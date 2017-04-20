@@ -1,7 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router';
-import axios from 'axios'
-import cookie from 'react-cookie'
+import axios from 'axios';
+import cookie from 'react-cookie';
+import $ from 'min-jquery';
 
 export default class ProblemForm extends React.Component {
 
@@ -41,13 +42,20 @@ export default class ProblemForm extends React.Component {
       requirements: this.state.requirements,
       references: this.state.references
     })
-    .then(function (result) {
-      
-    })
-    .catch(function (error) {
-      alert("There was an error.")
-      });
-  };
+  .then(function (result) {
+    $(document).ready(function(){
+      $('#avatarHeader').hide();
+      $('#createSuccessBox').show();
+});
+  })
+
+  .catch(function (error) {
+    $(document).ready(function(){
+      $('#avatarHeader').hide();
+      $('#createFailureBox').show();
+    });
+  });
+  }
 
   render() {
       return (

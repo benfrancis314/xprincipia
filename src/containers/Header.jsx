@@ -6,6 +6,12 @@ import axios from 'axios';
 import HeaderAvatar from '../components/HeaderAvatar.jsx';
 import NotificationSuccess from '../components/NotificationSuccess.jsx';
 import NotificationFailure from '../components/NotificationFailure.jsx';
+import VoteSuccess from '../components/VoteSuccess.jsx';
+import VoteFailure from '../components/VoteFailure.jsx';
+import CreateSuccess from '../components/CreateSuccess.jsx';
+import CreateFailure from '../components/CreateFailure.jsx';
+import FollowSuccess from '../components/FollowSuccess.jsx';
+import FollowFailure from '../components/FollowFailure.jsx';
 
 export default class Header extends React.Component {
 
@@ -57,6 +63,14 @@ export default class Header extends React.Component {
               <Link to="/welcome"><div>XPrincipia</div></Link>
             </div>
             <HeaderAvatar />
+            <NotificationFailure />
+            <NotificationSuccess />
+            <CreateFailure />
+            <CreateSuccess />
+            <VoteFailure />
+            <VoteSuccess />
+            <FollowFailure />
+            <FollowSuccess />
         </div>
       </div>
       );

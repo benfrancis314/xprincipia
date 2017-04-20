@@ -34,7 +34,7 @@ export default class AnswerContainer extends React.Component {
       return (
         <div id="answerContainer">
             <AnswerForm probID={this.props.params.probID} questID={this.props.params.questID} />
-            <QuestionUnit questions={this.state.questions}/>
+            {/*<QuestionUnit questions={this.state.questions}/>*/}
             <AnswerUnit answers={this.state.answers}/>
             <SideBarMore />
         </div>

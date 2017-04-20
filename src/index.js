@@ -23,6 +23,8 @@ import SolutionForm from './components/SolutionForm.jsx';
 import UserSolution from './components/UserSolution.jsx';
 import WelcomeCreateForm from './components/WelcomeCreateForm.jsx';
 
+import Handout from './components/Handout.jsx';
+
 //Load Containers
 import AnswerContainer from './containers/AnswerContainer.jsx';
 import CommentContainer from './containers/CommentContainer.jsx';
@@ -52,6 +54,7 @@ ReactDOM.render(
       <Route path='/welcome' component={WelcomeUnitsContainer}></Route>
       <Route path='/welcome/create' component={WelcomeCreateForm}></Route>
     </Route>
+    <Route path='/handout' component={Handout}></Route>
     <Route path='/error' component={ErrorContainer}>
       <IndexRoute component={Redirection}></IndexRoute>
       <Route path='/404' component={Error404}></Route>

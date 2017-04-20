@@ -4,20 +4,20 @@ import cookie from 'react-cookie';
 import img from '../assets/dnablackinvert.png';
 import $ from 'jquery';
 
-export default class NotificationSuccess extends React.Component {
+export default class FollowFailure extends React.Component {
 
-    notificationSuccessAck() {
+    followFailureAck() {
     $(document).ready(function() {
-        $('#notificationSuccessBox').hide();
+        $('#followFailureBox').hide();
         $('#avatarHeader').show();
     });
     }
 
    render() {
       return (
-        <div id="notificationSuccessBox" onClick={this.notificationSuccessAck}>
-            {/*<Link to="/profile" >*/}
-                <div id="notificationSuccessText">Post Successful</div>
+        <div id="followFailureBox" onClick={this.followFailureAck}>
+            {/*<Link to="/profile">*/}
+                <div id="notificationFailureText">Post Failure</div>
             {/*</Link>*/}
         </div>
       );

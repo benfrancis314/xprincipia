@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import cookie from 'react-cookie';
+import $ from 'jquery';
 
 export default class SuggestionForm extends React.Component {
 
@@ -24,10 +25,20 @@ this.state.suggestion = document.getElementById('suggestionTextArea').value
     description : this.state.suggestion,
   })
   .then(function (result) {
-    
+    $(document).ready(function(){
+      $('#avatarHeader').hide();
+      $('#notificationSuccessBox').show();
+});
   })
+
   .catch(function (error) {
+    $(document).ready(function(){
+      $('#avatarHeader').hide();
+      $('#notificationFailureBox').show();
+
+      alert('error');
     });
+  });
   }
 
 
