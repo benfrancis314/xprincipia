@@ -9,6 +9,8 @@ import Error404 from './components/Error404.jsx';
 import FullProblem from './components/FullProblem.jsx';
 import FullSolution from './components/FullSolution.jsx';
 // import Info from './components/Info.jsx';
+import Instructions from './components/Instructions.jsx';
+import Intro from './components/Intro.jsx';
 import Layout from './components/Layout.jsx';
 import LoginUnit from './components/LoginUnit.jsx';
 import ProblemForm from './components/ProblemForm.jsx';
@@ -23,8 +25,10 @@ import WelcomeCreateForm from './components/WelcomeCreateForm.jsx';
 
 //Load Containers
 import AnswerContainer from './containers/AnswerContainer.jsx';
+import CommentContainer from './containers/CommentContainer.jsx';
 import ErrorContainer from './containers/ErrorContainer.jsx';
 import LoginContainer from './containers/LoginContainer.jsx';
+import NewsFeedContainer from './containers/NewsFeedContainer.jsx';
 import ProfileContainer from './containers/ProfileContainer.jsx';
 import QuestionContainer from './containers/QuestionContainer.jsx';
 import SearchContainer from './containers/SearchContainer.jsx';
@@ -46,7 +50,7 @@ ReactDOM.render(
     <Route path='/welcomecontainer' component={WelcomeContainer}>
       <IndexRoute component={WelcomeUnitsContainer}></IndexRoute>
       <Route path='/welcome' component={WelcomeUnitsContainer}></Route>
-      <Route path='/welcome/create' component={ProblemForm}></Route>
+      <Route path='/welcome/create' component={WelcomeCreateForm}></Route>
     </Route>
     <Route path='/error' component={ErrorContainer}>
       <IndexRoute component={Redirection}></IndexRoute>
@@ -55,6 +59,9 @@ ReactDOM.render(
     </Route>
     <Route path='/search' component={SearchContainer}></Route>
     <Route path='/profile' component={ProfileContainer}></Route>
+    <Route path='/newsfeed' component={NewsFeedContainer}></Route>
+    <Route path='/intro' component={Intro}></Route>
+    <Route path='/instructions' component={Instructions}></Route>
     <Route path='/logincontainer' component={LoginContainer}>
       <IndexRoute component={LoginContainer}></IndexRoute>
       <Route path='/login' component={LoginUnit}></Route>
@@ -67,13 +74,16 @@ ReactDOM.render(
         <IndexRoute component={SideBarProblem}></IndexRoute>
         <Route path='/problem/:probID/SideBar' component={SideBarProblem}>
           <IndexRoute component={SolutionContainer}></IndexRoute>
-          <Route path='/problem/:probID/:questID/answers' component={AnswerContainer}></Route>
+          
+          <Route path='/problem/:probID/:suggID/comments' component={CommentContainer}></Route>
           <Route path='/problem/:probID/problem/create' component={ProblemForm}></Route>
           <Route path='/problem/:probID/solution/create' component={SolutionForm}></Route>
-          <Route path='/problem/:probID/questions' component={QuestionContainer}></Route>
           <Route path='/problem/:probID/solutions' component={SolutionContainer}></Route>
           <Route path='/problem/:probID/subproblems' component={SubProblemContainer}></Route>
+          <Route path='/problem/:probID/questions' component={QuestionContainer}></Route>
+          <Route path='/problem/:probID/question/:questID/answers' component={AnswerContainer}></Route>
           <Route path='/problem/:probID/suggestions' component={SuggestionContainer}></Route>
+          <Route path='/problem/:probID/suggestion/:suggID/comments' component={CommentContainer}></Route>
         </Route>
       </Route>
         <IndexRoute component={FullSolution}></IndexRoute>

@@ -1,6 +1,6 @@
 import React from 'react';
 import axios from 'axios';
-import cookie from 'react-cookie'
+import cookie from 'react-cookie';
 
 export default class QuestionForm extends React.Component {
 
@@ -14,7 +14,7 @@ export default class QuestionForm extends React.Component {
     this.postQuestion = this.postQuestion.bind(this);
   };
 
-  postQuestion() {
+postQuestion() {
   //Read field items into component state
   this.state.question = document.getElementById('questionTextArea').value
   
@@ -24,6 +24,7 @@ export default class QuestionForm extends React.Component {
     username: cookie.load('userName'),
     description : this.state.question,
   })
+
   .then(function (result) {
     
   })

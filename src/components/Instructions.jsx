@@ -1,7 +1,7 @@
 import React from 'react';
 import Header from '../containers/Header.jsx';
 
-export default class Error404 extends React.Component {
+export default class Instructions extends React.Component {
    render() {
       return (
       <div>
