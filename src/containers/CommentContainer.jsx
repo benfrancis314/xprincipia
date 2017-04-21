@@ -18,7 +18,7 @@ export default class CommentContainer extends React.Component {
     };
         componentDidMount(){
         var self = this;
-         axios.get('http://localhost:10000/auth/comments/suggestionID?id='+this.props.params.suggID).then(function (response) {
+         axios.get('http://http://ec2-13-58-19-50.us-east-2.compute.amazonaws.com:10000/auth/comments/suggestionID?id='+this.props.params.suggID).then(function (response) {
             self.setState({
                 comments: response.data,
             })

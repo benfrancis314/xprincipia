@@ -23,7 +23,7 @@ constructor(props){
 	}
 	renderItem(question) {
        function submitVote() {
-       axios.post('http://localhost:10000/auth/vote/create', {
+       axios.post('http://http://ec2-13-58-19-50.us-east-2.compute.amazonaws.com:10000/auth/vote/create', {
            Type: 2,
            TypeID: question.ID,
            username : cookie.load("userName"),
