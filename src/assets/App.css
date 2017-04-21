@@ -2059,9 +2059,12 @@
 #backContent {
   width: 100%;
   text-align: center;
-  font-size: 120%;
+  font-size: 105%;
   line-height: 150%;
   letter-spacing: 3px;
   color: #ffffff;
-  margin: 0% 10%;
+  margin-top: 20px;
+}
+#backLarge {
+  font-size: 125%;
 }
