@@ -1,12 +1,12 @@
 /*Global*/
 
     * {
-    	font-family: 'Alegreya Sans SC', sans-serif;
+    	font-family: 'Alegreya Sans SC', sans-serif, Verdana ,Arial;
     	font-weight: 100;
     }
     body {
     	color: #dddddd;
-    	font-family: 'Alegreya Sans SC', sans-serif;
+    	font-family: 'Alegreya Sans SC', Arial;
     	margin: 0 auto;
     	position: relative;
     	background-color: #0f131c;
@@ -710,14 +710,12 @@
     #banner {
     	color: #ffffff;
     	width: 100%;
-    	letter-spacing: .15em;
-    	font-size: 200%;
     	text-align: center;
     	margin-top: 14%;
     	padding: 0px 0px 5px 13px;
     }
     #bannerTitle {
-    	font-size: 200%;
+    	font-size: 400%;
     	letter-spacing: 16px;
     	border: 1px solid #00dcff;
     	border-width: 2px 0px;
@@ -726,6 +724,7 @@
     #bannerSlogan {
       margin-top: 15px;
       letter-spacing: 12px;
+      font-size: 200%;
     }
     #learnMore {
     	color: #00dcff;
@@ -834,7 +833,6 @@
       flex-direction: row;
       text-align: right;
       display: none;
-      /*padding-top: 5px;*/
     }
     #notificationFailureBox:hover, #notificationSuccessBox:hover {
       cursor: pointer;
@@ -1956,51 +1954,114 @@
 
 /*Handout*/
 
-#handout {
+
+#handoutFront {
   color: #dddddd;
   padding: 0px 10px 20px 10px;
   margin: 5px 5px 10px 5px;
   flex: 1 1 auto;
-  width: 60%;
   border: 1px solid #00dcff;
   border-width: 2px;
+  width: 700px;
+  height: 400px;
 }
 
-    #bannerHandout {
-    	color: #ffffff;
-    	width: 100%;
-    	letter-spacing: .15em;
-    	font-size: 200%;
-    	text-align: center;
-    	margin-top: 14%;
-    }
-    #bannerHandoutTitle {
-    	font-size: 200%;
-    	letter-spacing: 16px;
-    	border: 1px solid #00dcff;
-    	border-width: 2px 0px;
-      text-align: center;
-    }
-    #bannerHandoutSlogan {
-      margin-top: 15px;
-      letter-spacing: 12px;
-    }
-    #learnMoreHandout {
-    	color: #00dcff;
-    	padding: -10% 10% 0% 10%;
-    	font-size: 120%;
-    }
-    #introductionHandout {
-    	text-align: center;
-    	font-size: 120%;
-    	line-height: 150%;
-    	letter-spacing: 3px;
-      color: #ffffff;
-      padding-left: 15px;
-    }
-    #introductionHandout {
-    	margin: 0% 10%;
-    	border:
-    }
-    #emailHandout {
-    }
+#bannerHandout {
+  color: #ffffff;
+  width: 100%;
+  letter-spacing: .15em;
+  font-size: 200%;
+  text-align: center;
+  margin-top: 14%;
+}
+#bannerHandoutTitle {
+  font-size: 200%;
+  letter-spacing: 16px;
+  border: 1px solid #00dcff;
+  border-width: 2px 0px;
+  text-align: center;
+}
+#bannerHandoutSlogan {
+  margin-top: 15px;
+  letter-spacing: 12px;
+}
+#learnMoreHandout {
+  color: #00dcff;
+  padding: -10% 10% 0% 10%;
+  font-size: 120%;
+}
+#introductionHandout {
+  text-align: center;
+  font-size: 120%;
+  line-height: 150%;
+  letter-spacing: 3px;
+  color: #ffffff;
+  margin: 0% 10%;
+}
+#emailHandout {
+    font-size: 90%;
+}
+
+
+#handoutBack {
+  color: #dddddd;
+  margin: 5px 5px 10px 5px;
+  flex: 1 1 auto;
+  border: 1px solid #00dcff;
+  border-width: 2px;
+  width: 720px;
+  height: 400px;
+}
+#timeline {
+  display: inline-flex;
+  flex-direction: row;
+  align-items: stretch;
+  width: 100%;
+  border: 1px solid #00dcff;
+  border-width: 0px 0px 1px 0px;
+  border-radius: 3px;
+  height: 124px;
+}
+#betaDate, #launchDate {
+  flex: 1 1 auto;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  display: block;
+  padding: 20px 0px;
+}
+#betaDate {
+  margin-left: 9%;
+}
+#launchDate {
+  margin-right: 9%;
+}
+#timelineTitle {
+  flex: 1 1 auto;
+  color: #00dcff;
+  font-size: 180%;
+  padding: 3px 5px 3px 10px;
+  letter-spacing: 4px;
+}
+#blueDot {
+  color: #00dcff;
+}
+#timelineDate {
+  flex: 1 1 auto;
+  color: #00dcff;
+  font-size: 120%;
+  padding: 3px 5px 3px 10px;
+  margin: 0px 0px;
+  letter-spacing: 4px;
+}
+#backContent {
+  width: 100%;
+  text-align: center;
+  font-size: 120%;
+  line-height: 150%;
+  letter-spacing: 3px;
+  color: #ffffff;
+  margin: 0% 10%;
+}

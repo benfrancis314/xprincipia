@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import cookie from 'react-cookie';
+import $ from 'react-router';
 
 export default class CommentForm extends React.Component {
 
@@ -25,11 +26,18 @@ axios.post('http://localhost:10000/auth/comments/create', {
   username: cookie.load('userName'),
   description : this.state.comment,
 })
-.then(function (result) {
+  .then(function (result) {
+    $(document).ready(function(){
+      $('#avatarHeader').hide();
+      $('#notificationSuccessBox').show();
+});
+  })
 
-})
-.catch(function (error) {
-  alert('Please try again');
+  .catch(function (error) {
+    $(document).ready(function(){
+      $('#avatarHeader').hide();
+      $('#notificationFailureBox').show();
+    });
   });
 }
 

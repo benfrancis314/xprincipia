@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router';
 import axios from 'axios';
 import cookie from 'react-cookie';
+import $ from 'react-router';
 
 
 export default class SolutionForm extends React.Component {
@@ -40,12 +41,21 @@ export default class SolutionForm extends React.Component {
       experiments : this.state.experiments,
       references: this.state.references
     })
-    .then(function (result) {
-      
-    })
-    .catch(function (error) {
-      });
-  
+  .then(function (result) {
+    $(document).ready(function(){
+      $('#avatarHeader').hide();
+      $('#notificationSuccessBox').show();
+});
+  })
+
+  .catch(function (error) {
+    $(document).ready(function(){
+      $('#avatarHeader').hide();
+      $('#notificationFailureBox').show();
+
+      alert('error');
+    });
+  });
   }
 
   render() {

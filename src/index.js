@@ -23,7 +23,7 @@ import SolutionForm from './components/SolutionForm.jsx';
 import UserSolution from './components/UserSolution.jsx';
 import WelcomeCreateForm from './components/WelcomeCreateForm.jsx';
 
-import Handout from './components/Handout.jsx';
+import Handout from './components/HandoutFront.jsx';
 
 //Load Containers
 import AnswerContainer from './containers/AnswerContainer.jsx';

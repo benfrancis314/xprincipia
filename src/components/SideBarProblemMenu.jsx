@@ -9,7 +9,7 @@ export default class SideBarProblemMenu extends React.Component {
         <div id="solveMenu">
                 <div id="solveTitle">Solve</div>
                   <Link to={`/problem/${this.props.probID}/solutions`} activeClassName="activeGreen"><div id="solutionsButton">Top Solutions</div></Link>
-                  <Link to={`/problem/${this.props.probID}/subproblems`} activeClassName="activeGreen"><div id="subproblemButton">Sub Problems</div></Link>
+                  <Link to={`/problem/${this.props.probID}/subproblems`} activeClassName="activeGreen"><div id="subproblemButton">Subproblems</div></Link>
         </div>
         <div id="developMenu">
                 <div id="developTitle">Develop</div>

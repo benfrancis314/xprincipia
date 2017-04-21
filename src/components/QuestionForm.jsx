@@ -12,10 +12,6 @@ export default class QuestionForm extends React.Component {
     question: '',
   }
 
-  this.state= {
-    notification: 'Post',
-  }
-
     this.postQuestion = this.postQuestion.bind(this);
   };
 

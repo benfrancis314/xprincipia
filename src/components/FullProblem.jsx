@@ -1,7 +1,8 @@
 import React from 'react';
 import { Link  } from 'react-router';
 import axios from 'axios';
-import cookie from 'react-cookie'
+import cookie from 'react-cookie';
+import $ from 'jquery';
 
 export default class FullProblem extends React.Component {
   constructor(props){
@@ -64,11 +65,20 @@ export default class FullProblem extends React.Component {
            
         })
         .then(function (result) {
-            document.location = window.location.pathname 
+          $(document).ready(function(){
+            $('#avatarHeader').hide();
+            $('#notificationSuccessBox').show();
+
+          document.location = window.location.pathname;
+      });
         })
+
         .catch(function (error) {
-            alert("Already voted on solution")
-        })
+          $(document).ready(function(){
+            $('#avatarHeader').hide();
+            $('#notificationFailureBox').show();
+          });
+        });
   }
 
    render() {
@@ -83,7 +93,7 @@ export default class FullProblem extends React.Component {
           </div>
           <div id="problemIntro">
             <h1 id="problemTitle">{this.state.problemInfo.Title}</h1>
-            <div id="followProblem" onClick={this.submitVote}>Follow</div>
+            <div id="followProblem" onClick={this.submitVote}>Vote</div>
             <div id="contributor">{this.state.problemInfo.OriginalPosterUsername}</div>
             <div id="createDate">{this.state.problemInfo.CreatedAt}</div>
             <h1 id="problemSummaryLabel">Summary</h1>

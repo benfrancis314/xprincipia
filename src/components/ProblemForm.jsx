@@ -45,14 +45,14 @@ export default class ProblemForm extends React.Component {
   .then(function (result) {
     $(document).ready(function(){
       $('#avatarHeader').hide();
-      $('#createSuccessBox').show();
+      $('#notificationSuccessBox').show();
 });
   })
 
   .catch(function (error) {
     $(document).ready(function(){
       $('#avatarHeader').hide();
-      $('#createFailureBox').show();
+      $('#notificationFailureBox').show();
     });
   });
   }
@@ -62,7 +62,7 @@ export default class ProblemForm extends React.Component {
         <div id="createProblemBox">
             <form id="createForm">
               <fieldset>
-                  <legend>Create:Problem</legend>
+                  <legend>Create:Subproblem</legend>
                         <label htmlFor="problemTitleForm" id="problemTitleFormLabel">Title<br />
                             <input type="text" name="problemTitle" required="required" maxLength="140" id="problemTitleForm" autoFocus/>
                           </label><br />

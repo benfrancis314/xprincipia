@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router';
 import axios from 'axios';
 import cookie from 'react-cookie';
+import $ from 'react-router';
 
 export default class FullSolution extends React.Component {
   constructor(props){
@@ -51,11 +52,22 @@ export default class FullSolution extends React.Component {
            
         })
         .then(function (result) {
-            document.location = window.location.pathname 
+          $(document).ready(function(){
+            $('#avatarHeader').hide();
+            $('#notificationSuccessBox').show();
+
+          document.location = window.location.pathname;
+      });
         })
+
         .catch(function (error) {
-            alert("Already voted on solution")
-        })
+          $(document).ready(function(){
+            $('#avatarHeader').hide();
+            $('#notificationFailureBox').show();
+
+            alert('error');
+          });
+        });
   }
    render() {
       return (

@@ -9,15 +9,8 @@ export default class HeaderAvatar extends React.Component {
 
 fadeEnter() {
     $(document).ready(function() {
-        $()
         $('#profileBox').fadeTo('slow', 1);
         $('#headerSection').fadeTo('fast', 0.5);
-        // $('#profileBox').mouseenter(function() {
-            // $('#userName').fadeTo('slow', 0.5); 
-        // });
-        // $('div').mouseleave(function() {
-            // $('#profileBox').fadeTo('fast', 0.5);
-        // });
     });
 }
 
