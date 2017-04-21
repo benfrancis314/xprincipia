@@ -18,7 +18,7 @@ export default class HandoutBack extends React.Component {
             </div>
         </div>
         <div id="backContent">
-                Get involved in cutting edge science <br/>
+                <div id="backLarge">Get involved in cutting edge science</div>
                 .<br/>
                 Submit and Breakdown today’s scientific problems<br/>
                 .<br/>
