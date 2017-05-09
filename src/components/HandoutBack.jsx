@@ -24,7 +24,6 @@ export default class HandoutBack extends React.Component {
                 .<br/>
                 <div id="backLarge">Create and vote on solutions</div>
                 .<br />
-                .<br />
                 Contact us to learn more<br />
                 info@xprincipia.com
         </div>

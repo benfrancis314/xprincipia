@@ -1956,14 +1956,16 @@
 
 
 #handoutFront {
-  color: #dddddd;
+  color: #ffffff;
   padding: 0px 10px 0px 10px;
-  margin: 5px 5px 10px 5px;
+  margin: 60px 40px 40px 60px;
   flex: 1 1 auto;
   border: 1px solid #00dcff;
   border-width: 2px;
-  width: 700px;
-  height: 400px;
+  width: 600px;
+  height: 350px;
+  background-color: #0f131c;
+  font-size: 87%;
 }
 
 #bannerHandout {
@@ -2004,13 +2006,14 @@
 
 
 #handoutBack {
-  color: #dddddd;
-  margin: 5px 5px 10px 5px;
+  color: #ffffff;
+  margin: 120px 40px 40px 60px;
   flex: 1 1 auto;
   border: 1px solid #00dcff;
   border-width: 2px;
-  width: 720px;
-  height: 400px;
+  width: 620px;
+  height: 350px;
+  background-color: #0f131c;
 }
 #timeline {
   display: inline-flex;
@@ -2041,7 +2044,7 @@
 #timelineTitle {
   flex: 1 1 auto;
   color: #00dcff;
-  font-size: 180%;
+  font-size: 200%;
   padding: 3px 5px 3px 10px;
   letter-spacing: 4px;
 }
@@ -2051,7 +2054,7 @@
 #timelineDate {
   flex: 1 1 auto;
   color: #00dcff;
-  font-size: 120%;
+  font-size: 140%;
   padding: 3px 5px 3px 10px;
   margin: 0px 0px;
   letter-spacing: 4px;
@@ -2059,7 +2062,7 @@
 #backContent {
   width: 100%;
   text-align: center;
-  font-size: 105%;
+  font-size: 100%;
   line-height: 150%;
   letter-spacing: 3px;
   color: #ffffff;
