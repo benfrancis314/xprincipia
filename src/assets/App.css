@@ -344,7 +344,9 @@
 #prosButton, #consButton {
   width: 10em !important;
 }
-
+#followProblemLeftSB {
+  width: 60% !important;
+}
 /*Profile*/
 #profileBox {
   border-top-width: 0px !important;
@@ -1761,7 +1763,7 @@
       border-radius: 2px 2px 0px 0px;
       cursor: pointer;
       height: 37px;
-
+      min-width: 101.94px;
       text-align: center;
       font-size: 120%;
       padding: 0px 24px 0px 25px;;
@@ -1772,6 +1774,7 @@
     }
     #suggestionVoteNoComments {
       border-width: 1px 1px 1px 1px;
+      min-width: 103.27px;
     }
     #suggestionVote:hover, #suggestionVoteNoComments:hover {
       color: #0f131c;
