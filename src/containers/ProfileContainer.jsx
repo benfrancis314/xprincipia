@@ -5,6 +5,7 @@ import Header from '../containers/Header.jsx';
 import ProfileUnit from '../components/profile/ProfileUnit.jsx';
 import cookie from 'react-cookie';
 import axios from 'axios';
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group'; // ES6
 import TutorialProfileContent from '../components/tutorials/TutorialProfileContent.jsx';
 
 export default class ProfileContainer extends React.Component {
@@ -96,6 +97,12 @@ export default class ProfileContainer extends React.Component {
       return (
     <div id="profileContainer">
       <Header />
+        <ReactCSSTransitionGroup
+        transitionName="example"
+        transitionAppear={true}
+        transitionAppearTimeout={2000}
+        transitionEnter={false}
+        transitionLeave={false}>
       <div id="profileBox">
         <div id="profileLeft">
             <div id="userInformation">
@@ -105,17 +112,17 @@ export default class ProfileContainer extends React.Component {
             </div>
             <div id="userOptions">
                 <Link to={`/profile`} activeClassName="activeBlue">
-                    <div id="userProblemsSolutionsButton">Problems and Solutions </div>
+                    <div id="userProblemsSolutionsButton">Navigation </div>
                 </Link>
                 {/*<Link to={`/profile/notifications`} activeClassName="activeBlue">
                     <div id="notificationsButton">Notifications</div>
                 </Link>*/}
                 {/*<div id="userSettingsButton">Settings (Coming Soon)</div>*/}
-                <Link to={`/profile/about`} activeClassName="activeBlue">
-                    <div id="aboutXPButton">About XPrincipia</div>
-                </Link>
                 <Link to={`/profile/feedback`} activeClassName="activeBlue">
                     <div id="userFeedbackButton">Feedback</div>
+                </Link>
+                <Link to={`/profile/about`} activeClassName="activeBlue">
+                    <div id="aboutXPButton">About XPrincipia</div>
                 </Link>
                 <div id="logOutButton" onClick={this.onLogout}>Logout</div>
                 <br />
@@ -132,6 +139,7 @@ export default class ProfileContainer extends React.Component {
         </div>*/}
         
         <TutorialProfileContent />
+        </ReactCSSTransitionGroup>
     </div>
 
       );

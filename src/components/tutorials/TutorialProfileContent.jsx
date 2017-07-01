@@ -25,14 +25,14 @@ export default class TutorialProfileContent extends React.Component {
                  Contribute to scientific progress
               </div>*/}
               <div id="tutorialProseDescriptions">
-                 Here the <span id="blue">projects and proposals</span> you have <span id="blue">voted on or created</span> are displayed.
+                 <span id="blue">Navigate the projects and proposals</span> you have created or voted on.
                  <br />
                  <br />
-                 Provide feedback of how 
-                 <span id="blue"> you think XPrincipia should be improved.</span>
+                 Tell us
+                 <span id="blue"> how to improve XPrincipia.</span>
                  <br />
                  <br />
-                 Learn about XPrincipia and <span id="blue">contact us</span> for any additional information. 
+                 Learn about XPrincipia and <span id="blue">contact us</span> for additional information. 
                  <br />
                  <br />
               </div>
