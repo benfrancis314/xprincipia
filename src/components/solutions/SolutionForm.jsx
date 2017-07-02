@@ -36,6 +36,7 @@ export default class SolutionForm extends React.Component {
     })
     .then(function (result) {
       document.location = window.location.pathname 
+      // document.location = '/problem/' + this.props.params.probID + '/solutions/top'
     })
     .catch(function (error) {
         alert("There was an error.")

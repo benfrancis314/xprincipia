@@ -1437,7 +1437,18 @@
     	letter-spacing: 4px;
       background-color: rgba(0,220,255,0.05);
     }
-    #projectsTitleProfile {
+    #projectsTitleResume, #proposalsTitleResume {
+      flex: 1 1 auto;
+    	color: #00dcff;
+    	border: 1px solid #00dcff;
+    	border-width: 0px 0px 1px 0px;
+    	font-size: 120%;
+    	padding: 5px 5px 5px 10px;
+    	margin: 0px 0px 0px 0px;
+    	letter-spacing: 4px;
+      background-color: rgba(0,220,255,0.05);
+    }
+    #projectsTitleProfile, #projectsTitleResume {
       border-width: 0px 1px 1px 0px;
       margin: 0px 0px 0px 0px;
     }
@@ -1449,7 +1460,7 @@
     	font-size: 90%;
     	border: 1px solid #00ffdc;
     	border-width: 0px 1px 1px 1px;
-    	border-radius: 3px 3px 0px 0px;
+    	border-radius: 0px 0px 3px 3px;
     	text-align: center;
     	text-decoration: none;
     	margin: 0px 10px 0px 10px;
@@ -1459,13 +1470,18 @@
     #createdProblemsButton, #createdSolutionsButton {
       border-top: 0px;
       margin-top: 0px;
-      border-radius: 0px 0px 3px 3px;
+      border-radius: 0px 0px 0px 0px;
     }
     #followedProblemsButton:hover, #createdProblemsButton:hover,
     #votedSolutionsButton:hover, #createdSolutionsButton:hover,
     #followedProblemsButton:active, #createdProblemsButton:active,
     #votedSolutionsButton:active, #createdSolutionsButton:active {
     	background-color: rgba(0,255,220,1);
+    	color: #0f131c;
+    	cursor: pointer;
+    }
+    #projectsTitleResume:hover, #proposalsTitleResume:hover {
+      background-color: rgba(0,220,255,1);
     	color: #0f131c;
     	cursor: pointer;
     }
@@ -3351,6 +3367,7 @@ a#learnResourcesLink:hover {
   letter-spacing: 8px;
   padding: 5px;
   width: 100%;
+  /**/
 }
 #createDate {
   flex: 1 1 auto;
