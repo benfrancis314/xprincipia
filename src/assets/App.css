@@ -2882,7 +2882,7 @@
 }
 #SPPercent {
   text-align: center;
-  color: #00ffdc !important;
+  color: #00ffdc;
   font-size: 130%;
 }
 #SPVote {
@@ -4236,8 +4236,9 @@ p, body, #versionUnitTitle, #introPrompt, #introProseDescriptions,
 }
 #introBanner, #SBDiscussButton, #topSolutionsButtonRightSB,
 #createSolutionsButtonRightSB, #contentLearnButtonRightSB, 
-#resourcesLearnButtonRightSB {
-  border: 1px solid #2f2f42;
+#resourcesLearnButtonRightSB, #welcomeUserProblemsUnitList,
+#exploreInput {
+  border-color: #2f2f42;
 }
 input, textarea {
   color: #2f2f42;
@@ -4317,6 +4318,7 @@ label {
 #welcomeProblemsHeader3,
 #welcomeProblemsHeader4 {
   background-color: rgba(15,19,28,0.75);
+  /*background-color: rgba(255,113,0,0.5);*/
   border: 2px solid #2f2f42;
   border-radius: 100%;
   box-shadow: 0 0 2pt 2pt rgba(47,47,66,0.5);
@@ -4333,4 +4335,25 @@ label {
 #welcomeProblemsHeader3:hover,
 #welcomeProblemsHeader4:hover {
   background-color: rgba(15,19,28,0.25);
+}
+
+#header {
+  border: 1px solid #2f2f42;
+  border-width: 0px 0px 1px 0px;
+}
+
+
+/*Orange*/
+#SPPercent {
+  color: #ff7100;
+}
+#problemPercent {
+  color: #ff7100;
+}
+#followProblem {
+  color: #ff7100;
+  border-color: #ff7100;
+}
+#followProblem:hover {
+  background-color: #ff7100;
 }
