@@ -4193,7 +4193,7 @@ input#submitNewVersion:hover {
 
 /*XPrincipia Day*/
 
-/*body {
+body {
   background-color: #ffffff;
 }
 #error, #logoName, #banner, #welcomeUserProblemsUnit:hover *, 
@@ -4311,4 +4311,26 @@ label {
 #contentLearnButtonRightSB, 
 #resourcesLearnButtonRightSB {
   border-width: 0px 1px 0px 1px;
-}*/
+}
+#welcomeProblemsHeader1,
+#welcomeProblemsHeader2,
+#welcomeProblemsHeader3,
+#welcomeProblemsHeader4 {
+  background-color: rgba(15,19,28,0.75);
+  border: 2px solid #2f2f42;
+  border-radius: 100%;
+  box-shadow: 0 0 2pt 2pt rgba(47,47,66,0.5);
+}
+#welcomeProblemsHeader:hover, 
+#welcomeProblemsHeader1:hover,
+#welcomeProblemsHeader2:hover,
+#welcomeProblemsHeader3:hover,
+#welcomeProblemsHeader4:hover {
+  box-shadow: 0 0 1pt 3pt rgba(47,47,66,0.5);
+}
+#welcomeProblemsHeader1:hover,
+#welcomeProblemsHeader2:hover,
+#welcomeProblemsHeader3:hover,
+#welcomeProblemsHeader4:hover {
+  background-color: rgba(15,19,28,0.25);
+}
