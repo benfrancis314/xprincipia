@@ -4317,7 +4317,8 @@ label {
 #welcomeProblemsHeader2,
 #welcomeProblemsHeader3,
 #welcomeProblemsHeader4 {
-  background-color: rgba(15,19,28,0.75);
+  background-color: rgba(47,47,66,0.5);
+  background-color: rgba(15,19,28,0.5);
   /*background-color: rgba(255,113,0,0.5);*/
   border: 2px solid #2f2f42;
   border-radius: 100%;
@@ -4334,13 +4335,53 @@ label {
 #welcomeProblemsHeader2:hover,
 #welcomeProblemsHeader3:hover,
 #welcomeProblemsHeader4:hover {
-  background-color: rgba(15,19,28,0.25);
+  background-color: rgba(47,47,66,0);
+  background-color: rgba(15,19,28,0);
 }
 
 #header {
   border: 1px solid #2f2f42;
   border-width: 0px 0px 1px 0px;
 }
+#userProblemsSolutionsButton, #notificationsButton,
+#userSettingsButton, #aboutXPButton, 
+#userFeedbackButton, #logOutButton {
+  background-color: rgba(47,47,66,0);
+  color: #2f2f42;
+  border: 1px solid #2f2f42;
+  border-width: 1px 0px;
+}
+#projectsTitleProfile, #proposalsTitleProfile {
+  color: #2f2f42;
+  border: 1px solid #2f2f42;
+  border-width: 0px 0px 1px 0px;
+  background-color: rgba(0,220,255,0.05);
+}
+#projectsTitleProfile, #projectsTitleResume {
+  border-width: 0px 1px 1px 0px;
+}
+#followedProblemsButton, #createdProblemsButton, 
+#votedSolutionsButton, #createdSolutionsButton {
+  background-color: rgba(0,255,220,0);
+  color: #2f2f42;
+  border: 1px solid #2f2f42;
+  border-width: 0px 1px 1px 1px;
+}
+#feedbackExplanation {
+  border: 1px solid #2f2f42;
+  border-width: 1px 0px;
+  color: #2f2f42;
+}
+#feedbackTextArea {
+  color: #2f2f42;
+  border: 1px solid #2f2f42;
+}
+
+
+
+
+
+
 
 
 /*Orange*/
