@@ -42,10 +42,34 @@ export default class FullProblem extends React.Component {
       })       
   }
 
+    componentDidMount(){
+      var self = this;
+      axios.get( Config.API + '/auth/problems/ID?id='+this.props.params.probID).then(function (response) {
+
+          //set Problem Data
+          self.setState({
+              problemInfo: response.data
+          })
+    })
+    .catch(function (error) {
+        if(error.response.status === 401 || error.response.status === 403){
+            document.location = "/login"
+        }
+    });
+          
+    axios.get( Config.API + "/auth/vote/isVotedOn?type=0&typeID=" + this.props.params.probID + "&username=" + cookie.load("userName"))
+          .then( function (response){
+            console.log(response.data)
+            self.setState({
+              vote: response.data
+            })
+      })       
+  }
+
 
   componentWillReceiveProps(newProps){
     var self = this;
-      return axios.get( Config.API + '/auth/problems/ID?id='+newProps.params.probID).then(function (response) {
+      axios.get( Config.API + '/auth/problems/ID?id='+newProps.params.probID).then(function (response) {
         //set problem data
         self.setState({
             problemInfo: response.data,
@@ -168,7 +192,7 @@ unVote() {
           <div id="columnContainer">
             {/*<div id="fullProblemHeader">*/}
               <div  id="problemPercent">
-                <span id="bigPercentInactive">{floatToDecimal(this.state.problemInfo.PercentRank)}</span>%
+                <span id="bigPercentInactive">{this.state.problemInfo.Rank}</span>
               </div> 
               
                     <div id="sidebarMenu">
@@ -268,7 +292,7 @@ unVote() {
           <div id="columnContainer">
             {/*<div id="fullProblemHeader">*/}
               <div  id="problemPercent">
-                <span id="bigPercentInactive">{floatToDecimal(this.state.problemInfo.PercentRank)}</span>%
+                <span id="bigPercentInactive">{this.state.problemInfo.Rank}</span>
               </div> 
               
                     <div id="sidebarMenu">
@@ -360,7 +384,7 @@ unVote() {
           <div id="columnContainer">
             {/*<div id="fullProblemHeader">*/}
               <div  id="problemPercent">
-                <span id="bigPercentInactive">{floatToDecimal(this.state.problemInfo.PercentRank)}</span>%
+                <span id="bigPercentInactive">{this.state.problemInfo.Rank}</span>
               </div> 
               
                     <div id="sidebarMenu">
@@ -460,7 +484,7 @@ unVote() {
           <div id="columnContainer">
             {/*<div id="fullProblemHeader">*/}
               <div  id="problemPercent">
-                <span id="bigPercentInactive">{floatToDecimal(this.state.problemInfo.PercentRank)}</span>%
+                <span id="bigPercentInactive">{this.state.problemInfo.Rank}</span>
               </div> 
               
                     <div id="sidebarMenu">
