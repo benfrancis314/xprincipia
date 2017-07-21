@@ -35,7 +35,7 @@ export default class Header extends React.Component {
         // if (e.keyCode === 13)
         {
             // alert("This is not functional yet");
-            document.location = '/welcome';
+            document.location = '/search';
             
         }
         
@@ -44,6 +44,9 @@ export default class Header extends React.Component {
    render() {
       return (
         <div id="header">
+            <div id="logo">
+              <Link to="/welcome"><div id="logoName">XPrincipia</div></Link>
+            </div>
             {/*<div id="explore">
                 <form id="exploreFormHeader">
                     <input type="search" name="search"
@@ -52,9 +55,6 @@ export default class Header extends React.Component {
                     <input onKeyPress={this.submitSearch}  id="submitExplore" />
                 </form>
             </div>*/}
-            <div id="logo">
-              <Link to="/welcome"><div id="logoName">XPrincipia</div></Link>
-            </div>
             <HeaderAvatar />
         </div>
       );

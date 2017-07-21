@@ -105,11 +105,13 @@ export default class ProfileContainer extends React.Component {
             <div id="userInformation">
                 <p id="userName">{cookie.load('userName')}</p>
                 <img src={require('../assets/dnaAvatar.svg')} id="avatarImageProfile" width="160" height="160" alt="User Avatar, DNA Helix" />
-                <p id="userEmail">{cookie.load('userName')}</p>
             </div>
             <div id="userOptions">
                 <Link to={`/profile`} activeClassName="activeBlue">
                     <div id="userProblemsSolutionsButton">Activity</div>
+                </Link>
+                <Link to={`/profile/workspace`} activeClassName="activeBlue">
+                    <div id="userFeedbackButton">WorkSpace</div>
                 </Link>
                 {/*<Link to={`/profile/resume`} activeClassName="activeBlue">
                     <div id="userProblemsSolutionsButton">Resume</div>
@@ -123,9 +125,6 @@ export default class ProfileContainer extends React.Component {
                 </Link>
                 <Link to={`/profile/about`} activeClassName="activeBlue">
                     <div id="aboutXPButton">About XPrincipia</div>
-                </Link>
-                <Link to={`/profile/disclaimer`} activeClassName="activeBlue">
-                    <div id="aboutXPButton">Disclaimer</div>
                 </Link>
                 <div id="logOutButton" onClick={this.onLogout}>Logout</div>
                 {/*<br />

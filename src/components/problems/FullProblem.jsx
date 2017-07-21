@@ -42,30 +42,16 @@ export default class FullProblem extends React.Component {
       })       
   }
 
-    componentDidMount(){
+    componentWillMount(){
       var self = this;
-      axios.get( Config.API + '/auth/problems/ID?id='+this.props.params.probID).then(function (response) {
+      axios.get( Config.API + '/auth/problems/ID?id='+this.state.problemInfo.ParentID).then(function (response) {
 
           //set Problem Data
           self.setState({
-              problemInfo: response.data
+              parentInfo: response.data
           })
-    })
-    .catch(function (error) {
-        if(error.response.status === 401 || error.response.status === 403){
-            document.location = "/login"
-        }
     });
-          
-    axios.get( Config.API + "/auth/vote/isVotedOn?type=0&typeID=" + this.props.params.probID + "&username=" + cookie.load("userName"))
-          .then( function (response){
-            console.log(response.data)
-            self.setState({
-              vote: response.data
-            })
-      })       
-  }
-
+    }
 
   componentWillReceiveProps(newProps){
     var self = this;
@@ -148,83 +134,82 @@ unVote() {
           transitionAppearTimeout={2000}
           transitionEnter={false}
           transitionLeave={false}>
-        <div id="problemRow1">
+        {/*This is for image button, not named button*/}
+        {/*<div id="problemRow1">*/}
+        <div id="problemColumn1">
 
           {/*Used for standard site*/}
-          <Link to={`/problem/${this.state.problemInfo.ParentID}/subproblems`} onClick={refreshPage}>
+          {/*<Link to={`/problem/${this.state.problemInfo.ParentID}/subproblems`} onClick={refreshPage}>
             <div id="SPParent">
               <img src={require('../../assets/parent3.svg')} width="70" height="70" alt="Parent button, blue connection symbol" />
             </div>
-          </Link>
+          </Link>*/}
 
           {/*Used for mobile, not shown otherwise*/}
-          {/*<div id="SPParent2Div">*/}
-          <Link to={`/problem/${this.state.problemInfo.ParentID}/subproblems`} onClick={refreshPage}>
+          {/*<Link to={`/problem/${this.state.problemInfo.ParentID}/subproblems`} onClick={refreshPage}>
             <div id="SPParent2">
                 <img src={require('../../assets/upArrow.svg')} width="250" height="50" alt="Back arrow, blue up arrow" />
             </div>
-          </Link>
-          {/*</div>*/}
+          </Link>*/}
+
+          <div id="parentButton">
+            XPrincipia Projects
+          </div>
 
           <div id="problemIntro">
             <h1 id="problemTitle">{this.state.problemInfo.Title}</h1>
             <div id="projectCreator">
               {this.state.problemInfo.OriginalPosterUsername}
             </div>
-            <Link to={`/problem/${this.props.params.probID}/edit`}>
+            {/*<Link to={`/problem/${this.props.params.probID}/edit`}>
               <img src={require('../../assets/editBlue.svg')} id="editProjectButton" width="20" height="20" alt="Edit Button" />
-            </Link>
+            </Link>*/}
           </div>
         </div>
-        <div id="problemRow2">
-          <div id="fullProblem">
-            <div id="problemAdditionalInfoLabel">Additional Information
+        <div id="problemRow1">
+          {/*Row 1*/}
+            <div id="columnContainerProject">
+              <div id="sidebarMenu">
+                <Link to={`/problem/${this.props.params.probID}/questions`}>
+                  <div id="SBButtonDiscuss">Discuss</div>
+                </Link>
+              </div>
             </div>
+           {/*Row 2*/}
+            <div id="fullProblem">
+            
+              <div  id="problemPercent">
+                <div id="projectPercent">{this.state.problemInfo.Rank}</div>
+                <Link to={`/problem/${this.props.params.probID}/subproblems`}>
+                  <div id="votedProblem" onClick={this.unVote}>Voted</div>
+                </Link>
+              </div> 
             <p id="problemSummary">
               {this.state.problemInfo.Summary}
             </p>
+            <Link to={`/problem/${this.props.params.probID}/solutions/top`}>
+              <div id="SBButton">Proposals</div>
+            </Link>
             <Link to={`/problem/${this.props.params.probID}/create`} activeClassName="activeBlueText">
               <div id="createSPButtonBox">
-                <h1 id="createSPButton">Create a Sub Project</h1>
+                Create a Sub Project
               </div>
             </Link>
           </div>
-          <div id="columnContainer">
+          {/*Row 3*/}
+          <div id="columnContainerProject">
             {/*<div id="fullProblemHeader">*/}
-              <div  id="problemPercent">
-                <span id="bigPercentInactive">{this.state.problemInfo.Rank}</span>
-              </div> 
-              
-                    <div id="sidebarMenu">
-                      <Link to={`/problem/${this.props.params.probID}/subproblems`}>
-                        <div id="votedProblem" onClick={this.unVote}>Voted</div>
-                      </Link>
-                      <Link to={`/problem/${this.props.params.probID}/solutions/top`}>
-                        <div id="SBButton">Proposals</div>
-                      </Link>
-
-                      <Link to={`/problem/${this.props.params.probID}/questions`}>
-                        <div id="SBButton">Discuss</div>
-                      </Link>
-
-                      <Link to={`/problem/${this.props.params.probID}/learn/resources`}>
-                        <div id="SBButton">Learn</div>
-                      </Link>
-
-                      {/*<Link to={`/problem/${this.props.probID}/theory`}>
-                        <div id="SBButton">Theory</div>
-                      </Link> */}
-
-                    </div>
-                    {/*Used for mobile*/}
-                    <div id="createSPButtonBox2">
-                      <Link to={`/problem/${this.props.params.probID}/create`} activeClassName="activeBlue">
-                        <h1 id="createSPButton">Create a Sub Project</h1>
-                      </Link>
-                    </div>
-              
-            {/*</div>*/}
-            {/*<SideBarProblemMenu probID={this.props.params.probID} />*/}
+              <div id="sidebarMenu">
+                <Link to={`/problem/${this.props.params.probID}/learn/resources`}>
+                  <div id="SBButtonLearn">Learn</div>
+                </Link>
+              </div>
+              {/*Used for mobile*/}
+                <div id="createSPButtonBox2">
+                  <Link to={`/problem/${this.props.params.probID}/create`} activeClassName="activeBlue">
+                    <h1 id="createSPButton">Create a Sub Project</h1>
+                  </Link>
+                </div>
           </div>
       </div>
         {/*<div id="SPLabel">

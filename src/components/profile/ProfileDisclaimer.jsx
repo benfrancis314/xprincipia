@@ -3,10 +3,7 @@ import React from 'react';
 export default class ProfileDisclaimer extends React.Component {
    render() {
       return (
-        <div id="profileAbout">
-          <div id="profileAboutBanner">
-              <div id="profileAboutTitle">Disclaimer</div>
-          <div id="introProse">
+        <div>
               <div id="aboutProseDescriptions">
                  
                  XPrincipia does not own any of the content found or posted on the website. 
@@ -75,8 +72,6 @@ export default class ProfileDisclaimer extends React.Component {
                 - Marsilio Ficino
             </div>
           </div>
-        </div>
-      </div>
       );
    }
 }

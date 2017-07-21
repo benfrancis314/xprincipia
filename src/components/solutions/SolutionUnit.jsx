@@ -25,9 +25,6 @@ export default class SolutionUnit extends React.Component {
 						<div id="solutionPercent">{floatToDecimal(solution.PercentRank)}</div>
 						<div id="solutionUnitTitle">{solution.Title}</div>
 					</div>
-					{/*<div id="solutionUnitSummary">
-						{solution.Summary}
-					</div>*/}
 				</div>
 			</Link>
 			

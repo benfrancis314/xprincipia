@@ -40,6 +40,12 @@
       display: inline-flex;
     	flex-direction: column;
       width: 40%;
+    }
+    #columnContainerProject {
+      display: inline-flex;
+    	flex-direction: column;
+      width: 40%;
+      flex: 2 2 auto;
       /*justify-content: space-between;*/
     }
     h1 {
@@ -1024,7 +1030,7 @@ like vote and comments.*/
       width: 60%;
       float: left;
       flex: 1 1 auto;
-      margin-top: 1.5%;
+      /*margin-top: 1.5%;*/
     }
     #solutionHeader, #problemHeader {
     	display: inline-flex;
@@ -1195,6 +1201,9 @@ like vote and comments.*/
       /*Currently, I can't tell if I like it or not*/
       /*background-color: rgba(255,255,255,0.05);
       border-color: #dddddd;*/
+
+      /*Testing light blue background header*/
+      background-color: rgba(0,220,255,0.05);
     }
     /*#header:hover {
       transform: scale(1.02);
@@ -1209,8 +1218,9 @@ like vote and comments.*/
     #explore {
     	color: #dddddd;
     	letter-spacing: 8px;
-      width: 25%;
+      width: 33%;
       margin: 0 auto;
+      flex: 1 1 auto;
     }
     #exploreFormHeader{
       overflow: hidden;
@@ -1239,7 +1249,7 @@ like vote and comments.*/
     	background-color: inherit;
     	border: 1px solid #dddddd;
     	height: 35px;
-    	width: 200px;
+    	width: 80%;
     	letter-spacing: 6px;
     	font-size: 80%;
     	font-family: 'Raleway', sans-serif;
@@ -1253,10 +1263,10 @@ like vote and comments.*/
     	font-size: 200%;
     	font-weight: 100;
     	letter-spacing: 16px;
-    	flex: 1 2 auto;
+    	flex: 1 1 auto;
 /*Changing the width to 100% gets rid of gap on right
  but shrinking screen messes up avatar*/
-      width: 50%;
+      width: 33%;
     }
     #logoName {
       margin: 0 auto;
@@ -1280,6 +1290,7 @@ like vote and comments.*/
       display: inline-block;
       overflow: hidden;
     	text-align: center;
+      width: 33%;
     }
     #avatarImage {
       /*display: block;*/
@@ -1644,6 +1655,7 @@ like vote and comments.*/
       transition: all 0.5s ease 0s;
       transform: scale(1);
       padding: 10px;
+      margin-bottom: 5%;
     }
     #avatarImageProfile:hover {
       transform: scale(1.05);
@@ -1655,7 +1667,7 @@ like vote and comments.*/
     	margin: 10px;
     	padding: 0px;
     	font-family: 'Alegreya Sans SC', sans-serif;
-      margin-top: 7%;
+      margin-top: 5%;
       margin-bottom: 2%;
     }
     #userEmail {
@@ -1843,6 +1855,7 @@ like vote and comments.*/
       height: auto;
       word-break: break-all;
       overflow: auto;
+      width: 90%;
     }
     #profileUnitSummary {
     	font-family: 'Open Sans', sans-serif;
@@ -1852,6 +1865,7 @@ like vote and comments.*/
     	text-align: justify;
       word-break: break-all;
       overflow: auto;
+      width: 90%;
     }
     #unitSummary {
     	font-family: 'Open Sans', sans-serif;
@@ -1918,8 +1932,13 @@ like vote and comments.*/
 /*SearchBox*/
 
     #searchBox {
-    	margin: 7% 25% 0% 25%;
     	border: 1px solid #00dcff;
+      border-radius: 3px 3px 3px 3px;
+      height: 100%;
+      padding-bottom: 10%;
+      margin: 0 auto;
+      margin-top: 7%;
+      width: 60%;
     }
     #exploreForm{
     	overflow: hidden;
@@ -1934,22 +1953,31 @@ like vote and comments.*/
     	display: none;
     }
     #searchElements {
-    	margin: 2px 15px 5px 5px;
+    	margin: 2px 15px 0px 5px;
     	padding: 5px;
+      width: 95%;
     }
     #searchUnit {
     	border: 1px solid #00dcff;
     	border-width: 1px 0px 0px 0px;
     }
     #searchTitle {
-    	padding: 0px 5px 0px 5px;
-    	font-size: 115%;
-    	color: #00dcff;
+    	display: block;
+      margin: 5px 0px 0px 0px;
+      padding: 2px 5px 2px 5px;
+      font-size: 140%;
+      color: #00dcff !important;
+      line-height: 120%;
+      height: auto;
+      overflow: auto;
     }
     #searchSummary {
-    	font-family: 'Open Sans', sans-serf;
-    	padding: 0px 5px 5px 5px;
-    	font-size: 90%;
+    	font-family: 'Open Sans', sans-serif;
+    	padding: 0px 0px 10px 10px;
+    	font-size: 80%;
+    	margin: 0px;
+    	text-align: justify;
+      overflow: auto;
     }
     #moreSearchButton {
     	margin: auto;
@@ -2569,6 +2597,7 @@ like vote and comments.*/
     	align-items: stretch;
     	flex-direction: row;
       width: 100%;
+      min-height: 80vh;
     }
     #problem {
       border: 1px solid #00dcff;
@@ -2646,7 +2675,37 @@ like vote and comments.*/
     #SBButton1 {
       margin-top: 0px;
     }
-    
+    #SBButtonDiscuss, #SBButtonLearn {
+      flex: 1 1 auto;
+      color: #dddddd;
+      font-size: 170%;
+      border: 1px solid #dddddd;
+      border-width: 1px 1px;
+      border-radius: 3px;
+      text-align: center;
+      text-decoration: none;
+      margin: 0 auto;
+      margin-top: 20%;
+      width: 50%;
+      background-color: rgba(0,220,255,0);
+      transition: all 0.5s ease 0s;
+      padding: 5% 0% 5% 0%;
+    }
+    #SBButtonDiscuss {
+      margin-left: 2%;
+      border-radius: 10px 3px 3px 10px;
+    }
+    #SBButtonLearn {
+      margin-right: 2%;
+      border-radius: 3px 10px 10px 3px;
+    }
+    #SBButtonDiscuss:hover, #SBButtonLearn:hover {
+      background-color: rgba(0,220,255,0.15);
+      color: #00dcff;
+      cursor: pointer;
+      border-color: #00dcff;
+    }
+        
     #createButton {
     	background-color: rgba(0,255,220,0);
     	color: #00ffdc;
@@ -2674,39 +2733,29 @@ like vote and comments.*/
       color: #0f131c;
     }
     #createSPButtonBox, #createSPButtonBox2 {
-      margin: 6% 18% 0% 18%;
-    	border: 1px solid #dddddd;
-      /*border-radius: 3px;*/
-      /*box-shadow: 0 0 1pt 1pt rgba(255,255,255,0.5);*/
+      color: #00dcff;
+    	font-size: 160%;
+      margin: 1.5% 20% 0% 20%;
       border: 1px solid #00dcff;
-      /*box-shadow: 0 0 1pt 1pt rgba(0,220,255,0.5) !important;*/
+      border-width: 1px 1px 1px 1px;
+      border-radius: 0px 0px 7px 7px;
       background-color: rgba(0,220,255,0);
       transform: scale(1);
       transition: all 0.5s ease 0s;
+      /*letter-spacing: 1px;*/
+      padding: 0px;
+      text-align: center;
+    }
+    #createSPButtonBox:hover {
+    	background-color: rgba(0,220,255,0.15);
+    	color: #00dcff;
+    	cursor: pointer;
+      border-color: #00dcff;
+      transform: scale(1.02);
+      /*box-shadow: 0 0 1pt 1pt rgba(0,220,255,0.5) !important;*/
     }
     #createSPButtonBox2 {
       display: none;
-    }
-    #createSPButtonBox:hover {
-      transform: scale(1.02);
-      cursor: pointer;
-      box-shadow: 0 0 1pt 1pt rgba(0,220,255,0.5) !important;
-    }
-    #createSPButtonBox:hover * {
-      color: #00dcff;
-    }
-    #createSPButton {
-      color: #dddddd;
-      margin: 5px 0px;
-    	font-size: 180%;
-      padding: 5px;
-      letter-spacing: 6px;
-      cursor: default;
-      transition: all 0.5s ease 0s;
-    }
-    #createSPButton:hover {
-      cursor: pointer;
-      color: #00dcff;
     }
     #sidebarElements {
     	border: 1px solid #00dcff;
@@ -2900,11 +2949,6 @@ like vote and comments.*/
     	color: #0f131c;
     	cursor: pointer;
     }
-    #profileRightElements {
-    	margin: 2px 0px 0px 5px;
-    	padding: 5px;
-      width: 96%;
-    }
     #profileRightUnit {
     	border: 1px solid #00dcff;
     	border-width: 1px 0px 0px 0px;
@@ -3060,7 +3104,28 @@ like vote and comments.*/
   cursor: pointer;
   /*box-shadow: 0 0 1pt 1pt rgba(0,220,255,0.5);*/
 }
+#parentButton {
+  width: 50%;
+  display: block;
+  background-color: rgba(0,220,255,0.05);
+  padding: 0.3%;
+  /*box-shadow: 0 0 1pt 1pt rgba(0,220,255,0.5);*/
+  border: 1px solid #00dcff;
+  border-width: 0px 1px 1px 1px;
+  border-radius: 0px 0px 5px 5px;
+  letter-spacing: 1px;
+  color: #00dcff;
+  transition: all 0.5s ease 0s;
+  /*padding-left: 3%;*/
+  margin: 0 auto;
+  margin-bottom: 1%;
+  text-align: center;
 
+}
+#parentButton:hover {
+  cursor: pointer;
+  background-color: rgba(0,220,255,0.1);
+}
 
 #problemRow1, #problemRow2 {
   display: inline-flex;
@@ -3069,35 +3134,69 @@ like vote and comments.*/
   align-content: flex-start;
   width: 100%;
 }
+#problemColumn1 {
+  display: flex;
+  flex-direction: column;
+}
 
 #problemIntro {
   flex: 10 1 auto;
-  display: inline;
+  /*display: inline;*/
   width: 90%;
+
+  /*For new header type*/
+  display: block;
+  width: 100%;
 }
 #problemPercent {
   color: rgba(0,255,220,1);
   flex: 1 1 auto;
   margin: 0 auto;
   margin-top: 0%;
-  margin-bottom: 2%;
-  padding: 5px;
+  /*margin-bottom: 2%;*/
   /*padding-left: 9%;*/
   font-size: 500%;
   text-align: center;
   letter-spacing: 4px;
   font-family: 'Alegreya Sans SC', sans-serif;
-  height: auto;
   width: 70%;
   background-color: rgba(0, 255, 220, 0);
   transition: all 0.5s ease 0s;
   transform: scale(1);
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: center;
 }
-#problemPercent:hover {
-  transform: scale(1.1);
+#projectPercent {
+  transition: all 0.5s ease 0s;
+  margin-left: 21%;
 }
-#bigPercent {
-  font-size: 120%;
+#projectPercent:hover {
+  transform: scale(1.2);
+}
+#votedProblem {
+  flex: 1 1 auto;
+  text-align: center;
+  background-color: rgba(0, 255, 220, 1);
+  color: #0f131c;
+  border: 10px solid #00ffdc;
+  border-radius: 3px;
+  text-align: center;
+  /*letter-spacing: 8px;*/
+  font-family: 'Alegreya Sans SC', sans-serif;
+  font-size: 30%;
+  text-decoration: none;
+  transition: all 0.5s ease 0s;
+  /*padding: 2px;*/
+  letter-spacing: 2px;
+  margin: 0 auto;
+  margin-top: 5%;
+  margin-left: 22%;
+  width: 100%;
+}
+#votedProblem:hover {
+  cursor: pointer; 
 }
 #problemTitle {
   color: #dddddd;
@@ -3113,8 +3212,15 @@ like vote and comments.*/
   background-color: rgba(15,19,28,0.99);
   background-blend-mode: overlay;
   background-image: url('./vitruvianMan.jpg');*/
-}
 
+
+  /*For parent text button*/
+  margin: 0% 10% 0% 10%;
+}
+#bigPercent {
+  font-size: 120%;
+  flex: 1 1 auto;
+}
 #fullProblemHeader {
   display: flex;
   justify-content: space-between;
@@ -3191,29 +3297,8 @@ like vote and comments.*/
   cursor: pointer; 
   /*box-shadow: 0 0 2pt 2pt rgba(0,255,220,0.5);*/
 }
-#votedProblem {
-  flex: 1 1 auto;
-  margin: 0 auto;
-  text-align: center;
-  background-color: rgba(0, 255, 220, 1);
-  color: #0f131c;
-  border: 1px solid #00ffdc;
-  border-width: 1px 1px;
-  border-radius: 3px;
-  text-align: center;
-  /*letter-spacing: 8px;*/
-  font-family: 'Alegreya Sans SC', sans-serif;
-  font-size: 170%;
-  height: auto;
-  width: 70%;
-  text-decoration: none;
-  transition: all 0.5s ease 0s;
-}
-#votedProblem:hover {
-  cursor: pointer; 
-}
 #problemSummary, #problemSummaryLeftSB {
-  margin: 10px 25px 0px 25px;
+  margin: 0px 25px 0px 25px;
   line-height: 150%;
   font-size: 125%;
   border: 1px solid #00dcff;
@@ -3313,6 +3398,7 @@ like vote and comments.*/
   box-shadow: 0 0 2pt 2pt rgba(0,220,255,0.5);
   transition: all 0.5s ease 0s;
   transform: scale(1);
+  margin-top: 1%;
 
   /*Testing out a gradient here for 3D holograp effect*/
   /*Currently I like it*/
@@ -4604,16 +4690,15 @@ input#submitNewVersion:hover {
   text-align: center;
   letter-spacing: 8px;
   padding: 5px;
-  width: 20em;
+  width: 15em;
   text-align: center;
   transition: all 0.5s ease 0s;
   background-color: rgba(0,220,255,0);
   border: 1px solid #dddddd;
-  border-width: 0px 0px 0px 1px;
+  border-width: 0px 0px 0px 0px;
 }
 #aboutButton {
-  border: 1px solid #dddddd;
-  border-width: 0px 1px 0px 0px;
+  /*border-width: 0px 1px 0px 0px;*/
 }
 #aboutButton:hover, #careersButton:hover {
   background-color: rgba(0,220,255,0.1);
@@ -4787,3 +4872,92 @@ input#submitNewVersion:hover {
 
 /*Test 3D rotation*/
 /*transform: rotate3d(0,1,1,5deg) !important;*/
+
+
+
+/*V3*/
+
+/*Notebooks*/
+#noteBooksTitle {
+  flex: 1 1 auto;
+  color: #00dcff;
+  border: 1px solid #00dcff;
+  /*border-width: 0px 0px 1px 0px;*/
+  font-size: 80%;
+  /*padding: 3px 5px 3px 10px;*/
+  padding: 5px;
+  letter-spacing: 4px;
+  text-align: center;
+  width: 80%;
+  margin: 0 auto;
+  margin-top: 1%;
+  margin-bottom: 1%;
+}
+#noteBookUnit {
+  padding: 10px;
+  margin: 0 auto;
+  border: 1px solid #00dcff;
+  transition: all 0.5s ease 0s;
+  box-shadow: 0 0 0pt 0pt rgba(0,220,255,0.5);
+  margin-bottom: 2%;
+  background-color: rgba(0,220,255,0.05);
+  width: 90%;
+  text-align: center;
+}
+#noteBookUnit {
+  cursor: pointer;
+  box-shadow: 0 0 2pt 2pt rgba(0,220,255,0.5);
+}
+#noteBookUnitContainer {
+  padding: 0px;
+  margin: 0 auto;
+  color: #00dcff;
+  letter-spacing: 1px;
+  display: flex;
+  flex-direction: row;
+  flex: 2 2 auto;
+  font-size: 120%;
+}
+#noteBookUnitTitle {
+  text-align: center;
+  padding: 5px;
+  margin: 0 auto;
+  color: #dddddd;
+  letter-spacing: 1px;
+  font-family: 'Alegreya Sans SC', sans-serif;
+  font-size: 120%;
+  width: 100%;
+  word-wrap: break-word; 
+  overflow: auto;
+}
+#noteBookUnitTitle:hover {
+  text-align: center;
+  padding: 5px;
+  margin: 0 auto;
+  color: #dddddd;
+  letter-spacing: 1px;
+  font-family: 'Alegreya Sans SC', sans-serif;
+  font-size: 120%;
+  width: 100%;
+  word-wrap: break-word; 
+  overflow: auto;
+}
+#createNoteBookButton {
+  color: #dddddd;
+  font-size: 120%;
+  padding: 5px;
+  letter-spacing: 6px;
+  cursor: default;
+  transition: all 0.5s ease 0s;
+  border: 1px solid #dddddd;
+  /*border-radius: 3px;*/
+  /*box-shadow: 0 0 1pt 1pt rgba(0,220,255,0.5) !important;*/
+  /*background-color: rgba(0,220,255,0.05);*/
+  transform: scale(1);
+  text-align: center;
+  width: 30%;
+  margin: 0 auto;
+  margin-bottom: 5px;
+  margin-top: 5px;
+
+}

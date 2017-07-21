@@ -54,6 +54,7 @@ import ProfileDisclaimer from './components/profile/ProfileDisclaimer.jsx';
 import ProfileNotifications from './components/profile/ProfileNotifications.jsx';
 import ProfileProblemsSolutions from './components/profile/ProfileProblemsSolutions.jsx';
 import ProfileResume from './components/profile/ProfileResume.jsx';
+import ProfileWorkspace from './components/profile/ProfileWorkspace.jsx';
 import ProsDeleteForm from './components/proscons/ProsDeleteForm.jsx';
 import ProsEditForm from './components/proscons/ProsEditForm.jsx';
 import ProsFlagForm from './components/proscons/ProsFlagForm.jsx';
@@ -123,7 +124,6 @@ ReactDOM.render(
       <Route path='/404' component={Error404}></Route>
       <Route path='/redirection' component={Redirection}></Route>
     </Route>
-    <Route path='/search' component={SearchContainer}></Route>
     <Route path='/intro' component={Intro}></Route>
     <Route path='/newsfeed' component={NewsFeedContainer}></Route>
     <Route path='/instructions' component={Instructions}></Route>
@@ -140,6 +140,7 @@ ReactDOM.render(
         <Route path='/welcome' component={WelcomeCreateButton}></Route>
         <Route path='/welcome/create' component={WelcomeCreateForm}></Route>
       </Route>
+      <Route path='/search' component={SearchContainer}></Route>
       <Route path='/profile/container' component={ProfileContainer}>
         <IndexRoute component={ProfileProblemsSolutions}></IndexRoute>
         <Route path='/profile' component={ProfileProblemsSolutions}></Route>
@@ -150,8 +151,9 @@ ReactDOM.render(
           <IndexRoute component={ProfileAbout}></IndexRoute>
           <Route path='/profile/about' component={ProfileAbout}></Route>
           <Route path='/profile/careers' component={ProfileCareers}></Route>
+          <Route path='/profile/disclaimer' component={ProfileDisclaimer}></Route>
         </Route>
-        <Route path='/profile/disclaimer' component={ProfileDisclaimer}></Route>
+        <Route path='/profile/workspace' component={ProfileWorkspace}></Route>
       </Route>
       <Route path='/problem/:probID' component={FullProblem}>
         <IndexRoute component={SideBarProblem}></IndexRoute>
