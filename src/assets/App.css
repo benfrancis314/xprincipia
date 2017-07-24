@@ -3312,6 +3312,9 @@ like vote and comments.*/
   transition: all 0.5s ease 0s;
   /*font-weight: 300;*/
 }
+#problemSummary {
+  font-size: 120%;
+}
 
 
 
@@ -3331,7 +3334,7 @@ like vote and comments.*/
   margin-top: 5px;
   margin-bottom: 10px;
   flex: 1 1 auto;
-  width: 100%;
+  width: 80%;
 }
 
 
