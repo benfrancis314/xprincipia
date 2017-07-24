@@ -30,6 +30,7 @@ import FullSolutionDescription from './components/solutions/FullSolutionDescript
 import FullVersion from './components/versions/FullVersion.jsx';
 import Instructions from './components/tutorials/Instructions.jsx';
 import Intro from './components/tutorials/Intro.jsx';
+import Introduction from './components/Introduction.jsx';
 import Layout from './components/Layout.jsx';
 import LearnContentDeleteForm from './components/learn/LearnContentDeleteForm.jsx';
 import LearnContentEditForm from './components/learn/LearnContentEditForm.jsx';
@@ -131,6 +132,7 @@ ReactDOM.render(
       <IndexRoute component={LoginContainer}></IndexRoute>
       <Route path='/login' component={LoginUnit}></Route>
       <Route path='/register' component={RegisterUnit}></Route>
+      <Route path='/introduction' component={Introduction}></Route>
     </Route>
     <IndexRoute component={Layout}></IndexRoute>
     <Route path='/home' component={Layout}>
