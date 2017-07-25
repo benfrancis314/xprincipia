@@ -41,7 +41,7 @@ class App extends React.Component {
     //Check if user is logged in
     if (this.state.userToken === undefined ){
       //redirect to login page if not logged in. Register is also allowed
-      if (window.location.pathname !== "/login" && window.location.pathname !== "/register"){
+      if (window.location.pathname !== "/login" && window.location.pathname !== "/register" && window.location.pathname !== "/introduction"){
         document.location = "/login";
         return (
         <div>

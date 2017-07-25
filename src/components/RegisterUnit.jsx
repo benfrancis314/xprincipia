@@ -47,7 +47,8 @@ constructor(){
         .then(function (result) {
           self.setState({
             userToken: result.data.token
-          })
+          });
+        
           cookie.save('userToken', self.state.userToken );
           cookie.save('userName', self.state.username)
           
@@ -55,32 +56,48 @@ constructor(){
           return axios.post( Config.API + '/auth/saveToken',  {
             username : self.state.username,
             token : "Bearer " + self.state.userToken
-          }, {headers: { Authorization: "Bearer " + self.state.userToken }}).then (function (response){
+          }, {headers: { Authorization: "Bearer " + self.state.userToken }})
+          .then (function (response){
             
             document.location = "/welcome";
 
           })
+
+          // Using this to see when error does not send. This one doesn't send, instead most third error does
+          // .catch(function (error) {
+          //   alert('Please try again (posting register error).')
+          // });
           
       })
-      .catch(function (error) {
-        alert('Please try again.')
-      });
+      // Seems not to go off, seems like third one does
+      // .catch(function (error) {
+      //   alert('Please try again.')
+      // });
       
     })
+              .catch(function (error) {
+            alert('This username is taken OR the password is not long enough.')
+          });
   }
 
   render() {
       return (
-
-        <div id="register">
-            <form >
-                <input type="text" name="fullname" required="required" maxLength="30" placeholder="Full Name" id="registerFullName" autoFocus />
-                <input type="text" name="username" required="required" maxLength="30" placeholder="Username" id="registerUserName" />
-                <input type="email" name="email" required="required" maxLength="30" placeholder="Email" id="registerEmail" />
-                <input type="password" name="password" required="required" maxLength="30" placeholder="Password" id="registerPassword"/>
-                <Link to="/register"><input type="submit" value="Register" onClick={this.postRegister} id="submitRegister"/></Link>
-                <Link to='/login'><div id="loginButton">Login</div></Link>
-            </form>
+        <div>
+          <Link to={`/introduction`}>
+            <div id="introductionButton" onClick={this.openIntroduction}>
+              Introduction
+            </div>
+          </Link>
+          <div id="register">
+              <form >
+                  <input type="text" name="fullname" required="required" maxLength="30" placeholder="Full Name" id="registerFullName" autoFocus />
+                  <input type="text" name="username" required="required" maxLength="30" placeholder="Username" id="registerUserName" />
+                  <input type="email" name="email" required="required" maxLength="30" placeholder="Email" id="registerEmail" />
+                  <input type="password" name="password" required="required" maxLength="30" placeholder="Password (8 ch Min)" id="registerPassword"/>
+                  <Link to="/register"><input type="submit" value="Register" onClick={this.postRegister} id="submitRegister"/></Link>
+                  <Link to='/login'><div id="loginButton">Login</div></Link>
+              </form>
+          </div>
         </div>
 
       );

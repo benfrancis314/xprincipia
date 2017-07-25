@@ -12,7 +12,7 @@ export default class Info extends React.Component {
               <div id="introduction">
                   .
                   <br /> Breakdown and solve today's scientific problems
-                 <br />.<br />Contribute to tomorrow's' technological revolutions
+                  <br />.<br />Contribute to tomorrow's' technological revolutions
                   <br />.<br />.
               </div>
               <br />

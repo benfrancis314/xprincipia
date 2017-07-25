@@ -45,6 +45,7 @@
       display: inline-flex;
     	flex-direction: column;
       width: 40%;
+      height: 90%;
       flex: 2 2 auto;
       /*justify-content: space-between;*/
     }
@@ -104,6 +105,10 @@
     }
     #blue {
       color: #00dcff !important;
+    }
+    #blueOpen {
+      color: #00dcff !important;
+      font-family: 'Open Sans' !important;
     }
     #green {
       color: #00ffdc !important;
@@ -252,7 +257,7 @@
     border-width: 1px 1px 1px 1px !important;
     border-radius: 0% !important;
     box-shadow: 0 0 1pt 1pt rgba(0,220,255,0.5) !important;
-    width: 94.5% !important;
+    width: 90.5% !important;
     height: auto !important;
     word-wrap: break-word !important; 
     align-items: center !important; 
@@ -293,6 +298,7 @@
   width: 100% !important;
   margin: 0 auto !important;
   margin-top: 5% !important;
+  margin-bottom: 3% !important;
 }
 #welcomeProblemsHeader1, #welcomeProblemsHeader2,
 #welcomeProblemsHeader3, #welcomeProblemsHeader4 {
@@ -407,6 +413,19 @@
 #sidebarSB {
   padding: 0px !important;
 }
+/*Trying to fix mobile look of V3 Projects*/
+#problemRow1 {
+  display: default;
+}
+#SBButtonDiscuss, #SBButtonLearn {
+  /*clear: both !important;*/
+}
+#SBButtonDiscuss {
+
+}
+#SBButtonLearn {
+
+}
 /*Problem Left SB*/
 
 #maxContainerRow {
@@ -470,7 +489,9 @@
 #projectsTitleProfile, #proposalsTitleProfile {
   border-top-width: 1px !important;
 }
-
+#profileAboutQuote {
+  color: #aaaaaa !important;
+}
 /*Discuss*/
 
 /*This is trying to get question text to go beneath options
@@ -483,9 +504,11 @@ like vote and comments.*/
 /*Header*/
 #logoName {
   font-size: 110% !important;
-  letter-spacing: 12px !important;
+  letter-spacing: 10px !important;
   flex: 1 6 auto !important;
   width: 80% !important;
+  margin-top: 1% !important;
+  margin-left: 0% !important;
 }
 
 /*Footer*/
@@ -1194,8 +1217,8 @@ like vote and comments.*/
       text-align: center;
       padding: 3px 0px 2px 0px;
       font-size: 110%;
-      /*transition: all 0.5s ease 0s;
-      transform: scale(1);*/
+      transition: all 0.5s ease 0s;
+      /*transform: scale(1);*/
 
       /*Testing out a gray header background, to match the footer */
       /*Currently, I can't tell if I like it or not*/
@@ -1205,9 +1228,12 @@ like vote and comments.*/
       /*Testing light blue background header*/
       background-color: rgba(0,220,255,0.05);
     }
-    /*#header:hover {
-      transform: scale(1.02);
-    }*/
+    #header:hover, #header:active {
+      /*Unused transform*/
+    /*transform: scale(1.02);*/
+      background-color: rgba(0,220,255,0.1);
+      color: #ffffff;
+    }
     #explore, #logo {
       margin: 0 auto;
       display: inline-block;
@@ -1298,7 +1324,8 @@ like vote and comments.*/
     	border-radius: 50%;
       margin: 0 auto;
       margin-top: 0.4%;
-      margin-left: 1%;
+      margin-left: 1.7%;
+
       padding: 2px;
       /*vertical-align: middle;*/
       /*float: right;*/
@@ -1334,6 +1361,9 @@ like vote and comments.*/
     #headerName {
       display: inline;
       flex: 2 2 auto;
+
+      /*Testing out header username letter spacing*/
+      /*letter-spacing: 2px;*/
     }
     #imgContainerAvatar {
       flex: 1 1 auto;
@@ -1460,7 +1490,11 @@ like vote and comments.*/
     	font-size: 200%;
     	text-align: center;
     	padding: 0px 0px 5px 0px;
-      margin-top: 11.5%;
+      /*Old margin-top*/
+      /*margin-top: 11.5%;*/
+
+      /*New margin-top*/
+      margin-top: 7.5%;
     }
     #bannerTitle {
     	font-size: 250%;
@@ -1570,7 +1604,7 @@ like vote and comments.*/
     }
     #submitLogin:hover, #submitRegister:hover,
     #submitLogin:focus, #submitLogin:active, 
-    #submitRegister:focus, #submitLogin:active {
+    #submitRegister:focus, #submitRegister:active {
     	color: #0f131c !important;
     	background-color: rgba(0,220, 255, 1) !important;
     	cursor: pointer;
@@ -1597,19 +1631,46 @@ like vote and comments.*/
 /*End Login*/
 
 /*Introduction*/
+#loginIntroduction {
+  font-size: 70%;
+  width: 60%;
+  margin: 0 auto;
+  margin-top: 2.5%;
+  margin-bottom: 2.5%;
+  padding: 10px;
+  border: 1px outset #00dcff;
+  border-radius: 3px;
+
+  /*Possible box-shadow instead of border*/
+  box-shadow: 0 0 1pt 1pt rgba(0,220,255,0.5);
+}
 #introductionButton {
   padding: 4px;
   border: 1px solid #dddddd;
   border-radius: 3px;
   margin: 0 auto;
-  margin-top: 2.5%;
-  margin-bottom: 2.5%;
+  margin-top: 0%;
+  margin-bottom: 2%;
   width: 30%;
   font-size: 90%;
   transition: all 0.5s ease 0s;
   color: #dddddd;
 }
-#introductionButton:hover, #introductionButton:active {
+#introductionButtonClicked {
+  background-color: rgba(0,220,255,0.05);
+  color: rgba(0,220,255,1);
+  border: 1px solid rgba(0,220,255,1);
+  padding: 4px;
+  border-radius: 3px;
+  margin: 0 auto;
+  margin-top: 2.5%;
+  margin-bottom: 2%;
+  width: 30%;
+  font-size: 90%;
+  transition: all 0.5s ease 0s;
+}
+#introductionButton:hover, #introductionButton:active,
+#introductionButtonClicked:hover, #introductionButtonClicked:active {
   background-color: rgba(0,220,255,0.05);
   cursor: pointer;
   color: rgba(0,220,255,1);
@@ -1622,20 +1683,124 @@ like vote and comments.*/
   margin-top: 0px;
 }
 #introductionContainer {
-  position: absolute;
-  top: 200px;
   margin: 0 auto;
-  margin-left: 20%;
-  margin-right: 20%;
+  margin-top: 3%;
+  margin-bottom: 3%;
   width: 60%;
-  background-color: #0f131c;
-  border: #00dcff;
-  height: 0.5vh;
+  background-color: rgba(0,220,255,0.05);
+  border: 2px outset #00dcff;
+  border-radius: 3px 40px 3px 3px;;
   text-align: left;
-  padding: 20%;
+  padding: 5% 10% 10% 10%;
   z-index: 5;
 }
+#introductionWelcome {
+  border: 1px outset #00dcff;
+  border-width: 1px 0px 0px 0px;
+  padding: 15px;
+}
+#introductionCapital {
+  font-size: 150%;
+}
+#introductionProse {
+  font-family: 'Open Sans';
+  font-size: 60%;
+  letter-spacing: normal;
+  color: #bbbbbb;
+}
+#introductionProjectsProse {
+  font-family: 'Open Sans';
+  font-size: 60%;
+  color: #bbbbbb;
+  letter-spacing: normal;
+  width: 80%;
+  margin: 0 auto;
+}
+#introductionProjectHeader1,
+#introductionProjectHeader2,
+#introductionProjectHeader3,
+#introductionProjectHeader4 {
+  
+  /*Rectangular*/
 
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-color: rgba(15,19,28,0.999);
+  background-blend-mode: overlay;
+  transition: all 0.2s ease 0s;
+  transform: scale(1);
+
+  display: flex;
+  flex-direction: column;
+  word-wrap: break-word; 
+  align-items: center; 
+  justify-content: center;
+  margin: 0 auto;
+  transition: all 0.5s ease 0s;
+
+  background-size: cover;
+  border: 1px solid #00dcff;
+  box-shadow: 0 0 1pt 1pt rgba(0,220,255,0.5);
+  width: 70%;
+  height: auto;
+  position: relative;
+  margin-top: 8%;
+  margin-bottom: 4%;
+  padding: 3%;
+  
+
+  /*Circular*/
+
+  /*background-size: contain;
+  background-repeat: no-repeat;
+  background-color: rgba(15,19,28,0.999);
+  background-blend-mode: overlay;
+  transition: all 0.5s ease 0s;
+  transform: scale(1);
+
+  font-size: 50%;
+  display: flex;
+  flex-direction: column;
+  border: 2px solid #00dcff;
+  border-radius: 100%;
+  width: 14em;
+  height: 14em;
+  word-wrap: break-word; 
+  align-items: center; 
+  justify-content: center;
+  margin: 0 auto;
+  box-shadow: 0 0 2pt 2pt rgba(0,220,255,0.5);
+  transition: all 0.5s ease 0s;
+  transform: scale(1);*/
+}
+#introductionProjectHeader1 {
+  background-image: url('./earthRise.jpg');
+}
+#introductionProjectHeader2 {
+  background-image: url('./vitruvianMan.jpg');
+}
+#introductionProjectHeader3 {
+  background-image: url('./einstein.jpg');
+}
+#introductionProjectHeader4 {
+  background-image: url('./turingMachine.jpg');
+}
+#introductionProjectHeader1:hover,
+#introductionProjectHeader2:hover,
+#introductionProjectHeader3:hover,
+#introductionProjectHeader4:hover {
+  background-color: rgba(15,19,28,0.5);
+  transform: scale(1.02);
+}
+introductionProjectTitle {
+  margin: 0 auto;
+  padding: 10px 15px 10px 15px;
+  font-size: 160%;
+  color: #dddddd;
+  word-wrap: break-word; 
+  text-align: center;
+  transition: all 0.5s ease 0s;
+}
 
 /*Profile*/
 
@@ -2472,8 +2637,6 @@ like vote and comments.*/
       box-shadow: 0 0 2pt 2pt rgba(0,220,255,0.5);
       transition: all 0.5s ease 0s;
       transform: scale(1);
-
-      /*margin-right: 10% !important;*/
     }
     #welcomeProblemsHeader1 {
       background-image: url('./earthRise.jpg');
@@ -2496,11 +2659,6 @@ like vote and comments.*/
       transform: scale(1.02);
     }
   #welcomeProblemsTitle {
-      /*margin: 0 auto;
-      padding: 5px 10px 5px 10px;
-      font-size: 130%;
-      transition: all 0.5s ease 0s;*/
-
       margin: 0 auto;
       padding: 5px 10px 5px 10px;
       font-size: 130%;
@@ -2717,7 +2875,7 @@ like vote and comments.*/
     #SBButtonDiscuss, #SBButtonLearn {
       flex: 1 1 auto;
       color: #dddddd;
-      font-size: 170%;
+      font-size: 250%;
       border: 1px solid #dddddd;
       border-width: 1px 1px;
       border-radius: 3px;
@@ -2728,14 +2886,16 @@ like vote and comments.*/
       width: 50%;
       background-color: rgba(0,220,255,0);
       transition: all 0.5s ease 0s;
-      padding: 5% 0% 5% 0%;
+      padding: 7% 0% 7% 0%;
     }
     #SBButtonDiscuss {
-      margin-left: 2%;
+      margin-right: 20%;
+      margin-top: 30%;
       border-radius: 10px 3px 3px 10px;
     }
     #SBButtonLearn {
-      margin-right: 2%;
+      margin-left: 20%;
+      margin-top: 30%;
       border-radius: 3px 10px 10px 3px;
     }
     #SBButtonDiscuss:hover, #SBButtonLearn:hover {
@@ -3149,21 +3309,23 @@ like vote and comments.*/
   background-color: rgba(0,220,255,0.05);
   padding: 0.3%;
   /*box-shadow: 0 0 1pt 1pt rgba(0,220,255,0.5);*/
-  border: 1px solid #00dcff;
+  border: 1px solid #aaaaaa;
   border-width: 0px 1px 1px 1px;
-  border-radius: 0px 0px 5px 5px;
+  border-radius: 0px 0px 3px 3px;
   letter-spacing: 1px;
-  color: #00dcff;
+  color: #aaaaaa;
   transition: all 0.5s ease 0s;
   /*padding-left: 3%;*/
   margin: 0 auto;
-  margin-bottom: 1%;
+  margin-bottom: 1.5%;
   text-align: center;
 
 }
-#parentButton:hover {
+#parentButton:hover, #parentButton:active {
   cursor: pointer;
   background-color: rgba(0,220,255,0.1);
+  color: #ffffff;
+  border-color: #ffffff
 }
 
 #problemRow1, #problemRow2 {
@@ -3374,6 +3536,21 @@ like vote and comments.*/
   margin-bottom: 10px;
   flex: 1 1 auto;
   width: 80%;
+}
+#sidebarSBProjects {
+  padding-left: 0px;
+  flex-grow: 1;
+  flex-shrink: 1;
+  border-radius: 0px;
+  border-width: 0px 0px;
+  position: relative;
+  color: #dddddd;
+  padding: 0px 0px 20px 0px;
+  margin: 0 auto;
+  margin-top: 5px;
+  margin-bottom: 10px;
+  flex: 1 1 auto;
+  width: 100%;
 }
 
 

@@ -42,6 +42,8 @@ export default class Header extends React.Component {
     }
 
    render() {
+
+if (this.state.userToken === undefined ){
       return (
         <div id="header">
             <div id="logo">
@@ -55,8 +57,28 @@ export default class Header extends React.Component {
                     <input onKeyPress={this.submitSearch}  id="submitExplore" />
                 </form>
             </div>*/}
+            
+            {/*Login in header here*/}
             <HeaderAvatar />
         </div>
       );
-   }
+    } else {
+        return (
+            <div id="header">
+                <div id="logo">
+                <Link to="/welcome"><div id="logoName">XPrincipia</div></Link>
+                </div>
+                {/*<div id="explore">
+                    <form id="exploreFormHeader">
+                        <input type="search" name="search"
+                            placeholder="Explore" id="exploreHeaderInput"  
+                            onKeyDown={this.queryProblem} />
+                        <input onKeyPress={this.submitSearch}  id="submitExplore" />
+                    </form>
+                </div>*/}
+                <HeaderAvatar />
+            </div>
+      );  
+
+ }}
 }

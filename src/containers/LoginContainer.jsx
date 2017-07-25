@@ -32,18 +32,27 @@ export default class LoginContainer extends React.Component {
 
    render() {
       return (
+        /*<div id="loginContainer">
+          <div id="info">
+              <div id="banner">
+                  <div id="bannerTitle">XPrincipia</div>
+                    {this.props.children}
+                  <div id="bannerLoginSlogan">Open R&D</div>
+              </div>
+          </div>
+        </div>*/
+
+        // Alt Intro
         <div id="loginContainer">
           <div id="info">
               <div id="banner">
                   <div id="bannerTitle">XPrincipia</div>
-                    
-                    <Link to={`/introduction`}>
-                      <div id="introductionButton" onClick={this.openIntroduction}>
-                        Introduction
-                      </div>
-                    </Link>
+                    <div id="loginIntroduction">
+                    Breakdown and solve today's scientific projects
+                    <br />&sdot;<br />Contribute to tomorrow's technological revolutions
+                    </div>                
                     {this.props.children}
-                  <div id="bannerLoginSlogan">Open R&D</div>
+                    <div id="bannerLoginSlogan">Open R&D</div>
               </div>
           </div>
         </div>
