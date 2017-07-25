@@ -56,11 +56,6 @@ export default class LoginUnit extends React.Component {
    render() {
       return (
         <div>
-          <Link to={`/introduction`}>
-            <div id="introductionButton" onClick={this.openIntroduction}>
-              Introduction
-            </div>
-          </Link>
           <div id="signup">
               <form>
                   <input type="text" name="email" required="required" maxLength="30" placeholder="Username" id="loginEmail" autoFocus />
@@ -69,6 +64,11 @@ export default class LoginUnit extends React.Component {
                   <Link to='/register'><div id="registerButton">Register</div></Link>
               </form>
           </div>
+          <Link to={`/introduction`}>
+            <div id="introductionButton" onClick={this.openIntroduction}>
+              Introduction
+            </div>
+          </Link>
         </div>
 
       );

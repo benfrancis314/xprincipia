@@ -49,12 +49,14 @@ import ProblemLeftSB from './components/problems/ProblemLeftSB.jsx';
 import ProblemSolutionsMenu from './components/problems/ProblemSolutionsMenu.jsx';
 import ProblemTopSolutions from './components/problems/ProblemTopSolutions.jsx';
 import ProjectEditForm from './components/problems/ProjectEditForm.jsx';
+import ProjectFlagForm from './components/problems/ProjectFlagForm.jsx';
 import ProfileAbout from './components/profile/ProfileAbout.jsx';
 import ProfileCareers from './components/profile/ProfileCareers.jsx';
 import ProfileDisclaimer from './components/profile/ProfileDisclaimer.jsx';
 import ProfileNotifications from './components/profile/ProfileNotifications.jsx';
 import ProfileProblemsSolutions from './components/profile/ProfileProblemsSolutions.jsx';
 import ProfileResume from './components/profile/ProfileResume.jsx';
+import ProfileSettings from './components/profile/ProfileSettings.jsx';
 import ProfileWorkspace from './components/profile/ProfileWorkspace.jsx';
 import ProsDeleteForm from './components/proscons/ProsDeleteForm.jsx';
 import ProsEditForm from './components/proscons/ProsEditForm.jsx';
@@ -155,6 +157,7 @@ ReactDOM.render(
           <Route path='/profile/careers' component={ProfileCareers}></Route>
           <Route path='/profile/disclaimer' component={ProfileDisclaimer}></Route>
         </Route>
+        <Route path='/profile/settings' component={ProfileSettings}></Route>
         <Route path='/profile/workspace' component={ProfileWorkspace}></Route>
       </Route>
       <Route path='/problem/:probID' component={FullProblem}>
@@ -163,6 +166,7 @@ ReactDOM.render(
           <IndexRoute component={SubProblemContainer}></IndexRoute>
           <Route path='/problem/:probID/create' component={ProblemForm}></Route>
           <Route path='/problem/:probID/edit' component={ProjectEditForm}></Route>
+          <Route path='/problem/:probID/flag' component={ProjectFlagForm}></Route>
           <Route path='/problem/:probID/subproblems' component={SubProblemContainer}></Route>
         </Route>
         <Route path='/problem/:probID/solutions' component={ProblemSolutionsMenu}>

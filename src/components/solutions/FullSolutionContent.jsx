@@ -148,9 +148,9 @@ unVote() {
               </div>
               <div id="createDate">{dateTime(this.state.solutionInfo.CreatedAt)}</div>
               
-              {/*<Link to={`/fullsolution/${this.props.params.probID}/${this.props.params.solutionID}/edit`}>
-                <img src={require('../../assets/flag.svg')} id="flagSolutionButton" width="20" height="20" alt="Edit Button" />
-              </Link>*/}
+              <Link to={`/fullsolution/${this.props.params.probID}/${this.props.params.solutionID}/flag`}>
+                <img src={require('../../assets/flag.svg')} id="deleteSolutionButton" width="20" height="20" alt="Flag Button" />
+              </Link>
 
 
               <div id="prosConsMenu">

@@ -113,8 +113,16 @@
     #green {
       color: #00ffdc !important;
     }
+    #whiteOpen {
+      color: #dddddd !important;
+      font-family: 'Open Sans' !important;
+    }
     #nodisplay {
       display: none;
+    }
+    #dot {
+      /*HTML is &sdot;*/
+      font-size: 50%;
     }
     #embedLink {
       width: 800px;
@@ -535,6 +543,26 @@ like vote and comments.*/
   width: 90% !important;
   margin: 0 auto !important;
 }
+
+/*Testing issue of mobile being too wide*/
+#header, #footer, #introContainer {
+  /*display: none !important;*/
+}
+#main {
+  width: 100vw !important;
+}
+/*Testing ids that might fix problem*/
+#problemPercent{
+  margin: 0 auto !important;
+}
+#problemSummary {
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
+
 
 }
 
@@ -1519,16 +1547,28 @@ like vote and comments.*/
       margin-top: 12px;
     }
     #bannerLoginSlogan {
-      padding: 3px;
+      /*padding: 3px;
       border: 1px solid #00dcff;
     	border-width: 2px 0px;
-      letter-spacing: 12px;
-      /*color: #00dcff;*/
       background-color: rgba(0, 220, 255, 0.05);
       box-shadow: 0 0 1pt 1pt rgba(0,220,255,0.5);
       width: 33%;
       margin: 0 auto;
-      margin-top: 12px;
+      margin-top: 12px;*/
+
+      /*Trying new bannerLoginSlogan look inside loginIntroduction*/
+      font-size: 130%;
+      /*background-color: rgba(0, 220, 255, 0.05);*/
+      width: 60%;
+      margin: 0 auto;
+        
+      margin: 0 auto;
+      margin-top: 2.5%;
+      margin-bottom: 2.5%;
+      padding: 10px;
+      border: 1px outset #00dcff;
+      border-width: 1px 0px;
+      border-radius: 0px;
     }
     #learnMore {
     	color: #00dcff;
@@ -1638,11 +1678,12 @@ like vote and comments.*/
   margin-top: 2.5%;
   margin-bottom: 2.5%;
   padding: 10px;
-  border: 1px outset #00dcff;
-  border-radius: 3px;
+  /*border: 1px outset #00dcff;
+  border-width: 1px 0px;
+  border-radius: 3px;*/
 
   /*Possible box-shadow instead of border*/
-  box-shadow: 0 0 1pt 1pt rgba(0,220,255,0.5);
+  /*box-shadow: 0 0 1pt 1pt rgba(0,220,255,0.5);*/
 }
 #introductionButton {
   padding: 4px;
@@ -1689,7 +1730,7 @@ like vote and comments.*/
   width: 60%;
   background-color: rgba(0,220,255,0.05);
   border: 2px outset #00dcff;
-  border-radius: 3px 40px 3px 3px;;
+  border-radius: 3px 40px 40px 40px;;
   text-align: left;
   padding: 5% 10% 10% 10%;
   z-index: 5;
@@ -2038,7 +2079,8 @@ introductionProjectTitle {
     #profileRightUnit {
     	border: 1px solid #00dcff;
     	border-width: 1px 0px 0px 0px;
-    	padding: 7px;
+    	padding: 2px;
+      transition: all 0.5s ease 0s;
 
       /*Exploring the look of gradients as background colors, 
       so far I haven't found anything I like*/
@@ -3148,16 +3190,6 @@ introductionProjectTitle {
     	color: #0f131c;
     	cursor: pointer;
     }
-    #profileRightUnit {
-    	border: 1px solid #00dcff;
-    	border-width: 1px 0px 0px 0px;
-    	padding: 2px;
-      transition: all 0.5s ease 0s;
-    }
-    #profileRightUnit:hover {
-      color: #ffffff;
-      cursor: pointer;
-    }
     #unitSummary {
     	font-family: 'Open Sans', sans-serf;
     	padding: 0px 5px 5px 5px;
@@ -3218,11 +3250,12 @@ introductionProjectTitle {
   transition: all 0.5s ease 0s
 }
 
-#flagSolutionButton:hover, #deleteSolutionButton:hover {
+#flagSolutionButton:hover, #deleteSolutionButton:hover,
+#flagSolutionButton:active, #deleteSolutionButton:active {
   cursor: pointer;
   box-shadow: 0 0 2pt 2pt rgba(255,127,127,0.5);
 }
-#editSolutionButton:hover {
+#editSolutionButton:hover, #editSolutionButton:active{
   cursor: pointer;
   box-shadow: 0 0 2pt 2pt rgba(0,220,255,0.5);
 }
@@ -3233,9 +3266,48 @@ introductionProjectTitle {
   /*box-shadow: 0 0 1pt 1pt rgba(0,220,255,0.5);*/
   transition: all 0.5s ease 0s
 }
-#editProjectButton:hover {
+#editProjectButton:hover, #editProjectButton:active {
   cursor: pointer;
   box-shadow: 0 0 2pt 2pt rgba(0,220,255,0.5);
+}
+#flagProjectButton {
+  display: block;
+  margin: 0 auto;
+  transition: all 0.5s ease 0s
+}
+#flagProjectButton:hover, #flagProjectButton:active {
+  cursor: pointer;
+  box-shadow: 0 0 2pt 2pt rgba(255,127,127,0.5);
+}
+#flagText {
+  font-family: 'Open Sans';
+  margin-top: 5px;
+}
+#flagTextArea {
+  text-align: left;
+  font-family: 'Open Sans', sans-serif;
+  color: #ffffff;
+  border: 1px solid #dddddd;
+  height: 4em;
+  resize: none;
+  margin-top: 2%;
+  margin-bottom: 2%;
+}
+#radioFlag {
+  padding: 5px;
+
+}
+#radioFlag:focus {
+  /*Currently doesn't work*/
+  box-shadow: 0 0 1pt 1pt rgba(255,127,127,0.5);
+}
+#flagOptionLabel {
+  color: rgba(255,127,127,1);
+  text-align: center;
+}
+#flagOption {
+  border: 5px inset rgba(255,127,127,1);
+  padding: 3px;
 }
 #backArrow {
   flex: 1 1 auto;
@@ -3253,6 +3325,7 @@ introductionProjectTitle {
   cursor: pointer;
   box-shadow: 0 0 2pt 2pt rgba(0,220,255,0.5);
 }
+
 
 
 /*Layout 2 CSS*/
@@ -3376,12 +3449,12 @@ introductionProjectTitle {
 #projectPercent:hover {
   transform: scale(1.2);
 }
-#votedProblem {
+#voteProblem {
   flex: 1 1 auto;
   text-align: center;
-  background-color: rgba(0, 255, 220, 1);
-  color: #0f131c;
-  border: 10px solid #00ffdc;
+  background-color: rgba(0, 255, 220, 0);
+  color: #00ffdc;
+  border: 1px solid #00ffdc;
   border-radius: 3px;
   text-align: center;
   /*letter-spacing: 8px;*/
@@ -3389,7 +3462,30 @@ introductionProjectTitle {
   font-size: 30%;
   text-decoration: none;
   transition: all 0.5s ease 0s;
-  /*padding: 2px;*/
+  padding: 9px;
+  letter-spacing: 2px;
+  margin: 0 auto;
+  margin-top: 5%;
+  margin-left: 22%;
+  width: 100%;
+}
+#voteProblem:hover {
+  cursor: pointer; 
+}
+#votedProblem {
+  flex: 1 1 auto;
+  text-align: center;
+  background-color: rgba(0, 255, 220, 1);
+  color: #0f131c;
+  border: 1px solid #00ffdc;
+  border-radius: 3px;
+  text-align: center;
+  /*letter-spacing: 8px;*/
+  font-family: 'Alegreya Sans SC', sans-serif;
+  font-size: 30%;
+  text-decoration: none;
+  transition: all 0.5s ease 0s;
+  padding: 9px;
   letter-spacing: 2px;
   margin: 0 auto;
   margin-top: 5%;
@@ -5180,3 +5276,47 @@ input#submitNewVersion:hover {
   margin-top: 5px;
 
 }
+
+/*User Settings*/
+    #profileSettingsElements {
+    	margin: 5% 15px 0px 5px;
+    	padding: 5px;
+      width: 100%;
+    }
+    #profileSettingsUnit {
+    	border: 1px solid #00dcff;
+    	border-width: 1px 0px 1px 0px;
+    	padding: 2%;
+      margin-top: 5%;
+      transition: all 0.5s ease 0s;
+
+      /*Exploring the look of gradients as background colors, 
+      so far I haven't found anything I like*/
+      /*background: linear-gradient(rgba(0,220,255,0.0), rgba(0,220,255,0.02), rgba(0,220,255,0.0))*/
+    }
+    #profileSettingsUnit:hover {
+      cursor: pointer;
+      background-color: rgba(0,220,255,0.05);
+    }
+    #profileSettingsUnitTitle {
+      display: block;
+      margin: 5px 0px 0px 0px;
+      padding: 2px 5px 2px 5px;
+      font-size: 160%;
+      color: #00dcff !important;
+      line-height: 120%;
+      height: auto;
+      word-break: break-all;
+      overflow: auto;
+      width: 90%;
+    }
+    #profileSettingsUnitSummary {
+    	font-family: 'Open Sans', sans-serif;
+    	padding: 0px 0px 10px 10px;
+    	font-size: 90%;
+    	margin: 0px;
+    	text-align: justify;
+      word-break: break-all;
+      overflow: auto;
+      width: 90%;
+    }

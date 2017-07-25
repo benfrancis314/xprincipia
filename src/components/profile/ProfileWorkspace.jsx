@@ -10,7 +10,7 @@ export default class SolutionContainer extends React.Component {
             <div id="noteBooksTitle">Notebooks</div>
             <div>
                 <div id="createNoteBookButton">
-                    Create New
+                    New
                 </div>
                 <ul> 
                 {/*They should be organized by recency*/}

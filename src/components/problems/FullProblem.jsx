@@ -170,37 +170,25 @@ unVote() {
           transitionAppearTimeout={2000}
           transitionEnter={false}
           transitionLeave={false}>
-        {/*This is for image button, not named button*/}
         {/*<div id="problemRow1">*/}
         <div id="problemColumn1">
 
-          {/*Used for standard site*/}
-          {/*<Link to={`/problem/${this.state.problemInfo.ParentID}/subproblems`} onClick={refreshPage}>
-            <div id="SPParent">
-              <img src={require('../../assets/parent3.svg')} width="70" height="70" alt="Parent button, blue connection symbol" />
-            </div>
-          </Link>*/}
-
-          {/*Used for mobile, not shown otherwise*/}
-          {/*<Link to={`/problem/${this.state.problemInfo.ParentID}/subproblems`} onClick={refreshPage}>
-            <div id="SPParent2">
-                <img src={require('../../assets/upArrow.svg')} width="250" height="50" alt="Back arrow, blue up arrow" />
-            </div>
-          </Link>*/}
-
           {/*Want this to load parent of project*/}
-          <div id="parentButton">
-            XPrincipia Projects
-          </div>
+          <Link to={`/problem/${this.state.problemInfo.ParentID}/subproblems`} onClick={refreshPage}>
+            <div id="parentButton">
+              {/*Should be parent name, XPrincipia projects IF top level*/}
+              XPrincipia Projects
+            </div>
+          </Link>
 
           <div id="problemIntro">
             <h1 id="problemTitle">{this.state.problemInfo.Title}</h1>
             <div id="projectCreator">
               {this.state.problemInfo.OriginalPosterUsername}
             </div>
-            {/*<Link to={`/problem/${this.props.params.probID}/edit`}>
-              <img src={require('../../assets/editBlue.svg')} id="editProjectButton" width="20" height="20" alt="Edit Button" />
-            </Link>*/}
+              <Link to={`/problem/${this.props.params.probID}/flag`}>
+                <img src={require('../../assets/flag.svg')} id="flagProjectButton" width="20" height="20" alt="Flag Button" />
+              </Link>
           </div>
         </div>
         <div id="problemRow1">
@@ -312,7 +300,7 @@ unVote() {
           {/*Row 1*/}
             <div id="columnContainerProject">
               <div id="sidebarMenu">
-                <Link to={`/problem/${this.props.params.probID}/questions`}>
+                <Link to={`/problem/${this.props.params.probID}/questions`} activeClassName="activeWhite">
                   <div id="SBButtonDiscuss">Discuss</div>
                 </Link>
               </div>
@@ -323,13 +311,13 @@ unVote() {
               <div  id="problemPercent">
                 <div id="projectPercent">{this.state.problemInfo.Rank}</div>
                 <Link to={`/problem/${this.props.params.probID}/subproblems`}>
-                  <div id="followProblem" onClick={this.submitVote}>Vote</div>
+                  <div id="voteProblem" onClick={this.submitVote}>Vote</div>
                 </Link>
               </div> 
             <p id="problemSummary">
               {this.state.problemInfo.Summary}
             </p>
-            <Link to={`/problem/${this.props.params.probID}/solutions/top`}>
+            <Link to={`/problem/${this.props.params.probID}/solutions/top`} activeClassName="activeWhite">
               <div id="SBButton">Proposals</div>
             </Link>
             <Link to={`/problem/${this.props.params.probID}/create`} activeClassName="activeBlueText">
@@ -342,7 +330,7 @@ unVote() {
           <div id="columnContainerProject">
             {/*<div id="fullProblemHeader">*/}
               <div id="sidebarMenu">
-                <Link to={`/problem/${this.props.params.probID}/learn/resources`}>
+                <Link to={`/problem/${this.props.params.probID}/learn/resources`} activeClassName="activeWhite">
                   <div id="SBButtonLearn">Learn</div>
                 </Link>
               </div>

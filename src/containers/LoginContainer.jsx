@@ -47,12 +47,14 @@ export default class LoginContainer extends React.Component {
           <div id="info">
               <div id="banner">
                   <div id="bannerTitle">XPrincipia</div>
-                    <div id="loginIntroduction">
-                    Breakdown and solve today's scientific projects
-                    <br />&sdot;<br />Contribute to tomorrow's technological revolutions
-                    </div>                
-                    {this.props.children}
                     <div id="bannerLoginSlogan">Open R&D</div>
+                    <div id="loginIntroduction">
+                      Breakdown and solve today's scientific projects
+                      <br />
+                      {/*<span id="dot">&sdot;</span>*/}
+                      <br />Contribute to tomorrow's technological revolutions
+                      </div>            
+                    {this.props.children}
               </div>
           </div>
         </div>

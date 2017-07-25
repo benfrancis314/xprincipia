@@ -2,6 +2,7 @@ import React from 'react';
 import {Link} from 'react-router';
 import cookie from 'react-cookie';
 import $ from 'jquery';
+import RegisterUnit from './RegisterUnit.jsx';
 
 export default class Introduction extends React.Component {
 
@@ -66,12 +67,12 @@ export default class Introduction extends React.Component {
                 <div id="introductionProjectsProse">
                     Here are the projects towards progressing our technologies, tools which have shaped our history so far, and will continue to shape our future, including advances such as artificial intelligence and nanostructures.
                 </div>
-                <Link to={`/register`}>
-                    <div id="introductionButton" onClick={this.openIntroduction}>
-                        Join
-                    </div>
-                </Link>
+                {/*I like the register being here, but there's problems with the scrolling/lack of page jumps*/}
+                {/*Moving inside introductionContainer through off width styles*/}
+                <RegisterUnit />
             </div>
+
+            
           </div>
       );
    }
