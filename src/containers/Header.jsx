@@ -35,15 +35,20 @@ export default class Header extends React.Component {
         // if (e.keyCode === 13)
         {
             // alert("This is not functional yet");
-            document.location = '/welcome';
+            document.location = '/search';
             
         }
         
     }
 
    render() {
+
+if (this.state.userToken === undefined ){
       return (
         <div id="header">
+            <div id="logo">
+              <Link to="/welcome"><div id="logoName">XPrincipia</div></Link>
+            </div>
             {/*<div id="explore">
                 <form id="exploreFormHeader">
                     <input type="search" name="search"
@@ -52,11 +57,36 @@ export default class Header extends React.Component {
                     <input onKeyPress={this.submitSearch}  id="submitExplore" />
                 </form>
             </div>*/}
-            <div id="logo">
-              <Link to="/welcome"><div id="logoName">XPrincipia</div></Link>
+            
+            {/*Login in header here*/}
+            <div id="loginHeaderUsername">
+                <input type="text" name="email" required="required" maxLength="30" placeholder="Username" id="loginEmail" autoFocus />
             </div>
-            <HeaderAvatar />
+            <div id="registerHeaderPassword">
+                <input type="password" name="password" required="required" maxLength="30" placeholder="Password" id="loginPassword" />
+            </div>
+            <div id="registerHeaderButton">
+                Register
+            </div>
         </div>
       );
-   }
+    } else {
+        return (
+            <div id="header">
+                <div id="logo">
+                <Link to="/welcome"><div id="logoName">XPrincipia</div></Link>
+                </div>
+                {/*<div id="explore">
+                    <form id="exploreFormHeader">
+                        <input type="search" name="search"
+                            placeholder="Explore" id="exploreHeaderInput"  
+                            onKeyDown={this.queryProblem} />
+                        <input onKeyPress={this.submitSearch}  id="submitExplore" />
+                    </form>
+                </div>*/}
+                <HeaderAvatar />
+            </div>
+      );  
+
+ }}
 }
