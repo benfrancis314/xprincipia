@@ -1518,11 +1518,8 @@ like vote and comments.*/
     	font-size: 200%;
     	text-align: center;
     	padding: 0px 0px 5px 0px;
-      /*Old margin-top*/
-      /*margin-top: 11.5%;*/
-
-      /*New margin-top*/
-      margin-top: 7.5%;
+      margin-top: 8.5%;
+      margin-bottom: 5.5%;
     }
     #bannerTitle {
     	font-size: 250%;
@@ -1607,14 +1604,7 @@ like vote and comments.*/
     }
     #loginPassword, #registerPassword {
       margin-bottom: 15px;
-      /*width: 22%;*/
     }
-    /*#registerEmail {
-      width: 18%;
-    }
-    #registerUserName {
-      width: 20%;
-    }*/
     #enter {
     	color: #00dcff;
     	font-size: 100%;
@@ -1666,6 +1656,77 @@ like vote and comments.*/
     	color: #0f131c !important;
     	background-color: rgba(0,255, 220, 1) !important;
     	cursor: pointer;
+    }
+    #loginHeaderEmail {
+    	display: block;
+      font-size: 125%;
+      width: 15%;
+      box-shadow: 0 0 1pt 1pt rgba(0,220,255,0.5);
+      font-family: 'Alegreya Sans SC', sans-serif;
+      margin: 0 auto;
+      margin-top: 0.3%;
+      margin-bottom: 0.3%;
+      padding: 0px !important;
+    }
+    #loginHeaderPassword {
+    	display: block;
+      font-size: 125%;
+      width: 15%;
+      box-shadow: 0 0 1pt 1pt rgba(0,220,255,0.5);
+      font-family: 'Alegreya Sans SC', sans-serif;
+      margin: 0 auto;
+      margin-left: 1%;
+      margin-top: 0.3%;
+      margin-bottom: 0.3%;
+      padding: 0px !important;
+      transition: all 0.5s ease 0s;
+    }
+    #loginHeaderUsernameDiv {
+      margin: 0 auto;
+    }
+    #loginHeaderPasswordDiv {
+      margin: 0 auto;
+    }
+    #loginHeaderSubmitButton {
+      font-family: 'Alegreya Sans SC', sans-serif;
+      color: #00ffdc;
+      background-color: inherit;
+      text-align: center;
+      border: 1px solid #dddddd;
+      border-radius: 3px;
+      padding: 6px 8px 3px 8px;
+      display: inline-block;
+      margin: 0 auto;
+      margin: 0.3% 0.5% 0.3% 1%;
+      /*font-size: 125%;*/
+      box-shadow: 0 0 1pt 1pt rgba(255,255,255,0.5);
+      transition: all 0.5s ease 0s;  
+      vertical-align: middle;
+    }
+    #loginHeaderSubmitButton:hover {
+      cursor: pointer;
+      background-color: rgba(255,255,255,0.15);
+    }
+    #registerHeaderButton {
+      font-family: 'Alegreya Sans SC', sans-serif;
+      font-size: 100%;
+      color: #00ffdc;
+      background-color: inherit;
+      text-align: center;
+      border: 1px solid #00ffdc;
+      border-radius: 3px;
+      padding: 3px 8px 3px 8px;
+      display: block;
+      margin: 0 auto;
+      margin: 0.3% 0.5% 0.3% 1%;
+      font-size: 125%;
+      box-shadow: 0 0 1pt 1pt rgba(0,255,220,0.5);
+      transition: all 0.5s ease 0s;
+    }
+    #registerHeaderButton:hover {
+     cursor: pointer;
+     background-color: rgba(0,255,220,1);
+     color: #0f131c;
     }
 
 /*End Login*/
@@ -2458,8 +2519,28 @@ introductionProjectTitle {
 
 /*Welcome*/
 
+    #welcomeIntroductionButton {
+      border: 1px solid #dddddd;
+      border-width: 1px 1px 1px 0px;
+      border-radius: 0px 7px 7px 0px;
+      color: #dddddd;
+      text-align: center;
+      padding: 1% 1% 1% 1.5%;
+      width: 10%;
+      margin-top: 0.75%;
+      transition: all 0.5s ease 0s;
+      font-size: 120%;
+      letter-spacing: 0.25px;
+      /*font-family: 'Open Sans';*/
+      /*margin: 0 auto;*/
+    }
+    #welcomeIntroductionButton:hover {
+      cursor: pointer;
+      background-color: rgba(255,255,255,0.1);
+    }
+
     #welcomeBox {
-    	margin: 2.5% 20% 2.5% 20%;
+    	margin: 0.5% 20% 2.5% 20%;
     	border: 1px solid #dddddd;
       /*border-radius: 3px;*/
       /*box-shadow: 0 0 1pt 1pt rgba(255,255,255,0.5);*/

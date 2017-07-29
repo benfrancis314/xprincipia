@@ -77,4 +77,3 @@ export default class Introduction extends React.Component {
       );
    }
 }
-

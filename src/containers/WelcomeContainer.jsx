@@ -56,6 +56,11 @@ export default class WelcomeContainer extends React.Component {
    render() {
       return (
         <div>
+         <Link to="/register">
+            <div id="welcomeIntroductionButton">
+                Introduction
+            </div>
+         </Link>
             {/*<ReactCSSTransitionGroup
             transitionName="example"
             transitionAppear={true}

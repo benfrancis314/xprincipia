@@ -28,6 +28,7 @@ Book graphic by <a href="http://www.flaticon.com/authors/ocha">ocha</a> from <a 
 
 // Arrows
 https://thenounproject.com/alicoskun/collection/arrows/?oq=arrow%20collection&cidx=18&i=940775
+https://thenounproject.com/ali.coskun/collection/arrows/?i=940774
 
 // Comments
 https://thenounproject.com/search/?q=comments&i=835334
