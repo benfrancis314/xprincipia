@@ -49,24 +49,19 @@ if (this.state.userToken === undefined ){
             <div id="logo">
               <Link to="/welcome"><div id="logoName">XPrincipia</div></Link>
             </div>
-            {/*<div id="explore">
-                <form id="exploreFormHeader">
-                    <input type="search" name="search"
-                        placeholder="Explore" id="exploreHeaderInput"  
-                        onKeyDown={this.queryProblem} />
-                    <input onKeyPress={this.submitSearch}  id="submitExplore" />
-                </form>
-            </div>*/}
             
             {/*Login in header here*/}
-            <div id="loginHeaderUsername">
-                <input type="text" name="email" required="required" maxLength="30" placeholder="Username" id="loginEmail" autoFocus />
-            </div>
-            <div id="registerHeaderPassword">
-                <input type="password" name="password" required="required" maxLength="30" placeholder="Password" id="loginPassword" />
+            <input type="text" name="email" required="required" maxLength="30" placeholder="Username" id="loginHeaderEmail" autoFocus />
+            <input type="password" name="password" required="required" maxLength="30" placeholder="Password" id="loginHeaderPassword" />            
+            
+            {/*Need logo here, arrow signaling "Submit"*/}
+            <div id="loginHeaderSubmitButton"> 
+                <img src={require('../assets/rightArrowWhite.svg')} width="10" height="10" alt="Submit login arrow, blue right arrow" />
             </div>
             <div id="registerHeaderButton">
-                Register
+                <Link to="/welcome">
+                    Register
+                </Link>
             </div>
         </div>
       );
