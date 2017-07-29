@@ -127,11 +127,6 @@ ReactDOM.render(
     <Route path='/intro' component={Intro}></Route>
     <Route path='/newsfeed' component={NewsFeedContainer}></Route>
     <Route path='/instructions' component={Instructions}></Route>
-    <Route path='/logincontainer' component={LoginContainer}>
-      <IndexRoute component={LoginContainer}></IndexRoute>
-      <Route path='/login' component={LoginUnit}></Route>
-      <Route path='/register' component={RegisterUnit}></Route>
-    </Route>
     <IndexRoute component={Layout}></IndexRoute>
     <Route path='/home' component={Layout}>
       <IndexRoute component={FullProblem}></IndexRoute>
@@ -139,6 +134,11 @@ ReactDOM.render(
         <IndexRoute component={WelcomeCreateButton}></IndexRoute>
         <Route path='/welcome' component={WelcomeCreateButton}></Route>
         <Route path='/welcome/create' component={WelcomeCreateForm}></Route>
+      </Route>
+      <Route path='/logincontainer' component={LoginContainer}>
+        <IndexRoute component={LoginContainer}></IndexRoute>
+        <Route path='/login' component={LoginUnit}></Route>
+        <Route path='/register' component={RegisterUnit}></Route>
       </Route>
       <Route path='/profile/container' component={ProfileContainer}>
         <IndexRoute component={ProfileProblemsSolutions}></IndexRoute>
