@@ -4,6 +4,10 @@
     	font-family: 'Alegreya Sans SC', sans-serif;
     	font-weight: 100;
     }
+    /*Theoretically should make page fill height*/
+    html, body {
+      height: 100vh;
+    }
     body {
     	color: #dddddd;
     	font-family: 'Alegreya Sans SC', sans-serif;
@@ -30,7 +34,7 @@
     	flex-direction: row;
       word-wrap: break-word; 
       justify-content: center;
-      margin-bottom: 3%;
+      margin-bottom: 15%;
     }
     #columnContainer {
       display: inline-flex;
@@ -95,8 +99,62 @@
     #blue {
       color: #00dcff !important;
     }
+    #green {
+      color: #00ffdc !important;
+    }
     #nodisplay {
       display: none;
+    }
+    #embedLink {
+      width: 800px;
+      height: 600px;
+      overflow: auto;
+      border: 2px solid #00dcff;
+      box-shadow: 0 0 3pt 3pt rgba(0,220,255,0.5)
+    }
+
+      /*Scrollbar*/
+    ::-webkit-scrollbar {
+        width: 12px;
+        height: 12px;
+    }
+    ::-webkit-scrollbar-button {
+      display: none;
+    }
+    ::-webkit-scrollbar-track {
+        -webkit-box-shadow: inset 0 0 6px rgba(0,220,255,0); 
+        box-shadow: inset 0 0 6px rgba(0,220,255,0); 
+        -webkit-border-radius: 3px;
+        border-radius: 3px;
+    }
+    /* Handle */
+    ::-webkit-scrollbar-thumb:vertical {
+        -webkit-border-radius: 3px;
+        border-radius: 3px;
+        background: rgba(0,220,255,0.01); 
+        -webkit-box-shadow: inset 0 0 6px rgba(0,220,255,0.5); 
+        box-shadow: inset 0 0 6px rgba(0,220,255,0.5); 
+    }
+    ::-webkit-scrollbar-thumb:horizontal {
+        -webkit-border-radius: 3px;
+        border-radius: 3px;
+        background: rgba(0,220,255,0.01); 
+        -webkit-box-shadow: inset 0 0 6px rgba(0,220,255,0.1); 
+        box-shadow: inset 0 0 6px rgba(0,220,255,0.1); 
+    }
+    ::-webkit-scrollbar-corner {
+      display: none;
+    }
+    ::-webkit-resizer {
+      display: none;
+    }
+
+    /*Fixing autofill problem*/
+    input:-webkit-autofill {
+      -webkit-box-shadow: 0 0 0 30px white inset !important;
+      box-shadow: 0 0 0 30px #00dcff inset !important ;
+      background-color: inherit !important;
+      color: #ffffff !important;
     }
 
 
@@ -105,7 +163,7 @@
 
 
 /*Media Queries*/
-@media screen and (max-width: 900px) { 
+@media screen and (max-width: 1100px) { 
   /*Login Page*/
   #fullProblem, #fullSolution {
     width: 100% !important;
@@ -143,6 +201,11 @@
     font-size: 70% !important;
     width: 90% !important;
   }
+  #bannerLoginSlogan {
+    letter-spacing: 10px !important;
+    font-size: 70% !important;
+    width: 90% !important;
+  }
   #signup, #register {
     width: 100% !important;
     padding-left: 0px !important;
@@ -152,31 +215,47 @@
     border-radius: 3px;
     margin: 0% 15% 0% 15% !important;
   }
-  #loginEmail, #loginPassword {
+  #loginEmail, #loginPassword, #registerFullName,
+  #registerUserName, #registerEmail, #registerPassword {
     width: 80% !important;
   }
-  #submitLogin {
+  #submitLogin, #submitRegister {
     width: 50% !important;
   }
-  #registerButton {
+  #registerButton, #loginButton {
     width: 40% !important;
   }
 /*Welcome*/
-  #welcomeProblemsUnit {
+  #welcomeUnitsContainer {
     width: 100% !important;
-    margin: 0% 5% 0% 5% !important;
+    padding-right: 0px !important;
+    padding-left: 0px !important;
+  }
+  #welcomeUserUnitsContainer {
+    padding-right: 0px !important;
+    padding-left: 0px !important;
   }
   #welcomeProblemsHeader, 
   #welcomeProblemsHeader1,
   #welcomeProblemsHeader2,
   #welcomeProblemsHeader3,
   #welcomeProblemsHeader4 {
+
+    background-size: cover !important;
+    border: 1px solid #00dcff !important;
+    border-width: 1px 1px 1px 1px !important;
     border-radius: 0% !important;
     box-shadow: 0 0 1pt 1pt rgba(0,220,255,0.5) !important;
-    width: 30em !important;
+    width: 94.5% !important;
     height: auto !important;
+    word-wrap: break-word !important; 
+    align-items: center !important; 
+    justify-content: center !important;
     margin-bottom: 5% !important;
-    background-size: cover !important;
+    position: relative !important;
+    margin: 0 auto !important;
+    margin-top: 2% !important;
+    transition: all 0.2s ease 0s !important;
   }
   #welcomeProblemsHeader:hover, 
   #welcomeProblemsHeader1:hover,
@@ -200,6 +279,10 @@
     width: 100% !important;
     margin: 0 auto !important;
   }
+  #createWelcomeButton {
+    padding-left: 5px !important;
+    padding-right: 5px !important;
+  }
   #welcomeBox {
   width: 100% !important;
   margin: 0 auto !important;
@@ -208,7 +291,6 @@
 #welcomeProblemsHeader1, #welcomeProblemsHeader2,
 #welcomeProblemsHeader3, #welcomeProblemsHeader4 {
   margin-bottom: 0 !important;
-  border-width: 0px 1px 1px 1px !important;
 }
 #exploreWelcomeForm {
   width: 100% !important;
@@ -225,13 +307,23 @@
   margin: 0 !important;
   display: none !important;
 }
+#SPParent2Div {
+  width: 100% !important;
+  margin: 1% 0% 1% 0% !important;
+}
 #SPParent2 {
-  display: initial !important;
+  display: block !important;
+  transition: all 0.5s ease 0s !important;
+  /*text-align: center !important;*/
+  /*vertical-align: middle !important;*/
+  transition: all 0.5s ease 0s !important;
+  width: 40% !important;
   margin: 0 auto !important;
-  height: 50px !important;
-  width: 250px !important;
-  text-align: center !important;
-  float: center !important;
+}
+#SPParent2:hover {
+  cursor: pointer !important;
+  background-color: rgba(0,220,255,0.05) !important;
+  box-shadow: 0 0 1pt 1pt rgba(0,220,255,0.5) !important;
 }
 #problemRow1, #problemRow2 {
   display: flex !important;
@@ -240,9 +332,9 @@
   text-align: center !important;
 }
 #problemTitle {
-  width: 100% !important;
+  width: 98% !important;
   margin: 0 auto !important;
-  margin-bottom: 4% !important;
+  margin-bottom: 5px !important;
 }
 #problemIntro {
   width: 100% !important;
@@ -270,7 +362,7 @@
   margin: 0 auto !important;
   margin-bottom: 1% !important;
   margin-top: 4% !important;
-  width: 100% !important;
+  width: 98% !important;
 }
 #SPHeader {
   /*display: block;*/
@@ -297,6 +389,11 @@
 #SPUnitList {
   flex-direction: column  !important;
   display: flex  !important;
+}
+#SPUnit {
+  width: 40em !important;
+  margin: 0 auto !important;
+  font-size: 130% !important;
 }
 #SParrowImg {
   display: none !important;
@@ -339,15 +436,20 @@
   margin-bottom: 8% !important;
 }
 #solutionPercent {
-  width: 15% !important;
+  width: 20% !important;
 }
 #prosButton, #consButton {
   width: 10em !important;
 }
-
+#followProblemLeftSB {
+  width: 60% !important;
+}
 /*Profile*/
 #profileBox {
   border-top-width: 0px !important;
+}
+#profileLeft, #profileRight {
+  overflow: auto !important;
 }
 #profileAboutTitle {
   letter-spacing: 2px !important;
@@ -362,7 +464,65 @@
 #projectsTitleProfile, #proposalsTitleProfile {
   border-top-width: 1px !important;
 }
+
+/*Discuss*/
+
+/*This is trying to get question text to go beneath options
+like vote and comments.*/
+
+/*#suggestionContent {
+  clear: both !important;
+}*/
+
+/*Header*/
+#logoName {
+  font-size: 110% !important;
+  letter-spacing: 12px !important;
+  flex: 1 6 auto !important;
+  width: 80% !important;
+  margin-left: 5% !important;
+  text-align: left !important;
 }
+#avatarImage {
+  margin-right: 0% !important;
+  margin-left: 3px !important;
+}
+
+/*Footer*/
+
+#footer {
+  flex-direction: column !important;
+  width: 100% !important;
+}
+#footerAbout, #footerCareers, #creativeCommons {
+  flex: 1 1 auto;
+  transition: all 0.5s ease 0s;
+  margin: 0 auto;
+  width: 100% !important;
+  text-align: center !important;
+  padding-top: 5px !important;
+  padding-bottom: 5px !important;
+  font-size: 100% !important;
+  letter-spacing: 2px !important;
+}
+
+
+/*Tutorials*/
+#introBanner {
+  width: 90% !important;
+  margin: 0 auto !important;
+}
+
+}
+
+@media screen and (max-width: 800px) {
+#SPUnit {
+  width: 28em !important;
+  margin: 0 auto !important;
+  font-size: 125% !important;
+}
+}
+
 
 @media screen and (max-width: 600px) {
 
@@ -375,7 +535,7 @@
 }
 #logo {
   font-size: 150% !important;
-  letter-spacing: 16px;
+  letter-spacing: 16px !important;
   flex: 1 6 auto !important;
   width: 80% !important;
 }
@@ -407,7 +567,11 @@
 #xp {
   display: none;
 }
-
+#SPUnit {
+  width: 22em !important;
+  margin: 0 auto !important;
+  font-size: 115% !important;
+}
 /*Profile*/
 #profileBox {
   display: flex !important;
@@ -417,11 +581,13 @@
   border: 1px solid #00dcff;
   width: 100% !important;
   padding: 0px !important;
+  height: auto !important;
+  overflow: auto !important;
+  margin-right: 0 !important;
 }
 #profileLeft, #profileRight {
   color: #dddddd;
   padding: 0px 0px 0px 0px !important;
-  /*overflow: scroll !important;*/
   margin: 0px 0px 0px 0px !important;
   flex: 1 1 auto;
   width: 100% !important;
@@ -430,7 +596,35 @@
   margin: 2px 0px 0px 0px !important;
   padding: 0px !important;
 }
+#aboutButton, #careersButton{
+  padding-left: 0px !important;
+  padding-right: 0px !important;
 }
+#aboutButton, #careersButton {
+  letter-spacing: 2px !important;
+  padding: 5px 0px 5px 0px !important;
+  width: 10em !important;
+}
+#aboutIntroProse {
+  padding: 10px 0px 10px 0px !important;
+  margin-left: 0% !important;
+  margin-right: 7% !important;
+}
+#profileAboutContact {
+  padding: 5px 0px 5px 0px !important;
+  font-size: 90% !important;
+  letter-spacing: 2px !important;
+}
+}
+
+@media screen and (max-width: 400px) {
+#SPUnit {
+  width: 18em !important;
+  margin: 0 auto !important;
+  font-size: 100% !important;
+}
+}
+
 
 /*End Media Queries*/
 
@@ -442,6 +636,30 @@
 
 /*Answer and Question*/
 
+    #answerQuestionHeader {
+      display: flex;
+    	flex-direction: row;
+    }
+    #answerQuestionLabel {
+      font-size: 150%;
+      color: #00dcff;
+      width: 100%;
+      padding-left: 3%;
+      letter-spacing: 8px;
+      /*text-align: center;*/
+      /*border: 1px solid #00dcff;
+      border-width: 0px 0px 1px 0px;*/
+    }
+    #answerQuestionContent {
+      flex: 3 3 auto;
+      font-family: 'Open Sans';
+      width: 80%;
+      padding: 0px 10px 10px 15px;
+    }
+    #greenBorder {
+      border-color: #00ffdc;
+      padding-top: 15px;
+    }
     #sidebarElements {
       border: 1px solid #00dcff;
       border-width: 0px 1px;
@@ -456,17 +674,6 @@
     	border: 1px solid #00dcff;
     	font-size: 90%;
     	text-align: justify;
-    }
-    #questionUnit {
-    	display: -webkit-box;
-    	display: -moz-box;
-    	display: -ms-flexbox;
-    	display: -webkit-flex;
-    	display: flex;
-    	flex-direction: row;
-    	font-family: 'Open Sans';
-    	padding-top: 10px;
-    	width: 100%;
     }
     #questionContent {
     	flex: 3 3 auto;
@@ -487,7 +694,7 @@
     #questionAnswers {
       flex: 1 1 auto;
       color: #00dcff;
-      background-color: #0f131c;
+      background-color: inherit;
       border: 1px solid #00dcff;
       border-radius: 2px;
       cursor: pointer;
@@ -500,12 +707,12 @@
     }
     #questionAnswers:active {
       color: #00dcff;
-      background-color: #0f131c;
+      background-color: inherit;
     }
     #questionVote {
       flex: 1 1 auto;
       color: #00ffdc;
-      background-color: #0f131c;
+      background-color: inherit;
       border: 1px solid #00ffdc;
       border-radius: 2px;
       cursor: pointer;
@@ -517,7 +724,7 @@
     }
     #questionVote:active {
       color: #00ffdc;
-      background-color: #0f131c;
+      background-color: inherit;
     }
     #commentSBButton, #commentSBButtonUser,
     #deleteSBButton, #editSBButton, 
@@ -553,36 +760,35 @@
     }
     #commentSBButton:hover, #commentSBButtonUser:hover {
       cursor: pointer;
-      box-shadow: 0 0 1pt 1pt rgba(0,220,255,0.5);
+      box-shadow: 0 0 2pt 2pt rgba(0,220,255,0.5);
+      /*Interesting thing to try to get images to switch on hover*/
+      /*content: url("http://i.imgur.com/uKnMvyp.jpg");*/
     }
 
     #flagSBButton, #deleteSBButton {
       color: #ff7f7f;
       border: 1px solid #ff7f7f;
       border-radius: 0px 0px 0px 2px;
-      /*OR #fc5353*/
     }
     #flagSBButton:active, #deleteSBButton:active {
       color: #0f131c !important;
       background-color: #ff7f7f;
     }
     #flagSBButton:hover, #deleteSBButton:hover {
-      /*color: #0f131c !important;
-      background-color: #ff7f7f;*/
       cursor: pointer;
-      box-shadow: 0 0 1pt 1pt rgba(255,127,127,0.5);
+      box-shadow: 0 0 2pt 2pt rgba(255,127,127,0.5);
     }
     #editSBButton:hover, #editSBButtonAnswer:hover {
       cursor: pointer;
-      box-shadow: 0 0 1pt 1pt rgba(0,220,255,0.5);
+      box-shadow: 0 0 2pt 2pt rgba(0,220,255,0.5);
     }
     #flagSBButton:active {
       color: #ff7f7f;
-      background-color: #0f131c;
+      background-color: inherit;
     }    
     #editSBButton:active, #editSBButtonAnswer:active {
       color: #00ffdc;
-      background-color: #0f131c;
+      background-color: inherit;
     }
 
     #answerProblem fieldset {
@@ -617,7 +823,7 @@
     #answerVote {
       flex: 1 1 auto;
       color: #00ffdc;
-      background-color: #0f131c;
+      background-color: inherit;
       border: 1px solid #00ffdc;
       border-radius: 2px;
       cursor: pointer;
@@ -630,7 +836,7 @@
     }
     #answerVote:active {
       color: #00ffdc;
-      background-color: #0f131c;
+      background-color: inherit;
     }
 
 /*End Answer*/
@@ -640,12 +846,21 @@
  /*CreateProblem and Create Solution*/
 
     #createForm {
-      /*background-color: rgba(255,255,255,0.05);*/
       color: #00dcff;
       height: auto;
       padding: 0px 5px 5px 5px;
       width: 90%;
       margin: 0 auto;
+      background-color: rgba(0,220,255,0.025);
+     }
+    #solutionDeleteForm, #solutionEditForm {
+      color: #00dcff;
+      height: auto;
+      padding: 0px 5px 5px 5px;
+      width: 90%;
+      margin: 0 auto;
+      margin-bottom: 5%;
+      /*background-color: rgba(0,220,255,0.025);*/
      }
     #welcomeCreateForm {
       background-color: rgba(0,220,255,0.01);
@@ -664,10 +879,24 @@
     	text-align: left;
     	height: 5em;
     }
+    #projectEditSummaryForm {
+      font-family: 'Open Sans';
+    	text-align: left;
+    	height: 5em;
+    }
     #problemDescriptionForm, #problemRequirementsForm, #solutionDescriptionForm, {
       height: 10em;
     }
     #problemTitleForm {
+      font-family: 'Alegreya Sans SC', sans-serif;
+      color: #ffffff;
+      margin: 0 auto;
+      letter-spacing: 6px;
+      border: 1px solid #ffffff;
+      border-radius: 3px;
+      box-shadow: 0 0 1pt 1pt rgba(255,255,255,0.5);
+    }
+    #projectEditTitleForm {
       font-family: 'Alegreya Sans SC', sans-serif;
       color: #ffffff;
       margin: 0 auto;
@@ -709,6 +938,9 @@
     }
     #solutionTitleForm {
       font-family: 'Alegreya Sans SC';
+    }
+    #solutionEditReferencesForm {
+      margin-bottom: 3%;
     }
  
 
@@ -761,7 +993,7 @@
     	color: #00dcff;
     	border: 1px solid #00dcff;
     	background-color: rgba(0,220,255,0);
-    	width: 86%;
+    	width: 50%;
     	margin: 0 auto;
       margin-top: 3%;
       margin-bottom: 2%;
@@ -845,7 +1077,7 @@
     	width: 30%;
     	margin-left: 35%;
     	padding-left: 1%;
-    	background-color: #0f131c;
+    	background-color: inherit;
     	color: #00dcff;
     	font-family: 'Alegreya Sans SC', sans-serif;
     	font-size: 120%;
@@ -895,7 +1127,7 @@
 /*EditSolution*/
 
 #editForm {
-  background-color: #0f131c;
+  background-color: inherit;
   color: #00dcff;
   width: 50%;
   height: auto;
@@ -972,7 +1204,7 @@
 
     #header {
     	border: 1px solid #00dcff;
-    	border-width: 0px 0px 1px 0px;
+    	border-width: 1px 0px 1px 0px;
     	overflow: hidden;
     	width: 100%;
     	display: inline-flex;
@@ -985,6 +1217,11 @@
       font-size: 110%;
       /*transition: all 0.5s ease 0s;
       transform: scale(1);*/
+
+      /*Testing out a gray header background, to match the footer */
+      /*Currently, I can't tell if I like it or not*/
+      /*background-color: rgba(255,255,255,0.05);
+      border-color: #dddddd;*/
     }
     /*#header:hover {
       transform: scale(1.02);
@@ -1026,7 +1263,7 @@
     }
     #exploreHeaderInput {
       color: #dddddd;
-    	background-color: #0f131c;
+    	background-color: inherit;
     	border: 1px solid #dddddd;
     	height: 35px;
     	width: 200px;
@@ -1076,6 +1313,9 @@
       border: 1px solid #00dcff;
     	border-radius: 50%;
       margin: 0 auto;
+      margin-top: 0.4%;
+      margin-left: 1%;
+      padding: 2px;
       /*vertical-align: middle;*/
       /*float: right;*/
     }
@@ -1116,6 +1356,78 @@
     }
 
 /*End Header*/
+
+
+
+/*Footer*/
+#footer {
+  width: 100%;
+  background-color: rgba(255,255,255,0.05);
+  text-align: center;
+  font-size: 150%;
+  letter-spacing: 16px;
+  color: #dddddd;
+  padding-top: 0.5%;
+  padding-bottom: 0%;
+  border: 1px solid #dddddd;
+  border-width: 1px 0px;
+  margin: 0 auto;
+  /*margin-top: 5%;*/
+  transition: all 0.5s ease 0s;
+  z-index: 500;
+
+  display: inline-flex;
+  align-items: stretch;
+  flex-direction: row;
+
+  /*position: absolute;*/
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 500;
+}
+
+#footerAbout, #footerCareers, #creativeCommons {
+  flex: 1 1 auto;
+  transition: all 0.5s ease 0s;
+  margin: 0 auto;
+  width: 33.3vw;
+}
+#footerAbout:hover, #footerCareers:hover,
+#footerAbout:active, #footerCareers:active  {
+  cursor: pointer;
+  color: #00dcff;
+}
+#creativeCommons {
+  text-align: center;
+}
+#creativeCommonsLogo {
+  /*box-shadow: 0 0 1pt 1pt rgba(255,255,255,0.5);*/
+  transition: all 0.2s ease 0s;
+}
+#creativeCommonsLogo:hover {
+  background-color: rgba(15,19,28,0.999);
+  background-blend-mode: overlay;
+  box-shadow: 0 0 1pt 1pt rgba(0,220,255,0.5);
+  cursor: pointer;
+}
+/*Found in disclaimer*/
+#creativeCommonsDisclaimer {
+  text-align: center;
+  width: 100%;
+  margin: 0 auto;
+}
+#creativeCommonsLogoDisclaimer {
+  box-shadow: 0 0 2pt 2pt rgba(0,220,255,0.5);
+  /*border: 1px solid #00dcff;*/
+}
+#creativeCommonsLogoDisclaimer:hover {
+  cursor: pointer;
+}
+  
+
+
+/*End Footer*/
 
 
 
@@ -1185,6 +1497,18 @@
       background-color: rgba(0, 220, 255, 0.05);
       box-shadow: 0 0 1pt 1pt rgba(0,220,255,0.5);
       width: 60%;
+      margin: 0 auto;
+      margin-top: 12px;
+    }
+    #bannerLoginSlogan {
+      padding: 3px;
+      border: 1px solid #00dcff;
+    	border-width: 2px 0px;
+      letter-spacing: 12px;
+      /*color: #00dcff;*/
+      background-color: rgba(0, 220, 255, 0.05);
+      box-shadow: 0 0 1pt 1pt rgba(0,220,255,0.5);
+      width: 33%;
       margin: 0 auto;
       margin-top: 12px;
     }
@@ -1260,9 +1584,11 @@
       margin-top: 0.5%;
       width: 15%;
     }
-    #submitLogin:hover, #submitRegister:hover {
-    	color: #0f131c;
-    	background-color: rgba(0,220, 255, 1);
+    #submitLogin:hover, #submitRegister:hover,
+    #submitLogin:focus, #submitLogin:active, 
+    #submitRegister:focus, #submitLogin:active {
+    	color: #0f131c !important;
+    	background-color: rgba(0,220, 255, 1) !important;
     	cursor: pointer;
     }
     #registerButton, #loginButton {
@@ -1276,9 +1602,11 @@
     #registerButton, #loginButton {
       margin-top: 0%;
     }
-    #registerButton:hover, #loginButton:hover {
-    	color: #0f131c;
-    	background-color: rgba(0,255, 220, 1);
+    #registerButton:hover, #loginButton:hover,
+    #registerButton:focus, #registerButton:active,
+    #loginButton:focus, #loginButton:active {
+    	color: #0f131c !important;
+    	background-color: rgba(0,255, 220, 1) !important;
     	cursor: pointer;
     }
 
@@ -1302,14 +1630,19 @@
 
       /*Box profile styles*/
       border: 1px solid #00dcff;
-      width: 85%;
-      margin-top: 30px;
-
+      border-width: 1px 1px 1px 0px;
+      border-radius: 0px 0px 50px 0px;
+      width: 92%;
+      margin-top: 2%;
+      height: 81vh;
+      margin-left: 0;
+      background-color: rgba(0,220,255,0.03);
     }
     #profileLeft, #profileRight {
     	color: #dddddd;
     	padding: 0px 0px 0px 0px;
-    	/*overflow: scroll !important;*/
+    	overflow-y: scroll;
+      overflow-x: hidden;
     	margin: 5px 5px 10px 5px;
     	flex: 1 1 auto;
     	width: 60%;
@@ -1319,6 +1652,9 @@
     	width: 40%;
     	border: 1px solid #00dcff;
     	border-width: 0px 1px 0px 0px;
+    }
+    #profileRight {
+      
     }
     #avatar {
     	padding: 10px;
@@ -1334,6 +1670,7 @@
       margin: 0 auto;
       transition: all 0.5s ease 0s;
       transform: scale(1);
+      padding: 10px;
     }
     #avatarImageProfile:hover {
       transform: scale(1.05);
@@ -1364,16 +1701,23 @@
     	background-color: rgba(0,220,255,0);
     	color: #00dcff;
     	font-family: 'Alegreya Sans SC', sans-serif;
-    	font-size: 135%;
+    	font-size: 150%;
     	font-weight: 100;
     	border: 1px solid #00dcff;
-    	border-width: 1px 1px;
-    	border-radius: 3px;
+    	border-width: 1px 1px 1px 0px;
+      border-radius: 0px 0px 15px 0px;
     	text-align: center;
     	text-decoration: none;
-    	margin: 5px 0px;
+    	margin: 10px 0px;
     	letter-spacing: 1px;
       transition: all 0.5s ease 0s;
+      /*width: 90%;*/
+      left: 0;
+
+      /*Testing out profile buttons based off shayans feedback*/
+      /*Also changed profile left to being 40% width instead of previously 35%*/
+      width: 80%;
+      padding-left: 10%;
     }
     #userProblemsSolutionsButton:hover, #notificationsButton:hover,
     #userSettingsButton:hover, #aboutXPButton:hover, 
@@ -1434,7 +1778,18 @@
     	letter-spacing: 4px;
       background-color: rgba(0,220,255,0.05);
     }
-    #projectsTitleProfile {
+    #projectsTitleResume, #proposalsTitleResume {
+      flex: 1 1 auto;
+    	color: #00dcff;
+    	border: 1px solid #00dcff;
+    	border-width: 0px 0px 1px 0px;
+    	font-size: 120%;
+    	padding: 5px 5px 5px 10px;
+    	margin: 0px 0px 0px 0px;
+    	letter-spacing: 4px;
+      background-color: rgba(0,220,255,0.05);
+    }
+    #projectsTitleProfile, #projectsTitleResume {
       border-width: 0px 1px 1px 0px;
       margin: 0px 0px 0px 0px;
     }
@@ -1446,7 +1801,7 @@
     	font-size: 90%;
     	border: 1px solid #00ffdc;
     	border-width: 0px 1px 1px 1px;
-    	border-radius: 3px 3px 0px 0px;
+    	border-radius: 0px 0px 3px 3px;
     	text-align: center;
     	text-decoration: none;
     	margin: 0px 10px 0px 10px;
@@ -1456,13 +1811,33 @@
     #createdProblemsButton, #createdSolutionsButton {
       border-top: 0px;
       margin-top: 0px;
-      border-radius: 0px 0px 3px 3px;
+      border-radius: 0px 0px 0px 0px;
     }
     #followedProblemsButton:hover, #createdProblemsButton:hover,
     #votedSolutionsButton:hover, #createdSolutionsButton:hover,
     #followedProblemsButton:active, #createdProblemsButton:active,
     #votedSolutionsButton:active, #createdSolutionsButton:active {
     	background-color: rgba(0,255,220,1);
+    	color: #0f131c;
+    	cursor: pointer;
+    }
+    #followedProblemsButtonActive, #createdProblemsButtonActive, 
+    #votedSolutionsButtonActive, #createdSolutionsButtonActive {
+      flex: 1 1 auto;
+    	font-size: 90%;
+    	border: 1px solid #00ffdc;
+    	border-width: 0px 1px 1px 1px;
+    	border-radius: 0px 0px 3px 3px;
+    	text-align: center;
+    	text-decoration: none;
+    	margin: 0px 10px 0px 10px;
+      transition: all 0.5s ease 0s;
+      padding: 3px;
+      background-color: #00ffdc;
+      color: #0f131c;
+    }
+    #projectsTitleResume:hover, #proposalsTitleResume:hover {
+      background-color: rgba(0,220,255,1);
     	color: #0f131c;
     	cursor: pointer;
     }
@@ -1474,23 +1849,39 @@
     #profileRightUnit {
     	border: 1px solid #00dcff;
     	border-width: 1px 0px 0px 0px;
-    	padding: 2px;
+    	padding: 7px;
+
+      /*Exploring the look of gradients as background colors, 
+      so far I haven't found anything I like*/
+      /*background: linear-gradient(rgba(0,220,255,0.0), rgba(0,220,255,0.02), rgba(0,220,255,0.0))*/
     }
     #profileRightUnit:hover {
       color: #ffffff;
       cursor: pointer;
+      background-color: rgba(0,220,255,0.05);
     }
     #profileUnitTitle {
       display: block;
-      margin: 0px;
+      margin: 5px 0px 0px 0px;
       padding: 2px 5px 2px 5px;
-      font-size: 120%;
+      font-size: 160%;
       color: #00dcff !important;
       line-height: 120%;
       height: auto;
+      word-break: break-all;
+      overflow: auto;
+    }
+    #profileUnitSummary {
+    	font-family: 'Open Sans', sans-serif;
+    	padding: 0px 0px 10px 10px;
+    	font-size: 90%;
+    	margin: 0px;
+    	text-align: justify;
+      word-break: break-all;
+      overflow: auto;
     }
     #unitSummary {
-    	font-family: 'Open Sans', sans-serf;
+    	font-family: 'Open Sans', sans-serif;
     	padding: 0px 5px 5px 5px;
     	font-size: 80%;
     	margin: 0px;
@@ -1643,6 +2034,8 @@
   border: 1px solid #00dcff;
   transition: all 0.5s ease 0s;
   box-shadow: 0 0 0pt 0pt rgba(0,220,255,0.5);
+  margin-bottom: 2%;
+  background-color: rgba(0,220,255,0.05);
 }
 #solutionUnitContainer {
   padding: 0px;
@@ -1674,11 +2067,13 @@
   font-family: 'Alegreya Sans SC', sans-serif;
   font-size: 120%;
   width: 100%;
+  word-wrap: break-word; 
+  overflow: auto;
 }
 #problemVote {
   flex: 1 1 auto;
   color: #00ffdc;
-  background-color: #0f131c;
+  background-color: inherit;
   border: 1px solid #00ffdc;
   border-radius: 2px;
   cursor: pointer;
@@ -1695,7 +2090,7 @@
 }
 #problemVote:active {
   color: #00ffdc;
-  background-color: #0f131c;
+  background-color: inherit;
 }
 #subProblemSummary, #solutionUnitSummary {
   color: #dddddd;
@@ -1761,7 +2156,7 @@
       border-radius: 2px 2px 0px 0px;
       cursor: pointer;
       height: 37px;
-
+      min-width: 101.94px;
       text-align: center;
       font-size: 120%;
       padding: 0px 24px 0px 25px;;
@@ -1772,6 +2167,29 @@
     }
     #suggestionVoteNoComments {
       border-width: 1px 1px 1px 1px;
+      min-width: 103.27px;
+    }
+    #suggestionVoted, #suggestionVotedNoComments {
+      flex: 1 1 auto;
+      color: #0f131c;
+      background-color: #00ffdc;
+      border: 1px solid #00ffdc;
+      border-width: 1px 1px 1px 0px;
+      border-radius: 2px 2px 0px 0px;
+      cursor: pointer;
+      height: 37px;
+      min-width: 101.94px;
+      text-align: center;
+      font-size: 120%;
+      padding: 0px 12px 0px 13px;;
+      letter-spacing: 4px;
+      margin: 0 auto;
+      transition: all 0.5s ease 0s;
+      box-shadow: 0 0 0pt 0pt rgba(255,127,127,0.5);
+    }
+    #suggestionVotedNoComments {
+      border-width: 1px 1px 1px 1px;
+      min-width: 103.27px;
     }
     #suggestionVote:hover, #suggestionVoteNoComments:hover {
       color: #0f131c;
@@ -1781,7 +2199,7 @@
     }
     #suggestionVote:active, #suggestionVoteNoComments:active {
       color: #00ffdc;
-      background-color: #0f131c;
+      background-color: inherit;
     }
     #suggestionVote:focus, #suggestionVoteNoComments:focus {
       box-shadow: 0 0 0pt 0pt rgba(0,255,220,0.5);
@@ -1865,7 +2283,7 @@
       /*border-radius: 3px;*/
       /*box-shadow: 0 0 1pt 1pt rgba(255,255,255,0.5);*/
       border: 2px solid #00dcff;
-      box-shadow: 0 0 2pt 2pt rgba(0,220,255,0.5) !important;
+      box-shadow: 0 0 2pt 2pt rgba(0,220,255,0.5);
       background-color: rgba(0,220,255,0.05);
       transform: scale(1.02);
       transition: all 0.5s ease 0s;
@@ -1889,14 +2307,29 @@
       color: #0f131c !important;
       background-color: #00dcff !important;  
     }
+    .activeBlueTextHeader div {
+      color: #00dcff !important;
+      transform: scale(1.02) !important;
+    }
     .activeBlue button {
       color: #0f131c !important;
       background-color: #00dcff !important;  
     }
+    .activeBlueText div h1 {
+      color: #00dcff !important;
+    }
+    /*Doesn't work since it highlights the entire box*/
+    /*.activeGlow {
+      box-shadow: 0 0 2pt 2pt rgba(0,220,255,0.5);
+    }*/
     /*#createWelcomeButton:active {
       background-color: #00dcff;
       color: #0f131c;
     }*/
+    #whiteHeader {
+      transform: scale(1);
+      transition: all 0.5s ease 0s;
+    }
     #SPListDiv {
       width: 100%;
       margin:0 auto;
@@ -2013,7 +2446,7 @@
       background-image: url('./einstein.jpg');
     }
     #welcomeProblemsHeader4 {
-      background-image: url('./lhc.jpg');
+      background-image: url('./turingMachine.jpg');
     }
     #welcomeProblemsHeader1:hover,
     #welcomeProblemsHeader2:hover,
@@ -2066,6 +2499,13 @@
     margin: 0 auto;
     margin-top: 2%;
     transition: all 0.2s ease 0s;
+
+    /*Test to draw eye more to user projects*/
+    /*border-radius: 0px 0px 15px 0px;
+    background-color: rgba(255,255,255,0.05);*/
+
+    /*Added gradient for testing 3D hologram look*/
+    /*background: radial-gradient(rgba(0,220,255,0.05), rgba(0,220,255,0.035), rgba(0,220,255,0.05));*/
   }
   #welcomeUserProblemsHeader:hover {
     box-shadow: 0 0 1.5pt 1.5pt rgba(0,220,255,0.5);
@@ -2082,6 +2522,12 @@
     border: 1px solid #00dcff;
     border-width: 0px 1px 1px 1px;
     padding-bottom: 2%;
+
+    /*Testing new style with user projects*/
+    /*So far haven't found what I'm looking for*/
+    /*width: 70%;
+    border: 1px solid #dddddd;*/
+    /*background-color: rgba(255,255,255,0.05);*/
   }
   #welcomeUserProblemsUnitList a {
     /*display: block;*/
@@ -2092,11 +2538,9 @@
     margin: 0 auto;
     padding: 10px 15px 10px 15px !important;
     font-size: 140%;
-    /*color: #00dcff;*/
     word-wrap: break-word; 
     text-align: center;
     background-color: rgba(0,220,255,0.05);
-    /*position: relative;*/
   }
     /*#welcomeProblemsSummary {
     	font-family: 'Open Sans', sans-serf;
@@ -2107,7 +2551,7 @@
     	display: block;
     	color: #00dcff;
     	border: 1px solid #00dcff;
-    	background-color: #0f131c;
+    	background-color: inherit;
     	width: 84.5%;
     	margin-left: 7.5%;
     }
@@ -2155,7 +2599,7 @@
     }
     #problem {
       border: 1px solid #00dcff;
-      background-color: #0f131c;
+      background-color: inherit;
     	border-width: 0px 2px;
     	border-radius: 23px;
       position: relative;
@@ -2275,6 +2719,9 @@
       cursor: pointer;
       box-shadow: 0 0 1pt 1pt rgba(0,220,255,0.5) !important;
     }
+    #createSPButtonBox:hover * {
+      color: #00dcff;
+    }
     #createSPButton {
       color: #dddddd;
       margin: 5px 0px;
@@ -2311,20 +2758,39 @@
   height: 4em;
   resize: none;
 }
-
+#learnContentTextArea {
+  height: 12em;
+}
 #askQuestion, #addSuggestion, #addAnswer {
   font-size: 90%;
   color: #00dcff;
   background-color: rgba(0,255,220,0);
   border: 1px solid #00dcff;
   border-radius: 2px;
-  /*margin-top: 5px;*/
-  margin-bottom: 2%;
+  margin-top: 2%;
+  width: 40%;
   transition: all 0.5s ease 0s;
 }
 #addAnswer {
   color: #00dcff;
   border: 1px solid #00dcff;
+}
+#addAnswerGreen {
+  font-size: 90%;
+  color: #00dcff;
+  background-color: rgba(0,255,220,0);
+  border: 1px solid #00dcff;
+  border-radius: 2px;
+  margin-top: 2%;
+  width: 40%;
+  transition: all 0.5s ease 0s;
+  color: #00ffdc;
+  border: 1px solid #00ffdc;
+}
+#addAnswerGreen:hover, #addAnswerGreen:active {
+  color: #0f131c;
+  background-color: rgba(0,255,220,1);
+  cursor: pointer;
 }
 #askQuestion:hover, #addAnswer:hover, #addSuggestion:hover, #askquestion:active, #addAnswer:active, #addSuggestion:active  {
   color: #0f131c;
@@ -2428,7 +2894,7 @@
     #userOptions {
     }
     #newsFeedFieldUnit {
-    	background-color: #0f131c;
+    	background-color: inherit;
     	color: #00dcff;
     	font-family: 'Alegreya Sans SC', sans-serif;
     	font-size: 100%;
@@ -2462,14 +2928,15 @@
     	cursor: pointer;
     }
     #profileRightElements {
-    	margin: 2px 15px 0px 5px;
+    	margin: 2px 0px 0px 5px;
     	padding: 5px;
-      width: 100%;
+      width: 96%;
     }
     #profileRightUnit {
     	border: 1px solid #00dcff;
     	border-width: 1px 0px 0px 0px;
     	padding: 2px;
+      transition: all 0.5s ease 0s;
     }
     #profileRightUnit:hover {
       color: #ffffff;
@@ -2520,7 +2987,7 @@
 #flagSolutionButton, #deleteSolutionButton {
   display: block;
   margin: 0 auto;
-  box-shadow: 0 0 1pt 1pt rgba(255,127,127,0.5);
+  /*box-shadow: 0 0 1pt 1pt rgba(255,127,127,0.5);*/
   transition: all 0.5s ease 0s
 }
 #deleteSolutionButton {
@@ -2531,9 +2998,8 @@
   display: block;
   margin: 0 auto;
   padding: 3px;
-  box-shadow: 0 0 1pt 1pt rgba(0,220,255,0.5);
+  /*box-shadow: 0 0 1pt 1pt rgba(0,220,255,0.5);*/
   transition: all 0.5s ease 0s
-
 }
 
 #flagSolutionButton:hover, #deleteSolutionButton:hover {
@@ -2544,7 +3010,17 @@
   cursor: pointer;
   box-shadow: 0 0 2pt 2pt rgba(0,220,255,0.5);
 }
-
+#editProjectButton {
+  display: block;
+  margin: 0 auto;
+  padding: 3px;
+  /*box-shadow: 0 0 1pt 1pt rgba(0,220,255,0.5);*/
+  transition: all 0.5s ease 0s
+}
+#editProjectButton:hover {
+  cursor: pointer;
+  box-shadow: 0 0 2pt 2pt rgba(0,220,255,0.5);
+}
 #backArrow {
   flex: 1 1 auto;
   padding: 4px;
@@ -2584,7 +3060,7 @@
   cursor: pointer;
   box-shadow: 0 0 2pt 2pt rgba(0,220,255,0.5);
 }
-#SPParent {
+#SPParent img {
   flex: 1 1 auto;
   color: #00ffdc;
   text-align: center;
@@ -2594,11 +3070,11 @@
   margin-left: 50%;
   padding-top: 0px;
   margin-top: 10px;
-  box-shadow: 0 0 0pt 0pt rgba(0,220,255,0.5);
   transition: all 0.5s ease 0s;
 }
-#SPParent:hover {
+#SPParent:hover img {
   cursor: pointer;
+  background-color: rgba(0,220,255,0.05);
   box-shadow: 0 0 1pt 1pt rgba(0,220,255,0.5);
 }
 #SPParent2 {
@@ -2606,7 +3082,7 @@
 }
 #SPParent2:hover {
   cursor: pointer;
-  box-shadow: 0 0 1pt 1pt rgba(0,220,255,0.5);
+  /*box-shadow: 0 0 1pt 1pt rgba(0,220,255,0.5);*/
 }
 
 
@@ -2643,6 +3119,9 @@
 }
 #problemPercent:hover {
   transform: scale(1.1);
+}
+#bigPercent {
+  font-size: 120%;
 }
 #problemTitle {
   color: #dddddd;
@@ -2711,6 +3190,29 @@
   transition: all 0.5s ease 0s;
   /*box-shadow: 0 0 0pt 0pt rgba(0,255,220,0.5);*/
 }
+#votedProjectLeftSB {
+  flex: 1 1 auto;
+  margin: 0 auto;
+  margin-right: 25px;
+  padding: 5px;
+  padding-left: 1%;
+  color: #0f131c;
+  font-size: 120%;
+  border: 1px solid #00ffdc;
+  border-width: 1px 1px;
+  /*border-radius: 3px;*/
+  text-align: center;
+  letter-spacing: 8px;
+  font-family: 'Alegreya Sans SC', sans-serif;
+  height: auto;
+  width: 10%;
+  background-color: rgba(0, 255, 220, 1);
+  transition: all 0.5s ease 0s;
+  /*box-shadow: 0 0 0pt 0pt rgba(0,255,220,0.5);*/
+}
+#votedProjectLeftSB:hover {
+  cursor: pointer;
+}
 #followProblem {
   flex: 1 1 auto;
   margin: 0 auto;
@@ -2736,7 +3238,27 @@
   cursor: pointer; 
   /*box-shadow: 0 0 2pt 2pt rgba(0,255,220,0.5);*/
 }
-
+#votedProblem {
+  flex: 1 1 auto;
+  margin: 0 auto;
+  text-align: center;
+  background-color: rgba(0, 255, 220, 1);
+  color: #0f131c;
+  border: 1px solid #00ffdc;
+  border-width: 1px 1px;
+  border-radius: 3px;
+  text-align: center;
+  /*letter-spacing: 8px;*/
+  font-family: 'Alegreya Sans SC', sans-serif;
+  font-size: 170%;
+  height: auto;
+  width: 70%;
+  text-decoration: none;
+  transition: all 0.5s ease 0s;
+}
+#votedProblem:hover {
+  cursor: pointer; 
+}
 #problemSummary, #problemSummaryLeftSB {
   margin: 10px 25px 0px 25px;
   line-height: 150%;
@@ -2766,8 +3288,10 @@
   border-width: 0px 0px;
   position: relative;
   color: #dddddd;
-  padding: 0px 10px 20px 0px;
-  margin: 5px 5px 10px 5px;
+  padding: 0px 0px 20px 0px;
+  margin: 0 auto;
+  margin-top: 5px;
+  margin-bottom: 10px;
   flex: 1 1 auto;
   width: 100%;
 }
@@ -2801,11 +3325,12 @@
   width: 100%;
   margin: 0 auto;
   margin-top: 2%;
+  overflow-x: scroll;
 }
 #SPUnitList li {
   display: inline-block;
   /*display: inline;*/
-  margin: 0% 1% 2% 1%;
+  margin: 2% 1% 7% 1%;
   list-style-type: none;
 }
 #SPUnit {
@@ -2835,6 +3360,11 @@
   box-shadow: 0 0 2pt 2pt rgba(0,220,255,0.5);
   transition: all 0.5s ease 0s;
   transform: scale(1);
+
+  /*Testing out a gradient here for 3D holograp effect*/
+  /*Currently I like it*/
+  /*I also am adding it to the welcome user units for now*/
+  /*background: radial-gradient(rgba(0,220,255,0.05), rgba(0,220,255,0.05), rgba(0,220,255,0.035), rgba(0,220,255,0.05));*/
 }
 #SPHeader:hover {
   box-shadow: 0 0 1pt 3pt rgba(0,220,255,0.5);
@@ -2846,6 +3376,8 @@
   font-size: 120%;
   color: #dddddd;
   word-wrap: break-word; 
+  word-break: break-word;
+  overflow: auto;
   text-align: center;
   transition: all 0.5s ease 0s;
 }
@@ -2870,7 +3402,7 @@
 }
 #SPVote:active {
   color: #00ffdc;
-  background-color: #0f131c;
+  background-color: inherit;
 }
 
 /*ProblemLeftSB Page*/
@@ -2885,6 +3417,7 @@
   padding: 0px 10px 20px 10px;
   flex: 1 1 auto;
   float: right;
+  max-width: 62.6vw;
 }
 
 #fullProblemLeft {
@@ -2894,6 +3427,7 @@
   display: flex;
   flex-direction: column;
   word-wrap: break-word; 
+  min-width: 464.25px;
   /*justify-content: flex-start;*/
 }
 #problemLeftSBHeader {
@@ -2943,6 +3477,12 @@
   font-size: 150%;
   color: #00ffdc;
 }
+#ProposalPercentFull {
+  text-align: center;
+  font-size: 250%;
+  color: #00ffdc;
+  margin-bottom: 0.5%;
+}
 
 /*End ProblemLeftSB*/
 
@@ -2950,7 +3490,45 @@
 
 /*Right Solutions SB*/
 #backSolutionArrowDiv {
+  text-align: center;
+  transition: all 0.5s ease 0s;
+  width: 5%;
+  box-shadow: 0 0 1pt 1pt rgba(0,220,255,0.5);
+  left: 0;
+  margin-bottom: 1%;
+}
+#backSolutionArrowDiv:hover {
+  background-color: rgba(0,220,255,0.15);
+  cursor: pointer;
+}
+#backProposalArrowDiv {
+  text-align: center;
+  transition: all 0.5s ease 0s;
+  width: 7%;
+  box-shadow: 0 0 1pt 1pt rgba(0,220,255,0.5);
+  /*left: 0;*/
+  margin-bottom: 1%;
+}
+#backProposalArrowDiv:hover {
+  background-color: rgba(0,220,255,0.15);
+  cursor: pointer;
+}
+#backProjectArrowDiv {
+  text-align: center;
+  transition: all 0.5s ease 0s;
+  box-shadow: 0 0 1pt 1pt rgba(0,220,255,0.5);
   width: 100%;
+  margin-left: 30%;
+  padding: 3px;
+}
+#backProjectArrowDiv:hover {
+  background-color: rgba(0,220,255,0.15);
+  cursor: pointer;
+}
+
+#solutionDescriptionReturn:hover {
+  background-color: rgba(0,220,255,0.15);
+  cursor: pointer;
 }
 #backSolutionArrow {
   flex: 1 1 auto;
@@ -2965,6 +3543,28 @@
 #backSolutionArrow:hover {
   cursor: pointer;
   box-shadow: 0 0 2pt 2pt rgba(0,220,255,0.5);
+}
+#backSubProjectArrow {
+  flex: 1 1 auto;
+  color: #00ffdc;
+  text-align: center;
+  margin: 0 auto;
+  /*box-shadow: 0 0 1pt 1pt rgba(0,220,255,0.5);*/
+  transition: all 0.5s ease 0s;
+
+  /*display: block;*/
+}
+#backSubProjectArrow:hover {
+  cursor: pointer;
+  /*background-color: rgba(0,220,255,0.05);*/
+  /*box-shadow: 0 0 2pt 2pt rgba(0,220,255,0.5);*/
+}
+#backArrowBlueHover {
+  color: #00ffdc;
+  text-align: center;
+  margin: 0 auto;
+  /*box-shadow: 0 0 1pt 1pt rgba(0,220,255,0.5);*/
+  transition: all 0.5s ease 0s;
 }
 #solutionsHeader {
   flex: 1 1 auto;
@@ -2994,6 +3594,7 @@
   color: #dddddd;
   border: 1px solid #dddddd;
   border-width: 0px 1px 0px 1px;
+  border-bottom-color: #00dcff;
   font-size: 80%;
   /*padding: 3px 5px 3px 10px;*/
   padding: 5px;
@@ -3004,6 +3605,11 @@
   transition: all 0.5s ease 0s;
   background-color: rgba(0,220,255,0);
 }
+#topSolutionsButtonRightSB,
+#createSolutionsButtonRightSB {
+  border-width: 0px 1px 1px 1px;
+  border-bottom-color: #00dcff;
+}
 
 #topSolutionsButtonRightSB:hover,
 #createSolutionsButtonRightSB:hover {
@@ -3012,10 +3618,15 @@
   cursor: pointer;
   border-color: #00dcff;
 }
-.activeWhite {
+/*.activeWhite {
   background-color: rgba(0,220,255,0.15);
   color: #00dcff !important;
   border-color: #00dcff;
+}*/
+.activeWhite div {
+  background-color: rgba(0,220,255,0.15) !important;
+  /*color: #00dcff !important;*/
+  border-color: #00dcff !important;
 }
 /*.activeWhite #topSolutionsButtonRightSB,
 .activeWhite #createSolutionsButtonRightSB {
@@ -3027,6 +3638,10 @@
 .activeWhite #topSolutionsButtonRightSB:hover,
 .activeWhite #createSolutionsButtonRightSB:hover {
   background-color: none;
+}
+.activeDimWhite div {
+  background-color: rgba(0,220,255,0.1) !important;
+  /*color: #00dcff !important;*/
 }
 #solutionsTitleRightSB {
   flex: 1 1 auto;
@@ -3224,18 +3839,30 @@ label + input[type=radio] + label {
   border-radius: 10px;
   overflow: hidden;
 }
+#learnContentText {
+  font-family: 'Open Sans';
+  margin-top: 5px;
+  max-width: 584.31px;
+}
 #learnResourcesText {
-  font-family: 'Alegreya Sans SC';
+  font-family: 'Open Sans';
   margin-top: 5px;
 }
-a#learnResourcesLink {
+#learnResourcesLink {
   text-decoration: underline;
   color: rgba(255,255,255,1);
   transition: all 1s ease 0s;
   font-size: 120%;
+  transform: scale(1);
+  font-family: 'Open Sans';
+  overflow: auto;
+  word-break: break-all;
+  margin-top: 5px;
+  max-width: 584.31px;
 }
-a#learnResourcesLink:hover {
+#learnResourcesLink:hover {
   color: rgba(0,220,255,1);
+  transform: scale(1.02);
 }
 /*End Learn SB*/
 
@@ -3295,7 +3922,8 @@ a#learnResourcesLink:hover {
   margin-bottom: 0px;
   margin-top: 5px;
   transition: all 0.25s ease 0s;
-  color: rgba(221,221,221,1)
+  color: rgba(221,221,221,1);
+  word-wrap: break-word; 
   /*font-family: 'Open Sans', sans-serif;*/
 }
 
@@ -3307,7 +3935,7 @@ a#learnResourcesLink:hover {
   padding: 0px 0px 0px 0px;
 }
 #solutionSummary {
-  margin-top: 25px;
+  margin-top: 15px;
   padding: 0px 5px 0px 5px;
   margin-bottom: 25px;
   padding-left: 5%;
@@ -3327,7 +3955,32 @@ a#learnResourcesLink:hover {
   letter-spacing: 8px;
   padding: 5px;
   width: 5em;
+}
+#proposalCreator {
+  flex: 1 1 auto;
+  margin: 0 auto;
+  font-size: 80%;
   text-align: center;
+  letter-spacing: 8px;
+  padding: 5px;
+  width: 100%;
+  transition: all 0.5s ease 0s;
+}
+#proposalCreator:hover {
+  color: #ffffff;
+}
+#projectCreator {
+  flex: 1 1 auto;
+  margin: 0 auto;
+  font-size: 80%;
+  text-align: center;
+  letter-spacing: 8px;
+  padding: 5px 0px 5px 0px;
+  width: 100%;
+  transition: all 0.5s ease 0s;
+}
+#projectCreator:hover {
+  color: #ffffff;
 }
 #createDate {
   flex: 1 1 auto;
@@ -3376,6 +4029,19 @@ a#learnResourcesLink:hover {
   color: #00dcff;
   border-color: #00dcff;
 }
+#solutionDescriptionReturn {
+  color: #00dcff;
+  font-size: 100%;
+  text-align: center;
+  transition: all 0.5s ease 0s;
+  width: 20%;
+  margin: 0 auto;
+  box-shadow: 0 0 1pt 1pt rgba(0,220,255,0.5);
+}
+#solutionDescriptionReturn:hover {
+  background-color: rgba(0,220,255,0.15);
+  cursor: pointer;
+}
 #proTextArea, #conTextArea {
   text-align: left;
   font-family: 'Open Sans', sans-serif;
@@ -3392,8 +4058,9 @@ a#learnResourcesLink:hover {
   background-color: rgba(0,255,220,0);
   border: 1px solid #00ffdc;
   border-radius: 2px;
-  margin-top: 5px;
+  margin-top: 2%;
   transition: all 0.5s ease 0s;
+  width: 40%;
 }
 #addProsCons:hover {
   color: #0f131c;
@@ -3401,10 +4068,6 @@ a#learnResourcesLink:hover {
   border: 1px solid #00ffdc;
   cursor: pointer;
 }
-/*#currentVersion {
-  flex: 2 2 auto;
-  width: 2em;
-}*/
 
 /*End Full Solution*/
 
@@ -3508,6 +4171,7 @@ a#learnResourcesLink:hover {
 }
 #editFormFieldset {
   background-color: inherit;
+  padding-bottom: 2.5%;
 }
 input#submitNewVersion {
   display: block;
@@ -3549,9 +4213,9 @@ input#submitNewVersion:hover {
 #feedbackTextArea {
   text-align: left;
   font-family: 'Open Sans', sans-serif;
-  padding: 10px;
+  padding: 20px;
   color: #ffffff;
-  background-color: #0f131c;
+  background-color: inherit;
   border: 1px solid #ffffff;
   height: 8em;
   resize: none;
@@ -3564,13 +4228,14 @@ input#submitNewVersion:hover {
 /*Arrows*/
 
 #SParrowImg {
-  background-color: #0f131c;
+  background-color: inherit;
   box-shadow: 0 0 0pt 0pt rgba(0,220,255,0.5);
   /*border: 1px solid #00dcff;*/
   margin: 0 auto;
   vertical-align: middle;
   padding: 5px;
   transition: all 0.5s ease 0s;
+  visibility: hidden;
  }
 #SParrowImg:hover {
   box-shadow: 0 0 1pt 1pt rgba(0,220,255,0.5);
@@ -3647,6 +4312,16 @@ input#submitNewVersion:hover {
   font-size: 140%;
   margin-left: 5%;
   margin-right: 5%;
+  /*background-color: rgba(0,220,255, 0.05);*/
+}
+#aboutIntroProse {
+  letter-spacing: 2px;
+  line-height: 150%;
+  padding: 10px;
+  padding-top: 10px;
+  font-size: 140%;
+  margin-left: 7%;
+  margin-right: 7%;
   /*background-color: rgba(0,220,255, 0.05);*/
 }
 #introContent {
@@ -3733,6 +4408,9 @@ input#submitNewVersion:hover {
   margin-right: 5%;
   /*background-color: rgba(0,220,255, 0.05);*/
 }
+#introContainer {
+  margin-top: 10%;
+}
 #tutorialContent {
   width:80%;
   border: 1px solid #00dcff;
@@ -3817,7 +4495,7 @@ input#submitNewVersion:hover {
   margin: 0 auto;
   height: 60%;
   margin-top: 4%;
-  background-color: #0f131c;
+  background-color: inherit;
   box-shadow: 0 0 2pt 2pt rgba(0,220,255,0.5);
   display: none;
   }
@@ -3867,7 +4545,7 @@ input#submitNewVersion:hover {
 /*End Tutorials*/
 
 
-
+/*d*/
 /*Profile About*/
 #profileAbout {
   width: 100%;
@@ -3875,25 +4553,19 @@ input#submitNewVersion:hover {
   margin-top: 4%;
 }
 #profileAboutTitle {
-  /*font-size: 200%;
+  font-size: 250%;
+  letter-spacing: 16px;
+  border: 1px solid #00dcff;
+  border-width: 0px 0px;
   text-align: center;
-  margin-top: 5%;
-  color: #ffffff;
-  letter-spacing: 8px;
-  margin-top: 5%;
-  margin-bottom: 5%;*/
-
-      font-size: 250%;
-    	letter-spacing: 16px;
-    	border: 1px solid #00dcff;
-    	border-width: 2px 0px;
-      text-align: center;
-      margin: 0 auto;
-      box-shadow: 0 0 2pt 2pt rgba(0,220,255,0.5);
+  margin: 0 auto;
+  box-shadow: 0 0 1pt 1pt rgba(0,220,255,0.5);
+  width: 100%;
+  background-color: rgba(0,220,255,0.05);
 }
 #profileAboutBanner {
   margin: 0 auto;
-  margin-top: 5%;
+  margin-top: 7%;
 }
 #profileAboutSummary {
   font-size: 140%;
@@ -3920,6 +4592,34 @@ input#submitNewVersion:hover {
   letter-spacing: 8px;
   background-color: rgba(0,255,220,0.05)
 }
+#profileAboutContact {
+  margin: 0 auto;
+  color: #00ffdc;
+  padding: 5px;
+  text-align: center;
+  border: 1px solid #00ffdc;
+  border-width: 1px 0px;
+  /*width: 30%;*/
+  margin-bottom: 4%;
+  margin-top: 3%;
+  font-size: 140%;
+  letter-spacing: 8px;
+  background-color: rgba(0,255,220,0.05)
+}
+#profileAboutQuote {
+  margin: 0 auto;
+  color: #515151;
+  padding: 5px;
+  padding-left: 5%;
+  padding-right: 5%;
+  text-align: left;
+  margin-bottom: 3%;
+  margin-top: 3%;
+  font-size: 100%;
+  font-style: italic;
+  line-height: 120%;
+
+}
 #aboutProseDescriptions {
   text-align: left;
   /*margin-left: 10%;
@@ -3935,6 +4635,40 @@ input#submitNewVersion:hover {
 #aboutList {
   margin-left: 5%;
   margin-top: 2%;
+}
+#aboutMenu {
+  display: inline-flex;
+  text-align: center;
+  flex-direction: row;
+  justify-content: space-around;
+  width: 100%;
+  margin-top: 10px;
+}
+#aboutButton, #careersButton {
+  flex: 1 1 auto;
+  margin: 0 auto;
+  font-size: 80%;
+  text-align: center;
+  letter-spacing: 8px;
+  padding: 5px;
+  width: 20em;
+  text-align: center;
+  transition: all 0.5s ease 0s;
+  background-color: rgba(0,220,255,0);
+  border: 1px solid #dddddd;
+  border-width: 0px 0px 0px 1px;
+}
+#aboutButton {
+  border: 1px solid #dddddd;
+  border-width: 0px 1px 0px 0px;
+}
+#aboutButton:hover, #careersButton:hover {
+  background-color: rgba(0,220,255,0.1);
+  cursor: pointer;
+}
+#aboutButton:active, #careersButton:active {
+  background-color: rgba(0,220,255,0.15);
+  color: #00dcff;
 }
 /*#profileAboutReturn:hover {
   cursor: pointer;
@@ -3968,9 +4702,9 @@ input#submitNewVersion:hover {
   color: #ff7f7f;
 }*/
 
-#redFieldset {
-  /*border-color: #ff7f7f;*/
-}
+/*#redFieldset {
+  border-color: #ff7f7f;
+}*/
 #freeFormEditTextArea {
   border-color: #ff7f7f;
 }
@@ -3981,7 +4715,7 @@ input#submitNewVersion:hover {
 #deleteButton, #editButton, #flagButton, #returnButton {
   font-size: 120%;
   color: #ff7f7f;
-  background-color: #0f131c;
+  background-color: rgba(255,127,127,0);
   border: 1px solid #ff7f7f;
   border-radius: 2px;
   margin-top: 5px;
@@ -3991,6 +4725,7 @@ input#submitNewVersion:hover {
   padding: 5px;
   float: right;
   margin-right: 10%;
+  transition: all 0.5s ease 0s;
 }
 #returnButton {
   color: #00ffdc;
@@ -4002,7 +4737,7 @@ input#submitNewVersion:hover {
 #deleteButton:hover, #editButton:hover {
   cursor: pointer;
   color: #0f131c;
-  background-color: #ff7f7f;
+  background-color: rgba(255,127,127,1);
 }
 #returnButton:hover {
   cursor: pointer;
@@ -4035,7 +4770,7 @@ input#submitNewVersion:hover {
       z-index: 5;
       width: 35%;
       border: 1px solid #00dcff;
-      background-color: #0f131c;
+      background-color: inherit;
       padding: 5px;
       text-align: center;
       display: none;
@@ -4097,32 +4832,5 @@ input#submitNewVersion:hover {
 /*End Notifications*/
 
 
-
-/*Fonts*/
-
-#problemAdditionalInfoLabel,
-#followProblem {
-  /*font-family: 'Open Sans', sans-serif;*/
-}
-
-/*End Fonts*/
-
-
-
-/*Animations*/
-
-  /*@keyframes oscillate {
-    0%   {box-shadow: 0 0 5pt 1pt rgba(0,220,255,0.5);}
-    25%  {box-shadow: 0 0 1pt 5pt rgba(0,220,255,0.5);}
-    50%  {box-shadow: 0 0 5pt 1pt rgba(0,220,255,0.5);}
-    75%  {box-shadow: 0 0 1pt 5pt rgba(0,220,255,0.5);}
-    100% {box-shadow: 0 0 5pt 1pt rgba(0,220,255,0.5);}
-  }
-
-  #empty {
-    animation-name: oscillate;
-    animation-duration: 20s;
-    animation-iteration-count: infinite;
-  }*/
-
-/*End Animations*/
+/*Test 3D rotation*/
+/*transform: rotate3d(0,1,1,5deg) !important;*/

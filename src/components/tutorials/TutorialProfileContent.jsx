@@ -1,20 +1,19 @@
 import React from 'react';
-import Header from '../../containers/Header.jsx';
-import { Link } from 'react-router';
 
 export default class TutorialProfileContent extends React.Component {
    render() {
       return (
         <div>
-            <Link to="/tutorialwelcome">
+            {/*This link is here to try to make it toggle visibility w/o jQuery*/}
+            {/*<Link to="/tutorialwelcome">
                 <div id="tutorialWelcomeButtonDiv">
                     <img src={require('../../assets/upArrow.svg')} id="tutorialWelcomeButton" width="50" height="50" alt="Back arrow, blue up arrow" />
                 </div>
-            </Link>
+            </Link>*/}
         <div id="introContainer">
           <div id="introBanner">
               <div id="introPrompt">Welcome to your
-                  <span id="blue"> User Headerquarters</span></div>
+                  <span id="blue"> User Headquarters</span></div>
           </div>
         <div id="tutorialContent"> 
           {/*<div id="introProse">
@@ -25,14 +24,16 @@ export default class TutorialProfileContent extends React.Component {
                  Contribute to scientific progress
               </div>*/}
               <div id="tutorialProseDescriptions">
-                 Here the <span id="blue">projects and proposals</span> you have <span id="blue">voted on or created</span> are displayed.
+                 <span id="blue">Access </span>the <span id="blue">projects and proposals</span> you have <span id="blue">created</span> or <span id="blue">voted</span> on.
                  <br />
                  <br />
-                 Provide feedback of how 
-                 <span id="blue"> you think XPrincipia should be improved.</span>
+                {/*<span id="blue">View your resume </span>of original contributions.
+                 <br />
+                 <br />*/}
+                 <span id="blue">Tell us </span>how to <span id="blue">improve XPrincipia</span>.
                  <br />
                  <br />
-                 Learn about XPrincipia and <span id="blue">contact us</span> for any additional information. 
+                 <span id="blue">Learn about XPrincipia</span> or <span id="blue">contact us</span> for additional information. 
                  <br />
                  <br />
               </div>

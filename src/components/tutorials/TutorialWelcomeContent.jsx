@@ -1,16 +1,14 @@
 import React from 'react';
-import Header from '../../containers/Header.jsx';
-import { Link } from 'react-router';
 
 export default class TutorialWelcomeContent extends React.Component {
    render() {
       return (
         <div>
-            <Link to="/tutorialwelcome">
+            {/*<Link to="/tutorialwelcome">
                 <div id="tutorialWelcomeButtonDiv">
                     <img src={require('../../assets/upArrow.svg')} id="tutorialWelcomeButton" width="50" height="50" alt="Back arrow, blue up arrow" />
                 </div>
-            </Link>
+            </Link>*/}
         <div id="introContainer">
           <div id="introBanner">
               <div id="introPrompt">Welcome to
@@ -26,14 +24,14 @@ export default class TutorialWelcomeContent extends React.Component {
               </div>*/}
               <div id="tutorialProseDescriptions">
                  Here it is your task to <span id="blue"> divide four of the largest 
-                 cutting edge projects of humanity</span> into sub projects or create your own project. 
+                 cutting edge projects of humanity</span> into <span id="blue">sub projects</span> or <span id="blue">create your own project.</span> 
                  <br />
                  <br />
                  Vote to<span id="blue"> determine the rank</span> of each sub project. 
                  <br />
                  <br />
-                 You may then <span id="blue">submit proposals towards completing the project </span>
-                 or discuss it to help others. 
+                 You may then <span id="blue">submit proposals towards completing each project </span>
+                 or engage in a <span id="blue">variety of discussions</span> to further their progress. 
                  <br />
                  <br />
               </div>

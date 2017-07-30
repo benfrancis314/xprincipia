@@ -15,75 +15,65 @@ export default class WelcomeUnit extends React.Component {
 		);
 	}
 	renderItem(problem) {
-  
-if (problem.Title === 'Interstellar Civilization') {
+    
+    if (problem.Title === 'Interstellar Civilization') {
 
-      return (
-          <Link key={problem.ID} to={{pathname: '/problem/'+problem.ID +'/subproblems'}}>
-              <li  id="welcomeProblemsUnit">
-                  <div id="welcomeProblemsHeader1">
-                    <div id="welcomeProblemsTitle">
-                        {problem.Title}
+        return (
+            <li key={problem.ID} id="welcomeProblemsUnit">
+                <Link to={{pathname: '/problem/'+problem.ID +'/subproblems'}}>
+                    <div id="welcomeProblemsHeader1">
+                        <div id="welcomeProblemsTitle">
+                            {problem.Title}
+                        </div>
                     </div>
-                  </div>
-              </li>
-          </Link>
-      );
+                </Link>
+            </li>
+        );
 
-} else if (problem.Title === 'Evolving Humanity') {
-      return (
-          <Link key={problem.ID} to={{pathname: '/problem/'+problem.ID +'/subproblems'}}>
-              <li  id="welcomeProblemsUnit">
-                  <div id="welcomeProblemsHeader2">
-                    <div id="welcomeProblemsTitle">
-                        {problem.Title}
+    } else if (problem.Title === 'Evolving Humanity') {
+        return (
+            <li key={problem.ID} id="welcomeProblemsUnit">
+            <Link to={{pathname: '/problem/'+problem.ID +'/subproblems'}}>
+                    <div id="welcomeProblemsHeader2">
+                        <div id="welcomeProblemsTitle">
+                            {problem.Title}
+                        </div>
+                    </div> 
+                </Link>
+            </li>
+
+        
+        );
+    } else if (problem.Title === 'Theoretical Knowledge') {
+        return (
+            <li key={problem.ID} id="welcomeProblemsUnit">
+            <Link to={{pathname: '/problem/'+problem.ID +'/subproblems'}}>
+                    <div id="welcomeProblemsHeader3">
+                        <div id="welcomeProblemsTitle">
+                            {problem.Title}
+                        </div>
                     </div>
-                  </div>
-              </li>
-          </Link>
+                </Link>
+            </li>
 
-      
-      );
-} else if (problem.Title === 'Theoretical Knowledge') {
-      return (
-          <Link key={problem.ID} to={{pathname: '/problem/'+problem.ID +'/subproblems'}}>
-              <li  id="welcomeProblemsUnit">
-                  <div id="welcomeProblemsHeader3">
-                    <div id="welcomeProblemsTitle">
-                        {problem.Title}
+        );
+    } else if (problem.Title === 'Technology Development') {
+        return (
+            <li key={problem.ID} id="welcomeProblemsUnit">
+                <Link to={{pathname: '/problem/'+problem.ID +'/subproblems'}}>
+                    <div id="welcomeProblemsHeader4">
+                        <div id="welcomeProblemsTitle">
+                            {problem.Title}
+                        </div>
                     </div>
-                  </div>
-              </li>
-          </Link>
+                </Link>
+            </li>
+            
 
-      );
-} else if (problem.Title === 'Technology Development') {
-      return (
-          <Link key={problem.ID} to={{pathname: '/problem/'+problem.ID +'/subproblems'}}>
-              <li  id="welcomeProblemsUnit">
-                  <div id="welcomeProblemsHeader4">
-                    <div id="welcomeProblemsTitle">
-                        {problem.Title}
-                    </div>
-                  </div>
-              </li>
-          </Link>
-
-      );
-} else 
-      return (
-          /*<Link key={problem.ID} to={{pathname: '/problem/'+problem.ID +'/subproblems'}}>
-              <li  id="welcomeProblemsUnit">
-                  <div id="welcomeProblemsHeaderInvisible">
-                    <div id="welcomeProblemsTitle">
-                        {problem.Title}
-                    </div>
-                  </div>
-              </li>
-          </Link>*/
-          <div id="nodisplay">
-          </div>
-
-      );
-   }
+        );
+    } else 
+        return (
+            <li key={problem.ID} id="nodisplay"></li>
+        );
+    }
 }

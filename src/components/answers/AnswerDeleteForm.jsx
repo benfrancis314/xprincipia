@@ -2,6 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import cookie from 'react-cookie';
 import { Link } from 'react-router';
+import {Config} from '../../config.js'
 
 export default class AnswerDeleteForm extends React.Component {
 
@@ -9,51 +10,27 @@ export default class AnswerDeleteForm extends React.Component {
   super();
 
   this.state= {
-    question: '',
+    answer: '',
   }
 
-    this.postQuestion = this.postQuestion.bind(this);
+    this.deleteAnswer = this.deleteAnswer.bind(this);
   };
 
-postQuestion() {
-  //Read field items into component state
-  this.state.question = document.getElementById('questionTextArea').value
-
-  //if User is on a solution post with type 1
-  //solutionID will be available in props
-  if(this.props.solutionID){
-    axios.post('http://ec2-13-58-239-116.us-east-2.compute.amazonaws.com/auth/questions/create', {
-    type:'1',
-    typeID: this.props.solutionID,
-    username: cookie.load('userName'),
-    description : this.state.question,
-  })
-    .then(function (result) {
-      document.location = window.location.pathname 
-    })
-    .catch(function (error) {
-      alert("I'm sorry there was a problem with your request")
-      });
-    } 
-
-    //else post to problem
-    //probID will be used
-    else {
-      axios.post('http://ec2-13-58-239-116.us-east-2.compute.amazonaws.com/auth/questions/create', {
-      type:'0',
-      typeID: this.props.probID,
-      username: cookie.load('userName'),
-      description : this.state.question,
+deleteAnswer() {
+      var self = this
+      axios.delete( Config.API + '/auth/answers/delete?id='+this.props.params.answerID, {
+        params: {
+          id: this.props.params.questID,
+          username: cookie.load('userName')
+        }
     })
       .then(function (result) {
-        document.location = window.location.pathname 
+        document.location = '/problem/'+ self.props.params.probID + '/question/' + self.props.params.questID + '/answers'
       })
       .catch(function (error) {
-        alert("I'm sorry there was a problem with your request")
+        alert("I'm sorry, there was a problem with your request. ")
       });
     }
-
-  }
   
 
 
@@ -62,13 +39,13 @@ postQuestion() {
       return (
       <div id="questionFormComponent">
             <form id="questionForm">
-                <fieldset>
-                    <legend>Delete Question</legend>
-                         <div>Are you sure you would like to delete this question?</div>
+                <fieldset id="redFieldset">
+                    <legend>Delete Answer</legend>
+                         <div>Are you sure you would like to delete this answer?</div>
                          <br />
-                         <div onClick={this.postQuestion} id="deleteButton">Delete</div>
-                         <Link to='/problem/${question.TypeID}/questions'>
-                            <div id="returnButton">Return</div>
+                         <div onClick={this.deleteAnswer} id="deleteButton">Delete</div>
+                         <Link to={`/problem/${this.props.params.probID}/question/${this.props.params.questID}/answers`}>
+                            <div id="returnButton">Exit</div>
                          </Link>
                 </fieldset>
             </form>

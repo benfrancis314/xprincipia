@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import cookie from 'react-cookie';
+import {Config} from '../../config.js'
 
 export default class FreeFormForm extends React.Component {
 
@@ -18,7 +19,7 @@ postFreeForm() {
   //Read field items into component state
   this.state.freeForm = document.getElementById('freeFormTextArea').value
 
-      axios.post('http://ec2-13-58-239-116.us-east-2.compute.amazonaws.com/auth/freeForms/create', {
+      axios.post( Config.API + '/auth/freeForms/create', {
       type:'0',
       typeID: this.props.params.probID,
       username: cookie.load('userName'),
@@ -42,8 +43,7 @@ postFreeForm() {
             <form id="questionForm">
                 <fieldset>
                     <legend>FreeForm Discussion</legend>
-                         <textarea name="questionText" required="required" id="freeFormTextArea" autoFocus ></textarea>
-                         <br />
+                         <textarea name="questionText" required="required" id="freeFormTextArea" placeholder="Engage in freeform discussion with your peers about this project. " autoFocus ></textarea>
                          <input type="button" value="Add" onClick={this.postFreeForm} id="askQuestion"/>
                 </fieldset>
             </form>

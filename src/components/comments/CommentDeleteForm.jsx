@@ -2,6 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import cookie from 'react-cookie';
 import { Link } from 'react-router';
+import {Config} from '../../config.js'
 
 export default class CommentDeleteForm extends React.Component {
 
@@ -9,66 +10,41 @@ export default class CommentDeleteForm extends React.Component {
   super();
 
   this.state= {
-    question: '',
+    comment: '',
   }
 
-    this.postQuestion = this.postQuestion.bind(this);
+    this.deleteComment = this.deleteComment.bind(this);
   };
 
-postQuestion() {
-  //Read field items into component state
-  this.state.question = document.getElementById('questionTextArea').value
+deleteComment() {
 
-  //if User is on a solution post with type 1
-  //solutionID will be available in props
-  if(this.props.solutionID){
-    axios.post('http://ec2-13-58-239-116.us-east-2.compute.amazonaws.com/auth/questions/create', {
-    type:'1',
-    typeID: this.props.solutionID,
-    username: cookie.load('userName'),
-    description : this.state.question,
-  })
-    .then(function (result) {
-      document.location = window.location.pathname 
-    })
-    .catch(function (error) {
-      alert("I'm sorry there was a problem with your request")
-      });
-    } 
-
-    //else post to problem
-    //probID will be used
-    else {
-      axios.post('http://ec2-13-58-239-116.us-east-2.compute.amazonaws.com/auth/questions/create', {
-      type:'0',
-      typeID: this.props.probID,
-      username: cookie.load('userName'),
-      description : this.state.question,
+////Delete comment
+      var self = this
+      axios.delete( Config.API + '/auth/comments/delete?id='+this.props.params.commentID, {
+        params: {
+          id: this.props.params.commentID,
+          username: cookie.load('userName')
+        }
     })
       .then(function (result) {
+        // document.location = '/problem/'+ self.props.params.probID + '/suggestion/' + self.props.params.suggID + '/comments'
         document.location = window.location.pathname 
       })
       .catch(function (error) {
-        alert("I'm sorry there was a problem with your request")
+        alert("I'm sorry, there was a problem with your request. ")
       });
     }
-
-  }
-  
-
-
-
    render() {
       return (
       <div id="questionFormComponent">
             <form id="questionForm">
-                <fieldset>
-                    <legend>Delete Question</legend>
-                         <div>Are you sure you would like to delete this question?</div>
+                <fieldset id="redFieldset">
+                    <legend>Delete Comment</legend>
+                         <div>Are you sure you would like to delete this comment?</div>
                          <br />
-                         <div onClick={this.postQuestion} id="deleteButton">Delete</div>
-                         <Link to='/problem/${question.TypeID}/questions'>
-                            <div id="returnButton">Return</div>
+                         <div onClick={this.deleteComment} id="deleteButton">Delete</div>
+                         <Link to={`/problem/${this.props.params.probID}/suggestion/${this.props.params.suggID}/comments`}>
+                            <div id="returnButton">Exit</div>
                          </Link>
                 </fieldset>
             </form>

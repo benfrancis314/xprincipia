@@ -2,7 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import cookie from 'react-cookie';
 import SideBarMore from '../SideBarMore.jsx';
-
+import {Config} from '../../config.js'
 
 export default class LearnContentForm extends React.Component {
 constructor(props){
@@ -20,7 +20,7 @@ constructor(props){
 
   //if User is on a solution post with type 1
   //solutionID will be available in props
-      axios.post('http://ec2-13-58-239-116.us-east-2.compute.amazonaws.com/auth/learnItems/create', {
+      axios.post( Config.API + '/auth/learnItems/create', {
       type:'0',
       typeID: this.props.params.probID,
       username: cookie.load('userName'),
@@ -36,7 +36,7 @@ constructor(props){
 
     // componentDidMount(){
     //     var self = this;
-    //         return axios.get('http://ec2-13-58-239-116.us-east-2.compute.amazonaws.com/auth/learnItems/typeID?id='+this.props.params.probID+'&dataType=0').then(function (response) {
+    //         return axios.get( Config.API + '/auth/learnItems/typeID?id='+this.props.params.probID+'&dataType=0').then(function (response) {
     //             self.setState({
     //                 learnItems: response.data
     //             })
@@ -48,7 +48,7 @@ constructor(props){
             <div id="suggestionFormComponent">
                 <form id="suggestionForm">
                     <fieldset>
-                        <legend>Create Content</legend>
+                        <legend>Create a Lesson</legend>
                              {/*<div>
                                 <input type="radio" id="option-one" />
                                     <label>Easy</label>
@@ -58,8 +58,7 @@ constructor(props){
                                     <label>Hard</label>
                              </div>*/}
                             <textarea name="suggestionText" required="required" id="learnContentTextArea" 
-                            placeholder="Create new learning content to help others more deelpy understand the project." autoFocus ></textarea>
-                            <br />
+                            placeholder="Create a lesson to help others understand the project." autoFocus ></textarea>
                             <input type="button" value="Create" onClick={this.postLearnItem} id="addSuggestion"/>
                     </fieldset>
                 </form>

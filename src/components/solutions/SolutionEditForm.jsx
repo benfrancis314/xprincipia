@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router';
 import axios from 'axios';
 import cookie from 'react-cookie';
-
+import {Config} from '../../config.js'
 
 export default class EditSolutionForm extends React.Component {
 
@@ -21,7 +21,7 @@ export default class EditSolutionForm extends React.Component {
   };
   componentWillMount(){
       var self = this;
-      return axios.get('http://ec2-13-58-239-116.us-east-2.compute.amazonaws.com/auth/solutions/ID?id='+this.props.params.solutionID).then(function (response) {
+      return axios.get( Config.API + '/auth/solutions/ID?id='+this.props.params.solutionID).then(function (response) {
           //if parent ID is 0 then the problem is at the root of the tree
           // return id as the parentID for routing purposes
           //set other data
@@ -50,7 +50,7 @@ export default class EditSolutionForm extends React.Component {
     this.state.references = document.getElementById('solutionEditReferencesForm').value
 
   var self = this;
-  axios.put('http://ec2-13-58-239-116.us-east-2.compute.amazonaws.com/auth/solutions/update?id='+this.props.params.solutionID, {
+  axios.put( Config.API + '/auth/solutions/update?id='+this.props.params.solutionID, {
       username: cookie.load('userName'),
       title : self.state.title,
       summary : self.state.summary,
@@ -58,7 +58,8 @@ export default class EditSolutionForm extends React.Component {
       references: self.state.references
     })
     .then(function (result) {
-      document.location = '/problem/' + self.props.params.probID + '/solutions/top'
+     document.location = window.location.pathname
+
     })
     .catch(function (error) {
         alert("I'm sorry, there was a problem with your request.")
@@ -69,9 +70,9 @@ export default class EditSolutionForm extends React.Component {
   render() {
       return (
       <div id="createSolutionBox">
-          <form id="createForm">
+          <form id="solutionEditForm">
             <fieldset id="editFormFieldset">
-                <legend>Edit</legend>
+                <legend>Edit Proposal</legend>
                       
                       <label htmlFor="solutionTitle" id="editTitleFormLabel">Title<br />
                          <input type="text" name="solutionTitle" required="required" maxLength="140" id="solutionEditTitleForm" autoFocus/>
@@ -88,8 +89,12 @@ export default class EditSolutionForm extends React.Component {
                       <label htmlFor="solutionReferences" id="editReferencesFormLabel">References<br />
                           <textarea name="solutionReferences" placeholder="Provide your references here." id="solutionEditReferencesForm">
                           </textarea></label><br />
-                      <Link to={`/problem/${this.props.params.probID}/solutions`}>
-                        <input type="submit" value="Update" onClick={this.updateSolution} id="submitNewVersion"/>
+
+                      <Link to={`/fullsolution/${this.props.params.probID}/${this.props.params.solutionID}/full`}>
+                        <div onClick={this.updateSolution} id="editButton">Edit</div>
+                      </Link>
+                      <Link to={`/fullsolution/${this.props.params.probID}/${this.props.params.solutionID}/full`}>
+                        <div id="returnButton">Exit</div>
                       </Link>
             </fieldset>
           </form>

@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router';
 import axios from 'axios'
 import cookie from 'react-cookie';
-// import $ from 'jquery';
+import {Config} from '../../config.js'
 
 export default class WelcomeCreateForm extends React.Component {
 
@@ -27,24 +27,23 @@ export default class WelcomeCreateForm extends React.Component {
     // this.state.field = document.getElementById('problemFieldForm').value
     this.state.summary = document.getElementById('problemSummaryForm').value
     // this.state.description = document.getElementById('problemDescriptionForm').value
-  
-  axios.post('http://ec2-13-58-239-116.us-east-2.compute.amazonaws.com/auth/problems/create', {
-      username: cookie.load('userName'),
-      parentID: this.props.params.probID,
-      title : this.state.title,
-      // field: this.state.field,
-      summary : this.state.summary,
-      // description : this.state.description,
+    var self = this
+    return axios.post( Config.API + '/auth/problems/create', {
+        username: cookie.load('userName'),
+        parentID: this.props.params.probID,
+        title : this.state.title,
+        summary : this.state.summary,
+        
 
-    })
-    .then(function (result) {
-      document.location = window.location.pathname 
-    })
-    .catch(function (error) {
-      console.log(error.response.data)
-      alert( error.response.data)
-    });
-  };
+      })
+      .then(function (response) {
+        document.location = '/welcome' 
+      })
+      .catch(function (error) {
+        console.log(error.response.data)
+        alert( error.response.data)
+      });
+    };
 
 // toggle() {
 //   $(document).ready(function(){
@@ -80,7 +79,7 @@ export default class WelcomeCreateForm extends React.Component {
                             <textarea name="problemField" required="required" maxLength="250" placeholder="Please provide any additional information you'd like. (250 character max.)" id="problemSummaryForm"/>
                           </label><br />
 
-                        <Link to={`/welcome`}><input type="submit" value="Create" onClick={this.postProblem} id="submitProblem"/></Link>
+                        <input type="button" value="Create" onClick={this.postProblem} id="submitProblem"/>
               </fieldset>
             </form>
             {/*<Link to='/welcome'><div id="welcomeMore">Back</div></Link>*/}

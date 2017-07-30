@@ -1,11 +1,12 @@
 import React from 'react';
 import axios from 'axios';
 import { Link } from 'react-router';
-import Header from './Header.jsx';
+// Currently unused, may use later. Loading only loads part of page, currently looks weird
+// import ReactCSSTransitionGroup from 'react-addons-css-transition-group'; // ES6
 import TutorialWelcomeContent from '../components/tutorials/TutorialWelcomeContent.jsx';
-import TutorialWelcomePage from '../components/tutorials/TutorialWelcomePage.jsx';
 import WelcomeUnit from '../components/welcome/WelcomeUnit.jsx';
 import WelcomeUserUnit from '../components/welcome/WelcomeUserUnit.jsx';
+import {Config} from '../config.js'
 
 export default class WelcomeContainer extends React.Component {
    
@@ -26,7 +27,7 @@ export default class WelcomeContainer extends React.Component {
         this.state.searchText = document.getElementById('exploreInput').value
 
         var self = this
-        return axios.get('http://ec2-13-58-239-116.us-east-2.compute.amazonaws.com/auth/problems/search?q='+this.state.searchText).then(function (response) {
+        return axios.get( Config.API + '/auth/problems/search?q='+this.state.searchText).then(function (response) {
             self.setState({
               userproblems: response.data
             })
@@ -39,7 +40,7 @@ export default class WelcomeContainer extends React.Component {
         }
         componentWillMount(){
         var self = this;
-        return axios.get('http://ec2-13-58-239-116.us-east-2.compute.amazonaws.com/auth/problems/all').then(function (response) {
+        return axios.get( Config.API + '/auth/problems/all').then(function (response) {
             self.setState({
                 problems: response.data,
                 userproblems: response.data
@@ -55,8 +56,12 @@ export default class WelcomeContainer extends React.Component {
    render() {
       return (
         <div>
-          <Header />
-
+            {/*<ReactCSSTransitionGroup
+            transitionName="example"
+            transitionAppear={true}
+            transitionAppearTimeout={2000}
+            transitionEnter={false}
+            transitionLeave={false}>*/}
           <div id="welcomeBox">
               <Link to="/welcome">
                 <h1 id="welcomePrompt">XPrincipia Projects</h1>
@@ -72,7 +77,7 @@ export default class WelcomeContainer extends React.Component {
          <div id="welcomeFormComponent">
                <form  id="exploreWelcomeForm">
                  <input type="search" name="search"
-                    placeholder="Search user projects" id="exploreInput"  onKeyDown={this.queryProblem} autoFocus/>
+                    placeholder="Search all projects" id="exploreInput"  onKeyDown={this.queryProblem} autoFocus/>
                  {/*<input type="submit" value="Go" id="submitExplore" />*/}
             </form>
          </div>
@@ -85,6 +90,7 @@ export default class WelcomeContainer extends React.Component {
           </div>*/}
 
           <TutorialWelcomeContent />
+          {/*</ReactCSSTransitionGroup>*/}
         </div>
       );
    }

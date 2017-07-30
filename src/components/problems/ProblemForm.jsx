@@ -1,9 +1,8 @@
 import React from 'react';
-import { Redirect, Router, Route, IndexRoute, browserHistory } from 'react-router';
 import axios from 'axios';
 import cookie from 'react-cookie';
 import { Link } from 'react-router';
-
+import {Config} from '../../config.js'
 
 export default class ProblemForm extends React.Component {
 
@@ -28,7 +27,7 @@ export default class ProblemForm extends React.Component {
     this.state.summary = document.getElementById('problemSummaryForm').value
   
     var self = this
-    axios.post('http://ec2-13-58-239-116.us-east-2.compute.amazonaws.com/auth/problems/create', {
+    axios.post( Config.API + '/auth/problems/create', {
       username: cookie.load('userName'),
       parentID: this.props.params.probID,
       title : this.state.title,
@@ -49,10 +48,10 @@ export default class ProblemForm extends React.Component {
         <div id="createProblemBox">
             <form id="createForm">
               <fieldset>
-                  <legend>Create:Sub Project</legend>
+                  <legend>Create a Sub Project</legend>
                         <Link to={`/problem/${this.props.params.probID}/subproblems`}>
                           <div id="backSolutionArrowDiv">
-                              <img src={require('../../assets/upArrow.svg')} id="backSolutionArrow" width="50" height="30" alt="Back arrow, blue up arrow" />
+                              <img src={require('../../assets/upArrow.svg')} id="backSubProjectArrow" width="50" height="30" alt="Back arrow, blue up arrow" />
                           </div>
                         </Link>
                         <label htmlFor="problemTitleForm" id="problemTitleFormLabel">Title<br />
@@ -60,14 +59,15 @@ export default class ProblemForm extends React.Component {
                           </label><br />
 
                         <label htmlFor="problemSummaryForm" id="problemSummaryFormLabel">Additional Information<br />
-                            <textarea name="problemSummary" required="required" maxLength="250" 
-                            placeholder="Please provide any additional information you'd like. (250 character max.)" id="problemSummaryForm">
-                            </textarea></label><br />
+                            <textarea name="problemSummary" required="required" maxLength="350" 
+                            placeholder="Please provide any additional information you'd like. (250 character max)" id="problemSummaryForm"/>
+                            </label><br />
 
                         <input type="button" value="Create" onClick={this.postProblem} id="submitProblem"/>
               </fieldset>
             </form>
         </div>
+
       );
    }
 }

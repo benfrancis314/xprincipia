@@ -1,5 +1,4 @@
 import React from 'react';
-import axios from 'axios';
 import { Link } from 'react-router';
 
 
@@ -20,15 +19,7 @@ if (problem.Title === 'Interstellar Civilization') {
 
       return (
       
-        <li  key={problem.ID} id="welcomeProblemsUnit">
-            <Link to={{pathname: '/problem/'+problem.ID +'/subproblems'}}>
-                <div id="welcomeProblemsHeaderInvisible">
-                    <div id="welcomeProblemsTitle">
-                        {problem.Title}
-                        <div id="SPPercent">{floatToDecimal(problem.PercentRank)}</div>
-                    </div>
-                </div>
-            </Link>
+        <li key={problem.ID} id="nodisplay">
         </li>
       
       
@@ -36,43 +27,19 @@ if (problem.Title === 'Interstellar Civilization') {
 
 } else if (problem.Title === 'Evolving Humanity') {
       return (
-        <li  key={problem.ID} id="welcomeProblemsUnit">
-          <Link  to={{pathname: '/problem/'+problem.ID +'/subproblems'}}>
-            <div id="welcomeProblemsHeaderInvisible">
-                <div id="welcomeProblemsTitle">
-                    {problem.Title}
-                    <div id="SPPercent">{floatToDecimal(problem.PercentRank)}</div>
-                </div>
-            </div>
-          </Link>
+        <li key={problem.ID} id="nodisplay">
         </li>
       
       );
 } else if (problem.Title === 'Theoretical Knowledge') {
       return (
-        <li key={problem.ID} id="welcomeProblemsUnit">
-            <Link to={{pathname: '/problem/'+problem.ID +'/subproblems'}}>
-                <div id="welcomeProblemsHeaderInvisible">
-                    <div id="welcomeProblemsTitle">
-                        {problem.Title}
-                        <div id="SPPercent">{floatToDecimal(problem.PercentRank)}</div>
-                    </div>
-                </div>
-            </Link>
+        <li key={problem.ID} id="nodisplay">
         </li>
       
       );
 } else if (problem.Title === 'Technology Development') {
       return (
-        <li key={problem.ID} id="welcomeProblemsUnit">
-            <Link to={{pathname: '/problem/'+problem.ID +'/subproblems'}}>
-                <div id="welcomeProblemsHeaderInvisible">
-                    <div id="welcomeProblemsTitle">
-                        {problem.Title}
-                        <div id="SPPercent">{floatToDecimal(problem.PercentRank)}</div>
-                    </div>
-                </div>
-            </Link>
+        <li key={problem.ID} id="nodisplay">
         </li>
       
       );
@@ -93,6 +60,6 @@ if (problem.Title === 'Interstellar Civilization') {
    }
 }
 
-function floatToDecimal(float) {
-	return Math.round(float*100)+'%';
-}
+// function floatToDecimal(float) {
+// 	return Math.round(float*100)+'%';
+// }

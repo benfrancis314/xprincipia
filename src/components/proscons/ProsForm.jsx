@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import cookie from 'react-cookie';
+import {Config} from '../../config.js'
 
 export default class ProsForm extends React.Component {
 
@@ -18,7 +19,7 @@ postPro() {
   //Read field items into component state
 this.state.pro = document.getElementById('proTextArea').value
 
- axios.post('http://ec2-13-58-239-116.us-east-2.compute.amazonaws.com/auth/pros/create', {
+ axios.post( Config.API + '/auth/pros/create', {
     username: cookie.load('userName'),
     type:'1',
     typeID: this.props.params.solutionID,
@@ -41,7 +42,6 @@ this.state.pro = document.getElementById('proTextArea').value
                 <fieldset>
                     <legend>Pros</legend>
                          <textarea name="suggestionText" required="required" id="proTextArea" autoFocus ></textarea>
-                         <br />
                          <input type="button" value="Add" onClick={this.postPro} id="addProsCons"/>
                 </fieldset>
             </form>

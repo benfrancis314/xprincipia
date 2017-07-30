@@ -2,6 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import cookie from 'react-cookie';
 import { Link } from 'react-router';
+import {Config} from '../../config.js'
 
 export default class AnswerEditForm extends React.Component {
 
@@ -17,12 +18,12 @@ export default class AnswerEditForm extends React.Component {
 
   componentWillMount(){
       var self = this;
-        return axios.get('http://ec2-13-58-239-116.us-east-2.compute.amazonaws.com/auth/questions/typeID?id='+this.props.params.probID+'&dataType=0').then(function (response) {
+        return axios.get( Config.API + '/auth/answers/ID?id='+this.props.params.answerID).then(function (response) {
           self.setState({
-              answers: response.data
+              answer: response.data
           })
           
-          document.getElementById('answerEditTextArea').value = self.state.question.description;
+          document.getElementById('answerEditTextArea').value = self.state.answer.Description;
 
     })
     .catch(function (error) {
@@ -34,19 +35,20 @@ export default class AnswerEditForm extends React.Component {
 
 updateAnswer() {
   //Read field items into component state
-  this.state.question = document.getElementById('questionTextArea').value
+  this.state.answer = document.getElementById('answerEditTextArea').value
 
-  axios.post('http://ec2-13-58-239-116.us-east-2.compute.amazonaws.com/auth/questions/create', {
-      type:'0',
-      typeID: this.props.questID,
+  axios.put( Config.API + '/auth/answers/update?id='+this.props.params.answerID, {
+      type:'4',
+      typeID: this.props.params.questID,
       username: cookie.load('userName'),
-      description : this.state.question,
+      description : this.state.answer,
     })
       .then(function (result) {
+        // document.location = '/problem/' + self.props.params.probID + '/question/' + self.props.params.questID + '/answers'
         document.location = window.location.pathname 
       })
       .catch(function (error) {
-        alert("I'm sorry, there was a problem with your request")
+        alert("I'm sorry, there was a problem with your request. ")
       });
     }
 
@@ -63,9 +65,9 @@ updateAnswer() {
                     <legend id="redLegend">Edit Answer</legend>
                          <textarea name="questionText" required="required" id="answerEditTextArea" autoFocus ></textarea>
                          <br />
-                         <div onClick={this.postQuestion} id="editButton">Edit</div>
-                         <Link to='/problem/${question.TypeID}/questions'>
-                          <div id="returnButton">Return</div>
+                         <div onClick={this.updateAnswer} id="editButton">Submit</div>
+                         <Link to={`/problem/${this.props.params.probID}/question/${this.props.params.questID}/answers`}>
+                            <div id="returnButton">Exit</div>
                          </Link>
                 </fieldset>
             </form>

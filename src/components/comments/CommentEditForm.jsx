@@ -2,6 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import cookie from 'react-cookie';
 import { Link } from 'react-router';
+import {Config} from '../../config.js'
 
 export default class CommentEditForm extends React.Component {
 
@@ -9,20 +10,20 @@ export default class CommentEditForm extends React.Component {
   super();
 
   this.state= {
-    question: '',
+    comment: '',
   }
 
-    this.postQuestion = this.postQuestion.bind(this);
+    this.updateComment = this.updateComment.bind(this);
   };
 
   componentWillMount(){
       var self = this;
-        return axios.get('http://ec2-13-58-239-116.us-east-2.compute.amazonaws.com/auth/questions/typeID?id='+this.props.params.probID+'&dataType=0').then(function (response) {
+        return axios.get( Config.API + '/auth/comments/ID?id='+this.props.params.commentID).then(function (response) {
           self.setState({
-              questions: response.data
+              comment: response.data
           })
           
-          document.getElementById('questionEditTextArea').value = self.state.question.description;
+          document.getElementById('commentEditTextArea').value = self.state.comment.Description;
 
     })
     .catch(function (error) {
@@ -32,21 +33,23 @@ export default class CommentEditForm extends React.Component {
     });   
   }
 
-postQuestion() {
+updateComment() {
   //Read field items into component state
-  this.state.question = document.getElementById('questionTextArea').value
+  this.state.comment = document.getElementById('commentEditTextArea').value
 
-  axios.post('http://ec2-13-58-239-116.us-east-2.compute.amazonaws.com/auth/questions/create', {
-      type:'0',
-      typeID: this.props.probID,
+  var self = this
+  axios.put( Config.API + '/auth/comments/update?id='+this.props.params.commentID, {
+      type:'5',
+      typeID: self.props.params.commentID,
       username: cookie.load('userName'),
-      description : this.state.question,
+      description : self.state.comment,
     })
       .then(function (result) {
-        document.location = window.location.pathname 
+        document.location = '/problem/' + self.props.params.probID + '/suggestion/' + self.props.params.suggID + '/comments'
+        // document.location = window.location.pathname 
       })
       .catch(function (error) {
-        alert("I'm sorry there was a problem with your request")
+        alert("I'm sorry, there was a problem with your request. ")
       });
     }
 
@@ -60,12 +63,12 @@ postQuestion() {
       <div id="questionFormComponent">
             <form id="questionForm">
                 <fieldset id="redFieldset">
-                    <legend id="redLegend">Edit Question</legend>
-                         <textarea name="questionText" required="required" id="questionEditTextArea" autoFocus ></textarea>
+                    <legend id="redLegend">Edit Comment</legend>
+                         <textarea name="questionText" required="required" id="commentEditTextArea" autoFocus ></textarea>
                          <br />
-                         <div onClick={this.postQuestion} id="editButton">Edit</div>
-                         <Link to='/problem/${question.TypeID}/questions'>
-                          <div id="returnButton">Return</div>
+                         <div onClick={this.updateComment} id="editButton">Submit</div>
+                         <Link to={`/problem/${this.props.params.probID}/suggestion/${this.props.params.suggID}/comments`}>
+                            <div id="returnButton">Exit</div>
                          </Link>
                 </fieldset>
             </form>

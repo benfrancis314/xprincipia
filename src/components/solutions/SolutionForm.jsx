@@ -1,8 +1,7 @@
 import React from 'react';
-import { Link } from 'react-router';
 import axios from 'axios';
 import cookie from 'react-cookie';
-
+import {Config} from '../../config.js'
 
 export default class SolutionForm extends React.Component {
 
@@ -27,7 +26,7 @@ export default class SolutionForm extends React.Component {
     this.state.references = document.getElementById('solutionReferencesForm').value
 
     var self = this
-    axios.post('http://ec2-13-58-239-116.us-east-2.compute.amazonaws.com/auth/solutions/create', {
+    axios.post( Config.API + '/auth/solutions/create', {
         username: cookie.load('userName'),
         problemID:this.props.params.probID,
         title : this.state.title,
@@ -42,6 +41,7 @@ export default class SolutionForm extends React.Component {
           alert("There was an error.")
         });
     
+
   }
 
   render() {
@@ -59,17 +59,19 @@ export default class SolutionForm extends React.Component {
                 </label><br />
 
               <label htmlFor="solutionSummary" id="solutionSummaryFormLabel">Summary<br />
-                  <textarea name="solutionSummary" required="required" maxLength="400" placeholder="Summarize your proposal here. (250 characters)" id="solutionSummaryForm"/>
+                  <textarea name="solutionSummary" required="required" maxLength="400" placeholder="Please summarize your proposal here. (400 character max)" id="solutionSummaryForm"/>
                 </label><br />
 
               <label htmlFor="solutionDescription" id="solutionDescriptionFormLabel">Description<br />
-                  <textarea name="solutionDescription" required="required" placeholder="Describe your proposal here." id="solutionDescriptionForm">
+                  <textarea name="solutionDescription" required="required" placeholder="Please describe your proposal here." id="solutionDescriptionForm">
                   </textarea></label><br />
 
               <label htmlFor="solutionReferences" id="solutionReferenceFormLabel">References<br />
                   <textarea name="solutionReferences" placeholder="Please provide any references here." id="solutionReferencesForm">
                   </textarea></label><br />
-              <Link to={`/problem/${this.props.params.probID}/solutions`}><input type="submit" value="Create" onClick={this.postSolution} id="submitSolution"/></Link>
+              {/*<Link to={`/problem/${this.props.params.probID}/solutions`}>*/}
+                <input type="submit" value="Create" onClick={this.postSolution} id="submitSolution"/>
+              {/*</Link>*/}
             </fieldset>
           </form>
       </div>

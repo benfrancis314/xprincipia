@@ -1,47 +1,56 @@
 import React from 'react';
-import { Link  } from 'react-router';
 
-export default class TutorialProblemPage extends React.Component {
+export default class ProfileAbout extends React.Component {
    render() {
       return (
-        <div id="profileAbout">
-          <div id="profileAboutBanner">
-              <div id="profileAboutTitle">XPrincipia</div>
-          <div id="introProse">
-              {/*<div id="introSummary">
-                 Contribute to scientific progress
-              </div>*/}
+        <div>
               <div id="aboutProseDescriptions">
-                 XPrincipia is a website that <span id="blue">allows everyone to contribute to scientific progress. </span>
+                 <span id="blue">XPrincipia</span> is an <span id="blue">open content research and development </span>
+                 web app allowing anyone to access and contribute to <span id="blue">scientific progress</span>.
                  <br />
                  <br />
-                 <span id="aboutBlue">
-                   Work together to:
-                 </span>
+                 Our mission is to <span id="blue">advance humanity to the best possible future. </span>
+                 <br />
+                 <br />
+                 
+                 Together we aim to:
                  <br />
                  <div id="aboutList">
-                 <span id="blue">1. </span>Complete major projects for humanity's future
+                 1. <span id="blue">Breakdown</span>  major <span id="blue">scientific projects </span>into <span id="blue">levels of sub projects</span>. 
                  <br />
-                 <span id="blue">2. </span>Determine the best proposals towards their achievement 
+                 2. <span id="blue">Create proposals</span> for lower-level sub projects and <span id="blue">solve </span>each major project <span id="blue">bottom-up</span>. 
                  <br />
-                 <span id="blue">3. </span>Learn deeply about the subjects required
+                 3. <span id="blue">Learn and teach</span> the subjects needed to <span id="blue">master</span> each project.
                  </div>
+                 <br />
+                 Over time <span id="blue">new areas of the site will open</span>, with the goal of becoming the <span id="blue">online center for scientific progress</span>. 
+                 <br />
+                 <br />
+                 <span id="blue">XPrincipia Competitions </span> will open on <span id="blue">Labor Day 2017</span>, 
+                 focusing users towards developing <span id="blue">specific projects</span>, where <span id="blue">themed prizes</span> are earned by the <span id="blue">top competitors</span>.
+                 <br />
+                 <br />
+                 <span id="blue">XPrincipia Crowdfunding </span> will open in <span id="blue">2018</span>, 
+                 allowing users to choose which <span id="blue"> experiments to conduct </span> and <span id="blue"> prototypes to create</span>.
+                 <br />
+                 <br />
+                 <span id="blue">XPrincipia Market </span> will open in <span id="blue">2020</span>, 
+                 providing users with the <span id="blue">technology</span>, <span id="blue">scientific equipment</span> and <span id="blue">raw materials</span> to create and research <span id="blue"> on their own</span>.
+                 <br />
+                 <br />
+                 <br />
+                 <span id="blue">Contact us</span> for more information:
               </div>
-              {/*<div id="introSummary">
-                Win competitions
-              </div>
-                  <div id="introProseDescriptions">
-                    Compete for best proposal on a featured project
-                    <br />
-                    Win prizes
-                    <br /> 
-                    <br />
-                  </div>*/}
-          </div>
-            <div id="profileAboutReturn">
+            <div id="profileAboutContact">
                 info@xprincipia.com
             </div>
-        </div>
+            <div id="profileAboutQuote">
+                It is the business of the future to be dangerous … The major advances in civilization are processes 
+                that all but wreck the societies in which they occur.
+                <br />
+                <br />
+                - A.N. Whitehead
+            </div>
       </div>
       );
    }
