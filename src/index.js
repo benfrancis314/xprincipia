@@ -1,10 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Redirect, Router, Route, IndexRoute, browserHistory } from 'react-router';
+
+//Load utilities
+import niceAlert from './utilities/niceAlert.js';
+global.niceAlert = niceAlert;
+
 import App from './App';
 
 //Load Components
-
 import AnswerDeleteForm from './components/answers/AnswerDeleteForm.jsx';
 import AnswerEditForm from './components/answers/AnswerEditForm.jsx';
 import AnswerFlagForm from './components/answers/AnswerFlagForm.jsx';
