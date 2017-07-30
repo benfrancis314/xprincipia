@@ -66,6 +66,9 @@ class App extends React.Component {
           <div id="notificationContent">Notification Content</div>
           <div id="notificationReturn">Return</div>
         </div>
+        <div>{/* appears at bottom of page */}
+          <a onClick={()=>{global.niceAlert('test')}}>test alert</a>
+        </div>
       </div>
       );
     
