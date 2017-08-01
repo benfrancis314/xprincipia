@@ -25,10 +25,57 @@ export default class Introduction extends React.Component {
             </Link>
           <div id="introductionContainer">
                 <div id="introductionWelcome">
-                    <span id="introductionCapital">W</span>elcome to <span id="introductionBig">XPrincipia</span>
+                    <span id="introductionCapital">W</span><span id="blue">elcome</span> to <span id="introductionBig">XPrincipia: The </span><span id="introductionBigBlue">Open Frontier </span><span id="introductionBig">of Research.</span>
                 </div>
                 <div id="introductionProse">
-                    We are a center for collaborative <span id="blueOpen">human progress projects</span>, with the belief that many can achieve more than few.
+                    Here anyone, <span id="blueOpen">regardless of background </span>or class, may openly <span id="blueOpen">contribute to </span>and <span id="blueOpen">join </span>today's cutting edge of 
+                    scientific <span id="blueOpen">research </span>and technology <span id="blueOpen">development</span>.
+                    <br />
+                    <br />
+                    For <span id="blueOpen">the first time</span>, we allow every impassioned person with internet access to <span id="blueOpen">explore the frontier </span>of modern projects 
+                    towards <span id="blueOpen">advancing our human civilization </span>into its <span id="blueOpen">greatest future</span>. 
+                    <br />
+                    <br />
+                    Included along this frontier are the projects driving humanity towards <span id="blueOpen">becoming a spacefaring civilization </span>and <span id="blueOpen">perfecting our 
+                    biological organism</span>, out of choice. Included here are the aims of <span id="blueOpen">completing our theoretical understanding </span>of the universe we 
+                    find ourselves in and of <span id="blueOpen">designing the technologies needed </span>for all scopes of these ambitions. 
+                    <br />
+                    <br />
+                    These goals sit high in challenge and thus <span id="blueOpen">need more than just our institutions and private sector </span>in work towards them; 
+                    rather, the force of <span id="blueOpen">all prepared and willing minds </span>will be needed if our aim is their achievement. 
+                    <br />
+                    <br />
+                    For the first time, we allow <span id="blueOpen">every skilled craftsman </span>to directly contribute towards the ambitions 
+                    of each project, no matter how demanding. 
+                    <br />
+                    <br />
+                    For the first time, <span id="blueOpen">we invite you</span>, wherever you may come from, to <span id="blueOpen">create and breakdown projects </span>new and old, 
+                    to <span id="blueOpen">design and discover your own proposals </span>towards each aim and to <span id="blueOpen">debate those of your peers</span>, with perfection in mind by all. 
+                    <br />
+                    <br />
+                    For the first time, we <span id="blueOpen">unveil a system </span>attempting to truly and absolutely <span id="blueOpen">democratize science</span> and human progress, utilizing the advent of 
+                    the internet and the growing ambition of our generations, <span id="blueOpen">culminating in this moment</span>.
+                    <br />
+                    <br />
+                    For the apprenticed or virtuously determined mind, we provide a <span id="blueOpen">new way to learn</span>, allowing <span id="blueOpen">peer to teach peer </span>with focus upon mastering 
+                    each project for future achievement.
+                    <br />
+                    <br />
+                    For all of the collected works and every waiting decision, <span id="blueOpen">your vote </span>determines the most important projects, 
+                    the best proposals and the most valuable points of discussion.
+                    <br />
+                    <br />
+                    The <span id="blueOpen">entire architecture </span>of XPrincipia, constantly shifting at <span id="blueOpen">democratic will</span>, is up to you.
+                    <br />
+                    <br />
+                    <br />
+                    Our success, and the <span id="blueOpen">fruit it may bare</span>, is up to us all.
+                    <br />
+                    <br />
+                    Welcome to XPrincipia.
+
+
+                    {/*We are a center for collaborative <span id="blueOpen">human progress projects</span>, with the belief that many can achieve more than few.
                     <br />
                     <br />
                     With the <span id="blueOpen">advent of the internet</span>, we present an opportunity for <span id="blueOpen">anyone around the world</span> to contribute to the cutting edge of science and technology.
@@ -37,45 +84,45 @@ export default class Introduction extends React.Component {
                     From this conviction, we have designed a web app to organize this collaboration, with the intent of iterating our functionality to suit <span id="blueOpen"> your needs</span>.
                     <br />
                     <br />
-                    The collective works will belong in the <span id="blueOpen"> public domain</span>, for everyone to use. 
+                    The collective works will belong in the <span id="blueOpen"> public domain</span>, for everyone to use. */}
                     
                 </div>
-                <div id="introductionProse">
+                {/*<div id="introductionProse">
                     We have centered these efforts around <span id="blueOpen"> four core projects </span>we belive to be most important for humanity:
-                </div>
+                </div>*/}
                 <div id="introductionProjectHeader1">
                     <div id="introductionProjectTitle">
                         Interstellar Civilization
                     </div>
                 </div>
-                <div id="introductionProjectsProse">
+                {/*<div id="introductionProjectsProse">
                     Here are the projects towards transitioning humanity into an interstellar civilization, spreading life throughout the universe and ensuring our long-term survival.
-                </div>
+                </div>*/}
                 {/*Link each to the actual project - check url on active site*/}
                 <div id="introductionProjectHeader2">
                     <div id="introductionProjectTitle">
                         Evolving Humanity
                     </div>
                 </div>
-                <div id="introductionProjectsProse">
-                    Here are the projects towards intentionally evovling the human organism into a more perfect state, in both mind and body. 
-                </div>
+                {/*<div id="introductionProjectsProse">
+                    Here are the projects towards intentionally evoling the human organism into a more perfect state, in both mind and body. 
+                </div>*/}
                 <div id="introductionProjectHeader3">
                     <div id="introductionProjectTitle">
                         Theoretical Knowledge
                     </div>
                 </div>
-                <div id="introductionProjectsProse">
+                {/*<div id="introductionProjectsProse">
                     Here are the projects towards understanding and mastering our theoretical base of knowledge, ranging from the fundamental nature of reality to the dynamics of human societies. 
-                </div>
+                </div>*/}
                 <div id="introductionProjectHeader4">
                     <div id="introductionProjectTitle">
                         Technology Development
                     </div>
                 </div>
-                <div id="introductionProjectsProse">
+                {/*<div id="introductionProjectsProse">
                     Here are the projects towards progressing our technologies, tools which have shaped our history so far, and will continue to shape our future, including advances such as artificial intelligence and nanostructures.
-                </div>
+                </div>*/}
                 {/*Autofocus in register causes page-jump problem*/}
                 {/*Moving inside introductionContainer through off width styles*/}
                 {/*<RegisterUnit />*/}

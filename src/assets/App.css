@@ -1792,12 +1792,19 @@ like vote and comments.*/
 }
 #introductionCapital {
   font-size: 150%;
+  /*color: #00dcff;*/
+
 }
 #introductionBig {
   font-size: 125%;
+  /*letter-spacing: 2px;
+  padding-left: 3px;*/
+}
+#introductionBigBlue {
+  font-size: 125%;
   color: #00dcff;
-  letter-spacing: 2px;
-  padding-left: 3px;
+  /*letter-spacing: 2px;*/
+  /*padding-left: 3px;*/
 }
 #introductionProse {
   font-family: 'Open Sans';
