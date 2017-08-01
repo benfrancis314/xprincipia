@@ -921,7 +921,7 @@ like vote and comments.*/
       font-family: 'Alegreya Sans SC', sans-serif;
       color: #ffffff;
       margin: 0 auto;
-      letter-spacing: 6px;
+      letter-spacing: 4px;
       border: 1px solid #ffffff;
       border-radius: 3px;
       box-shadow: 0 0 1pt 1pt rgba(255,255,255,0.5);
@@ -1025,8 +1025,8 @@ like vote and comments.*/
     	background-color: rgba(0,220,255,0);
     	width: 50%;
     	margin: 0 auto;
-      margin-top: 3%;
-      margin-bottom: 2%;
+      margin-top: 2%;
+      margin-bottom: 1%;
       font-family: 'Alegreya Sans SC', sans-serif;
       transition: all 0.5s ease 0s;
       letter-spacing: 2px;
@@ -1257,9 +1257,8 @@ like vote and comments.*/
       background-color: rgba(0,220,255,0.05);
     }
     #header:hover, #header:active {
-      /*Unused transform*/
-    /*transform: scale(1.02);*/
-      background-color: rgba(0,220,255,0.1);
+      /*Removing background-color for now*/
+      /*background-color: rgba(0,220,255,0.1);*/
       color: #ffffff;
     }
     #explore, #logo {
@@ -1518,11 +1517,11 @@ like vote and comments.*/
     	font-size: 200%;
     	text-align: center;
     	padding: 0px 0px 5px 0px;
-      margin-top: 8.5%;
+      margin-top: 5.5%;
       margin-bottom: 5.5%;
     }
     #bannerTitle {
-    	font-size: 250%;
+    	font-size: 175%;
     	letter-spacing: 16px;
     	border: 1px solid #00dcff;
     	border-width: 2px 0px;
@@ -1544,21 +1543,8 @@ like vote and comments.*/
       margin-top: 12px;
     }
     #bannerLoginSlogan {
-      /*padding: 3px;
-      border: 1px solid #00dcff;
-    	border-width: 2px 0px;
-      background-color: rgba(0, 220, 255, 0.05);
-      box-shadow: 0 0 1pt 1pt rgba(0,220,255,0.5);
-      width: 33%;
-      margin: 0 auto;
-      margin-top: 12px;*/
-
-      /*Trying new bannerLoginSlogan look inside loginIntroduction*/
-      font-size: 130%;
-      /*background-color: rgba(0, 220, 255, 0.05);*/
-      width: 60%;
-      margin: 0 auto;
-        
+      font-size: 110%;
+      width: 50%;
       margin: 0 auto;
       margin-top: 2.5%;
       margin-bottom: 2.5%;
@@ -1667,6 +1653,7 @@ like vote and comments.*/
       margin-top: 0.3%;
       margin-bottom: 0.3%;
       padding: 0px !important;
+      background-color: #0f131c;
     }
     #loginHeaderPassword {
     	display: block;
@@ -1680,6 +1667,7 @@ like vote and comments.*/
       margin-bottom: 0.3%;
       padding: 0px !important;
       transition: all 0.5s ease 0s;
+      background-color: #0f131c;
     }
     #loginHeaderUsernameDiv {
       margin: 0 auto;
@@ -1690,7 +1678,7 @@ like vote and comments.*/
     #loginHeaderSubmitButton {
       font-family: 'Alegreya Sans SC', sans-serif;
       color: #00ffdc;
-      background-color: inherit;
+      background-color: #0f131c;
       text-align: center;
       border: 1px solid #dddddd;
       border-radius: 3px;
@@ -1722,6 +1710,7 @@ like vote and comments.*/
       font-size: 125%;
       box-shadow: 0 0 1pt 1pt rgba(0,255,220,0.5);
       transition: all 0.5s ease 0s;
+      background-color: #0f131c;
     }
     #registerHeaderButton:hover {
      cursor: pointer;
@@ -1736,15 +1725,10 @@ like vote and comments.*/
   font-size: 70%;
   width: 60%;
   margin: 0 auto;
-  margin-top: 2.5%;
-  margin-bottom: 2.5%;
-  padding: 10px;
-  /*border: 1px outset #00dcff;
-  border-width: 1px 0px;
-  border-radius: 3px;*/
-
-  /*Possible box-shadow instead of border*/
-  /*box-shadow: 0 0 1pt 1pt rgba(0,220,255,0.5);*/
+  margin-top: 0.5%;
+  margin-bottom: 0%;
+  padding: 20px;
+  line-height: 120%;
 }
 #introductionButton {
   padding: 4px;
@@ -1781,34 +1765,46 @@ like vote and comments.*/
 #signup, #register {
   padding-top: 0px;
 }
-#loginEmail, #registerUserName {
+#loginEmail {
   margin-top: 0px;
 }
 #introductionContainer {
-  margin: 0 auto;
-  margin-top: 3%;
+  margin-top: 1%;
   margin-bottom: 3%;
-  width: 60%;
+  margin-right: 0;
+  font-size: 175%;
+  width: 75%;
   background-color: rgba(0,220,255,0.05);
   border: 2px outset #00dcff;
-  border-radius: 3px 40px 40px 40px;;
+  border-right-width: 0px;
+  border-radius: 40px 3px 40px 40px;;
   text-align: left;
-  padding: 5% 10% 10% 10%;
+  padding: 5% 5% 5% 5%;
   z-index: 5;
+  float: right;
 }
 #introductionWelcome {
   border: 1px outset #00dcff;
   border-width: 1px 0px 0px 0px;
   padding: 15px;
+  margin-bottom: 1%;
+  font-size: 120%;
 }
 #introductionCapital {
   font-size: 150%;
+}
+#introductionBig {
+  font-size: 125%;
+  color: #00dcff;
+  letter-spacing: 2px;
+  padding-left: 3px;
 }
 #introductionProse {
   font-family: 'Open Sans';
   font-size: 60%;
   letter-spacing: normal;
   color: #bbbbbb;
+  padding-left: 3%;
 }
 #introductionProjectsProse {
   font-family: 'Open Sans';
@@ -2531,14 +2527,28 @@ introductionProjectTitle {
       transition: all 0.5s ease 0s;
       font-size: 120%;
       letter-spacing: 0.25px;
-      /*font-family: 'Open Sans';*/
-      /*margin: 0 auto;*/
     }
     #welcomeIntroductionButton:hover {
       cursor: pointer;
       background-color: rgba(255,255,255,0.1);
     }
-
+    #welcomeIntroductionButtonActive {
+      border: 1px solid #dddddd;
+      border-width: 1px 1px 1px 0px;
+      border-radius: 0px 7px 7px 0px;
+      color: #dddddd;
+      text-align: center;
+      padding: 1% 1% 1% 1.5%;
+      width: 10%;
+      margin-top: 0.75%;
+      transition: all 0.5s ease 0s;
+      font-size: 120%;
+      letter-spacing: 0.25px;
+      background-color: rgba(255,255,255,0.1);
+    }
+    #welcomeIntroductionButtonActive:hover {
+      cursor: pointer;
+    }
     #welcomeBox {
     	margin: 0.5% 20% 2.5% 20%;
     	border: 1px solid #dddddd;
@@ -3007,7 +3017,7 @@ introductionProjectTitle {
       margin: 0 auto;
       margin-top: 20%;
       width: 50%;
-      background-color: rgba(0,220,255,0);
+      background-color: rgba(255,255,255,0.025);
       transition: all 0.5s ease 0s;
       padding: 7% 0% 7% 0%;
     }
@@ -3552,6 +3562,8 @@ introductionProjectTitle {
 }
 #voteProblem:hover {
   cursor: pointer; 
+  color: #0f131c;
+  background-color: rgba(0, 255, 220, 1);
 }
 #votedProblem {
   flex: 1 1 auto;
@@ -3580,7 +3592,7 @@ introductionProjectTitle {
   color: #dddddd;
   margin: 2% 10% 0% 10%;
   font-size: 210%;
-  letter-spacing: 6px;
+  letter-spacing: 4px;
   border: 1px solid #dddddd;
   border-radius: 3px;
   box-shadow: 0 0 1pt 1pt rgba(255,255,255,0.5);
@@ -3688,6 +3700,7 @@ introductionProjectTitle {
   color: #dddddd;
   min-width: 80%;
   transition: all 0.5s ease 0s;
+  background-color: rgba(255,255,255,0.025);
   /*font-weight: 300;*/
 }
 #problemSummary {
@@ -5401,3 +5414,19 @@ input#submitNewVersion:hover {
       overflow: auto;
       width: 90%;
     }
+
+
+
+/*Entrance*/
+
+#entranceGates {
+      width: 100%;
+      display: inline-flex;
+    	flex-direction: row;
+      word-wrap: break-word; 
+      justify-content: center;
+      margin-bottom: 15%;
+}
+
+
+/*End Entrance*/

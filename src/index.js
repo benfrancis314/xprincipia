@@ -87,6 +87,7 @@ import WelcomeCreateForm from './components/welcome/WelcomeCreateForm.jsx';
 //Load Containers
 import AnswerContainer from './containers/AnswerContainer.jsx';
 import ConsContainer from './containers/ConsContainer.jsx';
+import EntranceContainer from './containers/EntranceContainer.jsx';
 import ErrorContainer from './containers/ErrorContainer.jsx';
 import FreeFormContainer from './containers/FreeFormContainer.jsx';
 import FreeFormCommentContainer from './containers/FreeFormCommentContainer.jsx';
@@ -127,12 +128,13 @@ ReactDOM.render(
       <Route path='/404' component={Error404}></Route>
       <Route path='/redirection' component={Redirection}></Route>
     </Route>
-    <Route path='/intro' component={Intro}></Route>
     <Route path='/newsfeed' component={NewsFeedContainer}></Route>
     <Route path='/instructions' component={Instructions}></Route>
     <IndexRoute component={Layout}></IndexRoute>
     <Route path='/home' component={Layout}>
+    <Route path='/introduction' component={Introduction}></Route>
       <IndexRoute component={FullProblem}></IndexRoute>
+      <Route path='/entrance' component={EntranceContainer}></Route>
       <Route path='/welcomecontainer' component={WelcomeContainer}>
         <IndexRoute component={WelcomeCreateButton}></IndexRoute>
         <Route path='/welcome' component={WelcomeCreateButton}></Route>

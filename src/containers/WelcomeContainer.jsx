@@ -56,7 +56,7 @@ export default class WelcomeContainer extends React.Component {
    render() {
       return (
         <div>
-         <Link to="/register">
+         <Link to="/introduction">
             <div id="welcomeIntroductionButton">
                 Introduction
             </div>

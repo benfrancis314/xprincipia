@@ -6,6 +6,61 @@ import {Config} from '../../config.js'
 
 export default class ProjectEditForm extends React.Component {
 
+  constructor(props){
+    super(props);
+    
+    //ProblemForm structure in backend
+    this.state= {
+      title: '',
+      summary: '',
+    }
+
+    this.flagProject = this.updateProject.bind(this);
+  };
+
+  componentWillMount() {
+      var self = this;
+      return axios.get( Config.API + '/auth/problems/ID?id='+this.props.params.probID).then(function (response) {
+        //if parent ID is 0 then the problem is at the root of the tree
+        // return id as the parentID for routing purposes
+        //set other data
+        self.setState({
+            problemInfo: response.data
+      })
+
+        document.getElementById('projectEditTitleForm').value = self.state.problemInfo.Title;
+        document.getElementById('projectEditSummaryForm').value = self.state.problemInfo.Summary;
+  
+    })
+    .catch(function (error) {
+        if(error.response.status === 401 || error.response.status === 403){
+            document.location = "/login"
+        }
+    });   
+  }
+
+//  flagProject() {
+//     //Read field items into component state
+//     this.state.title = document.getElementById('projectEditTitleForm').value
+//     this.state.summary = document.getElementById('projectEditSummaryForm').value
+
+//   var self = this;
+//     axios.post( Config.API + '/auth/feedback/create', {
+//     type: 0,
+//     typeID: 2,
+//     username: cookie.load('userName'),
+//     reason: 0,
+//     description : this.state.feedback,
+//     })
+//     .then(function (result) {
+//       document.location = '/problem/'+ self.props.params.probID + '/subproblems'
+//     })
+//     .catch(function (error) {
+//         alert("I'm sorry, there was a problem with your request.")
+//       });
+  
+//   }
+
   render() {
       return (
         <div id="createProblemBox">

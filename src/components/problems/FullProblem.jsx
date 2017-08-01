@@ -5,6 +5,7 @@ import cookie from 'react-cookie';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group'; // ES6
 import SideBarProblemMenu from './SideBarProblemMenu.jsx';
 import SubProblemContainer from '../../containers/SubProblemContainer.jsx';
+import SubProjectParentUnit from './SubProjectParentUnit.jsx';
 import TutorialProjectContent from '../tutorials/TutorialProjectContent.jsx';
 import {Config} from '../../config.js'
 
@@ -180,6 +181,8 @@ unVote() {
               XPrincipia Projects
             </div>
           </Link>
+          {/*Add SubProjectParentUnit when properly designed*/}
+          {/*<SubProjectParentUnit />*/}
 
           <div id="problemIntro">
             <h1 id="problemTitle">{this.state.problemInfo.Title}</h1>
