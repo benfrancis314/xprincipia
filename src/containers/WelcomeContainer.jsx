@@ -27,7 +27,7 @@ export default class WelcomeContainer extends React.Component {
         this.state.searchText = document.getElementById('exploreInput').value
 
         var self = this
-        return axios.get( Config.API + '/auth/problems/search?q='+this.state.searchText).then(function (response) {
+        return axios.get( Config.API + '/problems/search?q='+this.state.searchText).then(function (response) {
             self.setState({
               userproblems: response.data
             })
@@ -40,7 +40,7 @@ export default class WelcomeContainer extends React.Component {
         }
         componentWillMount(){
         var self = this;
-        return axios.get( Config.API + '/auth/problems/all').then(function (response) {
+        return axios.get( Config.API + '/problems/all').then(function (response) {
             self.setState({
                 problems: response.data,
                 userproblems: response.data

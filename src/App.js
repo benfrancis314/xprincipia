@@ -39,18 +39,18 @@ class App extends React.Component {
   }
   render() {
     //Check if user is logged in
-    if (this.state.userToken === undefined ){
+    // if (this.state.userToken === undefined ){
       //redirect to login page if not logged in. Register is also allowed
-      if (window.location.pathname !== "/login" && window.location.pathname !== "/register" && window.location.pathname !== "/introduction"){
-        document.location = "/login";
-        return (
-        <div>
-          <p>error image</p>
+      // if (window.location.pathname !== "/login" && window.location.pathname !== "/register" && window.location.pathname !== "/introduction"){
+      //   document.location = "/login";
+      //   return (
+        /*<div>
+          <p>error image</p>*/
           {/*Put 404 error image and also wait 2 seconds before redirecting*/}
-        </div>
+        {/*</div>
         )
       }
-    } 
+    } */}
 
     //Load the welcome page if route is '/'
     if (window.location.pathname === "/" || this.state.undefinedPaths.inArray(window.location.pathname) //continue to next line

@@ -1682,7 +1682,7 @@ like vote and comments.*/
       text-align: center;
       border: 1px solid #dddddd;
       border-radius: 3px;
-      padding: 6px 8px 3px 8px;
+      padding: 6px 8px 6px 8px;
       display: inline-block;
       margin: 0 auto;
       margin: 0.3% 0.5% 0.3% 1%;
@@ -1690,6 +1690,8 @@ like vote and comments.*/
       box-shadow: 0 0 1pt 1pt rgba(255,255,255,0.5);
       transition: all 0.5s ease 0s;  
       vertical-align: middle;
+      width: 20px;
+      height: 20px;
     }
     #loginHeaderSubmitButton:hover {
       cursor: pointer;

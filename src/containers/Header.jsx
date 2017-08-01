@@ -25,7 +25,7 @@ export default class Header extends React.Component {
     };
 
   componentWillMount() {
-    // this.state =  { userToken: cookie.load('userToken') };
+    this.state =  { userToken: cookie.load('userToken') };
   }
 
   postLogin() {
@@ -94,9 +94,7 @@ if (this.state.userToken === undefined ){
             <input type="password" name="password" required="required" maxLength="30" placeholder="Password" id="loginHeaderPassword" />            
             
             {/*Need logo here, arrow signaling "Submit"*/}
-            <div id="loginHeaderSubmitButton" onClick={this.postLogin}> 
-                <img src={require('../assets/rightArrowWhite.svg')} width="10" height="10" alt="Submit login arrow, blue right arrow" />
-            </div>
+            <input type="image" src={require('../assets/rightArrowWhite.svg')} onClick={this.postLogin} id="loginHeaderSubmitButton" alt="Submit login arrow, blue right arrow"/>
             <div id="registerHeaderButton">
                 <Link to="/register">
                     Register

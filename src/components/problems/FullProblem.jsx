@@ -26,7 +26,7 @@ export default class FullProblem extends React.Component {
 // in componentDidMount
     getInitialState() {
       var self = this;
-      return axios.get( Config.API + '/auth/problems/ID?id='+this.state.problemInfo.ParentID).then(function (response) {
+      return axios.get( Config.API + '/problems/ID?id='+this.state.problemInfo.ParentID).then(function (response) {
 
           //set Problem Data
           self.setState({
@@ -37,7 +37,7 @@ export default class FullProblem extends React.Component {
 
     componentWillMount(){
       var self = this;
-      return axios.get( Config.API + '/auth/problems/ID?id='+this.state.problemInfo.ParentID).then(function (response) {
+      return axios.get( Config.API + '/problems/ID?id='+this.state.problemInfo.ParentID).then(function (response) {
 
           //set Problem Data
           self.setState({
@@ -49,7 +49,7 @@ export default class FullProblem extends React.Component {
 
     componentDidMount(){
       var self = this;
-      axios.get( Config.API + '/auth/problems/ID?id='+this.props.params.probID).then(function (response) {
+      axios.get( Config.API + '/problems/ID?id='+this.props.params.probID).then(function (response) {
 
           //set Problem Data
           self.setState({
@@ -62,7 +62,7 @@ export default class FullProblem extends React.Component {
         }
     });
           
-    axios.get( Config.API + "/auth/vote/isVotedOn?type=0&typeID=" + this.props.params.probID + "&username=" + cookie.load("userName"))
+    axios.get( Config.API + "/vote/isVotedOn?type=0&typeID=" + this.props.params.probID + "&username=" + cookie.load("userName"))
           .then( function (response){
             console.log(response.data)
             self.setState({
@@ -73,7 +73,7 @@ export default class FullProblem extends React.Component {
 
   componentWillReceiveProps(newProps){
     var self = this;
-      axios.get( Config.API + '/auth/problems/ID?id='+newProps.params.probID).then(function (response) {
+      axios.get( Config.API + '/problems/ID?id='+newProps.params.probID).then(function (response) {
         //set problem data
         self.setState({
             problemInfo: response.data,
