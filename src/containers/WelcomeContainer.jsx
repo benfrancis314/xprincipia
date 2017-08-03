@@ -1,12 +1,13 @@
 import React from 'react';
 import axios from 'axios';
 import { Link } from 'react-router';
+import Sound from 'react-sound';
 // Currently unused, may use later. Loading only loads part of page, currently looks weird
 // import ReactCSSTransitionGroup from 'react-addons-css-transition-group'; // ES6
 import TutorialWelcomeContent from '../components/tutorials/TutorialWelcomeContent.jsx';
 import WelcomeUnit from '../components/welcome/WelcomeUnit.jsx';
 import WelcomeUserUnit from '../components/welcome/WelcomeUserUnit.jsx';
-import {Config} from '../config.js'
+import {Config} from '../config.js';
 
 export default class WelcomeContainer extends React.Component {
    
@@ -18,7 +19,8 @@ export default class WelcomeContainer extends React.Component {
            userproblems : [],
            searchText: [],
         }
-        this.queryProblem = this.queryProblem.bind(this)
+        this.queryProblem = this.queryProblem.bind(this);
+        this.startSound = this.startSound.bind(this);
     };
 
 
@@ -51,16 +53,34 @@ export default class WelcomeContainer extends React.Component {
                 document.location = "/login"
             }
         }); 
+     }
+
+     startSound () {
+        var self = this;
+
+        return  self.setState({ volume: 100 });
         }
    
    render() {
       return (
         <div>
+            <Sound
+                url={require('../assets/jfkSpeech.mp3')}
+                autoLoad={true}
+                playStatus={Sound.status.PLAYING}
+                playFromPosition={87500 /* in milliseconds */}
+                onLoading={this.handleSongLoading}
+                onPlaying={this.handleSongPlaying}
+                onFinishedPlaying={this.handleSongFinishedPlaying} 
+                volume={0}/>
          <Link to="/introduction">
             <div id="welcomeIntroductionButton">
                 Introduction
             </div>
          </Link>
+            {/*<div onClick={this.stateSound} id="soundButton">
+                Sound
+            </div>*/}
             {/*<ReactCSSTransitionGroup
             transitionName="example"
             transitionAppear={true}

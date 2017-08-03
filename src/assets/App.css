@@ -1513,15 +1513,15 @@ like vote and comments.*/
     #banner {
     	color: #ffffff;
     	width: 100%;
-    	letter-spacing: .15em;
+    	letter-spacing: 6px;
     	font-size: 200%;
     	text-align: center;
     	padding: 0px 0px 5px 0px;
-      margin-top: 5.5%;
+      margin-top: 8.5%;
       margin-bottom: 5.5%;
     }
     #bannerTitle {
-    	font-size: 175%;
+    	font-size: 250%;
     	letter-spacing: 16px;
     	border: 1px solid #00dcff;
     	border-width: 2px 0px;
@@ -1547,7 +1547,7 @@ like vote and comments.*/
       width: 50%;
       margin: 0 auto;
       margin-top: 2.5%;
-      margin-bottom: 2.5%;
+      margin-bottom: 1.5%;
       padding: 10px;
       border: 1px outset #00dcff;
       border-width: 1px 0px;
@@ -1738,7 +1738,7 @@ like vote and comments.*/
   border-radius: 3px;
   margin: 0 auto;
   margin-top: 0%;
-  margin-bottom: 2%;
+  margin-bottom: 1.5%;
   width: 30%;
   font-size: 90%;
   transition: all 0.5s ease 0s;
@@ -1771,19 +1771,19 @@ like vote and comments.*/
   margin-top: 0px;
 }
 #introductionContainer {
+  margin: 0 auto;
   margin-top: 1%;
   margin-bottom: 3%;
-  margin-right: 0;
   font-size: 175%;
   width: 75%;
   background-color: rgba(0,220,255,0.05);
   border: 2px outset #00dcff;
-  border-right-width: 0px;
-  border-radius: 40px 3px 40px 40px;;
+  border-width: 0px 1px 0px 1px;
+  border-radius: 0px 0px 0px 0px;;
   text-align: left;
   padding: 5% 5% 5% 5%;
   z-index: 5;
-  float: right;
+  /*float: right;*/
 }
 #introductionWelcome {
   border: 1px outset #00dcff;
@@ -2524,6 +2524,12 @@ introductionProjectTitle {
 
 /*Welcome*/
 
+    #soundButton {
+
+    }
+    #soundButton:hover {
+      cursor: pointer;
+    }
     #welcomeIntroductionButton {
       border: 1px solid #dddddd;
       border-width: 1px 1px 1px 0px;
