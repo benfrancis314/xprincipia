@@ -25,13 +25,14 @@ export default class Introduction extends React.Component {
             </Link>
           <div id="introductionContainer">
                 <div id="introductionWelcome">
-                    <span id="introductionCapital">W</span><span id="blue">elcome</span> to <span id="introductionBig">XPrincipia: The </span><span id="introductionBigBlue">Open Frontier </span><span id="introductionBig">of Research.</span>
+                    <span id="introductionCapital">W</span>elcome to <span id="introductionBig">XPrincipia: </span><span id="introductionBigBlue">The Open Frontier of Research</span><span id="introductionBig"></span>
                 </div>
                 <div id="introductionProse">
-                    Here anyone, <span id="blueOpen">regardless of background </span>or class, may openly <span id="blueOpen">contribute to </span>and <span id="blueOpen">join </span>today's cutting edge of 
+                    Here anyone, <span id="blueOpen">regardless of background </span>or class, may openly contribute to and <span id="blueOpen">join today's cutting edge </span>of 
                     scientific <span id="blueOpen">research </span>and technology <span id="blueOpen">development</span>.
                     <br />
                     <br />
+                    {/*Consider italicizing "the first time"*/}
                     For <span id="blueOpen">the first time</span>, we allow every impassioned person with internet access to <span id="blueOpen">explore the frontier </span>of modern projects 
                     towards <span id="blueOpen">advancing our human civilization </span>into its <span id="blueOpen">greatest future</span>. 
                     <br />
@@ -61,7 +62,7 @@ export default class Introduction extends React.Component {
                     each project for future achievement.
                     <br />
                     <br />
-                    For all of the collected works and every waiting decision, <span id="blueOpen">your vote </span>determines the most important projects, 
+                    For all of the collected works and <span id="blueOpen">every waiting decision</span>, <span id="blueOpen">your vote </span>determines the most important projects, 
                     the best proposals and the most valuable points of discussion.
                     <br />
                     <br />
@@ -72,7 +73,7 @@ export default class Introduction extends React.Component {
                     Our success, and the <span id="blueOpen">fruit it may bare</span>, is up to us all.
                     <br />
                     <br />
-                    Welcome to XPrincipia.
+                    <span id="blueOpen">Welcome to XPrincipia.</span>
 
 
                     {/*We are a center for collaborative <span id="blueOpen">human progress projects</span>, with the belief that many can achieve more than few.

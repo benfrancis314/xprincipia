@@ -15,7 +15,7 @@ constructor(props){
     };
     componentWillMount(){
         var self = this;
-            return axios.get( Config.API + '/auth/learnItems/typeID?id='+this.props.params.probID).then(function (response) {
+            return axios.get( Config.API + '/learnItems/typeID?id='+this.props.params.probID).then(function (response) {
                 self.setState({
                     learnItems: response.data
                 })

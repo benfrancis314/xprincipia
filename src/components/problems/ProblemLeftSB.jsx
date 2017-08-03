@@ -28,6 +28,7 @@ export default class ProblemLeftSB extends React.Component {
     })
     .catch(function (error) {
         if(error.response.status === 401 || error.response.status === 403){
+            // Change this to an alert so they don't lose their place
             document.location = "/login"
         }
     });

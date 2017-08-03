@@ -2993,14 +2993,15 @@ introductionProjectTitle {
     #SBButton, #SBButton1 {
     	flex: 1 1 auto;
     	color: #dddddd;
-    	font-size: 170%;
+    	font-size: 190%;
     	border: 1px solid #dddddd;
     	border-width: 1px 1px;
     	border-radius: 3px;
     	text-align: center;
     	text-decoration: none;
       margin: 0 auto;
-    	margin-top: 12px;
+    	margin-top: 15px;
+      margin-bottom: 3px;
       width: 70%;
       background-color: rgba(0,220,255,0);
       transition: all 0.5s ease 0s;
@@ -3481,24 +3482,51 @@ introductionProjectTitle {
   display: block;
   background-color: rgba(0,220,255,0.05);
   padding: 0.3%;
-  /*box-shadow: 0 0 1pt 1pt rgba(0,220,255,0.5);*/
   border: 1px solid #aaaaaa;
   border-width: 0px 1px 1px 1px;
   border-radius: 0px 0px 3px 3px;
   letter-spacing: 1px;
   color: #aaaaaa;
   transition: all 0.5s ease 0s;
-  /*padding-left: 3%;*/
   margin: 0 auto;
-  margin-bottom: 1.5%;
+  margin-bottom: 0.2%;
   text-align: center;
-
 }
 #parentButton:hover, #parentButton:active {
   cursor: pointer;
   background-color: rgba(0,220,255,0.1);
   color: #ffffff;
   border-color: #ffffff
+}
+#parentChildrenButton {
+  background-color: rgba(0,220,255,0.05);
+  border: 1px solid #aaaaaa;
+  border-width: 1px 1px 1px 1px;
+  border-radius: 0px 0px 3px 3px;
+  letter-spacing: 1px;
+  color: #aaaaaa;
+  transition: all 0.5s ease 0s;
+  text-align: center;
+  /*margin: 0% 5% 0% 5%;  */
+  width: 100%;
+  min-width: 14em;
+  display: block;
+  /*Previously used width: 14em*/
+}
+#parentChildrenButton:hover, #parentChildrenButton:active {
+  cursor: pointer;
+  background-color: rgba(0,220,255,0.1);
+  color: #ffffff;
+  border-color: #ffffff;
+}
+#parentChildrenUnitList {
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  width: 100%;
+  margin: 0 auto;
+  overflow-x: scroll;
 }
 
 #problemRow1, #problemRow2 {
@@ -3950,7 +3978,7 @@ introductionProjectTitle {
   text-align: center;
   transition: all 0.5s ease 0s;
   width: 5%;
-  box-shadow: 0 0 1pt 1pt rgba(0,220,255,0.5);
+  /*box-shadow: 0 0 1pt 1pt rgba(0,220,255,0.5);*/
   left: 0;
   margin-bottom: 1%;
 }
@@ -4083,6 +4111,11 @@ introductionProjectTitle {
 .activeWhite div {
   background-color: rgba(0,220,255,0.15) !important;
   /*color: #00dcff !important;*/
+  border-color: #00dcff !important;
+}
+.activeWhiteBlueText div {
+  background-color: rgba(0,220,255,0.15) !important;
+  color: #00dcff !important;
   border-color: #00dcff !important;
 }
 /*.activeWhite #topSolutionsButtonRightSB,

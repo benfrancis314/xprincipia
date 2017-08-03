@@ -3,6 +3,7 @@ import { Link  } from 'react-router';
 import axios from 'axios';
 import cookie from 'react-cookie';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group'; // ES6
+import ProjectParentChildrenUnitsContainer from '../../containers/ProjectParentChildrenUnitsContainer.jsx';
 import SideBarProblemMenu from './SideBarProblemMenu.jsx';
 import SubProblemContainer from '../../containers/SubProblemContainer.jsx';
 import SubProjectParentUnit from './SubProjectParentUnit.jsx';
@@ -62,7 +63,7 @@ export default class FullProblem extends React.Component {
         }
     });
           
-    axios.get( Config.API + "/vote/isVotedOn?type=0&typeID=" + this.props.params.probID + "&username=" + cookie.load("userName"))
+    axios.get( Config.API + "/auth/vote/isVotedOn?type=0&typeID=" + this.props.params.probID + "&username=" + cookie.load("userName"))
           .then( function (response){
             console.log(response.data)
             self.setState({
@@ -82,7 +83,7 @@ export default class FullProblem extends React.Component {
     })
     .catch(function (error) {
         if(error.response.status === 401 || error.response.status === 403){
-            document.location = "/login"
+            document.location = "/welcome"
         }
     }); 
       this.setState({
@@ -182,7 +183,7 @@ unVote() {
             </div>
           </Link>
           {/*Add SubProjectParentUnit when properly designed*/}
-          {/*<SubProjectParentUnit />*/}
+          <SubProjectParentUnit parentID={this.state.problemInfo.ParentID}/>
 
           <div id="problemIntro">
             <h1 id="problemTitle">{this.state.problemInfo.Title}</h1>
@@ -285,9 +286,10 @@ unVote() {
             </div>
           </Link>*/}
 
-          <div id="parentButton">
-            XPrincipia Projects
-          </div>
+          <Link to={`/problem/${this.state.problemInfo.ParentID}/subproblems`} onClick={refreshPage}>
+            <SubProjectParentUnit parentID={this.state.problemInfo.ParentID}/>
+          </Link>
+          <ProjectParentChildrenUnitsContainer parentID={this.state.problemInfo.ParentID} problemTitle={this.state.problemInfo.Title}/>
 
           <div id="problemIntro">
             <h1 id="problemTitle">{this.state.problemInfo.Title}</h1>
@@ -303,7 +305,7 @@ unVote() {
           {/*Row 1*/}
             <div id="columnContainerProject">
               <div id="sidebarMenu">
-                <Link to={`/problem/${this.props.params.probID}/questions`} activeClassName="activeWhite">
+                <Link to={`/problem/${this.props.params.probID}/questions`} activeClassName="activeWhiteBlueText">
                   <div id="SBButtonDiscuss">Discuss</div>
                 </Link>
               </div>
@@ -333,7 +335,7 @@ unVote() {
           <div id="columnContainerProject">
             {/*<div id="fullProblemHeader">*/}
               <div id="sidebarMenu">
-                <Link to={`/problem/${this.props.params.probID}/learn/resources`} activeClassName="activeWhite">
+                <Link to={`/problem/${this.props.params.probID}/learn/resources`} activeClassName="activeWhiteBlueText">
                   <div id="SBButtonLearn">Learn</div>
                 </Link>
               </div>

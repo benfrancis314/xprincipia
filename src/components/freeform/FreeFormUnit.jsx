@@ -17,7 +17,7 @@ export default class FreeFormUnit extends React.Component {
             voteHash : {},
         })
         props.freeForms.forEach( function (freeForm){
-            axios.get( Config.API + "/auth/vote/isVotedOn?type=6&typeID=" + freeForm.ID + "&username=" + cookie.load("userName"))
+            axios.get( Config.API + "/vote/isVotedOn?type=6&typeID=" + freeForm.ID + "&username=" + cookie.load("userName"))
             .then( function (response) {  
                 const voteHash = self.state.voteHash;
 

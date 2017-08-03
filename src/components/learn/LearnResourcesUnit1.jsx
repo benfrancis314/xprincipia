@@ -17,7 +17,7 @@ export default class LearnResourcesUnit1 extends React.Component {
             voteHash : {},
         })
         props.resources.forEach( function (resource){
-            axios.get( Config.API + "/auth/vote/isVotedOn?type=8&typeID=" + resource.ID + "&username=" + cookie.load("userName"))
+            axios.get( Config.API + "/vote/isVotedOn?type=8&typeID=" + resource.ID + "&username=" + cookie.load("userName"))
             .then( function (response) {  
                 const voteHash = self.state.voteHash;
 

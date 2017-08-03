@@ -1,74 +1,38 @@
 import React from 'react';
-import {Link} from 'react-router';
+import axios from 'axios';
+import cookie from 'react-cookie';
+import {Config} from '../../config.js'
 
-export default class SubProjectParentUnit extends React.Component {
+export default class FullProblem extends React.Component {
+  constructor(props){
+        super(props);
 
-  constructor(){
-  super();
-  this.state = {
-	  problems: []
-  }
-
-  };
+        this.state = {
+            parent: [],
+        }
+    };
 
     componentWillMount(){
-      var self = this;
-	  if (self.props.problem != null ){
-		  self.setState({problems: this.props.problems})
-	  }
-      return
+        var self = this;
+            return axios.get( Config.API + '/problems/ID?id='+this.props.parentID).then(function (response) {
+                self.setState({
+                    parent: response.data
+                })
+								console.log(parent.Title);
+            }) 
     }
 
-    //On recieving new props
-  componentWillReceiveProps(newProps){
-	  var self = this
-	  self.setState({problems: newProps.problems})
-	  console.log(self.state.problems)
-  }
 
-
-	render() {
-		return (
-	    <div id="SPwrapper">
-			<ul id="SPUnitList"> 
-				<li>
-					<img src={require('../../assets/leftArrow.svg')} id="SParrowImg" width="50" height="50" alt="User avatar, DNA Helix" />
-				</li>
-				{this.state.problems.map(this.renderItem)}
-				<li>
-					<img src={require('../../assets/rightArrow.svg')} id="SParrowImg" width="50" height="50" alt="User avatar, DNA Helix" />
-				</li>
-			</ul>
-		</div>
-		);
+   render() {
+		 
+		 if (this.state.parent.Title == undefined) {
+			 		 return (
+			<div id="parentButton">XPrincipia Projects</div>);
+		}
+		else {
+		 return (
+			<div id="parentButton">{this.state.parent.Title}</div>
+			);
+		}
 	}
-	renderItem(problem) {
-  
-			function refreshPage() {
-				// Temporary fix for refreshing sub problems
-				// document.location = '/problem/'+ self.props.params.probID +'/subproblems';
-					//  SubProblemUnit.forceUpdate()
-			}
-
-    return (
-
-        <Link key={problem.ID} to={'/problem/'+problem.ID +'/subproblems'} onClick={refreshPage} >
-				<li key={problem.ID} id="SPUnit">
-				<div id="SPHeader">
-					<div id="SPTitle">{problem.Title}</div>
-					<div id="SPPercent">{problem.Rank}</div>
-					{/*<div>
-						<img src={require('../assets/voteArrow.png')} id="SPVote" width="20" height="20" alt="Vote arrow, blue up arrow" />
-					</div>*/}
-				</div>
-			</li>
-		</Link>
-
-	);
-  }
 }
-
-//convert float to Decimal
-// function floatToDecimal(float) {
-// 	return Math.round(float*100)+'%';
-// }

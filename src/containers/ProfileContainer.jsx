@@ -110,9 +110,10 @@ export default class ProfileContainer extends React.Component {
                 <Link to={`/profile`} activeClassName="activeBlue">
                     <div id="userProblemsSolutionsButton">Activity</div>
                 </Link>
-                <Link to={`/profile/workspace`} activeClassName="activeBlue">
+                {/*Commented out WorkSpace until working*/}
+                {/*<Link to={`/profile/workspace`} activeClassName="activeBlue">
                     <div id="userFeedbackButton">WorkSpace</div>
-                </Link>
+                </Link>*/}
                 {/*<Link to={`/profile/resume`} activeClassName="activeBlue">
                     <div id="userProblemsSolutionsButton">Resume</div>
                 </Link>*/}
@@ -126,9 +127,10 @@ export default class ProfileContainer extends React.Component {
                 <Link to={`/profile/about`} activeClassName="activeBlue">
                     <div id="aboutXPButton">About XPrincipia</div>
                 </Link>
-                <Link to={`/profile/settings`} activeClassName="activeBlue">
+                {/*Commented out Settings until working*/}
+                {/*<Link to={`/profile/settings`} activeClassName="activeBlue">
                     <div id="aboutXPButton">Settings</div>
-                </Link>
+                </Link>*/}
                 <div id="logOutButton" onClick={this.onLogout}>Logout</div>
                 {/*<br />
                 <p id="xp">XP</p>*/}

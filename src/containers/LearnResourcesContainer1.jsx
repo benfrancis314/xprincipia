@@ -16,13 +16,13 @@ constructor(props){
     componentDidMount(){
         var self = this;
         if(this.props.params.solutionID){
-            return axios.get( Config.API + '/auth/resources/typeID?id='+this.props.params.solutionID+'&dataType=1').then(function (response) {
+            return axios.get( Config.API + '/resources/typeID?id='+this.props.params.solutionID+'&dataType=1').then(function (response) {
                 self.setState({
                     resources: response.data
                 })
             })  
         } else {
-            return axios.get( Config.API + '/auth/resources/typeID?id='+this.props.params.probID+'&dataType=0').then(function (response) {
+            return axios.get( Config.API + '/resources/typeID?id='+this.props.params.probID+'&dataType=0').then(function (response) {
                 self.setState({
                     resources: response.data
                 })

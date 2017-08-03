@@ -17,7 +17,7 @@ export default class LearnContentUnit1 extends React.Component {
             voteHash : {},
         })
         props.learnItems.forEach( function (learnItem){
-            axios.get( Config.API + "/auth/vote/isVotedOn?type=7&typeID=" + learnItem.ID + "&username=" + cookie.load("userName"))
+            axios.get( Config.API + "/vote/isVotedOn?type=7&typeID=" + learnItem.ID + "&username=" + cookie.load("userName"))
             .then( function (response) {  
                 const voteHash = self.state.voteHash;
 

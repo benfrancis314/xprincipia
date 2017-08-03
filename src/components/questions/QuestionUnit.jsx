@@ -19,7 +19,7 @@ constructor(props){
         voteHash : {},
     })
     props.questions.forEach( function (question){
-        axios.get( Config.API + "/auth/vote/isVotedOn?type=2&typeID=" + question.ID + "&username=" + cookie.load("userName"))
+        axios.get( Config.API + "/vote/isVotedOn?type=2&typeID=" + question.ID + "&username=" + cookie.load("userName"))
         .then( function (response) {  
             const voteHash = self.state.voteHash;
 
