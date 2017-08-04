@@ -47,7 +47,7 @@ export default class LoginContainer extends React.Component {
           <div id="info">
               <div id="banner">
                   <div id="bannerTitle">XPrincipia</div>
-                    <div id="bannerLoginSlogan">The Open Frontier of Research</div>
+                    {/*<div id="bannerLoginSlogan">The Open Frontier of Research</div>*/}
                     {/*Commenting out for now until I can get the look right*/}
                     {/*<div id="loginIntroduction">
                       Breakdown and solve today's scientific projects

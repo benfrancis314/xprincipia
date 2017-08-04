@@ -91,6 +91,11 @@ export default class ProfileContainer extends React.Component {
         window.location.href='http://www.xprincipia.com'
     }
 
+
+
+
+
+
    render() {
       return (
     <div id="profileContainer">
@@ -104,7 +109,9 @@ export default class ProfileContainer extends React.Component {
         <div id="profileLeft">
             <div id="userInformation">
                 <p id="userName">{cookie.load('userName')}</p>
-                <img src={require('../assets/dnaAvatar.svg')} id="avatarImageProfile" width="160" height="160" alt="User Avatar, DNA Helix" />
+                <div id="earth"></div>
+                {sphere}
+                {/*<img src={require('../assets/dnaAvatar.svg')} id="avatarImageProfile" width="160" height="160" alt="User Avatar, DNA Helix" />*/}
             </div>
             <div id="userOptions">
                 <Link to={`/profile`} activeClassName="activeBlue">

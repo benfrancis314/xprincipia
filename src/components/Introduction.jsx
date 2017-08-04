@@ -66,7 +66,7 @@ export default class Introduction extends React.Component {
                     the best proposals and the most valuable points of discussion.
                     <br />
                     <br />
-                    The <span id="blueOpen">entire architecture </span>of XPrincipia, constantly shifting at <span id="blueOpen">democratic will</span>, is up to you.
+                    The <span id="blueOpen">entire architecture and works</span>of XPrincipia, constantly shifting at <span id="blueOpen">democratic will</span>, is up to you.
                     <br />
                     <br />
                     <br />
@@ -74,48 +74,36 @@ export default class Introduction extends React.Component {
                     <br />
                     <br />
                     <span id="blueOpen">Welcome to XPrincipia.</span>
-
-
-                    {/*We are a center for collaborative <span id="blueOpen">human progress projects</span>, with the belief that many can achieve more than few.
-                    <br />
-                    <br />
-                    With the <span id="blueOpen">advent of the internet</span>, we present an opportunity for <span id="blueOpen">anyone around the world</span> to contribute to the cutting edge of science and technology.
-                    <br />
-                    <br />
-                    From this conviction, we have designed a web app to organize this collaboration, with the intent of iterating our functionality to suit <span id="blueOpen"> your needs</span>.
-                    <br />
-                    <br />
-                    The collective works will belong in the <span id="blueOpen"> public domain</span>, for everyone to use. */}
                     
                 </div>
-                {/*<div id="introductionProse">
-                    We have centered these efforts around <span id="blueOpen"> four core projects </span>we belive to be most important for humanity:
-                </div>*/}
+                <div id="introductionProse">
+                    Join our effort to make humanity a spacefaring civilization
+                </div>
                 <div id="introductionProjectHeader1">
                     <div id="introductionProjectTitle">
                         Interstellar Civilization
                     </div>
                 </div>
-                {/*<div id="introductionProjectsProse">
-                    Here are the projects towards transitioning humanity into an interstellar civilization, spreading life throughout the universe and ensuring our long-term survival.
-                </div>*/}
+                <div id="introductionProjectsProse">
+                    For the first time in history, <span id="iOpen">choose </span> to evolve our species:
+                </div>
                 {/*Link each to the actual project - check url on active site*/}
                 <div id="introductionProjectHeader2">
                     <div id="introductionProjectTitle">
                         Evolving Humanity
                     </div>
                 </div>
-                {/*<div id="introductionProjectsProse">
-                    Here are the projects towards intentionally evoling the human organism into a more perfect state, in both mind and body. 
-                </div>*/}
+                <div id="introductionProjectsProse">
+                    Complete our oldest endeavor, to fully understand the world we find ourselves in:
+                </div>
                 <div id="introductionProjectHeader3">
                     <div id="introductionProjectTitle">
                         Theoretical Knowledge
                     </div>
                 </div>
-                {/*<div id="introductionProjectsProse">
-                    Here are the projects towards understanding and mastering our theoretical base of knowledge, ranging from the fundamental nature of reality to the dynamics of human societies. 
-                </div>*/}
+                <div id="introductionProjectsProse">
+                    Shape our world with tools, the force that has always driven it:
+                </div>
                 <div id="introductionProjectHeader4">
                     <div id="introductionProjectTitle">
                         Technology Development

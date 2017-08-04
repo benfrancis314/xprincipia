@@ -120,6 +120,12 @@ return axios.post( Config.API + '/register', {
   render() {
       return (
 
+      <div>
+        <Link to={`/introduction`}>
+          <div id="introductionButton">
+            Introduction
+          </div>
+        </Link>
         <div id="register">
             <form >
                 <input type="text" name="fullname" required="required" maxLength="30" placeholder="Full Name" id="registerFullName" autoFocus />
@@ -130,6 +136,7 @@ return axios.post( Config.API + '/register', {
                 <Link to='/login'><div id="loginButton">Login</div></Link>
             </form>
         </div>
+      </div>
 
       );
    }

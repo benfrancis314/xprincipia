@@ -31,8 +31,8 @@ export default class Header extends React.Component {
   postLogin() {
     var self = this
     //Read field items into component state
-    this.state.username = document.getElementById('loginEmail').value
-    this.state.password = document.getElementById('loginPassword').value
+    this.state.username = document.getElementById('loginHeaderEmail').value
+    this.state.password = document.getElementById('loginHeaderPassword').value
 
     return axios.post( Config.API + '/login', {
       username : this.state.username,
@@ -94,7 +94,8 @@ if (this.state.userToken === undefined ){
             <input type="password" name="password" required="required" maxLength="30" placeholder="Password" id="loginHeaderPassword" />            
             
             {/*Need logo here, arrow signaling "Submit"*/}
-            <input type="image" src={require('../assets/rightArrowWhite.svg')} onClick={this.postLogin} id="loginHeaderSubmitButton" alt="Submit login arrow, blue right arrow"/>
+            <Link to='/'><input type="submit" value="Login" onClick={this.postLogin} id="submitLogin" /></Link>            
+            {/*<input type="image" src={require('../assets/rightArrowWhite.svg')} onClick={this.postLogin} id="loginHeaderSubmitButton" alt="Submit login arrow, blue right arrow"/>*/}
             <div id="registerHeaderButton">
                 <Link to="/register">
                     Register

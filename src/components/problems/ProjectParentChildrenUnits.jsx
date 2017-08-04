@@ -43,17 +43,19 @@ export default class ProjectParentChildrenUnits extends React.Component {
 			document.location = '/problem/'+ self.props.params.probID +'/subproblems';
 					ProjectParentChildrenUnits.forceUpdate()
 		}
-		return (
+		
+		//  Trying to get nothing to show up if it has no siblings
+		 if (problem.Title == undefined) {
+			 		 return (
+			<div id="nodisplay"></div>);
+		}
+		else {
+			return (
 			<Link key={problem.ID} to={'/problem/'+problem.ID +'/subproblems'} onClick={refreshPage} >
 				<li key={problem.ID} id="parentChildrenButton">
 					{problem.Title}
 				</li>
-			</Link>
-		);
+			</Link>);
+		}
   }
 }
-
-//convert float to Decimal
-// function floatToDecimal(float) {
-// 	return Math.round(float*100)+'%';
-// }

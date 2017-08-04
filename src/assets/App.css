@@ -120,6 +120,15 @@
     #nodisplay {
       display: none;
     }
+    #iOpen {
+      font-family: 'Open Sans' !important;
+      font-style: italic;
+    }
+    #iBlueOpen {
+      color: #00dcff !important;
+      font-family: 'Open Sans' !important;
+      font-style: italic;
+    }
     #dot {
       /*HTML is &sdot;*/
       font-size: 50%;
@@ -1078,7 +1087,7 @@ like vote and comments.*/
 
 
     #fullProblem {
-      width: 60%;
+      width: 65%;
       float: left;
       flex: 1 1 auto;
       /*margin-top: 1.5%;*/
@@ -1737,7 +1746,7 @@ like vote and comments.*/
   border: 1px solid #dddddd;
   border-radius: 3px;
   margin: 0 auto;
-  margin-top: 0%;
+  margin-top: 1.5%;
   margin-bottom: 1.5%;
   width: 30%;
   font-size: 90%;
@@ -3486,23 +3495,21 @@ introductionProjectTitle {
 #parentButton {
   width: 50%;
   display: block;
-  background-color: rgba(0,220,255,0.05);
+  background-color: rgba(0,220,255,0.1);
   padding: 0.3%;
-  border: 1px solid #aaaaaa;
+  border: 1px solid#dddddd;
   border-width: 0px 1px 1px 1px;
   border-radius: 0px 0px 3px 3px;
   letter-spacing: 1px;
-  color: #aaaaaa;
+  color: #ffffff;
   transition: all 0.5s ease 0s;
   margin: 0 auto;
-  margin-bottom: 0.2%;
   text-align: center;
 }
 #parentButton:hover, #parentButton:active {
   cursor: pointer;
-  background-color: rgba(0,220,255,0.1);
   color: #ffffff;
-  border-color: #ffffff
+  border-color: #dddddd;
 }
 #parentChildrenButton {
   background-color: rgba(0,220,255,0.05);
@@ -3523,7 +3530,7 @@ introductionProjectTitle {
   cursor: pointer;
   background-color: rgba(0,220,255,0.1);
   color: #ffffff;
-  border-color: #ffffff;
+  border-color: #dddddd;
 }
 #parentChildrenUnitList {
   text-align: center;
@@ -3533,6 +3540,7 @@ introductionProjectTitle {
   width: 100%;
   margin: 0 auto;
   overflow-x: scroll;
+  margin-top: 0.6%;
 }
 
 #problemRow1, #problemRow2 {
@@ -3632,23 +3640,15 @@ introductionProjectTitle {
   cursor: pointer; 
 }
 #problemTitle {
-  color: #dddddd;
-  margin: 2% 10% 0% 10%;
+  background-color: rgba(0,220,255,0.1);
+  color: rgba(255,255,255,1);
   font-size: 210%;
   letter-spacing: 4px;
   border: 1px solid #dddddd;
   border-radius: 3px;
   box-shadow: 0 0 1pt 1pt rgba(255,255,255,0.5);
-  transition: all 0.25s ease 0s;
-  /*background-size: cover;
-  background-repeat: no-repeat;
-  background-color: rgba(15,19,28,0.99);
-  background-blend-mode: overlay;
-  background-image: url('./vitruvianMan.jpg');*/
-
-
-  /*For parent text button*/
   margin: 0% 10% 0% 10%;
+  transition: all 0.25s ease 0s;
 }
 #bigPercent {
   font-size: 120%;
@@ -3733,7 +3733,8 @@ introductionProjectTitle {
 #problemSummary, #problemSummaryLeftSB {
   margin: 0px 25px 0px 25px;
   line-height: 150%;
-  font-size: 125%;
+  /*Previously was 125%, fullproblem was 60% in width*/
+  font-size: 130%;
   border: 1px solid #00dcff;
   border-width: 1px 0px;
   padding: 15px 15px 17px 15px;
@@ -3746,11 +3747,6 @@ introductionProjectTitle {
   background-color: rgba(255,255,255,0.025);
   /*font-weight: 300;*/
 }
-#problemSummary {
-  font-size: 120%;
-}
-
-
 
 
 /*Sidebar*/
