@@ -4,7 +4,10 @@ import cookie from 'react-cookie';
 import axios from 'axios';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group'; // ES6
 import TutorialProfileContent from '../components/tutorials/TutorialProfileContent.jsx';
-import {Config} from '../config.js'
+import {Config} from '../config.js';
+import $ from 'jquery';
+// import sphere from 'jquery.earth-3d';
+
 
 export default class ProfileContainer extends React.Component {
     constructor(){
@@ -57,7 +60,7 @@ export default class ProfileContainer extends React.Component {
     onLogout() {
         cookie.remove('userToken');
         cookie.remove('userName');
-        document.location = "/login";
+        document.location = "/welcome";
     }
     onCreatedSolution() {
         var self = this;
@@ -93,9 +96,6 @@ export default class ProfileContainer extends React.Component {
 
 
 
-
-
-
    render() {
       return (
     <div id="profileContainer">
@@ -109,8 +109,8 @@ export default class ProfileContainer extends React.Component {
         <div id="profileLeft">
             <div id="userInformation">
                 <p id="userName">{cookie.load('userName')}</p>
+                {/*Set entire background of profile left sb as stars*/}
                 <div id="earth"></div>
-                {sphere}
                 {/*<img src={require('../assets/dnaAvatar.svg')} id="avatarImageProfile" width="160" height="160" alt="User Avatar, DNA Helix" />*/}
             </div>
             <div id="userOptions">
@@ -154,8 +154,36 @@ export default class ProfileContainer extends React.Component {
         
         <TutorialProfileContent />
         </ReactCSSTransitionGroup>
+
+
     </div>
 
       );
    }
 }
+
+
+// For use if trying to get sphere to work:
+
+// Normal sphere
+/*<a href="https://github.com/SamHasler/sphere"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_green_007200.png" alt="Fork on GitHub" /></a>
+	<div id="outer">
+		<div id="inner">
+			<h3>sphere.js</h3>
+			<canvas id="sphere" width="300" height="300">
+				Sorry, your browser does not support the canvas element
+			</canvas>
+			<div id="fps"></div>
+			<div>Sphere rendered in JavaScript / Canvas 
+				that renders an image onto the surface of a perfect sphere rather than using triangles / geometry.
+			</div>
+			<div><a href="../docs/sphere.html">Read the annotated source</a></div>
+		</div>
+	</div>*/
+
+// Super cool sphere
+{/*{function sphere(){
+    return $('#sphere').earth3d({
+        dragElement: $('#locations')
+    });
+}}*/}

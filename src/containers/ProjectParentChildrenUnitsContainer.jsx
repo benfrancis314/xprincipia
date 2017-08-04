@@ -30,7 +30,7 @@ export default class ProjectParentChildrenUnitsContainer extends React.Component
     render() {
       return (
         <div>
-            <ProjectParentChildrenUnits problems={this.state.problems} problemTitle={this.props.problemTitle} />
+            <ProjectParentChildrenUnits problems={this.state.problems} projectTitle={this.props.problemTitle} />
         </div>
       
       );

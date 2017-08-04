@@ -45,17 +45,22 @@ export default class ProjectParentChildrenUnits extends React.Component {
 		}
 		
 		//  Trying to get nothing to show up if it has no siblings
-		 if (problem.Title == undefined) {
+
+		if (problem.Title == 'self.props.projectTitle') {
 			 		 return (
-			<div id="nodisplay"></div>);
+							// T
+							<Link key={problem.ID} to={'/problem/'+problem.ID +'/subproblems'} onClick={refreshPage} >
+								<li key={problem.ID} id="parentChildrenSelfButton">
+									{problem.Title}
+								</li>
+							</Link>);
+			} else {
+				return (
+					<Link key={problem.ID} to={'/problem/'+problem.ID +'/subproblems'} onClick={refreshPage} >
+						<li key={problem.ID} id="parentChildrenSelfButton">
+							{problem.Title}
+						</li>
+					</Link>);
 		}
-		else {
-			return (
-			<Link key={problem.ID} to={'/problem/'+problem.ID +'/subproblems'} onClick={refreshPage} >
-				<li key={problem.ID} id="parentChildrenButton">
-					{problem.Title}
-				</li>
-			</Link>);
-		}
-  }
+	}
 }

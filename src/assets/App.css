@@ -1345,13 +1345,10 @@ like vote and comments.*/
     }*/
     #avatarHeader {
       flex: 1 1 auto;
-      text-align: center;
-      /*text-align: right;*/
-
-      margin: 0 auto;
-      display: inline-block;
-      overflow: hidden;
-    	text-align: center;
+      /*margin: 0 auto;*/
+      /*display: inline-block;*/
+      /*overflow: hidden;*/
+    	/*text-align: center;*/
       width: 33%;
     }
     #avatarImage {
@@ -1368,26 +1365,20 @@ like vote and comments.*/
     }
     #avatarFullName {
       margin: 0 auto;
-      margin-right: 3%;
-      font-size: 200%;
-      color: #dddddd;
       letter-spacing: 8px;
-    	overflow: hidden;
+    	/*overflow: hidden;*/
     	width: 100%;
-    	display: -webkit-box;
-    	display: -moz-box;
-    	display: -ms-flexbox;
-    	display: -webkit-flex;
-    	display: inline-flex;
-    	flex-direction: row;
-    	justify-content: space-between;
-    	flex-wrap: nowrap;
-    	align-items: strech;
-      text-align: right;
-      float: right;
+    	/*display: flex;*/
+    	/*flex-direction: column;*/
+    	/*justify-content: space-between;*/
+    	/*flex-wrap: nowrap;*/
+    	/*align-items: strech;*/
+      /*text-align: right;*/
+      /*float: right;*/
       transition: all 0.5s ease 0s;
       transform: scale(1);
-      color: #ffffff;
+      margin-bottom: 0px;
+      /*color: #ffffff;*/
     }
     /*#avatarFullName:hover {
       transform: scale(1.02);
@@ -1395,11 +1386,39 @@ like vote and comments.*/
       cursor: pointer;
     }*/
     #headerName {
-      display: inline;
-      flex: 2 2 auto;
+      /*Old CSS*/
+      /*display: inline;*/
+      /*flex: 2 2 auto;*/
 
-      /*Testing out header username letter spacing*/
-      /*letter-spacing: 2px;*/
+      /*New CSS*/
+      color: #00dcff;
+      /*flex: 2 2 auto;*/
+      margin: 0 auto;
+      margin-left: 55%;
+      font-size: 140%;
+      text-align: center;
+      letter-spacing: 8px;
+      padding: 3px;
+      width: 40%;
+      transition: all 0.5s ease 0s;
+      background-color: rgba(0,220,255,0.05);
+      border: 1px solid #00dcff;
+      border-radius: 5px;
+      margin-bottom: 0px;
+      /*height: 100%;*/
+    }
+    #headerName:hover {
+      background-color: rgba(0,220,255,0.1);
+    }
+    #commandButton {
+      flex: 1 1 auto;
+      margin: 0 auto;
+      font-size: 50%;
+      text-align: center;
+      /*letter-spacing: 8px;*/
+      padding: 0px;
+      width: 100%;
+      transition: all 0.5s ease 0s;
     }
     #imgContainerAvatar {
       flex: 1 1 auto;
@@ -1781,14 +1800,14 @@ like vote and comments.*/
 }
 #introductionContainer {
   margin: 0 auto;
-  margin-top: 1%;
+  margin-top: 2.5%;
   margin-bottom: 3%;
   font-size: 175%;
   width: 75%;
   background-color: rgba(0,220,255,0.05);
-  border: 2px outset #00dcff;
-  border-width: 0px 1px 0px 1px;
-  border-radius: 0px 0px 0px 0px;;
+  border: 2px solid #00dcff;
+  border-width: 1px 1px 1px 1px;
+  border-radius: 40px 40px 0px 0px;;
   text-align: left;
   padding: 5% 5% 5% 5%;
   z-index: 5;
@@ -1797,14 +1816,31 @@ like vote and comments.*/
 #introductionWelcome {
   border: 1px outset #00dcff;
   border-width: 1px 0px 0px 0px;
-  padding: 15px;
-  margin-bottom: 1%;
-  font-size: 120%;
-}
-#introductionCapital {
-  font-size: 150%;
+  padding: 3%;
+  padding-bottom: 0px;
+  padding-top: 2%;
+  margin-top: 1%;
+  margin-bottom: 0%;
+  font-size: 160%;
+  text-align: center;
+  letter-spacing: 4px;
   /*color: #00dcff;*/
 
+
+  /*Trying out blend color between #ffffff and #0dcff. 
+  So far haven't found conceptto work. 
+  
+  Eitherway, interesting color to keep. */
+
+  /*border-color: #74ECFF;*/
+}
+#introductionCapital {
+  font-size: 120%;
+
+}
+#introductionCapitalBlue {
+  font-size: 120%;
+  color: #00dcff;
 }
 #introductionBig {
   font-size: 125%;
@@ -1817,17 +1853,30 @@ like vote and comments.*/
   /*letter-spacing: 2px;*/
   /*padding-left: 3px;*/
 }
+#introductionTitle {
+  color: #ffffff;
+  text-align: center;
+  padding: 5px;
+  margin: 0 auto;
+  margin-top: 1%;
+  margin-bottom: 2.5%;
+  border: 1px solid #00dcff;
+  border-width: 1px 0px;
+  width: 80%;
+}
 #introductionProse {
   font-family: 'Open Sans';
-  font-size: 60%;
+  font-size: 70%;
   letter-spacing: normal;
-  color: #bbbbbb;
-  padding-left: 3%;
+  color: #dddddd;
+  padding-left: 8%;
+  padding-right: 8%;
+  line-height: 170%;
 }
 #introductionProjectsProse {
   font-family: 'Open Sans';
   font-size: 60%;
-  color: #bbbbbb;
+  color: #dddddd;
   letter-spacing: normal;
   width: 80%;
   margin: 0 auto;
@@ -1981,14 +2030,18 @@ introductionProjectTitle {
       transform: scale(1.05);
     }
     #userName {
-    	font-size: 270%;
+    	font-size: 250%;
+      letter-spacing: 6px;
     	text-align: center;
-    	line-height: 100%;
-    	margin: 10px;
-    	padding: 0px;
+    	margin: 0 auto;
+    	padding: 10px 3px;
     	font-family: 'Alegreya Sans SC', sans-serif;
-      margin-top: 5%;
-      margin-bottom: 2%;
+      word-break: break-all;
+      overflow: auto;
+      border: 1px solid #dddddd;
+      border-width: 0px 1px 1px 0px;
+      border-radius: 4px;
+      background-color: rgba(255,255,255,0.01);
     }
     #userEmail {
     	font-size: 155%;
@@ -2194,6 +2247,59 @@ introductionProjectTitle {
     	font-size: 80%;
     	margin: 0px;
     	text-align: justify;
+    }
+    #earth {
+      position: relative;
+      width: 250px;
+      height: 250px;
+      margin: 3em auto;
+      margin-bottom: 6.5%;
+      margin-top: 5.5%;
+      background: url(earth2Sphere.jpg) 0 0 repeat;
+      background-color: rgba(0,220,255,0.6);
+      background-blend-mode: overlay;
+      border-radius: 50%;
+      background-size: 630px;
+      animation: rotate 35s linear infinite;
+      transition: transform 2500ms linear;
+      transform-style: preserve-3d;
+      box-shadow: inset 20px 0 80px 6px rgba(15,19,28,1);
+      color: #000;
+
+      border: 3px outset rgba(0,220,255, 0.25);
+    	border-radius: 50%;
+      transition: all 0.5s ease 0s;
+      /*transform: scale(1);*/
+      /*padding: 10px;*/
+
+    }
+
+    #earth:after {
+      content: "";
+      position: absolute;
+      top: 0%;
+      left: 0%;
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      box-shadow: -80px 15px 80px 10px rgba(0,0,0,.9) inset;
+    }
+
+    #earth:before {
+      content: "";
+      position: absolute;
+      border-radius: 50%;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      opacity: 0.2;
+      background: radial-gradient(circle at 100px 100px, #fff, #000);
+    }
+
+    @keyframes rotate {
+      0% {background-position: 0 0;}
+      100% {background-position: 630px 0;}
     }
 
 /*End Profile*/
@@ -3521,9 +3627,11 @@ introductionProjectTitle {
   transition: all 0.5s ease 0s;
   text-align: center;
   /*margin: 0% 5% 0% 5%;  */
-  width: 100%;
+  /*width: 100%;*/
   min-width: 14em;
+  max-width: 18em;
   display: block;
+  word-break: none;
   /*Previously used width: 14em*/
 }
 #parentChildrenButton:hover, #parentChildrenButton:active {
@@ -3542,6 +3650,31 @@ introductionProjectTitle {
   overflow-x: scroll;
   margin-top: 0.6%;
 }
+#parentChildrenSelfButton {
+  background-color: rgba(0,220,255,0.05);
+  border: 1px solid #aaaaaa;
+  border-width: 1px 1px 1px 1px;
+  border-radius: 0px 0px 3px 3px;
+  letter-spacing: 1px;
+  color: #aaaaaa;
+  transition: all 0.5s ease 0s;
+  text-align: center;
+  /*margin: 0% 5% 0% 5%;  */
+  /*width: 100%;*/
+  min-width: 14em;
+  max-width: 18em;
+  display: block;
+  word-break: none;
+  /*Previously used width: 14em*/
+}
+#parentChildrenSelfButton:hover, #parentChildrenSelfButton:active {
+  cursor: pointer;
+  background-color: rgba(0,220,255,0.1);
+  color: #ffffff;
+  border-color: #dddddd;
+}
+
+
 
 #problemRow1, #problemRow2 {
   display: inline-flex;

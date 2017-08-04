@@ -43,6 +43,29 @@
 
     </script>
 
+    <!--Rotating Sphere plugin-->
+
+      <!--<script src="Stats.js"></script>
+      <script src="requestanimationframe.polyfill.js"></script>
+      <script src="..\sphere.js"></script>
+      <script>
+            function go() {
+                  var texture = "earth1024x1024.jpg";
+                  createSphere(document.getElementById("sphere"),texture);
+                  var stats = new Stats();
+                  // Align top-left
+                  stats.getDomElement().style.position = 'relative';
+                  stats.getDomElement().style.marginLeft = '-40px';
+                  stats.getDomElement().style.left = '50%';
+                  
+                  document.getElementById("fps").appendChild(stats.getDomElement());
+                  setInterval(function () {
+                  stats.update();
+                  
+                  }, 1000 / 60);
+            }
+      </script>-->
+
     <!--
       Notice the use of %PUBLIC_URL% in the tag above.
       It will be replaced with the URL of the `public` folder during the build.
