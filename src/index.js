@@ -17,6 +17,7 @@ import ConsDeleteForm from './components/proscons/ConsDeleteForm.jsx';
 import ConsEditForm from './components/proscons/ConsEditForm.jsx';
 import ConsFlagForm from './components/proscons/ConsFlagForm.jsx';
 import ConsForm from './components/proscons/ConsForm.jsx';
+import Empty from './components/Empty.jsx';
 import Error404 from './components/Error404.jsx';
 import FeedbackForm from './components/FeedbackForm.jsx';
 import FreeFormDeleteForm from './components/freeform/FreeFormDeleteForm.jsx';
@@ -170,6 +171,7 @@ ReactDOM.render(
           <Route path='/problem/:probID/flag' component={ProjectFlagForm}></Route>
           <Route path='/problem/:probID/subproblems' component={SubProblemContainer}></Route>
         </Route>
+        <Route path='/problem/:probID/subprojects' component={Empty}></Route>
         <Route path='/problem/:probID/solutions' component={ProblemSolutionsMenu}>
         <IndexRoute component={ProblemTopSolutions}></IndexRoute>
         <Route path='/problem/:probID/solutions/create' component={SolutionForm}></Route>
@@ -203,7 +205,8 @@ ReactDOM.render(
             <Route path='/fullsolution/:probID/:solutionID/versionform' component={VersionForm}></Route>
           </Route>
         </Route>
-          <Route path='/problem/:probID/discuss' component={ProblemDiscussMenu}>
+      </Route>
+                <Route path='/problem/:probID/discuss' component={ProblemDiscussMenu}>
             <IndexRoute component={QuestionContainer}></IndexRoute>
             <Route path='/problem/:probID/questions/container' component={QuestionContainer}>
               <IndexRoute component={QuestionForm}></IndexRoute>
@@ -260,7 +263,6 @@ ReactDOM.render(
                 <Route path='/problem/:probID/learn/resources/:resourceID/embed' component={LearnResourcesEmbed}></Route>            
               </Route>
             </Route>
-      </Route>
       <IndexRoute component={ProblemLeftSB}></IndexRoute>
         <Route path='/problem/:probID/sb' component={ProblemLeftSB}>
           <IndexRoute component={ProblemSolutionsMenu}></IndexRoute>

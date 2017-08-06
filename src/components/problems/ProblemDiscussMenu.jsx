@@ -24,7 +24,10 @@ export default class ProblemDiscussMenu extends React.Component {
 
    render() {
       return (
-        <div id="solutions">
+        <div id="projectInteractMenu">
+            <Link to={`/problem/${this.props.params.probID}/subprojects`}>
+                <div id="subProjectsButton">View Sub Projects</div>
+            </Link>
             <div id="solutionsTitleRightSB">Discuss</div>
             <div id="sidebarDiscussMenu">
                 <div id="discussGroup1">

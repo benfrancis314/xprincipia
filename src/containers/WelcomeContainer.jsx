@@ -66,13 +66,13 @@ export default class WelcomeContainer extends React.Component {
         <div>
             <Sound
                 url={require('../assets/jfkSpeech.mp3')}
-                autoLoad={true}
+                autoLoad={false}
                 playStatus={Sound.status.PLAYING}
                 playFromPosition={87500 /*Comment: in milliseconds*/}
                 onLoading={this.handleSongLoading}
                 onPlaying={this.handleSongPlaying}
                 onFinishedPlaying={this.handleSongFinishedPlaying} 
-                volume={100}/>
+                volume={0}/>
          <Link to="/introduction">
             <div id="welcomeIntroductionButton">
                 Introduction

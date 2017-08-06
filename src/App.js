@@ -3,6 +3,8 @@ import axios from 'axios'
 import cookie from 'react-cookie'
 import './assets/App.css';
 import './assets/index.css';
+import { Link } from 'react-router';
+import $ from 'jquery';
 
 
 class App extends React.Component {
@@ -37,6 +39,12 @@ class App extends React.Component {
   onLogout() {
     cookie.remove('userToken', { path: '/' });
   }
+  hideNotification() {
+    $(document).ready(function() {
+        $('#notificationShow').attr('id','notification');
+     });
+    };
+    
   render() {
     //Check if user is logged in
     // if (this.state.userToken === undefined ){
@@ -63,10 +71,17 @@ class App extends React.Component {
       <div className="App">
         {this.props.children}
         <div id="notification">
-          <div id="notificationHeader">Notification</div>
-          <br />
-          <div id="notificationContent">Notification Content</div>
-          <div id="notificationReturn">Return</div>
+          <div id="notificationHeader">!</div>
+          <div id="notificationContent">We apologize for this error. In your <span id="blue">Personal Headquarters</span>, please tell us the error under <span id="blue">Feedback</span>.</div>
+          <div id="notificationLoginRegisterContainer">
+            <Link to='/login'>
+              <div id="notificationLogin" onClick={this.hideNotification}>Login</div>
+            </Link>
+            <Link to='/register'>
+            <div id="notificationRegister" onClick={this.hideNotification}>Register</div>
+            </Link>
+          </div>
+          <div id="notificationReturn" onClick={this.hideNotification}>Return</div>
         </div>
       </div>
       );

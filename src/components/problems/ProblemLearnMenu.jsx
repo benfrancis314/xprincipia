@@ -6,7 +6,7 @@ export default class ProblemLearnMenu extends React.Component {
 
    render() {
       return (
-        <div id="solutions">
+        <div id="projectInteractMenu">
             <div id="solutionsTitleRightSB">Learn</div>
             <div id="solutionsLearnHeader">
                 <Link to={`/problem/${this.props.params.probID}/learn/content`} activeClassName="activeWhite">

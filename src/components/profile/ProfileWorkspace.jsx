@@ -6,7 +6,7 @@ export default class SolutionContainer extends React.Component {
 
    render() {
       return (
-        <div id="solutions">
+        <div>
             <div id="noteBooksTitle">Notebooks</div>
             <div>
                 <div id="createNoteBookButton">

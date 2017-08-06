@@ -8,7 +8,10 @@ import SideBarProblemMenu from './SideBarProblemMenu.jsx';
 import SubProblemContainer from '../../containers/SubProblemContainer.jsx';
 import SubProjectParentUnit from './SubProjectParentUnit.jsx';
 import TutorialProjectContent from '../tutorials/TutorialProjectContent.jsx';
-import {Config} from '../../config.js'
+import {Config} from '../../config.js';
+
+// import Scroll from 'react-scroll'; // Imports all Mixins
+// import {scroller} from 'react-scroll'; //Imports scroller mixin, can use as scroller.scrollTo()
 
 export default class FullProblem extends React.Component {
   constructor(props){
@@ -154,6 +157,11 @@ unVote() {
         
     }
 
+jumpDown() {
+  // var self=this;
+  // window.location.hash = "problemSummary";
+}
+
    render() {
 
 			function refreshPage() {
@@ -199,7 +207,7 @@ unVote() {
           {/*Row 1*/}
             <div id="columnContainerProject">
               <div id="sidebarMenu">
-                <Link to={`/problem/${this.props.params.probID}/questions`}>
+                <Link to={`/problem/${this.props.params.probID}/questions`} onClick={this.jumpDown}>
                   <div id="SBButtonDiscuss">Discuss</div>
                 </Link>
               </div>
@@ -289,7 +297,7 @@ unVote() {
           <Link to={`/problem/${this.state.problemInfo.ParentID}/subproblems`} onClick={refreshPage}>
             <SubProjectParentUnit parentID={this.state.problemInfo.ParentID}/>
           </Link>
-          <ProjectParentChildrenUnitsContainer parentID={this.state.problemInfo.ParentID} problemTitle={this.state.problemInfo.Title}/>
+          {/*<ProjectParentChildrenUnitsContainer parentID={this.state.problemInfo.ParentID} problemTitle={this.state.problemInfo.Title}/>*/}
 
           <div id="problemIntro">
             <h1 id="problemTitle">{this.state.problemInfo.Title}</h1>
@@ -305,8 +313,8 @@ unVote() {
           {/*Row 1*/}
             <div id="columnContainerProject">
               <div id="sidebarMenu">
-                <Link to={`/problem/${this.props.params.probID}/questions`} activeClassName="activeWhiteBlueText">
-                  <div id="SBButtonDiscuss">Discuss</div>
+                <Link to={`/problem/${this.props.params.probID}/questions`} activeClassName="activeWhiteBlueText" onClick={this.jumpDown}>
+                    <div id="SBButtonDiscuss">Discuss</div>
                 </Link>
               </div>
             </div>
@@ -322,7 +330,7 @@ unVote() {
             <p id="problemSummary">
               {this.state.problemInfo.Summary}
             </p>
-            <Link to={`/problem/${this.props.params.probID}/solutions/top`} activeClassName="activeWhite">
+            <Link to={`/problem/${this.props.params.probID}/solutions/top`} activeClassName="activeWhite" onClick={this.jumpDown}>
               <div id="SBButton">Proposals</div>
             </Link>
             <Link to={`/problem/${this.props.params.probID}/create`} activeClassName="activeBlueText">
@@ -335,7 +343,7 @@ unVote() {
           <div id="columnContainerProject">
             {/*<div id="fullProblemHeader">*/}
               <div id="sidebarMenu">
-                <Link to={`/problem/${this.props.params.probID}/learn/resources`} activeClassName="activeWhiteBlueText">
+                <Link to={`/problem/${this.props.params.probID}/learn/resources`} activeClassName="activeWhiteBlueText" onClick={this.jumpDown}>
                   <div id="SBButtonLearn">Learn</div>
                 </Link>
               </div>
@@ -350,12 +358,13 @@ unVote() {
         {/*<div id="SPLabel">
           Sub Projects
         </div>*/}
-        <div id="sidebarSBProjects">
-          {React.cloneElement(this.props.children, {probID: this.state.probID})}
+          <div id="projectMenuContainer">
+          </div>
+            {React.cloneElement(this.props.children, {probID: this.state.probID})}
+          
           
           {/*Attempt to get subprojects always underneath the section, particularly for creating new projects*/}
-          {/*<SubProblemContainer probID={this.state.probID}/>*/}
-        </div>
+          {/*<SubProblemContainer />*/}
 
         {/*<div id="tutorialProblemButtonDiv">
           <img src={require('../../assets/tutorial.svg')} id="tutorialProblemButton" width="50" height="50" alt="Back arrow, blue up arrow" />

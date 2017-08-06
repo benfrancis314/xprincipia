@@ -20,12 +20,12 @@ export default class Introduction extends React.Component {
           transitionLeave={false}>
             <Link to="/welcome">
                 <div id="welcomeIntroductionButtonActive">
-                    Introduction
+                    Explore
                 </div>
             </Link>
           <div id="introductionContainer">
                 <div id="introductionWelcome">
-                    <span id="introductionCapitalBlue">W</span><span id="blue">elcome to </span><span id="introductionCapital">XP</span>rincipia
+                    <span id="introductionCapitalBlue">W</span><span id="blue">elcome to </span><span id="introductionCapitalBlue">XP</span><span id="blue">rincipia</span>
                     <br />
                 </div>
                 {/*Considering change to "The Open Frontier of Discovery/Science*/}
@@ -40,7 +40,7 @@ export default class Introduction extends React.Component {
                     <br />
                     <br />
                     Upon this unique moment in time, we find ourselves <span id="blueOpen">looking ahead into the unknown</span> , 
-                    in great need of a great people to <span id="blueOpen">represent the best of our species</span>, to take this 
+                    in great need of<span id="blueOpen"> a great people to represent the best of our species</span>, who will take this 
                     challenge into their own hands and will. 
                     <br />
                     <br />
@@ -57,7 +57,7 @@ export default class Introduction extends React.Component {
                     where we would like to go. 
                     <br />
                     <br />
-                    Each project along this trajectory will be broken down with <span id="blueOpen">thought and efficiency</span>, for which 
+                    <span id="blueOpen">Each project along this trajectory </span>will be broken down with <span id="blueOpen">thought and efficiency</span>, for which 
                     proposals will be created with <span id="blueOpen">great creativity and determination</span>. 
                     <br />
                     <br />

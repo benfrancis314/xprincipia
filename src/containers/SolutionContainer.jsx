@@ -26,7 +26,7 @@ export default class SolutionContainer extends React.Component {
 
    render() {
       return (
-        <div id="solutions">
+        <div>
             <div id="solutionsTitleRightSB">Proposals</div>
             <div id="solutionsHeader">
                 <Link to={`/problem/${this.props.params.probID}/solution/create`}>

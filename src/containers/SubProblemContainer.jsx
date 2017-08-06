@@ -29,7 +29,7 @@ export default class SubProblemContainer extends React.Component {
     }
     render() {
       return (
-        <div id="solutions">
+        <div id="sidebarSBProjects">
             <SubProblemUnit problems={this.state.problems} />
         </div>
       

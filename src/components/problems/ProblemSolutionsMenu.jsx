@@ -24,7 +24,7 @@ export default class ProblemSolutionsMenu extends React.Component {
 
    render() {
       return (
-        <div id="solutions">
+        <div id="projectInteractMenu">
             <div id="solutionsTitleRightSB">Proposals</div>
             <div id="solutionsHeader">
                 <Link to={`/problem/${this.props.params.probID}/solutions/top`} activeClassName="activeWhite"><div id="topSolutionsButtonRightSB">Top</div></Link>

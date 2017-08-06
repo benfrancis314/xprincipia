@@ -12,8 +12,8 @@ export default class TutorialProfileContent extends React.Component {
             </Link>*/}
         <div id="introContainer">
           <div id="introBanner">
-              <div id="introPrompt">Welcome to your
-                  <span id="blue"> User Headquarters</span></div>
+              <div id="introPrompt">Welcome to your <br />
+                  <span id="blue">Personal Headquarters</span></div>
           </div>
         <div id="tutorialContent"> 
           {/*<div id="introProse">
