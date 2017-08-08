@@ -94,8 +94,12 @@ if (this.state.userToken === undefined ){
             <input type="password" name="password" required="required" maxLength="30" placeholder="Password" id="loginHeaderPassword" />            
             
             {/*Need logo here, arrow signaling "Submit"*/}
-            <Link to='/'><input type="submit" value="Login" onClick={this.postLogin} id="submitLogin" /></Link>            
-            {/*<input type="image" src={require('../assets/rightArrowWhite.svg')} onClick={this.postLogin} id="loginHeaderSubmitButton" alt="Submit login arrow, blue right arrow"/>*/}
+            <input type="submit" value="Login" onClick={this.postLogin} id="loginHeaderSubmitButton" />           
+            {/*<div id="loginHeaderSubmitButton" onClick={this.postLogin} >
+                Login
+            </div>*/}
+            {/*Attempt to get the login button to just be an arrow*/}
+            {/*<input type="image" src={require('../assets/rightArrowWhite.svg')} onClick={this.postLogin} id="loginHeaderSubmitImage" alt="Submit login arrow, blue right arrow"/>*/}
             <div id="registerHeaderButton">
                 <Link to="/register">
                     Register

@@ -2,13 +2,16 @@ import React from 'react';
 import {Link} from 'react-router';
 import cookie from 'react-cookie';
 import $ from 'jquery';
-import RegisterUnit from './RegisterUnit.jsx';
+import IntroductionRegister from './IntroductionRegister'
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group'; // ES6
 
 
 export default class Introduction extends React.Component {
 
    render() {
+    $(document).ready(function() {
+              $('#introductionContainer').hide().slideDown(500);
+    });
       return (
         <div id="fullWide">
             {/*I would prefer slide from side than fade transition*/}
@@ -31,44 +34,45 @@ export default class Introduction extends React.Component {
                 {/*Considering change to "The Open Frontier of Discovery/Science*/}
                 <div id="introductionTitle">The Open Frontier of Research</div>
                 <div id="introductionProse">
-                    We find ourselves in the<span id="blueOpen"> age of great opportunity</span>, but equally the<span id="blueOpen"> age of great peril</span>. 
+                    {/*Trying out capital W here to match the one in Welcome above*/}
+                    <span id="introductionCapitalProse">W</span>e find ourselves in an<span id="blueOpen"> age of great opportunity</span>, but equally an<span id="blueOpen"> age of great peril</span>. 
                     <br />
                     <br />
-                    We find ourselves in the <span id="blueOpen">upturn of an era</span>, where the crescendos of science and discovery 
-                    rest our collective future, as a species and civilization,
-                    <span id="blueOpen"> upon their conclusion</span>. 
+                    We find ourselves in the <span id="blueOpen">upturn of an era</span>, where the <span id='blueOpen'>advances of science and discovery </span>
+                    hold our collective future,<span id="blueOpen"> as a species and civilization</span>,
+                    upon their conclusion. 
                     <br />
                     <br />
-                    Upon this unique moment in time, we find ourselves <span id="blueOpen">looking ahead into the unknown</span> , 
+                    Upon this unique moment in time, we find ourselves <span id="blueOpen">looking ahead into the unknown</span>, 
                     in great need of<span id="blueOpen"> a great people to represent the best of our species</span>, who will take this 
                     challenge into their own hands and will. 
                     <br />
                     <br />
-                    <span id="blueOpen">We call upon you</span>, and all alike with the <span id="blueOpen">spirit of 
+                    <span id="blueOpen">We call upon you</span>, and everyone with the <span id="blueOpen">spirit of 
                     discovery in heart</span>, to take up this challenge 
-                    of all ages and shape the future of our species.
+                    of all ages and <span id="blueOpen">shape the future of our species</span>.
                     <br />
                     <br />
-                    We call upon you for this adventure of all time, looking not at where you come from but <span id="blueOpen">upon 
+                    We call upon you for this <span id="openBlue">adventure of all time</span>, looking not at where you come from but <span id="blueOpen"> 
                     where you will take us</span>. 
                     <br />
                     <br />
-                    <span id="blueOpen">Join the frontier of all knowledge and all will of discovery</span>, the focus of where we are and 
-                    where we would like to go. 
+                    <span id="blueOpen">Join the frontier of all knowledge</span> and<span id="blueOpen"> will of discovery</span>, the focus of where we are and 
+                    where we choose to go. 
                     <br />
                     <br />
-                    <span id="blueOpen">Each project along this trajectory </span>will be broken down with <span id="blueOpen">thought and efficiency</span>, for which 
-                    proposals will be created with <span id="blueOpen">great creativity and determination</span>. 
+                    <span id="blueOpen">Each project along this path </span>will be broken down with <span id="blueOpen">thought and efficiency</span>, for which 
+                    <span id="blueOpen">proposals will be created </span>with great<span id="blueOpen"> creativity and determination</span>. 
                     <br />
                     <br />
-                    Discussion and debate will be held with <span id="blueOpen">rigor and deterimation</span>, for which there will be tailored education, <span id="blueOpen">designed 
-                    with patience and used with ambition</span>. 
+                    <span id="blueOpen">Discussion and debate </span>will be held with <span id="blueOpen">rigor and deterimation</span>, and 
+                    <span id="blueOpen">project-targeted education </span>will be <span id='blueOpen'>designed with patience </span>and <span id="blueOpen">used with ambition</span>. 
                     <br />
                     <br />
                     Proposals are weighed by pro and con, and <span id="blueOpen">decisions made by democratic vote</span>.
                     <br />
                     <br />
-                    In the end, <span id="blueOpen">an architecture will be built with the greatest works of our time held inside</span>, a blueprint 
+                    In the end, <span id="blueOpen">an architecture will be built with the greatest works of our time </span>held inside, a blueprint 
                     designed for tomorrow. 
                     <br />
                     <br />
@@ -76,12 +80,10 @@ export default class Introduction extends React.Component {
                     <br />
                     <br />
                     We ask you <span id="blueOpen">to join this cause</span>, to explore this frontier and dedicate your will to advance our world,
-                    with the knowledge that together <span id="blueOpen">we will not fail</span>.
-                    
+                    with the knowledge that together <span id="blueOpen">we will not fail</span>.     
                 </div>
 
-                Join XPrincipia
-                RegisterUnit
+                <IntroductionRegister />
 
                 <div id="introductionProse"> 
                     Join the effort to make humanity into a spacefaring civilization
@@ -120,9 +122,6 @@ export default class Introduction extends React.Component {
                 {/*<div id="introductionProjectsProse">
                     Here are the projects towards progressing our technologies, tools which have shaped our history so far, and will continue to shape our future, including advances such as artificial intelligence and nanostructures.
                 </div>*/}
-                {/*Autofocus in register causes page-jump problem*/}
-                {/*Moving inside introductionContainer through off width styles*/}
-                {/*<RegisterUnit />*/}
             </div>
 
             </ReactCSSTransitionGroup>

@@ -1,7 +1,9 @@
 import React from 'react';
 import {Link} from 'react-router';
-import axios from 'axios'
-import {Config} from '../../config.js'
+import axios from 'axios';
+import {Config} from '../../config.js';
+import SubProblemContainer from '../../containers/SubProblemContainer.jsx';
+
 
 export default class ProblemDiscussMenu extends React.Component {
   constructor(props){
@@ -25,7 +27,7 @@ export default class ProblemDiscussMenu extends React.Component {
    render() {
       return (
         <div id="projectInteractMenu">
-            <Link to={`/problem/${this.props.params.probID}/subprojects`}>
+            <Link to={`/problem/${this.props.params.probID}/subproblems`}>
                 <div id="subProjectsButton">View Sub Projects</div>
             </Link>
             <div id="solutionsTitleRightSB">Discuss</div>

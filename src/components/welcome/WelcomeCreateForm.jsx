@@ -43,7 +43,7 @@ export default class WelcomeCreateForm extends React.Component {
       .catch(function (error) {
         // console.log(error.response.data)
           $(document).ready(function() {
-              $('#notification').attr('id','notificationShow');
+              $('#notification').attr('id','notificationShow').hide().slideDown();
               $('#notificationContent').text(error.response.data);
               // alert( "Please login to add content. ");
               if (error.response.data == '[object Object]') {
@@ -53,9 +53,6 @@ export default class WelcomeCreateForm extends React.Component {
                     $('#notificationContent').html('Please <span id="blue">login </span>to contribute content');
                   })
                 );
-              }
-              else {
-                return (alert( "Please login to add content. "));
               }
           });
       });

@@ -12,26 +12,40 @@ export default class FullProblem extends React.Component {
         }
     };
 
-    componentWillMount(){
+
+    getInitialState(){
         var self = this;
-            return axios.get( Config.API + '/problems/ID?id='+this.props.parentID).then(function (response) {
+            return axios.get( Config.API + '/problems/ID?id='+self.props.parentID).then(function (response) {
                 self.setState({
                     parent: response.data
                 })
-								console.log(parent.Title);
+            }) 
+    }
+
+    componentWillMount(){
+        var self = this;
+            return axios.get( Config.API + '/problems/ID?id='+self.props.parentID).then(function (response) {
+                self.setState({
+                    parent: response.data
+                })
             }) 
     }
 
 
    render() {
 		 
-		 if (this.state.parent.Title == undefined) {
-			 		 return (
-			<div id="parentButton">XPrincipia Projects</div>);
+	if (this.props.parentID == 0) {
+		return (
+			<div id="parentButton">
+                XPrincipia Projects
+            </div>
+            );
 		}
-		else {
+	else {
 		 return (
-			<div id="parentButton">{this.state.parent.Title}</div>
+			<div id="parentButton">
+                {this.state.parent.Title}
+            </div>
 			);
 		}
 	}

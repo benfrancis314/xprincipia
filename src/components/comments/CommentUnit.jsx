@@ -2,7 +2,8 @@ import React from 'react';
 import { Link } from 'react-router';
 import axios from 'axios';
 import cookie from 'react-cookie';
-import {Config} from '../../config.js'
+import {Config} from '../../config.js';
+import $ from 'jquery';
 
 export default class CommentUnit extends React.Component {
 
@@ -50,9 +51,22 @@ export default class CommentUnit extends React.Component {
         .then(function (result) {
             document.location = window.location.pathname 
         })
-        .catch(function (error) {
-            alert("You may only vote on a comment once.")
-        })
+      .catch(function (error) {
+        // console.log(error.response.data)
+          $(document).ready(function() {
+              $('#notification').attr('id','notificationShow').hide().slideDown();
+              $('#notificationContent').text(error.response.data);
+              // alert( "Please login to add content. ");
+              if (error.response.data == '[object Object]') {
+                return (
+                  $(document).ready(function() {
+                    $('#notificationLoginRegisterContainer').attr('id','notificationLoginRegisterContainerShow');
+                    $('#notificationContent').html('Please <span id="blue">login </span>to contribute content');
+                  })
+                );
+              }
+          });
+      });
        }
         function unVote() {
         axios.delete( Config.API + '/auth/vote/delete' ,{
@@ -65,9 +79,22 @@ export default class CommentUnit extends React.Component {
         .then(function (result) {
             document.location = window.location.pathname 
         })
-        .catch(function (error) {
-            alert("I'm sorry, there was a problem with your request. ")
-        })
+      .catch(function (error) {
+        // console.log(error.response.data)
+          $(document).ready(function() {
+              $('#notification').attr('id','notificationShow').hide().slideDown();
+              $('#notificationContent').text(error.response.data);
+              // alert( "Please login to add content. ");
+              if (error.response.data == '[object Object]') {
+                return (
+                  $(document).ready(function() {
+                    $('#notificationLoginRegisterContainer').attr('id','notificationLoginRegisterContainerShow');
+                    $('#notificationContent').html('Please <span id="blue">login </span>to contribute content');
+                  })
+                );
+              }
+          });
+      });
   }
        if (this.state.voteHash[comment.ID] === true && comment.Username === cookie.load('userName')) {
            return (

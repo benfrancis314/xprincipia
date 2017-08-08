@@ -1521,10 +1521,6 @@ like vote and comments.*/
       margin-top: 0%;
       margin-bottom: 0%;
     }
-    #register {
-      /*margin-top: 1%;
-      margin-bottom: 2%;*/
-    }
     #banner {
     	color: #ffffff;
     	width: 100%;
@@ -1690,7 +1686,7 @@ like vote and comments.*/
     #loginHeaderPasswordDiv {
       margin: 0 auto;
     }
-    #loginHeaderSubmitButton {
+    #loginHeaderSubmitImage {
       font-family: 'Alegreya Sans SC', sans-serif;
       color: #00ffdc;
       background-color: #0f131c;
@@ -1708,9 +1704,32 @@ like vote and comments.*/
       width: 20px;
       height: 20px;
     }
-    #loginHeaderSubmitButton:hover {
+    #loginHeaderSubmitImage:hover {
       cursor: pointer;
       background-color: rgba(255,255,255,0.15);
+    }
+    #loginHeaderSubmitButton {
+      font-family: 'Alegreya Sans SC', sans-serif;
+      font-size: 100%;
+      color: #00dcff;
+      background-color: inherit;
+      text-align: center;
+      border: 1px solid #00dcff;
+      border-radius: 3px;
+      padding: 3px 8px 3px 8px;
+      display: block;
+      margin: 0 auto;
+      margin: 0.3% 0.5% 0.3% 1%;
+      font-size: 125%;
+      box-shadow: 0 0 1pt 1pt rgba(0,220,255,0.5);
+      transition: all 0.5s ease 0s;
+      background-color: #0f131c;
+      width: 6%;
+    }
+    #loginHeaderSubmitButton:hover {
+     cursor: pointer;
+     background-color: rgba(0,220,255,1);
+     color: #0f131c;
     }
     #registerHeaderButton {
       font-family: 'Alegreya Sans SC', sans-serif;
@@ -1823,7 +1842,6 @@ like vote and comments.*/
 }
 #introductionCapital {
   font-size: 120%;
-
 }
 #introductionCapitalBlue {
   font-size: 120%;
@@ -1833,6 +1851,9 @@ like vote and comments.*/
   font-size: 125%;
   /*letter-spacing: 2px;
   padding-left: 3px;*/
+}
+#introductionCapitalProse {
+  font-size: 150%;
 }
 #introductionBigBlue {
   font-size: 125%;
@@ -1867,6 +1888,20 @@ like vote and comments.*/
   letter-spacing: normal;
   width: 80%;
   margin: 0 auto;
+}
+#introRegisterJoin {
+  margin: 0 auto;
+
+}
+#introRegister {
+  color: #dddd1d;
+  padding: 0px 10px 20px 0px;
+  flex: 1 1 auto;
+  width: 100%;
+  font-size: 110%;
+  margin: 0 auto;
+  margin-top: 0%;
+  margin-bottom: 0%;
 }
 #introductionProjectHeader1,
 #introductionProjectHeader2,
@@ -3110,7 +3145,7 @@ introductionProjectTitle {
     	margin-top: 15px;
       margin-bottom: 3px;
       width: 70%;
-      background-color: rgba(0,220,255,0);
+      background-color: rgba(255,255,255,0.025);
       transition: all 0.5s ease 0s;
     }
     #SBButton:hover, #SBButton1:hover {
@@ -3188,7 +3223,7 @@ introductionProjectTitle {
       border: 1px solid #00dcff;
       border-width: 1px 1px 1px 1px;
       border-radius: 0px 0px 7px 7px;
-      background-color: rgba(0,220,255,0);
+      background-color: rgba(255,255,255,0.025);
       transform: scale(1);
       transition: all 0.5s ease 0s;
       /*letter-spacing: 1px;*/
@@ -3597,10 +3632,14 @@ introductionProjectTitle {
   transition: all 0.5s ease 0s;
   margin: 0 auto;
   text-align: center;
+
+  /*Use until project sibilings are working*/
+  margin-bottom: 1%;
 }
 #parentButton:hover, #parentButton:active {
   cursor: pointer;
   color: #ffffff;
+  background-color: rgba(0,220,255,0.15);
 }
 #parentChildrenButton {
   background-color: rgba(0,220,255,0.05);
@@ -3909,7 +3948,7 @@ introductionProjectTitle {
   color: #dddddd;
   padding: 0px 0px 20px 0px;
   margin: 0 auto;
-  margin-top: 3%;
+  margin-top: 2%;
   margin-bottom: 10px;
   flex: 1 1 auto;
   width: 80%;
@@ -3918,6 +3957,22 @@ introductionProjectTitle {
 /*Continue this in morning*/
 #subProjectsButton {
   margin: 0 auto;
+  margin-bottom: 0%;
+  width: 33%;
+  text-align: center;
+  font-size: 135%;
+  padding: 3px;
+  border: 1px solid #00ffdc;
+  border-width: 1px 1px 0px 1px;
+  border-radius: 5px 5px 0px 0px;
+  color: #00ffdc;
+  /*background-color: rgba(0,255,220,0.05);*/
+  transition: all 0.5s ease 0s;
+  transform: scale(1);
+}
+#subProjectsButton:hover {
+  background-color: rgba(0,255,220,0.15);
+  transform: scale(1.02);
 }
 
 
@@ -4278,8 +4333,9 @@ introductionProjectTitle {
   flex: 1 1 auto;
   color: #00dcff;
   border: 1px solid #00dcff;
+  border-radius: 3px;
   /*border-width: 0px 0px 1px 0px;*/
-  font-size: 80%;
+  font-size: 150%;
   /*padding: 3px 5px 3px 10px;*/
   padding: 5px;
   margin: 0px 0px;
