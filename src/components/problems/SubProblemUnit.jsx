@@ -11,6 +11,8 @@ export default class SubProblemUnit extends React.Component {
 
   };
 
+
+		// Not sure what this is used for
     // componentDidMount(){
     //   var self = this;
 	  // if (self.props.problem != null ){
@@ -20,16 +22,12 @@ export default class SubProblemUnit extends React.Component {
     // }
 
     //On recieving new props
-  componentWillReceiveProps(newProps){
+  componentWillReceiveProps(nextProps){
 	  var self = this
-	  self.setState({problems: newProps.problems})
+	  self.setState({problems: nextProps.problems})
 	  console.log(self.state.problems)
   }
 
-shouldComponentUpdate(nextProps, nextState) {
-    // return a boolean value
-    return true;
-}
 
 	render() {
 		return (

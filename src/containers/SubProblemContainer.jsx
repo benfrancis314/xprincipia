@@ -42,7 +42,15 @@ export default class SubProblemContainer extends React.Component {
             })
         })  
     }
-
+componentWillReceiveProps (nextProps){
+        var self = this;
+        window.scrollTo(0,0);
+        return axios.get( Config.API + '/auth/problems/subproblems?id='+nextProps.params.probID).then(function (response) {
+            self.setState({
+                problems: response.data
+            })
+        }) 
+}
 
 //         //On recieving new props
 //     componentWillReceiveProps(newProps){
