@@ -24,63 +24,19 @@ export default class FullProblem extends React.Component {
         }
         this.submitVote = this.submitVote.bind(this)
         this.unVote = this.unVote.bind(this)
-        this.goToParent = this.goToParent.bind(this)
     };
-
-
-// Trying to get parentInfo to load. Currently problem is these two stages of lifecyle are behind where state is set
-// in componentDidMount
-    getInitialState() {
-      var self = this;
-      axios.get( Config.API + '/problems/ID?id='+this.state.problemInfo.ParentID).then(function (response) {
-
-          //set Problem Data
-          self.setState({
-              parentInfo: response.data
-          });
-          
-    });
-      axios.get( Config.API + '/problems/ID?id='+this.props.params.probID).then(function (response) {
-          //set problem data
-          self.setState({
-              problemInfo: response.data,
-              probID: response.data.ID
-          })
-      })
-    }
-
-    componentWillMount(){
-      var self = this;
-          axios.get( Config.API + '/problems/ID?id='+this.state.problemInfo.ParentID).then(function (response) {
-
-          //set Problem Data
-          self.setState({
-              parentInfo: response.data
-          })
-    });
-          axios.get( Config.API + '/problems/ID?id='+this.props.params.probID).then(function (response) {
-          //set problem data
-          self.setState({
-              problemInfo: response.data,
-              probID: response.data.ID
-          })
-      })
-    }
-
-
     componentDidMount(){
       var self = this;
-      axios.get( Config.API + '/problems/ID?id='+this.props.params.probID).then(function (response) {
+      axios.get( Config.API + '/auth/problems/ID?id='+this.props.params.probID).then(function (response) {
 
           //set Problem Data
           self.setState({
-              problemInfo: response.data,
-              probID: response.data.ID
+              problemInfo: response.data
           })
     })
     .catch(function (error) {
         if(error.response.status === 401 || error.response.status === 403){
-            document.location = "/login"
+            document.location = "/welcome"
         }
     });
           
@@ -93,9 +49,10 @@ export default class FullProblem extends React.Component {
       })       
   }
 
+
   componentWillReceiveProps(newProps){
     var self = this;
-      axios.get( Config.API + '/problems/ID?id='+newProps.params.probID).then(function (response) {
+      return axios.get( Config.API + '/auth/problems/ID?id='+newProps.params.probID).then(function (response) {
         //set problem data
         self.setState({
             problemInfo: response.data,
@@ -103,29 +60,15 @@ export default class FullProblem extends React.Component {
         })
     })
     .catch(function (error) {
-      // Commented because console error, "Cannot read 'status'"
         if(error.response.status === 401 || error.response.status === 403){
             document.location = "/welcome"
         }
     }); 
-      this.setState({
-    // set something 
-    
-  });
-}
-  // Trying to get sub projects to not need to refresh
-shouldComponentUpdate(nextProps, nextState) {
-  // return a boolean value
-  return true;
-}
-componentWillUpdate (nextProps, nextState){
-    // perform any preparations for an upcoming update
-}
 
-componentDidUpdate (prevProps, prevState){
-    // perform DOM operations after the data has been updated
-}
-  submitVote() {
+  }
+
+// Old
+submitVote() {
       var self = this
        axios.post( Config.API + '/auth/vote/create', {
            Type: 0,
@@ -142,8 +85,6 @@ componentDidUpdate (prevProps, prevState){
                 problemInfo: response.data,
                 // vote: true,
             })
-            // Turning this on and off for testing if state changes work
-            // Currently unVote works 
             document.location = window.location.pathname 
           })
           
@@ -165,6 +106,7 @@ componentDidUpdate (prevProps, prevState){
           });
       });
   }
+
 unVote() {
       return axios.delete( Config.API + '/auth/vote/delete' ,{
         params: {
@@ -174,39 +116,57 @@ unVote() {
         }
         })
         .then(function (result) {
-            // set problem data
-            // this.setState({
+            //set problem data
+            // self.setState({
                 
             //     vote: false,
             // })
-            // Turning this on and off for testing if state changes work
-            // Currently unVote works 
             document.location = window.location.pathname 
         })
-      .catch(function (error) {
-        // console.log(error.response.data)
-          $(document).ready(function() {
-              $('#notification').attr('id','notificationShow').hide().slideDown();
-              $('#notificationContent').text(error.response.data);
-              // alert( "Please login to add content. ");
-              if (error.response.data == '[object Object]') {
-                return (
-                  $(document).ready(function() {
-                    $('#notificationLoginRegisterContainer').attr('id','notificationLoginRegisterContainerShow');
-                    $('#notificationContent').html('Please <span id="blue">login </span>to unvote');
-                  })
-                );
-              }
-          });
-      });
+        .catch(function (error) {
+            alert("unvote I'm sorry, there was a problem with your request. ")
+        })
         
     }
 
-goToParent() {
-  var self = this;
-  document.location = '/problem/'+ this.state.problemInfo.ParentID + '/subproblems';
-  // alert(this.state.problemInfo.ParentID);
-}
+
+// New
+// unVote() {
+//       return axios.delete( Config.API + '/auth/vote/delete' ,{
+//         params: {
+//           type: 0,
+//           typeID: this.props.params.probID,
+//           username: cookie.load('userName')
+//         }
+//         })
+//         .then(function (result) {
+//             // set problem data
+//             // this.setState({
+                
+//             //     vote: false,
+//             // })
+//             // Turning this on and off for testing if state changes work
+//             // Currently unVote works 
+//             document.location = window.location.pathname 
+//         })
+//       .catch(function (error) {
+//         // console.log(error.response.data)
+//           $(document).ready(function() {
+//               $('#notification').attr('id','notificationShow').hide().slideDown();
+//               $('#notificationContent').text(error.response.data);
+//               // alert( "Please login to add content. ");
+//               if (error.response.data == '[object Object]') {
+//                 return (
+//                   $(document).ready(function() {
+//                     $('#notificationLoginRegisterContainer').attr('id','notificationLoginRegisterContainerShow');
+//                     $('#notificationContent').html('Please <span id="blue">login </span>to unvote');
+//                   })
+//                 );
+//               }
+//           });
+//       });
+        
+//     }
 
 jumpDown() {
   // var self=this;
@@ -228,23 +188,8 @@ goToProposals() {
   document.location = '/problem/'+ self.props.params.probID + '/solutions/top'
 }
 
-  changeName(newName) {
-    this.setState({
-      name: newName
-    });
-  }
-
-
-
-
 
    render() {
-
-			function refreshPage() {
-				// Temporary fix for refreshing sub problems
-				// document.location = '/problem/'+ self.props.params.probID +'/subproblems';
-					 FullProblem.forceUpdate()
-			}
 
        if (this.state.vote ===true && this.state.problemInfo.OriginalPosterUsername === cookie.load('userName')) {
            return (
@@ -259,16 +204,7 @@ goToProposals() {
 
         <div id="problemColumn1">
         
-          {/*<Link to={`/problem/${this.state.problemInfo.ParentID}/subproblems`} onClick={refreshPage}>*/}
-          
-          {/*Add SubProjectParentUnit when properly designed*/}
-          {/*<div onClick={this.goToParent}>*/}
             <SubProjectParentUnit parentID={this.state.problemInfo.ParentID} />
-          {/*</div>*/}
-
-          {/*<Link to={`/problem/${this.state.problemInfo.ParentID}/subproblems`} onClick={refreshPage}>
-            <SubProjectParentUnit parentID={this.state.problemInfo.ParentID}/>
-          </Link>*/}
           {/*<ProjectParentChildrenUnitsContainer parentID={this.state.problemInfo.ParentID} problemTitle={this.state.problemInfo.Title}/>*/}
 
           <div id="problemIntro">
@@ -375,7 +311,7 @@ goToProposals() {
             </div>
           </Link>*/}
 
-          <Link to={`/problem/${this.state.problemInfo.ParentID}/subproblems`} onClick={refreshPage}>
+          <Link to={`/problem/${this.state.problemInfo.ParentID}/subproblems`}>
             <SubProjectParentUnit parentID={this.state.problemInfo.ParentID}/>
           </Link>
           {/*<ProjectParentChildrenUnitsContainer parentID={this.state.problemInfo.ParentID} problemTitle={this.state.problemInfo.Title}/>*/}
@@ -469,21 +405,7 @@ goToProposals() {
         {/*<div id="problemRow1">*/}
         <div id="problemColumn1">
 
-          {/*Used for standard site*/}
-          {/*<Link to={`/problem/${this.state.problemInfo.ParentID}/subproblems`} onClick={refreshPage}>
-            <div id="SPParent">
-              <img src={require('../../assets/parent3.svg')} width="70" height="70" alt="Parent button, blue connection symbol" />
-            </div>
-          </Link>*/}
-
-          {/*Used for mobile, not shown otherwise*/}
-          {/*<Link to={`/problem/${this.state.problemInfo.ParentID}/subproblems`} onClick={refreshPage}>
-            <div id="SPParent2">
-                <img src={require('../../assets/upArrow.svg')} width="250" height="50" alt="Back arrow, blue up arrow" />
-            </div>
-          </Link>*/}
-
-          <Link to={`/problem/${this.state.problemInfo.ParentID}/subproblems`} onClick={refreshPage}>
+          <Link to={`/problem/${this.state.problemInfo.ParentID}/subproblems`}>
             <SubProjectParentUnit parentID={this.state.problemInfo.ParentID}/>
           </Link>
           {/*<ProjectParentChildrenUnitsContainer parentID={this.state.problemInfo.ParentID} problemTitle={this.state.problemInfo.Title}/>*/}
@@ -593,7 +515,7 @@ goToProposals() {
             </div>
           </Link>*/}
 
-          <Link to={`/problem/${this.state.problemInfo.ParentID}/subproblems`} onClick={refreshPage}>
+          <Link to={`/problem/${this.state.problemInfo.ParentID}/subproblems`} >
             <SubProjectParentUnit parentID={this.state.problemInfo.ParentID}/>
           </Link>
           {/*<ProjectParentChildrenUnitsContainer parentID={this.state.problemInfo.ParentID} problemTitle={this.state.problemInfo.Title}/>*/}
