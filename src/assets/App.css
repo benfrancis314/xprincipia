@@ -1856,6 +1856,7 @@ like vote and comments.*/
 }
 #introductionCapitalProse {
   font-size: 150%;
+  font-family: 'Open Sans';
 }
 #introductionBigBlue {
   font-size: 125%;
@@ -1893,10 +1894,17 @@ like vote and comments.*/
 }
 #introRegisterJoin {
   margin: 0 auto;
+  width: 40%;
+  text-align: center;
+  color: #00ffdc;
+  border: 1px solid #00ffdc;
+  border-radius: 3px;
+  padding: 3px;
+  margin-top: 3%;
+  margin-bottom: 3%;
 
 }
 #introRegister {
-  color: #dddd1d;
   padding: 0px 10px 20px 0px;
   flex: 1 1 auto;
   width: 100%;
@@ -1905,6 +1913,21 @@ like vote and comments.*/
   margin-top: 0%;
   margin-bottom: 0%;
 }
+#introRegisterFullName, #introRegisterPassword,
+#introRegisterUserName, #introRegisterEmail {
+  display: block;
+  margin-top: 15px;
+  font-size: 75%;
+  width: 33.3%;
+  margin-bottom: 0px;
+  box-shadow: 0 0 2pt 2pt rgba(0,220,255,0.5);
+  font-family: 'Alegreya Sans SC', sans-serif;
+}
+#loginPassword, #registerPassword {
+  margin-bottom: 15px;
+}
+
+
 #introductionProjectHeader1,
 #introductionProjectHeader2,
 #introductionProjectHeader3,

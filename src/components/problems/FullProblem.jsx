@@ -50,9 +50,9 @@ export default class FullProblem extends React.Component {
   }
 
 
-  componentWillReceiveProps(newProps){
+  componentWillReceiveProps(nextProps){
     var self = this;
-      return axios.get( Config.API + '/auth/problems/ID?id='+newProps.params.probID).then(function (response) {
+      axios.get( Config.API + '/auth/problems/ID?id='+nextProps.params.probID).then(function (response) {
         //set problem data
         self.setState({
             problemInfo: response.data,
@@ -64,7 +64,12 @@ export default class FullProblem extends React.Component {
             document.location = "/welcome"
         }
     }); 
-
+    axios.get( Config.API + "/auth/vote/isVotedOn?type=0&typeID=" + this.props.params.probID + "&username=" + cookie.load("userName"))
+          .then( function (response){
+            self.setState({
+              vote: response.data
+            })
+      })   
   }
 
 // Old
@@ -118,55 +123,29 @@ unVote() {
         .then(function (result) {
             //set problem data
             // self.setState({
-                
-            //     vote: false,
+            //     problemInfo: response.data,
+            //     // vote: false,
             // })
             document.location = window.location.pathname 
         })
         .catch(function (error) {
-            alert("unvote I'm sorry, there was a problem with your request. ")
-        })
+          // console.log(error.response.data)
+            $(document).ready(function() {
+                $('#notification').attr('id','notificationShow').hide().slideDown();
+                $('#notificationContent').text(error.response.data);
+                // alert( "Please login to add content. ");
+                if (error.response.data == '[object Object]') {
+                  return (
+                    $(document).ready(function() {
+                      $('#notificationLoginRegisterContainer').attr('id','notificationLoginRegisterContainerShow');
+                      $('#notificationContent').html('Please <span id="blue">login </span>to unvote');
+                    })
+                  );
+                }
+            });
+        });
         
     }
-
-
-// New
-// unVote() {
-//       return axios.delete( Config.API + '/auth/vote/delete' ,{
-//         params: {
-//           type: 0,
-//           typeID: this.props.params.probID,
-//           username: cookie.load('userName')
-//         }
-//         })
-//         .then(function (result) {
-//             // set problem data
-//             // this.setState({
-                
-//             //     vote: false,
-//             // })
-//             // Turning this on and off for testing if state changes work
-//             // Currently unVote works 
-//             document.location = window.location.pathname 
-//         })
-//       .catch(function (error) {
-//         // console.log(error.response.data)
-//           $(document).ready(function() {
-//               $('#notification').attr('id','notificationShow').hide().slideDown();
-//               $('#notificationContent').text(error.response.data);
-//               // alert( "Please login to add content. ");
-//               if (error.response.data == '[object Object]') {
-//                 return (
-//                   $(document).ready(function() {
-//                     $('#notificationLoginRegisterContainer').attr('id','notificationLoginRegisterContainerShow');
-//                     $('#notificationContent').html('Please <span id="blue">login </span>to unvote');
-//                   })
-//                 );
-//               }
-//           });
-//       });
-        
-//     }
 
 jumpDown() {
   // var self=this;

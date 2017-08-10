@@ -35,22 +35,25 @@ export default class Introduction extends React.Component {
                 <div id="introductionTitle">The Open Frontier of Research</div>
                 <div id="introductionProse">
                     {/*Trying out capital W here to match the one in Welcome above*/}
-                    <span id="introductionCapitalProse">W</span>e find ourselves in an<span id="blueOpen"> age of great opportunity</span>, but equally an<span id="blueOpen"> age of great peril</span>. 
+                    <span id="introductionCapitalProse">W</span>e find ourselves in an<span id="blueOpen"> age of great opportunity</span>, but equally in an<span id="blueOpen"> age of great peril</span>. 
                     <br />
                     <br />
-                    We find ourselves in the <span id="blueOpen">upturn of an era</span>, where the <span id='blueOpen'>advances of science and discovery </span>
+                    We find ourselves in the <span id="blueOpen">upturn of an era</span> where the <span id='blueOpen'>advances of science and technology </span>
                     hold our collective future,<span id="blueOpen"> as a species and civilization</span>,
                     upon their conclusion. 
                     <br />
                     <br />
                     Upon this unique moment in time, we find ourselves <span id="blueOpen">looking ahead into the unknown</span>, 
-                    in great need of<span id="blueOpen"> a great people to represent the best of our species</span>, who will take this 
-                    challenge into their own hands and will. 
+                    in great need of<span id="blueOpen"> a great people to represent the best of our species</span>, who will take our 
+                    challenges into their own hands and will. 
                     <br />
                     <br />
+                    {/*A*/}
                     <span id="blueOpen">We call upon you</span>, and everyone with the <span id="blueOpen">spirit of 
                     discovery in heart</span>, to take up this challenge 
                     of all ages and <span id="blueOpen">shape the future of our species</span>.
+                    {/*B*/}
+                    {/*<span id="blueOpen">We call upon you</span> to take up this mission, to solve each problem we encounter and<span id="blueOpen"> shape the future of our species</span>.*/}
                     <br />
                     <br />
                     We call upon you for this <span id="blueOpen">adventure of all time</span>, looking not at where you come from but <span id="blueOpen"> 

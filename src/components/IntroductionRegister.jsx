@@ -164,10 +164,10 @@ return axios.post( Config.API + '/register', {
         </div>
         <div id="introRegister">
             <form >
-                <input type="text" name="fullname" required="required" maxLength="30" placeholder="Full Name" id="registerFullName" />
-                <input type="text" name="username" required="required" maxLength="30" placeholder="Username" id="registerUserName" />
-                <input type="email" name="email" required="required" maxLength="30" placeholder="Email" id="registerEmail" />
-                <input type="password" name="password" required="required" maxLength="30" placeholder="Password" id="registerPassword"/>
+                <input type="text" name="fullname" required="required" maxLength="30" placeholder="Full Name" id="introRegisterFullName" />
+                <input type="text" name="username" required="required" maxLength="30" placeholder="Username" id="introRegisterUserName" />
+                <input type="email" name="email" required="required" maxLength="30" placeholder="Email" id="introRegisterEmail" />
+                <input type="password" name="password" required="required" maxLength="30" placeholder="Password" id="introRegisterPassword"/>
                 <Link to="/register"><input type="submit" value="Register" onClick={this.postRegister} id="submitRegister"/></Link>
                 <Link to='/login'><div id="loginButton">Login</div></Link>
             </form>
