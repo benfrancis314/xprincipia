@@ -11,13 +11,13 @@ export default class SubProblemUnit extends React.Component {
 
   };
 
-    componentWillMount(){
-      var self = this;
-	  if (self.props.problem != null ){
-		  self.setState({problems: this.props.problems})
-	  }
-      return
-    }
+    // componentDidMount(){
+    //   var self = this;
+	  // if (self.props.problem != null ){
+		//   self.setState({problems: this.props.problems})
+	  // }
+    //   return
+    // }
 
     //On recieving new props
   componentWillReceiveProps(newProps){
@@ -26,6 +26,10 @@ export default class SubProblemUnit extends React.Component {
 	  console.log(self.state.problems)
   }
 
+shouldComponentUpdate(nextProps, nextState) {
+    // return a boolean value
+    return true;
+}
 
 	render() {
 		return (
@@ -46,8 +50,8 @@ export default class SubProblemUnit extends React.Component {
   
 			function refreshPage() {
 				// Temporary fix for refreshing sub problems
-				document.location = '/problem/'+ self.props.params.probID +'/subproblems';
-					 SubProblemUnit.forceUpdate()
+				// document.location = '/problem/'+ self.props.params.probID +'/subproblems';
+					//  SubProblemUnit.forceUpdate()
 			}
 
     return (

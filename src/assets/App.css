@@ -1369,7 +1369,7 @@ like vote and comments.*/
     	width: 100%;
       transition: all 0.5s ease 0s;
       transform: scale(1);
-      margin-top: 0.37%;
+      margin-top: 0.39%;
     }
     /*#avatarFullName:hover {
       transform: scale(1.02);
@@ -1392,10 +1392,12 @@ like vote and comments.*/
       border: 1px solid #00dcff;
       border-radius: 5px;
       margin-bottom: 0px;
+      transform: scale(1);
     }
     #headerName:hover {
-      background-color: rgba(0,220,255,0.1);
-      box-shadow: 0 0 0.4pt 0.4pt rgba(0,220,255,1) inset;
+      background-color: rgba(0,220,255,0.12);
+      box-shadow: 0 0 0.5pt 0.5pt rgba(0,220,255,1) inset;
+      transform: scale(1.02);
     }
     #commandButton {
       flex: 1 1 auto;

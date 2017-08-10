@@ -53,7 +53,7 @@ export default class Introduction extends React.Component {
                     of all ages and <span id="blueOpen">shape the future of our species</span>.
                     <br />
                     <br />
-                    We call upon you for this <span id="openBlue">adventure of all time</span>, looking not at where you come from but <span id="blueOpen"> 
+                    We call upon you for this <span id="blueOpen">adventure of all time</span>, looking not at where you come from but <span id="blueOpen"> 
                     where you will take us</span>. 
                     <br />
                     <br />
@@ -62,25 +62,25 @@ export default class Introduction extends React.Component {
                     <br />
                     <br />
                     <span id="blueOpen">Each project along this path </span>will be broken down with <span id="blueOpen">thought and efficiency</span>, for which 
-                    <span id="blueOpen">proposals will be created </span>with great<span id="blueOpen"> creativity and determination</span>. 
+                    <span id="blueOpen"> new proposals will be created </span>to achieve or solve each project.
                     <br />
                     <br />
                     <span id="blueOpen">Discussion and debate </span>will be held with <span id="blueOpen">rigor and deterimation</span>, and 
-                    <span id="blueOpen">project-targeted education </span>will be <span id='blueOpen'>designed with patience </span>and <span id="blueOpen">used with ambition</span>. 
+                    <span id="blueOpen"> targeted education </span>will be <span id='blueOpen'>designed with patience </span>and <span id="blueOpen">used with ambition</span>. 
                     <br />
                     <br />
-                    Proposals are weighed by pro and con, and <span id="blueOpen">decisions made by democratic vote</span>.
+                    Proposals are<span id='blueOpen'> weighed by pro and con</span>, and the best will be<span id="blueOpen"> determined by democratic vote</span>.
                     <br />
                     <br />
-                    In the end, <span id="blueOpen">an architecture will be built with the greatest works of our time </span>held inside, a blueprint 
-                    designed for tomorrow. 
+                    In the end, <span id="blueOpen">an architecture will be built with the greatest works of our time </span>held inside and a<span id='blueOpen'> blueprint 
+                    designed for a better tomorrow</span>. 
                     <br />
                     <br />
-                    <span id="blueOpen">At no point in this process will we rest</span>, our eyes too focused upon what is at grasp ahead. 
+                    <span id="blueOpen">At no point in this process will we rest</span>, our eyes focused upon what is at grasp ahead. 
                     <br />
                     <br />
-                    We ask you <span id="blueOpen">to join this cause</span>, to explore this frontier and dedicate your will to advance our world,
-                    with the knowledge that together <span id="blueOpen">we will not fail</span>.     
+                    We ask you to<span id="blueOpen"> join this cause</span>, to explore this frontier and dedicate your will to advance our world,
+                    with the knowledge that<span id="blueOpen"> together we will not fail</span>.     
                 </div>
 
                 <IntroductionRegister />

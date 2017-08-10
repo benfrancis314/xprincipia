@@ -32,24 +32,39 @@ export default class FullProblem extends React.Component {
 // in componentDidMount
     getInitialState() {
       var self = this;
-      return axios.get( Config.API + '/problems/ID?id='+this.state.problemInfo.ParentID).then(function (response) {
+      axios.get( Config.API + '/problems/ID?id='+this.state.problemInfo.ParentID).then(function (response) {
 
           //set Problem Data
           self.setState({
               parentInfo: response.data
-          })
+          });
+          
     });
+      axios.get( Config.API + '/problems/ID?id='+this.props.params.probID).then(function (response) {
+          //set problem data
+          self.setState({
+              problemInfo: response.data,
+              probID: response.data.ID
+          })
+      })
     }
 
     componentWillMount(){
       var self = this;
-      return axios.get( Config.API + '/problems/ID?id='+this.state.problemInfo.ParentID).then(function (response) {
+          axios.get( Config.API + '/problems/ID?id='+this.state.problemInfo.ParentID).then(function (response) {
 
           //set Problem Data
           self.setState({
               parentInfo: response.data
           })
     });
+          axios.get( Config.API + '/problems/ID?id='+this.props.params.probID).then(function (response) {
+          //set problem data
+          self.setState({
+              problemInfo: response.data,
+              probID: response.data.ID
+          })
+      })
     }
 
 
@@ -59,7 +74,8 @@ export default class FullProblem extends React.Component {
 
           //set Problem Data
           self.setState({
-              problemInfo: response.data
+              problemInfo: response.data,
+              probID: response.data.ID
           })
     })
     .catch(function (error) {
@@ -142,7 +158,7 @@ componentDidUpdate (prevProps, prevState){
                 return (
                   $(document).ready(function() {
                     $('#notificationLoginRegisterContainer').attr('id','notificationLoginRegisterContainerShow');
-                    $('#notificationContent').html('Please <span id="blue">login </span>to contribute content');
+                    $('#notificationContent').html('Please <span id="blue">login </span>to vote');
                   })
                 );
               }
@@ -177,7 +193,7 @@ unVote() {
                 return (
                   $(document).ready(function() {
                     $('#notificationLoginRegisterContainer').attr('id','notificationLoginRegisterContainerShow');
-                    $('#notificationContent').html('Please <span id="blue">login </span>to contribute content');
+                    $('#notificationContent').html('Please <span id="blue">login </span>to unvote');
                   })
                 );
               }
@@ -212,7 +228,11 @@ goToProposals() {
   document.location = '/problem/'+ self.props.params.probID + '/solutions/top'
 }
 
-
+  changeName(newName) {
+    this.setState({
+      name: newName
+    });
+  }
 
 
 
@@ -242,9 +262,9 @@ goToProposals() {
           {/*<Link to={`/problem/${this.state.problemInfo.ParentID}/subproblems`} onClick={refreshPage}>*/}
           
           {/*Add SubProjectParentUnit when properly designed*/}
-          <div onClick={this.goToParent}>
+          {/*<div onClick={this.goToParent}>*/}
             <SubProjectParentUnit parentID={this.state.problemInfo.ParentID} />
-          </div>
+          {/*</div>*/}
 
           {/*<Link to={`/problem/${this.state.problemInfo.ParentID}/subproblems`} onClick={refreshPage}>
             <SubProjectParentUnit parentID={this.state.problemInfo.ParentID}/>
@@ -312,7 +332,7 @@ goToProposals() {
         </div>*/}
           <div id="projectMenuContainer">
           </div>
-            {React.cloneElement(this.props.children, {probID: this.state.probID})}
+            {React.cloneElement(this.props.children)}
           
           
           {/*Attempt to get subprojects always underneath the section, particularly for creating new projects*/}
