@@ -17,7 +17,7 @@ export default class FullSolutionDescription extends React.Component {
     //initialize the component with this state
     componentDidMount(){
       var self = this;
-      return axios.get( Config.API + '/auth/solutions/ID?id='+this.props.params.solutionID).then(function (response) {
+      return axios.get( Config.API + '/auth/solutions/ID?id='+this.props.solutionID).then(function (response) {
           self.setState({
               solutionInfo: response.data,
           })
@@ -32,7 +32,7 @@ export default class FullSolutionDescription extends React.Component {
   //On recieving new props
   componentWillReceiveProps(newProps){
     var self = this;
-      return axios.get( Config.API + '/auth/solutions/ID?id='+newProps.params.solutionID).then(function (response) {
+      return axios.get( Config.API + '/auth/solutions/ID?id='+newProps.solutionID).then(function (response) {
           self.setState({
               solutionInfo: response.data,  
           })
@@ -96,9 +96,6 @@ export default class FullSolutionDescription extends React.Component {
                  {this.state.solutionInfo.References}
               </p>
             </div>
-            <br />
-            <br />
-            <br />
             <br />
             <br />
             <p id="xp">XP</p>

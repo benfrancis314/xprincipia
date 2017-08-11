@@ -26,8 +26,8 @@ export default class ProblemDiscussMenu extends React.Component {
 
    render() {
       return (
-        <div id="projectInteractMenu">
-            <div id="solutionsTitleRightSB">Discuss</div>
+        <div id="projectInteractDiscussMenu">
+            <div id="proposalsTitleRightSB">Discuss</div>
             <div id="sidebarDiscussMenu">
                 <div id="discussGroup1">
                     <Link to={`/problem/${this.props.params.probID}/questions`} activeClassName="activeWhite">

@@ -47,7 +47,7 @@ export default class ProblemForm extends React.Component {
       return (
         <div id="createProblemBox">
             <form id="createForm">
-              <fieldset>
+              <fieldset id="fieldSetNoBorder">
                         <Link to={`/problem/${this.props.params.probID}/subproblems`}>
                           <div id="backSolutionArrowDiv">
                               <img src={require('../../assets/upArrow.svg')} id="backSubProjectArrow" width="50" height="30" alt="Back arrow, blue up arrow" />

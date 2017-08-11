@@ -4,11 +4,7 @@ export default class TutorialProjectContent extends React.Component {
    render() {
       return (
         <div>
-            {/*<Link to="/tutorialwelcome">
-                <div id="tutorialWelcomeButtonDiv">
-                    <img src={require('../../assets/upArrow.svg')} id="tutorialWelcomeButton" width="50" height="50" alt="Back arrow, blue up arrow" />
-                </div>
-            </Link>*/}
+        <img src={require('../../assets/heroLogo.svg')} id="middleAlignOrion" width='70' height='100' alt="Back arrow, blue up arrow" />
         <div id="introContainer">
           <div id="introBanner">
               <div id="introPrompt">Welcome to the
@@ -27,21 +23,30 @@ export default class TutorialProjectContent extends React.Component {
                   it is the most important in its <span id="blue"> sub project level</span>.
                  <br />
                  <br />
-                 View this project's <span id="blue">own sub projects </span>and<span id="blue"> create new ones.</span>
+                 Explore this project's <span id="blue">own sub projects </span>and<span id="blue"> create new ones.</span>
                  <br />
                  <br />
-                 <span id="blue">Disscuss</span> the project by asking questions,
-                  giving suggestions or engaging in freeform discussion. 
+                 <span id="blue">Discuss</span> the project by <span id='blue'>asking questions</span>,
+                  <span id='blue'>giving suggestions</span> or engaging in <span id='blue'>freeform discussion</span>. 
                  <br />
                  <br />
-                 <span id="blue">Learn </span>about each subject and<span id="blue"> teach others.</span>
+                 <span id="blue">Learn </span>about<span id='blue'> relevant subjects </span>and<span id="blue"> teach others.</span>
                  <br />
                  <br />
-                 When you are ready,<span id="blue"> visit the proposals </span>and
+                 {/*A*/}
+                 {/*When you are ready,<span id="blue"> visit the proposals </span>and
                 <span id="blue"> vote for the best.</span>
                  <br />
+                 <br />*/}
+                 {/*B*/}
+
+                 <span id="blue">Examine </span>each<span id="blue"> proposal</span>, <span id="blue">debate</span> its success 
+                 and <span id="blue">vote</span> for the best. 
+
                  <br />
-                 Finally, <span id="blue"> create your own proposal</span> and analyze the pros and cons of others. 
+                 <br />
+                 {/*End*/}
+                 Finally, <span id="blue"> create your own proposal</span>. 
                  <br />
                  <br />
               </div>

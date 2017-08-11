@@ -1,7 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import cookie from 'react-cookie';
-import {Config} from '../../config.js'
+import {Config} from '../../config.js';
 
 export default class QuestionForm extends React.Component {
 
@@ -44,8 +44,8 @@ postQuestion() {
       return (
       <div id="questionFormComponent">
             <form id="questionForm">
-                <fieldset>
-                    <legend>Questions</legend>
+                <fieldset id='fieldSetNoBorder'>
+                    <legend id="blue">Questions</legend>
                          <textarea name="questionText" required="required" id="questionTextArea" placeholder="Ask a question you have about this project or view those asked by your peers. " autoFocus ></textarea>
                          <input type="button" value="Ask" onClick={this.postQuestion} id="askQuestion"/>
                 </fieldset>

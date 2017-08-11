@@ -92,7 +92,7 @@ export default class AnswerContainer extends React.Component {
                     </div>
                     <div id="suggestionText">
                         {/*Test Description*/}
-                        {this.state.question.Description}
+                        <span id="blueOpen">Q: </span>{this.state.question.Description}
                     </div>
 				</div>
                 {/*<button type="button" id="suggestionVote" onClick={submitVote}>

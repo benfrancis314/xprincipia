@@ -41,3 +41,11 @@ https://www.bnl.gov/newsroom/news.php?a=26082
 
 DNA
 https://thenounproject.com/search/?q=dna&i=207112
+
+
+Hero Constellation
+https://thenounproject.com/marialuisa.iborra/collection/constellations/?oq=constellations&cidx=1&i=900710
+
+Orion Constellation
+https://thenounproject.com/search/?q=orion&i=7867
+

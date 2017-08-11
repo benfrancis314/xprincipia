@@ -11,6 +11,7 @@ import SubProjectParentUnit from './SubProjectParentUnit.jsx';
 import TutorialProjectContent from '../tutorials/TutorialProjectContent.jsx';
 import {Config} from '../../config.js';
 import $ from 'jquery';
+// import ScrollableAnchor from '../../react-scrollable-anchor';
 
 // import Scroll from 'react-scroll'; // Imports all Mixins
 // import {scroller} from 'react-scroll'; //Imports scroller mixin, can use as scroller.scrollTo()
@@ -159,7 +160,12 @@ jumpDown() {
 }
 
 goToDiscuss() {
-  document.location = '/problem/'+ self.props.params.probID + '/questions'
+  document.location = '/problem/'+ self.props.params.probID + '/questions';
+  $(document).ready(function() {
+    $("#SBButtonDiscuss").click(function () { 
+    $("#projectInteractDiscussMenu").animate({scrollLeft: 250}, 800);
+    });
+});
 }
 
 goToLearn() {
@@ -224,9 +230,6 @@ goToProposals() {
               <div id="SBButton">Proposals</div>
             </Link>*/}
             <Link to={`/problem/${this.props.params.probID}/create`} activeClassName="activeBlueText">
-              {/*Old*/}
-              {/*<div id="createSPButtonBox">*/}
-              {/*New*/}
               <div id="SBButton">
                 Create a Sub Project
               </div>
@@ -251,10 +254,10 @@ goToProposals() {
         {/*<div id="SPLabel">
           Sub Projects
         </div>*/}
-          <div id="projectMenuContainer">
-          </div>
-          {React.cloneElement(this.props.children)}
+          {/*<div id="projectMenuContainer">
+          </div>*/}
           {React.cloneElement(<SubProblemContainer probID={this.props.params.probID} />)}
+          {React.cloneElement(this.props.children)}
           {React.cloneElement(<ProblemSolutionsMenu probID={this.props.params.probID} projectTitle={this.state.problemInfo.Title} />)}
           
           {/*<FullSolutionContainer />*/}

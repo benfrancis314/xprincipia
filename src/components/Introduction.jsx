@@ -28,11 +28,12 @@ export default class Introduction extends React.Component {
             </Link>
           <div id="introductionContainer">
                 <div id="introductionWelcome">
-                    <span id="introductionCapitalBlue">W</span><span id="blue">elcome to </span><span id="introductionCapitalBlue">XP</span><span id="blue">rincipia</span>
+                    <span id="introductionCapital">W</span>elcome to <span id="introductionCapital"> XP</span>rincipia
                     <br />
                 </div>
                 {/*Considering change to "The Open Frontier of Discovery/Science*/}
-                <div id="introductionTitle">The Open Frontier of Research</div>
+                {/*Not currently using*/}
+                {/*<div id="introductionTitle">The Open Frontier of Research</div>*/}
                 <div id="introductionProse">
                     {/*Trying out capital W here to match the one in Welcome above*/}
                     <span id="introductionCapitalProse">W</span>e find ourselves in an<span id="blueOpen"> age of great opportunity</span>, but equally in an<span id="blueOpen"> age of great peril</span>. 
@@ -171,7 +172,7 @@ Welcome to XPrincipia.
 
 
 
-// Previous Introduction
+// Draft 2
 
 {/*Here anyone, <span id="blueOpen">regardless of background </span>or class, may openly contribute to and <span id="blueOpen">join today's cutting edge </span>of 
 scientific <span id="blueOpen">research </span>and technology <span id="blueOpen">development</span>.

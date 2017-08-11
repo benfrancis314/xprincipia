@@ -1,7 +1,8 @@
 import React from 'react';
 import axios from 'axios';
 import cookie from 'react-cookie';
-import {Config} from '../config.js'
+import {Config} from '../config.js';
+import FullSolution from '../components/solutions/FullSolution.jsx';
 
 export default class FullSolutionContainer extends React.Component {
   constructor(props){
@@ -16,7 +17,7 @@ export default class FullSolutionContainer extends React.Component {
 
     getInitialState(){
       var self = this;
-      return axios.get( Config.API + '/auth/solutions/ID?id='+this.props.params.solutionID).then(function (response) {
+      return axios.get( Config.API + '/auth/solutions/ID?id='+this.props.solutionID).then(function (response) {
           self.setState({
               solutionInfo: response.data,
           })
@@ -26,7 +27,7 @@ export default class FullSolutionContainer extends React.Component {
     //initialize the component with this state
     componentDidMount(){
       var self = this;
-      return axios.get( Config.API + '/auth/solutions/ID?id='+this.props.params.solutionID).then(function (response) {
+      return axios.get( Config.API + '/auth/solutions/ID?id='+this.props.solutionID).then(function (response) {
           self.setState({
               solutionInfo: response.data,
           })
@@ -41,7 +42,7 @@ export default class FullSolutionContainer extends React.Component {
   //On recieving new props
   componentWillReceiveProps(newProps){
     var self = this;
-      return axios.get( Config.API + '/auth/solutions/ID?id='+newProps.params.solutionID).then(function (response) {
+      return axios.get( Config.API + '/auth/solutions/ID?id='+newProps.solutionID).then(function (response) {
           self.setState({
               solutionInfo: response.data,  
           })
@@ -68,10 +69,11 @@ export default class FullSolutionContainer extends React.Component {
             alert("I'm sorry, you've already voted on a solution.");
         })
   }
+
    render() {
       return (
-        <div>
-            {React.cloneElement(this.props.children, {probID: this.state.probID})}
+        <div id="proposalToggleOff">
+            {React.cloneElement(<FullSolution probID={this.props.probID} solutionID={this.props.solutionID} /> )}
         </div>
       );
    }

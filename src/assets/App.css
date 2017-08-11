@@ -1,3 +1,55 @@
+/*CSS Documentation
+
+Organization
+
+The CSS is organized in clusters of similar design, 
+usually by component but sometimes by similarity in style. 
+These are often localized but also exist on larger scales.
+
+Around the first two thirds of the code entire pages are 
+attempted to be grouped together, although there is often 
+blending between pages due to similar styles.
+
+Around the final third of the code the organization 
+shifts to a focus on chronology, where more recent changes 
+are listed later. This is due to a quickly shifting code, 
+where the most recent code is most likely to be changed or removed.
+
+The best strategy for working with the stylesheet is using COMMAND F 
+to search the document by the ID used. Most components have unique IDs, 
+although there is some overlap. This can often be determined by looking at the name. 
+
+The ID name is named to be most intuitive. For instance, if it is a button leading
+ to the introduction, the ID is “introductionButton”. If it is named according to its styling, 
+ like “fullWide”, which is only width: 100, then it is likely used universally and 
+ should not be changed due to ubiquity in the code. 
+
+Creating new ids should not be strayed away from, and is generally encouraged, 
+as elements that similar now may shift to being radically different in an update. 
+
+
+Guide
+
+Lean on using %’s instead of px’s, so everything is in the same spacing units. 
+
+There has been iteration of nomenclature around the site, although some 
+IDs do not reflect this. For instance, a Proposal used to be a Solution. 
+It is best not to get attached to a name, since any of them may change over time. 
+When new IDs are created use their current name in the intuitive naming scheme. 
+
+Solution => Proposal
+Problem => Project
+
+If working in tandem with the App.css sheet, it is highly recommended 
+to use the split editor screen and using COMMAND F for finding the elements.
+
+
+Author: Ben Francis
+Last updated: 8/11/17
+ */
+
+
+
 /*Global*/
 
     * {
@@ -685,7 +737,7 @@ like vote and comments.*/
     }
     #answerQuestionLabel {
       font-size: 150%;
-      color: #00dcff;
+      color: #00ffdc;
       width: 100%;
       padding-left: 3%;
       letter-spacing: 8px;
@@ -889,7 +941,7 @@ like vote and comments.*/
  /*CreateProblem and Create Solution*/
 
     #createProblemBox {
-      margin-top: 2%;
+      margin-top: 0%;
     }
     #createForm {
       color: #00dcff;
@@ -897,22 +949,28 @@ like vote and comments.*/
       padding: 0px 5px 5px 5px;
       width: 80%;
       margin: 0 auto;
-      background-color: rgba(0,220,255,0.025);
+      /*background-color: rgba(0,220,255,0.025);*/
      }
     #proposalFormCreateTitle {
       text-align: center;
       color: #ffffff;
       margin: 0 auto;
-      margin-top: 5%;
+      margin-top: 3%;
       margin-bottom: 2%;
       width: 70%;
-      padding: 1% 0% 1% 0%;
+      padding: 2% 0% 2% 0%;
       font-size: 175%;
-      letter-spacing: 4px;
+      letter-spacing: 6px;
       border: 1px solid #dddddd;
       border-width: 1px 1px 1px 1px;
       border-radius: 3px 3px 3px 3px;
-      background-color: rgba(255,255,255,0.025);
+      background-color: rgba(0,220,255, 0.05);
+
+        /*font-size: 200%;
+  text-align: center;
+  letter-spacing: 6px;
+  margin-top: 4%;
+  margin-bottom: 4%;*/
     }
     #solutionDeleteForm, #solutionEditForm {
       color: #00dcff;
@@ -940,6 +998,10 @@ like vote and comments.*/
     	text-align: left;
     	height: 5em;
     }
+    #solutionSummaryForm, #solutionDescriptionForm, 
+    #solutionReferencesForm, #problemSummaryForm {
+      background-color: rgba(0,220,255, 0.05);
+    }
     #projectEditSummaryForm {
       font-family: 'Open Sans';
     	text-align: left;
@@ -956,6 +1018,7 @@ like vote and comments.*/
       border: 1px solid #ffffff;
       border-radius: 3px;
       box-shadow: 0 0 1pt 1pt rgba(255,255,255,0.5);
+      background-color: rgba(0,220,255, 0.05);
     }
     #projectEditTitleForm {
       font-family: 'Alegreya Sans SC', sans-serif;
@@ -1006,6 +1069,8 @@ like vote and comments.*/
     #solutionTitleForm {
       font-family: 'Alegreya Sans SC';
       border-color: #dddddd;
+      background-color: rgba(0,220,255, 0.05);
+      margin: 0 auto;
     }
     #solutionEditReferencesForm {
       margin-bottom: 3%;
@@ -1016,6 +1081,12 @@ like vote and comments.*/
     fieldset {
     	border: 1px solid #00dcff;
       background-color: inherit;
+    }
+    #fieldSetSideBorder {
+      border-width: 0px 1px;
+    }
+    #fieldSetNoBorder {
+      border-width: 0px;
     }
     input, textarea {
       font-family: 'Open Sans', sans-serif;
@@ -1060,7 +1131,7 @@ like vote and comments.*/
     	display: block;
     	color: #00dcff;
     	border: 1px solid #00dcff;
-    	background-color: rgba(0,220,255,0);
+    	background-color: rgba(0,220,255, 0.05);
     	width: 50%;
     	margin: 0 auto;
       margin-top: 2%;
@@ -1174,6 +1245,9 @@ like vote and comments.*/
     #solutionReferences:hover, #xp:hover {
       color: rgba(255,255,255,1);
     }
+    #solutionTitle:hover {
+      cursor: pointer;
+    }
     #elementLabel {
       flex: 0 1 auto;
       margin: 1px 5% 0% 0%;
@@ -1186,6 +1260,13 @@ like vote and comments.*/
       letter-spacing: 12px;
       color: #00dcff;
       text-align: center;
+    }
+    #proposalToggleOff {
+      display: none;
+    }
+    #proposalToggleOn {
+      display: inline;
+
     }
 
 /*End UserSolution, FullSolution, and Problem*/
@@ -2540,8 +2621,19 @@ introductionProjectTitle {
   border: 1px solid #00dcff;
   transition: all 0.25s ease 0s;
   box-shadow: 0 0 0pt 0pt rgba(0,220,255,0.5);
-  margin-bottom: 2%;
+  margin-top: 2%;
   background-color: rgba(0,220,255,0.05);
+}
+#solutionUnitActive {
+  padding: 10px;
+  margin: 0 auto;
+  width: 90%;
+  border: 1px solid #00dcff;
+  transition: all 0.25s ease 0s;
+  margin-top: 2%;
+  background-color: rgba(0,220,255,0.05);
+  box-shadow: 0 0 2pt 2pt rgba(0,220,255,0.5);
+  display: none;
 }
 #solutionUnitContainer {
   padding: 0px;
@@ -2564,14 +2656,14 @@ introductionProjectTitle {
 }
 #solutionUnitTitle {
   text-align: center;
-  padding: 5px;
+  padding: 4px;
   margin: 0 auto;
   margin-right: 9%;
   margin-left: 1%;
   color: #ffffff;
   letter-spacing: 1px;
   font-family: 'Alegreya Sans SC', sans-serif;
-  font-size: 120%;
+  font-size: 130%;
   width: 100%;
   word-wrap: break-word; 
   overflow: auto;
@@ -2756,13 +2848,17 @@ introductionProjectTitle {
       cursor: pointer;
     }
     #welcomeBox {
-    	margin: 0.5% 20% 2.5% 20%;
+    	/*Old*/
+      margin: 0.5% 20% 2.5% 20%;
     	border: 1px solid #dddddd;
-      /*border-radius: 3px;*/
-      /*box-shadow: 0 0 1pt 1pt rgba(255,255,255,0.5);*/
-      border: 2px solid #00dcff;
-      box-shadow: 0 0 1pt 1pt rgba(0,220,255,0.5) !important;
-      background-color: rgba(0,220,255,0.05);
+      /*border: 2px solid #00dcff;*/
+      /*box-shadow: 0 0 1pt 1pt rgba(0,220,255,0.5) !important;*/
+      /*background-color: rgba(0,220,255,0.05);*/
+
+      /*New*/
+      border: 1px solid #dddddd;
+      border-radius: 3px;
+      background-color: rgba(0,220,255, 0.05);
     }
     #welcomePrompt {
     	color: #dddddd;
@@ -2798,11 +2894,15 @@ introductionProjectTitle {
     	border: 1px solid #dddddd;
       /*border-radius: 3px;*/
       /*box-shadow: 0 0 1pt 1pt rgba(255,255,255,0.5);*/
-      border: 2px solid #00dcff;
+      /*border: 2px solid #00dcff;*/
       box-shadow: 0 0 1pt 1pt rgba(0,220,255,0.5) !important;
       background-color: rgba(0,220,255,0.05);
       transform: scale(1);
       transition: all 0.5s ease 0s;
+
+      border: 1px solid #dddddd;
+      border-radius: 3px;
+      background-color: rgba(0,220,255, 0.05);
     }
     #createWelcomeButtonBox:hover {
       transform: scale(1.02);
@@ -2861,6 +2961,12 @@ introductionProjectTitle {
     }
     .activeBlueText div h1 {
       color: #00dcff !important;
+    }
+    .activeBlueText div {
+    	background-color: rgba(0,220,255,0.15) !important;
+    	color: #00dcff !important;
+    	cursor: default!important;
+      border-color: #00dcff !important;
     }
     /*Doesn't work since it highlights the entire box*/
     /*.activeGlow {
@@ -3058,6 +3164,7 @@ introductionProjectTitle {
     background-color: rgba(0,220,255,0.0);
     border: 1px solid #00dcff;
     border-width: 0px 1px 1px 1px;
+    border-radius: 0px 0px 3px 3px;
     padding-bottom: 2%;
 
     /*Testing new style with user projects*/
@@ -3200,6 +3307,7 @@ introductionProjectTitle {
     	margin-top: 15px;
       margin-bottom: 3px;
       width: 70%;
+      /*Old*/
       background-color: rgba(255,255,255,0.025);
       transition: all 0.5s ease 0s;
     }
@@ -3239,10 +3347,12 @@ introductionProjectTitle {
       border-radius: 3px 0px 40px 3px;
     }
     #SBButtonDiscuss:hover, #SBButtonLearn:hover {
-      background-color: rgba(0,220,255,0.15);
-      color: #00dcff;
+      background-color: rgba(255,255,255,0.05);
+      /*color: #00dcff;*/
       cursor: pointer;
-      border-color: #00dcff;
+      /*border-color: #00dcff;*/
+      box-shadow: 0 0 1px 1px rgba(0,220,255,1);
+
     }
         
     #createButton {
@@ -3318,6 +3428,7 @@ introductionProjectTitle {
   border: 1px solid #dddddd;
   height: 4em;
   resize: none;
+  background-color: rgba(0,220,255, 0.05);
 }
 #learnContentTextArea {
   height: 12em;
@@ -3325,7 +3436,7 @@ introductionProjectTitle {
 #askQuestion, #addSuggestion, #addAnswer {
   font-size: 90%;
   color: #00dcff;
-  background-color: rgba(0,255,220,0);
+  background-color: rgba(0,220,255, 0.05);
   border: 1px solid #00dcff;
   border-radius: 2px;
   margin-top: 2%;
@@ -3503,6 +3614,12 @@ introductionProjectTitle {
 
 /*Logos*/
 
+#middleAlignOrion {
+  display: block;
+  margin: 0 auto;
+  padding: 3px;
+  margin-top: 2%;
+}
 #deleteLogo {
   /*display: block;
   margin: 0 auto;*/
@@ -3863,7 +3980,7 @@ introductionProjectTitle {
   transition: all 0.25s ease 0s;
 }
 #proposalCreateProjectTitle {
-  /*background-color: rgba(0,220,255,0.1);*/
+  background-color: rgba(0,220,255, 0.05);
   color: rgba(221,221,221,1);
   font-size: 150%;
   letter-spacing: 4px;
@@ -4004,7 +4121,7 @@ introductionProjectTitle {
   flex: 1 1 auto;
   width: 100%;
 }
-#projectInteractMenu {
+#projectInteractMenu, #projectInteractDiscussMenu {
   padding-left: 0px;
   flex-grow: 1;
   flex-shrink: 1;
@@ -4220,7 +4337,8 @@ introductionProjectTitle {
   width: 5%;
   /*box-shadow: 0 0 1pt 1pt rgba(0,220,255,0.5);*/
   left: 0;
-  margin-bottom: -1%;
+  margin-top: -1%;
+  margin-left: 14%;
 }
 #backSolutionArrowDiv:hover {
   background-color: rgba(0,220,255,0.15);
@@ -4271,10 +4389,11 @@ introductionProjectTitle {
   box-shadow: 0 0 2pt 2pt rgba(0,220,255,0.5);
 }
 #backSubProjectArrow {
-  flex: 1 1 auto;
+  /*flex: 1 1 auto;*/
   color: #00ffdc;
-  text-align: center;
+  /*text-align: center;*/
   margin: 0 auto;
+  padding: 2px;
   /*box-shadow: 0 0 1pt 1pt rgba(0,220,255,0.5);*/
   transition: all 0.5s ease 0s;
 
@@ -4376,31 +4495,58 @@ introductionProjectTitle {
 }
 #solutionsTitleRightSB {
   flex: 1 1 auto;
-  /*color: #00dcff;*/
-  /*border: 1px solid #00dcff;*/
+  color: #ffffff;
   border-radius: 3px;
-  font-size: 175%;
-  padding: 5px;
+  font-size: 200%;
   margin: 0px 0px;
   letter-spacing: 4px;
   text-align: center;
   margin-bottom: 2%;
-  background-color: rgba(255,255,255,0.025);
+  transition: all 0.25s ease 0s;
+  padding: 2% 0% 2% 0%;
+  font-size: 200%;
+  letter-spacing: 6px;
+  border: 1px solid #dddddd;
+  border-width: 1px 1px 1px 1px;
+  border-radius: 3px 3px 3px 3px;
+  background-color: rgba(0,220,255, 0.05);
+  box-shadow: 0 0 1pt 1pt rgba(255,255,255,0.5);
 
   /*Considering making this title white, possibly units instead*/
   /*background-color: rgba(0,220,255,0.1);*/
-  color: rgba(255,255,255,1);
-  /*font-size: 210%;*/
-  border: 1px solid #dddddd;
-  box-shadow: 0 0 1pt 1pt rgba(255,255,255,0.5);
-  /*margin: 0% 10% 0% 10%;*/
+  
+}
+#proposalsTitleRightSB {
+  flex: 1 1 auto;
+  color: #ffffff;
+  border-radius: 3px;
+  font-size: 200%;
+  margin: 0px 0px;
+  letter-spacing: 4px;
+  text-align: center;
+  margin-bottom: 0.15%;
   transition: all 0.25s ease 0s;
+  padding: 2% 0% 2% 0%;
+  font-size: 200%;
+  letter-spacing: 6px;
+  border: 1px solid #dddddd;
+  border-width: 1px 1px 1px 1px;
+  border-radius: 3px 3px 3px 3px;
+  background-color: rgba(0,220,255, 0.05);
+  box-shadow: 0 0 1pt 1pt rgba(255,255,255,0.5);
+
+  /*Considering making this title white, possibly units instead*/
+  /*background-color: rgba(0,220,255,0.1);*/
+  
 }
 #fullSolution {
-  width: 100%;
+  width: 90%;
   border: 1px solid #00dcff;
+  border-radius: 3px;
   /*background-color: rgba(255,255,255,0.05);*/
   background-color: rgba(0,220,255,0.05);
+  margin: 0 auto;
+  margin-top: 1%;
 }
 #solutionFormLabel {
   color: #00dcff;
@@ -5032,7 +5178,6 @@ input#submitNewVersion:hover {
 }
 #introPrompt {
   color: #dddddd;
-  font-size: 180%;
   cursor: default;
   font-size: 200%;
   text-align: center;
@@ -5150,7 +5295,7 @@ input#submitNewVersion:hover {
   /*background-color: rgba(0,220,255, 0.05);*/
 }
 #introContainer {
-  margin-top: 10%;
+  margin-top: 3%;
 }
 #tutorialContent {
   width:80%;
