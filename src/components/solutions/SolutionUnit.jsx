@@ -3,10 +3,30 @@ import { Link } from 'react-router';
 
 export default class SolutionUnit extends React.Component {
 
+//   constructor(props){
+//         super(props);
+
+//         this.state = {
+//             solutions: []
+//         }
+
+//     };
+
+//     getInitialState(){
+//         var self = this;
+//         window.scrollTo(0,0);
+//         return axios.get( Config.API + '/solutions/problemID?id='+this.props.probID).then(function (response) {
+//             self.setState({
+//                 solutions: response.data
+//             })
+//         })
+//     }
+
+
 	render() {
 		return (
 	    <div>
-			<ul> {this.props.solutions.map(this.renderItem)} </ul>     
+			<ul> {this.props.solutions.map(this.renderItem)} </ul>
 	    </div>
 
 		);
@@ -17,8 +37,6 @@ export default class SolutionUnit extends React.Component {
     return (
 
         <li key={solution.ID}>
-
-			
 			<Link to={`/fullsolution/${solution.ProblemID}/${solution.ID}/full`}>
 				<div id="solutionUnit">
 					<div id="solutionUnitContainer">
@@ -27,9 +45,7 @@ export default class SolutionUnit extends React.Component {
 					</div>
 				</div>
 			</Link>
-			
         </li>);
-
   }
 }
 

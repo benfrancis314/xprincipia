@@ -212,7 +212,7 @@ export default class FreeFormUnit extends React.Component {
                             <img src={require('../../assets/comments.svg')} id="commentLogo" width="24" height="24" alt="Comments Button" />
                     </div>
                 </Link> */}
-                <button type="button" onClick={submitVote} id="suggestionVote">
+                <button type="button" onClick={submitVote} id="suggestionVoteNoComments">
                     Vote
                 </button>             
                 <br /><br /> 

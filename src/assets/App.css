@@ -117,6 +117,9 @@
       color: #dddddd !important;
       font-family: 'Open Sans' !important;
     }
+    #gray {
+      color: #888888 !important;
+    }
     #nodisplay {
       display: none;
     }
@@ -366,6 +369,7 @@
   margin: 0 auto !important;
   margin-bottom: 4% !important;
 }
+
 #problemIntro {
   width: 100% !important;
 }
@@ -884,14 +888,32 @@ like vote and comments.*/
 
  /*CreateProblem and Create Solution*/
 
+    #createProblemBox {
+      margin-top: 2%;
+    }
     #createForm {
       color: #00dcff;
       height: auto;
       padding: 0px 5px 5px 5px;
-      width: 90%;
+      width: 80%;
       margin: 0 auto;
       background-color: rgba(0,220,255,0.025);
      }
+    #proposalFormCreateTitle {
+      text-align: center;
+      color: #ffffff;
+      margin: 0 auto;
+      margin-top: 5%;
+      margin-bottom: 2%;
+      width: 70%;
+      padding: 1% 0% 1% 0%;
+      font-size: 175%;
+      letter-spacing: 4px;
+      border: 1px solid #dddddd;
+      border-width: 1px 1px 1px 1px;
+      border-radius: 3px 3px 3px 3px;
+      background-color: rgba(255,255,255,0.025);
+    }
     #solutionDeleteForm, #solutionEditForm {
       color: #00dcff;
       height: auto;
@@ -945,7 +967,7 @@ like vote and comments.*/
       box-shadow: 0 0 1pt 1pt rgba(255,255,255,0.5);
     }
     #problemTitleFormLabel, #problemFieldFormLabel, #problemSummaryFormLabel,
-    #problemDescriptionFormLabel, 
+    #problemDescriptionFormLabel, #projectTitleProposalFormLabel,
     #problemReferencesFormLabel, #solutionTitleFormLabel, #problemSummaryFormLabel,
     #solutionDescriptionFormLabel, #solutionReferenceFormLabel, #solutionSummaryFormLabel,
     #editSummaryFormLabel, #editDescriptionFormLabel, #editReferencesFormLabel     {
@@ -955,8 +977,14 @@ like vote and comments.*/
       margin: 0 auto;
       margin-top: 1%;
     }
+    #projectTitleProposalFormLabel{
+      /*margin-top: 4%;*/
+      color: #00dcff;
+    }
     #solutionTitleFormLabel {
-      margin-top: 4%;
+      margin-top: 2%;
+      margin-bottom: 1%;
+      color: #dddddd;
     }
     #problemTitleFormLabel {
       margin-top: 0%;
@@ -977,6 +1005,7 @@ like vote and comments.*/
     }
     #solutionTitleForm {
       font-family: 'Alegreya Sans SC';
+      border-color: #dddddd;
     }
     #solutionEditReferencesForm {
       margin-bottom: 3%;
@@ -2507,8 +2536,9 @@ introductionProjectTitle {
 #solutionUnit {
   padding: 10px;
   margin: 0 auto;
+  width: 90%;
   border: 1px solid #00dcff;
-  transition: all 0.5s ease 0s;
+  transition: all 0.25s ease 0s;
   box-shadow: 0 0 0pt 0pt rgba(0,220,255,0.5);
   margin-bottom: 2%;
   background-color: rgba(0,220,255,0.05);
@@ -2538,7 +2568,7 @@ introductionProjectTitle {
   margin: 0 auto;
   margin-right: 9%;
   margin-left: 1%;
-  color: #00dcff;
+  color: #ffffff;
   letter-spacing: 1px;
   font-family: 'Alegreya Sans SC', sans-serif;
   font-size: 120%;
@@ -3750,10 +3780,10 @@ introductionProjectTitle {
   color: rgba(0,255,220,1);
   flex: 1 1 auto;
   margin: 0 auto;
-  margin-top: 0%;
+  margin-top: -1%;
   /*margin-bottom: 2%;*/
   /*padding-left: 9%;*/
-  font-size: 500%;
+  font-size: 450%;
   text-align: center;
   letter-spacing: 4px;
   font-family: 'Alegreya Sans SC', sans-serif;
@@ -3829,6 +3859,17 @@ introductionProjectTitle {
   border: 1px solid #dddddd;
   border-radius: 3px;
   box-shadow: 0 0 1pt 1pt rgba(255,255,255,0.5);
+  margin: 0% 10% 0% 10%;
+  transition: all 0.25s ease 0s;
+}
+#proposalCreateProjectTitle {
+  /*background-color: rgba(0,220,255,0.1);*/
+  color: rgba(221,221,221,1);
+  font-size: 150%;
+  letter-spacing: 4px;
+  border: 1px solid #00dcff;
+  border-radius: 3px;
+  /*box-shadow: 0 0 1pt 1pt rgba(255,255,255,0.5);*/
   margin: 0% 10% 0% 10%;
   transition: all 0.25s ease 0s;
 }
@@ -3956,10 +3997,10 @@ introductionProjectTitle {
   border-width: 0px 0px;
   position: relative;
   color: #dddddd;
-  padding: 0px 0px 20px 0px;
+  padding: 0px 0px 0px 0px;
   margin: 0 auto;
   margin-top: 5px;
-  margin-bottom: 10px;
+  margin-bottom: 0px;
   flex: 1 1 auto;
   width: 100%;
 }
@@ -3973,31 +4014,10 @@ introductionProjectTitle {
   color: #dddddd;
   padding: 0px 0px 20px 0px;
   margin: 0 auto;
-  margin-top: 2%;
+  margin-top: 0.5%;
   margin-bottom: 10px;
   flex: 1 1 auto;
   width: 80%;
-}
-
-/*Continue this in morning*/
-#subProjectsButton {
-  margin: 0 auto;
-  margin-bottom: 0%;
-  width: 33%;
-  text-align: center;
-  font-size: 135%;
-  padding: 3px;
-  border: 1px solid #00ffdc;
-  border-width: 1px 1px 0px 1px;
-  border-radius: 5px 5px 0px 0px;
-  color: #00ffdc;
-  /*background-color: rgba(0,255,220,0.05);*/
-  transition: all 0.5s ease 0s;
-  transform: scale(1);
-}
-#subProjectsButton:hover {
-  background-color: rgba(0,255,220,0.15);
-  transform: scale(1.02);
 }
 
 
@@ -4028,13 +4048,13 @@ introductionProjectTitle {
   justify-content: space-between;
   width: 100%;
   margin: 0 auto;
-  margin-top: 2%;
+  margin-top: 0.5%;
   overflow-x: scroll;
 }
 #SPUnitList li {
   display: inline-block;
   /*display: inline;*/
-  margin: 2% 1% 7% 1%;
+  margin: 2% 1% 4% 1%;
   list-style-type: none;
 }
 #SPUnit {
@@ -4200,7 +4220,7 @@ introductionProjectTitle {
   width: 5%;
   /*box-shadow: 0 0 1pt 1pt rgba(0,220,255,0.5);*/
   left: 0;
-  margin-bottom: 1%;
+  margin-bottom: -1%;
 }
 #backSolutionArrowDiv:hover {
   background-color: rgba(0,220,255,0.15);
@@ -4356,16 +4376,25 @@ introductionProjectTitle {
 }
 #solutionsTitleRightSB {
   flex: 1 1 auto;
-  color: #00dcff;
-  border: 1px solid #00dcff;
+  /*color: #00dcff;*/
+  /*border: 1px solid #00dcff;*/
   border-radius: 3px;
-  /*border-width: 0px 0px 1px 0px;*/
-  font-size: 150%;
-  /*padding: 3px 5px 3px 10px;*/
+  font-size: 175%;
   padding: 5px;
   margin: 0px 0px;
   letter-spacing: 4px;
   text-align: center;
+  margin-bottom: 2%;
+  background-color: rgba(255,255,255,0.025);
+
+  /*Considering making this title white, possibly units instead*/
+  /*background-color: rgba(0,220,255,0.1);*/
+  color: rgba(255,255,255,1);
+  /*font-size: 210%;*/
+  border: 1px solid #dddddd;
+  box-shadow: 0 0 1pt 1pt rgba(255,255,255,0.5);
+  /*margin: 0% 10% 0% 10%;*/
+  transition: all 0.25s ease 0s;
 }
 #fullSolution {
   width: 100%;

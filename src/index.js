@@ -165,11 +165,11 @@ ReactDOM.render(
       <Route path='/problem/:probID' component={FullProblem}>
         <IndexRoute component={SideBarProblem}></IndexRoute>
         <Route path='/problem/:probID/sideBar' component={SideBarProblem}>
-          <IndexRoute component={SubProblemContainer}></IndexRoute>
+          <IndexRoute component={Empty}></IndexRoute>
           <Route path='/problem/:probID/create' component={ProblemForm}></Route>
           <Route path='/problem/:probID/edit' component={ProjectEditForm}></Route>
           <Route path='/problem/:probID/flag' component={ProjectFlagForm}></Route>
-          <Route path='/problem/:probID/subproblems' component={SubProblemContainer}></Route>
+          <Route path='/problem/:probID/subproblems' component={Empty}></Route>
         </Route>
         <Route path='/problem/:probID/subprojects' component={Empty}></Route>
         <Route path='/problem/:probID/solutions' component={ProblemSolutionsMenu}>

@@ -13,6 +13,16 @@ export default class FullSolutionContainer extends React.Component {
 
         this.submitVote = this.submitVote.bind(this)
     };
+
+    getInitialState(){
+      var self = this;
+      return axios.get( Config.API + '/auth/solutions/ID?id='+this.props.params.solutionID).then(function (response) {
+          self.setState({
+              solutionInfo: response.data,
+          })
+    })
+    }
+
     //initialize the component with this state
     componentDidMount(){
       var self = this;

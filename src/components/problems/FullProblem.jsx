@@ -3,6 +3,7 @@ import { Link  } from 'react-router';
 import axios from 'axios';
 import cookie from 'react-cookie';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group'; // ES6
+import ProblemSolutionsMenu from './ProblemSolutionsMenu.jsx';
 import ProjectParentChildrenUnitsContainer from '../../containers/ProjectParentChildrenUnitsContainer.jsx';
 import SideBarProblemMenu from './SideBarProblemMenu.jsx';
 import SubProblemContainer from '../../containers/SubProblemContainer.jsx';
@@ -21,6 +22,7 @@ export default class FullProblem extends React.Component {
         this.state = {
             problemInfo: [],
             parentInfo: [],
+            probID: []
         }
         this.submitVote = this.submitVote.bind(this)
         this.unVote = this.unVote.bind(this)
@@ -31,14 +33,15 @@ export default class FullProblem extends React.Component {
 
           //set Problem Data
           self.setState({
-              problemInfo: response.data
+              problemInfo: response.data,
+              probID: response.data.ID
           })
     })
-    .catch(function (error) {
-        if(error.response.status === 401 || error.response.status === 403){
-            document.location = "/welcome"
-        }
-    });
+    // .catch(function (error) {
+    //     if(error.response.status === 401 || error.response.status === 403){
+    //         document.location = "/welcome"
+    //     }
+    // });
           
     axios.get( Config.API + "/auth/vote/isVotedOn?type=0&typeID=" + this.props.params.probID + "&username=" + cookie.load("userName"))
           .then( function (response){
@@ -217,11 +220,14 @@ goToProposals() {
             <p id="problemSummary">
               {this.state.problemInfo.Summary}
             </p>
-            <Link to={`/problem/${this.props.params.probID}/solutions/top`} activeClassName="activeWhite" onClick={this.jumpDown}>
+            {/*<Link to={`/problem/${this.props.params.probID}/solutions/top`} activeClassName="activeWhite" onClick={this.jumpDown}>
               <div id="SBButton">Proposals</div>
-            </Link>
+            </Link>*/}
             <Link to={`/problem/${this.props.params.probID}/create`} activeClassName="activeBlueText">
-              <div id="createSPButtonBox">
+              {/*Old*/}
+              {/*<div id="createSPButtonBox">*/}
+              {/*New*/}
+              <div id="SBButton">
                 Create a Sub Project
               </div>
             </Link>
@@ -247,8 +253,11 @@ goToProposals() {
         </div>*/}
           <div id="projectMenuContainer">
           </div>
-            {React.cloneElement(this.props.children)}
+          {React.cloneElement(this.props.children)}
+          {React.cloneElement(<SubProblemContainer probID={this.props.params.probID} />)}
+          {React.cloneElement(<ProblemSolutionsMenu probID={this.props.params.probID} projectTitle={this.state.problemInfo.Title} />)}
           
+          {/*<FullSolutionContainer />*/}
           
           {/*Attempt to get subprojects always underneath the section, particularly for creating new projects*/}
           {/*{React.cloneElement(<SubProblemContainer />, {probID: this.state.probID})}*/}
@@ -357,7 +366,6 @@ goToProposals() {
           <div id="projectMenuContainer">
           </div>
             {React.cloneElement(this.props.children, {probID: this.state.probID})}
-          
           
           {/*Attempt to get subprojects always underneath the section, particularly for creating new projects*/}
           {/*<SubProblemContainer />*/}
