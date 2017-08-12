@@ -1746,8 +1746,9 @@ like vote and comments.*/
       transition: all 0.5s ease 0s;
     }
     #submitLogin, #submitRegister {
-      margin-top: 0.5%;
+      margin-top: 2%;
       width: 15%;
+      background-color: rgba(0,220,255,0.05);
     }
     #submitLogin:hover, #submitRegister:hover,
     #submitLogin:focus, #submitLogin:active, 
@@ -1758,7 +1759,7 @@ like vote and comments.*/
     }
     #registerButton, #loginButton {
     	color: #00ffdc;
-      background-color: rgba(0,255, 220, 0);
+      background-color: rgba(0,220,255,0.05);
     	border: 1px solid #00ffdc;
       border-width: 0px 1px 1px 1px;
       width: 10%;
@@ -1926,16 +1927,15 @@ like vote and comments.*/
 }
 #introductionContainer {
   margin: 0 auto;
-  margin-top: 2.5%;
+  margin-top: 2%;
   margin-bottom: 3%;
   font-size: 175%;
   width: 75%;
-  background-color: rgba(0,220,255,0.05);
-  border: 2px solid #00dcff;
+  /*border: 2px solid #00dcff;*/
   border-width: 1px 1px 1px 1px;
   border-radius: 40px 40px 0px 0px;;
   text-align: left;
-  padding: 5% 5% 5% 5%;
+  padding: 0% 5% 5% 5%;
   z-index: 5;
   /*float: right;*/
 }
@@ -1943,13 +1943,16 @@ like vote and comments.*/
   border: 1px outset #00dcff;
   border-width: 1px 0px 0px 0px;
   padding: 3%;
-  padding-bottom: 0px;
+  padding-bottom: 4%;
   padding-top: 4%;
   margin-top: 1%;
   margin-bottom: 1%;
   font-size: 160%;
   text-align: center;
   letter-spacing: 4px;
+  border: 1px solid #dddddd;
+  border-radius: 3px;
+  background-color: rgba(0,220,255,0.05);
   /*color: #00dcff;*/
 
 
@@ -2000,7 +2003,14 @@ like vote and comments.*/
   color: #dddddd;
   padding-left: 8%;
   padding-right: 8%;
+  padding-top: 3%;
+  padding-bottom: 3%;
   line-height: 170%;
+  background-color: rgba(0,220,255,0.05);
+  border: 1px solid #00dcff;
+  border-width: 1px 0px;
+  width: 70%;
+  margin: 0 auto;
 }
 #introductionProjectsProse {
   font-family: 'Open Sans';
@@ -2018,12 +2028,12 @@ like vote and comments.*/
   border: 1px solid #00ffdc;
   border-radius: 3px;
   padding: 3px;
-  margin-top: 3%;
-  margin-bottom: 3%;
-
+  margin-top: 4%;
+  margin-bottom: 2%;
+  background-color: rgba(0,220,255,0.05);
 }
 #introRegister {
-  padding: 0px 10px 20px 0px;
+  padding: 0px 0% 4% 0px;
   flex: 1 1 auto;
   width: 100%;
   font-size: 110%;
@@ -2040,9 +2050,11 @@ like vote and comments.*/
   margin-bottom: 0px;
   box-shadow: 0 0 2pt 2pt rgba(0,220,255,0.5);
   font-family: 'Alegreya Sans SC', sans-serif;
+  background-color: rgba(0,220,255,0.05);
 }
 #loginPassword, #registerPassword {
   margin-bottom: 15px;
+  background-color: rgba(0,220,255,0.05);
 }
 
 
@@ -2593,7 +2605,7 @@ introductionProjectTitle {
 
 /*SubProblemUnit and SolutionUnit*/
 
-#subProblemUnit:hover, #solutionUnit:hover {
+#subProblemUnit:hover {
   cursor: pointer;
   box-shadow: 0 0 2pt 2pt rgba(0,220,255,0.5);
 }
@@ -2628,10 +2640,15 @@ introductionProjectTitle {
   width: 90%;
   border: 1px solid #00dcff;
   border-radius: 3px;
-  transition: all 0.25s ease 0s;
+  transition: all 0.5s ease 0s;
   box-shadow: 0 0 0pt 0pt rgba(0,220,255,0.5);
-  margin-top: 2%;
+  margin-top: 2.25%;
   background-color: rgba(0,220,255,0.05);
+}
+#solutionUnit:hover {
+  cursor: pointer;
+  /*font-size: 105%;*/
+  box-shadow: 0 0 2px 2px rgba(0,220,255,0.5);
 }
 #solutionUnitActive {
   padding: 10px;
@@ -2907,7 +2924,7 @@ introductionProjectTitle {
       /*border-radius: 3px;*/
       /*box-shadow: 0 0 1pt 1pt rgba(255,255,255,0.5);*/
       /*border: 2px solid #00dcff;*/
-      box-shadow: 0 0 1pt 1pt rgba(0,220,255,0.5) !important;
+      /*box-shadow: 0 0 1pt 1pt rgba(0,220,255,0.5) !important;*/
       background-color: rgba(0,220,255,0.05);
       transform: scale(1);
       transition: all 0.5s ease 0s;
@@ -2917,9 +2934,9 @@ introductionProjectTitle {
       background-color: rgba(0,220,255, 0.05);
     }
     #createWelcomeButtonBox:hover {
-      transform: scale(1.02);
-      box-shadow: 0 0 2pt 2pt rgba(0,220,255,0.5) !important;
-    }
+      /*transform: scale(1.02);*/
+      background-color: rgba(0,220,255,0.05); 
+      border-color: #00dcff;   }
     #createWelcomeButtonBox:hover * {
       color: #00dcff;
       cursor: pointer;
@@ -3419,7 +3436,7 @@ introductionProjectTitle {
   height: 12em;
 }
 #askQuestion, #addSuggestion, #addAnswer {
-  font-size: 90%;
+  font-size: 110%;
   color: #00dcff;
   background-color: rgba(0,220,255, 0.05);
   border: 1px solid #00dcff;
@@ -3427,6 +3444,12 @@ introductionProjectTitle {
   margin-top: 2%;
   width: 40%;
   transition: all 0.5s ease 0s;
+  padding: 3px 0px 3px 0px;
+  
+  border: 1px solid #00dcff;
+  border-width: 1px 1px 1px 1px;
+  border-radius: 3px 3px 3px 3px;
+  background-color: rgba(0,220,255, 0.05);
 }
 #addAnswer {
   color: #00dcff;
@@ -3810,7 +3833,7 @@ introductionProjectTitle {
 #parentButton:hover, #parentButton:active {
   cursor: pointer;
   color: #ffffff;
-  background-color: rgba(0,220,255,0.15);
+  background-color: rgba(0,220,255,0.12);
 }
 #parentChildrenButton {
   background-color: rgba(0,220,255,0.05);
@@ -3927,7 +3950,7 @@ introductionProjectTitle {
   letter-spacing: 4px;
   font-family: 'Alegreya Sans SC', sans-serif;
   width: 100%;
-  transition: all 0.5s ease 0s;
+  transition: all 2s ease 0s;
   transform: scale(1);
   border: 1px solid #00ffdc;
   border-width: 0px 0px 1px 0px;
@@ -3950,7 +3973,7 @@ introductionProjectTitle {
   letter-spacing: 4px;
   font-family: 'Alegreya Sans SC', sans-serif;
   width: 100%;
-  transition: all 0.5s ease 0s;
+  transition: all 2s ease 0s;
   transform: scale(1);
   border: 1px solid #00ffdc;
   border-width: 0px 0px 1px 0px;
@@ -4601,7 +4624,7 @@ introductionProjectTitle {
   color: #ffffff;
   border-radius: 3px;
   font-size: 200%;
-  margin: 0px 0px;
+  margin: 0 auto;
   letter-spacing: 4px;
   text-align: center;
   margin-bottom: 0.15%;
@@ -4624,10 +4647,10 @@ introductionProjectTitle {
   color: #ffffff;
   border-radius: 3px;
   font-size: 200%;
-  margin: 0px 0px;
+  margin: 0 auto;
   letter-spacing: 4px;
   text-align: center;
-  margin-top: 1%;
+  margin-top: 1.5%;
   margin-bottom: 0.15%;
   transition: all 0.25s ease 0s;
   font-size: 200%;
@@ -4637,10 +4660,26 @@ introductionProjectTitle {
   border-radius: 3px 3px 3px 3px;
   background-color: rgba(0,220,255, 0.05);
   box-shadow: 0 0 1pt 1pt rgba(255,255,255,0.5);
-
-  /*Considering making this title white, possibly units instead*/
-  /*background-color: rgba(0,220,255,0.1);*/
-  
+  width: 85%;
+}
+#discussMenuEnd {
+  flex: 1 1 auto;
+  color: #ffffff;
+  border-radius: 3px;
+  font-size: 200%;
+  margin: 0 auto;
+  letter-spacing: 4px;
+  text-align: center;
+  margin-bottom: 2.5%;
+  transition: all 0.25s ease 0s;
+  font-size: 200%;
+  letter-spacing: 6px;
+  border: 1px solid #dddddd;
+  border-width: 1px 1px 1px 1px;
+  border-radius: 3px 3px 3px 3px;
+  background-color: rgba(0,220,255, 0.05);
+  box-shadow: 0 0 1pt 1pt rgba(255,255,255,0.5);
+  width: 85%;
 }
 #fullSolution {
   width: 90%;
@@ -4650,6 +4689,7 @@ introductionProjectTitle {
   background-color: rgba(0,220,255,0.05);
   margin: 0 auto;
   margin-top: 1%;
+  padding-top: 1%;
 }
 #solutionFormLabel {
   color: #00dcff;
@@ -4916,19 +4956,14 @@ label + input[type=radio] + label {
 }
 
 #solutionTitle {
-  /*color: #dddddd;*/
-  /*margin: 2% 10% 2% 10%;*/
-  /*font-size: 180%;*/
-  /*letter-spacing: 6px;*/
   border: 1px solid #dddddd;
   border-radius: 3px;
   box-shadow: 0 0 1pt 1pt rgba(255,255,255,0.5);
   margin-bottom: 0px;
-  margin-top: 5px;
+  margin-top: 3%;
   transition: all 0.25s ease 0s;
   color: rgba(221,221,221,1);
   word-wrap: break-word; 
-  /*font-family: 'Open Sans', sans-serif;*/
 }
 
 #solutionIntro {

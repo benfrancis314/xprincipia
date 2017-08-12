@@ -172,7 +172,7 @@ Welcome to XPrincipia.
 
 
 
-// Draft 2
+// Draft 2 - Lincoln Inspiration
 
 {/*Here anyone, <span id="blueOpen">regardless of background </span>or class, may openly contribute to and <span id="blueOpen">join today's cutting edge </span>of 
 scientific <span id="blueOpen">research </span>and technology <span id="blueOpen">development</span>.
@@ -219,3 +219,104 @@ Our success, and the <span id="blueOpen">fruit it may bare</span>, is up to us a
 <br />
 <br />
 <span id="blueOpen">Welcome to XPrincipia.</span>*/}
+
+
+
+// Draft 3 - Kennedy Inspiration
+
+          /*<div id="introductionContainer">
+                <div id="introductionWelcome">
+                    <span id="introductionCapital">W</span>elcome to <span id="introductionCapital"> XP</span>rincipia
+                    <br />
+                </div>
+                Considering change to "The Open Frontier of Discovery/Science
+                Not currently using
+                <div id="introductionTitle">The Open Frontier of Research</div>
+                <div id="introductionProse">
+                    <span id="introductionCapitalProse">W</span>e find ourselves in an<span id="blueOpen"> age of great opportunity</span>, but equally in an<span id="blueOpen"> age of great peril</span>. 
+                    <br />
+                    <br />
+                    We find ourselves in the <span id="blueOpen">upturn of an era</span> where the <span id='blueOpen'>advances of science and technology </span>
+                    hold our collective future,<span id="blueOpen"> as a species and civilization</span>,
+                    upon their conclusion. 
+                    <br />
+                    <br />
+                    Upon this unique moment in time, we find ourselves <span id="blueOpen">looking ahead into the unknown</span>, 
+                    in great need of<span id="blueOpen"> a great people to represent the best of our species</span>, who will take our 
+                    challenges into their own hands and will. 
+                    <br />
+                    <br />
+                    A
+                    <span id="blueOpen">We call upon you</span>, and everyone with the <span id="blueOpen">spirit of 
+                    discovery in heart</span>, to take up this challenge 
+                    of all ages and <span id="blueOpen">shape the future of our species</span>.
+                    B
+                    <span id="blueOpen">We call upon you</span> to take up this mission, to solve each problem we encounter and<span id="blueOpen"> shape the future of our species</span>.
+                    <br />
+                    <br />
+                    We call upon you for this <span id="blueOpen">adventure of all time</span>, looking not at where you come from but <span id="blueOpen"> 
+                    where you will take us</span>. 
+                    <br />
+                    <br />
+                    <span id="blueOpen">Join the frontier of all knowledge</span> and<span id="blueOpen"> will of discovery</span>, the focus of where we are and 
+                    where we choose to go. 
+                    <br />
+                    <br />
+                    <span id="blueOpen">Each project along this path </span>will be broken down with <span id="blueOpen">thought and efficiency</span>, for which 
+                    <span id="blueOpen"> new proposals will be created </span>to achieve or solve each project.
+                    <br />
+                    <br />
+                    <span id="blueOpen">Discussion and debate </span>will be held with <span id="blueOpen">rigor and deterimation</span>, and 
+                    <span id="blueOpen"> targeted education </span>will be <span id='blueOpen'>designed with patience </span>and <span id="blueOpen">used with ambition</span>. 
+                    <br />
+                    <br />
+                    Proposals are<span id='blueOpen'> weighed by pro and con</span>, and the best will be<span id="blueOpen"> determined by democratic vote</span>.
+                    <br />
+                    <br />
+                    In the end, <span id="blueOpen">an architecture will be built with the greatest works of our time </span>held inside and a<span id='blueOpen'> blueprint 
+                    designed for a better tomorrow</span>. 
+                    <br />
+                    <br />
+                    <span id="blueOpen">At no point in this process will we rest</span>, our eyes focused upon what is at grasp ahead. 
+                    <br />
+                    <br />
+                    We ask you to<span id="blueOpen"> join this cause</span>, to explore this frontier and dedicate your will to advance our world,
+                    with the knowledge that<span id="blueOpen"> together we will not fail</span>.     
+                </div>
+
+                <IntroductionRegister />
+
+                <div id="introductionProse"> 
+                    Join the effort to make humanity into a spacefaring civilization
+                </div>
+                <div id="introductionProjectHeader1">
+                    <div id="introductionProjectTitle">
+                        Interstellar Civilization
+                    </div>
+                </div>
+                <div id="introductionProjectsProse">
+                    Choose to evolve our species into a more perfect state of being:
+                </div>
+                <div id="introductionProjectHeader2">
+                    <div id="introductionProjectTitle">
+                        Evolving Humanity
+                    </div>
+                </div>
+                <div id="introductionProjectsProse">
+                    Complete our oldest endeavor, to fully understand the world we find ourselves in:
+                </div>
+                <div id="introductionProjectHeader3">
+                    <div id="introductionProjectTitle">
+                        Theoretical Knowledge
+                    </div>
+                </div>
+                <div id="introductionProjectsProse">
+                    Design the tools needed for all scopes of our ambitions:
+                    Shape our world with tools, the force that has always driven it:
+                </div>
+                <div id="introductionProjectHeader4">
+                    <div id="introductionProjectTitle">
+                        Technology Development
+                    </div>
+                </div>
+            </div>*/

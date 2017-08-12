@@ -18,14 +18,14 @@ constructor(props){
 
     componentDidMount(){
         var self = this;
-        if(this.props.params.solutionID){
-            return axios.get( Config.API + '/cons/typeID?id='+this.props.params.solutionID+'&dataType=1').then(function (response) {
+        if(this.props.solutionID){
+            return axios.get( Config.API + '/cons/typeID?id='+this.props.solutionID+'&dataType=1').then(function (response) {
                 self.setState({
                     cons: response.data
                 })
             })  
         } else {
-            return axios.get( Config.API + '/cons/typeID?id='+this.props.params.probID+'&dataType=0').then(function (response) {
+            return axios.get( Config.API + '/cons/typeID?id='+this.props.probID+'&dataType=0').then(function (response) {
                 self.setState({
                     cons: response.data
                 })
@@ -35,7 +35,7 @@ constructor(props){
    render() {
            return (
         <div id="suggestionContainer">
-              <Link to={`/fullsolution/${this.props.params.probID}/${this.props.params.solutionID}/description`}>
+              <Link to={`/fullsolution/${this.props.probID}/${this.props.solutionID}/description`}>
                  <div id="solutionDescriptionReturn">
                      <img src={require('../assets/upArrow.svg')} id="backArrowBlueHover" width="50" height="30" alt="Back arrow, blue up arrow" />
                  </div>
@@ -47,8 +47,7 @@ constructor(props){
           transitionEnter={false}
           transitionLeave={false}>*/}
           {this.props.children}
-            <ConsUnit cons={this.state.cons} probID={this.props.params.probID}/>
-            <SideBarMore />
+            <ConsUnit cons={this.state.cons} probID={this.props.probID} solutionID={this.props.solutionID}/>
         {/*</ReactCSSTransitionGroup>*/}
         </div>    
       );

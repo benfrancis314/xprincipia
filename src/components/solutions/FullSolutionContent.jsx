@@ -4,7 +4,9 @@ import axios from 'axios';
 import cookie from 'react-cookie';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group'; // ES6
 import {Config} from '../../config.js';
+import ConsContainer from '../../containers/ConsContainer.jsx';
 import FullSolutionDescription from './FullSolutionDescription.jsx';
+import ProsContainer from '../../containers/ProsContainer.jsx';
 
 export default class FullSolutionContent extends React.Component {
   constructor(props){
@@ -180,6 +182,8 @@ unVote() {
               </div>
             
               <div>
+            {/*{React.cloneElement(<ProsContainer probID={this.state.probID} solutionID={this.state.solutionID} /> )}*/}
+            {/*{React.cloneElement(<ConsContainer probID={this.state.probID} solutionID={this.state.solutionID} /> )}*/}
             {React.cloneElement(<FullSolutionDescription probID={this.state.probID} solutionID={this.state.solutionID} /> )}
             </div>
         </div>
