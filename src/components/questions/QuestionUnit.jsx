@@ -59,10 +59,6 @@ constructor(props){
           
         })
         .catch(function (error) {
-            // alert("I'm sorry, there was a problem with your request.")
-        
-            // Slow internet may cause there to an error, when really
-            //it just needs to reload. In so, the following may be useful:
             document.location = window.location.pathname 
         })
     }

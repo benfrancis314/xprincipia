@@ -84,8 +84,8 @@ export default class FullSolution extends React.Component {
       return (
         <div id="fullSolution">
             <div id="solutionIntro">
-                <div id="backProposalArrowDiv" onClick={toggleProposal}>
-                    <img src={require('../../assets/upArrow.svg')} id="backArrowBlueHover" width="50" height="30" alt="Back arrow, blue up arrow" />
+                <div onClick={toggleProposal}>
+                    <img src={require('../../assets/redX.svg')} id="closeRedX" width="35" height="35" alt="Close button, red X symbol" />
                 </div>
                 <h1 id="solutionTitle" onClick={toggleProposal}>{this.state.solutionInfo.Title}</h1>
                 <div id="proposalCreator">{this.state.solutionInfo.OriginalPosterUsername}</div>
@@ -96,7 +96,7 @@ export default class FullSolution extends React.Component {
             </div>
             {/*{React.cloneElement(this.props.children, {solutionInfo: this.state.solutionInfo}, {probID: this.props.probID}, {solutionID: this.props.solutionID})}*/}
             {React.cloneElement(<FullSolutionContent probID={this.props.probID} solutionID={this.props.solutionID} /> )}
-      </div>
+        </div>
       );
    }
 }

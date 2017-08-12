@@ -9,16 +9,38 @@ export default class ProblemSolutionsMenu extends React.Component {
         super(props);
 
         this.state = {
-            solutions: []
+            solutions: [],
+            probID: []
         }
 
     };
-    componentDidMount(){
+    getInitialState(){
         var self = this;
         window.scrollTo(0,0);
         return axios.get( Config.API + '/auth/solutions/problemID?id='+this.props.probID).then(function (response) {
             self.setState({
-                solutions: response.data
+                solutions: response.data,
+                probID: this.props.probID
+            })
+        })
+    }
+    // componentDidMount(){
+    //     var self = this;
+    //     window.scrollTo(0,0);
+    //     return axios.get( Config.API + '/auth/solutions/problemID?id='+this.props.probID).then(function (response) {
+    //         self.setState({
+    //             solutions: response.data,
+    //             probID: this.props.probID
+    //         })
+    //     })
+    // }
+    componentWillReceiveProps (nextProps){
+        var self = this;
+        window.scrollTo(0,0);
+        return axios.get( Config.API + '/auth/solutions/problemID?id='+nextProps.probID).then(function (response) {
+            self.setState({
+                solutions: response.data,
+                probID: nextProps.probID
             })
         })
     }
@@ -37,7 +59,7 @@ export default class ProblemSolutionsMenu extends React.Component {
         console.log('Solutions state2' + this.state.solutions + 'x');
       return (
         <div>
-            <SolutionUnit solutions={this.state.solutions} probID={this.props.probID}/>
+            <SolutionUnit solutions={this.state.solutions} probID={this.state.probID}/>
         </div>
 
       );

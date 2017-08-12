@@ -38,7 +38,7 @@ componentWillReceiveProps (nextProps){
             <div>
                 <Link to={`/problem/${this.props.parentID}/subproblems`}>
                     <div id="parentButton">
-                        XPrincipia Projects
+                        <span id='blue'>Parent: </span>XPrincipia Projects
                     </div>
                 </Link>
             </div>
@@ -49,7 +49,7 @@ componentWillReceiveProps (nextProps){
 			<div>
                 <Link to={`/problem/${this.props.parentID}/subproblems`}>
                     <div id="parentButton">
-                        {this.state.parent.Title}
+                        <span id='blue'>Parent: </span>{this.state.parent.Title}
                     </div>
                 </Link>
             </div>

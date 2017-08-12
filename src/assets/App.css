@@ -195,6 +195,10 @@ Last updated: 8/11/17
       border: 2px solid #00dcff;
       box-shadow: 0 0 3pt 3pt rgba(0,220,255,0.5)
     }
+    #thinDiv1 {
+      width: 90%;
+      margin: 0 auto;
+    }
 
       /*Scrollbar*/
     ::-webkit-scrollbar {
@@ -486,19 +490,6 @@ Last updated: 8/11/17
 #sidebarSB {
   padding: 0px !important;
 }
-/*Trying to fix mobile look of V3 Projects*/
-#problemRow1 {
-  display: default;
-}
-#SBButtonDiscuss, #SBButtonLearn {
-  /*clear: both !important;*/
-}
-#SBButtonDiscuss {
-
-}
-#SBButtonLearn {
-
-}
 /*Problem Left SB*/
 
 #maxContainerRow {
@@ -770,6 +761,15 @@ like vote and comments.*/
     	font-size: 90%;
     	text-align: justify;
     }
+    #questionForm {
+      /*margin-top: 2%;*/
+    }
+    #questionLegend {
+      color: #00dcff;
+      margin: 0 auto;
+      font-size: 125%;
+      padding: 5px;
+    }
     #questionContent {
     	flex: 3 3 auto;
     	font-family: 'Open Sans';
@@ -826,7 +826,7 @@ like vote and comments.*/
     #editSBButtonAnswer, #flagSBButton {
       flex: 1 1 auto;
       color: #00ffdc;
-      background-color: inherit;
+      background-color: rgba(255,255,255,0.05);
       border: 1px solid #00dcff;
       border-radius: 2px 0px 0px 2px;
       cursor: pointer;
@@ -843,7 +843,7 @@ like vote and comments.*/
       box-shadow: 0 0 0pt 0pt rgba(255,127,127,0.5);
     }
     #commentSBButtonUser {
-      border-radius: 0px 0px 0px 0px;
+      border-radius: 0px 0px 0px 3px;
     }
     #editSBButton {
       border-width: 1px 0px 1px 0px;
@@ -1088,6 +1088,10 @@ like vote and comments.*/
     #fieldSetNoBorder {
       border-width: 0px;
     }
+    #fieldSetNoBorderPadding {
+      border-width: 0px;
+      padding-top: 0px;
+    }
     input, textarea {
       font-family: 'Open Sans', sans-serif;
       font-size: 100%;
@@ -1187,9 +1191,13 @@ like vote and comments.*/
 
 
     #fullProblem {
+      margin: 0 auto;
       width: 65%;
-      float: left;
+      /*float: left;*/
       flex: 1 1 auto;
+      /*display: inline-flex;
+      flex-direction: row;
+      justify-content: flex-start;*/
       /*margin-top: 1.5%;*/
     }
     #solutionHeader, #problemHeader {
@@ -2735,9 +2743,12 @@ introductionProjectTitle {
       flex: 3 3 auto;
       font-family: 'Open Sans';
       border: 1px solid #00dcff;
-      border-width: 1px 0px 0px 0px;
+      border-width: 1px 0px 1px 1px;
+      border-radius: 3px 0px 0px 3px;
       width: 80%;
       padding: 10px;
+      margin-bottom: 1%;
+      background-color: rgba(255,255,255,0.05);
     }
     #suggestionText {
       font-family: 'Open Sans';
@@ -2746,10 +2757,10 @@ introductionProjectTitle {
     #suggestionVote, #suggestionVoteNoComments {
       flex: 1 1 auto;
       color: #00ffdc;
-      background-color: inherit;
+      background-color: rgba(255,255,255,0.05);
       border: 1px solid #00ffdc;
       border-width: 1px 1px 1px 0px;
-      border-radius: 2px 2px 0px 0px;
+      border-radius: 2px 2px 3px 0px;
       cursor: pointer;
       height: 37px;
       min-width: 101.94px;
@@ -2849,7 +2860,7 @@ introductionProjectTitle {
     }
     #welcomeBox {
     	/*Old*/
-      margin: 0.5% 20% 2.5% 20%;
+      margin: -1% 20% 1.5% 20%;
     	border: 1px solid #dddddd;
       /*border: 2px solid #00dcff;*/
       /*box-shadow: 0 0 1pt 1pt rgba(0,220,255,0.5) !important;*/
@@ -2950,6 +2961,7 @@ introductionProjectTitle {
     .activeBlue div {
       color: #0f131c !important;
       background-color: #00dcff !important;  
+      border-color: #00dcff !important;
     }
     .activeBlueTextHeader div {
       color: #00dcff !important;
@@ -2992,6 +3004,12 @@ introductionProjectTitle {
     	padding: 2px;
       width: 80%;
       margin: 0 auto;
+      margin-bottom: 1%;
+      border: 1px solid #00dcff;
+      border-width: 0px 0px 1px 0px;
+      border-radius: 0% 0% 15% 15%;
+      padding: 1px;
+      background: linear-gradient(rgba(0,255,220,0), rgba(0,220,255,0.1));
     }
     #welcomeUserUnitsContainer {
     	/*margin: 0% 5% 3% 5%;*/
@@ -3128,7 +3146,7 @@ introductionProjectTitle {
     /*display: block;*/
     /*flex-direction: column;*/
     border: 1px solid #00dcff;
-    border-radius: 0%;
+    border-radius: 3px;
     box-shadow: 0 0 0pt 0pt rgba(0,220,255,0.5);
     width: 94.5%;
     height: auto;
@@ -3286,29 +3304,29 @@ introductionProjectTitle {
     	border-width: 0px 0px 0px 1px;
     }
     #sidebarMenu {
-      display: flex;
+      /*display: flex;
       flex-direction: column;
       align-items: stretch;
       margin-bottom: 10px;
       justify-content: center;
       flex: 1 1 auto;
-      width: 100%;
+      width: 100%;*/
     }
-    #SBButton, #SBButton1 {
+    #SBButton, #SBButton1, #SBButtonNoHover {
     	flex: 1 1 auto;
     	color: #dddddd;
-    	font-size: 190%;
-    	border: 1px solid #dddddd;
-    	border-width: 1px 1px;
-    	border-radius: 3px;
+    	font-size: 180%;
     	text-align: center;
     	text-decoration: none;
       margin: 0 auto;
-    	margin-top: 15px;
+    	margin-top: 0px;
       margin-bottom: 3px;
-      width: 70%;
-      /*Old*/
-      background-color: rgba(255,255,255,0.025);
+      width: 40%;
+      border: 1px solid #dddddd;
+      border-width: 1px;
+      border-radius: 3px;
+      background-color: rgba(0,220,255, 0.05);
+      /*box-shadow: 0 0 1pt 1pt rgba(255,255,255,0.5);*/
       transition: all 0.5s ease 0s;
     }
     #SBButton:hover, #SBButton1:hover {
@@ -3319,40 +3337,6 @@ introductionProjectTitle {
     }
     #SBButton1 {
       margin-top: 0px;
-    }
-    #SBButtonDiscuss, #SBButtonLearn {
-      flex: 1 1 auto;
-      color: #dddddd;
-      font-size: 250%;
-      border: 1px solid #dddddd;
-      border-width: 1px 1px;
-      border-radius: 3px;
-      text-align: center;
-      text-decoration: none;
-      margin: 0 auto;
-      margin-top: 20%;
-      width: 70%;
-      background-color: rgba(255,255,255,0.025);
-      transition: all 0.5s ease 0s;
-      padding: 10% 0% 10% 0%;
-    }
-    #SBButtonDiscuss {
-      margin-right: 20%;
-      margin-top: 30%;
-      border-radius: 0px 3px 3px 40px;
-    }
-    #SBButtonLearn {
-      margin-left: 20%;
-      margin-top: 30%;
-      border-radius: 3px 0px 40px 3px;
-    }
-    #SBButtonDiscuss:hover, #SBButtonLearn:hover {
-      background-color: rgba(255,255,255,0.05);
-      /*color: #00dcff;*/
-      cursor: pointer;
-      /*border-color: #00dcff;*/
-      box-shadow: 0 0 1px 1px rgba(0,220,255,1);
-
     }
         
     #createButton {
@@ -3614,6 +3598,20 @@ introductionProjectTitle {
 
 /*Logos*/
 
+#closeRedX {
+  display: block;
+  margin: 0 auto;
+  /*padding: 3px;*/
+  margin-top: 1%;
+  margin-bottom: 1%;
+  border: 0px solid #ff7f7f;
+  border-radius: 50%;
+  transition: all 0.5s ease 0s;
+}
+#closeRedX:hover {
+  cursor: pointer;
+  background-color: rgba(255,127,127,0.15);
+}
 #middleAlignOrion {
   display: block;
   margin: 0 auto;
@@ -3875,9 +3873,15 @@ introductionProjectTitle {
 #problemRow1, #problemRow2 {
   display: inline-flex;
   justify-content: space-between;
-  align-items: flex-start;
+  align-items: center;
   align-content: flex-start;
   width: 100%;
+}
+#problemRow1 {
+  width: 60%;
+  margin: 0 auto;
+  margin-top: 1%;
+  justify-content: center;
 }
 #problemColumn1 {
   display: flex;
@@ -3898,47 +3902,82 @@ introductionProjectTitle {
   flex: 1 1 auto;
   margin: 0 auto;
   margin-top: -1%;
-  /*margin-bottom: 2%;*/
-  /*padding-left: 9%;*/
-  font-size: 450%;
+  font-size: 400%;
   text-align: center;
   letter-spacing: 4px;
   font-family: 'Alegreya Sans SC', sans-serif;
-  width: 70%;
-  background-color: rgba(0, 255, 220, 0);
+  width: 100%;
   transition: all 0.5s ease 0s;
-  transform: scale(1);
   display: flex;
   align-items: center;
   flex-direction: row;
-  justify-content: center;
+  border: 1px solid #00ffdc;
+  border-radius: 50%;
+  padding: 3px;
+  background-color: rgba(255,255,255,0.05)
 }
 #projectPercent {
+  color: rgba(0,255,220,1);
+  flex: 1 1 auto;
+  margin: 0 auto;
+  margin-top: -1%;
+  font-size: 475%;
+  text-align: center;
+  letter-spacing: 4px;
+  font-family: 'Alegreya Sans SC', sans-serif;
+  width: 100%;
   transition: all 0.5s ease 0s;
-  margin-left: 21%;
+  transform: scale(1);
+  border: 1px solid #00ffdc;
+  border-width: 0px 0px 1px 0px;
+  border-radius: 0% 0% 20% 20%;
+  padding: 1px;
+  /*background-color: rgba(255,255,255,0.05);*/
+  background: linear-gradient(rgba(0,255,220,0), rgba(0,220,255,0.1));
 }
 #projectPercent:hover {
-  transform: scale(1.2);
+  /*transform: scale(1.2);*/
+  font-size: 570%;
+}
+#projectPercentGreen {
+  color: rgba(0,255,220,1);
+  flex: 1 1 auto;
+  margin: 0 auto;
+  margin-top: -1%;
+  font-size: 475%;
+  text-align: center;
+  letter-spacing: 4px;
+  font-family: 'Alegreya Sans SC', sans-serif;
+  width: 100%;
+  transition: all 0.5s ease 0s;
+  transform: scale(1);
+  border: 1px solid #00ffdc;
+  border-width: 0px 0px 1px 0px;
+  border-radius: 0% 0% 20% 20%;
+  padding: 1px;
+  /*background-color: rgba(255,255,255,0.05);*/
+  background: linear-gradient(rgba(0,255,220,0), rgba(0,255,220,0.1));
+}
+#projectPercentGreen:hover {
+  /*transform: scale(1.2);*/
+  font-size: 570%;
 }
 #voteProblem {
   flex: 1 1 auto;
   text-align: center;
-  background-color: rgba(0, 255, 220, 0);
   color: #00ffdc;
   border: 1px solid #00ffdc;
-  border-radius: 3px;
+  border-radius: 3px 0px 0px 3px;
   text-align: center;
-  /*letter-spacing: 8px;*/
   font-family: 'Alegreya Sans SC', sans-serif;
-  font-size: 30%;
-  text-decoration: none;
   transition: all 0.5s ease 0s;
-  padding: 9px;
+  padding: 0.7% 0%;
   letter-spacing: 2px;
-  margin: 0 auto;
-  margin-top: 5%;
-  margin-left: 22%;
-  width: 100%;
+  margin: 0 auto; 
+  font-size: 115%;
+  width: 8em;
+  /*Keep this*/
+  background-color: rgba(255,255,255,0.025);
 }
 #voteProblem:hover {
   cursor: pointer; 
@@ -3951,22 +3990,53 @@ introductionProjectTitle {
   background-color: rgba(0, 255, 220, 1);
   color: #0f131c;
   border: 1px solid #00ffdc;
-  border-radius: 3px;
+  border-radius: 3px 0px 0px 3px;
   text-align: center;
-  /*letter-spacing: 8px;*/
   font-family: 'Alegreya Sans SC', sans-serif;
-  font-size: 30%;
-  text-decoration: none;
   transition: all 0.5s ease 0s;
-  padding: 9px;
+  padding: 0.7% 0%;
   letter-spacing: 2px;
-  margin: 0 auto;
-  margin-top: 5%;
-  margin-left: 22%;
-  width: 100%;
+  margin: 0 auto; 
+  font-size: 115%;
+  width: 8em;
 }
 #votedProblem:hover {
   cursor: pointer; 
+  color: #0f131c;
+  background-color: #00ffdc;
+}
+#SBButtonDiscuss, #SBButtonLearn {
+  flex: 1 1 auto;
+  text-align: center;
+  background-color: rgba(0, 255, 220, 1);
+  color: #dddddd;
+  border: 1px solid #dddddd;
+  border-radius: 0px 3px 3px 0px;
+  text-align: center;
+  font-family: 'Alegreya Sans SC', sans-serif;
+  transition: all 0.5s ease 0s;
+  padding: 0.7% 0%;
+  letter-spacing: 2px;
+  margin: 0 auto;
+      
+  font-size: 115%;
+  background-color: rgba(255,255,255,0.025);
+  width: 8em;
+}
+#SBButtonDiscuss {
+  border-radius: 0px;
+}
+#SBButtonDiscuss:hover, #SBButtonLearn:hover {
+  /*A*/
+  /*background-color: rgba(255,255,255,0.05);
+  cursor: pointer;
+  box-shadow: 0 0 1px 1px rgba(0,220,255,1);*/
+
+  /*B*/
+  background-color: #00dcff;
+  color: #0f131c;
+  cursor: pointer;
+  border-color: #00dcff;
 }
 #problemTitle {
   background-color: rgba(0,220,255,0.1);
@@ -4071,13 +4141,14 @@ introductionProjectTitle {
   /*box-shadow: 0 0 2pt 2pt rgba(0,255,220,0.5);*/
 }
 #problemSummary, #problemSummaryLeftSB {
-  margin: 0px 25px 0px 25px;
+  margin: -1px 25px 7.5px 25px;
   line-height: 150%;
   /*Previously was 125%, fullproblem was 60% in width*/
   font-size: 130%;
   border: 1px solid #00dcff;
-  border-width: 1px 0px;
-  padding: 15px 15px 17px 15px;
+  border-radius: 15%;
+  border-width: 0px 0px 1px 0px;
+  padding: 15px 35px 17px 35px;
   text-align: left;
   font-family: 'Source Sans Pro', sans-serif;
   transition: all 0.25s ease 0s;
@@ -4131,10 +4202,10 @@ introductionProjectTitle {
   color: #dddddd;
   padding: 0px 0px 20px 0px;
   margin: 0 auto;
-  margin-top: 0.5%;
+  /*margin-top: 3%;*/
   margin-bottom: 10px;
   flex: 1 1 auto;
-  width: 80%;
+  width: 70%;
 }
 
 
@@ -4468,10 +4539,19 @@ introductionProjectTitle {
   color: #00dcff !important;
   border-color: #00dcff;
 }*/
+
 .activeWhite div {
   background-color: rgba(0,220,255,0.15) !important;
   /*color: #00dcff !important;*/
   border-color: #00dcff !important;
+}
+.activeWhiteBorder div {
+  background-color: rgba(0,220,255,0.05) !important;
+  color: #00dcff !important;
+  /*font-size: 175% !important;*/
+  border-color: #00dcff !important;
+  border-width: 1px !important;
+  /*padding: 3px 0px !important;*/
 }
 .activeWhiteBlueText div {
   background-color: rgba(0,220,255,0.15) !important;
@@ -4496,7 +4576,6 @@ introductionProjectTitle {
 #solutionsTitleRightSB {
   flex: 1 1 auto;
   color: #ffffff;
-  border-radius: 3px;
   font-size: 200%;
   margin: 0px 0px;
   letter-spacing: 4px;
@@ -4507,8 +4586,8 @@ introductionProjectTitle {
   font-size: 200%;
   letter-spacing: 6px;
   border: 1px solid #dddddd;
-  border-width: 1px 1px 1px 1px;
-  border-radius: 3px 3px 3px 3px;
+  border-width: 1px;
+  border-radius: 3px;
   background-color: rgba(0,220,255, 0.05);
   box-shadow: 0 0 1pt 1pt rgba(255,255,255,0.5);
 
@@ -4527,6 +4606,29 @@ introductionProjectTitle {
   margin-bottom: 0.15%;
   transition: all 0.25s ease 0s;
   padding: 2% 0% 2% 0%;
+  font-size: 200%;
+  letter-spacing: 6px;
+  border: 1px solid #dddddd;
+  border-width: 1px 1px 1px 1px;
+  border-radius: 3px 3px 3px 3px;
+  background-color: rgba(0,220,255, 0.05);
+  box-shadow: 0 0 1pt 1pt rgba(255,255,255,0.5);
+
+  /*Considering making this title white, possibly units instead*/
+  /*background-color: rgba(0,220,255,0.1);*/
+  
+}
+#proposalsTitleRightSBEnd {
+  flex: 1 1 auto;
+  color: #ffffff;
+  border-radius: 3px;
+  font-size: 200%;
+  margin: 0px 0px;
+  letter-spacing: 4px;
+  text-align: center;
+  margin-top: 1%;
+  margin-bottom: 0.15%;
+  transition: all 0.25s ease 0s;
   font-size: 200%;
   letter-spacing: 6px;
   border: 1px solid #dddddd;
@@ -4596,16 +4698,30 @@ introductionProjectTitle {
   text-decoration: none;
   margin: 0 auto;
   /*margin-top: 12px;*/
-  width: 70%;
+  width: 60%;
   background-color: rgba(0,220,255,0);
   transition: all 0.2s ease 0s;
-
+  padding: 3px 0px;
 }
-#SBDiscussButton:hover {
+#SBDiscussButton:hover, #SBDiscussButtonEnd:hover {
   background-color: rgba(0,220,255,0.15);
   color: #00dcff;
   cursor: pointer;
   border-color: #00dcff;
+}
+#SBDiscussButtonEnd {
+  flex: 1 1 auto;
+  color: #dddddd;
+  font-size: 130%;
+  border: 1px solid #dddddd;
+  border-width: 0px 1px 1px 1px;
+  text-align: center;
+  text-decoration: none;
+  margin: 0 auto;
+  /*margin-top: 12px;*/
+  width: 50%;
+  background-color: rgba(0,220,255,0);
+  transition: all 0.2s ease 0s;
 }
 #SBDiscussButton1 {
   border-width: 0px 1px 1px 1px;
@@ -4616,8 +4732,8 @@ introductionProjectTitle {
   align-items: stretch;
   width: 100%;
   border: 1px solid #00dcff;
-  border-width: 0px 0px 1px 0px;
-  margin-bottom: 10px;
+  border-width: 0px 0px 0px 0px;
+  margin-bottom: 0px;
 }
 #discussGroup1, #discussGroup2 {
   flex: 1 1 auto;

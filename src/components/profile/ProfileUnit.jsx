@@ -31,7 +31,7 @@ export default class ProfileUnit extends React.Component {
        }
       else if (this.props.currentType === 'problem') {
         return (
-          <Link key={item.ID} to={`/problem/${item.ID}`} >
+          <Link key={item.ID} to={`/problem/${item.ID}/subproblems`} >
             <li><div id="profileRightUnit">
                 <div id="profileUnitTitle">{item.Title}</div>
              <div id="profileUnitSummary">{item.Summary} </div>

@@ -45,26 +45,29 @@ export default class ProblemForm extends React.Component {
 
   render() {
       return (
-        <div id="createProblemBox">
-            <form id="createForm">
-              <fieldset id="fieldSetNoBorder">
-                        <Link to={`/problem/${this.props.params.probID}/subproblems`}>
-                          <div id="backSolutionArrowDiv">
-                              <img src={require('../../assets/upArrow.svg')} id="backSubProjectArrow" width="50" height="30" alt="Back arrow, blue up arrow" />
-                          </div>
-                        </Link>
-                        <label htmlFor="problemTitleForm" id="problemTitleFormLabel">Project Title<br />
-                            <input type="text" name="problemTitle" required="required" maxLength="70" id="problemTitleForm" autoFocus/>
-                          </label><br />
+        <div>
+          <Link to={`/problem/${this.props.params.probID}/subproblems`}>
+              <img src={require('../../assets/redX.svg')} id="closeRedX" width="40" height="40" alt="Close button, red X symbol" />
+          </Link>
+          <div id="SBButtonNoHover">
+            New Sub Project
+          </div>
+          <div id="createProblemBox">
+              <form id="createForm">
+                <fieldset id="fieldSetNoBorder">
+                  <label htmlFor="problemTitleForm" id="problemTitleFormLabel">Project Title<br />
+                      <input type="text" name="problemTitle" required="required" maxLength="70" id="problemTitleForm" autoFocus/>
+                    </label><br />
 
-                        <label htmlFor="problemSummaryForm" id="problemSummaryFormLabel">Additional Information<br />
-                            <textarea name="problemSummary" required="required" maxLength="350" 
-                            placeholder="Please provide any additional information you'd like. (250 character max)" id="problemSummaryForm"/>
-                            </label><br />
+                  <label htmlFor="problemSummaryForm" id="problemSummaryFormLabel">Additional Information<br />
+                      <textarea name="problemSummary" required="required" maxLength="350" 
+                      placeholder="Please provide any additional information you'd like. (250 character max)" id="problemSummaryForm"/>
+                      </label><br />
 
-                        <input type="button" value="Create" onClick={this.postProblem} id="submitProblem"/>
-              </fieldset>
-            </form>
+                  <input type="button" value="Create" onClick={this.postProblem} id="submitProblem"/>
+                </fieldset>
+              </form>
+          </div>
         </div>
 
       );

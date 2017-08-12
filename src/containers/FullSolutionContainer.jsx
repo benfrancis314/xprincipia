@@ -10,6 +10,7 @@ export default class FullSolutionContainer extends React.Component {
 
         this.state = {
             solutionInfo: [],
+            probID: []
         }
 
         this.submitVote = this.submitVote.bind(this)
@@ -20,40 +21,36 @@ export default class FullSolutionContainer extends React.Component {
       return axios.get( Config.API + '/auth/solutions/ID?id='+this.props.solutionID).then(function (response) {
           self.setState({
               solutionInfo: response.data,
+              probID: this.props.probID
           })
     })
+
     }
 
     //initialize the component with this state
-    componentDidMount(){
+    // componentDidMount(){
+    //   var self = this;
+    //   return axios.get( Config.API + '/auth/solutions/ID?id='+this.props.solutionID).then(function (response) {
+    //       self.setState({
+    //           solutionInfo: response.data,
+    //       })
+    // })
+    // .catch(function (error) {
+    //     if(error.response.status === 401 || error.response.status === 403){
+    //         document.location = "/login"
+    //     }
+    // });   
+    // }
+componentWillReceiveProps (nextProps){
       var self = this;
-      return axios.get( Config.API + '/auth/solutions/ID?id='+this.props.solutionID).then(function (response) {
+      return axios.get( Config.API + '/auth/solutions/ID?id='+nextProps.solutionID).then(function (response) {
           self.setState({
               solutionInfo: response.data,
+              probID: nextProps.probID
           })
     })
-    .catch(function (error) {
-        if(error.response.status === 401 || error.response.status === 403){
-            document.location = "/login"
-        }
-    });   
-    }
+}
 
-  //On recieving new props
-  componentWillReceiveProps(newProps){
-    var self = this;
-      return axios.get( Config.API + '/auth/solutions/ID?id='+newProps.solutionID).then(function (response) {
-          self.setState({
-              solutionInfo: response.data,  
-          })
-    })
-    .catch(function (error) {
-        if(error.response.status === 401 || error.response.status === 403){
-            document.location = "/login"
-        }
-    }); 
-
-  }
   submitVote() {
        axios.post( Config.API + '/auth/vote/create', {
            Type: 1,
@@ -73,7 +70,7 @@ export default class FullSolutionContainer extends React.Component {
    render() {
       return (
         <div id="proposalToggleOff">
-            {React.cloneElement(<FullSolution probID={this.props.probID} solutionID={this.props.solutionID} /> )}
+            {React.cloneElement(<FullSolution probID={this.state.probID} solutionID={this.props.solutionID} /> )}
         </div>
       );
    }

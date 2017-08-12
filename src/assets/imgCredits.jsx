@@ -49,3 +49,8 @@ https://thenounproject.com/marialuisa.iborra/collection/constellations/?oq=const
 Orion Constellation
 https://thenounproject.com/search/?q=orion&i=7867
 
+Close X
+https://thenounproject.com/search/?q=close&i=755939
+
+Other Constellations
+https://thenounproject.com/marialuisa.iborra/collection/constellations/
