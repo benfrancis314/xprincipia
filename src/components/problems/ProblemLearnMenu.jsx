@@ -46,6 +46,7 @@ export default class ProblemLearnMenu extends React.Component {
                     </div>*/}
 
                     {this.props.children}
+                    <div id="proposalsTitleRightSBEnd"><br /></div>
                 </div>
             </ReactCSSTransitionGroup>
         </div>

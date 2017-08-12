@@ -35,14 +35,8 @@ export default class FullProblem extends React.Component {
           //set Problem Data
           self.setState({
               problemInfo: response.data,
-              probID: response.data.ID
           })
     })
-    // .catch(function (error) {
-    //     if(error.response.status === 401 || error.response.status === 403){
-    //         document.location = "/welcome"
-    //     }
-    // });
           
     axios.get( Config.API + "/auth/vote/isVotedOn?type=0&typeID=" + this.props.params.probID + "&username=" + cookie.load("userName"))
           .then( function (response){
@@ -56,7 +50,7 @@ export default class FullProblem extends React.Component {
 
   componentWillReceiveProps(nextProps){
     var self = this;
-      axios.get( Config.API + '/auth/problems/ID?id='+nextProps.params.probID).then(function (response) {
+      return axios.get( Config.API + '/auth/problems/ID?id='+nextProps.params.probID).then(function (response) {
         //set problem data
         self.setState({
             problemInfo: response.data,

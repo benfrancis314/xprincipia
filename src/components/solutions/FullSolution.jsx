@@ -14,6 +14,8 @@ export default class FullSolution extends React.Component {
 
         this.state = {
             solutionInfo: [],
+            solutionID: [],
+            probID: []
         }
 
         this.submitVote = this.submitVote.bind(this)
@@ -41,23 +43,13 @@ export default class FullSolution extends React.Component {
   //On recieving next props
   componentWillReceiveProps(nextProps){
     var self = this;
-      return axios.get( Config.API + '/solutions/ID?id='+nextProps.solutionID).then(function (response) {
+	    return axios.get( Config.API + '/auth/solutions/ID?id='+this.props.solutionID).then(function (response) {
           self.setState({
-              solutionInfo: response.data,  
+              solutionInfo: response.data,
+              solutionID: nextProps.solutionID,
+		      probID: nextProps.probID
           })
-          var solutionInfo = self.state.solutionInfo
-          solutionInfo.CreatedAt = dateTime(solutionInfo.CreatedAt)
-          self.setState({
-              solutionInfo : solutionInfo
-          })
-
-    })
-    .catch(function (error) {
-        // if(error.response.status === 401 || error.response.status === 403){
-        //     document.location = "/login"
-        // }
-    }); 
-
+        })
   }
   submitVote() {
        axios.post( Config.API + '/auth/vote/create', {
@@ -94,8 +86,7 @@ export default class FullSolution extends React.Component {
                 {this.state.solutionInfo.Summary}
                 </p>
             </div>
-            {/*{React.cloneElement(this.props.children, {solutionInfo: this.state.solutionInfo}, {probID: this.props.probID}, {solutionID: this.props.solutionID})}*/}
-            {React.cloneElement(<FullSolutionContent probID={this.props.probID} solutionID={this.props.solutionID} /> )}
+            {React.cloneElement(<FullSolutionContent probID={this.state.probID} solutionID={this.state.solutionID} /> )}
         </div>
       );
    }

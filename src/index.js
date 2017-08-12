@@ -92,7 +92,6 @@ import EntranceContainer from './containers/EntranceContainer.jsx';
 import ErrorContainer from './containers/ErrorContainer.jsx';
 import FreeFormContainer from './containers/FreeFormContainer.jsx';
 import FreeFormCommentContainer from './containers/FreeFormCommentContainer.jsx';
-import FullSolutionContainer from './containers/FullSolutionContainer.jsx';
 import LearnContentContainer1 from './containers/LearnContentContainer1.jsx';
 import LearnResourcesContainer1 from './containers/LearnResourcesContainer1.jsx';
 import LoginContainer from './containers/LoginContainer.jsx';
@@ -176,8 +175,6 @@ ReactDOM.render(
         <IndexRoute component={ProblemTopSolutions}></IndexRoute>
         <Route path='/problem/:probID/solutions/create' component={SolutionForm}></Route>
         <Route path='/problem/:probID/solutions/top' component={ProblemTopSolutions}></Route>
-        <Route path='/fullsolution/:probID/:solutionID/container' component={FullSolutionContainer}>
-          <IndexRoute component={FullSolution}></IndexRoute>
           <Route path='/fullsolution/:probID/:solutionID' component={FullSolution}>
             <IndexRoute component={FullSolutionContent}></IndexRoute>
             <Route path='/fullsolution/:probID/:solutionID/delete' component={SolutionDeleteForm}></Route>
@@ -205,7 +202,6 @@ ReactDOM.render(
             <Route path='/fullsolution/:probID/:solutionID/versionform' component={VersionForm}></Route>
           </Route>
         </Route>
-      </Route>
                 <Route path='/problem/:probID/discuss' component={ProblemDiscussMenu}>
             <IndexRoute component={QuestionContainer}></IndexRoute>
             <Route path='/problem/:probID/questions/container' component={QuestionContainer}>

@@ -25,7 +25,6 @@ export default class SubProblemUnit extends React.Component {
   componentWillReceiveProps(nextProps){
 	  var self = this
 	  self.setState({problems: nextProps.problems})
-	  console.log(self.state.problems)
   }
 
 

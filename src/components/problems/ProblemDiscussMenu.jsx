@@ -39,7 +39,7 @@ export default class ProblemDiscussMenu extends React.Component {
             transitionLeave={false}>
                 <div id="projectInteractDiscussMenu">
                     <div id="proposalsTitleRightSB">Discuss</div>
-                        <div id="thinDiv1">
+                        {/*<div id="thinDiv1">*/}
                             <div id="sidebarDiscussMenu">
                                 <div id="discussGroup1">
                                     <Link to={`/problem/${this.props.params.probID}/questions`} activeClassName="activeWhiteBorder">
@@ -56,7 +56,7 @@ export default class ProblemDiscussMenu extends React.Component {
                                 </div>
                             </div>
                             {React.cloneElement(this.props.children, {probID: this.state.probID})}
-                        </div>
+                        {/*</div>*/}
                     <div id="proposalsTitleRightSBEnd"><br /></div>
                 </div>
             </ReactCSSTransitionGroup>

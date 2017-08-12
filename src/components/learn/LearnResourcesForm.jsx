@@ -45,17 +45,9 @@ constructor(props){
            return (
         <div>
             <div id="suggestionFormComponent">
-                <form id="suggestionForm">
-                    <fieldset>
-                        <legend>Add a Resource</legend>
-                             {/*<div>
-                                <input type="radio" />
-                                    <label>Easy</label>
-                                <input type="radio" />
-                                    <label>Medium</label>
-                                <input type="radio" />
-                                    <label>Hard</label>
-                             </div>*/}
+                <form id="questionForm">
+                    <fieldset id='fieldSetNoBorderPadding'>
+                        {/*<legend>Add a Resource</legend>*/}
                             <textarea name="suggestionText" required="required" id="resourcesTextArea" placeholder="Please enter the URL of your favorite resource to learn about this project." autoFocus ></textarea>
                             <input type="button" value="Add" onClick={this.postResource} id="addSuggestion"/>
                     </fieldset>

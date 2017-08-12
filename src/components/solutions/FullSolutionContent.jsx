@@ -13,26 +13,35 @@ export default class FullSolutionContent extends React.Component {
         this.state = {
             solutionInfo: [],
             vote : true,
+            probID : [],
+            solutionID : []
         }
 
         this.submitVote = this.submitVote.bind(this)
         this.unVote = this.unVote.bind(this)
         this.deleteSolution = this.deleteSolution.bind(this)
     };
+
+    getInitialState(){
+        var self = this;
+            self.setState({
+                probID : this.props.probID,
+                solutionID : this.props.solutionID
+            })
+    }
+
     //initialize the component with this state
     componentDidMount(){
       var self = this;
-      axios.get( Config.API + '/auth/solutions/ID?id='+this.props.solutionID).then(function (response) {
+      axios.get( Config.API + '/solutions/ID?id='+this.props.solutionID).then(function (response) {
           self.setState({
               solutionInfo: response.data,
-              rank: response.data.Rank
+              rank: response.data.Rank,
+
           })
     })
-    .catch(function (error) {
-       
-    });
     
-    axios.get( Config.API + "/auth/vote/isVotedOn?type=1&typeID=" + this.props.solutionID + "&username=" + cookie.load("userName"))
+    axios.get( Config.API + "/vote/isVotedOn?type=1&typeID=" + this.props.solutionID + "&username=" + cookie.load("userName"))
           .then( function (response){
             console.log(response.data)
             self.setState({
@@ -41,19 +50,26 @@ export default class FullSolutionContent extends React.Component {
       })     
     }
 
+  componentWillReceiveProps(nextProps){
+	  var self = this
+	  self.setState({
+		  solutionID: nextProps.solutionID,
+		  probID: nextProps.probID
+	  })
+  }
 
   deleteSolution() {
   
   //Delete question
    var self = this
-    axios.delete( Config.API + '/auth/solutions/delete?id='+this.props.solutionID, {
+    axios.delete( Config.API + '/auth/solutions/delete?id='+this.state.solutionID, {
         params: {
           id: this.props.solutionID,
           username: cookie.load('userName')
         }
       })
       .then(function (result) {
-        document.location = '/problem/'+ self.props.probID + '/solutions/top'
+        document.location = '/problem/'+ self.state.probID + '/solutions/top'
       })
       .catch(function (error) {
         alert("I'm sorry there was a problem with your request")
@@ -98,7 +114,7 @@ unVote() {
    render() {
        if (this.state.vote === true && this.state.solutionInfo.OriginalPosterUsername === cookie.load('userName')) {
            return (
-      <div> 
+      <div>
             <div id="ProposalPercentFull">
                 {this.state.solutionInfo.Rank}
             </div>
@@ -112,30 +128,30 @@ unVote() {
               </div>
               <div id="createDate">{dateTime(this.state.solutionInfo.CreatedAt)}</div>
               
-              <Link to={`/fullsolution/${this.props.probID}/${this.props.solutionID}/edit`}>
+              <Link to={`/fullsolution/${this.state.probID}/${this.state.solutionID}/edit`}>
                 <img src={require('../../assets/editBlue.svg')} id="editSolutionButton" width="20" height="20" alt="Edit Button" />
               </Link>
 
-              <Link to={`/fullsolution/${this.props.probID}/${this.props.solutionID}/delete`}>
+              <Link to={`/fullsolution/${this.state.probID}/${this.state.solutionID}/delete`}>
                 <img src={require('../../assets/delete.svg')} id="deleteSolutionButton" width="20" height="20" alt="Edit Button" />              
               </Link>
 
               <div id="prosConsMenu">
-                <Link to={`/fullsolution/${this.props.probID}/${this.props.solutionID}/pros`} activeClassName="activeWhiteBlueText">
+                <Link to={`/fullsolution/${this.state.probID}/${this.state.solutionID}/pros`} activeClassName="activeWhiteBlueText">
                     <div id="prosButton">Pros</div>
                 </Link>
-                <Link to={`/fullsolution/${this.props.probID}/${this.props.solutionID}/cons`} activeClassName="activeWhiteBlueText">
+                <Link to={`/fullsolution/${this.state.probID}/${this.state.solutionID}/cons`} activeClassName="activeWhiteBlueText">
                     <div id="consButton">Cons</div>
                 </Link>
               </div>
             
               <div>
-            {React.cloneElement(this.props.children, {probID: this.props.probID}, {solutionID: this.props.solutionID})}
+            {React.cloneElement(this.props.children, {probID: this.state.probID}, {solutionID: this.state.solutionID})}
             </div>
         </div>
                )    } else {
     return (
-      <div> 
+      <div>
             <div id="ProposalPercentFull">
                 {this.state.solutionInfo.Rank}
             </div>
@@ -155,17 +171,16 @@ unVote() {
 
 
               <div id="prosConsMenu">
-                <Link to={`/fullsolution/${this.props.probID}/${this.props.solutionID}/pros`} activeClassName="activeWhite">
+                <Link to={`/fullsolution/${this.state.probID}/${this.state.solutionID}/pros`} activeClassName="activeWhite">
                     <div id="prosButton">Pros</div>
                 </Link>
-                <Link to={`/fullsolution/${this.props.probID}/${this.props.solutionID}/cons`} activeClassName="activeWhite">
+                <Link to={`/fullsolution/${this.state.probID}/${this.state.solutionID}/cons`} activeClassName="activeWhite">
                     <div id="consButton">Cons</div>
                 </Link>
               </div>
             
               <div>
-            {/*{React.cloneElement(this.props.children, {probID: this.props.probID}, {solutionID: this.props.solutionID})}*/}
-            {React.cloneElement(<FullSolutionDescription probID={this.props.probID} solutionID={this.props.solutionID} /> )}
+            {React.cloneElement(<FullSolutionDescription probID={this.state.probID} solutionID={this.state.solutionID} /> )}
             </div>
         </div>
       );

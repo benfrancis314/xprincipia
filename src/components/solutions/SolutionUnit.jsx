@@ -1,13 +1,33 @@
 import React from 'react';
 import { Link } from 'react-router';
-import FullSolutionContainer from '../../containers/FullSolutionContainer.jsx';
+import FullSolution from './FullSolution.jsx';
 import $ from 'jquery';
+import axios from 'axios';
+import {Config} from '../../config.js';
 
 
 export default class SolutionUnit extends React.Component {
+  constructor(props){
+        super(props);
+
+        this.state = {
+            solutions: [],
+            probID: []
+        }
+
+    };
+
+  componentWillReceiveProps(nextProps){
+	  var self = this
+	  self.setState({
+		  solutions: nextProps.solutions,
+		  probID: nextProps.probID
+	  })
+  }
+
 
 	render() {
-		if (this.props.solutions === null) {
+		if (this.state.solutions === null) {
 			alert("hey")
 			return (
 				<div>
@@ -17,7 +37,8 @@ export default class SolutionUnit extends React.Component {
 		} else {
 			return (
 				<div>
-					<ul> {this.props.solutions.map(this.renderItem)} </ul>
+            		{/*x{this.state.probID}x*/}
+					<ul> {this.state.solutions.map(this.renderItem)} </ul>
 				</div>
 			);
 		}
@@ -26,25 +47,24 @@ export default class SolutionUnit extends React.Component {
 	renderItem(solution) {
 		function toggleProposal() {
 			$(document).ready(function() {
-				// $('#proposalToggleOff').toggle();
 				$('#proposalToggleOff').attr('id','proposalToggleOn').hide().slideDown();
 				$('#solutionUnit').attr('id','solutionUnitActive');				
-				// alert('working');
 			});
 		};
 
-    return (
-
-        <li key={solution.ID}>
-				<div id="solutionUnit" onClick={toggleProposal} >
-					<div id="solutionUnitContainer">
-						<div id="solutionPercent">{floatToDecimal(solution.PercentRank)}</div>
-						<div id="solutionUnitTitle">{solution.Title}</div>
+		return (
+			<li key={solution.ID}>
+					<div id="solutionUnit" onClick={toggleProposal} >
+						<div id="solutionUnitContainer">
+							<div id="solutionPercent">{floatToDecimal(solution.PercentRank)}</div>
+							<div id="solutionUnitTitle">{solution.Title}</div>
+						</div>
 					</div>
+				<div id="proposalToggleOff">
+					{React.cloneElement(<FullSolution probID={solution.ProblemID} solutionID={solution.ID}  />)}
 				</div>
-			{React.cloneElement(<FullSolutionContainer probID={solution.ProblemID} solutionID={solution.ID}  />)}
-        </li>);
-  }
+			</li>);
+	}
 }
 
 

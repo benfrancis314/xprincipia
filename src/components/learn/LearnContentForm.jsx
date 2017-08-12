@@ -34,31 +34,15 @@ constructor(props){
       });
     }
 
-    // componentDidMount(){
-    //     var self = this;
-    //         return axios.get( Config.API + '/auth/learnItems/typeID?id='+this.props.params.probID+'&dataType=0').then(function (response) {
-    //             self.setState({
-    //                 learnItems: response.data
-    //             })
-    //         }) 
-    //     }
    render() {
            return (
         <div>
             <div id="suggestionFormComponent">
                 <form id="suggestionForm">
-                    <fieldset>
-                        <legend>Create a Lesson</legend>
-                             {/*<div>
-                                <input type="radio" id="option-one" />
-                                    <label>Easy</label>
-                                <input type="radio" id="option-two" />
-                                    <label>Medium</label>
-                                <input type="radio" id="option-three" />
-                                    <label>Hard</label>
-                             </div>*/}
+                    <fieldset id='fieldSetNoBorderPadding'>
+                        {/*<legend>Create a Lesson</legend>*/}
                             <textarea name="suggestionText" required="required" id="learnContentTextArea" 
-                            placeholder="Create a lesson to help others understand the project." autoFocus ></textarea>
+                            placeholder="Create a lesson to help others understand this project, promoting future advancement." autoFocus ></textarea>
                             <input type="button" value="Create" onClick={this.postLearnItem} id="addSuggestion"/>
                     </fieldset>
                 </form>
