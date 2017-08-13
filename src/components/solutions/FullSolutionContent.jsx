@@ -7,6 +7,7 @@ import {Config} from '../../config.js';
 import ConsContainer from '../../containers/ConsContainer.jsx';
 import FullSolutionDescription from './FullSolutionDescription.jsx';
 import ProsContainer from '../../containers/ProsContainer.jsx';
+import $ from 'jquery';
 
 export default class FullSolutionContent extends React.Component {
   constructor(props){
@@ -27,15 +28,15 @@ export default class FullSolutionContent extends React.Component {
     getInitialState(){
         var self = this;
             self.setState({
-                probID : this.props.probID,
-                solutionID : this.props.solutionID
+                probID : this.props.params.probID,
+                solutionID : this.props.params.solutionID
             })
     }
 
     //initialize the component with this state
     componentDidMount(){
       var self = this;
-      axios.get( Config.API + '/solutions/ID?id='+this.props.solutionID).then(function (response) {
+      axios.get( Config.API + '/solutions/ID?id='+this.props.params.solutionID).then(function (response) {
           self.setState({
               solutionInfo: response.data,
               rank: response.data.Rank,
@@ -43,7 +44,7 @@ export default class FullSolutionContent extends React.Component {
           })
     })
     
-    axios.get( Config.API + "/vote/isVotedOn?type=1&typeID=" + this.props.solutionID + "&username=" + cookie.load("userName"))
+    axios.get( Config.API + "/vote/isVotedOn?type=1&typeID=" + this.props.params.solutionID + "&username=" + cookie.load("userName"))
           .then( function (response){
             console.log(response.data)
             self.setState({
@@ -55,8 +56,8 @@ export default class FullSolutionContent extends React.Component {
   componentWillReceiveProps(nextProps){
 	  var self = this
 	  self.setState({
-		  solutionID: nextProps.solutionID,
-		  probID: nextProps.probID
+		  solutionID: nextProps.params.solutionID,
+		  probID: nextProps.params.probID
 	  })
   }
 
@@ -66,7 +67,7 @@ export default class FullSolutionContent extends React.Component {
    var self = this
     axios.delete( Config.API + '/auth/solutions/delete?id='+this.state.solutionID, {
         params: {
-          id: this.props.solutionID,
+          id: this.props.params.solutionID,
           username: cookie.load('userName')
         }
       })
@@ -74,7 +75,20 @@ export default class FullSolutionContent extends React.Component {
         document.location = '/problem/'+ self.state.probID + '/solutions/top'
       })
       .catch(function (error) {
-        alert("I'm sorry there was a problem with your request")
+        // console.log(error.response.data)
+          $(document).ready(function() {
+              $('#notification').attr('id','notificationShow').hide().slideDown();
+              $('#notificationContent').text(error.response.data);
+              // alert( "Please login to add content. ");
+              if (error.response.data == '[object Object]') {
+                return (
+                  $(document).ready(function() {
+                    $('#notificationLoginRegisterContainer').attr('id','notificationLoginRegisterContainerShow');
+                    $('#notificationContent').html('Please <span id="blue">login </span>to contribute content');
+                  })
+                );
+              }
+          });
       });
   }
   submitVote() {
@@ -88,9 +102,22 @@ export default class FullSolutionContent extends React.Component {
             document.location = window.location.pathname;
             alert("Thank you, your vote has been recorded.");
         })
-        .catch(function (error) {
-            alert("You may only vote on a proposal once. ");
-        })
+      .catch(function (error) {
+        // console.log(error.response.data)
+          $(document).ready(function() {
+              $('#notification').attr('id','notificationShow').hide().slideDown();
+              $('#notificationContent').text(error.response.data);
+              // alert( "Please login to add content. ");
+              if (error.response.data == '[object Object]') {
+                return (
+                  $(document).ready(function() {
+                    $('#notificationLoginRegisterContainer').attr('id','notificationLoginRegisterContainerShow');
+                    $('#notificationContent').html('Please <span id="blue">login </span>to contribute content');
+                  })
+                );
+              }
+          });
+      });
   }
 unVote() {
     var self = this
@@ -108,9 +135,22 @@ unVote() {
             })
             document.location = window.location.pathname 
         })
-        .catch(function (error) {
-            alert("I'm sorry, there was a problem with your request. ")
-        })
+      .catch(function (error) {
+        // console.log(error.response.data)
+          $(document).ready(function() {
+              $('#notification').attr('id','notificationShow').hide().slideDown();
+              $('#notificationContent').text(error.response.data);
+              // alert( "Please login to add content. ");
+              if (error.response.data == '[object Object]') {
+                return (
+                  $(document).ready(function() {
+                    $('#notificationLoginRegisterContainer').attr('id','notificationLoginRegisterContainerShow');
+                    $('#notificationContent').html('Please <span id="blue">login </span>to contribute content');
+                  })
+                );
+              }
+          });
+      });
         
     }
    render() {

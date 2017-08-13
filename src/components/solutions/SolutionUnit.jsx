@@ -54,7 +54,8 @@ export default class SolutionUnit extends React.Component {
 
 		return (
 			<li key={solution.ID}>
-					<div id="solutionUnit" onClick={toggleProposal} >
+				<Link to={`/fullsolution/${solution.ProblemID}/${solution.ID}`} >
+					<div id="solutionUnit">
 						<div id="solutionUnitContainer">
 							<div id="solutionPercent">{floatToDecimal(solution.PercentRank)}</div>
 							<div id="solutionUnitTitle">{solution.Title}</div>
@@ -63,6 +64,7 @@ export default class SolutionUnit extends React.Component {
 				<div id="proposalToggleOff">
 					{React.cloneElement(<FullSolution probID={solution.ProblemID} solutionID={solution.ID}  />)}
 				</div>
+				</Link>
 			</li>);
 	}
 }

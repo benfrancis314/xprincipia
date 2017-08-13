@@ -3,7 +3,8 @@ import { Link } from 'react-router';
 import axios from 'axios';
 import CommentUnit from '../components/comments/CommentUnit.jsx';
 import SideBarMore from '../components/SideBarMore.jsx';
-import {Config} from '../config.js'
+import {Config} from '../config.js';
+import $ from 'jquery';
 
 export default class SuggestionCommentContainer extends React.Component {
    constructor(props){
@@ -38,9 +39,22 @@ export default class SuggestionCommentContainer extends React.Component {
           })
           
         })
-        .catch(function (error) {
-
-        }); 
+      .catch(function (error) {
+        // console.log(error.response.data)
+          $(document).ready(function() {
+              $('#notification').attr('id','notificationShow').hide().slideDown();
+              $('#notificationContent').text(error.response.data);
+              // alert( "Please login to add content. ");
+              if (error.response.data == '[object Object]') {
+                return (
+                  $(document).ready(function() {
+                    $('#notificationLoginRegisterContainer').attr('id','notificationLoginRegisterContainerShow');
+                    $('#notificationContent').html('Please <span id="blue">login </span>to contribute content');
+                  })
+                );
+              }
+          });
+      });
     axios.get( Config.API + '/auth/comments/suggestionID?id='+this.props.params.suggID).then(function (response) {
         self.setState({
             comments: response.data,
@@ -59,9 +73,22 @@ export default class SuggestionCommentContainer extends React.Component {
 //         .then(function (result) {
 //             document.location = window.location.pathname;
 //         })
-//         .catch(function (error) {
-//             alert("You may only vote on a suggestion once. ");
-//         })
+//   .catch(function (error) {
+//     // console.log(error.response.data)
+//       $(document).ready(function() {
+//           $('#notification').attr('id','notificationShow').hide().slideDown();
+//           $('#notificationContent').text(error.response.data);
+//           // alert( "Please login to add content. ");
+//           if (error.response.data == '[object Object]') {
+//             return (
+//               $(document).ready(function() {
+//                 $('#notificationLoginRegisterContainer').attr('id','notificationLoginRegisterContainerShow');
+//                 $('#notificationContent').html('Please <span id="blue">login </span>to contribute content');
+//               })
+//             );
+//           }
+//       });
+//   });
 //   }
  
    render() {

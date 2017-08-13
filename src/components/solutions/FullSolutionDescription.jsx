@@ -17,7 +17,7 @@ export default class FullSolutionDescription extends React.Component {
     //initialize the component with this state
     componentDidMount(){
       var self = this;
-      return axios.get( Config.API + '/solutions/ID?id='+this.props.solutionID).then(function (response) {
+      return axios.get( Config.API + '/solutions/ID?id='+this.props.params.solutionID).then(function (response) {
           self.setState({
               solutionInfo: response.data,
           })
@@ -27,7 +27,7 @@ export default class FullSolutionDescription extends React.Component {
   //On recieving new props
   componentWillReceiveProps(nextProps){
 	  var self = this
-	        return axios.get( Config.API + '/solutions/ID?id='+nextProps.solutionID).then(function (response) {
+	        return axios.get( Config.API + '/solutions/ID?id='+nextProps.params.solutionID).then(function (response) {
           self.setState({
               solutionInfo: response.data,  
           })

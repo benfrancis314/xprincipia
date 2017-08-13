@@ -2,7 +2,8 @@ import React from 'react';
 import {Link, bros} from 'react-router';
 import axios from 'axios';
 import cookie from 'react-cookie';
-import {Config} from '../config.js'
+import {Config} from '../config.js';
+import $ from 'jquery';
 
 export default class RegisterUnit extends React.Component {
 
@@ -38,8 +39,22 @@ constructor(){
         email: this.state.email,
         username : this.state.username,
         password: this.state.password
-      }).catch(function (error) {
-        alert( error.response.data)
+      })
+      .catch(function (error) {
+        // console.log(error.response.data)
+          $(document).ready(function() {
+              $('#notification').attr('id','notificationShow').hide().slideDown();
+              $('#notificationContent').text(error.response.data);
+              // alert( "Please login to add content. ");
+              if (error.response.data == '[object Object]') {
+                return (
+                  $(document).ready(function() {
+                    $('#notificationLoginRegisterContainer').attr('id','notificationLoginRegisterContainerShow');
+                    $('#notificationContent').html('Please <span id="blue">login </span>to contribute content');
+                  })
+                );
+              }
+          });
       })
       .then(function (result) {
         
@@ -85,10 +100,22 @@ return axios.post( Config.API + '/register', {
     username : this.state.username,
     password: this.state.password
   })
-  .catch(function (error) {
-        alert( error.response.data)
-        return
-    })
+      .catch(function (error) {
+        // console.log(error.response.data)
+          $(document).ready(function() {
+              $('#notification').attr('id','notificationShow').hide().slideDown();
+              $('#notificationContent').text(error.response.data);
+              // alert( "Please login to add content. ");
+              if (error.response.data == '[object Object]') {
+                return (
+                  $(document).ready(function() {
+                    $('#notificationLoginRegisterContainer').attr('id','notificationLoginRegisterContainerShow');
+                    $('#notificationContent').html('Please <span id="blue">login </span>to contribute content');
+                  })
+                );
+              }
+          });
+      })
   .then(function (result) {
     return axios.post( Config.API + '/login', {
       username : self.state.username,
@@ -110,10 +137,22 @@ return axios.post( Config.API + '/register', {
       })
   
   })
-  .catch(function (error) {
-    alert( error.response.data)
-    
-  })
+      .catch(function (error) {
+        // console.log(error.response.data)
+          $(document).ready(function() {
+              $('#notification').attr('id','notificationShow').hide().slideDown();
+              $('#notificationContent').text(error.response.data);
+              // alert( "Please login to add content. ");
+              if (error.response.data == '[object Object]') {
+                return (
+                  $(document).ready(function() {
+                    $('#notificationLoginRegisterContainer').attr('id','notificationLoginRegisterContainerShow');
+                    $('#notificationContent').html('Please <span id="blue">login </span>to contribute content');
+                  })
+                );
+              }
+          });
+      });
 })
 }}
 
@@ -206,10 +245,22 @@ axios.post('http://localhost:10000/register', {
       alert('You have been registered. Welcome to XPrincipia! Please log in')
      
     })
-    .catch(function (error) {
-      console.log(error.response.data)
-      alert( error.response.data)
-    });
+      .catch(function (error) {
+        // console.log(error.response.data)
+          $(document).ready(function() {
+              $('#notification').attr('id','notificationShow').hide().slideDown();
+              $('#notificationContent').text(error.response.data);
+              // alert( "Please login to add content. ");
+              if (error.response.data == '[object Object]') {
+                return (
+                  $(document).ready(function() {
+                    $('#notificationLoginRegisterContainer').attr('id','notificationLoginRegisterContainerShow');
+                    $('#notificationContent').html('Please <span id="blue">login </span>to contribute content');
+                  })
+                );
+              }
+          });
+      });
 }
 
   render() {

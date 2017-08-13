@@ -2,6 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Router, Route, IndexRoute, browserHistory } from 'react-router';
 import App from './App';
+import ReactGA from 'react-ga';
+ReactGA.initialize('UA-104103231-1'); //Unique Google Analytics tracking number
 
 //Load Components
 
@@ -110,10 +112,17 @@ import WelcomeContainer from './containers/WelcomeContainer.jsx';
 //Assets
 import './assets/index.css';
 
+function fireTracking() {
+    ReactGA.pageview(window.location.hash);
+}
 
+// This may be needed for Google Analytics:
+// One thing to note is you may need to adjust the 
+// window.location argument you push to the ReactGA.pageview() function. 
+// It will really depend how you have set up React Router.
 
 ReactDOM.render(
-  <Router history={browserHistory}>
+  <Router onUpdate={fireTracking} history={browserHistory}>
     <Route path='/' component={App}>
     <IndexRoute component={Intro}></IndexRoute>
     <Route path='/intro' component={Intro}></Route>
@@ -202,7 +211,7 @@ ReactDOM.render(
             <Route path='/fullsolution/:probID/:solutionID/versionform' component={VersionForm}></Route>
           </Route>
         </Route>
-                <Route path='/problem/:probID/discuss' component={ProblemDiscussMenu}>
+        <Route path='/problem/:probID/discuss' component={ProblemDiscussMenu}>
             <IndexRoute component={QuestionContainer}></IndexRoute>
             <Route path='/problem/:probID/questions/container' component={QuestionContainer}>
               <IndexRoute component={QuestionForm}></IndexRoute>

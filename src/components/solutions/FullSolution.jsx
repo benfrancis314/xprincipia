@@ -23,7 +23,7 @@ export default class FullSolution extends React.Component {
     //initialize the component with this state
     componentDidMount(){
       var self = this;
-      return axios.get( Config.API + '/auth/solutions/ID?id='+this.props.solutionID).then(function (response) {
+      return axios.get( Config.API + '/solutions/ID?id='+this.props.params.solutionID).then(function (response) {
           self.setState({
               solutionInfo: response.data,
           })
@@ -34,23 +34,34 @@ export default class FullSolution extends React.Component {
           })
 
     })
-    .catch(function (error) {
-        if(error.response.status === 401 || error.response.status === 403){
-            document.location = "/login"
-        }
-    });   
+      .catch(function (error) {
+        // console.log(error.response.data)
+          $(document).ready(function() {
+              $('#notification').attr('id','notificationShow').hide().slideDown();
+              $('#notificationContent').text(error.response.data);
+              // alert( "Please login to add content. ");
+              if (error.response.data == '[object Object]') {
+                return (
+                  $(document).ready(function() {
+                    $('#notificationLoginRegisterContainer').attr('id','notificationLoginRegisterContainerShow');
+                    $('#notificationContent').html('Please <span id="blue">login </span>to contribute content');
+                  })
+                );
+              }
+          });
+      }); 
     }
   //On recieving next props
-  componentWillReceiveProps(nextProps){
-    var self = this;
-	    return axios.get( Config.API + '/auth/solutions/ID?id='+this.props.solutionID).then(function (response) {
-          self.setState({
-              solutionInfo: response.data,
-              solutionID: nextProps.solutionID,
-		      probID: nextProps.probID
-          })
-        })
-  }
+//   componentWillReceiveProps(nextProps){
+//     var self = this;
+// 	    return axios.get( Config.API + '/auth/solutions/ID?id='+nextProps.params.solutionID).then(function (response) {
+//           self.setState({
+//               solutionInfo: response.data,
+//               solutionID: nextProps.params.solutionID,
+// 		      probID: nextProps.params.probID
+//           })
+//         })
+//   }
   submitVote() {
        axios.post( Config.API + '/auth/vote/create', {
            Type: 1,
@@ -62,9 +73,22 @@ export default class FullSolution extends React.Component {
             document.location = window.location.pathname;
             alert("Thank you, your vote has been recorded.");
         })
-        .catch(function (error) {
-            alert("I'm sorry, you've already voted on a solution.");
-        })
+      .catch(function (error) {
+        // console.log(error.response.data)
+          $(document).ready(function() {
+              $('#notification').attr('id','notificationShow').hide().slideDown();
+              $('#notificationContent').text(error.response.data);
+              // alert( "Please login to add content. ");
+              if (error.response.data == '[object Object]') {
+                return (
+                  $(document).ready(function() {
+                    $('#notificationLoginRegisterContainer').attr('id','notificationLoginRegisterContainerShow');
+                    $('#notificationContent').html('Please <span id="blue">login </span>to contribute content');
+                  })
+                );
+              }
+          });
+      });
   }
    render() {
         function toggleProposal() {
@@ -86,7 +110,7 @@ export default class FullSolution extends React.Component {
                 {this.state.solutionInfo.Summary}
                 </p>
             </div>
-            {React.cloneElement(<FullSolutionContent probID={this.state.probID} solutionID={this.state.solutionID} /> )}
+            {/*{React.cloneElement(<FullSolutionContent probID={this.state.probID} solutionID={this.state.solutionID} /> )}*/}
         </div>
       );
    }

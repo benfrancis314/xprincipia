@@ -3,7 +3,8 @@ import axios from 'axios';
 import WelcomeUnit from '../components/welcome/WelcomeUnit.jsx';
 import WelcomeUserUnit from '../components/welcome/WelcomeUserUnit.jsx';
 import WelcomeMore from '../components/welcome/WelcomeMore.jsx';
-import {Config} from '../../config.js'
+import {Config} from '../../config.js';
+import $ from 'jquery';
 
 export default class WelcomeUnitsContainer extends React.Component {
     constructor(props){
@@ -27,11 +28,22 @@ export default class WelcomeUnitsContainer extends React.Component {
               problems: response.data
             })
         })
-        .catch(function (error) {
-            if(error.response.status === 401 || error.response.status === 403) {
-                document.location = "/login"
-            }
-        }); 
+      .catch(function (error) {
+        // console.log(error.response.data)
+          $(document).ready(function() {
+              $('#notification').attr('id','notificationShow').hide().slideDown();
+              $('#notificationContent').text(error.response.data);
+              // alert( "Please login to add content. ");
+              if (error.response.data == '[object Object]') {
+                return (
+                  $(document).ready(function() {
+                    $('#notificationLoginRegisterContainer').attr('id','notificationLoginRegisterContainerShow');
+                    $('#notificationContent').html('Please <span id="blue">login </span>to contribute content');
+                  })
+                );
+              }
+          });
+      });
         }
         componentWillMount(){
         var self = this;
@@ -40,11 +52,22 @@ export default class WelcomeUnitsContainer extends React.Component {
                 problems: response.data
             })
         }) 
-        .catch(function (error) {
-            if(error.response.status === 401 || error.response.status === 403){
-                document.location = "/login"
-            }
-        }); 
+      .catch(function (error) {
+        // console.log(error.response.data)
+          $(document).ready(function() {
+              $('#notification').attr('id','notificationShow').hide().slideDown();
+              $('#notificationContent').text(error.response.data);
+              // alert( "Please login to add content. ");
+              if (error.response.data == '[object Object]') {
+                return (
+                  $(document).ready(function() {
+                    $('#notificationLoginRegisterContainer').attr('id','notificationLoginRegisterContainerShow');
+                    $('#notificationContent').html('Please <span id="blue">login </span>to contribute content');
+                  })
+                );
+              }
+          });
+      });
         }
  
    render() {

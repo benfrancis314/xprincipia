@@ -826,7 +826,7 @@ like vote and comments.*/
     #editSBButtonAnswer, #flagSBButton {
       flex: 1 1 auto;
       color: #00ffdc;
-      background-color: rgba(255,255,255,0.05);
+      background-color: rgba(0,220,255,0.05);
       border: 1px solid #00dcff;
       border-radius: 2px 0px 0px 2px;
       cursor: pointer;
@@ -2766,7 +2766,7 @@ introductionProjectTitle {
       width: 80%;
       padding: 15px;
       margin-bottom: 1%;
-      background-color: rgba(255,255,255,0.05);
+      background-color: rgba(0,220,255,0.05);
     }
     #suggestionText {
       font-family: 'Open Sans';
@@ -2775,7 +2775,7 @@ introductionProjectTitle {
     #suggestionVote, #suggestionVoteNoComments {
       flex: 1 1 auto;
       color: #00ffdc;
-      background-color: rgba(255,255,255,0.05);
+      background-color: rgba(0,220,255,0.05);
       border: 1px solid #00ffdc;
       border-width: 1px 1px 1px 0px;
       border-radius: 2px 2px 3px 0px;
