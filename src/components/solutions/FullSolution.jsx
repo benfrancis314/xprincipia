@@ -111,6 +111,7 @@ export default class FullSolution extends React.Component {
                 </p>
             </div>
             {/*{React.cloneElement(<FullSolutionContent probID={this.state.probID} solutionID={this.state.solutionID} /> )}*/}
+            {React.cloneElement(this.props.children, {solutionInfo: this.state.solutionInfo})}
         </div>
       );
    }

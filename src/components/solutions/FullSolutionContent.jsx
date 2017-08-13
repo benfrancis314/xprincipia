@@ -157,11 +157,11 @@ unVote() {
        if (this.state.vote === true && this.state.solutionInfo.OriginalPosterUsername === cookie.load('userName')) {
            return (
       <div>
-            <div id="ProposalPercentFull">
+            <div id="ProposalPercentFullGreen">
                 {this.state.solutionInfo.Rank}
             </div>
             <div id="voteVersionsMenu">
-                <Link><div id="voteSolution" onClick={this.unVote}>unVote</div></Link>
+                <Link><div id="votedSolution" onClick={this.unVote}>Voted</div></Link>
                 {/*<Link to={`/fullsolution/${this.props.params.probID}/${this.props.params.solutionID}/versions`}>
                     <div id="versionsButton">
                             Versions
@@ -188,10 +188,89 @@ unVote() {
               </div>
             
               <div>
-            {React.cloneElement(this.props.children, {probID: this.state.probID}, {solutionID: this.state.solutionID})}
+            {this.props.children}
             </div>
         </div>
-               )    } else {
+               );
+
+  } else if(this.state.solutionInfo.OriginalPosterUsername === cookie.load('userName')) {
+      return ( 
+      <div>
+            <div id="ProposalPercentFull">
+                {this.state.solutionInfo.Rank}
+            </div>
+            <div id="voteVersionsMenu">
+                <Link><div id="voteSolution" onClick={this.submitVote}>Vote</div></Link>
+                {/*<Link to={`/fullsolution/${this.props.params.probID}/${this.props.params.solutionID}/versions`}>
+                    <div id="versionsButton">
+                            Versions
+                    </div>
+                </Link>*/}
+              </div>
+              <div id="createDate">{dateTime(this.state.solutionInfo.CreatedAt)}</div>
+              
+              <Link to={`/fullsolution/${this.state.probID}/${this.state.solutionID}/edit`}>
+                <img src={require('../../assets/editBlue.svg')} id="editSolutionButton" width="20" height="20" alt="Edit Button" />
+              </Link>
+
+              <Link to={`/fullsolution/${this.state.probID}/${this.state.solutionID}/delete`}>
+                <img src={require('../../assets/delete.svg')} id="deleteSolutionButton" width="20" height="20" alt="Edit Button" />              
+              </Link>
+
+              <div id="prosConsMenu">
+                <Link to={`/fullsolution/${this.state.probID}/${this.state.solutionID}/pros`} activeClassName="activeWhiteBlueText">
+                    <div id="prosButton">Pros</div>
+                </Link>
+                <Link to={`/fullsolution/${this.state.probID}/${this.state.solutionID}/cons`} activeClassName="activeWhiteBlueText">
+                    <div id="consButton">Cons</div>
+                </Link>
+              </div>
+            
+              <div>
+            {this.props.children}
+            </div>
+        </div>
+
+      ); 
+  } else if(this.state.vote ===true) {
+      return ( 
+      <div>
+            <div id="ProposalPercentFullGreen">
+                {this.state.solutionInfo.Rank}
+            </div>
+            <div id="voteVersionsMenu">
+                    <Link><div id="votedSolution" onClick={this.unVote}>Voted</div></Link>
+                    {/*<Link to={`/fullsolution/${this.props.params.probID}/${this.props.params.solutionID}/versions`}>
+                        <div id="versionsButton">
+                                Versions
+                        </div>
+                    </Link>*/}
+              </div>
+              <div id="createDate">{dateTime(this.state.solutionInfo.CreatedAt)}</div>
+              
+              {/*<Link to={`/fullsolution/${this.props.probID}/${this.props.solutionID}/flag`}>
+                <img src={require('../../assets/flag.svg')} id="deleteSolutionButton" width="20" height="20" alt="Flag Button" />
+              </Link>*/}
+
+
+              <div id="prosConsMenu">
+                <Link to={`/fullsolution/${this.state.probID}/${this.state.solutionID}/pros`} activeClassName="activeWhite">
+                    <div id="prosButton">Pros</div>
+                </Link>
+                <Link to={`/fullsolution/${this.state.probID}/${this.state.solutionID}/cons`} activeClassName="activeWhite">
+                    <div id="consButton">Cons</div>
+                </Link>
+              </div>
+            
+              <div>
+            {/*{React.cloneElement(<ProsContainer probID={this.state.probID} solutionID={this.state.solutionID} /> )}*/}
+            {/*{React.cloneElement(<ConsContainer probID={this.state.probID} solutionID={this.state.solutionID} /> )}*/}
+            {this.props.children}
+            </div>
+        </div>
+
+      ); 
+            } else {
     return (
       <div>
             <div id="ProposalPercentFull">
@@ -224,7 +303,7 @@ unVote() {
               <div>
             {/*{React.cloneElement(<ProsContainer probID={this.state.probID} solutionID={this.state.solutionID} /> )}*/}
             {/*{React.cloneElement(<ConsContainer probID={this.state.probID} solutionID={this.state.solutionID} /> )}*/}
-            {React.cloneElement(<FullSolutionDescription probID={this.state.probID} solutionID={this.state.solutionID} /> )}
+            {this.props.children}
             </div>
         </div>
       );

@@ -181,16 +181,16 @@ ReactDOM.render(
         </Route>
         <Route path='/problem/:probID/subprojects' component={Empty}></Route>
         <Route path='/problem/:probID/solutions' component={ProblemSolutionsMenu}>
-        <IndexRoute component={ProblemTopSolutions}></IndexRoute>
-        <Route path='/problem/:probID/solutions/create' component={SolutionForm}></Route>
-        <Route path='/problem/:probID/solutions/top' component={ProblemTopSolutions}></Route>
-          <Route path='/fullsolution/:probID/:solutionID' component={FullSolution}>
+          <IndexRoute component={ProblemTopSolutions}></IndexRoute>
+          <Route path='/problem/:probID/solutions/create' component={SolutionForm}></Route>
+        </Route>
+        <Route path='/problem/:probID/proposal/:solutionID/container' component={FullSolution}>
             <IndexRoute component={FullSolutionContent}></IndexRoute>
             <Route path='/fullsolution/:probID/:solutionID/delete' component={SolutionDeleteForm}></Route>
             <Route path='/fullsolution/:probID/:solutionID/edit' component={SolutionEditForm}></Route>
-            <Route path='/fullsolution/:probID/:solutionID/full' component={FullSolutionContent}>
+            <Route path='/problem/:probID/proposal/:solutionID/full' component={FullSolutionContent}>
               <IndexRoute component={FullSolutionDescription}></IndexRoute>
-              <Route path='/fullsolution/:probID/:solutionID/description' component={FullSolutionDescription}></Route>
+              <Route path='/problem/:probID/proposal/:solutionID' component={FullSolutionDescription}></Route>
               <Route path='/fullsolution/:probID/:solutionID/pros' component={ProsContainer}>
                 <IndexRoute component={ProsForm}></IndexRoute>
                 <Route path='/problem/:probID/:solutionID/pros/pros' component={ProsForm}></Route>
@@ -209,7 +209,6 @@ ReactDOM.render(
             <Route path='/fullsolution/:probID/:solutionID/versions' component={VersionsContainer}></Route>
             <Route path='/fullsolution/:probID/:solutionID/fullversion' component={FullVersion}></Route>
             <Route path='/fullsolution/:probID/:solutionID/versionform' component={VersionForm}></Route>
-          </Route>
         </Route>
         <Route path='/problem/:probID/discuss' component={ProblemDiscussMenu}>
             <IndexRoute component={QuestionContainer}></IndexRoute>

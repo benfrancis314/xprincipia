@@ -50,11 +50,6 @@ export default class ProblemSolutionsMenu extends React.Component {
       return (
         <div>
             <SolutionUnit solutions={this.state.solutions} probID={this.state.probID}/>
-            {/*{this.state.probID}
-            <br />
-            {this.state.solutions.ProblemID}
-            <br />
-            x*/}
         </div>
 
       );

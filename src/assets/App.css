@@ -3951,12 +3951,10 @@ introductionProjectTitle {
   font-family: 'Alegreya Sans SC', sans-serif;
   width: 100%;
   transition: all 2s ease 0s;
-  transform: scale(1);
   border: 1px solid #00ffdc;
   border-width: 0px 0px 1px 0px;
   border-radius: 0% 0% 20% 20%;
   padding: 1px;
-  /*background-color: rgba(255,255,255,0.05);*/
   background: linear-gradient(rgba(0,255,220,0), rgba(0,220,255,0.1));
 }
 #projectPercent:hover {
@@ -4000,7 +3998,6 @@ introductionProjectTitle {
   margin: 0 auto; 
   font-size: 115%;
   width: 8em;
-  /*Keep this*/
   background-color: rgba(255,255,255,0.025);
 }
 #voteProblem:hover {
@@ -4416,9 +4413,41 @@ introductionProjectTitle {
 }
 #ProposalPercentFull {
   text-align: center;
-  font-size: 250%;
+  font-size: 350%;
   color: #00ffdc;
   margin-bottom: 0.5%;
+
+  width: 100%;
+  transition: all 2s ease 0s;
+  transform: scale(1);
+  border: 1px solid #00ffdc;
+  border-width: 0px 0px 1px 0px;
+  border-radius: 0% 0% 20% 20%;
+  padding: 1px;
+  background: linear-gradient(rgba(0,255,220,0), rgba(0,220,255,0.1));
+}
+#ProposalPercentFull:hover {
+  /*transform: scale(1.2);*/
+  font-size: 420%;
+}
+#ProposalPercentFullGreen {
+  text-align: center;
+  font-size: 350%;
+  color: #00ffdc;
+  margin-bottom: 0.5%;
+
+  width: 100%;
+  transition: all 2s ease 0s;
+  transform: scale(1);
+  border: 1px solid #00ffdc;
+  border-width: 0px 0px 1px 0px;
+  border-radius: 0% 0% 20% 20%;
+  padding: 1px;
+  background: linear-gradient(rgba(0,255,220,0), rgba(0,255,220,0.1));
+}
+#ProposalPercentFullGreen:hover {
+  /*transform: scale(1.2);*/
+  font-size: 420%;
 }
 
 /*End ProblemLeftSB*/
@@ -4682,7 +4711,7 @@ introductionProjectTitle {
   width: 85%;
 }
 #fullSolution {
-  width: 90%;
+  width: 70%;
   border: 1px solid #00dcff;
   border-radius: 3px;
   /*background-color: rgba(255,255,255,0.05);*/
@@ -4928,17 +4957,19 @@ label + input[type=radio] + label {
   margin-top: -10px;
   padding-left: 1%;
   color: #00ffdc;
-  font-size: 120%;
+  background-color: #00ffdc;
+  font-size: 115%;
   border: 1px solid #00ffdc;
-  border-radius: 0px 0px 0px 0px;
+  border-radius: 3px;
   text-align: center;
-  letter-spacing: 8px;
-  padding: 5px;
+  letter-spacing: 2px;
+  padding: 0.7% 0%;
   margin: 0 auto;
-  letter-spacing: 8px;
-  width: 10em;
+  width: 8em;
   text-align: center;
   transition: all 0.5s ease 0s;
+
+  background-color: rgba(255,255,255,0.025);
 }
 #voteSolution:hover, 
 #versionsButton:hover {
@@ -4953,6 +4984,28 @@ label + input[type=radio] + label {
 }
 #versionsButton:hover {
   background-color: #00dcff;
+}
+#votedSolution {
+  flex: 1 1 auto;
+  margin: 0 auto;
+  margin-bottom: 10px;
+  margin-top: -10px;
+  padding-left: 1%;
+  color: #0f131c;
+  background-color: #00ffdc;
+  font-size: 115%;
+  border: 1px solid #00ffdc;
+  border-radius: 3px;
+  text-align: center;
+  letter-spacing: 2px;
+  padding: 0.7% 0%;
+  margin: 0 auto;
+  width: 8em;
+  text-align: center;
+  transition: all 0.5s ease 0s;
+}
+#votedSolution:hover {
+  cursor: pointer;
 }
 
 #solutionTitle {
