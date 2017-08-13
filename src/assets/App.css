@@ -2502,15 +2502,16 @@ introductionProjectTitle {
     	text-align: justify;
     }
     #questionUnit {
-    	display: -webkit-box;
-    	display: -moz-box;
-    	display: -ms-flexbox;
-    	display: -webkit-flex;
     	display: flex;
     	flex-direction: row;
     	font-family: 'Open Sans';
     	padding-top: 10px;
+      margin: 0 auto;
       width: 100%;
+    }
+    #questionUnitContainer {
+      margin-top: 1%;
+      margin-bottom: 3%;
     }
     #questionContent {
     	flex: 3 3 auto;
@@ -2760,17 +2761,19 @@ introductionProjectTitle {
     #suggestionContent {
       flex: 3 3 auto;
       font-family: 'Open Sans';
-      border: 1px solid #00dcff;
+      border: 1px solid #dddddd;
       border-width: 1px 0px 1px 1px;
       border-radius: 3px 0px 0px 3px;
       width: 80%;
       padding: 15px;
-      margin-bottom: 1%;
+      margin-bottom: 1.1%;
       background-color: rgba(0,220,255,0.05);
     }
     #suggestionText {
       font-family: 'Open Sans';
-      margin-top: 5px;
+      margin: 7px;
+      margin-top: 10px;
+      font-size: 115%;
     }
     #suggestionVote, #suggestionVoteNoComments {
       flex: 1 1 auto;
@@ -3431,6 +3434,8 @@ introductionProjectTitle {
   height: 4em;
   resize: none;
   background-color: rgba(0,220,255, 0.05);
+  margin: 0 auto;
+  width: 70%;
 }
 #learnContentTextArea {
   height: 12em;

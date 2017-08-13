@@ -186,11 +186,9 @@ ReactDOM.render(
         </Route>
         <Route path='/problem/:probID/proposal/:solutionID/container' component={FullSolution}>
             <IndexRoute component={FullSolutionContent}></IndexRoute>
+            <Route path='/problem/:probID/proposal/:solutionID' component={FullSolutionContent}>
             <Route path='/fullsolution/:probID/:solutionID/delete' component={SolutionDeleteForm}></Route>
             <Route path='/fullsolution/:probID/:solutionID/edit' component={SolutionEditForm}></Route>
-            <Route path='/problem/:probID/proposal/:solutionID/full' component={FullSolutionContent}>
-              <IndexRoute component={FullSolutionDescription}></IndexRoute>
-              <Route path='/problem/:probID/proposal/:solutionID' component={FullSolutionDescription}></Route>
               <Route path='/fullsolution/:probID/:solutionID/pros' component={ProsContainer}>
                 <IndexRoute component={ProsForm}></IndexRoute>
                 <Route path='/problem/:probID/:solutionID/pros/pros' component={ProsForm}></Route>

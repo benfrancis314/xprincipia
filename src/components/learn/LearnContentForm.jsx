@@ -51,6 +51,9 @@ constructor(props){
    render() {
            return (
         <div>
+          <div id="discussMenuEnd">
+            Lessons
+          </div>
             <div id="suggestionFormComponent">
                 <form id="suggestionForm">
                     <fieldset id='fieldSetNoBorderPadding'>

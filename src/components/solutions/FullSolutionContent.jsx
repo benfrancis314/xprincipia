@@ -189,6 +189,7 @@ unVote() {
             
               <div>
             {this.props.children}
+            <FullSolutionDescription solutionID={this.state.solutionID}/>
             </div>
         </div>
                );

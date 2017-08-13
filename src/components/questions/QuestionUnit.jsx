@@ -34,7 +34,7 @@ constructor(props){
 
 	render() {
 		return (
-	    <div>
+	    <div id="questionUnitContainer">
 			<ul> {this.props.questions.map(this.renderItem)} </ul>	               
 	    </div>
 		);
@@ -147,7 +147,7 @@ constructor(props){
 					    {question.Username}
                     </div>
                     <div id="suggestionText">
-                        <span id="blue">Q: </span>{question.Description}
+                        {question.Description}
                     </div>
 				</div>
                 <Link to={`/problem/${question.TypeID}/question/${question.ID}/delete`} >

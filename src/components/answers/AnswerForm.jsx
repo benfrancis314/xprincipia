@@ -53,15 +53,22 @@ axios.post( Config.API + '/auth/answers/create', {
 
    render() {
       return (
-
-      <div id="answerFormComponent">
-        <form id="answerForm">
-            <fieldset id="greenBorder">
-                <legend>Answers</legend>
-                     <textarea name="answerText" required="required" id="answerTextArea" placeholder="Answer this question or view the answers of your peers. " autoFocus ></textarea>
-                     <input type="button" value="Answer" onClick={this.postAnswer} id="addAnswerGreen" />
-            </fieldset>
-        </form>
+      <div>
+        <div id="discussMenuEnd">
+          Answers
+        </div>
+        <div id="answerFormComponent">
+          <form id="answerForm">
+              {/*A*/}
+              <fieldset id='fieldSetNoBorderPadding'>
+              {/*B*/}
+              {/*<fieldset id="greenBorder">*/}
+                  {/*<legend>Answers</legend>*/}
+                      <textarea name="answerText" required="required" id="answerTextArea" placeholder="Answer this question or view the answers of your peers. " autoFocus ></textarea>
+                      <input type="button" value="Answer" onClick={this.postAnswer} id="addAnswerGreen" />
+              </fieldset>
+          </form>
+        </div>
       </div>
 
       );

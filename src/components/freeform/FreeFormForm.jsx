@@ -53,14 +53,19 @@ postFreeForm() {
 
    render() {
       return (
-      <div id="questionFormComponent">
-            <form id="questionForm">
-                <fieldset id='fieldSetNoBorderPadding'>
-                    {/*<legend>FreeForm Discussion</legend>*/}
-                         <textarea name="questionText" required="required" id="freeFormTextArea" placeholder="Engage in freeform discussion with your peers about this project. " autoFocus ></textarea>
-                         <input type="button" value="Add" onClick={this.postFreeForm} id="askQuestion"/>
-                </fieldset>
-            </form>
+      <div>
+        <div id="discussMenuEnd">
+          FreeForm
+        </div>
+        <div id="questionFormComponent">
+              <form id="questionForm">
+                  <fieldset id='fieldSetNoBorderPadding'>
+                      {/*<legend>FreeForm Discussion</legend>*/}
+                          <textarea name="questionText" required="required" id="freeFormTextArea" placeholder="Engage in freeform discussion with your peers about this project. " autoFocus ></textarea>
+                          <input type="button" value="Add" onClick={this.postFreeForm} id="askQuestion"/>
+                  </fieldset>
+              </form>
+        </div>
       </div>
 
       );
