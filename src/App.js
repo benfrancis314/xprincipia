@@ -45,7 +45,7 @@ class App extends React.Component {
         document.location = "/login";
         return (
         <div>
-          <p>error image</p>
+          <p></p>
           {/*Put 404 error image and also wait 2 seconds before redirecting*/}
         </div>
         )

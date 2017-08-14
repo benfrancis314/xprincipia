@@ -18,6 +18,7 @@ export default class FullProblem extends React.Component {
         this.submitVote = this.submitVote.bind(this)
         this.unVote = this.unVote.bind(this)
     };
+
     componentDidMount(){
       var self = this;
       axios.get( Config.API + '/auth/problems/ID?id='+this.props.params.probID).then(function (response) {
