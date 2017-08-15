@@ -33,16 +33,17 @@ this.state.pro = document.getElementById('proTextArea').value
         // console.log(error.response.data)
           $(document).ready(function() {
               $('#notification').attr('id','notificationShow').hide().slideDown();
-              $('#notificationContent').text(error.response.data);
-              // alert( "Please login to add content. ");
-              if (error.response.data == '[object Object]') {
+              if (error.response.data != '') {
+                $('#notificationContent').text(error.response.data);
+              }
+              else if (error.response.data == '[object Object]') {
                 return (
                   $(document).ready(function() {
                     $('#notificationLoginRegisterContainer').attr('id','notificationLoginRegisterContainerShow');
                     $('#notificationContent').html('Please <span id="blue">login </span>to contribute content');
                   })
                 );
-              }
+              } 
           });
       });
 } 
@@ -50,15 +51,20 @@ this.state.pro = document.getElementById('proTextArea').value
 
    render() {
       return (
-
-      <div id="suggestionFormComponent">
-            <form id="suggestionForm">
-                <fieldset>
-                    <legend>Pros</legend>
-                         <textarea name="suggestionText" required="required" id="proTextArea" autoFocus ></textarea>
-                         <input type="button" value="Add" onClick={this.postPro} id="addProsCons"/>
-                </fieldset>
-            </form>
+      <div>
+        <div id="discussMenuEnd">
+          Pros
+        </div>
+        <div id="suggestionFormComponent">
+              <form id="suggestionForm">
+                  <fieldset  id='fieldSetNoBorderPadding'>
+                      {/*<legend>Pros</legend>*/}
+                          <textarea name="suggestionText" required="required" id="proTextArea" placeholder="Add a pro towards the merit of this proposal. " autoFocus ></textarea>
+                          {/*Replace with blueAdd button*/}
+                          <input type="button" value="Add" onClick={this.postPro} id="addProsCons"/>
+                  </fieldset>
+              </form>
+        </div>
       </div>
 
       );

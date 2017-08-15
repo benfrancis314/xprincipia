@@ -17,8 +17,6 @@ export default class FullSolution extends React.Component {
             solutionID: [],
             probID: []
         }
-
-        this.submitVote = this.submitVote.bind(this)
     };
     //initialize the component with this state
     componentDidMount(){
@@ -38,18 +36,19 @@ export default class FullSolution extends React.Component {
         // console.log(error.response.data)
           $(document).ready(function() {
               $('#notification').attr('id','notificationShow').hide().slideDown();
-              $('#notificationContent').text(error.response.data);
-              // alert( "Please login to add content. ");
-              if (error.response.data == '[object Object]') {
+              if (error.response.data != '') {
+                $('#notificationContent').text(error.response.data);
+              }
+              else if (error.response.data == '[object Object]') {
                 return (
                   $(document).ready(function() {
                     $('#notificationLoginRegisterContainer').attr('id','notificationLoginRegisterContainerShow');
                     $('#notificationContent').html('Please <span id="blue">login </span>to contribute content');
                   })
                 );
-              }
+              } 
           });
-      }); 
+      });
     }
   //On recieving next props
 //   componentWillReceiveProps(nextProps){
@@ -62,35 +61,10 @@ export default class FullSolution extends React.Component {
 //           })
 //         })
 //   }
-  submitVote() {
-       axios.post( Config.API + '/auth/vote/create', {
-           Type: 1,
-           TypeID: this.state.solutionInfo.ID,
-           username : cookie.load("userName"),
-           
-        })
-        .then(function (result) {
-            document.location = window.location.pathname;
-            alert("Thank you, your vote has been recorded.");
-        })
-      .catch(function (error) {
-        // console.log(error.response.data)
-          $(document).ready(function() {
-              $('#notification').attr('id','notificationShow').hide().slideDown();
-              $('#notificationContent').text(error.response.data);
-              // alert( "Please login to add content. ");
-              if (error.response.data == '[object Object]') {
-                return (
-                  $(document).ready(function() {
-                    $('#notificationLoginRegisterContainer').attr('id','notificationLoginRegisterContainerShow');
-                    $('#notificationContent').html('Please <span id="blue">login </span>to contribute content');
-                  })
-                );
-              }
-          });
-      });
-  }
+
    render() {
+    //    No longer used but would like to use this in the future.
+    //    Problem is it toggles the solution units in order from first to last, not the one selected
         function toggleProposal() {
             $(document).ready(function() {
                 $('#proposalToggleOn').attr('id','proposalToggleOff');
@@ -98,20 +72,26 @@ export default class FullSolution extends React.Component {
             });
 		};
       return (
-        <div id="fullSolution">
-            <div id="solutionIntro">
-                <div onClick={toggleProposal}>
-                    <img src={require('../../assets/redX.svg')} id="closeRedX" width="35" height="35" alt="Close button, red X symbol" />
+        <div id='fullSolutionContainer'>
+            <div id="fullSolution">
+                <div id="solutionIntro">
+                    
+                    {/*When scroll is ready have this scroll to proposals*/}
+                    <Link to={`/problem/${this.props.params.probID}/subproblems`}>
+                        <img src={require('../../assets/redX.svg')} id="closeRedX" width="40" height="40" alt="Close button, red X symbol" />
+                    </Link>
+                    <h1 id="solutionTitle" onClick={toggleProposal}>{this.state.solutionInfo.Title}</h1>
+                    <div id="proposalCreator">{this.state.solutionInfo.OriginalPosterUsername}</div>
+                    {/*Commented out until functional*/}
+                    {/*<div id="currentVersion">v.112</div>*/}
+                    <p id="solutionSummary">
+                    {this.state.solutionInfo.Summary}
+                    </p>
                 </div>
-                <h1 id="solutionTitle" onClick={toggleProposal}>{this.state.solutionInfo.Title}</h1>
-                <div id="proposalCreator">{this.state.solutionInfo.OriginalPosterUsername}</div>
-                {/*<div id="currentVersion">v.112</div>*/}
-                <p id="solutionSummary">
-                {this.state.solutionInfo.Summary}
-                </p>
+                {/*{React.cloneElement(<FullSolutionContent probID={this.state.probID} solutionID={this.state.solutionID} /> )}*/}
+                {React.cloneElement(this.props.children, {solutionInfo: this.state.solutionInfo})}
             </div>
-            {/*{React.cloneElement(<FullSolutionContent probID={this.state.probID} solutionID={this.state.solutionID} /> )}*/}
-            {React.cloneElement(this.props.children, {solutionInfo: this.state.solutionInfo})}
+            {randomImg()}
         </div>
       );
    }
@@ -122,3 +102,23 @@ export default class FullSolution extends React.Component {
  function dateTime(str){
      return str.substring(0,9)
  }
+
+ function randomImg() {
+if (Math.random() < 0.125) {
+  return <img src={require('../../assets/orionLogo.svg')} id="middleAlignOrionLess" width='70' height='100' alt="Back arrow, blue up arrow" />
+} else if (Math.random() < 0.25){
+  return <img src={require('../../assets/heroLogo.svg')} id="middleAlignOrionLess" width='70' height='100' alt="Back arrow, blue up arrow" />
+} else if (Math.random() < 0.375){
+  return <img src={require('../../assets/dragonConstellation.svg')} id="middleAlignOrionLess" width='70' height='100' alt="Back arrow, blue up arrow" />
+} else if (Math.random() < 0.5){
+  return <img src={require('../../assets/hunterConstellation.svg')} id="middleAlignOrionLess" width='70' height='100' alt="Back arrow, blue up arrow" />
+} else if (Math.random() < 0.625){
+  return <img src={require('../../assets/queenConstellation.svg')} id="middleAlignOrionLess" width='70' height='100' alt="Back arrow, blue up arrow" />
+} else if (Math.random() < 0.75){
+  return <img src={require('../../assets/pegasusConstellation.svg')} id="middleAlignOrionLess" width='70' height='100' alt="Back arrow, blue up arrow" />
+} else if (Math.random() < 0.875){
+  return <img src={require('../../assets/archerConstellation.svg')} id="middleAlignOrionLess" width='70' height='100' alt="Back arrow, blue up arrow" />
+} else if (Math.random() < 0.1){
+  return <img src={require('../../assets/greatBearConstellation.svg')} id="middleAlignOrionLess" width='70' height='100' alt="Back arrow, blue up arrow" />
+}
+}

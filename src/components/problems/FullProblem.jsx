@@ -11,7 +11,10 @@ import SubProjectParentUnit from './SubProjectParentUnit.jsx';
 import TutorialProjectContent from '../tutorials/TutorialProjectContent.jsx';
 import {Config} from '../../config.js';
 import $ from 'jquery';
-// import ScrollableAnchor from 'react-scrollable-anchor';
+import ScrollableAnchor from 'react-scrollable-anchor';
+import { configureAnchors } from 'react-scrollable-anchor';
+
+configureAnchors({offset: -50, scrollDuration: 900});
 
 // import Scroll from 'react-scroll'; // Imports all Mixins
 // import {scroller} from 'react-scroll'; //Imports scroller mixin, can use as scroller.scrollTo()
@@ -30,7 +33,7 @@ export default class FullProblem extends React.Component {
     };
     componentDidMount(){
       var self = this;
-      axios.get( Config.API + '/auth/problems/ID?id='+this.props.params.probID).then(function (response) {
+      axios.get( Config.API + '/problems/ID?id='+this.props.params.probID).then(function (response) {
 
           //set Problem Data
           self.setState({
@@ -38,7 +41,7 @@ export default class FullProblem extends React.Component {
           })
     })
           
-    axios.get( Config.API + "/auth/vote/isVotedOn?type=0&typeID=" + this.props.params.probID + "&username=" + cookie.load("userName"))
+    axios.get( Config.API + "/vote/isVotedOn?type=0&typeID=" + this.props.params.probID + "&username=" + cookie.load("userName"))
           .then( function (response){
             console.log(response.data)
             self.setState({
@@ -50,7 +53,7 @@ export default class FullProblem extends React.Component {
 
   componentWillReceiveProps(nextProps){
     var self = this;
-      return axios.get( Config.API + '/auth/problems/ID?id='+nextProps.params.probID).then(function (response) {
+      return axios.get( Config.API + '/problems/ID?id='+nextProps.params.probID).then(function (response) {
         //set problem data
         self.setState({
             problemInfo: response.data,
@@ -61,19 +64,20 @@ export default class FullProblem extends React.Component {
         // console.log(error.response.data)
           $(document).ready(function() {
               $('#notification').attr('id','notificationShow').hide().slideDown();
-              $('#notificationContent').text(error.response.data);
-              // alert( "Please login to add content. ");
-              if (error.response.data == '[object Object]') {
+              if (error.response.data != '') {
+                $('#notificationContent').text(error.response.data);
+              }
+              else if (error.response.data == '[object Object]') {
                 return (
                   $(document).ready(function() {
                     $('#notificationLoginRegisterContainer').attr('id','notificationLoginRegisterContainerShow');
                     $('#notificationContent').html('Please <span id="blue">login </span>to contribute content');
                   })
                 );
-              }
+              } 
           });
       });
-    axios.get( Config.API + "/auth/vote/isVotedOn?type=0&typeID=" + this.props.params.probID + "&username=" + cookie.load("userName"))
+    axios.get( Config.API + "/vote/isVotedOn?type=0&typeID=" + this.props.params.probID + "&username=" + cookie.load("userName"))
           .then( function (response){
             self.setState({
               vote: response.data
@@ -107,16 +111,17 @@ submitVote() {
         // console.log(error.response.data)
           $(document).ready(function() {
               $('#notification').attr('id','notificationShow').hide().slideDown();
-              $('#notificationContent').text(error.response.data);
-              // alert( "Please login to add content. ");
-              if (error.response.data == '[object Object]') {
+              if (error.response.data != '') {
+                $('#notificationContent').text(error.response.data);
+              }
+              else if (error.response.data == '[object Object]') {
                 return (
                   $(document).ready(function() {
                     $('#notificationLoginRegisterContainer').attr('id','notificationLoginRegisterContainerShow');
-                    $('#notificationContent').html('Please <span id="blue">login </span>to vote');
+                    $('#notificationContent').html('Please <span id="blue">login </span>to contribute content');
                   })
                 );
-              }
+              } 
           });
       });
   }
@@ -137,22 +142,23 @@ unVote() {
             // })
             document.location = window.location.pathname 
         })
-        .catch(function (error) {
-          // console.log(error.response.data)
-            $(document).ready(function() {
-                $('#notification').attr('id','notificationShow').hide().slideDown();
+      .catch(function (error) {
+        // console.log(error.response.data)
+          $(document).ready(function() {
+              $('#notification').attr('id','notificationShow').hide().slideDown();
+              if (error.response.data != '') {
                 $('#notificationContent').text(error.response.data);
-                // alert( "Please login to add content. ");
-                if (error.response.data == '[object Object]') {
-                  return (
-                    $(document).ready(function() {
-                      $('#notificationLoginRegisterContainer').attr('id','notificationLoginRegisterContainerShow');
-                      $('#notificationContent').html('Please <span id="blue">login </span>to unvote');
-                    })
-                  );
-                }
-            });
-        });
+              }
+              else if (error.response.data == '[object Object]') {
+                return (
+                  $(document).ready(function() {
+                    $('#notificationLoginRegisterContainer').attr('id','notificationLoginRegisterContainerShow');
+                    $('#notificationContent').html('Please <span id="blue">login </span>to contribute content');
+                  })
+                );
+              } 
+          });
+      });
         
     }
 
@@ -198,7 +204,6 @@ goToProposals() {
         <div id="problemColumn1">
           <SubProjectParentUnit parentID={this.state.problemInfo.ParentID} />
           {/*<ProjectParentChildrenUnitsContainer parentID={this.state.problemInfo.ParentID} problemTitle={this.state.problemInfo.Title}/>*/}
-          {/*Column 1*/}
           <div id="problemIntro">
             <h1 id="problemTitle">{this.state.problemInfo.Title}</h1>
           </div>
@@ -206,10 +211,7 @@ goToProposals() {
                 <Link><div id="votedProblem" onClick={this.unVote}>
                     Voted
                 </div></Link>
-                <Link activeClassName="activeBlue">
-                {/*This needs jump down*/}
-                    <div id="SBButtonDiscuss">Proposals</div>
-                </Link>
+                <a href='#proposals'><div id="SBButtonDiscuss">Proposals</div></a>
                 <Link to={`/problem/${this.props.params.probID}/questions`} activeClassName="activeBlue">
                     <div id="SBButtonDiscuss">Discuss</div>
                 </Link>
@@ -233,12 +235,9 @@ goToProposals() {
               {React.cloneElement(this.props.children)}
             </div>
           {React.cloneElement(<SubProblemContainer probID={this.props.params.probID} />)}
-          {React.cloneElement(<ProblemSolutionsMenu probID={this.props.params.probID} projectTitle={this.state.problemInfo.Title} />)}
-          
-          {/*<FullSolutionContainer />*/}
-          
-          {/*Attempt to get subprojects always underneath the section, particularly for creating new projects*/}
-          {/*{React.cloneElement(<SubProblemContainer />, {probID: this.state.probID})}*/}
+          <ScrollableAnchor id={'proposals'}>
+            {React.cloneElement(<ProblemSolutionsMenu probID={this.props.params.probID} projectTitle={this.state.problemInfo.Title} />)}
+          </ScrollableAnchor>
 
         {/*<div id="tutorialProblemButtonDiv">
           <img src={require('../../assets/tutorial.svg')} id="tutorialProblemButton" width="50" height="50" alt="Back arrow, blue up arrow" />
@@ -263,7 +262,6 @@ goToProposals() {
         <div id="problemColumn1">
           <SubProjectParentUnit parentID={this.state.problemInfo.ParentID} />
           {/*<ProjectParentChildrenUnitsContainer parentID={this.state.problemInfo.ParentID} problemTitle={this.state.problemInfo.Title}/>*/}
-          {/*Column 1*/}
           <div id="problemIntro">
             <h1 id="problemTitle">{this.state.problemInfo.Title}</h1>
           </div>
@@ -271,10 +269,7 @@ goToProposals() {
                 <Link><div id="voteProblem" onClick={this.submitVote}>
                     Vote
                 </div></Link>
-                <Link activeClassName="activeBlue">
-                {/*This needs jump down*/}
-                    <div id="SBButtonDiscuss">Proposals</div>
-                </Link>
+                <a href='#proposals'><div id="SBButtonDiscuss">Proposals</div></a>
                 <Link to={`/problem/${this.props.params.probID}/questions`} activeClassName="activeBlue">
                     <div id="SBButtonDiscuss">Discuss</div>
                 </Link>
@@ -298,13 +293,9 @@ goToProposals() {
               {React.cloneElement(this.props.children)}
             </div>
           {React.cloneElement(<SubProblemContainer probID={this.props.params.probID} />)}
-          {React.cloneElement(<ProblemSolutionsMenu probID={this.props.params.probID} projectTitle={this.state.problemInfo.Title} />)}
-          
-          {/*<FullSolutionContainer />*/}
-          
-          {/*Attempt to get subprojects always underneath the section, particularly for creating new projects*/}
-          {/*{React.cloneElement(<SubProblemContainer />, {probID: this.state.probID})}*/}
-
+          <ScrollableAnchor id={'proposals'}>
+            {React.cloneElement(<ProblemSolutionsMenu probID={this.props.params.probID} projectTitle={this.state.problemInfo.Title} />)}
+          </ScrollableAnchor>
         {/*<div id="tutorialProblemButtonDiv">
           <img src={require('../../assets/tutorial.svg')} id="tutorialProblemButton" width="50" height="50" alt="Back arrow, blue up arrow" />
         </div>*/}
@@ -327,7 +318,6 @@ goToProposals() {
         <div id="problemColumn1">
           <SubProjectParentUnit parentID={this.state.problemInfo.ParentID} />
           {/*<ProjectParentChildrenUnitsContainer parentID={this.state.problemInfo.ParentID} problemTitle={this.state.problemInfo.Title}/>*/}
-          {/*Column 1*/}
           <div id="problemIntro">
             <h1 id="problemTitle">{this.state.problemInfo.Title}</h1>
           </div>
@@ -335,10 +325,7 @@ goToProposals() {
                 <Link><div id="votedProblem" onClick={this.unVote}>
                     Voted
                 </div></Link>
-                <Link activeClassName="activeBlue">
-                {/*This needs jump down*/}
-                    <div id="SBButtonDiscuss">Proposals</div>
-                </Link>
+                <a href='#proposals'><div id="SBButtonDiscuss">Proposals</div></a>
                 <Link to={`/problem/${this.props.params.probID}/questions`} activeClassName="activeBlue">
                     <div id="SBButtonDiscuss">Discuss</div>
                 </Link>
@@ -362,12 +349,9 @@ goToProposals() {
               {React.cloneElement(this.props.children)}
             </div>
           {React.cloneElement(<SubProblemContainer probID={this.props.params.probID} />)}
-          {React.cloneElement(<ProblemSolutionsMenu probID={this.props.params.probID} projectTitle={this.state.problemInfo.Title} />)}
-          
-          {/*<FullSolutionContainer />*/}
-          
-          {/*Attempt to get subprojects always underneath the section, particularly for creating new projects*/}
-          {/*{React.cloneElement(<SubProblemContainer />, {probID: this.state.probID})}*/}
+          <ScrollableAnchor id={'proposals'}>
+            {React.cloneElement(<ProblemSolutionsMenu probID={this.props.params.probID} projectTitle={this.state.problemInfo.Title} />)}
+          </ScrollableAnchor>
 
         {/*<div id="tutorialProblemButtonDiv">
           <img src={require('../../assets/tutorial.svg')} id="tutorialProblemButton" width="50" height="50" alt="Back arrow, blue up arrow" />
@@ -393,7 +377,6 @@ goToProposals() {
         <div id="problemColumn1">
           <SubProjectParentUnit parentID={this.state.problemInfo.ParentID} />
           {/*<ProjectParentChildrenUnitsContainer parentID={this.state.problemInfo.ParentID} problemTitle={this.state.problemInfo.Title}/>*/}
-          {/*Column 1*/}
           <div id="problemIntro">
             <h1 id="problemTitle">{this.state.problemInfo.Title}</h1>
           </div>
@@ -401,10 +384,7 @@ goToProposals() {
                 <Link><div id="voteProblem" onClick={this.submitVote}>
                     Vote
                 </div></Link>
-                <Link activeClassName="activeBlue">
-                {/*This needs jump down*/}
-                    <div id="SBButtonDiscuss">Proposals</div>
-                </Link>
+                <a href='#proposals'><div id="SBButtonDiscuss">Proposals</div></a>
                 <Link to={`/problem/${this.props.params.probID}/questions`} activeClassName="activeBlue">
                     <div id="SBButtonDiscuss">Discuss</div>
                 </Link>
@@ -428,12 +408,9 @@ goToProposals() {
               {React.cloneElement(this.props.children)}
             </div>
           {React.cloneElement(<SubProblemContainer probID={this.props.params.probID} />)}
-          {React.cloneElement(<ProblemSolutionsMenu probID={this.props.params.probID} projectTitle={this.state.problemInfo.Title} />)}
-          
-          {/*<FullSolutionContainer />*/}
-          
-          {/*Attempt to get subprojects always underneath the section, particularly for creating new projects*/}
-          {/*{React.cloneElement(<SubProblemContainer />, {probID: this.state.probID})}*/}
+          <ScrollableAnchor id={'proposals'}>
+            {React.cloneElement(<ProblemSolutionsMenu probID={this.props.params.probID} projectTitle={this.state.problemInfo.Title} />)}
+          </ScrollableAnchor >
 
         {/*<div id="tutorialProblemButtonDiv">
           <img src={require('../../assets/tutorial.svg')} id="tutorialProblemButton" width="50" height="50" alt="Back arrow, blue up arrow" />

@@ -73,7 +73,7 @@ export default class Introduction extends React.Component {
                     <span id="blueOpen"> targeted education </span>will be <span id='blueOpen'>designed with patience </span>and <span id="blueOpen">used with ambition</span>. 
                     <br />
                     <br />
-                    Proposals are<span id='blueOpen'> weighed by pro and con</span>, and the best will be<span id="blueOpen"> determined by democratic vote</span>.
+                    Proposals will<span id='blueOpen'> weighed by pro and con</span>, and the best<span id="blueOpen"> determined by democratic vote</span>.
                     <br />
                     <br />
                     In the end, <span id="blueOpen">an architecture will be built with the greatest works of our time </span>held inside and a<span id='blueOpen'> blueprint 

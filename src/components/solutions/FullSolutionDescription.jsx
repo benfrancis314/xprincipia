@@ -24,15 +24,15 @@ export default class FullSolutionDescription extends React.Component {
     }) 
     }
 
-  //On recieving new props
-//   componentWillReceiveProps(nextProps){
-// 	  var self = this
-// 	        return axios.get( Config.API + '/solutions/ID?id='+nextProps.params.solutionID).then(function (response) {
-//           self.setState({
-//               solutionInfo: response.data,  
-//           })
-//             })
-//   }
+//   On recieving new props
+  componentWillReceiveProps(nextProps){
+	  var self = this
+	        return axios.get( Config.API + '/solutions/ID?id='+nextProps.solutionID).then(function (response) {
+          self.setState({
+              solutionInfo: response.data,  
+          })
+            })
+  }
    render() {
       
       if (this.state.solutionInfo.References === "" ) {

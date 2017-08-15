@@ -35,11 +35,11 @@ constructor(props){
    render() {
            return (
         <div id="suggestionContainer">
-              <Link to={`/fullsolution/${this.props.probID}/${this.props.solutionID}/description`}>
-                 <div id="solutionDescriptionReturn">
-                     <img src={require('../assets/upArrow.svg')} id="backArrowBlueHover" width="50" height="30" alt="Back arrow, blue up arrow" />
-                 </div>
-              </Link>
+            <Link to={`/problem/${this.props.params.probID}/proposal/${this.props.params.solutionID}`}>
+                <div >
+                    <img src={require('../assets/redX.svg')} id="closeRedX" width="35" height="35" alt="Close button, red X symbol" />
+                </div>
+             </Link>
         {/*<ReactCSSTransitionGroup
           transitionName="example"
           transitionAppear={true}

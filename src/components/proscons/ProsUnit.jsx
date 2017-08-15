@@ -10,23 +10,23 @@ export default class ProsUnit extends React.Component {
          this.renderItem = this.renderItem.bind(this)
     };
   
-    componentWillReceiveProps (props) {
-        var self = this
-        self.setState({
-            voteHash : {},
-        })
-        props.pros.forEach( function (pro){
-            axios.get( Config.API + "/vote/isVotedOn?type=9&typeID=" + pro.ID + "&username=" + cookie.load("userName"))
-            .then( function (response) {  
-                const voteHash = self.state.voteHash;
+    // componentWillReceiveProps (nextProps) {
+    //     var self = this
+    //     self.setState({
+    //         voteHash : {},
+    //     })
+    //     props.pros.forEach( function (pro){
+    //         axios.get( Config.API + "/auth/vote/isVotedOn?type=9&typeID=" + pro.ID + "&username=" + cookie.load("userName"))
+    //         .then( function (response) {  
+    //             const voteHash = self.state.voteHash;
 
-                voteHash[pro.ID] = response.data
-                self.setState({
-                    voteHash,
-                })
-            })  
-        })
-    }
+    //             voteHash[pro.ID] = response.data
+    //             self.setState({
+    //                 voteHash,
+    //             })
+    //         })  
+    //     })
+    // }
 
 	render() {
 		return (
@@ -123,6 +123,7 @@ export default class ProsUnit extends React.Component {
                             <img src={require('../../assets/editBlue.svg')} id="editLogo" width="18" height="18" alt="Edit Button" />
                         </div>
                     </Link>
+                {/*For when we add in comments to these*/}
                 {/*<Link to={`/problem/${pro.TypeID}/pros/${pro.ID}/comments`}>
                     <div id="commentSBButtonUser">
                             <img src={require('../../assets/comments.svg')} id="commentLogo" width="24" height="24" alt="Comments Button" />

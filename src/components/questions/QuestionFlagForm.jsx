@@ -37,16 +37,17 @@ postQuestion() {
         // console.log(error.response.data)
           $(document).ready(function() {
               $('#notification').attr('id','notificationShow').hide().slideDown();
-              $('#notificationContent').text(error.response.data);
-              // alert( "Please login to add content. ");
-              if (error.response.data == '[object Object]') {
+              if (error.response.data != '') {
+                $('#notificationContent').text(error.response.data);
+              }
+              else if (error.response.data == '[object Object]') {
                 return (
                   $(document).ready(function() {
                     $('#notificationLoginRegisterContainer').attr('id','notificationLoginRegisterContainerShow');
                     $('#notificationContent').html('Please <span id="blue">login </span>to contribute content');
                   })
                 );
-              }
+              } 
           });
       });
     } 
@@ -67,16 +68,17 @@ postQuestion() {
         // console.log(error.response.data)
           $(document).ready(function() {
               $('#notification').attr('id','notificationShow').hide().slideDown();
-              $('#notificationContent').text(error.response.data);
-              // alert( "Please login to add content. ");
-              if (error.response.data == '[object Object]') {
+              if (error.response.data != '') {
+                $('#notificationContent').text(error.response.data);
+              }
+              else if (error.response.data == '[object Object]') {
                 return (
                   $(document).ready(function() {
                     $('#notificationLoginRegisterContainer').attr('id','notificationLoginRegisterContainerShow');
                     $('#notificationContent').html('Please <span id="blue">login </span>to contribute content');
                   })
                 );
-              }
+              } 
           });
       });
     }

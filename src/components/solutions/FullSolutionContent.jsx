@@ -36,15 +36,17 @@ export default class FullSolutionContent extends React.Component {
     //initialize the component with this state
     componentDidMount(){
       var self = this;
-      axios.get( Config.API + '/solutions/ID?id='+this.props.params.solutionID).then(function (response) {
+      axios.get( Config.API + '/auth/solutions/ID?id='+this.props.params.solutionID).then(function (response) {
           self.setState({
               solutionInfo: response.data,
-              rank: response.data.Rank,
-
+              rank: response.data.Rank
           })
     })
+    .catch(function (error) {
+       
+    });
     
-    axios.get( Config.API + "/vote/isVotedOn?type=1&typeID=" + this.props.params.solutionID + "&username=" + cookie.load("userName"))
+    axios.get( Config.API + "/auth/vote/isVotedOn?type=1&typeID=" + this.props.params.solutionID + "&username=" + cookie.load("userName"))
           .then( function (response){
             console.log(response.data)
             self.setState({
@@ -53,13 +55,14 @@ export default class FullSolutionContent extends React.Component {
       })     
     }
 
-  componentWillReceiveProps(nextProps){
-	  var self = this
-	  self.setState({
-		  solutionID: nextProps.params.solutionID,
-		  probID: nextProps.params.probID
-	  })
-  }
+// Not sure if this is needed
+  // componentWillReceiveProps(nextProps){
+	//   var self = this
+	//   self.setState({
+	// 	  solutionID: nextProps.params.solutionID,
+	// 	  probID: nextProps.params.probID
+	//   })
+  // }
 
   deleteSolution() {
   
@@ -78,16 +81,17 @@ export default class FullSolutionContent extends React.Component {
         // console.log(error.response.data)
           $(document).ready(function() {
               $('#notification').attr('id','notificationShow').hide().slideDown();
-              $('#notificationContent').text(error.response.data);
-              // alert( "Please login to add content. ");
-              if (error.response.data == '[object Object]') {
+              if (error.response.data != '') {
+                $('#notificationContent').text(error.response.data);
+              }
+              else if (error.response.data == '[object Object]') {
                 return (
                   $(document).ready(function() {
                     $('#notificationLoginRegisterContainer').attr('id','notificationLoginRegisterContainerShow');
                     $('#notificationContent').html('Please <span id="blue">login </span>to contribute content');
                   })
                 );
-              }
+              } 
           });
       });
   }
@@ -100,22 +104,22 @@ export default class FullSolutionContent extends React.Component {
         })
         .then(function (result) {
             document.location = window.location.pathname;
-            alert("Thank you, your vote has been recorded.");
         })
       .catch(function (error) {
         // console.log(error.response.data)
           $(document).ready(function() {
               $('#notification').attr('id','notificationShow').hide().slideDown();
-              $('#notificationContent').text(error.response.data);
-              // alert( "Please login to add content. ");
-              if (error.response.data == '[object Object]') {
+              if (error.response.data != '') {
+                $('#notificationContent').text(error.response.data);
+              }
+              else if (error.response.data == '[object Object]') {
                 return (
                   $(document).ready(function() {
                     $('#notificationLoginRegisterContainer').attr('id','notificationLoginRegisterContainerShow');
                     $('#notificationContent').html('Please <span id="blue">login </span>to contribute content');
                   })
                 );
-              }
+              } 
           });
       });
   }
@@ -134,21 +138,23 @@ unVote() {
 
             })
             document.location = window.location.pathname 
+            
         })
       .catch(function (error) {
         // console.log(error.response.data)
           $(document).ready(function() {
               $('#notification').attr('id','notificationShow').hide().slideDown();
-              $('#notificationContent').text(error.response.data);
-              // alert( "Please login to add content. ");
-              if (error.response.data == '[object Object]') {
+              if (error.response.data != '') {
+                $('#notificationContent').text(error.response.data);
+              }
+              else if (error.response.data == '[object Object]') {
                 return (
                   $(document).ready(function() {
                     $('#notificationLoginRegisterContainer').attr('id','notificationLoginRegisterContainerShow');
                     $('#notificationContent').html('Please <span id="blue">login </span>to contribute content');
                   })
                 );
-              }
+              } 
           });
       });
         
@@ -179,10 +185,10 @@ unVote() {
               </Link>
 
               <div id="prosConsMenu">
-                <Link to={`/fullsolution/${this.state.probID}/${this.state.solutionID}/pros`} activeClassName="activeWhiteBlueText">
+                <Link to={`/fullsolution/${this.state.probID}/${this.state.solutionID}/pros`} activeClassName="activeWhite">
                     <div id="prosButton">Pros</div>
                 </Link>
-                <Link to={`/fullsolution/${this.state.probID}/${this.state.solutionID}/cons`} activeClassName="activeWhiteBlueText">
+                <Link to={`/fullsolution/${this.state.probID}/${this.state.solutionID}/cons`} activeClassName="activeWhite">
                     <div id="consButton">Cons</div>
                 </Link>
               </div>
@@ -233,7 +239,7 @@ unVote() {
         </div>
 
       ); 
-  } else if(this.state.vote ===true) {
+  } else if(this.state.vote === true) {
       return ( 
       <div>
             <div id="ProposalPercentFullGreen">

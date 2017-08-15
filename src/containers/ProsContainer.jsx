@@ -50,7 +50,7 @@ constructor(props){
           transitionEnter={false}
           transitionLeave={false}>*/}
           {this.props.children}
-          {/*{React.cloneElement(<ProsUnit probID={this.props.probID} solutionID={this.props.solutionID} /> )}*/}
+          {React.cloneElement(<ProsUnit pros={this.state.pros} probID={this.props.probID} solutionID={this.props.solutionID} /> )}
         {/*</ReactCSSTransitionGroup>*/}
         </div>    
       );

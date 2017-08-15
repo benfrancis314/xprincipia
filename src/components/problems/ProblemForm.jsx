@@ -4,6 +4,10 @@ import cookie from 'react-cookie';
 import { Link } from 'react-router';
 import {Config} from '../../config.js';
 import $ from 'jquery';
+import ScrollableAnchor from 'react-scrollable-anchor';
+import { configureAnchors } from 'react-scrollable-anchor';
+
+configureAnchors({offset: -50, scrollDuration: 1000});
 
 export default class ProblemForm extends React.Component {
 
@@ -42,16 +46,17 @@ export default class ProblemForm extends React.Component {
         // console.log(error.response.data)
           $(document).ready(function() {
               $('#notification').attr('id','notificationShow').hide().slideDown();
-              $('#notificationContent').text(error.response.data);
-              // alert( "Please login to add content. ");
-              if (error.response.data == '[object Object]') {
+              if (error.response.data != '') {
+                $('#notificationContent').text(error.response.data);
+              }
+              else if (error.response.data == '[object Object]') {
                 return (
                   $(document).ready(function() {
                     $('#notificationLoginRegisterContainer').attr('id','notificationLoginRegisterContainerShow');
                     $('#notificationContent').html('Please <span id="blue">login </span>to contribute content');
                   })
                 );
-              }
+              } 
           });
       });
   };
@@ -59,9 +64,11 @@ export default class ProblemForm extends React.Component {
   render() {
       return (
         <div>
-          <Link to={`/problem/${this.props.params.probID}/subproblems`}>
-              <img src={require('../../assets/redX.svg')} id="closeRedX" width="40" height="40" alt="Close button, red X symbol" />
-          </Link>
+          <ScrollableAnchor id={'newSubProject'}>
+            <Link to={`/problem/${this.props.params.probID}/subproblems`}>
+                <img src={require('../../assets/redX.svg')} id="closeRedX" width="40" height="40" alt="Close button, red X symbol" />
+            </Link>
+          </ScrollableAnchor>
           <div id="SBButtonNoHover">
             New Sub Project
           </div>
