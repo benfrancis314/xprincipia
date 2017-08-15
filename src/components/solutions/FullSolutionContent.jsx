@@ -138,7 +138,7 @@ unVote() {
 
             })
             document.location = window.location.pathname 
-            
+            // Scroll back to proposal
         })
       .catch(function (error) {
         // console.log(error.response.data)

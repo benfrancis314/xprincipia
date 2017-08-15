@@ -252,23 +252,21 @@ function floatToDecimal(float) {
 
 function url(resourceURL){
 
-    if (resourceURL.substring(0,7) === 'https://' || resourceURL.substring(0,6) === 'http://') {
+    if (resourceURL.includes('https://') || resourceURL.includes('http://')) {
         return ( resourceURL );
 
     } 
     else if (
         (resourceURL.substring(0,3) !== 'www.')  &&  
         (
-            (resourceURL.slice(-4) === '.com') || (resourceURL.slice(-4) === '.org') || (resourceURL.slice(-4) === '.edu') || (resourceURL.slice(-4) === '.gov') || (resourceURL.slice(-4) === '.net') )
+            (resourceURL.includes('.com')) || (resourceURL.includes('.org')) || (resourceURL.includes('.edu')) || (resourceURL.includes('.gov')) || (resourceURL.includes('.net')) )
             ) 
         {
         return ( 'https://' + resourceURL );
     }
 
     else {
-        // return ( resourceURL );
         return ( 'https://www.google.com/#q=' + resourceURL );
-        // return ( 'https://en.wikipedia.org/wiki/' + resourceURL );
     }
 }
 
