@@ -108,18 +108,19 @@ import SuggestionCommentContainer from './containers/SuggestionCommentContainer.
 import SuggestionContainer from './containers/SuggestionContainer.jsx';
 import VersionsContainer from './containers/VersionsContainer.jsx'
 import WelcomeContainer from './containers/WelcomeContainer.jsx';
-// import Profile from './components/Profile.jsx'
+
 //Assets
 import './assets/index.css';
-
-function fireTracking() {
-    ReactGA.pageview(window.location.hash);
-}
 
 // This may be needed for Google Analytics:
 // One thing to note is you may need to adjust the 
 // window.location argument you push to the ReactGA.pageview() function. 
 // It will really depend how you have set up React Router.
+function fireTracking() {
+    ReactGA.pageview(window.location.hash);
+}
+
+
 
 ReactDOM.render(
   <Router onUpdate={fireTracking} history={browserHistory}>

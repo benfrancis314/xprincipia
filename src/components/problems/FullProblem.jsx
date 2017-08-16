@@ -37,11 +37,12 @@ export default class FullProblem extends React.Component {
 
           //set Problem Data
           self.setState({
-              problemInfo: response.data,
+              problemInfo: response.data
           })
     })
+
           
-    axios.get( Config.API + "/vote/isVotedOn?type=0&typeID=" + this.props.params.probID + "&username=" + cookie.load("userName"))
+    axios.get( Config.API + "/auth/vote/isVotedOn?type=0&typeID=" + this.props.params.probID + "&username=" + cookie.load("userName"))
           .then( function (response){
             console.log(response.data)
             self.setState({
@@ -51,42 +52,43 @@ export default class FullProblem extends React.Component {
   }
 
 
-  componentWillReceiveProps(nextProps){
-    var self = this;
-      return axios.get( Config.API + '/problems/ID?id='+nextProps.params.probID).then(function (response) {
-        //set problem data
-        self.setState({
-            problemInfo: response.data,
-            probID: response.data.ID
-        })
-    })
-      .catch(function (error) {
-        // console.log(error.response.data)
-          $(document).ready(function() {
-              $('#notification').attr('id','notificationShow').hide().slideDown();
-              if (error.response.data != '') {
-                $('#notificationContent').text(error.response.data);
-              }
-              else if (error.response.data == '[object Object]') {
-                return (
-                  $(document).ready(function() {
-                    $('#notificationLoginRegisterContainer').attr('id','notificationLoginRegisterContainerShow');
-                    $('#notificationContent').html('Please <span id="blue">login </span>to contribute content');
-                  })
-                );
-              } 
-          });
-      });
-    axios.get( Config.API + "/vote/isVotedOn?type=0&typeID=" + this.props.params.probID + "&username=" + cookie.load("userName"))
-          .then( function (response){
-            self.setState({
-              vote: response.data
-            })
-      })   
-  }
+
+  // componentWillReceiveProps(nextProps){
+  //   var self = this;
+  //     return axios.get( Config.API + '/problems/ID?id='+nextProps.params.probID).then(function (response) {
+  //       //set problem data
+  //       self.setState({
+  //           problemInfo: response.data,
+  //           probID: response.data.ID
+  //       })
+  //   })
+  //     .catch(function (error) {
+  //       // console.log(error.response.data)
+  //         $(document).ready(function() {
+  //             $('#notification').attr('id','notificationShow').hide().slideDown();
+  //             if (error.response.data != '') {
+  //               $('#notificationContent').text(error.response.data);
+  //             }
+  //             else if (error.response.data == '[object Object]') {
+  //               return (
+  //                 $(document).ready(function() {
+  //                   $('#notificationLoginRegisterContainer').attr('id','notificationLoginRegisterContainerShow');
+  //                   $('#notificationContent').html('Please <span id="blue">login </span>to contribute');
+  //                 })
+  //               );
+  //             } 
+  //         });
+  //     });
+  //   axios.get( Config.API + "/vote/isVotedOn?type=0&typeID=" + this.props.params.probID + "&username=" + cookie.load("userName"))
+  //         .then( function (response){
+  //           self.setState({
+  //             vote: response.data
+  //           })
+  //     })   
+  // }
 
 // Old
-submitVote() {
+  submitVote() {
       var self = this
        axios.post( Config.API + '/auth/vote/create', {
            Type: 0,
@@ -95,7 +97,6 @@ submitVote() {
            
         })
         .then(function (result) {
-            // alert("Thank you, your vote has been recorded.")
           return axios.get( Config.API + '/auth/problems/ID?id='+self.props.params.probID).then(function (response) {
           
             //set problem data
@@ -111,17 +112,18 @@ submitVote() {
         // console.log(error.response.data)
           $(document).ready(function() {
               $('#notification').attr('id','notificationShow').hide().slideDown();
-              if (error.response.data != '') {
+
+                if (error.response.data == '[object Object]') {
+                  return (
+                    $(document).ready(function() {
+                      $('#notificationLoginRegisterContainer').attr('id','notificationLoginRegisterContainerShow');
+                      $('#notificationFeedbackShow').attr('id','notificationFeedback');
+                      $('#notificationContent').html('Please <span id="blue">login </span>to vote');
+                    })
+                  );
+                }  else if (error.response.data != '') {
                 $('#notificationContent').text(error.response.data);
               }
-              else if (error.response.data == '[object Object]') {
-                return (
-                  $(document).ready(function() {
-                    $('#notificationLoginRegisterContainer').attr('id','notificationLoginRegisterContainerShow');
-                    $('#notificationContent').html('Please <span id="blue">login </span>to contribute content');
-                  })
-                );
-              } 
           });
       });
   }
@@ -137,8 +139,8 @@ unVote() {
         .then(function (result) {
             //set problem data
             // self.setState({
-            //     problemInfo: response.data,
-            //     // vote: false,
+                
+            //     vote: false,
             // })
             document.location = window.location.pathname 
         })
@@ -146,17 +148,18 @@ unVote() {
         // console.log(error.response.data)
           $(document).ready(function() {
               $('#notification').attr('id','notificationShow').hide().slideDown();
-              if (error.response.data != '') {
+
+                if (error.response.data == '[object Object]') {
+                  return (
+                    $(document).ready(function() {
+                      $('#notificationLoginRegisterContainer').attr('id','notificationLoginRegisterContainerShow');
+                      $('#notificationFeedbackShow').attr('id','notificationFeedback');
+                      $('#notificationContent').html('Please <span id="blue">login </span>to vote');
+                    })
+                  );
+                }  else if (error.response.data != '') {
                 $('#notificationContent').text(error.response.data);
               }
-              else if (error.response.data == '[object Object]') {
-                return (
-                  $(document).ready(function() {
-                    $('#notificationLoginRegisterContainer').attr('id','notificationLoginRegisterContainerShow');
-                    $('#notificationContent').html('Please <span id="blue">login </span>to contribute content');
-                  })
-                );
-              } 
           });
       });
         
@@ -284,7 +287,7 @@ goToProposals() {
               <img src={require('../../assets/editBlue.svg')} id="editProjectButton" width="20" height="20" alt="Edit Button" />
             </Link>*/}
 
-            <div id="projectPercent">{this.state.problemInfo.Rank}</div>
+            <div id="projectPercentGreen">{this.state.problemInfo.Rank}</div>
             <div id="fullProblem">
               <p id="problemSummary">
                 {this.state.problemInfo.Summary}
@@ -296,6 +299,7 @@ goToProposals() {
           <ScrollableAnchor id={'proposals'}>
             {React.cloneElement(<ProblemSolutionsMenu probID={this.props.params.probID} projectTitle={this.state.problemInfo.Title} />)}
           </ScrollableAnchor>
+
         {/*<div id="tutorialProblemButtonDiv">
           <img src={require('../../assets/tutorial.svg')} id="tutorialProblemButton" width="50" height="50" alt="Back arrow, blue up arrow" />
         </div>*/}
@@ -307,7 +311,7 @@ goToProposals() {
 
   } else if(this.state.vote ===true) {
       return ( 
-       <div id="maxContainerColumn">
+      <div id="maxContainerColumn">
         <ReactCSSTransitionGroup
           transitionName="example"
           transitionAppear={true}
@@ -336,9 +340,6 @@ goToProposals() {
             <div id="projectCreator">
               {this.state.problemInfo.OriginalPosterUsername}
             </div>
-            {/*<Link to={`/problem/${this.props.params.probID}/edit`}>
-              <img src={require('../../assets/editBlue.svg')} id="editProjectButton" width="20" height="20" alt="Edit Button" />
-            </Link>*/}
 
             <div id="projectPercentGreen">{this.state.problemInfo.Rank}</div>
             <div id="fullProblem">
@@ -395,11 +396,8 @@ goToProposals() {
             <div id="projectCreator">
               {this.state.problemInfo.OriginalPosterUsername}
             </div>
-            {/*<Link to={`/problem/${this.props.params.probID}/edit`}>
-              <img src={require('../../assets/editBlue.svg')} id="editProjectButton" width="20" height="20" alt="Edit Button" />
-            </Link>*/}
 
-            <div id="projectPercent">{this.state.problemInfo.Rank}</div>
+            <div id="projectPercentGreen">{this.state.problemInfo.Rank}</div>
             <div id="fullProblem">
               <p id="problemSummary">
                 {this.state.problemInfo.Summary}
@@ -410,7 +408,7 @@ goToProposals() {
           {React.cloneElement(<SubProblemContainer probID={this.props.params.probID} />)}
           <ScrollableAnchor id={'proposals'}>
             {React.cloneElement(<ProblemSolutionsMenu probID={this.props.params.probID} projectTitle={this.state.problemInfo.Title} />)}
-          </ScrollableAnchor >
+          </ScrollableAnchor>
 
         {/*<div id="tutorialProblemButtonDiv">
           <img src={require('../../assets/tutorial.svg')} id="tutorialProblemButton" width="50" height="50" alt="Back arrow, blue up arrow" />

@@ -46,7 +46,7 @@ export default class WelcomeContainer extends React.Component {
                 return (
                   $(document).ready(function() {
                     $('#notificationLoginRegisterContainer').attr('id','notificationLoginRegisterContainerShow');
-                    $('#notificationContent').html('Please <span id="blue">login </span>to contribute content');
+                    $('#notificationContent').html('Please <span id="blue">login </span>to contribute');
                   })
                 );
               } 
@@ -72,7 +72,7 @@ export default class WelcomeContainer extends React.Component {
                 return (
                   $(document).ready(function() {
                     $('#notificationLoginRegisterContainer').attr('id','notificationLoginRegisterContainerShow');
-                    $('#notificationContent').html('Please <span id="blue">login </span>to contribute content');
+                    $('#notificationContent').html('Please <span id="blue">login </span>to contribute');
                   })
                 );
               } 
@@ -89,15 +89,15 @@ export default class WelcomeContainer extends React.Component {
    render() {
       return (
         <div>
-            <Sound
+            {/*<Sound
                 url={require('../assets/jfkSpeech.mp3')}
                 autoLoad={false}
                 playStatus={Sound.status.PLAYING}
-                playFromPosition={87500 /*Comment: in milliseconds*/}
+                playFromPosition={87500 //in ms}
                 onLoading={this.handleSongLoading}
                 onPlaying={this.handleSongPlaying}
                 onFinishedPlaying={this.handleSongFinishedPlaying} 
-                volume={0}/>
+                volume={0}/>*/}
          <Link to="/introduction">
             <div id="welcomeIntroductionButton">
                 Introduction

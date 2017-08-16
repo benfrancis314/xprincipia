@@ -38,7 +38,7 @@ export default class CommentEditForm extends React.Component {
                 return (
                   $(document).ready(function() {
                     $('#notificationLoginRegisterContainer').attr('id','notificationLoginRegisterContainerShow');
-                    $('#notificationContent').html('Please <span id="blue">login </span>to contribute content');
+                    $('#notificationContent').html('Please <span id="blue">login </span>to contribute');
                   })
                 );
               } 
@@ -72,7 +72,7 @@ updateComment() {
                 return (
                   $(document).ready(function() {
                     $('#notificationLoginRegisterContainer').attr('id','notificationLoginRegisterContainerShow');
-                    $('#notificationContent').html('Please <span id="blue">login </span>to contribute content');
+                    $('#notificationContent').html('Please <span id="blue">login </span>to contribute');
                   })
                 );
               } 

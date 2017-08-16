@@ -38,7 +38,7 @@ export default class QuestionEditForm extends React.Component {
                 return (
                   $(document).ready(function() {
                     $('#notificationLoginRegisterContainer').attr('id','notificationLoginRegisterContainerShow');
-                    $('#notificationContent').html('Please <span id="blue">login </span>to contribute content');
+                    $('#notificationContent').html('Please <span id="blue">login </span>to contribute');
                   })
                 );
               } 
@@ -70,7 +70,7 @@ updateQuestion() {
                 return (
                   $(document).ready(function() {
                     $('#notificationLoginRegisterContainer').attr('id','notificationLoginRegisterContainerShow');
-                    $('#notificationContent').html('Please <span id="blue">login </span>to contribute content');
+                    $('#notificationContent').html('Please <span id="blue">login </span>to contribute');
                   })
                 );
               } 

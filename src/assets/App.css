@@ -2788,6 +2788,7 @@ introductionProjectTitle {
       margin: 7px;
       margin-top: 10px;
       font-size: 115%;
+      color: #eeeeee;
     }
     #suggestionVote, #suggestionVoteNoComments {
       flex: 1 1 auto;
@@ -5975,6 +5976,25 @@ input#submitNewVersion:hover {
     #notificationRegister:hover {
       background-color: rgba(0, 255, 220, 0.25);
       cursor: pointer;
+    }
+    #notificationFeedbackShow {
+      color: #00dcff;
+      padding: 3px;
+      border: 1px solid #00dcff;
+      border-radius: 3px;
+      font-size: 70%;
+      transition: all 0.5s ease 0s;
+      width: 25%;
+      margin: 0 auto;
+      margin-top: 2%;
+      margin-bottom: 1.5%;
+    }
+    #notificationFeedbackShow:hover {
+      background-color: rgba(0, 220, 255, 0.25);
+      cursor: pointer;
+    }
+    #notificationFeedback {
+      display: none;
     }
     #notificationReturn {
       color: #ff7f7f;

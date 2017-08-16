@@ -20,7 +20,7 @@ constructor(props){
         voteHash : {},
     })
     props.questions.forEach( function (question){
-        axios.get( Config.API + "/vote/isVotedOn?type=2&typeID=" + question.ID + "&username=" + cookie.load("userName"))
+        axios.get( Config.API + "/auth/vote/isVotedOn?type=2&typeID=" + question.ID + "&username=" + cookie.load("userName"))
         .then( function (response) {  
             const voteHash = self.state.voteHash;
 
@@ -31,6 +31,7 @@ constructor(props){
         })  
     })
 }
+
 
 	render() {
 		return (
@@ -59,21 +60,22 @@ constructor(props){
           })
           
         })
+
       .catch(function (error) {
         // console.log(error.response.data)
           $(document).ready(function() {
               $('#notification').attr('id','notificationShow').hide().slideDown();
-              if (error.response.data != '') {
+
+                if (error.response.data == '[object Object]') {
+                  return (
+                    $(document).ready(function() {
+                      $('#notificationLoginRegisterContainer').attr('id','notificationLoginRegisterContainerShow');
+                      $('#notificationContent').html('Please <span id="blue">login </span>to vote');
+                    })
+                  );
+                }  else if (error.response.data != '') {
                 $('#notificationContent').text(error.response.data);
               }
-              else if (error.response.data == '[object Object]') {
-                return (
-                  $(document).ready(function() {
-                    $('#notificationLoginRegisterContainer').attr('id','notificationLoginRegisterContainerShow');
-                    $('#notificationContent').html('Please <span id="blue">login </span>to contribute content');
-                  })
-                );
-              } 
           });
       });
     }
@@ -92,17 +94,17 @@ constructor(props){
         // console.log(error.response.data)
           $(document).ready(function() {
               $('#notification').attr('id','notificationShow').hide().slideDown();
-              if (error.response.data != '') {
+
+                if (error.response.data == '[object Object]') {
+                  return (
+                    $(document).ready(function() {
+                      $('#notificationLoginRegisterContainer').attr('id','notificationLoginRegisterContainerShow');
+                      $('#notificationContent').html('Please <span id="blue">login </span>to vote');
+                    })
+                  );
+                }  else if (error.response.data != '') {
                 $('#notificationContent').text(error.response.data);
               }
-              else if (error.response.data == '[object Object]') {
-                return (
-                  $(document).ready(function() {
-                    $('#notificationLoginRegisterContainer').attr('id','notificationLoginRegisterContainerShow');
-                    $('#notificationContent').html('Please <span id="blue">login </span>to contribute content');
-                  })
-                );
-              } 
           });
       });
         
@@ -113,7 +115,7 @@ constructor(props){
             <li key={question.ID} id="questionUnit"> 
                     <div id="suggestionContent">
                         <div id="discussHeader">
-                            <span id="discussPercent">{floatToDecimal(question.PercentRank)}</span>
+                            <span id="discussPercent">{floatToDecimal(question.PercentRank)}1</span>
                             {question.Username}
                         </div>
                         <div id="suggestionText">
@@ -145,7 +147,7 @@ constructor(props){
             <li key={question.ID} id="questionUnit"> 
 				<div id="suggestionContent">
 					<div id="discussHeader">
-                        <span id="discussPercent">{floatToDecimal(question.PercentRank)}</span>
+                        <span id="discussPercent">{floatToDecimal(question.PercentRank)}2</span>
 					    {question.Username}
                     </div>
                     <div id="suggestionText">
@@ -176,7 +178,7 @@ constructor(props){
         <li key={question.ID} id="questionUnit"> 
 				<div id="suggestionContent">
 					<div id="discussHeader">
-                        <span id="discussPercent">{floatToDecimal(question.PercentRank)}</span>
+                        <span id="discussPercent">{floatToDecimal(question.PercentRank)}3</span>
 					    {question.Username}
                     </div>
                     <div id="suggestionText">
@@ -203,7 +205,7 @@ constructor(props){
         <li key={question.ID} id="questionUnit"> 
 				<div id="suggestionContent">
 					<div id="discussHeader">
-                        <span id="discussPercent">{floatToDecimal(question.PercentRank)}</span>
+                        <span id="discussPercent">{floatToDecimal(question.PercentRank)}4</span>
 					    {question.Username}
                     </div>
                     <div id="suggestionText">

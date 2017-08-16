@@ -81,6 +81,9 @@ class App extends React.Component {
             <div id="notificationRegister" onClick={this.hideNotification}>Register</div>
             </Link>
           </div>
+          <Link to='/profile/feedback'>
+              <div id="notificationFeedbackShow" onClick={this.hideNotification}>Feedback</div>
+          </Link>
           <div id="notificationReturn" onClick={this.hideNotification}>Return</div>
         </div>
       </div>
