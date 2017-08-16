@@ -55,19 +55,24 @@ deleteLearnItem() {
 
    render() {
       return (
-      <div id="questionFormComponent">
-            <form id="questionForm">
-                <fieldset>
-                    <legend>Delete Lesson</legend>
-                         <div>Are you sure you would like to delete this lesson?</div>
-                         <br />
-                         <div onClick={this.deleteLearnItem} id="deleteButton">Delete</div>
-                          <Link to={`/problem/${this.props.params.probID}/learn/content`}>
-                            <div id="returnButton">Exit</div>
-                         </Link>
-                </fieldset>
-            </form>
-      </div>
+        <div>
+          <div id="discussMenuEnd">
+            Lessons
+          </div>
+          <div id="questionFormComponent">
+                <form id="questionForm">
+                    <fieldset>
+                        <legend>Delete Lesson</legend>
+                            <div>Are you sure you would like to delete this lesson?</div>
+                            <br />
+                            <div onClick={this.deleteLearnItem} id="deleteButton">Delete</div>
+                              <Link to={`/problem/${this.props.params.probID}/learn/content`}>
+                                <div id="returnButton">Exit</div>
+                            </Link>
+                    </fieldset>
+                </form>
+          </div>
+        </div>
 
       );
    }

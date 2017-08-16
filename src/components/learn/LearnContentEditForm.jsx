@@ -49,7 +49,6 @@ export default class LearnContentEditForm extends React.Component {
 updateLearnItem() {
   //Read field items into component state
   this.state.learnItem = document.getElementById('questionEditTextArea').value
-  console.log(this.state.learnItem)
   var self = this
   axios.put( Config.API + '/auth/learnItems/update?id='+this.props.params.learnItemID, {
       type:'0',
@@ -86,19 +85,24 @@ updateLearnItem() {
 
    render() {
       return (
-      <div id="questionFormComponent">
-            <form id="questionForm">
-                <fieldset id="redFieldset">
-                    <legend id="redLegend">Edit Lesson</legend>
-                         <textarea name="questionText" required="required" id="questionEditTextArea" autoFocus ></textarea>
-                         <br />
-                         <div onClick={this.updateLearnItem} id="editButton">Submit</div>
-                          <Link to={`/problem/${this.state.learnItem.TypeID}/learn/content`}>
-                          <div id="returnButton">Exit</div>
-                         </Link>
-                </fieldset>
-            </form>
-      </div>
+        <div>
+          <div id="discussMenuEnd">
+            Lessons
+          </div>
+          <div id="questionFormComponent">
+                <form id="questionForm">
+                    <fieldset id="redFieldset">
+                        <legend id="redLegend">Edit Lesson</legend>
+                            <textarea name="questionText" required="required" id="questionEditTextArea" autoFocus ></textarea>
+                            <br />
+                            <div onClick={this.updateLearnItem} id="editButton">Submit</div>
+                              <Link to={`/problem/${this.state.learnItem.TypeID}/learn/content`}>
+                              <div id="returnButton">Exit</div>
+                            </Link>
+                    </fieldset>
+                </form>
+          </div>
+        </div>
 
       );
    }

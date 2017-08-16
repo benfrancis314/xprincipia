@@ -50,18 +50,23 @@ deleteQuestion() {
     }
    render() {
       return (
-      <div id="questionFormComponent">
-            <form id="questionForm">
-                <fieldset>
-                    <legend>Delete Question</legend>
-                         <div>Are you sure you would like to delete this question?</div>
-                         <br />
-                          <div onClick={this.deleteQuestion} id="deleteButton">Delete</div>
-                         <Link to={`/problem/${this.props.params.probID}/questions`}>
-                            <div id="returnButton">Exit</div>
-                         </Link>
-                </fieldset>
-            </form>
+      <div>
+        <div id="discussMenuEnd">
+          Questions
+        </div>
+        <div id="questionFormComponent">
+              <form id="questionForm">
+                  <fieldset>
+                      <legend>Delete Question</legend>
+                          <div>Are you sure you would like to delete this question?</div>
+                          <br />
+                            <div onClick={this.deleteQuestion} id="deleteButton">Delete</div>
+                          <Link to={`/problem/${this.props.params.probID}/questions`}>
+                              <div id="returnButton">Exit</div>
+                          </Link>
+                  </fieldset>
+              </form>
+        </div>
       </div>
 
       );

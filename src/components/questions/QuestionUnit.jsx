@@ -11,7 +11,6 @@ constructor(props){
      super(props);
 
         this.renderItem = this.renderItem.bind(this)
-        // this.submitVote = this.submitVote.bind(this)
 
     };
     componentWillReceiveProps (props) {
@@ -41,6 +40,7 @@ constructor(props){
 		);
 	}
 	renderItem(question) {
+       
        function submitVote() {
        var self = this
        axios.post( Config.API + '/auth/vote/create', {
@@ -50,15 +50,7 @@ constructor(props){
            
         })
         .then(function (result) {
-          return axios.get( Config.API + '/auth/questions/ID?id='+self.props.params.questID).then(function (response) {
-          
-            //set problem data
-            self.setState({
-                question: response.data,
-            })
-
-          })
-          
+            document.location = window.location.pathname 
         })
 
       .catch(function (error) {
@@ -91,7 +83,6 @@ constructor(props){
             document.location = window.location.pathname 
         })
       .catch(function (error) {
-        // console.log(error.response.data)
           $(document).ready(function() {
               $('#notification').attr('id','notificationShow').hide().slideDown();
 
@@ -115,7 +106,7 @@ constructor(props){
             <li key={question.ID} id="questionUnit"> 
                     <div id="suggestionContent">
                         <div id="discussHeader">
-                            <span id="discussPercent">{floatToDecimal(question.PercentRank)}1</span>
+                            <span id="discussPercent">{floatToDecimal(question.PercentRank)}</span>
                             {question.Username}
                         </div>
                         <div id="suggestionText">
@@ -147,7 +138,7 @@ constructor(props){
             <li key={question.ID} id="questionUnit"> 
 				<div id="suggestionContent">
 					<div id="discussHeader">
-                        <span id="discussPercent">{floatToDecimal(question.PercentRank)}2</span>
+                        <span id="discussPercent">{floatToDecimal(question.PercentRank)}</span>
 					    {question.Username}
                     </div>
                     <div id="suggestionText">

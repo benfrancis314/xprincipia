@@ -48,15 +48,15 @@ export default class LearnResourcesEditForm extends React.Component {
 
 updateResource() {
   this.state.resource = document.getElementById('questionEditTextArea').value
-
+  var self = this
   axios.put( Config.API + '/auth/resources/update?id='+this.props.params.resourceID, {
       type:'0',
       typeID: this.props.params.probID,
       username: cookie.load('userName'),
-      description : this.state.resource,
+      description : self.state.resource,
     })
       .then(function (result) {
-        document.location = window.location.pathname 
+        document.location = '/problem/'+ self.props.params.probID + '/learn/resources'
       })
       .catch(function (error) {
         // console.log(error.response.data)
@@ -84,19 +84,24 @@ updateResource() {
 
    render() {
       return (
-      <div id="questionFormComponent">
-            <form id="questionForm">
-                <fieldset id="redFieldset">
-                    <legend id="redLegend">Edit Resource</legend>
-                         <textarea name="questionText" required="required" id="questionEditTextArea" autoFocus ></textarea>
-                         <br />
-                         <div onClick={this.updateResource} id="editButton">Submit</div>
-                         <Link to={`/problem/${this.state.resource.TypeID}/learn/resources`}>
-                          <div id="returnButton">Exit</div>
-                         </Link>
-                </fieldset>
-            </form>
-      </div>
+        <div>
+          <div id="discussMenuEnd">
+            Resources
+          </div>
+          <div id="questionFormComponent">
+                <form id="questionForm">
+                    <fieldset id="redFieldset">
+                        <legend id="redLegend">Edit Resource</legend>
+                            <textarea name="questionText" required="required" id="questionEditTextArea" autoFocus ></textarea>
+                            <br />
+                            <div onClick={this.updateResource} id="editButton">Submit</div>
+                            <Link to={`/problem/${this.state.resource.TypeID}/learn/resources`}>
+                              <div id="returnButton">Exit</div>
+                            </Link>
+                    </fieldset>
+                </form>
+          </div>
+        </div>
 
       );
    }

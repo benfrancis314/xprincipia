@@ -18,7 +18,7 @@ export default class LearnResourcesUnit1 extends React.Component {
             voteHash : {},
         })
         props.resources.forEach( function (resource){
-            axios.get( Config.API + "/vote/isVotedOn?type=8&typeID=" + resource.ID + "&username=" + cookie.load("userName"))
+            axios.get( Config.API + "/auth/vote/isVotedOn?type=8&typeID=" + resource.ID + "&username=" + cookie.load("userName"))
             .then( function (response) {  
                 const voteHash = self.state.voteHash;
 
@@ -49,16 +49,17 @@ export default class LearnResourcesUnit1 extends React.Component {
 
        function  submitVote() {
        axios.post( Config.API + '/auth/vote/create', {
-           Type: 8, //TODO: Change to correct type
+           Type: 8,
            TypeID: resource.ID,
            username : cookie.load("userName"),
            
         })
         .then(function (result) {
-            document.location = window.location.pathname;
+            document.location = window.location.pathname 
+
+          
         })
       .catch(function (error) {
-        // console.log(error.response.data)
           $(document).ready(function() {
               $('#notification').attr('id','notificationShow').hide().slideDown();
 
@@ -86,23 +87,22 @@ export default class LearnResourcesUnit1 extends React.Component {
         .then(function (result) {
             document.location = window.location.pathname 
         })
-      .catch(function (error) {
-        // console.log(error.response.data)
-          $(document).ready(function() {
-              $('#notification').attr('id','notificationShow').hide().slideDown();
+    //   .catch(function (error) {
+    //       $(document).ready(function() {
+    //           $('#notification').attr('id','notificationShow').hide().slideDown();
 
-                if (error.response.data == '[object Object]') {
-                  return (
-                    $(document).ready(function() {
-                      $('#notificationLoginRegisterContainer').attr('id','notificationLoginRegisterContainerShow');
-                      $('#notificationContent').html('Please <span id="blue">login </span>to vote');
-                    })
-                  );
-                }  else if (error.response.data != '') {
-                $('#notificationContent').text(error.response.data);
-              }
-          });
-      });
+    //             if (error.response.data == '[object Object]') {
+    //               return (
+    //                 $(document).ready(function() {
+    //                   $('#notificationLoginRegisterContainer').attr('id','notificationLoginRegisterContainerShow');
+    //                   $('#notificationContent').html('Please <span id="blue">login </span>to vote');
+    //                 })
+    //               );
+    //             }  else if (error.response.data != '') {
+    //             $('#notificationContent').text(error.response.data);
+    //           }
+    //       });
+    //   });
         
     }
   

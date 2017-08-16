@@ -53,19 +53,24 @@ deleteResource() {
 
    render() {
       return (
-      <div id="questionFormComponent">
-            <form id="questionForm">
-                <fieldset>
-                    <legend>Delete Resource</legend>
-                         <div>Are you sure you would like to delete this resource?</div>
-                         <br />
-                         <div onClick={this.deleteResource} id="deleteButton">Delete</div>
-                         <Link to={`/problem/${this.props.params.probID}/learn/resources`}>
-                            <div id="returnButton">Exit</div>
-                         </Link>
-                </fieldset>
-            </form>
-      </div>
+        <div>
+          <div id="discussMenuEnd">
+            Resources
+          </div>
+          <div id="questionFormComponent">
+                <form id="questionForm">
+                    <fieldset>
+                        <legend>Delete Resource</legend>
+                            <div>Are you sure you would like to delete this resource?</div>
+                            <br />
+                            <div onClick={this.deleteResource} id="deleteButton">Delete</div>
+                            <Link to={`/problem/${this.props.params.probID}/learn/resources`}>
+                                <div id="returnButton">Exit</div>
+                            </Link>
+                    </fieldset>
+                </form>
+          </div>
+        </div>
 
       );
    }

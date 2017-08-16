@@ -17,7 +17,7 @@ export default class ConsUnit extends React.Component {
             voteHash : {},
         })
         props.cons.forEach( function (con){
-            axios.get( Config.API + "/vote/isVotedOn?type=10&typeID=" + con.ID + "&username=" + cookie.load("userName"))
+            axios.get( Config.API + "/auth/vote/isVotedOn?type=10&typeID=" + con.ID + "&username=" + cookie.load("userName"))
             .then( function (response) {  
                 const voteHash = self.state.voteHash;
 
@@ -29,6 +29,7 @@ export default class ConsUnit extends React.Component {
         })
     }
 
+
 	render() {
 		return (
 	    <div>
@@ -38,8 +39,7 @@ export default class ConsUnit extends React.Component {
 		);
 	}
 	renderItem(con) {
-        // Warning on console says this var self is not needed, so I'm commenting it out
-        // var self = this;
+
        function  submitVote() {
        axios.post( Config.API + '/auth/vote/create', {
            Type: 10,
@@ -67,13 +67,13 @@ export default class ConsUnit extends React.Component {
               }
           });
       });
-  }    
+    }
         function unVote() {
-        axios.delete( Config.API + '/auth/vote/delete' ,{
-            params: {
-            type: 10,
-            typeID: con.ID,
-            username: cookie.load('userName')
+      axios.delete( Config.API + '/auth/vote/delete' ,{
+        params: {
+          type: 10,
+          typeID: con.ID,
+          username: cookie.load('userName')
         }
         })
         .then(function (result) {
@@ -101,7 +101,7 @@ export default class ConsUnit extends React.Component {
         //Display edit and delete buttons if user is OP
        if (this.state.voteHash[con.ID] === true && con.Username === cookie.load('userName')) {
            return (
-       <li key={con.ID} id="suggestionUnit">
+       <li key={con.ID} id="prosConsUnit">
 				<div id="suggestionContent">
 					<div id="discussHeader">
                         <span id="discussPercent">{floatToDecimal(con.PercentRank)}</span>
@@ -133,7 +133,7 @@ export default class ConsUnit extends React.Component {
   
     }  else if ( con.Username === cookie.load('userName')) {
         return (
-       <li key={con.ID} id="suggestionUnit">
+       <li key={con.ID} id="prosConsUnit">
 				<div id="suggestionContent">
 					<div id="discussHeader">
                         <span id="discussPercent">{floatToDecimal(con.PercentRank)}</span>
@@ -164,7 +164,7 @@ export default class ConsUnit extends React.Component {
         </li>);
     } else if (this.state.voteHash[con.ID] === true) {
         return (
-       <li key={con.ID} id="suggestionUnit">
+       <li key={con.ID} id="prosConsUnit">
 				<div id="suggestionContent">
 					<div id="discussHeader">
                         <span id="discussPercent">{floatToDecimal(con.PercentRank)}</span>
@@ -186,7 +186,7 @@ export default class ConsUnit extends React.Component {
         </li>);
   } else {
     return (
-       <li key={con.ID} id="suggestionUnit">
+       <li key={con.ID} id="prosConsUnit">
 				<div id="suggestionContent">
 					<div id="discussHeader">
                         <span id="discussPercent">{floatToDecimal(con.PercentRank)}</span>

@@ -287,7 +287,7 @@ goToProposals() {
               <img src={require('../../assets/editBlue.svg')} id="editProjectButton" width="20" height="20" alt="Edit Button" />
             </Link>*/}
 
-            <div id="projectPercentGreen">{this.state.problemInfo.Rank}</div>
+            <div id="projectPercent">{this.state.problemInfo.Rank}</div>
             <div id="fullProblem">
               <p id="problemSummary">
                 {this.state.problemInfo.Summary}
@@ -397,7 +397,7 @@ goToProposals() {
               {this.state.problemInfo.OriginalPosterUsername}
             </div>
 
-            <div id="projectPercentGreen">{this.state.problemInfo.Rank}</div>
+            <div id="projectPercent">{this.state.problemInfo.Rank}</div>
             <div id="fullProblem">
               <p id="problemSummary">
                 {this.state.problemInfo.Summary}

@@ -53,18 +53,23 @@ deleteSuggestion() {
 
    render() {
       return (
-      <div id="questionFormComponent">
-            <form id="questionForm">
-                <fieldset>
-                    <legend>Delete Suggestion</legend>
-                         <div>Are you sure you would like to delete this suggestion?</div>
-                         <br />
-                          <div onClick={this.deleteSuggestion} id="deleteButton">Delete</div>
-                         <Link to={`/problem/${this.props.params.probID}/suggestions`}>
-                            <div id="returnButton">Exit</div>
-                         </Link>
-                </fieldset>
-            </form>
+      <div>
+        <div id="discussMenuEnd">
+          Suggestions
+        </div>
+        <div id="questionFormComponent">
+              <form id="questionForm">
+                  <fieldset>
+                      <legend>Delete Suggestion</legend>
+                          <div>Are you sure you would like to delete this suggestion?</div>
+                          <br />
+                            <div onClick={this.deleteSuggestion} id="deleteButton">Delete</div>
+                          <Link to={`/problem/${this.props.params.probID}/suggestions`}>
+                              <div id="returnButton">Exit</div>
+                          </Link>
+                  </fieldset>
+              </form>
+        </div>
       </div>
 
       );

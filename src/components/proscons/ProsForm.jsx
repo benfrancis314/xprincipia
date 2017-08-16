@@ -28,6 +28,7 @@ this.state.pro = document.getElementById('proTextArea').value
   })
   .then(function (result) {
     document.location = window.location.pathname 
+    // scroll to pros again
   })
       .catch(function (error) {
         // console.log(error.response.data)

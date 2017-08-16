@@ -21,20 +21,21 @@ constructor(props){
     };
     componentDidMount(){
         var self = this;
-        if(this.props.solutionID){
+        // if(this.props.solutionID){
             return axios.get( Config.API + '/pros/typeID?id='+this.props.params.solutionID+'&dataType=1').then(function (response) {
                 self.setState({
                     pros: response.data
                 })
             })  
-        } else {
-            return axios.get( Config.API + '/pros/typeID?id='+this.props.params.probID+'&dataType=0').then(function (response) {
-                self.setState({
-                    pros: response.data
-                })
-            }) 
-        }
-    }
+        } 
+    //     else {
+    //         return axios.get( Config.API + '/pros/typeID?id='+this.props.params.probID+'&dataType=0').then(function (response) {
+    //             self.setState({
+    //                 pros: response.data
+    //             })
+    //         }) 
+    //     }
+    // }
    render() {
            return (
         <div id="suggestionContainer">
@@ -50,7 +51,7 @@ constructor(props){
           transitionEnter={false}
           transitionLeave={false}>*/}
           {this.props.children}
-          {React.cloneElement(<ProsUnit pros={this.state.pros} probID={this.props.probID} solutionID={this.props.solutionID} /> )}
+          {React.cloneElement(<ProsUnit pros={this.state.pros} probID={this.props.params.probID} solutionID={this.props.params.solutionID} /> )}
         {/*</ReactCSSTransitionGroup>*/}
         </div>    
       );

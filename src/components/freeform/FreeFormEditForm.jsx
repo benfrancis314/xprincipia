@@ -85,20 +85,25 @@ updateFreeForm() {
 
    render() {
       return (
-      <div id="questionFormComponent">
-            <form id="questionForm">
-                <fieldset>
-                    <legend id="redLegend">Edit FreeForm Comment</legend>
-                         <textarea name="questionText" required="required" id="freeFormEditTextArea" autoFocus ></textarea>
-                         <br />
-                         <Link to={`/problem/${this.state.resources.TypeID}/freeForms`}>
-                            <div onClick={this.updateFreeForm} id="editButton">Submit</div>
-                         </Link>
-                         <Link to={`/problem/${this.state.resources.TypeID}/freeForms`}>
-                            <div id="returnButton">Exit</div>
-                         </Link>
-                </fieldset>
-            </form>
+      <div>
+        <div id="discussMenuEnd">
+          Open Debate
+        </div>
+        <div id="questionFormComponent">
+              <form id="questionForm">
+                  <fieldset>
+                      <legend id="redLegend">Edit Debate Point</legend>
+                          <textarea name="questionText" required="required" id="freeFormEditTextArea" autoFocus ></textarea>
+                          <br />
+                          <Link to={`/problem/${this.state.freeForm.TypeID}/freeForms`}>
+                              <div onClick={this.updateFreeForm} id="editButton">Submit</div>
+                          </Link>
+                          <Link to={`/problem/${this.state.freeForm.TypeID}/freeForms`}>
+                              <div id="returnButton">Exit</div>
+                          </Link>
+                  </fieldset>
+              </form>
+        </div>
       </div>
 
       );

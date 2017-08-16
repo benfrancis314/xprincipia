@@ -29,9 +29,9 @@ export default class ProblemLearnMenu extends React.Component {
                                 <div id="SBDiscussButton">Resources</div>
                             </Link>
 
-                            <Link to={`/problem/${this.props.params.probID}/learn/wiki`}  activeClassName="activeWhiteBorder">
+                            {/*<Link to={`/problem/${this.props.params.probID}/learn/wiki`}  activeClassName="activeWhiteBorder">
                                 <div id="SBDiscussButton">Wiki</div>
-                            </Link>
+                            </Link>*/}
                         </div>
                     </div>
                     {/*Old*/}

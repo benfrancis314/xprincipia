@@ -38,15 +38,13 @@ export default class ProblemSolutionsMenu extends React.Component {
    render() {
     
     if (this.state.solutions === null) {
-        alert('a1');
-        console.log('Solutions state1' + this.state.solutions + 'x');
+        // alert('a1');
         return (
             <div>
-                Hello
+                XP
             </div>
         );
     } else {
-        console.log('Solutions state2' + this.state.solutions + 'x');
       return (
         <div>
             <SolutionUnit solutions={this.state.solutions} probID={this.state.probID}/>

@@ -51,7 +51,7 @@ export default class ProblemDiscussMenu extends React.Component {
                                     </Link>
 
                                     <Link to={`/problem/${this.props.params.probID}/freeforms`} activeClassName="activeWhiteBorder">
-                                        <div id="SBDiscussButton">FreeForm</div>
+                                        <div id="SBDiscussButton">Open Debate</div>
                                     </Link>
                                 </div>
                             </div>

@@ -55,18 +55,23 @@ deleteFreeform() {
 
    render() {
       return (
-      <div id="questionFormComponent">
-            <form id="questionForm">
-                <fieldset>
-                    <legend>Delete Free Form</legend>
-                         <div>Are you sure you would like to delete this Discussion Item?</div>
-                         <br />
-                         <div onClick={this.deleteFreeform} id="deleteButton">Delete</div>
-                         <Link to={`/problem/${this.state.freeForm.TypeID}/freeForms`}>
-                            <div id="returnButton">Exit</div>
-                         </Link>
-                </fieldset>
-            </form>
+    <div>
+        <div id="discussMenuEnd">
+          Open Debate
+        </div>
+        <div id="questionFormComponent">
+              <form id="questionForm">
+                  <fieldset>
+                      <legend>Delete Debate Point</legend>
+                          <div>Are you sure you would like to delete this debate point?</div>
+                          <br />
+                          <div onClick={this.deleteFreeform} id="deleteButton">Delete</div>
+                          <Link to={`/problem/${this.state.freeForm.TypeID}/freeForms`}>
+                              <div id="returnButton">Exit</div>
+                          </Link>
+                  </fieldset>
+              </form>
+        </div>
       </div>
 
       );

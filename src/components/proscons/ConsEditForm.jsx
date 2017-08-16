@@ -50,6 +50,7 @@ updateCon() {
   //Read field items into component state
   this.state.con = document.getElementById('conEditTextArea').value
 
+  var self = this
   axios.put( Config.API + '/auth/cons/update?id='+this.props.params.conID, {
       type:'1',
       typeID: this.props.params.solutionID,
@@ -57,7 +58,7 @@ updateCon() {
       description : this.state.con,
     })
       .then(function (result) {
-        document.location = '/fullsolution/'+ self.props.params.probID + '/' + self.props.params.solutionID + '/cons'
+        document.location = '/fullsolution/' + self.props.params.probID + '/' + self.props.params.solutionID + '/cons'
       })
       .catch(function (error) {
         // console.log(error.response.data)
@@ -92,7 +93,7 @@ updateCon() {
                          <textarea name="questionText" required="required" id="conEditTextArea" autoFocus ></textarea>
                          <br />
                          <div onClick={this.updateCon} id="editButton">Submit</div>
-                         <Link to={`/fullsolution/${this.props.params.probID}/${this.props.params.solutionID}/pros`}>
+                         <Link to={`/fullsolution/${this.props.params.probID}/${this.props.params.solutionID}/cons`}>
                           <div id="returnButton">Exit</div>
                          </Link>
                 </fieldset>

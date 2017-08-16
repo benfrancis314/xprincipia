@@ -28,6 +28,7 @@ this.state.con = document.getElementById('conTextArea').value
     })
       .then(function (result) {
         document.location = window.location.pathname 
+        // scroll to cons again
       })
       .catch(function (error) {
         // console.log(error.response.data)

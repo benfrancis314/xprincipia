@@ -11,23 +11,24 @@ export default class ProsUnit extends React.Component {
          this.renderItem = this.renderItem.bind(this)
     };
   
-    // componentWillReceiveProps (nextProps) {
-    //     var self = this
-    //     self.setState({
-    //         voteHash : {},
-    //     })
-    //     props.pros.forEach( function (pro){
-    //         axios.get( Config.API + "/auth/vote/isVotedOn?type=9&typeID=" + pro.ID + "&username=" + cookie.load("userName"))
-    //         .then( function (response) {  
-    //             const voteHash = self.state.voteHash;
+    componentWillReceiveProps (props) {
+        var self = this
+        self.setState({
+            voteHash : {},
+        })
+        props.pros.forEach( function (pro){
+            axios.get( Config.API + "/auth/vote/isVotedOn?type=9&typeID=" + pro.ID + "&username=" + cookie.load("userName"))
+            .then( function (response) {  
+                const voteHash = self.state.voteHash;
 
-    //             voteHash[pro.ID] = response.data
-    //             self.setState({
-    //                 voteHash,
-    //             })
-    //         })  
-    //     })
-    // }
+                voteHash[pro.ID] = response.data
+                self.setState({
+                    voteHash,
+                })
+            })  
+        })
+    }
+
 
 	render() {
 		return (
@@ -99,7 +100,7 @@ export default class ProsUnit extends React.Component {
     }
        if (this.state.voteHash[pro.ID] === true && pro.Username === cookie.load('userName')) {
            return (
-       <li key={pro.ID} id="suggestionUnit">
+       <li key={pro.ID} id="prosConsUnit">
 				<div id="suggestionContent">
 					<div id="discussHeader">
                         <span id="discussPercent">{floatToDecimal(pro.PercentRank)}</span>
@@ -132,7 +133,7 @@ export default class ProsUnit extends React.Component {
 
     }  else if ( pro.Username === cookie.load('userName')) {
         return (
-       <li key={pro.ID} id="suggestionUnit">
+       <li key={pro.ID} id="prosConsUnit">
 				<div id="suggestionContent">
 					<div id="discussHeader">
                         <span id="discussPercent">{floatToDecimal(pro.PercentRank)}</span>
@@ -165,7 +166,7 @@ export default class ProsUnit extends React.Component {
         </li>);
     } else if (this.state.voteHash[pro.ID] === true) {
         return (
-       <li key={pro.ID} id="suggestionUnit">
+       <li key={pro.ID} id="prosConsUnit">
 				<div id="suggestionContent">
 					<div id="discussHeader">
                         <span id="discussPercent">{floatToDecimal(pro.PercentRank)}</span>
@@ -188,7 +189,7 @@ export default class ProsUnit extends React.Component {
         </li>);
     } else {
     return (
-       <li key={pro.ID} id="suggestionUnit">
+       <li key={pro.ID} id="prosConsUnit">
 				<div id="suggestionContent">
 					<div id="discussHeader">
                         <span id="discussPercent">{floatToDecimal(pro.PercentRank)}</span>

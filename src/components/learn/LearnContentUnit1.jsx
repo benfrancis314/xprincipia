@@ -18,7 +18,7 @@ export default class LearnContentUnit1 extends React.Component {
             voteHash : {},
         })
         props.learnItems.forEach( function (learnItem){
-            axios.get( Config.API + "/vote/isVotedOn?type=7&typeID=" + learnItem.ID + "&username=" + cookie.load("userName"))
+            axios.get( Config.API + "/auth/vote/isVotedOn?type=7&typeID=" + learnItem.ID + "&username=" + cookie.load("userName"))
             .then( function (response) {  
                 const voteHash = self.state.voteHash;
 
@@ -41,17 +41,17 @@ export default class LearnContentUnit1 extends React.Component {
     renderItem(learnItem) {
 
        function  submitVote() {
+        var self = this
        axios.post( Config.API + '/auth/vote/create', {
            Type: 7,
            TypeID: learnItem.ID,
            username : cookie.load("userName"),
-           
+        
         })
         .then(function (result) {
-            document.location = window.location.pathname;
+            document.location = window.location.pathname 
         })
       .catch(function (error) {
-        // console.log(error.response.data)
           $(document).ready(function() {
               $('#notification').attr('id','notificationShow').hide().slideDown();
 
@@ -80,7 +80,6 @@ export default class LearnContentUnit1 extends React.Component {
             document.location = window.location.pathname 
         })
       .catch(function (error) {
-        // console.log(error.response.data)
           $(document).ready(function() {
               $('#notification').attr('id','notificationShow').hide().slideDown();
 
