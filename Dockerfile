@@ -5,7 +5,7 @@ MAINTAINER Shayan
 RUN mkdir -p /usr/src/app
 ADD build /usr/src/app/build
 ADD server.js /usr/src/app
-ADD certificates /user/src/app/certificates
+
 
 
 # Install dependencies
