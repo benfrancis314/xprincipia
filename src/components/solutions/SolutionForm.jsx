@@ -36,7 +36,9 @@ export default class SolutionForm extends React.Component {
         references: this.state.references
       })
       .then(function (result) {
-        document.location = '/problem/' + self.props.probID + '/solutions/top'
+        document.location = '/problem/' + self.props.probID + '/subproblems'
+        window.location.hash = "problemSummary";
+
       })
       .catch(function (error) {
         // console.log(error.response.data)

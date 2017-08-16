@@ -9,9 +9,9 @@ export default class Redirection extends React.Component {
           </div>
       </div>
 
-// <div id="logoXP">
-//     XP
-// </div>
+/*<div id="logoXP">
+    Explore
+</div>*/
 
 
       );

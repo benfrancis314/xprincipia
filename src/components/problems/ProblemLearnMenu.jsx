@@ -17,7 +17,7 @@ export default class ProblemLearnMenu extends React.Component {
             transitionAppearTimeout={2000}
             transitionEnter={false}
             transitionLeave={false}>
-                <div id="projectInteractMenu">
+                <div id="projectInteractDiscussMenu">
                     <div id="proposalsTitleRightSB">Learn</div>
                     <div id="sidebarDiscussMenu">
                         <div id="discussGroup1">

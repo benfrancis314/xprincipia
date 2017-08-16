@@ -174,12 +174,7 @@ jumpDown() {
 }
 
 goToDiscuss() {
-  document.location = '/problem/'+ this.state.probID + '/questions';
-  $(document).ready(function() {
-    $("#SBButtonDiscuss").click(function () { 
-    $("#projectInteractDiscussMenu").animate({scrollLeft: 250}, 800);
-    });
-});
+  window.location.hash = "problemSummary";
 }
 
 goToLearn() {
@@ -191,9 +186,15 @@ goToProposals() {
 }
 
 
+
+
    render() {
 
-       if (this.state.vote ===true && this.state.problemInfo.OriginalPosterUsername === cookie.load('userName')) {
+function toDiscuss() {
+  document.location = '/problem/'+ self.props.params.probID + '/questions'
+}
+     
+       if (this.state.vote ===true && this.state.problemInfo.OriginalPosterUsername === cookie.load('userName')) {  
            return (
 
       <div id="maxContainerColumn">
