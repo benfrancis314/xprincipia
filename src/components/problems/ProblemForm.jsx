@@ -25,9 +25,9 @@ export default class ProblemForm extends React.Component {
     this.postProblem = this.postProblem.bind(this);
   };
 
-componentDidUpdate() {
-        ReactDOM.findDOMNode(this).scrollIntoView();
-  }      
+// componentDidUpdate() {
+//         ReactDOM.findDOMNode(this).scrollIntoView();
+//   }      
 
   postProblem() {
     

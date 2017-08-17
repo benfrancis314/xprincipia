@@ -4,10 +4,10 @@ import axios from 'axios'
 import {Config} from '../../config.js';
 import ProblemTopSolutions from './ProblemTopSolutions.jsx';
 import SolutionForm from '../solutions/SolutionForm.jsx';
-import ScrollableAnchor from 'react-scrollable-anchor';
-import { configureAnchors } from 'react-scrollable-anchor';
+// import ScrollableAnchor from 'react-scrollable-anchor';
+// import { configureAnchors } from 'react-scrollable-anchor';
 
-configureAnchors({offset: -50, scrollDuration: 900});
+// configureAnchors({offset: -50, scrollDuration: 900});
 
 
 
@@ -19,6 +19,7 @@ export default class ProblemSolutionsMenu extends React.Component {
             solutions: [],
             probID: []
         }
+        this.goToProposalForm = this.goToProposalForm.bind(this)
 
     };
 
@@ -50,20 +51,35 @@ export default class ProblemSolutionsMenu extends React.Component {
         })
     }
 
+goToProposalForm() {
+    window.scrollBy(0,500);
+//   if (window.location.pathname.includes('questions') || window.location.pathname.includes('suggestions') || window.location.pathname.includes('freeforms') || window.location.pathname.includes('learn') )
+//   {
+//     window.scrollTo(0, 1900);
+//   }
+//   else if (window.location.pathname.includes('create')) {
+//     window.scrollTo(0, 1380);
+//   }
+//   else {
+//     window.scrollTo(0, 1400);
+//   } 
+}
+
    render() {
+
       return (
         <div id="projectInteractMenu">
             <div id="solutionsTitleRightSB">Proposals</div>
             {/*onClick scroll to proposal form*/}
-            <a href='#proposals'>
-                <div>
+            {/*<a href='#proposals'>*/}
+                <div onClick={this.goToProposalForm}>
                     <img src={require('../../assets/blueAdd3.svg')} id="addBlueX" width="32" height="32" alt="Close button, red X symbol" />
                 </div>
-            </a>
+            {/*</a>*/}
             <ProblemTopSolutions probID={this.props.probID} />
-            <ScrollableAnchor id={'proposalForm'}>
+            {/*<ScrollableAnchor id={'proposalForm'}>*/}
                 <SolutionForm probID={this.props.probID} projectTitle={this.props.projectTitle}/>
-            </ScrollableAnchor >
+            {/*</ScrollableAnchor >*/}
         </div>
 
       );
