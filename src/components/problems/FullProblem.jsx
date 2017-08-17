@@ -51,7 +51,7 @@ export default class FullProblem extends React.Component {
       })       
   }
 
-// Isn't working
+// Isn't working at the moment
 // Goal is to stop willReceiveProps from happening if it is just 
 // changes in the url on the same page
 shouldComponentUpdate(nextProps, nextState) {
