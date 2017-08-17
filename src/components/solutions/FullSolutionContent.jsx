@@ -217,26 +217,27 @@ unVote() {
               </div>
               <div id="createDate">{dateTime(this.state.solutionInfo.CreatedAt)}</div>
               
-              <Link to={`/fullsolution/${this.state.probID}/${this.state.solutionID}/edit`}>
+              <Link to={`/fullsolution/${this.props.params.probID}/${this.props.params.solutionID}/edit`}>
                 <img src={require('../../assets/editBlue.svg')} id="editSolutionButton" width="20" height="20" alt="Edit Button" />
               </Link>
 
-              <Link to={`/fullsolution/${this.state.probID}/${this.state.solutionID}/delete`}>
+              <Link to={`/fullsolution/${this.props.params.probID}/${this.props.params.solutionID}/delete`}>
                 <img src={require('../../assets/delete.svg')} id="deleteSolutionButton" width="20" height="20" alt="Edit Button" />              
               </Link>
 
               <div id="prosConsMenu">
-                <Link to={`/fullsolution/${this.state.probID}/${this.state.solutionID}/pros`} activeClassName="activeWhiteBlueText">
+                <Link to={`/fullsolution/${this.props.params.probID}/${this.props.params.solutionID}/pros`} activeClassName="activeWhiteBlueText">
                     <div id="prosButton">Pros</div>
                 </Link>
-                <Link to={`/fullsolution/${this.state.probID}/${this.state.solutionID}/cons`} activeClassName="activeWhiteBlueText">
+                <Link to={`/fullsolution/${this.props.params.probID}/${this.props.params.solutionID}/cons`} activeClassName="activeWhiteBlueText">
                     <div id="consButton">Cons</div>
                 </Link>
               </div>
             
               <div>
               {this.props.children}
-              {React.cloneElement(<FullSolutionDescription solutionInfo={ this.state.solutionInfo} solutionID={this.props.params.solutionID}/> )}            </div>
+              {React.cloneElement(<FullSolutionDescription solutionInfo={ this.state.solutionInfo} solutionID={this.props.params.solutionID}/> )}            
+              </div>
         </div>
 
       ); 
@@ -262,10 +263,10 @@ unVote() {
 
 
               <div id="prosConsMenu">
-                <Link to={`/fullsolution/${this.state.probID}/${this.state.solutionID}/pros`} activeClassName="activeWhite">
+                <Link to={`/fullsolution/${this.props.params.probID}/${this.props.params.solutionID}/pros`} activeClassName="activeWhite">
                     <div id="prosButton">Pros</div>
                 </Link>
-                <Link to={`/fullsolution/${this.state.probID}/${this.state.solutionID}/cons`} activeClassName="activeWhite">
+                <Link to={`/fullsolution/${this.props.params.probID}/${this.props.params.solutionID}/cons`} activeClassName="activeWhite">
                     <div id="consButton">Cons</div>
                 </Link>
               </div>
@@ -299,10 +300,10 @@ unVote() {
 
 
               <div id="prosConsMenu">
-                <Link to={`/fullsolution/${this.state.probID}/${this.state.solutionID}/pros`} activeClassName="activeWhite">
+                <Link to={`/fullsolution/${this.props.params.probID}/${this.props.params.solutionID}/pros`} activeClassName="activeWhite">
                     <div id="prosButton">Pros</div>
                 </Link>
-                <Link to={`/fullsolution/${this.state.probID}/${this.state.solutionID}/cons`} activeClassName="activeWhite">
+                <Link to={`/fullsolution/${this.props.params.probID}/${this.props.params.solutionID}/cons`} activeClassName="activeWhite">
                     <div id="consButton">Cons</div>
                 </Link>
               </div>

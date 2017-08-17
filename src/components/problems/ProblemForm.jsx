@@ -1,4 +1,5 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 import axios from 'axios';
 import cookie from 'react-cookie';
 import { Link } from 'react-router';
@@ -23,6 +24,10 @@ export default class ProblemForm extends React.Component {
 
     this.postProblem = this.postProblem.bind(this);
   };
+
+componentDidUpdate() {
+        ReactDOM.findDOMNode(this).scrollIntoView();
+  }      
 
   postProblem() {
     

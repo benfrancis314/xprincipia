@@ -63,35 +63,7 @@ export default class SuggestionCommentContainer extends React.Component {
     })        
 
   }
-//       submitVote() {
-//       var self = this
-//        axios.post( Config.API + '/auth/vote/create', {
-//            Type: 3,
-//            TypeID: this.state.suggestion.ID,
-//            username : cookie.load("userName"),
-           
-//         })
-//         .then(function (result) {
-//             document.location = window.location.pathname;
-//         })
-    //   .catch(function (error) {
-    //     // console.log(error.response.data)
-    //       $(document).ready(function() {
-    //           $('#notification').attr('id','notificationShow').hide().slideDown();
-    //           if (error.response.data != '') {
-    //             $('#notificationContent').text(error.response.data);
-    //           }
-    //           else if (error.response.data == '[object Object]') {
-    //             return (
-    //               $(document).ready(function() {
-    //                 $('#notificationLoginRegisterContainer').attr('id','notificationLoginRegisterContainerShow');
-    //                 $('#notificationContent').html('Please <span id="blue">login </span>to contribute');
-    //               })
-    //             );
-    //           } 
-    //       });
-    //   });
-//   }
+
  
    render() {
       return (
@@ -102,10 +74,10 @@ export default class SuggestionCommentContainer extends React.Component {
                         <img src={require('../assets/upArrow.svg')} id="backSolutionArrow" width="50" height="30" alt="Back arrow, blue up arrow" />
                     </div>
                 </Link>
-                <div id="answerQuestionLabel">Comments</div>
+                <div id="answerQuestionLabel">Return to Suggestions</div>
             </div>
             {/*Suggestion being commented on*/}
-            <div id="suggestionUnit">
+            <div id="answerQuestionUnit">
                 <div id="answerQuestionContent">
 					<div id="discussHeader">
                         <span id="discussPercent">

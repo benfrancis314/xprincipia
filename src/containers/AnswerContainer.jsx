@@ -64,36 +64,7 @@ export default class AnswerContainer extends React.Component {
     })        
 
   }
-
-// Commented out until works
-//       submitVote() {
-//       var self = this
-//        axios.post( Config.API + '/auth/vote/create', {
-//            Type: 2,
-//            TypeID: this.state.question.ID,
-//            username : cookie.load("userName"),
-           
-//         })
-//         .then(function (result) {
-//             document.location = window.location.pathname;
-//         })
-//   .catch(function (error) {
-//     // console.log(error.response.data)
-//       $(document).ready(function() {
-//           $('#notification').attr('id','notificationShow').hide().slideDown();
-//           $('#notificationContent').text(error.response.data);
-//           // alert( "Please login to add content. ");
-//           if (error.response.data == '[object Object]') {
-//             return (
-//               $(document).ready(function() {
-//                 $('#notificationLoginRegisterContainer').attr('id','notificationLoginRegisterContainerShow');
-//                 $('#notificationContent').html('Please <span id="blue">login </span>to contribute');
-//               })
-//             );
-//           }
-//       });
-//   });
-//   }
+å
  
    render() {
       return (
@@ -106,9 +77,9 @@ export default class AnswerContainer extends React.Component {
                     <img src={require('../assets/upArrow.svg')} id="backSolutionArrow" width="50" height="30" alt="Back arrow, blue up arrow" />
                 </div>
             </Link>
-            <div id="answerQuestionLabel">Answers</div>
+            <div id="answerQuestionLabel">Return to Questions</div>
         </div>
-        <div id="questionUnit"> 
+        <div id="answerQuestionUnit"> 
                 <div id="answerQuestionContent">
 					<div id="discussHeader">
                         <span id="discussPercent">

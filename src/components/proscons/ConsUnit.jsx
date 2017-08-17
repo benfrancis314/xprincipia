@@ -202,7 +202,7 @@ export default class ConsUnit extends React.Component {
                             Flag
                         </div>
                 </Link>*/}
-				<button type="button" onClick={submitVote} id="suggestionVote">
+				<button type="button" onClick={submitVote} id="suggestionVoteNoComments">
                     Vote
                 </button> 
         </li>);

@@ -85,12 +85,13 @@ export default class Introduction extends React.Component {
                     <br />
                     We ask you to<span id="blueOpen"> join this cause</span>, to explore this frontier and dedicate your will to advance our world,
                     with the knowledge that<span id="blueOpen"> together we will not fail</span>.     
+
                 </div>
 
                 <IntroductionRegister />
 
-                <div id="introductionProse"> 
-                    Join the effort to make humanity into a spacefaring civilization
+                <div id="introductionProjectsProse"> 
+                    Join the effort to make humanity into a spacefaring civilization:
                 </div>
                 <div id="introductionProjectHeader1">
                     <div id="introductionProjectTitle">
@@ -102,9 +103,11 @@ export default class Introduction extends React.Component {
                 </div>
                 {/*Link each to the actual project - check url on active site*/}
                 <div id="introductionProjectHeader2">
-                    <div id="introductionProjectTitle">
-                        Evolving Humanity
-                    </div>
+                    <Link to={`/problem/2/subproblems`}>
+                        <div id="introductionProjectTitle">
+                            Evolving Humanity
+                        </div>
+                    </Link>
                 </div>
                 <div id="introductionProjectsProse">
                     Complete our oldest endeavor, to fully understand the world we find ourselves in:
@@ -115,7 +118,7 @@ export default class Introduction extends React.Component {
                     </div>
                 </div>
                 <div id="introductionProjectsProse">
-                    Design the tools needed for all scopes of our ambitions:
+                    {/*Design the tools needed for all scopes of our ambitions:*/}
                     Shape our world with tools, the force that has always driven it:
                 </div>
                 <div id="introductionProjectHeader4">

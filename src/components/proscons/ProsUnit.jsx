@@ -5,6 +5,7 @@ import cookie from 'react-cookie';
 import {Config} from '../../config.js';
 import $ from 'jquery';
 
+
 export default class ProsUnit extends React.Component {
     constructor(props){
         super(props);
@@ -205,7 +206,7 @@ export default class ProsUnit extends React.Component {
                             Flag
                         </div>
                 </Link>*/}
-				<button type="button" onClick={submitVote} id="suggestionVote">
+				<button type="button" onClick={submitVote} id="suggestionVoteNoComments">
                     Vote
                 </button> 
             <br /><br /> 

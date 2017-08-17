@@ -1,10 +1,9 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 import {Link} from 'react-router';
 import axios from 'axios';
 import {Config} from '../../config.js';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group'; // ES6
-import SubProblemContainer from '../../containers/SubProblemContainer.jsx';
-
 
 export default class ProblemDiscussMenu extends React.Component {
   constructor(props){
@@ -17,13 +16,17 @@ export default class ProblemDiscussMenu extends React.Component {
     };
         componentDidMount(){
         var self = this;
-        window.scrollTo(0,0);
         return axios.get( Config.API + '/solutions/problemID?id='+this.props.params.probID).then(function (response) {
             self.setState({
                 solutions: response.data
             })
         })
+        
     }
+// While fullProblem has componentWillReceiveProps this does not work
+// componentDidUpdate() {
+//         ReactDOM.findDOMNode(this).scrollIntoView();
+//   }      
 
    render() {
       return (

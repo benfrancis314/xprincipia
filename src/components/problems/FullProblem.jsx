@@ -51,41 +51,55 @@ export default class FullProblem extends React.Component {
       })       
   }
 
+// Isn't working
+// Goal is to stop willReceiveProps from happening if it is just 
+// changes in the url on the same page
+shouldComponentUpdate(nextProps, nextState) {
+    // only render if probID has changed
+    return this.state.probID !== nextProps.params.probID;
+}
 
+// shouldComponentUpdate(nextProps, nextState) {
+//     // only render if probID has changed
+    
+//     if (window.location.pathname)
+//     return false
+// }
 
-  // componentWillReceiveProps(nextProps){
-  //   var self = this;
-  //     return axios.get( Config.API + '/problems/ID?id='+nextProps.params.probID).then(function (response) {
-  //       //set problem data
-  //       self.setState({
-  //           problemInfo: response.data,
-  //           probID: response.data.ID
-  //       })
-  //   })
-  //     .catch(function (error) {
-  //       // console.log(error.response.data)
-  //         $(document).ready(function() {
-  //             $('#notification').attr('id','notificationShow').hide().slideDown();
-  //             if (error.response.data != '') {
-  //               $('#notificationContent').text(error.response.data);
-  //             }
-  //             else if (error.response.data == '[object Object]') {
-  //               return (
-  //                 $(document).ready(function() {
-  //                   $('#notificationLoginRegisterContainer').attr('id','notificationLoginRegisterContainerShow');
-  //                   $('#notificationContent').html('Please <span id="blue">login </span>to contribute');
-  //                 })
-  //               );
-  //             } 
-  //         });
-  //     });
-  //   axios.get( Config.API + "/vote/isVotedOn?type=0&typeID=" + this.props.params.probID + "&username=" + cookie.load("userName"))
-  //         .then( function (response){
-  //           self.setState({
-  //             vote: response.data
-  //           })
-  //     })   
-  // }
+  componentWillReceiveProps(nextProps){
+    var self = this;
+      return axios.get( Config.API + '/problems/ID?id='+nextProps.params.probID).then(function (response) {
+        //set problem data
+        self.setState({
+            problemInfo: response.data,
+            probID: response.data.ID
+        })
+    })
+      .catch(function (error) {
+        // console.log(error.response.data)
+          $(document).ready(function() {
+              $('#notification').attr('id','notificationShow').hide().slideDown();
+              if (error.response.data != '') {
+                $('#notificationContent').text(error.response.data);
+              }
+              else if (error.response.data == '[object Object]') {
+                return (
+                  $(document).ready(function() {
+                    $('#notificationLoginRegisterContainer').attr('id','notificationLoginRegisterContainerShow');
+                    $('#notificationContent').html('Please <span id="blue">login </span>to contribute');
+                  })
+                );
+              } 
+          });
+      });
+    axios.get( Config.API + "/vote/isVotedOn?type=0&typeID=" + this.props.params.probID + "&username=" + cookie.load("userName"))
+          .then( function (response){
+            self.setState({
+              vote: response.data
+            })
+      })   
+  }
+
 
 // Old
   submitVote() {
@@ -173,17 +187,18 @@ jumpDown() {
   // Or use jQuery, likely best option
 }
 
-goToDiscuss() {
-  window.location.hash = "problemSummary";
-}
+// Not using any of these
+// goToDiscuss() {
+//   window.location.hash = "problemSummary";
+// }
 
-goToLearn() {
-  document.location = '/problem/'+ self.props.params.probID + '/learn/resources'
-}
+// goToLearn() {
+//   document.location = '/problem/'+ self.props.params.probID + '/learn/resources'
+// }
 
-goToProposals() {
-  document.location = '/problem/'+ self.props.params.probID + '/solutions/top'
-}
+// goToProposals() {
+//   document.location = '/problem/'+ self.props.params.probID + '/solutions/top'
+// }
 
 
 
@@ -191,7 +206,9 @@ goToProposals() {
    render() {
 
 function toDiscuss() {
-  document.location = '/problem/'+ self.props.params.probID + '/questions'
+  // document.location = '/problem/'+ self.props.params.probID + '/questions'
+  location.hash = "problemSummary";
+
 }
      
        if (this.state.vote ===true && this.state.problemInfo.OriginalPosterUsername === cookie.load('userName')) {  

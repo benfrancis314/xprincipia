@@ -728,7 +728,7 @@ like vote and comments.*/
     }
     #answerQuestionLabel {
       font-size: 150%;
-      color: #00ffdc;
+      color: #00dcff;
       width: 100%;
       padding-left: 3%;
       letter-spacing: 8px;
@@ -896,15 +896,22 @@ like vote and comments.*/
       text-align: justify;
     }
     #answerUnit {
-      display: -webkit-box;
-      display: -moz-box;
-      display: -ms-flexbox;
-      display: -webkit-flex;
       display: flex;
       flex-direction: row;
       font-family: 'Open Sans';
       padding-top: 10px;
       width: 100%;
+    }
+    #answerQuestionUnit {
+      display: flex;
+      flex-direction: row;
+      font-family: 'Open Sans';
+      padding-top: 10px;
+      width: 100%;
+      border: 1px solid #00dcff;
+      border-radius: 3px;
+      margin-top: 1%;
+      margin-bottom: 1%;
     }
     #answerContent {
     	flex: 3 3 auto;
@@ -2017,6 +2024,24 @@ like vote and comments.*/
   color: #dddddd;
   padding-left: 8%;
   padding-right: 8%;
+  padding-top: 6%;
+  padding-bottom: 8%;
+  line-height: 170%;
+  background-color: rgba(0,220,255,0.05);
+  border: 1px solid #00dcff;
+  border-width: 1px 0px;
+  width: 70%;
+  margin: 0 auto;
+  margin-top: 2%;
+  margin-bottom: 6%;
+}
+#introductionProjectsProse {
+  font-family: 'Open Sans';
+  font-size: 70%;
+  letter-spacing: normal;
+  color: #dddddd;
+  padding-left: 8%;
+  padding-right: 8%;
   padding-top: 3%;
   padding-bottom: 3%;
   line-height: 170%;
@@ -2026,17 +2051,13 @@ like vote and comments.*/
   width: 70%;
   margin: 0 auto;
 }
-#introductionProjectsProse {
-  font-family: 'Open Sans';
-  font-size: 60%;
-  color: #dddddd;
-  letter-spacing: normal;
-  width: 80%;
-  margin: 0 auto;
+#introRegisterContainer {
+  margin-top: 2%;
+  margin-bottom: 2%
 }
 #introRegisterJoin {
   margin: 0 auto;
-  width: 40%;
+  width: 60%;
   text-align: center;
   color: #00ffdc;
   border: 1px solid #00ffdc;
@@ -2044,6 +2065,7 @@ like vote and comments.*/
   padding: 3px;
   margin-top: 4%;
   margin-bottom: 2%;
+  font-size: 140%;
   background-color: rgba(0,220,255,0.05);
 }
 #introRegister {
@@ -2059,8 +2081,8 @@ like vote and comments.*/
 #introRegisterUserName, #introRegisterEmail {
   display: block;
   margin-top: 15px;
-  font-size: 75%;
-  width: 33.3%;
+  font-size: 90%;
+  width: 40%;
   margin-bottom: 0px;
   box-shadow: 0 0 2pt 2pt rgba(0,220,255,0.5);
   font-family: 'Alegreya Sans SC', sans-serif;
@@ -2100,8 +2122,8 @@ like vote and comments.*/
   width: 70%;
   height: auto;
   position: relative;
-  margin-top: 8%;
-  margin-bottom: 4%;
+  margin-top: 6%;
+  margin-bottom: 8%;
   padding: 3%;
   
 
@@ -4511,9 +4533,9 @@ introductionProjectTitle {
   margin-left: 14%;
 }
 #backSolutionArrowDiv:hover {
-  background-color: rgba(0,220,255,0.15);
+  /*background-color: rgba(0,220,255,0.15);*/
   cursor: pointer;
-  box-shadow: 0 0 1pt 1pt rgba(0,220,255,0.5);
+  /*box-shadow: 0 0 1pt 1pt rgba(0,220,255,0.5);*/
 }
 #backProposalArrowDiv {
   text-align: center;
@@ -4556,7 +4578,9 @@ introductionProjectTitle {
 }
 #backSolutionArrow:hover {
   cursor: pointer;
-  box-shadow: 0 0 2pt 2pt rgba(0,220,255,0.5);
+  background-color: rgba(0,220,255,0.15);
+
+  /*box-shadow: 0 0 2pt 2pt rgba(0,220,255,0.5);*/
 }
 #backSubProjectArrow {
   /*flex: 1 1 auto;*/

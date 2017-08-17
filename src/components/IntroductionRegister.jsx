@@ -28,10 +28,10 @@ constructor(){
 
   postRegister() {
     //Read field items into component state
-    this.state.email = document.getElementById('registerEmail').value
-    this.state.password = document.getElementById('registerPassword').value
-    this.state.fullname = document.getElementById('registerFullName').value
-    this.state.username = document.getElementById('registerUserName').value
+    this.state.email = document.getElementById('introRegisterEmail').value
+    this.state.password = document.getElementById('introRegisterPassword').value
+    this.state.fullname = document.getElementById('introRegisterFullName').value
+    this.state.username = document.getElementById('introRegisterUserName').value
 
     var self = this;
     return axios.post( Config.API + '/register', {
@@ -89,10 +89,10 @@ postRegisterReturn(e) {
 
 if (e.keyCode === 13) {  
 //Read field items into component state
-this.state.email = document.getElementById('registerEmail').value
-this.state.password = document.getElementById('registerPassword').value
-this.state.fullname = document.getElementById('registerFullName').value
-this.state.username = document.getElementById('registerUserName').value
+this.state.email = document.getElementById('introRegisterEmail').value
+this.state.password = document.getElementById('introRegisterPassword').value
+this.state.fullname = document.getElementById('introRegisterFullName').value
+this.state.username = document.getElementById('introRegisterUserName').value
 
 var self = this;
 return axios.post( Config.API + '/register', {
@@ -162,7 +162,7 @@ return axios.post( Config.API + '/register', {
   render() {
       return (
 
-      <div>
+      <div id="introRegisterContainer">
         <div id="introRegisterJoin">
             Join XPrincipia
         </div>
@@ -172,8 +172,8 @@ return axios.post( Config.API + '/register', {
                 <input type="text" name="username" required="required" maxLength="30" placeholder="Username" id="introRegisterUserName" />
                 <input type="email" name="email" required="required" maxLength="30" placeholder="Email" id="introRegisterEmail" />
                 <input type="password" name="password" required="required" maxLength="30" placeholder="Password" id="introRegisterPassword"/>
-                <Link to="/register"><input type="submit" value="Register" onClick={this.postRegister} id="submitRegister"/></Link>
-                <Link to='/login'><div id="loginButton">Login</div></Link>
+                <input type="submit" value="Register" onClick={this.postRegister} id="submitRegister"/>
+                <Link to='/login'><div id="registerButton">Login</div></Link>
             </form>
         </div>
       </div>

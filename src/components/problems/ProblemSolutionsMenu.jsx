@@ -16,24 +16,24 @@ export default class ProblemSolutionsMenu extends React.Component {
         super(props);
 
         this.state = {
-            solutions: []
+            solutions: [],
+            probID: []
         }
 
     };
 
     getInitialState(){
         var self = this;
-        window.scrollTo(0,0);
         return axios.get( Config.API + '/auth/solutions/problemID?id='+this.props.probID).then(function (response) {
             self.setState({
-                solutions: response.data
+                solutions: response.data,
+                probID: this.props.probID
             })
         })
     }
 
         componentDidMount(){
         var self = this;
-        window.scrollTo(0,0);
         return axios.get( Config.API + '/auth/solutions/problemID?id='+this.props.probID).then(function (response) {
             self.setState({
                 solutions: response.data
@@ -43,7 +43,6 @@ export default class ProblemSolutionsMenu extends React.Component {
 
     componentWillReceiveProps (nextProps){
         var self = this;
-        window.scrollTo(0,0);
         return axios.get( Config.API + '/auth/solutions/problemID?id='+this.props.probID).then(function (response) {
             self.setState({
                 solutions: response.data
@@ -56,11 +55,15 @@ export default class ProblemSolutionsMenu extends React.Component {
         <div id="projectInteractMenu">
             <div id="solutionsTitleRightSB">Proposals</div>
             {/*onClick scroll to proposal form*/}
-            <div>
-                <img src={require('../../assets/blueAdd3.svg')} id="addBlueX" width="32" height="32" alt="Close button, red X symbol" />
-            </div>
+            <a href='#proposals'>
+                <div>
+                    <img src={require('../../assets/blueAdd3.svg')} id="addBlueX" width="32" height="32" alt="Close button, red X symbol" />
+                </div>
+            </a>
             <ProblemTopSolutions probID={this.props.probID} />
-            <SolutionForm probID={this.props.probID} projectTitle={this.props.projectTitle}/>
+            <ScrollableAnchor id={'proposalForm'}>
+                <SolutionForm probID={this.props.probID} projectTitle={this.props.projectTitle}/>
+            </ScrollableAnchor >
         </div>
 
       );
