@@ -1,6 +1,5 @@
 import React from 'react';
 import SolutionUnit from '../solutions/SolutionUnit.jsx';
-import SideBarMore from '../SideBarMore.jsx';
 import axios from 'axios';
 import {Config} from '../../config.js';
 

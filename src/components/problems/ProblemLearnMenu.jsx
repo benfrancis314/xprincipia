@@ -23,10 +23,9 @@ export default class ProblemLearnMenu extends React.Component {
         })
     }
 
-// While fullProblem has componentWillReceiveProps this does not work
-// componentDidUpdate() {
-//         ReactDOM.findDOMNode(this).scrollIntoView();
-//   }      
+componentDidUpdate() {
+        ReactDOM.findDOMNode(this).scrollIntoView();
+  }      
 
    render() {
       return (

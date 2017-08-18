@@ -1,4 +1,5 @@
 import React from 'react';
+// Will be uesd with componentDidUpdate
 import ReactDOM from 'react-dom';
 import {Link} from 'react-router';
 import axios from 'axios';
@@ -23,10 +24,10 @@ export default class ProblemDiscussMenu extends React.Component {
         })
         
     }
-// While fullProblem has componentWillReceiveProps this does not work
-// componentDidUpdate() {
-//         ReactDOM.findDOMNode(this).scrollIntoView();
-//   }      
+
+componentDidUpdate() {
+        ReactDOM.findDOMNode(this).scrollIntoView();
+  }      
 
    render() {
       return (

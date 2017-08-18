@@ -54,11 +54,11 @@ class App extends React.Component {
       //   return (
         /*<div>
           <p>error image</p>*/
-          {/*Put 404 error image and also wait 2 seconds before redirecting*/}
-        {/*</div>
+          /*Put 404 error image and also wait 2 seconds before redirecting*/
+        /*</div>
         )
       }
-    } */}
+    } */
 
     //Load the welcome page if route is '/'
     if (window.location.pathname === "/" || this.state.undefinedPaths.inArray(window.location.pathname) //continue to next line

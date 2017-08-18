@@ -1,5 +1,4 @@
 import React from 'react';
-import {Link} from 'react-router';
 import axios from 'axios'
 import {Config} from '../../config.js';
 import ProblemTopSolutions from './ProblemTopSolutions.jsx';

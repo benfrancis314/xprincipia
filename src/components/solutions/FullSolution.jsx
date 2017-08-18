@@ -1,4 +1,5 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 import { Link } from 'react-router';
 import axios from 'axios';
 import cookie from 'react-cookie';
@@ -36,10 +37,10 @@ export default class FullSolution extends React.Component {
         // console.log(error.response.data)
           $(document).ready(function() {
               $('#notification').attr('id','notificationShow').hide().slideDown();
-              if (error.response.data !== '') {
+              if (error.response.data != '') {
                 $('#notificationContent').text(error.response.data);
               }
-              else if (error.response.data === '[object Object]') {
+              else if (error.response.data == '[object Object]') {
                 return (
                   $(document).ready(function() {
                     $('#notificationLoginRegisterContainer').attr('id','notificationLoginRegisterContainerShow');
@@ -51,16 +52,20 @@ export default class FullSolution extends React.Component {
       });
     }
   //On recieving next props
-//   componentWillReceiveProps(nextProps){
-//     var self = this;
-// 	    return axios.get( Config.API + '/auth/solutions/ID?id='+nextProps.params.solutionID).then(function (response) {
-//           self.setState({
-//               solutionInfo: response.data,
-//               solutionID: nextProps.params.solutionID,
-// 		      probID: nextProps.params.probID
-//           })
-//         })
-//   }
+  componentWillReceiveProps(nextProps){
+    var self = this;
+	    return axios.get( Config.API + '/auth/solutions/ID?id='+nextProps.params.solutionID).then(function (response) {
+          self.setState({
+              solutionInfo: response.data,
+              solutionID: nextProps.params.solutionID,
+		      probID: nextProps.params.probID
+          })
+        })
+  }
+
+componentDidUpdate() {
+        ReactDOM.findDOMNode(this).scrollIntoView();
+  }   
 
    render() {
     //    No longer used but would like to use this in the future.

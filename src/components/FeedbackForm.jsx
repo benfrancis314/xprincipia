@@ -29,20 +29,19 @@ this.state.feedback = document.getElementById('addSuggestion').value
     document.location = window.location.pathname 
   })
       .catch(function (error) {
-        // console.log(error.response.data)
           $(document).ready(function() {
               $('#notification').attr('id','notificationShow').hide().slideDown();
-              if (error.response.data !== '') {
-                $('#notificationContent').text(error.response.data);
+
+                if (error.response.data == '[object Object]') {
+                  return (
+                    $(document).ready(function() {
+                      $('#notificationLoginRegisterContainer').attr('id','notificationLoginRegisterContainerShow');
+                      $('#notificationContent').html('Please <span id="blue">login </span>to contribute feedback. ');
+                    })
+                  );
+                }  else if (error.response.data != '') {
+              $('#notificationContent').text(error.response.data);
               }
-              else if (error.response.data === '[object Object]') {
-                return (
-                  $(document).ready(function() {
-                    $('#notificationLoginRegisterContainer').attr('id','notificationLoginRegisterContainerShow');
-                    $('#notificationContent').html('Please <span id="blue">login </span>to contribute');
-                  })
-                );
-              } 
           });
       });
 
@@ -60,7 +59,7 @@ this.state.feedback = document.getElementById('addSuggestion').value
             <form id="suggestionForm">
                 <fieldset id="feedbackFieldset">
                     <legend>User Feedback</legend>
-                         <textarea name="feedbackText" required="required" id="feedbackTextArea" placeholder="Please provide feedback on how we can improve your XPrincipia experience. " autoFocus ></textarea>
+                         <textarea name="feedbackText" required="required" id="feedbackTextArea" placeholder="Please provide feedback on how we can improve your experience at XPrincipia. " autoFocus ></textarea>
                          <input type="button" value="Submit" onClick={this.postFeedback} id="addSuggestion"/>
                 </fieldset>
             </form>

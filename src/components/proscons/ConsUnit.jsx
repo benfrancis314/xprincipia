@@ -55,14 +55,14 @@ export default class ConsUnit extends React.Component {
           $(document).ready(function() {
               $('#notification').attr('id','notificationShow').hide().slideDown();
 
-                if (error.response.data === '[object Object]') {
+                if (error.response.data == '[object Object]') {
                   return (
                     $(document).ready(function() {
                       $('#notificationLoginRegisterContainer').attr('id','notificationLoginRegisterContainerShow');
                       $('#notificationContent').html('Please <span id="blue">login </span>to vote');
                     })
                   );
-                }  else if (error.response.data !== '') {
+                }  else if (error.response.data != '') {
                 $('#notificationContent').text(error.response.data);
               }
           });
@@ -84,14 +84,14 @@ export default class ConsUnit extends React.Component {
           $(document).ready(function() {
               $('#notification').attr('id','notificationShow').hide().slideDown();
 
-                if (error.response.data === '[object Object]') {
+                if (error.response.data == '[object Object]') {
                   return (
                     $(document).ready(function() {
                       $('#notificationLoginRegisterContainer').attr('id','notificationLoginRegisterContainerShow');
                       $('#notificationContent').html('Please <span id="blue">login </span>to vote');
                     })
                   );
-                }  else if (error.response.data !== '') {
+                }  else if (error.response.data != '') {
                 $('#notificationContent').text(error.response.data);
               }
           });
