@@ -395,24 +395,23 @@ Last updated: 8/11/17
   margin: 0 !important;
   display: none !important;
 }
+#SPParent2Div {
+  width: 100% !important;
+  margin: 1% 0% 1% 0% !important;
+}
 #SPParent2 {
   display: block !important;
-  margin: 0 auto !important;
-  height: 30px !important;
-  width: 150px !important;
-  text-align: center !important;
   transition: all 0.5s ease 0s !important;
+  /*text-align: center !important;*/
+  /*vertical-align: middle !important;*/
+  transition: all 0.5s ease 0s !important;
+  width: 40% !important;
+  margin: 0 auto !important;
 }
-#SPParent2 img {
-  display: block !important;
-
-  flex: 1 1 auto !important;
-  text-align: center !important;
-  margin: 0 auto !important;
-  vertical-align: middle !important;
-  padding: 5px !important;
-  transition: all 0.5s ease 0s !important;
-  margin-bottom: 2% !important;
+#SPParent2:hover {
+  cursor: pointer !important;
+  background-color: rgba(0,220,255,0.05) !important;
+  box-shadow: 0 0 1pt 1pt rgba(0,220,255,0.5) !important;
 }
 #problemRow1, #problemRow2 {
   display: flex !important;
@@ -421,9 +420,9 @@ Last updated: 8/11/17
   text-align: center !important;
 }
 #problemTitle {
-  width: 100% !important;
+  width: 98% !important;
   margin: 0 auto !important;
-  margin-bottom: 4% !important;
+  margin-bottom: 5px !important;
 }
 
 #problemIntro {
@@ -452,7 +451,7 @@ Last updated: 8/11/17
   margin: 0 auto !important;
   margin-bottom: 1% !important;
   margin-top: 4% !important;
-  width: 100% !important;
+  width: 98% !important;
 }
 #SPHeader {
   /*display: block;*/
@@ -481,8 +480,9 @@ Last updated: 8/11/17
   display: flex  !important;
 }
 #SPUnit {
-  width: 18em !important;
+  width: 40em !important;
   margin: 0 auto !important;
+  font-size: 130% !important;
 }
 #SParrowImg {
   display: none !important;
@@ -571,8 +571,12 @@ like vote and comments.*/
   letter-spacing: 10px !important;
   flex: 1 6 auto !important;
   width: 80% !important;
-  margin-top: 1% !important;
-  margin-left: 0% !important;
+  margin-left: 5% !important;
+  text-align: left !important;
+}
+#avatarImage {
+  margin-right: 0% !important;
+  margin-left: 3px !important;
 }
 
 /*Footer*/
@@ -622,6 +626,15 @@ like vote and comments.*/
 
 }
 
+@media screen and (max-width: 800px) {
+#SPUnit {
+  width: 28em !important;
+  margin: 0 auto !important;
+  font-size: 125% !important;
+}
+}
+
+
 @media screen and (max-width: 600px) {
 
 /*Header*/
@@ -665,7 +678,11 @@ like vote and comments.*/
 #xp {
   display: none;
 }
-
+#SPUnit {
+  width: 22em !important;
+  margin: 0 auto !important;
+  font-size: 115% !important;
+}
 /*Profile*/
 #profileBox {
   display: flex !important;
@@ -709,8 +726,16 @@ like vote and comments.*/
   font-size: 90% !important;
   letter-spacing: 2px !important;
 }
-
 }
+
+@media screen and (max-width: 400px) {
+#SPUnit {
+  width: 18em !important;
+  margin: 0 auto !important;
+  font-size: 100% !important;
+}
+}
+
 
 /*End Media Queries*/
 
@@ -3865,13 +3890,10 @@ introductionProjectTitle {
 }
 #SPParent:hover img {
   cursor: pointer;
-  background-color: rgba(0,220,255,0.15);
+  background-color: rgba(0,220,255,0.05);
   box-shadow: 0 0 1pt 1pt rgba(0,220,255,0.5);
 }
 #SPParent2 {
-  display: none;
-}
-#SPParent2Div {
   display: none;
 }
 #SPParent2:hover {
@@ -4200,6 +4222,29 @@ introductionProjectTitle {
   background-color: rgba(0, 255, 220, 0);
   transition: all 0.5s ease 0s;
   /*box-shadow: 0 0 0pt 0pt rgba(0,255,220,0.5);*/
+}
+#votedProjectLeftSB {
+  flex: 1 1 auto;
+  margin: 0 auto;
+  margin-right: 25px;
+  padding: 5px;
+  padding-left: 1%;
+  color: #0f131c;
+  font-size: 120%;
+  border: 1px solid #00ffdc;
+  border-width: 1px 1px;
+  /*border-radius: 3px;*/
+  text-align: center;
+  letter-spacing: 8px;
+  font-family: 'Alegreya Sans SC', sans-serif;
+  height: auto;
+  width: 10%;
+  background-color: rgba(0, 255, 220, 1);
+  transition: all 0.5s ease 0s;
+  /*box-shadow: 0 0 0pt 0pt rgba(0,255,220,0.5);*/
+}
+#votedProjectLeftSB:hover {
+  cursor: pointer;
 }
 #followProblem {
   flex: 1 1 auto;

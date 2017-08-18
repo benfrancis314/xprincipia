@@ -209,6 +209,21 @@ goToProposal() {
           transitionAppearTimeout={2000}
           transitionEnter={false}
           transitionLeave={false}>
+        <div id="problemRow1">
+
+          {/*Used for standard site*/}
+          <Link to={`/problem/${this.state.problemInfo.ParentID}/subproblems`} onClick={refreshPage}>
+            <div id="SPParent">
+              <img src={require('../../assets/parent3.svg')} width="70" height="70" alt="Parent button, blue connection symbol" />
+            </div>
+          </Link>
+
+          {/*Used for mobile, not shown otherwise*/}
+          <div id="SPParent2Div">
+            <Link to={`/problem/${this.state.problemInfo.ParentID}/subproblems`} onClick={refreshPage}>
+              <img src={require('../../assets/upArrow.svg')} width="250" height="50" alt="Back arrow, blue up arrow" id="SPParent2" />
+            </Link>
+          </div>
 
         <div id="problemColumn1">
           <SubProjectParentUnit parentID={this.state.problemInfo.ParentID} />
@@ -272,6 +287,20 @@ goToProposal() {
           transitionAppearTimeout={2000}
           transitionEnter={false}
           transitionLeave={false}>
+        <div id="problemRow1">
+
+          <Link to={`/problem/${this.state.problemInfo.ParentID}/subproblems`} onClick={refreshPage}>
+            <div id="SPParent">
+              <img src={require('../../assets/parent3.svg')} width="70" height="70" alt="Parent button, blue connection symbol" />
+            </div>
+          </Link>
+
+          {/*Used for mobile, not shown otherwise*/}
+          <div id="SPParent2Div">
+            <Link to={`/problem/${this.state.problemInfo.ParentID}/subproblems`} onClick={refreshPage}>
+              <img src={require('../../assets/upArrow.svg')} width="250" height="50" alt="Back arrow, blue up arrow" id="SPParent2" />
+            </Link>
+          </div>
 
         <div id="problemColumn1">
           <SubProjectParentUnit parentID={this.state.problemInfo.ParentID} />
@@ -335,6 +364,17 @@ goToProposal() {
           transitionAppearTimeout={2000}
           transitionEnter={false}
           transitionLeave={false}>
+        <div id="problemRow1">
+          <Link to={`/problem/${this.state.problemInfo.ParentID}/subproblems`} onClick={refreshPage}>
+            <img src={require('../../assets/parent3.svg')} id="SPParent" width="70" height="70" alt="Back arrow, blue up arrow" />
+          </Link>
+
+          {/*Used for mobile*/}
+          <div id="SPParent2Div">
+            <Link to={`/problem/${this.state.problemInfo.ParentID}/subproblems`} onClick={refreshPage}>
+              <img src={require('../../assets/upArrow.svg')} width="250" height="50" alt="Back arrow, blue up arrow" id="SPParent2" />
+            </Link>
+          </div>
 
         <div id="problemColumn1">
           <SubProjectParentUnit parentID={this.state.problemInfo.ParentID} />
@@ -397,6 +437,19 @@ goToProposal() {
           transitionAppearTimeout={2000}
           transitionEnter={false}
           transitionLeave={false}>
+        <div id="problemRow1">
+          <Link to={`/problem/${this.state.problemInfo.ParentID}/subproblems`} onClick={refreshPage}>
+            <div id="SPParent">
+              <img src={require('../../assets/parent3.svg')} width="70" height="70" alt="Parent button, blue connection symbol" />
+            </div>
+          </Link>
+
+          {/*Used for mobile*/}
+          <div id="SPParent2Div">
+            <Link to={`/problem/${this.state.problemInfo.ParentID}/subproblems`} onClick={refreshPage}>
+              <img src={require('../../assets/upArrow.svg')} width="250" height="50" alt="Back arrow, blue up arrow" id="SPParent2" />
+            </Link>
+          </div>
 
         <div id="problemColumn1">
           <SubProjectParentUnit parentID={this.state.problemInfo.ParentID} />
