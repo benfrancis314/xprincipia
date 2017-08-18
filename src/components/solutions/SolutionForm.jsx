@@ -3,6 +3,10 @@ import axios from 'axios';
 import cookie from 'react-cookie';
 import {Config} from '../../config.js';
 import $ from 'jquery';
+import ScrollableAnchor from 'react-scrollable-anchor';
+import { configureAnchors } from 'react-scrollable-anchor';
+
+configureAnchors({offset: 50, scrollDuration: 900});
 
 export default class SolutionForm extends React.Component {
 
@@ -66,9 +70,13 @@ export default class SolutionForm extends React.Component {
       <div>
         {randomImg()}
         <div id="createSolutionBox">
+                        <ScrollableAnchor id={'proposalForm'}>
+
             <div id="proposalFormCreateTitle">
                   New Proposal
                 </div>
+                            </ScrollableAnchor>
+
             <form id="createForm">
               <fieldset id="fieldSetSideBorder">
                 <label htmlFor="solutionTitle" id="projectTitleProposalFormLabel">Project Title<br />
@@ -76,7 +84,7 @@ export default class SolutionForm extends React.Component {
                 </label><br />
 
                 <label htmlFor="solutionTitle" id="solutionTitleFormLabel">Proposal Title<br />
-                    <input type="text" name="solutionTitle" required="required" maxLength="140" id="solutionTitleForm" autoFocus/>
+                    <input type="text" name="solutionTitle" required="required" maxLength="140" id="solutionTitleForm" />
                   </label><br />
 
                 <label htmlFor="solutionSummary" id="solutionSummaryFormLabel">Summary<br />

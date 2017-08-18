@@ -11,10 +11,10 @@ import SubProjectParentUnit from './SubProjectParentUnit.jsx';
 import TutorialProjectContent from '../tutorials/TutorialProjectContent.jsx';
 import {Config} from '../../config.js';
 import $ from 'jquery';
-// import ScrollableAnchor from 'react-scrollable-anchor';
-// import { configureAnchors } from 'react-scrollable-anchor';
+import ScrollableAnchor from 'react-scrollable-anchor';
+import { configureAnchors } from 'react-scrollable-anchor';
 
-// configureAnchors({offset: -50, scrollDuration: 900});
+configureAnchors({offset: -50, scrollDuration: 900});
 
 // import Scroll from 'react-scroll'; // Imports all Mixins
 // import {scroller} from 'react-scroll'; //Imports scroller mixin, can use as scroller.scrollTo()
@@ -30,7 +30,6 @@ export default class FullProblem extends React.Component {
         }
         this.submitVote = this.submitVote.bind(this)
         this.unVote = this.unVote.bind(this)
-        this.goToProposal = this.goToProposal.bind(this)
     };
     componentDidMount(){
       var self = this;
@@ -59,13 +58,6 @@ shouldComponentUpdate(nextProps, nextState) {
     // only render if probID has changed
     return this.state.probID !== nextProps.params.probID;
 }
-
-// shouldComponentUpdate(nextProps, nextState) {
-//     // only render if probID has changed
-    
-//     if (window.location.pathname)
-//     return false
-// }
 
   componentWillReceiveProps(nextProps){
     var self = this;
@@ -180,23 +172,6 @@ unVote() {
         
     }
 
-goToProposal() {
-  if (window.location.pathname.includes('questions') || window.location.pathname.includes('suggestions') || window.location.pathname.includes('freeforms') || window.location.pathname.includes('learn') )
-  {
-    window.scrollTo(0, 1050);
-  }
-  else if (window.location.pathname.includes('create')) {
-    window.scrollTo(0, 900);
-  }
-  else {
-    window.scrollTo(0, 520);
-  }
-
-}
-
-
-
-
    render() {
      
        if (this.state.vote ===true && this.state.problemInfo.OriginalPosterUsername === cookie.load('userName')) {  
@@ -220,11 +195,9 @@ goToProposal() {
                 <Link><div id="votedProblem" onClick={this.unVote}>
                     Voted
                 </div></Link>
-                {/*<a href='#proposals'>*/}
-                <Link>
+                <a href='#proposals'>
                   <div id="SBButtonDiscuss" onClick={this.goToProposal}>Proposals</div>
-                </Link>
-                {/*</a>*/}
+                </a>
                 <Link to={`/problem/${this.props.params.probID}/questions`} activeClassName="activeBlue">
                     <div id="SBButtonDiscuss">Discuss</div>
                 </Link>
@@ -248,11 +221,9 @@ goToProposal() {
               {React.cloneElement(this.props.children)}
             </div>
           {React.cloneElement(<SubProblemContainer probID={this.props.params.probID} />)}
-          {/*<ScrollableAnchor id={'proposals'}>*/}
-          <div id="scrollLandProposals">
+          <ScrollableAnchor id={'proposals'}>
             {React.cloneElement(<ProblemSolutionsMenu probID={this.props.params.probID} projectTitle={this.state.problemInfo.Title} />)}
-          </div>          
-          {/*</ScrollableAnchor>*/}
+          </ScrollableAnchor>
         {/*<div id="tutorialProblemButtonDiv">
           <img src={require('../../assets/tutorial.svg')} id="tutorialProblemButton" width="50" height="50" alt="Back arrow, blue up arrow" />
         </div>*/}
@@ -283,11 +254,9 @@ goToProposal() {
                 <Link><div id="voteProblem" onClick={this.submitVote}>
                     Vote
                 </div></Link>
-                {/*<a href='#proposals'>*/}
-                <Link>
+                <a href='#proposals'>
                   <div id="SBButtonDiscuss" onClick={this.goToProposal}>Proposals</div>
-                </Link>
-                {/*</a>*/}
+                </a>
                 <Link to={`/problem/${this.props.params.probID}/questions`} activeClassName="activeBlue">
                     <div id="SBButtonDiscuss">Discuss</div>
                 </Link>
@@ -311,11 +280,9 @@ goToProposal() {
               {React.cloneElement(this.props.children)}
             </div>
           {React.cloneElement(<SubProblemContainer probID={this.props.params.probID} />)}
-          {/*<ScrollableAnchor id={'proposals'}>*/}
-          <div id="scrollLandProposals">
+          <ScrollableAnchor id={'proposals'}>
             {React.cloneElement(<ProblemSolutionsMenu probID={this.props.params.probID} projectTitle={this.state.problemInfo.Title} />)}
-          </div>          
-          {/*</ScrollableAnchor>*/}
+          </ScrollableAnchor>
 
         {/*<div id="tutorialProblemButtonDiv">
           <img src={require('../../assets/tutorial.svg')} id="tutorialProblemButton" width="50" height="50" alt="Back arrow, blue up arrow" />
@@ -346,11 +313,9 @@ goToProposal() {
                 <Link><div id="votedProblem" onClick={this.unVote}>
                     Voted
                 </div></Link>
-                {/*<a href='#proposals'>*/}
-                <Link>
+                <a href='#proposals'>
                   <div id="SBButtonDiscuss" onClick={this.goToProposal}>Proposals</div>
-                </Link>
-                {/*</a>*/}
+                </a>
                 <Link to={`/problem/${this.props.params.probID}/questions`} activeClassName="activeBlue">
                     <div id="SBButtonDiscuss">Discuss</div>
                 </Link>
@@ -371,11 +336,9 @@ goToProposal() {
               {React.cloneElement(this.props.children)}
             </div>
           {React.cloneElement(<SubProblemContainer probID={this.props.params.probID} />)}
-          {/*<ScrollableAnchor id={'proposals'}>*/}
-          <div id="scrollLandProposals">
+          <ScrollableAnchor id={'proposals'}>
             {React.cloneElement(<ProblemSolutionsMenu probID={this.props.params.probID} projectTitle={this.state.problemInfo.Title} />)}
-          </div>
-          {/*</ScrollableAnchor>*/}
+          </ScrollableAnchor>
 
         {/*<div id="tutorialProblemButtonDiv">
           <img src={require('../../assets/tutorial.svg')} id="tutorialProblemButton" width="50" height="50" alt="Back arrow, blue up arrow" />
@@ -408,11 +371,9 @@ goToProposal() {
                 <Link><div id="voteProblem" onClick={this.submitVote}>
                     Vote
                 </div></Link>
-                {/*<a href='#proposals'>*/}
-                <Link>
+                <a href='#proposals'>
                   <div id="SBButtonDiscuss" onClick={this.goToProposal}>Proposals</div>
-                </Link>
-                {/*</a>*/}
+                </a>
                 <Link to={`/problem/${this.props.params.probID}/questions`} activeClassName="activeBlue">
                     <div id="SBButtonDiscuss">Discuss</div>
                 </Link>
@@ -433,9 +394,9 @@ goToProposal() {
               {React.cloneElement(this.props.children)}
             </div>
           {React.cloneElement(<SubProblemContainer probID={this.props.params.probID} />)}
-          {/*<ScrollableAnchor id={'proposals'}>*/}
+          <ScrollableAnchor id={'proposals'}>
             {React.cloneElement(<ProblemSolutionsMenu probID={this.props.params.probID} projectTitle={this.state.problemInfo.Title} />)}
-          {/*</ScrollableAnchor>*/}
+          </ScrollableAnchor>
 
         {/*<div id="tutorialProblemButtonDiv">
           <img src={require('../../assets/tutorial.svg')} id="tutorialProblemButton" width="50" height="50" alt="Back arrow, blue up arrow" />
