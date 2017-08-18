@@ -104,29 +104,29 @@ if (this.state.userToken === undefined ){
               <Link to="/welcome"><div id="logoName">XPrincipia</div></Link>
             </div>
             
-            {/*Login in header here*/}
-            <input type="text" name="email" required="required" maxLength="30" placeholder="Username" id="loginHeaderEmail" autoFocus />
-            <input type="password" name="password" required="required" maxLength="30" placeholder="Password" id="loginHeaderPassword" />            
-            
-            {/*Need logo here, arrow signaling "Submit"*/}
-            <input type="submit" value="Login" onClick={this.postLogin} id="loginHeaderSubmitButton" />           
-            {/*<div id="loginHeaderSubmitButton" onClick={this.postLogin} >
-                Login
-            </div>*/}
-            {/*Attempt to get the login button to just be an arrow*/}
-            {/*<input type="image" src={require('../assets/rightArrowWhite.svg')} onClick={this.postLogin} id="loginHeaderSubmitImage" alt="Submit login arrow, blue right arrow"/>*/}
-            <div id="registerHeaderButton">
-                <Link to="/register">
-                    Register
-                </Link>
-            </div>
+                {/*Login in header here*/}
+                <input type="text" name="email" required="required" maxLength="30" placeholder="Username" id="loginHeaderEmail" autoFocus />
+                <input type="password" name="password" required="required" maxLength="30" placeholder="Password" id="loginHeaderPassword" />            
+                
+                {/*Need logo here, arrow signaling "Submit"*/}
+                <input type="submit" value="Login" onClick={this.postLogin} id="loginHeaderSubmitButton" />           
+                {/*<div id="loginHeaderSubmitButton" onClick={this.postLogin} >
+                    Login
+                </div>*/}
+                {/*Attempt to get the login button to just be an arrow*/}
+                {/*<input type="image" src={require('../assets/rightArrowWhite.svg')} onClick={this.postLogin} id="loginHeaderSubmitImage" alt="Submit login arrow, blue right arrow"/>*/}
+                <div id="registerHeaderButton">
+                    <Link to="/register">
+                        Register
+                    </Link>
+                </div>
         </div>
       );
     } else {
         return (
             <div id="header">
                 <div id="logo">
-                <Link to="/welcome"><div id="logoName">XPrincipia</div></Link>
+                    <Link to="/welcome"><div id="logoName">XPrincipia</div></Link>
                 </div>
                 {/*<div id="explore">
                     <form id="exploreFormHeader">
