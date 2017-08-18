@@ -23,30 +23,32 @@ export default class ProblemSolutionsMenu extends React.Component {
 
     };
 
-    getInitialState(){
-        var self = this;
-        return axios.get( Config.API + '/auth/solutions/problemID?id='+this.props.probID).then(function (response) {
-            self.setState({
-                solutions: response.data,
-                probID: this.props.probID
-            })
-        })
-    }
+// Not using anymore but keeping commented just in case it doesn't work
+    // getInitialState(){
+    //     var self = this;
+    //     return axios.get( Config.API + '/solutions/problemID?id='+this.props.probID).then(function (response) {
+    //         self.setState({
+    //             solutions: response.data,
+    //             probID: this.props.probID
+    //         })
+    //     })
+    // }
 
         componentDidMount(){
         var self = this;
-        return axios.get( Config.API + '/auth/solutions/problemID?id='+this.props.probID).then(function (response) {
+        return axios.get( Config.API + '/solutions/problemID?id='+this.props.probID).then(function (response) {
             self.setState({
-                solutions: response.data
+                solutions: response.data,
+                probID: self.props.probID
             })
         })
     }
 
     componentWillReceiveProps (nextProps){
         var self = this;
-        return axios.get( Config.API + '/auth/solutions/problemID?id='+this.props.probID).then(function (response) {
+        return axios.get( Config.API + '/solutions/problemID?id='+this.props.probID).then(function (response) {
             self.setState({
-                solutions: response.data
+                solutions: response.data,
             })
         })
     }
