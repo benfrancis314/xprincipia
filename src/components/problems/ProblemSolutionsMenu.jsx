@@ -17,29 +17,17 @@ export default class ProblemSolutionsMenu extends React.Component {
 
         this.state = {
             solutions: [],
-            probID: []
+            // probID: []
         }
         this.goToProposalForm = this.goToProposalForm.bind(this)
 
     };
-
-// Not using anymore but keeping commented just in case it doesn't work
-    // getInitialState(){
-    //     var self = this;
-    //     return axios.get( Config.API + '/solutions/problemID?id='+this.props.probID).then(function (response) {
-    //         self.setState({
-    //             solutions: response.data,
-    //             probID: this.props.probID
-    //         })
-    //     })
-    // }
 
         componentDidMount(){
         var self = this;
         return axios.get( Config.API + '/solutions/problemID?id='+this.props.probID).then(function (response) {
             self.setState({
                 solutions: response.data,
-                probID: self.props.probID
             })
         })
     }
@@ -55,16 +43,6 @@ export default class ProblemSolutionsMenu extends React.Component {
 
 goToProposalForm() {
     window.scrollBy(0,500);
-//   if (window.location.pathname.includes('questions') || window.location.pathname.includes('suggestions') || window.location.pathname.includes('freeforms') || window.location.pathname.includes('learn') )
-//   {
-//     window.scrollTo(0, 1900);
-//   }
-//   else if (window.location.pathname.includes('create')) {
-//     window.scrollTo(0, 1380);
-//   }
-//   else {
-//     window.scrollTo(0, 1400);
-//   } 
 }
 
    render() {

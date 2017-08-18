@@ -29,7 +29,6 @@ import FreeFormForm from './components/freeform/FreeFormForm.jsx';
 import FullProblem from './components/problems/FullProblem.jsx';
 import FullSolution from './components/solutions/FullSolution.jsx';
 import FullSolutionContent from './components/solutions/FullSolutionContent.jsx';
-import FullSolutionDescription from './components/solutions/FullSolutionDescription.jsx';
 import FullVersion from './components/versions/FullVersion.jsx';
 import Instructions from './components/tutorials/Instructions.jsx';
 import Intro from './components/tutorials/Intro.jsx';
@@ -116,14 +115,17 @@ import './assets/index.css';
 // One thing to note is you may need to adjust the 
 // window.location argument you push to the ReactGA.pageview() function. 
 // It will really depend how you have set up React Router.
-function fireTracking() {
-    ReactGA.pageview(window.location.hash);
-}
+
+// function fireTracking() {
+//     ReactGA.pageview(window.location.hash);
+// }
 
 
 
 ReactDOM.render(
-  <Router onUpdate={fireTracking} history={browserHistory}>
+  // When we have Google Analytics working it should be:
+  // <Router onUpdate={fireTracking} history={browserHistory}>
+  <Router history={browserHistory}>
     <Route path='/' component={App}>
     <IndexRoute component={Intro}></IndexRoute>
     <Route path='/intro' component={Intro}></Route>

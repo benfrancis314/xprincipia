@@ -1,9 +1,5 @@
 import React from 'react';
 import { Link } from 'react-router';
-import FullSolution from './FullSolution.jsx';
-import $ from 'jquery';
-import axios from 'axios';
-import {Config} from '../../config.js';
 
 
 export default class SolutionUnit extends React.Component {
@@ -45,12 +41,6 @@ export default class SolutionUnit extends React.Component {
 	}
 
 	renderItem(solution) {
-		function toggleProposal() {
-			$(document).ready(function() {
-				$('#proposalToggleOff').attr('id','proposalToggleOn').hide().slideDown();
-				$('#solutionUnit').attr('id','solutionUnitActive');				
-			});
-		};
 
 		return (
 			<li key={solution.ID}>

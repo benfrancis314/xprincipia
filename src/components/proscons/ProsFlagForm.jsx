@@ -37,10 +37,10 @@ postPro() {
         // console.log(error.response.data)
           $(document).ready(function() {
               $('#notification').attr('id','notificationShow').hide().slideDown();
-              if (error.response.data != '') {
+              if (error.response.data !== '') {
                 $('#notificationContent').text(error.response.data);
               }
-              else if (error.response.data == '[object Object]') {
+              else if (error.response.data === '[object Object]') {
                 return (
                   $(document).ready(function() {
                     $('#notificationLoginRegisterContainer').attr('id','notificationLoginRegisterContainerShow');
@@ -68,10 +68,10 @@ postPro() {
         // console.log(error.response.data)
           $(document).ready(function() {
               $('#notification').attr('id','notificationShow').hide().slideDown();
-              if (error.response.data != '') {
+              if (error.response.data !== '') {
                 $('#notificationContent').text(error.response.data);
               }
-              else if (error.response.data == '[object Object]') {
+              else if (error.response.data === '[object Object]') {
                 return (
                   $(document).ready(function() {
                     $('#notificationLoginRegisterContainer').attr('id','notificationLoginRegisterContainerShow');
@@ -97,9 +97,10 @@ postPro() {
                          <textarea name="questionText" required="required" id="questionFlagTextArea" autoFocus ></textarea>
                          <br />
                          <div onClick={this.postPro} id="flagButton">Submit</div>
-                         <Link to='/problem/${pro.TypeID}/pros'>
+                         {/*Link not working at the moment and not being used*/}
+                         {/*<Link to='/problem/${pro.TypeID}/pros'>*/}
                             <div id="returnButton">Exit</div>
-                         </Link>
+                         {/*</Link>*/}
                 </fieldset>
             </form>
       </div>

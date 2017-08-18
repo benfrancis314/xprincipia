@@ -5,7 +5,6 @@ import axios from 'axios';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group'; // ES6
 import TutorialProfileContent from '../components/tutorials/TutorialProfileContent.jsx';
 import {Config} from '../config.js';
-import $ from 'jquery';
 // import sphere from 'jquery.earth-3d';
 
 
@@ -182,8 +181,8 @@ export default class ProfileContainer extends React.Component {
 	</div>*/
 
 // Super cool sphere
-{/*{function sphere(){
+/*{function sphere(){
     return $('#sphere').earth3d({
         dragElement: $('#locations')
     });
-}}*/}
+}}*/

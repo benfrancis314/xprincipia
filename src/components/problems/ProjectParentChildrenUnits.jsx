@@ -13,7 +13,7 @@ export default class ProjectParentChildrenUnits extends React.Component {
 
     componentWillMount(){
       var self = this;
-	  if (self.props.problem != null ){
+	  if (self.props.problem !== null ){
 		  self.setState({problems: this.props.problems})
 	  }
       return
@@ -46,7 +46,7 @@ export default class ProjectParentChildrenUnits extends React.Component {
 		
 		//  Trying to get nothing to show up if it has no siblings
 
-		if (problem.Title == 'self.props.projectTitle') {
+		if (problem.Title === 'self.props.projectTitle') {
 			 		 return (
 							// T
 							<Link key={problem.ID} to={'/problem/'+problem.ID +'/subproblems'} onClick={refreshPage} >

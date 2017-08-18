@@ -42,7 +42,6 @@ constructor(props){
 	renderItem(question) {
        
        function submitVote() {
-       var self = this
        axios.post( Config.API + '/auth/vote/create', {
            Type: 2,
            TypeID: question.ID,
@@ -58,14 +57,14 @@ constructor(props){
           $(document).ready(function() {
               $('#notification').attr('id','notificationShow').hide().slideDown();
 
-                if (error.response.data == '[object Object]') {
+                if (error.response.data === '[object Object]') {
                   return (
                     $(document).ready(function() {
                       $('#notificationLoginRegisterContainer').attr('id','notificationLoginRegisterContainerShow');
                       $('#notificationContent').html('Please <span id="blue">login </span>to vote');
                     })
                   );
-                }  else if (error.response.data != '') {
+                }  else if (error.response.data !== '') {
                 $('#notificationContent').text(error.response.data);
               }
           });
@@ -86,14 +85,14 @@ constructor(props){
           $(document).ready(function() {
               $('#notification').attr('id','notificationShow').hide().slideDown();
 
-                if (error.response.data == '[object Object]') {
+                if (error.response.data === '[object Object]') {
                   return (
                     $(document).ready(function() {
                       $('#notificationLoginRegisterContainer').attr('id','notificationLoginRegisterContainerShow');
                       $('#notificationContent').html('Please <span id="blue">login </span>to vote');
                     })
                   );
-                }  else if (error.response.data != '') {
+                }  else if (error.response.data !== '') {
                 $('#notificationContent').text(error.response.data);
               }
           });

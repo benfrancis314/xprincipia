@@ -14,7 +14,6 @@ export default class ProjectParentChildrenUnitsContainer extends React.Component
     };
     componentDidMount(){
         var self = this;
-        window.scrollTo(0,0);
         return axios.get( Config.API + '/auth/problems/subproblems?id='+this.props.parentID).then(function (response) {
             self.setState({
                 problems: response.data
@@ -25,7 +24,6 @@ export default class ProjectParentChildrenUnitsContainer extends React.Component
     componentWillReceiveProps(newProps){
         var self = this
         self.setState({problems: newProps.problems})
-        console.log(self.state.problems)
     }
     render() {
       return (

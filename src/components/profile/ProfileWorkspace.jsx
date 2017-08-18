@@ -1,6 +1,7 @@
 import React from 'react';
-import {Link} from 'react-router';
-import axios from 'axios'
+// Not being used yet
+// import {Link} from 'react-router';
+// import axios from 'axios';
 
 export default class SolutionContainer extends React.Component {
 

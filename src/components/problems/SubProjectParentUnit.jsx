@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link  } from 'react-router';
 import axios from 'axios';
-import cookie from 'react-cookie';
 import {Config} from '../../config.js'
 
 export default class FullProblem extends React.Component {
@@ -14,7 +13,7 @@ export default class FullProblem extends React.Component {
     };
 
 
-    getInitialState(){
+    componentDidMount(){
         var self = this;
             return axios.get( Config.API + '/problems/ID?id='+self.props.parentID).then(function (response) {
                 self.setState({
@@ -33,7 +32,7 @@ componentWillReceiveProps (nextProps){
 }
    render() {
 		 
-	if (this.props.parentID == 0) {
+	if (this.props.parentID === 0) {
 		return (
             <div>
                 <Link to={`/problem/${this.props.parentID}/subproblems`}>

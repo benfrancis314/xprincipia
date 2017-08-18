@@ -1,7 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import { Link } from 'react-router';
-import Sound from 'react-sound';
+// import Sound from 'react-sound';
 // Currently unused, may use later. Loading only loads part of page, currently looks weird
 // import ReactCSSTransitionGroup from 'react-addons-css-transition-group'; // ES6
 import TutorialWelcomeContent from '../components/tutorials/TutorialWelcomeContent.jsx';
@@ -21,7 +21,7 @@ export default class WelcomeContainer extends React.Component {
            searchText: [],
         }
         this.queryProblem = this.queryProblem.bind(this);
-        this.startSound = this.startSound.bind(this);
+        // this.startSound = this.startSound.bind(this);
     };
 
 
@@ -39,10 +39,10 @@ export default class WelcomeContainer extends React.Component {
         // console.log(error.response.data)
           $(document).ready(function() {
               $('#notification').attr('id','notificationShow').hide().slideDown();
-              if (error.response.data != '') {
+              if (error.response.data !== '') {
                 $('#notificationContent').text(error.response.data);
               }
-              else if (error.response.data == '[object Object]') {
+              else if (error.response.data === '[object Object]') {
                 return (
                   $(document).ready(function() {
                     $('#notificationLoginRegisterContainer').attr('id','notificationLoginRegisterContainerShow');
@@ -65,10 +65,10 @@ export default class WelcomeContainer extends React.Component {
         // console.log(error.response.data)
           $(document).ready(function() {
               $('#notification').attr('id','notificationShow').hide().slideDown();
-              if (error.response.data != '') {
+              if (error.response.data !== '') {
                 $('#notificationContent').text(error.response.data);
               }
-              else if (error.response.data == '[object Object]') {
+              else if (error.response.data === '[object Object]') {
                 return (
                   $(document).ready(function() {
                     $('#notificationLoginRegisterContainer').attr('id','notificationLoginRegisterContainerShow');
@@ -80,11 +80,11 @@ export default class WelcomeContainer extends React.Component {
       });
      }
 
-     startSound () {
-        var self = this;
+    //  startSound () {
+    //     var self = this;
 
-        return  self.setState({ volume: 100 });
-        }
+    //     return  self.setState({ volume: 100 });
+    //     }
    
    render() {
       return (

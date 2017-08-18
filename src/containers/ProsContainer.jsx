@@ -2,12 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import { Link } from 'react-router';
 // import ReactCSSTransitionGroup from 'react-addons-css-transition-group'; // ES6
-import ProsDeleteForm from '../components/proscons/ProsDeleteForm.jsx';
-import ProsEditForm from '../components/proscons/ProsEditForm.jsx';
-import ProsFlagForm from '../components/proscons/ProsFlagForm.jsx';
-import ProsForm from '../components/proscons/ProsForm.jsx';
 import ProsUnit from '../components/proscons/ProsUnit.jsx';
-import SideBarMore from '../components/SideBarMore.jsx';
 import {Config} from '../config.js'
 
 export default class ProsContainer extends React.Component {

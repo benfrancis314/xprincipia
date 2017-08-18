@@ -21,7 +21,6 @@ export default class Header extends React.Component {
            password: '',
         }
         this.queryProblem = this.queryProblem.bind(this);
-        this.queryProblem = this.submitSearch.bind(this);
         this.postLogin = this.postLogin.bind(this);
     };
 
@@ -58,10 +57,10 @@ export default class Header extends React.Component {
         // console.log(error.response.data)
           $(document).ready(function() {
               $('#notification').attr('id','notificationShow').hide().slideDown();
-              if (error.response.data != '') {
+              if (error.response.data !== '') {
                 $('#notificationContent').text(error.response.data);
               }
-              else if (error.response.data == '[object Object]') {
+              else if (error.response.data === '[object Object]') {
                 return (
                   $(document).ready(function() {
                     $('#notificationLoginRegisterContainer').attr('id','notificationLoginRegisterContainerShow');
@@ -85,15 +84,11 @@ export default class Header extends React.Component {
         })  
     }
 
-    submitSearch(e) {
-        // if (e.keyCode === 13)
-        {
-            // alert("This is not functional yet");
-            document.location = '/search';
-            
-        }
-        
-    }
+// This is not functional yet
+// When functional add: this.queryProblem = this.submitSearch.bind(this);
+    // submitSearch(e) {
+    //         document.location = '/search';
+    // }
 
    render() {
 

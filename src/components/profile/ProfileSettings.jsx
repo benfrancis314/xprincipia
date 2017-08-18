@@ -1,9 +1,5 @@
 import React from 'react';
 import { Link  } from 'react-router';
-import ProfileUnit from '../../components/profile/ProfileUnit.jsx';
-import cookie from 'react-cookie';
-import axios from 'axios'
-import {Config} from '../../config.js'
 
 export default class ProfileSettings extends React.Component {
 

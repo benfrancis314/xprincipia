@@ -1,5 +1,5 @@
 import React from 'react';
-import {Link, bros} from 'react-router';
+import {Link} from 'react-router';
 import axios from 'axios';
 import cookie from 'react-cookie';
 import {Config} from '../config.js';
@@ -44,10 +44,10 @@ constructor(){
         // console.log(error.response.data)
           $(document).ready(function() {
               $('#notification').attr('id','notificationShow').hide().slideDown();
-              if (error.response.data != '') {
+              if (error.response.data !== '') {
                 $('#notificationContent').text(error.response.data);
               }
-              else if (error.response.data == '[object Object]') {
+              else if (error.response.data === '[object Object]') {
                 return (
                   $(document).ready(function() {
                     $('#notificationLoginRegisterContainer').attr('id','notificationLoginRegisterContainerShow');
@@ -105,10 +105,10 @@ return axios.post( Config.API + '/register', {
         // console.log(error.response.data)
           $(document).ready(function() {
               $('#notification').attr('id','notificationShow').hide().slideDown();
-              if (error.response.data != '') {
+              if (error.response.data !== '') {
                 $('#notificationContent').text(error.response.data);
               }
-              else if (error.response.data == '[object Object]') {
+              else if (error.response.data === '[object Object]') {
                 return (
                   $(document).ready(function() {
                     $('#notificationLoginRegisterContainer').attr('id','notificationLoginRegisterContainerShow');
@@ -143,10 +143,10 @@ return axios.post( Config.API + '/register', {
         // console.log(error.response.data)
           $(document).ready(function() {
               $('#notification').attr('id','notificationShow').hide().slideDown();
-              if (error.response.data != '') {
+              if (error.response.data !== '') {
                 $('#notificationContent').text(error.response.data);
               }
-              else if (error.response.data == '[object Object]') {
+              else if (error.response.data === '[object Object]') {
                 return (
                   $(document).ready(function() {
                     $('#notificationLoginRegisterContainer').attr('id','notificationLoginRegisterContainerShow');

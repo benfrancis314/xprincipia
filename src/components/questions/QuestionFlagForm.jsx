@@ -37,10 +37,10 @@ postQuestion() {
         // console.log(error.response.data)
           $(document).ready(function() {
               $('#notification').attr('id','notificationShow').hide().slideDown();
-              if (error.response.data != '') {
+              if (error.response.data !== '') {
                 $('#notificationContent').text(error.response.data);
               }
-              else if (error.response.data == '[object Object]') {
+              else if (error.response.data === '[object Object]') {
                 return (
                   $(document).ready(function() {
                     $('#notificationLoginRegisterContainer').attr('id','notificationLoginRegisterContainerShow');
@@ -68,10 +68,10 @@ postQuestion() {
         // console.log(error.response.data)
           $(document).ready(function() {
               $('#notification').attr('id','notificationShow').hide().slideDown();
-              if (error.response.data != '') {
+              if (error.response.data !== '') {
                 $('#notificationContent').text(error.response.data);
               }
-              else if (error.response.data == '[object Object]') {
+              else if (error.response.data === '[object Object]') {
                 return (
                   $(document).ready(function() {
                     $('#notificationLoginRegisterContainer').attr('id','notificationLoginRegisterContainerShow');
@@ -94,12 +94,14 @@ postQuestion() {
             <form id="flagForm">
                 <fieldset>
                     <legend>Reason for Flag</legend>
+                    {/*Place holder isn't working, not sure why, should be:
+                    placeholder="Optional: Is this flag due to bad culture, illogical content, 
+                         or another reason" */}
                          <textarea name="questionText" required="required" id="questionFlagTextArea" 
-                         placeholder="Optional: Is this flag due to bad culture, illogical content, 
-                         or another reason?" autoFocus ></textarea>
+                          autoFocus ></textarea>
                          <br />
                          <div onClick={this.postQuestion} id="flagButton">Submit</div>
-                         <Link to='/problem/${question.TypeID}/questions'>
+                          <Link to={`/problem/${this.props.params.probID}/questions`}>
                             <div id="returnButton">Exit</div>
                          </Link>
                 </fieldset>

@@ -1,6 +1,7 @@
 import React from 'react';
-import axios from 'axios';
-import { Link } from 'react-router';
+// Not used yet, commenting out to avoid console errors
+// import axios from 'axios';
+// import { Link } from 'react-router';
 import Introduction from '../components/Introduction.jsx';
 
 

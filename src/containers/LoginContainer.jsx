@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link  } from 'react-router';
 import cookie from 'react-cookie';
 import $ from 'jquery';
 

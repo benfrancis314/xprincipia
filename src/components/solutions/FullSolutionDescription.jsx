@@ -1,7 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router';
 import axios from 'axios';
-import cookie from 'react-cookie';
 import {Config} from '../../config.js'
 
 export default class FullSolutionDescription extends React.Component {
@@ -10,7 +8,6 @@ export default class FullSolutionDescription extends React.Component {
 
         this.state = {
             solutionInfo: [],
-            probID: [],
             solutionID: []
         }
     };
@@ -81,9 +78,3 @@ export default class FullSolutionDescription extends React.Component {
 
 
  
-  function dateTime(str) {
-     if(str != undefined){
-        var result = str.substring(0,9);
-        return result
-     }
-}
