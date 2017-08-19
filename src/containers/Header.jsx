@@ -20,20 +20,14 @@ export default class Header extends React.Component {
            username: '',
            password: '',
         }
+        this.queryProblem = this.queryProblem.bind(this);
+        this.queryProblem = this.submitSearch.bind(this);
         this.postLogin = this.postLogin.bind(this);
     };
 
-  componentDidMount() {
+  componentWillMount() {
     this.state =  { userToken: cookie.load('userToken') };
   }
-
-// Testing to see if this helps username problem
-  componentWillReceiveProps(nextProps){
-    var self = this;
-    this.state =  { userToken: cookie.load('userToken') };
-  }
-// End of test
-
 
   postLogin() {
     var self = this
@@ -79,23 +73,27 @@ export default class Header extends React.Component {
       });
 }
 
-// Not currently in use
-    // queryProblem () {
-    //     var self = this
-    //     this.state.searchText = document.getElementById('exploreInput').value
-    //     return axios.get( Config.API + '/problems/search?q='+this.state.searchText).then(function (response) {
-    //         self.setState({
-    //           problems: response.data
-    //         })
-    //         document.location = '/welcome';
-    //     })  
-    // }
 
-// This is not functional yet
-// When functional add: this.queryProblem = this.submitSearch.bind(this);
-    // submitSearch(e) {
-    //         document.location = '/search';
-    // }
+    queryProblem () {
+        var self = this
+        this.state.searchText = document.getElementById('exploreInput').value
+        return axios.get( Config.API + '/problems/search?q='+this.state.searchText).then(function (response) {
+            self.setState({
+              problems: response.data
+            })
+            document.location = '/welcome';
+        })  
+    }
+
+    submitSearch(e) {
+        // if (e.keyCode === 13)
+        {
+            // alert("This is not functional yet");
+            document.location = '/search';
+            
+        }
+        
+    }
 
    render() {
 
@@ -105,30 +103,24 @@ if (this.state.userToken === undefined ){
             <div id="logo">
               <Link to="/welcome"><div id="logoName">XPrincipia</div></Link>
             </div>
-            
-                {/*Login in header here*/}
-                <input type="text" name="email" required="required" maxLength="30" placeholder="Username" id="loginHeaderEmail" autoFocus />
-                <input type="password" name="password" required="required" maxLength="30" placeholder="Password" id="loginHeaderPassword" />            
-                
-                {/*Need logo here, arrow signaling "Submit"*/}
-                <input type="submit" value="Login" onClick={this.postLogin} id="loginHeaderSubmitButton" />           
-                {/*<div id="loginHeaderSubmitButton" onClick={this.postLogin} >
-                    Login
-                </div>*/}
-                {/*Attempt to get the login button to just be an arrow*/}
-                {/*<input type="image" src={require('../assets/rightArrowWhite.svg')} onClick={this.postLogin} id="loginHeaderSubmitImage" alt="Submit login arrow, blue right arrow"/>*/}
-                <div id="registerHeaderButton">
-                    <Link to="/register">
-                        Register
-                    </Link>
-                </div>
+            {/*Login in header*/}
+            <input type="text" name="email" required="required" maxLength="30" placeholder="Username" id="loginHeaderEmail" autoFocus />
+            <input type="password" name="password" required="required" maxLength="30" placeholder="Password" id="loginHeaderPassword" />            
+            <input type="submit" value="Login" onClick={this.postLogin} id="loginHeaderSubmitButton" />           
+            {/*Attempt to get the login button to just be an arrow*/}
+            {/*<input type="image" src={require('../assets/rightArrowWhite.svg')} onClick={this.postLogin} id="loginHeaderSubmitImage" alt="Submit login arrow, blue right arrow"/>*/}
+            <div id="registerHeaderButton">
+                <Link to="/register">
+                    Register
+                </Link>
+            </div>
         </div>
       );
     } else {
         return (
             <div id="header">
                 <div id="logo">
-                    <Link to="/welcome"><div id="logoName">XPrincipia</div></Link>
+                <Link to="/welcome"><div id="logoName">XPrincipia</div></Link>
                 </div>
                 {/*<div id="explore">
                     <form id="exploreFormHeader">

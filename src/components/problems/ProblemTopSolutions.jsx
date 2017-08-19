@@ -18,7 +18,6 @@ export default class ProblemSolutionsMenu extends React.Component {
         return axios.get( Config.API + '/solutions/problemID?id='+this.props.probID).then(function (response) {
             self.setState({
                 solutions: response.data,
-                probID: this.props.probID
             })
         })
     }
@@ -44,7 +43,7 @@ export default class ProblemSolutionsMenu extends React.Component {
     } else {
       return (
         <div>
-            <SolutionUnit solutions={this.state.solutions} probID={this.state.probID}/>
+            <SolutionUnit solutions={this.state.solutions} probID={this.props.probID}/>
         </div>
 
       );

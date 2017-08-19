@@ -40,7 +40,7 @@ postFreeForm() {
                 return (
                   $(document).ready(function() {
                     $('#notificationLoginRegisterContainer').attr('id','notificationLoginRegisterContainerShow');
-                    $('#notificationContent').html('Please <span id="blue">login </span>to contribute');
+                    $('#notificationContent').html('Please <span id="blue">login </span>to contribute to this debate');
                   })
                 );
               } 

@@ -28,17 +28,16 @@ export default class FullSolutionContent extends React.Component {
     //initialize the component with this state
     componentDidMount(){
       var self = this;
-      axios.get( Config.API + '/auth/solutions/ID?id='+this.props.params.solutionID).then(function (response) {
+      self.setState({
+          probID : this.props.params.probID,
+          solutionID : this.props.params.solutionID
+      })
+      axios.get( Config.API + '/solutions/ID?id='+this.props.params.solutionID).then(function (response) {
           self.setState({
               solutionInfo: response.data,
-              rank: response.data.Rank,
-              probID : this.props.params.probID,
-              solutionID : this.props.params.solutionID
+              rank: response.data.Rank
           })
     })
-    .catch(function (error) {
-       
-    });
     
     axios.get( Config.API + "/auth/vote/isVotedOn?type=1&typeID=" + this.props.params.solutionID + "&username=" + cookie.load("userName"))
           .then( function (response){
@@ -48,15 +47,6 @@ export default class FullSolutionContent extends React.Component {
             })
       })     
     }
-
-// Not sure if this is needed
-  // componentWillReceiveProps(nextProps){
-	//   var self = this
-	//   self.setState({
-	// 	  solutionID: nextProps.params.solutionID,
-	// 	  probID: nextProps.params.probID
-	//   })
-  // }
 
   deleteSolution() {
   
