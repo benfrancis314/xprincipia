@@ -7,9 +7,6 @@ import axios from 'axios';
 import {Config} from '../../config.js';
 import $ from 'jquery';
 import ScrollableAnchor from 'react-scrollable-anchor';
-import { configureAnchors } from 'react-scrollable-anchor';
-
-configureAnchors({offset: -50, scrollDuration: 1000});
 
 export default class ProblemForm extends React.Component {
 
@@ -49,6 +46,7 @@ export default class ProblemForm extends React.Component {
       document.location = '/problem/'+self.props.params.probID+'/subproblems'
     })
       .catch(function (error) {
+        alert('why not working');
           $(document).ready(function() {
               $('#notification').attr('id','notificationShow').hide().slideDown();
 
@@ -56,7 +54,7 @@ export default class ProblemForm extends React.Component {
                   return (
                     $(document).ready(function() {
                       $('#notificationLoginRegisterContainer').attr('id','notificationLoginRegisterContainerShow');
-                      $('#notificationContent').html('Please <span id="blue">login </span>to vote');
+                      $('#notificationContent').html('Please <span id="blue">login </span>to create a project');
                     })
                   );
                 }  else if (error.response.data != '') {
@@ -69,11 +67,12 @@ export default class ProblemForm extends React.Component {
   render() {
       return (
         <div>
-          <ScrollableAnchor id={'newSubProject'}>
+          {/*ScrollableAnchor doesn't work right now, not sure why*/}
+          {/*<ScrollableAnchor id={'newSubProject'}>*/}
             <Link to={`/problem/${this.props.params.probID}/subproblems`}>
                 <img src={require('../../assets/redX.svg')} id="closeRedX" width="40" height="40" alt="Close button, red X symbol" />
             </Link>
-          </ScrollableAnchor>
+          {/*</ScrollableAnchor>*/}
           <div id="SBButtonNoHover">
             New Sub Project
           </div>

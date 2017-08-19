@@ -14,7 +14,7 @@ import $ from 'jquery';
 import ScrollableAnchor from 'react-scrollable-anchor';
 import { configureAnchors } from 'react-scrollable-anchor';
 
-configureAnchors({offset: -50, scrollDuration: 900});
+configureAnchors({offset: -20, scrollDuration: 700});
 
 // import Scroll from 'react-scroll'; // Imports all Mixins
 // import {scroller} from 'react-scroll'; //Imports scroller mixin, can use as scroller.scrollTo()
@@ -33,6 +33,7 @@ export default class FullProblem extends React.Component {
     };
     componentDidMount(){
       var self = this;
+      window.scrollTo(0,0);
       axios.get( Config.API + '/problems/ID?id='+this.props.params.probID).then(function (response) {
 
           //set Problem Data
@@ -51,9 +52,6 @@ export default class FullProblem extends React.Component {
       })       
   }
 
-// Isn't working at the moment
-// Goal is to stop willReceiveProps from happening if it is just 
-// changes in the url on the same page
 shouldComponentUpdate(nextProps, nextState) {
     // only render if probID has changed
     return this.state.probID !== nextProps.params.probID;
@@ -61,6 +59,9 @@ shouldComponentUpdate(nextProps, nextState) {
 
   componentWillReceiveProps(nextProps){
     var self = this;
+    // This would help when exiting Learn and Discuss to get back to top of page, 
+    // but then clicking the new proposal button refreshes too
+    // window.scrollTo(0,0);
       return axios.get( Config.API + '/problems/ID?id='+nextProps.params.probID).then(function (response) {
         //set problem data
         self.setState({

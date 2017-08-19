@@ -44,7 +44,7 @@ export default class WelcomeCreateForm extends React.Component {
                   return (
                     $(document).ready(function() {
                       $('#notificationLoginRegisterContainer').attr('id','notificationLoginRegisterContainerShow');
-                      $('#notificationContent').html('Please <span id="blue">login </span>to vote');
+                      $('#notificationContent').html('Please <span id="blue">login </span>to create a project');
                     })
                   );
                 }  else if (error.response.data != '') {

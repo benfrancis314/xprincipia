@@ -4,9 +4,6 @@ import cookie from 'react-cookie';
 import {Config} from '../../config.js';
 import $ from 'jquery';
 import ScrollableAnchor from 'react-scrollable-anchor';
-import { configureAnchors } from 'react-scrollable-anchor';
-
-configureAnchors({offset: 50, scrollDuration: 900});
 
 export default class SolutionForm extends React.Component {
 
@@ -41,28 +38,26 @@ export default class SolutionForm extends React.Component {
       })
       .then(function (result) {
         document.location = '/problem/' + self.props.probID + '/subproblems'
-        window.location.hash = "problemSummary";
+        // Not sure why that is here, will delete if no utility found
+        // window.location.hash = "problemSummary";
 
       })
       .catch(function (error) {
-        // console.log(error.response.data)
           $(document).ready(function() {
               $('#notification').attr('id','notificationShow').hide().slideDown();
-              if (error.response.data != '') {
-                $('#notificationContent').text(error.response.data);
+
+                if (error.response.data == '[object Object]') {
+                  return (
+                    $(document).ready(function() {
+                      $('#notificationLoginRegisterContainer').attr('id','notificationLoginRegisterContainerShow');
+                      $('#notificationContent').html('Please <span id="blue">login </span>to create a project');
+                    })
+                  );
+                }  else if (error.response.data != '') {
+              $('#notificationContent').text(error.response.data);
               }
-              else if (error.response.data == '[object Object]') {
-                return (
-                  $(document).ready(function() {
-                    $('#notificationLoginRegisterContainer').attr('id','notificationLoginRegisterContainerShow');
-                    $('#notificationContent').html('Please <span id="blue">login </span>to contribute');
-                  })
-                );
-              } 
           });
       });
-    
-
   }
 
   render() {
@@ -70,12 +65,11 @@ export default class SolutionForm extends React.Component {
       <div>
         {randomImg()}
         <div id="createSolutionBox">
-                        <ScrollableAnchor id={'proposalForm'}>
-
-            <div id="proposalFormCreateTitle">
-                  New Proposal
-                </div>
-                            </ScrollableAnchor>
+            <ScrollableAnchor id={'proposalForm'}>
+              <div id="proposalFormCreateTitle">
+                    New Proposal
+              </div>
+            </ScrollableAnchor>
 
             <form id="createForm">
               <fieldset id="fieldSetSideBorder">
@@ -98,7 +92,7 @@ export default class SolutionForm extends React.Component {
                 <label htmlFor="solutionReferences" id="solutionReferenceFormLabel">References <span id="gray">(Optional)</span><br />
                     <textarea name="solutionReferences" placeholder="Please provide any references here." id="solutionReferencesForm">
                     </textarea></label><br />
-                  <input type="submit" value="Create" onClick={this.postSolution} id="submitSolution"/>
+                  <input type="button" value="Create" onClick={this.postSolution} id="submitSolution"/>
               </fieldset>
             </form>
         </div>

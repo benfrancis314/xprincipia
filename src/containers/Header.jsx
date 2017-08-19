@@ -20,13 +20,20 @@ export default class Header extends React.Component {
            username: '',
            password: '',
         }
-        this.queryProblem = this.queryProblem.bind(this);
         this.postLogin = this.postLogin.bind(this);
     };
 
-  componentWillMount() {
+  componentDidMount() {
     this.state =  { userToken: cookie.load('userToken') };
   }
+
+// Testing to see if this helps username problem
+  componentWillReceiveProps(nextProps){
+    var self = this;
+    this.state =  { userToken: cookie.load('userToken') };
+  }
+// End of test
+
 
   postLogin() {
     var self = this
@@ -72,17 +79,17 @@ export default class Header extends React.Component {
       });
 }
 
-
-    queryProblem () {
-        var self = this
-        this.state.searchText = document.getElementById('exploreInput').value
-        return axios.get( Config.API + '/problems/search?q='+this.state.searchText).then(function (response) {
-            self.setState({
-              problems: response.data
-            })
-            document.location = '/welcome';
-        })  
-    }
+// Not currently in use
+    // queryProblem () {
+    //     var self = this
+    //     this.state.searchText = document.getElementById('exploreInput').value
+    //     return axios.get( Config.API + '/problems/search?q='+this.state.searchText).then(function (response) {
+    //         self.setState({
+    //           problems: response.data
+    //         })
+    //         document.location = '/welcome';
+    //     })  
+    // }
 
 // This is not functional yet
 // When functional add: this.queryProblem = this.submitSearch.bind(this);

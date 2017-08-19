@@ -50,7 +50,7 @@ export default class Introduction extends React.Component {
                     <br />
                     <br />
                     {/*A*/}
-                    <span id="blueOpen">We call upon you</span>, and everyone with the <span id="blueOpen">spirit of 
+                    <span id="blueOpen">We call upon you</span>, and all pioneers with the <span id="blueOpen">spirit of 
                     discovery in heart</span>, to take up this challenge 
                     of all ages and <span id="blueOpen">shape the future of our species</span>.
                     {/*B*/}
@@ -69,22 +69,25 @@ export default class Introduction extends React.Component {
                     <span id="blueOpen"> new proposals will be created </span>to achieve or solve each project.
                     <br />
                     <br />
-                    <span id="blueOpen">Discussion and debate </span>will be held with <span id="blueOpen">rigor and deterimation</span>, and 
+                    <span id="blueOpen">Discussion and debate </span>will be held with <span id="blueOpen">rigor and deterimation</span> and 
                     <span id="blueOpen"> targeted education </span>will be <span id='blueOpen'>designed with patience </span>and <span id="blueOpen">used with ambition</span>. 
                     <br />
                     <br />
-                    Proposals will<span id='blueOpen'> weighed by pro and con</span>, and the best<span id="blueOpen"> determined by democratic vote</span>.
+                    Proposals will<span id='blueOpen'> weighed by pro and con</span> and the best<span id="blueOpen"> determined by democratic vote</span>.
                     <br />
                     <br />
                     In the end, <span id="blueOpen">an architecture will be built with the greatest works of our time </span>held inside and a<span id='blueOpen'> blueprint 
                     designed for a better tomorrow</span>. 
                     <br />
                     <br />
-                    <span id="blueOpen">At no point in this process will we rest</span>, our eyes focused upon what is at grasp ahead. 
+                    {/*I don't like the part beneath*/}
+                    {/*<span id="blueOpen">At no point in this process will we rest</span>, our eyes focused upon what is at grasp ahead. 
+                    <br />
+                    <br />*/}
+                    We ask you to<span id="blueOpen"> join this cause</span>, to explore this frontier and dedicate your will to<span id="blueOpen"> advance our world</span>.
                     <br />
                     <br />
-                    We ask you to<span id="blueOpen"> join this cause</span>, to explore this frontier and dedicate your will to advance our world,
-                    with the knowledge that<span id="blueOpen"> together we will not fail</span>.     
+                    Though challenges lay ahead,<span id="blueOpen"> together we cannot fail</span>.     
 
                 </div>
 
@@ -93,48 +96,76 @@ export default class Introduction extends React.Component {
                 <div id="introductionProjectsProse"> 
                     Join the effort to make humanity into a spacefaring civilization:
                 </div>
-                <div id="introductionProjectHeader1">
-                    <div id="introductionProjectTitle">
-                        Interstellar Civilization
+                <Link to={`/problem/7/subproblems`}>
+                    <div id="introductionProjectHeader1">
+                        <div id="introductionProjectTitle">
+                            Interstellar Civilization
+                        </div>
                     </div>
-                </div>
+                </Link>
                 <div id="introductionProjectsProse">
                     Choose to evolve our species into a more perfect state of being:
                 </div>
                 {/*Link each to the actual project - check url on active site*/}
-                <div id="introductionProjectHeader2">
-                    <Link to={`/problem/2/subproblems`}>
+                <Link to={`/problem/8/subproblems`}>
+                    <div id="introductionProjectHeader2"> 
                         <div id="introductionProjectTitle">
                             Evolving Humanity
                         </div>
-                    </Link>
-                </div>
+                    </div>
+                </Link>
                 <div id="introductionProjectsProse">
                     Complete our oldest endeavor, to fully understand the world we find ourselves in:
                 </div>
-                <div id="introductionProjectHeader3">
-                    <div id="introductionProjectTitle">
-                        Theoretical Knowledge
+                <Link to={`/problem/9/subproblems`}>
+                    <div id="introductionProjectHeader3">
+                        <div id="introductionProjectTitle">
+                            Theoretical Knowledge
+                        </div>
                     </div>
-                </div>
+                </Link>
                 <div id="introductionProjectsProse">
                     {/*Design the tools needed for all scopes of our ambitions:*/}
                     Shape our world with tools, the force that has always driven it:
                 </div>
-                <div id="introductionProjectHeader4">
-                    <div id="introductionProjectTitle">
-                        Technology Development
+                <Link to={`/problem/10/subproblems`}>
+                    <div id="introductionProjectHeader4">
+                        <div id="introductionProjectTitle">
+                            Technology Development
+                        </div>
                     </div>
-                </div>
+                </Link>
                 {/*<div id="introductionProjectsProse">
                     Here are the projects towards progressing our technologies, tools which have shaped our history so far, and will continue to shape our future, including advances such as artificial intelligence and nanostructures.
                 </div>*/}
             </div>
+            
+            {randomImg()}
 
             </ReactCSSTransitionGroup>
           </div>
       );
    }
+}
+
+function randomImg() {
+if (Math.random() < 0.125) {
+  return <img src={require('../assets/orionLogo.svg')} id="middleAlignOrionIntro" width='70' height='100' alt="Back arrow, blue up arrow" />
+} else if (Math.random() < 0.25){
+  return <img src={require('../assets/heroLogo.svg')} id="middleAlignOrionIntro" width='70' height='100' alt="Back arrow, blue up arrow" />
+} else if (Math.random() < 0.375){
+  return <img src={require('../assets/dragonConstellation.svg')} id="middleAlignOrionIntro" width='70' height='100' alt="Back arrow, blue up arrow" />
+} else if (Math.random() < 0.5){
+  return <img src={require('../assets/hunterConstellation.svg')} id="middleAlignOrionIntro" width='70' height='100' alt="Back arrow, blue up arrow" />
+} else if (Math.random() < 0.625){
+  return <img src={require('../assets/queenConstellation.svg')} id="middleAlignOrionIntro" width='70' height='100' alt="Back arrow, blue up arrow" />
+} else if (Math.random() < 0.75){
+  return <img src={require('../assets/pegasusConstellation.svg')} id="middleAlignOrionIntro" width='70' height='100' alt="Back arrow, blue up arrow" />
+} else if (Math.random() < 0.875){
+  return <img src={require('../assets/archerConstellation.svg')} id="middleAlignOrionIntro" width='70' height='100' alt="Back arrow, blue up arrow" />
+} else if (Math.random() < 0.1){
+  return <img src={require('../assets/greatBearConstellation.svg')} id="middleAlignOrionIntro" width='70' height='100' alt="Back arrow, blue up arrow" />
+}
 }
 
 

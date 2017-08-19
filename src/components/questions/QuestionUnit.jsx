@@ -13,6 +13,12 @@ constructor(props){
         this.renderItem = this.renderItem.bind(this)
 
     };
+
+// shouldComponentUpdate(nextProps, nextState) {
+//     // only render if probID has changed
+//     return this.state.probID !== nextProps.params.probID;
+// }
+
     componentWillReceiveProps (props) {
     var self = this
     self.setState({
