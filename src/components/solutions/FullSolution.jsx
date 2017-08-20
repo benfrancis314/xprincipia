@@ -2,10 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Link } from 'react-router';
 import axios from 'axios';
-import cookie from 'react-cookie';
-import ReactCSSTransitionGroup from 'react-addons-css-transition-group'; // ES6
 import {Config} from '../../config.js';
-import FullSolutionContent from './FullSolutionContent.jsx';
 import $ from 'jquery';
 
 
@@ -81,7 +78,6 @@ componentDidUpdate() {
             <div id="fullSolution">
                 <div id="solutionIntro">
                     
-                    {/*When scroll is ready have this scroll to proposals*/}
                     <Link to={`/problem/${this.props.params.probID}/subproblems`}>
                         <img src={require('../../assets/redX.svg')} id="closeRedX" width="40" height="40" alt="Close button, red X symbol" />
                     </Link>
@@ -93,7 +89,6 @@ componentDidUpdate() {
                     {this.state.solutionInfo.Summary}
                     </p>
                 </div>
-                {/*{React.cloneElement(<FullSolutionContent probID={this.state.probID} solutionID={this.state.solutionID} /> )}*/}
                 {React.cloneElement(this.props.children, {solutionInfo: this.state.solutionInfo})}
             </div>
             {randomImg()}

@@ -2,11 +2,8 @@ import React from 'react';
 import { Link } from 'react-router';
 import axios from 'axios';
 import cookie from 'react-cookie';
-import ReactCSSTransitionGroup from 'react-addons-css-transition-group'; // ES6
 import {Config} from '../../config.js';
-import ConsContainer from '../../containers/ConsContainer.jsx';
 import FullSolutionDescription from './FullSolutionDescription.jsx';
-import ProsContainer from '../../containers/ProsContainer.jsx';
 import $ from 'jquery';
 
 export default class FullSolutionContent extends React.Component {

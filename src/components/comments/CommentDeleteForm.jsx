@@ -20,7 +20,6 @@ export default class CommentDeleteForm extends React.Component {
 deleteComment() {
 
 ////Delete comment
-      var self = this
       axios.delete( Config.API + '/auth/comments/delete?id='+this.props.params.commentID, {
         params: {
           id: this.props.params.commentID,

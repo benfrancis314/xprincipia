@@ -1,6 +1,5 @@
 import React from 'react';
 import {Link} from 'react-router';
-import cookie from 'react-cookie';
 import $ from 'jquery';
 import IntroductionRegister from './IntroductionRegister'
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group'; // ES6
@@ -87,7 +86,7 @@ export default class Introduction extends React.Component {
                     We ask you to<span id="blueOpen"> join this cause</span>, to explore this frontier and dedicate your will to<span id="blueOpen"> advance our world</span>.
                     <br />
                     <br />
-                    Though challenges lay ahead,<span id="blueOpen"> together we cannot fail</span>.     
+                    Though challenges stand ahead,<span id="blueOpen"> together we cannot fail</span>.     
 
                 </div>
 
@@ -208,7 +207,7 @@ Welcome to XPrincipia.
 
 // Draft 2 - Lincoln Inspiration
 
-{/*Here anyone, <span id="blueOpen">regardless of background </span>or class, may openly contribute to and <span id="blueOpen">join today's cutting edge </span>of 
+/*Here anyone, <span id="blueOpen">regardless of background </span>or class, may openly contribute to and <span id="blueOpen">join today's cutting edge </span>of 
 scientific <span id="blueOpen">research </span>and technology <span id="blueOpen">development</span>.
 <br />
 <br />
@@ -252,7 +251,7 @@ The <span id="blueOpen">entire architecture and works</span>of XPrincipia, const
 Our success, and the <span id="blueOpen">fruit it may bare</span>, is up to us all.
 <br />
 <br />
-<span id="blueOpen">Welcome to XPrincipia.</span>*/}
+<span id="blueOpen">Welcome to XPrincipia.</span>*/
 
 
 

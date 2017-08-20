@@ -4,8 +4,8 @@ import axios from 'axios';
 import cookie from 'react-cookie';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group'; // ES6
 import ProblemSolutionsMenu from './ProblemSolutionsMenu.jsx';
-import ProjectParentChildrenUnitsContainer from '../../containers/ProjectParentChildrenUnitsContainer.jsx';
-import SideBarProblemMenu from './SideBarProblemMenu.jsx';
+// Not used yet, would like to develop later
+// import ProjectParentChildrenUnitsContainer from '../../containers/ProjectParentChildrenUnitsContainer.jsx';
 import SubProblemContainer from '../../containers/SubProblemContainer.jsx';
 import SubProjectParentUnit from './SubProjectParentUnit.jsx';
 import TutorialProjectContent from '../tutorials/TutorialProjectContent.jsx';
@@ -85,6 +85,7 @@ shouldComponentUpdate(nextProps, nextState) {
               } 
           });
       });
+      // Console warning says axios call below is "Unreachable code"
     axios.get( Config.API + "/vote/isVotedOn?type=0&typeID=" + this.props.params.probID + "&username=" + cookie.load("userName"))
           .then( function (response){
             self.setState({
@@ -410,8 +411,4 @@ unVote() {
        }
 }}
 
-//convert float to Decimal
-function floatToDecimal(float) {
-	return Math.round(float*100);
-}
  

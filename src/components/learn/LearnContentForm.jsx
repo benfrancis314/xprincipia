@@ -1,7 +1,6 @@
 import React from 'react';
 import axios from 'axios';
 import cookie from 'react-cookie';
-import SideBarMore from '../SideBarMore.jsx';
 import {Config} from '../../config.js';
 import $ from 'jquery';
 

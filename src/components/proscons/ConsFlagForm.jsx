@@ -97,9 +97,10 @@ postCon() {
                          <textarea name="questionText" required="required" id="questionFlagTextArea" autoFocus ></textarea>
                          <br />
                          <div onClick={this.postCon} id="flagButton">Submit</div>
-                         <Link to='/problem/${con.TypeID}/cons'>
+                         {/*The link below doesn't work*/}
+                         {/*<Link to='/problem/${con.TypeID}/cons'>*/}
                             <div id="returnButton">Exit</div>
-                         </Link>
+                         {/*</Link>*/}
                 </fieldset>
             </form>
       </div>

@@ -136,26 +136,27 @@ function floatToDecimal(float) {
 	return Math.round(float*100)+'%';
 }
 
-function url(resourceURL) {
-// Warning console says self is not used
-// var self = this
-    if (resourceURL.substring(0,7) === 'https://') {
-        return ( resourceURL );
+// Not used at moment
+// function url(resourceURL) {
+// // Warning console says self is not used
+// // var self = this
+//     if (resourceURL.substring(0,7) === 'https://') {
+//         return ( resourceURL );
 
-    } 
-    else if (
-        // (resourceURL.substring(0,3) !== 'www.')  &&  
-        (
-            (resourceURL.slice(-4) === '.com') || (resourceURL.slice(-4) == '.org') || (resourceURL.slice(-4) === '.edu') || (resourceURL.slice(-4) === '.gov') || (resourceURL.slice(-4) === '.net') )
-            ) 
-        {
-        return ( 'https://' + resourceURL );
-    }
+//     } 
+//     else if (
+//         // (resourceURL.substring(0,3) !== 'www.')  &&  
+//         (
+//             (resourceURL.slice(-4) === '.com') || (resourceURL.slice(-4) == '.org') || (resourceURL.slice(-4) === '.edu') || (resourceURL.slice(-4) === '.gov') || (resourceURL.slice(-4) === '.net') )
+//             ) 
+//         {
+//         return ( 'https://' + resourceURL );
+//     }
 
-    else {
-        return ( resourceURL );
-        // return ( 'https://www.google.com/#q=' + resourceURL );
-        // return ( 'https://en.wikipedia.org/wiki/' + resourceURL );
-    }
-}
+//     else {
+//         return ( resourceURL );
+//         // return ( 'https://www.google.com/#q=' + resourceURL );
+//         // return ( 'https://en.wikipedia.org/wiki/' + resourceURL );
+//     }
+// }
     

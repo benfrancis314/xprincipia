@@ -14,6 +14,7 @@ constructor(props){
 
     };
 
+// Trying to use this to fix scroll error when discuss menu up and scroll down to #proposals in url
 // shouldComponentUpdate(nextProps, nextState) {
 //     // only render if probID has changed
 //     return this.state.probID !== nextProps.params.probID;

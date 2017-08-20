@@ -21,7 +21,6 @@ export default class Header extends React.Component {
            password: '',
         }
         this.queryProblem = this.queryProblem.bind(this);
-        this.queryProblem = this.submitSearch.bind(this);
         this.postLogin = this.postLogin.bind(this);
     };
 
@@ -51,7 +50,8 @@ export default class Header extends React.Component {
         username : self.state.username,
         token : "Bearer " + self.state.userToken
       }, {headers: { Authorization: "Bearer " + self.state.userToken }}).then (function (response){
-        document.location = "/welcome";
+        alert('success')
+        // document.location = "/welcome";
       })
     })
       .catch(function (error) {
@@ -85,15 +85,11 @@ export default class Header extends React.Component {
         })  
     }
 
-    submitSearch(e) {
-        // if (e.keyCode === 13)
-        {
-            // alert("This is not functional yet");
-            document.location = '/search';
-            
-        }
-        
-    }
+// Not using currently
+    // submitSearch(e) {
+    //     // if (e.keyCode === 13)
+    //         document.location = '/search';
+    // }
 
    render() {
 

@@ -3,7 +3,6 @@ import axios from 'axios'
 import {Config} from '../../config.js';
 import ProblemTopSolutions from './ProblemTopSolutions.jsx';
 import SolutionForm from '../solutions/SolutionForm.jsx';
-import ScrollableAnchor from 'react-scrollable-anchor';
 
 export default class ProblemSolutionsMenu extends React.Component {
   constructor(props){

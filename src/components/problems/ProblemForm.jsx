@@ -6,7 +6,6 @@ import { Link } from 'react-router';
 import axios from 'axios';
 import {Config} from '../../config.js';
 import $ from 'jquery';
-import ScrollableAnchor from 'react-scrollable-anchor';
 
 export default class ProblemForm extends React.Component {
 
