@@ -14,7 +14,7 @@ export default class ProfileProblemsSolutions extends React.Component {
             votedProblems: [],
             createdProblems: [],
             currentItems:[],
-            currentType: 'solution',
+            currentType: 'problem',
         }
 
 

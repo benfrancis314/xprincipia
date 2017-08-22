@@ -2,7 +2,8 @@ import React from 'react';
 import axios from 'axios';
 import cookie from 'react-cookie';
 import { Link } from 'react-router';
-import {Config} from '../../config.js'
+import {Config} from '../../config.js';
+import $ from 'jquery';
 
 export default class ConsEditForm extends React.Component {
 
@@ -26,17 +27,30 @@ export default class ConsEditForm extends React.Component {
           document.getElementById('conEditTextArea').value = self.state.con.Description;
 
     })
-    .catch(function (error) {
-        if(error.response.status === 401 || error.response.status === 403){
-            document.location = "/login"
-        }
-    });   
+      .catch(function (error) {
+        // console.log(error.response.data)
+          $(document).ready(function() {
+              $('#notification').attr('id','notificationShow').hide().slideDown();
+              if (error.response.data != '') {
+                $('#notificationContent').text(error.response.data);
+              }
+              else if (error.response.data == '[object Object]') {
+                return (
+                  $(document).ready(function() {
+                    $('#notificationLoginRegisterContainer').attr('id','notificationLoginRegisterContainerShow');
+                    $('#notificationContent').html('Please <span id="blue">login </span>to contribute');
+                  })
+                );
+              } 
+          });
+      });
   }
 
 updateCon() {
   //Read field items into component state
   this.state.con = document.getElementById('conEditTextArea').value
 
+  var self = this
   axios.put( Config.API + '/auth/cons/update?id='+this.props.params.conID, {
       type:'1',
       typeID: this.props.params.solutionID,
@@ -44,10 +58,24 @@ updateCon() {
       description : this.state.con,
     })
       .then(function (result) {
-        document.location = '/fullsolution/'+ self.props.params.probID + '/' + self.props.params.solutionID + '/cons'
+        document.location = '/fullsolution/' + self.props.params.probID + '/' + self.props.params.solutionID + '/cons'
       })
       .catch(function (error) {
-        alert("I'm sorry, there was a problem with your request.")
+        // console.log(error.response.data)
+          $(document).ready(function() {
+              $('#notification').attr('id','notificationShow').hide().slideDown();
+              if (error.response.data != '') {
+                $('#notificationContent').text(error.response.data);
+              }
+              else if (error.response.data == '[object Object]') {
+                return (
+                  $(document).ready(function() {
+                    $('#notificationLoginRegisterContainer').attr('id','notificationLoginRegisterContainerShow');
+                    $('#notificationContent').html('Please <span id="blue">login </span>to contribute');
+                  })
+                );
+              } 
+          });
       });
     }
 
@@ -65,7 +93,7 @@ updateCon() {
                          <textarea name="questionText" required="required" id="conEditTextArea" autoFocus ></textarea>
                          <br />
                          <div onClick={this.updateCon} id="editButton">Submit</div>
-                         <Link to={`/fullsolution/${this.props.params.probID}/${this.props.params.solutionID}/pros`}>
+                         <Link to={`/fullsolution/${this.props.params.probID}/${this.props.params.solutionID}/cons`}>
                           <div id="returnButton">Exit</div>
                          </Link>
                 </fieldset>

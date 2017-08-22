@@ -16,7 +16,6 @@ export default class VersionsContainer extends React.Component {
     };
         componentDidMount(){
         var self = this;
-        window.scrollTo(0,0);
         return axios.get( Config.API + '/auth/solutions/problemID?id='+this.props.params.probID).then(function (response) {
             self.setState({
                 solutions: response.data

@@ -2,7 +2,8 @@ import React from 'react';
 import { Link } from 'react-router';
 import axios from 'axios'
 import cookie from 'react-cookie';
-import {Config} from '../../config.js'
+import {Config} from '../../config.js';
+import $ from 'jquery';
 
 export default class WelcomeCreateForm extends React.Component {
 
@@ -22,12 +23,8 @@ export default class WelcomeCreateForm extends React.Component {
   };
 
   postProblem() {
-    //Read field items into component state
     this.state.title = document.getElementById('problemTitleForm').value
-    // this.state.field = document.getElementById('problemFieldForm').value
     this.state.summary = document.getElementById('problemSummaryForm').value
-    // this.state.description = document.getElementById('problemDescriptionForm').value
-    var self = this
     return axios.post( Config.API + '/auth/problems/create', {
         username: cookie.load('userName'),
         parentID: this.props.params.probID,
@@ -40,52 +37,49 @@ export default class WelcomeCreateForm extends React.Component {
         document.location = '/welcome' 
       })
       .catch(function (error) {
-        console.log(error.response.data)
-        alert( error.response.data)
+          $(document).ready(function() {
+              $('#notification').attr('id','notificationShow').hide().slideDown();
+
+                if (error.response.data == '[object Object]') {
+                  return (
+                    $(document).ready(function() {
+                      $('#notificationLoginRegisterContainer').attr('id','notificationLoginRegisterContainerShow');
+                      $('#notificationContent').html('Please <span id="blue">login </span>to create a project');
+                    })
+                  );
+                }  else if (error.response.data != '') {
+                $('#notificationContent').text(error.response.data);
+              }
+          });
       });
     };
 
-// toggle() {
-//   $(document).ready(function(){
-// $("welcomeMore").click(function(){
-//     $("welcomeMoreX").toggle(1000);
-//     });
-//   });
-// }
-
-
   render() {
       return (
-      <div>
-        {/*<div id="createWelcomeButtonBox">
-          <Link to="/welcome/create" activeClassName="activeBlue">
-            <h1 id="createWelcomeButton">Create a Project</h1>
+        <div>
+          <Link to={`/welcome`}>
+              <img src={require('../../assets/redX.svg')} id="closeRedX" width="40" height="40" alt="Close button, red X symbol" />
           </Link>
-        </div>*/}
-        <div id="createProblemBox">
-            <form id="welcomeCreateForm">
-              <fieldset>
-                  {/*<legend>Create:Project</legend>*/}
-                        <div id="createWelcomeButtonFormBox">
-                          <Link to="/welcome/" activeClassName="activeBlue">
-                            <h1 id="createWelcomeButtonForm">Create a Project</h1>
-                          </Link>
-                        </div>
-                        <label htmlFor="problemTitleForm" id="problemTitleFormLabel">Title<br />
-                            <input type="text" name="problemTitle" required="required" maxLength="70" id="problemTitleForm" autoFocus/>
-                          </label><br />
+          <div id="SBButtonNoHover">
+            New Project
+          </div>
+          <div id="createProblemBox">
+              <form id="createForm">
+                <fieldset id="fieldSetNoBorder">
+                  <label htmlFor="problemTitleForm" id="problemTitleFormLabel">Project Title<br />
+                      <input type="text" name="problemTitle" required="required" maxLength="70" id="problemTitleForm" autoFocus/>
+                    </label><br />
 
-                        <label htmlFor="problemSummaryForm" id="problemSummaryFormLabel">Additional Information<br />
-                            <textarea name="problemField" required="required" maxLength="250" placeholder="Please provide any additional information you'd like. (250 character max.)" id="problemSummaryForm"/>
-                          </label><br />
+                  <label htmlFor="problemSummaryForm" id="problemSummaryFormLabel">Additional Information<br />
+                      <textarea name="problemSummary" required="required" maxLength="350" 
+                      placeholder="Please provide any additional information you'd like. (250 character max)" id="problemSummaryForm"/>
+                      </label><br />
 
-                        <input type="button" value="Create" onClick={this.postProblem} id="submitProblem"/>
-              </fieldset>
-            </form>
-            {/*<Link to='/welcome'><div id="welcomeMore">Back</div></Link>*/}
-            {/*<div id="welcomeMore" onClick={this.toggle}>Toggle</div>*/}
+                  <input type="button" value="Create" onClick={this.postProblem} id="submitProblem"/>
+                </fieldset>
+              </form>
+          </div>
         </div>
-      </div>
       );
    }
 }

@@ -1,8 +1,8 @@
 import React from 'react';
 import {Link} from 'react-router';
-import cookie from 'react-cookie'
-import axios from 'axios'
-import {Config} from '../config.js'
+import cookie from 'react-cookie';
+import axios from 'axios';
+import {Config} from '../config.js';
 
 export default class LoginUnit extends React.Component {
   constructor(){
@@ -55,14 +55,20 @@ export default class LoginUnit extends React.Component {
 
    render() {
       return (
-
-        <div id="signup">
-            <form>
-                <input type="text" name="email" required="required" maxLength="30" placeholder="Username" id="loginEmail" autoFocus />
-                <input type="password" name="password" required="required" maxLength="30" placeholder="Password" id="loginPassword" />
-                <Link to='/login'><input type="submit" value="Login" onClick={this.postLogin} id="submitLogin" /></Link>
-                <Link to='/register'><div id="registerButton">Register</div></Link>
-            </form>
+        <div>
+          <Link to={`/introduction`}>
+            <div id="introductionButton">
+              Introduction
+            </div>
+          </Link>
+          <div id="signup">
+              <form>
+                  <input type="text" name="email" required="required" maxLength="30" placeholder="Username" id="loginEmail" autoFocus />
+                  <input type="password" name="password" required="required" maxLength="30" placeholder="Password" id="loginPassword" />
+                  <Link to='/login'><input type="submit" value="Login" onClick={this.postLogin} id="submitLogin" /></Link>
+                  <Link to='/register'><div id="registerButton">Register</div></Link>
+              </form>
+          </div>
         </div>
 
       );

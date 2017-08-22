@@ -14,9 +14,9 @@ export default class QuestionContainer extends React.Component {
         }
         
     };
-    componentWillMount(){
+    componentDidMount(){
         var self = this;
-            return axios.get( Config.API + '/auth/questions/typeID?id='+this.props.params.probID).then(function (response) {
+            return axios.get( Config.API + '/questions/typeID?id='+this.props.params.probID).then(function (response) {
                 self.setState({
                     questions: response.data
                 })

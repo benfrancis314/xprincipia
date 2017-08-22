@@ -2,7 +2,8 @@ import React from 'react';
 import { Link } from 'react-router';
 import axios from 'axios';
 import cookie from 'react-cookie';
-import {Config} from '../../config.js'
+import {Config} from '../../config.js';
+import $ from 'jquery';
 
 export default class EditSolutionForm extends React.Component {
 
@@ -35,11 +36,23 @@ export default class EditSolutionForm extends React.Component {
           document.getElementById('solutionEditReferencesForm').value = self.state.solutionInfo.References;
 
     })
-    .catch(function (error) {
-        if(error.response.status === 401 || error.response.status === 403){
-            document.location = "/login"
-        }
-    });   
+      .catch(function (error) {
+        // console.log(error.response.data)
+          $(document).ready(function() {
+              $('#notification').attr('id','notificationShow').hide().slideDown();
+              if (error.response.data != '') {
+                $('#notificationContent').text(error.response.data);
+              }
+              else if (error.response.data == '[object Object]') {
+                return (
+                  $(document).ready(function() {
+                    $('#notificationLoginRegisterContainer').attr('id','notificationLoginRegisterContainerShow');
+                    $('#notificationContent').html('Please <span id="blue">login </span>to contribute');
+                  })
+                );
+              } 
+          });
+      });
   }
 
     updateSolution() {
@@ -58,11 +71,24 @@ export default class EditSolutionForm extends React.Component {
       references: self.state.references
     })
     .then(function (result) {
-     document.location = window.location.pathname
-
+     document.location = '/problem/' + self.props.params.probID + '/proposal/' + self.props.params.solutionID
     })
-    .catch(function (error) {
-        alert("I'm sorry, there was a problem with your request.")
+      .catch(function (error) {
+        // console.log(error.response.data)
+          $(document).ready(function() {
+              $('#notification').attr('id','notificationShow').hide().slideDown();
+              if (error.response.data != '') {
+                $('#notificationContent').text(error.response.data);
+              }
+              else if (error.response.data == '[object Object]') {
+                return (
+                  $(document).ready(function() {
+                    $('#notificationLoginRegisterContainer').attr('id','notificationLoginRegisterContainerShow');
+                    $('#notificationContent').html('Please <span id="blue">login </span>to contribute');
+                  })
+                );
+              } 
+          });
       });
   
   }
@@ -90,10 +116,9 @@ export default class EditSolutionForm extends React.Component {
                           <textarea name="solutionReferences" placeholder="Provide your references here." id="solutionEditReferencesForm">
                           </textarea></label><br />
 
-                      <Link to={`/fullsolution/${this.props.params.probID}/${this.props.params.solutionID}/full`}>
-                        <div onClick={this.updateSolution} id="editButton">Edit</div>
-                      </Link>
-                      <Link to={`/fullsolution/${this.props.params.probID}/${this.props.params.solutionID}/full`}>
+                      <div onClick={this.updateSolution} id="editButton">Edit</div>
+
+                      <Link to={`/problem/${this.props.params.probID}/proposal/${this.props.params.solutionID}`}>
                         <div id="returnButton">Exit</div>
                       </Link>
             </fieldset>

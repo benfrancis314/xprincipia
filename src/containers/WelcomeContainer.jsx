@@ -1,12 +1,14 @@
 import React from 'react';
 import axios from 'axios';
 import { Link } from 'react-router';
+// import Sound from 'react-sound';
 // Currently unused, may use later. Loading only loads part of page, currently looks weird
 // import ReactCSSTransitionGroup from 'react-addons-css-transition-group'; // ES6
 import TutorialWelcomeContent from '../components/tutorials/TutorialWelcomeContent.jsx';
 import WelcomeUnit from '../components/welcome/WelcomeUnit.jsx';
 import WelcomeUserUnit from '../components/welcome/WelcomeUserUnit.jsx';
-import {Config} from '../config.js'
+import {Config} from '../config.js';
+import $ from 'jquery';
 
 export default class WelcomeContainer extends React.Component {
    
@@ -18,7 +20,8 @@ export default class WelcomeContainer extends React.Component {
            userproblems : [],
            searchText: [],
         }
-        this.queryProblem = this.queryProblem.bind(this)
+        this.queryProblem = this.queryProblem.bind(this);
+        // this.startSound = this.startSound.bind(this);
     };
 
 
@@ -27,35 +30,82 @@ export default class WelcomeContainer extends React.Component {
         this.state.searchText = document.getElementById('exploreInput').value
 
         var self = this
-        return axios.get( Config.API + '/auth/problems/search?q='+this.state.searchText).then(function (response) {
+        return axios.get( Config.API + '/problems/search?q='+this.state.searchText).then(function (response) {
             self.setState({
               userproblems: response.data
             })
         })
-        .catch(function (error) {
-            if(error.response.status === 401 || error.response.status === 403) {
-                document.location = "/login"
-            }
-        }); 
+      .catch(function (error) {
+        // console.log(error.response.data)
+          $(document).ready(function() {
+              $('#notification').attr('id','notificationShow').hide().slideDown();
+              if (error.response.data != '') {
+                $('#notificationContent').text(error.response.data);
+              }
+              else if (error.response.data == '[object Object]') {
+                return (
+                  $(document).ready(function() {
+                    $('#notificationLoginRegisterContainer').attr('id','notificationLoginRegisterContainerShow');
+                    $('#notificationContent').html('Please <span id="blue">login </span>to contribute');
+                  })
+                );
+              } 
+          });
+      });
         }
         componentWillMount(){
         var self = this;
-        return axios.get( Config.API + '/auth/problems/all').then(function (response) {
+        return axios.get( Config.API + '/problems/all').then(function (response) {
             self.setState({
                 problems: response.data,
                 userproblems: response.data
             })
         }) 
-        .catch(function (error) {
-            if(error.response.status === 401 || error.response.status === 403){
-                document.location = "/login"
-            }
-        }); 
-        }
+      .catch(function (error) {
+        // console.log(error.response.data)
+          $(document).ready(function() {
+              $('#notification').attr('id','notificationShow').hide().slideDown();
+              if (error.response.data != '') {
+                $('#notificationContent').text(error.response.data);
+              }
+              else if (error.response.data == '[object Object]') {
+                return (
+                  $(document).ready(function() {
+                    $('#notificationLoginRegisterContainer').attr('id','notificationLoginRegisterContainerShow');
+                    $('#notificationContent').html('Please <span id="blue">login </span>to contribute');
+                  })
+                );
+              } 
+          });
+      });
+     }
+
+    //  startSound () {
+    //     var self = this;
+
+    //     return  self.setState({ volume: 100 });
+    //     }
    
    render() {
       return (
         <div>
+            {/*<Sound
+                url={require('../assets/jfkSpeech.mp3')}
+                autoLoad={false}
+                playStatus={Sound.status.PLAYING}
+                playFromPosition={87500 //in ms}
+                onLoading={this.handleSongLoading}
+                onPlaying={this.handleSongPlaying}
+                onFinishedPlaying={this.handleSongFinishedPlaying} 
+                volume={0}/>*/}
+         <Link to="/introduction">
+            <div id="welcomeIntroductionButton">
+                Introduction
+            </div>
+         </Link>
+            {/*<div onClick={this.stateSound} id="soundButton">
+                Sound
+            </div>*/}
             {/*<ReactCSSTransitionGroup
             transitionName="example"
             transitionAppear={true}

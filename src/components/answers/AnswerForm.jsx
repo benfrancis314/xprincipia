@@ -1,7 +1,8 @@
 import React from 'react';
 import axios from 'axios';
 import cookie from 'react-cookie';
-import {Config} from '../../config.js'
+import {Config} from '../../config.js';
+import $ from 'jquery';
 
 export default class AnswerForm extends React.Component {
 
@@ -27,24 +28,44 @@ axios.post( Config.API + '/auth/answers/create', {
 .then(function (result) {
   document.location = window.location.pathname 
 })
-.catch(function (error) {
-  alert("I'm sorry, there was a problem with your request.");
-  });
+      .catch(function (error) {
+          $(document).ready(function() {
+              $('#notification').attr('id','notificationShow').hide().slideDown();
+
+                if (error.response.data == '[object Object]') {
+                  return (
+                    $(document).ready(function() {
+                      $('#notificationLoginRegisterContainer').attr('id','notificationLoginRegisterContainerShow');
+                      $('#notificationContent').html('Please <span id="blue">login </span>to answer this question');
+                    })
+                  );
+                }  else if (error.response.data != '') {
+              $('#notificationContent').text(error.response.data);
+              }
+          });
+      });
 }
 
 
 
    render() {
       return (
-
-      <div id="answerFormComponent">
-        <form id="answerForm">
-            <fieldset id="greenBorder">
-                <legend>Answers</legend>
-                     <textarea name="answerText" required="required" id="answerTextArea" placeholder="Answer this question or view the answers of your peers. " autoFocus ></textarea>
-                     <input type="button" value="Answer" onClick={this.postAnswer} id="addAnswerGreen" />
-            </fieldset>
-        </form>
+      <div>
+        <div id="discussMenuEnd">
+          Answers
+        </div>
+        <div id="answerFormComponent">
+          <form id="answerForm">
+              {/*A*/}
+              <fieldset id='fieldSetNoBorderPadding'>
+              {/*B*/}
+              {/*<fieldset id="greenBorder">*/}
+                  {/*<legend>Answers</legend>*/}
+                      <textarea name="answerText" required="required" id="answerTextArea" placeholder="Answer this question or view the answers of your peers. " autoFocus ></textarea>
+                      <input type="button" value="Answer" onClick={this.postAnswer} id="addAnswerGreen" />
+              </fieldset>
+          </form>
+        </div>
       </div>
 
       );

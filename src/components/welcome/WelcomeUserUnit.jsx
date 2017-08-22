@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router';
-
+// import ReactGA from 'react-ga';
 
 export default class WelcomeUserUnit extends React.Component {
    
@@ -15,6 +15,15 @@ export default class WelcomeUserUnit extends React.Component {
 	}
 	renderItem(problem) {
   
+
+// For Google Analytics when working
+    // function handleClick() {
+    //     ReactGA.event({
+    //         category: 'Project',
+    //         action: 'Clicked Link',
+    //     });
+    // }
+
 if (problem.Title === 'Interstellar Civilization') {
 
       return (
@@ -46,7 +55,7 @@ if (problem.Title === 'Interstellar Civilization') {
 } else 
       return (
         <li key={problem.ID} id="welcomeUserProblemsUnit">
-            <Link to={{pathname: '/problem/'+problem.ID +'/subproblems'}}>
+            <Link to={{pathname: '/problem/'+problem.ID +'/subproblems'}} onClick={()=>{this.handleClick()}}>
                 <div id="welcomeUserProblemsHeader">
                     <div id="welcomeUserProblemsTitle">
                         {problem.Title}

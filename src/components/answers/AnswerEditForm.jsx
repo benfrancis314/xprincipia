@@ -2,7 +2,8 @@ import React from 'react';
 import axios from 'axios';
 import cookie from 'react-cookie';
 import { Link } from 'react-router';
-import {Config} from '../../config.js'
+import {Config} from '../../config.js';
+import $ from 'jquery';
 
 export default class AnswerEditForm extends React.Component {
 
@@ -26,11 +27,23 @@ export default class AnswerEditForm extends React.Component {
           document.getElementById('answerEditTextArea').value = self.state.answer.Description;
 
     })
-    .catch(function (error) {
-        if(error.response.status === 401 || error.response.status === 403){
-            document.location = "/login"
-        }
-    });   
+      .catch(function (error) {
+        // console.log(error.response.data)
+          $(document).ready(function() {
+              $('#notification').attr('id','notificationShow').hide().slideDown();
+              if (error.response.data != '') {
+                $('#notificationContent').text(error.response.data);
+              }
+              else if (error.response.data == '[object Object]') {
+                return (
+                  $(document).ready(function() {
+                    $('#notificationLoginRegisterContainer').attr('id','notificationLoginRegisterContainerShow');
+                    $('#notificationContent').html('Please <span id="blue">login </span>to contribute');
+                  })
+                );
+              } 
+          });
+      });
   }
 
 updateAnswer() {
@@ -48,7 +61,21 @@ updateAnswer() {
         document.location = window.location.pathname 
       })
       .catch(function (error) {
-        alert("I'm sorry, there was a problem with your request. ")
+        // console.log(error.response.data)
+          $(document).ready(function() {
+              $('#notification').attr('id','notificationShow').hide().slideDown();
+              if (error.response.data != '') {
+                $('#notificationContent').text(error.response.data);
+              }
+              else if (error.response.data == '[object Object]') {
+                return (
+                  $(document).ready(function() {
+                    $('#notificationLoginRegisterContainer').attr('id','notificationLoginRegisterContainerShow');
+                    $('#notificationContent').html('Please <span id="blue">login </span>to contribute');
+                  })
+                );
+              } 
+          });
       });
     }
 

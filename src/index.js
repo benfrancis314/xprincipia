@@ -2,6 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Router, Route, IndexRoute, browserHistory } from 'react-router';
 import App from './App';
+import ReactGA from 'react-ga';
+ReactGA.initialize('UA-104103231-1'); //Unique Google Analytics tracking number
 
 //Load Components
 
@@ -17,6 +19,7 @@ import ConsDeleteForm from './components/proscons/ConsDeleteForm.jsx';
 import ConsEditForm from './components/proscons/ConsEditForm.jsx';
 import ConsFlagForm from './components/proscons/ConsFlagForm.jsx';
 import ConsForm from './components/proscons/ConsForm.jsx';
+import Empty from './components/Empty.jsx';
 import Error404 from './components/Error404.jsx';
 import FeedbackForm from './components/FeedbackForm.jsx';
 import FreeFormDeleteForm from './components/freeform/FreeFormDeleteForm.jsx';
@@ -26,10 +29,10 @@ import FreeFormForm from './components/freeform/FreeFormForm.jsx';
 import FullProblem from './components/problems/FullProblem.jsx';
 import FullSolution from './components/solutions/FullSolution.jsx';
 import FullSolutionContent from './components/solutions/FullSolutionContent.jsx';
-import FullSolutionDescription from './components/solutions/FullSolutionDescription.jsx';
 import FullVersion from './components/versions/FullVersion.jsx';
 import Instructions from './components/tutorials/Instructions.jsx';
 import Intro from './components/tutorials/Intro.jsx';
+import Introduction from './components/Introduction.jsx';
 import Layout from './components/Layout.jsx';
 import LearnContentDeleteForm from './components/learn/LearnContentDeleteForm.jsx';
 import LearnContentEditForm from './components/learn/LearnContentEditForm.jsx';
@@ -48,12 +51,15 @@ import ProblemLeftSB from './components/problems/ProblemLeftSB.jsx';
 import ProblemSolutionsMenu from './components/problems/ProblemSolutionsMenu.jsx';
 import ProblemTopSolutions from './components/problems/ProblemTopSolutions.jsx';
 import ProjectEditForm from './components/problems/ProjectEditForm.jsx';
+import ProjectFlagForm from './components/problems/ProjectFlagForm.jsx';
 import ProfileAbout from './components/profile/ProfileAbout.jsx';
 import ProfileCareers from './components/profile/ProfileCareers.jsx';
 import ProfileDisclaimer from './components/profile/ProfileDisclaimer.jsx';
 import ProfileNotifications from './components/profile/ProfileNotifications.jsx';
 import ProfileProblemsSolutions from './components/profile/ProfileProblemsSolutions.jsx';
 import ProfileResume from './components/profile/ProfileResume.jsx';
+import ProfileSettings from './components/profile/ProfileSettings.jsx';
+import ProfileWorkspace from './components/profile/ProfileWorkspace.jsx';
 import ProsDeleteForm from './components/proscons/ProsDeleteForm.jsx';
 import ProsEditForm from './components/proscons/ProsEditForm.jsx';
 import ProsFlagForm from './components/proscons/ProsFlagForm.jsx';
@@ -83,10 +89,10 @@ import WelcomeCreateForm from './components/welcome/WelcomeCreateForm.jsx';
 //Load Containers
 import AnswerContainer from './containers/AnswerContainer.jsx';
 import ConsContainer from './containers/ConsContainer.jsx';
+import EntranceContainer from './containers/EntranceContainer.jsx';
 import ErrorContainer from './containers/ErrorContainer.jsx';
 import FreeFormContainer from './containers/FreeFormContainer.jsx';
 import FreeFormCommentContainer from './containers/FreeFormCommentContainer.jsx';
-import FullSolutionContainer from './containers/FullSolutionContainer.jsx';
 import LearnContentContainer1 from './containers/LearnContentContainer1.jsx';
 import LearnResourcesContainer1 from './containers/LearnResourcesContainer1.jsx';
 import LoginContainer from './containers/LoginContainer.jsx';
@@ -96,18 +102,28 @@ import ProfileContainer from './containers/ProfileContainer.jsx';
 import ProsContainer from './containers/ProsContainer.jsx';
 import QuestionContainer from './containers/QuestionContainer.jsx';
 import SearchContainer from './containers/SearchContainer.jsx';
-import SubProblemContainer from './containers/SubProblemContainer.jsx';
 import SuggestionCommentContainer from './containers/SuggestionCommentContainer.jsx';
 import SuggestionContainer from './containers/SuggestionContainer.jsx';
 import VersionsContainer from './containers/VersionsContainer.jsx'
 import WelcomeContainer from './containers/WelcomeContainer.jsx';
-// import Profile from './components/Profile.jsx'
+
 //Assets
 import './assets/index.css';
+
+// This may be needed for Google Analytics:
+// One thing to note is you may need to adjust the 
+// window.location argument you push to the ReactGA.pageview() function. 
+// It will really depend how you have set up React Router.
+
+// function fireTracking() {
+//     ReactGA.pageview(window.location.hash);
+// }
 
 
 
 ReactDOM.render(
+  // When we have Google Analytics working it should be:
+  // <Router onUpdate={fireTracking} history={browserHistory}>
   <Router history={browserHistory}>
     <Route path='/' component={App}>
     <IndexRoute component={Intro}></IndexRoute>
@@ -123,22 +139,23 @@ ReactDOM.render(
       <Route path='/404' component={Error404}></Route>
       <Route path='/redirection' component={Redirection}></Route>
     </Route>
-    <Route path='/search' component={SearchContainer}></Route>
-    <Route path='/intro' component={Intro}></Route>
     <Route path='/newsfeed' component={NewsFeedContainer}></Route>
     <Route path='/instructions' component={Instructions}></Route>
-    <Route path='/logincontainer' component={LoginContainer}>
-      <IndexRoute component={LoginContainer}></IndexRoute>
-      <Route path='/login' component={LoginUnit}></Route>
-      <Route path='/register' component={RegisterUnit}></Route>
-    </Route>
     <IndexRoute component={Layout}></IndexRoute>
     <Route path='/home' component={Layout}>
+    <Route path='/introduction' component={Introduction}></Route>
       <IndexRoute component={FullProblem}></IndexRoute>
+      <Route path='/entrance' component={EntranceContainer}></Route>
       <Route path='/welcomecontainer' component={WelcomeContainer}>
         <IndexRoute component={WelcomeCreateButton}></IndexRoute>
         <Route path='/welcome' component={WelcomeCreateButton}></Route>
         <Route path='/welcome/create' component={WelcomeCreateForm}></Route>
+      </Route>
+      <Route path='/search' component={SearchContainer}></Route>
+      <Route path='/logincontainer' component={LoginContainer}>
+        <IndexRoute component={LoginContainer}></IndexRoute>
+        <Route path='/login' component={LoginUnit}></Route>
+        <Route path='/register' component={RegisterUnit}></Route>
       </Route>
       <Route path='/profile/container' component={ProfileContainer}>
         <IndexRoute component={ProfileProblemsSolutions}></IndexRoute>
@@ -150,57 +167,50 @@ ReactDOM.render(
           <IndexRoute component={ProfileAbout}></IndexRoute>
           <Route path='/profile/about' component={ProfileAbout}></Route>
           <Route path='/profile/careers' component={ProfileCareers}></Route>
+          <Route path='/profile/disclaimer' component={ProfileDisclaimer}></Route>
         </Route>
-        <Route path='/profile/disclaimer' component={ProfileDisclaimer}></Route>
+        <Route path='/profile/settings' component={ProfileSettings}></Route>
+        <Route path='/profile/workspace' component={ProfileWorkspace}></Route>
       </Route>
       <Route path='/problem/:probID' component={FullProblem}>
         <IndexRoute component={SideBarProblem}></IndexRoute>
         <Route path='/problem/:probID/sideBar' component={SideBarProblem}>
-          <IndexRoute component={SubProblemContainer}></IndexRoute>
+          <IndexRoute component={Empty}></IndexRoute>
           <Route path='/problem/:probID/create' component={ProblemForm}></Route>
           <Route path='/problem/:probID/edit' component={ProjectEditForm}></Route>
-          <Route path='/problem/:probID/subproblems' component={SubProblemContainer}></Route>
+          <Route path='/problem/:probID/flag' component={ProjectFlagForm}></Route>
+          <Route path='/problem/:probID/subproblems' component={Empty}></Route>
         </Route>
-      </Route>
-      <IndexRoute component={ProblemLeftSB}></IndexRoute>
-        <Route path='/problem/:probID/sb' component={ProblemLeftSB}>
-          <IndexRoute component={ProblemSolutionsMenu}></IndexRoute>
-          <Route path='/problem/:probID/solutions' component={ProblemSolutionsMenu}>
-            <IndexRoute component={ProblemTopSolutions}></IndexRoute>
-            <Route path='/problem/:probID/solutions/create' component={SolutionForm}></Route>
-            <Route path='/problem/:probID/solutions/top' component={ProblemTopSolutions}></Route>
-            <Route path='/fullsolution/:probID/:solutionID/container' component={FullSolutionContainer}>
-              <IndexRoute component={FullSolution}></IndexRoute>
-              <Route path='/fullsolution/:probID/:solutionID' component={FullSolution}>
-                <IndexRoute component={FullSolutionContent}></IndexRoute>
-                <Route path='/fullsolution/:probID/:solutionID/delete' component={SolutionDeleteForm}></Route>
-                <Route path='/fullsolution/:probID/:solutionID/edit' component={SolutionEditForm}></Route>
-                <Route path='/fullsolution/:probID/:solutionID/full' component={FullSolutionContent}>
-                  <IndexRoute component={FullSolutionDescription}></IndexRoute>
-                  <Route path='/fullsolution/:probID/:solutionID/description' component={FullSolutionDescription}></Route>
-                  <Route path='/fullsolution/:probID/:solutionID/pros' component={ProsContainer}>
-                    <IndexRoute component={ProsForm}></IndexRoute>
-                    <Route path='/problem/:probID/:solutionID/pros/pros' component={ProsForm}></Route>
-                    <Route path='/problem/:probID/:solutionID/pros/:proID/edit' component={ProsEditForm}></Route>
-                    <Route path='/problem/:probID/:solutionID/pros/:proID/flag' component={ProsFlagForm}></Route>
-                    <Route path='/problem/:probID/:solutionID/pros/:proID/delete' component={ProsDeleteForm}></Route>
-                  </Route>
-                  <Route path='/fullsolution/:probID/:solutionID/cons' component={ConsContainer}>
-                    <IndexRoute component={ConsForm}></IndexRoute>
-                    <Route path='/problem/:probID/:solutionID/cons' component={ConsForm}></Route>
-                    <Route path='/problem/:probID/:solutionID/cons/:conID/edit' component={ConsEditForm}></Route>
-                    <Route path='/problem/:probID/:solutionID/cons/:conID/flag' component={ConsFlagForm}></Route>
-                    <Route path='/problem/:probID/:solutionID/cons/:conID/delete' component={ConsDeleteForm}></Route>
-                  </Route>                
-                </Route>
-                <Route path='/fullsolution/:probID/:solutionID/versions' component={VersionsContainer}></Route>
-                <Route path='/fullsolution/:probID/:solutionID/fullversion' component={FullVersion}></Route>
-                <Route path='/fullsolution/:probID/:solutionID/versionform' component={VersionForm}></Route>
+        <Route path='/problem/:probID/subprojects' component={Empty}></Route>
+        <Route path='/problem/:probID/solutions' component={ProblemSolutionsMenu}>
+          <IndexRoute component={ProblemTopSolutions}></IndexRoute>
+          <Route path='/problem/:probID/solutions/create' component={SolutionForm}></Route>
+        </Route>
+        <Route path='/problem/:probID/proposal/:solutionID/container' component={FullSolution}>
+            <IndexRoute component={FullSolutionContent}></IndexRoute>
+            <Route path='/problem/:probID/proposal/:solutionID' component={FullSolutionContent}>
+            <Route path='/fullsolution/:probID/:solutionID/delete' component={SolutionDeleteForm}></Route>
+            <Route path='/fullsolution/:probID/:solutionID/edit' component={SolutionEditForm}></Route>
+              <Route path='/fullsolution/:probID/:solutionID/pros' component={ProsContainer}>
+                <IndexRoute component={ProsForm}></IndexRoute>
+                <Route path='/problem/:probID/:solutionID/pros/pros' component={ProsForm}></Route>
+                <Route path='/problem/:probID/:solutionID/pros/:proID/edit' component={ProsEditForm}></Route>
+                <Route path='/problem/:probID/:solutionID/pros/:proID/flag' component={ProsFlagForm}></Route>
+                <Route path='/problem/:probID/:solutionID/pros/:proID/delete' component={ProsDeleteForm}></Route>
               </Route>
+              <Route path='/fullsolution/:probID/:solutionID/cons' component={ConsContainer}>
+                <IndexRoute component={ConsForm}></IndexRoute>
+                <Route path='/problem/:probID/:solutionID/cons' component={ConsForm}></Route>
+                <Route path='/problem/:probID/:solutionID/cons/:conID/edit' component={ConsEditForm}></Route>
+                <Route path='/problem/:probID/:solutionID/cons/:conID/flag' component={ConsFlagForm}></Route>
+                <Route path='/problem/:probID/:solutionID/cons/:conID/delete' component={ConsDeleteForm}></Route>
+              </Route>                
             </Route>
-          </Route>
-          <IndexRoute component={ProblemDiscussMenu}></IndexRoute>
-          <Route path='/problem/:probID/discuss' component={ProblemDiscussMenu}>
+            <Route path='/fullsolution/:probID/:solutionID/versions' component={VersionsContainer}></Route>
+            <Route path='/fullsolution/:probID/:solutionID/fullversion' component={FullVersion}></Route>
+            <Route path='/fullsolution/:probID/:solutionID/versionform' component={VersionForm}></Route>
+        </Route>
+        <Route path='/problem/:probID/discuss' component={ProblemDiscussMenu}>
             <IndexRoute component={QuestionContainer}></IndexRoute>
             <Route path='/problem/:probID/questions/container' component={QuestionContainer}>
               <IndexRoute component={QuestionForm}></IndexRoute>
@@ -247,9 +257,7 @@ ReactDOM.render(
                 <Route path='/problem/:probID/learn/content/:learnItemID/edit' component={LearnContentEditForm}></Route>
                 <Route path='/problem/:probID/learn/content/:learnItemID/flag' component={LearnContentFlagForm}></Route>
                 <Route path='/problem/:probID/learn/content/:learnItemID/delete' component={LearnContentDeleteForm}></Route>
-              
              </Route>
-           
               <Route path='/problem/:probID/learn/resources/full' component={LearnResourcesContainer1}>
                 <IndexRoute component={LearnResourcesForm}></IndexRoute>
                 <Route path='/problem/:probID/learn/resources' component={LearnResourcesForm}></Route>
@@ -259,7 +267,12 @@ ReactDOM.render(
                 <Route path='/problem/:probID/learn/resources/:resourceID/embed' component={LearnResourcesEmbed}></Route>            
               </Route>
             </Route>
+      <IndexRoute component={ProblemLeftSB}></IndexRoute>
+        <Route path='/problem/:probID/sb' component={ProblemLeftSB}>
+          <IndexRoute component={ProblemSolutionsMenu}></IndexRoute>
           </Route>
+          <IndexRoute component={ProblemDiscussMenu}></IndexRoute>
+        </Route>
        
       </Route>
     </Route>

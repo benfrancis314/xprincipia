@@ -8,6 +8,12 @@ export default class Redirection extends React.Component {
                <div id="loader"></div>
           </div>
       </div>
+
+/*<div id="logoXP">
+    Explore
+</div>*/
+
+
       );
    }
 }

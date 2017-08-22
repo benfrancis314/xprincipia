@@ -8,10 +8,11 @@ export default class HeaderAvatar extends React.Component {
       return (
         <div id="avatarHeader">
             <Link to="/profile" id="whiteHeader">
-            <div id="avatarFullName">
-                <div id="headerName">{cookie.load("userName")}</div>
-                <img src={require('../assets/dnaAvatar.svg')} id="avatarImage" width="33" height="33" alt="User avatar, DNA Helix" />
-            </div>
+                <div id="avatarFullName">
+                    <div id="headerName">{cookie.load("userName")}</div>
+                    {/*<div id="commandButton">Command</div>*/}
+                    {/*<img src={require('../assets/dnaAvatar.svg')} id="avatarImage" width="33" height="33" alt="User avatar, DNA Helix" />*/}
+                </div>
             </Link>
         </div>
       );

@@ -1,35 +1,51 @@
 import React from 'react';
 import SolutionUnit from '../solutions/SolutionUnit.jsx';
-import SideBarMore from '../SideBarMore.jsx';
 import axios from 'axios';
-import {Config} from '../../config.js'
+import {Config} from '../../config.js';
 
 export default class ProblemSolutionsMenu extends React.Component {
   constructor(props){
         super(props);
 
         this.state = {
-            solutions: []
+            solutions: [],
+            probID: []
         }
 
     };
-        componentDidMount(){
+    componentDidMount(){
         var self = this;
-        window.scrollTo(0,0);
-        return axios.get( Config.API + '/auth/solutions/problemID?id='+this.props.params.probID).then(function (response) {
+        return axios.get( Config.API + '/solutions/problemID?id='+this.props.probID).then(function (response) {
             self.setState({
-                solutions: response.data
+                solutions: response.data,
+            })
+        })
+    }
+    componentWillReceiveProps (nextProps){
+        var self = this;
+        return axios.get( Config.API + '/solutions/problemID?id='+nextProps.probID).then(function (response) {
+            self.setState({
+                solutions: response.data,
+                probID: nextProps.probID
             })
         })
     }
 
    render() {
+    
+    if (this.state.solutions === null) {
+        // alert('a1');
+        return (
+            <div>
+                XP
+            </div>
+        );
+    } else {
       return (
         <div>
-            <SolutionUnit solutions={this.state.solutions} probID={this.props.params.probID}/>
-            <SideBarMore />
+            <SolutionUnit solutions={this.state.solutions} probID={this.props.probID}/>
         </div>
 
       );
-   }
+   }}
 }

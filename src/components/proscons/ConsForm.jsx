@@ -1,7 +1,8 @@
 import React from 'react';
 import axios from 'axios';
 import cookie from 'react-cookie';
-import {Config} from '../../config.js'
+import {Config} from '../../config.js';
+import $ from 'jquery';
 
 export default class ConsForm extends React.Component {
 
@@ -27,24 +28,45 @@ this.state.con = document.getElementById('conTextArea').value
     })
       .then(function (result) {
         document.location = window.location.pathname 
+        // scroll to cons again
       })
       .catch(function (error) {
-        alert("I'm sorry, there was a problem with your request.")
+        // console.log(error.response.data)
+          $(document).ready(function() {
+              $('#notification').attr('id','notificationShow').hide().slideDown();
+
+                if (error.response.data == '[object Object]') {
+                  return (
+                    $(document).ready(function() {
+                      $('#notificationLoginRegisterContainer').attr('id','notificationLoginRegisterContainerShow');
+                      $('#notificationFeedbackShow').attr('id','notificationFeedback');
+                      $('#notificationContent').html('Please <span id="blue">login </span>to vote');
+                    })
+                  );
+                }  else if (error.response.data != '') {
+                $('#notificationContent').text(error.response.data);
+              }
+          });
       });
 }
 
 
    render() {
       return (
-
-      <div id="suggestionFormComponent">
-            <form id="suggestionForm">
-                <fieldset>
-                    <legend>Cons</legend>
-                         <textarea name="suggestionText" required="required" id="conTextArea" autoFocus ></textarea>
-                         <input type="button" value="Add" onClick={this.postCon} id="addProsCons"/>
-                </fieldset>
-            </form>
+      <div>
+        <div id="discussMenuEnd">
+          Cons
+        </div>
+        <div id="suggestionFormComponent">
+              <form id="suggestionForm">
+                  <fieldset  id='fieldSetNoBorderPadding'>
+                      {/*<legend>Pros</legend>*/}
+                          <textarea name="suggestionText" required="required" id="conTextArea" placeholder="Add a con towards the merit of this proposal. " autoFocus ></textarea>
+                          {/*Replace with blueAdd button*/}
+                          <input type="button" value="Add" onClick={this.postCon} id="addProsCons"/>
+                  </fieldset>
+              </form>
+        </div>
       </div>
 
       );

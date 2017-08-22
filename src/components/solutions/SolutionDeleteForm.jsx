@@ -2,7 +2,8 @@ import React from 'react';
 import { Link } from 'react-router';
 import axios from 'axios';
 import cookie from 'react-cookie';
-import {Config} from '../../config.js'
+import {Config} from '../../config.js';
+import $ from 'jquery';
 
 export default class SolutionDeleteForm extends React.Component {
 
@@ -31,10 +32,24 @@ export default class SolutionDeleteForm extends React.Component {
         }
       })
       .then(function (result) {
-      document.location = '/problem/'+ self.props.params.probID + '/solutions/top'
+      document.location = '/problem/'+ self.props.params.probID + '/subproblems'
     })
       .catch(function (error) {
-        alert("I'm sorry, there was a problem with your request.")
+        // console.log(error.response.data)
+          $(document).ready(function() {
+              $('#notification').attr('id','notificationShow').hide().slideDown();
+              if (error.response.data != '') {
+                $('#notificationContent').text(error.response.data);
+              }
+              else if (error.response.data == '[object Object]') {
+                return (
+                  $(document).ready(function() {
+                    $('#notificationLoginRegisterContainer').attr('id','notificationLoginRegisterContainerShow');
+                    $('#notificationContent').html('Please <span id="blue">login </span>to contribute');
+                  })
+                );
+              } 
+          });
       });
   }
 
@@ -47,7 +62,7 @@ export default class SolutionDeleteForm extends React.Component {
                     <div>Are you sure you would like to delete this proposal?</div>
                     <br />
                     <div onClick={this.deleteSolution} id="deleteButton">Delete</div>
-                    <Link to={`/fullsolution/${this.props.params.probID}/${this.props.params.solutionID}/full`}>
+                      <Link to={`/problem/${this.props.params.probID}/proposal/${this.props.params.solutionID}`}>
                         <div id="returnButton">Exit</div>
                     </Link>
             </fieldset>

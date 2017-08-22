@@ -2,7 +2,8 @@ import React from 'react';
 import { Link } from 'react-router';
 import axios from 'axios';
 import cookie from 'react-cookie';
-import {Config} from '../../config.js'
+import {Config} from '../../config.js';
+import $ from 'jquery';
 
 export default class LearnResourcesUnit1 extends React.Component {
     constructor(props){
@@ -48,17 +49,32 @@ export default class LearnResourcesUnit1 extends React.Component {
 
        function  submitVote() {
        axios.post( Config.API + '/auth/vote/create', {
-           Type: 8, //TODO: Change to correct type
+           Type: 8,
            TypeID: resource.ID,
            username : cookie.load("userName"),
            
         })
         .then(function (result) {
-            document.location = window.location.pathname;
+            document.location = window.location.pathname 
+
+          
         })
-        .catch(function (error) {
-            alert("You may only vote on a resource once. ");
-        })
+      .catch(function (error) {
+          $(document).ready(function() {
+              $('#notification').attr('id','notificationShow').hide().slideDown();
+
+                if (error.response.data == '[object Object]') {
+                  return (
+                    $(document).ready(function() {
+                      $('#notificationLoginRegisterContainer').attr('id','notificationLoginRegisterContainerShow');
+                      $('#notificationContent').html('Please <span id="blue">login </span>to vote');
+                    })
+                  );
+                }  else if (error.response.data != '') {
+                $('#notificationContent').text(error.response.data);
+              }
+          });
+      });
   }
       function unVote() {
       axios.delete( Config.API + '/auth/vote/delete' ,{
@@ -71,9 +87,22 @@ export default class LearnResourcesUnit1 extends React.Component {
         .then(function (result) {
             document.location = window.location.pathname 
         })
-        .catch(function (error) {
-            alert("I'm sorry, there was a problem with your request. ")
-        })
+    //   .catch(function (error) {
+    //       $(document).ready(function() {
+    //           $('#notification').attr('id','notificationShow').hide().slideDown();
+
+    //             if (error.response.data == '[object Object]') {
+    //               return (
+    //                 $(document).ready(function() {
+    //                   $('#notificationLoginRegisterContainer').attr('id','notificationLoginRegisterContainerShow');
+    //                   $('#notificationContent').html('Please <span id="blue">login </span>to vote');
+    //                 })
+    //               );
+    //             }  else if (error.response.data != '') {
+    //             $('#notificationContent').text(error.response.data);
+    //           }
+    //       });
+    //   });
         
     }
   
@@ -237,23 +266,21 @@ function floatToDecimal(float) {
 
 function url(resourceURL){
 
-    if (resourceURL.substring(0,7) === 'https://' || resourceURL.substring(0,6) === 'http://') {
+    if (resourceURL.includes('https://') || resourceURL.includes('http://')) {
         return ( resourceURL );
 
     } 
     else if (
         (resourceURL.substring(0,3) !== 'www.')  &&  
         (
-            (resourceURL.slice(-4) === '.com') || (resourceURL.slice(-4) === '.org') || (resourceURL.slice(-4) === '.edu') || (resourceURL.slice(-4) === '.gov') || (resourceURL.slice(-4) === '.net') )
+            (resourceURL.includes('.com')) || (resourceURL.includes('.org')) || (resourceURL.includes('.edu')) || (resourceURL.includes('.gov')) || (resourceURL.includes('.net')) )
             ) 
         {
         return ( 'https://' + resourceURL );
     }
 
     else {
-        // return ( resourceURL );
         return ( 'https://www.google.com/#q=' + resourceURL );
-        // return ( 'https://en.wikipedia.org/wiki/' + resourceURL );
     }
 }
 

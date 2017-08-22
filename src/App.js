@@ -3,6 +3,8 @@ import axios from 'axios'
 import cookie from 'react-cookie'
 import './assets/App.css';
 import './assets/index.css';
+import { Link } from 'react-router';
+import $ from 'jquery';
 
 
 class App extends React.Component {
@@ -37,20 +39,27 @@ class App extends React.Component {
   onLogout() {
     cookie.remove('userToken', { path: '/' });
   }
+  hideNotification() {
+    $(document).ready(function() {
+        $('#notificationShow').attr('id','notification');
+     });
+    };
+    
   render() {
     //Check if user is logged in
-    if (this.state.userToken === undefined ){
+    // if (this.state.userToken === undefined ){
       //redirect to login page if not logged in. Register is also allowed
-      if (window.location.pathname !== "/login" && window.location.pathname !== "/register"){
-        document.location = "/login";
-        return (
-        <div>
-          <p></p>
-          {/*Put 404 error image and also wait 2 seconds before redirecting*/}
-        </div>
+      // if (window.location.pathname !== "/login" && window.location.pathname !== "/register" && window.location.pathname !== "/introduction"){
+      //   document.location = "/login";
+      //   return (
+        /*<div>
+          <p>error image</p>*/
+          /*Put 404 error image and also wait 2 seconds before redirecting*/
+        /*</div>
+
         )
       }
-    } 
+    } */
 
     //Load the welcome page if route is '/'
     if (window.location.pathname === "/" || this.state.undefinedPaths.inArray(window.location.pathname) //continue to next line
@@ -63,10 +72,20 @@ class App extends React.Component {
       <div className="App">
         {this.props.children}
         <div id="notification">
-          <div id="notificationHeader">Notification</div>
-          <br />
-          <div id="notificationContent">Notification Content</div>
-          <div id="notificationReturn">Return</div>
+          <div id="notificationHeader">!</div>
+          <div id="notificationContent">We apologize for this error. In your <span id="blue">Personal Headquarters</span>, please tell us the error under <span id="blue">Feedback</span>.</div>
+          <div id="notificationLoginRegisterContainer">
+            <Link to='/login'>
+              <div id="notificationLogin" onClick={this.hideNotification}>Login</div>
+            </Link>
+            <Link to='/register'>
+            <div id="notificationRegister" onClick={this.hideNotification}>Register</div>
+            </Link>
+          </div>
+          <Link to='/profile/feedback'>
+              <div id="notificationFeedbackShow" onClick={this.hideNotification}>Feedback</div>
+          </Link>
+          <div id="notificationReturn" onClick={this.hideNotification}>Return</div>
         </div>
       </div>
       );

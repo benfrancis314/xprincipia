@@ -1,7 +1,8 @@
 import React from 'react';
 import axios from 'axios';
 import cookie from 'react-cookie';
-import {Config} from '../../config.js'
+import {Config} from '../../config.js';
+import $ from 'jquery';
 
 export default class QuestionForm extends React.Component {
 
@@ -32,7 +33,20 @@ postQuestion() {
         document.location = window.location.pathname 
       })
       .catch(function (error) {
-        alert("I'm sorry, there was a problem with your request.")
+          $(document).ready(function() {
+              $('#notification').attr('id','notificationShow').hide().slideDown();
+
+                if (error.response.data == '[object Object]') {
+                  return (
+                    $(document).ready(function() {
+                      $('#notificationLoginRegisterContainer').attr('id','notificationLoginRegisterContainerShow');
+                      $('#notificationContent').html('Please <span id="blue">login </span>to ask a question');
+                    })
+                  );
+                }  else if (error.response.data != '') {
+              $('#notificationContent').text(error.response.data);
+              }
+          });
       });
     }
 
@@ -42,14 +56,19 @@ postQuestion() {
 
    render() {
       return (
-      <div id="questionFormComponent">
-            <form id="questionForm">
-                <fieldset>
-                    <legend>Questions</legend>
-                         <textarea name="questionText" required="required" id="questionTextArea" placeholder="Ask a question you have about this project or view those asked by your peers. " autoFocus ></textarea>
-                         <input type="button" value="Ask" onClick={this.postQuestion} id="askQuestion"/>
-                </fieldset>
-            </form>
+      <div>
+        <div id="discussMenuEnd">
+          Questions
+        </div>
+        <div id="questionFormComponent">
+              <form id="questionForm">
+                  <fieldset id='fieldSetNoBorderPadding'>
+                      {/*<legend id="questionLegend">Questions</legend>*/}
+                          <textarea name="questionText" required="required" id="questionTextArea" placeholder="Ask a question you have about this project or view those asked by your peers. " autoFocus ></textarea>
+                          <input type="button" value="Ask" onClick={this.postQuestion} id="askQuestion"/>
+                  </fieldset>
+              </form>
+        </div>
       </div>
 
       );

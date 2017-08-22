@@ -1,3 +1,55 @@
+/*CSS Documentation
+
+Organization
+
+The CSS is organized in clusters of similar design, 
+usually by component but sometimes by similarity in style. 
+These are often localized but also exist on larger scales.
+
+Around the first two thirds of the code entire pages are 
+attempted to be grouped together, although there is often 
+blending between pages due to similar styles.
+
+Around the final third of the code the organization 
+shifts to a focus on chronology, where more recent changes 
+are listed later. This is due to a quickly shifting code, 
+where the most recent code is most likely to be changed or removed.
+
+The best strategy for working with the stylesheet is using COMMAND F 
+to search the document by the ID used. Most components have unique IDs, 
+although there is some overlap. This can often be determined by looking at the name. 
+
+The ID name is named to be most intuitive. For instance, if it is a button leading
+ to the introduction, the ID is “introductionButton”. If it is named according to its styling, 
+ like “fullWide”, which is only width: 100, then it is likely used universally and 
+ should not be changed due to ubiquity in the code. 
+
+Creating new ids should not be strayed away from, and is generally encouraged, 
+as elements that similar now may shift to being radically different in an update. 
+
+
+Guide
+
+Lean on using %’s instead of px’s, so everything is in the same spacing units. 
+
+There has been iteration of nomenclature around the site, although some 
+IDs do not reflect this. For instance, a Proposal used to be a Solution. 
+It is best not to get attached to a name, since any of them may change over time. 
+When new IDs are created use their current name in the intuitive naming scheme. 
+
+Solution => Proposal
+Problem => Project
+
+If working in tandem with the App.css sheet, it is highly recommended 
+to use the split editor screen and using COMMAND F for finding the elements.
+
+
+Author: Ben Francis
+Last updated: 8/11/17
+ */
+
+
+
 /*Global*/
 
     * {
@@ -40,6 +92,13 @@
       display: inline-flex;
     	flex-direction: column;
       width: 40%;
+    }
+    #columnContainerProject {
+      display: inline-flex;
+    	flex-direction: column;
+      width: 40%;
+      height: 90%;
+      flex: 2 2 auto;
       /*justify-content: space-between;*/
     }
     h1 {
@@ -99,11 +158,35 @@
     #blue {
       color: #00dcff !important;
     }
+    #blueOpen {
+      color: #00dcff !important;
+      font-family: 'Open Sans' !important;
+    }
     #green {
       color: #00ffdc !important;
     }
+    #whiteOpen {
+      color: #dddddd !important;
+      font-family: 'Open Sans' !important;
+    }
+    #gray {
+      color: #888888 !important;
+    }
     #nodisplay {
       display: none;
+    }
+    #iOpen {
+      font-family: 'Open Sans' !important;
+      font-style: italic;
+    }
+    #iBlueOpen {
+      color: #00dcff !important;
+      font-family: 'Open Sans' !important;
+      font-style: italic;
+    }
+    #dot {
+      /*HTML is &sdot;*/
+      font-size: 50%;
     }
     #embedLink {
       width: 800px;
@@ -111,6 +194,10 @@
       overflow: auto;
       border: 2px solid #00dcff;
       box-shadow: 0 0 3pt 3pt rgba(0,220,255,0.5)
+    }
+    #thinDiv1 {
+      width: 90%;
+      margin: 0 auto;
     }
 
       /*Scrollbar*/
@@ -246,7 +333,7 @@
     border-width: 1px 1px 1px 1px !important;
     border-radius: 0% !important;
     box-shadow: 0 0 1pt 1pt rgba(0,220,255,0.5) !important;
-    width: 94.5% !important;
+    width: 90.5% !important;
     height: auto !important;
     word-wrap: break-word !important; 
     align-items: center !important; 
@@ -287,6 +374,7 @@
   width: 100% !important;
   margin: 0 auto !important;
   margin-top: 5% !important;
+  margin-bottom: 3% !important;
 }
 #welcomeProblemsHeader1, #welcomeProblemsHeader2,
 #welcomeProblemsHeader3, #welcomeProblemsHeader4 {
@@ -336,6 +424,7 @@
   margin: 0 auto !important;
   margin-bottom: 5px !important;
 }
+
 #problemIntro {
   width: 100% !important;
 }
@@ -347,8 +436,6 @@
 }
 #problemSummary, #problemSummaryLeftSB {
   margin: 0 auto !important;
-  margin-left: 3% !important;
-  margin-right: 3% !important;
 }
 #columnContainer {
   width: 100% !important;
@@ -388,10 +475,9 @@
 }
 #SPUnitList {
   flex-direction: column  !important;
-  display: flex  !important;
 }
 #SPUnit {
-  width: 40em !important;
+  width: 16em !important;
   margin: 0 auto !important;
   font-size: 130% !important;
 }
@@ -464,7 +550,9 @@
 #projectsTitleProfile, #proposalsTitleProfile {
   border-top-width: 1px !important;
 }
-
+#profileAboutQuote {
+  color: #aaaaaa !important;
+}
 /*Discuss*/
 
 /*This is trying to get question text to go beneath options
@@ -477,8 +565,9 @@ like vote and comments.*/
 /*Header*/
 #logoName {
   font-size: 110% !important;
-  letter-spacing: 12px !important;
+  letter-spacing: 10px !important;
   flex: 1 6 auto !important;
+<<<<<<< HEAD
   width: 80% !important;
   margin-left: 5% !important;
   text-align: left !important;
@@ -486,6 +575,12 @@ like vote and comments.*/
 #avatarImage {
   margin-right: 0% !important;
   margin-left: 3px !important;
+=======
+  width: 100% !important;
+  margin-top: 1% !important;
+  margin-left: 0% !important;
+  margin-bottom: 2% !important;
+>>>>>>> v3benJuly2HeaderFix
 }
 
 /*Footer*/
@@ -513,23 +608,176 @@ like vote and comments.*/
   margin: 0 auto !important;
 }
 
+/*Testing issue of mobile being too wide*/
+#header, #footer, #introContainer {
+  /*display: none !important;*/
 }
-
-@media screen and (max-width: 800px) {
-#SPUnit {
-  width: 28em !important;
+/*#main {
+  width: 100vw !important;
+}*/
+/*Testing ids that might fix problem*/
+#problemPercent{
   margin: 0 auto !important;
-  font-size: 125% !important;
 }
+#problemSummary {
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+  padding-left: 3% !important;
+  padding-right: 3% !important;
 }
 
+
+/*V3 Mobile Fixes*/
+
+
+#SBButton, #SBButton1, #SBButtonNoHover {
+  width: 100% !important;
+}
+#parentButton {
+  width: 100% !important;
+  padding-top: 1% !important;
+  padding-bottom: 1% !important;
+}
+#voteProblem, #votedProblem, #SBButtonDiscuss, #SBButtonLearn {
+  width: 12em !important;
+  font-size: 130% !important;
+}
+#projectInteractMenu, #projectInteractDiscussMenu {
+  width: 100% !important;
+}
+#proposalFormCreateTitle {
+  width: 100% !important;
+}
+#createForm {
+  padding: 0px 0px 5px 0px !important;
+  width: 100% !important;
+}
+#avatarHeader {
+  flex: 1 1 auto !important;
+  width: 100% !important;
+}
+#logo {
+  width: 100% !important;
+}
+body, html, #main {
+  width: 99.99% !important;
+}
+#welcomeIntroductionButton {
+  width: 100% !important;
+  border-radius: 0px 0px 0px 0px !important;
+}
+#welcomeUnitsContainer {
+  margin-bottom: 5% !important;
+}
+#header {
+  display: flex !important;
+  flex-direction: column !important;
+}
+#headerName {
+  width: 100% !important;
+  text-align: center !important;
+  margin: 0 auto !important;
+  font-size: 70% !important;
+  padding-left: 0px !important;
+  padding-right: 0px !important;
+}
+#logo, #avatarHeader, #headerLoginContainer {
+  flex: 1 1 auto !important;
+}
+#headerLoginContainer {
+  margin-top: 4% !important;
+  margin-bottom: 4% !important;
+}
+#loginHeaderEmail, #loginHeaderPassword {
+  width: 8em !important;
+  text-align: center !important;
+  margin: 0 auto !important;
+  display: block !important;
+  font-size: 90% !important;
+}
+#loginHeaderSubmitButton, #registerHeaderButton {
+  width: 8em !important;
+  margin: 0 auto !important;
+  display: block !important;
+  padding: 0 !important;
+  font-size: 90% !important;
+}
+#registerHeaderButton {
+  margin-bottom: 2% !important;
+}
+#introductionButton {
+  width: 100% !important;
+  margin-top: 4% !important;
+}
+#welcomeIntroductionButtonActive {
+  width: 100% !important;
+  border-radius: 0px !important;
+}
+#introductionContainer {
+  width: 100% !important;
+  padding: 0 !important;
+}
+#introductionWelcome {
+  padding: 0 !important;
+}
+#introRegisterJoin {
+  width: 100% !important;
+}
+#introRegisterFullName, #introRegisterUserName,
+#introRegisterEmail, #introRegisterPassword {
+  width: 80% !important;
+}
+#introductionProjectTitle {
+  text-align: center !important;
+}
+#questionUnit, #suggestionUnit, #answerUnit, #prosConsUnit {
+  flex-direction: column !important;
+}
+#suggestionContent, #answerContent {
+  width: 100% !important;
+  border-width: 1px 1px 1px 1px !important;
+  padding-left: 0px !important;
+  padding-right: 0px !important;
+  margin: 0 auto !important;
+}
+#suggestionVote, #suggestionVoted, #suggestionVoteNoComments, #suggestionVotedNoComments {
+  width: 100% !important;
+  border-width: 1px 1px 1px 1px !important;
+  margin-bottom: 2% !important;
+  padding-left: 0px !important;
+  padding-right: 0px !important;
+}
+#discussHeader {
+  margin-left: 2% !important;
+}
+#deleteSBButton, #editSBButton, #commentSBButtonUser{
+  padding-left: 0px !important;
+  padding-right: 0px !important;
+}
+#questionTextArea, #answerTextArea, 
+#suggestionTextArea, #commentTextArea,
+#proTextArea, #conTextArea, 
+#resourcesTextArea, #learnContentTextArea, 
+#freeFormTextArea {
+  width: 70% !important;
+}
+#fieldSetNoBorderPadding {
+  padding-left: 0px !important;
+  padding-right: 0px !important;
+  margin-left: 0px !important;
+  margin-right: 0px !important;
+}
+
+
+
+
+
+
+}
 
 @media screen and (max-width: 600px) {
 
 /*Header*/
-#headerName {
-  display: none !important;
-}
 #explore {
   display: none !important;
 }
@@ -537,11 +785,7 @@ like vote and comments.*/
   font-size: 150% !important;
   letter-spacing: 16px !important;
   flex: 1 6 auto !important;
-  width: 80% !important;
-}
-#avatarHeader {
-  flex: 1 1 auto !important;
-  width: 7% !important;
+  width: 100% !important;
 }
 
 /*Welcome Page*/
@@ -675,6 +919,15 @@ like vote and comments.*/
     	font-size: 90%;
     	text-align: justify;
     }
+    #questionForm {
+      /*margin-top: 2%;*/
+    }
+    #questionLegend {
+      color: #00dcff;
+      margin: 0 auto;
+      font-size: 125%;
+      padding: 5px;
+    }
     #questionContent {
     	flex: 3 3 auto;
     	font-family: 'Open Sans';
@@ -731,7 +984,7 @@ like vote and comments.*/
     #editSBButtonAnswer, #flagSBButton {
       flex: 1 1 auto;
       color: #00ffdc;
-      background-color: inherit;
+      background-color: rgba(0,220,255,0.05);
       border: 1px solid #00dcff;
       border-radius: 2px 0px 0px 2px;
       cursor: pointer;
@@ -748,7 +1001,7 @@ like vote and comments.*/
       box-shadow: 0 0 0pt 0pt rgba(255,127,127,0.5);
     }
     #commentSBButtonUser {
-      border-radius: 0px 0px 0px 0px;
+      border-radius: 0px 0px 0px 3px;
     }
     #editSBButton {
       border-width: 1px 0px 1px 0px;
@@ -801,15 +1054,22 @@ like vote and comments.*/
       text-align: justify;
     }
     #answerUnit {
-      display: -webkit-box;
-      display: -moz-box;
-      display: -ms-flexbox;
-      display: -webkit-flex;
       display: flex;
       flex-direction: row;
       font-family: 'Open Sans';
       padding-top: 10px;
       width: 100%;
+    }
+    #answerQuestionUnit {
+      display: flex;
+      flex-direction: row;
+      font-family: 'Open Sans';
+      padding-top: 10px;
+      width: 100%;
+      border: 1px solid #00dcff;
+      border-radius: 3px;
+      margin-top: 1%;
+      margin-bottom: 1%;
     }
     #answerContent {
     	flex: 3 3 auto;
@@ -845,14 +1105,32 @@ like vote and comments.*/
 
  /*CreateProblem and Create Solution*/
 
+    #createProblemBox {
+      margin-top: 0%;
+    }
     #createForm {
       color: #00dcff;
       height: auto;
       padding: 0px 5px 5px 5px;
-      width: 90%;
+      width: 80%;
       margin: 0 auto;
-      background-color: rgba(0,220,255,0.025);
+      /*background-color: rgba(0,220,255,0.025);*/
      }
+    #proposalFormCreateTitle {
+      text-align: center;
+      color: #ffffff;
+      margin: 0 auto;
+      margin-top: 3%;
+      margin-bottom: 2%;
+      width: 70%;
+      padding: 2% 0% 2% 0%;
+      font-size: 175%;
+      letter-spacing: 6px;
+      border: 1px solid #dddddd;
+      border-width: 1px 1px 1px 1px;
+      border-radius: 3px 3px 3px 3px;
+      background-color: rgba(0,220,255, 0.05);
+    }
     #solutionDeleteForm, #solutionEditForm {
       color: #00dcff;
       height: auto;
@@ -879,6 +1157,10 @@ like vote and comments.*/
     	text-align: left;
     	height: 5em;
     }
+    #solutionSummaryForm, #solutionDescriptionForm, 
+    #solutionReferencesForm, #problemSummaryForm {
+      background-color: rgba(0,220,255, 0.05);
+    }
     #projectEditSummaryForm {
       font-family: 'Open Sans';
     	text-align: left;
@@ -891,10 +1173,11 @@ like vote and comments.*/
       font-family: 'Alegreya Sans SC', sans-serif;
       color: #ffffff;
       margin: 0 auto;
-      letter-spacing: 6px;
+      letter-spacing: 4px;
       border: 1px solid #ffffff;
       border-radius: 3px;
       box-shadow: 0 0 1pt 1pt rgba(255,255,255,0.5);
+      background-color: rgba(0,220,255, 0.05);
     }
     #projectEditTitleForm {
       font-family: 'Alegreya Sans SC', sans-serif;
@@ -906,7 +1189,7 @@ like vote and comments.*/
       box-shadow: 0 0 1pt 1pt rgba(255,255,255,0.5);
     }
     #problemTitleFormLabel, #problemFieldFormLabel, #problemSummaryFormLabel,
-    #problemDescriptionFormLabel, 
+    #problemDescriptionFormLabel, #projectTitleProposalFormLabel,
     #problemReferencesFormLabel, #solutionTitleFormLabel, #problemSummaryFormLabel,
     #solutionDescriptionFormLabel, #solutionReferenceFormLabel, #solutionSummaryFormLabel,
     #editSummaryFormLabel, #editDescriptionFormLabel, #editReferencesFormLabel     {
@@ -916,8 +1199,14 @@ like vote and comments.*/
       margin: 0 auto;
       margin-top: 1%;
     }
+    #projectTitleProposalFormLabel{
+      /*margin-top: 4%;*/
+      color: #00dcff;
+    }
     #solutionTitleFormLabel {
-      margin-top: 4%;
+      margin-top: 2%;
+      margin-bottom: 1%;
+      color: #dddddd;
     }
     #problemTitleFormLabel {
       margin-top: 0%;
@@ -938,6 +1227,9 @@ like vote and comments.*/
     }
     #solutionTitleForm {
       font-family: 'Alegreya Sans SC';
+      border-color: #dddddd;
+      background-color: rgba(0,220,255, 0.05);
+      margin: 0 auto;
     }
     #solutionEditReferencesForm {
       margin-bottom: 3%;
@@ -948,6 +1240,16 @@ like vote and comments.*/
     fieldset {
     	border: 1px solid #00dcff;
       background-color: inherit;
+    }
+    #fieldSetSideBorder {
+      border-width: 0px 1px;
+    }
+    #fieldSetNoBorder {
+      border-width: 0px;
+    }
+    #fieldSetNoBorderPadding {
+      border-width: 0px;
+      padding-top: 0px;
     }
     input, textarea {
       font-family: 'Open Sans', sans-serif;
@@ -992,11 +1294,11 @@ like vote and comments.*/
     	display: block;
     	color: #00dcff;
     	border: 1px solid #00dcff;
-    	background-color: rgba(0,220,255,0);
+    	background-color: rgba(0,220,255, 0.05);
     	width: 50%;
     	margin: 0 auto;
-      margin-top: 3%;
-      margin-bottom: 2%;
+      margin-top: 2%;
+      margin-bottom: 1%;
       font-family: 'Alegreya Sans SC', sans-serif;
       transition: all 0.5s ease 0s;
       letter-spacing: 2px;
@@ -1048,10 +1350,14 @@ like vote and comments.*/
 
 
     #fullProblem {
-      width: 60%;
-      float: left;
+      margin: 0 auto;
+      width: 65%;
+      /*float: left;*/
       flex: 1 1 auto;
-      margin-top: 1.5%;
+      /*display: inline-flex;
+      flex-direction: row;
+      justify-content: flex-start;*/
+      /*margin-top: 1.5%;*/
     }
     #solutionHeader, #problemHeader {
     	display: inline-flex;
@@ -1106,6 +1412,9 @@ like vote and comments.*/
     #solutionReferences:hover, #xp:hover {
       color: rgba(255,255,255,1);
     }
+    #solutionTitle:hover {
+      cursor: pointer;
+    }
     #elementLabel {
       flex: 0 1 auto;
       margin: 1px 5% 0% 0%;
@@ -1118,6 +1427,13 @@ like vote and comments.*/
       letter-spacing: 12px;
       color: #00dcff;
       text-align: center;
+    }
+    #proposalToggleOff {
+      display: none;
+    }
+    #proposalToggleOn {
+      display: inline;
+
     }
 
 /*End UserSolution, FullSolution, and Problem*/
@@ -1198,7 +1514,21 @@ like vote and comments.*/
 
 /*End Errors*/
 
+/*XP Logo for marketing*/
 
+#logoXP {
+  width: 100%;
+  height: 100px;
+  margin: 0 auto;
+  letter-spacing: 16px;
+  font-size: 700%;
+  /*margin-left: 45%;*/
+  margin-top: 20%;
+  /*border: 1px solid #00dcff;
+  border-radius: 50%;*/
+  /*padding: 10px;*/
+  text-align: center;
+}
 
 /*Header*/
 
@@ -1215,17 +1545,22 @@ like vote and comments.*/
       text-align: center;
       padding: 3px 0px 2px 0px;
       font-size: 110%;
-      /*transition: all 0.5s ease 0s;
-      transform: scale(1);*/
+      transition: all 0.5s ease 0s;
+      /*transform: scale(1);*/
 
       /*Testing out a gray header background, to match the footer */
       /*Currently, I can't tell if I like it or not*/
       /*background-color: rgba(255,255,255,0.05);
       border-color: #dddddd;*/
+
+      /*Testing light blue background header*/
+      background-color: rgba(0,220,255,0.05);
     }
-    /*#header:hover {
-      transform: scale(1.02);
-    }*/
+    #header:hover, #header:active {
+      /*Removing background-color for now*/
+      /*background-color: rgba(0,220,255,0.1);*/
+      color: #ffffff;
+    }
     #explore, #logo {
       margin: 0 auto;
       display: inline-block;
@@ -1236,8 +1571,9 @@ like vote and comments.*/
     #explore {
     	color: #dddddd;
     	letter-spacing: 8px;
-      width: 25%;
+      width: 33%;
       margin: 0 auto;
+      flex: 1 1 auto;
     }
     #exploreFormHeader{
       overflow: hidden;
@@ -1266,7 +1602,7 @@ like vote and comments.*/
     	background-color: inherit;
     	border: 1px solid #dddddd;
     	height: 35px;
-    	width: 200px;
+    	width: 80%;
     	letter-spacing: 6px;
     	font-size: 80%;
     	font-family: 'Raleway', sans-serif;
@@ -1280,10 +1616,10 @@ like vote and comments.*/
     	font-size: 200%;
     	font-weight: 100;
     	letter-spacing: 16px;
-    	flex: 1 2 auto;
+    	flex: 1 1 auto;
 /*Changing the width to 100% gets rid of gap on right
  but shrinking screen messes up avatar*/
-      width: 50%;
+      width: 33%;
     }
     #logoName {
       margin: 0 auto;
@@ -1293,54 +1629,25 @@ like vote and comments.*/
       transform: scale(1);
       color: #ffffff;
     }
-    /*#logoName:active {
-      transform: scale(1.02);
-      color: #00dcff;
-      cursor: pointer;
-    }*/
     #avatarHeader {
       flex: 1 1 auto;
-      text-align: center;
-      /*text-align: right;*/
-
-      margin: 0 auto;
-      display: inline-block;
-      overflow: hidden;
-    	text-align: center;
+      width: 33%;
     }
     #avatarImage {
-      /*display: block;*/
       border: 1px solid #00dcff;
     	border-radius: 50%;
       margin: 0 auto;
       margin-top: 0.4%;
-      margin-left: 1%;
+      margin-left: 1.7%;
       padding: 2px;
-      /*vertical-align: middle;*/
-      /*float: right;*/
     }
     #avatarFullName {
       margin: 0 auto;
-      margin-right: 3%;
-      font-size: 200%;
-      color: #dddddd;
       letter-spacing: 8px;
-    	overflow: hidden;
     	width: 100%;
-    	display: -webkit-box;
-    	display: -moz-box;
-    	display: -ms-flexbox;
-    	display: -webkit-flex;
-    	display: inline-flex;
-    	flex-direction: row;
-    	justify-content: space-between;
-    	flex-wrap: nowrap;
-    	align-items: strech;
-      text-align: right;
-      float: right;
       transition: all 0.5s ease 0s;
       transform: scale(1);
-      color: #ffffff;
+      margin-top: 0.39%;
     }
     /*#avatarFullName:hover {
       transform: scale(1.02);
@@ -1348,8 +1655,37 @@ like vote and comments.*/
       cursor: pointer;
     }*/
     #headerName {
-      display: inline;
-      flex: 2 2 auto;
+      /*New CSS*/
+      color: #00dcff;
+      /*flex: 2 2 auto;*/
+      margin: 0 auto;
+      margin-left: 55%;
+      font-size: 140%;
+      text-align: center;
+      letter-spacing: 8px;
+      padding: 3px;
+      width: 40%;
+      transition: all 0.5s ease 0s;
+      background-color: rgba(0,220,255,0.05);
+      border: 1px solid #00dcff;
+      border-radius: 5px;
+      margin-bottom: 0px;
+      transform: scale(1);
+    }
+    #headerName:hover {
+      background-color: rgba(0,220,255,0.12);
+      box-shadow: 0 0 0.5pt 0.5pt rgba(0,220,255,1) inset;
+      transform: scale(1.02);
+    }
+    #commandButton {
+      flex: 1 1 auto;
+      margin: 0 auto;
+      font-size: 50%;
+      text-align: center;
+      /*letter-spacing: 8px;*/
+      padding: 0px;
+      width: 100%;
+      transition: all 0.5s ease 0s;
     }
     #imgContainerAvatar {
       flex: 1 1 auto;
@@ -1465,18 +1801,15 @@ like vote and comments.*/
       margin-top: 0%;
       margin-bottom: 0%;
     }
-    #register {
-      /*margin-top: 1%;
-      margin-bottom: 2%;*/
-    }
     #banner {
     	color: #ffffff;
     	width: 100%;
-    	letter-spacing: .15em;
+    	letter-spacing: 6px;
     	font-size: 200%;
     	text-align: center;
     	padding: 0px 0px 5px 0px;
-      margin-top: 11.5%;
+      margin-top: 8.5%;
+      margin-bottom: 5.5%;
     }
     #bannerTitle {
     	font-size: 250%;
@@ -1501,16 +1834,15 @@ like vote and comments.*/
       margin-top: 12px;
     }
     #bannerLoginSlogan {
-      padding: 3px;
-      border: 1px solid #00dcff;
-    	border-width: 2px 0px;
-      letter-spacing: 12px;
-      /*color: #00dcff;*/
-      background-color: rgba(0, 220, 255, 0.05);
-      box-shadow: 0 0 1pt 1pt rgba(0,220,255,0.5);
-      width: 33%;
+      font-size: 110%;
+      width: 50%;
       margin: 0 auto;
-      margin-top: 12px;
+      margin-top: 2.5%;
+      margin-bottom: 1.5%;
+      padding: 10px;
+      border: 1px outset #00dcff;
+      border-width: 1px 0px;
+      border-radius: 0px;
     }
     #learnMore {
     	color: #00dcff;
@@ -1549,14 +1881,7 @@ like vote and comments.*/
     }
     #loginPassword, #registerPassword {
       margin-bottom: 15px;
-      /*width: 22%;*/
     }
-    /*#registerEmail {
-      width: 18%;
-    }
-    #registerUserName {
-      width: 20%;
-    }*/
     #enter {
     	color: #00dcff;
     	font-size: 100%;
@@ -1581,19 +1906,20 @@ like vote and comments.*/
       transition: all 0.5s ease 0s;
     }
     #submitLogin, #submitRegister {
-      margin-top: 0.5%;
+      margin-top: 2%;
       width: 15%;
+      background-color: rgba(0,220,255,0.05);
     }
     #submitLogin:hover, #submitRegister:hover,
     #submitLogin:focus, #submitLogin:active, 
-    #submitRegister:focus, #submitLogin:active {
+    #submitRegister:focus, #submitRegister:active {
     	color: #0f131c !important;
     	background-color: rgba(0,220, 255, 1) !important;
     	cursor: pointer;
     }
     #registerButton, #loginButton {
     	color: #00ffdc;
-      background-color: rgba(0,255, 220, 0);
+      background-color: rgba(0,220,255,0.05);
     	border: 1px solid #00ffdc;
       border-width: 0px 1px 1px 1px;
       width: 10%;
@@ -1609,10 +1935,386 @@ like vote and comments.*/
     	background-color: rgba(0,255, 220, 1) !important;
     	cursor: pointer;
     }
+    #loginHeaderEmail {
+    	display: block;
+      font-size: 125%;
+      width: 15%;
+      box-shadow: 0 0 1pt 1pt rgba(0,220,255,0.5);
+      font-family: 'Alegreya Sans SC', sans-serif;
+      margin: 0 auto;
+      margin-top: 0.3%;
+      margin-bottom: 0.3%;
+      padding: 0px !important;
+      background-color: #0f131c;
+    }
+    #loginHeaderPassword {
+    	display: block;
+      font-size: 125%;
+      width: 15%;
+      box-shadow: 0 0 1pt 1pt rgba(0,220,255,0.5);
+      font-family: 'Alegreya Sans SC', sans-serif;
+      margin: 0 auto;
+      margin-left: 1%;
+      margin-top: 0.3%;
+      margin-bottom: 0.3%;
+      padding: 0px !important;
+      transition: all 0.5s ease 0s;
+      background-color: #0f131c;
+    }
+    #loginHeaderUsernameDiv {
+      margin: 0 auto;
+    }
+    #loginHeaderPasswordDiv {
+      margin: 0 auto;
+    }
+    #loginHeaderSubmitImage {
+      font-family: 'Alegreya Sans SC', sans-serif;
+      color: #00ffdc;
+      background-color: #0f131c;
+      text-align: center;
+      border: 1px solid #dddddd;
+      border-radius: 3px;
+      padding: 6px 8px 6px 8px;
+      display: inline-block;
+      margin: 0 auto;
+      margin: 0.3% 0.5% 0.3% 1%;
+      /*font-size: 125%;*/
+      box-shadow: 0 0 1pt 1pt rgba(255,255,255,0.5);
+      transition: all 0.5s ease 0s;  
+      vertical-align: middle;
+      width: 20px;
+      height: 20px;
+    }
+    #loginHeaderSubmitImage:hover {
+      cursor: pointer;
+      background-color: rgba(255,255,255,0.15);
+    }
+    #loginHeaderSubmitButton {
+      font-family: 'Alegreya Sans SC', sans-serif;
+      font-size: 100%;
+      color: #00dcff;
+      background-color: inherit;
+      text-align: center;
+      border: 1px solid #00dcff;
+      border-radius: 3px;
+      padding: 3px 8px 3px 8px;
+      display: block;
+      margin: 0 auto;
+      margin: 0.3% 0.5% 0.3% 1%;
+      font-size: 125%;
+      box-shadow: 0 0 1pt 1pt rgba(0,220,255,0.5);
+      transition: all 0.5s ease 0s;
+      background-color: #0f131c;
+      width: 6%;
+    }
+    #loginHeaderSubmitButton:hover {
+     cursor: pointer;
+     background-color: rgba(0,220,255,1);
+     color: #0f131c;
+    }
+    #registerHeaderButton {
+      font-family: 'Alegreya Sans SC', sans-serif;
+      font-size: 100%;
+      color: #00ffdc;
+      background-color: inherit;
+      text-align: center;
+      border: 1px solid #00ffdc;
+      border-radius: 3px;
+      padding: 3px 8px 3px 8px;
+      display: block;
+      margin: 0 auto;
+      margin: 0.3% 0.5% 0.3% 1%;
+      font-size: 125%;
+      box-shadow: 0 0 1pt 1pt rgba(0,255,220,0.5);
+      transition: all 0.5s ease 0s;
+      background-color: #0f131c;
+    }
+    #registerHeaderButton:hover {
+     cursor: pointer;
+     background-color: rgba(0,255,220,1);
+     color: #0f131c;
+    }
 
 /*End Login*/
 
+/*Introduction*/
+#loginIntroduction {
+  font-size: 70%;
+  width: 60%;
+  margin: 0 auto;
+  margin-top: 0.5%;
+  margin-bottom: 0%;
+  padding: 20px;
+  line-height: 120%;
+}
+#introductionButton {
+  padding: 4px;
+  border: 1px solid #dddddd;
+  border-radius: 3px;
+  margin: 0 auto;
+  margin-top: 1.5%;
+  margin-bottom: 1.5%;
+  width: 30%;
+  font-size: 90%;
+  transition: all 0.5s ease 0s;
+  color: #dddddd;
+}
+#introductionButtonClicked {
+  background-color: rgba(0,220,255,0.05);
+  color: rgba(0,220,255,1);
+  border: 1px solid rgba(0,220,255,1);
+  padding: 4px;
+  border-radius: 3px;
+  margin: 0 auto;
+  margin-top: 2.5%;
+  margin-bottom: 2%;
+  width: 30%;
+  font-size: 90%;
+  transition: all 0.5s ease 0s;
+}
+#introductionButton:hover, #introductionButton:active,
+#introductionButtonClicked:hover, #introductionButtonClicked:active {
+  background-color: rgba(0,220,255,0.05);
+  cursor: pointer;
+  color: rgba(0,220,255,1);
+  border: 1px solid rgba(0,220,255,1);
+}
+#signup, #register {
+  padding-top: 0px;
+}
+#introductionContainer {
+  margin: 0 auto;
+  margin-top: 2%;
+  margin-bottom: 0%;
+  font-size: 175%;
+  width: 75%;
+  /*border: 2px solid #00dcff;*/
+  border-width: 1px 1px 1px 1px;
+  border-radius: 40px 40px 0px 0px;;
+  text-align: left;
+  padding: 0% 5% 0% 5%;
+  z-index: 5;
+  /*float: right;*/
+}
+#introductionWelcome {
+  border: 1px outset #00dcff;
+  border-width: 1px 0px 0px 0px;
+  padding: 3%;
+  padding-bottom: 4%;
+  padding-top: 4%;
+  margin-top: 1%;
+  margin-bottom: 1%;
+  font-size: 160%;
+  text-align: center;
+  letter-spacing: 4px;
+  border: 1px solid #dddddd;
+  border-radius: 3px;
+  background-color: rgba(0,220,255,0.05);
+  /*color: #00dcff;*/
 
+
+  /*Trying out blend color between #ffffff and #0dcff. 
+  So far haven't found conceptto work. 
+  
+  Eitherway, interesting color to keep. */
+
+  /*border-color: #74ECFF;*/
+}
+#introductionCapital {
+  font-size: 120%;
+}
+#introductionCapitalBlue {
+  font-size: 120%;
+  color: #00dcff;
+}
+#introductionBig {
+  font-size: 125%;
+  /*letter-spacing: 2px;
+  padding-left: 3px;*/
+}
+#introductionCapitalProse {
+  font-size: 150%;
+  font-family: 'Open Sans';
+}
+#introductionBigBlue {
+  font-size: 125%;
+  color: #00dcff;
+  /*letter-spacing: 2px;*/
+  /*padding-left: 3px;*/
+}
+#introductionTitle {
+  color: #ffffff;
+  text-align: center;
+  padding: 5px;
+  margin: 0 auto;
+  margin-top: 1%;
+  margin-bottom: 3.5%;
+  border: 1px solid #00dcff;
+  border-width: 1px 0px;
+  width: 80%;
+}
+#introductionProse {
+  font-family: 'Open Sans';
+  font-size: 70%;
+  letter-spacing: normal;
+  color: #dddddd;
+  padding-left: 8%;
+  padding-right: 8%;
+  padding-top: 6%;
+  padding-bottom: 8%;
+  line-height: 170%;
+  background-color: rgba(0,220,255,0.05);
+  border: 1px solid #00dcff;
+  border-width: 1px 0px;
+  width: 70%;
+  margin: 0 auto;
+  margin-top: 2%;
+  margin-bottom: 6%;
+}
+#introductionProjectsProse {
+  font-family: 'Open Sans';
+  font-size: 70%;
+  letter-spacing: normal;
+  color: #dddddd;
+  padding-left: 8%;
+  padding-right: 8%;
+  padding-top: 3%;
+  padding-bottom: 3%;
+  line-height: 170%;
+  background-color: rgba(0,220,255,0.05);
+  border: 1px solid #00dcff;
+  border-width: 1px 0px;
+  width: 70%;
+  margin: 0 auto;
+}
+#introRegisterContainer {
+  margin-top: 2%;
+  margin-bottom: 2%
+}
+#introRegisterJoin {
+  margin: 0 auto;
+  width: 60%;
+  text-align: center;
+  color: #00ffdc;
+  border: 1px solid #00ffdc;
+  border-radius: 3px;
+  padding: 3px;
+  margin-top: 4%;
+  margin-bottom: 2%;
+  font-size: 140%;
+  background-color: rgba(0,220,255,0.05);
+}
+#introRegister {
+  padding: 0px 0% 4% 0px;
+  flex: 1 1 auto;
+  width: 100%;
+  font-size: 110%;
+  margin: 0 auto;
+  margin-top: 0%;
+  margin-bottom: 0%;
+}
+#introRegisterFullName, #introRegisterPassword,
+#introRegisterUserName, #introRegisterEmail {
+  display: block;
+  margin-top: 15px;
+  font-size: 90%;
+  width: 40%;
+  margin-bottom: 0px;
+  box-shadow: 0 0 2pt 2pt rgba(0,220,255,0.5);
+  font-family: 'Alegreya Sans SC', sans-serif;
+  background-color: rgba(0,220,255,0.05);
+}
+#loginPassword, #registerPassword {
+  margin-bottom: 15px;
+  /*background-color: rgba(0,220,255,0.05);*/
+}
+
+
+#introductionProjectHeader1,
+#introductionProjectHeader2,
+#introductionProjectHeader3,
+#introductionProjectHeader4 {
+  
+  /*Rectangular*/
+
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-color: rgba(15,19,28,0.999);
+  background-blend-mode: overlay;
+  transition: all 0.2s ease 0s;
+  transform: scale(1);
+
+  display: flex;
+  flex-direction: column;
+  word-wrap: break-word; 
+  align-items: center; 
+  justify-content: center;
+  margin: 0 auto;
+  transition: all 0.5s ease 0s;
+
+  background-size: cover;
+  border: 1px solid #00dcff;
+  box-shadow: 0 0 1pt 1pt rgba(0,220,255,0.5);
+  width: 70%;
+  height: auto;
+  position: relative;
+  margin-top: 6%;
+  margin-bottom: 8%;
+  padding: 3%;
+  
+
+  /*Circular*/
+
+  /*background-size: contain;
+  background-repeat: no-repeat;
+  background-color: rgba(15,19,28,0.999);
+  background-blend-mode: overlay;
+  transition: all 0.5s ease 0s;
+  transform: scale(1);
+
+  font-size: 50%;
+  display: flex;
+  flex-direction: column;
+  border: 2px solid #00dcff;
+  border-radius: 100%;
+  width: 14em;
+  height: 14em;
+  word-wrap: break-word; 
+  align-items: center; 
+  justify-content: center;
+  margin: 0 auto;
+  box-shadow: 0 0 2pt 2pt rgba(0,220,255,0.5);
+  transition: all 0.5s ease 0s;
+  transform: scale(1);*/
+}
+#introductionProjectHeader1 {
+  background-image: url('./earthRise.jpg');
+}
+#introductionProjectHeader2 {
+  background-image: url('./vitruvianMan.jpg');
+}
+#introductionProjectHeader3 {
+  background-image: url('./einstein.jpg');
+}
+#introductionProjectHeader4 {
+  background-image: url('./turingMachine.jpg');
+}
+#introductionProjectHeader1:hover,
+#introductionProjectHeader2:hover,
+#introductionProjectHeader3:hover,
+#introductionProjectHeader4:hover {
+  background-color: rgba(15,19,28,0.5);
+  transform: scale(1.02);
+}
+introductionProjectTitle {
+  margin: 0 auto;
+  padding: 10px 15px 10px 15px;
+  font-size: 160%;
+  color: #dddddd;
+  word-wrap: break-word; 
+  text-align: center;
+  transition: all 0.5s ease 0s;
+}
 
 /*Profile*/
 
@@ -1633,8 +2335,8 @@ like vote and comments.*/
       border-width: 1px 1px 1px 0px;
       border-radius: 0px 0px 50px 0px;
       width: 92%;
-      margin-top: 2%;
-      height: 81vh;
+      margin-top: 1.75%;
+      height: 84vh;
       margin-left: 0;
       background-color: rgba(0,220,255,0.03);
     }
@@ -1671,19 +2373,25 @@ like vote and comments.*/
       transition: all 0.5s ease 0s;
       transform: scale(1);
       padding: 10px;
+      margin-bottom: 5%;
     }
     #avatarImageProfile:hover {
       transform: scale(1.05);
     }
     #userName {
-    	font-size: 270%;
+    	font-size: 200%;
+      letter-spacing: 6px;
     	text-align: center;
-    	line-height: 100%;
-    	margin: 10px;
-    	padding: 0px;
+    	margin: 0 auto;
+      margin-right: 7%;
+    	padding: 5px 3px;
     	font-family: 'Alegreya Sans SC', sans-serif;
-      margin-top: 7%;
-      margin-bottom: 2%;
+      word-break: break-all;
+      overflow: auto;
+      border: 1px solid #dddddd;
+      border-width: 0px 1px 1px 0px;
+      border-radius: 0px 0px 20px 0px;
+      background-color: rgba(255,255,255,0.03);
     }
     #userEmail {
     	font-size: 155%;
@@ -1849,7 +2557,8 @@ like vote and comments.*/
     #profileRightUnit {
     	border: 1px solid #00dcff;
     	border-width: 1px 0px 0px 0px;
-    	padding: 7px;
+    	padding: 2px;
+      transition: all 0.5s ease 0s;
 
       /*Exploring the look of gradients as background colors, 
       so far I haven't found anything I like*/
@@ -1870,6 +2579,7 @@ like vote and comments.*/
       height: auto;
       word-break: break-all;
       overflow: auto;
+      width: 90%;
     }
     #profileUnitSummary {
     	font-family: 'Open Sans', sans-serif;
@@ -1879,6 +2589,7 @@ like vote and comments.*/
     	text-align: justify;
       word-break: break-all;
       overflow: auto;
+      width: 90%;
     }
     #unitSummary {
     	font-family: 'Open Sans', sans-serif;
@@ -1886,6 +2597,59 @@ like vote and comments.*/
     	font-size: 80%;
     	margin: 0px;
     	text-align: justify;
+    }
+    #earth {
+      position: relative;
+      width: 250px;
+      height: 250px;
+      margin: 3em auto;
+      margin-bottom: 6.5%;
+      margin-top: 5.5%;
+      background: url(earth2Sphere.jpg) 0 0 repeat;
+      background-color: rgba(0,220,255,0.5);
+      background-blend-mode: overlay;
+      border-radius: 50%;
+      background-size: 630px;
+      animation: rotate 35s linear infinite;
+      transition: transform 2500ms linear;
+      transform-style: preserve-3d;
+      box-shadow: inset 20px 0 80px 6px rgba(15,19,28,1);
+      color: #000;
+
+      border: 3px outset rgba(0,220,255, 0.05);
+    	border-radius: 50%;
+      transition: all 0.5s ease 0s;
+      /*transform: scale(1);*/
+      /*padding: 10px;*/
+
+    }
+
+    #earth:after {
+      content: "";
+      position: absolute;
+      top: 0%;
+      left: 0%;
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      box-shadow: -80px 15px 80px 10px rgba(0,0,0,.9) inset;
+    }
+
+    #earth:before {
+      content: "";
+      position: absolute;
+      border-radius: 50%;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      opacity: 0.2;
+      background: radial-gradient(circle at 100px 100px, #fff, #000);
+    }
+
+    @keyframes rotate {
+      0% {background-position: 0 0;}
+      100% {background-position: 630px 0;}
     }
 
 /*End Profile*/
@@ -1910,15 +2674,16 @@ like vote and comments.*/
     	text-align: justify;
     }
     #questionUnit {
-    	display: -webkit-box;
-    	display: -moz-box;
-    	display: -ms-flexbox;
-    	display: -webkit-flex;
     	display: flex;
     	flex-direction: row;
     	font-family: 'Open Sans';
     	padding-top: 10px;
+      margin: 0 auto;
       width: 100%;
+    }
+    #questionUnitContainer {
+      margin-top: 1%;
+      margin-bottom: 3%;
     }
     #questionContent {
     	flex: 3 3 auto;
@@ -1945,8 +2710,13 @@ like vote and comments.*/
 /*SearchBox*/
 
     #searchBox {
-    	margin: 7% 25% 0% 25%;
     	border: 1px solid #00dcff;
+      border-radius: 3px 3px 3px 3px;
+      height: 100%;
+      padding-bottom: 10%;
+      margin: 0 auto;
+      margin-top: 7%;
+      width: 60%;
     }
     #exploreForm{
     	overflow: hidden;
@@ -1961,22 +2731,31 @@ like vote and comments.*/
     	display: none;
     }
     #searchElements {
-    	margin: 2px 15px 5px 5px;
+    	margin: 2px 15px 0px 5px;
     	padding: 5px;
+      width: 95%;
     }
     #searchUnit {
     	border: 1px solid #00dcff;
     	border-width: 1px 0px 0px 0px;
     }
     #searchTitle {
-    	padding: 0px 5px 0px 5px;
-    	font-size: 115%;
-    	color: #00dcff;
+    	display: block;
+      margin: 5px 0px 0px 0px;
+      padding: 2px 5px 2px 5px;
+      font-size: 140%;
+      color: #00dcff !important;
+      line-height: 120%;
+      height: auto;
+      overflow: auto;
     }
     #searchSummary {
-    	font-family: 'Open Sans', sans-serf;
-    	padding: 0px 5px 5px 5px;
-    	font-size: 90%;
+    	font-family: 'Open Sans', sans-serif;
+    	padding: 0px 0px 10px 10px;
+    	font-size: 80%;
+    	margin: 0px;
+    	text-align: justify;
+      overflow: auto;
     }
     #moreSearchButton {
     	margin: auto;
@@ -1999,7 +2778,7 @@ like vote and comments.*/
 
 /*SubProblemUnit and SolutionUnit*/
 
-#subProblemUnit:hover, #solutionUnit:hover {
+#subProblemUnit:hover {
   cursor: pointer;
   box-shadow: 0 0 2pt 2pt rgba(0,220,255,0.5);
 }
@@ -2031,11 +2810,29 @@ like vote and comments.*/
 #solutionUnit {
   padding: 10px;
   margin: 0 auto;
+  width: 90%;
   border: 1px solid #00dcff;
+  border-radius: 3px;
   transition: all 0.5s ease 0s;
   box-shadow: 0 0 0pt 0pt rgba(0,220,255,0.5);
-  margin-bottom: 2%;
+  margin-top: 2.25%;
   background-color: rgba(0,220,255,0.05);
+}
+#solutionUnit:hover {
+  cursor: pointer;
+  /*font-size: 105%;*/
+  box-shadow: 0 0 2px 2px rgba(0,220,255,0.5);
+}
+#solutionUnitActive {
+  padding: 10px;
+  margin: 0 auto;
+  width: 90%;
+  border: 1px solid #00dcff;
+  transition: all 0.25s ease 0s;
+  margin-top: 2%;
+  background-color: rgba(0,220,255,0.05);
+  box-shadow: 0 0 2pt 2pt rgba(0,220,255,0.5);
+  display: none;
 }
 #solutionUnitContainer {
   padding: 0px;
@@ -2058,14 +2855,14 @@ like vote and comments.*/
 }
 #solutionUnitTitle {
   text-align: center;
-  padding: 5px;
+  padding: 4px;
   margin: 0 auto;
   margin-right: 9%;
   margin-left: 1%;
-  color: #00dcff;
+  color: #ffffff;
   letter-spacing: 1px;
   font-family: 'Alegreya Sans SC', sans-serif;
-  font-size: 120%;
+  font-size: 130%;
   width: 100%;
   word-wrap: break-word; 
   overflow: auto;
@@ -2106,8 +2903,6 @@ like vote and comments.*/
 
 /*End SubProblemUnit*/
 
-
-
 /*Suggestions*/
 
     #sidebarElements {
@@ -2126,34 +2921,44 @@ like vote and comments.*/
       text-align: justify;
     }
     #suggestionUnit {
-      display: -webkit-box;
-      display: -moz-box;
-      display: -ms-flexbox;
-      display: -webkit-flex;
       display: flex;
       flex-direction: row;
       font-family: 'Open Sans';
       padding-top: 10px;
     }
+    #prosConsUnit {
+      display: flex;
+      flex-direction: row;
+      font-family: 'Open Sans';
+      padding-top: 10px;
+      width: 90%;
+      margin: 0 auto;
+    }
     #suggestionContent {
       flex: 3 3 auto;
       font-family: 'Open Sans';
-      border: 1px solid #00dcff;
-      border-width: 1px 0px 0px 0px;
+      border: 1px solid #dddddd;
+      border-width: 1px 0px 1px 1px;
+      border-radius: 3px 0px 0px 3px;
       width: 80%;
-      padding: 10px;
+      padding: 15px;
+      margin-bottom: 1.1%;
+      background-color: rgba(0,220,255,0.05);
     }
     #suggestionText {
       font-family: 'Open Sans';
-      margin-top: 5px;
+      margin: 7px;
+      margin-top: 10px;
+      font-size: 115%;
+      color: #eeeeee;
     }
     #suggestionVote, #suggestionVoteNoComments {
       flex: 1 1 auto;
       color: #00ffdc;
-      background-color: inherit;
+      background-color: rgba(0,220,255,0.05);
       border: 1px solid #00ffdc;
       border-width: 1px 1px 1px 0px;
-      border-radius: 2px 2px 0px 0px;
+      border-radius: 2px 2px 3px 0px;
       cursor: pointer;
       height: 37px;
       min-width: 101.94px;
@@ -2211,14 +3016,58 @@ like vote and comments.*/
 
 /*Welcome*/
 
+    #soundButton {
+
+    }
+    #soundButton:hover {
+      cursor: pointer;
+    }
+    #welcomeIntroductionButton {
+      border: 1px solid #dddddd;
+      border-width: 1px 1px 1px 0px;
+      border-radius: 0px 7px 7px 0px;
+      color: #dddddd;
+      text-align: center;
+      padding: 1% 1% 1% 1.5%;
+      width: 10%;
+      margin-top: 0.75%;
+      transition: all 0.5s ease 0s;
+      font-size: 120%;
+      letter-spacing: 0.25px;
+    }
+    #welcomeIntroductionButton:hover {
+      cursor: pointer;
+      background-color: rgba(255,255,255,0.1);
+    }
+    #welcomeIntroductionButtonActive {
+      border: 1px solid #dddddd;
+      border-width: 1px 1px 1px 0px;
+      border-radius: 0px 7px 7px 0px;
+      color: #dddddd;
+      text-align: center;
+      padding: 1% 1% 1% 1.5%;
+      width: 10%;
+      margin-top: 0.75%;
+      transition: all 0.5s ease 0s;
+      font-size: 120%;
+      letter-spacing: 0.25px;
+      background-color: rgba(255,255,255,0.1);
+    }
+    #welcomeIntroductionButtonActive:hover {
+      cursor: pointer;
+    }
     #welcomeBox {
-    	margin: 2.5% 20% 2.5% 20%;
+    	/*Old*/
+      margin: -1% 20% 1.5% 20%;
     	border: 1px solid #dddddd;
-      /*border-radius: 3px;*/
-      /*box-shadow: 0 0 1pt 1pt rgba(255,255,255,0.5);*/
-      border: 2px solid #00dcff;
-      box-shadow: 0 0 1pt 1pt rgba(0,220,255,0.5) !important;
-      background-color: rgba(0,220,255,0.05);
+      /*border: 2px solid #00dcff;*/
+      /*box-shadow: 0 0 1pt 1pt rgba(0,220,255,0.5) !important;*/
+      /*background-color: rgba(0,220,255,0.05);*/
+
+      /*New*/
+      border: 1px solid #dddddd;
+      border-radius: 3px;
+      background-color: rgba(0,220,255, 0.05);
     }
     #welcomePrompt {
     	color: #dddddd;
@@ -2254,16 +3103,20 @@ like vote and comments.*/
     	border: 1px solid #dddddd;
       /*border-radius: 3px;*/
       /*box-shadow: 0 0 1pt 1pt rgba(255,255,255,0.5);*/
-      border: 2px solid #00dcff;
-      box-shadow: 0 0 1pt 1pt rgba(0,220,255,0.5) !important;
+      /*border: 2px solid #00dcff;*/
+      /*box-shadow: 0 0 1pt 1pt rgba(0,220,255,0.5) !important;*/
       background-color: rgba(0,220,255,0.05);
       transform: scale(1);
       transition: all 0.5s ease 0s;
+
+      border: 1px solid #dddddd;
+      border-radius: 3px;
+      background-color: rgba(0,220,255, 0.05);
     }
     #createWelcomeButtonBox:hover {
-      transform: scale(1.02);
-      box-shadow: 0 0 2pt 2pt rgba(0,220,255,0.5) !important;
-    }
+      /*transform: scale(1.02);*/
+      background-color: rgba(0,220,255,0.05); 
+      border-color: #00dcff;   }
     #createWelcomeButtonBox:hover * {
       color: #00dcff;
       cursor: pointer;
@@ -2306,6 +3159,7 @@ like vote and comments.*/
     .activeBlue div {
       color: #0f131c !important;
       background-color: #00dcff !important;  
+      border-color: #00dcff !important;
     }
     .activeBlueTextHeader div {
       color: #00dcff !important;
@@ -2317,6 +3171,12 @@ like vote and comments.*/
     }
     .activeBlueText div h1 {
       color: #00dcff !important;
+    }
+    .activeBlueText div {
+    	background-color: rgba(0,220,255,0.15) !important;
+    	color: #00dcff !important;
+    	cursor: default!important;
+      border-color: #00dcff !important;
     }
     /*Doesn't work since it highlights the entire box*/
     /*.activeGlow {
@@ -2342,6 +3202,12 @@ like vote and comments.*/
     	padding: 2px;
       width: 80%;
       margin: 0 auto;
+      margin-bottom: 1%;
+      border: 1px solid #00dcff;
+      border-width: 0px 0px 1px 0px;
+      border-radius: 0% 0% 15% 15%;
+      padding: 1px;
+      background: linear-gradient(rgba(0,255,220,0), rgba(0,220,255,0.1));
     }
     #welcomeUserUnitsContainer {
     	/*margin: 0% 5% 3% 5%;*/
@@ -2432,8 +3298,6 @@ like vote and comments.*/
       box-shadow: 0 0 2pt 2pt rgba(0,220,255,0.5);
       transition: all 0.5s ease 0s;
       transform: scale(1);
-
-      /*margin-right: 10% !important;*/
     }
     #welcomeProblemsHeader1 {
       background-image: url('./earthRise.jpg');
@@ -2456,11 +3320,6 @@ like vote and comments.*/
       transform: scale(1.02);
     }
   #welcomeProblemsTitle {
-      /*margin: 0 auto;
-      padding: 5px 10px 5px 10px;
-      font-size: 130%;
-      transition: all 0.5s ease 0s;*/
-
       margin: 0 auto;
       padding: 5px 10px 5px 10px;
       font-size: 130%;
@@ -2485,7 +3344,7 @@ like vote and comments.*/
     /*display: block;*/
     /*flex-direction: column;*/
     border: 1px solid #00dcff;
-    border-radius: 0%;
+    border-radius: 3px;
     box-shadow: 0 0 0pt 0pt rgba(0,220,255,0.5);
     width: 94.5%;
     height: auto;
@@ -2521,6 +3380,7 @@ like vote and comments.*/
     background-color: rgba(0,220,255,0.0);
     border: 1px solid #00dcff;
     border-width: 0px 1px 1px 1px;
+    border-radius: 0px 0px 3px 3px;
     padding-bottom: 2%;
 
     /*Testing new style with user projects*/
@@ -2587,15 +3447,12 @@ like vote and comments.*/
 /*Layout*/
 
     #main {
-    	display: -webkit-box;
-    	display: -moz-box;
-    	display: -ms-flexbox;
-    	display: -webkit-flex;
     	overflow: auto;
     	display: inline-flex;
     	align-items: stretch;
     	flex-direction: row;
       width: 100%;
+      min-height: 80vh;
     }
     #problem {
       border: 1px solid #00dcff;
@@ -2641,31 +3498,33 @@ like vote and comments.*/
     	border-width: 0px 0px 0px 1px;
     }
     #sidebarMenu {
-      display: flex;
+      /*display: flex;
       flex-direction: column;
       align-items: stretch;
       margin-bottom: 10px;
       justify-content: center;
       flex: 1 1 auto;
-      width: 100%;
+      width: 100%;*/
     }
-    #SBButton, #SBButton1 {
+    #SBButton, #SBButton1, #SBButtonNoHover {
     	flex: 1 1 auto;
     	color: #dddddd;
-    	font-size: 170%;
-    	border: 1px solid #dddddd;
-    	border-width: 1px 1px;
-    	border-radius: 3px;
+    	font-size: 180%;
     	text-align: center;
     	text-decoration: none;
       margin: 0 auto;
-    	margin-top: 12px;
-      width: 70%;
-      background-color: rgba(0,220,255,0);
+    	margin-top: 0px;
+      margin-bottom: 3px;
+      width: 40%;
+      border: 1px solid #dddddd;
+      border-width: 1px;
+      border-radius: 3px;
+      background-color: rgba(0,220,255, 0.05);
+      /*box-shadow: 0 0 1pt 1pt rgba(255,255,255,0.5);*/
       transition: all 0.5s ease 0s;
     }
     #SBButton:hover, #SBButton1:hover {
-    	background-color: rgba(0,220,255,0.15);
+    	background-color: rgba(0,220,255,0.05);
     	color: #00dcff;
     	cursor: pointer;
       border-color: #00dcff;
@@ -2673,7 +3532,7 @@ like vote and comments.*/
     #SBButton1 {
       margin-top: 0px;
     }
-    
+        
     #createButton {
     	background-color: rgba(0,255,220,0);
     	color: #00ffdc;
@@ -2701,39 +3560,29 @@ like vote and comments.*/
       color: #0f131c;
     }
     #createSPButtonBox, #createSPButtonBox2 {
-      margin: 6% 18% 0% 18%;
-    	border: 1px solid #dddddd;
-      /*border-radius: 3px;*/
-      /*box-shadow: 0 0 1pt 1pt rgba(255,255,255,0.5);*/
+      color: #00dcff;
+    	font-size: 160%;
+      margin: 1.5% 20% 0% 20%;
       border: 1px solid #00dcff;
-      /*box-shadow: 0 0 1pt 1pt rgba(0,220,255,0.5) !important;*/
-      background-color: rgba(0,220,255,0);
+      border-width: 1px 1px 1px 1px;
+      border-radius: 0px 0px 7px 7px;
+      background-color: rgba(255,255,255,0.025);
       transform: scale(1);
       transition: all 0.5s ease 0s;
+      /*letter-spacing: 1px;*/
+      padding: 0px;
+      text-align: center;
+    }
+    #createSPButtonBox:hover {
+    	background-color: rgba(0,220,255,0.15);
+    	color: #00dcff;
+    	cursor: pointer;
+      border-color: #00dcff;
+      transform: scale(1.02);
+      /*box-shadow: 0 0 1pt 1pt rgba(0,220,255,0.5) !important;*/
     }
     #createSPButtonBox2 {
       display: none;
-    }
-    #createSPButtonBox:hover {
-      transform: scale(1.02);
-      cursor: pointer;
-      box-shadow: 0 0 1pt 1pt rgba(0,220,255,0.5) !important;
-    }
-    #createSPButtonBox:hover * {
-      color: #00dcff;
-    }
-    #createSPButton {
-      color: #dddddd;
-      margin: 5px 0px;
-    	font-size: 180%;
-      padding: 5px;
-      letter-spacing: 6px;
-      cursor: default;
-      transition: all 0.5s ease 0s;
-    }
-    #createSPButton:hover {
-      cursor: pointer;
-      color: #00dcff;
     }
     #sidebarElements {
     	border: 1px solid #00dcff;
@@ -2757,19 +3606,28 @@ like vote and comments.*/
   border: 1px solid #dddddd;
   height: 4em;
   resize: none;
+  background-color: rgba(0,220,255, 0.05);
+  margin: 0 auto;
+  width: 70%;
 }
 #learnContentTextArea {
   height: 12em;
 }
 #askQuestion, #addSuggestion, #addAnswer {
-  font-size: 90%;
+  font-size: 110%;
   color: #00dcff;
-  background-color: rgba(0,255,220,0);
+  background-color: rgba(0,220,255, 0.05);
   border: 1px solid #00dcff;
   border-radius: 2px;
   margin-top: 2%;
   width: 40%;
   transition: all 0.5s ease 0s;
+  padding: 3px 0px 3px 0px;
+  
+  border: 1px solid #00dcff;
+  border-width: 1px 1px 1px 1px;
+  border-radius: 3px 3px 3px 3px;
+  background-color: rgba(0,220,255, 0.05);
 }
 #addAnswer {
   color: #00dcff;
@@ -2927,21 +3785,6 @@ like vote and comments.*/
     	color: #0f131c;
     	cursor: pointer;
     }
-    #profileRightElements {
-    	margin: 2px 0px 0px 5px;
-    	padding: 5px;
-      width: 96%;
-    }
-    #profileRightUnit {
-    	border: 1px solid #00dcff;
-    	border-width: 1px 0px 0px 0px;
-    	padding: 2px;
-      transition: all 0.5s ease 0s;
-    }
-    #profileRightUnit:hover {
-      color: #ffffff;
-      cursor: pointer;
-    }
     #unitSummary {
     	font-family: 'Open Sans', sans-serf;
     	padding: 0px 5px 5px 5px;
@@ -2957,6 +3800,52 @@ like vote and comments.*/
 
 /*Logos*/
 
+#closeRedX {
+  display: block;
+  margin: 0 auto;
+  margin-top: 1%;
+  margin-bottom: 1%;
+  border: 0px solid #ff7f7f;
+  border-radius: 50%;
+  transition: all 0.5s ease 0s;
+}
+#closeRedX:hover {
+  cursor: pointer;
+  background-color: rgba(255,127,127,0.15);
+}
+#addBlueX {
+  display: block;
+  margin: 0 auto;
+  margin-top: 0%;
+  margin-bottom: 0%;
+  border: 1.5px solid #00dcff;
+  border-radius: 50%;
+  transition: all 0.5s ease 0s;
+  padding: 5px;
+}
+#addBlueX:hover {
+  cursor: pointer;
+  background-color: rgba(0,220,255,0.15);
+}
+#middleAlignOrion {
+  display: block;
+  margin: 0 auto;
+  padding: 3px;
+  margin-top: 2%;
+}
+#middleAlignOrionLess {
+  display: block;
+  margin: 0 auto;
+  padding: 3px;
+  margin-top: 1%;
+}
+#middleAlignOrionIntro {
+  display: block;
+  margin: 0 auto;
+  padding: 3px;
+  margin-top: -1%;
+  margin-bottom: 4%;
+}
 #deleteLogo {
   /*display: block;
   margin: 0 auto;*/
@@ -3002,11 +3891,12 @@ like vote and comments.*/
   transition: all 0.5s ease 0s
 }
 
-#flagSolutionButton:hover, #deleteSolutionButton:hover {
+#flagSolutionButton:hover, #deleteSolutionButton:hover,
+#flagSolutionButton:active, #deleteSolutionButton:active {
   cursor: pointer;
   box-shadow: 0 0 2pt 2pt rgba(255,127,127,0.5);
 }
-#editSolutionButton:hover {
+#editSolutionButton:hover, #editSolutionButton:active{
   cursor: pointer;
   box-shadow: 0 0 2pt 2pt rgba(0,220,255,0.5);
 }
@@ -3017,9 +3907,48 @@ like vote and comments.*/
   /*box-shadow: 0 0 1pt 1pt rgba(0,220,255,0.5);*/
   transition: all 0.5s ease 0s
 }
-#editProjectButton:hover {
+#editProjectButton:hover, #editProjectButton:active {
   cursor: pointer;
   box-shadow: 0 0 2pt 2pt rgba(0,220,255,0.5);
+}
+#flagProjectButton {
+  display: block;
+  margin: 0 auto;
+  transition: all 0.5s ease 0s
+}
+#flagProjectButton:hover, #flagProjectButton:active {
+  cursor: pointer;
+  box-shadow: 0 0 2pt 2pt rgba(255,127,127,0.5);
+}
+#flagText {
+  font-family: 'Open Sans';
+  margin-top: 5px;
+}
+#flagTextArea {
+  text-align: left;
+  font-family: 'Open Sans', sans-serif;
+  color: #ffffff;
+  border: 1px solid #dddddd;
+  height: 4em;
+  resize: none;
+  margin-top: 2%;
+  margin-bottom: 2%;
+}
+#radioFlag {
+  padding: 5px;
+
+}
+#radioFlag:focus {
+  /*Currently doesn't work*/
+  box-shadow: 0 0 1pt 1pt rgba(255,127,127,0.5);
+}
+#flagOptionLabel {
+  color: rgba(255,127,127,1);
+  text-align: center;
+}
+#flagOption {
+  border: 5px inset rgba(255,127,127,1);
+  padding: 3px;
 }
 #backArrow {
   flex: 1 1 auto;
@@ -3037,6 +3966,7 @@ like vote and comments.*/
   cursor: pointer;
   box-shadow: 0 0 2pt 2pt rgba(0,220,255,0.5);
 }
+
 
 
 /*Layout 2 CSS*/
@@ -3084,61 +4014,278 @@ like vote and comments.*/
   cursor: pointer;
   /*box-shadow: 0 0 1pt 1pt rgba(0,220,255,0.5);*/
 }
+#parentButton {
+  width: 50%;
+  display: block;
+  background-color: rgba(0,220,255,0.1);
+  padding: 0.3%;
+  border: 1px solid#dddddd;
+  border-width: 0px 1px 1px 1px;
+  border-radius: 0px 0px 3px 3px;
+  letter-spacing: 1px;
+  color: #ffffff;
+  transition: all 0.5s ease 0s;
+  margin: 0 auto;
+  text-align: center;
+
+  /*Use until project sibilings are working*/
+  margin-bottom: 1%;
+}
+#parentButton:hover, #parentButton:active {
+  cursor: pointer;
+  color: #ffffff;
+  background-color: rgba(0,220,255,0.12);
+}
+#parentChildrenButton {
+  background-color: rgba(0,220,255,0.05);
+  border: 1px solid #aaaaaa;
+  border-width: 1px 1px 1px 1px;
+  border-radius: 0px 0px 3px 3px;
+  letter-spacing: 1px;
+  color: #aaaaaa;
+  transition: all 0.5s ease 0s;
+  text-align: center;
+  /*margin: 0% 5% 0% 5%;  */
+  /*width: 100%;*/
+  min-width: 14em;
+  max-width: 18em;
+  display: block;
+  word-break: none;
+  /*Previously used width: 14em*/
+}
+#parentChildrenButton:hover, #parentChildrenButton:active {
+  cursor: pointer;
+  background-color: rgba(0,220,255,0.1);
+  color: #ffffff;
+  border-color: #dddddd;
+}
+#parentChildrenUnitList {
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  width: 100%;
+  margin: 0 auto;
+  overflow-x: scroll;
+  margin-top: 0.6%;
+}
+#parentChildrenSelfButton {
+  background-color: rgba(0,220,255,0.05);
+  border: 1px solid #aaaaaa;
+  border-width: 1px 1px 1px 1px;
+  border-radius: 0px 0px 3px 3px;
+  letter-spacing: 1px;
+  color: #aaaaaa;
+  transition: all 0.5s ease 0s;
+  text-align: center;
+  /*margin: 0% 5% 0% 5%;  */
+  /*width: 100%;*/
+  min-width: 14em;
+  max-width: 18em;
+  display: block;
+  word-break: none;
+  /*Previously used width: 14em*/
+}
+#parentChildrenSelfButton:hover, #parentChildrenSelfButton:active {
+  cursor: pointer;
+  background-color: rgba(0,220,255,0.1);
+  color: #ffffff;
+  border-color: #dddddd;
+}
+
 
 
 #problemRow1, #problemRow2 {
   display: inline-flex;
   justify-content: space-between;
-  align-items: flex-start;
+  align-items: center;
   align-content: flex-start;
   width: 100%;
+}
+#problemRow1 {
+  width: 60%;
+  margin: 0 auto;
+  margin-top: 1%;
+  justify-content: center;
+}
+#problemColumn1 {
+  display: flex;
+  flex-direction: column;
 }
 
 #problemIntro {
   flex: 10 1 auto;
-  display: inline;
+  /*display: inline;*/
   width: 90%;
+
+  /*For new header type*/
+  display: block;
+  width: 100%;
 }
 #problemPercent {
   color: rgba(0,255,220,1);
   flex: 1 1 auto;
   margin: 0 auto;
-  margin-top: 0%;
-  margin-bottom: 2%;
-  padding: 5px;
-  /*padding-left: 9%;*/
-  font-size: 500%;
+  margin-top: -1%;
+  font-size: 400%;
   text-align: center;
   letter-spacing: 4px;
   font-family: 'Alegreya Sans SC', sans-serif;
-  height: auto;
-  width: 70%;
-  background-color: rgba(0, 255, 220, 0);
+  width: 100%;
   transition: all 0.5s ease 0s;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  border: 1px solid #00ffdc;
+  border-radius: 50%;
+  padding: 3px;
+  background-color: rgba(255,255,255,0.05)
+}
+#projectPercent {
+  color: rgba(0,255,220,1);
+  flex: 1 1 auto;
+  margin: 0 auto;
+  margin-top: -1%;
+  font-size: 475%;
+  text-align: center;
+  letter-spacing: 4px;
+  font-family: 'Alegreya Sans SC', sans-serif;
+  width: 100%;
+  transition: all 2s ease 0s;
+  border: 1px solid #00ffdc;
+  border-width: 0px 0px 1px 0px;
+  border-radius: 0% 0% 20% 20%;
+  padding: 1px;
+  background: linear-gradient(rgba(0,255,220,0), rgba(0,220,255,0.1));
+}
+#projectPercent:hover {
+  /*transform: scale(1.2);*/
+  font-size: 570%;
+}
+#projectPercentGreen {
+  color: rgba(0,255,220,1);
+  flex: 1 1 auto;
+  margin: 0 auto;
+  margin-top: -1%;
+  font-size: 475%;
+  text-align: center;
+  letter-spacing: 4px;
+  font-family: 'Alegreya Sans SC', sans-serif;
+  width: 100%;
+  transition: all 2s ease 0s;
   transform: scale(1);
+  border: 1px solid #00ffdc;
+  border-width: 0px 0px 1px 0px;
+  border-radius: 0% 0% 20% 20%;
+  padding: 1px;
+  /*background-color: rgba(255,255,255,0.05);*/
+  background: linear-gradient(rgba(0,255,220,0), rgba(0,255,220,0.1));
 }
-#problemPercent:hover {
-  transform: scale(1.1);
+#projectPercentGreen:hover {
+  /*transform: scale(1.2);*/
+  font-size: 570%;
 }
-#bigPercent {
-  font-size: 120%;
+#voteProblem {
+  flex: 1 1 auto;
+  text-align: center;
+  color: #00ffdc;
+  border: 1px solid #00ffdc;
+  border-radius: 3px 0px 0px 3px;
+  text-align: center;
+  font-family: 'Alegreya Sans SC', sans-serif;
+  transition: all 0.5s ease 0s;
+  padding: 0.7% 0%;
+  letter-spacing: 2px;
+  margin: 0 auto; 
+  font-size: 115%;
+  width: 8em;
+  background-color: rgba(255,255,255,0.025);
+}
+#voteProblem:hover {
+  cursor: pointer; 
+  color: #0f131c;
+  background-color: rgba(0, 255, 220, 1);
+}
+#votedProblem {
+  flex: 1 1 auto;
+  text-align: center;
+  background-color: rgba(0, 255, 220, 1);
+  color: #0f131c;
+  border: 1px solid #00ffdc;
+  border-radius: 3px 0px 0px 3px;
+  text-align: center;
+  font-family: 'Alegreya Sans SC', sans-serif;
+  transition: all 0.5s ease 0s;
+  padding: 0.7% 0%;
+  letter-spacing: 2px;
+  margin: 0 auto; 
+  font-size: 115%;
+  width: 8em;
+}
+#votedProblem:hover {
+  cursor: pointer; 
+  color: #0f131c;
+  background-color: #00ffdc;
+}
+#SBButtonDiscuss, #SBButtonLearn {
+  flex: 1 1 auto;
+  text-align: center;
+  background-color: rgba(0, 255, 220, 1);
+  color: #dddddd;
+  border: 1px solid #dddddd;
+  border-radius: 0px 3px 3px 0px;
+  text-align: center;
+  font-family: 'Alegreya Sans SC', sans-serif;
+  transition: all 0.5s ease 0s;
+  padding: 0.7% 0%;
+  letter-spacing: 2px;
+  margin: 0 auto;
+      
+  font-size: 115%;
+  background-color: rgba(255,255,255,0.025);
+  width: 8em;
+}
+#SBButtonDiscuss {
+  border-radius: 0px;
+}
+#SBButtonDiscuss:hover, #SBButtonLearn:hover {
+  /*A*/
+  /*background-color: rgba(255,255,255,0.05);
+  cursor: pointer;
+  box-shadow: 0 0 1px 1px rgba(0,220,255,1);*/
+
+  /*B*/
+  background-color: #00dcff;
+  color: #0f131c;
+  cursor: pointer;
+  border-color: #00dcff;
 }
 #problemTitle {
-  color: #dddddd;
-  margin: 2% 10% 0% 10%;
+  background-color: rgba(0,220,255,0.1);
+  color: rgba(255,255,255,1);
   font-size: 210%;
-  letter-spacing: 6px;
+  letter-spacing: 4px;
   border: 1px solid #dddddd;
   border-radius: 3px;
   box-shadow: 0 0 1pt 1pt rgba(255,255,255,0.5);
+  margin: 0% 10% 0% 10%;
   transition: all 0.25s ease 0s;
-  /*background-size: cover;
-  background-repeat: no-repeat;
-  background-color: rgba(15,19,28,0.99);
-  background-blend-mode: overlay;
-  background-image: url('./vitruvianMan.jpg');*/
 }
-
+#proposalCreateProjectTitle {
+  background-color: rgba(0,220,255, 0.05);
+  color: rgba(221,221,221,1);
+  font-size: 150%;
+  letter-spacing: 4px;
+  border: 1px solid #00dcff;
+  border-radius: 3px;
+  /*box-shadow: 0 0 1pt 1pt rgba(255,255,255,0.5);*/
+  margin: 0% 10% 0% 10%;
+  transition: all 0.25s ease 0s;
+}
+#bigPercent {
+  font-size: 120%;
+  flex: 1 1 auto;
+}
 #fullProblemHeader {
   display: flex;
   justify-content: space-between;
@@ -3238,44 +4385,24 @@ like vote and comments.*/
   cursor: pointer; 
   /*box-shadow: 0 0 2pt 2pt rgba(0,255,220,0.5);*/
 }
-#votedProblem {
-  flex: 1 1 auto;
-  margin: 0 auto;
-  text-align: center;
-  background-color: rgba(0, 255, 220, 1);
-  color: #0f131c;
-  border: 1px solid #00ffdc;
-  border-width: 1px 1px;
-  border-radius: 3px;
-  text-align: center;
-  /*letter-spacing: 8px;*/
-  font-family: 'Alegreya Sans SC', sans-serif;
-  font-size: 170%;
-  height: auto;
-  width: 70%;
-  text-decoration: none;
-  transition: all 0.5s ease 0s;
-}
-#votedProblem:hover {
-  cursor: pointer; 
-}
 #problemSummary, #problemSummaryLeftSB {
-  margin: 10px 25px 0px 25px;
+  margin: -1px 25px 7.5px 25px;
   line-height: 150%;
-  font-size: 125%;
+  /*Previously was 125%, fullproblem was 60% in width*/
+  font-size: 130%;
   border: 1px solid #00dcff;
-  border-width: 1px 0px;
-  padding: 15px 15px 17px 15px;
+  border-radius: 15%;
+  border-width: 0px 0px 1px 0px;
+  padding: 15px 35px 17px 35px;
   text-align: left;
   font-family: 'Source Sans Pro', sans-serif;
   transition: all 0.25s ease 0s;
   color: #dddddd;
   min-width: 80%;
   transition: all 0.5s ease 0s;
+  background-color: rgba(255,255,255,0.025);
   /*font-weight: 300;*/
 }
-
-
 
 
 /*Sidebar*/
@@ -3293,7 +4420,40 @@ like vote and comments.*/
   margin-top: 5px;
   margin-bottom: 10px;
   flex: 1 1 auto;
+  width: 80%;
+}
+#sidebarSBProjects {
+  padding-left: 0px;
+  flex-grow: 1;
+  flex-shrink: 1;
+  border-radius: 0px;
+  border-width: 0px 0px;
+  position: relative;
+  color: #dddddd;
+  padding: 0px 0px 0px 0px;
+  margin: 0 auto;
+  margin-top: 5px;
+  margin-bottom: 0px;
+  flex: 1 1 auto;
   width: 100%;
+}
+#projectInteractMenu, #projectInteractDiscussMenu {
+  padding-left: 0px;
+  flex-grow: 1;
+  flex-shrink: 1;
+  border-radius: 0px;
+  border-width: 0px 0px;
+  position: relative;
+  color: #dddddd;
+  padding: 0px 0px 20px 0px;
+  margin: 0 auto;
+  /*margin-top: 3%;*/
+  margin-bottom: 10px;
+  flex: 1 1 auto;
+  width: 70%;
+}
+#projectInteractMenu {
+  margin-top: 2%;
 }
 
 
@@ -3314,7 +4474,7 @@ like vote and comments.*/
 }
 #SPwrapper {
   width: 100%;
-  margin:0 auto;
+  margin: 0 auto;
   text-align:center;
 }
 #SPUnitList {
@@ -3324,13 +4484,13 @@ like vote and comments.*/
   justify-content: space-between;
   width: 100%;
   margin: 0 auto;
-  margin-top: 2%;
+  margin-top: 0.5%;
   overflow-x: scroll;
 }
 #SPUnitList li {
   display: inline-block;
   /*display: inline;*/
-  margin: 2% 1% 7% 1%;
+  margin: 2% 1% 4% 1%;
   list-style-type: none;
 }
 #SPUnit {
@@ -3360,6 +4520,7 @@ like vote and comments.*/
   box-shadow: 0 0 2pt 2pt rgba(0,220,255,0.5);
   transition: all 0.5s ease 0s;
   transform: scale(1);
+  margin-top: 1%;
 
   /*Testing out a gradient here for 3D holograp effect*/
   /*Currently I like it*/
@@ -3479,9 +4640,41 @@ like vote and comments.*/
 }
 #ProposalPercentFull {
   text-align: center;
-  font-size: 250%;
+  font-size: 350%;
   color: #00ffdc;
   margin-bottom: 0.5%;
+
+  width: 100%;
+  transition: all 2s ease 0s;
+  transform: scale(1);
+  border: 1px solid #00ffdc;
+  border-width: 0px 0px 1px 0px;
+  border-radius: 0% 0% 20% 20%;
+  padding: 1px;
+  background: linear-gradient(rgba(0,255,220,0), rgba(0,220,255,0.1));
+}
+#ProposalPercentFull:hover {
+  /*transform: scale(1.2);*/
+  font-size: 420%;
+}
+#ProposalPercentFullGreen {
+  text-align: center;
+  font-size: 350%;
+  color: #00ffdc;
+  margin-bottom: 0.5%;
+
+  width: 100%;
+  transition: all 2s ease 0s;
+  transform: scale(1);
+  border: 1px solid #00ffdc;
+  border-width: 0px 0px 1px 0px;
+  border-radius: 0% 0% 20% 20%;
+  padding: 1px;
+  background: linear-gradient(rgba(0,255,220,0), rgba(0,255,220,0.1));
+}
+#ProposalPercentFullGreen:hover {
+  /*transform: scale(1.2);*/
+  font-size: 420%;
 }
 
 /*End ProblemLeftSB*/
@@ -3493,13 +4686,15 @@ like vote and comments.*/
   text-align: center;
   transition: all 0.5s ease 0s;
   width: 5%;
-  box-shadow: 0 0 1pt 1pt rgba(0,220,255,0.5);
+  /*box-shadow: 0 0 1pt 1pt rgba(0,220,255,0.5);*/
   left: 0;
-  margin-bottom: 1%;
+  margin-top: -1%;
+  margin-left: 14%;
 }
 #backSolutionArrowDiv:hover {
-  background-color: rgba(0,220,255,0.15);
+  /*background-color: rgba(0,220,255,0.15);*/
   cursor: pointer;
+  /*box-shadow: 0 0 1pt 1pt rgba(0,220,255,0.5);*/
 }
 #backProposalArrowDiv {
   text-align: center;
@@ -3542,13 +4737,16 @@ like vote and comments.*/
 }
 #backSolutionArrow:hover {
   cursor: pointer;
-  box-shadow: 0 0 2pt 2pt rgba(0,220,255,0.5);
+  background-color: rgba(0,220,255,0.15);
+
+  /*box-shadow: 0 0 2pt 2pt rgba(0,220,255,0.5);*/
 }
 #backSubProjectArrow {
-  flex: 1 1 auto;
+  /*flex: 1 1 auto;*/
   color: #00ffdc;
-  text-align: center;
+  /*text-align: center;*/
   margin: 0 auto;
+  padding: 2px;
   /*box-shadow: 0 0 1pt 1pt rgba(0,220,255,0.5);*/
   transition: all 0.5s ease 0s;
 
@@ -3623,9 +4821,23 @@ like vote and comments.*/
   color: #00dcff !important;
   border-color: #00dcff;
 }*/
+
 .activeWhite div {
   background-color: rgba(0,220,255,0.15) !important;
   /*color: #00dcff !important;*/
+  border-color: #00dcff !important;
+}
+.activeWhiteBorder div {
+  background-color: rgba(0,220,255,0.05) !important;
+  color: #00dcff !important;
+  /*font-size: 175% !important;*/
+  border-color: #00dcff !important;
+  border-width: 1px !important;
+  /*padding: 3px 0px !important;*/
+}
+.activeWhiteBlueText div {
+  background-color: rgba(0,220,255,0.15) !important;
+  color: #00dcff !important;
   border-color: #00dcff !important;
 }
 /*.activeWhite #topSolutionsButtonRightSB,
@@ -3645,21 +4857,101 @@ like vote and comments.*/
 }
 #solutionsTitleRightSB {
   flex: 1 1 auto;
-  color: #00dcff;
-  border: 1px solid #00dcff;
-  /*border-width: 0px 0px 1px 0px;*/
-  font-size: 80%;
-  /*padding: 3px 5px 3px 10px;*/
-  padding: 5px;
+  color: #ffffff;
+  font-size: 200%;
   margin: 0px 0px;
   letter-spacing: 4px;
   text-align: center;
+  margin-bottom: 2%;
+  transition: all 0.25s ease 0s;
+  padding: 2% 0% 2% 0%;
+  font-size: 200%;
+  letter-spacing: 6px;
+  border: 1px solid #dddddd;
+  border-width: 1px;
+  border-radius: 3px;
+  background-color: rgba(0,220,255, 0.05);
+  box-shadow: 0 0 1pt 1pt rgba(255,255,255,0.5);
+
+  /*Considering making this title white, possibly units instead*/
+  /*background-color: rgba(0,220,255,0.1);*/
+  
+}
+#proposalsTitleRightSB {
+  flex: 1 1 auto;
+  color: #ffffff;
+  border-radius: 3px;
+  font-size: 200%;
+  margin: 0 auto;
+  letter-spacing: 4px;
+  text-align: center;
+  margin-bottom: 0.15%;
+  transition: all 0.25s ease 0s;
+  padding: 2% 0% 2% 0%;
+  font-size: 200%;
+  letter-spacing: 6px;
+  border: 1px solid #dddddd;
+  border-width: 1px 1px 1px 1px;
+  border-radius: 3px 3px 3px 3px;
+  background-color: rgba(0,220,255, 0.05);
+  box-shadow: 0 0 1pt 1pt rgba(255,255,255,0.5);
+
+  /*Considering making this title white, possibly units instead*/
+  /*background-color: rgba(0,220,255,0.1);*/
+  
+}
+#proposalsTitleRightSBEnd {
+  flex: 1 1 auto;
+  color: #ffffff;
+  border-radius: 3px;
+  font-size: 200%;
+  margin: 0 auto;
+  letter-spacing: 4px;
+  text-align: center;
+  margin-top: 1.5%;
+  margin-bottom: 0.15%;
+  transition: all 0.25s ease 0s;
+  font-size: 200%;
+  letter-spacing: 6px;
+  border: 1px solid #dddddd;
+  border-width: 1px 1px 1px 1px;
+  border-radius: 3px 3px 3px 3px;
+  background-color: rgba(0,220,255, 0.05);
+  box-shadow: 0 0 1pt 1pt rgba(255,255,255,0.5);
+  width: 85%;
+}
+#discussMenuEnd {
+  flex: 1 1 auto;
+  color: #ffffff;
+  border-radius: 3px;
+  font-size: 200%;
+  margin: 0 auto;
+  letter-spacing: 4px;
+  text-align: center;
+  margin-bottom: 2.5%;
+  transition: all 0.25s ease 0s;
+  font-size: 200%;
+  letter-spacing: 6px;
+  border: 1px solid #dddddd;
+  border-width: 1px 1px 1px 1px;
+  border-radius: 3px 3px 3px 3px;
+  background-color: rgba(0,220,255, 0.05);
+  box-shadow: 0 0 1pt 1pt rgba(255,255,255,0.5);
+  width: 85%;
 }
 #fullSolution {
-  width: 100%;
+  width: 70%;
   border: 1px solid #00dcff;
+  border-radius: 3px;
   /*background-color: rgba(255,255,255,0.05);*/
   background-color: rgba(0,220,255,0.05);
+  margin: 0 auto;
+  margin-top: 1%;
+  /*margin-bottom: 2%;*/
+  padding-top: 1%;
+}
+#fullSolutionContainer {
+  margin-bottom: 1%;
 }
 #solutionFormLabel {
   color: #00dcff;
@@ -3709,16 +5001,30 @@ like vote and comments.*/
   text-decoration: none;
   margin: 0 auto;
   /*margin-top: 12px;*/
-  width: 70%;
+  width: 60%;
   background-color: rgba(0,220,255,0);
   transition: all 0.2s ease 0s;
-
+  padding: 3px 0px;
 }
-#SBDiscussButton:hover {
+#SBDiscussButton:hover, #SBDiscussButtonEnd:hover {
   background-color: rgba(0,220,255,0.15);
   color: #00dcff;
   cursor: pointer;
   border-color: #00dcff;
+}
+#SBDiscussButtonEnd {
+  flex: 1 1 auto;
+  color: #dddddd;
+  font-size: 130%;
+  border: 1px solid #dddddd;
+  border-width: 0px 1px 1px 1px;
+  text-align: center;
+  text-decoration: none;
+  margin: 0 auto;
+  /*margin-top: 12px;*/
+  width: 50%;
+  background-color: rgba(0,220,255,0);
+  transition: all 0.2s ease 0s;
 }
 #SBDiscussButton1 {
   border-width: 0px 1px 1px 1px;
@@ -3729,8 +5035,8 @@ like vote and comments.*/
   align-items: stretch;
   width: 100%;
   border: 1px solid #00dcff;
-  border-width: 0px 0px 1px 0px;
-  margin-bottom: 10px;
+  border-width: 0px 0px 0px 0px;
+  margin-bottom: 0px;
 }
 #discussGroup1, #discussGroup2 {
   flex: 1 1 auto;
@@ -3846,7 +5152,7 @@ label + input[type=radio] + label {
 }
 #learnResourcesText {
   font-family: 'Open Sans';
-  margin-top: 5px;
+  /*margin-top: 5px;*/
 }
 #learnResourcesLink {
   text-decoration: underline;
@@ -3857,7 +5163,7 @@ label + input[type=radio] + label {
   font-family: 'Open Sans';
   overflow: auto;
   word-break: break-all;
-  margin-top: 5px;
+  /*margin-top: 5px;*/
   max-width: 584.31px;
 }
 #learnResourcesLink:hover {
@@ -3879,22 +5185,28 @@ label + input[type=radio] + label {
 }
 #voteSolution, #versionsButton {
   flex: 1 1 auto;
-  margin: 0 auto;
-  margin-bottom: 10px;
-  margin-top: -10px;
   padding-left: 1%;
   color: #00ffdc;
-  font-size: 120%;
+  background-color: #00ffdc;
+  font-size: 115%;
+  /*A*/
   border: 1px solid #00ffdc;
-  border-radius: 0px 0px 0px 0px;
+  border-radius: 3px;
   text-align: center;
-  letter-spacing: 8px;
-  padding: 5px;
+  letter-spacing: 2px;
+  padding: 0.7% 0%;
+  /*B*/
+  /*border: 1px solid #00ffdc;
+  border-radius: 0% 0% 30% 30%;
+  text-align: center;
+  letter-spacing: 2px;
+  padding: 3% 0%;*/
   margin: 0 auto;
-  letter-spacing: 8px;
-  width: 10em;
+  width: 8em;
   text-align: center;
   transition: all 0.5s ease 0s;
+
+  background-color: rgba(255,255,255,0.025);
 }
 #voteSolution:hover, 
 #versionsButton:hover {
@@ -3910,21 +5222,42 @@ label + input[type=radio] + label {
 #versionsButton:hover {
   background-color: #00dcff;
 }
+#votedSolution {
+  flex: 1 1 auto;
+  color: #0f131c;
+  background-color: #00ffdc;
+  font-size: 120%;
+  /*A*/
+  border: 1px solid #00ffdc;
+  border-radius: 3px;
+  text-align: center;
+  letter-spacing: 2px;
+  padding: 0.7% 0%;
+  /*B*/
+  /*border: 1px solid #00ffdc;
+  border-radius: 0% 0% 30% 30%;
+  text-align: center;
+  letter-spacing: 2px;
+  padding: 3% 0%;*/
+  margin: 0 auto;
+  margin-bottom: 5%;
+  width: 8em;
+  text-align: center;
+  transition: all 0.5s ease 0s;
+}
+#votedSolution:hover {
+  cursor: pointer;
+}
 
 #solutionTitle {
-  /*color: #dddddd;*/
-  /*margin: 2% 10% 2% 10%;*/
-  /*font-size: 180%;*/
-  /*letter-spacing: 6px;*/
   border: 1px solid #dddddd;
   border-radius: 3px;
   box-shadow: 0 0 1pt 1pt rgba(255,255,255,0.5);
   margin-bottom: 0px;
-  margin-top: 5px;
+  margin-top: 3%;
   transition: all 0.25s ease 0s;
   color: rgba(221,221,221,1);
   word-wrap: break-word; 
-  /*font-family: 'Open Sans', sans-serif;*/
 }
 
 #solutionIntro {
@@ -4054,9 +5387,9 @@ label + input[type=radio] + label {
 }
 #addProsCons {
   font-size: 90%;
-  color: #00ffdc;
-  background-color: rgba(0,255,220,0);
-  border: 1px solid #00ffdc;
+  color: #00dcff;
+  background-color: rgba(0,220,255,0);
+  border: 1px solid #00dcff;
   border-radius: 2px;
   margin-top: 2%;
   transition: all 0.5s ease 0s;
@@ -4064,8 +5397,8 @@ label + input[type=radio] + label {
 }
 #addProsCons:hover {
   color: #0f131c;
-  background-color: rgba(0,255,220,1);
-  border: 1px solid #00ffdc;
+  background-color: rgba(0,220,255,1);
+  border: 1px solid #00dcff;
   cursor: pointer;
 }
 
@@ -4291,7 +5624,6 @@ input#submitNewVersion:hover {
 }
 #introPrompt {
   color: #dddddd;
-  font-size: 180%;
   cursor: default;
   font-size: 200%;
   text-align: center;
@@ -4409,7 +5741,7 @@ input#submitNewVersion:hover {
   /*background-color: rgba(0,220,255, 0.05);*/
 }
 #introContainer {
-  margin-top: 10%;
+  margin-top: 3%;
 }
 #tutorialContent {
   width:80%;
@@ -4651,16 +5983,15 @@ input#submitNewVersion:hover {
   text-align: center;
   letter-spacing: 8px;
   padding: 5px;
-  width: 20em;
+  width: 15em;
   text-align: center;
   transition: all 0.5s ease 0s;
   background-color: rgba(0,220,255,0);
   border: 1px solid #dddddd;
-  border-width: 0px 0px 0px 1px;
+  border-width: 0px 0px 0px 0px;
 }
 #aboutButton {
-  border: 1px solid #dddddd;
-  border-width: 0px 1px 0px 0px;
+  /*border-width: 0px 1px 0px 0px;*/
 }
 #aboutButton:hover, #careersButton:hover {
   background-color: rgba(0,220,255,0.1);
@@ -4705,9 +6036,6 @@ input#submitNewVersion:hover {
 /*#redFieldset {
   border-color: #ff7f7f;
 }*/
-#freeFormEditTextArea {
-  border-color: #ff7f7f;
-}
 
 /*textarea:focus {
   border-color: #ff7f7f !important;
@@ -4762,27 +6090,114 @@ input#submitNewVersion:hover {
 
 /*Notifications*/
 
-    #notification {
+    #notificationShow {
       position: fixed;
-      top: 5;
-      right: 5;
-      /*margin-left: -12.5%;*/
-      z-index: 5;
-      width: 35%;
-      border: 1px solid #00dcff;
-      background-color: inherit;
+      top: 15vh;
+      z-index: 500;
+      width: 50%;
+      margin: 0 auto;
+      margin-left: 25%;
+      margin-right: 25%;
+      border: 1px solid #ff7f7f;
+      border-radius: 3px;
+      box-shadow: 0 0 2pt 2pt rgba(255,127,127,0.25);
+      background-color: rgba(15,19,28,0.9);
       padding: 5px;
       text-align: center;
+      font-size: 150%;
+      color: #ffffff;
+    }
+    #notification {
       display: none;
     }
     #notificationHeader {
-
+      color: #ff7f7f;
+      background-color: rgba(255,127,127,0.25);
+      border: 1px solid #ff7f7f;
+      border-radius: 50px;
+      margin: 0 auto;
+      margin-top: 1%;
+      width: 30px;
+      height: 30px;
     }
     #notificationContent {
-
+      color: #ffffff;
+      padding: 5px;
+      font-size: 115%;
+      margin: 4% 8% 4% 8%;
+    }
+    #notificationLoginRegisterContainer {
+      display: none;
+    }
+    #notificationLoginRegisterContainerShow {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-around;
+      width: 53%;
+      margin: 0 auto;
+    }
+    #notificationLogin {
+      flex: 1 1 auto;
+      color: #00dcff;
+      padding: 3px;
+      border: 1px solid #00dcff;
+      border-radius: 3px;
+      font-size: 100%;
+      width: 6em;
+      transition: all 0.5s ease 0s;
+    }
+    #notificationLogin:hover {
+      background-color: rgba(0, 220, 255, 0.25);
+      cursor: pointer;
+    }
+    #notificationRegister {
+      flex: 1 1 auto;
+      color: #00ffdc;
+      padding: 3px;
+      border: 1px solid #00ffdc;
+      border-radius: 3px;
+      font-size: 100%;
+      width: 6em;
+      transition: all 0.5s ease 0s;
+    }
+    #notificationRegister:hover {
+      background-color: rgba(0, 255, 220, 0.25);
+      cursor: pointer;
+    }
+    #notificationFeedbackShow {
+      color: #00dcff;
+      padding: 3px;
+      border: 1px solid #00dcff;
+      border-radius: 3px;
+      font-size: 70%;
+      transition: all 0.5s ease 0s;
+      width: 25%;
+      margin: 0 auto;
+      margin-top: 2%;
+      margin-bottom: 1.5%;
+    }
+    #notificationFeedbackShow:hover {
+      background-color: rgba(0, 220, 255, 0.25);
+      cursor: pointer;
+    }
+    #notificationFeedback {
+      display: none;
     }
     #notificationReturn {
-      
+      color: #ff7f7f;
+      padding: 3px;
+      border: 1px solid #ff7f7f;
+      border-radius: 3px;
+      font-size: 70%;
+      transition: all 0.5s ease 0s;
+      width: 25%;
+      margin: 0 auto;
+      margin-top: 2%;
+      margin-bottom: 1.5%;
+    }
+    #notificationReturn:hover {
+      background-color: rgba(255,127,127,0.25);
+      cursor: pointer;
     }
 
     /*Notifications*/
@@ -4834,3 +6249,152 @@ input#submitNewVersion:hover {
 
 /*Test 3D rotation*/
 /*transform: rotate3d(0,1,1,5deg) !important;*/
+
+
+
+/*V3*/
+
+/*Notebooks*/
+#noteBooksTitle {
+  flex: 1 1 auto;
+  color: #00dcff;
+  border: 1px solid #00dcff;
+  /*border-width: 0px 0px 1px 0px;*/
+  font-size: 80%;
+  /*padding: 3px 5px 3px 10px;*/
+  padding: 5px;
+  letter-spacing: 4px;
+  text-align: center;
+  width: 80%;
+  margin: 0 auto;
+  margin-top: 1%;
+  margin-bottom: 1%;
+}
+#noteBookUnit {
+  padding: 10px;
+  margin: 0 auto;
+  border: 1px solid #00dcff;
+  transition: all 0.5s ease 0s;
+  box-shadow: 0 0 0pt 0pt rgba(0,220,255,0.5);
+  margin-bottom: 2%;
+  background-color: rgba(0,220,255,0.05);
+  width: 90%;
+  text-align: center;
+}
+#noteBookUnit {
+  cursor: pointer;
+  box-shadow: 0 0 2pt 2pt rgba(0,220,255,0.5);
+}
+#noteBookUnitContainer {
+  padding: 0px;
+  margin: 0 auto;
+  color: #00dcff;
+  letter-spacing: 1px;
+  display: flex;
+  flex-direction: row;
+  flex: 2 2 auto;
+  font-size: 120%;
+}
+#noteBookUnitTitle {
+  text-align: center;
+  padding: 5px;
+  margin: 0 auto;
+  color: #dddddd;
+  letter-spacing: 1px;
+  font-family: 'Alegreya Sans SC', sans-serif;
+  font-size: 120%;
+  width: 100%;
+  word-wrap: break-word; 
+  overflow: auto;
+}
+#noteBookUnitTitle:hover {
+  text-align: center;
+  padding: 5px;
+  margin: 0 auto;
+  color: #dddddd;
+  letter-spacing: 1px;
+  font-family: 'Alegreya Sans SC', sans-serif;
+  font-size: 120%;
+  width: 100%;
+  word-wrap: break-word; 
+  overflow: auto;
+}
+#createNoteBookButton {
+  color: #dddddd;
+  font-size: 120%;
+  padding: 5px;
+  letter-spacing: 6px;
+  cursor: default;
+  transition: all 0.5s ease 0s;
+  border: 1px solid #dddddd;
+  /*border-radius: 3px;*/
+  /*box-shadow: 0 0 1pt 1pt rgba(0,220,255,0.5) !important;*/
+  /*background-color: rgba(0,220,255,0.05);*/
+  transform: scale(1);
+  text-align: center;
+  width: 30%;
+  margin: 0 auto;
+  margin-bottom: 5px;
+  margin-top: 5px;
+
+}
+
+/*User Settings*/
+    #profileSettingsElements {
+    	margin: 5% 15px 0px 5px;
+    	padding: 5px;
+      width: 100%;
+    }
+    #profileSettingsUnit {
+    	border: 1px solid #00dcff;
+    	border-width: 1px 0px 1px 0px;
+    	padding: 2%;
+      margin-top: 5%;
+      transition: all 0.5s ease 0s;
+
+      /*Exploring the look of gradients as background colors, 
+      so far I haven't found anything I like*/
+      /*background: linear-gradient(rgba(0,220,255,0.0), rgba(0,220,255,0.02), rgba(0,220,255,0.0))*/
+    }
+    #profileSettingsUnit:hover {
+      cursor: pointer;
+      background-color: rgba(0,220,255,0.05);
+    }
+    #profileSettingsUnitTitle {
+      display: block;
+      margin: 5px 0px 0px 0px;
+      padding: 2px 5px 2px 5px;
+      font-size: 160%;
+      color: #00dcff !important;
+      line-height: 120%;
+      height: auto;
+      word-break: break-all;
+      overflow: auto;
+      width: 90%;
+    }
+    #profileSettingsUnitSummary {
+    	font-family: 'Open Sans', sans-serif;
+    	padding: 0px 0px 10px 10px;
+    	font-size: 90%;
+    	margin: 0px;
+    	text-align: justify;
+      word-break: break-all;
+      overflow: auto;
+      width: 90%;
+    }
+
+
+
+/*Entrance*/
+
+#entranceGates {
+      width: 100%;
+      display: inline-flex;
+    	flex-direction: row;
+      word-wrap: break-word; 
+      justify-content: center;
+      margin-bottom: 15%;
+}
+
+
+/*End Entrance*/

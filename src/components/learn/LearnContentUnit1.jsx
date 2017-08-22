@@ -2,7 +2,8 @@ import React from 'react';
 import { Link } from 'react-router';
 import axios from 'axios';
 import cookie from 'react-cookie';
-import {Config} from '../../config.js'
+import {Config} from '../../config.js';
+import $ from 'jquery';
 
 export default class LearnContentUnit1 extends React.Component {
     constructor(props){
@@ -44,14 +45,27 @@ export default class LearnContentUnit1 extends React.Component {
            Type: 7,
            TypeID: learnItem.ID,
            username : cookie.load("userName"),
-           
+        
         })
         .then(function (result) {
-            document.location = window.location.pathname;
+            document.location = window.location.pathname 
         })
-        .catch(function (error) {
-            alert("I'm sorry, you've already voted on a comment.");
-        })
+      .catch(function (error) {
+          $(document).ready(function() {
+              $('#notification').attr('id','notificationShow').hide().slideDown();
+
+                if (error.response.data == '[object Object]') {
+                  return (
+                    $(document).ready(function() {
+                      $('#notificationLoginRegisterContainer').attr('id','notificationLoginRegisterContainerShow');
+                      $('#notificationContent').html('Please <span id="blue">login </span>to vote');
+                    })
+                  );
+                }  else if (error.response.data != '') {
+                $('#notificationContent').text(error.response.data);
+              }
+          });
+      });
   }
       function unVote() {
       axios.delete( Config.API + '/auth/vote/delete' ,{
@@ -64,9 +78,22 @@ export default class LearnContentUnit1 extends React.Component {
         .then(function (result) {
             document.location = window.location.pathname 
         })
-        .catch(function (error) {
-            alert("I'm sorry, there was a problem with your request. ")
-        })
+      .catch(function (error) {
+          $(document).ready(function() {
+              $('#notification').attr('id','notificationShow').hide().slideDown();
+
+                if (error.response.data == '[object Object]') {
+                  return (
+                    $(document).ready(function() {
+                      $('#notificationLoginRegisterContainer').attr('id','notificationLoginRegisterContainerShow');
+                      $('#notificationContent').html('Please <span id="blue">login </span>to vote');
+                    })
+                  );
+                }  else if (error.response.data != '') {
+                $('#notificationContent').text(error.response.data);
+              }
+          });
+      });
         
     }
 

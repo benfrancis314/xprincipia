@@ -1,8 +1,8 @@
 import React from 'react';
 import axios from 'axios';
 import cookie from 'react-cookie';
-import SideBarMore from '../SideBarMore.jsx';
-import {Config} from '../../config.js'
+import {Config} from '../../config.js';
+import $ from 'jquery';
 
 export default class LearnContentForm extends React.Component {
 constructor(props){
@@ -30,35 +30,35 @@ constructor(props){
         document.location = window.location.pathname 
       })
       .catch(function (error) {
-        alert("I'm sorry, there was a problem with your request.")
+          $(document).ready(function() {
+              $('#notification').attr('id','notificationShow').hide().slideDown();
+
+                if (error.response.data == '[object Object]') {
+                  return (
+                    $(document).ready(function() {
+                      $('#notificationLoginRegisterContainer').attr('id','notificationLoginRegisterContainerShow');
+                      $('#notificationContent').html('Please <span id="blue">login </span>to create a lesson');
+                    })
+                  );
+                }  else if (error.response.data != '') {
+              $('#notificationContent').text(error.response.data);
+              }
+          });
       });
     }
 
-    // componentDidMount(){
-    //     var self = this;
-    //         return axios.get( Config.API + '/auth/learnItems/typeID?id='+this.props.params.probID+'&dataType=0').then(function (response) {
-    //             self.setState({
-    //                 learnItems: response.data
-    //             })
-    //         }) 
-    //     }
    render() {
            return (
         <div>
+          <div id="discussMenuEnd">
+            Lessons
+          </div>
             <div id="suggestionFormComponent">
                 <form id="suggestionForm">
-                    <fieldset>
-                        <legend>Create a Lesson</legend>
-                             {/*<div>
-                                <input type="radio" id="option-one" />
-                                    <label>Easy</label>
-                                <input type="radio" id="option-two" />
-                                    <label>Medium</label>
-                                <input type="radio" id="option-three" />
-                                    <label>Hard</label>
-                             </div>*/}
+                    <fieldset id='fieldSetNoBorderPadding'>
+                        {/*<legend>Create a Lesson</legend>*/}
                             <textarea name="suggestionText" required="required" id="learnContentTextArea" 
-                            placeholder="Create a lesson to help others understand the project." autoFocus ></textarea>
+                            placeholder="Create a lesson to help others understand this project, promoting future advancement." autoFocus ></textarea>
                             <input type="button" value="Create" onClick={this.postLearnItem} id="addSuggestion"/>
                     </fieldset>
                 </form>

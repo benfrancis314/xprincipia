@@ -1,7 +1,8 @@
 import React from 'react';
 import axios from 'axios';
 import cookie from 'react-cookie';
-import {Config} from '../../config.js'
+import {Config} from '../../config.js';
+import $ from 'jquery';
 
 export default class ProsForm extends React.Component {
 
@@ -27,24 +28,45 @@ this.state.pro = document.getElementById('proTextArea').value
   })
   .then(function (result) {
     document.location = window.location.pathname 
+    // scroll to pros again
   })
-  .catch(function (error) {
-    alert("I'm sorry there was a problem with your request")
-  });
+      .catch(function (error) {
+        // console.log(error.response.data)
+          $(document).ready(function() {
+              $('#notification').attr('id','notificationShow').hide().slideDown();
+
+                if (error.response.data == '[object Object]') {
+                  return (
+                    $(document).ready(function() {
+                      $('#notificationLoginRegisterContainer').attr('id','notificationLoginRegisterContainerShow');
+                      $('#notificationFeedbackShow').attr('id','notificationFeedback');
+                      $('#notificationContent').html('Please <span id="blue">login </span>to vote');
+                    })
+                  );
+                }  else if (error.response.data != '') {
+                $('#notificationContent').text(error.response.data);
+              }
+          });
+      });
 } 
 
 
    render() {
       return (
-
-      <div id="suggestionFormComponent">
-            <form id="suggestionForm">
-                <fieldset>
-                    <legend>Pros</legend>
-                         <textarea name="suggestionText" required="required" id="proTextArea" autoFocus ></textarea>
-                         <input type="button" value="Add" onClick={this.postPro} id="addProsCons"/>
-                </fieldset>
-            </form>
+      <div>
+        <div id="discussMenuEnd">
+          Pros
+        </div>
+        <div id="suggestionFormComponent">
+              <form id="suggestionForm">
+                  <fieldset  id='fieldSetNoBorderPadding'>
+                      {/*<legend>Pros</legend>*/}
+                          <textarea name="suggestionText" required="required" id="proTextArea" placeholder="Add a pro towards the merit of this proposal. " autoFocus ></textarea>
+                          {/*Replace with blueAdd button*/}
+                          <input type="button" value="Add" onClick={this.postPro} id="addProsCons"/>
+                  </fieldset>
+              </form>
+        </div>
       </div>
 
       );

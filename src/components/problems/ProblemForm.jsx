@@ -1,8 +1,11 @@
 import React from 'react';
-import axios from 'axios';
+// Will be uesd with componentDidUpdate
+// import ReactDOM from 'react-dom';import axios from 'axios';
 import cookie from 'react-cookie';
 import { Link } from 'react-router';
-import {Config} from '../../config.js'
+import axios from 'axios';
+import {Config} from '../../config.js';
+import $ from 'jquery';
 
 export default class ProblemForm extends React.Component {
 
@@ -18,6 +21,10 @@ export default class ProblemForm extends React.Component {
 
     this.postProblem = this.postProblem.bind(this);
   };
+
+// componentDidUpdate() {
+//         ReactDOM.findDOMNode(this).scrollIntoView();
+//   }      
 
   postProblem() {
     
@@ -37,35 +44,53 @@ export default class ProblemForm extends React.Component {
       //redirect back to the last page     
       document.location = '/problem/'+self.props.params.probID+'/subproblems'
     })
-    .catch(function (error) {
-      console.log(error.response.data)
-      alert( error.response.data)
-    });
-  };
+      .catch(function (error) {
+        alert('why not working');
+          $(document).ready(function() {
+              $('#notification').attr('id','notificationShow').hide().slideDown();
+
+                if (error.response.data == '[object Object]') {
+                  return (
+                    $(document).ready(function() {
+                      $('#notificationLoginRegisterContainer').attr('id','notificationLoginRegisterContainerShow');
+                      $('#notificationContent').html('Please <span id="blue">login </span>to create a project');
+                    })
+                  );
+                }  else if (error.response.data != '') {
+              $('#notificationContent').text(error.response.data);
+              }
+          });
+      });
+  }
 
   render() {
       return (
-        <div id="createProblemBox">
-            <form id="createForm">
-              <fieldset>
-                  <legend>Create a Sub Project</legend>
-                        <Link to={`/problem/${this.props.params.probID}/subproblems`}>
-                          <div id="backSolutionArrowDiv">
-                              <img src={require('../../assets/upArrow.svg')} id="backSubProjectArrow" width="50" height="30" alt="Back arrow, blue up arrow" />
-                          </div>
-                        </Link>
-                        <label htmlFor="problemTitleForm" id="problemTitleFormLabel">Title<br />
-                            <input type="text" name="problemTitle" required="required" maxLength="70" id="problemTitleForm" autoFocus/>
-                          </label><br />
+        <div>
+          {/*ScrollableAnchor doesn't work right now, not sure why*/}
+          {/*<ScrollableAnchor id={'newSubProject'}>*/}
+            <Link to={`/problem/${this.props.params.probID}/subproblems`}>
+                <img src={require('../../assets/redX.svg')} id="closeRedX" width="40" height="40" alt="Close button, red X symbol" />
+            </Link>
+          {/*</ScrollableAnchor>*/}
+          <div id="SBButtonNoHover">
+            New Sub Project
+          </div>
+          <div id="createProblemBox">
+              <form id="createForm">
+                <fieldset id="fieldSetNoBorder">
+                  <label htmlFor="problemTitleForm" id="problemTitleFormLabel">Project Title<br />
+                      <input type="text" name="problemTitle" required="required" maxLength="70" id="problemTitleForm" autoFocus/>
+                    </label><br />
 
-                        <label htmlFor="problemSummaryForm" id="problemSummaryFormLabel">Additional Information<br />
-                            <textarea name="problemSummary" required="required" maxLength="350" 
-                            placeholder="Please provide any additional information you'd like. (250 character max)" id="problemSummaryForm"/>
-                            </label><br />
+                  <label htmlFor="problemSummaryForm" id="problemSummaryFormLabel">Additional Information<br />
+                      <textarea name="problemSummary" required="required" maxLength="350" 
+                      placeholder="Please provide any additional information you'd like. (250 character max)" id="problemSummaryForm"/>
+                      </label><br />
 
-                        <input type="button" value="Create" onClick={this.postProblem} id="submitProblem"/>
-              </fieldset>
-            </form>
+                  <input type="button" value="Create" onClick={this.postProblem} id="submitProblem"/>
+                </fieldset>
+              </form>
+          </div>
         </div>
 
       );

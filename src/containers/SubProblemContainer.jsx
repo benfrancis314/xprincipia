@@ -12,24 +12,35 @@ export default class SubProblemContainer extends React.Component {
         }
         
     };
+
     componentDidMount(){
         var self = this;
-        window.scrollTo(0,0);
-        return axios.get( Config.API + '/auth/problems/subproblems?id='+this.props.params.probID).then(function (response) {
+        return axios.get( Config.API + '/problems/subproblems?id='+this.props.probID).then(function (response) {
             self.setState({
                 problems: response.data
             })
         })  
     }
-        //On recieving new props
-    componentWillReceiveProps(newProps){
-        var self = this
-        self.setState({problems: newProps.problems})
-        console.log(self.state.problems)
+    componentWillReceiveProps (nextProps){
+        var self = this;
+        return axios.get( Config.API + '/problems/subproblems?id='+nextProps.probID).then(function (response) {
+            self.setState({
+                problems: response.data
+            })
+        }) 
     }
+
+//         //On recieving next props
+//     componentWillReceiveProps(nextProps){
+//         var self = this
+//         self.setState({problems: nextProps.problems})
+//         console.log(self.state.problems)
+//     }
+
+
     render() {
       return (
-        <div id="solutions">
+        <div id="sidebarSBProjects">
             <SubProblemUnit problems={this.state.problems} />
         </div>
       

@@ -1,7 +1,8 @@
 import React from 'react';
 import axios from 'axios';
 import cookie from 'react-cookie';
-import {Config} from '../../config.js'
+import {Config} from '../../config.js';
+import $ from 'jquery';
 
 export default class LearnResourcesForm extends React.Component {
 constructor(props){
@@ -29,7 +30,20 @@ constructor(props){
         document.location = window.location.pathname 
       })
       .catch(function (error) {
-        alert("I'm sorry there was a problem with your request")
+          $(document).ready(function() {
+              $('#notification').attr('id','notificationShow').hide().slideDown();
+
+                if (error.response.data == '[object Object]') {
+                  return (
+                    $(document).ready(function() {
+                      $('#notificationLoginRegisterContainer').attr('id','notificationLoginRegisterContainerShow');
+                      $('#notificationContent').html('Please <span id="blue">login </span>to add a learning resource');
+                    })
+                  );
+                }  else if (error.response.data != '') {
+              $('#notificationContent').text(error.response.data);
+              }
+          });
       });
     }
 
@@ -44,18 +58,13 @@ constructor(props){
    render() {
            return (
         <div>
+          <div id="discussMenuEnd">
+            Resources
+          </div>
             <div id="suggestionFormComponent">
-                <form id="suggestionForm">
-                    <fieldset>
-                        <legend>Add a Resource</legend>
-                             {/*<div>
-                                <input type="radio" />
-                                    <label>Easy</label>
-                                <input type="radio" />
-                                    <label>Medium</label>
-                                <input type="radio" />
-                                    <label>Hard</label>
-                             </div>*/}
+                <form id="questionForm">
+                    <fieldset id='fieldSetNoBorderPadding'>
+                        {/*<legend>Add a Resource</legend>*/}
                             <textarea name="suggestionText" required="required" id="resourcesTextArea" placeholder="Please enter the URL of your favorite resource to learn about this project." autoFocus ></textarea>
                             <input type="button" value="Add" onClick={this.postResource} id="addSuggestion"/>
                     </fieldset>

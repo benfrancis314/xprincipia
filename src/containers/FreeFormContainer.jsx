@@ -15,7 +15,7 @@ constructor(props){
     };
     componentDidMount(){
         var self = this;
-            return axios.get( Config.API + '/auth/freeForms/typeID?id='+this.props.params.probID).then(function (response) {
+            return axios.get( Config.API + '/freeForms/typeID?id='+this.props.params.probID).then(function (response) {
                 self.setState({
                     freeForms: response.data
                 })

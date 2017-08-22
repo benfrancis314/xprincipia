@@ -1,5 +1,6 @@
 import React from 'react';
 import {Link} from 'react-router';
+import ReactGA from 'react-ga';
 
 export default class SubProblemUnit extends React.Component {
 
@@ -11,19 +12,20 @@ export default class SubProblemUnit extends React.Component {
 
   };
 
-    componentWillMount(){
-      var self = this;
-	  if (self.props.problem != null ){
-		  self.setState({problems: this.props.problems})
-	  }
-      return
-    }
+
+		// Not sure what this is used for
+    // componentDidMount(){
+    //   var self = this;
+	  // if (self.props.problem != null ){
+		//   self.setState({problems: this.props.problems})
+	  // }
+    //   return
+    // }
 
     //On recieving new props
-  componentWillReceiveProps(newProps){
+  componentWillReceiveProps(nextProps){
 	  var self = this
-	  self.setState({problems: newProps.problems})
-	  console.log(self.state.problems)
+	  self.setState({problems: nextProps.problems})
   }
 
 
@@ -43,26 +45,28 @@ export default class SubProblemUnit extends React.Component {
 		);
 	}
 	renderItem(problem) {
-  
-			function refreshPage() {
-				// Temporary fix for refreshing sub problems
-				// document.location = '/problem/'+ self.props.params.probID +'/subproblems';
-					 SubProblemUnit.forceUpdate()
-			}
+
+				function handleClick() {
+					ReactGA.event({
+							category: 'Project',
+							action: 'Clicked Link',
+					});
+					// alert('success');
+    }
 
     return (
 
-        <Link key={problem.ID} to={'/problem/'+problem.ID +'/subproblems'} onClick={refreshPage} >
-				<li key={problem.ID} id="SPUnit">
-				<div id="SPHeader">
-					<div id="SPTitle">{problem.Title}</div>
-					<div id="SPPercent">{problem.Rank}</div>
-					{/*<div>
-						<img src={require('../assets/voteArrow.png')} id="SPVote" width="20" height="20" alt="Vote arrow, blue up arrow" />
-					</div>*/}
-				</div>
-			</li>
-		</Link>
+        <Link key={problem.ID} to={'/problem/'+problem.ID +'/subproblems'} onClick={handleClick}>
+					<li key={problem.ID} id="SPUnit">
+						<div id="SPHeader">
+							<div id="SPTitle">{problem.Title}</div>
+							<div id="SPPercent">{problem.Rank}</div>
+							{/*<div>
+								<img src={require('../assets/voteArrow.png')} id="SPVote" width="20" height="20" alt="Vote arrow, blue up arrow" />
+							</div>*/}
+						</div>
+					</li>
+				</Link>
 
 	);
   }

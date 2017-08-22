@@ -2,7 +2,9 @@ import React from 'react';
 import { Link } from 'react-router';
 import axios from 'axios';
 import cookie from 'react-cookie';
-import {Config} from '../../config.js'
+import {Config} from '../../config.js';
+import $ from 'jquery';
+
 
 export default class ProsUnit extends React.Component {
     constructor(props){
@@ -28,6 +30,7 @@ export default class ProsUnit extends React.Component {
         })
     }
 
+
 	render() {
 		return (
 	    <div>
@@ -48,9 +51,23 @@ export default class ProsUnit extends React.Component {
         .then(function (result) {
             document.location = window.location.pathname;
         })
-        .catch(function (error) {
-            alert("I'm sorry, you've already voted on a pro.");
-        })
+      .catch(function (error) {
+        // console.log(error.response.data)
+          $(document).ready(function() {
+              $('#notification').attr('id','notificationShow').hide().slideDown();
+
+                if (error.response.data == '[object Object]') {
+                  return (
+                    $(document).ready(function() {
+                      $('#notificationLoginRegisterContainer').attr('id','notificationLoginRegisterContainerShow');
+                      $('#notificationContent').html('Please <span id="blue">login </span>to vote');
+                    })
+                  );
+                }  else if (error.response.data != '') {
+                $('#notificationContent').text(error.response.data);
+              }
+          });
+      });
     }
         function unVote() {
       axios.delete( Config.API + '/auth/vote/delete' ,{
@@ -63,14 +80,28 @@ export default class ProsUnit extends React.Component {
         .then(function (result) {
             document.location = window.location.pathname 
         })
-        .catch(function (error) {
-            alert("I'm sorry, there was a problem with your request. ")
-        })
+      .catch(function (error) {
+        // console.log(error.response.data)
+          $(document).ready(function() {
+              $('#notification').attr('id','notificationShow').hide().slideDown();
+
+                if (error.response.data == '[object Object]') {
+                  return (
+                    $(document).ready(function() {
+                      $('#notificationLoginRegisterContainer').attr('id','notificationLoginRegisterContainerShow');
+                      $('#notificationContent').html('Please <span id="blue">login </span>to vote');
+                    })
+                  );
+                }  else if (error.response.data != '') {
+                $('#notificationContent').text(error.response.data);
+              }
+          });
+      });
         
     }
        if (this.state.voteHash[pro.ID] === true && pro.Username === cookie.load('userName')) {
            return (
-       <li key={pro.ID} id="suggestionUnit">
+       <li key={pro.ID} id="prosConsUnit">
 				<div id="suggestionContent">
 					<div id="discussHeader">
                         <span id="discussPercent">{floatToDecimal(pro.PercentRank)}</span>
@@ -103,7 +134,7 @@ export default class ProsUnit extends React.Component {
 
     }  else if ( pro.Username === cookie.load('userName')) {
         return (
-       <li key={pro.ID} id="suggestionUnit">
+       <li key={pro.ID} id="prosConsUnit">
 				<div id="suggestionContent">
 					<div id="discussHeader">
                         <span id="discussPercent">{floatToDecimal(pro.PercentRank)}</span>
@@ -123,6 +154,7 @@ export default class ProsUnit extends React.Component {
                             <img src={require('../../assets/editBlue.svg')} id="editLogo" width="18" height="18" alt="Edit Button" />
                         </div>
                     </Link>
+                {/*For when we add in comments to these*/}
                 {/*<Link to={`/problem/${pro.TypeID}/pros/${pro.ID}/comments`}>
                     <div id="commentSBButtonUser">
                             <img src={require('../../assets/comments.svg')} id="commentLogo" width="24" height="24" alt="Comments Button" />
@@ -135,7 +167,7 @@ export default class ProsUnit extends React.Component {
         </li>);
     } else if (this.state.voteHash[pro.ID] === true) {
         return (
-       <li key={pro.ID} id="suggestionUnit">
+       <li key={pro.ID} id="prosConsUnit">
 				<div id="suggestionContent">
 					<div id="discussHeader">
                         <span id="discussPercent">{floatToDecimal(pro.PercentRank)}</span>
@@ -158,7 +190,7 @@ export default class ProsUnit extends React.Component {
         </li>);
     } else {
     return (
-       <li key={pro.ID} id="suggestionUnit">
+       <li key={pro.ID} id="prosConsUnit">
 				<div id="suggestionContent">
 					<div id="discussHeader">
                         <span id="discussPercent">{floatToDecimal(pro.PercentRank)}</span>
@@ -174,7 +206,7 @@ export default class ProsUnit extends React.Component {
                             Flag
                         </div>
                 </Link>*/}
-				<button type="button" onClick={submitVote} id="suggestionVote">
+				<button type="button" onClick={submitVote} id="suggestionVoteNoComments">
                     Vote
                 </button> 
             <br /><br /> 

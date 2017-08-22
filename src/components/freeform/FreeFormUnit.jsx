@@ -2,7 +2,8 @@ import React from 'react';
 import { Link } from 'react-router';
 import axios from 'axios';
 import cookie from 'react-cookie';
-import {Config} from '../../config.js'
+import {Config} from '../../config.js';
+import $ from 'jquery';
 
 export default class FreeFormUnit extends React.Component {
     constructor(props){
@@ -49,9 +50,23 @@ export default class FreeFormUnit extends React.Component {
         .then(function (result) {
             document.location = window.location.pathname;
         })
-        .catch(function (error) {
-            alert("You may only vote on a discussion point once.");
-        })
+      .catch(function (error) {
+        // console.log(error.response.data)
+          $(document).ready(function() {
+              $('#notification').attr('id','notificationShow').hide().slideDown();
+
+                if (error.response.data == '[object Object]') {
+                  return (
+                    $(document).ready(function() {
+                      $('#notificationLoginRegisterContainer').attr('id','notificationLoginRegisterContainerShow');
+                      $('#notificationContent').html('Please <span id="blue">login </span>to vote');
+                    })
+                  );
+                }  else if (error.response.data != '') {
+                $('#notificationContent').text(error.response.data);
+              }
+          });
+      });
   }
       function unVote() {
       axios.delete( Config.API + '/auth/vote/delete' ,{
@@ -64,9 +79,23 @@ export default class FreeFormUnit extends React.Component {
         .then(function (result) {
             document.location = window.location.pathname 
         })
-        .catch(function (error) {
-            alert("I'm sorry, there was a problem with your request. ")
-        })
+      .catch(function (error) {
+        // console.log(error.response.data)
+          $(document).ready(function() {
+              $('#notification').attr('id','notificationShow').hide().slideDown();
+
+                if (error.response.data == '[object Object]') {
+                  return (
+                    $(document).ready(function() {
+                      $('#notificationLoginRegisterContainer').attr('id','notificationLoginRegisterContainerShow');
+                      $('#notificationContent').html('Please <span id="blue">login </span>to vote');
+                    })
+                  );
+                }  else if (error.response.data != '') {
+                $('#notificationContent').text(error.response.data);
+              }
+          });
+      });
 }
   
        if (this.state.voteHash[freeForm.ID] === true && freeForm.Username === cookie.load('userName')) {
@@ -185,7 +214,7 @@ export default class FreeFormUnit extends React.Component {
                             <img src={require('../../assets/comments.svg')} id="commentLogo" width="24" height="24" alt="Comments Button" />
                     </div>
                 </Link> */}
-                <button type="button" onClick={submitVote} id="suggestionVote">
+                <button type="button" onClick={submitVote} id="suggestionVoteNoComments">
                     Vote
                 </button>             
                 <br /><br /> 

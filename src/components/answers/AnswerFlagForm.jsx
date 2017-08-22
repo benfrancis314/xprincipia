@@ -2,7 +2,8 @@ import React from 'react';
 import axios from 'axios';
 import cookie from 'react-cookie';
 import { Link } from 'react-router';
-import {Config} from '../../config.js'
+import {Config} from '../../config.js';
+import $ from 'jquery';
 
 export default class AnswerFlagForm extends React.Component {
 
@@ -32,8 +33,22 @@ postQuestion() {
     .then(function (result) {
       document.location = window.location.pathname 
     })
-    .catch(function (error) {
-      alert("I'm sorry there was a problem with your request")
+      .catch(function (error) {
+        // console.log(error.response.data)
+          $(document).ready(function() {
+              $('#notification').attr('id','notificationShow').hide().slideDown();
+              if (error.response.data != '') {
+                $('#notificationContent').text(error.response.data);
+              }
+              else if (error.response.data == '[object Object]') {
+                return (
+                  $(document).ready(function() {
+                    $('#notificationLoginRegisterContainer').attr('id','notificationLoginRegisterContainerShow');
+                    $('#notificationContent').html('Please <span id="blue">login </span>to contribute');
+                  })
+                );
+              } 
+          });
       });
     } 
 
@@ -50,7 +65,21 @@ postQuestion() {
         document.location = window.location.pathname 
       })
       .catch(function (error) {
-        alert("I'm sorry there was a problem with your request")
+        // console.log(error.response.data)
+          $(document).ready(function() {
+              $('#notification').attr('id','notificationShow').hide().slideDown();
+              if (error.response.data != '') {
+                $('#notificationContent').text(error.response.data);
+              }
+              else if (error.response.data == '[object Object]') {
+                return (
+                  $(document).ready(function() {
+                    $('#notificationLoginRegisterContainer').attr('id','notificationLoginRegisterContainerShow');
+                    $('#notificationContent').html('Please <span id="blue">login </span>to contribute');
+                  })
+                );
+              } 
+          });
       });
     }
 
@@ -68,9 +97,10 @@ postQuestion() {
                          <textarea name="questionText" required="required" id="questionFlagTextArea" autoFocus ></textarea>
                          <br />
                          <div onClick={this.postQuestion} id="flagButton">Submit</div>
-                         <Link to='/problem/${question.TypeID}/questions'>
+                         {/*The link below doesn't work*/}
+                         {/*<Link to='/problem/${question.TypeID}/questions'>*/}
                             <div id="returnButton">Exit</div>
-                         </Link>
+                         {/*</Link>*/}
                 </fieldset>
             </form>
       </div>

@@ -1,7 +1,8 @@
 import React from 'react';
 import axios from 'axios';
 import cookie from 'react-cookie';
-import {Config} from '../../config.js'
+import {Config} from '../../config.js';
+import $ from 'jquery';
 
 export default class LearnResourcesEmbed extends React.Component {
    
@@ -24,11 +25,23 @@ export default class LearnResourcesEmbed extends React.Component {
     
     }).then( function(response){
     })
-    .catch(function (error) {
-        // if(error.response.status === 401 || error.response.status === 403){
-        //     document.location = "/login"
-        // }
-    });   
+      .catch(function (error) {
+        // console.log(error.response.data)
+          $(document).ready(function() {
+              $('#notification').attr('id','notificationShow').hide().slideDown();
+              if (error.response.data != '') {
+                $('#notificationContent').text(error.response.data);
+              }
+              else if (error.response.data == '[object Object]') {
+                return (
+                  $(document).ready(function() {
+                    $('#notificationLoginRegisterContainer').attr('id','notificationLoginRegisterContainerShow');
+                    $('#notificationContent').html('Please <span id="blue">login </span>to contribute');
+                  })
+                );
+              } 
+          });
+      });
   }
   
   componentWillReceiveProps(newProps){
@@ -44,11 +57,23 @@ export default class LearnResourcesEmbed extends React.Component {
     }).then( function(response){
       
     })
-    .catch(function (error) {
-        // if(error.response.status === 401 || error.response.status === 403){
-        //     document.location = "/login"
-        // }
-    }); 
+      .catch(function (error) {
+        // console.log(error.response.data)
+          $(document).ready(function() {
+              $('#notification').attr('id','notificationShow').hide().slideDown();
+              if (error.response.data != '') {
+                $('#notificationContent').text(error.response.data);
+              }
+              else if (error.response.data == '[object Object]') {
+                return (
+                  $(document).ready(function() {
+                    $('#notificationLoginRegisterContainer').attr('id','notificationLoginRegisterContainerShow');
+                    $('#notificationContent').html('Please <span id="blue">login </span>to contribute');
+                  })
+                );
+              } 
+          });
+      });
 
   }
   submitVote() {
@@ -63,9 +88,23 @@ export default class LearnResourcesEmbed extends React.Component {
         .then(function (result) {
             document.location = window.location.pathname;
         })
-        .catch(function (error) {
-            alert("You may only vote on a resource once. ");
-        })
+      .catch(function (error) {
+        // console.log(error.response.data)
+          $(document).ready(function() {
+              $('#notification').attr('id','notificationShow').hide().slideDown();
+              if (error.response.data != '') {
+                $('#notificationContent').text(error.response.data);
+              }
+              else if (error.response.data == '[object Object]') {
+                return (
+                  $(document).ready(function() {
+                    $('#notificationLoginRegisterContainer').attr('id','notificationLoginRegisterContainerShow');
+                    $('#notificationContent').html('Please <span id="blue">login </span>to contribute');
+                  })
+                );
+              } 
+          });
+      });
   }
 
 	render() {
@@ -97,26 +136,27 @@ function floatToDecimal(float) {
 	return Math.round(float*100)+'%';
 }
 
-function url(resourceURL) {
-// Warning console says self is not used
-// var self = this
-    if (resourceURL.substring(0,7) === 'https://') {
-        return ( resourceURL );
+// Not used at moment
+// function url(resourceURL) {
+// // Warning console says self is not used
+// // var self = this
+//     if (resourceURL.substring(0,7) === 'https://') {
+//         return ( resourceURL );
 
-    } 
-    else if (
-        // (resourceURL.substring(0,3) !== 'www.')  &&  
-        (
-            (resourceURL.slice(-4) === '.com') || (resourceURL.slice(-4) == '.org') || (resourceURL.slice(-4) === '.edu') || (resourceURL.slice(-4) === '.gov') || (resourceURL.slice(-4) === '.net') )
-            ) 
-        {
-        return ( 'https://' + resourceURL );
-    }
+//     } 
+//     else if (
+//         // (resourceURL.substring(0,3) !== 'www.')  &&  
+//         (
+//             (resourceURL.slice(-4) === '.com') || (resourceURL.slice(-4) == '.org') || (resourceURL.slice(-4) === '.edu') || (resourceURL.slice(-4) === '.gov') || (resourceURL.slice(-4) === '.net') )
+//             ) 
+//         {
+//         return ( 'https://' + resourceURL );
+//     }
 
-    else {
-        return ( resourceURL );
-        // return ( 'https://www.google.com/#q=' + resourceURL );
-        // return ( 'https://en.wikipedia.org/wiki/' + resourceURL );
-    }
-}
+//     else {
+//         return ( resourceURL );
+//         // return ( 'https://www.google.com/#q=' + resourceURL );
+//         // return ( 'https://en.wikipedia.org/wiki/' + resourceURL );
+//     }
+// }
     

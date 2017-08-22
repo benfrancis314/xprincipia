@@ -9,7 +9,7 @@ export default class ProfileAbout extends React.Component {
                  web app allowing anyone to access and contribute to <span id="blue">scientific progress</span>.
                  <br />
                  <br />
-                 Our mission is to <span id="blue">advance humanity to the best possible future. </span>
+                 Our mission is to <span id="blue">advance humanity to the best possible future </span>through <span id='blue'>free scientific collaboration</span>.
                  <br />
                  <br />
                  

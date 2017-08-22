@@ -1,7 +1,8 @@
 import React from 'react';
 import axios from 'axios';
 import cookie from 'react-cookie';
-import {Config} from '../../config.js'
+import {Config} from '../../config.js';
+import $ from 'jquery';
 
 export default class FreeFormForm extends React.Component {
 
@@ -29,7 +30,21 @@ postFreeForm() {
         document.location = window.location.pathname 
       })
       .catch(function (error) {
-        alert("I'm sorry, there was a problem with your request.")
+        // console.log(error.response.data)
+          $(document).ready(function() {
+              $('#notification').attr('id','notificationShow').hide().slideDown();
+              if (error.response.data != '') {
+                $('#notificationContent').text(error.response.data);
+              }
+              else if (error.response.data == '[object Object]') {
+                return (
+                  $(document).ready(function() {
+                    $('#notificationLoginRegisterContainer').attr('id','notificationLoginRegisterContainerShow');
+                    $('#notificationContent').html('Please <span id="blue">login </span>to contribute to this debate');
+                  })
+                );
+              } 
+          });
       });
     }
 
@@ -39,14 +54,19 @@ postFreeForm() {
 
    render() {
       return (
-      <div id="questionFormComponent">
-            <form id="questionForm">
-                <fieldset>
-                    <legend>FreeForm Discussion</legend>
-                         <textarea name="questionText" required="required" id="freeFormTextArea" placeholder="Engage in freeform discussion with your peers about this project. " autoFocus ></textarea>
-                         <input type="button" value="Add" onClick={this.postFreeForm} id="askQuestion"/>
-                </fieldset>
-            </form>
+      <div>
+        <div id="discussMenuEnd">
+          Open Debate
+        </div>
+        <div id="questionFormComponent">
+              <form id="questionForm">
+                  <fieldset id='fieldSetNoBorderPadding'>
+                      {/*<legend>FreeForm Discussion</legend>*/}
+                          <textarea name="questionText" required="required" id="freeFormTextArea" placeholder="Engage in open debate with your peers about this project. " autoFocus ></textarea>
+                          <input type="button" value="Add" onClick={this.postFreeForm} id="askQuestion"/>
+                  </fieldset>
+              </form>
+        </div>
       </div>
 
       );

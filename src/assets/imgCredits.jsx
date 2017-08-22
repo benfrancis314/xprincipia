@@ -28,6 +28,7 @@ Book graphic by <a href="http://www.flaticon.com/authors/ocha">ocha</a> from <a 
 
 // Arrows
 https://thenounproject.com/alicoskun/collection/arrows/?oq=arrow%20collection&cidx=18&i=940775
+https://thenounproject.com/ali.coskun/collection/arrows/?i=940774
 
 // Comments
 https://thenounproject.com/search/?q=comments&i=835334
@@ -40,3 +41,16 @@ https://www.bnl.gov/newsroom/news.php?a=26082
 
 DNA
 https://thenounproject.com/search/?q=dna&i=207112
+
+
+Hero Constellation
+https://thenounproject.com/marialuisa.iborra/collection/constellations/?oq=constellations&cidx=1&i=900710
+
+Orion Constellation
+https://thenounproject.com/search/?q=orion&i=7867
+
+Close X
+https://thenounproject.com/search/?q=close&i=755939
+
+Other Constellations
+https://thenounproject.com/marialuisa.iborra/collection/constellations/
