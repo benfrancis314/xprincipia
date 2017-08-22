@@ -15,8 +15,9 @@ export default class Header extends React.Component {
         super(props);
 
         this.state = {
-           problems : [],
-           searchText: [],
+        //    Not currently used
+        //    problems : [],
+        //    searchText: [],
            username: '',
            password: '',
         }
@@ -24,7 +25,8 @@ export default class Header extends React.Component {
         this.postLogin = this.postLogin.bind(this);
     };
 
-  componentWillMount() {
+// Previously componentWillMount, testing DidMount
+  componentDidMount() {
     this.state =  { userToken: cookie.load('userToken') };
   }
 
@@ -50,7 +52,7 @@ export default class Header extends React.Component {
         username : self.state.username,
         token : "Bearer " + self.state.userToken
       }, {headers: { Authorization: "Bearer " + self.state.userToken }}).then (function (response){
-        // alert('success')
+        alert('success')
         document.location = "/welcome";
       })
     })

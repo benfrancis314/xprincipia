@@ -175,7 +175,7 @@ constructor(props){
         <li key={question.ID} id="questionUnit"> 
 				<div id="suggestionContent">
 					<div id="discussHeader">
-                        <span id="discussPercent">{floatToDecimal(question.PercentRank)}3</span>
+                        <span id="discussPercent">{floatToDecimal(question.PercentRank)}</span>
 					    {question.Username}
                     </div>
                     <div id="suggestionText">
@@ -202,7 +202,7 @@ constructor(props){
         <li key={question.ID} id="questionUnit"> 
 				<div id="suggestionContent">
 					<div id="discussHeader">
-                        <span id="discussPercent">{floatToDecimal(question.PercentRank)}4</span>
+                        <span id="discussPercent">{floatToDecimal(question.PercentRank)}</span>
 					    {question.Username}
                     </div>
                     <div id="suggestionText">
