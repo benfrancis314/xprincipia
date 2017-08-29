@@ -25,8 +25,8 @@ export default class Header extends React.Component {
         this.postLogin = this.postLogin.bind(this);
     };
 
-// Previously componentWillMount, testing DidMount
-  componentDidMount() {
+
+  componentWillMount() {
     this.state =  { userToken: cookie.load('userToken') };
   }
 
