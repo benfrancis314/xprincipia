@@ -16,9 +16,6 @@ import { configureAnchors } from 'react-scrollable-anchor';
 
 configureAnchors({offset: -20, scrollDuration: 700});
 
-// import Scroll from 'react-scroll'; // Imports all Mixins
-// import {scroller} from 'react-scroll'; //Imports scroller mixin, can use as scroller.scrollTo()
-
 export default class FullProblem extends React.Component {
   constructor(props){
         super(props);

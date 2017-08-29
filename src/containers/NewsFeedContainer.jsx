@@ -1,13 +1,70 @@
 import React from 'react';
-import Header from '../containers/Header.jsx';
 import ProfileUnit from '../components/profile/ProfileUnit.jsx';
+import stream from 'getstream';
 
 export default class NewsFeedContainer extends React.Component {  
 
+// Trying it here since error of publicly sharing private key, caused by:
+// if (this.browser && this.apiSecret)
+// Error might be from:
+// Note: Stream's API uses SSL to keep your data secure. SSL can give errors if your libraries are outdated. See this discussion.
+
+// Instantiate a new client (server side)
+// client = stream.connect('jhvqmgj4wjb6', 'pwcy9cczz8e46rmbahbwaf9ak45ps4t46y9quwq6tv9vf3h3cnf5dyw3attkgddh', '27689');
+// Instantiate a new client (client side)
+// client = stream.connect('jhvqmgj4wjb6', null, '27689');
+// Find your API keys here https://getstream.io/dashboard/
+
    render() {
+
+    // var client = stream.connect('jhvqmgj4wjb6', 'pwcy9cczz8e46rmbahbwaf9ak45ps4t46y9quwq6tv9vf3h3cnf5dyw3attkgddh');
+
+    // var general = client.feed('user', 'general');
+
+
+    // general.addActivity({
+    //     actor: 'general',
+    //     verb: 'add',
+    //     object: 'picture:10',
+    //     foreign_id: 'picture:10',
+    //     message: 'Beautiful bird. Absolutely beautiful. Phenomenal bird.'
+    // });
+    // // jack's 'timeline' feed follows chris' 'user' feed:
+    // var jack = client.feed('timeline', 'jack');
+    // jack.follow('user', 'general');
+
+    // // Read 'timeline' for jack - the post by chris will show up:
+    // jack.get({ limit: 10 }).then(function(results) {
+    // var activityData = results;
+
+    // // Read the next page, using id filtering for optimal performance:
+    // jack.get({ limit: 10, id_lte: activityData[activityData.length-1].id }).then(function(results) {
+    //     var nextActivityData = results;
+    // });
+    // });
+
+
+
+// Second part
+
+
+// // Instantiate a feed using feed class 'user' and user id '1'
+// var user1 = client.feed('user', '1');
+// // Instantiate a feed for feed group 'user', user id '1' and a security token generated server side
+
+// // $token not defined
+// // user1 = client.feed('user', '1', $token);
+
+// // Add an activity to the feed
+// var activity = {"actor": "User:1", "verb": "pin", "object": "Place:42", "target": "Board:1"};
+
+// // Asynchronous methods return Promise since v3.0.0
+// user1.addActivity(activity)
+//     .then(function(data) { /* on success */ })
+//     .catch(function(reason) { /* on failure, reason.error contains an explanation */ });
+
       return (
     <div>
-      <Header />
       <div id="newsFeedBox">
         <div id="newsFeedLeft">
             <div id="userInformation">
@@ -32,23 +89,9 @@ export default class NewsFeedContainer extends React.Component {
             </div>
         </div>
         <div id="newsFeedRight">
-            <div id="profileSidebarMenu">
-                <div id="profileProblemsMenu">
-                    <div id="solveTitle">Problems</div>
-                    <div id="followedProblemsButton">Followed</div>
-                    <div id="createdProblemsButton">Created</div>
-                </div>
-                <div id="profileSolutionsMenu">
-                    <div id="developTitle">Solutions</div>
-                    <div id="votedSolutionsButton">Voted</div>
-                    <div id="createdSolutionsButton">Created</div>
-                </div>
-            </div>
+            {/*Warning: profileRightElements is used elsewhere, create new ID to change*/}
             <div id="profileRightElements">
-              <ProfileUnit />
-              {/*<ProfileUnit />
-              <ProfileUnit />
-              <ProfileUnit />*/}
+              {/*<ProfileUnit />*/}
             </div>
             <div id="moreButton">
                 More
