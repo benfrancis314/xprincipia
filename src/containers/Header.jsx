@@ -3,9 +3,6 @@ import {Link} from 'react-router';
 import cookie from 'react-cookie';
 import axios from 'axios';
 import HeaderAvatar from '../components/HeaderAvatar.jsx';
-// Notifications currently unused, may be used for notifications in future
-// import NotificationSuccess from '../components/NotificationSuccess.jsx';
-// import NotificationFailure from '../components/NotificationFailure.jsx';
 import {Config} from '../config.js';
 import $ from 'jquery';
 
@@ -15,9 +12,6 @@ export default class Header extends React.Component {
         super(props);
 
         this.state = {
-        //    Not currently used
-        //    problems : [],
-        //    searchText: [],
            username: '',
            password: '',
         }
