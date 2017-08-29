@@ -92,7 +92,6 @@ shouldComponentUpdate(nextProps, nextState) {
   }
 
 
-// Old
   submitVote() {
       var self = this
        axios.post( Config.API + '/auth/vote/create', {
@@ -134,7 +133,8 @@ shouldComponentUpdate(nextProps, nextState) {
   }
 
 unVote() {
-      return axios.delete( Config.API + '/auth/vote/delete' ,{
+      var self = this
+      axios.delete( Config.API + '/auth/vote/delete' ,{
         params: {
           type: 0,
           typeID: this.props.params.probID,
@@ -142,9 +142,10 @@ unVote() {
         }
         })
         .then(function (result) {
+            return axios.get( Config.API + '/auth/problems/ID?id='+self.props.params.probID).then(function (response) {
             //set problem data
             // self.setState({
-                
+                problemInfo: response.data,
             //     vote: false,
             // })
             document.location = window.location.pathname 
