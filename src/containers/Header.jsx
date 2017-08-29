@@ -52,7 +52,7 @@ export default class Header extends React.Component {
         username : self.state.username,
         token : "Bearer " + self.state.userToken
       }, {headers: { Authorization: "Bearer " + self.state.userToken }}).then (function (response){
-        document.location = "/welcome";
+        document.location = window.location.pathname;
       })
     })
       .catch(function (error) {
