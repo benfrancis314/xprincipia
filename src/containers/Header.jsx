@@ -52,25 +52,24 @@ export default class Header extends React.Component {
         username : self.state.username,
         token : "Bearer " + self.state.userToken
       }, {headers: { Authorization: "Bearer " + self.state.userToken }}).then (function (response){
-        alert('success')
         document.location = "/welcome";
       })
     })
       .catch(function (error) {
-        // console.log(error.response.data)
           $(document).ready(function() {
               $('#notification').attr('id','notificationShow').hide().slideDown();
-              if (error.response.data != '') {
-                $('#notificationContent').text(error.response.data);
-              }
-              else if (error.response.data == '[object Object]') {
+              if (error.response.data == '[object Object]') {
                 return (
                   $(document).ready(function() {
                     $('#notificationLoginRegisterContainer').attr('id','notificationLoginRegisterContainerShow');
-                    $('#notificationContent').html('Please <span id="blue">login </span>to contribute');
+                    $('#notificationFeedbackShow').attr('id','notificationFeedback');
+                    $('#notificationContent').html('Your<span id="blue"> username </span>and<span id="blue"> password </span>was not recognized. Please<span id="green"> Register</span> ');
                   })
                 );
               } 
+              else if (error.response.data != '') {
+                $('#notificationContent').text(error.response.data);
+              }
           });
       });
 }
