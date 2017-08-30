@@ -108,6 +108,7 @@ export default class LearnResourcesUnit1 extends React.Component {
   
        if (this.state.voteHash[resource.ID] === true && resource.Username === cookie.load('userName')) {
            return (
+            
        <li key={resource.ID} id="suggestionUnit">
 				<div id="suggestionContent">
 					<div id="discussHeader">

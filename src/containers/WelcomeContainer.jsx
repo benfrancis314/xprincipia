@@ -88,7 +88,7 @@ export default class WelcomeContainer extends React.Component {
    
    render() {
       return (
-        <div>
+        <div id="fullWide">
             {/*<Sound
                 url={require('../assets/jfkSpeech.mp3')}
                 autoLoad={false}

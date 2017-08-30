@@ -137,7 +137,8 @@ shouldComponentUpdate(nextProps, nextState) {
   }
 
 unVote() {
-      return axios.delete( Config.API + '/auth/vote/delete' ,{
+      var self = this
+      axios.delete( Config.API + '/auth/vote/delete' ,{
         params: {
           type: 0,
           typeID: this.props.params.probID,
@@ -145,15 +146,15 @@ unVote() {
         }
         })
         .then(function (result) {
+            return axios.get( Config.API + '/auth/problems/ID?id='+self.props.params.probID).then(function (response) {
             //set problem data
-            // self.setState({
-                
-            //     vote: false,
-            // })
+            self.setState({
+                problemInfo: response.data,
+            })
             document.location = window.location.pathname 
         })
+        })
       .catch(function (error) {
-        // console.log(error.response.data)
           $(document).ready(function() {
               $('#notification').attr('id','notificationShow').hide().slideDown();
 
@@ -172,6 +173,7 @@ unVote() {
       });
         
     }
+
 
    render() {
      

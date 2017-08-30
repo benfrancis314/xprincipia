@@ -34,8 +34,8 @@ export default class LoginUnit extends React.Component {
       self.setState({
         userToken: result.data.token
       })
-      cookie.save('userToken', result.data.token );
-      cookie.save('userName', self.state.username)
+      cookie.save('userToken', result.data.token, { path: '/' });
+      cookie.save('userName', self.state.username, { path: '/' })
       
       // Store token/Username in db table
       return axios.post( Config.API + '/auth/saveToken',  {
