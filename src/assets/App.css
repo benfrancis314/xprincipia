@@ -3881,7 +3881,7 @@ introductionProjectTitle {
   margin: 0 auto;
   padding: 3px;
   /*box-shadow: 0 0 1pt 1pt rgba(0,220,255,0.5);*/
-  transition: all 0.5s ease 0s
+  transition: all 0.5s ease 0s;
 }
 #editProjectButton:hover, #editProjectButton:active {
   cursor: pointer;

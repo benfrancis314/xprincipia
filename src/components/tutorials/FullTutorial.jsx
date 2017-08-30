@@ -29,111 +29,55 @@ export default class Tutorial extends React.Component {
                     <span id="introductionCapital">W</span>elcome to <span id="introductionCapital"> XP</span>rincipia
                     <br />
                 </div>
-                {/*Considering change to "The Open Frontier of Discovery/Science*/}
-                {/*Not currently using*/}
-                {/*<div id="introductionTitle">The Open Frontier of Research</div>*/}
-                <div id="introductionProse">
-                    {/*Trying out capital W here to match the one in Welcome above*/}
-                    <span id="introductionCapitalProse">W</span>e find ourselves in an<span id="blueOpen"> age of great opportunity</span>, but equally in an<span id="blueOpen"> age of great peril</span>. 
-                    <br />
-                    <br />
-                    We find ourselves in the <span id="blueOpen">upturn of an era</span> where the <span id='blueOpen'>advances of science and technology </span>
-                    hold our collective future,<span id="blueOpen"> as a species and civilization</span>,
-                    upon their conclusion. 
-                    <br />
-                    <br />
-                    Upon this unique moment in time, we find ourselves <span id="blueOpen">looking ahead into the unknown</span>, 
-                    in great need of<span id="blueOpen"> a great people to represent the best of our species</span>, who will take our 
-                    challenges into their own hands and will. 
-                    <br />
-                    <br />
-                    {/*A*/}
-                    <span id="blueOpen">We call upon you</span>, and all pioneers with the <span id="blueOpen">spirit of 
-                    discovery in heart</span>, to take up this challenge 
-                    of all ages and <span id="blueOpen">shape the future of our species</span>.
-                    {/*B*/}
-                    {/*<span id="blueOpen">We call upon you</span> to take up this mission, to solve each problem we encounter and<span id="blueOpen"> shape the future of our species</span>.*/}
-                    <br />
-                    <br />
-                    We call upon you for this <span id="blueOpen">adventure of all time</span>, looking not at where you come from but <span id="blueOpen"> 
-                    where you will take us</span>. 
-                    <br />
-                    <br />
-                    <span id="blueOpen">Join the frontier of all knowledge</span> and<span id="blueOpen"> will of discovery</span>, the focus of where we are and 
-                    where we choose to go. 
-                    <br />
-                    <br />
-                    <span id="blueOpen">Each project along this path </span>will be broken down with <span id="blueOpen">thought and efficiency</span>, for which 
-                    <span id="blueOpen"> new proposals will be created </span>to achieve or solve each project.
-                    <br />
-                    <br />
-                    <span id="blueOpen">Discussion and debate </span>will be held with <span id="blueOpen">rigor and deterimation</span> and 
-                    <span id="blueOpen"> targeted education </span>will be <span id='blueOpen'>designed with patience </span>and <span id="blueOpen">used with ambition</span>. 
-                    <br />
-                    <br />
-                    Proposals will<span id='blueOpen'> weighed by pro and con</span> and the best<span id="blueOpen"> determined by democratic vote</span>.
-                    <br />
-                    <br />
-                    In the end, <span id="blueOpen">an architecture will be built with the greatest works of our time </span>held inside and a<span id='blueOpen'> blueprint 
-                    designed for a better tomorrow</span>. 
-                    <br />
-                    <br />
-                    {/*I don't like the part beneath*/}
-                    {/*<span id="blueOpen">At no point in this process will we rest</span>, our eyes focused upon what is at grasp ahead. 
-                    <br />
-                    <br />*/}
-                    We ask you to<span id="blueOpen"> join this cause</span>, to explore this frontier and dedicate your will to<span id="blueOpen"> advance our world</span>.
-                    <br />
-                    <br />
-                    Though challenges stand ahead,<span id="blueOpen"> together we cannot fail</span>.     
-
-                </div>
-
-                <div id="introductionProjectsProse"> 
-                    Join the effort to make humanity into a spacefaring civilization:
-                </div>
-                <Link to={`/problem/7/subproblems`}>
-                    <div id="introductionProjectHeader1">
-                        <div id="introductionProjectTitle">
-                            Interstellar Civilization
-                        </div>
+                <div id="fullTutorialContainer">
+                    <div id="fullTutorialProse">
+                        Welcome to the beginning of your XPrincipia experience.
                     </div>
-                </Link>
-                <div id="introductionProjectsProse">
-                    Choose to evolve our species into a more perfect state of being:
-                </div>
-                {/*Link each to the actual project - check url on active site*/}
-                <Link to={`/problem/8/subproblems`}>
-                    <div id="introductionProjectHeader2"> 
-                        <div id="introductionProjectTitle">
-                            Evolving Humanity
-                        </div>
+                    <div id="fullTutorialProse">
+                        Our goal is to focus the human species towards achieving its best possible future. 
                     </div>
-                </Link>
-                <div id="introductionProjectsProse">
-                    Complete our oldest endeavor, to fully understand the world we find ourselves in:
-                </div>
-                <Link to={`/problem/9/subproblems`}>
-                    <div id="introductionProjectHeader3">
-                        <div id="introductionProjectTitle">
-                            Theoretical Knowledge
-                        </div>
+                    <div id="fullTutorialProse">
+                        To do so, major projects are selected and broken down into solvable sub projects
                     </div>
-                </Link>
-                <div id="introductionProjectsProse">
-                    {/*Design the tools needed for all scopes of our ambitions:*/}
-                    Shape our world with tools, the force that has always driven it:
-                </div>
-                <Link to={`/problem/10/subproblems`}>
-                    <div id="introductionProjectHeader4">
-                        <div id="introductionProjectTitle">
-                            Technology Development
-                        </div>
+                    <div id="fullTutorialProse">
                     </div>
-                </Link>
-                {/*<div id="introductionProjectsProse">
-                    Here are the projects towards progressing our technologies, tools which have shaped our history so far, and will continue to shape our future, including advances such as artificial intelligence and nanostructures.
-                </div>*/}
+                    <div id="fullTutorialProse">
+                    </div>
+                    <div id="fullTutorialProse">
+                    </div>
+                    <div id="fullTutorialProse">
+                    </div>
+                    <div id="fullTutorialProse">
+                    </div>
+                    <div id="fullTutorialProse">
+                    </div>
+                    <div id="fullTutorialProse">
+                    </div>
+                    <div id="fullTutorialProse">
+                    </div>
+                    <div id="fullTutorialProse">
+                    </div>
+                    <div id="fullTutorialProse">
+                    </div>
+                    <div id="fullTutorialProse">
+                    </div>
+                    <div id="fullTutorialProse">
+                    </div>
+                    <div id="fullTutorialProse">
+                    </div>
+                    <div id="fullTutorialProse">
+                    </div>
+                    <div id="fullTutorialProse">
+                    </div>
+                    <div id="fullTutorialProse">
+                    </div>
+                    <div id="fullTutorialProse">
+                    </div>
+                    <div id="fullTutorialProse">
+                    </div>
+                    <div id="fullTutorialProse">
+                    </div>
+                </div>
             </div>
             
             {randomImg()}

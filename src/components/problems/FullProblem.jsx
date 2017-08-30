@@ -211,9 +211,9 @@ unVote() {
             <div id="projectCreator">
               {this.state.problemInfo.OriginalPosterUsername}
             </div>
-            {/*<Link to={`/problem/${this.props.params.probID}/edit`}>
+            <Link to={`/problem/${this.props.params.probID}/edit`}>
               <img src={require('../../assets/editBlue.svg')} id="editProjectButton" width="20" height="20" alt="Edit Button" />
-            </Link>*/}
+            </Link>
 
             <div id="projectPercentGreen">{this.state.problemInfo.Rank}</div>
             <div id="fullProblem">
@@ -270,9 +270,9 @@ unVote() {
             <div id="projectCreator">
               {this.state.problemInfo.OriginalPosterUsername}
             </div>
-            {/*<Link to={`/problem/${this.props.params.probID}/edit`}>
+            <Link to={`/problem/${this.props.params.probID}/edit`}>
               <img src={require('../../assets/editBlue.svg')} id="editProjectButton" width="20" height="20" alt="Edit Button" />
-            </Link>*/}
+            </Link>
 
             <div id="projectPercent">{this.state.problemInfo.Rank}</div>
             <div id="fullProblem">
