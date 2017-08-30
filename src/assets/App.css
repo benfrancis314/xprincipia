@@ -2292,6 +2292,24 @@ introductionProjectTitle {
   transition: all 0.5s ease 0s;
 }
 
+
+
+/*Full Tutorial*/
+
+#fullTutorialMotto {
+  margin: 0 auto;
+  color: #515151;
+  text-align: center;
+  margin-bottom: 5%;
+  margin-top: -2%;
+  font-size: 150%;
+  font-style: italic;
+}
+
+/*End Full Tutorial*/
+
+
+
 /*Profile*/
 
     #profileContainer {
@@ -5906,7 +5924,6 @@ input#submitNewVersion:hover {
   font-size: 100%;
   font-style: italic;
   line-height: 120%;
-
 }
 #aboutProseDescriptions {
   text-align: left;

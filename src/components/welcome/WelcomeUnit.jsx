@@ -8,8 +8,8 @@ export default class WelcomeUnit extends React.Component {
 		return (
 	    <div id="SPListDiv">
 			<ul id="welcomeProblemsUnitList"> 
-        {this.props.problems.map(this.renderItem)} 
-      </ul>
+                {this.props.problems.map(this.renderItem)} 
+            </ul>
 	               
 	    </div>
 		);
