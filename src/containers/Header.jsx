@@ -3,9 +3,6 @@ import {Link} from 'react-router';
 import cookie from 'react-cookie';
 import axios from 'axios';
 import HeaderAvatar from '../components/HeaderAvatar.jsx';
-// Notifications currently unused, may be used for notifications in future
-// import NotificationSuccess from '../components/NotificationSuccess.jsx';
-// import NotificationFailure from '../components/NotificationFailure.jsx';
 import {Config} from '../config.js';
 import $ from 'jquery';
 
@@ -15,14 +12,13 @@ export default class Header extends React.Component {
         super(props);
 
         this.state = {
-           problems : [],
-           searchText: [],
            username: '',
            password: '',
         }
         this.queryProblem = this.queryProblem.bind(this);
         this.postLogin = this.postLogin.bind(this);
     };
+
 
   componentWillMount() {
     this.state =  { userToken: cookie.load('userToken') };
@@ -50,7 +46,8 @@ export default class Header extends React.Component {
         username : self.state.username,
         token : "Bearer " + self.state.userToken
       }, {headers: { Authorization: "Bearer " + self.state.userToken }}).then (function (response){
-        // alert('success')
+        
+        //return to same page
         document.location = window.location.pathname;
       })
     })

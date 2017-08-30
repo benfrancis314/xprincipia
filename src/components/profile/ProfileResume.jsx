@@ -53,8 +53,9 @@ export default class ProfileResume extends React.Component {
         
     }   
     onLogout() {
-        cookie.remove('userToken');
-        cookie.remove('userName');
+        cookie.remove('userToken', { path: '/' });
+        cookie.remove('userName', { path: '/' });
+        
         document.location = "/login";
     }
     onCreatedSolution() {

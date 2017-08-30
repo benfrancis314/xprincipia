@@ -71,6 +71,7 @@ class App extends React.Component {
       return (
       <div className="App">
         {this.props.children}
+        {/*Error alert below*/}
         <div id="notification">
           <div id="notificationHeader">!</div>
           <div id="notificationContent">We apologize for this error. In your <span id="blue">Personal Headquarters</span>, please tell us the error under <span id="blue">Feedback</span>.</div>
