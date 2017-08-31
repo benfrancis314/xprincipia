@@ -1388,9 +1388,6 @@ body, html, #main {
     #solutionReferences:hover, #xp:hover {
       color: rgba(255,255,255,1);
     }
-    #solutionTitle:hover {
-      cursor: pointer;
-    }
     #elementLabel {
       flex: 0 1 auto;
       margin: 1px 5% 0% 0%;
@@ -2302,8 +2299,27 @@ introductionProjectTitle {
   text-align: center;
   margin-bottom: 5%;
   margin-top: -2%;
-  font-size: 150%;
+  font-size: 220%;
   font-style: italic;
+  letter-spacing: 4px;
+  width: 70%;
+}
+#fullTutorialMotto:hover {
+  cursor: pointer;
+}
+#fullTutorialMotto2 {
+  margin: 0 auto;
+  color: #aaaaaa;
+  text-align: center;
+  margin-bottom: 5%;
+  margin-top: -2%;
+  font-size: 230%;
+  /*font-style: italic;*/
+  letter-spacing: 4px;
+  width: 70%;
+}
+#fullTutorialMotto2:hover {
+  cursor: pointer;
 }
 
 /*End Full Tutorial*/

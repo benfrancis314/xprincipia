@@ -27,7 +27,7 @@ export default class TutorialProjectContent extends React.Component {
                  <br />
                  <br />
                  <span id="blue">Discuss</span> the project by <span id='blue'>asking questions</span>,
-                  <span id='blue'>giving suggestions</span> or engaging in <span id='blue'>freeform discussion</span>. 
+                  <span id='blue'>giving suggestions</span> or engaging in <span id='blue'>open debate</span>. 
                  <br />
                  <br />
                  <span id="blue">Learn </span>about<span id='blue'> relevant subjects </span>and<span id="blue"> teach others.</span>

@@ -6,10 +6,24 @@ import ReactCSSTransitionGroup from 'react-addons-css-transition-group'; // ES6
 
 export default class Tutorial extends React.Component {
 
+    latinTranslate() {
+        $(document).ready(function() {
+            $('#fullTutorialMotto').attr('id','fullTutorialMotto2');
+            $('#fullTutorialMotto2').hide().html('Question Authority').fadeIn(1000);
+        });
+    }
+    latinUntranslate() {
+        $(document).ready(function() {
+            $('#fullTutorialMotto2').attr('id','fullTutorialMotto');
+            $('#fullTutorialMotto').html('Nullius in verba'); 
+        });
+    }
+
    render() {
     $(document).ready(function() {
-              $('#introductionContainer').hide().slideDown(500);
+        $('#introductionContainer').hide().slideDown(500);
     });
+
       return (
         <div id="fullWide">
             {/*I would prefer slide from side than fade transition*/}
@@ -29,6 +43,7 @@ export default class Tutorial extends React.Component {
                         <span id="introductionCapital">W</span>elcome to <span id="introductionCapital"> XP</span>rincipia
                         <br />
                     </div>
+            </div>
                     <div id="fullTutorialContainer">
                         <div id="fullTutorialProse">
                             Welcome to the beginning of your XPrincipia experience.
@@ -37,7 +52,7 @@ export default class Tutorial extends React.Component {
                             Our goal is to focus the human species towards achieving its best possible future. 
                         </div>
                         <div id="fullTutorialProse">
-                            Four major projects are selected to focus our efforts upon. 
+                            Four major projects are selected to focus our efforts towards. 
                         </div>
                         <div id="fullTutorialEmbed">
                             <div id="welcomeUnitsContainer">
@@ -226,11 +241,10 @@ export default class Tutorial extends React.Component {
                             Explore
                         </div>
                         {randomImg()}
-                        <div id="fullTutorialMotto">
+                        <div id="fullTutorialMotto" onMouseOver={this.latinTranslate} onMouseOut={this.latinUntranslate}>
                             Nullius in verba
                         </div>
                     </div>
-                </div>
             
             </ReactCSSTransitionGroup>
           </div>
