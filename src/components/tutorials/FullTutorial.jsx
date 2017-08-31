@@ -95,7 +95,7 @@ export default class Tutorial extends React.Component {
                             </div>
                         </div>
                         <div id="fullTutorialProseTop">
-                            You may also create<span id="blueOpen"> your own independent project</span>. 
+                            You may also<span id="blueOpen"> create your own independent project</span>. 
                         </div>
                         <div id="fullTutorialProseBottom">
                             With an open mind and perspective,<span id="blueOpen"> almost all projects </span>
@@ -223,7 +223,27 @@ export default class Tutorial extends React.Component {
                             Projects are then discussed by<span id="blueOpen"> asking questions</span>,<span id="blueOpen"> adding suggestions </span>and<span id="blueOpen"> engaging in open debate</span>:
                         </div>
                         <div id="fullTutorialEmbed">
-                            X
+                                <img src={require('../../assets/redX.svg')} id="closeRedX" width="40" height="40" alt="Close button, red X symbol" />
+                                <div id="projectInteractDiscussMenu">
+                                    <div id="proposalsTitleRightSB">Discuss</div>
+                                            <div id="sidebarDiscussMenu">
+                                                <div id="discussGroup1">
+                                                    <Link activeClassName="activeWhiteBorder">
+                                                        <div id="SBDiscussButton">Questions</div>
+                                                    </Link>
+                                                    <Link activeClassName="activeWhiteBorder">
+                                                        <div id="SBDiscussButton">Suggestions</div>
+                                                    </Link>
+                                                    <Link activeClassName="activeWhiteBorder">
+                                                        <div id="SBDiscussButton">Open Debate</div>
+                                                    </Link>
+                                                </div>
+                                            </div>
+                                            {/*Question container here*/}
+                                            {/*{React.cloneElement(this.props.children, {probID: this.state.probID})}*/}
+                                        {/*</div>*/}
+                                    <div id="proposalsTitleRightSBEnd"><br /></div>
+                                </div>
                         </div>
                         <div id="fullTutorialNumbers">
                             III
