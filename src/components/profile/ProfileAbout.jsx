@@ -26,7 +26,7 @@ export default class ProfileAbout extends React.Component {
                  Over time <span id="blue">new areas of the site will open</span>, with the goal of becoming the <span id="blue">online center for scientific progress</span>. 
                  <br />
                  <br />
-                 <span id="blue">XPrincipia Competitions </span> will open on <span id="blue">Labor Day 2017</span>, 
+                 <span id="blue">XPrincipia Competitions </span> will open <span id="blue">Fall 2017</span>, 
                  focusing users towards developing <span id="blue">specific projects</span>, where <span id="blue">themed prizes</span> are earned by the <span id="blue">top competitors</span>.
                  <br />
                  <br />

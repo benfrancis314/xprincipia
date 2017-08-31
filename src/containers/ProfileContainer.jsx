@@ -59,7 +59,6 @@ export default class ProfileContainer extends React.Component {
     onLogout() {
         cookie.remove('userToken', { path: '/' });
         cookie.remove('userName', { path: '/' });
-       
         document.location = "/welcome";
     }
     onCreatedSolution() {

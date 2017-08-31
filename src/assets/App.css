@@ -6390,9 +6390,6 @@ input#submitNewVersion:hover {
 
 
 
-
-
-
 /*XPrincipia Day*/
 
 /*body {
@@ -6597,11 +6594,11 @@ Orange
 }
 
 
-Green/Earth
+Green/Earth (Not in use, used for exploratory styling, current leaning cleaner look)
 Possibly juxtapose Green/Earth with Blue/Future
-Keep in mind only an option, cleaner look may be better
 Currently leaning away from use of full green here, 
-probably start with sublte green for aesthetic accentuation. 
+probably start with sublte green for aesthetic accentuation.
+
 
 ::-webkit-scrollbar-thumb:vertical {
     box-shadow: inset 0 0 6px rgba(0, 255, 0, 1); 
@@ -6636,12 +6633,6 @@ probably start with sublte green for aesthetic accentuation.
   border-width: 0px 0px 1px 0px;
   background: linear-gradient(rgba(0,255,220,0), rgba(153, 77, 0,0.25));
 }*/
-
-
-
-
-
-
 
 
 
