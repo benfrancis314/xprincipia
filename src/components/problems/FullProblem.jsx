@@ -23,7 +23,8 @@ export default class FullProblem extends React.Component {
         this.state = {
             problemInfo: [],
             parentInfo: [],
-            probID: []
+            probID: [],
+            vote: false
         }
         this.submitVote = this.submitVote.bind(this)
         this.unVote = this.unVote.bind(this)
@@ -54,41 +55,22 @@ shouldComponentUpdate(nextProps, nextState) {
 }
 
   componentWillReceiveProps(nextProps){
-    var self = this;
-    // This would help when exiting Learn and Discuss to get back to top of page, 
-    // but then clicking the new proposal button refreshes too
-    // window.scrollTo(0,0);
-      return axios.get( Config.API + '/problems/ID?id='+nextProps.params.probID).then(function (response) {
-        //set problem data
-        self.setState({
-            problemInfo: response.data,
-            probID: response.data.ID
-        })
+      var self = this;
+      axios.get( Config.API + '/problems/ID?id='+nextProps.params.probID).then(function (response) {
+
+          //set Problem Data
+          self.setState({
+              problemInfo: response.data
+          })
     })
-      .catch(function (error) {
-        // console.log(error.response.data)
-          $(document).ready(function() {
-              $('#notification').attr('id','notificationShow').hide().slideDown();
-              if (error.response.data != '') {
-                $('#notificationContent').text(error.response.data);
-              }
-              else if (error.response.data == '[object Object]') {
-                return (
-                  $(document).ready(function() {
-                    $('#notificationLoginRegisterContainer').attr('id','notificationLoginRegisterContainerShow');
-                    $('#notificationContent').html('Please <span id="blue">login </span>to contribute');
-                  })
-                );
-              } 
-          });
-      });
-      // Console warning says axios call below is "Unreachable code"
-    axios.get( Config.API + "/vote/isVotedOn?type=0&typeID=" + this.props.params.probID + "&username=" + cookie.load("userName"))
+
+          
+    axios.get( Config.API + "/auth/vote/isVotedOn?type=0&typeID=" + nextProps.params.probID + "&username=" + cookie.load("userName"))
           .then( function (response){
             self.setState({
               vote: response.data
             })
-      })   
+      })       
   }
 
 
@@ -232,7 +214,7 @@ unVote() {
       </div>
       );
 
-       } else if(this.state.problemInfo.OriginalPosterUsername === cookie.load('userName')) {
+       } else if(this.state.vote ===false && this.state.problemInfo.OriginalPosterUsername === cookie.load('userName')) {
            return (
 
       <div id="maxContainerColumn">
@@ -350,7 +332,7 @@ unVote() {
 
        }
   
-  else {
+  else if (this.state.vote ===false) {
       return (
       <div id="maxContainerColumn">
         <ReactCSSTransitionGroup

@@ -2309,6 +2309,21 @@ introductionProjectTitle {
   padding: 0% 5% 0% 5%;
   z-index: 5;
 }
+#fullTutorialWelcome {
+  border: 1px outset #00dcff;
+  border-width: 1px 0px 0px 0px;
+  padding: 2%;
+  padding-bottom: 2%;
+  padding-top: 2%;
+  margin-top: 1%;
+  margin-bottom: 1%;
+  font-size: 150%;
+  text-align: center;
+  letter-spacing: 4px;
+  border: 1px solid #dddddd;
+  border-radius: 3px;
+  background-color: rgba(0,220,255,0.05);
+}
 #fullTutorialNumbers {
   text-align: center;
   margin: 0 auto;
@@ -3996,6 +4011,8 @@ introductionProjectTitle {
   padding: 3px;
   /*box-shadow: 0 0 1pt 1pt rgba(0,220,255,0.5);*/
   transition: all 0.5s ease 0s;
+  z-index: 500;
+  margin-bottom: 1%;
 }
 #editProjectButton:hover, #editProjectButton:active {
   cursor: pointer;

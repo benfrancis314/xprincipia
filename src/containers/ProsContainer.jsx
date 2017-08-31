@@ -33,22 +33,22 @@ constructor(props){
     // }
    render() {
            return (
-        <div id="suggestionContainer">
-            <Link to={`/problem/${this.props.params.probID}/proposal/${this.props.params.solutionID}`}>
-                <div >
-                    <img src={require('../assets/redX.svg')} id="closeRedX" width="35" height="35" alt="Close button, red X symbol" />
-                </div>
-             </Link>
-        {/*<ReactCSSTransitionGroup
-          transitionName="example"
-          transitionAppear={true}
-          transitionAppearTimeout={2000}
-          transitionEnter={false}
-          transitionLeave={false}>*/}
-          {this.props.children}
-          {React.cloneElement(<ProsUnit pros={this.state.pros} probID={this.props.params.probID} solutionID={this.props.params.solutionID} /> )}
-        {/*</ReactCSSTransitionGroup>*/}
-        </div>    
+                <div id="suggestionContainer">
+                    <Link to={`/problem/${this.props.params.probID}/proposal/${this.props.params.solutionID}`}>
+                        <div >
+                            <img src={require('../assets/redX.svg')} id="closeRedX" width="35" height="35" alt="Close button, red X symbol" />
+                        </div>
+                    </Link>
+                {/*<ReactCSSTransitionGroup
+                transitionName="example"
+                transitionAppear={true}
+                transitionAppearTimeout={2000}
+                transitionEnter={false}
+                transitionLeave={false}>*/}
+                {this.props.children}
+                {React.cloneElement(<ProsUnit pros={this.state.pros} probID={this.props.params.probID} solutionID={this.props.params.solutionID} /> )}
+                {/*</ReactCSSTransitionGroup>*/}
+                </div>    
       );
    }
 }

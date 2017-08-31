@@ -10,7 +10,7 @@ export default class Tutorial extends React.Component {
     latinTranslate() {
         $(document).ready(function() {
             $('#fullTutorialMotto').attr('id','fullTutorialMotto2').hide();
-            $('#fullTutorialMotto2').html('Question Authority').fadeIn(2750);
+            $('#fullTutorialMotto2').html('Question Authority').fadeIn(3500);
         });
     }
     // Can't quite get the untranslate to work smoothly, so I'm leaving it out for now
@@ -41,7 +41,7 @@ export default class Tutorial extends React.Component {
                 </div>
             </Link>
             <div id="tutorialContainer">
-                    <div id="introductionWelcome">
+                    <div id="fullTutorialWelcome">
                         <span id="introductionCapital">XP</span>rincipia<span id="introductionCapital"> T</span>utorial
                         <br />
                     </div>
@@ -404,7 +404,110 @@ export default class Tutorial extends React.Component {
                             This process determines the best proposals and shows each user<span id="blueOpen"> how to improve their proposal</span>: 
                         </div>
                         <div id="fullTutorialEmbed">
-                            X
+                            <div id="fullWide">
+                                <div id='fullSolutionContainer'>
+                                    <div id="fullSolution">
+                                        <div id="solutionIntro">
+                                            
+                                            <Link>
+                                                <img src={require('../../assets/redX.svg')} id="closeRedX" width="40" height="40" alt="Close button, red X symbol" />
+                                            </Link>
+                                            <h1 id="solutionTitle">SpaceX's Plan to Colonize Mars</h1>
+                                            <div id="proposalCreator">madelyn.sather</div>
+                                            <p id="solutionSummary">
+                                            SpaceX proposal summary here
+                                            </p>
+                                        </div>
+                                        <div id="ProposalPercentFullGreen">
+                                            35
+                                        </div>
+                                        <div id="voteVersionsMenu">
+                                            <Link><div id="votedSolution">Voted</div></Link>
+                                        </div>
+                                        <div id="createDate">2017-08-2</div>
+                                        <div id="prosConsMenu">
+                                            <Link>
+                                                <div id="prosButton">Pros</div>
+                                            </Link>
+                                            <Link>
+                                                <div id="consButton">Cons</div>
+                                            </Link>
+                                        </div>
+                                        
+                                        <div>
+                                        <div id="suggestionContainer">
+                                            <Link>
+                                                <div >
+                                                    <img src={require('../../assets/redX.svg')} id="closeRedX" width="35" height="35" alt="Close button, red X symbol" />
+                                                </div>
+                                            </Link>
+                                        <div id="discussMenuEnd">
+                                            Pros
+                                        </div>
+                                        <div id="suggestionFormComponent">
+                                            <form id="suggestionForm">
+                                                <fieldset  id='fieldSetNoBorderPadding'>
+                                                    <textarea name="suggestionText" required="required" id="proTextArea" placeholder="Add a pro towards the merit of this proposal. " autoFocus ></textarea>
+                                                    <input type="button" value="Add" id="addProsCons"/>
+                                                </fieldset>
+                                            </form>
+                                        </div>
+                                        <ul>
+                                            <li id="prosConsUnit">
+                                                    <div id="suggestionContent">
+                                                        <div id="discussHeader">
+                                                            <span id="discussPercent">50%</span>
+                                                            julie.chisolm
+                                                        </div>
+                                                        <div id="suggestionText">
+                                                            Sample Pro 1
+                                                        </div>
+                                                    </div>
+                                                    <button type="button" id="suggestionVoted">
+                                                        Voted
+                                                    </button> 
+                                                <br /><br /> 
+                                            </li>
+                                            <li id="prosConsUnit">
+                                                    <div id="suggestionContent">
+                                                        <div id="discussHeader">
+                                                            <span id="discussPercent">50%</span>
+                                                            joel.sirjord
+                                                        </div>
+                                                        <div id="suggestionText">
+                                                            Sample Pro 2
+                                                        </div>
+                                                    </div>
+                                                    <button type="button" id="suggestionVoteNoComments">
+                                                        Vote
+                                                    </button> 
+                                                <br /><br /> 
+                                            </li>
+                                        </ul>
+                                        </div>    
+                                        <div> 
+                                            <div>
+                                            <br />
+                                            <div id="solutionFormLabel">Description</div>
+                                            <p id="solutionDescription">
+                                                SpaceX proposal description
+                                            </p>
+                                            </div>
+                                            <div>
+                                            <div id="solutionFormLabel">References</div>
+                                            <p id="solutionReferences">
+                                                SpaceX references
+                                            </p>
+                                            </div>
+                                            <br />
+                                            <br />
+                                            <p id="xp">XP</p>
+                                            <br />
+                                    </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                         <div id="fullTutorialNumbers">
                             IV
@@ -416,7 +519,68 @@ export default class Tutorial extends React.Component {
                             <span id="blueOpen">Learning resources </span>and<span id="blueOpen"> user-customized lessons </span>are created and openly available:
                         </div>
                         <div id="fullTutorialEmbed">
-                            X
+                            <img src={require('../../assets/redX.svg')} id="closeRedX" width="40" height="40" alt="Close button, red X symbol" />
+                            <div id="projectInteractDiscussMenu">
+                                <div id="proposalsTitleRightSB">Learn</div>
+                                <div id="sidebarDiscussMenu">
+                                    <div id="discussGroup1">
+                                        <Link activeClassName="activeWhiteBorder">
+                                            <div id="SBDiscussButton">Lessons</div>
+                                        </Link>
+                                        <Link  activeClassName="activeWhiteBorder">
+                                            <div id="SBDiscussButton">Resources</div>
+                                        </Link>
+                                    </div>
+                                </div>
+                                <div id="suggestionContainer">
+                                    <div id="discussMenuEnd">
+                                        Resources
+                                    </div>
+                                        <div id="suggestionFormComponent">
+                                            <form id="questionForm">
+                                                <fieldset id='fieldSetNoBorderPadding'>
+                                                    <textarea name="suggestionText" required="required" id="resourcesTextArea" placeholder="Please enter the URL of your favorite resource to learn about this project." autoFocus ></textarea>
+                                                    <input type="button" value="Add" id="addSuggestion"/>
+                                                </fieldset>
+                                            </form>
+                                        </div>
+                                    <ul>
+                                        <li id="questionUnit"> 
+                                                <div id="suggestionContent">
+                                                    <div id="discussHeader">
+                                                        <span id="discussPercent">70%</span>
+                                                        samarth.damania
+                                                    </div>
+                                                    <div id="learnResourcesLink">
+                                                        <a target="_blank">
+                                                            http://www.spacex.com/mars
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                                <button type="button" id="suggestionVoteNoComments">
+                                                    Vote
+                                                </button>
+                                        </li>
+                                        <li id="questionUnit"> 
+                                                <div id="suggestionContent">
+                                                    <div id="discussHeader">
+                                                        <span id="discussPercent">30%</span>
+                                                        eric.albam
+                                                    </div>
+                                                    <div id="learnResourcesLink">
+                                                        <a target="_blank">
+                                                            http://www.spacex.com/sites/spacex/files/mars_presentation.pdf
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                                <button type="button" id="suggestionVotedNoComments">
+                                                    Voted
+                                                </button>
+                                        </li>
+                                    </ul>
+                                </div> 
+                                <div id="proposalsTitleRightSBEnd"><br /></div>
+                            </div>
                         </div>
                         <div id="fullTutorialNumbers">
                             V
