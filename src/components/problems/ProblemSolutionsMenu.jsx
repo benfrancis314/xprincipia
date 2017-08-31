@@ -37,7 +37,7 @@ export default class ProblemSolutionsMenu extends React.Component {
         <div id="projectInteractMenu">
             <div id="solutionsTitleRightSB">Proposals</div>
             <a href='#proposalForm'>
-                <div onClick={this.goToProposalForm}>
+                <div>
                     <img src={require('../../assets/blueAdd3.svg')} id="addBlueX" width="32" height="32" alt="Close button, red X symbol" />
                 </div>
             </a>

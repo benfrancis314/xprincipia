@@ -2,6 +2,7 @@ import React from 'react';
 import {Link} from 'react-router';
 import $ from 'jquery';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group'; // ES6
+import ScrollableAnchor from 'react-scrollable-anchor';
 
 
 export default class Tutorial extends React.Component {
@@ -145,7 +146,7 @@ export default class Tutorial extends React.Component {
                             II
                         </div>
                         <div id="fullTutorialProseStart">
-                            Each project is<span id="blueOpen"> broken down into more solvable sub projects</span>.
+                            Each project is<span id="blueOpen"> broken down </span>into<span id="blueOpen"> more solvable sub projects</span>.
                         </div>
                         <div id="fullTutorialProseBottom">
                             This process is repeated,<span id="blueOpen"> creating a tree pattern</span>:
@@ -239,9 +240,61 @@ export default class Tutorial extends React.Component {
                                                     </Link>
                                                 </div>
                                             </div>
-                                            {/*Question container here*/}
-                                            {/*{React.cloneElement(this.props.children, {probID: this.state.probID})}*/}
-                                        {/*</div>*/}
+                                            <div id="questionContainer">
+                                                        <div id="discussMenuEnd">
+                                                            Questions
+                                                        </div>
+                                                        <div id="questionFormComponent">
+                                                            <form id="questionForm">
+                                                                <fieldset id='fieldSetNoBorderPadding'>
+                                                                        <textarea name="questionText" required="required" id="questionTextArea" placeholder="Ask a question you have about this project or view those asked by your peers. " autoFocus ></textarea>
+                                                                        <input type="button" value="Ask" id="askQuestion"/>
+                                                                </fieldset>
+                                                            </form>
+                                                        </div>
+                                                        <div id="questionUnitContainer">
+                                                            <ul>
+                                                                <li id="questionUnit"> 
+                                                                    <div id="suggestionContent">
+                                                                        <div id="discussHeader">
+                                                                            <span id="discussPercent">60%</span>
+                                                                            nancy.lynn
+                                                                        </div>
+                                                                        <div id="suggestionText">
+                                                                            <span id="blue">Q: </span>Test question 1
+                                                                        </div>
+                                                                    </div>
+                                                                    <Link activeClassName="activeGlow">
+                                                                        <div id="commentSBButtonUser">
+                                                                                <img src={require('../../assets/comments.svg')} id="commentLogo" width="24" height="24" alt="Comments Button" />
+                                                                        </div>                
+                                                                    </Link>
+                                                                    <button type="button" id="suggestionVoted">
+                                                                        Voted
+                                                                    </button>
+                                                                </li>
+                                                                <li id="questionUnit"> 
+                                                                    <div id="suggestionContent">
+                                                                        <div id="discussHeader">
+                                                                            <span id="discussPercent">40%</span>
+                                                                            darrin.evans
+                                                                        </div>
+                                                                        <div id="suggestionText">
+                                                                            <span id="blue">Q: </span>Test question 2
+                                                                        </div>
+                                                                    </div>
+                                                                    <Link activeClassName="activeGlow">
+                                                                        <div id="commentSBButtonUser">
+                                                                                <img src={require('../../assets/comments.svg')} id="commentLogo" width="24" height="24" alt="Comments Button" />
+                                                                        </div>                
+                                                                    </Link>
+                                                                    <button type="button" id="suggestionVoted">
+                                                                        Voted
+                                                                    </button>
+                                                                </li>
+                                                            </ul>	               
+                                                        </div>
+                                            </div>
                                     <div id="proposalsTitleRightSBEnd"><br /></div>
                                 </div>
                         </div>
@@ -252,13 +305,97 @@ export default class Tutorial extends React.Component {
                             The most important aspect of the site is<span id="blueOpen"> proposals</span>. 
                         </div>
                         <div id="fullTutorialProse">    
-                            All ideas to solve or achieve each project can be represented by proposals. 
+                            All ideas to<span id="blueOpen"> solve or achieve each project </span>can be represented by proposals. 
                         </div>
                         <div id="fullTutorialProseBottom">    
                             They may be<span id="blueOpen"> novel ideas from the community</span> or <span id="blueOpen"> already established ideas</span> from outside references:
                         </div>
                         <div id="fullTutorialEmbed">
-                            X
+                            <div id="projectInteractMenu">
+                                <div id="solutionsTitleRightSB">Proposals</div>
+                                <a href='#proposalForm'>
+                                    <div>
+                                        <img src={require('../../assets/blueAdd3.svg')} id="addBlueX" width="32" height="32" alt="Close button, red X symbol" />
+                                    </div>
+                                </a>
+                                <ul> 
+                                    <li>
+                                        <Link >
+                                            <div id="solutionUnit">
+                                                <div id="solutionUnitContainer">
+                                                    <div id="solutionPercent">25%</div>
+                                                    <div id="solutionUnitTitle">SpaceX's Plan to Colonize Mars</div>
+                                                </div>
+                                            </div>
+                                        </Link>
+                                    </li>
+                                    <li>
+                                        <Link >
+                                            <div id="solutionUnit">
+                                                <div id="solutionUnitContainer">
+                                                    <div id="solutionPercent">25%</div>
+                                                    <div id="solutionUnitTitle">NASA's Plan to Colonize Mars</div>
+                                                </div>
+                                            </div>
+                                        </Link>
+                                    </li>
+                                    <li>
+                                        <Link >
+                                            <div id="solutionUnit">
+                                                <div id="solutionUnitContainer">
+                                                    <div id="solutionPercent">25%</div>
+                                                    <div id="solutionUnitTitle">Mars One's Plan to Colonize Mars</div>
+                                                </div>
+                                            </div>
+                                        </Link>
+                                    </li>
+                                    <li>
+                                        <Link >
+                                            <div id="solutionUnit">
+                                                <div id="solutionUnitContainer">
+                                                    <div id="solutionPercent">25%</div>
+                                                    <div id="solutionUnitTitle">United Arab Emirate's Plan to Colonize Mars</div>
+                                                </div>
+                                            </div>
+                                        </Link>
+                                    </li>
+                                </ul>
+                                <div>
+                                    {randomImg()}
+                                    <div id="createSolutionBox">
+                                        <ScrollableAnchor id={'proposalForm'}>
+                                            <div id="proposalFormCreateTitle">
+                                                    New Proposal
+                                            </div>
+                                        </ScrollableAnchor>
+
+                                        <form id="createForm">
+                                            <fieldset id="fieldSetSideBorder">
+                                                <label htmlFor="solutionTitle" id="projectTitleProposalFormLabel">Project Title<br />
+                                                <h1 id="proposalCreateProjectTitle">Colonize Mars</h1>
+                                                </label><br />
+
+                                                <label htmlFor="solutionTitle" id="solutionTitleFormLabel">Proposal Title<br />
+                                                    <input type="text" name="solutionTitle" required="required" maxLength="140" id="solutionTitleForm" />
+                                                </label><br />
+
+                                                <label htmlFor="solutionSummary" id="solutionSummaryFormLabel">Summary<br />
+                                                    <textarea name="solutionSummary" required="required" maxLength="400" placeholder="Please summarize your proposal here. (400 character max)" id="solutionSummaryForm"/>
+                                                </label><br />
+
+                                                <label htmlFor="solutionDescription" id="solutionDescriptionFormLabel">Description<br />
+                                                    <textarea name="solutionDescription" required="required" placeholder="Please describe your proposal here." id="solutionDescriptionForm">
+                                                    </textarea></label><br />
+
+                                                <label htmlFor="solutionReferences" id="solutionReferenceFormLabel">References <span id="gray">(Optional)</span><br />
+                                                    <textarea name="solutionReferences" placeholder="Please provide any references here." id="solutionReferencesForm">
+                                                    </textarea></label><br />
+                                                <input type="button" value="Create" id="submitSolution"/>
+                                            </fieldset>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                         <div id="fullTutorialProseTop">
                             Once created, each proposal<span id="blueOpen"> undergoes a pro-con analysis</span>. 

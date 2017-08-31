@@ -2370,7 +2370,7 @@ introductionProjectTitle {
   width: 70%;
 }
 #fullTutorialMotto:hover {
-  cursor: pointer;
+  /*cursor: pointer;*/
 }
 #fullTutorialMotto2 {
   margin: 0 auto;
