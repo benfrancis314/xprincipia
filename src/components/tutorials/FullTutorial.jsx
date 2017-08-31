@@ -8,16 +8,17 @@ export default class Tutorial extends React.Component {
 
     latinTranslate() {
         $(document).ready(function() {
-            $('#fullTutorialMotto').attr('id','fullTutorialMotto2');
-            $('#fullTutorialMotto2').hide().html('Question Authority').fadeIn(1000);
+            $('#fullTutorialMotto').attr('id','fullTutorialMotto2').hide();
+            $('#fullTutorialMotto2').html('Question Authority').fadeIn(2750);
         });
     }
-    latinUntranslate() {
-        $(document).ready(function() {
-            $('#fullTutorialMotto2').attr('id','fullTutorialMotto');
-            $('#fullTutorialMotto').html('Nullius in verba'); 
-        });
-    }
+    // Can't quite get the untranslate to work smoothly, so I'm leaving it out for now
+    // latinUntranslate() {
+    //     $(document).ready(function() {
+    //         $('#fullTutorialMotto2').attr('id','fullTutorialMotto');
+    //         $('#fullTutorialMotto').html('Nullius in verba'); 
+    //     });
+    // }
 
    render() {
     $(document).ready(function() {
@@ -38,21 +39,24 @@ export default class Tutorial extends React.Component {
                     Explore
                 </div>
             </Link>
-            <div id="introductionContainer">
+            <div id="tutorialContainer">
                     <div id="introductionWelcome">
-                        <span id="introductionCapital">W</span>elcome to <span id="introductionCapital"> XP</span>rincipia
+                        <span id="introductionCapital">XP</span>rincipia<span id="introductionCapital"> T</span>utorial
                         <br />
                     </div>
             </div>
                     <div id="fullTutorialContainer">
-                        <div id="fullTutorialProse">
-                            Welcome to the beginning of your XPrincipia experience.
+                        <div id="fullTutorialNumbers">
+                            I
+                        </div>
+                        <div id="fullTutorialProseStart">
+                            Welcome to the beginning of<span id="blueOpen"> your XPrincipia experience</span>.
                         </div>
                         <div id="fullTutorialProse">
-                            Our goal is to focus the human species towards achieving its best possible future. 
+                            Our goal is to<span id="blueOpen"> focus the human species </span>towards achieving its<span id="blueOpen"> best possible future</span>. 
                         </div>
-                        <div id="fullTutorialProse">
-                            Four major projects are selected to focus our efforts towards. 
+                        <div id="fullTutorialProseBottom">
+                            <span id="blueOpen">Four major projects are selected </span>to focus these efforts towards:
                         </div>
                         <div id="fullTutorialEmbed">
                             <div id="welcomeUnitsContainer">
@@ -90,11 +94,17 @@ export default class Tutorial extends React.Component {
                                 </div>
                             </div>
                         </div>
-                        <div id="fullTutorialProse">
-                            You may also create your own indpendent project. With an open mind, most projects 
-                            do work towards advancing progess or civilization.
+                        <div id="fullTutorialProseTop">
+                            You may also create<span id="blueOpen"> your own independent project</span>. 
+                        </div>
+                        <div id="fullTutorialProseBottom">
+                            With an open mind and perspective,<span id="blueOpen"> almost all projects </span>
+                            help advance progress or civilization:
                         </div>
                         <div id="fullTutorialEmbed">
+                            <div id="createWelcomeButtonBox">
+                                <h1 id="createWelcomeButton">Create a Project</h1>
+                            </div>
                             <div id="welcomeFormComponent">
                                 <form id="exploreWelcomeForm">
                                     <input type="search" name="search" placeholder="Search all projects" id="exploreInput" />
@@ -106,7 +116,7 @@ export default class Tutorial extends React.Component {
                                         <li id="welcomeUserProblemsUnit">
                                             <div id="welcomeUserProblemsHeader">
                                                 <div id="welcomeUserProblemsTitle">
-                                                    Science Project Title
+                                                    Relatable Science Project Title
                                                     <div id="SPPercent">24</div>
                                                 </div>        
                                             </div>
@@ -114,7 +124,15 @@ export default class Tutorial extends React.Component {
                                         <li id="welcomeUserProblemsUnit">
                                             <div id="welcomeUserProblemsHeader">
                                                 <div id="welcomeUserProblemsTitle">
-                                                    Social Work Title
+                                                    Blood Testing Project Title
+                                                    <div id="SPPercent">24</div>
+                                                </div>        
+                                            </div>
+                                        </li>
+                                        <li id="welcomeUserProblemsUnit">
+                                            <div id="welcomeUserProblemsHeader">
+                                                <div id="welcomeUserProblemsTitle">
+                                                    Social Work Project Title
                                                     <div id="SPPercent">17</div>
                                                 </div>        
                                             </div>
@@ -123,45 +141,51 @@ export default class Tutorial extends React.Component {
                                 </div>
                             </div>
                         </div>
-                        <div id="fullTutorialProse">
-                            Each project is broken down into more solvable sub projects. This process is repeated, 
-                            creating a tree pattern. 
+                        <div id="fullTutorialNumbers">
+                            II
+                        </div>
+                        <div id="fullTutorialProseStart">
+                            Each project is<span id="blueOpen"> broken down into more solvable sub projects</span>.
+                        </div>
+                        <div id="fullTutorialProseBottom">
+                            This process is repeated,<span id="blueOpen"> creating a tree pattern</span>:
                         </div>
                         <div id="fullTutorialEmbed">
                             <div id="maxContainerColumn">
-                            <div id="problemColumn1">
+                            <div id="problemColumn1Wide">
                                 <div id="parentButton">
-                                    <span id='blue'>Parent: </span>XPrincipia Projects
+                                    <span id='blue'>Parent: </span>Mars
                                 </div>
                             <div id="problemIntro">
-                                <h1 id="problemTitle">XPrincipia</h1>
+                                <h1 id="problemTitle">Colonizing Mars</h1>
                             </div>
                             <div id="problemRow1">
                                     <Link><div id="voteProblem">
                                         Vote
                                     </div></Link>
                                     <a>
-                                    <div id="SBButtonDiscuss">Proposals</div>
+                                        <div id="SBButtonDiscuss">Proposals</div>
                                     </a>
                                     <Link activeClassName="activeBlue">
                                         <div id="SBButtonDiscuss">Discuss</div>
                                     </Link>
                                     <Link activeClassName="activeBlue">
-                                    <div id="SBButtonLearn">Learn</div>
+                                        <div id="SBButtonLearn">Learn</div>
                                     </Link>
                                 </div>
                                 <div id="projectCreator">
-                                xprincipia
+                                    xprincipia
                                 </div>
 
                                 <div id="projectPercent">30</div>
                                 <div id="fullProblem">
-                                <p id="problemSummary">
-                                    What are the best methods to colonize Mars?
-                                </p>
+                                    <p id="problemSummary">
+                                        What are the best methods to colonize Mars?
+                                    </p>
                                 </div>
-                                {/*What should be here?*/}
-                                {/*{React.cloneElement(this.props.children)}*/}
+                                <div id="SBButton">
+                                    Create a Sub Project
+                                </div>
                                 </div>
                                 <div id="sidebarSBProjects">
                                     <div id="SPwrapper">
@@ -171,7 +195,7 @@ export default class Tutorial extends React.Component {
                                             </li>
                                             <li id="SPUnit">
                                                 <div id="SPHeader">
-                                                    <div id="SPTitle">SP 1 (Martian Architecture?)</div>
+                                                    <div id="SPTitle">Martian Colonial Architecture</div>
                                                     <div id="SPPercent">20</div>
                                                 </div>
                                             </li>
@@ -195,47 +219,64 @@ export default class Tutorial extends React.Component {
                                 </div>
                             </div>
                         </div>
-                        <div id="fullTutorialProse">
-                            Projects are then discussed by asking questions, adding suggestions and engaging in open debate. 
+                        <div id="fullTutorialProseSingle">
+                            Projects are then discussed by<span id="blueOpen"> asking questions</span>,<span id="blueOpen"> adding suggestions </span>and<span id="blueOpen"> engaging in open debate</span>:
                         </div>
                         <div id="fullTutorialEmbed">
                             X
                         </div>
-                        <div id="fullTutorialProse">
-                            The most important aspect of the site is<span id="blue"> proposals</span>. All ideas to solve or 
-                            achieve the project can be represented by proposals. They may be novel from the user or be promoting 
-                            an already established idea. 
+                        <div id="fullTutorialNumbers">
+                            III
+                        </div>
+                        <div id="fullTutorialProseStart">
+                            The most important aspect of the site is<span id="blueOpen"> proposals</span>. 
+                        </div>
+                        <div id="fullTutorialProse">    
+                            All ideas to solve or achieve each project can be represented by proposals. 
+                        </div>
+                        <div id="fullTutorialProseBottom">    
+                            They may be<span id="blueOpen"> novel ideas from the community</span> or <span id="blueOpen"> already established ideas</span> from outside references:
                         </div>
                         <div id="fullTutorialEmbed">
                             X
                         </div>
-                        <div id="fullTutorialProse">
-                            Once created, they may undergo a pro-con analysis. This determines the best proposals and shows 
-                            each proposal how it may improve. 
+                        <div id="fullTutorialProseTop">
+                            Once created, each proposal<span id="blueOpen"> undergoes a pro-con analysis</span>. 
+                        </div>
+                        <div id="fullTutorialProseBottom">    
+                            This process determines the best proposals and shows each user<span id="blueOpen"> how to improve their proposal</span>: 
                         </div>
                         <div id="fullTutorialEmbed">
                             X
                         </div>
-                        <div id="fullTutorialProse">
-                            Finally, users may further their knowledge of each project for future contributions. 
-                            Learning resources and user-customized lessons are created and openly available. 
+                        <div id="fullTutorialNumbers">
+                            IV
+                        </div>
+                        <div id="fullTutorialProseStart">
+                            Finally, users may<span id="blueOpen"> further their knowledge </span>of each project for future contributions. 
+                        </div>
+                        <div id="fullTutorialProseBottom">
+                            <span id="blueOpen">Learning resources </span>and<span id="blueOpen"> user-customized lessons </span>are created and openly available:
                         </div>
                         <div id="fullTutorialEmbed">
                             X
                         </div>
-                        <div id="fullTutorialProse">
-                            For all aspects of the site, the best contributions are voted upon. Those with the most 
-                            votes rise to the top in a process inspired by natural selection. 
+                        <div id="fullTutorialNumbers">
+                            V
+                        </div>
+                        <div id="fullTutorialProseStart">
+                            For all aspects of the site,<span id="blueOpen"> the best contributions are voted upon</span>. Those with the most 
+                            votes rise to the top in a<span id="blueOpen"> process inspired by natural selection</span>. 
                         </div>
                         <div id="fullTutorialProse">
-                            All work on XPrincipia belongs in the public domain. 
+                            All work on XPrincipia belongs to the<span id="blueOpen"> public domain</span>. 
                         </div>
                         <div id="fullTutorialProse">
-                            Through these processes, sub projects towards the bottom of the tree will develop 
-                            quality proposals, allowing for higher level projects to be achieved bottom-up. 
+                            Through these processes,<span id="blueOpen"> sub projects towards the bottom of the tree </span>will develop 
+                            quality proposals, allowing for higher level projects to be<span id="blueOpen"> achieved bottom-up</span>. 
                         </div>
-                        <div id="fullTutorialProse">
-                            Future sections of XPrincipia will be designed towards democratically implementing these ideas. 
+                        <div id="fullTutorialProseBottom">
+                            Future sections of XPrincipia will be designed towards<span id="blueOpen"> democratically implementing these ideas</span>. 
                         </div>
                         <div id="fullTutorialExplore">
                             Explore
