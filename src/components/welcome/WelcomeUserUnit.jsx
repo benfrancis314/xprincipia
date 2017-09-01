@@ -61,7 +61,6 @@ if (problem.Title === 'Interstellar Civilization') {
                         {problem.Title}
                         <div id="SPPercent">{problem.Rank}</div>
                     </div>
-                    
                 </div>
             </Link>
         </li>

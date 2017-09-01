@@ -29,7 +29,6 @@ export default class QuestionContainer extends React.Component {
         <div id="questionContainer">
             {this.props.children}
             <QuestionUnit questions={this.state.questions} />
-            <SideBarMore />
         </div>
       
       );

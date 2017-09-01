@@ -2,7 +2,7 @@ import React from 'react';
 import { Link  } from 'react-router';
 
 
-export default class ProblemDiscussMenu extends React.Component {
+export default class Empty extends React.Component {
 
    render() {
       return (
