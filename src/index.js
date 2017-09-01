@@ -100,6 +100,7 @@ import LoginContainer from './containers/LoginContainer.jsx';
 import NewsFeedContainer from './containers/NewsFeedContainer.jsx';
 import ProfileAboutContainer from './containers/ProfileAboutContainer.jsx';
 import ProfileContainer from './containers/ProfileContainer.jsx';
+import ProjectRelatedParentsContainer from './containers/ProjectRelatedParentsContainer.jsx';
 import ProsContainer from './containers/ProsContainer.jsx';
 import QuestionContainer from './containers/QuestionContainer.jsx';
 import SearchContainer from './containers/SearchContainer.jsx';
@@ -249,9 +250,9 @@ ReactDOM.render(
               <Route path='/project/:probID/freeform/:freeFormID/delete' component={FreeFormDeleteForm}></Route>
             </Route>
             <Route path='/project/:probID/freeform/:freeID/comments' component={FreeFormCommentContainer}></Route>
-          </Route>
+        </Route>
           {/*<IndexRoute component={ProblemLearnMenu}></IndexRoute>*/}
-          <Route path='/project/:probID/learn' component={ProblemLearnMenu}>
+        <Route path='/project/:probID/learn' component={ProblemLearnMenu}>
               <Route path='/project/:probID/learn/content/full' component={LearnContentContainer1}>
                 <IndexRoute component={LearnContentForm}></IndexRoute>
                 <Route path='/project/:probID/learn/content' component={LearnContentForm}></Route>
@@ -267,16 +268,33 @@ ReactDOM.render(
                 <Route path='/project/:probID/learn/resources/:resourceID/delete' component={LearnResourcesDeleteForm}></Route>  
                 <Route path='/project/:probID/learn/resources/:resourceID/embed' component={LearnResourcesEmbed}></Route>            
               </Route>
-            </Route>
-      <IndexRoute component={ProblemLeftSB}></IndexRoute>
-        <Route path='/project/:probID/sb' component={ProblemLeftSB}>
-          <IndexRoute component={ProblemSolutionsMenu}></IndexRoute>
-          </Route>
-          <IndexRoute component={ProblemDiscussMenu}></IndexRoute>
         </Route>
-       
+        <Route path='/project/:probID/related' component={ProjectRelatedParentsContainer}>
+              <Route path='/project/:probID/learn/content/full' component={LearnContentContainer1}>
+                <IndexRoute component={LearnContentForm}></IndexRoute>
+                <Route path='/project/:probID/learn/content' component={LearnContentForm}></Route>
+                <Route path='/project/:probID/learn/content/:learnItemID/edit' component={LearnContentEditForm}></Route>
+                <Route path='/project/:probID/learn/content/:learnItemID/flag' component={LearnContentFlagForm}></Route>
+                <Route path='/project/:probID/learn/content/:learnItemID/delete' component={LearnContentDeleteForm}></Route>
+             </Route>
+              <Route path='/project/:probID/learn/resources/full' component={LearnResourcesContainer1}>
+                <IndexRoute component={LearnResourcesForm}></IndexRoute>
+                <Route path='/project/:probID/learn/resources' component={LearnResourcesForm}></Route>
+                <Route path='/project/:probID/learn/resources/:resourceID/edit' component={LearnResourcesEditForm}></Route>
+                <Route path='/project/:probID/learn/resources/:resourceID/flag' component={LearnResourcesFlagForm}></Route>
+                <Route path='/project/:probID/learn/resources/:resourceID/delete' component={LearnResourcesDeleteForm}></Route>  
+                <Route path='/project/:probID/learn/resources/:resourceID/embed' component={LearnResourcesEmbed}></Route>            
+              </Route>
+        </Route>
+        <IndexRoute component={ProblemLeftSB}></IndexRoute>
+          <Route path='/project/:probID/sb' component={ProblemLeftSB}>
+            <IndexRoute component={ProblemSolutionsMenu}></IndexRoute>
+            </Route>
+            <IndexRoute component={ProblemDiscussMenu}></IndexRoute>
+          </Route>
+        
+        </Route>
       </Route>
-    </Route>
     {/*<Redirect from='*' to='/404' />*/}
     <Route path='*' component={Error404}/>
   </Router>,

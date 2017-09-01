@@ -15,6 +15,7 @@ export default class ProblemDiscussMenu extends React.Component {
         }
 
     };
+    // Is this necessary?
         componentDidMount(){
         var self = this;
         return axios.get( Config.API + '/solutions/problemID?id='+this.props.params.probID).then(function (response) {
