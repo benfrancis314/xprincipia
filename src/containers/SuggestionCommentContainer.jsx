@@ -69,7 +69,7 @@ export default class SuggestionCommentContainer extends React.Component {
       return (
         <div id="answerContainer">
             <div id="answerQuestionHeader">
-                <Link to={`/problem/${this.props.params.probID}/suggestions`}>
+                <Link to={`/project/${this.props.params.probID}/suggestions`}>
                     <div id="backSolutionArrowDiv">
                         <img src={require('../assets/upArrow.svg')} id="backSolutionArrow" width="50" height="30" alt="Back arrow, blue up arrow" />
                     </div>

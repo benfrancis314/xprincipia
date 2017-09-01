@@ -179,17 +179,17 @@ unVote() {
                 <a href='#proposals'>
                   <div id="SBButtonDiscuss" onClick={this.goToProposal}>Proposals</div>
                 </a>
-                <Link to={`/problem/${this.props.params.probID}/questions`} activeClassName="activeBlue">
+                <Link to={`/project/${this.props.params.probID}/questions`} activeClassName="activeBlue">
                     <div id="SBButtonDiscuss">Discuss</div>
                 </Link>
-                <Link to={`/problem/${this.props.params.probID}/learn/resources`} activeClassName="activeBlue">
+                <Link to={`/project/${this.props.params.probID}/learn/resources`} activeClassName="activeBlue">
                   <div id="SBButtonLearn">Learn</div>
                 </Link>
             </div>
             <div id="projectCreator">
               {this.state.problemInfo.OriginalPosterUsername}
             </div>
-            <Link to={`/problem/${this.props.params.probID}/edit`}>
+            <Link to={`/project/${this.props.params.probID}/edit`}>
               <img src={require('../../assets/editBlue.svg')} id="editProjectButton" width="20" height="20" alt="Edit Button" />
             </Link>
 
@@ -238,17 +238,17 @@ unVote() {
                 <a href='#proposals'>
                   <div id="SBButtonDiscuss" onClick={this.goToProposal}>Proposals</div>
                 </a>
-                <Link to={`/problem/${this.props.params.probID}/questions`} activeClassName="activeBlue">
+                <Link to={`/project/${this.props.params.probID}/questions`} activeClassName="activeBlue">
                     <div id="SBButtonDiscuss">Discuss</div>
                 </Link>
-                <Link to={`/problem/${this.props.params.probID}/learn/resources`} activeClassName="activeBlue">
+                <Link to={`/project/${this.props.params.probID}/learn/resources`} activeClassName="activeBlue">
                   <div id="SBButtonLearn">Learn</div>
                 </Link>
             </div>
             <div id="projectCreator">
               {this.state.problemInfo.OriginalPosterUsername}
             </div>
-            <Link to={`/problem/${this.props.params.probID}/edit`}>
+            <Link to={`/project/${this.props.params.probID}/edit`}>
               <img src={require('../../assets/editBlue.svg')} id="editProjectButton" width="20" height="20" alt="Edit Button" />
             </Link>
 
@@ -297,10 +297,10 @@ unVote() {
                 <a href='#proposals'>
                   <div id="SBButtonDiscuss" onClick={this.goToProposal}>Proposals</div>
                 </a>
-                <Link to={`/problem/${this.props.params.probID}/questions`} activeClassName="activeBlue">
+                <Link to={`/project/${this.props.params.probID}/questions`} activeClassName="activeBlue">
                     <div id="SBButtonDiscuss">Discuss</div>
                 </Link>
-                <Link to={`/problem/${this.props.params.probID}/learn/resources`} activeClassName="activeBlue">
+                <Link to={`/project/${this.props.params.probID}/learn/resources`} activeClassName="activeBlue">
                   <div id="SBButtonLearn">Learn</div>
                 </Link>
             </div>
@@ -355,10 +355,10 @@ unVote() {
                 <a href='#proposals'>
                   <div id="SBButtonDiscuss" onClick={this.goToProposal}>Proposals</div>
                 </a>
-                <Link to={`/problem/${this.props.params.probID}/questions`} activeClassName="activeBlue">
+                <Link to={`/project/${this.props.params.probID}/questions`} activeClassName="activeBlue">
                     <div id="SBButtonDiscuss">Discuss</div>
                 </Link>
-                <Link to={`/problem/${this.props.params.probID}/learn/resources`} activeClassName="activeBlue">
+                <Link to={`/project/${this.props.params.probID}/learn/resources`} activeClassName="activeBlue">
                   <div id="SBButtonLearn">Learn</div>
                 </Link>
             </div>

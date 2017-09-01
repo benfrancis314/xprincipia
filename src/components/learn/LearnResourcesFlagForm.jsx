@@ -94,7 +94,7 @@ postResource() {
                          <textarea name="questionText" required="required" id="questionFlagTextArea" autoFocus ></textarea>
                          <br />
                          <div onClick={this.postResource} id="flagButton">Submit</div>
-                          <Link to={`/problem/${this.props.params.probID}/learn/resources`}>
+                          <Link to={`/project/${this.props.params.probID}/learn/resources`}>
                             <div id="returnButton">Exit</div>
                          </Link>
                 </fieldset>

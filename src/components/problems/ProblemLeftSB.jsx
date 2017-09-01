@@ -172,7 +172,7 @@ unVote() {
         <div id="maxContainerRow">
           <div id="fullProblemLeft">
             <div id="problemLeftSBHeader">
-              <Link to={`/problem/${this.props.params.probID}/subproblems`}>
+              <Link to={`/project/${this.props.params.probID}/subprojects`}>
                 <div id="backProjectArrowDiv">
                   <img src={require('../../assets/leftArrow.svg')} id="backArrowBlueHover" width="50" height="30" alt="Back arrow, blue up arrow" />
                 </div>
@@ -219,7 +219,7 @@ unVote() {
         <div id="maxContainerRow">
           <div id="fullProblemLeft">
             <div id="problemLeftSBHeader">
-              <Link to={`/problem/${this.props.params.probID}/subproblems`}>
+              <Link to={`/project/${this.props.params.probID}/subprojects`}>
                 <div id="backProjectArrowDiv">
                   <img src={require('../../assets/leftArrow.svg')} id="backArrowBlueHover" width="50" height="30" alt="Back arrow, blue up arrow" />
                 </div>
@@ -266,7 +266,7 @@ unVote() {
         <div id="maxContainerRow">
           <div id="fullProblemLeft">
             <div id="problemLeftSBHeader">
-              <Link to={`/problem/${this.props.params.probID}/subproblems`}>
+              <Link to={`/project/${this.props.params.probID}/subprojects`}>
                 <div id="backProjectArrowDiv">
                   <img src={require('../../assets/leftArrow.svg')} id="backArrowBlueHover" width="50" height="30" alt="Back arrow, blue up arrow" />
                 </div>
@@ -316,7 +316,7 @@ unVote() {
         <div id="maxContainerRow">
           <div id="fullProblemLeft">
             <div id="problemLeftSBHeader">
-              <Link to={`/problem/${this.props.params.probID}/subproblems`}>
+              <Link to={`/project/${this.props.params.probID}/subprojects`}>
                 <div id="backProjectArrowDiv">
                   <img src={require('../../assets/leftArrow.svg')} id="backArrowBlueHover" width="50" height="30" alt="Back arrow, blue up arrow" />
                 </div>

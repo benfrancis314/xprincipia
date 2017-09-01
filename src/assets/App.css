@@ -4004,21 +4004,21 @@ introductionProjectTitle {
   /*box-shadow: 0 0 1pt 1pt rgba(0,220,255,0.5);*/
   transition: all 0.5s ease 0s;
 }
-#proposalIterateButton {
+#proposalDevelopButton {
   letter-spacing: 2px;
-  width: 25%;
+  width: 20%;
   margin: 0 auto;
   padding: 3px;
   transition: all 0.5s ease 0s;
   border: 1px solid #00dcff;
-  border-width: 1px 0px;
-  /*border-radius: 3px;*/
+  border-width: 1px 1px;
+  border-radius: 3px 3px 35% 35%;
   background-color: rgba(0,220,255,0.05);
   color: #00dcff;
   text-align: center;
-  font-size: 150%;
+  font-size: 140%;
 }
-#proposalIterateButton:hover {
+#proposalDevelopButton:hover {
   background-color: #00dcff;
   color: #0f131c;
 }

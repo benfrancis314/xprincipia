@@ -95,7 +95,7 @@ export default class Introduction extends React.Component {
                 <div id="introductionProjectsProse"> 
                     Join the effort to make humanity into a spacefaring civilization:
                 </div>
-                <Link to={`/problem/7/subproblems`}>
+                <Link to={`/project/7/subprojects`}>
                     <div id="introductionProjectHeader1">
                         <div id="introductionProjectTitle">
                             Interstellar Civilization
@@ -106,7 +106,7 @@ export default class Introduction extends React.Component {
                     Choose to evolve our species into a more perfect state of being:
                 </div>
                 {/*Link each to the actual project - check url on active site*/}
-                <Link to={`/problem/8/subproblems`}>
+                <Link to={`/project/8/subprojects`}>
                     <div id="introductionProjectHeader2"> 
                         <div id="introductionProjectTitle">
                             Evolving Humanity
@@ -116,7 +116,7 @@ export default class Introduction extends React.Component {
                 <div id="introductionProjectsProse">
                     Complete our oldest endeavor, to fully understand the world we find ourselves in:
                 </div>
-                <Link to={`/problem/9/subproblems`}>
+                <Link to={`/project/9/subprojects`}>
                     <div id="introductionProjectHeader3">
                         <div id="introductionProjectTitle">
                             Theoretical Knowledge
@@ -127,7 +127,7 @@ export default class Introduction extends React.Component {
                     {/*Design the tools needed for all scopes of our ambitions:*/}
                     Shape our world with tools, the force that has always driven it:
                 </div>
-                <Link to={`/problem/10/subproblems`}>
+                <Link to={`/project/10/subprojects`}>
                     <div id="introductionProjectHeader4">
                         <div id="introductionProjectTitle">
                             Technology Development

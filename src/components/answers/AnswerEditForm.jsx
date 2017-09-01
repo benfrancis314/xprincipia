@@ -57,7 +57,7 @@ updateAnswer() {
       description : this.state.answer,
     })
       .then(function (result) {
-        // document.location = '/problem/' + self.props.params.probID + '/question/' + self.props.params.questID + '/answers'
+        // document.location = '/project/' + self.props.params.probID + '/question/' + self.props.params.questID + '/answers'
         document.location = window.location.pathname 
       })
       .catch(function (error) {
@@ -93,7 +93,7 @@ updateAnswer() {
                          <textarea name="questionText" required="required" id="answerEditTextArea" autoFocus ></textarea>
                          <br />
                          <div onClick={this.updateAnswer} id="editButton">Submit</div>
-                         <Link to={`/problem/${this.props.params.probID}/question/${this.props.params.questID}/answers`}>
+                         <Link to={`/project/${this.props.params.probID}/question/${this.props.params.questID}/answers`}>
                             <div id="returnButton">Exit</div>
                          </Link>
                 </fieldset>

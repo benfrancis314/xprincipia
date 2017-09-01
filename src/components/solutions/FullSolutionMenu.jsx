@@ -103,7 +103,7 @@ export default class FullSolutionMenu extends React.Component {
       <div> 
             <div id="voteVersionsMenu">
                     <Link><div id="voteSolution" onClick={this.submitVote}>Vote</div></Link>
-                    <Link to={`/fullsolution/${this.props.params.probID}/${this.props.params.solutionID}/versions`}>
+                    <Link to={`/proposal/${this.props.params.probID}/${this.props.params.solutionID}/versions`}>
                         <div id="versionsButton">
                                 Versions
                         </div>
@@ -111,10 +111,10 @@ export default class FullSolutionMenu extends React.Component {
               </div>
               <div id="createDate">{dateTime(this.state.solutionInfo.CreatedAt)}</div>
               <div id="prosConsMenu">
-                <Link to={`/fullsolution/${this.props.params.probID}/${this.props.params.solutionID}/pros`}>
+                <Link to={`/proposal/${this.props.params.probID}/${this.props.params.solutionID}/pros`}>
                     <div id="prosButton">Pros</div>
                 </Link>
-                <Link to={`/fullsolution/${this.props.params.probID}/${this.props.params.solutionID}/cons`}>
+                <Link to={`/proposal/${this.props.params.probID}/${this.props.params.solutionID}/cons`}>
                     <div id="consButton">Cons</div>
                 </Link>
               </div>

@@ -32,7 +32,7 @@ export default class SolutionDeleteForm extends React.Component {
         }
       })
       .then(function (result) {
-      document.location = '/problem/'+ self.props.params.probID + '/subproblems'
+      document.location = '/project/'+ self.props.params.probID + '/subprojects'
     })
       .catch(function (error) {
         // console.log(error.response.data)
@@ -62,7 +62,7 @@ export default class SolutionDeleteForm extends React.Component {
                     <div>Are you sure you would like to delete this proposal?</div>
                     <br />
                     <div onClick={this.deleteSolution} id="deleteButton">Delete</div>
-                      <Link to={`/problem/${this.props.params.probID}/proposal/${this.props.params.solutionID}`}>
+                      <Link to={`/project/${this.props.params.probID}/proposal/${this.props.params.solutionID}`}>
                         <div id="returnButton">Exit</div>
                     </Link>
             </fieldset>

@@ -111,12 +111,12 @@ export default class ConsUnit extends React.Component {
                         {con.Description}
                     </div>
 				</div>
-                    <Link to={`/problem/${this.props.probID}/${con.TypeID}/cons/${con.ID}/delete`}>
+                    <Link to={`/project/${this.props.probID}/${con.TypeID}/cons/${con.ID}/delete`}>
                         <div id="deleteSBButton">
                             <img src={require('../../assets/delete.svg')} id="editLogo" width="18" height="18" alt="Delete Button" />
                         </div>
                     </Link>
-                    <Link to={`/problem/${this.props.probID}/${con.TypeID}/cons/${con.ID}/edit`}>
+                    <Link to={`/project/${this.props.probID}/${con.TypeID}/cons/${con.ID}/edit`}>
                         <div id="editSBButtonAnswer">
                             <img src={require('../../assets/editBlue.svg')} id="editLogo" width="18" height="18" alt="Edit Button" />
                         </div>
@@ -143,12 +143,12 @@ export default class ConsUnit extends React.Component {
                         {con.Description}
                     </div>
 				</div>
-                    <Link to={`/problem/${this.props.probID}/${con.TypeID}/cons/${con.ID}/delete`}>
+                    <Link to={`/project/${this.props.probID}/${con.TypeID}/cons/${con.ID}/delete`}>
                         <div id="deleteSBButton">
                             <img src={require('../../assets/delete.svg')} id="editLogo" width="18" height="18" alt="Delete Button" />
                         </div>
                     </Link>
-                    <Link to={`/problem/${this.props.probID}/${con.TypeID}/cons/${con.ID}/edit`}>
+                    <Link to={`/project/${this.props.probID}/${con.TypeID}/cons/${con.ID}/edit`}>
                         <div id="editSBButtonAnswer">
                             <img src={require('../../assets/editBlue.svg')} id="editLogo" width="18" height="18" alt="Edit Button" />
                         </div>
@@ -174,7 +174,7 @@ export default class ConsUnit extends React.Component {
                         {con.Description}
                     </div>
 				</div>
-                {/*<Link to={`/problem/${con.TypeID}/cons/${con.ID}/flag`}>
+                {/*<Link to={`/project/${con.TypeID}/cons/${con.ID}/flag`}>
                         <div id="flagSBButton">
                             <img src={require('.../src/assets/delete.svg')} id="deleteLogo" width="11" height="11" alt="Delete Button, Red X" />
                             Flag
@@ -196,7 +196,7 @@ export default class ConsUnit extends React.Component {
                         {con.Description}
                     </div>
 				</div>
-                {/*<Link to={`/problem/${con.TypeID}/cons/${con.ID}/flag`}>
+                {/*<Link to={`/project/${con.TypeID}/cons/${con.ID}/flag`}>
                         <div id="flagSBButton">
                             <img src={require('.../src/assets/delete.svg')} id="deleteLogo" width="11" height="11" alt="Delete Button, Red X" />
                             Flag

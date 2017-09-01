@@ -55,7 +55,7 @@ if (problem.Title === 'Interstellar Civilization') {
 } else 
       return (
         <li key={problem.ID} id="welcomeUserProblemsUnit">
-            <Link to={{pathname: '/problem/'+problem.ID +'/subproblems'}} onClick={()=>{this.handleClick()}}>
+            <Link to={{pathname: '/project/'+problem.ID +'/subprojects'}} onClick={()=>{this.handleClick()}}>
                 <div id="welcomeUserProblemsHeader">
                     <div id="welcomeUserProblemsTitle">
                         {problem.Title}

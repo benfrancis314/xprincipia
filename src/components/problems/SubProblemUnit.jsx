@@ -56,7 +56,7 @@ export default class SubProblemUnit extends React.Component {
 
     return (
 
-        <Link key={problem.ID} to={'/problem/'+problem.ID +'/subproblems'} onClick={handleClick}>
+        <Link key={problem.ID} to={'/project/'+problem.ID +'/subprojects'} onClick={handleClick}>
 					<li key={problem.ID} id="SPUnit">
 						<div id="SPHeader">
 							<div id="SPTitle">{problem.Title}</div>

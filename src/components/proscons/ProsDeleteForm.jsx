@@ -28,7 +28,7 @@ export default class ProsDeleteForm extends React.Component {
         }
       })
       .then(function (result) {
-        document.location = '/fullsolution/'+ self.props.params.probID + '/' + self.props.params.solutionID + '/pros'
+        document.location = '/proposal/'+ self.props.params.probID + '/' + self.props.params.solutionID + '/pros'
       })
       .catch(function (error) {
         // console.log(error.response.data)
@@ -60,7 +60,7 @@ export default class ProsDeleteForm extends React.Component {
                          <div>Are you sure you would like to delete this Pro?</div>
                          <br />
                          <div onClick={this.deletePro} id="deleteButton">Delete</div>
-                         <Link to={`/fullsolution/${this.props.params.probID}/${this.props.solutionID}/pros`}>
+                         <Link to={`/proposal/${this.props.params.probID}/${this.props.solutionID}/pros`}>
                             <div id="returnButton">Exit</div>
                          </Link>
                 </fieldset>

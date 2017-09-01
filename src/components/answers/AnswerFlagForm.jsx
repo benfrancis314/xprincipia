@@ -98,7 +98,7 @@ postQuestion() {
                          <br />
                          <div onClick={this.postQuestion} id="flagButton">Submit</div>
                          {/*The link below doesn't work*/}
-                         {/*<Link to='/problem/${question.TypeID}/questions'>*/}
+                         {/*<Link to='/project/${question.TypeID}/questions'>*/}
                             <div id="returnButton">Exit</div>
                          {/*</Link>*/}
                 </fieldset>

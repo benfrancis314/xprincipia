@@ -27,7 +27,7 @@ deleteSuggestion() {
       }
     })
     .then(function (result) {
-      document.location = '/problem/'+ self.props.params.probID + '/suggestions'
+      document.location = '/project/'+ self.props.params.probID + '/suggestions'
     })
       .catch(function (error) {
         // console.log(error.response.data)
@@ -64,7 +64,7 @@ deleteSuggestion() {
                           <div>Are you sure you would like to delete this suggestion?</div>
                           <br />
                             <div onClick={this.deleteSuggestion} id="deleteButton">Delete</div>
-                          <Link to={`/problem/${this.props.params.probID}/suggestions`}>
+                          <Link to={`/project/${this.props.params.probID}/suggestions`}>
                               <div id="returnButton">Exit</div>
                           </Link>
                   </fieldset>

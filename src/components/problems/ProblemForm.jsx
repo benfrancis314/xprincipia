@@ -42,7 +42,7 @@ export default class ProblemForm extends React.Component {
     })
     .then(function (result) {
       //redirect back to the last page     
-      document.location = '/problem/'+self.props.params.probID+'/subproblems'
+      document.location = '/project/'+self.props.params.probID+'/subprojects'
     })
       .catch(function (error) {
         alert('why not working');
@@ -68,7 +68,7 @@ export default class ProblemForm extends React.Component {
         <div>
           {/*ScrollableAnchor doesn't work right now, not sure why*/}
           {/*<ScrollableAnchor id={'newSubProject'}>*/}
-            <Link to={`/problem/${this.props.params.probID}/subproblems`}>
+            <Link to={`/project/${this.props.params.probID}/subprojects`}>
                 <img src={require('../../assets/redX.svg')} id="closeRedX" width="40" height="40" alt="Close button, red X symbol" />
             </Link>
           {/*</ScrollableAnchor>*/}

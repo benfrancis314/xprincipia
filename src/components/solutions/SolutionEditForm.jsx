@@ -71,7 +71,7 @@ export default class EditSolutionForm extends React.Component {
       references: self.state.references
     })
     .then(function (result) {
-     document.location = '/problem/' + self.props.params.probID + '/proposal/' + self.props.params.solutionID
+     document.location = '/project/' + self.props.params.probID + '/proposal/' + self.props.params.solutionID
     })
       .catch(function (error) {
         // console.log(error.response.data)
@@ -96,32 +96,28 @@ export default class EditSolutionForm extends React.Component {
   render() {
       return (
       <div id="createSolutionBox">
-          <form id="solutionEditForm">
-            <fieldset id="editFormFieldset">
-                <legend>Edit Proposal</legend>
-                      
-                      <label htmlFor="solutionTitle" id="editTitleFormLabel">Title<br />
-                         <input type="text" name="solutionTitle" required="required" maxLength="140" id="solutionEditTitleForm" autoFocus/>
-                      </label><br />
+          <form id="solutionEditForm">                      
+            <label htmlFor="solutionTitle" id="editTitleFormLabel">Title<br />
+                <input type="text" name="solutionTitle" required="required" maxLength="140" id="solutionEditTitleForm" autoFocus/>
+            </label><br />
 
-                      <label htmlFor="solutionSummary" id="editSummaryFormLabel">Summary<br />
-                         <textarea name="solutionSummary" required="required" maxLength="400" placeholder="Summarize in 250 characters here." id="solutionEditSummaryForm"/>
-                      </label><br />
+            <label htmlFor="solutionSummary" id="editSummaryFormLabel">Summary<br />
+                <textarea name="solutionSummary" required="required" maxLength="400" placeholder="Summarize in 250 characters here." id="solutionEditSummaryForm"/>
+            </label><br />
 
-                      <label htmlFor="solutionDescription" id="editDescriptionFormLabel">Description<br />
-                          <textarea name="solutionDescription" required="required" placeholder="Describe in detail here." id="solutionEditDescriptionForm">
-                          </textarea></label><br />
+            <label htmlFor="solutionDescription" id="editDescriptionFormLabel">Description<br />
+                <textarea name="solutionDescription" required="required" placeholder="Describe in detail here." id="solutionEditDescriptionForm">
+                </textarea></label><br />
 
-                      <label htmlFor="solutionReferences" id="editReferencesFormLabel">References<br />
-                          <textarea name="solutionReferences" placeholder="Provide your references here." id="solutionEditReferencesForm">
-                          </textarea></label><br />
+            <label htmlFor="solutionReferences" id="editReferencesFormLabel">References<br />
+                <textarea name="solutionReferences" placeholder="Provide your references here." id="solutionEditReferencesForm">
+                </textarea></label><br />
 
-                      <div onClick={this.updateSolution} id="editButton">Edit</div>
+            <div onClick={this.updateSolution} id="editButton">Submit</div>
 
-                      <Link to={`/problem/${this.props.params.probID}/proposal/${this.props.params.solutionID}`}>
-                        <div id="returnButton">Exit</div>
-                      </Link>
-            </fieldset>
+            <Link to={`/project/${this.props.params.probID}/proposal/${this.props.params.solutionID}`}>
+              <div id="returnButton">Exit</div>
+            </Link>
           </form>
       </div>
       );

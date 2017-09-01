@@ -64,7 +64,7 @@ export default class ProjectEditForm extends React.Component {
       summary : self.state.summary
     })
     .then(function (result) {
-      document.location = '/problem/'+ self.props.params.probID + '/subproblems'
+      document.location = '/project/'+ self.props.params.probID + '/subprojects'
     })
       .catch(function (error) {
         // console.log(error.response.data)
@@ -100,10 +100,10 @@ export default class ProjectEditForm extends React.Component {
                             </textarea></label><br />
 
                           <br />
-                          <Link to={`/problem/${this.props.params.probID}/subproblems`}>
+                          <Link to={`/project/${this.props.params.probID}/subprojects`}>
                               <div onClick={this.updateProject} id="editButton">Submit</div>
                           </Link>
-                          <Link to={`/problem/${this.props.params.probID}/subproblems`}>
+                          <Link to={`/project/${this.props.params.probID}/subprojects`}>
                             <div id="returnButton">Exit</div>
                           </Link>
             </form>
