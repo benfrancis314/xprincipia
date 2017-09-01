@@ -1,6 +1,6 @@
 import React from 'react'
 import cookie from 'react-cookie';
-import CSSTransitionGroup from 'react-transition-group/CSSTransitionGroup'
+// import CSSTransitionGroup from 'react-transition-group/CSSTransitionGroup'
 
 export default class ChatBox extends React.Component{
     constructor() {

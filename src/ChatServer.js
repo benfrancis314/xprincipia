@@ -21,13 +21,11 @@ io.on('connection', function (socket) {
   var addedUser = false;
 
   // when the client emits 'new message', this listens and executes
-  socket.on('new action', function (action, type, typeID) {
+  socket.on('new message', function (data) {
     // we tell the client to execute 'new message'
-    io.emit('new action', {
+    io.emit('new message', {
       username: socket.username,
-      action: action,
-      type: type,
-      typeID: typeID
+      message: data
     });
     console.log(data)
   });

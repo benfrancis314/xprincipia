@@ -105,11 +105,13 @@ import WelcomeContainer from './containers/WelcomeContainer.jsx';
 //Assets
 import './assets/index.css';
 
+import ChatBoxContainer from './components/chatbox/ChatBoxContainer.jsx'
 
 
 ReactDOM.render(
   <Router history={browserHistory}>
     <Route path='/' component={App}>
+    <Route path='/chatbox' component={ChatBoxContainer}/>
     <IndexRoute component={Intro}></IndexRoute>
     <Route path='/intro' component={Intro}></Route>
     <IndexRoute component={Intro}></IndexRoute>
