@@ -15,6 +15,7 @@ export default class ProblemDiscussMenu extends React.Component {
         }
 
     };
+    
     // Is this necessary?
         componentDidMount(){
         var self = this;
