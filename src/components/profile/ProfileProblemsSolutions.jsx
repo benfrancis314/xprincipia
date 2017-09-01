@@ -55,7 +55,7 @@ export default class ProfileProblemsSolutions extends React.Component {
     onLogout() {
         cookie.remove('userToken', { path: '/' });
         cookie.remove('userName', { path: '/' });
-        document.location = "/login";
+        document.location = "/welcome"; 
     }
     onCreatedSolution() {
         var self = this;

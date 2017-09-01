@@ -16,9 +16,6 @@ import { configureAnchors } from 'react-scrollable-anchor';
 
 configureAnchors({offset: -20, scrollDuration: 700});
 
-// import Scroll from 'react-scroll'; // Imports all Mixins
-// import {scroller} from 'react-scroll'; //Imports scroller mixin, can use as scroller.scrollTo()
-
 export default class FullProblem extends React.Component {
   constructor(props){
         super(props);
@@ -26,7 +23,8 @@ export default class FullProblem extends React.Component {
         this.state = {
             problemInfo: [],
             parentInfo: [],
-            probID: []
+            probID: [],
+            vote: false
         }
         this.submitVote = this.submitVote.bind(this)
         this.unVote = this.unVote.bind(this)
@@ -57,45 +55,25 @@ shouldComponentUpdate(nextProps, nextState) {
 }
 
   componentWillReceiveProps(nextProps){
-    var self = this;
-    // This would help when exiting Learn and Discuss to get back to top of page, 
-    // but then clicking the new proposal button refreshes too
-    // window.scrollTo(0,0);
-      return axios.get( Config.API + '/problems/ID?id='+nextProps.params.probID).then(function (response) {
-        //set problem data
-        self.setState({
-            problemInfo: response.data,
-            probID: response.data.ID
-        })
+      var self = this;
+      axios.get( Config.API + '/problems/ID?id='+nextProps.params.probID).then(function (response) {
+
+          //set Problem Data
+          self.setState({
+              problemInfo: response.data
+          })
     })
-      .catch(function (error) {
-        // console.log(error.response.data)
-          $(document).ready(function() {
-              $('#notification').attr('id','notificationShow').hide().slideDown();
-              if (error.response.data != '') {
-                $('#notificationContent').text(error.response.data);
-              }
-              else if (error.response.data == '[object Object]') {
-                return (
-                  $(document).ready(function() {
-                    $('#notificationLoginRegisterContainer').attr('id','notificationLoginRegisterContainerShow');
-                    $('#notificationContent').html('Please <span id="blue">login </span>to contribute');
-                  })
-                );
-              } 
-          });
-      });
-      // Console warning says axios call below is "Unreachable code"
-    axios.get( Config.API + "/vote/isVotedOn?type=0&typeID=" + this.props.params.probID + "&username=" + cookie.load("userName"))
+
+          
+    axios.get( Config.API + "/auth/vote/isVotedOn?type=0&typeID=" + nextProps.params.probID + "&username=" + cookie.load("userName"))
           .then( function (response){
             self.setState({
               vote: response.data
             })
-      })   
+      })       
   }
 
 
-// Old
   submitVote() {
       var self = this
        axios.post( Config.API + '/auth/vote/create', {
@@ -137,7 +115,8 @@ shouldComponentUpdate(nextProps, nextState) {
   }
 
 unVote() {
-      return axios.delete( Config.API + '/auth/vote/delete' ,{
+      var self = this
+      axios.delete( Config.API + '/auth/vote/delete' ,{
         params: {
           type: 0,
           typeID: this.props.params.probID,
@@ -145,15 +124,15 @@ unVote() {
         }
         })
         .then(function (result) {
+            return axios.get( Config.API + '/auth/problems/ID?id='+self.props.params.probID).then(function (response) {
             //set problem data
-            // self.setState({
-                
-            //     vote: false,
-            // })
+            self.setState({
+                problemInfo: response.data,
+            })
             document.location = window.location.pathname 
         })
+        })
       .catch(function (error) {
-        // console.log(error.response.data)
           $(document).ready(function() {
               $('#notification').attr('id','notificationShow').hide().slideDown();
 
@@ -172,6 +151,7 @@ unVote() {
       });
         
     }
+
 
    render() {
      
@@ -209,9 +189,9 @@ unVote() {
             <div id="projectCreator">
               {this.state.problemInfo.OriginalPosterUsername}
             </div>
-            {/*<Link to={`/problem/${this.props.params.probID}/edit`}>
+            <Link to={`/problem/${this.props.params.probID}/edit`}>
               <img src={require('../../assets/editBlue.svg')} id="editProjectButton" width="20" height="20" alt="Edit Button" />
-            </Link>*/}
+            </Link>
 
             <div id="projectPercentGreen">{this.state.problemInfo.Rank}</div>
             <div id="fullProblem">
@@ -234,7 +214,7 @@ unVote() {
       </div>
       );
 
-       } else if(this.state.problemInfo.OriginalPosterUsername === cookie.load('userName')) {
+       } else if(this.state.vote ===false && this.state.problemInfo.OriginalPosterUsername === cookie.load('userName')) {
            return (
 
       <div id="maxContainerColumn">
@@ -268,9 +248,9 @@ unVote() {
             <div id="projectCreator">
               {this.state.problemInfo.OriginalPosterUsername}
             </div>
-            {/*<Link to={`/problem/${this.props.params.probID}/edit`}>
+            <Link to={`/problem/${this.props.params.probID}/edit`}>
               <img src={require('../../assets/editBlue.svg')} id="editProjectButton" width="20" height="20" alt="Edit Button" />
-            </Link>*/}
+            </Link>
 
             <div id="projectPercent">{this.state.problemInfo.Rank}</div>
             <div id="fullProblem">
@@ -352,7 +332,7 @@ unVote() {
 
        }
   
-  else {
+  else if (this.state.vote ===false) {
       return (
       <div id="maxContainerColumn">
         <ReactCSSTransitionGroup

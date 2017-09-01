@@ -44,6 +44,13 @@ If working in tandem with the App.css sheet, it is highly recommended
 to use the split editor screen and using COMMAND F for finding the elements.
 
 
+Summary
+
+In summary, Command F whatever ID you are looking for, and it is likely 
+any other ID's you're looking for are in the near vicinity. 
+
+
+
 Author: Ben Francis
 Last updated: 8/11/17
  */
@@ -1388,9 +1395,6 @@ body, html, #main {
     #solutionReferences:hover, #xp:hover {
       color: rgba(255,255,255,1);
     }
-    #solutionTitle:hover {
-      cursor: pointer;
-    }
     #elementLabel {
       flex: 0 1 auto;
       margin: 1px 5% 0% 0%;
@@ -2064,13 +2068,11 @@ body, html, #main {
   margin-bottom: 0%;
   font-size: 175%;
   width: 75%;
-  /*border: 2px solid #00dcff;*/
   border-width: 1px 1px 1px 1px;
   border-radius: 40px 40px 0px 0px;;
   text-align: left;
   padding: 0% 5% 0% 5%;
   z-index: 5;
-  /*float: right;*/
 }
 #introductionWelcome {
   border: 1px outset #00dcff;
@@ -2086,11 +2088,10 @@ body, html, #main {
   border: 1px solid #dddddd;
   border-radius: 3px;
   background-color: rgba(0,220,255,0.05);
-  /*color: #00dcff;*/
 
 
   /*Trying out blend color between #ffffff and #0dcff. 
-  So far haven't found conceptto work. 
+  So far haven't found concept to work. 
   
   Eitherway, interesting color to keep. */
 
@@ -2291,6 +2292,116 @@ introductionProjectTitle {
   text-align: center;
   transition: all 0.5s ease 0s;
 }
+
+
+
+/*Full Tutorial*/
+
+#tutorialContainer {
+  margin: 0 auto;
+  margin-top: 2%;
+  margin-bottom: 4%;
+  font-size: 175%;
+  width: 75%;
+  border-width: 1px 1px 1px 1px;
+  border-radius: 40px 40px 0px 0px;;
+  text-align: left;
+  padding: 0% 5% 0% 5%;
+  z-index: 5;
+}
+#fullTutorialWelcome {
+  border: 1px outset #00dcff;
+  border-width: 1px 0px 0px 0px;
+  padding: 2%;
+  padding-bottom: 2%;
+  padding-top: 2%;
+  margin-top: 1%;
+  margin-bottom: 1%;
+  font-size: 150%;
+  text-align: center;
+  letter-spacing: 4px;
+  border: 1px solid #dddddd;
+  border-radius: 3px;
+  background-color: rgba(0,220,255,0.05);
+}
+#fullTutorialNumbers {
+  text-align: center;
+  margin: 0 auto;
+  margin-top: 4%;
+  margin-bottom: 4%;
+  font-size: 300%;
+  border: 1px solid #333333;
+  border-width: 1px 0px;
+  width: 50%;
+}
+#fullTutorialProseTop, #fullTutorialProse, #fullTutorialProseBottom, #fullTutorialProseSingle, #fullTutorialProseStart {
+  width: 70%;
+  margin: 0 auto;
+  margin-top: 2%;
+  margin-bottom: 2%;
+  font-size: 145%;
+  font-family: 'Open Sans';
+  line-height: 160%;
+}
+#fullTutorialProseStart {
+  margin-top: 2%;
+}
+#fullTutorialProseTop {
+  margin-top: 5%;
+}
+#fullTutorialProseBottom {
+  margin-bottom: 5%;
+}
+#fullTutorialProseSingle {
+  margin-top: 4%;
+  margin-bottom: 4%;
+}
+
+#fullTutorialExplore {
+  width: 55%;
+  padding: 3%;
+  padding-bottom: 2%;
+  padding-top: 2%;
+  margin: 0 auto;
+  margin-top: 1%;
+  margin-bottom: 3%;
+  font-size: 225%;
+  text-align: center;
+  letter-spacing: 4px;
+  border: 1px solid #dddddd;
+  border-radius: 3px;
+  background-color: rgba(0,220,255,0.05);
+
+}
+#fullTutorialMotto {
+  margin: 0 auto;
+  color: #515151;
+  text-align: center;
+  margin-bottom: 5%;
+  margin-top: -1%;
+  font-size: 250%;
+  font-style: italic;
+  letter-spacing: 4px;
+  width: 70%;
+}
+#fullTutorialMotto:hover {
+  /*cursor: pointer;*/
+}
+#fullTutorialMotto2 {
+  margin: 0 auto;
+  color: #dddddd;
+  text-align: center;
+  margin-bottom: 5%;
+  margin-top: -2%;
+  font-size: 260%;
+  letter-spacing: 4px;
+  width: 70%;
+}
+
+
+/*End Full Tutorial*/
+
+
 
 /*Profile*/
 
@@ -3864,7 +3975,25 @@ introductionProjectTitle {
   margin: 0 auto;
   padding: 3px;
   /*box-shadow: 0 0 1pt 1pt rgba(0,220,255,0.5);*/
-  transition: all 0.5s ease 0s
+  transition: all 0.5s ease 0s;
+}
+#proposalIterateButton {
+  letter-spacing: 2px;
+  width: 25%;
+  margin: 0 auto;
+  padding: 3px;
+  transition: all 0.5s ease 0s;
+  border: 1px solid #00dcff;
+  border-width: 1px 0px;
+  /*border-radius: 3px;*/
+  background-color: rgba(0,220,255,0.05);
+  color: #00dcff;
+  text-align: center;
+  font-size: 150%;
+}
+#proposalIterateButton:hover {
+  background-color: #00dcff;
+  color: #0f131c;
 }
 
 #flagSolutionButton:hover, #deleteSolutionButton:hover,
@@ -3881,7 +4010,9 @@ introductionProjectTitle {
   margin: 0 auto;
   padding: 3px;
   /*box-shadow: 0 0 1pt 1pt rgba(0,220,255,0.5);*/
-  transition: all 0.5s ease 0s
+  transition: all 0.5s ease 0s;
+  z-index: 500;
+  margin-bottom: 1%;
 }
 #editProjectButton:hover, #editProjectButton:active {
   cursor: pointer;
@@ -3998,7 +4129,7 @@ introductionProjectTitle {
   display: block;
   background-color: rgba(0,220,255,0.1);
   padding: 0.3%;
-  border: 1px solid#dddddd;
+  border: 1px solid#00dcff;
   border-width: 0px 1px 1px 1px;
   border-radius: 0px 0px 3px 3px;
   letter-spacing: 1px;
@@ -4090,6 +4221,11 @@ introductionProjectTitle {
 #problemColumn1 {
   display: flex;
   flex-direction: column;
+}
+#problemColumn1Wide {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
 }
 
 #problemIntro {
@@ -5906,7 +6042,6 @@ input#submitNewVersion:hover {
   font-size: 100%;
   font-style: italic;
   line-height: 120%;
-
 }
 #aboutProseDescriptions {
   text-align: left;
@@ -6354,3 +6489,466 @@ input#submitNewVersion:hover {
 
 
 /*End Entrance*/
+
+
+
+/*XPrincipia Day*/
+
+/*body {
+  background-color: #ffffff;
+}
+#error, #logoName, #banner, #welcomeUserProblemsUnit:hover *, 
+#questionTextArea, #answerTextArea, #suggestionTextArea, 
+#commentTextArea,#proTextArea, #conTextArea, 
+#resourcesTextArea, #learnContentTextArea, #freeFormTextArea {
+  color: #2f2f42;
+}
+#SBButton, #SBButton1, #createWelcomeButtonFormBox,
+#welcomeBox, #subProblemSummary, #solutionUnitSummary, 
+#questionTextArea, #answerTextArea, #suggestionTextArea, #commentTextArea,
+#proTextArea, #conTextArea, #resourcesTextArea, #learnContentTextArea, 
+#freeFormTextArea, #problemTitle, #solutionTitle {
+  border: 1px solid #2f2f42;
+}
+#problem {
+  border: 1px solid #00dcff;
+}
+#solutionTitle {
+  box-shadow: 0 0 1pt 1pt rgba(255,255,255,0.5);
+  color: rgba(221,221,221,1)
+}
+p, body, #versionUnitTitle, #introPrompt, #introProseDescriptions,
+#tutorialProseDescriptions, #aboutProseDescriptions,
+#SBDiscussButton, #topSolutionsButtonRightSB,
+#createSolutionsButtonRightSB, #contentLearnButtonRightSB, 
+#resourcesLearnButtonRightSB, #sidebar, #SPTitle, #sidebarSB,
+#problemSummary, #problemSummaryLeftSB, #problemTitle,
+#newsFeedLeft, #newsFeedRight, #createSPButton, #SBButton, #SBButton1,
+#problem, #createWelcomeButton, 
+#exploreWelcomeForm, #subProblemSummary, #solutionUnitSummary,
+#exploreForm, #profileLeft, #profileRight, #signup, #register,
+#info, #avatarFullName, #welcomePrompt, 
+#explore, #exploreFormHeader, #exploreInput, #exploreHeaderInput,
+#errorContainer, #profileLeft, #profileRight, #createWelcomeButtonForm,
+#problemSummary:hover, #problemAdditionalInfoLabel,
+#problemAdditionalInfoLabelSB
+ {
+  color: #2f2f42;
+}
+#introBanner, #SBDiscussButton, #topSolutionsButtonRightSB,
+#createSolutionsButtonRightSB, #contentLearnButtonRightSB, 
+#resourcesLearnButtonRightSB, #welcomeUserProblemsUnitList,
+#exploreInput {
+  border-color: #2f2f42;
+}
+input, textarea {
+  color: #2f2f42;
+  border: 1px solid #2f2f42;
+}
+#bannerTitle {
+  border: 1px solid #2f2f42;
+  box-shadow: 0 0 2pt 2pt rgba(47,47,66, 0.5);
+  background-color: rgba(0, 220, 255, 0);
+}
+#loginEmail, #registerFullName,
+#loginPassword, #registerPassword,
+#registerUserName, #registerEmail {
+  box-shadow: 0 0 2pt 2pt rgba(47,47,66, 0.5);
+}
+#submitLogin, #submitRegister,
+#registerButton, #loginButton {
+  color: #2f2f42;
+  background-color: rgba(47,47,66, 0);
+  border: 1px solid #2f2f42;
+}
+#registerButton, #loginButton {
+  border-width: 0px 1px 1px 1px;
+  border-radius: 0px 0px 3px 3px;
+}
+#bannerSlogan {
+  border: 1px solid #2f2f42;
+  border-width: 2px 0px;
+  background-color: rgba(47,47,66, 0.05);
+  box-shadow: 0 0 1pt 1pt rgba(47,47,66, 0.5);
+}
+#problemSummary, #problemSummaryLeftSB {
+  border: 1px solid #2f2f42;
+  border-width: 1px 0px;
+  color: #2f2f42;
+}
+#SPHeader {
+  border: 2px solid #2f2f42;
+  background-color: rgba(47,47,66,0.05);
+  box-shadow: 0 0 2pt 2pt rgba(47,47,66,0.5);
+}
+#createSPButtonBox, #createSPButtonBox2 {
+  border: 1px solid #2f2f42;
+  border: 1px solid #2f2f42;
+  background-color: rgba(47,47,66, 0);
+}
+label {
+  color: #2f2f42;
+}
+#problemTitleFormLabel, #problemFieldFormLabel, #problemSummaryFormLabel,
+#problemDescriptionFormLabel, 
+#problemReferencesFormLabel, #solutionTitleFormLabel, #problemSummaryFormLabel,
+#solutionDescriptionFormLabel, #solutionReferenceFormLabel, #solutionSummaryFormLabel,
+#editSummaryFormLabel, #editDescriptionFormLabel, #editReferencesFormLabel     {
+  color: #2f2f42;
+}
+#SPTitleLeftSB {
+  color: #2f2f42;
+}
+#SPHeaderLeftSB {
+  border: 2px solid #2f2f42;
+  background-color: rgba(47,47,66,0.05);
+  box-shadow: 0 0 2pt 2pt rgba(47,47,66,0.5);
+}
+#solutionsTitleRightSB {
+  color: #2f2f42;
+  border: 1px solid #2f2f42;
+}
+#topSolutionsButtonRightSB,
+#createSolutionsButtonRightSB, 
+#contentLearnButtonRightSB, 
+#resourcesLearnButtonRightSB {
+  border-width: 0px 1px 0px 1px;
+}
+#welcomeProblemsHeader1,
+#welcomeProblemsHeader2,
+#welcomeProblemsHeader3,
+#welcomeProblemsHeader4 {
+  background-color: rgba(47,47,66,0.5);
+  background-color: rgba(15,19,28,0.5);
+  border: 2px solid #2f2f42;
+  border-radius: 100%;
+  box-shadow: 0 0 2pt 2pt rgba(47,47,66,0.5);
+}
+#welcomeProblemsHeader:hover, 
+#welcomeProblemsHeader1:hover,
+#welcomeProblemsHeader2:hover,
+#welcomeProblemsHeader3:hover,
+#welcomeProblemsHeader4:hover {
+  box-shadow: 0 0 1pt 3pt rgba(47,47,66,0.5);
+}
+#welcomeProblemsHeader1:hover,
+#welcomeProblemsHeader2:hover,
+#welcomeProblemsHeader3:hover,
+#welcomeProblemsHeader4:hover {
+  background-color: rgba(47,47,66,0);
+  background-color: rgba(15,19,28,0);
+}
+
+#header {
+  border: 1px solid #2f2f42;
+  border-width: 0px 0px 1px 0px;
+}
+#userProblemsSolutionsButton, #notificationsButton,
+#userSettingsButton, #aboutXPButton, 
+#userFeedbackButton, #logOutButton {
+  background-color: rgba(47,47,66,0);
+  color: #2f2f42;
+  border: 1px solid #2f2f42;
+  border-width: 1px 0px;
+}
+#projectsTitleProfile, #proposalsTitleProfile {
+  color: #2f2f42;
+  border: 1px solid #2f2f42;
+  border-width: 0px 0px 1px 0px;
+  background-color: rgba(0,220,255,0.05);
+}
+#projectsTitleProfile, #projectsTitleResume {
+  border-width: 0px 1px 1px 0px;
+}
+#followedProblemsButton, #createdProblemsButton, 
+#votedSolutionsButton, #createdSolutionsButton {
+  background-color: rgba(0,255,220,0);
+  color: #2f2f42;
+  border: 1px solid #2f2f42;
+  border-width: 0px 1px 1px 1px;
+}
+#feedbackExplanation {
+  border: 1px solid #2f2f42;
+  border-width: 1px 0px;
+  color: #2f2f42;
+}
+#feedbackTextArea {
+  color: #2f2f42;
+  border: 1px solid #2f2f42;
+}
+
+
+
+
+Orange
+#SPPercent {
+  color: #ff7100;
+}
+#problemPercent {
+  color: #ff7100;
+}
+#followProblem {
+  color: #ff7100;
+  border-color: #ff7100;
+}
+#followProblem:hover {
+  background-color: #ff7100;
+}
+
+
+Green/Earth (Not in use, used for exploratory styling, current leaning cleaner look)
+Possibly juxtapose Green/Earth with Blue/Future
+Currently leaning away from use of full green here, 
+probably start with sublte green for aesthetic accentuation.
+
+
+::-webkit-scrollbar-thumb:vertical {
+    box-shadow: inset 0 0 6px rgba(0, 255, 0, 1); 
+    background-color: #1c4a1c;
+}
+::-webkit-scrollbar-thumb:horizontal {
+    box-shadow: inset 0 0 6px rgba(0, 255, 0, 1);
+    background-color: #1c4a1c; 
+}
+
+    input:-webkit-autofill {
+      -webkit-box-shadow: 0 0 0 30px white inset !important;
+      box-shadow: 0 0 0 30px #00dcff inset !important ;
+      background-color: inherit !important;
+      color: #ffffff !important;
+    }
+
+    #SBButton:hover, #SBButton1:hover {
+    	background-color: rgba(28, 74, 28,0.05);
+    	color: #1c4a1c;
+      border-color: #1c4a1c;
+    }
+    #projectPercent {
+  color: rgba(28, 74, 28,1);
+  border: 1px solid #1c4a1c;
+  border-width: 0px 0px 1px 0px;
+  background: linear-gradient(rgba(0,255,220,0), rgba(0, 255, 0,0.25));
+}
+#projectPercentGreen {
+  color: rgba(28, 74, 28,1);
+  border: 1px solid #1c4a1c;
+  border-width: 0px 0px 1px 0px;
+  background: linear-gradient(rgba(0,255,220,0), rgba(153, 77, 0,0.25));
+}*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*XPrincipia Dream*/
+
+/*body {
+  background-color: #121221;
+}
+#error, #logoName, #banner, #welcomeUserProblemsUnit:hover *, 
+#questionTextArea, #answerTextArea, #suggestionTextArea, 
+#commentTextArea,#proTextArea, #conTextArea, 
+#resourcesTextArea, #learnContentTextArea, #freeFormTextArea {
+  color: #00ffcc;
+}
+#SBButton, #SBButton1, #createWelcomeButtonFormBox,
+#welcomeBox, #subProblemSummary, #solutionUnitSummary, 
+#questionTextArea, #answerTextArea, #suggestionTextArea, #commentTextArea,
+#proTextArea, #conTextArea, #resourcesTextArea, #learnContentTextArea, 
+#freeFormTextArea, #problemTitle, #solutionTitle {
+  border: 1px solid #2f2f42;
+}
+#problem {
+  border: 1px solid #00dcff;
+}
+#solutionTitle {
+  box-shadow: 0 0 1pt 1pt rgba(255,255,255,0.5);
+  color: rgba(221,221,221,1)
+}
+p, body, #versionUnitTitle, #introPrompt, #introProseDescriptions,
+#tutorialProseDescriptions, #aboutProseDescriptions,
+#SBDiscussButton, #topSolutionsButtonRightSB,
+#createSolutionsButtonRightSB, #contentLearnButtonRightSB, 
+#resourcesLearnButtonRightSB, #sidebar, #SPTitle, #sidebarSB,
+#problemSummary, #problemSummaryLeftSB, #problemTitle,
+#newsFeedLeft, #newsFeedRight, #createSPButton, #SBButton, #SBButton1,
+#problem, #createWelcomeButton, 
+#exploreWelcomeForm, #subProblemSummary, #solutionUnitSummary,
+#exploreForm, #profileLeft, #profileRight, #signup, #register,
+#info, #avatarFullName, #welcomePrompt, 
+#explore, #exploreFormHeader, #exploreInput, #exploreHeaderInput,
+#errorContainer, #profileLeft, #profileRight, #createWelcomeButtonForm,
+#problemSummary:hover, #problemAdditionalInfoLabel,
+#problemAdditionalInfoLabelSB
+ {
+  color: #2f2f42;
+}
+#introBanner, #SBDiscussButton, #topSolutionsButtonRightSB,
+#createSolutionsButtonRightSB, #contentLearnButtonRightSB, 
+#resourcesLearnButtonRightSB, #welcomeUserProblemsUnitList,
+#exploreInput {
+  border-color: #2f2f42;
+}
+input, textarea {
+  color: #2f2f42;
+  border: 1px solid #2f2f42;
+}
+#bannerTitle {
+  border: 1px solid #2f2f42;
+  box-shadow: 0 0 2pt 2pt rgba(47,47,66, 0.5);
+  background-color: rgba(0, 220, 255, 0);
+}
+#loginEmail, #registerFullName,
+#loginPassword, #registerPassword,
+#registerUserName, #registerEmail {
+  box-shadow: 0 0 2pt 2pt rgba(47,47,66, 0.5);
+}
+#submitLogin, #submitRegister,
+#registerButton, #loginButton {
+  color: #2f2f42;
+  background-color: rgba(47,47,66, 0);
+  border: 1px solid #2f2f42;
+}
+#registerButton, #loginButton {
+  border-width: 0px 1px 1px 1px;
+  border-radius: 0px 0px 3px 3px;
+}
+#bannerSlogan {
+  border: 1px solid #2f2f42;
+  border-width: 2px 0px;
+  background-color: rgba(47,47,66, 0.05);
+  box-shadow: 0 0 1pt 1pt rgba(47,47,66, 0.5);
+}
+#problemSummary, #problemSummaryLeftSB {
+  border: 1px solid #2f2f42;
+  border-width: 1px 0px;
+  color: #2f2f42;
+}
+#SPHeader {
+  border: 2px solid #2f2f42;
+  background-color: rgba(47,47,66,0.05);
+  box-shadow: 0 0 2pt 2pt rgba(47,47,66,0.5);
+}
+#createSPButtonBox, #createSPButtonBox2 {
+  border: 1px solid #2f2f42;
+  border: 1px solid #2f2f42;
+  background-color: rgba(47,47,66, 0);
+}
+label {
+  color: #2f2f42;
+}
+#problemTitleFormLabel, #problemFieldFormLabel, #problemSummaryFormLabel,
+#problemDescriptionFormLabel, 
+#problemReferencesFormLabel, #solutionTitleFormLabel, #problemSummaryFormLabel,
+#solutionDescriptionFormLabel, #solutionReferenceFormLabel, #solutionSummaryFormLabel,
+#editSummaryFormLabel, #editDescriptionFormLabel, #editReferencesFormLabel     {
+  color: #2f2f42;
+}
+#SPTitleLeftSB {
+  color: #2f2f42;
+}
+#SPHeaderLeftSB {
+  border: 2px solid #2f2f42;
+  background-color: rgba(47,47,66,0.05);
+  box-shadow: 0 0 2pt 2pt rgba(47,47,66,0.5);
+}
+#solutionsTitleRightSB {
+  color: #2f2f42;
+  border: 1px solid #2f2f42;
+}
+#topSolutionsButtonRightSB,
+#createSolutionsButtonRightSB, 
+#contentLearnButtonRightSB, 
+#resourcesLearnButtonRightSB {
+  border-width: 0px 1px 0px 1px;
+}
+#welcomeProblemsHeader1,
+#welcomeProblemsHeader2,
+#welcomeProblemsHeader3,
+#welcomeProblemsHeader4 {
+  background-color: rgba(15,19,28,0.5);
+  border: 2px solid #ff99cc;
+  border-radius: 100%;
+  box-shadow: 0 0 2pt 2pt rgba(255, 153, 204,0.5);
+}
+#welcomeProblemsHeader:hover, 
+#welcomeProblemsHeader1:hover,
+#welcomeProblemsHeader2:hover,
+#welcomeProblemsHeader3:hover,
+#welcomeProblemsHeader4:hover {
+  box-shadow: 0 0 1pt 3pt rgba(47,47,66,0.5);
+}
+#welcomeProblemsHeader1:hover,
+#welcomeProblemsHeader2:hover,
+#welcomeProblemsHeader3:hover,
+#welcomeProblemsHeader4:hover {
+  background-color: rgba(47,47,66,0);
+  background-color: rgba(15,19,28,0);
+}
+
+#header {
+  border: 1px solid #00ffcc;
+  border-width: 0px 0px 1px 0px;
+}
+#userProblemsSolutionsButton, #notificationsButton,
+#userSettingsButton, #aboutXPButton, 
+#userFeedbackButton, #logOutButton {
+  background-color: rgba(47,47,66,0);
+  color: #2f2f42;
+  border: 1px solid #2f2f42;
+  border-width: 1px 0px;
+}
+#projectsTitleProfile, #proposalsTitleProfile {
+  color: #2f2f42;
+  border: 1px solid #2f2f42;
+  border-width: 0px 0px 1px 0px;
+  background-color: rgba(0,220,255,0.05);
+}
+#projectsTitleProfile, #projectsTitleResume {
+  border-width: 0px 1px 1px 0px;
+}
+#followedProblemsButton, #createdProblemsButton, 
+#votedSolutionsButton, #createdSolutionsButton {
+  background-color: rgba(0,255,220,0);
+  color: #2f2f42;
+  border: 1px solid #2f2f42;
+  border-width: 0px 1px 1px 1px;
+}
+#feedbackExplanation {
+  border: 1px solid #2f2f42;
+  border-width: 1px 0px;
+  color: #2f2f42;
+}
+#feedbackTextArea {
+  color: #2f2f42;
+  border: 1px solid #2f2f42;
+}
+#welcomeUnitsContainer {
+  border: 1px solid #ff00ff;
+  background: linear-gradient(rgba(255, 99, 51,0), rgba(255, 99, 51,0.2));
+  border-width: 0px 0px 1px 0px;
+  border-radius: 0% 0% 15% 15%;
+}
+
+#SPPercent {
+  color: #ff7100;
+}
+#problemPercent {
+  color: #ff7100;
+}
+#followProblem {
+  color: #ff7100;
+  border-color: #ff7100;
+}
+#followProblem:hover {
+  background-color: #ff7100;
+}*/

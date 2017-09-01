@@ -1,7 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import LearnResourcesUnit1 from '../components/learn/LearnResourcesUnit1.jsx';
-import SideBarMore from '../components/SideBarMore.jsx';
+import LearnResourcesEmbed from '../components/learn/LearnResourcesEmbed.jsx';
 import {Config} from '../config.js'
 
 export default class LearnResourcesContainer1 extends React.Component {
@@ -32,11 +32,10 @@ constructor(props){
    render() {
            return (
         <div>
-        <div id="suggestionContainer">
-            {this.props.children}
-            <LearnResourcesUnit1 resources={this.state.resources} />
-            <SideBarMore />
-        </div>  
+            <div id="suggestionContainer">
+                {this.props.children}
+                <LearnResourcesUnit1 resources={this.state.resources} />
+            </div>  
         </div>
       );
     }  

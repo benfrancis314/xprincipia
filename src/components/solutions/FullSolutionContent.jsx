@@ -158,7 +158,11 @@ unVote() {
               <div id="createDate">{dateTime(this.state.solutionInfo.CreatedAt)}</div>
               
               <Link to={`/fullsolution/${this.props.params.probID}/${this.props.params.solutionID}/edit`}>
-                <img src={require('../../assets/editBlue.svg')} id="editSolutionButton" width="20" height="20" alt="Edit Button" />
+              {/*Working on call to action 'Iterate' button*/}
+                <div id="proposalIterateButton">
+                  Iterate
+                </div>
+                {/*<img src={require('../../assets/editBlue.svg')} id="editSolutionButton" width="20" height="20" alt="Edit Button" />*/}
               </Link>
 
               <Link to={`/fullsolution/${this.props.params.probID}/${this.props.params.solutionID}/delete`}>
@@ -177,7 +181,6 @@ unVote() {
               <div>
               {this.props.children}
               {React.cloneElement(<FullSolutionDescription solutionInfo={ this.state.solutionInfo} solutionID={this.props.params.solutionID}/> )}
-            <FullSolutionDescription solutionID={this.state.solutionID}/>
             </div>
         </div>
                );
@@ -199,7 +202,11 @@ unVote() {
               <div id="createDate">{dateTime(this.state.solutionInfo.CreatedAt)}</div>
               
               <Link to={`/fullsolution/${this.props.params.probID}/${this.props.params.solutionID}/edit`}>
-                <img src={require('../../assets/editBlue.svg')} id="editSolutionButton" width="20" height="20" alt="Edit Button" />
+              {/*Working on call to action 'Iterate' button*/}
+                <div id="proposalIterateButton">
+                  Develop
+                </div>
+                {/*<img src={require('../../assets/editBlue.svg')} id="editSolutionButton" width="20" height="20" alt="Edit Button" />*/}
               </Link>
 
               <Link to={`/fullsolution/${this.props.params.probID}/${this.props.params.solutionID}/delete`}>

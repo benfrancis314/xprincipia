@@ -29,6 +29,7 @@ import FreeFormForm from './components/freeform/FreeFormForm.jsx';
 import FullProblem from './components/problems/FullProblem.jsx';
 import FullSolution from './components/solutions/FullSolution.jsx';
 import FullSolutionContent from './components/solutions/FullSolutionContent.jsx';
+import FullTutorial from './components/tutorials/FullTutorial.jsx';
 import FullVersion from './components/versions/FullVersion.jsx';
 import Instructions from './components/tutorials/Instructions.jsx';
 import Intro from './components/tutorials/Intro.jsx';
@@ -143,7 +144,8 @@ ReactDOM.render(
     <Route path='/instructions' component={Instructions}></Route>
     <IndexRoute component={Layout}></IndexRoute>
     <Route path='/home' component={Layout}>
-    <Route path='/introduction' component={Introduction}></Route>
+      <Route path='/introduction' component={Introduction}></Route>
+      <Route path='/tutorial' component={FullTutorial}></Route>
       <IndexRoute component={FullProblem}></IndexRoute>
       <Route path='/entrance' component={EntranceContainer}></Route>
       <Route path='/welcomecontainer' component={WelcomeContainer}>
