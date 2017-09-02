@@ -112,10 +112,14 @@ import WelcomeContainer from './containers/WelcomeContainer.jsx';
 //Assets
 import './assets/index.css';
 
+import ChatBoxContainer from './components/chatbox/ChatBoxContainer.jsx'
+
+
+
 // This may be needed for Google Analytics:
-// One thing to note is you may need to adjust the 
-// window.location argument you push to the ReactGA.pageview() function. 
-// It will really depend how you have set up React Router.
+// One thing to note is we may need to adjust the 
+// window.location argument we push to the ReactGA.pageview() function. 
+// It will really depend how we have set up React Router.
 
 // function fireTracking() {
 //     ReactGA.pageview(window.location.hash);
@@ -153,6 +157,7 @@ ReactDOM.render(
         <IndexRoute component={WelcomeCreateButton}></IndexRoute>
         <Route path='/welcome' component={WelcomeCreateButton}></Route>
         <Route path='/welcome/create' component={WelcomeCreateForm}></Route>
+        <Route path='/chatbox' component={ChatBoxContainer}/>
       </Route>
       <Route path='/search' component={SearchContainer}></Route>
       <Route path='/logincontainer' component={LoginContainer}>

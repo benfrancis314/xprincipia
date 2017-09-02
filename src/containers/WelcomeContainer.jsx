@@ -10,6 +10,7 @@ import WelcomeUserUnit from '../components/welcome/WelcomeUserUnit.jsx';
 import {Config} from '../config.js';
 import $ from 'jquery';
 
+
 export default class WelcomeContainer extends React.Component {
    
     constructor(props){
@@ -122,6 +123,14 @@ export default class WelcomeContainer extends React.Component {
                 <WelcomeUnit problems={this.state.problems} />
           </div>
           
+          {/*<div id="chatBoxOpenButtonContainer">*/}
+            <Link to="/chatbox" activeClassName="activeChat">
+              <div id="chatBoxOpenButton">
+                Live Discussion
+              </div>
+            </Link>
+          {/*</div>*/}
+
           {this.props.children}
 
          <div id="welcomeFormComponent">

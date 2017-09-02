@@ -9,17 +9,16 @@ export default class Introduction extends React.Component {
 
    render() {
     $(document).ready(function() {
-              $('#introductionContainer').hide().slideDown(500);
+        $('#introductionContainer').hide().slideDown(500);
     });
       return (
         <div id="fullWide">
-            {/*I would prefer slide from side than fade transition*/}
             <ReactCSSTransitionGroup
-          transitionName="example"
-          transitionAppear={true}
-          transitionAppearTimeout={2000}
-          transitionEnter={false}
-          transitionLeave={false}>
+                transitionName="example"
+                transitionAppear={true}
+                transitionAppearTimeout={2000}
+                transitionEnter={false}
+                transitionLeave={false}>
             <Link to="/welcome">
                 <div id="welcomeIntroductionButtonActive">
                     Explore
