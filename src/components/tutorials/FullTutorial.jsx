@@ -646,7 +646,6 @@ export default class Tutorial extends React.Component {
                             NULLIUS IN VERBA
                         </div>
                     </div>
-            
             </ReactCSSTransitionGroup>
           </div>
       );
