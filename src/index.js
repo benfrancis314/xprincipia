@@ -11,6 +11,7 @@ import AnswerDeleteForm from './components/answers/AnswerDeleteForm.jsx';
 import AnswerEditForm from './components/answers/AnswerEditForm.jsx';
 import AnswerFlagForm from './components/answers/AnswerFlagForm.jsx';
 import AnswerForm from './components/answers/AnswerForm.jsx';
+import ChatBoxContainer from './components/chatbox/ChatBoxContainer.jsx'
 import CommentDeleteForm from './components/comments/CommentDeleteForm.jsx';
 import CommentEditForm from './components/comments/CommentEditForm.jsx';
 import CommentFlagForm from './components/comments/CommentFlagForm.jsx';
@@ -79,6 +80,7 @@ import SuggestionDeleteForm from './components/suggestions/SuggestionDeleteForm.
 import SuggestionEditForm from './components/suggestions/SuggestionEditForm.jsx';
 import SuggestionFlagForm from './components/suggestions/SuggestionFlagForm.jsx';
 import SuggestionForm from './components/suggestions/SuggestionForm.jsx';
+import TrueEmpty from './components/TrueEmpty.jsx';
 import TutorialWelcomeButton from './components/tutorials/TutorialWelcomeButton.jsx';
 import TutorialWelcomeContent from './components/tutorials/TutorialWelcomeContent.jsx';
 import TutorialWelcomePage from './components/tutorials/TutorialWelcomePage.jsx';
@@ -111,9 +113,6 @@ import WelcomeContainer from './containers/WelcomeContainer.jsx';
 
 //Assets
 import './assets/index.css';
-
-import ChatBoxContainer from './components/chatbox/ChatBoxContainer.jsx'
-
 
 
 // This may be needed for Google Analytics:
@@ -155,9 +154,12 @@ ReactDOM.render(
       <Route path='/entrance' component={EntranceContainer}></Route>
       <Route path='/welcomecontainer' component={WelcomeContainer}>
         <IndexRoute component={WelcomeCreateButton}></IndexRoute>
-        <Route path='/welcome' component={WelcomeCreateButton}></Route>
+        <Route path='/welcomecreate' component={WelcomeCreateButton}>
+          <IndexRoute component={ChatBoxContainer}></IndexRoute>
+          <Route path='/chatbox' component={ChatBoxContainer}/>
+          <Route path='/welcome' component={TrueEmpty}/>
+        </Route>
         <Route path='/welcome/create' component={WelcomeCreateForm}></Route>
-        <Route path='/chatbox' component={ChatBoxContainer}/>
       </Route>
       <Route path='/search' component={SearchContainer}></Route>
       <Route path='/logincontainer' component={LoginContainer}>

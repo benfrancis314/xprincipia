@@ -91,6 +91,10 @@ export default class ChatBox extends React.Component{
             <div id="textBoxTop">
                 <br />
             </div>
+            <div id="chatBoxInstructions">
+                CARPE NOCTUM
+                {/*Preferably a phrase in latin, can use hover trick*/}
+            </div>
             <div id='textBox'>
                 <ul id='chatBoxMessagesList'>
                     {this.state.messages.map(this.renderMessages)}

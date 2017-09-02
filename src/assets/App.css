@@ -2297,12 +2297,31 @@ introductionProjectTitle {
 
 /*Full Tutorial*/
 
+#welcomeTutorialButtonActive {
+  border: 1px solid #dddddd;
+  border-width: 1px 1px 1px 0px;
+  border-radius: 0px 7px 7px 0px;
+  color: #dddddd;
+  text-align: center;
+  padding: 1% 1% 1% 1.5%;
+  width: 10%;
+  margin-top: 0.75%;
+  transition: all 0.5s ease 0s;
+  font-size: 120%;
+  letter-spacing: 0.25px;
+  background-color: rgba(255,255,255,0.1);
+}
+#welcomeTutorialButtonActive:hover {
+  cursor: pointer;
+}
+#fullTutorialHeader {
+}
 #tutorialContainer {
   margin: 0 auto;
-  margin-top: -0.5%;
+  margin-top: 0%;
   margin-bottom: 1%;
   font-size: 175%;
-  width: 65%;
+  width: 100%;
   border-width: 1px 1px 1px 1px;
   border-radius: 40px 40px 0px 0px;;
   text-align: left;
@@ -2315,8 +2334,8 @@ introductionProjectTitle {
   padding: 2%;
   padding-bottom: 1%;
   padding-top: 1%;
-  margin-top: 1%;
-  margin-bottom: 1%;
+  margin-top: 0.5%;
+  margin-bottom: 0%;
   font-size: 150%;
   text-align: center;
   letter-spacing: 4px;
@@ -2327,8 +2346,8 @@ introductionProjectTitle {
 #tutorialTableContents {
   text-align: left;
   margin: 0 auto;
-  margin-top: 0%;
-  margin-bottom: 0%;
+  margin-top: 1%;
+  margin-bottom: 1%;
   font-size: 140%;
   border: 1px solid #333333;
   border-width: 1px 0px;
@@ -2339,7 +2358,7 @@ introductionProjectTitle {
   justify-content: space-around;
 }
 #tutorialIndexNumber {
-  width: 100%;
+  width: 8em;
   text-align: center;
   transition: all 0.5s ease 0s;
   padding: 0.5% 0%;
@@ -2358,7 +2377,9 @@ introductionProjectTitle {
   border-width: 1px 0px;
   width: 50%;
 }
-#fullTutorialProseTop, #fullTutorialProse, #fullTutorialProseBottom, #fullTutorialProseSingle, #fullTutorialProseStart {
+#fullTutorialProseTop, #fullTutorialProse, #fullTutorialProseBottom, 
+#fullTutorialProseSingle, #fullTutorialProseSingleV, #fullTutorialProseStart,
+#fullTutorialProseStartSentence {
   width: 70%;
   margin: 0 auto;
   margin-top: 2%;
@@ -2368,7 +2389,11 @@ introductionProjectTitle {
   line-height: 160%;
 }
 #fullTutorialProseStart {
-  margin-top: 2%;
+  margin-top: 4%;
+}
+#fullTutorialProseStartSentence {
+  /*Possibly make first sentence more decorative*/
+  margin-top: 4%;
 }
 #fullTutorialProseTop {
   margin-top: 5%;
@@ -2378,6 +2403,10 @@ introductionProjectTitle {
 }
 #fullTutorialProseSingle {
   margin-top: 4%;
+  margin-bottom: 4%;
+}
+#fullTutorialProseSingleV {
+  margin-top: 6%;
   margin-bottom: 4%;
 }
 
@@ -2396,9 +2425,12 @@ introductionProjectTitle {
   color: #00ffdc;
   border-radius: 3px;
   background-color: rgba(0,255,220,0.05);
+  transition: 0.5s all ease 0s;
 }
 #fullTutorialExplore:hover {
   cursor: pointer;
+  background-color: #00ffdc;
+  color: #0f131c;
 }
 #fullTutorialMotto {
   margin: 0 auto;
@@ -2408,7 +2440,7 @@ introductionProjectTitle {
   margin-top: -1%;
   font-size: 250%;
   font-style: italic;
-  letter-spacing: 4px;
+  letter-spacing: 6px;
   width: 70%;
 }
 #fullTutorialMotto:hover {
@@ -6535,7 +6567,7 @@ input#submitNewVersion:hover {
   padding: 5px;
   font-size: 180%;
   border: 1px solid #333333;
-  margin-bottom: 2.5%;
+  margin-bottom: 2%;
 
   /*margin: 0% 18% 0% 18%;*/
   transform: scale(1);
@@ -6544,7 +6576,7 @@ input#submitNewVersion:hover {
   border-width: 0px 1px 1px 1px;
   border-radius: 3px 3px 45% 45%;
   background-color: rgba(0,220,255, 0.05);
-  /*background: linear-gradient( rgba(0,220,255,0.05), rgba(255,255,255,0.02));*/
+  /*background: linear-gradient( right, rgba(0,220,255,0.01), rgba(0,220,255,0.08), rgba(0,220,255,0.08),  rgba(0,220,255,0.01));*/
 }
 #chatBoxOpenButton:hover {
   cursor: pointer;
@@ -6556,9 +6588,19 @@ input#submitNewVersion:hover {
 #chatBoxContainer {
   width: 90%;
   margin: 0 auto;
-
 }
 #textBox {
+}
+#chatBoxInstructions {
+  margin: 0 auto;
+  color: #515151;
+  text-align: center;
+  margin-bottom: 0%;
+  margin-top: 1.5%;
+  font-size: 175%;
+  /*font-style: italic;*/
+  letter-spacing: 6px;
+  width: 70%;
 }
 #chatBoxMessagesList {
   width: 70%;
@@ -6598,7 +6640,7 @@ input#submitNewVersion:hover {
 }
 #chatBoxEntry {
   width: 70%;
-  margin-top: 2%;
+  margin-top: 1.5%;
   /*background-color: rgba(0,220,255, 0.05);*/
   background: radial-gradient(rgba(0,220,255, 0), rgba(0,220,255, 0.1));
 }
@@ -6621,7 +6663,7 @@ input#submitNewVersion:hover {
   border: 1px solid #dddddd;
   background-color: rgba(0,220,255, 0.05);
   border-radius: 45% 45% 3px 3px;
-  margin-top: 2%;
+  margin-top: 1.5%;
   margin-bottom: 1%;
   /*padding-top: 0.5%;*/
 }

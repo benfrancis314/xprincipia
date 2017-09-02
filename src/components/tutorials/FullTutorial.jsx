@@ -10,7 +10,7 @@ export default class Tutorial extends React.Component {
     latinTranslate() {
         $(document).ready(function() {
             $('#fullTutorialMotto').attr('id','fullTutorialMotto2').hide();
-            $('#fullTutorialMotto2').html('Question Authority').fadeIn(3500);
+            $('#fullTutorialMotto2').html('Question Authority').fadeIn(5500);
         });
     }
     // Can't quite get the untranslate to work smoothly, so I'm leaving it out for now
@@ -35,43 +35,45 @@ export default class Tutorial extends React.Component {
                 transitionAppearTimeout={2000}
                 transitionEnter={false}
                 transitionLeave={false}>
-            <Link to="/welcome">
-                <div id="welcomeIntroductionButtonActive">
-                    Explore
+            <div id="fullTutorialHeader">
+                <Link to="/welcome">
+                    <div id="welcomeTutorialButtonActive">
+                        Explore
+                    </div>
+                </Link>
+                <div id="tutorialTableContents">
+                    <a href='#tutorialIndex1'>
+                        <div id="tutorialIndexNumber">
+                            I. Projects
+                        </div>
+                    </a>
+                    <a href='#tutorialIndex2'>
+                        <div id="tutorialIndexNumber">
+                            II. Discuss
+                        </div>
+                    </a>
+                    <a href='#tutorialIndex3'>
+                        <div id="tutorialIndexNumber">
+                            III. Discuss
+                        </div>
+                    </a>
+                    <a href='#tutorialIndex4'>
+                        <div id="tutorialIndexNumber">
+                            IV. Proposals
+                        </div>
+                    </a>
+                    <a href='#tutorialIndex5'>
+                        <div id="tutorialIndexNumber">
+                            V. Learn
+                        </div>
+                    </a>
                 </div>
-            </Link>
+            </div>
             <div id="tutorialContainer">
                 <div id="fullTutorialWelcome">
                     <span id="introductionCapital">XP</span>rincipia<span id="introductionCapital"> T</span>utorial
                     <br />
                 </div>
-            </div>
-            <div id="tutorialTableContents">
-                <a href='#tutorialIndex1'>
-                    <div id="tutorialIndexNumber">
-                        I. Projects
-                    </div>
-                </a>
-                <a href='#tutorialIndex2'>
-                    <div id="tutorialIndexNumber">
-                        II. Discuss
-                    </div>
-                </a>
-                <a href='#tutorialIndex3'>
-                    <div id="tutorialIndexNumber">
-                        III. Discuss
-                    </div>
-                </a>
-                <a href='#tutorialIndex4'>
-                    <div id="tutorialIndexNumber">
-                        IV. Proposals
-                    </div>
-                </a>
-                <a href='#tutorialIndex5'>
-                    <div id="tutorialIndexNumber">
-                        V. Learn
-                    </div>
-                </a>
             </div>
                     <div id="fullTutorialContainer">
                         <ScrollableAnchor id={'tutorialIndex1'}>
@@ -79,8 +81,8 @@ export default class Tutorial extends React.Component {
                                 I
                             </div>
                         </ScrollableAnchor>
-                        <div id="fullTutorialProseStart">
-                            Welcome to the beginning of<span id="blueOpen"> your XPrincipia experience</span>.
+                        <div id="fullTutorialProseStartSentence">
+                            Welcome to the beginning of your<span id="blueOpen"> XPrincipia Experience</span>.
                         </div>
                         <div id="fullTutorialProse">
                             Our goal is to<span id="blueOpen"> focus the human species </span>towards achieving its<span id="blueOpen"> best possible future</span>. 
@@ -623,11 +625,11 @@ export default class Tutorial extends React.Component {
                             </div>
                         </ScrollableAnchor>
                         <div id="fullTutorialProseStart">
-                            For all aspects of the site,<span id="blueOpen"> the best contributions are voted upon</span>. Those with the most 
+                            For all aspects of the site<span id="blueOpen"> the best contributions are voted upon</span>. Those with the most 
                             votes rise to the top in a<span id="blueOpen"> process inspired by natural selection</span>. 
                         </div>
                         <div id="fullTutorialProse">
-                            All work on XPrincipia belongs to the<span id="blueOpen"> public domain</span>. 
+                            All work created on XPrincipia belongs to the<span id="blueOpen"> public domain</span>. 
                         </div>
                         <div id="fullTutorialProse">
                             Through these processes,<span id="blueOpen"> sub projects towards the bottom of the tree </span>will develop 
@@ -641,7 +643,7 @@ export default class Tutorial extends React.Component {
                         </div>
                         {randomImg()}
                         <div id="fullTutorialMotto" onMouseOver={this.latinTranslate} onMouseOut={this.latinUntranslate}>
-                            Nullius in verba
+                            NULLIUS IN VERBA
                         </div>
                     </div>
             

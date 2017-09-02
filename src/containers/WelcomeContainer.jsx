@@ -126,7 +126,7 @@ export default class WelcomeContainer extends React.Component {
           {/*<div id="chatBoxOpenButtonContainer">*/}
             <Link to="/chatbox" activeClassName="activeChat">
               <div id="chatBoxOpenButton">
-                Live Discussion
+                Live Debate
               </div>
             </Link>
           {/*</div>*/}
