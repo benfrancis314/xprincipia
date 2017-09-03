@@ -62,7 +62,7 @@ postFreeForm() {
               <form id="questionForm">
                   <fieldset id='fieldSetNoBorderPadding'>
                       {/*<legend>FreeForm Discussion</legend>*/}
-                          <textarea name="questionText" required="required" id="freeFormTextArea" placeholder="Engage in open debate with your peers about this project. " autoFocus ></textarea>
+                          <textarea name="questionText" required="required" id="freeFormTextArea" placeholder="Engage in open debate with your peers about this project. " ></textarea>
                           <input type="button" value="Add" onClick={this.postFreeForm} id="askQuestion"/>
                   </fieldset>
               </form>

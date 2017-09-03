@@ -58,7 +58,7 @@ constructor(props){
                     <fieldset id='fieldSetNoBorderPadding'>
                         {/*<legend>Create a Lesson</legend>*/}
                             <textarea name="suggestionText" required="required" id="learnContentTextArea" 
-                            placeholder="Create a lesson to help others understand this project, promoting future advancement." autoFocus ></textarea>
+                            placeholder="Create a lesson to help others understand this project, promoting future advancement." ></textarea>
                             <input type="button" value="Create" onClick={this.postLearnItem} id="addSuggestion"/>
                     </fieldset>
                 </form>

@@ -62,6 +62,8 @@ import ProfileProblemsSolutions from './components/profile/ProfileProblemsSoluti
 import ProfileResume from './components/profile/ProfileResume.jsx';
 import ProfileSettings from './components/profile/ProfileSettings.jsx';
 import ProfileWorkspace from './components/profile/ProfileWorkspace.jsx';
+import ProposalDiscussMenu from './components/solutions/ProposalDiscussMenu.jsx';
+import ProposalLearnMenu from './components/solutions/ProposalLearnMenu.jsx';
 import ProsDeleteForm from './components/proscons/ProsDeleteForm.jsx';
 import ProsEditForm from './components/proscons/ProsEditForm.jsx';
 import ProsFlagForm from './components/proscons/ProsFlagForm.jsx';
@@ -105,6 +107,7 @@ import ProfileContainer from './containers/ProfileContainer.jsx';
 import ProjectRelatedParentsContainer from './containers/ProjectRelatedParentsContainer.jsx';
 import ProsContainer from './containers/ProsContainer.jsx';
 import QuestionContainer from './containers/QuestionContainer.jsx';
+import RelatedProposalsContainer from './containers/RelatedProposalsContainer.jsx';
 import SearchContainer from './containers/SearchContainer.jsx';
 import SuggestionCommentContainer from './containers/SuggestionCommentContainer.jsx';
 import SuggestionContainer from './containers/SuggestionContainer.jsx';
@@ -200,6 +203,19 @@ ReactDOM.render(
             <Route path='/project/:probID/proposal/:solutionID' component={FullSolutionContent}>
             <Route path='/proposal/:probID/:solutionID/delete' component={SolutionDeleteForm}></Route>
             <Route path='/proposal/:probID/:solutionID/edit' component={SolutionEditForm}></Route>
+            <Route path='/project/:probID/proposal/:solutionID/related' component={RelatedProposalsContainer}></Route>
+            <Route path='/project/:probID/proposal/:solutionID/discuss' component={ProposalDiscussMenu}>
+              <IndexRoute component={QuestionContainer}></IndexRoute>
+              <Route path='/project/:probID/proposal/:solutionID/question/container' component={QuestionContainer}>
+                <IndexRoute component={QuestionForm}></IndexRoute>
+                <Route path='/project/:probID/proposal/:solutionID/questions' component={QuestionForm}></Route>
+                <Route path='/project/:probID/proposal/:solutionID/question/:questID/edit' component={QuestionEditForm}></Route>
+                <Route path='/project/:probID/proposal/:solutionID/question/:questID/flag' component={QuestionFlagForm}></Route>
+                <Route path='/project/:probID/proposal/:solutionID/question/:questID/delete' component={QuestionDeleteForm}></Route>
+              </Route>
+            </Route>
+            <Route path='/project/:probID/proposal/:solutionID/learn' component={ProposalLearnMenu}></Route>
+
               <Route path='/proposal/:probID/:solutionID/pros' component={ProsContainer}>
                 <IndexRoute component={ProsForm}></IndexRoute>
                 <Route path='/project/:probID/:solutionID/pros/pros' component={ProsForm}></Route>

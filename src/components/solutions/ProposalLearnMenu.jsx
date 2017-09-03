@@ -5,7 +5,7 @@ import axios from 'axios';
 import {Config} from '../../config.js';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group'; // ES6
 
-export default class ProblemLearnMenu extends React.Component {
+export default class ProposalLearnMenu extends React.Component {
   constructor(props){
         super(props);
 
@@ -31,7 +31,7 @@ export default class ProblemLearnMenu extends React.Component {
    render() {
       return (
         <div>
-            <Link to={`/project/${this.props.params.probID}/subprojects`}>
+            <Link to={`/project/${this.props.params.probID}/proposal/${this.props.params.solutionID}`}>
                 <img src={require('../../assets/redX.svg')} id="closeRedX" width="40" height="40" alt="Close button, red X symbol" />
             </Link>
             <ReactCSSTransitionGroup

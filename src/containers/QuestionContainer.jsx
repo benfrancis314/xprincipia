@@ -24,15 +24,23 @@ export default class QuestionContainer extends React.Component {
    
    render() {
         //If user is on fullsolution make use solutionID
-    return (
-        <div id="questionContainer">
-            {this.props.children}
-            <QuestionUnit questions={this.state.questions} />
-        </div>
+    if (this.props.params.solutionID){
+        return (
+            <div id="questionContainer">
+                {this.props.children}
+                {/*<QuestionUnit questions={this.state.questions} />*/}
+            </div>
+        );
+    } else {
+        return (
+            <div id="questionContainer">
+                {this.props.children}
+                <QuestionUnit questions={this.state.questions} />
+            </div>
       
-      );
-
-       }
+        );
+    }
       
 }
 
+}

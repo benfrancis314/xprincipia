@@ -65,7 +65,7 @@ constructor(props){
                 <form id="questionForm">
                     <fieldset id='fieldSetNoBorderPadding'>
                         {/*<legend>Add a Resource</legend>*/}
-                            <textarea name="suggestionText" required="required" id="resourcesTextArea" placeholder="Please enter the URL of your favorite resource to learn about this project." autoFocus ></textarea>
+                            <textarea name="suggestionText" required="required" id="resourcesTextArea" placeholder="Please enter the URL of your favorite resource to learn about this project." ></textarea>
                             <input type="button" value="Add" onClick={this.postResource} id="addSuggestion"/>
                     </fieldset>
                 </form>

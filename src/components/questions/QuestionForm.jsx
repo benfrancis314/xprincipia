@@ -55,21 +55,38 @@ postQuestion() {
 
 
    render() {
-      return (
-      <div>
-        <div id="discussMenuEnd">
-          Questions
-        </div>
-        <div id="questionFormComponent">
-              <form id="questionForm">
-                  <fieldset id='fieldSetNoBorderPadding'>
-                          <textarea name="questionText" required="required" id="questionTextArea" placeholder="Ask a question you have about this project or view those asked by your peers. " autoFocus ></textarea>
-                          <input type="button" value="Ask" onClick={this.postQuestion} id="askQuestion"/>
-                  </fieldset>
-              </form>
-        </div>
-      </div>
+    if (this.props.params.solutionID){
+        return (
+            <div>
+              <div id="discussMenuEnd">
+                Questions
+              </div>
+              <div id="questionFormComponent">
+                    <form id="questionForm">
+                        <fieldset id='fieldSetNoBorderPadding'>
+                                <textarea name="questionText" required="required" id="questionTextArea" placeholder="Ask a question you have about this project or view those asked by your peers. " ></textarea>
+                                <input type="button" value="Ask" onClick={this.postQuestion} id="askQuestion"/>
+                        </fieldset>
+                    </form>
+              </div>
+            </div>
+        );
+    } else {
+        return (
+          <div>
+            <div id="discussMenuEnd">
+              Questions
+            </div>
+            <div id="questionFormComponent">
+                  <form id="questionForm">
+                      <fieldset id='fieldSetNoBorderPadding'>
+                              <textarea name="questionText" required="required" id="questionTextArea" placeholder="Ask a question you have about this project or view those asked by your peers. " ></textarea>
+                              <input type="button" value="Ask" onClick={this.postQuestion} id="askQuestion"/>
+                      </fieldset>
+                  </form>
+            </div>
+          </div>
 
-      );
+        );
    }
-}
+}}

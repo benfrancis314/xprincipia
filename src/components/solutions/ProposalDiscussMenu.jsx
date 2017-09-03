@@ -6,7 +6,7 @@ import axios from 'axios';
 import {Config} from '../../config.js';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group'; // ES6
 
-export default class ProblemDiscussMenu extends React.Component {
+export default class ProposalDiscussMenu extends React.Component {
   constructor(props){
         super(props);
 
@@ -16,26 +16,22 @@ export default class ProblemDiscussMenu extends React.Component {
 
     };
     
-    // Is this necessary?
-        componentDidMount(){
-        var self = this;
-        return axios.get( Config.API + '/solutions/problemID?id='+this.props.params.probID).then(function (response) {
-            self.setState({
-                solutions: response.data
-            })
-        })
+    // Add back in when ready
+    //     componentDidMount(){
+    //     var self = this;
+    //     return axios.get( Config.API + '/solutions/problemID?id='+this.props.params.probID).then(function (response) {
+    //         self.setState({
+    //             solutions: response.data
+    //         })
+    //     })
         
-    }
-
-// Not using this currently, keep in case we decide to switch back
-// componentDidUpdate() {
-//         ReactDOM.findDOMNode(this).scrollIntoView();
-//   }      
+    // }
+    
 
    render() {
       return (
         <div>
-            <Link to={`/project/${this.props.params.probID}/subprojects`}>
+            <Link to={`/project/${this.props.params.probID}/proposal/${this.props.params.solutionID}`}>
                 <img src={require('../../assets/redX.svg')} id="closeRedX" width="40" height="40" alt="Close button, red X symbol" />
             </Link>
             <ReactCSSTransitionGroup
@@ -44,7 +40,7 @@ export default class ProblemDiscussMenu extends React.Component {
             transitionAppearTimeout={2000}
             transitionEnter={false}
             transitionLeave={false}>
-                <div id="projectInteractDiscussMenu">
+                <div id="proposalInteractDiscussMenu">
                     <div id="proposalsTitleRightSB">Discuss</div>
                             <div id="sidebarDiscussMenu">
                                 <div id="discussGroup1">
@@ -61,7 +57,7 @@ export default class ProblemDiscussMenu extends React.Component {
                                     </Link>
                                 </div>
                             </div>
-                            {React.cloneElement(this.props.children, {probID: this.state.probID})}
+                            {React.cloneElement(this.props.children, {probID: this.props.params.probID})}
                     <div id="proposalsTitleRightSBEnd"><br /></div>
                 </div>
             </ReactCSSTransitionGroup>
