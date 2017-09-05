@@ -14,18 +14,26 @@ constructor(props){
     };
     componentDidMount(){
         var self = this;
-            return axios.get( Config.API + '/freeForms/typeID?id='+this.props.params.probID).then(function (response) {
+        if(this.props.params.solutionID){
+            return axios.get( Config.API + '/freeForms/typeID?id='+this.props.params.solutionID+'&dataType=1').then(function (response) {
+                self.setState({
+                    freeForms: response.data
+                })
+            })  
+        } else {
+            return axios.get( Config.API + '/freeForms/typeID?id='+this.props.params.probID+'&dataType=0').then(function (response) {
                 self.setState({
                     freeForms: response.data
                 })
             }) 
+    }
     }
    render() {
         if (this.props.params.solutionID){
             return (
                 <div id="suggestionContainer">
                     {this.props.children}
-                    {/*<FreeFormUnit freeForms={this.state.freeForms} />*/}
+                    <FreeFormUnit freeForms={this.state.freeForms} />
                 </div>
             );
         } else {

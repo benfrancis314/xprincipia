@@ -1213,6 +1213,13 @@ body, html, #main {
       background-color: inherit;  
       letter-spacing: 1px;
     }
+    #proposalEditTitleFormLabel {
+      clear: both;
+      color: #00dcff;
+      margin-top: 0%;    
+      background-color: inherit;  
+      letter-spacing: 1px;
+    }
     #editTitleForm, #editSummaryForm, 
     #editDescriptionForm, #editReferencesForm {
       background-color: inherit; 

@@ -33,7 +33,7 @@ constructor(props){
         return (
             <div id="suggestionContainer">
                 {this.props.children}
-                {/*<SuggestionUnit suggestions={this.state.suggestions} />*/}
+                <SuggestionUnit suggestions={this.state.suggestions} />
             </div>
         );
     } else {

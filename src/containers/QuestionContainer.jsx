@@ -15,11 +15,22 @@ export default class QuestionContainer extends React.Component {
     };
     componentDidMount(){
         var self = this;
-            return axios.get( Config.API + '/questions/typeID?id='+this.props.params.probID).then(function (response) {
-                self.setState({
-                    questions: response.data
-                })
-            }) 
+            if(this.props.params.solutionID){
+               return axios.get( Config.API + '/questions/typeID?id='+this.props.params.solutionID+'&dataType=1').then(function (response) {
+                    self.setState({
+                        questions: response.data
+                    })
+                          .catch(function (error) {
+      });
+                })  
+
+            } else {
+                return axios.get( Config.API + '/questions/typeID?id='+this.props.params.probID+'&dataType=0').then(function (response) {
+                    self.setState({
+                        questions: response.data
+                    })
+                }) 
+        }
     }
    
    render() {
@@ -28,7 +39,7 @@ export default class QuestionContainer extends React.Component {
         return (
             <div id="questionContainer">
                 {this.props.children}
-                {/*<QuestionUnit questions={this.state.questions} />*/}
+                <QuestionUnit questions={this.state.questions} />
             </div>
         );
     } else {

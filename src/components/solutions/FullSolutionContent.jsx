@@ -157,12 +157,10 @@ unVote() {
               </div>
               <div id="createDate">{dateTime(this.state.solutionInfo.CreatedAt)}</div>
               
-              <Link to={`/proposal/${this.props.params.probID}/${this.props.params.solutionID}/edit`}>
-              {/*Working on call to action 'Iterate' button*/}
+              <Link to={`/proposal/${this.props.params.probID}/${this.props.params.solutionID}/edit`} activeClassName="activeBlue">
                 <div id="proposalDevelopButton">
                   Develop
                 </div>
-                {/*<img src={require('../../assets/editBlue.svg')} id="editSolutionButton" width="20" height="20" alt="Edit Button" />*/}
               </Link>
 
               <Link to={`/proposal/${this.props.params.probID}/${this.props.params.solutionID}/delete`}>

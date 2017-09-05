@@ -4,6 +4,7 @@ import axios from 'axios';
 import cookie from 'react-cookie';
 import {Config} from '../../config.js';
 import $ from 'jquery';
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group'; // ES6
 
 export default class EditSolutionForm extends React.Component {
 
@@ -95,31 +96,43 @@ export default class EditSolutionForm extends React.Component {
 
   render() {
       return (
-      <div id="createSolutionBox">
-          <form id="solutionEditForm">                      
-            <label htmlFor="solutionTitle" id="editTitleFormLabel">Title<br />
-                <input type="text" name="solutionTitle" required="required" maxLength="140" id="solutionEditTitleForm" autoFocus/>
-            </label><br />
-
-            <label htmlFor="solutionSummary" id="editSummaryFormLabel">Summary<br />
-                <textarea name="solutionSummary" required="required" maxLength="400" placeholder="Summarize in 250 characters here." id="solutionEditSummaryForm"/>
-            </label><br />
-
-            <label htmlFor="solutionDescription" id="editDescriptionFormLabel">Description<br />
-                <textarea name="solutionDescription" required="required" placeholder="Describe in detail here." id="solutionEditDescriptionForm">
-                </textarea></label><br />
-
-            <label htmlFor="solutionReferences" id="editReferencesFormLabel">References<br />
-                <textarea name="solutionReferences" placeholder="Provide your references here." id="solutionEditReferencesForm">
-                </textarea></label><br />
-
-            <div onClick={this.updateSolution} id="editButton">Submit</div>
-
+        <div>
             <Link to={`/project/${this.props.params.probID}/proposal/${this.props.params.solutionID}`}>
-              <div id="returnButton">Exit</div>
+                <img src={require('../../assets/redX.svg')} id="closeRedX" width="40" height="40" alt="Close button, red X symbol" />
             </Link>
-          </form>
-      </div>
+            <ReactCSSTransitionGroup
+            transitionName="example"
+            transitionAppear={true}
+            transitionAppearTimeout={2000}
+            transitionEnter={false}
+            transitionLeave={false}>
+            <div id="createSolutionBox">
+                <form id="solutionEditForm">                      
+                  <label htmlFor="solutionTitle" id="proposalEditTitleFormLabel">Title<br />
+                      <input type="text" name="solutionTitle" required="required" maxLength="140" id="solutionEditTitleForm" autoFocus/>
+                  </label><br />
+
+                  <label htmlFor="solutionSummary" id="editSummaryFormLabel">Summary<br />
+                      <textarea name="solutionSummary" required="required" maxLength="400" placeholder="Summarize in 250 characters here." id="solutionEditSummaryForm"/>
+                  </label><br />
+
+                  <label htmlFor="solutionDescription" id="editDescriptionFormLabel">Description<br />
+                      <textarea name="solutionDescription" required="required" placeholder="Describe in detail here." id="solutionEditDescriptionForm">
+                      </textarea></label><br />
+
+                  <label htmlFor="solutionReferences" id="editReferencesFormLabel">References<br />
+                      <textarea name="solutionReferences" placeholder="Provide your references here." id="solutionEditReferencesForm">
+                      </textarea></label><br />
+
+                  <div onClick={this.updateSolution} id="editButton">Submit</div>
+
+                  <Link to={`/project/${this.props.params.probID}/proposal/${this.props.params.solutionID}`}>
+                    <div id="returnButton">Exit</div>
+                  </Link>
+                </form>
+            </div>
+            </ReactCSSTransitionGroup>
+        </div>
       );
    }
 }

@@ -14,14 +14,14 @@ export default class ProposalLearnMenu extends React.Component {
         }
 
     };
-    componentDidMount(){
-        var self = this;
-        return axios.get( Config.API + '/solutions/problemID?id='+this.props.params.probID).then(function (response) {
-            self.setState({
-                solutions: response.data
-            })
-        })
-    }
+    // componentDidMount(){
+    //     var self = this;
+    //     return axios.get( Config.API + '/solutions/problemID?id='+this.props.params.probID).then(function (response) {
+    //         self.setState({
+    //             solutions: response.data
+    //         })
+    //     })
+    // }
 
 // Removing this isn't stopping the scrolling from happening, not sure why
 // componentDidUpdate() {
@@ -40,15 +40,15 @@ export default class ProposalLearnMenu extends React.Component {
             transitionAppearTimeout={2000}
             transitionEnter={false}
             transitionLeave={false}>
-                <div id="projectInteractDiscussMenu">
+                <div id="proposalInteractDiscussMenu">
                     <div id="proposalsTitleRightSB">Learn</div>
                     <div id="sidebarDiscussMenu">
                         <div id="discussGroup1">
-                            <Link to={`/project/${this.props.params.probID}/learn/content`} activeClassName="activeWhiteBorder">
+                            <Link to={`/project/${this.props.params.probID}/proposal/${this.props.params.solutionID}/learn/content`} activeClassName="activeWhiteBorder">
                                 <div id="SBDiscussButton">Lessons</div>
                             </Link>
 
-                            <Link to={`/project/${this.props.params.probID}/learn/resources`}  activeClassName="activeWhiteBorder">
+                            <Link to={`/project/${this.props.params.probID}/proposal/${this.props.params.solutionID}/learn/resources`}  activeClassName="activeWhiteBorder">
                                 <div id="SBDiscussButton">Resources</div>
                             </Link>
 

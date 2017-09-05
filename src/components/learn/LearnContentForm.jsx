@@ -18,13 +18,45 @@ constructor(props){
   //Read field items into component state
       this.state.learnItem = document.getElementById('learnContentTextArea').value
 
+
   //if User is on a solution post with type 1
   //solutionID will be available in props
+  if (this.props.params.solutionID) {
+      axios.post( Config.API + '/auth/learnItems/create', {
+      type:'1',
+      typeID: this.props.params.solutionID,
+      username: cookie.load('userName'),
+      description : this.state.learnItem
+    })
+      .then(function (result) {
+        document.location = window.location.pathname 
+      })
+      .catch(function (error) {
+        alert('error')
+          $(document).ready(function() {
+              $('#notification').attr('id','notificationShow').hide().slideDown();
+
+                if (error.response.data == '[object Object]') {
+                  return (
+                    $(document).ready(function() {
+                      $('#notificationLoginRegisterContainer').attr('id','notificationLoginRegisterContainerShow');
+                      $('#notificationContent').html('Please <span id="blue">login </span>to add a suggestion');
+                    })
+                  );
+                }  else if (error.response.data != '') {
+              $('#notificationContent').text(error.response.data);
+              }
+          });
+      });
+
+    //else post to problem
+    //probID will be used
+  } else {
       axios.post( Config.API + '/auth/learnItems/create', {
       type:'0',
       typeID: this.props.params.probID,
       username: cookie.load('userName'),
-      description : this.state.learnItem,
+      description : this.state.learnItem
     })
       .then(function (result) {
         document.location = window.location.pathname 
@@ -45,6 +77,7 @@ constructor(props){
               }
           });
       });
+    }
     }
 
    render() {
