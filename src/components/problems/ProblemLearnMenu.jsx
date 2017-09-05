@@ -23,9 +23,11 @@ export default class ProblemLearnMenu extends React.Component {
         })
     }
 
-componentDidUpdate() {
-        ReactDOM.findDOMNode(this).scrollIntoView();
-  }      
+// Previously used to scroll to discuss
+// Save for possible future use
+// componentDidUpdate() {
+//         ReactDOM.findDOMNode(this).scrollIntoView();
+//   }      
 
    render() {
       return (
