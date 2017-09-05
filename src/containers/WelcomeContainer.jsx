@@ -54,6 +54,9 @@ export default class WelcomeContainer extends React.Component {
           });
       });
         }
+        // componentDidMount(){
+        //   window.scrollTo(0,0);
+        // }
         componentWillMount(){
         var self = this;
         return axios.get( Config.API + '/problems/all').then(function (response) {

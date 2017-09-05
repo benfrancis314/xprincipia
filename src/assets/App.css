@@ -179,6 +179,9 @@ Last updated: 8/11/17
     #red {
       color: #ff7f7f !important;
     }
+    #altFont {
+      font-family: 'Roboto Condensed' !important;
+    }
     
     
     #whiteOpen {
@@ -3600,6 +3603,13 @@ introductionProjectTitle {
       border-color: #00dcff !important;
       cursor: default !important;
     }
+    .activeProfile div div{
+    	background-color: rgba(0,220,255,0.12) !important;
+      box-shadow: 0 0 0.5pt 0.5pt rgba(0,220,255,1) inset !important;
+      transform: scale(1.02) !important;
+      cursor: default !important;
+    }
+    
     /*Doesn't work since it highlights the entire box*/
     /*.activeGlow {
       box-shadow: 0 0 2pt 2pt rgba(0,220,255,0.5);
@@ -4326,6 +4336,7 @@ introductionProjectTitle {
 #proposalDevelopButton:hover {
   background-color: #00dcff;
   color: #0f131c;
+  cursor: pointer;
 }
 
 #flagSolutionButton:hover, #deleteSolutionButton:hover,
@@ -6903,6 +6914,7 @@ input#submitNewVersion:hover {
 }
 #whiteChat {
   font-family: 'Open Sans' !important;
+  /*font-family: 'Average Sans', sans-serif !important;*/
   font-size: 125%;
   padding-left: 2%;
   padding-right: 2%;

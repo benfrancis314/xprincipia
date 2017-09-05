@@ -433,10 +433,10 @@ export default class Tutorial extends React.Component {
                             </div>
                         </div>
                         <div id="fullTutorialProseTop">
-                            Once created, each proposal<span id="blueOpen"> undergoes a pro-con analysis</span>. 
+                            Once created, each proposal undergoes a <span id="blueOpen"> pro-con analysis</span>. 
                         </div>
                         <div id="fullTutorialProseBottom">    
-                            This process determines the best proposals and shows each user<span id="blueOpen"> how to improve their proposal</span>: 
+                            This process determines the best proposals and shows each user<span id="blueOpen"> how to develop their proposal</span>: 
                         </div>
                         <div id="fullTutorialEmbed">
                             <div id="fullWide">
@@ -460,6 +460,12 @@ export default class Tutorial extends React.Component {
                                             <Link><div id="votedSolution">Voted</div></Link>
                                         </div>
                                         <div id="createDate">2017-08-2</div>
+                                        <Link>
+                                            <div id="proposalDevelopButton">
+                                            Develop
+                                            </div>
+                                        </Link>
+
                                         <div id="prosConsMenu">
                                             <Link>
                                                 <div id="prosButton">Pros</div>
@@ -550,10 +556,10 @@ export default class Tutorial extends React.Component {
                             </div>
                         </ScrollableAnchor>
                         <div id="fullTutorialProseStart">
-                            Finally, users may<span id="blueOpen"> further their knowledge </span>of each project for future contributions. 
+                            Finally, users <span id="blueOpen"> are encouraged to learn </span>about each project. 
                         </div>
                         <div id="fullTutorialProseBottom">
-                            <span id="blueOpen">Learning resources </span>and<span id="blueOpen"> user-customized lessons </span>are created and openly available:
+                            <span id="blueOpen">The best resources </span>and<span id="blueOpen"> community-created lessons </span>are added and openly available:
                         </div>
                         <div id="fullTutorialEmbed">
                             <img src={require('../../assets/redX.svg')} id="closeRedX" width="40" height="40" alt="Close button, red X symbol" />
@@ -625,8 +631,8 @@ export default class Tutorial extends React.Component {
                             </div>
                         </ScrollableAnchor>
                         <div id="fullTutorialProseStart">
-                            For all aspects of the site<span id="blueOpen"> the best contributions are voted upon</span>. Those with the most 
-                            votes rise to the top in a<span id="blueOpen"> process inspired by natural selection</span>. 
+                           Everything on the site is<span id="blueOpen"> voted upon</span>. Whatever has the most 
+                            votes rises to the top in a process inspired by <span id="blueOpen">natural selection</span>. 
                         </div>
                         <div id="fullTutorialProse">
                             All work created on XPrincipia belongs to the<span id="blueOpen"> public domain</span>. 
@@ -635,12 +641,18 @@ export default class Tutorial extends React.Component {
                             Through these processes,<span id="blueOpen"> sub projects towards the bottom of the tree </span>will develop 
                             quality proposals, allowing for higher level projects to be<span id="blueOpen"> achieved bottom-up</span>. 
                         </div>
-                        <div id="fullTutorialProseBottom">
+                        <div id="fullTutorialProse">
                             Future sections of XPrincipia will be designed towards<span id="blueOpen"> democratically implementing these ideas</span>. 
                         </div>
-                        <div id="fullTutorialExplore">
-                            Explore
+                        <div id="fullTutorialProseBottom">
+                            Finally,<span id="blueOpen"> we encourage you to break things</span>. Do not to follow the paths of your peers.<span id="blueOpen"> Compete directly with others</span>. 
+                            Organize projects how you think is best.<span id="blueOpen"> Think and act for yourself</span>. Through independent thought and focus upon one common goal,<span id="blueOpen"> we will all succeed</span>. 
                         </div>
+                        <Link to="/welcome">
+                            <div id="fullTutorialExplore">
+                                Begin
+                            </div>
+                        </Link>
                         {randomImg()}
                         <div id="fullTutorialMotto" onMouseOver={this.latinTranslate} onMouseOut={this.latinUntranslate}>
                             NULLIUS IN VERBA

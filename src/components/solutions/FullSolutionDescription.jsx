@@ -26,20 +26,20 @@ export default class FullSolutionDescription extends React.Component {
             return axios.get( Config.API + '/auth/solutions/ID?id='+nextProps.solutionID).then(function (response) {
                 self.setState({
                     solutionInfo: response.data,
-                    solutionID: nextProps.solutionID,
+                    // solutionID: nextProps.solutionID,
                 })
             })
     }
 
 //   On recieving new props
-//   componentWillReceiveProps(nextProps){
-// 	  var self = this
-// 	        return axios.get( Config.API + '/solutions/ID?id='+nextProps.solutionID).then(function (response) {
-//           self.setState({
-//               solutionInfo: response.data,  
-//           })
-//             })
-//   }
+  componentWillReceiveProps(nextProps){
+	  var self = this
+	        return axios.get( Config.API + '/solutions/ID?id='+nextProps.solutionID).then(function (response) {
+          self.setState({
+              solutionInfo: response.data,  
+          })
+            })
+  }
    render() {
       
       if (this.state.solutionInfo.References === "" ) {
