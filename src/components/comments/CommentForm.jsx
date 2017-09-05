@@ -19,35 +19,66 @@ constructor(){
 postComment() {
   //Read field items into component state
   this.state.comment = document.getElementById('commentTextArea').value
-// Ajax post comment request
-axios.post( Config.API + '/auth/comments/create', {
-  type:'5',
-// Questions has "probID here"
-  suggestionID: this.props.params.suggID,
-  username: cookie.load('userName'),
-  description : this.state.comment,
-})
-.then(function (result) {
-  document.location = window.location.pathname 
-})
-      .catch(function (error) {
-          $(document).ready(function() {
-              $('#notification').attr('id','notificationShow').hide().slideDown();
 
-                if (error.response.data == '[object Object]') {
-                  return (
-                    $(document).ready(function() {
-                      $('#notificationLoginRegisterContainer').attr('id','notificationLoginRegisterContainerShow');
-                      $('#notificationContent').html('Please <span id="blue">login </span>to add a comment');
-                    })
-                  );
-                }  else if (error.response.data != '') {
-              $('#notificationContent').text(error.response.data);
-              }
-          });
-      });
+// Testing to see if this can be used to make comments elsewhere
+  if (this.props.params.proID) {
+    //   axios.post( Config.API + '/auth/comments/create', {
+    //   type:'5',
+    //   suggestionID: this.props.params.suggID,
+    //   username: cookie.load('userName'),
+    //   description : this.state.comment
+    // })
+    //   .then(function (result) {
+    //     document.location = window.location.pathname 
+    //   })
+    //   .catch(function (error) {
+    //     alert('error')
+    //       $(document).ready(function() {
+    //           $('#notification').attr('id','notificationShow').hide().slideDown();
+
+    //             if (error.response.data == '[object Object]') {
+    //               return (
+    //                 $(document).ready(function() {
+    //                   $('#notificationLoginRegisterContainer').attr('id','notificationLoginRegisterContainerShow');
+    //                   $('#notificationContent').html('Please <span id="blue">login </span>to add a suggestion');
+    //                 })
+    //               );
+    //             }  else if (error.response.data != '') {
+    //           $('#notificationContent').text(error.response.data);
+    //           }
+    //       });
+    //   });
+
+    //else post to problem
+    //probID will be used
+  } else {
+        axios.post( Config.API + '/auth/comments/create', {
+        type:'5',
+        suggestionID: this.props.params.suggID,
+        username: cookie.load('userName'),
+        description : this.state.comment
+      })
+      .then(function (result) {
+        document.location = window.location.pathname 
+      })
+            .catch(function (error) {
+                $(document).ready(function() {
+                    $('#notification').attr('id','notificationShow').hide().slideDown();
+
+                      if (error.response.data == '[object Object]') {
+                        return (
+                          $(document).ready(function() {
+                            $('#notificationLoginRegisterContainer').attr('id','notificationLoginRegisterContainerShow');
+                            $('#notificationContent').html('Please <span id="blue">login </span>to add a comment');
+                          })
+                        );
+                      }  else if (error.response.data != '') {
+                    $('#notificationContent').text(error.response.data);
+                    }
+                });
+            });
 }
-
+}
 
 
    render() {

@@ -56,7 +56,7 @@ export default class FullSolution extends React.Component {
           self.setState({
               solutionInfo: response.data,
               solutionID: nextProps.params.solutionID,
-		      probID: nextProps.params.probID
+		          probID: nextProps.params.probID
           })
         })
   }

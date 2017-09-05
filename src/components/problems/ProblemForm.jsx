@@ -30,7 +30,6 @@ export default class ProblemForm extends React.Component {
     
     //Read field items into component state
     this.state.title = document.getElementById('problemTitleForm').value
-    // this.state.field = document.getElementById('problemFieldForm').value
     this.state.summary = document.getElementById('problemSummaryForm').value
   
     var self = this

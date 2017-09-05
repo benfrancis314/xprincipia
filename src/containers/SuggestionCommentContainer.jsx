@@ -30,7 +30,6 @@ export default class SuggestionCommentContainer extends React.Component {
             })
         }) 
     }
-    // Strategy for updating state
   componentWillReceiveProps(newProps){
     var self = this;
       axios.get( Config.API + '/auth/suggestions/ID?id='+newProps.params.suggID).then(function (response) {

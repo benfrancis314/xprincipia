@@ -39,11 +39,19 @@ export default class SubProblemContainer extends React.Component {
 
 
     render() {
-      return (
-        <div id="sidebarSBProjects">
-            <SubProblemUnit problems={this.state.problems} />
-        </div>
-      
-      );
-   }
-}
+        /*if (this.props.params.solutionID) {
+            return (
+                <div id="sidebarSBProjects">
+                        <SubProblemUnit problems={this.state.problems} />
+                </div>
+        );
+            } else {*/
+            return (
+                <div id="sidebarSBProjects">
+                    <SubProblemUnit problems={this.state.problems} />
+                </div>
+            
+            );
+        }
+    }
+// }
