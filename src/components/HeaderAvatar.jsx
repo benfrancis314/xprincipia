@@ -7,7 +7,7 @@ export default class HeaderAvatar extends React.Component {
    render() {
       return (
         <div id="avatarHeader">
-            <Link to="/profile" id="whiteHeader">
+            <Link to="/profile" id="whiteHeader" activeClassName="activeProfile">
                 <div id="avatarFullName">
                     <div id="headerName">{cookie.load("userName")}</div>
                     {/*<div id="commandButton">Command</div>*/}

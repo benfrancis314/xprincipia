@@ -23,14 +23,15 @@ export default class ProblemLearnMenu extends React.Component {
         })
     }
 
-componentDidUpdate() {
-        ReactDOM.findDOMNode(this).scrollIntoView();
-  }      
+// Removing this isn't stopping the scrolling from happening, not sure why
+// componentDidUpdate() {
+//         ReactDOM.findDOMNode(this).scrollIntoView();
+//   }      
 
    render() {
       return (
         <div>
-            <Link to={`/problem/${this.props.params.probID}/subproblems`}>
+            <Link to={`/project/${this.props.params.probID}/subprojects`}>
                 <img src={require('../../assets/redX.svg')} id="closeRedX" width="40" height="40" alt="Close button, red X symbol" />
             </Link>
             <ReactCSSTransitionGroup
@@ -43,26 +44,26 @@ componentDidUpdate() {
                     <div id="proposalsTitleRightSB">Learn</div>
                     <div id="sidebarDiscussMenu">
                         <div id="discussGroup1">
-                            <Link to={`/problem/${this.props.params.probID}/learn/content`} activeClassName="activeWhiteBorder">
+                            <Link to={`/project/${this.props.params.probID}/learn/content`} activeClassName="activeWhiteBorder">
                                 <div id="SBDiscussButton">Lessons</div>
                             </Link>
 
-                            <Link to={`/problem/${this.props.params.probID}/learn/resources`}  activeClassName="activeWhiteBorder">
+                            <Link to={`/project/${this.props.params.probID}/learn/resources`}  activeClassName="activeWhiteBorder">
                                 <div id="SBDiscussButton">Resources</div>
                             </Link>
 
-                            {/*<Link to={`/problem/${this.props.params.probID}/learn/wiki`}  activeClassName="activeWhiteBorder">
+                            {/*<Link to={`/project/${this.props.params.probID}/learn/wiki`}  activeClassName="activeWhiteBorder">
                                 <div id="SBDiscussButton">Wiki</div>
                             </Link>*/}
                         </div>
                     </div>
                     {/*Old*/}
                     {/*<div id="solutionsLearnHeader">
-                        <Link to={`/problem/${this.props.params.probID}/learn/content`} activeClassName="activeWhite">
+                        <Link to={`/project/${this.props.params.probID}/learn/content`} activeClassName="activeWhite">
                             <div id="contentLearnButtonRightSB">Lessons</div>
                         </Link>
 
-                        <Link to={`/problem/${this.props.params.probID}/learn/resources`}  activeClassName="activeWhite">
+                        <Link to={`/project/${this.props.params.probID}/learn/resources`}  activeClassName="activeWhite">
                             <div id="resourcesLearnButtonRightSB">Resources</div>
                         </Link>
                     </div>*/}

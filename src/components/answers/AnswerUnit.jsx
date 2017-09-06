@@ -115,12 +115,12 @@ constructor(props){
                         {answer.Description}
                     </div>
 				</div>
-                <Link to={`/problem/${this.props.probID}/question/${this.props.questID}/answer/${answer.ID}/delete`}>
+                <Link to={`/project/${this.props.probID}/question/${this.props.questID}/answer/${answer.ID}/delete`}>
                     <div id="deleteSBButton">
                         <img src={require('../../assets/delete.svg')} id="editLogo" width="18" height="18" alt="Delete Button" />
                     </div>
                 </Link>
-                <Link to={`/problem/${this.props.probID}/question/${this.props.questID}/answer/${answer.ID}/edit`}>
+                <Link to={`/project/${this.props.probID}/question/${this.props.questID}/answer/${answer.ID}/edit`}>
                     <div id="editSBButtonAnswer">
                         <img src={require('../../assets/editBlue.svg')} id="editLogo" width="18" height="18" alt="Edit Button" />
                     </div>
@@ -143,12 +143,12 @@ constructor(props){
                         {answer.Description}
                     </div>
 				</div>
-                <Link to={`/problem/${this.props.probID}/question/${this.props.questID}/answer/${answer.ID}/delete`}>
+                <Link to={`/project/${this.props.probID}/question/${this.props.questID}/answer/${answer.ID}/delete`}>
                     <div id="deleteSBButton">
                         <img src={require('../../assets/delete.svg')} id="editLogo" width="18" height="18" alt="Delete Button" />
                     </div>
                 </Link>
-                <Link to={`/problem/${this.props.probID}/question/${this.props.questID}/answer/${answer.ID}/edit`}>
+                <Link to={`/project/${this.props.probID}/question/${this.props.questID}/answer/${answer.ID}/edit`}>
                     <div id="editSBButtonAnswer">
                         <img src={require('../../assets/editBlue.svg')} id="editLogo" width="18" height="18" alt="Edit Button" />
                     </div>

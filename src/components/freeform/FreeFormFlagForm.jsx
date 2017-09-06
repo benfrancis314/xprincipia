@@ -97,7 +97,7 @@ postFreeForm() {
                          <textarea name="questionText" required="required" id="questionFlagTextArea" autoFocus ></textarea>
                          <br />
                          <div onClick={this.postFreeForm} id="flagButton">Submit</div>
-                         <Link to='/problem/${freeForm.TypeID}/freeform'>
+                         <Link to='/project/${freeForm.TypeID}/freeform'>
                             <div id="returnButton">Exit</div>
                          </Link>
                 </fieldset>

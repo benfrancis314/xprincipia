@@ -72,7 +72,7 @@ export default class AnswerContainer extends React.Component {
        
         {/*Question being answered*/}
         <div id="answerQuestionHeader">
-            <Link to={`/problem/${this.props.params.probID}/questions`}>
+            <Link to={`/project/${this.props.params.probID}/questions`}>
                 <div id="backSolutionArrowDiv">
                     <img src={require('../assets/upArrow.svg')} id="backSolutionArrow" width="50" height="30" alt="Back arrow, blue up arrow" />
                 </div>

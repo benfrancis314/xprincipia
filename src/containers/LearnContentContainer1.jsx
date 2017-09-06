@@ -15,19 +15,27 @@ constructor(props){
     };
     componentWillMount(){
         var self = this;
-            return axios.get( Config.API + '/learnItems/typeID?id='+this.props.params.probID).then(function (response) {
+        if(this.props.params.solutionID){
+            return axios.get( Config.API + '/learnItems/typeID?id='+this.props.params.solutionID+'&dataType=1').then(function (response) {
+                self.setState({
+                    learnItems: response.data
+                })
+            })  
+        } else {
+            return axios.get( Config.API + '/learnItems/typeID?id='+this.props.params.probID+'&dataType=0').then(function (response) {
                 self.setState({
                     learnItems: response.data
                 })
             }) 
         }
+    }
    render() {
-           return (
-        <div id="suggestionContainer">
-            {this.props.children}
-            <LearnContentUnit1 learnItems={this.state.learnItems} />
-            <SideBarMore />
-        </div>  
+       return (
+            <div id="suggestionContainer">
+                {this.props.children}
+                <LearnContentUnit1 learnItems={this.state.learnItems} />
+                <SideBarMore />
+            </div>  
       );
     }  
 }

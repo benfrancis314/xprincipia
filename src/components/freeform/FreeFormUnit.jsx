@@ -110,17 +110,17 @@ export default class FreeFormUnit extends React.Component {
                         {freeForm.Description}
                     </div>
 				</div>
-                    <Link to={`/problem/${freeForm.TypeID}/freeform/${freeForm.ID}/delete`}>
+                    <Link to={`/project/${freeForm.TypeID}/freeform/${freeForm.ID}/delete`}>
                         <div id="deleteSBButton">
                             <img src={require('../../assets/delete.svg')} id="editLogo" width="18" height="18" alt="Delete Button" />
                         </div>
                     </Link>
-                    <Link to={`/problem/${freeForm.TypeID}/freeform/${freeForm.ID}/edit`}>
+                    <Link to={`/project/${freeForm.TypeID}/freeform/${freeForm.ID}/edit`}>
                         <div id="editSBButtonAnswer">
                             <img src={require('../../assets/editBlue.svg')} id="editLogo" width="18" height="18" alt="Edit Button" />
                         </div>
                     </Link>
-				{/*<Link  to={`/problem/${freeForm.TypeID}/freeform/${freeForm.ID}/comments`} activeClassName="activeBlue">
+				{/*<Link  to={`/project/${freeForm.TypeID}/freeform/${freeForm.ID}/comments`} activeClassName="activeBlue">
                     <div id="commentSBButtonUser">
                             <img src={require('../../assets/comments.svg')} id="commentLogo" width="24" height="24" alt="Comments Button" />
                     </div>
@@ -142,17 +142,17 @@ export default class FreeFormUnit extends React.Component {
                         {freeForm.Description}
                     </div>
 				</div>
-                    <Link to={`/problem/${freeForm.TypeID}/freeform/${freeForm.ID}/delete`}>
+                    <Link to={`/project/${freeForm.TypeID}/freeform/${freeForm.ID}/delete`}>
                         <div id="deleteSBButton">
                             <img src={require('../../assets/delete.svg')} id="editLogo" width="18" height="18" alt="Delete Button" />
                         </div>
                     </Link>
-                    <Link to={`/problem/${freeForm.TypeID}/freeform/${freeForm.ID}/edit`}>
+                    <Link to={`/project/${freeForm.TypeID}/freeform/${freeForm.ID}/edit`}>
                         <div id="editSBButtonAnswer">
                             <img src={require('../../assets/editBlue.svg')} id="editLogo" width="18" height="18" alt="Edit Button" />
                         </div>
                     </Link>
-				{/*<Link  to={`/problem/${freeForm.TypeID}/freeform/${freeForm.ID}/comments`} activeClassName="activeBlue">
+				{/*<Link  to={`/project/${freeForm.TypeID}/freeform/${freeForm.ID}/comments`} activeClassName="activeBlue">
                     <div id="commentSBButtonUser">
                             <img src={require('../../assets/comments.svg')} id="commentLogo" width="24" height="24" alt="Comments Button" />
                     </div>
@@ -174,13 +174,13 @@ export default class FreeFormUnit extends React.Component {
                         {freeForm.Description}
                     </div>
 				</div>
-                    {/*<Link to={`/problem/${freeForm.TypeID}/freeform/${freeForm.ID}/flag`}>
+                    {/*<Link to={`/project/${freeForm.TypeID}/freeform/${freeForm.ID}/flag`}>
                         <div id="flagSBButton">
                             <img src={require('.../src/assets/flag.svg')} id="deleteLogo" width="11" height="11" alt="Delete Button, Red X" />
                             Flag
                         </div>
                     </Link>*/}
-				{/*<Link  to={`/problem/${freeForm.TypeID}/freeform/${freeForm.ID}/comments`} activeClassName="activeBlue">
+				{/*<Link  to={`/project/${freeForm.TypeID}/freeform/${freeForm.ID}/comments`} activeClassName="activeBlue">
                     <div id="commentSBButtonUser">
                             <img src={require('../../assets/comments.svg')} id="commentLogo" width="24" height="24" alt="Comments Button" />
                     </div>
@@ -203,13 +203,13 @@ export default class FreeFormUnit extends React.Component {
                         {freeForm.Description}
                     </div>
 				</div>
-                    {/*<Link to={`/problem/${freeForm.TypeID}/freeform/${freeForm.ID}/flag`}>
+                    {/*<Link to={`/project/${freeForm.TypeID}/freeform/${freeForm.ID}/flag`}>
                         <div id="flagSBButton">
                             <img src={require('.../src/assets/flag.svg')} id="deleteLogo" width="11" height="11" alt="Delete Button, Red X" />
                             Flag
                         </div>
                     </Link>*/}
-				{/*<Link  to={`/problem/${freeForm.TypeID}/freeform/${freeForm.ID}/comments`} activeClassName="activeBlue">
+				{/*<Link  to={`/project/${freeForm.TypeID}/freeform/${freeForm.ID}/comments`} activeClassName="activeBlue">
                     <div id="commentSBButtonUser">
                             <img src={require('../../assets/comments.svg')} id="commentLogo" width="24" height="24" alt="Comments Button" />
                     </div>

@@ -10,7 +10,7 @@ export default class Tutorial extends React.Component {
     latinTranslate() {
         $(document).ready(function() {
             $('#fullTutorialMotto').attr('id','fullTutorialMotto2').hide();
-            $('#fullTutorialMotto2').html('Question Authority').fadeIn(3500);
+            $('#fullTutorialMotto2').html('Question Authority').fadeIn(5500);
         });
     }
     // Can't quite get the untranslate to work smoothly, so I'm leaving it out for now
@@ -35,23 +35,54 @@ export default class Tutorial extends React.Component {
                 transitionAppearTimeout={2000}
                 transitionEnter={false}
                 transitionLeave={false}>
-            <Link to="/welcome">
-                <div id="welcomeIntroductionButtonActive">
-                    Explore
-                </div>
-            </Link>
-            <div id="tutorialContainer">
-                    <div id="fullTutorialWelcome">
-                        <span id="introductionCapital">XP</span>rincipia<span id="introductionCapital"> T</span>utorial
-                        <br />
+            <div id="fullTutorialHeader">
+                <Link to="/welcome">
+                    <div id="welcomeTutorialButtonActive">
+                        Explore
                     </div>
+                </Link>
+                <div id="tutorialTableContents">
+                    <a href='#tutorialIndex1'>
+                        <div id="tutorialIndexNumber">
+                            I. Projects
+                        </div>
+                    </a>
+                    <a href='#tutorialIndex2'>
+                        <div id="tutorialIndexNumber">
+                            II. Discuss
+                        </div>
+                    </a>
+                    <a href='#tutorialIndex3'>
+                        <div id="tutorialIndexNumber">
+                            III. Discuss
+                        </div>
+                    </a>
+                    <a href='#tutorialIndex4'>
+                        <div id="tutorialIndexNumber">
+                            IV. Proposals
+                        </div>
+                    </a>
+                    <a href='#tutorialIndex5'>
+                        <div id="tutorialIndexNumber">
+                            V. Learn
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div id="tutorialContainer">
+                <div id="fullTutorialWelcome">
+                    <span id="introductionCapital">XP</span>rincipia<span id="introductionCapital"> T</span>utorial
+                    <br />
+                </div>
             </div>
                     <div id="fullTutorialContainer">
-                        <div id="fullTutorialNumbers">
-                            I
-                        </div>
-                        <div id="fullTutorialProseStart">
-                            Welcome to the beginning of<span id="blueOpen"> your XPrincipia experience</span>.
+                        <ScrollableAnchor id={'tutorialIndex1'}>
+                            <div id="fullTutorialNumbers">
+                                I
+                            </div>
+                        </ScrollableAnchor>
+                        <div id="fullTutorialProseStartSentence">
+                            Welcome to the beginning of your<span id="blueOpen"> XPrincipia Experience</span>.
                         </div>
                         <div id="fullTutorialProse">
                             Our goal is to<span id="blueOpen"> focus the human species </span>towards achieving its<span id="blueOpen"> best possible future</span>. 
@@ -117,7 +148,15 @@ export default class Tutorial extends React.Component {
                                         <li id="welcomeUserProblemsUnit">
                                             <div id="welcomeUserProblemsHeader">
                                                 <div id="welcomeUserProblemsTitle">
-                                                    Relatable Science Project Title
+                                                    Nanofabrication
+                                                    <div id="SPPercent">25</div>
+                                                </div>        
+                                            </div>
+                                        </li>
+                                        <li id="welcomeUserProblemsUnit">
+                                            <div id="welcomeUserProblemsHeader">
+                                                <div id="welcomeUserProblemsTitle">
+                                                    Genetic Diagnostics
                                                     <div id="SPPercent">24</div>
                                                 </div>        
                                             </div>
@@ -125,16 +164,8 @@ export default class Tutorial extends React.Component {
                                         <li id="welcomeUserProblemsUnit">
                                             <div id="welcomeUserProblemsHeader">
                                                 <div id="welcomeUserProblemsTitle">
-                                                    Blood Testing Project Title
-                                                    <div id="SPPercent">24</div>
-                                                </div>        
-                                            </div>
-                                        </li>
-                                        <li id="welcomeUserProblemsUnit">
-                                            <div id="welcomeUserProblemsHeader">
-                                                <div id="welcomeUserProblemsTitle">
-                                                    Social Work Project Title
-                                                    <div id="SPPercent">17</div>
+                                                    Elderly Care
+                                                    <div id="SPPercent">19</div>
                                                 </div>        
                                             </div>
                                         </li>
@@ -142,9 +173,11 @@ export default class Tutorial extends React.Component {
                                 </div>
                             </div>
                         </div>
-                        <div id="fullTutorialNumbers">
-                            II
-                        </div>
+                        <ScrollableAnchor id={'tutorialIndex2'}>
+                            <div id="fullTutorialNumbers">
+                                II
+                            </div>
+                        </ScrollableAnchor>
                         <div id="fullTutorialProseStart">
                             Each project is<span id="blueOpen"> broken down </span>into<span id="blueOpen"> more solvable sub projects</span>.
                         </div>
@@ -247,7 +280,7 @@ export default class Tutorial extends React.Component {
                                                         <div id="questionFormComponent">
                                                             <form id="questionForm">
                                                                 <fieldset id='fieldSetNoBorderPadding'>
-                                                                        <textarea name="questionText" required="required" id="questionTextArea" placeholder="Ask a question you have about this project or view those asked by your peers. " autoFocus ></textarea>
+                                                                        <textarea name="questionText" required="required" id="questionTextArea" placeholder="Ask a question you have about this project or view those asked by your peers. " ></textarea>
                                                                         <input type="button" value="Ask" id="askQuestion"/>
                                                                 </fieldset>
                                                             </form>
@@ -298,9 +331,11 @@ export default class Tutorial extends React.Component {
                                     <div id="proposalsTitleRightSBEnd"><br /></div>
                                 </div>
                         </div>
-                        <div id="fullTutorialNumbers">
-                            III
-                        </div>
+                        <ScrollableAnchor id={'tutorialIndex3'}>
+                            <div id="fullTutorialNumbers">
+                                III
+                            </div>
+                        </ScrollableAnchor>
                         <div id="fullTutorialProseStart">
                             The most important aspect of the site is<span id="blueOpen"> proposals</span>. 
                         </div>
@@ -398,10 +433,10 @@ export default class Tutorial extends React.Component {
                             </div>
                         </div>
                         <div id="fullTutorialProseTop">
-                            Once created, each proposal<span id="blueOpen"> undergoes a pro-con analysis</span>. 
+                            Once created, each proposal undergoes a <span id="blueOpen"> pro-con analysis</span>. 
                         </div>
                         <div id="fullTutorialProseBottom">    
-                            This process determines the best proposals and shows each user<span id="blueOpen"> how to improve their proposal</span>: 
+                            This process determines the best proposals and shows each user<span id="blueOpen"> how to develop their proposal</span>: 
                         </div>
                         <div id="fullTutorialEmbed">
                             <div id="fullWide">
@@ -425,6 +460,12 @@ export default class Tutorial extends React.Component {
                                             <Link><div id="votedSolution">Voted</div></Link>
                                         </div>
                                         <div id="createDate">2017-08-2</div>
+                                        <Link>
+                                            <div id="proposalDevelopButton">
+                                            Develop
+                                            </div>
+                                        </Link>
+
                                         <div id="prosConsMenu">
                                             <Link>
                                                 <div id="prosButton">Pros</div>
@@ -447,7 +488,7 @@ export default class Tutorial extends React.Component {
                                         <div id="suggestionFormComponent">
                                             <form id="suggestionForm">
                                                 <fieldset  id='fieldSetNoBorderPadding'>
-                                                    <textarea name="suggestionText" required="required" id="proTextArea" placeholder="Add a pro towards the merit of this proposal. " autoFocus ></textarea>
+                                                    <textarea name="suggestionText" required="required" id="proTextArea" placeholder="Add a pro towards the merit of this proposal. " ></textarea>
                                                     <input type="button" value="Add" id="addProsCons"/>
                                                 </fieldset>
                                             </form>
@@ -509,14 +550,16 @@ export default class Tutorial extends React.Component {
                                 </div>
                             </div>
                         </div>
-                        <div id="fullTutorialNumbers">
-                            IV
-                        </div>
+                        <ScrollableAnchor id={'tutorialIndex4'}>
+                            <div id="fullTutorialNumbers">
+                                IV
+                            </div>
+                        </ScrollableAnchor>
                         <div id="fullTutorialProseStart">
-                            Finally, users may<span id="blueOpen"> further their knowledge </span>of each project for future contributions. 
+                            Finally, users <span id="blueOpen"> are encouraged to learn </span>about each project. 
                         </div>
                         <div id="fullTutorialProseBottom">
-                            <span id="blueOpen">Learning resources </span>and<span id="blueOpen"> user-customized lessons </span>are created and openly available:
+                            <span id="blueOpen">The best resources </span>and<span id="blueOpen"> community-created lessons </span>are added and openly available:
                         </div>
                         <div id="fullTutorialEmbed">
                             <img src={require('../../assets/redX.svg')} id="closeRedX" width="40" height="40" alt="Close button, red X symbol" />
@@ -539,7 +582,7 @@ export default class Tutorial extends React.Component {
                                         <div id="suggestionFormComponent">
                                             <form id="questionForm">
                                                 <fieldset id='fieldSetNoBorderPadding'>
-                                                    <textarea name="suggestionText" required="required" id="resourcesTextArea" placeholder="Please enter the URL of your favorite resource to learn about this project." autoFocus ></textarea>
+                                                    <textarea name="suggestionText" required="required" id="resourcesTextArea" placeholder="Please enter the URL of your favorite resource to learn about this project." ></textarea>
                                                     <input type="button" value="Add" id="addSuggestion"/>
                                                 </fieldset>
                                             </form>
@@ -582,32 +625,39 @@ export default class Tutorial extends React.Component {
                                 <div id="proposalsTitleRightSBEnd"><br /></div>
                             </div>
                         </div>
-                        <div id="fullTutorialNumbers">
-                            V
-                        </div>
+                        <ScrollableAnchor id={'tutorialIndex5'}>
+                            <div id="fullTutorialNumbers">
+                                V
+                            </div>
+                        </ScrollableAnchor>
                         <div id="fullTutorialProseStart">
-                            For all aspects of the site,<span id="blueOpen"> the best contributions are voted upon</span>. Those with the most 
-                            votes rise to the top in a<span id="blueOpen"> process inspired by natural selection</span>. 
+                           Everything on the site is<span id="blueOpen"> voted upon</span>. Whatever has the most 
+                            votes rises to the top in a process inspired by <span id="blueOpen">natural selection</span>. 
                         </div>
                         <div id="fullTutorialProse">
-                            All work on XPrincipia belongs to the<span id="blueOpen"> public domain</span>. 
+                            All work created on XPrincipia belongs to the<span id="blueOpen"> public domain</span>. 
                         </div>
                         <div id="fullTutorialProse">
                             Through these processes,<span id="blueOpen"> sub projects towards the bottom of the tree </span>will develop 
                             quality proposals, allowing for higher level projects to be<span id="blueOpen"> achieved bottom-up</span>. 
                         </div>
-                        <div id="fullTutorialProseBottom">
+                        <div id="fullTutorialProse">
                             Future sections of XPrincipia will be designed towards<span id="blueOpen"> democratically implementing these ideas</span>. 
                         </div>
-                        <div id="fullTutorialExplore">
-                            Explore
+                        <div id="fullTutorialProseBottom">
+                            Finally,<span id="blueOpen"> we encourage you to break things</span>. Do not to follow the paths of your peers.<span id="blueOpen"> Compete directly with others</span>. 
+                            Organize projects how you think is best.<span id="blueOpen"> Think and act for yourself</span>. Through independent thought and focus upon one common goal,<span id="blueOpen"> we will all succeed</span>. 
                         </div>
+                        <Link to="/welcome">
+                            <div id="fullTutorialExplore">
+                                Begin
+                            </div>
+                        </Link>
                         {randomImg()}
                         <div id="fullTutorialMotto" onMouseOver={this.latinTranslate} onMouseOut={this.latinUntranslate}>
-                            Nullius in verba
+                            NULLIUS IN VERBA
                         </div>
                     </div>
-            
             </ReactCSSTransitionGroup>
           </div>
       );

@@ -40,7 +40,7 @@ export default class ProjectParentChildrenUnits extends React.Component {
 	renderItem(problem) {
 		function refreshPage() {
 			// Temporary fix for refreshing sub problems
-			document.location = '/problem/'+ self.props.params.probID +'/subproblems';
+			document.location = '/project/'+ self.props.params.probID +'/subprojects';
 					ProjectParentChildrenUnits.forceUpdate()
 		}
 		
@@ -49,14 +49,14 @@ export default class ProjectParentChildrenUnits extends React.Component {
 		if (problem.Title === 'self.props.projectTitle') {
 			 		 return (
 							// T
-							<Link key={problem.ID} to={'/problem/'+problem.ID +'/subproblems'} onClick={refreshPage} >
+							<Link key={problem.ID} to={'/project/'+problem.ID +'/subprojects'} onClick={refreshPage} >
 								<li key={problem.ID} id="parentChildrenSelfButton">
 									{problem.Title}
 								</li>
 							</Link>);
 			} else {
 				return (
-					<Link key={problem.ID} to={'/problem/'+problem.ID +'/subproblems'} onClick={refreshPage} >
+					<Link key={problem.ID} to={'/project/'+problem.ID +'/subprojects'} onClick={refreshPage} >
 						<li key={problem.ID} id="parentChildrenSelfButton">
 							{problem.Title}
 						</li>

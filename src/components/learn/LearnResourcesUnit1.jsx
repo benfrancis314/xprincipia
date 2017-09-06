@@ -43,7 +43,7 @@ export default class LearnResourcesUnit1 extends React.Component {
         // refreshPage currently not used so I am commenting it out
         // function refreshPage() {
             // Temporary fix for refreshing sub problems
-            // document.location = '/problem/'+ self.props.params.probID +'/subproblems';
+            // document.location = '/project/'+ self.props.params.probID +'/subprojects';
         //             LearnResourcesUnit1.forceUpdate()
         // }
 
@@ -116,7 +116,7 @@ export default class LearnResourcesUnit1 extends React.Component {
 					    {resource.Username}
                     </div>
                     <div id="learnResourcesLink">
-                        {/*<Link to={`/problem/${resource.TypeID}/learn/resources/${resource.ID}/embed`} onClick={refreshPage}>
+                        {/*<Link to={`/project/${resource.TypeID}/learn/resources/${resource.ID}/embed`} onClick={refreshPage}>
                             {resource.Description}
                         </Link>*/}
                         <a href={url(resource.Description)} target="_blank">
@@ -125,17 +125,17 @@ export default class LearnResourcesUnit1 extends React.Component {
                         </a>
                     </div>
 				</div>
-                <Link to={`/problem/${resource.TypeID}/learn/resources/${resource.ID}/delete`}>
+                <Link to={`/project/${resource.TypeID}/learn/resources/${resource.ID}/delete`}>
                     <div id="deleteSBButton">
                         <img src={require('../../assets/delete.svg')} id="editLogo" width="18" height="18" alt="Delete Button" />
                     </div>
                 </Link>
-                <Link to={`/problem/${resource.TypeID}/learn/resources/${resource.ID}/edit`}>
+                <Link to={`/project/${resource.TypeID}/learn/resources/${resource.ID}/edit`}>
                     <div id="editSBButtonAnswer">
                         <img src={require('../../assets/editBlue.svg')} id="editLogo" width="18" height="18" alt="Edit Button" />
                     </div>
                 </Link>
-                {/*<Link to={`/problem/${resource.TypeID}/learnresources/${resource.ID}/comments`}>
+                {/*<Link to={`/project/${resource.TypeID}/learnresources/${resource.ID}/comments`}>
                     <div id="commentSBButtonUser">
                             <img src={require('../../assets/comments.svg')} id="commentLogo" width="24" height="24" alt="Comments Button" />
                     </div>                
@@ -154,7 +154,7 @@ export default class LearnResourcesUnit1 extends React.Component {
 					    {resource.Username}
                     </div>
                     <div id="learnResourcesLink">
-                        {/*<Link to={`/problem/${resource.TypeID}/learn/resources/${resource.ID}/embed`} onClick={refreshPage}>
+                        {/*<Link to={`/project/${resource.TypeID}/learn/resources/${resource.ID}/embed`} onClick={refreshPage}>
                             {resource.Description}
                         </Link>*/}
                         <a href={url(resource.Description)} target="_blank">
@@ -163,17 +163,17 @@ export default class LearnResourcesUnit1 extends React.Component {
                         </a>
                     </div>
 				</div>
-                <Link to={`/problem/${resource.TypeID}/learn/resources/${resource.ID}/delete`}>
+                <Link to={`/project/${resource.TypeID}/learn/resources/${resource.ID}/delete`}>
                     <div id="deleteSBButton">
                         <img src={require('../../assets/delete.svg')} id="editLogo" width="18" height="18" alt="Delete Button" />
                     </div>
                 </Link>
-                <Link to={`/problem/${resource.TypeID}/learn/resources/${resource.ID}/edit`}>
+                <Link to={`/project/${resource.TypeID}/learn/resources/${resource.ID}/edit`}>
                     <div id="editSBButtonAnswer">
                         <img src={require('../../assets/editBlue.svg')} id="editLogo" width="18" height="18" alt="Edit Button" />
                     </div>
                 </Link>
-                {/*<Link to={`/problem/${resource.TypeID}/learnresources/${resource.ID}/comments`}>
+                {/*<Link to={`/project/${resource.TypeID}/learnresources/${resource.ID}/comments`}>
                     <div id="commentSBButtonUser">
                             <img src={require('../../assets/comments.svg')} id="commentLogo" width="24" height="24" alt="Comments Button" />
                     </div>                
@@ -193,7 +193,7 @@ export default class LearnResourcesUnit1 extends React.Component {
 					    {resource.Username}
                     </div>
                     <div id="learnResourcesLink">
-                        {/*<Link to={`/problem/${resource.TypeID}/learn/resources/${resource.ID}/embed`} onClick={refreshPage}>
+                        {/*<Link to={`/project/${resource.TypeID}/learn/resources/${resource.ID}/embed`} onClick={refreshPage}>
                             {resource.Description}
                         </Link>*/}
                         <a href={url(resource.Description)} target="_blank">
@@ -205,13 +205,13 @@ export default class LearnResourcesUnit1 extends React.Component {
                         </div>*/}
                     </div>
 				</div>
-                    {/*<Link to={`/problem/${resource.TypeID}/learn/resources/${resource.ID}/flag`}>
+                    {/*<Link to={`/project/${resource.TypeID}/learn/resources/${resource.ID}/flag`}>
                         <div id="flagSBButton">
                             <img src={require('.../src/assets/flag.svg')} id="deleteLogo" width="11" height="11" alt="Delete Button, Red X" />
                             Flag
                         </div>
                     </Link>*/}
-                {/*<Link to={`/problem/${resource.TypeID}/learn/resources/${resource.ID}/comments`} activeClassName="activeBlue">
+                {/*<Link to={`/project/${resource.TypeID}/learn/resources/${resource.ID}/comments`} activeClassName="activeBlue">
                     <div id="commentSBButtonUser">
                             <img src={require('../../assets/comments.svg')} id="commentLogo" width="24" height="24" alt="Comments Button" />
                     </div>                
@@ -230,7 +230,7 @@ export default class LearnResourcesUnit1 extends React.Component {
 					    {resource.Username}
                     </div>
                     <div id="learnResourcesLink">
-                        {/*<Link to={`/problem/${resource.TypeID}/learn/resources/${resource.ID}/embed`} onClick={refreshPage}>
+                        {/*<Link to={`/project/${resource.TypeID}/learn/resources/${resource.ID}/embed`} onClick={refreshPage}>
                             {resource.Description}
                         </Link>*/}
                         <a href={url(resource.Description)} target="_blank">
@@ -242,13 +242,13 @@ export default class LearnResourcesUnit1 extends React.Component {
                         </div>*/}
                     </div>
 				</div>
-                    {/*<Link to={`/problem/${resource.TypeID}/learn/resources/${resource.ID}/flag`}>
+                    {/*<Link to={`/project/${resource.TypeID}/learn/resources/${resource.ID}/flag`}>
                         <div id="flagSBButton">
                             <img src={require('.../src/assets/flag.svg')} id="deleteLogo" width="11" height="11" alt="Delete Button, Red X" />
                             Flag
                         </div>
                     </Link>*/}
-                {/*<Link to={`/problem/${resource.TypeID}/learn/resources/${resource.ID}/comments`} activeClassName="activeBlue">
+                {/*<Link to={`/project/${resource.TypeID}/learn/resources/${resource.ID}/comments`} activeClassName="activeBlue">
                     <div id="commentSBButtonUser">
                             <img src={require('../../assets/comments.svg')} id="commentLogo" width="24" height="24" alt="Comments Button" />
                     </div>                

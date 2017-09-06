@@ -14,14 +14,14 @@ class App extends React.Component {
       this.state = {
           userToken: [],
           undefinedPaths: [
-          "/problem/undefined/suggestions", 
-          '/problem/undefined/subproblems',
-          '/problem/undefined/questions',
-          '/problem/undefined/solutions',
-          '/problem/solutions',
-          '/problem/subproblems',
-          '/problem/suggestions',
-          '/problem/questions']
+          "/project/undefined/suggestions", 
+          '/project/undefined/subprojects',
+          '/project/undefined/questions',
+          '/project/undefined/solutions',
+          '/project/solutions',
+          '/project/subprojects',
+          '/project/suggestions',
+          '/project/questions']
       }
         
     };
@@ -62,7 +62,7 @@ class App extends React.Component {
 
     //Load the welcome page if route is '/'
     if (window.location.pathname === "/" || this.state.undefinedPaths.inArray(window.location.pathname) //continue to next line
-        || window.location.pathname === "/problem/0/subproblems"){ 
+        || window.location.pathname === "/project/0/subprojects"){ 
           document.location = "/welcome";
     }
 

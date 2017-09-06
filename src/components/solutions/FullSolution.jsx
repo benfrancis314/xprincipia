@@ -24,29 +24,30 @@ export default class FullSolution extends React.Component {
               solutionInfo: response.data,
           })
           var solutionInfo = self.state.solutionInfo
-          solutionInfo.CreatedAt = dateTime(solutionInfo.CreatedAt)
+          // solutionInfo.CreatedAt = dateTime(solutionInfo.CreatedAt)
           self.setState({
               solutionInfo : solutionInfo
           })
 
     })
-      .catch(function (error) {
-        // console.log(error.response.data)
-          $(document).ready(function() {
-              $('#notification').attr('id','notificationShow').hide().slideDown();
-              if (error.response.data != '') {
-                $('#notificationContent').text(error.response.data);
-              }
-              else if (error.response.data == '[object Object]') {
-                return (
-                  $(document).ready(function() {
-                    $('#notificationLoginRegisterContainer').attr('id','notificationLoginRegisterContainerShow');
-                    $('#notificationContent').html('Please <span id="blue">login </span>to contribute');
-                  })
-                );
-              } 
-          });
-      });
+    // Removing this error for now because it has only appeared for me when it shouldn't have
+      // .catch(function (error) {
+      //   // console.log(error.response.data)
+      //     $(document).ready(function() {
+      //         $('#notification').attr('id','notificationShow').hide().slideDown();
+      //         if (error.response.data != '') {
+      //           $('#notificationContent').text(error.response.data);
+      //         }
+      //         else if (error.response.data == '[object Object]') {
+      //           return (
+      //             $(document).ready(function() {
+      //               $('#notificationLoginRegisterContainer').attr('id','notificationLoginRegisterContainerShow');
+      //               $('#notificationContent').html('Please <span id="blue">login </span>to contribute');
+      //             })
+      //           );
+      //         } 
+      //     });
+      // });
     }
   //On recieving next props
   componentWillReceiveProps(nextProps){
@@ -55,7 +56,7 @@ export default class FullSolution extends React.Component {
           self.setState({
               solutionInfo: response.data,
               solutionID: nextProps.params.solutionID,
-		      probID: nextProps.params.probID
+		          probID: nextProps.params.probID
           })
         })
   }
@@ -78,7 +79,7 @@ componentDidUpdate() {
             <div id="fullSolution">
                 <div id="solutionIntro">
                     
-                    <Link to={`/problem/${this.props.params.probID}/subproblems`}>
+                    <Link to={`/project/${this.props.params.probID}/subprojects`}>
                         <img src={require('../../assets/redX.svg')} id="closeRedX" width="40" height="40" alt="Close button, red X symbol" />
                     </Link>
                     <h1 id="solutionTitle" onClick={toggleProposal}>{this.state.solutionInfo.Title}</h1>
@@ -96,12 +97,6 @@ componentDidUpdate() {
       );
    }
 }
-
-
-
- function dateTime(str){
-     return str.substring(0,9)
- }
 
  function randomImg() {
 if (Math.random() < 0.125) {

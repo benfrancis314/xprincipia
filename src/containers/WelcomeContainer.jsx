@@ -10,6 +10,7 @@ import WelcomeUserUnit from '../components/welcome/WelcomeUserUnit.jsx';
 import {Config} from '../config.js';
 import $ from 'jquery';
 
+
 export default class WelcomeContainer extends React.Component {
    
     constructor(props){
@@ -53,6 +54,9 @@ export default class WelcomeContainer extends React.Component {
           });
       });
         }
+        // componentDidMount(){
+        //   window.scrollTo(0,0);
+        // }
         componentWillMount(){
         var self = this;
         return axios.get( Config.API + '/problems/all').then(function (response) {
@@ -122,6 +126,14 @@ export default class WelcomeContainer extends React.Component {
                 <WelcomeUnit problems={this.state.problems} />
           </div>
           
+          {/*<div id="chatBoxOpenButtonContainer">*/}
+            <Link to="/chatbox" activeClassName="activeChat">
+              <div id="chatBoxOpenButton">
+                Live Debate
+              </div>
+            </Link>
+          {/*</div>*/}
+
           {this.props.children}
 
          <div id="welcomeFormComponent">

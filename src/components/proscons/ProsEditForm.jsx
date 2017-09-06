@@ -58,7 +58,7 @@ updatePro() {
       description : this.state.pro,
     })
       .then(function (result) {
-        document.location = '/fullsolution/' + self.props.params.probID + '/' + self.props.params.solutionID + '/pros'
+        document.location = '/proposal/' + self.props.params.probID + '/' + self.props.params.solutionID + '/pros'
       })
       .catch(function (error) {
         // console.log(error.response.data)
@@ -93,7 +93,7 @@ updatePro() {
                          <textarea name="questionText" required="required" id="proEditTextArea" autoFocus ></textarea>
                          <br />
                          <div onClick={this.updatePro} id="editButton">Submit</div>
-                         <Link to={`/fullsolution/${this.props.params.probID}/${this.props.params.solutionID}/pros`}>
+                         <Link to={`/proposal/${this.props.params.probID}/${this.props.params.solutionID}/pros`}>
                           <div id="returnButton">Exit</div>
                          </Link>
                 </fieldset>

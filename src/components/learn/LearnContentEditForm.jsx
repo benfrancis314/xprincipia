@@ -57,7 +57,7 @@ updateLearnItem() {
       description : self.state.learnItem,
     })
       .then(function (result) {
-        document.location = '/problem/'+ self.props.params.probID + '/learn/content'
+        document.location = '/project/'+ self.props.params.probID + '/learn/content'
       })
       .catch(function (error) {
         // console.log(error.response.data)
@@ -96,7 +96,7 @@ updateLearnItem() {
                             <textarea name="questionText" required="required" id="questionEditTextArea" autoFocus ></textarea>
                             <br />
                             <div onClick={this.updateLearnItem} id="editButton">Submit</div>
-                              <Link to={`/problem/${this.state.learnItem.TypeID}/learn/content`}>
+                              <Link to={`/project/${this.state.learnItem.TypeID}/learn/content`}>
                               <div id="returnButton">Exit</div>
                             </Link>
                     </fieldset>

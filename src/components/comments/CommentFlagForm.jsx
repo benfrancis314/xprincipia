@@ -97,7 +97,7 @@ postQuestion() {
                          <textarea name="questionText" required="required" id="questionFlagTextArea" autoFocus ></textarea>
                          <br />
                          <div onClick={this.postQuestion} id="flagButton">Submit</div>
-                         <Link to='/problem/${question.TypeID}/questions'>
+                         <Link to='/project/${question.TypeID}/questions'>
                             <div id="returnButton">Exit</div>
                          </Link>
                 </fieldset>

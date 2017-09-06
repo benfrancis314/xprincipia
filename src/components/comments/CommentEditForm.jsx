@@ -58,7 +58,7 @@ updateComment() {
       description : self.state.comment,
     })
       .then(function (result) {
-        document.location = '/problem/' + self.props.params.probID + '/suggestion/' + self.props.params.suggID + '/comments'
+        document.location = '/project/' + self.props.params.probID + '/suggestion/' + self.props.params.suggID + '/comments'
         // document.location = window.location.pathname 
       })
       .catch(function (error) {
@@ -94,7 +94,7 @@ updateComment() {
                          <textarea name="questionText" required="required" id="commentEditTextArea" autoFocus ></textarea>
                          <br />
                          <div onClick={this.updateComment} id="editButton">Submit</div>
-                         <Link to={`/problem/${this.props.params.probID}/suggestion/${this.props.params.suggID}/comments`}>
+                         <Link to={`/project/${this.props.params.probID}/suggestion/${this.props.params.suggID}/comments`}>
                             <div id="returnButton">Exit</div>
                          </Link>
                 </fieldset>

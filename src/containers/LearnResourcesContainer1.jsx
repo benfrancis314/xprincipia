@@ -30,13 +30,13 @@ constructor(props){
         }
     }
    render() {
-           return (
-        <div>
-            <div id="suggestionContainer">
-                {this.props.children}
-                <LearnResourcesUnit1 resources={this.state.resources} />
-            </div>  
-        </div>
+       return (
+            <div>
+                <div id="suggestionContainer">
+                    {this.props.children}
+                    <LearnResourcesUnit1 resources={this.state.resources} />
+                </div>  
+            </div>
       );
     }  
 }

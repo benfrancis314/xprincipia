@@ -108,7 +108,7 @@ export default class VersionForm extends React.Component {
                       <label htmlFor="solutionReferences" id="solutionReferenceFormLabel">References<br />
                           <textarea name="solutionReferences" placeholder="Provide your references here." id="versionReferencesForm">
                           </textarea></label><br />
-                      <Link to={`/problem/${this.props.params.probID}/solutions`}>
+                      <Link to={`/project/${this.props.params.probID}/solutions`}>
                         <input type="submit" value="Create" onClick={this.postSolution} id="submitNewVersion"/>
                       </Link>
             </fieldset>

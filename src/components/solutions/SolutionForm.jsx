@@ -37,7 +37,7 @@ export default class SolutionForm extends React.Component {
         references: this.state.references
       })
       .then(function (result) {
-        document.location = '/problem/' + self.props.probID + '/subproblems'
+        document.location = '/project/' + self.props.probID + '/subprojects'
         // Not sure why that is here, will delete if no utility found
         // window.location.hash = "problemSummary";
 
