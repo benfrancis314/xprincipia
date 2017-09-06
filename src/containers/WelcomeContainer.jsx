@@ -122,6 +122,14 @@ export default class WelcomeContainer extends React.Component {
                 <WelcomeUnit problems={this.state.problems} />
           </div>
           
+          {/*<div id="chatBoxOpenButtonContainer">*/}
+            {/*<Link to="/chatbox" activeClassName="activeChat">
+              <div id="chatBoxOpenButton">
+                Live Debate
+              </div>
+            </Link>*/}
+          {/*</div>*/}
+
           {this.props.children}
 
          <div id="welcomeFormComponent">
