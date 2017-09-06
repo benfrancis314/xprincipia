@@ -17,6 +17,7 @@ import { configureAnchors } from 'react-scrollable-anchor';
 configureAnchors({offset: -20, scrollDuration: 700});
 
 export default class FullProblem extends React.Component {
+  
   constructor(props){
         super(props);
 
@@ -115,21 +116,27 @@ shouldComponentUpdate(nextProps, nextState) {
   }
 
 unVote() {
-      var self = this
+      var self = this;
+      self.refs.btn.setAttribute("disabled", "disabled");
       axios.delete( Config.API + '/auth/vote/delete' ,{
         params: {
           type: 0,
           typeID: this.props.params.probID,
           username: cookie.load('userName')
         }
-        })
+      }
+      )
+      
         .then(function (result) {
+            // alert('success')
             return axios.get( Config.API + '/auth/problems/ID?id='+self.props.params.probID).then(function (response) {
             //set problem data
             self.setState({
                 problemInfo: response.data,
             })
             document.location = window.location.pathname 
+            // May not need this since it refreshes anyway
+            // self.refs.btn.removeAttribute("disabled");
         })
         })
       .catch(function (error) {
@@ -173,9 +180,9 @@ unVote() {
             <h1 id="problemTitle">{this.state.problemInfo.Title}</h1>
           </div>
           <div id="problemRow1">
-                <Link><div id="votedProblem" onClick={this.unVote}>
+                <Link><button id="votedProblem" ref='btn' onClick={this.unVote}>
                     Voted
-                </div></Link>
+                </button></Link>
                 <a href='#proposals'>
                   <div id="SBButtonDiscuss" onClick={this.goToProposal}>Proposals</div>
                 </a>
@@ -291,9 +298,9 @@ unVote() {
             <h1 id="problemTitle">{this.state.problemInfo.Title}</h1>
           </div>
           <div id="problemRow1">
-                <Link><div id="votedProblem" onClick={this.unVote}>
+                <Link><button id="votedProblem" ref='btn' onClick={this.unVote}>
                     Voted
-                </div></Link>
+                </button></Link>
                 <a href='#proposals'>
                   <div id="SBButtonDiscuss" onClick={this.goToProposal}>Proposals</div>
                 </a>
