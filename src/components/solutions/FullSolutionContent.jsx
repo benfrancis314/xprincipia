@@ -44,6 +44,16 @@ export default class FullSolutionContent extends React.Component {
             })
       })     
     }
+    componentWillReceiveProps(nextProps){
+      var self = this;
+        return axios.get( Config.API + '/auth/solutions/ID?id='+nextProps.params.solutionID).then(function (response) {
+            self.setState({
+                solutionInfo: response.data,
+                solutionID: nextProps.params.solutionID,
+                probID: nextProps.params.probID
+            })
+          })
+     }
 
   deleteSolution() {
   
@@ -56,7 +66,7 @@ export default class FullSolutionContent extends React.Component {
         }
       })
       .then(function (result) {
-        document.location = '/problem/'+ self.state.probID + '/solutions/top'
+        document.location = '/project/'+ self.state.probID + '/solutions/top'
       })
       .catch(function (error) {
         // console.log(error.response.data)
@@ -149,7 +159,7 @@ unVote() {
             </div>
             <div id="voteVersionsMenu">
                 <Link><div id="votedSolution" onClick={this.unVote}>Voted</div></Link>
-                {/*<Link to={`/fullsolution/${this.props.params.probID}/${this.props.params.solutionID}/versions`}>
+                {/*<Link to={`/proposal/${this.props.params.probID}/${this.props.params.solutionID}/versions`}>
                     <div id="versionsButton">
                             Versions
                     </div>
@@ -157,23 +167,21 @@ unVote() {
               </div>
               <div id="createDate">{dateTime(this.state.solutionInfo.CreatedAt)}</div>
               
-              <Link to={`/fullsolution/${this.props.params.probID}/${this.props.params.solutionID}/edit`}>
-              {/*Working on call to action 'Iterate' button*/}
-                <div id="proposalIterateButton">
-                  Iterate
+              <Link to={`/proposal/${this.props.params.probID}/${this.props.params.solutionID}/edit`} activeClassName="activeBlue">
+                <div id="proposalDevelopButton">
+                  Develop
                 </div>
-                {/*<img src={require('../../assets/editBlue.svg')} id="editSolutionButton" width="20" height="20" alt="Edit Button" />*/}
               </Link>
 
-              <Link to={`/fullsolution/${this.props.params.probID}/${this.props.params.solutionID}/delete`}>
+              <Link to={`/proposal/${this.props.params.probID}/${this.props.params.solutionID}/delete`}>
                 <img src={require('../../assets/delete.svg')} id="deleteSolutionButton" width="20" height="20" alt="Edit Button" />              
               </Link>
 
               <div id="prosConsMenu">
-                <Link to={`/fullsolution/${this.props.params.probID}/${this.props.params.solutionID}/pros`} activeClassName="activeWhite">
+                <Link to={`/proposal/${this.props.params.probID}/${this.props.params.solutionID}/pros`} activeClassName="activeWhite">
                     <div id="prosButton">Pros</div>
                 </Link>
-                <Link to={`/fullsolution/${this.props.params.probID}/${this.props.params.solutionID}/cons`} activeClassName="activeWhite">
+                <Link to={`/proposal/${this.props.params.probID}/${this.props.params.solutionID}/cons`} activeClassName="activeWhite">
                     <div id="consButton">Cons</div>
                 </Link>
               </div>
@@ -193,7 +201,7 @@ unVote() {
             </div>
             <div id="voteVersionsMenu">
                 <Link><div id="voteSolution" onClick={this.submitVote}>Vote</div></Link>
-                {/*<Link to={`/fullsolution/${this.props.params.probID}/${this.props.params.solutionID}/versions`}>
+                {/*<Link to={`/proposal/${this.props.params.probID}/${this.props.params.solutionID}/versions`}>
                     <div id="versionsButton">
                             Versions
                     </div>
@@ -201,23 +209,23 @@ unVote() {
               </div>
               <div id="createDate">{dateTime(this.state.solutionInfo.CreatedAt)}</div>
               
-              <Link to={`/fullsolution/${this.props.params.probID}/${this.props.params.solutionID}/edit`}>
+              <Link to={`/proposal/${this.props.params.probID}/${this.props.params.solutionID}/edit`} activeClassName="activeBlue">
               {/*Working on call to action 'Iterate' button*/}
-                <div id="proposalIterateButton">
+                <div id="proposalDevelopButton">
                   Develop
                 </div>
                 {/*<img src={require('../../assets/editBlue.svg')} id="editSolutionButton" width="20" height="20" alt="Edit Button" />*/}
               </Link>
 
-              <Link to={`/fullsolution/${this.props.params.probID}/${this.props.params.solutionID}/delete`}>
+              <Link to={`/proposal/${this.props.params.probID}/${this.props.params.solutionID}/delete`}>
                 <img src={require('../../assets/delete.svg')} id="deleteSolutionButton" width="20" height="20" alt="Edit Button" />              
               </Link>
 
               <div id="prosConsMenu">
-                <Link to={`/fullsolution/${this.props.params.probID}/${this.props.params.solutionID}/pros`} activeClassName="activeWhiteBlueText">
+                <Link to={`/proposal/${this.props.params.probID}/${this.props.params.solutionID}/pros`} activeClassName="activeWhiteBlueText">
                     <div id="prosButton">Pros</div>
                 </Link>
-                <Link to={`/fullsolution/${this.props.params.probID}/${this.props.params.solutionID}/cons`} activeClassName="activeWhiteBlueText">
+                <Link to={`/proposal/${this.props.params.probID}/${this.props.params.solutionID}/cons`} activeClassName="activeWhiteBlueText">
                     <div id="consButton">Cons</div>
                 </Link>
               </div>
@@ -237,7 +245,7 @@ unVote() {
             </div>
             <div id="voteVersionsMenu">
                     <Link><div id="votedSolution" onClick={this.unVote}>Voted</div></Link>
-                    {/*<Link to={`/fullsolution/${this.props.params.probID}/${this.props.params.solutionID}/versions`}>
+                    {/*<Link to={`/proposal/${this.props.params.probID}/${this.props.params.solutionID}/versions`}>
                         <div id="versionsButton">
                                 Versions
                         </div>
@@ -245,16 +253,16 @@ unVote() {
               </div>
               <div id="createDate">{dateTime(this.state.solutionInfo.CreatedAt)}</div>
               
-              {/*<Link to={`/fullsolution/${this.props.probID}/${this.props.solutionID}/flag`}>
+              {/*<Link to={`/proposal/${this.props.probID}/${this.props.solutionID}/flag`}>
                 <img src={require('../../assets/flag.svg')} id="deleteSolutionButton" width="20" height="20" alt="Flag Button" />
               </Link>*/}
 
 
               <div id="prosConsMenu">
-                <Link to={`/fullsolution/${this.props.params.probID}/${this.props.params.solutionID}/pros`} activeClassName="activeWhite">
+                <Link to={`/proposal/${this.props.params.probID}/${this.props.params.solutionID}/pros`} activeClassName="activeWhite">
                     <div id="prosButton">Pros</div>
                 </Link>
-                <Link to={`/fullsolution/${this.props.params.probID}/${this.props.params.solutionID}/cons`} activeClassName="activeWhite">
+                <Link to={`/proposal/${this.props.params.probID}/${this.props.params.solutionID}/cons`} activeClassName="activeWhite">
                     <div id="consButton">Cons</div>
                 </Link>
               </div>
@@ -274,7 +282,7 @@ unVote() {
             </div>
             <div id="voteVersionsMenu">
                     <Link><div id="voteSolution" onClick={this.submitVote}>Vote</div></Link>
-                    {/*<Link to={`/fullsolution/${this.props.params.probID}/${this.props.params.solutionID}/versions`}>
+                    {/*<Link to={`/proposal/${this.props.params.probID}/${this.props.params.solutionID}/versions`}>
                         <div id="versionsButton">
                                 Versions
                         </div>
@@ -282,16 +290,16 @@ unVote() {
               </div>
               <div id="createDate">{dateTime(this.state.solutionInfo.CreatedAt)}</div>
               
-              {/*<Link to={`/fullsolution/${this.props.probID}/${this.props.solutionID}/flag`}>
+              {/*<Link to={`/proposal/${this.props.probID}/${this.props.solutionID}/flag`}>
                 <img src={require('../../assets/flag.svg')} id="deleteSolutionButton" width="20" height="20" alt="Flag Button" />
               </Link>*/}
 
 
               <div id="prosConsMenu">
-                <Link to={`/fullsolution/${this.props.params.probID}/${this.props.params.solutionID}/pros`} activeClassName="activeWhite">
+                <Link to={`/proposal/${this.props.params.probID}/${this.props.params.solutionID}/pros`} activeClassName="activeWhite">
                     <div id="prosButton">Pros</div>
                 </Link>
-                <Link to={`/fullsolution/${this.props.params.probID}/${this.props.params.solutionID}/cons`} activeClassName="activeWhite">
+                <Link to={`/proposal/${this.props.params.probID}/${this.props.params.solutionID}/cons`} activeClassName="activeWhite">
                     <div id="consButton">Cons</div>
                 </Link>
               </div>
@@ -308,7 +316,7 @@ unVote() {
  
   function dateTime(str) {
      if(str != undefined){
-        var result = str.substring(0,9);
+        var result = str.substring(0,10);
         return result
      }
 }

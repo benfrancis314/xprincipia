@@ -97,7 +97,7 @@ postLearnItem() {
                          <textarea name="questionText" required="required" id="questionFlagTextArea" autoFocus ></textarea>
                          <br />
                          <div onClick={this.postLearnItem} id="flagButton">Submit</div>
-                         <Link to='/problem/${learnItem.TypeID}/learnItems'>
+                         <Link to='/project/${learnItem.TypeID}/learnItems'>
                             <div id="returnButton">Exit</div>
                          </Link>
                 </fieldset>

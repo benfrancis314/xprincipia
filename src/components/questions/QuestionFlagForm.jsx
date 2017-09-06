@@ -101,7 +101,7 @@ postQuestion() {
                           autoFocus ></textarea>
                          <br />
                          <div onClick={this.postQuestion} id="flagButton">Submit</div>
-                          <Link to={`/problem/${this.props.params.probID}/questions`}>
+                          <Link to={`/project/${this.props.params.probID}/questions`}>
                             <div id="returnButton">Exit</div>
                          </Link>
                 </fieldset>

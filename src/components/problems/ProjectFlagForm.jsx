@@ -65,7 +65,7 @@ export default class ProjectEditForm extends React.Component {
 //     description : this.state.feedback,
 //     })
 //     .then(function (result) {
-//       document.location = '/problem/'+ self.props.params.probID + '/subproblems'
+//       document.location = '/project/'+ self.props.params.probID + '/subprojects'
 //     })
       // .catch(function (error) {
       //   // console.log(error.response.data)
@@ -108,7 +108,7 @@ export default class ProjectEditForm extends React.Component {
                             {/*Also give them option to describe it*/}
                           {/*After submit an alert "Thank you for helping keep XPrincipia organized and clean. Your flag will be reviewed."*/}
                           <div id="deleteButton">Submit</div>
-                         <Link to={`/problem/${this.props.params.probID}/subproblems`}>
+                         <Link to={`/project/${this.props.params.probID}/subprojects`}>
                             <div id="returnButton">Exit</div>
                          </Link>
                 </fieldset>

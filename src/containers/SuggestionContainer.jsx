@@ -1,7 +1,6 @@
 import React from 'react';
 import axios from 'axios';
 import SuggestionUnit from '../components/suggestions/SuggestionUnit.jsx';
-import SideBarMore from '../components/SideBarMore.jsx';
 import {Config} from '../config.js'
 
 export default class SuggestionContainer extends React.Component {
@@ -30,14 +29,21 @@ constructor(props){
         }
     }
    render() {
-           return (
-        <div id="suggestionContainer">
-            {this.props.children}
-            <SuggestionUnit suggestions={this.state.suggestions} />
-            <SideBarMore />
-        </div>
+    if (this.props.params.solutionID){
+        return (
+            <div id="suggestionContainer">
+                {this.props.children}
+                <SuggestionUnit suggestions={this.state.suggestions} />
+            </div>
+        );
+    } else {
+        return (
+            <div id="suggestionContainer">
+                {this.props.children}
+                <SuggestionUnit suggestions={this.state.suggestions} />
+            </div>
       
-      );
+        );
+    }
       
-   }
-}
+}}

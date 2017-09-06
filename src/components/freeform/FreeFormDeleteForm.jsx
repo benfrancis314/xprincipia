@@ -27,7 +27,7 @@ deleteFreeform() {
       }
     })
     .then(function (result) {
-      document.location = '/problem/'+ self.props.params.probID + '/freeforms'
+      document.location = '/project/'+ self.props.params.probID + '/freeforms'
     })
       .catch(function (error) {
         // console.log(error.response.data)
@@ -65,7 +65,7 @@ deleteFreeform() {
                           <div>Are you sure you would like to delete this debate point?</div>
                           <br />
                           <div onClick={this.deleteFreeform} id="deleteButton">Delete</div>
-                          <Link to={`/problem/${this.state.freeForm.TypeID}/freeForms`}>
+                          <Link to={`/project/${this.state.freeForm.TypeID}/freeForms`}>
                               <div id="returnButton">Exit</div>
                           </Link>
                   </fieldset>

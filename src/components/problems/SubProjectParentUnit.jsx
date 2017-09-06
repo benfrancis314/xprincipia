@@ -35,7 +35,7 @@ componentWillReceiveProps (nextProps){
 	if (this.props.parentID === 0) {
 		return (
             <div>
-                <Link to={`/problem/${this.props.parentID}/subproblems`}>
+                <Link to={`/project/${this.props.parentID}/subprojects`}>
                     <div id="parentButton">
                         <span id='blue'>Parent: </span>XPrincipia Projects
                     </div>
@@ -46,7 +46,7 @@ componentWillReceiveProps (nextProps){
 	else {
 		 return (
 			<div>
-                <Link to={`/problem/${this.props.parentID}/subproblems`}>
+                <Link to={`/project/${this.props.parentID}/subprojects`}>
                     <div id="parentButton">
                         <span id='blue'>Parent: </span>{this.state.parent.Title}
                     </div>

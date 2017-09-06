@@ -95,10 +95,10 @@ updateFreeForm() {
                       <legend id="redLegend">Edit Debate Point</legend>
                           <textarea name="questionText" required="required" id="freeFormEditTextArea" autoFocus ></textarea>
                           <br />
-                          <Link to={`/problem/${this.state.freeForm.TypeID}/freeForms`}>
+                          <Link to={`/project/${this.state.freeForm.TypeID}/freeForms`}>
                               <div onClick={this.updateFreeForm} id="editButton">Submit</div>
                           </Link>
-                          <Link to={`/problem/${this.state.freeForm.TypeID}/freeForms`}>
+                          <Link to={`/project/${this.state.freeForm.TypeID}/freeForms`}>
                               <div id="returnButton">Exit</div>
                           </Link>
                   </fieldset>

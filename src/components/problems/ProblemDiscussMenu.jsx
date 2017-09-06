@@ -15,6 +15,8 @@ export default class ProblemDiscussMenu extends React.Component {
         }
 
     };
+    
+    // Is this necessary?
         componentDidMount(){
         var self = this;
         return axios.get( Config.API + '/solutions/problemID?id='+this.props.params.probID).then(function (response) {
@@ -25,8 +27,7 @@ export default class ProblemDiscussMenu extends React.Component {
         
     }
 
-// Previously used to scroll to discuss
-// Save for possible future use
+// Not using this currently, keep in case we decide to switch back
 // componentDidUpdate() {
 //         ReactDOM.findDOMNode(this).scrollIntoView();
 //   }      
@@ -34,7 +35,7 @@ export default class ProblemDiscussMenu extends React.Component {
    render() {
       return (
         <div>
-            <Link to={`/problem/${this.props.params.probID}/subproblems`}>
+            <Link to={`/project/${this.props.params.probID}/subprojects`}>
                 <img src={require('../../assets/redX.svg')} id="closeRedX" width="40" height="40" alt="Close button, red X symbol" />
             </Link>
             <ReactCSSTransitionGroup
@@ -45,24 +46,22 @@ export default class ProblemDiscussMenu extends React.Component {
             transitionLeave={false}>
                 <div id="projectInteractDiscussMenu">
                     <div id="proposalsTitleRightSB">Discuss</div>
-                        {/*<div id="thinDiv1">*/}
                             <div id="sidebarDiscussMenu">
                                 <div id="discussGroup1">
-                                    <Link to={`/problem/${this.props.params.probID}/questions`} activeClassName="activeWhiteBorder">
+                                    <Link to={`/project/${this.props.params.probID}/questions`} activeClassName="activeWhiteBorder">
                                         <div id="SBDiscussButton">Questions</div>
                                     </Link>
 
-                                    <Link to={`/problem/${this.props.params.probID}/suggestions`} activeClassName="activeWhiteBorder">
+                                    <Link to={`/project/${this.props.params.probID}/suggestions`} activeClassName="activeWhiteBorder">
                                         <div id="SBDiscussButton">Suggestions</div>
                                     </Link>
 
-                                    <Link to={`/problem/${this.props.params.probID}/freeforms`} activeClassName="activeWhiteBorder">
+                                    <Link to={`/project/${this.props.params.probID}/freeforms`} activeClassName="activeWhiteBorder">
                                         <div id="SBDiscussButton">Open Debate</div>
                                     </Link>
                                 </div>
                             </div>
                             {React.cloneElement(this.props.children, {probID: this.state.probID})}
-                        {/*</div>*/}
                     <div id="proposalsTitleRightSBEnd"><br /></div>
                 </div>
             </ReactCSSTransitionGroup>

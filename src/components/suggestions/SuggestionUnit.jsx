@@ -110,17 +110,17 @@ export default class SuggestionUnit extends React.Component {
                         {suggestion.Description}
                     </div>
 				</div>
-                <Link to={`/problem/${suggestion.TypeID}/suggestion/${suggestion.ID}/delete`}>
+                <Link to={`/project/${suggestion.TypeID}/suggestion/${suggestion.ID}/delete`}>
                     <div id="deleteSBButton">
                         <img src={require('../../assets/delete.svg')} id="editLogo" width="18" height="18" alt="Delete Button" />
                     </div>
                 </Link>
-                <Link to={`/problem/${suggestion.TypeID}/suggestion/${suggestion.ID}/edit`}>
+                <Link to={`/project/${suggestion.TypeID}/suggestion/${suggestion.ID}/edit`}>
                     <div id="editSBButton">
                         <img src={require('../../assets/editBlue.svg')} id="editLogo" width="18" height="18" alt="Edit Button" />
                     </div>
                 </Link>
-                <Link  to={`/problem/${suggestion.TypeID}/suggestion/${suggestion.ID}/comments`} activeClassName="activeBlue">
+                <Link  to={`/project/${suggestion.TypeID}/suggestion/${suggestion.ID}/comments`} activeClassName="activeBlue">
                     <div id="commentSBButtonUser">
                             <img src={require('../../assets/comments.svg')} id="commentLogo" width="24" height="24" alt="Comments Button" />
                     </div>
@@ -141,17 +141,17 @@ export default class SuggestionUnit extends React.Component {
                         {suggestion.Description}
                     </div>
 				</div>
-                <Link to={`/problem/${suggestion.TypeID}/suggestion/${suggestion.ID}/delete`}>
+                <Link to={`/project/${suggestion.TypeID}/suggestion/${suggestion.ID}/delete`}>
                     <div id="deleteSBButton">
                         <img src={require('../../assets/delete.svg')} id="editLogo" width="18" height="18" alt="Delete Button" />
                     </div>
                 </Link>
-                <Link to={`/problem/${suggestion.TypeID}/suggestion/${suggestion.ID}/edit`}>
+                <Link to={`/project/${suggestion.TypeID}/suggestion/${suggestion.ID}/edit`}>
                     <div id="editSBButton">
                         <img src={require('../../assets/editBlue.svg')} id="editLogo" width="18" height="18" alt="Edit Button" />
                     </div>
                 </Link>
-                <Link  to={`/problem/${suggestion.TypeID}/suggestion/${suggestion.ID}/comments`} activeClassName="activeBlue">
+                <Link  to={`/project/${suggestion.TypeID}/suggestion/${suggestion.ID}/comments`} activeClassName="activeBlue">
                     <div id="commentSBButtonUser">
                             <img src={require('../../assets/comments.svg')} id="commentLogo" width="24" height="24" alt="Comments Button" />
                     </div>
@@ -173,13 +173,13 @@ export default class SuggestionUnit extends React.Component {
                         {suggestion.Description}
                     </div>
 				</div>
-                    {/*<Link to={`/problem/${suggestion.TypeID}/suggestion/${suggestion.ID}/flag`}>
+                    {/*<Link to={`/project/${suggestion.TypeID}/suggestion/${suggestion.ID}/flag`}>
                         <div id="flagSBButton">
                             <img src={require('.../src/assets/flag.svg')} id="deleteLogo" width="11" height="11" alt="Delete Button, Red X" />
                             Flag
                         </div>
                     </Link>*/}
-                <Link  to={`/problem/${suggestion.TypeID}/suggestion/${suggestion.ID}/comments`} activeClassName="activeBlue">
+                <Link  to={`/project/${suggestion.TypeID}/suggestion/${suggestion.ID}/comments`} activeClassName="activeBlue">
                     <div id="commentSBButtonUser">
                             <img src={require('../../assets/comments.svg')} id="commentLogo" width="24" height="24" alt="Comments Button" />
                     </div>
@@ -201,13 +201,13 @@ export default class SuggestionUnit extends React.Component {
                         {suggestion.Description}
                     </div>
 				</div>
-                    {/*<Link to={`/problem/${suggestion.TypeID}/suggestion/${suggestion.ID}/flag`}>
+                    {/*<Link to={`/project/${suggestion.TypeID}/suggestion/${suggestion.ID}/flag`}>
                         <div id="flagSBButton">
                             <img src={require('.../src/assets/flag.svg')} id="deleteLogo" width="11" height="11" alt="Delete Button, Red X" />
                             Flag
                         </div>
                     </Link>*/}
-                <Link  to={`/problem/${suggestion.TypeID}/suggestion/${suggestion.ID}/comments`} activeClassName="activeBlue">
+                <Link  to={`/project/${suggestion.TypeID}/suggestion/${suggestion.ID}/comments`} activeClassName="activeBlue">
                     <div id="commentSBButtonUser">
                             <img src={require('../../assets/comments.svg')} id="commentLogo" width="24" height="24" alt="Comments Button" />
                     </div>

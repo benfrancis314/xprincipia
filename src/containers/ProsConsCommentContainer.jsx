@@ -10,7 +10,7 @@ export default class ProsConsCommentContainer extends React.Component {
         super(props);
 
         this.state = {
-            suggestions: [],
+            pro: [],
             comments: [],
            
         }
@@ -18,7 +18,7 @@ export default class ProsConsCommentContainer extends React.Component {
     };
         componentDidMount(){
         var self = this;
-         axios.get( Config.API + '/auth/comments/suggestionID?id='+this.props.params.suggID).then(function (response) {
+         axios.get( Config.API + '/auth/comments/proID?id='+this.props.params.proID).then(function (response) {
             self.setState({
                 comments: response.data,
             })

@@ -44,7 +44,7 @@ export default class SolutionUnit extends React.Component {
 
 		return (
 			<li key={solution.ID}>
-				<Link to={`/problem/${solution.ProblemID}/proposal/${solution.ID}`} >
+				<Link to={`/project/${solution.ProblemID}/proposal/${solution.ID}`} >
 					<div id="solutionUnit">
 						<div id="solutionUnitContainer">
 							<div id="solutionPercent">{floatToDecimal(solution.PercentRank)}</div>

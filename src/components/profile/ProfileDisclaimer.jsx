@@ -42,7 +42,7 @@ export default class ProfileDisclaimer extends React.Component {
                 Publication of information found in XPrincipia may be in violation of the laws of the country or jurisdiction from where you
                  are viewing this information. The XPrincpia database is stored on servers in the United States of America, and is maintained in 
                  reference to the protections afforded under local and federal law. Laws in your country or jurisdiction may not protect or allow 
-                 the same kinds of speech or distribution. Wikipedia does not encourage the violation of any laws, and cannot be responsible for any 
+                 the same kinds of speech or distribution. XPrincipia does not encourage the violation of any laws, and cannot be responsible for any 
                  violations of such laws, should you link to this domain or use, reproduce or republish the information contained herein.
                  <br />
                  <br />

@@ -17,7 +17,7 @@ export default class VersionsUnit extends React.Component {
     return (
 
         <li key={solution.ID}>
-			<Link to={`/fullsolution/${solution.ProblemID}/${solution.solutionID}/fullversion`}>
+			<Link to={`/proposal/${solution.ProblemID}/${solution.solutionID}/fullversion`}>
 				<div id="versionUnit">
 					<div id="versionUnitTitle">
 						<div id="versionPercent">{floatToDecimal(solution.PercentRank)}</div>

@@ -27,7 +27,7 @@ deleteLearnItem() {
         }
       })
       .then(function (result) {
-        document.location = '/problem/'+ self.props.params.probID + '/learn/content'
+        document.location = '/project/'+ self.props.params.probID + '/learn/content'
       })
       .catch(function (error) {
         // console.log(error.response.data)
@@ -66,7 +66,7 @@ deleteLearnItem() {
                             <div>Are you sure you would like to delete this lesson?</div>
                             <br />
                             <div onClick={this.deleteLearnItem} id="deleteButton">Delete</div>
-                              <Link to={`/problem/${this.props.params.probID}/learn/content`}>
+                              <Link to={`/project/${this.props.params.probID}/learn/content`}>
                                 <div id="returnButton">Exit</div>
                             </Link>
                     </fieldset>

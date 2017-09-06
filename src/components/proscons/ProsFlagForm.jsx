@@ -98,7 +98,7 @@ postPro() {
                          <br />
                          <div onClick={this.postPro} id="flagButton">Submit</div>
                          {/*Link not working at the moment and not being used*/}
-                         {/*<Link to='/problem/${pro.TypeID}/pros'>*/}
+                         {/*<Link to='/project/${pro.TypeID}/pros'>*/}
                             <div id="returnButton">Exit</div>
                          {/*</Link>*/}
                 </fieldset>

@@ -21,7 +21,7 @@ export default class ProfileNotifications extends React.Component {
    renderItem(item) {
        if (this.props.currentType === 'solution') {
         return (
-          <Link key={item.ID} to={`/fullsolution/${item.ProblemID}/${item.ID}/solutions`} >
+          <Link key={item.ID} to={`/proposal/${item.ProblemID}/${item.ID}/solutions`} >
             <li><div id="profileRightUnit">
                 <div id="profileUnitTitle">
                     Test Title
@@ -37,7 +37,7 @@ export default class ProfileNotifications extends React.Component {
        }
       else if (this.props.currentType === 'problem') {
         return (
-          <Link key={item.ID} to={`/problem/${item.ID}/solutions`} >
+          <Link key={item.ID} to={`/project/${item.ID}/solutions`} >
             <li><div id="profileRightUnit">
                 <div id="profileUnitTitle">
                     Test Title
