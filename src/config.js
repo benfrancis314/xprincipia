@@ -5,4 +5,6 @@ export class Config {
     // static API = 'http://localhost:10000'
     //productionAPI
     static API = 'https://xprincipiabeta.com'
+    //ChatAPI
+    static CHATAPI = 'http://ec2-18-221-66-130.us-east-2.compute.amazonaws.com'
 }

@@ -3,9 +3,9 @@ import cookie from 'react-cookie'
 import io from 'socket.io-client'
 import ChatBox from './ChatBox.jsx';
 import WelcomeCreateForm from './ChatBox.jsx';
+import {Config} from '../../config.js';
 
-
-let socket = io(`http://localhost:8000`)
+let socket = io(Config.CHATAPI)
 
 class ChatBoxContainer extends Component {
   state = { data: [''] }
