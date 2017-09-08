@@ -15,7 +15,11 @@ class ChatBoxContainer extends Component {
   }
 
   sendMessage = message => {
-    socket.emit(`new message`, message)
+    if (cookie.load('userName') == undefined ){
+      alert("you must log in")
+    } else {
+      socket.emit(`new message`, message)
+    }
   }
 
   render () {
