@@ -30,6 +30,7 @@ export default class SubProblemContainer extends React.Component {
         }) 
     }
 
+// Is this being used?
 //         //On recieving next props
 //     componentWillReceiveProps(nextProps){
 //         var self = this

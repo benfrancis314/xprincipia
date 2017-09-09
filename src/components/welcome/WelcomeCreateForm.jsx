@@ -30,7 +30,8 @@ export default class WelcomeCreateForm extends React.Component {
         parentID: this.props.params.probID,
         title : this.state.title,
         summary : this.state.summary,
-        
+        // Not sure if necessary
+        // Private: false
 
       })
       .then(function (response) {

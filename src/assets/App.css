@@ -2738,7 +2738,212 @@ introductionProjectTitle {
 
 
 
+/*Private Profile*/
 
+#privateContainer {
+  width: 95%;
+  margin: 0 auto;
+}
+#privateUserName {
+  letter-spacing: 16px;
+  color: #00dcff;
+  margin: 0 auto;
+  font-size: 150%;
+  text-align: center;
+}
+#privateContainerHeader {
+  letter-spacing: 14px;
+  width: 90%;
+  margin: 0 auto;
+  border: 1px solid #00dcff;
+  border-width: 0px 1px 1px 1px;
+  border-right-color: #515151;
+  border-left-color: #515151;
+  /*Original*/
+  /*border-radius: 0% 0% 15% 15%;*/
+  border-radius: 0% 0% 30% 30%;
+  /*Make sure this refreshes to keep page normal width*/
+  padding: 0% 0% 0.3% 0%;
+  background: linear-gradient(rgba(0,255,220,0), rgba(0,220,255,0.1));
+}
+#privateContainerMottoContainer {
+  text-align: center;
+  color: #888888;
+  font-size: 175%;
+  letter-spacing: 15px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0.5%;
+  margin-bottom: 0.5%;
+  margin-top: 0.5%;
+}
+#privateContainerMotto {
+  padding-left: 2%;
+  padding-right: 2%;
+  display: inline-block;
+}
+#lockImg {
+  margin: 0 auto;
+}
+#lockImg:hover {
+  cursor: pointer;
+}
+#privateContainerTitle {
+  margin: 0 auto;
+  color: #ffffff;
+  text-align: center;
+  margin-bottom: 0%;
+  margin-top: 0%;
+  font-size: 260%;
+  letter-spacing: 15px;
+  width: 70%;
+
+  border: 1px solid #00dcff;
+  border-radius: 15%;
+  border-width: 1px 0px 1px 0px;
+  padding: 15px 35px 15px 35px;
+  /*color: #dddddd;*/
+  transition: all 0.5s ease 0s;
+  background-color: rgba(255,255,255,0.025);
+}
+#privateContainerSettingsButton {
+  margin: 0 auto;
+  color: #00dcff;
+  text-align: center;
+  margin-bottom: 2%;
+  /*margin-top: 1.5%;*/
+  font-size: 175%;
+  letter-spacing: 6px;
+  width: 20%;
+  border: 1px solid #00dcff;
+  border-width: 0px 1px 1px 1px;
+  border-radius: 0% 0% 25% 25%;
+  transition: all 0.5s ease 0s;
+}
+#privateContainerSettingsButton:hover {
+  cursor: pointer;
+  background-color: #00dcff;
+  color: #0f131c;
+}
+#privateNewProject {
+  color: #dddddd;
+  border: 1px solid #dddddd;
+  margin: 0 auto;
+  text-align: center;
+  margin-bottom: 0%;
+  margin-top: 1.5%;
+  font-size: 175%;
+  letter-spacing: 6px;
+  width: 40%;
+  border-radius: 3px;
+  transition: all 0.5s ease 0s;
+  background-color: rgba(0,220,255,0.05);
+}
+#privateNewProject:hover {
+  background-color: #00dcff;
+  color: #0f131c;
+  cursor: pointer;
+}
+#SPHeaderPrivate {
+  display: inline-flex;
+  flex-direction: column;
+  border: 2px solid #00dcff;
+  border-radius: 100%;
+  width: 12em;
+  height: 12em;
+  word-wrap: break-word; 
+  align-items: center; 
+  justify-content: center;
+  background-color: rgba(0,220,255,0.05);
+  margin: 0 auto;
+  /*box-shadow: 0 0 2pt 2pt rgba(0,220,255,0.5);*/
+  box-shadow: 0 0 2pt 2pt rgba(0,220,255,0.5);
+  transition: all 0.5s ease 0s;
+  transform: scale(1);
+  margin-top: 1%;
+}
+#SPHeaderPrivate:hover #SPTitle{
+  color: #ffffff;
+  cursor: pointer;
+}
+#SPHeaderPrivate:hover {
+  box-shadow: 0 0 1pt 3pt rgba(255,127,127,0.5);
+  transform: scale(1.02);
+  cursor: pointer;
+}
+#privateTextBoxTop {
+  border: 1px solid #dddddd;
+  background-color: rgba(0,220,255, 0.05);
+  border-radius: 45% 45% 3px 3px;
+  margin-top: 1.5%;
+  margin-bottom: 1%;
+  /*padding-top: 0.5%;*/
+}
+#privateTextBoxBottom {
+  border: 1px solid #dddddd;
+  background-color: rgba(0,220,255, 0.05);
+  border-radius: 3px 3px 45% 45%;
+  margin-bottom: 2%;
+  margin-top: 1%;
+  /*padding-top: 0.5%;*/
+}
+#privateAlertShow {
+  position: fixed;
+  top: 15vh;
+  z-index: 500;
+  width: 50%;
+  margin: 0 auto;
+  margin-left: 25%;
+  margin-right: 25%;
+  border: 1px solid #00dcff;
+  border-radius: 3px;
+  box-shadow: 0 0 2pt 2pt rgba(0,220,255,0.25);
+  background-color: rgba(15,19,28,0.9);
+  padding: 5px;
+  text-align: center;
+  font-size: 150%;
+  color: #ffffff;
+}
+#privateAlert {
+  display: none;
+}
+#lockAlert {
+  margin: 0 auto;
+}
+#privateAlertHeader {
+  /*color: #00dcff;*/
+  /*background-color: rgba(0,220,255,0.25);*/
+  /*border: 1px solid #00dcff;*/
+  /*border-radius: 50px;*/
+  margin: 0 auto;
+  margin-top: 2%;
+  width: 30px;
+  height: 30px;
+}
+#privateAlertContent {
+  color: #ffffff;
+  padding: 5px;
+  font-size: 125%;
+  margin: 5% 8% 5% 8%;
+}
+#privateAlertReturn {
+  color: #00dcff;
+  padding: 3px;
+  border: 1px solid #00dcff;
+  border-radius: 3px;
+  font-size: 70%;
+  transition: all 0.5s ease 0s;
+  width: 25%;
+  margin: 0 auto;
+  margin-top: 2%;
+  margin-bottom: 2%;
+}
+#privateAlertReturn:hover {
+  background-color: rgba(0,220,255,0.25);
+  cursor: pointer;
+}
+
+/*End Private Profile*/
 
 
 /*Profile*/
@@ -4299,7 +4504,7 @@ introductionProjectTitle {
 }
 #commentLogo:hover {
   cursor: pointer;
-  box-shadow: 0 0 1pt 1pt rgba(0220,255,0.5);
+  box-shadow: 0 0 1pt 1pt rgba(0,220,255,0.5);
 }
 
 #flagSolutionButton, #deleteSolutionButton {
@@ -4830,7 +5035,7 @@ introductionProjectTitle {
   border-width: 0px 0px 1px 0px;
   padding: 15px 35px 17px 35px;
   text-align: left;
-  font-family: 'Source Sans Pro', sans-serif;
+  font-family: 'Open Sans', sans-serif;
   transition: all 0.25s ease 0s;
   color: #dddddd;
   min-width: 80%;

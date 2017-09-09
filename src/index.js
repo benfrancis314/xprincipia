@@ -104,6 +104,7 @@ import LoginContainer from './containers/LoginContainer.jsx';
 import NewsFeedContainer from './containers/NewsFeedContainer.jsx';
 import ProfileAboutContainer from './containers/ProfileAboutContainer.jsx';
 import ProfileContainer from './containers/ProfileContainer.jsx';
+import ProfileContainer2 from './containers/ProfileContainer2.jsx';
 import ProjectRelatedParentsContainer from './containers/ProjectRelatedParentsContainer.jsx';
 import ProsContainer from './containers/ProsContainer.jsx';
 import QuestionContainer from './containers/QuestionContainer.jsx';
@@ -170,6 +171,9 @@ ReactDOM.render(
         <IndexRoute component={LoginContainer}></IndexRoute>
         <Route path='/login' component={LoginUnit}></Route>
         <Route path='/register' component={RegisterUnit}></Route>
+      </Route>
+      <Route path='/mindtemple' component={ProfileContainer2}>
+        {/*<IndexRoute component={ProfileProblemsSolutions}></IndexRoute>*/}
       </Route>
       <Route path='/profile/container' component={ProfileContainer}>
         <IndexRoute component={ProfileProblemsSolutions}></IndexRoute>
