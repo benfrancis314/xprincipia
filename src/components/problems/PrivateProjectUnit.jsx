@@ -1,6 +1,7 @@
 import React from 'react';
 import {Link} from 'react-router';
 import ReactGA from 'react-ga';
+import $ from 'jquery';
 
 export default class PrivateProjectUnit extends React.Component {
 
@@ -20,28 +21,45 @@ export default class PrivateProjectUnit extends React.Component {
 // 	  self.setState({problems: nextProps.problems})
 //   }
 
-
+    hoverText() {
+        $(document).ready(function() {
+            // $('#fullTutorialMotto').attr('id','fullTutorialMotto2').hide();
+            $('#SPHeaderPrivate').html('New Project').fadeIn(5500);
+        });
+    }
+    unHoverText() {
+        $(document).ready(function() {
+            // $('#fullTutorialMotto').attr('id','fullTutorialMotto2').hide();
+            $('#SPHeaderPrivate').html("<img src={require('../../assets/blueAdd2.svg')} id='privateNewProjectPlus' width='80' height='80' alt='User avatar, DNA Helix' />");
+        });
+    }
+    
 	render() {
 		return (
 	    <div id="SPwrapper">
-			<ul id="SPUnitList"> 
+			<ul id="SPPrivateUnitList"> 
 				<li>
 					<img src={require('../../assets/leftArrow.svg')} id="SParrowImg" width="50" height="50" alt="User avatar, DNA Helix" />
 				</li>
                 {/*Commented out for testing*/}
 				{/*{this.state.problems.map(this.renderItem)}*/}
-                <li id="SPUnit">
+                <li id="SPPrivateUnit">
+                   <div id="SPHeaderPrivate" onMouseOver={this.hoverText} onMouseOut={this.unHoverText}>
+                       <img src={require('../../assets/blueAdd2.svg')} id="privateNewProjectPlus" width="80" height="80" alt="User avatar, DNA Helix" />
+                   </div>
+                </li>
+                {/*<li id="SPPrivateUnit">
                     <div id="SPHeaderPrivate">
                         <div id="SPTitle">DMT Theory</div>
                         <div id="SPPercent">1</div>
                     </div>
 				</li>
-                <li id="SPUnit">
+                <li id="PrivateSPUnit">
                     <div id="SPHeaderPrivate">
                         <div id="SPTitle">Evolving Intelligence</div>
                         <div id="SPPercent">2</div>
                     </div>
-				</li>
+				</li>*/}
 				<li>
 					<img src={require('../../assets/rightArrow.svg')} id="SParrowImg" width="50" height="50" alt="User avatar, DNA Helix" />
 				</li>

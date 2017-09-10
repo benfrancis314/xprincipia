@@ -34,46 +34,69 @@ hideNotification() {
             transitionAppearTimeout={2000}
             transitionEnter={false}
             transitionLeave={false}>
-                <div id="privateTextBoxTop">
+                {/*<div id="privateTextBoxTop">
                     <br />
-                </div>
+                </div>*/}
                 <div id="privateContainerHeader">
                     <div id="privateUserName">
-                        {/*xprincipia*/}
-                        {cookie.load('userName')}
+                        benfrancis
                     </div>
                     
-                </div>
-                <div id="privateContainerMottoContainer">
-                    <img src={require('../assets/lock.svg')} id="lockImg" width="30" height="30" onClick={this.privateAlert} alt="Logo logo, signifying this is private"/>
-                    <div id="privateContainerMotto">
-                        Organize your thoughts
-                    </div>
-                    <img src={require('../assets/lock.svg')} id="lockImg" width="30" height="30" onClick={this.privateAlert} alt="Logo logo, signifying this is private" />
                 </div>
                 <div id="privateContainerTitle">
                     Mind Temple
                 </div>
                 <div id="privateContainerSettingsButton">
-                    Settings
+                    {/*Settings*/}
+                    <img src={require('../assets/gear.svg')} id="lockImg" width="30" height="30" alt="Gear logo, link to settings"/>
+                </div>
+                <div id="privateContainerMottoContainer">
+                    <img src={require('../assets/lock.svg')} id="lockImg" width="25" height="25" onClick={this.privateAlert} alt="Lock logo, signifying this is private"/>
+                    <div id="privateContainerMotto">
+                        Organize your thoughts
+                    </div>
+                    <img src={require('../assets/lock.svg')} id="lockImg" width="25" height="25" onClick={this.privateAlert} alt="Lock logo, signifying this is private" />
                 </div>
                 {/*<div id="privateNewProject">
                     New Project
                 </div>*/}
-                <PrivateProjectForm />
+                {/*<PrivateProjectForm />*/}
                 <PrivateProjectsContainer />
-                <div id="privateTextBoxBottom">
+                {/*<div id="privateTextBoxBottom">
                     <br />
-                </div>
+                </div>*/}
+                {randomImg()}
+                <br />
+                <br />
             </ReactCSSTransitionGroup>
             <div id="privateAlert">
                 <div id="privateAlertHeader">
                     <img src={require('../assets/lockBlue.svg')} id="lockAlert" width="30" height="30" onClick={this.privateAlert} alt="Logo logo, signifying this is private"/>
                 </div>
-                <div id="notificationContent">This space is entirely <span id="blue">private</span></div>
+                <div id="privateAlertContent">This space is entirely <span id="blue">private</span></div>
                 <div id="privateAlertReturn" onClick={this.hideNotification}>Return</div>
             </div>
         </div>
       );
    }
+}
+
+function randomImg() {
+    if (Math.random() < 0.125) {
+      return <img src={require('../assets/orionLogo.svg')} id="middleAlignOrionLess" width='70' height='100' alt="Back arrow, blue up arrow" />
+    } else if (Math.random() < 0.25){
+      return <img src={require('../assets/heroLogo.svg')} id="middleAlignOrionLess" width='70' height='100' alt="Back arrow, blue up arrow" />
+    } else if (Math.random() < 0.375){
+      return <img src={require('../assets/dragonConstellation.svg')} id="middleAlignOrionLess" width='70' height='100' alt="Back arrow, blue up arrow" />
+    } else if (Math.random() < 0.5){
+      return <img src={require('../assets/hunterConstellation.svg')} id="middleAlignOrionLess" width='70' height='100' alt="Back arrow, blue up arrow" />
+    } else if (Math.random() < 0.625){
+      return <img src={require('../assets/queenConstellation.svg')} id="middleAlignOrionLess" width='70' height='100' alt="Back arrow, blue up arrow" />
+    } else if (Math.random() < 0.75){
+      return <img src={require('../assets/pegasusConstellation.svg')} id="middleAlignOrionLess" width='70' height='100' alt="Back arrow, blue up arrow" />
+    } else if (Math.random() < 0.875){
+      return <img src={require('../assets/archerConstellation.svg')} id="middleAlignOrionLess" width='70' height='100' alt="Back arrow, blue up arrow" />
+    } else if (Math.random() < 0.1){
+      return <img src={require('../assets/greatBearConstellation.svg')} id="middleAlignOrionLess" width='70' height='100' alt="Back arrow, blue up arrow" />
+    }
 }
