@@ -58,7 +58,7 @@ export default class RelatedProposalsContainer extends React.Component {
                     {/*<div id="relatedProposalFormTitle">
                         Related Form Title (if necessary)
                     </div>*/}
-                    <input id="relatedProposalForm" type="text" name="email" required="required" maxLength="30" placeholder="PROJECT#" />
+                    <input id="relatedProposalForm" type="text" name="email" required="required" maxLength="30" placeholder="PROPOSAL#" />
                     <input type="button" value="Add" id="relatedProposalAdd"/>
                     <RelatedProposalsUnit />
                 </div>

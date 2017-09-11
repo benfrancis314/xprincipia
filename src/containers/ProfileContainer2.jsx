@@ -15,7 +15,7 @@ export default class ProfileContainer extends React.Component {
 privateAlert () {
     // alert('success');
     $(document).ready(function() {
-        $('#privateAlert').attr('id','privateAlertShow').hide().slideDown();
+        $('#privateAlert').attr('id','privateAlertShow').hide().slideDown(1000);
     });
 }
 hideNotification() {
@@ -37,19 +37,20 @@ hideNotification() {
                 {/*<div id="privateTextBoxTop">
                     <br />
                 </div>*/}
-                <div id="privateUserName">
-                    {cookie.load('userName')}                    
-                </div>
+                <Link to={`/profile`}>
+                    <div id="privateUserName">
+                        {cookie.load('userName')}                    
+                    </div>
+                </Link>
                 <div id="privateContainerBanner">
                     <div id="privateContainerTitle">
                         Mind Temple
                     </div>
-                    {/*<Link to={`/profile`}>*/}
+                    
                         <div id="privateContainerSettingsButton" onClick={this.privateAlert}>
                             {/*Settings*/}
                             <img src={require('../assets/lock2Blue.svg')} id="privateSettingsGear" width="20" height="20" alt="Gear logo, link to settings"/>
                         </div>
-                    {/*</Link>*/}
                 </div>
                 <div id="privateContainerMottoContainer">
                     <div id="privateContainerMotto">
@@ -64,6 +65,7 @@ hideNotification() {
                 {/*<div id="privateTextBoxBottom">
                     <br />
                 </div>*/}
+                {this.props.children}
                 {randomImg()}
                 <br />
                 <br />

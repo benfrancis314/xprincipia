@@ -2960,7 +2960,7 @@ introductionProjectTitle {
   margin-left: 25%;
   margin-right: 25%;
   border: 1px solid #00dcff;
-  border-radius: 3px;
+  border-radius: 7%;
   box-shadow: 0 0 2pt 2pt rgba(0,220,255,0.25);
   background-color: rgba(15,19,28,0.9);
   padding: 5px;
@@ -3882,6 +3882,11 @@ introductionProjectTitle {
     .activePrivate div {
     	background-color: rgba(255,255,255,0.12) !important;
       box-shadow: 0 0 0.5pt 0.5pt rgba(255,255,255,1) inset !important;
+      transform: scale(1.02) !important;
+      cursor: default !important;
+    }
+    .activePrivateCreateButton li div {
+      box-shadow: 0 0 1pt 3pt rgba(0,220,255,0.5) !important;      
       transform: scale(1.02) !important;
       cursor: default !important;
     }

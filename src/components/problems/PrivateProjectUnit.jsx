@@ -34,8 +34,7 @@ export default class PrivateProjectUnit extends React.Component {
     }
     unHoverText() {
         $(document).ready(function() {
-            // $('#fullTutorialMotto').attr('id','fullTutorialMotto2').hide();
-            $('#privateContainerMotto').html("Organize your thoughts");
+            $('#privateContainerMottoBlue').html("Organize your thoughts");
             $('#privateContainerMottoBlue').attr('id','privateContainerMotto');
         });
     }
@@ -49,23 +48,25 @@ export default class PrivateProjectUnit extends React.Component {
 				</li>
                 {/*Commented out for testing*/}
 				{/*{this.state.problems.map(this.renderItem)}*/}
+                <Link to={`/mindtemple/create`} activeClassName="activePrivateCreateButton">
+                    <li id="SPPrivateUnit">
+                        <div id="SPHeaderPrivate" onMouseOver={this.hoverText} onMouseOut={this.unHoverText}>
+                            <img src={require('../../assets/blueAdd2.svg')} id="privateNewProjectPlus" width="80" height="80" alt="User avatar, DNA Helix" />
+                        </div>
+                    </li>
+                </Link>
                 <li id="SPPrivateUnit">
-                   <div id="SPHeaderPrivate" onMouseOver={this.hoverText} onMouseOut={this.unHoverText}>
-                       <img src={require('../../assets/blueAdd2.svg')} id="privateNewProjectPlus" width="80" height="80" alt="User avatar, DNA Helix" />
-                   </div>
-                </li>
-                {/*<li id="SPPrivateUnit">
                     <div id="SPHeaderPrivate">
                         <div id="SPTitle">DMT Theory</div>
-                        <div id="SPPercent">1</div>
+                        {/*<div id="SPPercent">1</div>*/}
                     </div>
 				</li>
                 <li id="PrivateSPUnit">
                     <div id="SPHeaderPrivate">
                         <div id="SPTitle">Evolving Intelligence</div>
-                        <div id="SPPercent">2</div>
+                        {/*<div id="SPPercent">2</div>*/}
                     </div>
-				</li>*/}
+				</li>
 				<li>
 					<img src={require('../../assets/rightArrow.svg')} id="SParrowImg" width="50" height="50" alt="User avatar, DNA Helix" />
 				</li>

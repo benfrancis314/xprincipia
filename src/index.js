@@ -46,6 +46,7 @@ import LearnResourcesEmbed from './components/learn/LearnResourcesEmbed.jsx';
 import LearnResourcesFlagForm from './components/learn/LearnResourcesFlagForm.jsx';
 import LearnResourcesForm from './components/learn/LearnResourcesForm.jsx';
 import LoginUnit from './components/LoginUnit.jsx';
+import PrivateProjectForm from './components/problems/PrivateProjectForm.jsx';
 import ProblemForm from './components/problems/ProblemForm.jsx';
 import ProblemDiscussMenu from './components/problems/ProblemDiscussMenu.jsx';
 import ProblemLearnMenu from './components/problems/ProblemLearnMenu.jsx';
@@ -172,8 +173,10 @@ ReactDOM.render(
         <Route path='/login' component={LoginUnit}></Route>
         <Route path='/register' component={RegisterUnit}></Route>
       </Route>
-      <Route path='/mindtemple' component={ProfileContainer2}>
-        {/*<IndexRoute component={ProfileProblemsSolutions}></IndexRoute>*/}
+      <Route path='/mindtemple/container' component={ProfileContainer2}>
+        <IndexRoute component={TrueEmpty}></IndexRoute>
+        <Route path='/mindtemple' component={TrueEmpty}></Route>
+        <Route path='/mindtemple/create' component={PrivateProjectForm}></Route>
       </Route>
       <Route path='/profile/container' component={ProfileContainer}>
         <IndexRoute component={ProfileProblemsSolutions}></IndexRoute>

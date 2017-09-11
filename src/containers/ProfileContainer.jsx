@@ -118,6 +118,9 @@ export default class ProfileContainer extends React.Component {
                 <div id="earth"></div>
             </div>
             <div id="userOptions">
+                <Link to={`/mindtemple`} activeClassName="activeBlue">
+                    <div id="userProblemsSolutionsButton">Private Projects</div>
+                </Link>
                 <Link to={`/profile`} activeClassName="activeBlue">
                     <div id="userProblemsSolutionsButton">Activity</div>
                 </Link>
