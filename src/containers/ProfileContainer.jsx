@@ -105,12 +105,12 @@ export default class ProfileContainer extends React.Component {
     // });
       return (
     <div id="profileContainer">
-        {/*<ReactCSSTransitionGroup
+        <ReactCSSTransitionGroup
         transitionName="example"
         transitionAppear={true}
-        transitionAppearTimeout={2000}
+        transitionAppearTimeout={3000}
         transitionEnter={false}
-        transitionLeave={false}>*/}
+        transitionLeave={false}>
       <div id="profileBox">
         <div id="profileLeft">
             <div id="userInformation">
@@ -135,7 +135,7 @@ export default class ProfileContainer extends React.Component {
         </div>
       </div>
         <TutorialProfileContent />
-        {/*</ReactCSSTransitionGroup>*/}
+        </ReactCSSTransitionGroup>
 
 
     </div>

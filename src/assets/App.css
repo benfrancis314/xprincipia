@@ -1630,7 +1630,6 @@ body, html, #main {
     }
     #avatarHeader {
       flex: 1 1 auto;
-      width: 33%;
     }
     #avatarImage {
       border: 1px solid #00dcff;
@@ -1640,36 +1639,23 @@ body, html, #main {
       margin-left: 1.7%;
       padding: 2px;
     }
-    #avatarFullName {
-      margin: 0 auto;
-      letter-spacing: 8px;
-    	width: 100%;
-      transition: all 0.5s ease 0s;
-      transform: scale(1);
-      margin-top: 0.39%;
-    }
-    /*#avatarFullName:hover {
-      transform: scale(1.02);
-      color: #00dcff;
-      cursor: pointer;
-    }*/
     #headerName {
-      /*New CSS*/
       color: #00dcff;
-      /*flex: 2 2 auto;*/
-      margin: 0 auto;
-      margin-left: 55%;
       font-size: 140%;
       text-align: center;
       letter-spacing: 8px;
-      padding: 3px;
-      width: 40%;
+      padding: 4px;
+      width: 100%;
       transition: all 0.5s ease 0s;
       background-color: rgba(0,220,255,0.05);
       border: 1px solid #00dcff;
       border-radius: 5px;
       margin-bottom: 0px;
       transform: scale(1);
+      margin: 0 auto;
+      margin-top: 0.39%;
+      margin-right: 0px;
+      flex: 1 1 auto;
     }
     #headerName:hover {
       background-color: rgba(0,220,255,0.12);
@@ -1688,6 +1674,36 @@ body, html, #main {
     }
     #imgContainerAvatar {
       flex: 1 1 auto;
+    }
+    #headerOptionsContainer {
+      display: inline-flex;
+      flex-direction: row;
+      justify-content: space-around;
+      width: 26.5%;
+    }
+    #headerTempleName {
+      color: #00dcff;
+      font-size: 140%;
+      text-align: center;
+      letter-spacing: 8px;
+      padding-left: 3px;
+      padding-right: 3px;
+      width: 100%;
+      transition: all 0.5s ease 0s;
+      background-color: rgba(255,255,255,0.05);
+      border: 1px solid #dddddd;
+      border-radius: 5px;
+      margin-bottom: 0px;
+      transform: scale(1);
+      margin: 0 auto;
+      margin-top: 0.39%;
+      margin-left: 50%;
+      flex: 1 1 auto;
+    }
+    #headerTempleName:hover {
+      background-color: rgba(255,255,255,0.12);
+      box-shadow: 0 0 0.5pt 0.5pt rgba(255,255,255,1) inset;
+      transform: scale(1.02);
     }
 
 /*End Header*/
@@ -2745,30 +2761,31 @@ introductionProjectTitle {
   margin: 0 auto;
 }
 #privateUserName {
-  letter-spacing: 16px;
-  color: #00dcff;
-  margin: 0 auto;
-  font-size: 150%;
-  text-align: center;
-}
-#privateContainerHeader {
   letter-spacing: 14px;
   width: 90%;
   margin: 0 auto;
   border: 1px solid #00dcff;
   border-width: 0px 1px 1px 1px;
-  border-right-color: #515151;
-  border-left-color: #515151;
+  /*border-right-color: #515151;
+  border-left-color: #515151;*/
+  letter-spacing: 16px;
+  color: #00dcff;
+  font-size: 130%;
+  text-align: center;
+  transition: all 2s ease 0s;
+  transform: scale(1);
   /*Original*/
   /*border-radius: 0% 0% 15% 15%;*/
-  border-radius: 0% 0% 30% 30%;
+  border-radius: 0% 0% 40% 40%;
   /*Make sure this refreshes to keep page normal width*/
-  padding: 0% 0% 0.3% 0%;
-  background: linear-gradient(rgba(0,255,220,0), rgba(0,220,255,0.1));
+  padding: 0.3% 0% 0.5% 0%;
+  background: linear-gradient(rgba(0,255,220,0.05), rgba(0,255,220,0.05), rgba(0,220,255,0));
+}
+#privateUserName:hover {
+  transform: scale(1.02);
 }
 #privateContainerMottoContainer {
   text-align: center;
-  color: #888888;
   font-size: 175%;
   letter-spacing: 15px;
   width: 100%;
@@ -2778,15 +2795,27 @@ introductionProjectTitle {
   margin-top: 0.5%;
 }
 #privateContainerMotto {
-  padding-left: 2%;
-  padding-right: 2%;
   display: inline-block;
+  color: #888888;
+  transition: all 2s ease 0s;
 }
-#lockImg {
+#privateContainerMottoBlue {
+  display: inline-block;
+  color: #00dcff;
+  transition: all 2s ease 0s;
+  letter-spacing: 16px;
+}
+#privateSettingsGear {
   margin: 0 auto;
+  vertical-align: center;
+  margin-top: 2px;
 }
-#lockImg:hover {
-  cursor: pointer;
+#privateContainerBanner {
+  transition: all 2s ease 0s;
+  transform: scale(1);
+}
+#privateContainerBanner:hover {
+  transform: scale(1.02);
 }
 #privateContainerTitle {
   margin: 0 auto;
@@ -2799,12 +2828,13 @@ introductionProjectTitle {
   width: 70%;
 
   border: 1px solid #00dcff;
-  border-radius: 15%;
+  border-radius: 0% 0% 15% 15%;
   border-width: 1px 0px 1px 0px;
   padding: 15px 35px 15px 35px;
   /*color: #dddddd;*/
   transition: all 0.5s ease 0s;
-  background: linear-gradient(rgba(0,220,255,0.1), rgba(255,255,255,0.025));
+  /*background: linear-gradient(rgba(0,220,255,0.1), rgba(255,255,255,0.025));*/
+  background: linear-gradient(rgba(255,255,255,0.05), rgba(0,220,255,0.1), rgba(0,220,255,0.1), rgba(255,255,255,0.025));
   /*background-color: rgba(255,255,255,0.025);*/
 }
 #privateContainerSettingsButton {
@@ -2820,10 +2850,11 @@ introductionProjectTitle {
   border-width: 0px 1px 1px 1px;
   border-radius: 0% 0% 25% 25%;
   transition: all 0.5s ease 0s;
+  background: linear-gradient(right, rgba(255,255,255,0.025), rgba(0,220,255,0.1), rgba(255,255,255,0.025));
 }
 #privateContainerSettingsButton:hover {
   cursor: pointer;
-  background-color: #00dcff;
+  background-color: rgba(0,220,255,0.1);
   color: #0f131c;
 }
 #privateNewProject {
@@ -3842,9 +3873,15 @@ introductionProjectTitle {
       border-color: #00dcff !important;
       cursor: default !important;
     }
-    .activeProfile div div{
+    .activeProfile div {
     	background-color: rgba(0,220,255,0.12) !important;
       box-shadow: 0 0 0.5pt 0.5pt rgba(0,220,255,1) inset !important;
+      transform: scale(1.02) !important;
+      cursor: default !important;
+    }
+    .activePrivate div {
+    	background-color: rgba(255,255,255,0.12) !important;
+      box-shadow: 0 0 0.5pt 0.5pt rgba(255,255,255,1) inset !important;
       transform: scale(1.02) !important;
       cursor: default !important;
     }
@@ -4513,6 +4550,12 @@ introductionProjectTitle {
   padding: 3px;
   margin-top: -1%;
   margin-bottom: 4%;
+}
+#middleAlignOrionPrivate {
+  display: block;
+  margin: 0 auto;
+  padding: 3px;
+  margin-top: -1%;
 }
 #deleteLogo {
   /*display: block;

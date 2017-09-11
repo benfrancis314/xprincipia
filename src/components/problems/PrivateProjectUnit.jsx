@@ -24,13 +24,19 @@ export default class PrivateProjectUnit extends React.Component {
     hoverText() {
         $(document).ready(function() {
             // $('#fullTutorialMotto').attr('id','fullTutorialMotto2').hide();
-            $('#SPHeaderPrivate').html('New Project').fadeIn(5500);
+            $('#privateContainerMotto').html('New Project').fadeIn(7500);
+            // Testing this for its strange effect
+            // $('#privateContainerMotto').fadeOut(function() {
+            //     $(this).text("New Project").fadeIn(1000);
+            //     }).fadeIn(1000);
+            $('#privateContainerMotto').attr('id','privateContainerMottoBlue');
         });
     }
     unHoverText() {
         $(document).ready(function() {
             // $('#fullTutorialMotto').attr('id','fullTutorialMotto2').hide();
-            $('#SPHeaderPrivate').html("<img src={require('../../assets/blueAdd2.svg')} id='privateNewProjectPlus' width='80' height='80' alt='User avatar, DNA Helix' />");
+            $('#privateContainerMotto').html("Organize your thoughts");
+            $('#privateContainerMottoBlue').attr('id','privateContainerMotto');
         });
     }
     
