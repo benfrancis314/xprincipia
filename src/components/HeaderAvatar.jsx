@@ -9,7 +9,7 @@ export default class HeaderAvatar extends React.Component {
         <div id="headerOptionsContainer">
                 <Link to="/mindtemple" id="whiteHeader" activeClassName="activePrivate">
                     <div id="headerTempleName">
-                        <img src={require('../assets/templeSoftWhite.svg')} id="privateSettingsGear" width="30" height="30" alt="Gear logo, link to settings"/>
+                        <img src={require('../assets/templeSoftWhite.svg')} id="mindTempleButton" width="30" height="30" alt="Gear logo, link to settings"/>
                     </div>
                 </Link>
                 <Link to="/profile" id="whiteHeader" activeClassName="activeProfile">

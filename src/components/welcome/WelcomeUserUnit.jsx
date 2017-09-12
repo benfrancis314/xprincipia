@@ -23,8 +23,12 @@ export default class WelcomeUserUnit extends React.Component {
     //         action: 'Clicked Link',
     //     });
     // }
-
-if (problem.Title === 'Interstellar Civilization') {
+if (problem.Private === true) {
+            return (
+                <div key={problem.ID} id="nodisplay">
+                </div>
+        );
+} else if (problem.Title === 'Interstellar Civilization') {
 
       return (
       

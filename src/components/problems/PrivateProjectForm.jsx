@@ -31,8 +31,6 @@ export default class WelcomeCreateForm extends React.Component {
         title : this.state.title,
         summary : this.state.summary,
         // Not sure if necessary
-        Private: true
-
       })
       .then(function (response) {
         document.location = '/mindtemple' 

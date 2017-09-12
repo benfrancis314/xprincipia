@@ -15,10 +15,10 @@ export default class ProfileContainer extends React.Component {
 privateAlert () {
     // alert('success');
     $(document).ready(function() {
-        $('#privateAlert').attr('id','privateAlertShow').hide().slideDown(1000);
+        $('#privateAlert').attr('id','privateAlertShow').hide().slideDown(7500);
     });
 }
-hideNotification() {
+hidePrivateNotification() {
     $(document).ready(function() {
         $('#privateAlertShow').attr('id','privateAlert');
      });
@@ -48,13 +48,12 @@ hideNotification() {
                     </div>
                     
                         <div id="privateContainerSettingsButton" onClick={this.privateAlert}>
-                            {/*Settings*/}
                             <img src={require('../assets/lock2Blue.svg')} id="privateSettingsGear" width="20" height="20" alt="Gear logo, link to settings"/>
                         </div>
                 </div>
                 <div id="privateContainerMottoContainer">
                     <div id="privateContainerMotto">
-                         Organize your thoughts
+                         ORGANIZE YOUR THOUGHTS
                     </div>
                 </div>
                 {/*<div id="privateNewProject">
@@ -70,13 +69,6 @@ hideNotification() {
                 <br />
                 <br />
             </ReactCSSTransitionGroup>
-            <div id="privateAlert">
-                <div id="privateAlertHeader">
-                    <img src={require('../assets/lock2Blue.svg')} id="lockAlert" width="30" height="30" onClick={this.privateAlert} alt="Logo logo, signifying this is private"/>
-                </div>
-                <div id="privateAlertContent">This space is entirely <span id="blue">private</span></div>
-                <div id="privateAlertReturn" onClick={this.hideNotification}>Return</div>
-            </div>
         </div>
       );
    }
