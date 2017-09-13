@@ -128,11 +128,11 @@ export default class WelcomeContainer extends React.Component {
           </div>
           
           {/*<div id="chatBoxOpenButtonContainer">*/}
-            <Link to="/chatbox" activeClassName="activeChat">
+            {/*<Link to="/chatbox" activeClassName="activeChat">
               <div id="chatBoxOpenButton">
                 Live Debate
               </div>
-            </Link>
+            </Link>*/}
           {/*</div>*/}
 
           {this.props.children}

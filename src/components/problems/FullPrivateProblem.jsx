@@ -234,7 +234,7 @@ unVote() {
                 <div id="privateAlertHeader">
                     <img src={require('../../assets/lock2Blue.svg')} id="lockAlert" width="30" height="30" onClick={this.privateAlert} alt="Logo logo, signifying this is private"/>
                 </div>
-                <div id="privateAlertContent">This space is entirely <span id="blue">private</span></div>
+                <div id="privateAlertContent">This project is entirely <span id="blue">private</span></div>
                 <div id="privateAlertReturn" onClick={this.hideNotification}>Return</div>
         </div>
       </div>
@@ -302,6 +302,13 @@ unVote() {
         <br />
         <br />
         </ReactCSSTransitionGroup>
+        <div id="privateAlert">
+                <div id="privateAlertHeader">
+                    <img src={require('../../assets/lock2Blue.svg')} id="lockAlert" width="30" height="30" onClick={this.privateAlert} alt="Logo logo, signifying this is private"/>
+                </div>
+                <div id="privateAlertContent">This project is entirely <span id="blue">private</span></div>
+                <div id="privateAlertReturn" onClick={this.hideNotification}>Return</div>
+        </div>
       </div>
       );
     }

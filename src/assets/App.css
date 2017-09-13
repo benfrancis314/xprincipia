@@ -3931,7 +3931,7 @@ introductionProjectTitle {
     	display: none;
     }
     #createWelcomeButtonBox {
-      margin: 0% 18% 0% 18%;
+      margin: 2.5% 18% 0% 18%;
       transform: scale(1);
       transition: all 0.5s ease 0s;
       border: 1px solid #dddddd;
