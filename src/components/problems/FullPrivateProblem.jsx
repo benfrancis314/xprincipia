@@ -223,7 +223,12 @@ unVote() {
           <img src={require('../../assets/tutorial.svg')} id="tutorialProblemButton" width="50" height="50" alt="Back arrow, blue up arrow" />
         </div>*/}
         
-        <TutorialProjectContent />
+        {/*Need new tutorial for mind temple*/}
+        {/*<TutorialProjectContent />*/}
+        <br />
+        <br />
+        <br />
+        <br />
         </ReactCSSTransitionGroup>
         <div id="privateAlert">
                 <div id="privateAlertHeader">
@@ -290,7 +295,12 @@ unVote() {
           <img src={require('../../assets/tutorial.svg')} id="tutorialProblemButton" width="50" height="50" alt="Back arrow, blue up arrow" />
         </div>*/}
         
-        <TutorialProjectContent />
+        {/*Need new tutorial for mind temple*/}
+        {/*<TutorialProjectContent />*/}
+        <br />
+        <br />
+        <br />
+        <br />
         </ReactCSSTransitionGroup>
       </div>
       );

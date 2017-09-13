@@ -95,7 +95,7 @@ this.state.question = document.getElementById('questionTextArea').value
               <div id="questionFormComponent">
                     <form id="questionForm">
                         <fieldset id='fieldSetNoBorderPadding'>
-                                <textarea name="questionText" required="required" id="questionTextArea" placeholder="Ask a question about this project" ></textarea>
+                                <textarea name="questionText" required="required" id="questionTextArea" placeholder="Ask questions about this project." ></textarea>
                                 <input type="button" value="Ask" onClick={this.postQuestion} id="askQuestion"/>
                         </fieldset>
                     </form>

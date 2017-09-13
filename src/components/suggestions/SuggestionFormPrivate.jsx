@@ -95,7 +95,7 @@ this.state.suggestion = document.getElementById('suggestionTextArea').value
               <form id="questionForm">
                   <fieldset  id='fieldSetNoBorderPadding'>
                       {/*<legend>Suggestions</legend>*/}
-                          <textarea name="suggestionText" required="required" id="suggestionTextArea" placeholder="Give a suggestion for this project. Often, this is the seed of an idea or a suggested direction to take the project. " ></textarea>
+                          <textarea name="suggestionText" required="required" id="suggestionTextArea" placeholder="Plant the seed of an idea or suggest a direction to take the idea. " ></textarea>
                           <input type="button" value="Add" onClick={this.postSuggestion} id="addSuggestion"/>
                   </fieldset>
               </form>

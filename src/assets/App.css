@@ -1931,11 +1931,11 @@ body, html, #main {
     #registerButton, #loginButton {
     	color: #00dcff;
       background-color: rgba(0,220, 255, 0);
-      font-size: 65%;
+      font-size: 80%;
     	border: 1px solid #00dcff;
       border-radius: 3px;
     	width: 14%;
-    	padding: 0px;
+    	padding: 3px;
     	margin: 0 auto;
       text-align: center;
       font-family: 'Alegreya Sans SC', sans-serif;
@@ -1961,7 +1961,7 @@ body, html, #main {
     	border: 1px solid #00ffdc;
       border-width: 0px 1px 1px 1px;
       width: 10%;
-      font-size: 60%;
+      font-size: 70%;
     }
     #registerButton, #loginButton {
       margin-top: 0%;
@@ -2169,7 +2169,7 @@ body, html, #main {
 }
 #introductionCapitalProse {
   font-size: 150%;
-  font-family: 'Open Sans';
+  /*font-family: 'Open Sans';*/
 }
 #introductionBigBlue {
   font-size: 125%;
@@ -2198,13 +2198,20 @@ body, html, #main {
   padding-top: 6%;
   padding-bottom: 8%;
   line-height: 170%;
-  background-color: rgba(0,220,255,0.05);
-  border: 1px solid #00dcff;
-  border-width: 1px 0px;
+  /*background-color: rgba(0,220,255,0.05);*/
+  /*border: 1px solid #00dcff;*/
+  /*border-width: 1px 0px;*/
   width: 70%;
   margin: 0 auto;
   margin-top: 2%;
   margin-bottom: 6%;
+
+  border: 1px solid #333333;
+  border-radius: 5px 5px 10px 10px;
+  width: 80%;
+  padding: 6% 5% 6% 5%;
+  /*margin-bottom: 1.1%;*/
+  background: linear-gradient(left,rgba(0,220,255, 0.06), rgba(0,220,255, 0.07), rgba(0,220,255, 0.02));
 }
 #introductionProjectsProse {
   font-family: 'Open Sans';
@@ -2230,8 +2237,8 @@ body, html, #main {
   margin: 0 auto;
   width: 60%;
   text-align: center;
-  color: #00ffdc;
-  border: 1px solid #00ffdc;
+  color: #ffffff;
+  border: 1px solid #dddddd;
   border-radius: 3px;
   padding: 3px;
   margin-top: 4%;
@@ -2296,6 +2303,30 @@ body, html, #main {
   margin-top: 6%;
   margin-bottom: 8%;
   padding: 3%;
+}
+
+#introductionExploreButton {
+  width: 35%;
+  padding: 3%;
+  padding-bottom: 1%;
+  padding-top: 1%;
+  margin: 0 auto;
+  margin-top: 0%;
+  margin-bottom: 8%;
+  font-size: 175%;
+  text-align: center;
+  letter-spacing: 4px;
+  border: 1px solid #00ffdc;
+  color: #00ffdc;
+  border-radius: 3px;
+  background-color: rgba(0,255,220,0.05);
+  transition: 0.5s all ease 0s;
+}
+#introductionExploreButton:hover {
+  cursor: pointer;
+  background-color: #00ffdc;
+  color: #0f131c;
+}
   
 
   /*Circular*/
@@ -2321,7 +2352,6 @@ body, html, #main {
   box-shadow: 0 0 2pt 2pt rgba(0,220,255,0.5);
   transition: all 0.5s ease 0s;
   transform: scale(1);*/
-}
 #introductionProjectHeader1 {
   background-image: url('./earthRise.jpg');
 }
@@ -2867,11 +2897,8 @@ introductionProjectTitle {
   border-radius: 0% 0% 15% 15%;
   border-width: 1px 0px 1px 0px;
   padding: 15px 35px 15px 35px;
-  /*color: #dddddd;*/
   transition: all 0.5s ease 0s;
-  /*background: linear-gradient(rgba(0,220,255,0.1), rgba(255,255,255,0.025));*/
   background: linear-gradient(rgba(255,255,255,0.05), rgba(0,220,255,0.1), rgba(0,220,255,0.1), rgba(255,255,255,0.025));
-  /*background-color: rgba(255,255,255,0.025);*/
 }
 #privateContainerSettingsButton {
   margin: 0 auto;
@@ -2952,7 +2979,7 @@ introductionProjectTitle {
   margin: 0 auto;
   /*box-shadow: 0 0 2pt 2pt rgba(0,220,255,0.5);*/
   box-shadow: 0 0 2pt 2pt rgba(0,220,255,0.5);
-  transition: all 0.5s ease 0s;
+  transition: all 0.75s ease 0s;
   transform: scale(1);
   margin-top: 1%;
 }
@@ -2964,6 +2991,7 @@ introductionProjectTitle {
   box-shadow: 0 0 1pt 3pt rgba(0,220,255,0.5);
   transform: scale(1.02);
   cursor: pointer;
+  background: radial-gradient(circle, rgba(0,220,255,0.05), rgba(0,220,255,0.05), rgba(0,220,255,0.1), rgba(0,220,255,0.05));
 }
 #SPPrivateUnitList {
   text-align: center;
@@ -3006,8 +3034,8 @@ introductionProjectTitle {
   overflow: hidden;
   padding: 5px 0px 0px 0px;
   margin: 0 auto;
-  margin-top: 2%;
-  margin-bottom: 2%;
+  margin-top: 1.8%;
+  margin-bottom: 1%;
   text-align: center;
   color: #dddddd;
   letter-spacing: 8px;
@@ -3016,13 +3044,14 @@ introductionProjectTitle {
 #privateExploreInput {
   color: #dddddd;
   background: radial-gradient(rgba(0,220,255, 0), rgba(0,220,255, 0.1));
-  border: 1px solid #dddddd;
+  border: 1px solid #00dcff;
   border-radius: 25%;
   height: 35px;
   width: 40%;
   letter-spacing: 6px;
   font-size: 110%;
   padding: auto;
+  padding-top: 5px 0px;
   font-family: 'Alegreya Sans SC', sans-serif;
   text-align: center;
   transition: all 0.5s ease 0s;
@@ -3729,7 +3758,7 @@ introductionProjectTitle {
 
       flex: 3 3 auto;
       font-family: 'Open Sans';
-      border: 1px solid #333333;
+      border: 1px solid #dddddd;
       border-radius: 5px 0px 25% 10px;
       width: 80%;
       padding: 2% 5% 2% 5%;
@@ -4186,6 +4215,7 @@ introductionProjectTitle {
   }
   #welcomeUserProblemsHeader:hover {
     box-shadow: 0 0 1.5pt 1.5pt rgba(0,220,255,0.5);
+    /*background: linear-gradient(left,rgba(0,220,255, 0.05), rgba(0,220,255, 0.1), rgba(0,220,255, 0.05));*/
   }
   #welcomeUserProblemsUnitList {
     text-align: center;
@@ -5348,7 +5378,7 @@ introductionProjectTitle {
   background-color: rgba(0,220,255,0.05);
   margin: 0 auto;
   box-shadow: 0 0 2pt 2pt rgba(0,220,255,0.5);
-  transition: all 0.5s ease 0s;
+  transition: all 0.75s ease 0s;
   transform: scale(1);
   margin-top: 1%;
 
@@ -5360,6 +5390,8 @@ introductionProjectTitle {
 #SPHeader:hover {
   box-shadow: 0 0 1pt 3pt rgba(0,220,255,0.5);
   transform: scale(1.02);
+  background: radial-gradient(circle, rgba(0,220,255,0.05), rgba(0,220,255,0.05), rgba(0,220,255,0.1), rgba(0,220,255,0.05));
+
 }
 #SPTitle {
   margin: 0 auto;

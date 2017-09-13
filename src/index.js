@@ -143,10 +143,10 @@ import LearnContentContainerPrivate from './containers/LearnContentContainerPriv
 import LearnResourcesContainer1 from './containers/LearnResourcesContainer1.jsx';
 import LearnResourcesContainerPrivate from './containers/LearnResourcesContainerPrivate.jsx';
 import LoginContainer from './containers/LoginContainer.jsx';
+import MindTempleContainer from './containers/MindTempleContainer.jsx';
 import NewsFeedContainer from './containers/NewsFeedContainer.jsx';
 import ProfileAboutContainer from './containers/ProfileAboutContainer.jsx';
 import ProfileContainer from './containers/ProfileContainer.jsx';
-import ProfileContainer2 from './containers/ProfileContainer2.jsx';
 import ProjectRelatedParentsContainer from './containers/ProjectRelatedParentsContainer.jsx';
 import ProsContainer from './containers/ProsContainer.jsx';
 import ProsContainerPrivate from './containers/ProsContainerPrivate.jsx';
@@ -218,7 +218,7 @@ ReactDOM.render(
         <Route path='/login' component={LoginUnit}></Route>
         <Route path='/register' component={RegisterUnit}></Route>
       </Route>
-      <Route path='/mindtemple/container' component={ProfileContainer2}>
+      <Route path='/mindtemple/container' component={MindTempleContainer}>
         <IndexRoute component={TrueEmpty}></IndexRoute>
         <Route path='/mindtemple' component={TrueEmpty}></Route>
         <Route path='/mindtemple/create' component={PrivateProjectForm}></Route>
