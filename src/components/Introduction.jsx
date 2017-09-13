@@ -51,7 +51,7 @@ export default class Introduction extends React.Component {
                     <span id="introductionCapitalProse">we organize this process </span>by allowing users to work with others in projects, to come up with the best proposals to solve these problems<span id="blueOpen"> and achieve these goals</span>. 
                     <br />
                     <br />
-                    <span id="introductionCapitalProse">in this process </span>you are also given a centralized location for yourself, currently in the form of<span id="blueOpen"> your Mind Temple</span>. 
+                    <span id="introductionCapitalProse">in this process </span>you are also given a centralized location for your own work, currently in the form of<span id="blueOpen"> your Mind Temple</span>. 
                     <br />
                     <br />
                     <span id="introductionCapitalProse">if you would like </span>to be apart of attaining these goals or access your Mind Temple, please<span id="greenOpen"> register </span>and<span id="blueOpen"> begin exploring</span>. 
