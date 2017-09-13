@@ -5,30 +5,29 @@ import { Link } from 'react-router';
 import {Config} from '../../config.js';
 import $ from 'jquery';
 
-export default class ProsDeleteForm extends React.Component {
+export default class LearnContentDeleteForm extends React.Component {
 
   constructor(){
   super();
 
   this.state= {
-    pro: '',
+    learnItem: '',
   }
 
-    this.deletePro = this.deletePro.bind(this);
+    this.deleteLearnItem = this.deleteLearnItem.bind(this);
   };
 
-  deletePro() {
-  
-  //Delete question
+deleteLearnItem() {
+//Delete question
       var self = this
-      axios.delete( Config.API + '/auth/pros/delete?id='+this.props.params.proID, {
+      axios.delete( Config.API + '/auth/learnItems/delete?', {
         params: {
-          id: this.props.params.questID,
+          id: this.props.params.learnItemID,
           username: cookie.load('userName')
         }
       })
       .then(function (result) {
-        document.location = '/proposal/'+ self.props.params.probID + '/' + self.props.params.solutionID + '/pros'
+        document.location = '/project/private/'+ self.props.params.probID + '/notes'
       })
       .catch(function (error) {
         // console.log(error.response.data)
@@ -47,25 +46,33 @@ export default class ProsDeleteForm extends React.Component {
               } 
           });
       });
-  }
+    }
+  
+
+  
 
 
 
    render() {
       return (
-      <div id="questionFormComponent">
-            <form id="questionForm">
-                <fieldset>
-                    <legend>Delete Pro</legend>
-                         <div>Are you sure you would like to delete this Pro?</div>
-                         <br />
-                         <div onClick={this.deletePro} id="deleteButton">Delete</div>
-                         <Link to={`/proposal/${this.props.params.probID}/${this.props.params.solutionID}/pros`}>
-                            <div id="returnButton">Exit</div>
-                         </Link>
-                </fieldset>
-            </form>
-      </div>
+        <div>
+          <div id="discussMenuEnd">
+            Notes
+          </div>
+          <div id="questionFormComponent">
+                <form id="questionForm">
+                    <fieldset>
+                        <legend>Delete Note</legend>
+                            <div>Are you sure you would like to delete this lesson?</div>
+                            <br />
+                            <div onClick={this.deleteLearnItem} id="deleteButton">Delete</div>
+                              <Link to={`/project/private/${this.props.params.probID}/notes`}>
+                                <div id="returnButton">Exit</div>
+                            </Link>
+                    </fieldset>
+                </form>
+          </div>
+        </div>
 
       );
    }

@@ -5,30 +5,30 @@ import { Link } from 'react-router';
 import {Config} from '../../config.js';
 import $ from 'jquery';
 
-export default class ProsDeleteForm extends React.Component {
+export default class ConsDeleteForm extends React.Component {
 
   constructor(){
   super();
 
   this.state= {
-    pro: '',
+    con: '',
   }
 
-    this.deletePro = this.deletePro.bind(this);
+    this.deleteCon = this.deleteCon.bind(this);
   };
 
-  deletePro() {
+  deleteCon() {
   
   //Delete question
       var self = this
-      axios.delete( Config.API + '/auth/pros/delete?id='+this.props.params.proID, {
+      axios.delete( Config.API + '/auth/cons/delete?id='+this.props.params.conID, {
         params: {
-          id: this.props.params.questID,
+          id: this.props.params.conID,
           username: cookie.load('userName')
         }
       })
       .then(function (result) {
-        document.location = '/proposal/'+ self.props.params.probID + '/' + self.props.params.solutionID + '/pros'
+        document.location = '/proposal/private/'+ self.props.params.probID + '/' + self.props.params.solutionID + '/cons'
       })
       .catch(function (error) {
         // console.log(error.response.data)
@@ -50,17 +50,16 @@ export default class ProsDeleteForm extends React.Component {
   }
 
 
-
    render() {
       return (
       <div id="questionFormComponent">
             <form id="questionForm">
                 <fieldset>
-                    <legend>Delete Pro</legend>
-                         <div>Are you sure you would like to delete this Pro?</div>
+                    <legend>Delete Con</legend>
+                         <div>Are you sure you would like to delete this Con?</div>
                          <br />
-                         <div onClick={this.deletePro} id="deleteButton">Delete</div>
-                         <Link to={`/proposal/${this.props.params.probID}/${this.props.params.solutionID}/pros`}>
+                         <div onClick={this.deleteCon} id="deleteButton">Delete</div>
+                         <Link to={`/proposal/private/${this.props.params.probID}/${this.props.params.solutionID}/cons`}>
                             <div id="returnButton">Exit</div>
                          </Link>
                 </fieldset>

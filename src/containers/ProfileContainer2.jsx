@@ -15,7 +15,7 @@ export default class ProfileContainer extends React.Component {
 privateAlert () {
     // alert('success');
     $(document).ready(function() {
-        $('#privateAlert').attr('id','privateAlertShow').hide().slideDown(7500);
+        $('#privateAlert').attr('id','privateAlertShow').hide().slideDown(750);
     });
 }
 hidePrivateNotification() {

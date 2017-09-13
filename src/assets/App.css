@@ -891,10 +891,20 @@ body, html, #main {
       border-width: 0px 0px 1px 0px;*/
     }
     #answerQuestionContent {
-      flex: 3 3 auto;
+      /*Old Styles*/
+      /*flex: 3 3 auto;
       font-family: 'Open Sans';
       width: 80%;
-      padding: 0px 10px 10px 15px;
+      padding: 0px 10px 10px 15px;*/
+
+      flex: 3 3 auto;
+      font-family: 'Open Sans';
+      border: 1px solid #00dcff;
+      border-radius: 5px 0px 25% 10px;
+      width: 90%;
+      padding: 2% 5% 2% 5%;
+      margin-bottom: 1.1%;
+      background: linear-gradient(left,rgba(0,220,255, 0.06), rgba(0,220,255, 0.07), rgba(0,220,255, 0.02));
     }
     #greenBorder {
       border-color: #00ffdc;
@@ -994,7 +1004,7 @@ body, html, #main {
       padding: 6px;
       vertical-align: center;
       transition: all 0.25s ease 0s;
-      box-shadow: 0 0 0pt 0pt rgba(255,127,127,0.5);
+      box-shadow: 0 0 0pt 0pt rgba(255,127,127,0.5) inset;
     }
     #commentSBButtonUser {
       border-radius: 0px 0px 0px 3px;
@@ -1009,7 +1019,7 @@ body, html, #main {
     }
     #commentSBButton:hover, #commentSBButtonUser:hover {
       cursor: pointer;
-      box-shadow: 0 0 2pt 2pt rgba(0,220,255,0.5);
+      box-shadow: 0 0 2pt 2pt rgba(0,220,255,0.5) inset;
       /*Interesting thing to try to get images to switch on hover*/
       /*content: url("http://i.imgur.com/uKnMvyp.jpg");*/
     }
@@ -1018,6 +1028,8 @@ body, html, #main {
       color: #ff7f7f;
       border: 1px solid #ff7f7f;
       border-radius: 0px 0px 0px 2px;
+      box-shadow: 0 0 0pt 0pt rgba(255,127,127,0.5) inset;
+      transition: all 0.5s ease 0s;
     }
     #flagSBButton:active, #deleteSBButton:active {
       color: #0f131c !important;
@@ -1025,11 +1037,11 @@ body, html, #main {
     }
     #flagSBButton:hover, #deleteSBButton:hover {
       cursor: pointer;
-      box-shadow: 0 0 2pt 2pt rgba(255,127,127,0.5);
+      box-shadow: 0 0 2pt 2pt rgba(255,127,127,0.5) inset;
     }
     #editSBButton:hover, #editSBButtonAnswer:hover {
       cursor: pointer;
-      box-shadow: 0 0 2pt 2pt rgba(0,220,255,0.5);
+      box-shadow: 0 0 2pt 2pt rgba(0,220,255,0.5) inset;
     }
     #flagSBButton:active {
       color: #ff7f7f;
@@ -1062,19 +1074,29 @@ body, html, #main {
       font-family: 'Open Sans';
       padding-top: 10px;
       width: 100%;
-      border: 1px solid #00dcff;
-      border-radius: 3px;
+      /*border: 1px solid #00dcff;
+      border-radius: 3px;*/
       margin-top: 1%;
       margin-bottom: 1%;
     }
     #answerContent {
-    	flex: 3 3 auto;
+    	/*Old Styles*/
+      /*flex: 3 3 auto;
     	font-family: 'Open Sans';
     	border: 1px solid #00ffdc;
     	border-width: 1px 0px 0px 0px;
     	width: 80%;
     	padding: 10px;
-    	margin-left: 8%;
+    	margin-left: 8%;*/
+
+      flex: 3 3 auto;
+      font-family: 'Open Sans';
+      border: 1px solid #333333;
+      border-radius: 5px 0px 25% 10px;
+      width: 80%;
+      padding: 2% 5% 2% 5%;
+      margin-bottom: 1.1%;
+      background: linear-gradient(left,rgba(0,220,255, 0.06), rgba(0,220,255, 0.07), rgba(0,220,255, 0.02));
     }
     #answerVote {
       flex: 1 1 auto;
@@ -2357,11 +2379,11 @@ introductionProjectTitle {
   margin-top: 0%;
   margin-bottom: 1%;
   font-size: 175%;
-  width: 100%;
+  width: 80%;
   border-width: 1px 1px 1px 1px;
   border-radius: 40px 40px 0px 0px;;
   text-align: left;
-  padding: 0% 4% 0% 4%;
+  /*padding: 0% 4% 0% 4%;*/
   z-index: 5;
 }
 #fullTutorialWelcome {
@@ -2792,7 +2814,7 @@ introductionProjectTitle {
   letter-spacing: 6px;
   width: 100%;
   margin: 0 auto;
-  padding: 0.5%;
+  padding: 0.5% 0% 0.5% 0%;
   margin-bottom: 0.5%;
   margin-top: 0.5%;
 }
@@ -3580,6 +3602,7 @@ introductionProjectTitle {
   cursor: pointer;
   /*font-size: 105%;*/
   box-shadow: 0 0 2px 2px rgba(0,220,255,0.5);
+  background: linear-gradient(left,rgba(0,220,255, 0.05), rgba(0,220,255, 0.1), rgba(0,220,255, 0.05));
 }
 #solutionUnitActive {
   padding: 10px;
@@ -3693,7 +3716,8 @@ introductionProjectTitle {
       margin: 0 auto;
     }
     #suggestionContent {
-      flex: 3 3 auto;
+      /*Old Styles*/
+      /*flex: 3 3 auto;
       font-family: 'Open Sans';
       border: 1px solid #dddddd;
       border-width: 1px 0px 1px 1px;
@@ -3701,14 +3725,35 @@ introductionProjectTitle {
       width: 80%;
       padding: 15px;
       margin-bottom: 1.1%;
-      background-color: rgba(0,220,255,0.05);
+      background-color: rgba(0,220,255,0.05);*/
+
+      flex: 3 3 auto;
+      font-family: 'Open Sans';
+      border: 1px solid #333333;
+      border-radius: 5px 0px 25% 10px;
+      width: 80%;
+      padding: 2% 5% 2% 5%;
+      margin-bottom: 1.1%;
+      background: linear-gradient(left,rgba(0,220,255, 0.06), rgba(0,220,255, 0.07), rgba(0,220,255, 0.02));
     }
     #suggestionText {
-      font-family: 'Open Sans';
+      /*Old Styles*/
+      /*font-family: 'Open Sans';
       margin: 7px;
       margin-top: 10px;
       font-size: 115%;
-      color: #eeeeee;
+      line-height: 150%;*/
+
+      line-height: 150%;
+      font-family: 'Open Sans' !important;
+      font-size: 125%;
+      padding-left: 2%;
+      padding-right: 2%;
+      padding-top: 1.75%;
+      padding-bottom: 1.75%;
+      border: 1px solid #333333;
+      border-width: 0px 0px 1px 0px;
+      width: 82%;
     }
     #suggestionVote, #suggestionVoteNoComments {
       flex: 1 1 auto;
@@ -4374,7 +4419,6 @@ introductionProjectTitle {
 #freeFormTextArea {
   text-align: left;
   font-family: 'Open Sans', sans-serif;
-  /*padding: 10px;*/
   color: #ffffff;
   border: 1px solid #dddddd;
   height: 4em;
@@ -4382,6 +4426,7 @@ introductionProjectTitle {
   background-color: rgba(0,220,255, 0.05);
   margin: 0 auto;
   width: 70%;
+  line-height: 150%;
 }
 #learnContentTextArea {
   height: 12em;
@@ -4409,7 +4454,7 @@ introductionProjectTitle {
 #addAnswerGreen {
   font-size: 90%;
   color: #00dcff;
-  background-color: rgba(0,255,220,0);
+  background-color: rgba(0,255,220,0.05);
   border: 1px solid #00dcff;
   border-radius: 2px;
   margin-top: 2%;
@@ -4622,7 +4667,7 @@ introductionProjectTitle {
 #middleAlignOrionPrivate {
   display: block;
   margin: 0 auto;
-  padding: 3px;
+  padding: 3px 0px 3px 0px;
   margin-top: -1%;
 }
 #deleteLogo {
@@ -4649,7 +4694,7 @@ introductionProjectTitle {
 }
 #commentLogo:hover {
   cursor: pointer;
-  box-shadow: 0 0 1pt 1pt rgba(0,220,255,0.5);
+  /*box-shadow: 0 0 1pt 1pt rgba(0,220,255,0.5);*/
 }
 
 #flagSolutionButton, #deleteSolutionButton {
@@ -5838,16 +5883,33 @@ introductionProjectTitle {
   border-width: 0px 0px 0px 0px;
 }
 #discussHeader {
-  font-size: 110%;
+  /*Old Styles*/
+  /*font-size: 110%;
   color: #00dcff;
-  margin-bottom: 3px;
+  margin-bottom: 3px;*/
+
+  color: #00dcff !important;
+  font-size: 90%;
+  padding-left: 0.5%;
+  width: 30%;
+  border: 1px solid #333333;
+  border-width: 0px 0px 1px 0px;
 }
 #discussHeaderGreen {
-  font-size: 110%;
+  /*Old Styles*/
+  /*font-size: 110%;
   color: #00ffdc;
-  margin-bottom: 3px;
+  margin-bottom: 3px;*/
+
+  color: #00dcff !important;
+  font-size: 90%;
+  padding-left: 0.5%;
+  width: 30%;
+  border: 1px solid #333333;
+  border-width: 0px 0px 1px 0px;
 }
 #discussPercent {
+  /*Old Styles*/
   margin-right: 10px;
   font-size: 120%;
 }
@@ -5931,16 +5993,33 @@ label + input[type=radio] + label {
   overflow: hidden;
 }
 #learnContentText {
-  font-family: 'Open Sans';
-  margin-top: 5px;
+  /*Old Text*/
+  /*font-family: 'Open Sans';
   max-width: 584.31px;
+  line-height: 150%;
+  margin: 7px;
+  margin-top: 10px;
+  font-size: 115%;*/
+
+  max-width: 584.31px;
+  line-height: 150%;
+  font-family: 'Open Sans' !important;
+  font-size: 125%;
+  padding-left: 2%;
+  padding-right: 2%;
+  padding-top: 1.75%;
+  padding-bottom: 1.75%;
+  border: 1px solid #333333;
+  border-width: 0px 0px 1px 0px;
+  width: 82%;
 }
 #learnResourcesText {
   font-family: 'Open Sans';
   /*margin-top: 5px;*/
 }
 #learnResourcesLink {
-  text-decoration: underline;
+  /*Old Styles*/
+  /*text-decoration: underline;
   color: rgba(255,255,255,1);
   transition: all 1s ease 0s;
   font-size: 120%;
@@ -5948,8 +6027,27 @@ label + input[type=radio] + label {
   font-family: 'Open Sans';
   overflow: auto;
   word-break: break-all;
-  /*margin-top: 5px;*/
   max-width: 584.31px;
+  line-height: 150%;
+  margin: 7px;
+  margin-top: 10px;*/
+
+  transition: all 1s ease 0s;
+  transform: scale(1);
+  overflow: auto;
+  word-break: break-all;
+  text-decoration: underline;
+  max-width: 584.31px;
+  line-height: 150%;
+  font-family: 'Open Sans' !important;
+  font-size: 125%;
+  padding-left: 2%;
+  padding-right: 2%;
+  padding-top: 1.75%;
+  padding-bottom: 1.75%;
+  border: 1px solid #333333;
+  border-width: 0px 0px 1px 0px;
+  width: 82%;
 }
 #learnResourcesLink:hover {
   color: rgba(0,220,255,1);
@@ -6169,6 +6267,7 @@ label + input[type=radio] + label {
   height: 4em;
   resize: none;
   background-color: inherit;
+  line-height: 150%;
 }
 #addProsCons {
   font-size: 90%;
@@ -7245,10 +7344,8 @@ input#submitNewVersion:hover {
   margin-left: 3%;
 }
 #chatBoxMessages {
-  /*background-color: rgba(0,220,255, 0.05);*/
   background: linear-gradient(left,rgba(0,220,255, 0.06), rgba(0,220,255, 0.07), rgba(0,220,255, 0.02));
   border: 1px solid #333333;
-  /*border-radius: 0px 5% 25% 0px;*/
   border-radius: 5px 5px 25% 10px;
   margin-top: 3%;
   margin-bottom: 3%;
@@ -7264,7 +7361,6 @@ input#submitNewVersion:hover {
 }
 #whiteChat {
   font-family: 'Open Sans' !important;
-  /*font-family: 'Average Sans', sans-serif !important;*/
   font-size: 125%;
   padding-left: 2%;
   padding-right: 2%;

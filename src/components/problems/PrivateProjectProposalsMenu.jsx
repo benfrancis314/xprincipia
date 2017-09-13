@@ -1,8 +1,8 @@
 import React from 'react';
 import axios from 'axios'
 import {Config} from '../../config.js';
-import ProblemTopSolutions from './ProblemTopSolutions.jsx';
-import SolutionForm from '../solutions/SolutionForm.jsx';
+import ProblemTopSolutionsPrivate from './ProblemTopSolutionsPrivate.jsx';
+import SolutionPrivateForm from '../solutions/SolutionPrivateForm.jsx';
 
 export default class ProblemSolutionsMenu extends React.Component {
   constructor(props){
@@ -41,8 +41,8 @@ export default class ProblemSolutionsMenu extends React.Component {
                     <img src={require('../../assets/blueAdd3.svg')} id="addBlueX" width="32" height="32" alt="Close button, red X symbol" />
                 </div>
             </a>
-            <ProblemTopSolutions probID={this.props.probID} />
-            <SolutionForm probID={this.props.probID} projectTitle={this.props.projectTitle} />
+            <ProblemTopSolutionsPrivate probID={this.props.probID} />
+            <SolutionPrivateForm probID={this.props.probID} projectTitle={this.props.projectTitle} />
         </div>
 
       );

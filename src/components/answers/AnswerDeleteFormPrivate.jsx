@@ -5,30 +5,28 @@ import { Link } from 'react-router';
 import {Config} from '../../config.js';
 import $ from 'jquery';
 
-export default class ProsDeleteForm extends React.Component {
+export default class AnswerDeleteForm extends React.Component {
 
   constructor(){
   super();
 
   this.state= {
-    pro: '',
+    answer: '',
   }
 
-    this.deletePro = this.deletePro.bind(this);
+    this.deleteAnswer = this.deleteAnswer.bind(this);
   };
 
-  deletePro() {
-  
-  //Delete question
+deleteAnswer() {
       var self = this
-      axios.delete( Config.API + '/auth/pros/delete?id='+this.props.params.proID, {
+      axios.delete( Config.API + '/auth/answers/delete?id='+this.props.params.answerID, {
         params: {
           id: this.props.params.questID,
           username: cookie.load('userName')
         }
-      })
+    })
       .then(function (result) {
-        document.location = '/proposal/'+ self.props.params.probID + '/' + self.props.params.solutionID + '/pros'
+        document.location = '/project/private/'+ self.props.params.probID + '/question/' + self.props.params.questID + '/answers'
       })
       .catch(function (error) {
         // console.log(error.response.data)
@@ -47,7 +45,8 @@ export default class ProsDeleteForm extends React.Component {
               } 
           });
       });
-  }
+    }
+  
 
 
 
@@ -55,12 +54,12 @@ export default class ProsDeleteForm extends React.Component {
       return (
       <div id="questionFormComponent">
             <form id="questionForm">
-                <fieldset>
-                    <legend>Delete Pro</legend>
-                         <div>Are you sure you would like to delete this Pro?</div>
+                <fieldset id="redFieldset">
+                    <legend>Delete Answer</legend>
+                         <div>Are you sure you would like to delete this answer?</div>
                          <br />
-                         <div onClick={this.deletePro} id="deleteButton">Delete</div>
-                         <Link to={`/proposal/${this.props.params.probID}/${this.props.params.solutionID}/pros`}>
+                         <div onClick={this.deleteAnswer} id="deleteButton">Delete</div>
+                         <Link to={`/project/private/${this.props.params.probID}/question/${this.props.params.questID}/answers`}>
                             <div id="returnButton">Exit</div>
                          </Link>
                 </fieldset>

@@ -1,8 +1,22 @@
 import React from 'react';
 import {Link} from 'react-router';
 import ReactGA from 'react-ga';
+import $ from 'jquery';
 
 export default class SubProblemUnit extends React.Component {
+
+	hoverText() {
+			$(document).ready(function() {
+					$('#privateContainerMotto').html("NEW SUB PROJECT").fadeIn(7500);
+					$('#privateContainerMotto').attr('id','privateContainerMottoBlue');
+			});
+	}
+	unHoverText() {
+			$(document).ready(function() {
+					$('#privateContainerMottoBlue').html("PROJECT BREAKDOWN");
+					$('#privateContainerMottoBlue').attr('id','privateContainerMotto');
+			});
+	}
 
   constructor(){
   super();
@@ -36,6 +50,13 @@ export default class SubProblemUnit extends React.Component {
 				<li>
 					<img src={require('../../assets/leftArrow.svg')} id="SParrowImg" width="50" height="50" alt="User avatar, DNA Helix" />
 				</li>
+				<Link to={`/project/${this.props.probID}/create`} activeClassName="activePrivateCreateButton">
+						<li id="SPUnit">
+								<div id="SPHeader" onMouseOver={this.hoverText} onMouseOut={this.unHoverText}>
+										<img src={require('../../assets/blueAdd2.svg')} id="privateNewProjectPlus" width="80" height="80" alt="User avatar, DNA Helix" />
+								</div>
+						</li>
+				</Link>
 				{this.state.problems.map(this.renderItem)}
 				<li>
 					<img src={require('../../assets/rightArrow.svg')} id="SParrowImg" width="50" height="50" alt="User avatar, DNA Helix" />

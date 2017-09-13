@@ -5,30 +5,29 @@ import { Link } from 'react-router';
 import {Config} from '../../config.js';
 import $ from 'jquery';
 
-export default class ProsDeleteForm extends React.Component {
+export default class LearnResourcesDeleteForm extends React.Component {
 
   constructor(){
   super();
 
   this.state= {
-    pro: '',
+    resource: '',
   }
 
-    this.deletePro = this.deletePro.bind(this);
+    this.deleteResource = this.deleteResource.bind(this);
   };
 
-  deletePro() {
-  
-  //Delete question
+deleteResource() {
+//Delete question
       var self = this
-      axios.delete( Config.API + '/auth/pros/delete?id='+this.props.params.proID, {
+      axios.delete( Config.API + '/auth/resources/delete?id='+this.props.params.resourceID, {
         params: {
-          id: this.props.params.questID,
+          id: this.props.params.resourceID,
           username: cookie.load('userName')
         }
       })
       .then(function (result) {
-        document.location = '/proposal/'+ self.props.params.probID + '/' + self.props.params.solutionID + '/pros'
+        document.location = '/project/private/'+ self.props.params.probID + '/resources'
       })
       .catch(function (error) {
         // console.log(error.response.data)
@@ -47,25 +46,31 @@ export default class ProsDeleteForm extends React.Component {
               } 
           });
       });
-  }
+    }
+  
 
 
 
    render() {
       return (
-      <div id="questionFormComponent">
-            <form id="questionForm">
-                <fieldset>
-                    <legend>Delete Pro</legend>
-                         <div>Are you sure you would like to delete this Pro?</div>
-                         <br />
-                         <div onClick={this.deletePro} id="deleteButton">Delete</div>
-                         <Link to={`/proposal/${this.props.params.probID}/${this.props.params.solutionID}/pros`}>
-                            <div id="returnButton">Exit</div>
-                         </Link>
-                </fieldset>
-            </form>
-      </div>
+        <div>
+          <div id="discussMenuEnd">
+            Resources
+          </div>
+          <div id="questionFormComponent">
+                <form id="questionForm">
+                    <fieldset>
+                        <legend>Delete Resource</legend>
+                            <div>Are you sure you would like to delete this resource?</div>
+                            <br />
+                            <div onClick={this.deleteResource} id="deleteButton">Delete</div>
+                            <Link to={`/project/private/${this.props.params.probID}/resources`}>
+                                <div id="returnButton">Exit</div>
+                            </Link>
+                    </fieldset>
+                </form>
+          </div>
+        </div>
 
       );
    }
