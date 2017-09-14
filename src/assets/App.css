@@ -7027,21 +7027,21 @@ input#submitNewVersion:hover {
   transition: all 0.5s ease 0s;
 }
 #returnButton {
-  color: #00ffdc;
-  border: 1px solid #00ffdc;
+  color: #00dcff;
+  border: 1px solid #00dcff;
   float: left;
   margin-right: 0%;
   margin-left: 10%;
 }
 #editButton {
-  color: #00dcff;
-  border: 1px solid #00dcff;
+  color: #00ffdc;
+  border: 1px solid #00ffdc;
   border-radius: 2px;
 }
 #editButton:hover {
   cursor: pointer;
   color: #0f131c;
-  background-color: #00dcff;
+  background-color: #00ffdc;
 }
 #deleteButton:hover {
   cursor: pointer;
@@ -7063,7 +7063,7 @@ input#submitNewVersion:hover {
 #returnQuestion:hover {
   cursor: pointer;
   color: #0f131c;
-  background-color: #00ffdc;
+  background-color: #00dcff;
 }
 
 

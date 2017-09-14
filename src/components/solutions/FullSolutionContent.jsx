@@ -307,7 +307,7 @@ unVote() {
               <div>
             {/*{React.cloneElement(<ProsContainer probID={this.state.probID} solutionID={this.state.solutionID} /> )}*/}
             {/*{React.cloneElement(<ConsContainer probID={this.state.probID} solutionID={this.state.solutionID} /> )}*/}
-              {React.cloneElement(this.props.children)}
+              {this.props.children}
               {React.cloneElement(<FullSolutionDescription solutionInfo={ this.state.solutionInfo} solutionID={this.props.params.solutionID}/> )}            </div>
         </div>
       );
