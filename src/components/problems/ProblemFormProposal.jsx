@@ -71,7 +71,7 @@ export default class ProblemForm extends React.Component {
         <div>
           {/*ScrollableAnchor doesn't work right now, not sure why*/}
           {/*<ScrollableAnchor id={'newSubProject'}>*/}
-            <Link to={`/project/${this.props.params.probID}/subprojects`}>
+            <Link to={`/project/${this.props.params.probID}/proposal/${this.props.params.solutionID}/subprojects`}>
                 <img src={require('../../assets/redX.svg')} id="closeRedX" width="40" height="40" alt="Close button, red X symbol" />
             </Link>
           {/*</ScrollableAnchor>*/}

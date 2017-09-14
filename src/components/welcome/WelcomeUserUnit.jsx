@@ -24,10 +24,21 @@ export default class WelcomeUserUnit extends React.Component {
     //     });
     // }
 if (problem.Private === true) {
-            return (
-                <div key={problem.ID} id="nodisplay">
-                </div>
+        return (
+            <div key={problem.ID} id="nodisplay">
+            </div>
         );
+
+} else if (problem.ParentType === 1) {
+
+      return (
+      
+            <li key={problem.ID} id="nodisplay">
+            </li>
+      
+      
+      );
+
 } else if (problem.Title === 'Interstellar Civilization') {
 
       return (

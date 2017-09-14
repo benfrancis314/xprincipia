@@ -70,6 +70,7 @@ import LoginUnit from './components/LoginUnit.jsx';
 import PrivateProjectForm from './components/problems/PrivateProjectForm.jsx';
 import PrivateSubProjectForm from './components/problems/PrivateSubProjectForm.jsx';
 import ProblemForm from './components/problems/ProblemForm.jsx';
+import ProblemFormProposal from './components/problems/ProblemFormProposal.jsx';
 import ProblemDiscussMenu from './components/problems/ProblemDiscussMenu.jsx';
 import ProblemDiscussPrivateMenu from './components/problems/ProblemDiscussPrivateMenu.jsx';
 import ProblemLearnMenu from './components/problems/ProblemLearnMenu.jsx';
@@ -155,6 +156,7 @@ import QuestionContainerPrivate from './containers/QuestionContainerPrivate.jsx'
 import RelatedProposalsContainer from './containers/RelatedProposalsContainer.jsx';
 import SearchContainer from './containers/SearchContainer.jsx';
 import SubProblemContainer from './containers/SubProblemContainer.jsx';
+import SubProjectProposalContainer from './containers/SubProjectProposalContainer.jsx';
 import SuggestionCommentContainer from './containers/SuggestionCommentContainer.jsx';
 import SuggestionCommentContainerPrivate from './containers/SuggestionCommentContainerPrivate.jsx';
 import SuggestionContainer from './containers/SuggestionContainer.jsx';
@@ -415,7 +417,8 @@ ReactDOM.render(
             <Route path='/project/:probID/proposal/:solutionID' component={FullSolutionContent}>
             <Route path='/proposal/:probID/:solutionID/delete' component={SolutionDeleteForm}></Route>
             <Route path='/proposal/:probID/:solutionID/edit' component={SolutionEditForm}></Route>
-            <Route path='/project/:probID/proposal/:solutionID/subprojects' component={SubProblemContainer}></Route>
+            <Route path='/project/:probID/proposal/:solutionID/subprojects' component={SubProjectProposalContainer}></Route>
+            <Route path='/project/:probID/proposal/:solutionID/subprojects/create' component={ProblemFormProposal}></Route>
             <Route path='/project/:probID/proposal/:solutionID/related' component={RelatedProposalsContainer}></Route>
             <Route path='/project/:probID/proposal/:solutionID/discuss' component={ProposalDiscussMenu}>
               <IndexRoute component={QuestionContainer}></IndexRoute>

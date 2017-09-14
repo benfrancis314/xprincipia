@@ -13,7 +13,7 @@ export default class SubProblemUnit extends React.Component {
 	}
 	unHoverText() {
 			$(document).ready(function() {
-					$('#privateContainerMottoBlue').html("PROJECT BREAKDOWN");
+					$('#privateContainerMottoBlue').html("PROPOSAL BREAKDOWN");
 					$('#privateContainerMottoBlue').attr('id','privateContainerMotto');
 			});
 	}
@@ -46,11 +46,11 @@ export default class SubProblemUnit extends React.Component {
 	render() {
 		return (
 	    <div id="SPwrapper">
-			<ul id="SPUnitList"> 
+			<ul id="SPUnitListProposal"> 
 				<li>
 					<img src={require('../../assets/leftArrow.svg')} id="SParrowImg" width="50" height="50" alt="User avatar, DNA Helix" />
 				</li>
-				<Link to={`/project/${this.props.probID}/create`} activeClassName="activePrivateCreateButton">
+				<Link to={`/project/${this.props.probID}/proposal/${this.props.solutionID}/subprojects/create`} activeClassName="activePrivateCreateButton">
 						<li id="SPUnit">
 								<div id="SPHeader" onMouseOver={this.hoverText} onMouseOut={this.unHoverText}>
 										<img src={require('../../assets/blueAdd2.svg')} id="privateNewProjectPlus" width="80" height="80" alt="User avatar, DNA Helix" />
@@ -74,7 +74,7 @@ export default class SubProblemUnit extends React.Component {
 					});
 					// alert('success');
     }
-if (problem.ParentType === 1) {
+if (problem.ParentType === 0) {
         return (
             <div key={problem.ID} id="nodisplay">
             </div>

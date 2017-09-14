@@ -46,7 +46,7 @@ export default class ProblemForm extends React.Component {
       document.location = '/project/private/'+self.props.params.probID+'/subprojects'
     })
       .catch(function (error) {
-        alert('why not working');
+        // alert('why not working');
           $(document).ready(function() {
               $('#notification').attr('id','notificationShow').hide().slideDown();
 

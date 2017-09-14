@@ -64,7 +64,7 @@ export default class ProjectEditPrivateForm extends React.Component {
       summary : self.state.summary
     })
     .then(function (result) {
-        alert('success');
+        // alert('success');
     //   document.location = '/project/private/'+ self.props.params.probID + '/subprojects'
       document.location = window.location.pathname 
     })

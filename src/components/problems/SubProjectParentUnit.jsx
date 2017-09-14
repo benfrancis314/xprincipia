@@ -31,8 +31,19 @@ componentWillReceiveProps (nextProps){
         }) 
 }
    render() {
-		 
-	if (this.props.parentID === 0) {
+
+    if (this.props.parentType === 1) {
+
+      return (
+            <div>
+                {/*<Link to={`/project/${this.props.parentID}/subprojects`}>*/}
+                    <div id="parentButton">
+                        <span id='blue'>Parent: </span>Return to Proposal
+                    </div>
+                {/*</Link>*/}
+            </div>
+      );		 
+} else if (this.props.parentID === 0) {
 		return (
             <div>
                 <Link to={`/project/${this.props.parentID}/subprojects`}>
