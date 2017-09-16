@@ -537,7 +537,7 @@ export default class Tutorial extends React.Component {
                                             <div>
                                             <div id="solutionFormLabel">References</div>
                                             <p id="solutionReferences">
-                                                SpaceX references
+                                                http://online.liebertpub.com/doi/pdfplus/10.1089/space.2017.29009.emu
                                             </p>
                                             </div>
                                             <br />

@@ -25,7 +25,7 @@ export default class WelcomeCreateForm extends React.Component {
   postProblem() {
     this.state.title = document.getElementById('problemTitleForm').value
     this.state.summary = document.getElementById('problemSummaryForm').value
-    return axios.post( Config.API + '/auth/problems/create', {
+    return axios.post( Config.API + '/auth/problems/create/private', {
         username: cookie.load('userName'),
         parentID: this.props.params.probID,
         title : this.state.title,
@@ -33,7 +33,7 @@ export default class WelcomeCreateForm extends React.Component {
         // Not sure if necessary
       })
       .then(function (response) {
-        document.location = '/welcome' 
+        document.location = '/mindtemple' 
       })
       .catch(function (error) {
           $(document).ready(function() {
@@ -56,11 +56,11 @@ export default class WelcomeCreateForm extends React.Component {
   render() {
       return (
         <div>
-          <Link to={`/welcome`}>
+          <Link to={`/mindtemple`}>
               <img src={require('../../assets/redX.svg')} id="closeRedX" width="40" height="40" alt="Close button, red X symbol" />
           </Link>
           <div id="SBButtonNoHover">
-            New Project
+            New Private Project
           </div>
           <div id="createProblemBox">
               <form id="createForm">

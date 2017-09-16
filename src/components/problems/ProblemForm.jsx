@@ -38,6 +38,8 @@ export default class ProblemForm extends React.Component {
       parentID: this.props.params.probID,
       title : this.state.title,
       summary : this.state.summary,
+      // Not sure if necessary
+      // Private: false
     })
     .then(function (result) {
       //redirect back to the last page     

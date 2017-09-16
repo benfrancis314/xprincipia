@@ -5,6 +5,7 @@ import axios from 'axios';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group'; // ES6
 import TutorialProfileContent from '../components/tutorials/TutorialProfileContent.jsx';
 import {Config} from '../config.js';
+// import $ from 'jquery';
 // import sphere from 'jquery.earth-3d';
 
 
@@ -97,12 +98,17 @@ export default class ProfileContainer extends React.Component {
 
 
    render() {
+    // Currently does it twice and is glitchy, would like to add back in later
+    // with ideally scrolling in from left
+    // $(document).ready(function() {
+    //     $('#profileContainer').hide().slideDown(1500);
+    // });
       return (
     <div id="profileContainer">
         <ReactCSSTransitionGroup
         transitionName="example"
         transitionAppear={true}
-        transitionAppearTimeout={2000}
+        transitionAppearTimeout={3000}
         transitionEnter={false}
         transitionLeave={false}>
       <div id="profileBox">
@@ -112,6 +118,9 @@ export default class ProfileContainer extends React.Component {
                 <div id="earth"></div>
             </div>
             <div id="userOptions">
+                <Link to={`/mindtemple`} activeClassName="activeBlue">
+                    <div id="userProblemsSolutionsButton">Private Projects</div>
+                </Link>
                 <Link to={`/profile`} activeClassName="activeBlue">
                     <div id="userProblemsSolutionsButton">Activity</div>
                 </Link>

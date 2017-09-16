@@ -1,11 +1,13 @@
 import React from 'react';
-import { Link } from 'react-router';
-import axios from 'axios'
+// Will be uesd with componentDidUpdate
+// import ReactDOM from 'react-dom';import axios from 'axios';
 import cookie from 'react-cookie';
+import { Link } from 'react-router';
+import axios from 'axios';
 import {Config} from '../../config.js';
 import $ from 'jquery';
 
-export default class WelcomeCreateForm extends React.Component {
+export default class ProblemForm extends React.Component {
 
   constructor(){
     super();
@@ -13,29 +15,38 @@ export default class WelcomeCreateForm extends React.Component {
     //ProblemForm structure in backend
     this.state= {
       title: '',
-      field: '',
-      description: '',
+      // field: '',
       summary: '',
     }
 
     this.postProblem = this.postProblem.bind(this);
-    // this.toggle = this.toggle.bind(this);
   };
 
+// componentDidUpdate() {
+//         ReactDOM.findDOMNode(this).scrollIntoView();
+//   }      
+
   postProblem() {
+    
+    //Read field items into component state
     this.state.title = document.getElementById('problemTitleForm').value
     this.state.summary = document.getElementById('problemSummaryForm').value
-    return axios.post( Config.API + '/auth/problems/create', {
-        username: cookie.load('userName'),
-        parentID: this.props.params.probID,
-        title : this.state.title,
-        summary : this.state.summary,
-        // Not sure if necessary
-      })
-      .then(function (response) {
-        document.location = '/welcome' 
-      })
+  
+    var self = this
+    axios.post( Config.API + '/auth/problems/create/private', {
+      username: cookie.load('userName'),
+      parentID: this.props.params.probID,
+      title : this.state.title,
+      summary : this.state.summary,
+      // Not sure if necessary
+      // Private: false
+    })
+    .then(function (result) {
+      //redirect back to the last page     
+      document.location = '/project/private/'+self.props.params.probID+'/subprojects'
+    })
       .catch(function (error) {
+        alert('why not working');
           $(document).ready(function() {
               $('#notification').attr('id','notificationShow').hide().slideDown();
 
@@ -47,20 +58,23 @@ export default class WelcomeCreateForm extends React.Component {
                     })
                   );
                 }  else if (error.response.data != '') {
-                $('#notificationContent').text(error.response.data);
+              $('#notificationContent').text(error.response.data);
               }
           });
       });
-    };
+  }
 
   render() {
       return (
         <div>
-          <Link to={`/welcome`}>
-              <img src={require('../../assets/redX.svg')} id="closeRedX" width="40" height="40" alt="Close button, red X symbol" />
-          </Link>
+          {/*ScrollableAnchor doesn't work right now, not sure why*/}
+          {/*<ScrollableAnchor id={'newSubProject'}>*/}
+            <Link to={`/project/private/${this.props.params.probID}/subprojects`}>
+                <img src={require('../../assets/redX.svg')} id="closeRedX" width="40" height="40" alt="Close button, red X symbol" />
+            </Link>
+          {/*</ScrollableAnchor>*/}
           <div id="SBButtonNoHover">
-            New Project
+            New Sub Project
           </div>
           <div id="createProblemBox">
               <form id="createForm">
@@ -79,6 +93,7 @@ export default class WelcomeCreateForm extends React.Component {
               </form>
           </div>
         </div>
+
       );
    }
 }

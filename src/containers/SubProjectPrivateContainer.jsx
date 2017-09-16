@@ -1,6 +1,6 @@
 import React from 'react';
 import axios from 'axios';
-import SubProblemUnit from '../components/problems/SubProblemUnit.jsx';
+import SubProjectPrivateUnit from '../components/problems/SubProjectPrivateUnit.jsx';
 import {Config} from '../config.js'
 
 export default class SubProblemContainer extends React.Component {
@@ -49,7 +49,7 @@ export default class SubProblemContainer extends React.Component {
             } else {*/
             return (
                 <div id="sidebarSBProjects">
-                    <SubProblemUnit problems={this.state.problems} />
+                    <SubProjectPrivateUnit problems={this.state.problems} />
                 </div>
             
             );

@@ -27,6 +27,7 @@ import FreeFormDeleteForm from './components/freeform/FreeFormDeleteForm.jsx';
 import FreeFormEditForm from './components/freeform/FreeFormEditForm.jsx';
 import FreeFormFlagForm from './components/freeform/FreeFormFlagForm.jsx';
 import FreeFormForm from './components/freeform/FreeFormForm.jsx';
+import FullPrivateProblem from './components/problems/FullPrivateProblem.jsx';
 import FullProblem from './components/problems/FullProblem.jsx';
 import FullSolution from './components/solutions/FullSolution.jsx';
 import FullSolutionContent from './components/solutions/FullSolutionContent.jsx';
@@ -46,6 +47,9 @@ import LearnResourcesEmbed from './components/learn/LearnResourcesEmbed.jsx';
 import LearnResourcesFlagForm from './components/learn/LearnResourcesFlagForm.jsx';
 import LearnResourcesForm from './components/learn/LearnResourcesForm.jsx';
 import LoginUnit from './components/LoginUnit.jsx';
+import PrivateProjectCreateButton from './components/problems/PrivateProjectCreateButton.jsx';
+import PrivateProjectForm from './components/problems/PrivateProjectForm.jsx';
+import PrivateSubProjectForm from './components/problems/PrivateSubProjectForm.jsx';
 import ProblemForm from './components/problems/ProblemForm.jsx';
 import ProblemDiscussMenu from './components/problems/ProblemDiscussMenu.jsx';
 import ProblemLearnMenu from './components/problems/ProblemLearnMenu.jsx';
@@ -104,6 +108,7 @@ import LoginContainer from './containers/LoginContainer.jsx';
 import NewsFeedContainer from './containers/NewsFeedContainer.jsx';
 import ProfileAboutContainer from './containers/ProfileAboutContainer.jsx';
 import ProfileContainer from './containers/ProfileContainer.jsx';
+import ProfileContainer2 from './containers/ProfileContainer2.jsx';
 import ProjectRelatedParentsContainer from './containers/ProjectRelatedParentsContainer.jsx';
 import ProsContainer from './containers/ProsContainer.jsx';
 import QuestionContainer from './containers/QuestionContainer.jsx';
@@ -171,6 +176,11 @@ ReactDOM.render(
         <Route path='/login' component={LoginUnit}></Route>
         <Route path='/register' component={RegisterUnit}></Route>
       </Route>
+      <Route path='/mindtemple/container' component={ProfileContainer2}>
+        <IndexRoute component={TrueEmpty}></IndexRoute>
+        <Route path='/mindtemple' component={TrueEmpty}></Route>
+        <Route path='/mindtemple/create' component={PrivateProjectForm}></Route>
+      </Route>
       <Route path='/profile/container' component={ProfileContainer}>
         <IndexRoute component={ProfileProblemsSolutions}></IndexRoute>
         <Route path='/profile' component={ProfileProblemsSolutions}></Route>
@@ -185,6 +195,108 @@ ReactDOM.render(
         </Route>
         <Route path='/profile/settings' component={ProfileSettings}></Route>
         <Route path='/profile/workspace' component={ProfileWorkspace}></Route>
+      </Route>
+      <Route path='/project/private/:probID' component={FullPrivateProblem}>
+        <IndexRoute component={SideBarProblem}></IndexRoute>
+        <Route path='/project/private/:probID/sideBar' component={SideBarProblem}>
+          <IndexRoute component={PrivateProjectCreateButton}></IndexRoute>
+          <Route path='/project/private/:probID/create' component={PrivateSubProjectForm}></Route>
+          <Route path='/project/private/:probID/edit' component={ProjectEditForm}></Route>
+          <Route path='/project/private/:probID/flag' component={ProjectFlagForm}></Route>
+          <Route path='/project/private/:probID/subprojects' component={PrivateProjectCreateButton}></Route>
+        </Route>
+        <Route path='/project/private/:probID/solutions' component={ProblemSolutionsMenu}>
+          <IndexRoute component={ProblemTopSolutions}></IndexRoute>
+          <Route path='/project/private/:probID/solutions/create' component={SolutionForm}></Route>
+        </Route>
+        <Route path='/project/private/:probID/proposal/:solutionID/container' component={FullSolution}>
+            <IndexRoute component={FullSolutionContent}></IndexRoute>
+            <Route path='/project/private/:probID/proposal/:solutionID' component={FullSolutionContent}>
+            <Route path='/proposal/private/:probID/:solutionID/delete' component={SolutionDeleteForm}></Route>
+            <Route path='/proposal/private/:probID/:solutionID/edit' component={SolutionEditForm}></Route>
+            <Route path='/project/private/:probID/proposal/:solutionID/subprojects' component={SubProblemContainer}></Route>
+            <Route path='/project/private/:probID/proposal/:solutionID/related' component={RelatedProposalsContainer}></Route>
+            <Route path='/project/private/:probID/proposal/:solutionID/discuss' component={ProposalDiscussMenu}>
+              <IndexRoute component={QuestionContainer}></IndexRoute>
+              <Route path='/project/private/:probID/proposal/:solutionID/question/container' component={QuestionContainer}>
+                <IndexRoute component={QuestionForm}></IndexRoute>
+                <Route path='/project/private/:probID/proposal/:solutionID/questions' component={QuestionForm}></Route>
+                <Route path='/project/private/:probID/proposal/:solutionID/question/:questID/edit' component={QuestionEditForm}></Route>
+                <Route path='/project/private/:probID/proposal/:solutionID/question/:questID/flag' component={QuestionFlagForm}></Route>
+                <Route path='/project/private/:probID/proposal/:solutionID/question/:questID/delete' component={QuestionDeleteForm}></Route>
+              </Route>
+              <Route path='/project/private/:probID/proposal/:solutionID/question/:questID/answers/container' component={AnswerContainer}>
+                <IndexRoute component={AnswerForm}></IndexRoute>
+                <Route path='/project/private/:probID/proposal/:solutionID/question/:questID/answers' component={AnswerForm}></Route>
+                <Route path='/project/private/:probID/proposal/:solutionID/question/:questID/answer/:answerID/edit' component={AnswerEditForm}></Route>
+                <Route path='/project/private/:probID/proposal/:solutionID/question/:questID/answer/:answerID/flag' component={AnswerFlagForm}></Route>
+                <Route path='/project/private/:probID/proposal/:solutionID/question/:questID/answer/:answerID/delete' component={AnswerDeleteForm}></Route>
+              </Route>
+              <Route path='/project/private/:probID/proposal/:solutionID/suggestion/container' component={SuggestionContainer}>
+                <IndexRoute component={SuggestionForm}></IndexRoute>
+                <Route path='/project/private/:probID/proposal/:solutionID/suggestions' component={SuggestionForm}></Route>
+                <Route path='/project/private/:probID/proposal/:solutionID/suggestion/:questID/edit' component={SuggestionEditForm}></Route>
+                <Route path='/project/private/:probID/proposal/:solutionID/suggestion/:questID/flag' component={SuggestionFlagForm}></Route>
+                <Route path='/project/private/:probID/proposal/:solutionID/suggestion/:questID/delete' component={SuggestionDeleteForm}></Route>
+              </Route>
+              <Route path='/project/private/:probID/suggestion/:suggID/container' component={SuggestionCommentContainer}>
+                <IndexRoute component={CommentForm}></IndexRoute>
+                <Route path='/project/private/:probID/proposal/:solutionID/suggestion/:suggID/comments' component={CommentForm}></Route>
+                <Route path='/project/private/:probID/proposal/:solutionID/suggestion/:suggID/comment/:commentID/edit' component={CommentEditForm}></Route>
+                <Route path='/project/private/:probID/proposal/:solutionID/suggestion/:suggID/comment/:commentID/flag' component={CommentFlagForm}></Route>
+                <Route path='/project/private/:probID/proposal/:solutionID/suggestion/:suggID/comment/:commentID/delete' component={CommentDeleteForm}></Route>
+              </Route>
+              <Route path='/project/private/:probID/debates/container' component={FreeFormContainer}>
+                <IndexRoute component={FreeFormForm}></IndexRoute>
+                <Route path='/project/private/:probID/proposal/:solutionID/debates' component={FreeFormForm}></Route>
+                <Route path='/project/private/:probID/proposal/:solutionID/debate/:freeFormID/edit' component={FreeFormEditForm}></Route>
+                <Route path='/project/private/:probID/proposal/:solutionID/debate/:freeFormID/flag' component={FreeFormFlagForm}></Route>
+                <Route path='/project/private/:probID/proposal/:solutionID/debate/:freeFormID/delete' component={FreeFormDeleteForm}></Route>
+              </Route>
+            </Route>
+            <Route path='/project/private/:probID/proposal/:solutionID/learn' component={ProposalLearnMenu}>
+              <Route path='/project/private/:probID/proposal/:solutionID/learn/content/full' component={LearnContentContainer1}>
+                <IndexRoute component={LearnContentForm}></IndexRoute>
+                <Route path='/project/private/:probID/proposal/:solutionID/learn/content' component={LearnContentForm}></Route>
+                <Route path='/project/private/:probID/proposal/:solutionID/learn/content/:learnItemID/edit' component={LearnContentEditForm}></Route>
+                <Route path='/project/private/:probID/proposal/:solutionID/learn/content/:learnItemID/flag' component={LearnContentFlagForm}></Route>
+                <Route path='/project/private/:probID/proposal/:solutionID/learn/content/:learnItemID/delete' component={LearnContentDeleteForm}></Route>
+              </Route>
+              <Route path='/project/private/:probID/learn/resources/full' component={LearnResourcesContainer1}>
+                <IndexRoute component={LearnResourcesForm}></IndexRoute>
+                <Route path='/project/private/:probID/proposal/:solutionID/learn/resources' component={LearnResourcesForm}></Route>
+                <Route path='/project/private/:probID/proposal/:solutionID/learn/resources/:resourceID/edit' component={LearnResourcesEditForm}></Route>
+                <Route path='/project/private/:probID/proposal/:solutionID/learn/resources/:resourceID/flag' component={LearnResourcesFlagForm}></Route>
+                <Route path='/project/private/:probID/proposal/:solutionID/learn/resources/:resourceID/delete' component={LearnResourcesDeleteForm}></Route>  
+                <Route path='/project/private/:probID/proposal/:solutionID/learn/resources/:resourceID/embed' component={LearnResourcesEmbed}></Route>            
+              </Route>
+            </Route>
+            <Route path='/proposal/private/:probID/:solutionID/pros' component={ProsContainer}>
+              <IndexRoute component={ProsForm}></IndexRoute>
+              <Route path='/project/private/:probID/:solutionID/pros/pros' component={ProsForm}></Route>
+              <Route path='/project/private/:probID/:solutionID/pros/:proID/edit' component={ProsEditForm}></Route>
+              <Route path='/project/private/:probID/:solutionID/pros/:proID/flag' component={ProsFlagForm}></Route>
+              <Route path='/project/private/:probID/:solutionID/pros/:proID/delete' component={ProsDeleteForm}></Route>
+            </Route>
+            <Route path='/project/private/:probID/suggestion/:suggID/container' component={SuggestionCommentContainer}>
+              <IndexRoute component={CommentForm}></IndexRoute>
+              <Route path='/project/private/:probID/proposal/:solutionID/pros/:proID/comments' component={CommentForm}></Route>
+              <Route path='/project/private/:probID/proposal/:solutionID/pros/:proID/comment/:commentID/edit' component={CommentEditForm}></Route>
+              <Route path='/project/private/:probID/proposal/:solutionID/pros/:proID/comment/:commentID/flag' component={CommentFlagForm}></Route>
+              <Route path='/project/private/:probID/proposal/:solutionID/pros/:proID/comment/:commentID/delete' component={CommentDeleteForm}></Route>
+            </Route>
+            <Route path='/proposal/private/:probID/:solutionID/cons' component={ConsContainer}>
+              <IndexRoute component={ConsForm}></IndexRoute>
+              <Route path='/project/private/:probID/:solutionID/cons' component={ConsForm}></Route>
+              <Route path='/project/private/:probID/:solutionID/cons/:conID/edit' component={ConsEditForm}></Route>
+              <Route path='/project/private/:probID/:solutionID/cons/:conID/flag' component={ConsFlagForm}></Route>
+              <Route path='/project/private/:probID/:solutionID/cons/:conID/delete' component={ConsDeleteForm}></Route>
+            </Route>                
+          </Route>
+          <Route path='/proposal/private/:probID/:solutionID/versions' component={VersionsContainer}></Route>
+          <Route path='/proposal/private/:probID/:solutionID/fullversion' component={FullVersion}></Route>
+          <Route path='/proposal/private/:probID/:solutionID/versionform' component={VersionForm}></Route>
+        </Route>
       </Route>
       <Route path='/project/:probID' component={FullProblem}>
         <IndexRoute component={SideBarProblem}></IndexRoute>
