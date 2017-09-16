@@ -84,16 +84,16 @@ if (problem.ParentType === 0) {
     return (
 
         <Link key={problem.ID} to={'/project/'+problem.ID +'/subprojects'} onClick={handleClick}>
-					<li key={problem.ID} id="SPUnit">
-						<div id="SPHeader">
-							<div id="SPTitle">{problem.Title}</div>
-							<div id="SPPercent">{problem.Rank}</div>
-							{/*<div>
-								<img src={require('../assets/voteArrow.png')} id="SPVote" width="20" height="20" alt="Vote arrow, blue up arrow" />
-							</div>*/}
-						</div>
-					</li>
-				</Link>
+			<li key={problem.ID} id="SPUnit">
+				<div id="SPHeader">
+					<div id="SPTitle">{problem.Title}</div>
+					<div id="SPPercent">{problem.Rank}</div>
+					{/*<div>
+						<img src={require('../assets/voteArrow.png')} id="SPVote" width="20" height="20" alt="Vote arrow, blue up arrow" />
+					</div>*/}
+				</div>
+			</li>
+		</Link>
 
 	)};
   }

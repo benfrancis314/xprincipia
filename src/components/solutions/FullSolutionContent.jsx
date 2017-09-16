@@ -185,7 +185,6 @@ unVote() {
                     <div id="consButton">Cons</div>
                 </Link>
               </div>
-            
               <div>
               {this.props.children}
               {React.cloneElement(<FullSolutionDescription solutionInfo={ this.state.solutionInfo} solutionID={this.props.params.solutionID}/> )}
@@ -229,7 +228,6 @@ unVote() {
                     <div id="consButton">Cons</div>
                 </Link>
               </div>
-            
               <div>
               {this.props.children}
               {React.cloneElement(<FullSolutionDescription solutionInfo={ this.state.solutionInfo} solutionID={this.props.params.solutionID}/> )}            
@@ -266,7 +264,6 @@ unVote() {
                     <div id="consButton">Cons</div>
                 </Link>
               </div>
-            
               <div>
               {this.props.children}
               {React.cloneElement(<FullSolutionDescription solutionInfo={ this.state.solutionInfo} solutionID={this.props.params.solutionID}/> )}
@@ -303,7 +300,6 @@ unVote() {
                     <div id="consButton">Cons</div>
                 </Link>
               </div>
-            
               <div>
             {/*{React.cloneElement(<ProsContainer probID={this.state.probID} solutionID={this.state.solutionID} /> )}*/}
             {/*{React.cloneElement(<ConsContainer probID={this.state.probID} solutionID={this.state.solutionID} /> )}*/}

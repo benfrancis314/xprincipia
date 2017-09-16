@@ -1,3 +1,4 @@
+
 import React from 'react';
 // Will be uesd with componentDidUpdate
 // import ReactDOM from 'react-dom';import axios from 'axios';
@@ -35,8 +36,8 @@ export default class ProblemForm extends React.Component {
     var self = this
     axios.post( Config.API + '/auth/problems/create', {
       username: cookie.load('userName'),
-      parentType : '0',
-      parentID: this.props.params.probID,
+      parentType : '1',
+      parentID: this.props.params.solutionID,
       title : this.state.title,
       summary : this.state.summary,
      
@@ -45,7 +46,7 @@ export default class ProblemForm extends React.Component {
     })
     .then(function (result) {
       //redirect back to the last page     
-      document.location = '/project/'+self.props.params.probID+'/subprojects'
+      document.location = '/project/'+self.props.params.probID+'/proposal/'+self.props.params.solutionID+'/subprojects'
     })
       .catch(function (error) {
         // alert('why not working');

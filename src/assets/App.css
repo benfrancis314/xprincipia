@@ -1177,12 +1177,15 @@ body, html, #main {
     }
     #solutionSummaryForm, #solutionDescriptionForm, 
     #solutionReferencesForm, #problemSummaryForm {
-      background-color: rgba(0,220,255, 0.05);
+      /*background-color: rgba(0,220,255, 0.05);*/
+      background: linear-gradient(left,rgba(0,220,255, 0.06), rgba(0,220,255, 0.07),rgba(0,220,255, 0.03));
+
     }
     #projectEditSummaryForm {
       font-family: 'Open Sans';
     	text-align: left;
     	height: 5em;
+      background-color: rgba(255,255,255,0.025);
     }
     #problemDescriptionForm, #problemRequirementsForm, #solutionDescriptionForm, {
       height: 10em;
@@ -1205,6 +1208,7 @@ body, html, #main {
       border: 1px solid #ffffff;
       border-radius: 3px;
       box-shadow: 0 0 1pt 1pt rgba(255,255,255,0.5);
+      background-color: rgba(255,255,255,0.025);
     }
     #problemTitleFormLabel, #problemFieldFormLabel, #problemSummaryFormLabel,
     #problemDescriptionFormLabel, #projectTitleProposalFormLabel,
@@ -1914,7 +1918,7 @@ body, html, #main {
       font-size: 75%;
       width: 22%;
       margin-bottom: 0px;
-      box-shadow: 0 0 2pt 2pt rgba(0,220,255,0.5);
+      /*box-shadow: 0 0 2pt 2pt rgba(0,220,255,0.5);*/
       font-family: 'Alegreya Sans SC', sans-serif;
     }
     #loginPassword, #registerPassword {
@@ -1973,23 +1977,105 @@ body, html, #main {
     	background-color: rgba(0,255, 220, 1) !important;
     	cursor: pointer;
     }
+    #submitRegisterIntroduction {
+      color: #00dcff;
+      background-color: rgba(0,220, 255, 0);
+      font-size: 80%;
+    	border: 1px solid #00dcff;
+      border-radius: 3px;
+    	width: 14%;
+    	padding: 3px;
+    	margin: 0 auto;
+      text-align: center;
+      font-family: 'Alegreya Sans SC', sans-serif;
+      letter-spacing: 2px;
+      margin-top: 3%;
+      transition: all 0.5s ease 0s;
+      margin-top: 2%;
+      width: 20%;
+      background-color: rgba(0,220,255,0.05);
+
+      /*background: linear-gradient(left,rgba(0,220,255, 0), rgba(0,220,255, 0.05), rgba(0,220,255, 0));*/
+      background: radial-gradient(circle,rgba(0,220,255, 0), rgba(0,220,255, 0.025), rgba(0,220,255, 0.05));
+      /*transition: all 0.75s ease 0s;*/
+      background-color: rgba(0,220,255,0.025);
+      transform: scale(1);
+    }
+    #submitRegisterIntroduction:hover, #submitRegisterIntroduction:active, #submitRegisterIntroduction:focus {
+      color: #0f131c !important;
+    	background-color: rgba(0,220, 255, 1) !important;
+    	cursor: pointer;
+    }
+    #registerButtonIntroduction {
+      color: #00dcff;
+      background-color: rgba(0,220, 255, 0);
+      font-size: 80%;
+    	border: 1px solid #00dcff;
+      border-radius: 3px;
+    	width: 14%;
+    	padding: 3px;
+    	margin: 0 auto;
+      text-align: center;
+      font-family: 'Alegreya Sans SC', sans-serif;
+      letter-spacing: 2px;
+      margin-top: 3%;
+      transition: all 0.5s ease 0s;
+      color: #00ffdc;
+      background-color: rgba(0,220,255,0.05);
+    	border: 1px solid #00ffdc;
+      border-width: 0px 1px 1px 1px;
+      width: 15%;
+      font-size: 70%;
+      margin-top: 0%;
+
+      /*background: linear-gradient(left,rgba(0,220,255, 0), rgba(0,220,255, 0.05), rgba(0,220,255, 0));*/
+      background: radial-gradient(circle,rgba(0,255,220, 0), rgba(0,255,220, 0.025), rgba(0,255,220, 0.05));
+      /*transition: all 0.75s ease 0s;*/
+      background-color: rgba(0,255,220,0.025);
+      transform: scale(1);
+    }
+    #registerButtonIntroduction:hover, #registerButtonIntroduction:active, #registerButtonIntroduction:focus {
+      color: #0f131c !important;
+    	background-color: rgba(0,255, 220, 1) !important;
+    	cursor: pointer;
+    }
+    #introRegisterFullName, #introRegisterUserName, #introRegisterEmail, #introRegisterPassword,
+    #registerFullName, #registerUserName, #registerEmail, #registerPassword,
+    #loginHeaderEmail, #loginEmail, #loginPassword {
+      background: linear-gradient(left,rgba(0,220,255, 0), rgba(0,220,255, 0.05), rgba(0,220,255, 0));
+      transition: all 0.75s ease 0s;
+      background-color: rgba(0,220,255,0.025);
+      transform: scale(1);
+    }
+    #introRegisterFullName:focus, #introRegisterUserName:focus, #introRegisterEmail:focus, #introRegisterPassword:focus,
+    #registerFullName:focus, #registerUserName:focus, #registerEmail:focus, #registerPassword:focus,
+    #loginHeaderEmail:focus, #loginHeaderPassword:focus, #loginEmail:focus, #loginPassword:focus {
+      box-shadow: 0 0 1pt 1pt rgba(0,220,255,0.5) !important;
+      transform: scale(1.02);
+      background: linear-gradient(left,rgba(0,220,255, 0.05), rgba(0,220,255, 0.1), rgba(0,220,255, 0.05));
+    }
+    #loginHeaderEmail:focus, #loginHeaderPassword:focus {
+      box-shadow: 0 0 1pt 1pt rgba(0,220,255,0.5) !important;
+      transform: scale(1.02);
+      background: linear-gradient(left,rgba(0,220,255, 0.05), rgba(0,220,255, 0.1), rgba(0,220,255, 0.05));
+    }
     #loginHeaderEmail {
     	display: block;
       font-size: 125%;
       width: 15%;
-      box-shadow: 0 0 1pt 1pt rgba(0,220,255,0.5);
+      /*box-shadow: 0 0 1pt 1pt rgba(0,220,255,0.5);*/
       font-family: 'Alegreya Sans SC', sans-serif;
       margin: 0 auto;
       margin-top: 0.3%;
       margin-bottom: 0.3%;
       padding: 0px !important;
-      background-color: #0f131c;
+      /*background-color: #0f131c;*/
     }
     #loginHeaderPassword {
     	display: block;
       font-size: 125%;
       width: 15%;
-      box-shadow: 0 0 1pt 1pt rgba(0,220,255,0.5);
+      /*box-shadow: 0 0 1pt 1pt rgba(0,220,255,0.5);*/
       font-family: 'Alegreya Sans SC', sans-serif;
       margin: 0 auto;
       margin-left: 1%;
@@ -1997,7 +2083,7 @@ body, html, #main {
       margin-bottom: 0.3%;
       padding: 0px !important;
       transition: all 0.5s ease 0s;
-      background-color: #0f131c;
+      /*background-color: #0f131c;*/
     }
     #loginHeaderUsernameDiv {
       margin: 0 auto;
@@ -2044,11 +2130,21 @@ body, html, #main {
       transition: all 0.5s ease 0s;
       background-color: #0f131c;
       width: 6%;
+
+      /*background: linear-gradient(left,rgba(0,220,255, 0), rgba(0,220,255, 0.05), rgba(0,220,255, 0));*/
+      background: radial-gradient(circle,rgba(0,220,255, 0), rgba(0,220,255, 0.025), rgba(0,220,255, 0.05));
+      /*transition: all 0.75s ease 0s;*/
+      background-color: rgba(0,220,255,0.025);
+      transform: scale(1);
     }
-    #loginHeaderSubmitButton:hover {
+    #loginHeaderSubmitButton:hover, #loginHeaderSubmitButton:active, #loginHeaderSubmitButton:focus {
      cursor: pointer;
      background-color: rgba(0,220,255,1);
      color: #0f131c;
+
+     /*box-shadow: 0 0 1pt 1pt rgba(0,220,255,0.5) !important;
+     transform: scale(1.02);
+     background: linear-gradient(left,rgba(0,220,255, 0.05), rgba(0,220,255, 0.1), rgba(0,220,255, 0.05));*/
     }
     #registerHeaderButton {
       font-family: 'Alegreya Sans SC', sans-serif;
@@ -2066,6 +2162,12 @@ body, html, #main {
       box-shadow: 0 0 1pt 1pt rgba(0,255,220,0.5);
       transition: all 0.5s ease 0s;
       background-color: #0f131c;
+
+      /*background: linear-gradient(left,rgba(0,220,255, 0), rgba(0,220,255, 0.05), rgba(0,220,255, 0));*/
+      background: radial-gradient(circle,rgba(0,255,220, 0), rgba(0,255,220, 0.025), rgba(0,255,220, 0.05));
+      /*transition: all 0.75s ease 0s;*/
+      background-color: rgba(0,255,220,0.025);
+      transform: scale(1);
     }
     #registerHeaderButton:hover {
      cursor: pointer;
@@ -2094,8 +2196,12 @@ body, html, #main {
   margin-bottom: 1.5%;
   width: 30%;
   font-size: 90%;
-  transition: all 0.5s ease 0s;
+  /*transition: all 0.5s ease 0s;*/
   color: #dddddd;
+  background: linear-gradient(left,rgba(255,255,255, 0), rgba(255,255,255, 0.05), rgba(255,255,255, 0));
+  transition: all 0.75s ease 0s;
+  background-color: rgba(255,255,255,0.025);
+  transform: scale(1);
 }
 #introductionButtonClicked {
   background-color: rgba(0,220,255,0.05);
@@ -2112,10 +2218,15 @@ body, html, #main {
 }
 #introductionButton:hover, #introductionButton:active,
 #introductionButtonClicked:hover, #introductionButtonClicked:active {
-  background-color: rgba(0,220,255,0.05);
+  /*background-color: rgba(0,220,255,0.05);
   cursor: pointer;
   color: rgba(0,220,255,1);
-  border: 1px solid rgba(0,220,255,1);
+  border: 1px solid rgba(0,220,255,1);*/
+
+  box-shadow: 0 0 1.5pt 1.5pt rgba(255,255,255,0.5);
+  transform: scale(1.02);
+  cursor: pointer;
+  background: linear-gradient(left,rgba(255,255,255, 0.05), rgba(255,255,255, 0.1), rgba(255,255,255, 0.05));
 }
 #signup, #register {
   padding-top: 0px;
@@ -2168,8 +2279,8 @@ body, html, #main {
   padding-left: 3px;*/
 }
 #introductionCapitalProse {
-  font-size: 135%;
-  /*font-family: 'Open Sans';*/
+  /*font-size: 135%;*/
+  font-size: 145%;
 }
 #introductionBigBlue {
   font-size: 125%;
@@ -2217,20 +2328,22 @@ body, html, #main {
   /*background: linear-gradient(left,rgba(0,220,255, 0.05), rgba(0,220,255, 0.07), rgba(0,220,255, 0.07), rgba(0,220,255, 0.05));*/
 }
 #introductionProjectsProse {
-  font-family: 'Open Sans';
-  font-size: 70%;
-  letter-spacing: normal;
+  font-family: 'Alegreya Sans SC';
+  font-size: 125%;
+  letter-spacing: 1px;
   color: #dddddd;
+  text-align: center;
   padding-left: 8%;
   padding-right: 8%;
   padding-top: 3%;
   padding-bottom: 3%;
   line-height: 170%;
-  background-color: rgba(0,220,255,0.05);
-  border: 1px solid #00dcff;
+  background-color: rgba(0,220,255,0);
+  border: 1px solid #dddddd;
   border-width: 1px 0px;
-  width: 70%;
+  width: 75%;
   margin: 0 auto;
+  background: linear-gradient(rgba(255,255,255,0.04), rgba(0,220,255,0.075), rgba(0,220,255,0.075), rgba(255,255,255,0.035));
 }
 #introRegisterContainer {
   margin-top: 2%;
@@ -2265,7 +2378,7 @@ body, html, #main {
   font-size: 90%;
   width: 40%;
   margin-bottom: 0px;
-  box-shadow: 0 0 2pt 2pt rgba(0,220,255,0.5);
+  /*box-shadow: 0 0 2pt 2pt rgba(0,220,255,0.5);*/
   font-family: 'Alegreya Sans SC', sans-serif;
   background-color: rgba(0,220,255,0.05);
 }
@@ -2286,26 +2399,25 @@ body, html, #main {
   background-repeat: no-repeat;
   background-color: rgba(15,19,28,0.999);
   background-blend-mode: overlay;
-  transition: all 0.2s ease 0s;
+  transition: all 0.5s ease 0s;
   transform: scale(1);
+  font-size: 70%;
 
   display: flex;
   flex-direction: column;
+  border: 2px solid #00dcff;
+  border-radius: 100%;
+  width: 14em;
+  height: 14em;
   word-wrap: break-word; 
   align-items: center; 
   justify-content: center;
   margin: 0 auto;
+  box-shadow: 0 0 2pt 2pt rgba(0,220,255,0.5);
   transition: all 0.5s ease 0s;
-
-  background-size: cover;
-  border: 1px solid #00dcff;
-  box-shadow: 0 0 1pt 1pt rgba(0,220,255,0.5);
-  width: 70%;
-  height: auto;
-  position: relative;
-  margin-top: 6%;
+  transform: scale(1);
+  margin-top: 4%;
   margin-bottom: 8%;
-  padding: 3%;
 }
 
 #introductionExploreButton {
@@ -2319,16 +2431,25 @@ body, html, #main {
   font-size: 175%;
   text-align: center;
   letter-spacing: 4px;
-  border: 1px solid #00ffdc;
-  color: #00ffdc;
+  border: 1px solid #dddddd;
+  color: #dddddd;
   border-radius: 3px;
   background-color: rgba(0,255,220,0.05);
   transition: 0.5s all ease 0s;
+
+  /*background: linear-gradient(left,rgba(0,220,255, 0), rgba(0,220,255, 0.05), rgba(0,220,255, 0));*/
+  background: radial-gradient(circle,rgba(0,220,255, 0.01), rgba(0,220,255, 0.025), rgba(0,220,255, 0.05));
+  transition: all 0.75s ease 0s;
+  background-color: rgba(0,220,255,0.025);
+  transform: scale(1);
 }
 #introductionExploreButton:hover {
   cursor: pointer;
-  background-color: #00ffdc;
-  color: #0f131c;
+  /*background-color: #00dcff;*/
+  /*color: #0f131c;*/
+  box-shadow: 0 0 1pt 1pt rgba(0,220,255,0.5) !important;
+  transform: scale(1.02);
+  background: radial-gradient(circle,rgba(0,220,255, 0.025), rgba(0,220,255, 0.05), rgba(0,220,255, 0.075));
 }
   
 
@@ -2373,6 +2494,7 @@ body, html, #main {
 #introductionProjectHeader4:hover {
   background-color: rgba(15,19,28,0.5);
   transform: scale(1.02);
+  cursor: pointer;
 }
 introductionProjectTitle {
   margin: 0 auto;
@@ -3064,6 +3186,10 @@ introductionProjectTitle {
   box-shadow: 0 0 2pt 2pt rgba(0,220,255,0);
   outline: none;
 }
+input[type=text]:focus, input[type=email]:focus, input[type=password]:focus, input[type=button]:focus, input[type=submit]:focus, textarea {
+  box-shadow: 0 0 0pt 0pt rgba(0,220,255,0) !important;
+  outline: none !important;
+}
 
 
 
@@ -3131,7 +3257,7 @@ introductionProjectTitle {
 
 /*Extended Proposal*/
 
-/*#privateContainerMottoContainerProposal {
+#proposalSubProjectsButton {
   text-align: center;
   font-size: 175%;
   letter-spacing: 6px;
@@ -3139,10 +3265,23 @@ introductionProjectTitle {
   margin: 0 auto;
   padding: 0.5% 0% 0.5% 0%;
   margin-bottom: 0.5%;
-  margin-top: 0.5%;
-  border: 1px solid #333333;
+  margin-top: 0%;
+  border: 1px solid #dddddd;
   border-width: 0px 1px 1px 1px;
   border-radius: 0% 0% 25% 25%;
+  /*background-color: rgba(15,19,28,0.05);*/
+  background: linear-gradient(left,rgba(0,220,255, 0), rgba(0,220,255, 0.05), rgba(0,220,255, 0));
+
+transition: all 0.75s ease 0s;
+  /*box-shadow: 0 0 0pt 0pt rgba(0,220,255,0.5);*/
+  background-color: rgba(0,220,255,0.05);
+  transform: scale(1);
+}
+#proposalSubProjectsButton:hover {
+  /*box-shadow: 0 0 2pt 2pt rgba(0,220,255,0.5);*/
+  background: linear-gradient(left,rgba(0,220,255, 0), rgba(0,220,255, 0.2), rgba(0,220,255, 0));
+  /*background-color: rgba(15,19,28,0.9);*/
+  transform: scale(1.02);
 }
 #privateContainerMottoProposal {
   display: inline-block;
@@ -3154,7 +3293,7 @@ introductionProjectTitle {
   color: #00dcff;
   transition: all 2s ease 0s;
   letter-spacing: 7px;
-}*/
+}
 
 
 
@@ -3902,10 +4041,25 @@ introductionProjectTitle {
       transition: all 0.5s ease 0s;
       font-size: 120%;
       letter-spacing: 0.25px;
+
+      background: linear-gradient(left,rgba(255,255,255, 0), rgba(255,255,255, 0.05), rgba(255,255,255, 0));
+      transition: all 0.75s ease 0s;
+      background-color: rgba(255,255,255,0.025);
+      transform: scale(1);
+      /*background: linear-gradient(left,rgba(255,255,255, 0.15), rgba(255,255,255, 0.1), rgba(255,255,255, 0.1), rgba(255,255,255, 0.05));*/
+
+
     }
     #welcomeIntroductionButton:hover {
+      /*cursor: pointer;*/
+      /*background-color: rgba(255,255,255,0.1);*/
+
+      box-shadow: 0 0 1.5pt 1.5pt rgba(255,255,255,0.5);
+      transform: scale(1.02);
       cursor: pointer;
-      background-color: rgba(255,255,255,0.1);
+      background: linear-gradient(left,rgba(255,255,255, 0.075), rgba(255,255,255, 0.1), rgba(255,255,255, 0.075));
+      /*background: linear-gradient(left,rgba(255,255,255, 0.15), rgba(255,255,255, 0.1), rgba(255,255,255, 0.05), rgba(255,255,255, 0));*/
+
     }
     #welcomeIntroductionButtonActive {
       border: 1px solid #dddddd;
@@ -3919,10 +4073,20 @@ introductionProjectTitle {
       transition: all 0.5s ease 0s;
       font-size: 120%;
       letter-spacing: 0.25px;
-      background-color: rgba(255,255,255,0.1);
+      /*background-color: rgba(255,255,255,0.1);*/
+
+
+      background: linear-gradient(left,rgba(255,255,255, 0), rgba(255,255,255, 0.05), rgba(255,255,255, 0));
+      transition: all 0.75s ease 0s;
+      background-color: rgba(255,255,255,0.025);
+      transform: scale(1);
     }
     #welcomeIntroductionButtonActive:hover {
+      box-shadow: 0 0 1.5pt 1.5pt rgba(255,255,255,0.5);
+      transform: scale(1.02);
       cursor: pointer;
+      background: linear-gradient(left,rgba(255,255,255, 0.075), rgba(255,255,255, 0.1), rgba(255,255,255, 0.075));
+
     }
     #welcomeBox {
     	/*Old*/
@@ -4240,7 +4404,11 @@ introductionProjectTitle {
     position: relative;
     margin: 0 auto;
     margin-top: 2%;
-    transition: all 0.2s ease 0s;
+    
+    background: linear-gradient(left,rgba(0,220,255, 0), rgba(0,220,255, 0.05), rgba(0,220,255, 0));
+    transition: all 0.75s ease 0s;
+    background-color: rgba(0,220,255,0.025);
+    transform: scale(1);
 
     /*Test to draw eye more to user projects*/
     /*border-radius: 0px 0px 15px 0px;
@@ -4251,7 +4419,8 @@ introductionProjectTitle {
   }
   #welcomeUserProblemsHeader:hover {
     box-shadow: 0 0 1.5pt 1.5pt rgba(0,220,255,0.5);
-    /*background: linear-gradient(left,rgba(0,220,255, 0.05), rgba(0,220,255, 0.1), rgba(0,220,255, 0.05));*/
+    transform: scale(1.02);
+    background: linear-gradient(left,rgba(0,220,255, 0.05), rgba(0,220,255, 0.1), rgba(0,220,255, 0.05));
   }
   #welcomeUserProblemsUnitList {
     text-align: center;
@@ -4707,11 +4876,13 @@ introductionProjectTitle {
   /*transition: all 0.5s ease 0s;*/
   padding: 5px;
   transition: all 0.75s ease 0s;
+  transform: scale(1);
   /*background: radial-gradient(circle, rgba(0,220,255,0), rgba(0,220,255,0), rgba(0,220,255,0), rgba(0,220,255,0));*/
 }
 #addBlueX:hover {
   cursor: pointer;
   background-color: rgba(0,220,255,0.15);
+  transform: scale(1.02);
   /*background: radial-gradient(circle, rgba(0,220,255,0.05), rgba(0,220,255,0.05), rgba(0,220,255,0.1), rgba(0,220,255,0.05));*/
 }
 #middleAlignOrion {
@@ -5873,9 +6044,10 @@ introductionProjectTitle {
 }
 #solutionFormLabel {
   color: #00dcff;
-  font-size: 150%;
-  /*margin-left: 5%;*/
+  font-size: 160%;
   text-align: center;
+  letter-spacing: 6px;
+  margin-top: 1%;
 }
 #solutionDescriptionFormLabel {
   color: #00dcff;
@@ -5896,13 +6068,16 @@ introductionProjectTitle {
   margin: 2.5% 5% 5% 5%;
   padding-left: 5%;
   padding-right: 5%;
-  font-size: 100%;
-  line-height: 175%;
+  font-size: 120%;
+  line-height: 170%;
   word-wrap: break-word; 
   transition: all 0.5s ease 0s;
   text-align: left;
 }
-
+#solutionDescription, #solutoinReferences {
+  padding-top: 3%;
+  margin-top: 0%;
+}
 /*End Right Solutions SB*/
 
 
@@ -6244,8 +6419,8 @@ label + input[type=radio] + label {
   margin-bottom: 25px;
   padding-left: 5%;
   padding-right: 5%;
-  font-size: 100%;
-  line-height: 150%;
+  font-size: 120%;
+  line-height: 170%;
   word-wrap: break-word; 
   font-family: 'Open Sans', sans-serif;
   transition: all 0.5s ease 0s;
@@ -6309,24 +6484,29 @@ label + input[type=radio] + label {
   border: 1px solid #00dcff;
   border-width: 1px 0px;
   margin-top: 10px;
+  background: linear-gradient(left,rgba(0,220,255, 0.05), rgba(0,220,255, 0), rgba(0,220,255, 0.05));
 }
 #prosButton, #consButton {
   flex: 1 1 auto;
   margin: 0 auto;
-  font-size: 80%;
+  font-size: 120%;
   text-align: center;
-  letter-spacing: 8px;
-  padding: 5px;
+  letter-spacing: 15px;
+  padding: 7px;
   width: 20em;
   text-align: center;
   transition: all 0.5s ease 0s;
+  box-shadow: 0 0 0pt 0pt rgba(0,220,255,0.5);
   background-color: rgba(0,220,255,0);
 }
 #prosButton:hover, #consButton:hover {
-  background-color: rgba(0,220,255,0.15);
+  background-color: rgba(0,220,255,0.05);
   color: #00dcff;
   cursor: pointer;
-  border-color: #00dcff;
+  box-shadow: 0 0 0px 0px rgba(0,220,255,0.5);
+  /*background: linear-gradient(left,rgba(0,220,255, 0), rgba(0,220,255, 0.05), rgba(0,220,255, 0));*/
+  
+
 }
 #prosButton:active, #consButton:active {
   background-color: rgba(0,220,255,0.15);
@@ -7011,7 +7191,7 @@ input#submitNewVersion:hover {
 /*textarea:focus {
   border-color: #ff7f7f !important;
 }*/
-#deleteButton, #editButton, #flagButton, #returnButton {
+#deleteButton, #editButton, #flagButton, #returnButton, #returnButtonProject, #editButtonProject, #deleteButtonProject {
   font-size: 120%;
   color: #ff7f7f;
   background-color: rgba(255,127,127,0);
@@ -7026,39 +7206,41 @@ input#submitNewVersion:hover {
   margin-right: 10%;
   transition: all 0.5s ease 0s;
 }
-#returnButton {
+#returnButton, #returnButtonProject {
   color: #00dcff;
   border: 1px solid #00dcff;
   float: left;
   margin-right: 0%;
   margin-left: 10%;
 }
-#editButton {
+#editButton, #editButtonProject {
   color: #00ffdc;
   border: 1px solid #00ffdc;
   border-radius: 2px;
 }
-#editButton:hover {
+#editButton:hover, #editButtonProject:hover {
   cursor: pointer;
   color: #0f131c;
   background-color: #00ffdc;
 }
-#deleteButton:hover {
+#deleteButton:hover, #deleteButtonProject:hover {
   cursor: pointer;
   color: #0f131c;
   background-color: rgba(255,127,127,1);
 }
-#returnButton:hover {
+#returnButton:hover, #returnButtonProject:hover {
   cursor: pointer;
   color: #0f131c;
-  background-color: #00ffdc;
+  background-color: #00dcff;
 }
 #deleteQuestion:hover {
   cursor: pointer;
   color: #0f131c;
   background-color: #ff7f7f;
 }
-
+#returnButtonProject, #editButtonProject, #deleteButtonProject {
+background-color: rgba(255,255,255,0.025);
+}
 
 #returnQuestion:hover {
   cursor: pointer;

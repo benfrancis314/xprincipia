@@ -9,22 +9,53 @@ export default class FullProblem extends React.Component {
 
         this.state = {
             parent: [],
+            solutionInfo: []
+
         }
     };
 
 
     componentDidMount(){
         var self = this;
-            return axios.get( Config.API + '/problems/ID?id='+self.props.parentID).then(function (response) {
+        axios.get( Config.API + '/solutions/ID?id='+this.props.parentID).then(function (response) {
+            self.setState({
+                solutionInfo: response.data,
+            })
+            // var solutionInfo = self.state.solutionInfo
+            // self.setState({
+            //     solutionInfo : solutionInfo
+            // })
+
+        })
+        axios.get( Config.API + '/problems/ID?id='+self.props.parentID).then(function (response) {
                 self.setState({
                     parent: response.data
                 })
             }) 
     }
+    // componentDidMount(){
+    //     var self = this;
+    //         axios.get( Config.API + '/solutions/ID?id='+self.props.parentID).then(function (response) {
+    //             self.setState({
+    //                 solutionInfo: response.data
+    //             })
+    //         }) 
+            
+    //         axios.get( Config.API + '/problems/ID?id='+self.props.parentID).then(function (response) {
+    //             self.setState({
+    //                 parent: response.data
+    //             })
+    //         }) 
+    // }
 
 componentWillReceiveProps (nextProps){
      var self = this;
-        return axios.get( Config.API + '/problems/ID?id='+nextProps.parentID).then(function (response) {
+        axios.get( Config.API + '/solutions/ID?id='+nextProps.parentID).then(function (response) {
+            self.setState({
+                solutionInfo: response.data,
+            })
+        })
+        axios.get( Config.API + '/problems/ID?id='+nextProps.parentID).then(function (response) {
             self.setState({
                 parent: response.data
             })
@@ -36,11 +67,11 @@ componentWillReceiveProps (nextProps){
 
       return (
             <div>
-                {/*<Link to={`/project/${this.props.parentID}/subprojects`}>*/}
+                <Link to={`/project/${this.state.solutionInfo.ProblemID}/proposal/${this.props.parentID}`}>
                     <div id="parentButton">
-                        <span id='blue'>Parent: </span>Return to Proposal
+                        <span id='blue'>Parent: </span>{this.state.solutionInfo.Title}
                     </div>
-                {/*</Link>*/}
+                </Link>
             </div>
       );		 
 } else if (this.props.parentID === 0) {

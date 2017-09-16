@@ -91,6 +91,8 @@ import ProfileSettings from './components/profile/ProfileSettings.jsx';
 import ProfileWorkspace from './components/profile/ProfileWorkspace.jsx';
 import ProposalDiscussMenu from './components/solutions/ProposalDiscussMenu.jsx';
 import ProposalLearnMenu from './components/solutions/ProposalLearnMenu.jsx';
+import ProposalSubProjectsButton from './components/solutions/ProposalSubProjectsButton.jsx';
+
 import ProsDeleteForm from './components/proscons/ProsDeleteForm.jsx';
 import ProsDeleteFormPrivate from './components/proscons/ProsDeleteFormPrivate.jsx';
 import ProsEditForm from './components/proscons/ProsEditForm.jsx';
@@ -256,6 +258,7 @@ ReactDOM.render(
         <Route path='/project/private/:probID/proposal/:solutionID/container' component={FullSolutionPrivate}>
             <IndexRoute component={FullSolutionContent}></IndexRoute>
             <Route path='/project/private/:probID/proposal/:solutionID' component={FullSolutionContentPrivate}>
+            <Route path='/project/private/:probID/proposal/:solutionID' component={ProposalSubProjectsButton}></Route>
             <Route path='/proposal/private/:probID/:solutionID/delete' component={SolutionDeleteFormPrivate}></Route>
             <Route path='/proposal/private/:probID/:solutionID/edit' component={SolutionEditFormPrivate}></Route>
             <Route path='/project/private/:probID/proposal/:solutionID/subprojects' component={SubProblemContainer}></Route>
@@ -414,7 +417,8 @@ ReactDOM.render(
         </Route>
         <Route path='/project/:probID/proposal/:solutionID/container' component={FullSolution}>
             <IndexRoute component={FullSolutionContent}></IndexRoute>
-            <Route path='/project/:probID/proposal/:solutionID' component={FullSolutionContent}>
+            <Route path='/project/:probID/proposal/:solutionID/content/container' component={FullSolutionContent}>
+            <Route path='/project/:probID/proposal/:solutionID' component={ProposalSubProjectsButton}></Route>
             <Route path='/proposal/:probID/:solutionID/delete' component={SolutionDeleteForm}></Route>
             <Route path='/proposal/:probID/:solutionID/edit' component={SolutionEditForm}></Route>
             <Route path='/project/:probID/proposal/:solutionID/subprojects' component={SubProjectProposalContainer}></Route>

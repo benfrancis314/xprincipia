@@ -48,13 +48,13 @@ export default class Introduction extends React.Component {
                     <span id="introductionCapitalProse">our goal </span>is to allow anyone to<span id="blueOpen"> contribute directly towards this cause</span>. 
                     <br />
                     <br />
-                    <span id="introductionCapitalProse">we organize this process </span>by allowing users to work with others in projects, to come up with the best proposals to solve these problems<span id="blueOpen"> and achieve these goals</span>. 
+                    <span id="introductionCapitalProse">we organize this process </span>by allowing users to work together in projects, creating proposals to solve these problems<span id="blueOpen"> and achieve these goals</span>. 
                     <br />
                     <br />
-                    <span id="introductionCapitalProse">in this process </span>you are also given a centralized location for your own work, currently in the form of<span id="blueOpen"> your Mind Temple</span>. 
+                    <span id="introductionCapitalProse">in this process, </span>you are also given a centralized location for your own work, currently in the form of<span id="blueOpen"> a private Mind Temple</span>. 
                     <br />
                     <br />
-                    <span id="introductionCapitalProse">if you would like </span>to be apart of attaining these goals or access your Mind Temple, please<span id="greenOpen"> register </span>and<span id="blueOpen"> begin exploring</span>. 
+                    <span id="introductionCapitalProse">if you would like </span>to join this mission or access your Mind Temple, please<span id="greenOpen"> register </span>and<span id="blueOpen"> begin exploring</span>. 
                 </div>
 
                 <IntroductionRegister />
@@ -65,7 +65,7 @@ export default class Introduction extends React.Component {
                 </Link>
 
                 <div id="introductionProjectsProse"> 
-                    Join the effort to make humanity into a spacefaring civilization:
+                    Help humanity reach the stars
                 </div>
                 <Link to={`/project/7/subprojects`}>
                     <div id="introductionProjectHeader1">
@@ -74,8 +74,9 @@ export default class Introduction extends React.Component {
                         </div>
                     </div>
                 </Link>
+                
                 <div id="introductionProjectsProse">
-                    Manually evolve our body and mind into more perfect states of being:
+                    Purposely evolve the human body and mind
                 </div>
                 {/*Link each to the actual project - check url on active site*/}
                 <Link to={`/project/8/subprojects`}>
@@ -86,7 +87,7 @@ export default class Introduction extends React.Component {
                     </div>
                 </Link>
                 <div id="introductionProjectsProse">
-                    Complete our oldest endeavor, to fully understand the world we find ourselves in:
+                    Seek to understand our universe
                 </div>
                 <Link to={`/project/9/subprojects`}>
                     <div id="introductionProjectHeader3">
@@ -97,7 +98,7 @@ export default class Introduction extends React.Component {
                 </Link>
                 <div id="introductionProjectsProse">
                     {/*Design the tools needed for all scopes of our ambitions:*/}
-                    Shape our world with tools, the force that has always driven it:
+                    Design technologies to change the world
                 </div>
                 <Link to={`/project/10/subprojects`}>
                     <div id="introductionProjectHeader4">
