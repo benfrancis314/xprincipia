@@ -42,7 +42,7 @@ export default class ProblemSolutionsMenu extends React.Component {
                 </div>
             </a>
             <ProblemTopSolutions probID={this.props.probID} />
-            <SolutionForm probID={this.props.probID} projectTitle={this.props.projectTitle}/>
+            <SolutionForm probID={this.props.probID} projectTitle={this.props.projectTitle} />
         </div>
 
       );

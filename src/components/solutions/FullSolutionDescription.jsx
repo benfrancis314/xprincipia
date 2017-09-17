@@ -21,15 +21,15 @@ export default class FullSolutionDescription extends React.Component {
     }) 
 }
 // This doesn't work
-    componentWillReceiveProps(nextProps){
-        var self = this;
-            return axios.get( Config.API + '/auth/solutions/ID?id='+nextProps.solutionID).then(function (response) {
-                self.setState({
-                    solutionInfo: response.data,
-                    // solutionID: nextProps.solutionID,
-                })
-            })
-    }
+    // componentWillReceiveProps(nextProps){
+    //     var self = this;
+    //         return axios.get( Config.API + '/auth/solutions/ID?id='+nextProps.solutionID).then(function (response) {
+    //             self.setState({
+    //                 solutionInfo: response.data,
+    //                 // solutionID: nextProps.solutionID,
+    //             })
+    //         })
+    // }
 
 //   On recieving new props
   componentWillReceiveProps(nextProps){
@@ -47,7 +47,7 @@ export default class FullSolutionDescription extends React.Component {
       <div> 
             <div>
               <br />
-              <div id="solutionFormLabel">Description</div>
+              <div id="solutionFormLabel">DESCRIPTION</div>
               <p id="solutionDescription">
                   {this.state.solutionInfo.Description}
               </p>
@@ -66,13 +66,13 @@ export default class FullSolutionDescription extends React.Component {
       <div> 
             <div>
               <br />
-              <div id="solutionFormLabel">Description</div>
+              <div id="solutionFormLabel">DESCRIPTION</div>
               <p id="solutionDescription">
                   {this.state.solutionInfo.Description}
               </p>
             </div>
             <div>
-              <div id="solutionFormLabel">References</div>
+              <div id="solutionFormLabel">REFERENCES</div>
               <p id="solutionReferences">
                  {this.state.solutionInfo.References}
               </p>

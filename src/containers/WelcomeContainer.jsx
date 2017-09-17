@@ -59,6 +59,7 @@ export default class WelcomeContainer extends React.Component {
         // }
         componentWillMount(){
         var self = this;
+        window.scrollTo(0,0);
         return axios.get( Config.API + '/problems/all').then(function (response) {
             self.setState({
                 problems: response.data,

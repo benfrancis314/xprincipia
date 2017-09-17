@@ -3,7 +3,7 @@ import { Link  } from 'react-router';
 import axios from 'axios';
 import cookie from 'react-cookie';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group'; // ES6
-import ProblemSolutionsMenu from './ProblemSolutionsMenu.jsx';
+import PrivateProjectProposalsMenu from './PrivateProjectProposalsMenu.jsx';
 // Not used yet, would like to develop later
 // import ProjectParentChildrenUnitsContainer from '../../containers/ProjectParentChildrenUnitsContainer.jsx';
 import SubProjectPrivateContainer from '../../containers/SubProjectPrivateContainer.jsx';
@@ -21,7 +21,7 @@ export default class FullPrivateProblem extends React.Component {
 privateAlert () {
     // alert('success');
     $(document).ready(function() {
-        $('#privateAlert').attr('id','privateAlertShow').hide().slideDown(7500);
+        $('#privateAlert').attr('id','privateAlertShow').hide().slideDown(500);
     });
 }
 
@@ -64,6 +64,7 @@ shouldComponentUpdate(nextProps, nextState) {
 
   componentWillReceiveProps(nextProps){
       var self = this;
+      window.scrollTo(0,0);
       axios.get( Config.API + '/problems/ID?id='+nextProps.params.probID).then(function (response) {
 
           //set Problem Data
@@ -181,7 +182,7 @@ unVote() {
           transitionLeave={false}>
 
         <div id="problemColumn1">
-          <SubPrivateProjectParentUnit parentID={this.state.problemInfo.ParentID} />
+          <SubPrivateProjectParentUnit parentID={this.state.problemInfo.ParentID} parentType={this.state.problemInfo.ParentType} />
           {/*<ProjectParentChildrenUnitsContainer parentID={this.state.problemInfo.ParentID} problemTitle={this.state.problemInfo.Title}/>*/}
           <div id="problemIntro">
             <h1 id="problemTitle">{this.state.problemInfo.Title}</h1>
@@ -193,17 +194,17 @@ unVote() {
                 <a href='#proposals'>
                   <div id="SBButtonDiscuss" onClick={this.goToProposal}>Proposals</div>
                 </a>
-                <Link to={`/project/${this.props.params.probID}/questions`} activeClassName="activeBlue">
+                <Link to={`/project/private/${this.props.params.probID}/questions`} activeClassName="activeBlue">
                     <div id="SBButtonDiscuss">Brainstorm</div>
                 </Link>
-                <Link to={`/project/${this.props.params.probID}/learn/resources`} activeClassName="activeBlue">
-                  <div id="SBButtonLearn">Notes</div>
+                <Link to={`/project/private/${this.props.params.probID}/notes`} activeClassName="activeBlue">
+                  <div id="SBButtonLearn">Notebook</div>
                 </Link>
             </div>
             <div id="privateFullSettingsButton" onClick={this.privateAlert}>
                 <img src={require('../../assets/lock2Blue.svg')} id="fullProblemLockLogo" width="20" height="20" alt="Gear logo, link to settings"/>
             </div>
-            <Link to={`/project/${this.props.params.probID}/edit`}>
+            <Link to={`/project/private/${this.props.params.probID}/edit`}>
               <img src={require('../../assets/editBlue.svg')} id="editProjectButton" width="20" height="20" alt="Edit Button" />
             </Link>
 
@@ -217,19 +218,23 @@ unVote() {
             </div>
           {React.cloneElement(<SubProjectPrivateContainer probID={this.props.params.probID} />)}
           <ScrollableAnchor id={'proposals'}>
-            {React.cloneElement(<ProblemSolutionsMenu probID={this.props.params.probID} projectTitle={this.state.problemInfo.Title} />)}
+            {React.cloneElement(<PrivateProjectProposalsMenu probID={this.props.params.probID} projectTitle={this.state.problemInfo.Title} />)}
           </ScrollableAnchor>
         {/*<div id="tutorialProblemButtonDiv">
           <img src={require('../../assets/tutorial.svg')} id="tutorialProblemButton" width="50" height="50" alt="Back arrow, blue up arrow" />
         </div>*/}
-        
-        <TutorialProjectContent />
+        {/*Need new tutorial for mind temple*/}
+        {/*<TutorialProjectContent />*/}
+        <br />
+        <br />
+        <br />
+        <br />
         </ReactCSSTransitionGroup>
         <div id="privateAlert">
                 <div id="privateAlertHeader">
                     <img src={require('../../assets/lock2Blue.svg')} id="lockAlert" width="30" height="30" onClick={this.privateAlert} alt="Logo logo, signifying this is private"/>
                 </div>
-                <div id="privateAlertContent">This space is entirely <span id="blue">private</span></div>
+                <div id="privateAlertContent">This project is entirely <span id="blue">private</span></div>
                 <div id="privateAlertReturn" onClick={this.hideNotification}>Return</div>
         </div>
       </div>
@@ -247,7 +252,7 @@ unVote() {
           transitionLeave={false}>
 
         <div id="problemColumn1">
-          <SubPrivateProjectParentUnit parentID={this.state.problemInfo.ParentID} />
+          <SubPrivateProjectParentUnit parentID={this.state.problemInfo.ParentID} parentType={this.state.problemInfo.ParentType} />
           {/*<ProjectParentChildrenUnitsContainer parentID={this.state.problemInfo.ParentID} problemTitle={this.state.problemInfo.Title}/>*/}
           <div id="problemIntro">
             <h1 id="problemTitle">{this.state.problemInfo.Title}</h1>
@@ -259,17 +264,17 @@ unVote() {
                 <a href='#proposals'>
                   <div id="SBButtonDiscuss" onClick={this.goToProposal}>Proposals</div>
                 </a>
-                <Link to={`/project/${this.props.params.probID}/questions`} activeClassName="activeBlue">
+                <Link to={`/project/private/${this.props.params.probID}/questions`} activeClassName="activeBlue">
                     <div id="SBButtonDiscuss">Brainstorm</div>
                 </Link>
-                <Link to={`/project/${this.props.params.probID}/learn/resources`} activeClassName="activeBlue">
-                  <div id="SBButtonLearn">Notes</div>
+                <Link to={`/project/private/${this.props.params.probID}/notes`} activeClassName="activeBlue">
+                  <div id="SBButtonLearn">Notebook</div>
                 </Link>
             </div>
             <div id="privateFullSettingsButton" onClick={this.privateAlert}>
                 <img src={require('../../assets/lock2Blue.svg')} id="fullProblemLockLogo" width="20" height="20" alt="Gear logo, link to settings"/>
             </div>
-            <Link to={`/project/${this.props.params.probID}/edit`}>
+            <Link to={`/project/private/${this.props.params.probID}/edit`}>
               <img src={require('../../assets/editBlue.svg')} id="editProjectButton" width="20" height="20" alt="Edit Button" />
             </Link>
 
@@ -283,15 +288,27 @@ unVote() {
             </div>
           {React.cloneElement(<SubProjectPrivateContainer probID={this.props.params.probID} />)}
           <ScrollableAnchor id={'proposals'}>
-            {React.cloneElement(<ProblemSolutionsMenu probID={this.props.params.probID} projectTitle={this.state.problemInfo.Title} />)}
+            {React.cloneElement(<PrivateProjectProposalsMenu probID={this.props.params.probID} projectTitle={this.state.problemInfo.Title} />)}
           </ScrollableAnchor>
 
         {/*<div id="tutorialProblemButtonDiv">
           <img src={require('../../assets/tutorial.svg')} id="tutorialProblemButton" width="50" height="50" alt="Back arrow, blue up arrow" />
         </div>*/}
-        
-        <TutorialProjectContent />
+        {/*Need new tutorial for mind temple*/}
+        {/*<TutorialProjectContent />*/}
+        <br />
+        <br />
+        <br />
+        <br />
         </ReactCSSTransitionGroup>
+        <div id="privateAlert">
+                <div id="privateAlertHeader">
+                    <img src={require('../../assets/lock2Blue.svg')} id="lockAlert" width="30" height="30" onClick={this.privateAlert} alt="Logo logo, signifying this is private"/>
+                </div>
+                <div id="privateAlertContent">This project is entirely <span id="blue">private</span></div>
+                <div id="privateAlertReturn" onClick={this.hideNotification}>Return</div>
+        </div>
+
       </div>
       );
     }

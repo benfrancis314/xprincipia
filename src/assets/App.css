@@ -232,7 +232,7 @@ Last updated: 8/11/17
         box-shadow: inset 0 0 6px rgba(0,220,255,0); 
         -webkit-border-radius: 3px;
         border-radius: 3px;
-        background-color: #0f131c;
+        background-color: rgba(0,220,255,0);
     }
     /* Handle */
     ::-webkit-scrollbar-thumb:vertical {
@@ -587,7 +587,6 @@ like vote and comments.*/
   font-size: 110% !important;
   letter-spacing: 10px !important;
   flex: 1 6 auto !important;
-<<<<<<< HEAD
   width: 80% !important;
   margin-left: 5% !important;
   text-align: left !important;
@@ -915,10 +914,20 @@ body, html, #main {
       border-width: 0px 0px 1px 0px;*/
     }
     #answerQuestionContent {
-      flex: 3 3 auto;
+      /*Old Styles*/
+      /*flex: 3 3 auto;
       font-family: 'Open Sans';
       width: 80%;
-      padding: 0px 10px 10px 15px;
+      padding: 0px 10px 10px 15px;*/
+
+      flex: 3 3 auto;
+      font-family: 'Open Sans';
+      border: 1px solid #00dcff;
+      border-radius: 5px 0px 25% 10px;
+      width: 90%;
+      padding: 2% 5% 2% 5%;
+      margin-bottom: 1.1%;
+      background: linear-gradient(left,rgba(0,220,255, 0.06), rgba(0,220,255, 0.07), rgba(0,220,255, 0.02));
     }
     #greenBorder {
       border-color: #00ffdc;
@@ -1018,7 +1027,7 @@ body, html, #main {
       padding: 6px;
       vertical-align: center;
       transition: all 0.25s ease 0s;
-      box-shadow: 0 0 0pt 0pt rgba(255,127,127,0.5);
+      box-shadow: 0 0 0pt 0pt rgba(255,127,127,0.5) inset;
     }
     #commentSBButtonUser {
       border-radius: 0px 0px 0px 3px;
@@ -1033,7 +1042,7 @@ body, html, #main {
     }
     #commentSBButton:hover, #commentSBButtonUser:hover {
       cursor: pointer;
-      box-shadow: 0 0 2pt 2pt rgba(0,220,255,0.5);
+      box-shadow: 0 0 2pt 2pt rgba(0,220,255,0.5) inset;
       /*Interesting thing to try to get images to switch on hover*/
       /*content: url("http://i.imgur.com/uKnMvyp.jpg");*/
     }
@@ -1042,6 +1051,8 @@ body, html, #main {
       color: #ff7f7f;
       border: 1px solid #ff7f7f;
       border-radius: 0px 0px 0px 2px;
+      box-shadow: 0 0 0pt 0pt rgba(255,127,127,0.5) inset;
+      transition: all 0.5s ease 0s;
     }
     #flagSBButton:active, #deleteSBButton:active {
       color: #0f131c !important;
@@ -1049,11 +1060,11 @@ body, html, #main {
     }
     #flagSBButton:hover, #deleteSBButton:hover {
       cursor: pointer;
-      box-shadow: 0 0 2pt 2pt rgba(255,127,127,0.5);
+      box-shadow: 0 0 2pt 2pt rgba(255,127,127,0.5) inset;
     }
     #editSBButton:hover, #editSBButtonAnswer:hover {
       cursor: pointer;
-      box-shadow: 0 0 2pt 2pt rgba(0,220,255,0.5);
+      box-shadow: 0 0 2pt 2pt rgba(0,220,255,0.5) inset;
     }
     #flagSBButton:active {
       color: #ff7f7f;
@@ -1086,19 +1097,29 @@ body, html, #main {
       font-family: 'Open Sans';
       padding-top: 10px;
       width: 100%;
-      border: 1px solid #00dcff;
-      border-radius: 3px;
+      /*border: 1px solid #00dcff;
+      border-radius: 3px;*/
       margin-top: 1%;
       margin-bottom: 1%;
     }
     #answerContent {
-    	flex: 3 3 auto;
+    	/*Old Styles*/
+      /*flex: 3 3 auto;
     	font-family: 'Open Sans';
     	border: 1px solid #00ffdc;
     	border-width: 1px 0px 0px 0px;
     	width: 80%;
     	padding: 10px;
-    	margin-left: 8%;
+    	margin-left: 8%;*/
+
+      flex: 3 3 auto;
+      font-family: 'Open Sans';
+      border: 1px solid #333333;
+      border-radius: 5px 0px 25% 10px;
+      width: 80%;
+      padding: 2% 5% 2% 5%;
+      margin-bottom: 1.1%;
+      background: linear-gradient(left,rgba(0,220,255, 0.06), rgba(0,220,255, 0.07), rgba(0,220,255, 0.02));
     }
     #answerVote {
       flex: 1 1 auto;
@@ -1179,12 +1200,15 @@ body, html, #main {
     }
     #solutionSummaryForm, #solutionDescriptionForm, 
     #solutionReferencesForm, #problemSummaryForm {
-      background-color: rgba(0,220,255, 0.05);
+      /*background-color: rgba(0,220,255, 0.05);*/
+      background: linear-gradient(left,rgba(0,220,255, 0.06), rgba(0,220,255, 0.07),rgba(0,220,255, 0.03));
+
     }
     #projectEditSummaryForm {
       font-family: 'Open Sans';
     	text-align: left;
     	height: 5em;
+      background-color: rgba(255,255,255,0.025);
     }
     #problemDescriptionForm, #problemRequirementsForm, #solutionDescriptionForm, {
       height: 10em;
@@ -1207,6 +1231,7 @@ body, html, #main {
       border: 1px solid #ffffff;
       border-radius: 3px;
       box-shadow: 0 0 1pt 1pt rgba(255,255,255,0.5);
+      background-color: rgba(255,255,255,0.025);
     }
     #problemTitleFormLabel, #problemFieldFormLabel, #problemSummaryFormLabel,
     #problemDescriptionFormLabel, #projectTitleProposalFormLabel,
@@ -1916,7 +1941,7 @@ body, html, #main {
       font-size: 75%;
       width: 22%;
       margin-bottom: 0px;
-      box-shadow: 0 0 2pt 2pt rgba(0,220,255,0.5);
+      /*box-shadow: 0 0 2pt 2pt rgba(0,220,255,0.5);*/
       font-family: 'Alegreya Sans SC', sans-serif;
     }
     #loginPassword, #registerPassword {
@@ -1933,11 +1958,11 @@ body, html, #main {
     #registerButton, #loginButton {
     	color: #00dcff;
       background-color: rgba(0,220, 255, 0);
-      font-size: 65%;
+      font-size: 80%;
     	border: 1px solid #00dcff;
       border-radius: 3px;
     	width: 14%;
-    	padding: 0px;
+    	padding: 3px;
     	margin: 0 auto;
       text-align: center;
       font-family: 'Alegreya Sans SC', sans-serif;
@@ -1963,7 +1988,7 @@ body, html, #main {
     	border: 1px solid #00ffdc;
       border-width: 0px 1px 1px 1px;
       width: 10%;
-      font-size: 60%;
+      font-size: 70%;
     }
     #registerButton, #loginButton {
       margin-top: 0%;
@@ -1975,23 +2000,105 @@ body, html, #main {
     	background-color: rgba(0,255, 220, 1) !important;
     	cursor: pointer;
     }
+    #submitRegisterIntroduction {
+      color: #00dcff;
+      background-color: rgba(0,220, 255, 0);
+      font-size: 80%;
+    	border: 1px solid #00dcff;
+      border-radius: 3px;
+    	width: 14%;
+    	padding: 3px;
+    	margin: 0 auto;
+      text-align: center;
+      font-family: 'Alegreya Sans SC', sans-serif;
+      letter-spacing: 2px;
+      margin-top: 3%;
+      transition: all 0.5s ease 0s;
+      margin-top: 2%;
+      width: 20%;
+      background-color: rgba(0,220,255,0.05);
+
+      /*background: linear-gradient(left,rgba(0,220,255, 0), rgba(0,220,255, 0.05), rgba(0,220,255, 0));*/
+      background: radial-gradient(circle,rgba(0,220,255, 0), rgba(0,220,255, 0.025), rgba(0,220,255, 0.05));
+      /*transition: all 0.75s ease 0s;*/
+      background-color: rgba(0,220,255,0.025);
+      transform: scale(1);
+    }
+    #submitRegisterIntroduction:hover, #submitRegisterIntroduction:active, #submitRegisterIntroduction:focus {
+      color: #0f131c !important;
+    	background-color: rgba(0,220, 255, 1) !important;
+    	cursor: pointer;
+    }
+    #registerButtonIntroduction {
+      color: #00dcff;
+      background-color: rgba(0,220, 255, 0);
+      font-size: 80%;
+    	border: 1px solid #00dcff;
+      border-radius: 3px;
+    	width: 14%;
+    	padding: 3px;
+    	margin: 0 auto;
+      text-align: center;
+      font-family: 'Alegreya Sans SC', sans-serif;
+      letter-spacing: 2px;
+      margin-top: 3%;
+      transition: all 0.5s ease 0s;
+      color: #00ffdc;
+      background-color: rgba(0,220,255,0.05);
+    	border: 1px solid #00ffdc;
+      border-width: 0px 1px 1px 1px;
+      width: 15%;
+      font-size: 70%;
+      margin-top: 0%;
+
+      /*background: linear-gradient(left,rgba(0,220,255, 0), rgba(0,220,255, 0.05), rgba(0,220,255, 0));*/
+      background: radial-gradient(circle,rgba(0,255,220, 0), rgba(0,255,220, 0.025), rgba(0,255,220, 0.05));
+      /*transition: all 0.75s ease 0s;*/
+      background-color: rgba(0,255,220,0.025);
+      transform: scale(1);
+    }
+    #registerButtonIntroduction:hover, #registerButtonIntroduction:active, #registerButtonIntroduction:focus {
+      color: #0f131c !important;
+    	background-color: rgba(0,255, 220, 1) !important;
+    	cursor: pointer;
+    }
+    #introRegisterFullName, #introRegisterUserName, #introRegisterEmail, #introRegisterPassword,
+    #registerFullName, #registerUserName, #registerEmail, #registerPassword,
+    #loginHeaderEmail, #loginEmail, #loginPassword {
+      background: linear-gradient(left,rgba(0,220,255, 0), rgba(0,220,255, 0.05), rgba(0,220,255, 0));
+      transition: all 0.75s ease 0s;
+      background-color: rgba(0,220,255,0.025);
+      transform: scale(1);
+    }
+    #introRegisterFullName:focus, #introRegisterUserName:focus, #introRegisterEmail:focus, #introRegisterPassword:focus,
+    #registerFullName:focus, #registerUserName:focus, #registerEmail:focus, #registerPassword:focus,
+    #loginHeaderEmail:focus, #loginHeaderPassword:focus, #loginEmail:focus, #loginPassword:focus {
+      box-shadow: 0 0 1pt 1pt rgba(0,220,255,0.5) !important;
+      transform: scale(1.02);
+      background: linear-gradient(left,rgba(0,220,255, 0.05), rgba(0,220,255, 0.1), rgba(0,220,255, 0.05));
+    }
+    #loginHeaderEmail:focus, #loginHeaderPassword:focus {
+      box-shadow: 0 0 1pt 1pt rgba(0,220,255,0.5) !important;
+      transform: scale(1.02);
+      background: linear-gradient(left,rgba(0,220,255, 0.05), rgba(0,220,255, 0.1), rgba(0,220,255, 0.05));
+    }
     #loginHeaderEmail {
     	display: block;
       font-size: 125%;
       width: 15%;
-      box-shadow: 0 0 1pt 1pt rgba(0,220,255,0.5);
+      /*box-shadow: 0 0 1pt 1pt rgba(0,220,255,0.5);*/
       font-family: 'Alegreya Sans SC', sans-serif;
       margin: 0 auto;
       margin-top: 0.3%;
       margin-bottom: 0.3%;
       padding: 0px !important;
-      background-color: #0f131c;
+      /*background-color: #0f131c;*/
     }
     #loginHeaderPassword {
     	display: block;
       font-size: 125%;
       width: 15%;
-      box-shadow: 0 0 1pt 1pt rgba(0,220,255,0.5);
+      /*box-shadow: 0 0 1pt 1pt rgba(0,220,255,0.5);*/
       font-family: 'Alegreya Sans SC', sans-serif;
       margin: 0 auto;
       margin-left: 1%;
@@ -1999,7 +2106,7 @@ body, html, #main {
       margin-bottom: 0.3%;
       padding: 0px !important;
       transition: all 0.5s ease 0s;
-      background-color: #0f131c;
+      /*background-color: #0f131c;*/
     }
     #loginHeaderUsernameDiv {
       margin: 0 auto;
@@ -2046,11 +2153,21 @@ body, html, #main {
       transition: all 0.5s ease 0s;
       background-color: #0f131c;
       width: 6%;
+
+      /*background: linear-gradient(left,rgba(0,220,255, 0), rgba(0,220,255, 0.05), rgba(0,220,255, 0));*/
+      background: radial-gradient(circle,rgba(0,220,255, 0), rgba(0,220,255, 0.025), rgba(0,220,255, 0.05));
+      /*transition: all 0.75s ease 0s;*/
+      background-color: rgba(0,220,255,0.025);
+      transform: scale(1);
     }
-    #loginHeaderSubmitButton:hover {
+    #loginHeaderSubmitButton:hover, #loginHeaderSubmitButton:active, #loginHeaderSubmitButton:focus {
      cursor: pointer;
      background-color: rgba(0,220,255,1);
      color: #0f131c;
+
+     /*box-shadow: 0 0 1pt 1pt rgba(0,220,255,0.5) !important;
+     transform: scale(1.02);
+     background: linear-gradient(left,rgba(0,220,255, 0.05), rgba(0,220,255, 0.1), rgba(0,220,255, 0.05));*/
     }
     #registerHeaderButton {
       font-family: 'Alegreya Sans SC', sans-serif;
@@ -2068,6 +2185,12 @@ body, html, #main {
       box-shadow: 0 0 1pt 1pt rgba(0,255,220,0.5);
       transition: all 0.5s ease 0s;
       background-color: #0f131c;
+
+      /*background: linear-gradient(left,rgba(0,220,255, 0), rgba(0,220,255, 0.05), rgba(0,220,255, 0));*/
+      background: radial-gradient(circle,rgba(0,255,220, 0), rgba(0,255,220, 0.025), rgba(0,255,220, 0.05));
+      /*transition: all 0.75s ease 0s;*/
+      background-color: rgba(0,255,220,0.025);
+      transform: scale(1);
     }
     #registerHeaderButton:hover {
      cursor: pointer;
@@ -2096,8 +2219,12 @@ body, html, #main {
   margin-bottom: 1.5%;
   width: 30%;
   font-size: 90%;
-  transition: all 0.5s ease 0s;
+  /*transition: all 0.5s ease 0s;*/
   color: #dddddd;
+  background: linear-gradient(left,rgba(255,255,255, 0), rgba(255,255,255, 0.05), rgba(255,255,255, 0));
+  transition: all 0.75s ease 0s;
+  background-color: rgba(255,255,255,0.025);
+  transform: scale(1);
 }
 #introductionButtonClicked {
   background-color: rgba(0,220,255,0.05);
@@ -2114,10 +2241,15 @@ body, html, #main {
 }
 #introductionButton:hover, #introductionButton:active,
 #introductionButtonClicked:hover, #introductionButtonClicked:active {
-  background-color: rgba(0,220,255,0.05);
+  /*background-color: rgba(0,220,255,0.05);
   cursor: pointer;
   color: rgba(0,220,255,1);
-  border: 1px solid rgba(0,220,255,1);
+  border: 1px solid rgba(0,220,255,1);*/
+
+  box-shadow: 0 0 1.5pt 1.5pt rgba(255,255,255,0.5);
+  transform: scale(1.02);
+  cursor: pointer;
+  background: linear-gradient(left,rgba(255,255,255, 0.05), rgba(255,255,255, 0.1), rgba(255,255,255, 0.05));
 }
 #signup, #register {
   padding-top: 0px;
@@ -2170,8 +2302,8 @@ body, html, #main {
   padding-left: 3px;*/
 }
 #introductionCapitalProse {
-  font-size: 150%;
-  font-family: 'Open Sans';
+  /*font-size: 135%;*/
+  font-size: 145%;
 }
 #introductionBigBlue {
   font-size: 125%;
@@ -2200,29 +2332,41 @@ body, html, #main {
   padding-top: 6%;
   padding-bottom: 8%;
   line-height: 170%;
-  background-color: rgba(0,220,255,0.05);
-  border: 1px solid #00dcff;
-  border-width: 1px 0px;
+  /*background-color: rgba(0,220,255,0.05);*/
+  /*border: 1px solid #00dcff;*/
+  /*border-width: 1px 0px;*/
   width: 70%;
   margin: 0 auto;
   margin-top: 2%;
   margin-bottom: 6%;
+
+  border: 1px solid #333333;
+  border-radius: 5px 5px 10px 10px;
+  width: 80%;
+  padding: 6% 5% 6% 5%;
+  /*margin-bottom: 1.1%;*/
+  /*Current*/
+  background: linear-gradient(left,rgba(0,220,255, 0.06), rgba(0,220,255, 0.07), rgba(0,220,255, 0.02));
+  /*Test*/
+  /*background: linear-gradient(left,rgba(0,220,255, 0.05), rgba(0,220,255, 0.07), rgba(0,220,255, 0.07), rgba(0,220,255, 0.05));*/
 }
 #introductionProjectsProse {
-  font-family: 'Open Sans';
-  font-size: 70%;
-  letter-spacing: normal;
+  font-family: 'Alegreya Sans SC';
+  font-size: 125%;
+  letter-spacing: 1px;
   color: #dddddd;
+  text-align: center;
   padding-left: 8%;
   padding-right: 8%;
   padding-top: 3%;
   padding-bottom: 3%;
   line-height: 170%;
-  background-color: rgba(0,220,255,0.05);
-  border: 1px solid #00dcff;
+  background-color: rgba(0,220,255,0);
+  border: 1px solid #dddddd;
   border-width: 1px 0px;
-  width: 70%;
+  width: 75%;
   margin: 0 auto;
+  background: linear-gradient(rgba(255,255,255,0.04), rgba(0,220,255,0.075), rgba(0,220,255,0.075), rgba(255,255,255,0.035));
 }
 #introRegisterContainer {
   margin-top: 2%;
@@ -2232,8 +2376,8 @@ body, html, #main {
   margin: 0 auto;
   width: 60%;
   text-align: center;
-  color: #00ffdc;
-  border: 1px solid #00ffdc;
+  color: #ffffff;
+  border: 1px solid #dddddd;
   border-radius: 3px;
   padding: 3px;
   margin-top: 4%;
@@ -2257,7 +2401,7 @@ body, html, #main {
   font-size: 90%;
   width: 40%;
   margin-bottom: 0px;
-  box-shadow: 0 0 2pt 2pt rgba(0,220,255,0.5);
+  /*box-shadow: 0 0 2pt 2pt rgba(0,220,255,0.5);*/
   font-family: 'Alegreya Sans SC', sans-serif;
   background-color: rgba(0,220,255,0.05);
 }
@@ -2278,26 +2422,58 @@ body, html, #main {
   background-repeat: no-repeat;
   background-color: rgba(15,19,28,0.999);
   background-blend-mode: overlay;
-  transition: all 0.2s ease 0s;
+  transition: all 0.5s ease 0s;
   transform: scale(1);
+  font-size: 70%;
 
   display: flex;
   flex-direction: column;
+  border: 2px solid #00dcff;
+  border-radius: 100%;
+  width: 14em;
+  height: 14em;
   word-wrap: break-word; 
   align-items: center; 
   justify-content: center;
   margin: 0 auto;
+  box-shadow: 0 0 2pt 2pt rgba(0,220,255,0.5);
   transition: all 0.5s ease 0s;
-
-  background-size: cover;
-  border: 1px solid #00dcff;
-  box-shadow: 0 0 1pt 1pt rgba(0,220,255,0.5);
-  width: 70%;
-  height: auto;
-  position: relative;
-  margin-top: 6%;
+  transform: scale(1);
+  margin-top: 4%;
   margin-bottom: 8%;
+}
+
+#introductionExploreButton {
+  width: 35%;
   padding: 3%;
+  padding-bottom: 1%;
+  padding-top: 1%;
+  margin: 0 auto;
+  margin-top: 0%;
+  margin-bottom: 8%;
+  font-size: 175%;
+  text-align: center;
+  letter-spacing: 4px;
+  border: 1px solid #dddddd;
+  color: #dddddd;
+  border-radius: 3px;
+  background-color: rgba(0,255,220,0.05);
+  transition: 0.5s all ease 0s;
+
+  /*background: linear-gradient(left,rgba(0,220,255, 0), rgba(0,220,255, 0.05), rgba(0,220,255, 0));*/
+  background: radial-gradient(circle,rgba(0,220,255, 0.01), rgba(0,220,255, 0.025), rgba(0,220,255, 0.05));
+  transition: all 0.75s ease 0s;
+  background-color: rgba(0,220,255,0.025);
+  transform: scale(1);
+}
+#introductionExploreButton:hover {
+  cursor: pointer;
+  /*background-color: #00dcff;*/
+  /*color: #0f131c;*/
+  box-shadow: 0 0 1pt 1pt rgba(0,220,255,0.5) !important;
+  transform: scale(1.02);
+  background: radial-gradient(circle,rgba(0,220,255, 0.025), rgba(0,220,255, 0.05), rgba(0,220,255, 0.075));
+}
   
 
   /*Circular*/
@@ -2323,7 +2499,6 @@ body, html, #main {
   box-shadow: 0 0 2pt 2pt rgba(0,220,255,0.5);
   transition: all 0.5s ease 0s;
   transform: scale(1);*/
-}
 #introductionProjectHeader1 {
   background-image: url('./earthRise.jpg');
 }
@@ -2342,6 +2517,7 @@ body, html, #main {
 #introductionProjectHeader4:hover {
   background-color: rgba(15,19,28,0.5);
   transform: scale(1.02);
+  cursor: pointer;
 }
 introductionProjectTitle {
   margin: 0 auto;
@@ -2381,11 +2557,11 @@ introductionProjectTitle {
   margin-top: 0%;
   margin-bottom: 1%;
   font-size: 175%;
-  width: 100%;
+  width: 80%;
   border-width: 1px 1px 1px 1px;
   border-radius: 40px 40px 0px 0px;;
   text-align: left;
-  padding: 0% 4% 0% 4%;
+  /*padding: 0% 4% 0% 4%;*/
   z-index: 5;
 }
 #fullTutorialWelcome {
@@ -2816,6 +2992,375 @@ introductionProjectTitle {
   letter-spacing: 6px;
   width: 100%;
   margin: 0 auto;
+  padding: 0.5% 0% 0.5% 0%;
+  margin-bottom: 0.5%;
+  margin-top: 0.5%;
+}
+#privateContainerMotto {
+  display: inline-block;
+  color: #888888;
+  transition: all 2s ease 0s;
+}
+#privateContainerMottoBlue {
+  display: inline-block;
+  color: #00dcff;
+  transition: all 2s ease 0s;
+  letter-spacing: 7px;
+}
+#privateSettingsGear {
+  margin: 0 auto;
+  vertical-align: center;
+  margin-top: 2px;
+}
+#mindTempleButton {
+  margin: 0 auto;
+  /*vertical-align: center;*/
+  margin-top: 2px;
+  /*bottom: 2px;*/
+  /*padding: 3px;*/
+}
+#fullProblemLockLogo {
+  margin: 0 auto;
+  vertical-align: middle;
+  margin-bottom: 2px;
+}
+#privateContainerBanner {
+  transition: all 2s ease 0s;
+  transform: scale(1);
+}
+#privateContainerBanner:hover {
+  transform: scale(1.02);
+}
+#privateContainerTitle {
+  margin: 0 auto;
+  color: #ffffff;
+  text-align: center;
+  margin-bottom: 0%;
+  margin-top: 3%;
+  font-size: 260%;
+  letter-spacing: 15px;
+  width: 70%;
+
+  border: 1px solid #00dcff;
+  border-radius: 0% 0% 15% 15%;
+  border-width: 1px 0px 1px 0px;
+  padding: 15px 35px 15px 35px;
+  transition: all 0.5s ease 0s;
+  background: linear-gradient(rgba(255,255,255,0.05), rgba(0,220,255,0.1), rgba(0,220,255,0.1), rgba(255,255,255,0.025));
+}
+#privateContainerSettingsButton {
+  margin: 0 auto;
+  color: #00dcff;
+  text-align: center;
+  margin-bottom: 2%;
+  /*margin-top: 1.5%;*/
+  font-size: 175%;
+  letter-spacing: 6px;
+  width: 10%;
+  border: 1px solid #00dcff;
+  border-width: 0px 1px 1px 1px;
+  border-radius: 0% 0% 25% 25%;
+  transition: all 0.5s ease 0s;
+  background: linear-gradient(right, rgba(255,255,255,0.025), rgba(0,220,255,0.1), rgba(255,255,255,0.025));
+}
+#privateContainerSettingsButton:hover {
+  cursor: pointer;
+  background-color: rgba(0,220,255,0.1);
+  color: #0f131c;
+}
+#privateFullSettingsButton {
+  margin: 0 auto;
+  color: #00dcff;
+  text-align: center;
+  margin-bottom: 0.5%;
+  /*margin-top: 1.5%;*/
+  font-size: 175%;
+  letter-spacing: 6px;
+  width: 10%;
+  border: 1px solid #00dcff;
+  border-width: 0px 1px 1px 1px;
+  border-radius: 0% 0% 25% 25%;
+  transition: all 0.5s ease 0s;
+  background: linear-gradient(right, rgba(255,255,255,0.025), rgba(0,220,255,0.1), rgba(255,255,255,0.025));
+}
+#privateFullSettingsButton:hover {
+  cursor: pointer;
+  background-color: rgba(0,220,255,0.1);
+  color: #0f131c;
+}
+#privateNewProject {
+  color: #dddddd;
+  border: 1px solid #dddddd;
+  margin: 0 auto;
+  text-align: center;
+  margin-bottom: 0%;
+  margin-top: 1.5%;
+  font-size: 175%;
+  letter-spacing: 6px;
+  width: 40%;
+  border-radius: 3px;
+  transition: all 0.5s ease 0s;
+  background-color: rgba(0,220,255,0.05);
+}
+#privateNewProject:hover {
+  background-color: #00dcff;
+  border-color: #00dcff;
+  color: #0f131c;
+  cursor: pointer;
+}
+#privateNewProjectPlus {
+  padding: 0px;
+  margin: 0 auto;
+  vertical-align: middle;
+}
+#SPHeaderPrivate {
+  display: inline-flex;
+  flex-direction: column;
+  border: 2px solid #00dcff;
+  border-radius: 100%;
+  width: 13em;
+  height: 13em;
+  word-wrap: break-word; 
+  align-items: center; 
+  justify-content: center;
+  background-color: rgba(0,220,255,0.05);
+  margin: 0 auto;
+  /*box-shadow: 0 0 2pt 2pt rgba(0,220,255,0.5);*/
+  box-shadow: 0 0 2pt 2pt rgba(0,220,255,0.5);
+  transition: all 0.75s ease 0s;
+  transform: scale(1);
+  margin-top: 1%;
+}
+#SPHeaderPrivate:hover #SPTitle{
+  color: #ffffff;
+  cursor: pointer;
+}
+#SPHeaderPrivate:hover {
+  box-shadow: 0 0 1pt 3pt rgba(0,220,255,0.5);
+  transform: scale(1.02);
+  cursor: pointer;
+  background: radial-gradient(circle, rgba(0,220,255,0.05), rgba(0,220,255,0.05), rgba(0,220,255,0.1), rgba(0,220,255,0.05));
+}
+#SPPrivateUnitList {
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  margin: 0 auto;
+  margin-top: 0.5%;
+  overflow-x: scroll;
+}
+#SPPrivateUnitList li {
+  display: inline-block;
+  /*display: inline;*/
+  margin: 2% 1% 3% 1%;
+  list-style-type: none;
+}
+#SPPrivateUnit {
+  /*width: 14em;*/
+  margin: 0% 5% 0% 5%;  
+}
+#privateTextBoxTop {
+  border: 1px solid #dddddd;
+  border-width: 1px 1px 1px 1px;
+  border-radius: 45% 45% 3px 3px;
+  background-color: rgba(0,220,255, 0.05);
+  margin-top: 1%;
+  margin-bottom: 1%;
+  /*padding-top: 0.5%;*/
+}
+#privateTextBoxBottom {
+  border: 1px solid #dddddd;
+  background-color: rgba(0,220,255, 0.05);
+  border-radius: 3px 3px 45% 45%;
+  margin-bottom: 2%;
+  margin-top: 1%;
+  /*padding-top: 0.5%;*/
+}
+#privateSearchForm {
+  overflow: hidden;
+  padding: 5px 0px 0px 0px;
+  margin: 0 auto;
+  margin-top: 1.8%;
+  margin-bottom: 1%;
+  text-align: center;
+  color: #dddddd;
+  letter-spacing: 8px;
+  padding-top: 10px;
+}
+#privateExploreInput {
+  color: #dddddd;
+  background: radial-gradient(rgba(0,220,255, 0), rgba(0,220,255, 0.1));
+  border: 1px solid #00dcff;
+  border-radius: 25%;
+  height: 35px;
+  width: 40%;
+  letter-spacing: 6px;
+  font-size: 110%;
+  padding: auto;
+  padding-top: 5px 0px;
+  font-family: 'Alegreya Sans SC', sans-serif;
+  text-align: center;
+  transition: all 0.5s ease 0s;
+}
+#privateExploreInput:hover, #privateExploreInput:focus, #privateExploreInput:active, input[type=search]:focus {
+  /*background-color: rgba(0,220,255, 0.1);*/
+  box-shadow: 0 0 2pt 2pt rgba(0,220,255,0);
+  outline: none;
+}
+input[type=text]:focus, input[type=email]:focus, input[type=password]:focus, input[type=button]:focus, input[type=submit]:focus, textarea {
+  box-shadow: 0 0 0pt 0pt rgba(0,220,255,0) !important;
+  outline: none !important;
+}
+
+
+
+/*Private Alert*/
+#privateAlertShow {
+  position: fixed;
+  top: 15vh;
+  z-index: 500;
+  width: 50%;
+  margin: 0 auto;
+  margin-left: 25%;
+  margin-right: 25%;
+  border: 1px solid #00dcff;
+  border-radius: 7%;
+  box-shadow: 0 0 2pt 2pt rgba(0,220,255,0.25);
+  background-color: rgba(15,19,28,0.9);
+  padding: 5px;
+  text-align: center;
+  font-size: 150%;
+  color: #ffffff;
+}
+#privateAlert {
+  display: none;
+}
+#lockAlert {
+  margin: 0 auto;
+}
+#privateAlertHeader {
+  /*color: #00dcff;*/
+  /*background-color: rgba(0,220,255,0.25);*/
+  /*border: 1px solid #00dcff;*/
+  /*border-radius: 50px;*/
+  margin: 0 auto;
+  margin-top: 2%;
+  width: 30px;
+  height: 30px;
+}
+#privateAlertContent {
+  color: #ffffff;
+  padding: 5px;
+  font-size: 125%;
+  margin: 5% 8% 5% 8%;
+  letter-spacing: 1px;
+}
+#privateAlertReturn {
+  color: #00dcff;
+  padding: 3px;
+  border: 1px solid #00dcff;
+  border-radius: 3px;
+  font-size: 70%;
+  transition: all 0.5s ease 0s;
+  width: 25%;
+  margin: 0 auto;
+  margin-top: 2%;
+  margin-bottom: 2%;
+}
+#privateAlertReturn:hover {
+  background-color: rgba(0,220,255,0.25);
+  cursor: pointer;
+}
+
+/*End Private Profile*/
+
+
+
+/*Extended Proposal*/
+
+#proposalSubProjectsButton {
+  text-align: center;
+  font-size: 175%;
+  letter-spacing: 6px;
+  width: 50%;
+  margin: 0 auto;
+  padding: 0.5% 0% 0.5% 0%;
+  margin-bottom: 0.5%;
+  margin-top: 0%;
+  border: 1px solid #dddddd;
+  border-width: 0px 1px 1px 1px;
+  border-radius: 0% 0% 25% 25%;
+  /*background-color: rgba(15,19,28,0.05);*/
+  background: linear-gradient(left,rgba(0,220,255, 0), rgba(0,220,255, 0.035), rgba(0,220,255, 0));
+
+transition: all 0.75s ease 0s;
+  /*box-shadow: 0 0 0pt 0pt rgba(0,220,255,0.5);*/
+  background-color: rgba(0,220,255,0.05);
+  transform: scale(1);
+}
+#proposalSubProjectsButton:hover {
+  /*box-shadow: 0 0 2pt 2pt rgba(0,220,255,0.5);*/
+  background: linear-gradient(left,rgba(0,220,255, 0), rgba(0,220,255, 0.1), rgba(0,220,255, 0));
+  /*background-color: rgba(15,19,28,0.9);*/
+  transform: scale(1.02);
+}
+#privateContainerMottoProposal {
+  display: inline-block;
+  color: #888888;
+  transition: all 2s ease 0s;
+}
+#privateContainerMottoBlueProposal {
+  display: inline-block;
+  color: #00dcff;
+  transition: all 2s ease 0s;
+  letter-spacing: 7px;
+}
+
+
+
+
+
+
+
+/*Private Profile*/
+
+#privateContainer {
+  width: 100%;
+  margin: 0 auto;
+}
+#privateUserName {
+  letter-spacing: 14px;
+  width: 90%;
+  margin: 0 auto;
+  border: 1px solid #00dcff;
+  border-width: 0px 1px 1px 1px;
+  /*border-right-color: #515151;
+  border-left-color: #515151;*/
+  letter-spacing: 16px;
+  color: #00dcff;
+  font-size: 130%;
+  text-align: center;
+  transition: all 2s ease 0s;
+  transform: scale(1);
+  /*Original*/
+  /*border-radius: 0% 0% 15% 15%;*/
+  border-radius: 0% 0% 40% 40%;
+  /*Make sure this refreshes to keep page normal width*/
+  padding: 0.3% 0% 0.5% 0%;
+  background: linear-gradient(rgba(0,255,220,0.05), rgba(0,255,220,0.05), rgba(0,220,255,0));
+}
+#privateUserName:hover {
+  transform: scale(1.02);
+  background-color: rgba(0,220,255,0.05);
+}
+#privateContainerMottoContainer {
+  text-align: center;
+  font-size: 175%;
+  letter-spacing: 6px;
+  width: 100%;
+  margin: 0 auto;
   padding: 0.5%;
   margin-bottom: 0.5%;
   margin-top: 0.5%;
@@ -3096,6 +3641,8 @@ introductionProjectTitle {
 }
 
 /*End Private Profile*/
+
+
 
 
 /*Profile*/
@@ -3604,6 +4151,7 @@ introductionProjectTitle {
   cursor: pointer;
   /*font-size: 105%;*/
   box-shadow: 0 0 2px 2px rgba(0,220,255,0.5);
+  background: linear-gradient(left,rgba(0,220,255, 0.05), rgba(0,220,255, 0.1), rgba(0,220,255, 0.05));
 }
 #solutionUnitActive {
   padding: 10px;
@@ -3717,7 +4265,8 @@ introductionProjectTitle {
       margin: 0 auto;
     }
     #suggestionContent {
-      flex: 3 3 auto;
+      /*Old Styles*/
+      /*flex: 3 3 auto;
       font-family: 'Open Sans';
       border: 1px solid #dddddd;
       border-width: 1px 0px 1px 1px;
@@ -3725,14 +4274,35 @@ introductionProjectTitle {
       width: 80%;
       padding: 15px;
       margin-bottom: 1.1%;
-      background-color: rgba(0,220,255,0.05);
+      background-color: rgba(0,220,255,0.05);*/
+
+      flex: 3 3 auto;
+      font-family: 'Open Sans';
+      border: 1px solid #dddddd;
+      border-radius: 5px 0px 25% 10px;
+      width: 80%;
+      padding: 2% 5% 2% 5%;
+      margin-bottom: 1.1%;
+      background: linear-gradient(left,rgba(0,220,255, 0.06), rgba(0,220,255, 0.07), rgba(0,220,255, 0.02));
     }
     #suggestionText {
-      font-family: 'Open Sans';
+      /*Old Styles*/
+      /*font-family: 'Open Sans';
       margin: 7px;
       margin-top: 10px;
       font-size: 115%;
-      color: #eeeeee;
+      line-height: 150%;*/
+
+      line-height: 150%;
+      font-family: 'Open Sans' !important;
+      font-size: 125%;
+      padding-left: 2%;
+      padding-right: 2%;
+      padding-top: 1.75%;
+      padding-bottom: 1.75%;
+      border: 1px solid #333333;
+      border-width: 0px 0px 1px 0px;
+      width: 82%;
     }
     #suggestionVote, #suggestionVoteNoComments {
       flex: 1 1 auto;
@@ -3816,10 +4386,25 @@ introductionProjectTitle {
       transition: all 0.5s ease 0s;
       font-size: 120%;
       letter-spacing: 0.25px;
+
+      background: linear-gradient(left,rgba(255,255,255, 0), rgba(255,255,255, 0.05), rgba(255,255,255, 0));
+      transition: all 0.75s ease 0s;
+      background-color: rgba(255,255,255,0.025);
+      transform: scale(1);
+      /*background: linear-gradient(left,rgba(255,255,255, 0.15), rgba(255,255,255, 0.1), rgba(255,255,255, 0.1), rgba(255,255,255, 0.05));*/
+
+
     }
     #welcomeIntroductionButton:hover {
+      /*cursor: pointer;*/
+      /*background-color: rgba(255,255,255,0.1);*/
+
+      box-shadow: 0 0 1.5pt 1.5pt rgba(255,255,255,0.5);
+      transform: scale(1.02);
       cursor: pointer;
-      background-color: rgba(255,255,255,0.1);
+      background: linear-gradient(left,rgba(255,255,255, 0.075), rgba(255,255,255, 0.1), rgba(255,255,255, 0.075));
+      /*background: linear-gradient(left,rgba(255,255,255, 0.15), rgba(255,255,255, 0.1), rgba(255,255,255, 0.05), rgba(255,255,255, 0));*/
+
     }
     #welcomeIntroductionButtonActive {
       border: 1px solid #dddddd;
@@ -3833,10 +4418,20 @@ introductionProjectTitle {
       transition: all 0.5s ease 0s;
       font-size: 120%;
       letter-spacing: 0.25px;
-      background-color: rgba(255,255,255,0.1);
+      /*background-color: rgba(255,255,255,0.1);*/
+
+
+      background: linear-gradient(left,rgba(255,255,255, 0), rgba(255,255,255, 0.05), rgba(255,255,255, 0));
+      transition: all 0.75s ease 0s;
+      background-color: rgba(255,255,255,0.025);
+      transform: scale(1);
     }
     #welcomeIntroductionButtonActive:hover {
+      box-shadow: 0 0 1.5pt 1.5pt rgba(255,255,255,0.5);
+      transform: scale(1.02);
       cursor: pointer;
+      background: linear-gradient(left,rgba(255,255,255, 0.075), rgba(255,255,255, 0.1), rgba(255,255,255, 0.075));
+
     }
     #welcomeBox {
     	/*Old*/
@@ -3881,7 +4476,7 @@ introductionProjectTitle {
     	display: none;
     }
     #createWelcomeButtonBox {
-      margin: 0% 18% 0% 18%;
+      margin: 2.5% 18% 0% 18%;
       transform: scale(1);
       transition: all 0.5s ease 0s;
       border: 1px solid #dddddd;
@@ -4154,7 +4749,11 @@ introductionProjectTitle {
     position: relative;
     margin: 0 auto;
     margin-top: 2%;
-    transition: all 0.2s ease 0s;
+    
+    background: linear-gradient(left,rgba(0,220,255, 0), rgba(0,220,255, 0.05), rgba(0,220,255, 0));
+    transition: all 0.75s ease 0s;
+    background-color: rgba(0,220,255,0.025);
+    transform: scale(1);
 
     /*Test to draw eye more to user projects*/
     /*border-radius: 0px 0px 15px 0px;
@@ -4165,6 +4764,8 @@ introductionProjectTitle {
   }
   #welcomeUserProblemsHeader:hover {
     box-shadow: 0 0 1.5pt 1.5pt rgba(0,220,255,0.5);
+    transform: scale(1.02);
+    background: linear-gradient(left,rgba(0,220,255, 0.05), rgba(0,220,255, 0.1), rgba(0,220,255, 0.05));
   }
   #welcomeUserProblemsUnitList {
     text-align: center;
@@ -4398,7 +4999,6 @@ introductionProjectTitle {
 #freeFormTextArea {
   text-align: left;
   font-family: 'Open Sans', sans-serif;
-  /*padding: 10px;*/
   color: #ffffff;
   border: 1px solid #dddddd;
   height: 4em;
@@ -4406,6 +5006,7 @@ introductionProjectTitle {
   background-color: rgba(0,220,255, 0.05);
   margin: 0 auto;
   width: 70%;
+  line-height: 150%;
 }
 #learnContentTextArea {
   height: 12em;
@@ -4433,7 +5034,7 @@ introductionProjectTitle {
 #addAnswerGreen {
   font-size: 90%;
   color: #00dcff;
-  background-color: rgba(0,255,220,0);
+  background-color: rgba(0,255,220,0.05);
   border: 1px solid #00dcff;
   border-radius: 2px;
   margin-top: 2%;
@@ -4617,12 +5218,17 @@ introductionProjectTitle {
   margin-bottom: 0%;
   border: 1.5px solid #00dcff;
   border-radius: 50%;
-  transition: all 0.5s ease 0s;
+  /*transition: all 0.5s ease 0s;*/
   padding: 5px;
+  transition: all 0.75s ease 0s;
+  transform: scale(1);
+  /*background: radial-gradient(circle, rgba(0,220,255,0), rgba(0,220,255,0), rgba(0,220,255,0), rgba(0,220,255,0));*/
 }
 #addBlueX:hover {
   cursor: pointer;
   background-color: rgba(0,220,255,0.15);
+  transform: scale(1.02);
+  /*background: radial-gradient(circle, rgba(0,220,255,0.05), rgba(0,220,255,0.05), rgba(0,220,255,0.1), rgba(0,220,255,0.05));*/
 }
 #middleAlignOrion {
   display: block;
@@ -4646,7 +5252,7 @@ introductionProjectTitle {
 #middleAlignOrionPrivate {
   display: block;
   margin: 0 auto;
-  padding: 3px;
+  padding: 3px 0px 3px 0px;s
   margin-top: -1%;
 }
 #deleteLogo {
@@ -4673,7 +5279,7 @@ introductionProjectTitle {
 }
 #commentLogo:hover {
   cursor: pointer;
-  box-shadow: 0 0 1pt 1pt rgba(0,220,255,0.5);
+  /*box-shadow: 0 0 1pt 1pt rgba(0,220,255,0.5);*/
 }
 
 #flagSolutionButton, #deleteSolutionButton {
@@ -4858,7 +5464,8 @@ introductionProjectTitle {
 #parentButton:hover, #parentButton:active {
   cursor: pointer;
   color: #ffffff;
-  background-color: rgba(0,220,255,0.12);
+  /*background-color: rgba(0,220,255,0.12);*/
+  background: linear-gradient(left,rgba(0,220,255, 0.1), rgba(0,220,255, 0.15), rgba(0,220,255, 0.1));
 }
 #parentChildrenButton {
   background-color: rgba(0,220,255,0.05);
@@ -5322,6 +5929,22 @@ introductionProjectTitle {
   margin: 2% 1% 4% 1%;
   list-style-type: none;
 }
+#SPUnitListProposal {
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  margin: 0 auto;
+  margin-top: 0.5%;
+  overflow-x: scroll;
+}
+#SPUnitListProposal li {
+  display: inline-block;
+  /*display: inline;*/
+  margin: 4% 1% 4% 1%;
+  list-style-type: none;
+}
 #SPUnit {
   display: inline-block;
   width: 14em;
@@ -5347,7 +5970,7 @@ introductionProjectTitle {
   background-color: rgba(0,220,255,0.05);
   margin: 0 auto;
   box-shadow: 0 0 2pt 2pt rgba(0,220,255,0.5);
-  transition: all 0.5s ease 0s;
+  transition: all 0.75s ease 0s;
   transform: scale(1);
   margin-top: 1%;
 
@@ -5359,6 +5982,8 @@ introductionProjectTitle {
 #SPHeader:hover {
   box-shadow: 0 0 1pt 3pt rgba(0,220,255,0.5);
   transform: scale(1.02);
+  background: radial-gradient(circle, rgba(0,220,255,0.05), rgba(0,220,255,0.05), rgba(0,220,255,0.1), rgba(0,220,255,0.05));
+
 }
 #SPTitle {
   margin: 0 auto;
@@ -5784,9 +6409,10 @@ introductionProjectTitle {
 }
 #solutionFormLabel {
   color: #00dcff;
-  font-size: 150%;
-  /*margin-left: 5%;*/
+  font-size: 160%;
   text-align: center;
+  letter-spacing: 6px;
+  margin-top: 1%;
 }
 #solutionDescriptionFormLabel {
   color: #00dcff;
@@ -5807,13 +6433,16 @@ introductionProjectTitle {
   margin: 2.5% 5% 5% 5%;
   padding-left: 5%;
   padding-right: 5%;
-  font-size: 100%;
-  line-height: 175%;
+  font-size: 120%;
+  line-height: 170%;
   word-wrap: break-word; 
   transition: all 0.5s ease 0s;
   text-align: left;
 }
-
+#solutionDescription, #solutoinReferences {
+  padding-top: 3%;
+  margin-top: 0%;
+}
 /*End Right Solutions SB*/
 
 
@@ -5882,16 +6511,33 @@ introductionProjectTitle {
   border-width: 0px 0px 0px 0px;
 }
 #discussHeader {
-  font-size: 110%;
+  /*Old Styles*/
+  /*font-size: 110%;
   color: #00dcff;
-  margin-bottom: 3px;
+  margin-bottom: 3px;*/
+
+  color: #00dcff !important;
+  font-size: 90%;
+  padding-left: 0.5%;
+  width: 30%;
+  border: 1px solid #333333;
+  border-width: 0px 0px 1px 0px;
 }
 #discussHeaderGreen {
-  font-size: 110%;
+  /*Old Styles*/
+  /*font-size: 110%;
   color: #00ffdc;
-  margin-bottom: 3px;
+  margin-bottom: 3px;*/
+
+  color: #00dcff !important;
+  font-size: 90%;
+  padding-left: 0.5%;
+  width: 30%;
+  border: 1px solid #333333;
+  border-width: 0px 0px 1px 0px;
 }
 #discussPercent {
+  /*Old Styles*/
   margin-right: 10px;
   font-size: 120%;
 }
@@ -5975,16 +6621,33 @@ label + input[type=radio] + label {
   overflow: hidden;
 }
 #learnContentText {
-  font-family: 'Open Sans';
-  margin-top: 5px;
+  /*Old Text*/
+  /*font-family: 'Open Sans';
   max-width: 584.31px;
+  line-height: 150%;
+  margin: 7px;
+  margin-top: 10px;
+  font-size: 115%;*/
+
+  max-width: 584.31px;
+  line-height: 150%;
+  font-family: 'Open Sans' !important;
+  font-size: 125%;
+  padding-left: 2%;
+  padding-right: 2%;
+  padding-top: 1.75%;
+  padding-bottom: 1.75%;
+  border: 1px solid #333333;
+  border-width: 0px 0px 1px 0px;
+  width: 82%;
 }
 #learnResourcesText {
   font-family: 'Open Sans';
   /*margin-top: 5px;*/
 }
 #learnResourcesLink {
-  text-decoration: underline;
+  /*Old Styles*/
+  /*text-decoration: underline;
   color: rgba(255,255,255,1);
   transition: all 1s ease 0s;
   font-size: 120%;
@@ -5992,8 +6655,27 @@ label + input[type=radio] + label {
   font-family: 'Open Sans';
   overflow: auto;
   word-break: break-all;
-  /*margin-top: 5px;*/
   max-width: 584.31px;
+  line-height: 150%;
+  margin: 7px;
+  margin-top: 10px;*/
+
+  transition: all 1s ease 0s;
+  transform: scale(1);
+  overflow: auto;
+  word-break: break-all;
+  text-decoration: underline;
+  max-width: 584.31px;
+  line-height: 150%;
+  font-family: 'Open Sans' !important;
+  font-size: 125%;
+  padding-left: 2%;
+  padding-right: 2%;
+  padding-top: 1.75%;
+  padding-bottom: 1.75%;
+  border: 1px solid #333333;
+  border-width: 0px 0px 1px 0px;
+  width: 82%;
 }
 #learnResourcesLink:hover {
   color: rgba(0,220,255,1);
@@ -6102,8 +6784,8 @@ label + input[type=radio] + label {
   margin-bottom: 25px;
   padding-left: 5%;
   padding-right: 5%;
-  font-size: 100%;
-  line-height: 150%;
+  font-size: 120%;
+  line-height: 170%;
   word-wrap: break-word; 
   font-family: 'Open Sans', sans-serif;
   transition: all 0.5s ease 0s;
@@ -6167,24 +6849,29 @@ label + input[type=radio] + label {
   border: 1px solid #00dcff;
   border-width: 1px 0px;
   margin-top: 10px;
+  background: linear-gradient(left,rgba(0,220,255, 0.05), rgba(0,220,255, 0), rgba(0,220,255, 0.05));
 }
 #prosButton, #consButton {
   flex: 1 1 auto;
   margin: 0 auto;
-  font-size: 80%;
+  font-size: 120%;
   text-align: center;
-  letter-spacing: 8px;
-  padding: 5px;
+  letter-spacing: 15px;
+  padding: 7px;
   width: 20em;
   text-align: center;
   transition: all 0.5s ease 0s;
+  box-shadow: 0 0 0pt 0pt rgba(0,220,255,0.5);
   background-color: rgba(0,220,255,0);
 }
 #prosButton:hover, #consButton:hover {
-  background-color: rgba(0,220,255,0.15);
+  background-color: rgba(0,220,255,0.05);
   color: #00dcff;
   cursor: pointer;
-  border-color: #00dcff;
+  box-shadow: 0 0 0px 0px rgba(0,220,255,0.5);
+  /*background: linear-gradient(left,rgba(0,220,255, 0), rgba(0,220,255, 0.05), rgba(0,220,255, 0));*/
+  
+
 }
 #prosButton:active, #consButton:active {
   background-color: rgba(0,220,255,0.15);
@@ -6213,6 +6900,7 @@ label + input[type=radio] + label {
   height: 4em;
   resize: none;
   background-color: inherit;
+  line-height: 150%;
 }
 #addProsCons {
   font-size: 90%;
@@ -6868,7 +7556,7 @@ input#submitNewVersion:hover {
 /*textarea:focus {
   border-color: #ff7f7f !important;
 }*/
-#deleteButton, #editButton, #flagButton, #returnButton {
+#deleteButton, #editButton, #flagButton, #returnButton, #returnButtonProject, #editButtonProject, #deleteButtonProject {
   font-size: 120%;
   color: #ff7f7f;
   background-color: rgba(255,127,127,0);
@@ -6883,34 +7571,46 @@ input#submitNewVersion:hover {
   margin-right: 10%;
   transition: all 0.5s ease 0s;
 }
-#returnButton {
-  color: #00ffdc;
-  border: 1px solid #00ffdc;
+#returnButton, #returnButtonProject {
+  color: #00dcff;
+  border: 1px solid #00dcff;
   float: left;
   margin-right: 0%;
   margin-left: 10%;
 }
-#deleteButton:hover, #editButton:hover {
+#editButton, #editButtonProject {
+  color: #00ffdc;
+  border: 1px solid #00ffdc;
+  border-radius: 2px;
+}
+#editButton:hover, #editButtonProject:hover {
+  cursor: pointer;
+  color: #0f131c;
+  background-color: #00ffdc;
+}
+#deleteButton:hover, #deleteButtonProject:hover {
   cursor: pointer;
   color: #0f131c;
   background-color: rgba(255,127,127,1);
 }
-#returnButton:hover {
+#returnButton:hover, #returnButtonProject:hover {
   cursor: pointer;
   color: #0f131c;
-  background-color: #00ffdc;
+  background-color: #00dcff;
 }
 #deleteQuestion:hover {
   cursor: pointer;
   color: #0f131c;
   background-color: #ff7f7f;
 }
-
+#returnButtonProject, #editButtonProject, #deleteButtonProject {
+background-color: rgba(255,255,255,0.025);
+}
 
 #returnQuestion:hover {
   cursor: pointer;
   color: #0f131c;
-  background-color: #00ffdc;
+  background-color: #00dcff;
 }
 
 
@@ -7289,10 +7989,8 @@ input#submitNewVersion:hover {
   margin-left: 3%;
 }
 #chatBoxMessages {
-  /*background-color: rgba(0,220,255, 0.05);*/
   background: linear-gradient(left,rgba(0,220,255, 0.06), rgba(0,220,255, 0.07), rgba(0,220,255, 0.02));
   border: 1px solid #333333;
-  /*border-radius: 0px 5% 25% 0px;*/
   border-radius: 5px 5px 25% 10px;
   margin-top: 3%;
   margin-bottom: 3%;
@@ -7308,7 +8006,6 @@ input#submitNewVersion:hover {
 }
 #whiteChat {
   font-family: 'Open Sans' !important;
-  /*font-family: 'Average Sans', sans-serif !important;*/
   font-size: 125%;
   padding-left: 2%;
   padding-right: 2%;

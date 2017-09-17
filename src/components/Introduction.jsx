@@ -33,66 +33,39 @@ export default class Introduction extends React.Component {
                 {/*Not currently using*/}
                 {/*<div id="introductionTitle">The Open Frontier of Research</div>*/}
                 <div id="introductionProse">
-                    {/*Trying out capital W here to match the one in Welcome above*/}
-                    <span id="introductionCapitalProse">W</span>e find ourselves in an<span id="blueOpen"> age of great opportunity</span>, but equally in an<span id="blueOpen"> age of great peril</span>. 
+                    <span id="introductionCapitalProse">within the near future,</span> technologies will<span id="blueOpen"> radically reshape our world</span>.
                     <br />
                     <br />
-                    We find ourselves in the <span id="blueOpen">upturn of an era</span> where the <span id='blueOpen'>advances of science and technology </span>
-                    hold our collective future,<span id="blueOpen"> as a species and civilization</span>,
-                    upon their conclusion. 
+                    <span id="introductionCapitalProse">human spaceflight, genetic engineering, artificial intelligence</span> and many other advancements will pair to propel humanity towards a new state of civilization,<span id="blueOpen"> possibly within our lifetimes</span>.  
                     <br />
                     <br />
-                    Upon this unique moment in time, we find ourselves <span id="blueOpen">looking ahead into the unknown</span>, 
-                    in great need of<span id="blueOpen"> a great people to represent the best of our species</span>, who will take our 
-                    challenges into their own hands and will. 
+                    <span id="introductionCapitalProse">to reach these goals,</span> we believe as much of the human population as possible should be working<span id="blueOpen"> towards their achievement</span>. 
                     <br />
                     <br />
-                    {/*A*/}
-                    <span id="blueOpen">We call upon you</span>, and all pioneers with the <span id="blueOpen">spirit of 
-                    discovery in heart</span>, to take up this challenge 
-                    of all ages and <span id="blueOpen">shape the future of our species</span>.
-                    {/*B*/}
-                    {/*<span id="blueOpen">We call upon you</span> to take up this mission, to solve each problem we encounter and<span id="blueOpen"> shape the future of our species</span>.*/}
+                    <span id="introductionCapitalProse">XPrincipia </span>is designed as a system<span id="blueOpen"> to allow this process to occur</span>. 
                     <br />
                     <br />
-                    We call upon you for this <span id="blueOpen">adventure of all time</span>, looking not at where you come from but <span id="blueOpen"> 
-                    where you will take us</span>. 
+                    <span id="introductionCapitalProse">our goal </span>is to allow anyone to<span id="blueOpen"> contribute directly towards this cause</span>. 
                     <br />
                     <br />
-                    <span id="blueOpen">Join the frontier of all knowledge</span> and<span id="blueOpen"> will of discovery</span>, the focus of where we are and 
-                    where we choose to go. 
+                    <span id="introductionCapitalProse">we organize this process </span>by allowing users to work together in projects, creating proposals to solve these problems<span id="blueOpen"> and achieve these goals</span>. 
                     <br />
                     <br />
-                    <span id="blueOpen">Each project along this path </span>will be broken down with <span id="blueOpen">thought and efficiency</span>, for which 
-                    <span id="blueOpen"> new proposals will be created </span>to achieve or solve each project.
+                    <span id="introductionCapitalProse">in this process, </span>you are also given a centralized location for your own work, currently in the form of<span id="blueOpen"> a private Mind Temple</span>. 
                     <br />
                     <br />
-                    <span id="blueOpen">Discussion and debate </span>will be held with <span id="blueOpen">rigor and deterimation</span> and 
-                    <span id="blueOpen"> targeted education </span>will be <span id='blueOpen'>designed with patience </span>and <span id="blueOpen">used with ambition</span>. 
-                    <br />
-                    <br />
-                    Proposals will<span id='blueOpen'> weighed by pro and con</span> and the best<span id="blueOpen"> determined by democratic vote</span>.
-                    <br />
-                    <br />
-                    In the end, <span id="blueOpen">an architecture will be built with the greatest works of our time </span>held inside and a<span id='blueOpen'> blueprint 
-                    designed for a better tomorrow</span>. 
-                    <br />
-                    <br />
-                    {/*I don't like the part beneath*/}
-                    {/*<span id="blueOpen">At no point in this process will we rest</span>, our eyes focused upon what is at grasp ahead. 
-                    <br />
-                    <br />*/}
-                    We ask you to<span id="blueOpen"> join this cause</span>, to explore this frontier and dedicate your will to<span id="blueOpen"> advance our world</span>.
-                    <br />
-                    <br />
-                    Though challenges stand ahead,<span id="blueOpen"> together we cannot fail</span>.     
-
+                    <span id="introductionCapitalProse">if you would like </span>to join this mission or access your Mind Temple, please<span id="greenOpen"> register </span>and<span id="blueOpen"> begin exploring</span>. 
                 </div>
 
                 <IntroductionRegister />
+                <Link to="/welcome">
+                    <div id="introductionExploreButton">
+                        Explore
+                    </div>
+                </Link>
 
                 <div id="introductionProjectsProse"> 
-                    Join the effort to make humanity into a spacefaring civilization:
+                    Help humanity reach the stars
                 </div>
                 <Link to={`/project/7/subprojects`}>
                     <div id="introductionProjectHeader1">
@@ -101,8 +74,9 @@ export default class Introduction extends React.Component {
                         </div>
                     </div>
                 </Link>
+                
                 <div id="introductionProjectsProse">
-                    Choose to evolve our species into a more perfect state of being:
+                    Purposely evolve the human body and mind
                 </div>
                 {/*Link each to the actual project - check url on active site*/}
                 <Link to={`/project/8/subprojects`}>
@@ -113,7 +87,7 @@ export default class Introduction extends React.Component {
                     </div>
                 </Link>
                 <div id="introductionProjectsProse">
-                    Complete our oldest endeavor, to fully understand the world we find ourselves in:
+                    Seek to understand our universe
                 </div>
                 <Link to={`/project/9/subprojects`}>
                     <div id="introductionProjectHeader3">
@@ -124,7 +98,7 @@ export default class Introduction extends React.Component {
                 </Link>
                 <div id="introductionProjectsProse">
                     {/*Design the tools needed for all scopes of our ambitions:*/}
-                    Shape our world with tools, the force that has always driven it:
+                    Design technologies to change the world
                 </div>
                 <Link to={`/project/10/subprojects`}>
                     <div id="introductionProjectHeader4">
@@ -352,3 +326,57 @@ Our success, and the <span id="blueOpen">fruit it may bare</span>, is up to us a
                     </div>
                 </div>
             </div>*/
+
+
+
+// Draft 4
+{/*<div id="introductionProse">
+                    <span id="introductionCapitalProse">W</span>e find ourselves in an<span id="blueOpen"> age of great opportunity</span>, but equally in an<span id="blueOpen"> age of great peril</span>. 
+                    <br />
+                    <br />
+                    We find ourselves in the <span id="blueOpen">upturn of an era</span> where the <span id='blueOpen'>advances of science and technology </span>
+                    hold our collective future,<span id="blueOpen"> as a species and civilization</span>,
+                    upon their conclusion. 
+                    <br />
+                    <br />
+                    Upon this unique moment in time, we find ourselves <span id="blueOpen">looking ahead into the unknown</span>, 
+                    in great need of<span id="blueOpen"> a great people to represent the best of our species</span>, who will take our 
+                    challenges into their own hands and will. 
+                    <br />
+                    <br />
+                    A
+                    <span id="blueOpen">We call upon you</span>, and all pioneers with the <span id="blueOpen">spirit of 
+                    discovery in heart</span>, to take up this challenge 
+                    of all ages and <span id="blueOpen">shape the future of our species</span>.
+                    B
+                    <br />
+                    <br />
+                    We call upon you for this <span id="blueOpen">adventure of all time</span>, looking not at where you come from but <span id="blueOpen"> 
+                    where you will take us</span>. 
+                    <br />
+                    <br />
+                    <span id="blueOpen">Join the frontier of all knowledge</span> and<span id="blueOpen"> will of discovery</span>, the focus of where we are and 
+                    where we choose to go. 
+                    <br />
+                    <br />
+                    <span id="blueOpen">Each project along this path </span>will be broken down with <span id="blueOpen">thought and efficiency</span>, for which 
+                    <span id="blueOpen"> new proposals will be created </span>to achieve or solve each project.
+                    <br />
+                    <br />
+                    <span id="blueOpen">Discussion and debate </span>will be held with <span id="blueOpen">rigor and deterimation</span> and 
+                    <span id="blueOpen"> targeted education </span>will be <span id='blueOpen'>designed with patience </span>and <span id="blueOpen">used with ambition</span>. 
+                    <br />
+                    <br />
+                    Proposals will<span id='blueOpen'> weighed by pro and con</span> and the best<span id="blueOpen"> determined by democratic vote</span>.
+                    <br />
+                    <br />
+                    In the end, <span id="blueOpen">an architecture will be built with the greatest works of our time </span>held inside and a<span id='blueOpen'> blueprint 
+                    designed for a better tomorrow</span>. 
+                    <br />
+                    <br />
+                    We ask you to<span id="blueOpen"> join this cause</span>, to explore this frontier and dedicate your will to<span id="blueOpen"> advance our world</span>.
+                    <br />
+                    <br />
+                    Though challenges stand ahead,<span id="blueOpen"> together we cannot fail</span>.     
+
+                </div>*/}

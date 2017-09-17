@@ -101,10 +101,10 @@ export default class ProjectEditForm extends React.Component {
 
                           <br />
                           <Link to={`/project/${this.props.params.probID}/subprojects`}>
-                              <div onClick={this.updateProject} id="editButton">Submit</div>
+                              <div onClick={this.updateProject} id="editButtonProject">Submit</div>
                           </Link>
                           <Link to={`/project/${this.props.params.probID}/subprojects`}>
-                            <div id="returnButton">Exit</div>
+                            <div id="returnButtonProject">Exit</div>
                           </Link>
             </form>
         </div>

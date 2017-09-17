@@ -4,6 +4,8 @@ import axios from 'axios';
 import cookie from 'react-cookie';
 import {Config} from '../config.js';
 import $ from 'jquery';
+// import ScrollableAnchor from 'react-scrollable-anchor';
+
 
 export default class IntroductionRegister extends React.Component {
 
@@ -163,17 +165,19 @@ return axios.post( Config.API + '/register', {
       return (
 
       <div id="introRegisterContainer">
-        <div id="introRegisterJoin">
+        {/*<ScrollableAnchor id={'register'}>*/}
+          <div id="introRegisterJoin">
             Join XPrincipia
-        </div>
+          </div>
+        {/*</ScrollableAnchor>*/}
         <div id="introRegister">
             <form >
                 <input type="text" name="fullname" required="required" maxLength="30" placeholder="Full Name" id="introRegisterFullName" />
                 <input type="text" name="username" required="required" maxLength="30" placeholder="Username" id="introRegisterUserName" />
                 <input type="email" name="email" required="required" maxLength="30" placeholder="Email" id="introRegisterEmail" />
                 <input type="password" name="password" required="required" maxLength="30" placeholder="Password" id="introRegisterPassword"/>
-                <input type="submit" value="Register" onClick={this.postRegister} id="submitRegister"/>
-                <Link to='/login'><div id="registerButton">Login</div></Link>
+                <input type="submit" value="Register" onClick={this.postRegister} id="submitRegisterIntroduction"/>
+                <Link to='/login'><div id="registerButtonIntroduction">Login</div></Link>
             </form>
         </div>
       </div>

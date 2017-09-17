@@ -35,6 +35,7 @@ export default class ProblemForm extends React.Component {
     var self = this
     axios.post( Config.API + '/auth/problems/create', {
       username: cookie.load('userName'),
+      parentType : '0',
       parentID: this.props.params.probID,
       title : this.state.title,
       summary : this.state.summary,
@@ -46,7 +47,7 @@ export default class ProblemForm extends React.Component {
       document.location = '/project/'+self.props.params.probID+'/subprojects'
     })
       .catch(function (error) {
-        alert('why not working');
+        // alert('why not working');
           $(document).ready(function() {
               $('#notification').attr('id','notificationShow').hide().slideDown();
 

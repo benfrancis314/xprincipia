@@ -30,25 +30,12 @@ export default class FullSolution extends React.Component {
           })
 
     })
-    // Removing this error for now because it has only appeared for me when it shouldn't have
-      // .catch(function (error) {
-      //   // console.log(error.response.data)
-      //     $(document).ready(function() {
-      //         $('#notification').attr('id','notificationShow').hide().slideDown();
-      //         if (error.response.data != '') {
-      //           $('#notificationContent').text(error.response.data);
-      //         }
-      //         else if (error.response.data == '[object Object]') {
-      //           return (
-      //             $(document).ready(function() {
-      //               $('#notificationLoginRegisterContainer').attr('id','notificationLoginRegisterContainerShow');
-      //               $('#notificationContent').html('Please <span id="blue">login </span>to contribute');
-      //             })
-      //           );
-      //         } 
-      //     });
-      // });
-    }
+}
+
+shouldComponentUpdate(nextProps, nextState) {
+    // only render if probID has changed
+    return this.state.solutoinID !== nextProps.params.solutionID;
+}
   //On recieving next props
   componentWillReceiveProps(nextProps){
     var self = this;

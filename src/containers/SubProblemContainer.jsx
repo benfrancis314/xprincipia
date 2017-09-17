@@ -49,7 +49,7 @@ export default class SubProblemContainer extends React.Component {
             } else {*/
             return (
                 <div id="sidebarSBProjects">
-                    <SubProblemUnit problems={this.state.problems} />
+                    <SubProblemUnit problems={this.state.problems} probID={this.props.probID} />
                 </div>
             
             );

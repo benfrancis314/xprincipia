@@ -58,6 +58,7 @@ shouldComponentUpdate(nextProps, nextState) {
 
   componentWillReceiveProps(nextProps){
       var self = this;
+      window.scrollTo(0,0);
       axios.get( Config.API + '/problems/ID?id='+nextProps.params.probID).then(function (response) {
 
           //set Problem Data
@@ -175,7 +176,7 @@ unVote() {
           transitionLeave={false}>
 
         <div id="problemColumn1">
-          <SubProjectParentUnit parentID={this.state.problemInfo.ParentID} />
+          <SubProjectParentUnit parentID={this.state.problemInfo.ParentID} parentType={this.state.problemInfo.ParentType} />
           {/*<ProjectParentChildrenUnitsContainer parentID={this.state.problemInfo.ParentID} problemTitle={this.state.problemInfo.Title}/>*/}
           <div id="problemIntro">
             <h1 id="problemTitle">{this.state.problemInfo.Title}</h1>
@@ -234,7 +235,7 @@ unVote() {
           transitionLeave={false}>
 
         <div id="problemColumn1">
-          <SubProjectParentUnit parentID={this.state.problemInfo.ParentID} />
+          <SubProjectParentUnit parentID={this.state.problemInfo.ParentID} parentType={this.state.problemInfo.ParentType} />
           {/*<ProjectParentChildrenUnitsContainer parentID={this.state.problemInfo.ParentID} problemTitle={this.state.problemInfo.Title}/>*/}
           <div id="problemIntro">
             <h1 id="problemTitle">{this.state.problemInfo.Title}</h1>
@@ -293,7 +294,7 @@ unVote() {
           transitionLeave={false}>
 
         <div id="problemColumn1">
-          <SubProjectParentUnit parentID={this.state.problemInfo.ParentID} />
+          <SubProjectParentUnit parentID={this.state.problemInfo.ParentID} parentType={this.state.problemInfo.ParentType} />
           {/*<ProjectParentChildrenUnitsContainer parentID={this.state.problemInfo.ParentID} problemTitle={this.state.problemInfo.Title}/>*/}
           <div id="problemIntro">
             <h1 id="problemTitle">{this.state.problemInfo.Title}</h1>
@@ -351,7 +352,7 @@ unVote() {
           transitionLeave={false}>
 
         <div id="problemColumn1">
-          <SubProjectParentUnit parentID={this.state.problemInfo.ParentID} />
+          <SubProjectParentUnit parentID={this.state.problemInfo.ParentID} parentType={this.state.problemInfo.ParentType} />
           {/*<ProjectParentChildrenUnitsContainer parentID={this.state.problemInfo.ParentID} problemTitle={this.state.problemInfo.Title}/>*/}
           <div id="problemIntro">
             <h1 id="problemTitle">{this.state.problemInfo.Title}</h1>
