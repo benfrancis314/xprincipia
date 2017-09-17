@@ -64,6 +64,7 @@ shouldComponentUpdate(nextProps, nextState) {
 
   componentWillReceiveProps(nextProps){
       var self = this;
+      window.scrollTo(0,0);
       axios.get( Config.API + '/problems/ID?id='+nextProps.params.probID).then(function (response) {
 
           //set Problem Data
