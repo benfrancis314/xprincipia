@@ -69,7 +69,7 @@ componentWillReceiveProps (nextProps){
             <div>
                 <Link to={`/project/${this.state.solutionInfo.ProblemID}/proposal/${this.props.parentID}`}>
                     <div id="parentButton">
-                        <span id='blue'>Parent: </span>{this.state.solutionInfo.Title}
+                        <span id='blue'>Proposal: </span>{this.state.solutionInfo.Title}
                     </div>
                 </Link>
             </div>

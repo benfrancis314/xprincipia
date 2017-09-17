@@ -181,7 +181,7 @@ unVote() {
           transitionLeave={false}>
 
         <div id="problemColumn1">
-          <SubPrivateProjectParentUnit parentID={this.state.problemInfo.ParentID} />
+          <SubPrivateProjectParentUnit parentID={this.state.problemInfo.ParentID} parentType={this.state.problemInfo.ParentType} />
           {/*<ProjectParentChildrenUnitsContainer parentID={this.state.problemInfo.ParentID} problemTitle={this.state.problemInfo.Title}/>*/}
           <div id="problemIntro">
             <h1 id="problemTitle">{this.state.problemInfo.Title}</h1>
@@ -252,7 +252,7 @@ unVote() {
           transitionLeave={false}>
 
         <div id="problemColumn1">
-          <SubPrivateProjectParentUnit parentID={this.state.problemInfo.ParentID} />
+          <SubPrivateProjectParentUnit parentID={this.state.problemInfo.ParentID} parentType={this.state.problemInfo.ParentType} />
           {/*<ProjectParentChildrenUnitsContainer parentID={this.state.problemInfo.ParentID} problemTitle={this.state.problemInfo.Title}/>*/}
           <div id="problemIntro">
             <h1 id="problemTitle">{this.state.problemInfo.Title}</h1>

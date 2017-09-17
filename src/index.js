@@ -71,6 +71,7 @@ import PrivateProjectForm from './components/problems/PrivateProjectForm.jsx';
 import PrivateSubProjectForm from './components/problems/PrivateSubProjectForm.jsx';
 import ProblemForm from './components/problems/ProblemForm.jsx';
 import ProblemFormProposal from './components/problems/ProblemFormProposal.jsx';
+import ProblemFormProposalPrivate from './components/problems/ProblemFormProposalPrivate.jsx';
 import ProblemDiscussMenu from './components/problems/ProblemDiscussMenu.jsx';
 import ProblemDiscussPrivateMenu from './components/problems/ProblemDiscussPrivateMenu.jsx';
 import ProblemLearnMenu from './components/problems/ProblemLearnMenu.jsx';
@@ -92,6 +93,7 @@ import ProfileWorkspace from './components/profile/ProfileWorkspace.jsx';
 import ProposalDiscussMenu from './components/solutions/ProposalDiscussMenu.jsx';
 import ProposalLearnMenu from './components/solutions/ProposalLearnMenu.jsx';
 import ProposalSubProjectsButton from './components/solutions/ProposalSubProjectsButton.jsx';
+import ProposalSubProjectsButtonPrivate from './components/solutions/ProposalSubProjectsButtonPrivate.jsx';
 
 import ProsDeleteForm from './components/proscons/ProsDeleteForm.jsx';
 import ProsDeleteFormPrivate from './components/proscons/ProsDeleteFormPrivate.jsx';
@@ -159,6 +161,7 @@ import RelatedProposalsContainer from './containers/RelatedProposalsContainer.js
 import SearchContainer from './containers/SearchContainer.jsx';
 import SubProblemContainer from './containers/SubProblemContainer.jsx';
 import SubProjectProposalContainer from './containers/SubProjectProposalContainer.jsx';
+import SubProjectProposalPrivateContainer from './containers/SubProjectProposalPrivateContainer.jsx';
 import SuggestionCommentContainer from './containers/SuggestionCommentContainer.jsx';
 import SuggestionCommentContainerPrivate from './containers/SuggestionCommentContainerPrivate.jsx';
 import SuggestionContainer from './containers/SuggestionContainer.jsx';
@@ -257,11 +260,12 @@ ReactDOM.render(
         </Route>
         <Route path='/project/private/:probID/proposal/:solutionID/container' component={FullSolutionPrivate}>
             <IndexRoute component={FullSolutionContent}></IndexRoute>
-            <Route path='/project/private/:probID/proposal/:solutionID' component={FullSolutionContentPrivate}>
-            <Route path='/project/private/:probID/proposal/:solutionID' component={ProposalSubProjectsButton}></Route>
+            <Route path='/project/private/:probID/proposal/:solutionID/content/container' component={FullSolutionContentPrivate}>
+            <Route path='/project/private/:probID/proposal/:solutionID' component={ProposalSubProjectsButtonPrivate}></Route>
             <Route path='/proposal/private/:probID/:solutionID/delete' component={SolutionDeleteFormPrivate}></Route>
             <Route path='/proposal/private/:probID/:solutionID/edit' component={SolutionEditFormPrivate}></Route>
-            <Route path='/project/private/:probID/proposal/:solutionID/subprojects' component={SubProblemContainer}></Route>
+            <Route path='/project/private/:probID/proposal/:solutionID/subprojects' component={SubProjectProposalPrivateContainer}></Route>
+            <Route path='/project/:probID/proposal/:solutionID/subprojects/create' component={ProblemFormProposalPrivate}></Route>
             <Route path='/project/private/:probID/proposal/:solutionID/related' component={RelatedProposalsContainer}></Route>
             <Route path='/project/private/:probID/proposal/:solutionID/discuss' component={ProposalDiscussMenu}>
               <IndexRoute component={QuestionContainer}></IndexRoute>

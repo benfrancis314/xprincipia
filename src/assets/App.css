@@ -3270,7 +3270,7 @@ input[type=text]:focus, input[type=email]:focus, input[type=password]:focus, inp
   border-width: 0px 1px 1px 1px;
   border-radius: 0% 0% 25% 25%;
   /*background-color: rgba(15,19,28,0.05);*/
-  background: linear-gradient(left,rgba(0,220,255, 0), rgba(0,220,255, 0.05), rgba(0,220,255, 0));
+  background: linear-gradient(left,rgba(0,220,255, 0), rgba(0,220,255, 0.035), rgba(0,220,255, 0));
 
 transition: all 0.75s ease 0s;
   /*box-shadow: 0 0 0pt 0pt rgba(0,220,255,0.5);*/
@@ -3279,7 +3279,7 @@ transition: all 0.75s ease 0s;
 }
 #proposalSubProjectsButton:hover {
   /*box-shadow: 0 0 2pt 2pt rgba(0,220,255,0.5);*/
-  background: linear-gradient(left,rgba(0,220,255, 0), rgba(0,220,255, 0.2), rgba(0,220,255, 0));
+  background: linear-gradient(left,rgba(0,220,255, 0), rgba(0,220,255, 0.1), rgba(0,220,255, 0));
   /*background-color: rgba(15,19,28,0.9);*/
   transform: scale(1.02);
 }
