@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import QuestionProposalUnit from '../components/questions/QuestionProposalUnit.jsx';
 import QuestionUnit from '../components/questions/QuestionUnit.jsx';
 import {Config} from '../config.js'
 
@@ -39,7 +40,7 @@ export default class QuestionContainer extends React.Component {
         return (
             <div id="questionContainer">
                 {this.props.children}
-                <QuestionUnit questions={this.state.questions} />
+                <QuestionProposalUnit questions={this.state.questions} probID={this.props.params.probID} />
             </div>
         );
     } else {

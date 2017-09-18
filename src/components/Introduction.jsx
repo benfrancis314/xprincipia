@@ -45,16 +45,16 @@ export default class Introduction extends React.Component {
                     <span id="introductionCapitalProse">XPrincipia </span>is designed as a system<span id="blueOpen"> to allow this process to occur</span>. 
                     <br />
                     <br />
-                    <span id="introductionCapitalProse">our goal </span>is to allow anyone to<span id="blueOpen"> contribute directly towards this cause</span>. 
+                    <span id="introductionCapitalProse">our goal is to allow anyone </span>to contribute directly towards this cause and connect these efforts, <span id="blueOpen">similar to how neurons must be connected to create a brain</span>. 
                     <br />
                     <br />
-                    <span id="introductionCapitalProse">we organize this process </span>by allowing users to work together in projects, creating proposals to solve these problems<span id="blueOpen"> and achieve these goals</span>. 
+                    <span id="introductionCapitalProse">we organize this process </span>by allowing users to work together in projects, creating proposals to<span id="blueOpen"> solve problems and achieve goals</span>. 
                     <br />
                     <br />
-                    <span id="introductionCapitalProse">in this process, </span>you are also given a centralized location for your own work, currently in the form of<span id="blueOpen"> a private Mind Temple</span>. 
+                    <span id="introductionCapitalProse">to aid you on this journey, </span>you are given a centralized location for your thoughts, organized in<span id="blueOpen"> a private Mind Temple</span>. 
                     <br />
                     <br />
-                    <span id="introductionCapitalProse">if you would like </span>to join this mission or access your Mind Temple, please<span id="greenOpen"> register </span>and<span id="blueOpen"> begin exploring</span>. 
+                    <span id="introductionCapitalProse">to join this mission or access your mind temple</span>,<span id="greenOpen"> please register </span>and<span id="blueOpen"> begin exploring</span>. 
                 </div>
 
                 <IntroductionRegister />
@@ -98,7 +98,7 @@ export default class Introduction extends React.Component {
                 </Link>
                 <div id="introductionProjectsProse">
                     {/*Design the tools needed for all scopes of our ambitions:*/}
-                    Design technologies to change the world
+                    Design technologies to shape the world
                 </div>
                 <Link to={`/project/10/subprojects`}>
                     <div id="introductionProjectHeader4">

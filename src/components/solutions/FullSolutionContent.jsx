@@ -44,6 +44,10 @@ export default class FullSolutionContent extends React.Component {
             })
       })     
     }
+    shouldComponentUpdate(nextProps, nextState) {
+        // only render if solutionID has changed
+        return this.state.solutoinID !== nextProps.params.solutionID;
+    }
     componentWillReceiveProps(nextProps){
       var self = this;
         return axios.get( Config.API + '/auth/solutions/ID?id='+nextProps.params.solutionID).then(function (response) {
@@ -167,21 +171,22 @@ unVote() {
               </div>
               <div id="createDate">{dateTime(this.state.solutionInfo.CreatedAt)}</div>
               
-              <Link to={`/proposal/${this.props.params.probID}/${this.props.params.solutionID}/edit`} activeClassName="activeBlue">
+              <Link to={`/proposal/${this.props.params.probID}/${this.props.params.solutionID}/edit`} activeClassName="activeProposalOption">
                 <div id="proposalDevelopButton">
                   Develop
                 </div>
               </Link>
 
-              <Link to={`/proposal/${this.props.params.probID}/${this.props.params.solutionID}/delete`}>
+              {/*<Link to={`/proposal/${this.props.params.probID}/${this.props.params.solutionID}/delete`}>
                 <img src={require('../../assets/delete.svg')} id="deleteSolutionButton" width="20" height="20" alt="Edit Button" />              
-              </Link>
+              </Link>*/}
 
+              
               <div id="prosConsMenu">
-                <Link to={`/proposal/${this.props.params.probID}/${this.props.params.solutionID}/pros`} activeClassName="activeWhite">
+                <Link to={`/proposal/${this.props.params.probID}/${this.props.params.solutionID}/pros`} activeClassName="activeProsCons">
                     <div id="prosButton">Pros</div>
                 </Link>
-                <Link to={`/proposal/${this.props.params.probID}/${this.props.params.solutionID}/cons`} activeClassName="activeWhite">
+                <Link to={`/proposal/${this.props.params.probID}/${this.props.params.solutionID}/cons`} activeClassName="activeProsCons">
                     <div id="consButton">Cons</div>
                 </Link>
               </div>
@@ -208,7 +213,7 @@ unVote() {
               </div>
               <div id="createDate">{dateTime(this.state.solutionInfo.CreatedAt)}</div>
               
-              <Link to={`/proposal/${this.props.params.probID}/${this.props.params.solutionID}/edit`} activeClassName="activeBlue">
+              <Link to={`/proposal/${this.props.params.probID}/${this.props.params.solutionID}/edit`} activeClassName="activeProposalOption">
               {/*Working on call to action 'Iterate' button*/}
                 <div id="proposalDevelopButton">
                   Develop
@@ -216,15 +221,15 @@ unVote() {
                 {/*<img src={require('../../assets/editBlue.svg')} id="editSolutionButton" width="20" height="20" alt="Edit Button" />*/}
               </Link>
 
-              <Link to={`/proposal/${this.props.params.probID}/${this.props.params.solutionID}/delete`}>
+              {/*<Link to={`/proposal/${this.props.params.probID}/${this.props.params.solutionID}/delete`}>
                 <img src={require('../../assets/delete.svg')} id="deleteSolutionButton" width="20" height="20" alt="Edit Button" />              
-              </Link>
+              </Link>*/}
 
               <div id="prosConsMenu">
-                <Link to={`/proposal/${this.props.params.probID}/${this.props.params.solutionID}/pros`} activeClassName="activeWhiteBlueText">
+                <Link to={`/proposal/${this.props.params.probID}/${this.props.params.solutionID}/pros`} activeClassName="activeProsCons">
                     <div id="prosButton">Pros</div>
                 </Link>
-                <Link to={`/proposal/${this.props.params.probID}/${this.props.params.solutionID}/cons`} activeClassName="activeWhiteBlueText">
+                <Link to={`/proposal/${this.props.params.probID}/${this.props.params.solutionID}/cons`} activeClassName="activeProsCons">
                     <div id="consButton">Cons</div>
                 </Link>
               </div>
@@ -257,10 +262,10 @@ unVote() {
 
 
               <div id="prosConsMenu">
-                <Link to={`/proposal/${this.props.params.probID}/${this.props.params.solutionID}/pros`} activeClassName="activeWhite">
+                <Link to={`/proposal/${this.props.params.probID}/${this.props.params.solutionID}/pros`} activeClassName="activeProsCons">
                     <div id="prosButton">Pros</div>
                 </Link>
-                <Link to={`/proposal/${this.props.params.probID}/${this.props.params.solutionID}/cons`} activeClassName="activeWhite">
+                <Link to={`/proposal/${this.props.params.probID}/${this.props.params.solutionID}/cons`} activeClassName="activeProsCons">
                     <div id="consButton">Cons</div>
                 </Link>
               </div>
@@ -293,10 +298,10 @@ unVote() {
 
 
               <div id="prosConsMenu">
-                <Link to={`/proposal/${this.props.params.probID}/${this.props.params.solutionID}/pros`} activeClassName="activeWhite">
+                <Link to={`/proposal/${this.props.params.probID}/${this.props.params.solutionID}/pros`} activeClassName="activeProsCons">
                     <div id="prosButton">Pros</div>
                 </Link>
-                <Link to={`/proposal/${this.props.params.probID}/${this.props.params.solutionID}/cons`} activeClassName="activeWhite">
+                <Link to={`/proposal/${this.props.params.probID}/${this.props.params.solutionID}/cons`} activeClassName="activeProsCons">
                     <div id="consButton">Cons</div>
                 </Link>
               </div>

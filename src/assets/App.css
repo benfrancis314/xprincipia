@@ -882,13 +882,18 @@ body, html, #main {
     }
     #answerQuestionLabel {
       font-size: 150%;
-      color: #00dcff;
-      width: 100%;
-      padding-left: 3%;
-      letter-spacing: 8px;
-      /*text-align: center;*/
-      /*border: 1px solid #00dcff;
-      border-width: 0px 0px 1px 0px;*/
+      color: #ffffff;
+      width: 80%;
+      margin: 0 auto;
+      margin-left: 3%;
+      letter-spacing: 4px;
+      padding: 3px;
+      text-align: center;
+      border: 1px solid #dddddd;
+      /*border-width: 0px 0px 1px 0px;*/
+      border-radius: 3px 3px 3px 3px;
+      background-color: rgba(0,220,255,0.05);
+      box-shadow: 0 0 1pt 1pt rgba(255,255,255,0.5);
     }
     #answerQuestionContent {
       /*Old Styles*/
@@ -1580,12 +1585,24 @@ body, html, #main {
       border-color: #dddddd;*/
 
       /*Testing light blue background header*/
+      box-shadow: 0 0 0pt 0pt rgba(0,220,255,0.5);
       background-color: rgba(0,220,255,0.05);
+
+      transition: all 2s ease 0s;
+      background-color: rgba(0,220,255,0.025);
+            background: linear-gradient(left,rgba(0,220,255, 0), rgba(0,220,255, 0.05), rgba(0,220,255, 0));
+
+      transform: scale(1);
     }
-    #header:hover, #header:active {
+    #header:hover, #header:active, #header:focus {
       /*Removing background-color for now*/
-      /*background-color: rgba(0,220,255,0.1);*/
+      background-color: rgba(0,220,255,0.05);
+            transition: all 2s ease 0s;
+
       color: #ffffff;
+      box-shadow: 0 0 1.5pt 1.5pt rgba(0,220,255,0.5);
+      transform: scale(1.005);
+      /*background: linear-gradient(left,rgba(0,220,255, 0.05), rgba(0,220,255, 0.1), rgba(0,220,255, 0.15), rgba(0,220,255, 0.15));*/
     }
     #explore, #logo {
       margin: 0 auto;
@@ -1978,10 +1995,10 @@ body, html, #main {
     	cursor: pointer;
     }
     #submitRegisterIntroduction {
-      color: #00dcff;
+      color: #00ffdc;
       background-color: rgba(0,220, 255, 0);
       font-size: 80%;
-    	border: 1px solid #00dcff;
+    	border: 1px solid #00ffdc;
       border-radius: 3px;
     	width: 14%;
     	padding: 3px;
@@ -1993,24 +2010,25 @@ body, html, #main {
       transition: all 0.5s ease 0s;
       margin-top: 2%;
       width: 20%;
-      background-color: rgba(0,220,255,0.05);
+      background-color: rgba(0,255,220,0.05);
 
       /*background: linear-gradient(left,rgba(0,220,255, 0), rgba(0,220,255, 0.05), rgba(0,220,255, 0));*/
-      background: radial-gradient(circle,rgba(0,220,255, 0), rgba(0,220,255, 0.025), rgba(0,220,255, 0.05));
+      background: radial-gradient(circle,rgba(0,255,220, 0), rgba(0,255,220, 0.025), rgba(0,255,220, 0.05));
       /*transition: all 0.75s ease 0s;*/
-      background-color: rgba(0,220,255,0.025);
+      background-color: rgba(0,255,220,0.025);
       transform: scale(1);
     }
     #submitRegisterIntroduction:hover, #submitRegisterIntroduction:active, #submitRegisterIntroduction:focus {
       color: #0f131c !important;
-    	background-color: rgba(0,220, 255, 1) !important;
+    	background-color: rgba(0,255,220, 1) !important;
     	cursor: pointer;
     }
     #registerButtonIntroduction {
       color: #00dcff;
-      background-color: rgba(0,220, 255, 0);
+      background-color: rgba(0,220,255, 0);
       font-size: 80%;
     	border: 1px solid #00dcff;
+      border-width: 0px 1px 1px 1px;
       border-radius: 3px;
     	width: 14%;
     	padding: 3px;
@@ -2020,23 +2038,20 @@ body, html, #main {
       letter-spacing: 2px;
       margin-top: 3%;
       transition: all 0.5s ease 0s;
-      color: #00ffdc;
       background-color: rgba(0,220,255,0.05);
-    	border: 1px solid #00ffdc;
-      border-width: 0px 1px 1px 1px;
       width: 15%;
       font-size: 70%;
       margin-top: 0%;
 
       /*background: linear-gradient(left,rgba(0,220,255, 0), rgba(0,220,255, 0.05), rgba(0,220,255, 0));*/
-      background: radial-gradient(circle,rgba(0,255,220, 0), rgba(0,255,220, 0.025), rgba(0,255,220, 0.05));
+      background: radial-gradient(circle,rgba(0,220,255, 0), rgba(0,220,255, 0.025), rgba(0,220,255, 0.05));
       /*transition: all 0.75s ease 0s;*/
-      background-color: rgba(0,255,220,0.025);
+      background-color: rgba(0,220,255,0.025);
       transform: scale(1);
     }
     #registerButtonIntroduction:hover, #registerButtonIntroduction:active, #registerButtonIntroduction:focus {
       color: #0f131c !important;
-    	background-color: rgba(0,255, 220, 1) !important;
+    	background-color: rgba(0,220,255, 1) !important;
     	cursor: pointer;
     }
     #introRegisterFullName, #introRegisterUserName, #introRegisterEmail, #introRegisterPassword,
@@ -2652,22 +2667,26 @@ introductionProjectTitle {
   margin-bottom: 5%;
   margin-top: -1%;
   font-size: 250%;
-  font-style: italic;
+  /*font-style: italic;*/
   letter-spacing: 6px;
   width: 70%;
+  transition: all 2s ease 0s;
 }
 #fullTutorialMotto:hover {
   /*cursor: pointer;*/
 }
 #fullTutorialMotto2 {
   margin: 0 auto;
-  color: #dddddd;
+  /*color: #dddddd;*/
+  color: #515151;
   text-align: center;
   margin-bottom: 5%;
-  margin-top: -2%;
-  font-size: 260%;
-  letter-spacing: 4px;
+  margin-top: -1%;
+  font-size: 250%;
+  /*font-size: 260%;*/
+  letter-spacing: 7px;
   width: 70%;
+  transition: all 2s ease 0s;
 }
 
 
@@ -3176,7 +3195,7 @@ introductionProjectTitle {
   letter-spacing: 6px;
   font-size: 110%;
   padding: auto;
-  padding-top: 5px 0px;
+  padding-top: 7px 0px;
   font-family: 'Alegreya Sans SC', sans-serif;
   text-align: center;
   transition: all 0.5s ease 0s;
@@ -3263,26 +3282,88 @@ input[type=text]:focus, input[type=email]:focus, input[type=password]:focus, inp
   letter-spacing: 6px;
   width: 50%;
   margin: 0 auto;
-  padding: 0.5% 0% 0.5% 0%;
+  padding: 0.5% 0% 0.6% 0%;
   margin-bottom: 0.5%;
   margin-top: 0%;
   border: 1px solid #dddddd;
-  border-width: 0px 1px 1px 1px;
-  border-radius: 0% 0% 25% 25%;
+  border-width: 1px 1px 1px 1px;
+  border-radius: 0% 0% 45% 45%;
   /*background-color: rgba(15,19,28,0.05);*/
-  background: linear-gradient(left,rgba(0,220,255, 0), rgba(0,220,255, 0.035), rgba(0,220,255, 0));
+  background: linear-gradient(left,rgba(0,220,255, 0), rgba(0,220,255, 0.025), rgba(0,220,255, 0));
 
-transition: all 0.75s ease 0s;
+  transition: all 0.75s ease 0s;
   /*box-shadow: 0 0 0pt 0pt rgba(0,220,255,0.5);*/
-  background-color: rgba(0,220,255,0.05);
+  background-color: rgba(0,220,255,0.025);
   transform: scale(1);
 }
-#proposalSubProjectsButton:hover {
+#proposalSubProjectsButton:hover, #proposalDevelopButton:hover, #proposalDiscussButton:hover,
+#proposalSubProjectsButton:focus, #proposalDevelopButton:focus, #proposalDiscussButton:focus,
+#proposalSubProjectsButton:active, #proposalDevelopButton:active, #proposalDiscussButton:active {
   /*box-shadow: 0 0 2pt 2pt rgba(0,220,255,0.5);*/
-  background: linear-gradient(left,rgba(0,220,255, 0), rgba(0,220,255, 0.1), rgba(0,220,255, 0));
+  background: linear-gradient(left,rgba(0,220,255, 0), rgba(0,220,255, 0.075), rgba(0,220,255, 0)) !important;
   /*background-color: rgba(15,19,28,0.9);*/
-  transform: scale(1.02);
+  letter-spacing: 8px !important;
+  color: #00dcff !important;
+  cursor: pointer;
+  border-color: #00dcff !important;
 }
+#proposalDiscussButton {
+  text-align: center;
+  font-size: 175%;
+  letter-spacing: 6px;
+  width: 50%;
+  margin: 0 auto;
+  padding: 0.6% 0% 0.5% 0%;
+  /*margin-bottom: 0.5%;*/
+  margin-top: 0%;
+  border: 1px solid #dddddd;
+  border-width: 0px 1px 0px 1px;
+  border-radius: 0% 0% 0% 0%;
+  background: linear-gradient(left,rgba(0,220,255, 0), rgba(0,220,255, 0.025), rgba(0,220,255, 0));
+
+  transition: all 0.75s ease 0s;
+  background-color: rgba(0,220,255,0.025);
+  transform: scale(1);
+}
+#proposalDevelopButton {
+  text-align: center;
+  font-size: 175%;
+  letter-spacing: 6px;
+  width: 50%;
+  margin: 0 auto;
+  padding: 0.6% 0% 0.5% 0%;
+  /*margin-bottom: 0.5%;*/
+  margin-top: 0%;
+  border: 1px solid #dddddd;
+  border-width: 1px 1px 0px 1px;
+  border-radius: 45% 45% 0% 0%;
+  /*background: linear-gradient(left,rgba(0,220,255, 0), rgba(0,220,255, 0.05), rgba(0,220,255, 0));*/
+  background: linear-gradient(left,rgba(0,220,255, 0), rgba(0,220,255, 0.025), rgba(0,220,255, 0));
+
+
+  transition: all 0.75s ease 0s;
+  background-color: rgba(0,220,255,0.025);
+  transform: scale(1);
+}
+/*#proposalDevelopButton {
+  letter-spacing: 2px;
+  width: 20%;
+  margin: 0 auto;
+  padding: 3px;
+  transition: all 0.5s ease 0s;
+  border: 1px solid #00dcff;
+  border-width: 1px 1px;
+  border-radius: 3px 3px 35% 35%;
+  background-color: rgba(0,220,255,0.05);
+  color: #00dcff;
+  text-align: center;
+  font-size: 140%;
+}
+#proposalDevelopButton:hover {
+  background-color: #00dcff;
+  color: #0f131c;
+  cursor: pointer;
+}*/
 #privateContainerMottoProposal {
   display: inline-block;
   color: #888888;
@@ -3294,6 +3375,7 @@ transition: all 0.75s ease 0s;
   transition: all 2s ease 0s;
   letter-spacing: 7px;
 }
+
 
 
 
@@ -4227,6 +4309,20 @@ transition: all 0.75s ease 0s;
       transform: scale(1.02) !important;
       cursor: default !important;
     }
+    .activeProposalOption div {
+      background: linear-gradient(left,rgba(0,220,255, 0), rgba(0,220,255, 0.1), rgba(0,220,255, 0)) !important;
+      /*background-color: rgba(15,19,28,0.9);*/
+      letter-spacing: 8px !important;
+      color: #00dcff !important;
+      cursor: default !important;
+      border-color: #00dcff !important;
+    }
+    .activeProsCons div {
+      background-color: rgba(0,220,255,0.05) !important;
+      color: #00dcff !important;
+      cursor: pointer !important;
+      box-shadow: 0 0 0px 0px rgba(0,220,255,0.5) !important;
+    }
     
     /*Doesn't work since it highlights the entire box*/
     /*.activeGlow {
@@ -4453,7 +4549,7 @@ transition: all 0.75s ease 0s;
     font-size: 140%;
     word-wrap: break-word; 
     text-align: center;
-    background-color: rgba(0,220,255,0.05);
+    /*background-color: rgba(0,220,255,0.05);*/
   }
     /*#welcomeProblemsSummary {
     	font-family: 'Open Sans', sans-serf;
@@ -4953,25 +5049,6 @@ transition: all 0.75s ease 0s;
   padding: 3px;
   /*box-shadow: 0 0 1pt 1pt rgba(0,220,255,0.5);*/
   transition: all 0.5s ease 0s;
-}
-#proposalDevelopButton {
-  letter-spacing: 2px;
-  width: 20%;
-  margin: 0 auto;
-  padding: 3px;
-  transition: all 0.5s ease 0s;
-  border: 1px solid #00dcff;
-  border-width: 1px 1px;
-  border-radius: 3px 3px 35% 35%;
-  background-color: rgba(0,220,255,0.05);
-  color: #00dcff;
-  text-align: center;
-  font-size: 140%;
-}
-#proposalDevelopButton:hover {
-  background-color: #00dcff;
-  color: #0f131c;
-  cursor: pointer;
 }
 
 #flagSolutionButton:hover, #deleteSolutionButton:hover,
@@ -6315,6 +6392,7 @@ label + input[type=radio] + label {
 #learnResourcesLink:hover {
   color: rgba(0,220,255,1);
   transform: scale(1.02);
+  cursor: pointer;
 }
 /*End Learn SB*/
 
@@ -6483,7 +6561,7 @@ label + input[type=radio] + label {
   width: 100%;
   border: 1px solid #00dcff;
   border-width: 1px 0px;
-  margin-top: 10px;
+  /*margin-top: 10px;*/
   background: linear-gradient(left,rgba(0,220,255, 0.05), rgba(0,220,255, 0), rgba(0,220,255, 0.05));
 }
 #prosButton, #consButton {
@@ -6499,13 +6577,12 @@ label + input[type=radio] + label {
   box-shadow: 0 0 0pt 0pt rgba(0,220,255,0.5);
   background-color: rgba(0,220,255,0);
 }
-#prosButton:hover, #consButton:hover {
+#prosButton:hover, #consButton:hover, #prosButton:focus, #consButton:focus, #prosButton:active, #consButton:active {
   background-color: rgba(0,220,255,0.05);
   color: #00dcff;
   cursor: pointer;
   box-shadow: 0 0 0px 0px rgba(0,220,255,0.5);
   /*background: linear-gradient(left,rgba(0,220,255, 0), rgba(0,220,255, 0.05), rgba(0,220,255, 0));*/
-  
 
 }
 #prosButton:active, #consButton:active {

@@ -33,7 +33,7 @@ export default class FullSolution extends React.Component {
 }
 
 shouldComponentUpdate(nextProps, nextState) {
-    // only render if probID has changed
+    // only render if solutionID has changed
     return this.state.solutoinID !== nextProps.params.solutionID;
 }
   //On recieving next props

@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import SuggestionProposalUnit from '../components/suggestions/SuggestionProposalUnit.jsx';
 import SuggestionUnit from '../components/suggestions/SuggestionUnit.jsx';
 import {Config} from '../config.js'
 
@@ -33,7 +34,7 @@ constructor(props){
         return (
             <div id="suggestionContainer">
                 {this.props.children}
-                <SuggestionUnit suggestions={this.state.suggestions} />
+                <SuggestionProposalUnit suggestions={this.state.suggestions} probID={this.props.params.probID} />
             </div>
         );
     } else {

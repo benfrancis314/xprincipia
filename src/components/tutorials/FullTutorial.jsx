@@ -7,12 +7,27 @@ import ScrollableAnchor from 'react-scrollable-anchor';
 
 export default class Tutorial extends React.Component {
 
-    latinTranslate() {
-        $(document).ready(function() {
-            $('#fullTutorialMotto').attr('id','fullTutorialMotto2').hide();
-            $('#fullTutorialMotto2').html('Question Authority').fadeIn(5500);
-        });
-    }
+// Old hover function, not sure if I will end up using it
+    // latinTranslate() {
+    //     alert('success');
+    //     $(document).ready(function() {
+    //         $('#fullTutorialMotto').attr('id','fullTutorialMotto2').hide();
+    //         $('#fullTutorialMotto2').html('Question Authority').fadeIn(5500);
+    //     });
+    // }
+
+    hoverText() {
+			$(document).ready(function() {
+					$('#fullTutorialMotto').html("QUESTION AUTHORITY").fadeIn(7500);
+					$('#fullTutorialMotto').attr('id','fullTutorialMotto2');
+			});
+	}
+	unHoverText() {
+			$(document).ready(function() {
+					$('#fullTutorialMotto2').html("NULLIUS IN VERBA");
+					$('#fullTutorialMotto2').attr('id','fullTutorialMotto');
+			});
+	}
     // Can't quite get the untranslate to work smoothly, so I'm leaving it out for now
     // latinUntranslate() {
     //     $(document).ready(function() {
@@ -54,17 +69,17 @@ export default class Tutorial extends React.Component {
                     </a>
                     <a href='#tutorialIndex3'>
                         <div id="tutorialIndexNumber">
-                            III. Discuss
+                            III. Proposals
                         </div>
                     </a>
                     <a href='#tutorialIndex4'>
                         <div id="tutorialIndexNumber">
-                            IV. Proposals
+                            IV. Learn
                         </div>
                     </a>
                     <a href='#tutorialIndex5'>
                         <div id="tutorialIndexNumber">
-                            V. Learn
+                            V. Mind Temple
                         </div>
                     </a>
                 </div>
@@ -82,7 +97,7 @@ export default class Tutorial extends React.Component {
                             </div>
                         </ScrollableAnchor>
                         <div id="fullTutorialProseStartSentence">
-                            Welcome to the beginning of your<span id="blueOpen"> XPrincipia Experience</span>.
+                            Welcome to<span id="blueOpen"> XPrincipia</span>.
                         </div>
                         <div id="fullTutorialProse">
                             Our goal is to<span id="blueOpen"> focus the human species </span>towards achieving its<span id="blueOpen"> best possible future</span>. 
@@ -182,7 +197,7 @@ export default class Tutorial extends React.Component {
                             Each project is<span id="blueOpen"> broken down </span>into<span id="blueOpen"> more solvable sub projects</span>.
                         </div>
                         <div id="fullTutorialProseBottom">
-                            This process is repeated,<span id="blueOpen"> creating a tree pattern</span>:
+                            This branching process is repeated,<span id="blueOpen"> creating a tree pattern</span>:
                         </div>
                         <div id="fullTutorialEmbed">
                             <div id="maxContainerColumn">
@@ -214,7 +229,7 @@ export default class Tutorial extends React.Component {
                                 <div id="projectPercent">30</div>
                                 <div id="fullProblem">
                                     <p id="problemSummary">
-                                        What are the best methods to colonize Mars?
+                                        This project details humanity's plan to colonize Mars. 
                                     </p>
                                 </div>
                                 <div id="SBButton">
@@ -474,7 +489,9 @@ export default class Tutorial extends React.Component {
                                                 <div id="consButton">Cons</div>
                                             </Link>
                                         </div>
-                                        
+                                        <div id="proposalSubProjectsButton">
+                                            Sub Projects
+                                        </div>
                                         <div>
                                         <div id="suggestionContainer">
                                             <Link>
@@ -644,9 +661,10 @@ export default class Tutorial extends React.Component {
                         <div id="fullTutorialProse">
                             Future sections of XPrincipia will be designed towards<span id="blueOpen"> democratically implementing these ideas</span>. 
                         </div>
+                        <br /><br />
                         <div id="fullTutorialProseBottom">
-                            Finally,<span id="blueOpen"> we encourage you to break things</span>. Do not to follow the paths of your peers.<span id="blueOpen"> Compete directly with others</span>. 
-                            Organize projects how you think is best.<span id="blueOpen"> Think and act for yourself</span>. Through independent thought and focus upon one common goal,<span id="blueOpen"> we will all succeed</span>. 
+                            Finally, we encourage you to break the rules.<br /><br /><span id="blueOpen"> Compete directly with others</span>,<span id="blueOpen"> create your own path</span><span id="blueOpen"> and think for yourself</span>. <br /><br />
+                            With everyone working together in their own unique way,<span id="blueOpen"> more ideas will be tested and the best found</span>. 
                         </div>
                         <Link to="/welcome">
                             <div id="fullTutorialExplore">
@@ -654,7 +672,7 @@ export default class Tutorial extends React.Component {
                             </div>
                         </Link>
                         {randomImg()}
-                        <div id="fullTutorialMotto" onMouseOver={this.latinTranslate} onMouseOut={this.latinUntranslate}>
+                        <div id="fullTutorialMotto" onMouseOver={this.hoverText} onMouseOut={this.unHoverText}>
                             NULLIUS IN VERBA
                         </div>
                     </div>
