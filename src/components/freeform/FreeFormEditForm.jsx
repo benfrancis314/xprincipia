@@ -84,28 +84,52 @@ updateFreeForm() {
 
 
    render() {
+      if (this.props.params.solutionID){
+        return (
+            <div>
+              <div id="discussMenuEnd">
+                Open Debate
+              </div>
+              <div id="questionFormComponent">
+                    <form id="questionForm">
+                        <fieldset>
+                            <legend id="redLegend">Edit Debate Point</legend>
+                                <textarea name="questionText" required="required" id="freeFormEditTextArea" autoFocus ></textarea>
+                                <br />
+                                <Link to={`/project/${this.props.params.probID}/proposal/${this.state.freeForm.TypeID}/debates`}>
+                                    <div onClick={this.updateFreeForm} id="editButton">Submit</div>
+                                </Link>
+                                <Link to={`/project/${this.props.params.probID}/proposal/${this.state.freeForm.TypeID}/debates`}>
+                                    <div id="returnButton">Exit</div>
+                                </Link>
+                        </fieldset>
+                    </form>
+              </div>
+            </div>
+        );
+    } else {
       return (
-      <div>
-        <div id="discussMenuEnd">
-          Open Debate
+        <div>
+          <div id="discussMenuEnd">
+            Open Debate
+          </div>
+          <div id="questionFormComponent">
+                <form id="questionForm">
+                    <fieldset>
+                        <legend id="redLegend">Edit Debate Point</legend>
+                            <textarea name="questionText" required="required" id="freeFormEditTextArea" autoFocus ></textarea>
+                            <br />
+                            <Link to={`/project/${this.state.freeForm.TypeID}/freeForms`}>
+                                <div onClick={this.updateFreeForm} id="editButton">Submit</div>
+                            </Link>
+                            <Link to={`/project/${this.state.freeForm.TypeID}/freeForms`}>
+                                <div id="returnButton">Exit</div>
+                            </Link>
+                    </fieldset>
+                </form>
+          </div>
         </div>
-        <div id="questionFormComponent">
-              <form id="questionForm">
-                  <fieldset>
-                      <legend id="redLegend">Edit Debate Point</legend>
-                          <textarea name="questionText" required="required" id="freeFormEditTextArea" autoFocus ></textarea>
-                          <br />
-                          <Link to={`/project/${this.state.freeForm.TypeID}/freeForms`}>
-                              <div onClick={this.updateFreeForm} id="editButton">Submit</div>
-                          </Link>
-                          <Link to={`/project/${this.state.freeForm.TypeID}/freeForms`}>
-                              <div id="returnButton">Exit</div>
-                          </Link>
-                  </fieldset>
-              </form>
-        </div>
-      </div>
-
       );
-   }
+    }
+  }
 }

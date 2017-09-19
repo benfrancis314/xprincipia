@@ -3302,7 +3302,7 @@ input[type=text]:focus, input[type=email]:focus, input[type=password]:focus, inp
   /*box-shadow: 0 0 2pt 2pt rgba(0,220,255,0.5);*/
   background: linear-gradient(left,rgba(0,220,255, 0), rgba(0,220,255, 0.075), rgba(0,220,255, 0)) !important;
   /*background-color: rgba(15,19,28,0.9);*/
-  letter-spacing: 8px !important;
+  letter-spacing: 7px !important;
   color: #00dcff !important;
   cursor: pointer;
   border-color: #00dcff !important;
@@ -4310,9 +4310,9 @@ input[type=text]:focus, input[type=email]:focus, input[type=password]:focus, inp
       cursor: default !important;
     }
     .activeProposalOption div {
-      background: linear-gradient(left,rgba(0,220,255, 0), rgba(0,220,255, 0.1), rgba(0,220,255, 0)) !important;
+      background: linear-gradient(left,rgba(0,220,255, 0), rgba(0,220,255, 0.075), rgba(0,220,255, 0)) !important;
       /*background-color: rgba(15,19,28,0.9);*/
-      letter-spacing: 8px !important;
+      letter-spacing: 7px !important;
       color: #00dcff !important;
       cursor: default !important;
       border-color: #00dcff !important;

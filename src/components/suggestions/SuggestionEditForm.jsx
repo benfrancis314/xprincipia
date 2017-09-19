@@ -84,28 +84,52 @@ export default class SuggestionEditForm extends React.Component {
 
 
    render() {
+      if (this.props.params.solutionID){
+        return (
+            <div>
+              <div id="discussMenuEnd">
+                Suggestions
+              </div>
+              <div id="questionFormComponent">
+                    <form id="questionForm">
+                        <fieldset id="redFieldset">
+                            <legend id="redLegend">Edit Suggestion</legend>
+                                <textarea name="questionText" required="required" id="questionEditTextArea" autoFocus ></textarea>
+                                <br />
+                                <Link to={`/project/${this.props.params.probID}/proposal/${this.state.suggestion.TypeID}/suggestions`}>
+                                  <div onClick={this.updateSuggestion} id="editButton">Submit</div>
+                                </Link>
+                                <Link to={`/project/${this.props.params.probID}/proposal/${this.state.suggestion.TypeID}/suggestions`}>
+                                  <div id="returnButton">Exit</div>
+                                </Link>
+                        </fieldset>
+                    </form>
+              </div>
+            </div>
+        );
+    } else {
       return (
-      <div>
-        <div id="discussMenuEnd">
-          Suggestions
+        <div>
+          <div id="discussMenuEnd">
+            Suggestions
+          </div>
+          <div id="questionFormComponent">
+                <form id="questionForm">
+                    <fieldset id="redFieldset">
+                        <legend id="redLegend">Edit Suggestion</legend>
+                            <textarea name="questionText" required="required" id="questionEditTextArea" autoFocus ></textarea>
+                            <br />
+                            <Link to={`/project/${this.state.suggestion.TypeID}/suggestions`}>
+                              <div onClick={this.updateSuggestion} id="editButton">Submit</div>
+                            </Link>
+                            <Link to={`/project/${this.state.suggestion.TypeID}/suggestions`}>
+                              <div id="returnButton">Exit</div>
+                            </Link>
+                    </fieldset>
+                </form>
+          </div>
         </div>
-        <div id="questionFormComponent">
-              <form id="questionForm">
-                  <fieldset id="redFieldset">
-                      <legend id="redLegend">Edit Suggestion</legend>
-                          <textarea name="questionText" required="required" id="questionEditTextArea" autoFocus ></textarea>
-                          <br />
-                          <Link to={`/project/${this.state.suggestion.TypeID}/suggestions`}>
-                            <div onClick={this.updateSuggestion} id="editButton">Submit</div>
-                          </Link>
-                          <Link to={`/project/${this.state.suggestion.TypeID}/suggestions`}>
-                            <div id="returnButton">Exit</div>
-                          </Link>
-                  </fieldset>
-              </form>
-        </div>
-      </div>
-
       );
-   }
+    }
+  }
 }

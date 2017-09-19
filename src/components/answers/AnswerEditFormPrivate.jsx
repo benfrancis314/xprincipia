@@ -57,12 +57,9 @@ updateAnswer() {
       description : this.state.answer,
     })
       .then(function (result) {
-        //   alert('success')
-        // document.location = '/project/private/' + self.props.params.probID + '/question/' + self.props.params.questID + '/answers'
         document.location = window.location.pathname 
       })
       .catch(function (error) {
-        // console.log(error.response.data)
           $(document).ready(function() {
               $('#notification').attr('id','notificationShow').hide().slideDown();
               if (error.response.data != '') {
@@ -80,29 +77,43 @@ updateAnswer() {
       });
     }
 
-  
-  
-
-
-
    render() {
-      return (
-      <div id="questionFormComponent">
-            <form id="questionForm">
-                <fieldset id="redFieldset">
-                    <legend id="redLegend">Edit Answer</legend>
-                         <textarea name="questionText" required="required" id="answerEditTextArea" autoFocus ></textarea>
-                         <br />
-                         <Link to={`/project/private/${this.props.params.probID}/question/${this.props.params.questID}/answers`}>
+      if (this.props.params.solutionID){
+        return (
+            <div id="questionFormComponent">
+              <form id="questionForm">
+                  <fieldset id="redFieldset">
+                      <legend id="redLegend">Edit Answer</legend>
+                          <textarea name="questionText" required="required" id="answerEditTextArea" autoFocus ></textarea>
+                          <br />
+                          <Link to={`/project/private/${this.props.params.probID}/proposal/${this.props.params.solutionID}/question/${this.props.params.questID}/answers`}>
                             <div onClick={this.updateAnswer} id="editButton">Submit</div>
-                         </Link>
-                         <Link to={`/project/private/${this.props.params.probID}/question/${this.props.params.questID}/answers`}>
-                            <div id="returnButton">Exit</div>
-                         </Link>
-                </fieldset>
-            </form>
-      </div>
-
+                          </Link>
+                          <Link to={`/project/private/${this.props.params.probID}/proposal/${this.props.params.solutionID}/question/${this.props.params.questID}/answers`}>
+                              <div id="returnButton">Exit</div>
+                          </Link>
+                  </fieldset>
+              </form>
+        </div>
+        );
+    } else {
+      return (
+        <div id="questionFormComponent">
+              <form id="questionForm">
+                  <fieldset id="redFieldset">
+                      <legend id="redLegend">Edit Answer</legend>
+                          <textarea name="questionText" required="required" id="answerEditTextArea" autoFocus ></textarea>
+                          <br />
+                          <Link to={`/project/private/${this.props.params.probID}/question/${this.props.params.questID}/answers`}>
+                            <div onClick={this.updateAnswer} id="editButton">Submit</div>
+                          </Link>
+                          <Link to={`/project/private/${this.props.params.probID}/question/${this.props.params.questID}/answers`}>
+                              <div id="returnButton">Exit</div>
+                          </Link>
+                  </fieldset>
+              </form>
+        </div>
       );
-   }
+    }
+  }
 }

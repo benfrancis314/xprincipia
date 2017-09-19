@@ -27,7 +27,7 @@ deleteSuggestion() {
       }
     })
     .then(function (result) {
-      document.location = '/project/'+ self.props.params.probID + '/suggestions'
+        document.location = window.location.pathname 
     })
       .catch(function (error) {
         // console.log(error.response.data)
@@ -52,28 +52,54 @@ deleteSuggestion() {
 
 
    render() {
+      if (this.props.params.solutionID){
+        return (
+            <div>
+              <div id="discussMenuEnd">
+                Suggestions
+              </div>
+              <div id="questionFormComponent">
+                    <form id="questionForm">
+                        <fieldset>
+                            <legend>Delete Suggestion</legend>
+                                <div>Are you sure you would like to delete this suggestion?</div>
+                                <br />
+                                <Link to={`/project/${this.props.params.probID}/proposal/${this.props.params.solutionID}/suggestions`}>
+                                    <div onClick={this.deleteSuggestion} id="deleteButton">Delete</div>
+                                </Link>                                
+                                <Link to={`/project/${this.props.params.probID}/proposal/${this.props.params.solutionID}/suggestions`}>
+                                    <div id="returnButton">Exit</div>
+                                </Link>
+                        </fieldset>
+                    </form>
+              </div>
+            </div>
+        );
+    } else {
       return (
-      <div>
-        <div id="discussMenuEnd">
-          Suggestions
+        <div>
+          <div id="discussMenuEnd">
+            Suggestions
+          </div>
+          <div id="questionFormComponent">
+                <form id="questionForm">
+                    <fieldset>
+                        <legend>Delete Suggestion</legend>
+                            <div>Are you sure you would like to delete this suggestion?</div>
+                            <br />
+                            <Link to={`/project/${this.props.params.probID}/suggestions`}>
+                                <div onClick={this.deleteSuggestion} id="deleteButton">Delete</div>
+                            </Link>
+                            <Link to={`/project/${this.props.params.probID}/suggestions`}>
+                                <div id="returnButton">Exit</div>
+                            </Link>
+                    </fieldset>
+                </form>
+          </div>
         </div>
-        <div id="questionFormComponent">
-              <form id="questionForm">
-                  <fieldset>
-                      <legend>Delete Suggestion</legend>
-                          <div>Are you sure you would like to delete this suggestion?</div>
-                          <br />
-                            <div onClick={this.deleteSuggestion} id="deleteButton">Delete</div>
-                          <Link to={`/project/${this.props.params.probID}/suggestions`}>
-                              <div id="returnButton">Exit</div>
-                          </Link>
-                  </fieldset>
-              </form>
-        </div>
-      </div>
-
       );
-   }
+    }
+  }
 }
 
 

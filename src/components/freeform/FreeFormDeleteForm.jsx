@@ -27,7 +27,7 @@ deleteFreeform() {
       }
     })
     .then(function (result) {
-      document.location = '/project/'+ self.props.params.probID + '/freeforms'
+        document.location = window.location.pathname 
     })
       .catch(function (error) {
         // console.log(error.response.data)
@@ -53,26 +53,52 @@ deleteFreeform() {
 
 
    render() {
+      if (this.props.params.solutionID){
+        return (
+            <div>
+              <div id="discussMenuEnd">
+                Open Debate
+              </div>
+              <div id="questionFormComponent">
+                    <form id="questionForm">
+                        <fieldset>
+                            <legend>Delete Debate Point</legend>
+                                <div>Are you sure you would like to delete this debate point?</div>
+                                <br />
+                                <Link to={`/project/${this.props.params.probID}/proposal/${this.state.freeForm.TypeID}/debates`}>
+                                    <div onClick={this.deleteFreeform} id="deleteButton">Delete</div>
+                                </Link>
+                                <Link to={`/project/${this.props.params.probID}/proposal/${this.state.freeForm.TypeID}/debates`}>
+                                    <div id="returnButton">Exit</div>
+                                </Link>
+                        </fieldset>
+                    </form>
+              </div>
+            </div>
+        );
+    } else {
       return (
-    <div>
-        <div id="discussMenuEnd">
-          Open Debate
-        </div>
-        <div id="questionFormComponent">
-              <form id="questionForm">
-                  <fieldset>
-                      <legend>Delete Debate Point</legend>
-                          <div>Are you sure you would like to delete this debate point?</div>
-                          <br />
-                          <div onClick={this.deleteFreeform} id="deleteButton">Delete</div>
-                          <Link to={`/project/${this.state.freeForm.TypeID}/freeForms`}>
-                              <div id="returnButton">Exit</div>
-                          </Link>
-                  </fieldset>
-              </form>
-        </div>
-      </div>
-
+        <div>
+            <div id="discussMenuEnd">
+              Open Debate
+            </div>
+            <div id="questionFormComponent">
+                  <form id="questionForm">
+                      <fieldset>
+                          <legend>Delete Debate Point</legend>
+                              <div>Are you sure you would like to delete this debate point?</div>
+                              <br />
+                              <Link to={`/project/${this.state.freeForm.TypeID}/freeForms`}>
+                                  <div onClick={this.deleteFreeform} id="deleteButton">Delete</div>
+                              </Link>
+                              <Link to={`/project/${this.state.freeForm.TypeID}/freeForms`}>
+                                  <div id="returnButton">Exit</div>
+                              </Link>
+                      </fieldset>
+                  </form>
+            </div>
+          </div>
       );
-   }
+    }
+  }
 }

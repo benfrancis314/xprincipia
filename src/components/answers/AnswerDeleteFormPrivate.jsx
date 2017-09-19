@@ -26,7 +26,8 @@ deleteAnswer() {
         }
     })
       .then(function (result) {
-        document.location = '/project/private/'+ self.props.params.probID + '/question/' + self.props.params.questID + '/answers'
+          document.location = window.location.pathname 
+        // document.location = '/project/'+ self.props.params.probID + '/question/' + self.props.params.questID + '/answers'
       })
       .catch(function (error) {
         // console.log(error.response.data)
@@ -51,21 +52,43 @@ deleteAnswer() {
 
 
    render() {
+      if (this.props.params.solutionID){
+        return (
+            <div id="questionFormComponent">
+              <form id="questionForm">
+                  <fieldset id="redFieldset">
+                      <legend>Delete Answer</legend>
+                          <div>Are you sure you would like to delete this answer?</div>
+                          <br />
+                          <Link to={`/project/private/${this.props.params.probID}/proposal/${this.props.params.solutionID}/question/${this.props.params.questID}/answers`}>
+                              <div onClick={this.deleteAnswer} id="deleteButton">Delete</div>
+                          </Link>
+                          <Link to={`/project/private/${this.props.params.probID}/proposal/${this.props.params.solutionID}/question/${this.props.params.questID}/answers`}>
+                              <div id="returnButton">Exit</div>
+                          </Link>
+                  </fieldset>
+              </form>
+            </div>
+        );
+    } else {
       return (
-      <div id="questionFormComponent">
-            <form id="questionForm">
-                <fieldset id="redFieldset">
-                    <legend>Delete Answer</legend>
-                         <div>Are you sure you would like to delete this answer?</div>
-                         <br />
-                         <div onClick={this.deleteAnswer} id="deleteButton">Delete</div>
-                         <Link to={`/project/private/${this.props.params.probID}/question/${this.props.params.questID}/answers`}>
-                            <div id="returnButton">Exit</div>
-                         </Link>
-                </fieldset>
-            </form>
-      </div>
+        <div id="questionFormComponent">
+              <form id="questionForm">
+                  <fieldset id="redFieldset">
+                      <legend>Delete Answer</legend>
+                          <div>Are you sure you would like to delete this answer?</div>
+                          <br />
+                          <Link to={`/project/private/${this.props.params.probID}/question/${this.props.params.questID}/answers`}>
+                              <div onClick={this.deleteAnswer} id="deleteButton">Delete</div>
+                          </Link>
+                          <Link to={`/project/private/${this.props.params.probID}/question/${this.props.params.questID}/answers`}>
+                              <div id="returnButton">Exit</div>
+                          </Link>
+                  </fieldset>
+              </form>
+        </div>
 
       );
-   }
+    }
+  }
 }
