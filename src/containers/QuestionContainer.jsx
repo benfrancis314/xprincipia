@@ -21,8 +21,6 @@ export default class QuestionContainer extends React.Component {
                     self.setState({
                         questions: response.data
                     })
-                          .catch(function (error) {
-      });
                 })  
 
             } else {

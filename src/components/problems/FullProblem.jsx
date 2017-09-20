@@ -55,6 +55,15 @@ shouldComponentUpdate(nextProps, nextState) {
     return this.state.probID !== nextProps.params.probID;
 }
 
+// First draft of attempt, this one seems not to work
+// componentWillUpdate (nextProps, nextState){
+//         //  may need to use componentDidUpate instead, since it acts on DOM after rendering/the data is updated
+//         // called as soon as shouldComponentUpdate returns as true
+//     // perform any preparations for an upcoming update
+//     // window.scrollTo(0,0);
+//     // this still seems to cause the reload
+// }
+
   componentWillReceiveProps(nextProps){
       var self = this;
       window.scrollTo(0,0);

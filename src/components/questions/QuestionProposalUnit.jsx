@@ -116,7 +116,7 @@ constructor(props){
                             {question.Username}
                         </div>
                         <div id="suggestionText">
-                            <span id="blue">Q: </span>{question.Description}
+                            {question.Description}
                         </div>
                     </div>
                     <Link to={`/project/${this.props.probID}/proposal/${question.TypeID}/question/${question.ID}/delete`} >
@@ -179,7 +179,7 @@ constructor(props){
 					    {question.Username}
                     </div>
                     <div id="suggestionText">
-                        <span id="blue">Q: </span>{question.Description}
+                        {question.Description}
                     </div>
 				</div>
                     {/*<Link to={`/project/${question.TypeID}/question/${question.ID}/flag`}>
@@ -206,7 +206,7 @@ constructor(props){
 					    {question.Username}
                     </div>
                     <div id="suggestionText">
-                        <span id="blue">Q: </span>{question.Description}
+                        {question.Description}
                     </div>
 				</div>
                 <Link to={`/project/${this.props.probID}/proposal/${question.TypeID}/question/${question.ID}/answers`} activeClassName="activeGlow">
