@@ -5,25 +5,26 @@ import cookie from 'react-cookie';
 import {Config} from '../../config.js';
 import $ from 'jquery';
 
-export default class SuggestionUnit extends React.Component {
-    
-    constructor(props){
-        super(props);
-        
-         this.renderItem = this.renderItem.bind(this)
-    };
-  
+export default class CommentUnit extends React.Component {
+
+ constructor(props){
+     super(props);
+
+        this.renderItem = this.renderItem.bind(this)
+        // this.submitVote = this.submitVote.bind(this)
+
+    }; 
     componentWillReceiveProps (props) {
         var self = this
         self.setState({
             voteHash : {},
         })
-        props.suggestions.forEach( function (suggestion){
-            axios.get( Config.API + "/auth/vote/isVotedOn?type=3&typeID=" + suggestion.ID + "&username=" + cookie.load("userName"))
+        props.comments.forEach( function (comment){
+            axios.get( Config.API + "/auth/vote/isVotedOn?type=5&typeID=" + comment.ID + "&username=" + cookie.load("userName"))
             .then( function (response) {  
                 const voteHash = self.state.voteHash;
 
-                voteHash[suggestion.ID] = response.data
+                voteHash[comment.ID] = response.data
                 self.setState({
                     voteHash,
                 })
@@ -33,22 +34,22 @@ export default class SuggestionUnit extends React.Component {
 	render() {
 		return (
 	    <div>
-			<ul> {this.props.suggestions.map(this.renderItem)} </ul>
+			<ul> {this.props.comments.map(this.renderItem)} </ul>
 	               
 	    </div>
 		);
 	}
-	renderItem(suggestion) {
 
+   renderItem(comment) {
        function  submitVote() {
        axios.post( Config.API + '/auth/vote/create', {
-           Type: 3,
-           TypeID: suggestion.ID,
+           Type: 5,
+           TypeID: comment.ID,
            username : cookie.load("userName"),
            
         })
         .then(function (result) {
-            document.location = window.location.pathname;
+            document.location = window.location.pathname 
         })
       .catch(function (error) {
         // console.log(error.response.data)
@@ -71,8 +72,8 @@ export default class SuggestionUnit extends React.Component {
         function unVote() {
         axios.delete( Config.API + '/auth/vote/delete' ,{
             params: {
-            type: 3,
-            typeID: suggestion.ID,
+            type: 5,
+            typeID: comment.ID,
             username: cookie.load('userName')
         }
         })
@@ -97,73 +98,92 @@ export default class SuggestionUnit extends React.Component {
           });
       });
   }
-  
-       if (this.state.voteHash[suggestion.ID] === true) {
+       if (this.state.voteHash[comment.ID] === true && comment.Username === cookie.load('userName')) {
            return (
-       <li key={suggestion.ID} id="suggestionUnit">
-				<div id="suggestionContent">
-					<div id="discussHeader">
-                        <span id="discussPercent">{floatToDecimal(suggestion.PercentRank)}</span>
-					    {/*{suggestion.Username}*/}
+            <li key={comment.ID} id="answerUnit">
+                    <div id="answerContent">
+                        <div id="discussHeaderGreen">
+                            <span id="discussPercent">{floatToDecimal(comment.PercentRank)}</span>
+                            {comment.Username}
+                        </div>
+                        <div id="suggestionText">
+                            {comment.Description}
+                        </div>
                     </div>
-                    <div id="suggestionText">
-                        {suggestion.Description}
-                    </div>
-				</div>
-                <Link to={`/project/private/${suggestion.TypeID}/suggestion/${suggestion.ID}/delete`}>
+                <Link to={`/project/private/${this.props.probID}/proposal/${this.props.solutionID}/suggestion/${this.props.suggID}/comment/${comment.ID}/delete`}>
                     <div id="deleteSBButton">
                         <img src={require('../../assets/delete.svg')} id="editLogo" width="18" height="18" alt="Delete Button" />
                     </div>
                 </Link>
-                <Link to={`/project/private/${suggestion.TypeID}/suggestion/${suggestion.ID}/edit`}>
-                    <div id="editSBButton">
+                <Link to={`/project/private/${this.props.probID}/proposal/${this.props.solutionID}/suggestion/${this.props.suggID}/comment/${comment.ID}/edit`}>
+                    <div id="editSBButtonAnswer">
                         <img src={require('../../assets/editBlue.svg')} id="editLogo" width="18" height="18" alt="Edit Button" />
-                    </div>
-                </Link>
-                <Link  to={`/project/private/${suggestion.TypeID}/suggestion/${suggestion.ID}/comments`} activeClassName="activeBlue">
-                    <div id="commentSBButtonUser">
-                            <img src={require('../../assets/comments.svg')} id="commentLogo" width="24" height="24" alt="Comments Button" />
                     </div>
                 </Link>
                 <button type="button" onClick={unVote} id="suggestionVoted">
                     Voted
-                </button>  
-        </li>);
-    }  else {
+                </button>
+            </li>);
+    }  else if ( comment.Username === cookie.load('userName')) {
         return (
-       <li key={suggestion.ID} id="suggestionUnit">
-				<div id="suggestionContent">
-					<div id="discussHeader">
-                        <span id="discussPercent">{floatToDecimal(suggestion.PercentRank)}</span>
-					    {/*{suggestion.Username}*/}
+            <li key={comment.ID} id="answerUnit">
+                <div id="answerContent">
+                    <div id="discussHeaderGreen">
+                        <span id="discussPercent">{floatToDecimal(comment.PercentRank)}</span>
+                        {comment.Username}
                     </div>
                     <div id="suggestionText">
-                        {suggestion.Description}
+                        {comment.Description}
                     </div>
-				</div>
-                <Link to={`/project/private/${suggestion.TypeID}/suggestion/${suggestion.ID}/delete`}>
+                </div>
+                <Link to={`/project/private/${this.props.probID}/proposal/${this.props.solutionID}/suggestion/${this.props.suggID}/comment/${comment.ID}/delete`}>
                     <div id="deleteSBButton">
                         <img src={require('../../assets/delete.svg')} id="editLogo" width="18" height="18" alt="Delete Button" />
                     </div>
                 </Link>
-                <Link to={`/project/private/${suggestion.TypeID}/suggestion/${suggestion.ID}/edit`}>
-                    <div id="editSBButton">
+                <Link to={`/project/private/${this.props.probID}/proposal/${this.props.solutionID}/suggestion/${this.props.suggID}/comment/${comment.ID}/edit`}>
+                    <div id="editSBButtonAnswer">
                         <img src={require('../../assets/editBlue.svg')} id="editLogo" width="18" height="18" alt="Edit Button" />
-                    </div>
-                </Link>
-                <Link  to={`/project/private/${suggestion.TypeID}/suggestion/${suggestion.ID}/comments`} activeClassName="activeBlue">
-                    <div id="commentSBButtonUser">
-                            <img src={require('../../assets/comments.svg')} id="commentLogo" width="24" height="24" alt="Comments Button" />
                     </div>
                 </Link>
                 <button type="button" onClick={submitVote} id="suggestionVote">
                     Vote
-                </button> 
-                <br /><br /> 
+                </button>
+            </li>);
+    } else if (this.state.voteHash[comment.ID] === true) {
+        return (
+        <li key={comment.ID} id="answerUnit">
+		    <div id="answerContent">
+					<div id="discussHeaderGreen">
+                        <span id="discussPercent">{floatToDecimal(comment.PercentRank)}</span>
+					    {comment.Username}
+                    </div>
+                    <div id="suggestionText">
+                        {comment.Description}
+                    </div>
+			</div>
+            <button type="button" onClick={unVote} id="suggestionVotedNoComments">
+                Voted
+            </button>
         </li>);
-        }
-    }
-}
+       } else {
+        return (
+        <li key={comment.ID} id="answerUnit">
+		    <div id="answerContent">
+					<div id="discussHeaderGreen">
+                        <span id="discussPercent">{floatToDecimal(comment.PercentRank)}</span>
+					    {comment.Username}
+                    </div>
+                    <div id="suggestionText">
+                        {comment.Description}
+                    </div>
+			</div>
+            <button type="button" onClick={submitVote} id="suggestionVoteNoComments">
+                Vote
+            </button>
+        </li>);
+   }
+}}
 
 //convert float to Decimal
 function floatToDecimal(float) {

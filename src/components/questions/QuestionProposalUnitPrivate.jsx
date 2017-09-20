@@ -119,17 +119,17 @@ constructor(props){
                             {question.Description}
                         </div>
                     </div>
-                    <Link to={`/project/${question.TypeID}/question/${question.ID}/delete`} >
+                    <Link to={`/project/private/${this.props.probID}/proposal/${this.props.solutionID}/question/${question.ID}/delete`} >
                     <div id="deleteSBButton">
                             <img src={require('../../assets/delete.svg')} id="editLogo" width="18" height="18" alt="Delete Button" />
                         </div>
                     </Link>
-                    <Link to={`/project/${question.TypeID}/question/${question.ID}/edit`}>
+                    <Link to={`/project/private/${this.props.probID}/proposal/${this.props.solutionID}/question/${question.ID}/edit`}>
                         <div id="editSBButton">
                             <img src={require('../../assets/editBlue.svg')} id="editLogo" width="18" height="18" alt="Edit Button" />
                         </div>
                     </Link>
-                    <Link to={`/project/${question.TypeID}/question/${question.ID}/answers`} activeClassName="activeGlow">
+                    <Link to={`/project/private/${this.props.probID}/proposal/${this.props.solutionID}/question/${question.ID}/answers`} activeClassName="activeGlow">
                         <div id="commentSBButtonUser">
                                 <img src={require('../../assets/comments.svg')} id="commentLogo" width="24" height="24" alt="Comments Button" />
                         </div>                
@@ -151,17 +151,17 @@ constructor(props){
                         {question.Description}
                     </div>
 				</div>
-                <Link to={`/project/${question.TypeID}/question/${question.ID}/delete`} >
+                <Link to={`/project/private/${this.props.probID}/proposal/${this.props.solutionID}/question/${question.ID}/delete`} >
                    <div id="deleteSBButton">
                         <img src={require('../../assets/delete.svg')} id="editLogo" width="18" height="18" alt="Delete Button" />
                     </div>
                 </Link>
-                <Link to={`/project/${question.TypeID}/question/${question.ID}/edit`}>
+                <Link to={`/project/private/${this.props.probID}/proposal/${this.props.solutionID}/question/${question.ID}/edit`}>
                     <div id="editSBButton">
                         <img src={require('../../assets/editBlue.svg')} id="editLogo" width="18" height="18" alt="Edit Button" />
                     </div>
                 </Link>
-                <Link to={`/project/${question.TypeID}/question/${question.ID}/answers`} activeClassName="activeGlow">
+                <Link to={`/project/private/${this.props.probID}/proposal/${this.props.solutionID}/question/${question.ID}/answers`} activeClassName="activeGlow">
                     <div id="commentSBButtonUser">
                             <img src={require('../../assets/comments.svg')} id="commentLogo" width="24" height="24" alt="Comments Button" />
                     </div>                
@@ -188,7 +188,7 @@ constructor(props){
                             Flag
                         </div>
                     </Link>*/}
-                <Link to={`/project/${question.TypeID}/question/${question.ID}/answers`} activeClassName="activeGlow">
+                <Link to={`/project/private/${this.props.probID}/proposal/${this.props.solutionID}/question/${question.ID}/answers`} activeClassName="activeGlow">
                     <div id="commentSBButtonUser">
                             <img src={require('../../assets/comments.svg')} id="commentLogo" width="24" height="24" alt="Comments Button" />
                     </div>                
@@ -215,7 +215,7 @@ constructor(props){
                             Flag
                         </div>
                     </Link>*/}
-                <Link to={`/project/${question.TypeID}/question/${question.ID}/answers`} activeClassName="activeGlow">
+                <Link to={`/project/private/${this.props.probID}/proposal/${this.props.solutionID}/question/${question.ID}/answers`} activeClassName="activeGlow">
                     <div id="commentSBButtonUser">
                             <img src={require('../../assets/comments.svg')} id="commentLogo" width="24" height="24" alt="Comments Button" />
                     </div>                

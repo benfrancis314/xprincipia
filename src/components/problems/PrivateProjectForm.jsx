@@ -46,6 +46,13 @@ export default class WelcomeCreateForm extends React.Component {
                       $('#notificationContent').html('Please <span id="blue">login </span>to create a project');
                     })
                   );
+                }  else if (error.response.data == 'Invalid Token') {
+                  return (
+                    $(document).ready(function() {
+                      $('#notificationLoginRegisterContainer').attr('id','notificationLoginRegisterContainerShow');
+                      $('#notificationContent').html('We apologize for this error. Please <span id="red">logout </span>and <span id="blue">login </span> again.');
+                    })
+                  );
                 }  else if (error.response.data != '') {
                 $('#notificationContent').text(error.response.data);
               }
@@ -62,6 +69,7 @@ export default class WelcomeCreateForm extends React.Component {
           <div id="SBButtonNoHover">
             New Private Project
           </div>
+          {/* {cookie.load('userName')} */}
           <div id="createProblemBox">
               <form id="createForm">
                 <fieldset id="fieldSetNoBorder">

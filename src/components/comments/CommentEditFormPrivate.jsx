@@ -58,8 +58,8 @@ updateComment() {
       description : self.state.comment,
     })
       .then(function (result) {
-        document.location = '/project/private/' + self.props.params.probID + '/suggestion/' + self.props.params.suggID + '/comments'
-        // document.location = window.location.pathname 
+        // document.location = '/project/' + self.props.params.probID + '/suggestion/' + self.props.params.suggID + '/comments'
+        document.location = window.location.pathname 
       })
       .catch(function (error) {
         // console.log(error.response.data)
@@ -86,21 +86,43 @@ updateComment() {
 
 
    render() {
+      if (this.props.params.solutionID){
+        return (
+            <div id="questionFormComponent">
+              <form id="questionForm">
+                  <fieldset id="redFieldset">
+                      <legend id="redLegend">Edit Comment</legend>
+                          <textarea name="questionText" required="required" id="commentEditTextArea" autoFocus ></textarea>
+                          <br />
+                          <Link to={`/project/private/${this.props.params.probID}/proposal/${this.props.params.solutionID}/suggestion/${this.props.params.suggID}/comments`}>
+                              <div onClick={this.updateComment} id="editButton">Submit</div>
+                          </Link>
+                          <Link to={`/project/private/${this.props.params.probID}/proposal/${this.props.params.solutionID}/suggestion/${this.props.params.suggID}/comments`}>
+                              <div id="returnButton">Exit</div>
+                          </Link>
+                  </fieldset>
+              </form>
+        </div>
+        );
+    } else {
       return (
-      <div id="questionFormComponent">
-            <form id="questionForm">
-                <fieldset id="redFieldset">
-                    <legend id="redLegend">Edit Comment</legend>
-                         <textarea name="questionText" required="required" id="commentEditTextArea" autoFocus ></textarea>
-                         <br />
-                         <div onClick={this.updateComment} id="editButton">Submit</div>
-                         <Link to={`/project/private/${this.props.params.probID}/suggestion/${this.props.params.suggID}/comments`}>
-                            <div id="returnButton">Exit</div>
-                         </Link>
-                </fieldset>
-            </form>
-      </div>
+        <div id="questionFormComponent">
+              <form id="questionForm">
+                  <fieldset id="redFieldset">
+                      <legend id="redLegend">Edit Comment</legend>
+                          <textarea name="questionText" required="required" id="commentEditTextArea" autoFocus ></textarea>
+                          <br />
+                          <Link to={`/project/private/${this.props.params.probID}/suggestion/${this.props.params.suggID}/comments`}>
+                              <div onClick={this.updateComment} id="editButton">Submit</div>
+                          </Link>
+                          <Link to={`/project/private/${this.props.params.probID}/suggestion/${this.props.params.suggID}/comments`}>
+                              <div id="returnButton">Exit</div>
+                          </Link>
+                  </fieldset>
+              </form>
+        </div>
 
       );
-   }
+    }
+  }
 }

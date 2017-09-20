@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import QuestionProposalUnitPrivate from '../components/questions/QuestionProposalUnitPrivate.jsx';
 import QuestionUnitPrivate from '../components/questions/QuestionUnitPrivate.jsx';
 import {Config} from '../config.js'
 
@@ -20,8 +21,6 @@ export default class QuestionContainer extends React.Component {
                     self.setState({
                         questions: response.data
                     })
-                          .catch(function (error) {
-      });
                 })  
 
             } else {
@@ -39,7 +38,7 @@ export default class QuestionContainer extends React.Component {
         return (
             <div id="questionContainer">
                 {this.props.children}
-                <QuestionUnitPrivate questions={this.state.questions} />
+                <QuestionProposalUnitPrivate questions={this.state.questions} probID={this.props.params.probID} solutionID={this.props.params.solutionID} />
             </div>
         );
     } else {

@@ -1,7 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router';
 import axios from 'axios';
+import CommentProposalUnitPrivate from '../components/comments/CommentProposalUnitPrivate.jsx';
 import CommentUnitPrivate from '../components/comments/CommentUnitPrivate.jsx';
+import SideBarMore from '../components/SideBarMore.jsx';
 import {Config} from '../config.js';
 import $ from 'jquery';
 
@@ -64,39 +66,79 @@ export default class SuggestionCommentContainer extends React.Component {
 
  
    render() {
-      return (
-        <div id="answerContainer">
-            <div id="answerQuestionHeader">
-                <Link to={`/project/private/${this.props.params.probID}/suggestions`}>
-                    <div id="backSolutionArrowDiv">
-                        <img src={require('../assets/upArrow.svg')} id="backSolutionArrow" width="50" height="30" alt="Back arrow, blue up arrow" />
+
+    if (this.props.params.solutionID){
+        return (
+            <div id="answerContainer">
+                <div id="answerQuestionHeader">
+                    <Link to={`/project/private/${this.props.params.probID}/proposal/${this.props.params.solutionID}/suggestions`}>
+                        <div id="backSolutionArrowDiv">
+                            <img src={require('../assets/upArrow.svg')} id="backSolutionArrow" width="50" height="30" alt="Back arrow, blue up arrow" />
+                        </div>
+                    </Link>
+                    <div id="answerQuestionLabel">Return to Suggestions</div>
+                </div>
+                {/*Suggestion being commented on*/}
+                <div id="answerQuestionUnit">
+                    <div id="answerQuestionContent">
+                        <div id="discussHeader">
+                            <span id="discussPercent">
+                                {floatToDecimal(this.state.suggestion.PercentRank)}
+                            </span>
+                            {this.state.suggestion.Username}
+                        </div>
+                        <div id="suggestionText">
+                            {this.state.suggestion.Description}
+                        </div>
                     </div>
-                </Link>
-                <div id="answerQuestionLabel">Return to Suggestions</div>
+                    {/*<button type="button" onClick={submitVote} id="suggestionVote">
+                        Vote
+                    </button> */}
+                    <br /><br /> 
+                </div>
+                {this.props.children}
+                <CommentProposalUnitPrivate comments={this.state.comments} probID={this.props.params.probID} solutionID={this.props.params.solutionID} suggID={this.props.params.suggID} commentID={this.props.params.commentID} />
+                <SideBarMore />
+            </div>);
+
+
+
+    } else {
+        return (
+            <div id="answerContainer">
+                <div id="answerQuestionHeader">
+                    <Link to={`/project/private/${this.props.params.probID}/suggestions`}>
+                        <div id="backSolutionArrowDiv">
+                            <img src={require('../assets/upArrow.svg')} id="backSolutionArrow" width="50" height="30" alt="Back arrow, blue up arrow" />
+                        </div>
+                    </Link>
+                    <div id="answerQuestionLabel">Return to Suggestions</div>
+                </div>
+                {/*Suggestion being commented on*/}
+                <div id="answerQuestionUnit">
+                    <div id="answerQuestionContent">
+                        <div id="discussHeader">
+                            <span id="discussPercent">
+                                {floatToDecimal(this.state.suggestion.PercentRank)}
+                            </span>
+                            {this.state.suggestion.Username}
+                        </div>
+                        <div id="suggestionText">
+                            {this.state.suggestion.Description}
+                        </div>
+                    </div>
+                    {/*<button type="button" onClick={submitVote} id="suggestionVote">
+                        Vote
+                    </button> */}
+                    <br /><br /> 
             </div>
-            {/*Suggestion being commented on*/}
-            <div id="answerQuestionUnit">
-                <div id="answerQuestionContent">
-					<div id="discussHeader">
-                        <span id="discussPercent">
-                            {floatToDecimal(this.state.suggestion.PercentRank)}
-                        </span>
-                        {this.state.suggestion.Username}
-                    </div>
-                    <div id="suggestionText">
-                        {this.state.suggestion.Description}
-                    </div>
-				</div>
-                {/*<button type="button" onClick={submitVote} id="suggestionVote">
-                    Vote
-                </button> */}
-                <br /><br /> 
-        </div>
-            {this.props.children}
-            <CommentUnitPrivate comments={this.state.comments} probID={this.props.params.probID} suggID={this.props.params.suggID} commentID={this.props.params.commentID} />
-        </div>
-      );
-   }
+                {this.props.children}
+                <CommentUnitPrivate comments={this.state.comments} probID={this.props.params.probID} suggID={this.props.params.suggID} commentID={this.props.params.commentID} />
+                <SideBarMore />
+            </div>
+        );
+    }
+  }
 }
 function floatToDecimal(float) {
 	return Math.round(float*100)+'%';

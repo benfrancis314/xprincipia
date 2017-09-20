@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import FreeFormProposalUnitPrivate from '../components/freeform/FreeFormProposalUnitPrivate.jsx';
 import FreeFormUnitPrivate from '../components/freeform/FreeFormUnitPrivate.jsx';
 import {Config} from '../config.js'
 
@@ -33,7 +34,7 @@ constructor(props){
             return (
                 <div id="suggestionContainer">
                     {this.props.children}
-                    <FreeFormUnitPrivate freeForms={this.state.freeForms} />
+                    <FreeFormProposalUnitPrivate freeForms={this.state.freeForms} probID={this.props.params.probID} solutionID={this.props.params.solutionID} />
                 </div>
             );
         } else {

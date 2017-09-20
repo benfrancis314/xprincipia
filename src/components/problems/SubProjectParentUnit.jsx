@@ -77,7 +77,7 @@ componentWillReceiveProps (nextProps){
 } else if (this.props.parentID === 0) {
 		return (
             <div>
-                <Link to={`/project/${this.props.parentID}/subprojects`}>
+                <Link to={`/welcome`}>
                     <div id="parentButton">
                         <span id='blue'>Parent: </span>XPrincipia Projects
                     </div>

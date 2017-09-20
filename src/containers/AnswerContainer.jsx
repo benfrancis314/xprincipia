@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router';
 import axios from 'axios';
+import AnswerProposalUnit from '../components/answers/AnswerProposalUnit.jsx';
 import AnswerUnit from '../components/answers/AnswerUnit.jsx';
 import SideBarMore from '../components/SideBarMore.jsx';
 import {Config} from '../config.js';
@@ -67,7 +68,49 @@ export default class AnswerContainer extends React.Component {
 å
  
    render() {
-      return (
+
+    if (this.props.params.solutionID){
+        return (
+            <div id="answerContainer">
+                    {/*Question being answered*/}
+                    <div id="answerQuestionHeader">
+                        <Link to={`/project/${this.props.params.probID}/proposal/${this.props.params.solutionID}/questions`}>
+                            <div id="backSolutionArrowDiv">
+                                <img src={require('../assets/upArrow.svg')} id="backSolutionArrow" width="50" height="30" alt="Back arrow, blue up arrow" />
+                            </div>
+                        </Link>
+                        <div id="answerQuestionLabel">Return to Questions</div>
+                    </div>
+                    <div id="answerQuestionUnit"> 
+                            <div id="answerQuestionContent">
+                                <div id="discussHeader">
+                                    <span id="discussPercent">
+                                        {floatToDecimal(this.state.question.PercentRank)}
+                                    </span>
+                                    {/*Test Username*/}
+                                    {this.state.question.Username}
+                                </div>
+                                <div id="suggestionText">
+                                    {/*Test Description*/}
+                                    <span id="blueOpen">Q: </span>{this.state.question.Description}
+                                </div>
+                            </div>
+                            {/*<button type="button" id="suggestionVote" onClick={submitVote}>
+                                Vote
+                            </button>*/}
+                            <br/><br/> 
+                    </div>
+                {this.props.children}
+                {/*<QuestionUnit questions={this.state.questions}/>*/}
+                <AnswerProposalUnit answers={this.state.answers} probID={this.props.params.probID} solutionID={this.props.params.solutionID} questID={this.props.params.questID} answerID={this.props.params.answerID} />
+                <SideBarMore />
+            </div>);
+
+
+
+
+    } else {
+        return (
         <div id="answerContainer">
        
         {/*Question being answered*/}
@@ -83,7 +126,6 @@ export default class AnswerContainer extends React.Component {
                 <div id="answerQuestionContent">
 					<div id="discussHeader">
                         <span id="discussPercent">
-                           
                             {floatToDecimal(this.state.question.PercentRank)}
                         </span>
 					    {/*Test Username*/}
@@ -107,6 +149,7 @@ export default class AnswerContainer extends React.Component {
         </div>
       );
    }
+}
 }
 //convert float to Decimal
 function floatToDecimal(float) {
