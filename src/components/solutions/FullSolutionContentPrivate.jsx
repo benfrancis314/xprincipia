@@ -171,14 +171,14 @@ unVote() {
               </div>
               <div id="createDate">{dateTime(this.state.solutionInfo.CreatedAt)}</div>
               
+              <Link to={`/proposal/private/${this.props.params.probID}/${this.props.params.solutionID}/delete`}>
+                <img src={require('../../assets/delete.svg')} id="deleteSolutionButton" width="20" height="20" alt="Edit Button" />              
+              </Link>
+
               <Link to={`/proposal/private/${this.props.params.probID}/${this.props.params.solutionID}/edit`} activeClassName="activeProposalOption">
                 <div id="proposalDevelopButton">
                   Develop
                 </div>
-              </Link>
-
-              <Link to={`/proposal/private/${this.props.params.probID}/${this.props.params.solutionID}/delete`}>
-                <img src={require('../../assets/delete.svg')} id="deleteSolutionButton" width="20" height="20" alt="Edit Button" />              
               </Link>
 
               <div id="prosConsMenu">
@@ -213,16 +213,14 @@ unVote() {
               </div>
               <div id="createDate">{dateTime(this.state.solutionInfo.CreatedAt)}</div>
               
+              <Link to={`/proposal/private/${this.props.params.probID}/${this.props.params.solutionID}/delete`}>
+                <img src={require('../../assets/delete.svg')} id="deleteSolutionButton" width="20" height="20" alt="Edit Button" />              
+              </Link>
+
               <Link to={`/proposal/private/${this.props.params.probID}/${this.props.params.solutionID}/edit`} activeClassName="activeProposalOption">
-              {/*Working on call to action 'Iterate' button*/}
                 <div id="proposalDevelopButton">
                   Develop
                 </div>
-                {/*<img src={require('../../assets/editBlue.svg')} id="editSolutionButton" width="20" height="20" alt="Edit Button" />*/}
-              </Link>
-
-              <Link to={`/proposal/private/${this.props.params.probID}/${this.props.params.solutionID}/delete`}>
-                <img src={require('../../assets/delete.svg')} id="deleteSolutionButton" width="20" height="20" alt="Edit Button" />              
               </Link>
 
               <div id="prosConsMenu">

@@ -98,7 +98,7 @@ export default class SuggestionUnit extends React.Component {
       });
   }
   
-       if (this.state.voteHash[suggestion.ID] === true && suggestion.Username === cookie.load('userName')) {
+       if (this.state.voteHash[suggestion.ID] === true) {
            return (
        <li key={suggestion.ID} id="suggestionUnit">
 				<div id="suggestionContent">
@@ -129,7 +129,7 @@ export default class SuggestionUnit extends React.Component {
                     Voted
                 </button>  
         </li>);
-    }  else if ( suggestion.Username === cookie.load('userName')) {
+    }  else {
         return (
        <li key={suggestion.ID} id="suggestionUnit">
 				<div id="suggestionContent">
@@ -161,64 +161,9 @@ export default class SuggestionUnit extends React.Component {
                 </button> 
                 <br /><br /> 
         </li>);
-    } else if (this.state.voteHash[suggestion.ID] === true) {
-        return (
-           <li key={suggestion.ID} id="suggestionUnit">
-				<div id="suggestionContent">
-					<div id="discussHeader">
-                        <span id="discussPercent">{floatToDecimal(suggestion.PercentRank)}</span>
-					    {/*{suggestion.Username}*/}
-                    </div>
-                    <div id="suggestionText">
-                        {suggestion.Description}
-                    </div>
-				</div>
-                    {/*<Link to={`/project/${suggestion.TypeID}/suggestion/${suggestion.ID}/flag`}>
-                        <div id="flagSBButton">
-                            <img src={require('.../src/assets/flag.svg')} id="deleteLogo" width="11" height="11" alt="Delete Button, Red X" />
-                            Flag
-                        </div>
-                    </Link>*/}
-                <Link  to={`/project/${suggestion.TypeID}/suggestion/${suggestion.ID}/comments`} activeClassName="activeBlue">
-                    <div id="commentSBButtonUser">
-                            <img src={require('../../assets/comments.svg')} id="commentLogo" width="24" height="24" alt="Comments Button" />
-                    </div>
-                </Link>
-                <button type="button" onClick={unVote} id="suggestionVoted">
-                    Voted
-                </button> 
-                <br /><br /> 
-        </li>);
-    } else {
-    return (
-       <li key={suggestion.ID} id="suggestionUnit">
-				<div id="suggestionContent">
-					<div id="discussHeader">
-                        <span id="discussPercent">{floatToDecimal(suggestion.PercentRank)}</span>
-					    {/*{suggestion.Username}*/}
-                    </div>
-                    <div id="suggestionText">
-                        {suggestion.Description}
-                    </div>
-				</div>
-                    {/*<Link to={`/project/${suggestion.TypeID}/suggestion/${suggestion.ID}/flag`}>
-                        <div id="flagSBButton">
-                            <img src={require('.../src/assets/flag.svg')} id="deleteLogo" width="11" height="11" alt="Delete Button, Red X" />
-                            Flag
-                        </div>
-                    </Link>*/}
-                <Link  to={`/project/${suggestion.TypeID}/suggestion/${suggestion.ID}/comments`} activeClassName="activeBlue">
-                    <div id="commentSBButtonUser">
-                            <img src={require('../../assets/comments.svg')} id="commentLogo" width="24" height="24" alt="Comments Button" />
-                    </div>
-                </Link>
-                <button type="button" onClick={submitVote} id="suggestionVote">
-                    Vote
-                </button> 
-                <br /><br /> 
-        </li>);
-  }
-}}
+        }
+    }
+}
 
 //convert float to Decimal
 function floatToDecimal(float) {

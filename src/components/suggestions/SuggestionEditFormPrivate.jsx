@@ -96,10 +96,10 @@ export default class SuggestionEditForm extends React.Component {
                             <legend id="redLegend">Edit Suggestion</legend>
                                 <textarea name="questionText" required="required" id="questionEditTextArea" autoFocus ></textarea>
                                 <br />
-                                <Link to={`/project/private/${this.props.params.probID}/proposal/${this.state.suggestion.TypeID}/suggestions`}>
+                                <Link to={`/project/private/${this.props.params.probID}/proposal/${this.props.params.solutionID}/suggestions`}>
                                   <div onClick={this.updateSuggestion} id="editButton">Submit</div>
                                 </Link>
-                                <Link to={`/project/private/${this.props.params.probID}/proposal/${this.state.suggestion.TypeID}/suggestions`}>
+                                <Link to={`/project/private/${this.props.params.probID}/proposal/${this.props.params.solutionID}/suggestions`}>
                                   <div id="returnButton">Exit</div>
                                 </Link>
                         </fieldset>
@@ -119,10 +119,10 @@ export default class SuggestionEditForm extends React.Component {
                         <legend id="redLegend">Edit Suggestion</legend>
                             <textarea name="questionText" required="required" id="questionEditTextArea" autoFocus ></textarea>
                             <br />
-                            <Link to={`/project/private/${this.state.suggestion.TypeID}/suggestions`}>
+                            <Link to={`/project/private/${this.props.params.probID}/suggestions`}>
                               <div onClick={this.updateSuggestion} id="editButton">Submit</div>
                             </Link>
-                            <Link to={`/project/private/${this.state.suggestion.TypeID}/suggestions`}>
+                            <Link to={`/project/private/${this.props.params.probID}/suggestions`}>
                               <div id="returnButton">Exit</div>
                             </Link>
                     </fieldset>

@@ -85,5 +85,6 @@ deleteComment() {
         </div>
 
       );
-   }
+    }
+  }
 }
