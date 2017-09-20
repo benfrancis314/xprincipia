@@ -2056,7 +2056,7 @@ body, html, #main {
     }
     #introRegisterFullName, #introRegisterUserName, #introRegisterEmail, #introRegisterPassword,
     #registerFullName, #registerUserName, #registerEmail, #registerPassword,
-    #loginHeaderEmail, #loginEmail, #loginPassword {
+    #loginHeaderEmail, #loginHeaderPassword, #loginEmail, #loginPassword {
       background: linear-gradient(left,rgba(0,220,255, 0), rgba(0,220,255, 0.05), rgba(0,220,255, 0));
       transition: all 0.75s ease 0s;
       background-color: rgba(0,220,255,0.025);
@@ -2072,7 +2072,7 @@ body, html, #main {
     #loginHeaderEmail:focus, #loginHeaderPassword:focus {
       box-shadow: 0 0 1pt 1pt rgba(0,220,255,0.5) !important;
       transform: scale(1.02);
-      background: linear-gradient(left,rgba(0,220,255, 0.05), rgba(0,220,255, 0.1), rgba(0,220,255, 0.05));
+      background: linear-gradient(left,rgba(0,220,255, 0), rgba(0,220,255, 0), rgba(0,220,255, 0));
     }
     #loginHeaderEmail {
     	display: block;

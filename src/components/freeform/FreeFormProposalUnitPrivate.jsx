@@ -110,12 +110,12 @@ export default class FreeFormUnit extends React.Component {
                         {freeForm.Description}
                     </div>
 				</div>
-                    <Link to={`/project/private/${this.props.probID}/proposal/${freeForm.TypeID}/debate/${freeForm.ID}/delete`}>
+                    <Link to={`/project/private/${this.props.probID}/proposal/${this.props.solutionID}/debate/${freeForm.ID}/delete`}>
                         <div id="deleteSBButton">
                             <img src={require('../../assets/delete.svg')} id="editLogo" width="18" height="18" alt="Delete Button" />
                         </div>
                     </Link>
-                    <Link to={`/project/private/${this.props.probID}/proposal/${freeForm.TypeID}/debate/${freeForm.ID}/edit`}>
+                    <Link to={`/project/private/${this.props.probID}/proposal/${this.props.solutionID}/debate/${freeForm.ID}/edit`}>
                         <div id="editSBButtonAnswer">
                             <img src={require('../../assets/editBlue.svg')} id="editLogo" width="18" height="18" alt="Edit Button" />
                         </div>
@@ -142,12 +142,12 @@ export default class FreeFormUnit extends React.Component {
                         {freeForm.Description}
                     </div>
 				</div>
-                    <Link to={`/project/private/${this.props.probID}/proposal/${freeForm.TypeID}/debate/${freeForm.ID}/delete`}>
+                    <Link to={`/project/private/${this.props.probID}/proposal/${this.props.solutionID}/debate/${freeForm.ID}/delete`}>
                         <div id="deleteSBButton">
                             <img src={require('../../assets/delete.svg')} id="editLogo" width="18" height="18" alt="Delete Button" />
                         </div>
                     </Link>
-                    <Link to={`/project/private/${this.props.probID}/proposal/${freeForm.TypeID}/debate/${freeForm.ID}/edit`}>
+                    <Link to={`/project/private/${this.props.probID}/proposal/${this.props.solutionID}/debate/${freeForm.ID}/edit`}>
                         <div id="editSBButtonAnswer">
                             <img src={require('../../assets/editBlue.svg')} id="editLogo" width="18" height="18" alt="Edit Button" />
                         </div>

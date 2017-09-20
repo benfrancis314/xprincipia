@@ -65,10 +65,10 @@ deleteFreeform() {
                             <legend>Delete Debate Point</legend>
                                 <div>Are you sure you would like to delete this debate point?</div>
                                 <br />
-                                <Link to={`/project/${this.props.params.probID}/proposal/${this.state.freeForm.TypeID}/debates`}>
+                                <Link to={`/project/${this.props.params.probID}/proposal/${this.props.params.solutionID}/debates`}>
                                     <div onClick={this.deleteFreeform} id="deleteButton">Delete</div>
                                 </Link>
-                                <Link to={`/project/${this.props.params.probID}/proposal/${this.state.freeForm.TypeID}/debates`}>
+                                <Link to={`/project/${this.props.params.probID}/proposal/${this.props.params.solutionID}/debates`}>
                                     <div id="returnButton">Exit</div>
                                 </Link>
                         </fieldset>

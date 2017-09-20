@@ -31,11 +31,9 @@ postFreeForm() {
       description : this.state.freeForm
     })
       .then(function (result) {
-        // alert('success')
         document.location = window.location.pathname 
       })
       .catch(function (error) {
-        // alert('error')
           $(document).ready(function() {
               $('#notification').attr('id','notificationShow').hide().slideDown();
 

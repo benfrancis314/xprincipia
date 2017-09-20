@@ -9,7 +9,7 @@ export default class Empty extends React.Component {
         <div>
           <Link to={`/project/private/${this.props.params.probID}/proposal/${this.props.params.solutionID}/questions`} activeClassName="activeProposalOption">
             <div id="proposalDiscussButton">
-              Discuss
+              Brainstorm
             </div>
           </Link>
           <Link to={`/project/private/${this.props.params.probID}/proposal/${this.props.params.solutionID}/subprojects`} activeClassName="activeWhite">

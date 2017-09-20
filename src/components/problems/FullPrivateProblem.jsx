@@ -19,7 +19,6 @@ configureAnchors({offset: -20, scrollDuration: 700});
 export default class FullPrivateProblem extends React.Component {
 
 privateAlert () {
-    // alert('success');
     $(document).ready(function() {
         $('#privateAlert').attr('id','privateAlertShow').hide().slideDown(500);
     });
@@ -304,11 +303,11 @@ unVote() {
         <br />
         </ReactCSSTransitionGroup>
         <div id="privateAlert">
-                <div id="privateAlertHeader">
-                    <img src={require('../../assets/lock2Blue.svg')} id="lockAlert" width="30" height="30" onClick={this.privateAlert} alt="Logo logo, signifying this is private"/>
-                </div>
-                <div id="privateAlertContent">This project is entirely <span id="blue">private</span></div>
-                <div id="privateAlertReturn" onClick={this.hideNotification}>Return</div>
+          <div id="privateAlertHeader">
+              <img src={require('../../assets/lock2Blue.svg')} id="lockAlert" width="30" height="30" onClick={this.privateAlert} alt="Logo logo, signifying this is private"/>
+          </div>
+          <div id="privateAlertContent">This project is entirely <span id="blue">private</span></div>
+          <div id="privateAlertReturn" onClick={this.hideNotification}>Return</div>
         </div>
       </div>
       );

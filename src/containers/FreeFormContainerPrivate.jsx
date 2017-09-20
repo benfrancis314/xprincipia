@@ -34,7 +34,7 @@ constructor(props){
             return (
                 <div id="suggestionContainer">
                     {this.props.children}
-                    <FreeFormProposalUnitPrivate freeForms={this.state.freeForms} probID={this.props.params.probID} />
+                    <FreeFormProposalUnitPrivate freeForms={this.state.freeForms} probID={this.props.params.probID} solutionID={this.props.params.solutionID} />
                 </div>
             );
         } else {

@@ -38,7 +38,7 @@ export default class QuestionContainer extends React.Component {
         return (
             <div id="questionContainer">
                 {this.props.children}
-                <QuestionProposalUnitPrivate questions={this.state.questions} />
+                <QuestionProposalUnitPrivate questions={this.state.questions} probID={this.props.params.probID} solutionID={this.props.params.solutionID} />
             </div>
         );
     } else {

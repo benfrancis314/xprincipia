@@ -3,6 +3,7 @@ import {Link} from 'react-router';
 import cookie from 'react-cookie';
 import axios from 'axios';
 import {Config} from '../config.js';
+import $ from 'jquery';
 
 export default class LoginUnit extends React.Component {
   constructor(){
@@ -47,8 +48,23 @@ export default class LoginUnit extends React.Component {
    
     })
     .catch(function (error) {
-      alert("I'm sorry, your username and password was not recognized. ")
-  });
+      // console.log(error.response.data)
+        $(document).ready(function() {
+            $('#notification').attr('id','notificationShow').hide().slideDown();
+
+              if (error.response.data == '[object Object]') {
+                return (
+                  $(document).ready(function() {
+                    $('#notificationLoginRegisterContainer').attr('id','notificationLoginRegisterContainerShow');
+                    $('#notificationFeedbackShow').attr('id','notificationFeedback');
+                    $('#notificationContent').html('Your information was <span id="red">not recognized</span>.<br />Please<span id="blue"> try again </span> or <span id="green">register</span>');
+                  })
+                );
+              }  else if (error.response.data != '') {
+              $('#notificationContent').text(error.response.data);
+            }
+        });
+    });
 
 
   }
