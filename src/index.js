@@ -174,6 +174,11 @@ import WelcomeContainer from './containers/WelcomeContainer.jsx';
 //Assets
 import './assets/index.css';
 
+// SSL
+import SSLCodeTxt from './362935320EA9A833C500A47D6B93B9E0.text';
+import SSLCode from './SSLCode.jsx';
+
+
 
 // This may be needed for Google Analytics:
 // One thing to note is we may need to adjust the 
@@ -193,6 +198,7 @@ ReactDOM.render(
     <Route path='/' component={App}>
     <IndexRoute component={Intro}></IndexRoute>
     <Route path='/intro' component={Intro}></Route>
+    <Route path='/.well-known/pki-validation/362935320EA9A833C500A47D6B93B9E0.txt' component={SSLCode}></Route>
     <IndexRoute component={Intro}></IndexRoute>
     <Route path='/welcome/tutorial' component={TutorialWelcomePage}>
       <IndexRoute component={TutorialWelcomeButton}></IndexRoute>

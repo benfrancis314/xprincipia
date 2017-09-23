@@ -8,7 +8,10 @@
   "dependencies": {
     "axios": "^0.15.3",
     "getstream": "^3.5.0",
+    "getstream-node": "^1.5.0",
     "min-jquery": "^1.7.0",
+    "module": "^1.2.5",
+    "mongoose": "^4.11.12",
     "react": "^15.6.1",
     "react-addons-css-transition-group": "^15.5.2",
     "react-cookie": "^1.0.5",

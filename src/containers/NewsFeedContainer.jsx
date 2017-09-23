@@ -1,6 +1,8 @@
 import React from 'react';
 import ProfileUnit from '../components/profile/ProfileUnit.jsx';
 import stream from 'getstream';
+// import stream from 'getstream-node';
+// import client from stream.connect('m95khpsuyu6c', 'xr4aw4d4j76q38wjc7r7yb5wx6bzzhsae552qgnzngdg98tctm9amchhbs29x86d', '27935', { location: 'us-west' });
 
 export default class NewsFeedContainer extends React.Component {  
 
@@ -14,6 +16,35 @@ export default class NewsFeedContainer extends React.Component {
 // Instantiate a new client (client side)
 // client = stream.connect('jhvqmgj4wjb6', null, '27689');
 // Find your API keys here https://getstream.io/dashboard/
+
+
+// The following line should be uncommented out when you begin working on this again
+    // client = stream.connect('m95khpsuyu6c', 'xr4aw4d4j76q38wjc7r7yb5wx6bzzhsae552qgnzngdg98tctm9amchhbs29x86d', '27935', { location: 'us-west' });
+    // user1 = client.feed('user', '1');
+// The following line should be uncommented out when you begin working on this again     
+    // activity = {'actor': 1, 'verb': 'tweet', 'object': 1, 'foreign_id': 'tweet:1'};
+
+
+postNotification() {
+
+    // user1.addActivity({
+    //     'actor': 1,
+    //     'verb': 'tweet',
+    //     'object': 1,
+    //     'foreign_id': 'tweet:1'
+    // });
+    // Create a bit more complex activity
+//     activity = {'actor': 1, 'verb': 'run', 'object': 1, 'foreign_id': 'run:1',
+// 	'course': {'name': 'Golden Gate park', 'distance': 10},
+// 	'participants': ['Thierry', 'Tommaso'],
+// 	'started_at': new Date()
+// };
+
+}
+
+
+
+
 
    render() {
 

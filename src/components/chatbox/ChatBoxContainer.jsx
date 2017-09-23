@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import cookie from 'react-cookie'
 import io from 'socket.io-client'
 import ChatBox from './ChatBox.jsx';
+// Why is this second one here?
 import WelcomeCreateForm from './ChatBox.jsx';
 import {Config} from '../../config.js';
 import $ from 'jquery';

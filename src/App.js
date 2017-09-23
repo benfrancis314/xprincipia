@@ -6,6 +6,13 @@ import './assets/index.css';
 import { Link } from 'react-router';
 import $ from 'jquery';
 
+// Not sure if these are needed, trying to figure out activity feed
+// import stream from 'getstream';
+// import stream from 'getstream-node';
+
+// x
+
+
 
 class App extends React.Component {
     constructor(props){
