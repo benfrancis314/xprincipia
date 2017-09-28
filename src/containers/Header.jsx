@@ -23,6 +23,9 @@ export default class Header extends React.Component {
   componentWillMount() {
     this.state =  { userToken: cookie.load('userToken') };
   }
+  componentWillReceiveProps(nextState) {
+    nextState =  { userToken: cookie.load('userToken') };
+  }
 
   postLogin() {
     var self = this

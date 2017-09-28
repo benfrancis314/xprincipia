@@ -13,11 +13,10 @@ import $ from 'jquery';
 
 export default class WelcomeContainer extends React.Component {
    
-
   hoverText() {
     $(document).ready(function() {
         // $('#privateContainerMotto').html("NEW PROJECT").fadeIn(7500);
-        $('#welcomeSearchFormLabel').attr('placeholder','XPRINCIPIA MISSION');
+        $('#welcomeSearchFormLabel').attr('placeholder','CINEMATIC GUIDE');
         $('#welcomeSearchFormLabel').attr('id','welcomeSearchFormLabelBlue');
     });
   }
@@ -109,22 +108,61 @@ export default class WelcomeContainer extends React.Component {
    
    render() {
       return (
-        <div id="privateContainer">
-            {/*<Sound
-                url={require('../assets/jfkSpeech.mp3')}
-                autoLoad={false}
-                playStatus={Sound.status.PLAYING}
-                playFromPosition={87500 //in ms}
-                onLoading={this.handleSongLoading}
-                onPlaying={this.handleSongPlaying}
-                onFinishedPlaying={this.handleSongFinishedPlaying} 
-                volume={0}/>*/}
-         <Link to="/introduction">
-            <div id="welcomeIntroductionLabel" onMouseOver={this.hoverText} onMouseOut={this.unHoverText}>
-                introduction
+        <div>
+          <div id="welcomeContainerBanner">
+              <div id="welcomeContainerTitle">
+                  XPrincipia Projects
+              </div>     
+              <Link to="/tutorial">
+              <div id="welcomeTutorialVideoButton" onClick={this.privateAlert} onMouseOver={this.hoverText} onMouseOut={this.unHoverText}>
+                  <img src={require('../assets/videoPlay3.svg')} id="welcomeVideoLogo" width="25" height="25" alt="Video player symbol, link to tutorial"/>
+              </div>
+              </Link>
+          </div>
+          {/* <div id="privateContainerMottoContainer">
+              <div id="privateContainerMotto">
+                    ORGANIZE YOUR THOUGHTS
+              </div>
+          </div> */}
+
+          {/* Get rid of if not using */}
+          <div id="welcomeUnitsContainer">
+            <div id="width80">
+                <WelcomeUnit problems={this.state.problems} />
             </div>
-         </Link>
-         {this.props.children}
+          </div>
+          
+          {/*<div id="chatBoxOpenButtonContainer">*/}
+            {/*<Link to="/chatbox" activeClassName="activeChat">
+              <div id="chatBoxOpenButton">
+                Live Debate
+              </div>
+            </Link>*/}
+          {/*</div>*/}
+
+          
+          <form id="welcomeSearchFormContainer">
+            <input type="search" name="search" placeholder="SEARCH PROJECT TREES" id="welcomeSearchFormLabel"  onKeyDown={this.queryProblem} autoFocus/>
+          </form>
+          {this.props.children}
+          
+        
+          {/* Old */}
+          {/* <div id="welcomeFormComponent">
+              <form id="privateSearchForm">
+                <input type="search" name="search" placeholder="Search all projects" id="privateExploreInput"  onKeyDown={this.queryProblem} autoFocus/>
+              </form>
+          </div> */}
+          <div id="welcomeUserUnitsContainer">
+              <WelcomeUserUnit problems={this.state.userproblems} />
+          </div>
+
+          {/*<div id="tutorialWelcomeButtonDiv">
+            <img src={require('../assets/tutorial.svg')} id="tutorialWelcomeButton" width="50" height="50" alt="Back arrow, blue up arrow" />
+          </div>*/}
+
+          <TutorialWelcomeContent />
+          {/*</ReactCSSTransitionGroup>*/}
         </div>
       );
    }

@@ -66,6 +66,7 @@ import LearnResourcesEmbed from './components/learn/LearnResourcesEmbed.jsx';
 import LearnResourcesFlagForm from './components/learn/LearnResourcesFlagForm.jsx';
 import LearnResourcesForm from './components/learn/LearnResourcesForm.jsx';
 import LearnResourcesPrivateForm from './components/learn/LearnResourcesPrivateForm.jsx';
+import Load from './components/Load.jsx';
 import LoginUnit from './components/LoginUnit.jsx';
 import PrivateProjectForm from './components/problems/PrivateProjectForm.jsx';
 import PrivateSubProjectForm from './components/problems/PrivateSubProjectForm.jsx';
@@ -161,6 +162,7 @@ import QuestionContainer from './containers/QuestionContainer.jsx';
 import QuestionContainerPrivate from './containers/QuestionContainerPrivate.jsx';
 import RelatedProposalsContainer from './containers/RelatedProposalsContainer.jsx';
 import SearchContainer from './containers/SearchContainer.jsx';
+import ShortStoryContainer from './containers/ShortStoryContainer.jsx';
 import SubProblemContainer from './containers/SubProblemContainer.jsx';
 import SubProjectProposalContainer from './containers/SubProjectProposalContainer.jsx';
 import SubProjectProposalPrivateContainer from './containers/SubProjectProposalPrivateContainer.jsx';
@@ -170,12 +172,14 @@ import SuggestionContainer from './containers/SuggestionContainer.jsx';
 import SuggestionContainerPrivate from './containers/SuggestionContainerPrivate.jsx';
 import VersionsContainer from './containers/VersionsContainer.jsx'
 import WelcomeContainer from './containers/WelcomeContainer.jsx';
+import WelcomeProjectsContainer from './containers/WelcomeProjectsContainer.jsx';
 
 //Assets
 import './assets/index.css';
 
 // SSL
-import SSLCodeTxt from './362935320EA9A833C500A47D6B93B9E0.text';
+import SSL from './.well-known/pki-validation/362935320EA9A833C500A47D6B93B9E0.txt';
+import SSLCode2 from './.well-known/pki-validation/SSLCode2';
 import SSLCode from './SSLCode.jsx';
 
 
@@ -198,34 +202,42 @@ ReactDOM.render(
     <Route path='/' component={App}>
     <IndexRoute component={Intro}></IndexRoute>
     <Route path='/intro' component={Intro}></Route>
-    <Route path='/.well-known/pki-validation/362935320EA9A833C500A47D6B93B9E0.txt' component={SSLCode}></Route>
+    <Route path='/.well-known' component={SSL}>
+      <Route path='/.well-known/pki-validation' component={SSL}>
+        <Route path='/.well-known/pki-validation/362935320EA9A833C500A47D6B93B9E0.txt' component={SSL}></Route>
+      </Route>
+    </Route>
     <IndexRoute component={Intro}></IndexRoute>
     <Route path='/welcome/tutorial' component={TutorialWelcomePage}>
       <IndexRoute component={TutorialWelcomeButton}></IndexRoute>
       <Route path='/welcome/tutorial/hide' component={ProfileProblemsSolutions}></Route>
       <Route path='/welcome/tutorial/show' component={TutorialWelcomeContent}></Route>
     </Route>
+    <Route path='/shortstory' component={ShortStoryContainer}></Route>
     <Route path='/error' component={ErrorContainer}>
       <IndexRoute component={Redirection}></IndexRoute>
       <Route path='/404' component={Error404}></Route>
       <Route path='/redirection' component={Redirection}></Route>
+      <Route path='/load' component={Load}></Route>
     </Route>
     <Route path='/newsfeed' component={NewsFeedContainer}></Route>
     <Route path='/instructions' component={Instructions}></Route>
     <IndexRoute component={Layout}></IndexRoute>
     <Route path='/home' component={Layout}>
-      <Route path='/introduction' component={Introduction}></Route>
-      <Route path='/tutorial' component={FullTutorial}></Route>
       <IndexRoute component={FullProblem}></IndexRoute>
       <Route path='/entrance' component={EntranceContainer}></Route>
-      <Route path='/welcomecontainer' component={WelcomeContainer}>
-        <IndexRoute component={WelcomeCreateButton}></IndexRoute>
-        <Route path='/welcomecreate' component={WelcomeCreateButton}>
-          <IndexRoute component={ChatBoxContainer}></IndexRoute>
-          <Route path='/chatbox' component={ChatBoxContainer}/>
-          <Route path='/welcome' component={TrueEmpty}/>
+      <Route path='/welcome/container' component={WelcomeContainer}>
+        <Route path='/introduction' component={Introduction}></Route>
+        <Route path='/tutorial' component={FullTutorial}></Route>
+        <Route path='/welcome/container/project' component={WelcomeProjectsContainer}>
+          <IndexRoute component={WelcomeCreateButton}></IndexRoute>
+          <Route path='/welcomecreate' component={WelcomeCreateButton}>
+            <IndexRoute component={ChatBoxContainer}></IndexRoute>
+            <Route path='/chatbox' component={ChatBoxContainer}/>
+            <Route path='/welcome' component={TrueEmpty}/>
+          </Route>
+          <Route path='/welcome/create' component={WelcomeCreateForm}></Route>
         </Route>
-        <Route path='/welcome/create' component={WelcomeCreateForm}></Route>
       </Route>
       <Route path='/search' component={SearchContainer}></Route>
       <Route path='/logincontainer' component={LoginContainer}>
@@ -273,7 +285,7 @@ ReactDOM.render(
             <Route path='/proposal/private/:probID/:solutionID/delete' component={SolutionDeleteFormPrivate}></Route>
             <Route path='/proposal/private/:probID/:solutionID/edit' component={SolutionEditFormPrivate}></Route>
             <Route path='/project/private/:probID/proposal/:solutionID/subprojects' component={SubProjectProposalPrivateContainer}></Route>
-            <Route path='/project/:probID/proposal/:solutionID/subprojects/create' component={ProblemFormProposalPrivate}></Route>
+            <Route path='/project/private/:probID/proposal/:solutionID/subprojects/create' component={ProblemFormProposalPrivate}></Route>
             <Route path='/project/private/:probID/proposal/:solutionID/related' component={RelatedProposalsContainer}></Route>
             <Route path='/project/private/:probID/proposal/:solutionID/discuss' component={ProposalDiscussMenuPrivate}>
               <IndexRoute component={QuestionContainer}></IndexRoute>

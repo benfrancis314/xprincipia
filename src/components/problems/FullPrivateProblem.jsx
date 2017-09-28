@@ -63,7 +63,7 @@ hidePrivateNotificationProject() {
 
 shouldComponentUpdate(nextProps, nextState) {
     // only render if probID has changed
-    return this.state.probID !== nextProps.params.probID;
+    return nextState.probID !== nextProps.params.probID;
 }
 
   componentWillReceiveProps(nextProps){

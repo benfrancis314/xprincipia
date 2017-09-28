@@ -12,7 +12,7 @@ export default class Introduction extends React.Component {
         $('#introductionContainer').hide().slideDown(500);
     });
       return (
-        <div id="fullWide">
+        <div id="fullWideIntro">
             <ReactCSSTransitionGroup
                 transitionName="example"
                 transitionAppear={true}
@@ -20,9 +20,7 @@ export default class Introduction extends React.Component {
                 transitionEnter={false}
                 transitionLeave={false}>
             <Link to="/welcome">
-                <div id="welcomeIntroductionButtonActive">
-                    Explore
-                </div>
+                <img src={require('../assets/redX.svg')} id="closeRedX" width="40" height="40" alt="Close button, red X symbol" />            
             </Link>
           <div id="introductionContainer">
                 <div id="introductionWelcome">
@@ -33,28 +31,34 @@ export default class Introduction extends React.Component {
                 {/*Not currently using*/}
                 {/*<div id="introductionTitle">The Open Frontier of Research</div>*/}
                 <div id="introductionProse">
-                    <span id="introductionCapitalProse">within the near future,</span> technologies will<span id="blueOpen"> radically reshape our world</span>.
-                    <br />
-                    <br />
-                    <span id="introductionCapitalProse">human spaceflight, genetic engineering, artificial intelligence</span> and many other advancements will pair to propel humanity towards a new state of civilization,<span id="blueOpen"> possibly within our lifetimes</span>.  
-                    <br />
-                    <br />
-                    <span id="introductionCapitalProse">to reach these goals,</span> we believe as much of the human population as possible should be working<span id="blueOpen"> towards their achievement</span>. 
-                    <br />
-                    <br />
-                    <span id="introductionCapitalProse">XPrincipia </span>is designed as a system<span id="blueOpen"> to allow this process to occur</span>. 
-                    <br />
-                    <br />
-                    <span id="introductionCapitalProse">our goal is to allow anyone </span>to contribute directly towards this cause and connect these efforts, <span id="blueOpen">similar to how neurons must be connected to create a brain</span>. 
-                    <br />
-                    <br />
-                    <span id="introductionCapitalProse">we organize this process </span>by allowing users to work together in projects, creating proposals to<span id="blueOpen"> solve problems and achieve goals</span>. 
-                    <br />
-                    <br />
-                    <span id="introductionCapitalProse">to aid you on this journey, </span>you are given a centralized location for your thoughts, organized in<span id="blueOpen"> a private Mind Temple</span>. 
-                    <br />
-                    <br />
-                    <span id="introductionCapitalProse">to join this mission or access your mind temple</span>,<span id="greenOpen"> please register </span>and<span id="blueOpen"> begin exploring</span>. 
+                    <div id="introductionSection1">
+                        <span id="introductionCapitalProse">within the near future,</span> technologies will<span id="blueOpen"> radically reshape our world</span>.
+                        <br />
+                        <br />
+                        <span id="introductionCapitalProse">human spaceflight, genetic engineering, artificial intelligence</span> and many other advancements will pair to propel humanity towards a new state of civilization,<span id="blueOpen"> possibly within our lifetimes</span>.  
+                        <br />
+                        <br />
+                        <span id="introductionCapitalProse">to reach these goals,</span> we believe as much of the human population as possible should be working<span id="blueOpen"> towards their achievement</span>. 
+                    </div>
+                    <div id="introductionSection2">
+                        <br />
+                        <br />
+                        <span id="introductionCapitalProse">XPrincipia </span>is designed as a platform<span id="blueOpen"> to allow this process to occur</span>. 
+                        <br />
+                        <br />
+                        <span id="introductionCapitalProse">our goal is to allow anyone </span>to contribute directly towards this cause and connect these efforts, <span id="blueOpen">similar to how neurons must be connected to create a brain</span>. 
+                        <br />
+                        <br />
+                    </div>
+                    <div id="introductionSection3">
+                        <span id="introductionCapitalProse">we organize this process </span>by allowing users to work together in projects, creating proposals to<span id="blueOpen"> solve problems and achieve goals</span>. 
+                        <br />
+                        <br />
+                        <span id="introductionCapitalProse">to aid you on this journey, </span>you are given a centralized location for your thoughts, organized in<span id="blueOpen"> a private Mind Temple</span>. 
+                        <br />
+                        <br />
+                        <span id="introductionCapitalProse">to join this mission,<span id="green"> please register </span>and<span id="blue"> begin exploring</span></span>. 
+                    </div>
                 </div>
 
                 <IntroductionRegister />

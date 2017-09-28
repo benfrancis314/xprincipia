@@ -3,6 +3,7 @@ import {Link} from 'react-router';
 import $ from 'jquery';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group'; // ES6
 import ScrollableAnchor from 'react-scrollable-anchor';
+import YouTube from 'react-youtube';
 
 
 export default class Tutorial extends React.Component {
@@ -41,7 +42,15 @@ export default class Tutorial extends React.Component {
         $('#introductionContainer').hide().slideDown(500);
     });
 
+    const opts = {
+        height: '390',
+        width: '640',
+        playerVars: { // https://developers.google.com/youtube/player_parameters 
+            autoplay: 1
+        }
+    };
       return (
+        
         <div id="fullWide">
             {/*I would prefer slide from side than fade transition*/}
             <ReactCSSTransitionGroup
@@ -52,48 +61,53 @@ export default class Tutorial extends React.Component {
                 transitionLeave={false}>
             <div id="fullTutorialHeader">
                 <Link to="/welcome">
-                    <div id="welcomeTutorialButtonActive">
-                        Explore
-                    </div>
+                    <img src={require('../../assets/redX.svg')} id="closeRedX" width="40" height="40" alt="Close button, red X symbol" />            
                 </Link>
-                <div id="tutorialTableContents">
-                    <a href='#tutorialIndex1'>
-                        <div id="tutorialIndexNumber">
-                            I. Projects
-                        </div>
-                    </a>
-                    <a href='#tutorialIndex2'>
-                        <div id="tutorialIndexNumber">
-                            II. Discuss
-                        </div>
-                    </a>
-                    <a href='#tutorialIndex3'>
-                        <div id="tutorialIndexNumber">
-                            III. Proposals
-                        </div>
-                    </a>
-                    <a href='#tutorialIndex4'>
-                        <div id="tutorialIndexNumber">
-                            IV. Learn
-                        </div>
-                    </a>
-                    <a href='#tutorialIndex5'>
-                        <div id="tutorialIndexNumber">
-                            V. Mind Temple
-                        </div>
-                    </a>
-                </div>
+            </div>
+            <div id="demoVideoContainer">
+                <YouTube
+                    videoId="9okNbFAtyaA"
+                    opts={opts}
+                    onReady={this._onReady}
+                />
             </div>
             <div id="tutorialContainer">
                 <div id="fullTutorialWelcome">
-                    <span id="introductionCapital">XP</span>rincipia<span id="introductionCapital"> T</span>utorial
+                    <span id="introductionCapital">XP</span>rincipia<span id="introductionCapital"> G</span>uide
                     <br />
                 </div>
+            </div>
+            <div id="tutorialTableContents">
+                <a href='#tutorialIndex1'>
+                    <div id="tutorialIndexNumber">
+                        I. Projects
+                    </div>
+                </a>
+                <a href='#tutorialIndex2'>
+                    <div id="tutorialIndexNumber">
+                        II. Discuss
+                    </div>
+                </a>
+                <a href='#tutorialIndex3'>
+                    <div id="tutorialIndexNumber">
+                        III. Proposals
+                    </div>
+                </a>
+                <a href='#tutorialIndex4'>
+                    <div id="tutorialIndexNumber">
+                        IV. Learn
+                    </div>
+                </a>
+                <a href='#tutorialIndex5'>
+                    <div id="tutorialIndexNumber">
+                        V. General
+                    </div>
+                </a>
             </div>
                     <div id="fullTutorialContainer">
                         <ScrollableAnchor id={'tutorialIndex1'}>
                             <div id="fullTutorialNumbers">
-                                I
+                                i. projects
                             </div>
                         </ScrollableAnchor>
                         <div id="fullTutorialProseStartSentence">
@@ -103,41 +117,43 @@ export default class Tutorial extends React.Component {
                             Our goal is to<span id="blueOpen"> focus the human species </span>towards achieving its<span id="blueOpen"> best possible future</span>. 
                         </div>
                         <div id="fullTutorialProseBottom">
-                            <span id="blueOpen">Four major projects are selected </span>to focus these efforts towards:
+                            <span id="blueOpen">Four major projects are selected </span>to aim these efforts towards:
                         </div>
                         <div id="fullTutorialEmbed">
                             <div id="welcomeUnitsContainer">
-                                <div id="SPListDiv">
-                                    <ul id="welcomeProblemsUnitList"> 
-                                        <li id="welcomeProblemsUnit">
-                                            <div id="welcomeProblemsHeader1">
-                                                <div id="welcomeProblemsTitle">
-                                                    Interstellar Civilization
+                                <div id="width80">
+                                    <div id="SPListDiv">
+                                        <ul id="welcomeProblemsUnitList"> 
+                                            <li id="welcomeProblemsUnit">
+                                                <div id="welcomeProblemsHeader1">
+                                                    <div id="welcomeProblemsTitle">
+                                                        Interstellar Civilization
+                                                    </div>
                                                 </div>
-                                            </div>
-                                        </li>
-                                        <li id="welcomeProblemsUnit">
-                                            <div id="welcomeProblemsHeader2">
-                                                <div id="welcomeProblemsTitle">
-                                                    Evolving Humanity
+                                            </li>
+                                            <li id="welcomeProblemsUnit">
+                                                <div id="welcomeProblemsHeader2">
+                                                    <div id="welcomeProblemsTitle">
+                                                        Evolving Humanity
+                                                    </div>
                                                 </div>
-                                            </div>
-                                        </li>
-                                        <li id="welcomeProblemsUnit">
-                                            <div id="welcomeProblemsHeader3">
-                                                <div id="welcomeProblemsTitle">
-                                                    Theoretical Knowledge
+                                            </li>
+                                            <li id="welcomeProblemsUnit">
+                                                <div id="welcomeProblemsHeader3">
+                                                    <div id="welcomeProblemsTitle">
+                                                        Theoretical Knowledge
+                                                    </div>
                                                 </div>
-                                            </div>
-                                        </li>
-                                        <li id="welcomeProblemsUnit">
-                                            <div id="welcomeProblemsHeader4">
-                                                <div id="welcomeProblemsTitle">
-                                                    Technology Development
+                                            </li>
+                                            <li id="welcomeProblemsUnit">
+                                                <div id="welcomeProblemsHeader4">
+                                                    <div id="welcomeProblemsTitle">
+                                                        Technology Development
+                                                    </div>
                                                 </div>
-                                            </div>
-                                        </li>
-                                    </ul>     
+                                            </li>
+                                        </ul>     
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -190,7 +206,7 @@ export default class Tutorial extends React.Component {
                         </div>
                         <ScrollableAnchor id={'tutorialIndex2'}>
                             <div id="fullTutorialNumbers">
-                                II
+                                ii. discuss
                             </div>
                         </ScrollableAnchor>
                         <div id="fullTutorialProseStart">
@@ -250,13 +266,13 @@ export default class Tutorial extends React.Component {
                                             </li>
                                             <li id="SPUnit">
                                                 <div id="SPHeader">
-                                                    <div id="SPTitle">SP 2</div>
+                                                    <div id="SPTitle">Martian Agriculture</div>
                                                     <div id="SPPercent">16</div>
                                                 </div>
                                             </li>
                                             <li id="SPUnit">
                                                 <div id="SPHeader">
-                                                    <div id="SPTitle">SP 3</div>
+                                                    <div id="SPTitle">Martian Life Support</div>
                                                     <div id="SPPercent">13</div>
                                                 </div>
                                             </li>
@@ -309,7 +325,7 @@ export default class Tutorial extends React.Component {
                                                                             nancy.lynn
                                                                         </div>
                                                                         <div id="suggestionText">
-                                                                            <span id="blue">Q: </span>Test question 1
+                                                                            <span id="blue">Q: </span>What is the timeline for creating a self-sustainable population?
                                                                         </div>
                                                                     </div>
                                                                     <Link activeClassName="activeGlow">
@@ -328,7 +344,7 @@ export default class Tutorial extends React.Component {
                                                                             darrin.evans
                                                                         </div>
                                                                         <div id="suggestionText">
-                                                                            <span id="blue">Q: </span>Test question 2
+                                                                            <span id="blue">Q: </span>How will the lower gravity affect archictural designs?
                                                                         </div>
                                                                     </div>
                                                                     <Link activeClassName="activeGlow">
@@ -348,7 +364,7 @@ export default class Tutorial extends React.Component {
                         </div>
                         <ScrollableAnchor id={'tutorialIndex3'}>
                             <div id="fullTutorialNumbers">
-                                III
+                                iii. proposals
                             </div>
                         </ScrollableAnchor>
                         <div id="fullTutorialProseStart">
@@ -373,7 +389,7 @@ export default class Tutorial extends React.Component {
                                         <Link >
                                             <div id="solutionUnit">
                                                 <div id="solutionUnitContainer">
-                                                    <div id="solutionPercent">25%</div>
+                                                    <div id="solutionPercent">33%</div>
                                                     <div id="solutionUnitTitle">SpaceX's Plan to Colonize Mars</div>
                                                 </div>
                                             </div>
@@ -383,13 +399,13 @@ export default class Tutorial extends React.Component {
                                         <Link >
                                             <div id="solutionUnit">
                                                 <div id="solutionUnitContainer">
-                                                    <div id="solutionPercent">25%</div>
+                                                    <div id="solutionPercent">33%</div>
                                                     <div id="solutionUnitTitle">NASA's Plan to Colonize Mars</div>
                                                 </div>
                                             </div>
                                         </Link>
                                     </li>
-                                    <li>
+                                    {/* <li>
                                         <Link >
                                             <div id="solutionUnit">
                                                 <div id="solutionUnitContainer">
@@ -398,12 +414,12 @@ export default class Tutorial extends React.Component {
                                                 </div>
                                             </div>
                                         </Link>
-                                    </li>
+                                    </li> */}
                                     <li>
                                         <Link >
                                             <div id="solutionUnit">
                                                 <div id="solutionUnitContainer">
-                                                    <div id="solutionPercent">25%</div>
+                                                    <div id="solutionPercent">33%</div>
                                                     <div id="solutionUnitTitle">United Arab Emirate's Plan to Colonize Mars</div>
                                                 </div>
                                             </div>
@@ -465,7 +481,7 @@ export default class Tutorial extends React.Component {
                                             <h1 id="solutionTitle">SpaceX's Plan to Colonize Mars</h1>
                                             <div id="proposalCreator">madelyn.sather</div>
                                             <p id="solutionSummary">
-                                            SpaceX proposal summary here
+                                            It is SpaceX's goal to reduce the cost of space transportation and enable the human colonization of Mars.
                                             </p>
                                         </div>
                                         <div id="ProposalPercentFullGreen">
@@ -514,19 +530,20 @@ export default class Tutorial extends React.Component {
                                             <li id="prosConsUnit">
                                                     <div id="suggestionContent">
                                                         <div id="discussHeader">
-                                                            <span id="discussPercent">50%</span>
+                                                            <span id="discussPercent">100%</span>
                                                             julie.chisolm
                                                         </div>
                                                         <div id="suggestionText">
-                                                            Sample Pro 1
+                                                            The price of spaceflight has always been the limiting factor of human space colonization, so attacking the problem head on is best. 
                                                         </div>
                                                     </div>
-                                                    <button type="button" id="suggestionVoted">
-                                                        Voted
+                                                    <button type="button" id="suggestionVote">
+                                                        Vote
                                                     </button> 
                                                 <br /><br /> 
                                             </li>
-                                            <li id="prosConsUnit">
+                                            {/* Commenting out second pro for now to save space */}
+                                            {/* <li id="prosConsUnit">
                                                     <div id="suggestionContent">
                                                         <div id="discussHeader">
                                                             <span id="discussPercent">50%</span>
@@ -540,7 +557,7 @@ export default class Tutorial extends React.Component {
                                                         Vote
                                                     </button> 
                                                 <br /><br /> 
-                                            </li>
+                                            </li> */}
                                         </ul>
                                         </div>    
                                         <div> 
@@ -548,13 +565,27 @@ export default class Tutorial extends React.Component {
                                             <br />
                                             <div id="solutionFormLabel">Description</div>
                                             <p id="solutionDescription">
-                                                SpaceX proposal description
+                                            Musk's Mars vision centers on a reusable rocket-and-spaceship combo that he's dubbed the Interplanetary Transport System (ITS). Both the booster and the spaceship will be powered by SpaceX's Raptor engine, still in development, which Musk said will be about three times stronger than the Merlin engines that power the company's Falcon 9 rocket.
+                                            <br />
+                                            <br />
+                                            The booster, with its 42 Raptors, will be the most powerful rocket in history, by far. It will be capable of launching 300 metric tons (330 tons) to low Earth orbit (LEO), or 550 metric tons (600 tons) in an expendable variant, Musk said. 
+                                            ITS rockets will launch the spaceships to Earth orbit, then come back down for a pinpoint landing about 20 minutes later.
+                                            <br />
+                                            <br />
+                                            The ITS boosters will launch many spaceships and fuel tankers (which will top up the spaceships' tanks) to orbit over the course of their operational lives; the rockets will be designed to fly about 1,000 times each. The spaceships, meanwhile, will hang out in orbit, and then depart en masse when Earth and Mars align favorably. This happens once every 26 months. 
+                                            <br />
+                                            <br />
+                                            Eventually Musk envisions 1,000 or more ITS spaceships, each carrying 100 or more people, leaving Earth orbit during each of these Mars windows. The architecture could conceivably get 1 million people to Mars within the next 50 to 100 years.
+                                            <br />
+                                            <br />
+                                            The ships would also fly back from Mars, using their nine Raptor engines and methane-based propellant that was manufactured on the Red Planet. Each ITS ship would probably be able to make 12 to 15 deep-space journeys during its operational life and each fuel tanker could likely fly to Earth orbit 100 or so times.
                                             </p>
                                             </div>
                                             <div>
                                             <div id="solutionFormLabel">References</div>
                                             <p id="solutionReferences">
-                                                http://online.liebertpub.com/doi/pdfplus/10.1089/space.2017.29009.emu
+                                                https://www.space.com/37200-read-elon-musk-spacex-mars-colony-plan.html
+                                                {/* http://online.liebertpub.com/doi/pdfplus/10.1089/space.2017.29009.emu */}
                                             </p>
                                             </div>
                                             <br />
@@ -569,7 +600,7 @@ export default class Tutorial extends React.Component {
                         </div>
                         <ScrollableAnchor id={'tutorialIndex4'}>
                             <div id="fullTutorialNumbers">
-                                IV
+                                iv. learn
                             </div>
                         </ScrollableAnchor>
                         <div id="fullTutorialProseStart">
@@ -644,7 +675,7 @@ export default class Tutorial extends React.Component {
                         </div>
                         <ScrollableAnchor id={'tutorialIndex5'}>
                             <div id="fullTutorialNumbers">
-                                V
+                                v. general
                             </div>
                         </ScrollableAnchor>
                         <div id="fullTutorialProseStart">

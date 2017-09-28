@@ -1495,7 +1495,6 @@ color: #dddddd;
 margin: 5px 5px 10px 5px;
 flex: 1 1 auto;
 width: 100%;
-
 }
 #error {
 color: #ffffff;
@@ -1542,6 +1541,36 @@ animation: spin 4s linear infinite;
 0% { transform: rotate(0deg); }
 100% { transform: rotate(360deg); }
 }
+#errorLoadContainer {
+  /* margin-top: 2%; */
+  width: 100%;
+  height: 100vh;
+  /* Old */
+  background: radial-gradient(circle,rgba(0,220,255, 0), rgba(0,220, 255, 0.05), rgba(0,220,255, 0), rgba(0,220,255, 0.05));
+  /* Current A */
+  /* background: radial-gradient(circle,rgba(0,220,255, 0.025), rgba(0,220, 255, 0.1), rgba(0, 220, 255, 0.025), rgba(0,220,255, 0.1));   */
+  /* Current B */
+  /* background: radial-gradient(circle,rgba(0,220,255, 0.075), rgba(0,220, 255, 0.05), rgba(0,220,255, 0.2), rgba(0,220,255, 0)); */
+  background: radial-gradient(circle,rgba(0,220,255, 0.01), rgba(0,220, 255, 0.025), rgba(0,220,255, 0.075), rgba(0,220,255, 0.05));  
+  transition: all 6s ease 0s;
+  background-color: #0f131c;
+  transform: scale(1);
+  box-shadow: 0 0 0pt 0pt rgba(0,220,255,0.5);
+  
+  }
+#errorLoadContainer:hover {
+  box-shadow: 0 0 2px 2px rgba(0,220,255,0.5);  
+  width: 100%;
+  height: 100vh;
+  transform: scale(1.02);
+  background-color: rgba(0,220,255,0.05);
+  /* Old */
+  /* background: radial-gradient(circle,rgba(0,220,255, 0), rgba(0,220, 255, 0.1), rgba(0,220,255, 0), rgba(0,220,255, 0.1)); */
+  /* Current */
+  background: radial-gradient(circle,rgba(0,220,255, 0.01), rgba(0,220, 255, 0.025), rgba(0,220,255, 0.1), rgba(0,220,255, 0.025));
+  
+}
+
 
 /*End Errors*/
 
@@ -1597,11 +1626,13 @@ text-align: center;
 #header:hover, #header:active, #header:focus {
   /*Removing background-color for now*/
   background-color: rgba(0,220,255,0.05);
-        transition: all 2s ease 0s;
-
+  transition: all 2s ease 0s;
   color: #ffffff;
-  box-shadow: 0 0 1.5pt 1.5pt rgba(0,220,255,0.5);
-  transform: scale(1.005);
+
+  /* The two below cause a horizontal scrollbar when hovered over */
+  /* box-shadow: 0 0 1.5pt 1.5pt rgba(0,220,255,0.5); */
+  /* transform: scale(1.005); */
+  
   /*background: linear-gradient(left,rgba(0,220,255, 0.05), rgba(0,220,255, 0.1), rgba(0,220,255, 0.15), rgba(0,220,255, 0.15));*/
 }
 #explore, #logo {
@@ -2319,10 +2350,6 @@ font-family: 'Open Sans';
 font-size: 70%;
 letter-spacing: normal;
 color: #dddddd;
-padding-left: 8%;
-padding-right: 8%;
-padding-top: 6%;
-padding-bottom: 8%;
 line-height: 170%;
 /*background-color: rgba(0,220,255,0.05);*/
 /*border: 1px solid #00dcff;*/
@@ -2335,7 +2362,7 @@ margin-bottom: 6%;
 border: 1px solid #333333;
 border-radius: 5px 5px 10px 10px;
 width: 80%;
-padding: 6% 5% 6% 5%;
+/* padding: 6% 5% 6% 5%; */
 /*margin-bottom: 1.1%;*/
 /*Current*/
 background: linear-gradient(left,rgba(0,220,255, 0.06), rgba(0,220,255, 0.07), rgba(0,220,255, 0.02));
@@ -2465,6 +2492,41 @@ cursor: pointer;
 box-shadow: 0 0 1pt 1pt rgba(0,220,255,0.5) !important;
 transform: scale(1.02);
 background: radial-gradient(circle,rgba(0,220,255, 0.025), rgba(0,220,255, 0.05), rgba(0,220,255, 0.075));
+}
+#introductionSection1, #introductionSection2, #introductionSection3 {
+  font-family: 'Open Sans';
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+#introductionSection1 {
+  /* background-image: url('./planetsDark.svg');   */
+  /* background-image: url('./orionDark.svg');     */
+  background-image: url('./earthDark.svg');  
+  background-position: top right;
+  padding: 6% 5% 0% 5%;  
+}
+#introductionSection2 {
+  background-position: top right;
+  /* background-image: url('./dnaDark5.svg'); */
+  /* Try a tree diagreem here, going downward */
+  /* background-image: url('./grecoDark.svg');   */
+  background-image: url('./geodesicDark.svg');    
+  padding: 0% 5% 0% 5%;
+}
+#introductionSection3 {
+  background-position: top right;  
+  background-image: url('./templeDark.svg');
+  /* background-image: url('./dodecahedronDark.svg'); */
+  background-image: url('./saturnDark.svg');    
+  padding: 0% 5% 6% 5%;
+}
+#fullWideIntro {
+  width: 100%;
+
+  /* background-image: url('./atomLight.svg');
+  background-repeat: no-repeat;
+  background-position: top left;
+  background-attachment: fixed; */
 }
 
 
@@ -2688,7 +2750,19 @@ letter-spacing: 7px;
 width: 70%;
 transition: all 2s ease 0s;
 }
-
+#demoVideoContainer {
+  margin: 0 auto;
+  width: 70%;
+  text-align: center;
+  box-shadow: 0 0 1pt 1pt #00dcff;
+  /* border: 1px solid #00dcff; */
+  /* border-width: 1px 0px; */
+  padding: 4px;
+  margin-top: 1%;
+  margin-bottom: 1%;
+  background: linear-gradient(left,rgba(0,220,255, 0), rgba(0,220,255, 0.25), rgba(0,220,255, 0));
+  /* background: linear-gradient(left,rgba(255,127,127, 0.06), rgba(255,127,127, 0.07), rgba(255,127,127, 0.02)); */
+}
 
 /*End Full Tutorial*/
 
@@ -2993,20 +3067,28 @@ margin-bottom: 0.5%;
 margin-top: 0.5%;
 }
 #privateContainerMotto {
-display: inline-block;
-color: #888888;
-transition: all 2s ease 0s;
+  display: inline-block;
+  color: #888888;
+  transition: all 2s ease 0s;
 }
 #privateContainerMottoBlue {
-display: inline-block;
-color: #00dcff;
-transition: all 2s ease 0s;
-letter-spacing: 7px;
+  display: inline-block;
+  color: #00dcff;
+  transition: all 2s ease 0s;
+  letter-spacing: 7px;
 }
 #privateSettingsGear {
-margin: 0 auto;
-vertical-align: center;
-margin-top: 2px;
+  margin: 0 auto;
+  vertical-align: center;
+  margin-top: 2px;
+}
+#welcomeVideoLogo {
+  margin: 0 auto;
+  /* Should be 'middle' if you want it effect */
+  vertical-align: middle;
+  margin-bottom: 4px;
+  /* margin-top: 4px;
+  margin-bottom: -2px; */
 }
 #mindTempleButton {
 margin: 0 auto;
@@ -4356,21 +4438,28 @@ font-family: 'Open Sans';
   transform: scale(1);
   transition: all 0.5s ease 0s;
 }
-#SPListDiv {
+#SPWelcomeListDiv {
   width: 100%;
   margin:0 auto;
   text-align:center;
-  margin-bottom: 40px;
+  margin-bottom: 2.25%;
 }
 #welcomeUnitsContainer {
   padding: 2px;
-  width: 80%;
+  width: 100%;
+  /* Old */
+  /* width: 80%; */
   margin: 0 auto;
   border: 1px solid #00dcff;
   border-width: 0px 0px 1px 0px;
-  border-radius: 0% 0% 15% 15%;
+  border-radius: 0% 0% 12% 12%;
   padding: 1px;
-  background: linear-gradient(rgba(0,255,220,0), rgba(0,220,255,0.1));
+  /* New, commenting out for now */
+  /* background: linear-gradient(rgba(0,220,255,0), rgba(0,220,255,0.01), rgba(0,220,255,0.05), rgba(0,220,255, 0.1)); */
+  /* border-color: rgba(0,220,255,0.25); */
+  border-width: 0px;
+  /* Old */
+  /* background: linear-gradient(rgba(0,255,220,0), rgba(0,220,255,0.1)); */
 }
 #welcomeUserUnitsContainer {
   /*margin: 0% 5% 3% 5%;*/
@@ -4548,7 +4637,9 @@ width: 53%;
 margin: 0 auto;
 background-color: rgba(0,220,255,0.0);
 border: 1px solid #00dcff;
-border-width: 0px 1px 1px 1px;
+border-width: 0px;
+/* Old */
+/* border-width: 0px 1px 1px 1px; */
 border-radius: 0px 0px 3px 3px;
 padding-bottom: 2%;
 
@@ -4590,6 +4681,152 @@ input#submitWelcomeProblem:hover {
   background-color: #00dcff;
   cursor: pointer;
 }
+
+
+/* New welcome styles */
+
+
+#welcomeProjectAddButton {
+  display: flex;
+  flex-direction: column;
+  border: 2px solid #00dcff;
+  border-radius: 100%;
+  width: 4.5em;
+  height: 4.5em;
+  align-items: center; 
+  justify-content: center;
+  background-color: rgba(0,220,255,0.05);
+  margin: 0 auto;
+  box-shadow: 0 0 2pt 2pt rgba(0,220,255,0.5);
+  transition: all 0.75s ease 0s;
+  transform: scale(1);
+  margin-bottom: 0.75%;
+  margin-top: 0.5%;
+}
+  #welcomeProjectAddButton:hover {
+  box-shadow: 0 0 1pt 3pt rgba(0,220,255,0.5);
+  transform: scale(1.02);
+  cursor: pointer;
+  background: radial-gradient(circle, rgba(0,220,255,0.05), rgba(0,220,255,0.05), rgba(0,220,255,0.1), rgba(0,220,255,0.05));
+  }
+  #welcomeSearchFormContainer {
+    text-align: center;
+    font-size: 175%;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0% 0% 0.5% 0%;
+    margin-bottom: 0.5%;
+    /* margin-top: 0.5%; */
+    }
+  #welcomeSearchFormLabel {
+    display: inline-block;
+    color: #888888;
+    transition: all 2s ease 0s;
+    letter-spacing: 6px !important;  
+    font-family: 'Alegreya Sans SC' !important;
+    box-shadow: 0 0 0pt 0pt rgba(0,220,255,0.5) !important;   
+    border-width: 0px !important;
+    outline-width: 0px !important; 
+  }
+  #welcomeSearchFormLabel:active, #welcomeSearchFormLabel:focus {
+    transition: all 2s ease 0s;
+    letter-spacing: 8px !important;  
+  }
+  #welcomeSearchFormLabelBlue {
+    display: inline-block;
+    color: #00dcff !important;
+    transition: all 2s ease 0s;
+    letter-spacing: 8px !important;  
+    font-family: 'Alegreya Sans SC' !important;
+    box-shadow: 0 0 0pt 0pt rgba(0,220,255,0.5) !important;   
+    border-width: 0px !important;
+    outline-width: 0px !important; 
+  }
+  #welcomeSearchFormLabelBlue:active, #welcomeSearchFormLabelBlue:focus {
+    transition: all 2s ease 0s;
+    letter-spacing: 10px !important;  
+  }
+  #welcomeSearchFormLabelBlue::placeholder {
+    color: #00dcff !important;
+  }
+  #width80 {
+    /* Original width in welcome container is 80% */
+    width: 87%;
+    /* Other option that looks good */
+    /* width: 86%; */
+    margin: 0 auto;
+  }
+  #welcomeTutorialVideoButton {
+    margin: 0 auto;
+    color: #00dcff;
+    text-align: center;
+    margin-bottom: 0.7%;
+    /*margin-top: 1.75%;*/
+    font-size: 175%;
+    letter-spacing: 6px;
+    width: 10%;
+    border: 1px solid #00dcff;
+    border-width: 0px 1px 1px 1px;
+    border-radius: 0% 0% 25% 25%;
+    transition: all 0.5s ease 0s;
+    background: linear-gradient(right, rgba(255,255,255,0.025), rgba(0,220,255,0.1), rgba(255,255,255,0.025));
+    }
+    #welcomeTutorialVideoButton:hover {
+    cursor: pointer;
+    background-color: rgba(0,220,255,0.1);
+    color: #0f131c;
+    }
+    #welcomeContainerBanner {
+      transition: all 2s ease 0s;
+      transform: scale(1);
+    }
+    #welcomeContainerBanner:hover {
+      transform: scale(1.02);
+    }
+    #welcomeContainerTitle {
+      margin: 0 auto;
+      color: #ffffff;
+      text-align: center;
+      margin-bottom: 0%;
+      margin-top: 2.4%;
+      font-size: 260%;
+      letter-spacing: 15px;
+      width: 70%;
+      
+      border: 1px solid #00dcff;
+      border-radius: 0% 0% 15% 15%;
+      border-width: 1px 0px 1px 0px;
+      padding: 15px 35px 15px 35px;
+      transition: all 0.5s ease 0s;
+      background: linear-gradient(rgba(255,255,255,0.05), rgba(0,220,255,0.1), rgba(0,220,255,0.1), rgba(255,255,255,0.025));
+    }
+    #welcomeIntroductionLabel {
+      letter-spacing: 14px;
+      width: 90%;
+      margin: 0 auto;
+      border: 1px solid #00dcff;
+      border-width: 0px 1px 1px 1px;
+      /*border-right-color: #515151;
+      border-left-color: #515151;*/
+      letter-spacing: 16px;
+      color: #00dcff;
+      font-size: 120%;      
+      /* Old */
+      /* font-size: 130%; */
+      text-align: center;
+      transition: all 2s ease 0s;
+      transform: scale(1);
+      /*Original*/
+      /*border-radius: 0% 0% 15% 15%;*/
+      border-radius: 0% 0% 40% 40%;
+      /*Make sure this refreshes to keep page normal width*/
+      padding: 0.3% 0% 0.5% 0%;
+      background: linear-gradient(rgba(0,255,220,0.05), rgba(0,255,220,0.05), rgba(0,220,255,0));
+    }
+    #welcomeIntroductionLabel:hover {
+      transform: scale(1.02);
+      background-color: rgba(0,220,255,0.05);
+    }
 
 /*End Welcome*/
 
@@ -7787,6 +8024,103 @@ margin-bottom: 2%;
 margin-top: 1%;
 /*padding-top: 0.5%;*/
 }
+
+
+/* Short Story Start */
+
+#shortStoryContainer {
+ color: black;
+ /* width: 70%; */
+ margin: 0 auto;
+ margin-top: 5%;
+ border-radius: 10%;
+}
+#storyTitle {
+  background-color: #ebd5b3;
+  width: 80%;
+  padding: 5%;
+  text-align: center;
+  font-size: 250%;
+}
+#storySubTitle {
+  background-color: rgba(255,255,255,0.75);
+  width: 80%;
+  padding: 5%;
+  text-align: center;
+  font-size: 150%;
+}
+
+#storyProse {
+  font-family: 'Open Sans';
+  font-size: 70%;
+  letter-spacing: normal;
+  color: #dddddd;
+  line-height: 170%;
+  width: 60%;
+  margin: 0 auto;
+  margin-top: 2%;
+  margin-bottom: 6%;
+
+  border: 1px solid #333333;
+  border-radius: 5px 5px 10px 10px;
+  width: 80%;
+  background: linear-gradient(left,rgba(0,220,255, 0.06), rgba(0,220,255, 0.07), rgba(0,220,255, 0.02));
+  overflow: auto;
+}
+
+
+#storySection1, #storySection2 {
+  line-height: 170%;
+  border: 2px solid #00dcff;
+  text-align: justify;
+  font-family: 'Encode Sans Expanded';
+  font-size: 185%;
+  font-weight: 400;
+  border-radius: 3%;
+  margin: 0 auto;
+  margin-bottom: 5%;  
+  width: 70%;
+  padding: 5% 8%;
+}
+#storySection1 {
+  color: black;
+  background: linear-gradient(left,rgba(187, 174, 154, 0.7), rgba(187, 174, 154, 0.85), rgba(187, 174, 154, 0.6));
+  margin-left: 0;
+  border-width: 1px 1px 1px 0px;
+  border-radius: 0% 3% 3% 0%;
+  /* font-family: Verdana; */
+  border-color: gray;
+  font-family: 'Open Sans';
+  
+}
+#storySection2 {
+  font-weight: 300;
+  background: linear-gradient(left,rgba(0,220,255, 0.08), rgba(0,220,255, 0.1), rgba(0,220,255, 0.06));
+  margin-right: 0;
+  border-width: 1px 0px 1px 1px;
+  border-radius: 3% 0% 0% 3%;
+}
+#storyReadingTime {
+  margin: 0 auto;
+  color: #00dcff;
+  text-align: center;
+  margin-bottom: 1%;
+  /*margin-top: 1.75%;*/
+  font-size: 115%;
+  padding: 3px;
+  letter-spacing: 6px;
+  width: 12%;
+  border: 1px solid #00dcff;
+  border-width: 0px 1px 1px 1px;
+  border-radius: 0% 0% 25% 25%;
+  transition: all 0.5s ease 0s;
+  background: linear-gradient(right, rgba(255,255,255,0.025), rgba(0,220,255,0.1), rgba(255,255,255,0.025));
+}
+#storyCapitalProse {
+  font-size: 165%;
+}
+
+/* Short Story End */
 
 
 

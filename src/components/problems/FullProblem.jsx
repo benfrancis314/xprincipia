@@ -53,7 +53,7 @@ export default class FullProblem extends React.Component {
 
 shouldComponentUpdate(nextProps, nextState) {
     // only render if probID has changed
-    return this.state.probID !== nextProps.params.probID;
+    return nextState.probID !== nextProps.params.probID;
 }
 
 // First draft of attempt, this one seems not to work
@@ -67,7 +67,7 @@ shouldComponentUpdate(nextProps, nextState) {
 
   componentWillReceiveProps(nextProps){
       var self = this;
-      window.scrollTo(0,0);
+      // window.scrollTo(0,0);
       axios.get( Config.API + '/problems/ID?id='+nextProps.params.probID).then(function (response) {
 
           //set Problem Data

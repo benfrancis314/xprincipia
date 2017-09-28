@@ -103,46 +103,77 @@ export default class ProfileContainer extends React.Component {
     // $(document).ready(function() {
     //     $('#profileContainer').hide().slideDown(1500);
     // });
-      return (
-    <div id="profileContainer">
-        <ReactCSSTransitionGroup
-        transitionName="example"
-        transitionAppear={true}
-        transitionAppearTimeout={3000}
-        transitionEnter={false}
-        transitionLeave={false}>
-      <div id="profileBox">
-        <div id="profileLeft">
-            <div id="userInformation">
-                <p id="userName">{cookie.load('userName')}</p>
-                <div id="earth"></div>
+
+    if (cookie.load('userName') == null) {
+        return (
+        <div id="profileContainer">
+            <ReactCSSTransitionGroup
+            transitionName="example"
+            transitionAppear={true}
+            transitionAppearTimeout={3000}
+            transitionEnter={false}
+            transitionLeave={false}>
+            <div id="profileBox">
+                <div id="profileLeft">
+                    <div id="userInformation">
+                        <br />
+                        <br />
+                        <br />
+                        <div id="earth"></div>
+                    </div>
+                    <div id="userOptions">
+                        <br />
+                        <Link to={`/profile/about`} activeClassName="activeBlue">
+                            <div id="aboutXPButton">About XPrincipia</div>
+                        </Link>
+                    </div>
+                </div>
+                <div id="profileRight">
+                    {React.cloneElement(this.props.children, {probID: this.state.probID})}
+                </div>
             </div>
-            <div id="userOptions">
-                <Link to={`/mindtemple`} activeClassName="activeBlue">
-                    <div id="userProblemsSolutionsButton">Private Projects</div>
-                </Link>
-                <Link to={`/profile`} activeClassName="activeBlue">
-                    <div id="userProblemsSolutionsButton">Activity</div>
-                </Link>
-                <Link to={`/profile/feedback`} activeClassName="activeBlue">
-                    <div id="userFeedbackButton">Feedback</div>
-                </Link>
-                <Link to={`/profile/about`} activeClassName="activeBlue">
-                    <div id="aboutXPButton">About XPrincipia</div>
-                </Link>
-                <div id="logOutButton" onClick={this.onLogout}>Logout</div>
+            <TutorialProfileContent />
+            </ReactCSSTransitionGroup>
+        </div>);
+    } else {
+     return (
+        <div id="profileContainer">
+            <ReactCSSTransitionGroup
+            transitionName="example"
+            transitionAppear={true}
+            transitionAppearTimeout={3000}
+            transitionEnter={false}
+            transitionLeave={false}>
+            <div id="profileBox">
+                <div id="profileLeft">
+                    <div id="userInformation">
+                        <p id="userName">{cookie.load('userName')}</p>
+                        <div id="earth"></div>
+                    </div>
+                    <div id="userOptions">
+                        <Link to={`/mindtemple`} activeClassName="activeBlue">
+                            <div id="userProblemsSolutionsButton">Private Projects</div>
+                        </Link>
+                        <Link to={`/profile`} activeClassName="activeBlue">
+                            <div id="userProblemsSolutionsButton">Activity</div>
+                        </Link>
+                        <Link to={`/profile/feedback`} activeClassName="activeBlue">
+                            <div id="userFeedbackButton">Feedback</div>
+                        </Link>
+                        <Link to={`/profile/about`} activeClassName="activeBlue">
+                            <div id="aboutXPButton">About XPrincipia</div>
+                        </Link>
+                        <div id="logOutButton" onClick={this.onLogout}>Logout</div>
+                    </div>
+                </div>
+                <div id="profileRight">
+                    {React.cloneElement(this.props.children, {probID: this.state.probID})}
+                </div>
             </div>
+            <TutorialProfileContent />
+            </ReactCSSTransitionGroup>
         </div>
-        <div id="profileRight">
-            {React.cloneElement(this.props.children, {probID: this.state.probID})}
-        </div>
-      </div>
-        <TutorialProfileContent />
-        </ReactCSSTransitionGroup>
-
-
-    </div>
-
       );
+    }
    }
 }
