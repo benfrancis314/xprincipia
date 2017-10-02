@@ -86,6 +86,11 @@ body {
   justify-content: center;
   z-index: 5;
   position: relative;
+  /* background-image: url('./geodesicDark2.svg');    
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: top center;
+  background-color: #121621; */
 }
 #maxContainerRow {
   width: 100%;
@@ -8061,10 +8066,10 @@ margin-top: 1%;
   margin-top: 2%;
   margin-bottom: 6%;
 
-  border: 1px solid #333333;
+  /* border: 1px solid #333333; */
   border-radius: 5px 5px 10px 10px;
   width: 80%;
-  background: linear-gradient(left,rgba(0,220,255, 0.06), rgba(0,220,255, 0.07), rgba(0,220,255, 0.02));
+  /* background: linear-gradient(left,rgba(0,220,255, 0.06), rgba(0,220,255, 0.07), rgba(0,220,255, 0.02)); */
   overflow: auto;
 }
 
@@ -8080,25 +8085,30 @@ margin-top: 1%;
   margin: 0 auto;
   margin-bottom: 5%;  
   width: 70%;
-  padding: 5% 8%;
+  padding: 0% 8%;
 }
 #storySection1 {
   color: black;
-  background: linear-gradient(left,rgba(187, 174, 154, 0.7), rgba(187, 174, 154, 0.85), rgba(187, 174, 154, 0.6));
+  background-color: #D1B794;
+  background: linear-gradient(left,rgba(43, 34, 23, 0.62), rgba(209,183,148, 1), rgba(209,183,148, 0.95), rgba(209,183,148, 0.9), rgba(223, 194, 156, 0.9), rgba(209,183,148, 0.9), rgba(209,183,148, 0.9), rgba(194, 168, 135, 0.9), rgba(209,183,148, 0.9), rgba(209,183,148, 0.8), rgba(209,183,148, 0.9), rgba(209,183,148, 0.95), rgba(209,183,148, 1), rgba(0,220,255, 0.1));
   margin-left: 0;
-  border-width: 1px 1px 1px 0px;
-  border-radius: 0% 3% 3% 0%;
+  border-width: 1px 1px 1px 1px;
+  border-radius: 3% 3% 3% 3%;
   /* font-family: Verdana; */
-  border-color: gray;
-  font-family: 'Open Sans';
-  
+  border-color: rgba(0, 220, 255, 0.5);
+  /* font-family: 'Open Sans'; */
+  font-size: 195%;
+  font-family: 'Slabo 27px', serif;
+  font-family: 'EB Garamond', 'Slabo 27px',serif;
+  padding: 0% 8%;
 }
+/* Make a section 3, so it can have different "blots" on the paper */
 #storySection2 {
   font-weight: 300;
   background: linear-gradient(left,rgba(0,220,255, 0.08), rgba(0,220,255, 0.1), rgba(0,220,255, 0.06));
   margin-right: 0;
-  border-width: 1px 0px 1px 1px;
-  border-radius: 3% 0% 0% 3%;
+  border-width: 1px 1px 1px 1px;
+  border-radius: 3% 3% 3% 3%;
 }
 #storyReadingTime {
   margin: 0 auto;
@@ -8116,8 +8126,77 @@ margin-top: 1%;
   transition: all 0.5s ease 0s;
   background: linear-gradient(right, rgba(255,255,255,0.025), rgba(0,220,255,0.1), rgba(255,255,255,0.025));
 }
-#storyCapitalProse {
+#storyCapitalProse1 {
+  font-size: 145%;
+  font-family: 'Cinzel', serif;
+}
+#storyCapitalProse2 {
   font-size: 165%;
+}
+#story1Logo1, #story1Logo2, #story1Logo3, #story1Logo4, #story1Logo5, #story1Logo6, #story1Logo7, #story1Logo8, #story1Logo9, #story1Logo10, #story1Logo11, #story1Logo12, #story1Logo13, #story1Logo14, #story1Logo15 {
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  font-family: 'EB Garamond', 'Slabo 27px',serif;
+}
+#story1Logo1 {
+  background-image: url('./dnaTan1.svg');  
+  background-position: top right;
+  padding-top: 10%;
+}
+#story1Logo2 {
+  background-image: url('./brainTan1.svg');  
+  background-position: top left;
+}
+#story1Logo3 {
+  background-image: url('./lamdaTan1.svg');  
+  background-position: top center;
+}
+#story1Logo5 {
+  background-image: url('./chemistryTan1.svg');  
+  background-position: top right;
+}
+#story1Logo6 {
+  background-image: url('./treeTan1.svg');  
+  background-position: top left;
+  padding-bottom: 10%;
+}
+#story1Logo7 {
+  background-image: url('./dnaTan1.svg');  
+  background-position: top right;
+  padding-top: 10%;
+}
+#story1Logo8 {
+  background-image: url('./mountainTan1.svg');  
+  background-position: top left;
+}
+#story1Logo9 {
+  background-image: url('./lamdaTan1.svg');  
+  background-position: top center;
+}
+#story1Logo10 {
+  background-image: url('./alienTan1.svg');  
+  background-position: top center;
+}
+#story1Logo11 {
+  background-image: url('./alienTan1.svg');  
+  background-position: top center;
+}
+#story1Logo12 {
+  background-image: url('./symbolTan1.svg');  
+  background-position: top center;
+}
+#story1Logo13 {
+  background-image: url('./chemistryTan1.svg');  
+  background-position: top right;
+}
+#story1Logo14 {
+  background-image: url('./concentricTan1.svg');  
+  background-position: top center;
+}
+#story1Logo15 {
+  background-image: url('./concentricTan2.svg');  
+  background-position: top center;
+  padding-bottom: 10%;
 }
 
 /* Short Story End */

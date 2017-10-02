@@ -20,12 +20,12 @@ export default class SuggestionCommentContainer extends React.Component {
     };
         componentDidMount(){
         var self = this;
-         axios.get( Config.API + '/auth/comments/suggestionID?id='+this.props.params.suggID).then(function (response) {
+         axios.get( Config.API + '/comments/suggestionID?id='+this.props.params.suggID).then(function (response) {
             self.setState({
                 comments: response.data,
             })
         })  
-        axios.get( Config.API + '/auth/suggestions/ID?id='+this.props.params.suggID).then(function (response) {
+        axios.get( Config.API + '/suggestions/ID?id='+this.props.params.suggID).then(function (response) {
             self.setState({
                 suggestion: response.data
             })
@@ -33,7 +33,7 @@ export default class SuggestionCommentContainer extends React.Component {
     }
   componentWillReceiveProps(newProps){
     var self = this;
-      axios.get( Config.API + '/auth/suggestions/ID?id='+newProps.params.suggID).then(function (response) {
+      axios.get( Config.API + '/suggestions/ID?id='+newProps.params.suggID).then(function (response) {
           self.setState({
               suggestion: response.data
           })

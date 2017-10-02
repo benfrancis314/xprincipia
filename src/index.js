@@ -228,7 +228,7 @@ ReactDOM.render(
       <Route path='/entrance' component={EntranceContainer}></Route>
       <Route path='/welcome/container' component={WelcomeContainer}>
         <Route path='/introduction' component={Introduction}></Route>
-        <Route path='/tutorial' component={FullTutorial}></Route>
+        <Route path='/demo' component={FullTutorial}></Route>
         <Route path='/welcome/container/project' component={WelcomeProjectsContainer}>
           <IndexRoute component={WelcomeCreateButton}></IndexRoute>
           <Route path='/welcomecreate' component={WelcomeCreateButton}>

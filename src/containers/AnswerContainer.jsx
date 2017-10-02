@@ -20,12 +20,12 @@ export default class AnswerContainer extends React.Component {
     };
     componentDidMount(){
         var self = this;
-        axios.get( Config.API + '/auth/answers/questionID?id='+this.props.params.questID).then(function (response) {
+        axios.get( Config.API + '/answers/questionID?id='+this.props.params.questID).then(function (response) {
             self.setState({
                 answers: response.data,
             })
         })
-        axios.get( Config.API + '/auth/questions/ID?id='+this.props.params.questID).then(function (response) {
+        axios.get( Config.API + '/questions/ID?id='+this.props.params.questID).then(function (response) {
             self.setState({
                 question: response.data
             })
@@ -35,7 +35,7 @@ export default class AnswerContainer extends React.Component {
     // Strategy for updating state
   componentWillReceiveProps(newProps){
     var self = this;
-      axios.get( Config.API + '/auth/questions/ID?id='+newProps.params.questID).then(function (response) {
+      axios.get( Config.API + '/questions/ID?id='+newProps.params.questID).then(function (response) {
           self.setState({
               question: response.data
           })
@@ -58,7 +58,7 @@ export default class AnswerContainer extends React.Component {
               } 
           });
       });
-    axios.get( Config.API + '/auth/answers/questionID?id='+this.props.params.questID).then(function (response) {
+    axios.get( Config.API + '/answers/questionID?id='+this.props.params.questID).then(function (response) {
         self.setState({
             answers: response.data,
         })
