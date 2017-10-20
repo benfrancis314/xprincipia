@@ -32,10 +32,11 @@ export default class FullSolution extends React.Component {
     })
 }
 
-shouldComponentUpdate(nextProps, nextState) {
-    // only render if solutionID has changed
-    return this.state.solutoinID !== nextProps.params.solutionID;
-}
+// shouldComponentUpdate(nextProps, nextState) {
+// //     // only render if solutionID has changed
+//     return (this.state.solutionID !== nextProps.params.solutionID) 
+//     // || (window.location.href.includes('question')))
+// }
   //On recieving next props
   componentWillReceiveProps(nextProps){
     var self = this;
@@ -49,7 +50,11 @@ shouldComponentUpdate(nextProps, nextState) {
   }
 
 componentDidUpdate() {
-        ReactDOM.findDOMNode(this).scrollIntoView();
+    if ((window.location.href.includes('#') == false) || (window.location.href.includes('question') == false)) {    
+        // Need to stop refresh from happening when clicking on Discuss, etc. OR doesn't work here, but I think this is right track.
+        return ReactDOM.findDOMNode(this).scrollIntoView();
+    }
+    // Previously, this created a feedback loop of updating that slowed the site when I used an IF/ELSE statement. Using an IF .. == false seems to avoid issue, but good to be aware of it being possible here. 
   }   
 
    render() {
@@ -65,7 +70,6 @@ componentDidUpdate() {
         <div id='fullSolutionContainer'>
             <div id="fullSolution">
                 <div id="solutionIntro">
-                    
                     <Link to={`/project/${this.props.params.probID}/subprojects`}>
                         <img src={require('../../assets/redX.svg')} id="closeRedX" width="40" height="40" alt="Close button, red X symbol" />
                     </Link>

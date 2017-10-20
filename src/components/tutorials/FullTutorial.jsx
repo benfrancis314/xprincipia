@@ -66,7 +66,7 @@ export default class Tutorial extends React.Component {
             </div>
             <div id="demoVideoContainer">
                 <YouTube
-                    videoId="9okNbFAtyaA"
+                    videoId="URkZcTODs8c"
                     opts={opts}
                     onReady={this._onReady}
                 />

@@ -8061,10 +8061,10 @@ margin-top: 1%;
   letter-spacing: normal;
   color: #dddddd;
   line-height: 170%;
-  width: 60%;
+  width: 65%;
   margin: 0 auto;
   margin-top: 2%;
-  margin-bottom: 6%;
+  /* margin-bottom: 6%; */
 
   /* border: 1px solid #333333; */
   border-radius: 5px 5px 10px 10px;
@@ -8090,7 +8090,7 @@ margin-top: 1%;
 #storySection1 {
   color: black;
   background-color: #D1B794;
-  background: linear-gradient(left,rgba(43, 34, 23, 0.62), rgba(209,183,148, 1), rgba(209,183,148, 0.95), rgba(209,183,148, 0.9), rgba(223, 194, 156, 0.9), rgba(209,183,148, 0.9), rgba(209,183,148, 0.9), rgba(194, 168, 135, 0.9), rgba(209,183,148, 0.9), rgba(209,183,148, 0.8), rgba(209,183,148, 0.9), rgba(209,183,148, 0.95), rgba(209,183,148, 1), rgba(0,220,255, 0.1));
+  background: linear-gradient(left,rgba(43, 34, 23, 0.62), rgba(209,183,148, 1), rgba(209,183,148, 0.95), rgba(209,183,148, 0.98), rgba(223, 194, 156, 0.9), rgba(209, 183, 148, 0.98), rgba(209,183,148, 0.98), rgba(194, 168, 135, 0.98), rgba(209,183,148, 0.98), rgba(209,183,148, 0.88), rgba(209,183,148, 0.98), rgba(209,183,148, 0.95), rgba(209,183,148, 1), rgba(0,220,255, 0.1));
   margin-left: 0;
   border-width: 1px 1px 1px 1px;
   border-radius: 3% 3% 3% 3%;
@@ -8102,6 +8102,10 @@ margin-top: 1%;
   font-family: 'EB Garamond', 'Slabo 27px',serif;
   padding: 0% 8%;
 }
+#storySection1 div i {
+  font-family: 'EB Garamond', 'Slabo 27px',serif;
+  font-style: italic;
+}
 /* Make a section 3, so it can have different "blots" on the paper */
 #storySection2 {
   font-weight: 300;
@@ -8109,12 +8113,25 @@ margin-top: 1%;
   margin-right: 0;
   border-width: 1px 1px 1px 1px;
   border-radius: 3% 3% 3% 3%;
+  transition: all 0.5s ease 0s;
+}
+#storySection2:hover {
+  font-weight: 300;
+  background: linear-gradient(left,rgba(70, 166, 180, 0.07), rgba(0,220,255, 0.1), rgba(0,220,255, 0.08));
+  background-color: rgba(0,220,255,0.01);
+  margin-right: 0;
+  border-width: 1px 1px 1px 1px;
+  border-radius: 3% 3% 3% 3%;
+}
+#storySection2 i {
+  font-family: 'Encode Sans Expanded';
+  font-style: italic;
 }
 #storyReadingTime {
   margin: 0 auto;
   color: #00dcff;
   text-align: center;
-  margin-bottom: 1%;
+  margin-bottom: 3%;
   /*margin-top: 1.75%;*/
   font-size: 115%;
   padding: 3px;
@@ -8141,7 +8158,7 @@ margin-top: 1%;
 #story1Logo1 {
   background-image: url('./dnaTan1.svg');  
   background-position: top right;
-  padding-top: 10%;
+  padding-top: 7%;
 }
 #story1Logo2 {
   background-image: url('./brainTan1.svg');  
@@ -8161,16 +8178,16 @@ margin-top: 1%;
   padding-bottom: 10%;
 }
 #story1Logo7 {
-  background-image: url('./dnaTan1.svg');  
+  background-image: url('./mountainTan2.svg');  
   background-position: top right;
-  padding-top: 10%;
+  padding-top: 7%;
 }
 #story1Logo8 {
   background-image: url('./mountainTan1.svg');  
   background-position: top left;
 }
 #story1Logo9 {
-  background-image: url('./lamdaTan1.svg');  
+  background-image: url('./mountainTan3.svg');  
   background-position: top center;
 }
 #story1Logo10 {
@@ -8186,8 +8203,8 @@ margin-top: 1%;
   background-position: top center;
 }
 #story1Logo13 {
-  background-image: url('./chemistryTan1.svg');  
-  background-position: top right;
+  background-image: url('./alienTan1.svg');  
+  background-position: top center;
 }
 #story1Logo14 {
   background-image: url('./concentricTan1.svg');  
@@ -8198,6 +8215,83 @@ margin-top: 1%;
   background-position: top center;
   padding-bottom: 10%;
 }
+#story2Logo1, #story2Logo2, #story2Logo3, #story2Logo4, #story2Logo5, #story2Logo6, #story2Logo7, #story2Logo8 {
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  font-family: 'Encode Sans Expanded';
+}
+#story2Logo1 {
+  /* background-image: url('./dnaTan1.svg');   */
+  background-position: top right;
+  padding-top: 7%;
+}
+#story2Logo2 {
+  /* background-image: url('./brainTan1.svg');   */
+  background-position: top left;
+}
+#story2Logo3 {
+  /* background-image: url('./lamdaTan1.svg');   */
+  background-position: top center;
+  padding-bottom: 10%;
+}
+#story2Logo4 {
+  /* background-image: url('./lamdaTan1.svg');   */
+  background-position: top center;
+  padding-top: 7%;
+}
+#story2Logo5 {
+  /* background-image: url('./chemistryTan1.svg');   */
+  background-position: top right;
+}
+#story2Logo6 {
+  /* background-image: url('./treeTan1.svg');   */
+  background-position: top left;
+}
+#story2Logo7 {
+  /* background-image: url('./mountainTan2.svg');   */
+  background-position: top right;
+}
+#story2Logo8 {
+  /* background-image: url('./concentricTan1.svg');   */
+  background-position: top center;
+  padding-bottom: 10%;
+  transition: all 2s ease 0s;
+}
+#story2Logo8:hover {
+  /* background-image: url('./concentricDark1.svg');   */
+  /* background-position: top center;
+  padding-bottom: 10%; */
+}
+#storyAlegreya {
+  /* font-family: 'Alegreya Sans SC'; */
+  font-size: 120%;
+  transition: all 1s ease 0s;
+}
+#storyAlegreya:hover {
+  letter-spacing: 1px !important;
+  font-size: 135%;
+}
+#storyEnd {
+  text-align: center;
+  font-size: 350%;
+  letter-spacing: 16px;
+  margin: 0 auto;
+  margin-top: 2%;
+  margin-bottom: 10%;
+  width: 100%;
+  border: 1px solid #00dcff;
+  border-width: 2px 0px;
+  padding: 2.5% 0% 2% 0%;
+  /* line-height: 0px; */
+  transition: all 1s ease 0s;
+  background: linear-gradient(left,rgba(43, 34, 23, 0.62), rgba(209,183,148, 0.98), rgba(209,183,148, 0.7), rgba(209,183,148, 0.25),rgba(0,220,255, 0.06), rgba(0,220,255, 0.09), rgba(0,220,255, 0.09), rgba(0,220,255, 0.1), rgba(0,220,255, 0.06),rgba(0,220,255, 0));
+}
+#storyEnd:hover {
+  background: linear-gradient(left,rgba(43, 34, 23, 0.72), rgba(209,183,148, 0.98), rgba(209,183,148, 0.7), rgba(209,183,148, 0.35),rgba(0,220,255, 0.06), rgba(0,220,255, 0.09), rgba(0,220,255, 0.09), rgba(0,220,255, 0.1), rgba(0,220,255, 0.04),rgba(0,220,255, 0));
+  background-color: rgba(0,220,255,0.05);
+  /* transform: scale(1.02); */
+}
+
 
 /* Short Story End */
 

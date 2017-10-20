@@ -14,7 +14,7 @@ import AnswerEditFormPrivate from './components/answers/AnswerEditFormPrivate.js
 import AnswerFlagForm from './components/answers/AnswerFlagForm.jsx';
 import AnswerForm from './components/answers/AnswerForm.jsx';
 import AnswerFormPrivate from './components/answers/AnswerFormPrivate.jsx';
-import ChatBoxContainer from './components/chatbox/ChatBoxContainer.jsx'
+// import ChatBoxContainer from './components/chatbox/ChatBoxContainer.jsx'
 import CommentDeleteForm from './components/comments/CommentDeleteForm.jsx';
 import CommentDeleteFormPrivate from './components/comments/CommentDeleteFormPrivate.jsx';
 import CommentEditForm from './components/comments/CommentEditForm.jsx';
@@ -177,10 +177,6 @@ import WelcomeProjectsContainer from './containers/WelcomeProjectsContainer.jsx'
 //Assets
 import './assets/index.css';
 
-// SSL
-import SSL from './.well-known/pki-validation/362935320EA9A833C500A47D6B93B9E0.txt';
-import SSLCode2 from './.well-known/pki-validation/SSLCode2';
-import SSLCode from './SSLCode.jsx';
 
 
 
@@ -202,11 +198,6 @@ ReactDOM.render(
     <Route path='/' component={App}>
     <IndexRoute component={Intro}></IndexRoute>
     <Route path='/intro' component={Intro}></Route>
-    <Route path='/.well-known' component={SSL}>
-      <Route path='/.well-known/pki-validation' component={SSL}>
-        <Route path='/.well-known/pki-validation/362935320EA9A833C500A47D6B93B9E0.txt' component={SSL}></Route>
-      </Route>
-    </Route>
     <IndexRoute component={Intro}></IndexRoute>
     <Route path='/welcome/tutorial' component={TutorialWelcomePage}>
       <IndexRoute component={TutorialWelcomeButton}></IndexRoute>
@@ -232,8 +223,8 @@ ReactDOM.render(
         <Route path='/welcome/container/project' component={WelcomeProjectsContainer}>
           <IndexRoute component={WelcomeCreateButton}></IndexRoute>
           <Route path='/welcomecreate' component={WelcomeCreateButton}>
-            <IndexRoute component={ChatBoxContainer}></IndexRoute>
-            <Route path='/chatbox' component={ChatBoxContainer}/>
+            {/* <IndexRoute component={ChatBoxContainer}></IndexRoute> */}
+            {/* <Route path='/chatbox' component={ChatBoxContainer}/> */}
             <Route path='/welcome' component={TrueEmpty}/>
           </Route>
           <Route path='/welcome/create' component={WelcomeCreateForm}></Route>

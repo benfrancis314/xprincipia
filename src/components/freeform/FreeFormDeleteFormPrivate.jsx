@@ -88,10 +88,10 @@ deleteFreeform() {
                           <legend>Delete Debate Point</legend>
                               <div>Are you sure you would like to delete this debate point?</div>
                               <br />
-                              <Link to={`/project/private/${this.state.freeForm.TypeID}/freeForms`}>
+                              <Link to={`/project/private/${this.props.params.probID}/open`}>
                                   <div onClick={this.deleteFreeform} id="deleteButton">Delete</div>
                               </Link>
-                              <Link to={`/project/private/${this.state.freeForm.TypeID}/freeForms`}>
+                              <Link to={`/project/private/${this.props.params.probID}/open`}>
                                   <div id="returnButton">Exit</div>
                               </Link>
                       </fieldset>

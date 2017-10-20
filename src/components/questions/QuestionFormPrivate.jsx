@@ -18,7 +18,10 @@ export default class QuestionForm extends React.Component {
 
 postQuestion() {
   //Read field items into component state
+// document.getElementById('questionTextArea').style.whiteSpace = "pre";
 this.state.question = document.getElementById('questionTextArea').value
+// Proof that the text spacing works up until this point
+// alert(this.state.question);
 
   //if User is on a solution post with type 1
   //solutionID will be available in props
@@ -55,11 +58,11 @@ this.state.question = document.getElementById('questionTextArea').value
     else {
 
       axios.post( Config.API + '/auth/questions/create', {
-      type:'0',
-      typeID: this.props.params.probID,
-      username: cookie.load('userName'),
-      description : this.state.question,
-    })
+        type:'0',
+        typeID: this.props.params.probID,
+        username: cookie.load('userName'),
+        description : this.state.question,
+      })
       .then(function (result) {
         document.location = window.location.pathname 
       })
