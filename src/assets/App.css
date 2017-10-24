@@ -270,6 +270,30 @@ input:-webkit-autofill {
 }
 
 
+/* Fixing Autocomplete */
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus
+input:-webkit-autofill, 
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+  border: 1px solid #0f131c;
+  -webkit-text-fill-color: #00dcff;
+  box-shadow: 0 0 3px 1000px #0f131c inset;
+  transition: all 1ss ease-in-out 0s;
+  background-color: #0f131c !important;
+}
+
+
+
+
+
+
 /*End Global*/
 
 
@@ -4147,6 +4171,7 @@ font-family: 'Open Sans';
   border: 1px solid #333333;
   border-width: 0px 0px 1px 0px;
   width: 82%;
+  white-space: pre-wrap !important;
 }
 #suggestionVote, #suggestionVoteNoComments {
   flex: 1 1 auto;
@@ -4466,64 +4491,6 @@ font-family: 'Open Sans';
   /* Old */
   /* background: linear-gradient(rgba(0,255,220,0), rgba(0,220,255,0.1)); */
 }
-#welcomeUserUnitsContainer {
-  /*margin: 0% 5% 3% 5%;*/
-  /*margin: 0% 0% 3% 0%;*/
-  padding: 2px;
-  margin: 0 auto;
-}
-#welcomeProblemsUnitList {
-  /*text-align: center;*/
-  display: flex;
-  /*align-items: center;*/
-  justify-content: space-between;
-  width: 100%;
-  margin: 0 auto;
-  }
-#welcomeProblemsUnitList li {
-  /*display: block;*/
-  /*margin-left: 5%;
-  margin-right: 5%;*/
-  list-style-type: none;
-}
-#welcomeProblemsUnit {
-  /*margin-left: 30px;
-  margin-right: 30px;*/
-}
-#welcomeProblemsUnit:hover * {
-  color: #ffffff;
-  cursor: pointer;
-}
-#welcomeProblemsHeader {
-  /*display: flex;
-  flex-direction: column;
-  border: 2px solid #00dcff;
-  border-radius: 100%;
-  box-shadow: 0 0 2pt 2pt rgba(0,220,255,0.5);
-  width: 14em;
-  height: 14em;
-  word-wrap: break-word; 
-  align-items: center; 
-  justify-content: center;
-  background-color: rgba(0,220,255,0.05);*/
-
-  display: inline-flex;
-  flex-direction: column;
-  border: 2px solid #00dcff;
-  border-radius: 100%;
-  width: 14em;
-  height: 14em;
-  word-wrap: break-word; 
-  /*align-items: center; */
-  /*justify-content: center;*/
-  background-color: rgba(0,220,255,0.05);
-  margin: 0 auto;
-  box-shadow: 0 0 2pt 2pt rgba(0,220,255,0.5);
-  transition: all 0.5s ease 0s;
-  transform: scale(1);
-  margin-left: 5%;
-  margin-right: 5%;
-}
 #welcomeProblemsHeader:hover, 
 #welcomeProblemsHeader1:hover,
 #welcomeProblemsHeader2:hover,
@@ -4546,8 +4513,9 @@ font-family: 'Open Sans';
   flex-direction: column;
   border: 2px solid #00dcff;
   border-radius: 100%;
-  width: 14em;
-  height: 14em;
+  /* Used to be 14em */
+  width: 13.5em;
+  height: 13.5em;
   word-wrap: break-word; 
   align-items: center; 
   justify-content: center;
@@ -4588,85 +4556,6 @@ font-family: 'Open Sans';
 #welcomeProblemsHeaderInvisible {
 display: none;
 }
-#welcomeUserProblemsUnit {
-display: inline-block;
-width: 100%;
-margin: 0% 5% 0% 5%;
-}
-#welcomeUserProblemsUnit:hover * {
-color: #ffffff;
-cursor: pointer;
-}
-#welcomeUserProblemsHeader {
-/*display: block;*/
-/*flex-direction: column;*/
-border: 1px solid #00dcff;
-border-radius: 3px;
-box-shadow: 0 0 0pt 0pt rgba(0,220,255,0.5);
-width: 94.5%;
-height: auto;
-word-wrap: break-word; 
-align-items: center; 
-justify-content: center;
-background-color: rgba(0,220,255,0);
-margin-bottom: 5%;
-background-size: cover;
-position: relative;
-margin: 0 auto;
-margin-top: 2%;
-
-background: linear-gradient(left,rgba(0,220,255, 0), rgba(0,220,255, 0.05), rgba(0,220,255, 0));
-transition: all 0.75s ease 0s;
-background-color: rgba(0,220,255,0.025);
-transform: scale(1);
-
-/*Test to draw eye more to user projects*/
-/*border-radius: 0px 0px 15px 0px;
-background-color: rgba(255,255,255,0.05);*/
-
-/*Added gradient for testing 3D hologram look*/
-/*background: radial-gradient(rgba(0,220,255,0.05), rgba(0,220,255,0.035), rgba(0,220,255,0.05));*/
-}
-#welcomeUserProblemsHeader:hover {
-box-shadow: 0 0 1.5pt 1.5pt rgba(0,220,255,0.5);
-transform: scale(1.02);
-background: linear-gradient(left,rgba(0,220,255, 0.05), rgba(0,220,255, 0.1), rgba(0,220,255, 0.05));
-}
-#welcomeUserProblemsUnitList {
-text-align: center;
-display: flex;
-flex-direction: column;
-align-items: center;
-justify-content: space-around;
-width: 53%;
-margin: 0 auto;
-background-color: rgba(0,220,255,0.0);
-border: 1px solid #00dcff;
-border-width: 0px;
-/* Old */
-/* border-width: 0px 1px 1px 1px; */
-border-radius: 0px 0px 3px 3px;
-padding-bottom: 2%;
-
-/*Testing new style with user projects*/
-/*So far haven't found what I'm looking for*/
-/*width: 70%;
-border: 1px solid #dddddd;*/
-/*background-color: rgba(255,255,255,0.05);*/
-}
-#welcomeUserProblemsUnitList a {
-/*display: block;*/
-text-decoration: none;
-list-style: none;
-}
-#welcomeUserProblemsTitle {
-margin: 0 auto;
-padding: 10px 15px 10px 15px !important;
-font-size: 140%;
-word-wrap: break-word; 
-text-align: center;
-/*background-color: rgba(0,220,255,0.05);*/
-}
 /*#welcomeProblemsSummary {
   font-family: 'Open Sans', sans-serf;
   padding: 0px 5px 5px 5px;
@@ -4689,71 +4578,6 @@ input#submitWelcomeProblem:hover {
 
 
 /* New welcome styles */
-
-
-#welcomeProjectAddButton {
-  display: flex;
-  flex-direction: column;
-  border: 2px solid #00dcff;
-  border-radius: 100%;
-  width: 4.5em;
-  height: 4.5em;
-  align-items: center; 
-  justify-content: center;
-  background-color: rgba(0,220,255,0.05);
-  margin: 0 auto;
-  box-shadow: 0 0 2pt 2pt rgba(0,220,255,0.5);
-  transition: all 0.75s ease 0s;
-  transform: scale(1);
-  margin-bottom: 0.75%;
-  margin-top: 0.5%;
-}
-  #welcomeProjectAddButton:hover {
-  box-shadow: 0 0 1pt 3pt rgba(0,220,255,0.5);
-  transform: scale(1.02);
-  cursor: pointer;
-  background: radial-gradient(circle, rgba(0,220,255,0.05), rgba(0,220,255,0.05), rgba(0,220,255,0.1), rgba(0,220,255,0.05));
-  }
-  #welcomeSearchFormContainer {
-    text-align: center;
-    font-size: 175%;
-    width: 100%;
-    margin: 0 auto;
-    padding: 0% 0% 0.5% 0%;
-    margin-bottom: 0.5%;
-    /* margin-top: 0.5%; */
-    }
-  #welcomeSearchFormLabel {
-    display: inline-block;
-    color: #888888;
-    transition: all 2s ease 0s;
-    letter-spacing: 6px !important;  
-    font-family: 'Alegreya Sans SC' !important;
-    box-shadow: 0 0 0pt 0pt rgba(0,220,255,0.5) !important;   
-    border-width: 0px !important;
-    outline-width: 0px !important; 
-  }
-  #welcomeSearchFormLabel:active, #welcomeSearchFormLabel:focus {
-    transition: all 2s ease 0s;
-    letter-spacing: 8px !important;  
-  }
-  #welcomeSearchFormLabelBlue {
-    display: inline-block;
-    color: #00dcff !important;
-    transition: all 2s ease 0s;
-    letter-spacing: 8px !important;  
-    font-family: 'Alegreya Sans SC' !important;
-    box-shadow: 0 0 0pt 0pt rgba(0,220,255,0.5) !important;   
-    border-width: 0px !important;
-    outline-width: 0px !important; 
-  }
-  #welcomeSearchFormLabelBlue:active, #welcomeSearchFormLabelBlue:focus {
-    transition: all 2s ease 0s;
-    letter-spacing: 10px !important;  
-  }
-  #welcomeSearchFormLabelBlue::placeholder {
-    color: #00dcff !important;
-  }
   #width80 {
     /* Original width in welcome container is 80% */
     width: 87%;
@@ -4765,8 +4589,8 @@ input#submitWelcomeProblem:hover {
     margin: 0 auto;
     color: #00dcff;
     text-align: center;
-    margin-bottom: 0.7%;
-    /*margin-top: 1.75%;*/
+    /* Removed margin-bottom for space */
+    /* margin-bottom: 0.25%; */
     font-size: 175%;
     letter-spacing: 6px;
     width: 10%;
@@ -4793,7 +4617,7 @@ input#submitWelcomeProblem:hover {
       color: #ffffff;
       text-align: center;
       margin-bottom: 0%;
-      margin-top: 2.4%;
+      margin-top: 1.5%;
       font-size: 260%;
       letter-spacing: 15px;
       width: 70%;
@@ -4815,7 +4639,7 @@ input#submitWelcomeProblem:hover {
       border-left-color: #515151;*/
       letter-spacing: 16px;
       color: #00dcff;
-      font-size: 120%;      
+      font-size: 90%;      
       /* Old */
       /* font-size: 130%; */
       text-align: center;
@@ -4825,7 +4649,7 @@ input#submitWelcomeProblem:hover {
       /*border-radius: 0% 0% 15% 15%;*/
       border-radius: 0% 0% 40% 40%;
       /*Make sure this refreshes to keep page normal width*/
-      padding: 0.3% 0% 0.5% 0%;
+      padding: 0.15% 0% 0.35% 0%;
       background: linear-gradient(rgba(0,255,220,0.05), rgba(0,255,220,0.05), rgba(0,220,255,0));
     }
     #welcomeIntroductionLabel:hover {
@@ -5813,6 +5637,7 @@ min-width: 80%;
 transition: all 0.5s ease 0s;
 background-color: rgba(255,255,255,0.025);
 /*font-weight: 300;*/
+white-space: pre-wrap !important;
 }
 
 
@@ -6413,6 +6238,7 @@ line-height: 170%;
 word-wrap: break-word; 
 transition: all 0.5s ease 0s;
 text-align: left;
+white-space: pre-wrap !important;
 }
 #solutionDescription, #solutionReferences {
 padding-top: 3%;
@@ -6651,6 +6477,7 @@ padding-bottom: 1.75%;
 border: 1px solid #333333;
 border-width: 0px 0px 1px 0px;
 width: 82%;
+white-space: pre-wrap !important;
 }
 #learnResourcesLink:hover {
 color: rgba(0,220,255,1);
@@ -6766,6 +6593,7 @@ word-wrap: break-word;
 font-family: 'Open Sans', sans-serif;
 transition: all 0.5s ease 0s;
 text-align: left;
+white-space: pre-wrap !important;
 }
 #currentVersion {
 flex: 1 1 auto;
@@ -6861,6 +6689,7 @@ transition: all 0.5s ease 0s;
 width: 20%;
 margin: 0 auto;
 box-shadow: 0 0 1pt 1pt rgba(0,220,255,0.5);
+white-space: pre-wrap !important;
 }
 #solutionDescriptionReturn:hover {
 background-color: rgba(0,220,255,0.15);
@@ -7703,6 +7532,7 @@ background-color: #00dcff;
   cursor: pointer;
 }
 
+
 /*Notifications*/
 
 #notificationFailureBox, #notificationSuccessBox {
@@ -7748,6 +7578,59 @@ background-color: #00dcff;
 /*End Notifications*/
 
 /*End Notifications*/
+
+
+
+
+/* Easter Eggs */
+
+
+#easterEggContainer {
+  position: fixed;
+  top: 15vh;
+  z-index: 500;
+  /* width: 50%; */
+  margin: 0 auto;
+  margin-left: 25%;
+  margin-right: 25%;
+  border: 1px solid #00dcff;
+  border-radius: 3px;
+  box-shadow: 0 0 2pt 2pt rgba(0,220,255,0.25);
+  background-color: rgba(15,19,28,0.9);
+  /* padding: 5px; */
+  text-align: center;
+  font-size: 150%;
+  color: #ffffff;
+}
+#easterEgg1 {
+  background-image: url('./wandererAboveFog.jpg');  
+  /* background-size: contain; */
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-color: rgba(15,19,28,0.9999);
+  background-blend-mode: overlay;
+  text-align: center;
+  padding: 15% 10%;
+  color: #00dcff;
+  /* color: #dddddd; */
+  font-size: 125%;
+  letter-spacing: 1px;
+  opacity: 0.8;
+}
+#easterEggText {
+  /* Trying to get the text not to have an opacity */
+  opacity: 1 !important;
+}
+
+
+/* End Easter Eggs */
+
+
+
+
+
+
+
 
 
 /*Test 3D rotation*/
@@ -8294,6 +8177,507 @@ margin-top: 1%;
 
 
 /* Short Story End */
+
+
+
+
+/* ActivityFeedStart */
+
+#feedContainer {
+  width: 100%;
+}
+#feedTitle {
+  border: 1px solid #333333;
+  background-color: rgba(0,220,255, 0.05);
+  border-radius: 45% 45% 3px 3px;
+  margin-top: 1.5%;
+  margin-bottom: 1%;
+  text-align: center;
+  letter-spacing: 6px;
+  padding: 2px;
+  color: #00dcff;
+  transition: all 2s ease 0s;
+}
+#feedTitleHover {
+  border: 1px solid #00dcff;
+  background-color: rgba(0,220,255, 0.05);
+  border-radius: 45% 45% 3px 3px;
+  margin-top: 1.5%;
+  margin-bottom: 1%;
+  text-align: center;
+  letter-spacing: 8px;
+  padding: 2px;
+  color: #00dcff;
+  transition: all 2s ease 0s;
+}
+#feedBottom {
+  border: 1px solid #333333;
+  background-color: rgba(0,220,255, 0.05);
+  border-radius: 45% 45% 3px 3px;
+  margin-top: 1.5%;
+  margin-bottom: 1%;
+}
+#feedUnitContainer {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+#feedOptionsButton {
+  /* border: 1px solid #00dcff;
+  border-width: 1px 1px 1px 0px;
+  border-radius: 0px 25% 25% 0%; */
+  /* padding: 5% 5% 5% 10%; */
+  width: 10%;
+  /* height: 10%; */
+  transition: all 1.5s ease 0s;
+  border-radius: 30% 30% 0% 0%;
+  background-color: rgba(0,220,255,0);
+  padding: 5px;
+  transform: scale(1);
+}
+#feedOptionsButton:hover {
+  /* transform: scale(1.1); */
+
+  /* padding-left: 15%; */
+  /* margin: 0 auto; */
+  /* border: 0px solid #00dcff;
+  background: linear-gradient(top,rgba(0,220,255, 0.075), rgba(0,220,255, 0.05), rgba(0,220,255, 0));
+  background-color: rgba(0,220,255,0.01); */
+}
+/* #welcomeProjectAddButton {
+  display: flex;
+  flex-direction: column;
+  border: 2px solid #00dcff;
+  border-radius: 100%;
+  width: 4.5em;
+  height: 4.5em;
+  align-items: center; 
+  justify-content: center;
+  background-color: rgba(0,220,255,0.05);
+  margin: 0 auto;
+  box-shadow: 0 0 2pt 2pt rgba(0,220,255,0.5);
+  transition: all 0.75s ease 0s;
+  transform: scale(1);
+  margin-bottom: 0.75%;
+  margin-top: 0.5%;
+}
+  #welcomeProjectAddButton:hover {
+  box-shadow: 0 0 1pt 3pt rgba(0,220,255,0.5);
+  transform: scale(1.02);
+  cursor: pointer;
+  background: radial-gradient(circle, rgba(0,220,255,0.05), rgba(0,220,255,0.05), rgba(0,220,255,0.1), rgba(0,220,255,0.05));
+  } */
+  #feedCircleImg {
+    padding: 0px;
+    margin: 0 auto;
+    vertical-align: middle;
+    transition: all 1s ease 0s;
+    transform: rotate(0deg);
+    box-shadow: 0 0 0pt 0pt rgba(0,220,255,0.5);
+  }
+  #feedCircleImg:hover, #feedCircleImg:active, #feedCircleImg:focus {
+    transform: rotate(90deg);
+    cursor: pointer;
+    /* This effect is cool but I'm not sure if it's quite right */
+    /* background-color: rgba(0,220,255,0.15); */
+    border-radius: 50%;
+  }
+    
+    
+#feedListDiv {
+  width: 90%;
+  left: 0;
+  margin-left: 1%;
+  padding-top: 1%;
+  transition: all 0.5s ease 0s;
+  /* border: 1px solid rgba(0,220,255,0.05);
+  border-width: 1px 1px 0px 0px;
+  border-radius: 0% 25% 0% 0%; */
+}
+#welcomeUserUnitsContainer {
+  /*margin: 0% 5% 3% 5%;*/
+  /*margin: 0% 0% 3% 0%;*/
+  padding: 2px;
+  margin: 0 auto;
+  display: inline-flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: space-between;
+}
+#welcomeProblemsUnitList {
+  /*text-align: center;*/
+  display: flex;
+  /*align-items: center;*/
+  justify-content: space-between;
+  width: 100%;
+  margin: 0 auto;
+  margin-right: 0;
+  }
+#welcomeProblemsUnitList li {
+  /*display: block;*/
+  /*margin-left: 5%;
+  margin-right: 5%;*/
+  list-style-type: none;
+}
+#welcomeProblemsUnit {
+  /*margin-left: 30px;
+  margin-right: 30px;*/
+}
+#welcomeProblemsUnit:hover * {
+  color: #ffffff;
+  cursor: pointer;
+}
+#welcomeProblemsHeader {
+  /*display: flex;
+  flex-direction: column;
+  border: 2px solid #00dcff;
+  border-radius: 100%;
+  box-shadow: 0 0 2pt 2pt rgba(0,220,255,0.5);
+  width: 14em;
+  height: 14em;
+  word-wrap: break-word; 
+  align-items: center; 
+  justify-content: center;
+  background-color: rgba(0,220,255,0.05);*/
+
+  display: inline-flex;
+  flex-direction: column;
+  border: 2px solid #00dcff;
+  border-radius: 100%;
+  width: 14em;
+  height: 14em;
+  word-wrap: break-word; 
+  /*align-items: center; */
+  /*justify-content: center;*/
+  background-color: rgba(0,220,255,0.05);
+  margin: 0 auto;
+  box-shadow: 0 0 2pt 2pt rgba(0,220,255,0.5);
+  transition: all 0.5s ease 0s;
+  transform: scale(1);
+  margin-left: 5%;
+  margin-right: 5%;
+}
+#feedUnitList {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  width: 90%;
+  margin: 0 auto;
+  margin-left: 0;
+  background-color: rgba(0,220,255,0.0);
+  border: 1px solid #00dcff;
+  border-width: 0px;
+  /* Old */
+  /* border-width: 0px 1px 1px 1px; */
+  border-radius: 0px 0px 3px 3px;
+  padding-bottom: 2%;
+  transition: all 0.5s ease 0s;
+  
+  /*Testing new style with user projects*/
+  /*So far haven't found what I'm looking for*/
+  /*width: 70%;
+  border: 1px solid #dddddd;*/
+  /*background-color: rgba(255,255,255,0.05);*/
+  }
+  #feedUnitList a {
+  /*display: block;*/
+  text-decoration: none;
+  list-style: none;
+  }
+#feedUnits {
+  background: linear-gradient(left,rgba(0,220,255, 0.06), rgba(0,220,255, 0.07), rgba(0,220,255, 0.02));
+  border: 1px solid #333333;
+  border-radius: 5px 5px 25% 10px;
+  margin-top: 0%;
+  margin-bottom: 3%;
+  padding: 2% 5% 2% 5%;
+  transition: all 0.75s ease 0s;
+  box-shadow: 0 0 0pt 0pt rgba(0,220,255,0.5);
+  background-color: rgba(0,220,255,0);
+  transform: scale(1);
+}
+#feedUnits:hover {
+  background: linear-gradient(left,rgba(0,220,255, 0.03), rgba(0,220,255, 0.1), rgba(0,220,255, 0));
+  border-color: #00dcff;
+  box-shadow: 0 0 1pt 1pt rgba(0,220,255,0.5);  
+  background-color: rgba(0,220,255,0.025);
+  transform: scale(1.02);
+}
+#feedUnits:hover #feedDate {
+  color: #00dcff;
+}
+#blueFeed {
+  color: #00dcff !important;
+  font-size: 90%;
+  padding-left: 5%;
+  width: 40%;
+  border: 1px solid #333333;
+  border-width: 0px 0px 1px 0px;
+  font-family: 'Alegreya Sans SC' !important;
+  text-align: left;
+}
+#whiteFeed {
+  font-family: 'Alegreya Sans SC' !important;
+  font-size: 145%;
+  padding-left: 2%;
+  padding-right: 2%;
+  padding-top: 1.75%;
+  padding-bottom: 1.75%;
+  border: 1px solid #333333;
+  border-width: 0px 0px 1px 0px;
+  width: 72%;
+}
+#feedDate {
+  color: #999999;
+  transition: all 0.5s ease 0s;
+}
+#feedListUnit {
+  display: inline-block;
+  width: 100%;
+  margin: 0% 0% 0% 5%;
+}
+#feedListUnit:hover * {
+  cursor: pointer;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Welcome Right Side */
+
+#SPListDiv {
+  width: 90%;
+  right: 0;
+  margin: 0 auto;
+  margin-right: 1%;
+  margin-top: 1%;
+}
+#welcomeRightContainer {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+#welcomeRightResults {
+  display: flex;
+  flex-direction: row;
+}
+#welcomeProjectAddButton {
+  display: flex;
+  flex-direction: column;
+  border: 2px solid #00dcff;
+  border-radius: 100%;
+  width: 3.5em;
+  height: 3.5em;
+  align-items: center; 
+  justify-content: center;
+  background-color: rgba(0,220,255,0.05);
+  margin: 0 auto;
+  box-shadow: 0 0 1.5pt 1.5pt rgba(0,220,255,0.5);
+  transition: all 0.75s ease 0s;
+  transform: scale(1);
+  margin-bottom: 0.75%;
+  margin-top: 0.5%;
+  margin: 0 auto;
+}
+  #welcomeProjectAddButton:hover {
+  box-shadow: 0 0 1pt 2pt rgba(0,220,255,0.5);
+  transform: scale(1.02);
+  cursor: pointer;
+  background: radial-gradient(circle, rgba(0,220,255,0.05), rgba(0,220,255,0.05), rgba(0,220,255,0.1), rgba(0,220,255,0.05));
+  }
+  #welcomeSearchFormContainer {
+    text-align: center;
+    font-size: 155%;
+    width: 90%;
+    margin: 0 auto;
+    /* padding: 0% 0% 0.5% 0%; */
+    /* margin-bottom: 0.5%; */
+    /* margin-top: 0.5%; */
+    }
+  #welcomeSearchFormLabel {
+    display: inline-block;
+    color: #888888;
+    transition: all 2s ease 0s;
+    letter-spacing: 6px !important;  
+    font-family: 'Alegreya Sans SC' !important;
+    box-shadow: 0 0 0pt 0pt rgba(0,220,255,0.5) !important;   
+    border-width: 0px !important;
+    outline-width: 0px !important; 
+    width: 100%;
+  }
+  #welcomeSearchFormLabel:active, #welcomeSearchFormLabel:focus {
+    transition: all 2s ease 0s;
+    letter-spacing: 8px !important;  
+  }
+  #welcomeSearchFormLabelBlue {
+    display: inline-block;
+    color: #00dcff !important;
+    transition: all 2s ease 0s;
+    letter-spacing: 8px !important;  
+    font-family: 'Alegreya Sans SC' !important;
+    box-shadow: 0 0 0pt 0pt rgba(0,220,255,0.5) !important;   
+    border-width: 0px !important;
+    outline-width: 0px !important; 
+  }
+  #welcomeSearchFormLabelBlue:active, #welcomeSearchFormLabelBlue:focus {
+    transition: all 2s ease 0s;
+    letter-spacing: 10px !important;  
+  }
+  #welcomeSearchFormLabelBlue::placeholder {
+    color: #00dcff !important;
+  }
+
+
+
+
+
+
+  #welcomeUserProblemsUnit {
+    display: inline-block;
+    width: 100%;
+    margin: 0 auto;
+    /* margin: 0% 5% 0% 5%; */
+    }
+    #welcomeUserProblemsUnit:hover * {
+    color: #ffffff;
+    cursor: pointer;
+    }
+    #welcomeUserProblemsHeader {
+    display: flex;
+    flex-direction: row;
+    border: 1px solid #00dcff;
+    border-radius: 3px;
+    box-shadow: 0 0 0pt 0pt rgba(0,220,255,0.5);
+    width: 94.5%;
+    height: auto;
+    word-wrap: break-word; 
+    align-items: center; 
+    justify-content: center;
+    background-color: rgba(0,220,255,0);
+    margin-bottom: 5%;
+    background-size: cover;
+    position: relative;
+    margin: 0 auto;
+    margin-bottom: 2%;
+    
+    background: linear-gradient(left,rgba(0,220,255, 0), rgba(0,220,255, 0.05), rgba(0,220,255, 0));
+    transition: all 0.75s ease 0s;
+    background-color: rgba(0,220,255,0.025);
+    transform: scale(1);
+    
+    /*Test to draw eye more to user projects*/
+    /*border-radius: 0px 0px 15px 0px;
+    background-color: rgba(255,255,255,0.05);*/
+    
+    /*Added gradient for testing 3D hologram look*/
+    /*background: radial-gradient(rgba(0,220,255,0.05), rgba(0,220,255,0.035), rgba(0,220,255,0.05));*/
+    }
+    #welcomeUserProblemsHeader:hover {
+    box-shadow: 0 0 1.5pt 1.5pt rgba(0,220,255,0.5);
+    transform: scale(1.02);
+    background: linear-gradient(left,rgba(0,255,220, 0.05), rgba(0,220,255, 0.1), rgba(0,220,255, 0.05));
+    }
+    #welcomeUserProblemsUnitList {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    width: 90%;
+    margin: 0 auto;
+    margin-right: 1%;
+    background-color: rgba(0,220,255,0.0);
+    border: 1px solid #00dcff;
+    border-width: 0px;
+    /* Old */
+    /* border-width: 0px 1px 1px 1px; */
+    border-radius: 0px 0px 3px 3px;
+    padding-bottom: 2%;
+    
+    /*Testing new style with user projects*/
+    /*So far haven't found what I'm looking for*/
+    /*width: 70%;
+    border: 1px solid #dddddd;*/
+    /*background-color: rgba(255,255,255,0.05);*/
+    }
+    #welcomeUserProblemsUnitList a {
+    /*display: block;*/
+    text-decoration: none;
+    list-style: none;
+    }
+    #welcomeUserProblemsTitle {
+      margin: 0 auto;
+      /* margin: 10px 15px 10px 15px !important; */
+      /* margin: 2% 3% 2% 3%; */
+      font-size: 140%;
+      word-wrap: break-word; 
+      text-align: center;
+      display: inline-flex;
+      flex-direction: row;
+      justify-content: flex-start;
+      align-items: stretch;
+      width: 100%;
+      /*background-color: rgba(0,220,255,0.05);*/
+    }
+    #welcomeProjectPercent {
+      text-align: center;
+      color: #00ffdc !important;
+      margin: 0 auto;
+      padding: 2% 5% 2% 7%;
+      width: 1em;
+      height: 100%;
+      margin-left: 0%;
+      margin-right: 5%;
+      font-size: 150%;
+      /* background: linear-gradient(rgba(0,255,220,0), rgba(0,220,255,0.1)); */
+      background: linear-gradient(left,rgba(0,255,220, 0.1), rgba(0,255,220, 0.05), rgba(0,255,220, 0));
+      background-color: rgba(0,255,220,0);
+      transition: all 0.5s ease 0s;
+      /* transform: scale(1); */
+    }
+    #welcomeProjectPercent:hover {
+      /* background: linear-gradient(left,rgba(0,255,220, 0.25), rgba(0,255,220, 0.05), rgba(0,255,220, 0)); */
+      /* background-color: rgba(0,255,220,0.05); */
+      /* transform: scale(0.98); */
+    }
+    #welcomeProblemsTitleText {
+      margin: 0 auto;
+      padding: 2% 0% 2% 0%;
+      text-align: center;
+      text-align: left;
+      height: 100%;
+      margin-left: 5%;
+      margin-right: 5%;
+      font-size: 130%;
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

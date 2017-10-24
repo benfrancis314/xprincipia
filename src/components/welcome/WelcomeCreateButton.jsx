@@ -27,7 +27,7 @@ export default class WelcomeContainer extends React.Component {
             <Link to="/welcome/create" activeClassName="activeBlue">
               <div id="welcomeProjectAddButton" onMouseOver={this.hoverText} onMouseOut={this.unHoverText}>
                 {/* Old height and width were 80 */}
-                  <img src={require('../../assets/blueAdd2.svg')} id="privateNewProjectPlus" width="50" height="50" alt="User avatar, DNA Helix" />
+                  <img src={require('../../assets/blueAdd2.svg')} id="privateNewProjectPlus" width="40" height="40" alt="User avatar, DNA Helix" />
               </div>
             </Link>
           {/* </div> */}

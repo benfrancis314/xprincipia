@@ -50,12 +50,17 @@ class App extends React.Component {
     $(document).ready(function() {
         $('#notificationShow').attr('id','notification');
      });
-    };
-    hidePrivateNotification() {
+  };
+  hidePrivateNotification() {
     $(document).ready(function() {
-        $('#privateAlertShow').attr('id','privateAlert');
+      $('#privateAlertShow').attr('id','privateAlert');
+    });
+  };
+  hideEasterEgg() {
+    $(document).ready(function() {
+        $('#easterEggContainer').fadeOut(3000);
      });
-    };
+  };
     
   render() {
     //Check if user is logged in
@@ -101,12 +106,15 @@ class App extends React.Component {
           <div id="notificationReturn" onClick={this.hideNotification}>Return</div>
         </div>
         <div id="privateAlert">
-                <div id="privateAlertHeader">
-                    <img src={require('./assets/lock2Blue.svg')} id="lockAlert" width="30" height="30" onClick={this.privateAlert} alt="Logo logo, signifying this is private"/>
-                </div>
-                <div id="privateAlertContent">This space is entirely <span id="blue">private</span></div>
-                <div id="privateAlertReturn" onClick={this.hidePrivateNotification}>Return</div>
+            <div id="privateAlertHeader">
+                <img src={require('./assets/lock2Blue.svg')} id="lockAlert" width="30" height="30" onClick={this.privateAlert} alt="Logo logo, signifying this is private"/>
             </div>
+            <div id="privateAlertContent">This space is entirely <span id="blue">private</span></div>
+            <div id="privateAlertReturn" onClick={this.hidePrivateNotification}>Return</div>
+        </div>
+        <div onMouseOver={this.hideEasterEgg}>
+        {randomImg()}
+        </div>
       </div>
       );
     
@@ -133,3 +141,36 @@ export default App;
     }
     return false;
 };
+
+
+
+function randomImg() {
+  if (Math.random() < 0.1) {
+    return (
+      <div id="easterEggContainer">
+        <div id="easterEgg1">
+          <div id="easterEggText">
+            man is a rope stretched between the animal and the übermensch &mdash; 
+            <br/>
+            a rope over an abyss. 
+          </div>
+        </div>
+      </div>
+    )
+  } 
+  //   else if (Math.random() < 0.25){
+  //   return <img src={require('./assets/heroLogo.svg')} id="middleAlignOrionPrivate" width='70' height='100' alt="Back arrow, blue up arrow" />
+  // } else if (Math.random() < 0.375){
+  //   return <img src={require('./assets/dragonConstellation.svg')} id="middleAlignOrionPrivate" width='70' height='100' alt="Back arrow, blue up arrow" />
+  // } else if (Math.random() < 0.5){
+  //   return <img src={require('./assets/hunterConstellation.svg')} id="middleAlignOrionPrivate" width='70' height='100' alt="Back arrow, blue up arrow" />
+  // } else if (Math.random() < 0.625){
+  //   return <img src={require('./assets/queenConstellation.svg')} id="middleAlignOrionPrivate" width='70' height='100' alt="Back arrow, blue up arrow" />
+  // } else if (Math.random() < 0.75){
+  //   return <img src={require('./assets/pegasusConstellation.svg')} id="middleAlignOrionPrivate" width='70' height='100' alt="Back arrow, blue up arrow" />
+  // } else if (Math.random() < 0.875){
+  //   return <img src={require('./assets/archerConstellation.svg')} id="middleAlignOrionPrivate" width='70' height='100' alt="Back arrow, blue up arrow" />
+  // } else if (Math.random() < 1){
+  //   return <img src={require('./assets/greatBearConstellation.svg')} id="middleAlignOrionPrivate" width='70' height='100' alt="Back arrow, blue up arrow" />
+  // }
+}

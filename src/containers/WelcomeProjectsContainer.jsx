@@ -4,6 +4,7 @@ import { Link } from 'react-router';
 // import Sound from 'react-sound';
 // Currently unused, may use later. Loading only loads part of page, currently looks weird
 // import ReactCSSTransitionGroup from 'react-addons-css-transition-group'; // ES6
+import ActivityFeedContainer from '../containers/ActivityFeedContainer.jsx';
 import TutorialWelcomeContent from '../components/tutorials/TutorialWelcomeContent.jsx';
 import WelcomeUnit from '../components/welcome/WelcomeUnit.jsx';
 import WelcomeUserUnit from '../components/welcome/WelcomeUserUnit.jsx';
@@ -22,8 +23,8 @@ export default class WelcomeContainer extends React.Component {
   }
   unHoverText() {
       $(document).ready(function() {
-          // $('#privateContainerMottoBlue').html("ORGANIZE YOUR THOUGHTS");
-          $('#welcomeSearchFormLabelBlue').attr('placeholder','SEARCH PROJECT TREES');            
+          // Used to say SEARCH PROJECT TREES
+          $('#welcomeSearchFormLabelBlue').attr('placeholder','SEARCH TOP PROJECTS');            
           $('#welcomeSearchFormLabelBlue').attr('id','welcomeSearchFormLabel');
       });
   }
@@ -144,10 +145,6 @@ export default class WelcomeContainer extends React.Component {
           {/*</div>*/}
 
           
-          <form id="welcomeSearchFormContainer">
-            <input type="search" name="search" placeholder="SEARCH PROJECT TREES" id="welcomeSearchFormLabel"  onKeyDown={this.queryProblem} autoFocus/>
-          </form>
-          {this.props.children}
           
         
           {/* Old */}
@@ -157,7 +154,20 @@ export default class WelcomeContainer extends React.Component {
               </form>
           </div> */}
           <div id="welcomeUserUnitsContainer">
-              <WelcomeUserUnit problems={this.state.userproblems} />
+              <ActivityFeedContainer problems={this.state.userproblems} />
+              
+              <div id="welcomeRightContainer">
+                <div id="welcomeRightResults">
+                  <form id="welcomeSearchFormContainer">
+                    {/* Used to say "SEARCH PROJECT TREES" */}
+                    <input type="search" name="search" placeholder="SEARCH TOP PROJECTS" id="welcomeSearchFormLabel"  onKeyDown={this.queryProblem} autoFocus/>
+                  </form>
+                  {this.props.children}
+                </div>
+                
+                <WelcomeUserUnit problems={this.state.userproblems} />
+              </div>
+              
           </div>
 
           {/*<div id="tutorialWelcomeButtonDiv">
@@ -171,7 +181,7 @@ export default class WelcomeContainer extends React.Component {
    }
 }
 function randomImg() {
-  if (Math.random() < 0.99) {
+  if (Math.random() < 0.125) {
     return <img src={require('../assets/orionLogo.svg')} id="middleAlignOrionPrivate" width='70' height='100' alt="Back arrow, blue up arrow" />
   } else if (Math.random() < 0.25){
     return <img src={require('../assets/heroLogo.svg')} id="middleAlignOrionPrivate" width='70' height='100' alt="Back arrow, blue up arrow" />
@@ -185,7 +195,7 @@ function randomImg() {
     return <img src={require('../assets/pegasusConstellation.svg')} id="middleAlignOrionPrivate" width='70' height='100' alt="Back arrow, blue up arrow" />
   } else if (Math.random() < 0.875){
     return <img src={require('../assets/archerConstellation.svg')} id="middleAlignOrionPrivate" width='70' height='100' alt="Back arrow, blue up arrow" />
-  } else if (Math.random() < 0.1){
+  } else if (Math.random() < 1){
     return <img src={require('../assets/greatBearConstellation.svg')} id="middleAlignOrionPrivate" width='70' height='100' alt="Back arrow, blue up arrow" />
   }
 }

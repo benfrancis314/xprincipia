@@ -73,8 +73,12 @@ if (problem.Private === true) {
             <Link to={{pathname: '/project/'+problem.ID +'/subprojects'}} onClick={()=>{this.handleClick()}}>
                 <div id="welcomeUserProblemsHeader">
                     <div id="welcomeUserProblemsTitle">
-                        {problem.Title}
-                        <div id="SPPercent">{problem.Rank}</div>
+                        <div id="welcomeProjectPercent">
+                            {problem.Rank}
+                        </div>
+                        <div id="welcomeProblemsTitleText">
+                            {problem.Title}
+                        </div>
                     </div>
                 </div>
             </Link>
