@@ -5,7 +5,6 @@ import { Link } from 'react-router';
 // Currently unused, may use later. Loading only loads part of page, currently looks weird
 // import ReactCSSTransitionGroup from 'react-addons-css-transition-group'; // ES6
 import ActivityFeedContainer from '../containers/ActivityFeedContainer.jsx';
-import TutorialWelcomeContent from '../components/tutorials/TutorialWelcomeContent.jsx';
 import WelcomeUnit from '../components/welcome/WelcomeUnit.jsx';
 import WelcomeUserUnit from '../components/welcome/WelcomeUserUnit.jsx';
 import {Config} from '../config.js';
@@ -16,16 +15,17 @@ export default class WelcomeContainer extends React.Component {
    
   hoverText() {
     $(document).ready(function() {
-        // $('#privateContainerMotto').html("NEW PROJECT").fadeIn(7500);
-        $('#welcomeSearchFormLabel').attr('placeholder','CINEMATIC GUIDE');
-        $('#welcomeSearchFormLabel').attr('id','welcomeSearchFormLabelBlue');
+        // $('#welcomeSearchFormLabel').attr('placeholder','CINEMATIC GUIDE');
+        // $('#welcomeSearchFormLabel').attr('id','welcomeSearchFormLabelBlue');
+        $('#logoName').html("cinematic guide").fadeIn(7500);
+        $('#logoName').attr('id','logoNameGuide');
     });
   }
   unHoverText() {
       $(document).ready(function() {
           // Used to say SEARCH PROJECT TREES
-          $('#welcomeSearchFormLabelBlue').attr('placeholder','SEARCH TOP PROJECTS');            
-          $('#welcomeSearchFormLabelBlue').attr('id','welcomeSearchFormLabel');
+          $('#logoNameGuide').html('XPrincipia');            
+          $('#logoNameGuide').attr('id','logoName');
       });
   }
   goToStory() {
@@ -39,12 +39,11 @@ export default class WelcomeContainer extends React.Component {
            problems : [],
            userproblems : [],
            searchText: [],
+           feedProjects: []
         }
         this.queryProblem = this.queryProblem.bind(this);
         // this.startSound = this.startSound.bind(this);
     };
-
-
      queryProblem () {
          //get search text box data
         this.state.searchText = document.getElementById('welcomeSearchFormLabel').value
@@ -82,7 +81,8 @@ export default class WelcomeContainer extends React.Component {
         return axios.get( Config.API + '/problems/all').then(function (response) {
             self.setState({
                 problems: response.data,
-                userproblems: response.data
+                userproblems: response.data,
+                feedProjects: response.data
             })
         }) 
       .catch(function (error) {
@@ -154,18 +154,26 @@ export default class WelcomeContainer extends React.Component {
               </form>
           </div> */}
           <div id="welcomeUserUnitsContainer">
-              <ActivityFeedContainer problems={this.state.userproblems} />
+              {React.cloneElement(this.props.children, {problems: this.state.feedProjects})}
+              {/* <ActivityFeedContainer problems={this.state.feedProjects} /> */}
               
               <div id="welcomeRightContainer">
-                <div id="welcomeRightResults">
-                  <form id="welcomeSearchFormContainer">
-                    {/* Used to say "SEARCH PROJECT TREES" */}
-                    <input type="search" name="search" placeholder="SEARCH TOP PROJECTS" id="welcomeSearchFormLabel"  onKeyDown={this.queryProblem} autoFocus/>
-                  </form>
-                  {this.props.children}
+                <div id="SPListDiv">
+                {/* <div id="welcomeRightResults"> */}
+                    <div id="leaderBoardCapTop">
+                          leaderboard
+                    </div>
+                    <form id="welcomeSearchFormContainer">
+                      {/* Used to say "SEARCH PROJECT TREES" */}
+                      <input type="search" name="search" placeholder="SEARCH TOP PROJECTS" id="welcomeSearchFormLabel"  onKeyDown={this.queryProblem} autoFocus/>
+                    </form>
+                     {/* {this.props.children} */}
+                  {/* </div> */}
+                    
+                    <WelcomeUserUnit problems={this.state.userproblems} />
+                  {/* <div id="leaderBoardCapBottom">
+                  </div> */}
                 </div>
-                
-                <WelcomeUserUnit problems={this.state.userproblems} />
               </div>
               
           </div>
@@ -174,7 +182,7 @@ export default class WelcomeContainer extends React.Component {
             <img src={require('../assets/tutorial.svg')} id="tutorialWelcomeButton" width="50" height="50" alt="Back arrow, blue up arrow" />
           </div>*/}
           {randomImg()}
-          <TutorialWelcomeContent />
+          {/* <TutorialWelcomeContent /> */}
           {/*</ReactCSSTransitionGroup>*/}
         </div>
       );

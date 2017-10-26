@@ -4,6 +4,8 @@ import axios from 'axios'
 import cookie from 'react-cookie';
 import {Config} from '../../config.js';
 import $ from 'jquery';
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group'; // ES6
+
 
 export default class WelcomeCreateForm extends React.Component {
 
@@ -56,28 +58,35 @@ export default class WelcomeCreateForm extends React.Component {
   render() {
       return (
         <div>
-          <Link to={`/welcome`}>
-              <img src={require('../../assets/redX.svg')} id="closeRedX" width="40" height="40" alt="Close button, red X symbol" />
-          </Link>
-          <div id="SBButtonNoHover">
-            New Project
-          </div>
-          <div id="createProblemBox">
-              <form id="createForm">
-                <fieldset id="fieldSetNoBorder">
-                  <label htmlFor="problemTitleForm" id="problemTitleFormLabel">Project Title<br />
-                      <input type="text" name="problemTitle" required="required" maxLength="70" id="problemTitleForm" autoFocus/>
-                    </label><br />
-
-                  <label htmlFor="problemSummaryForm" id="problemSummaryFormLabel">Additional Information<br />
-                      <textarea name="problemSummary" required="required" maxLength="350" 
-                      placeholder="Please provide any additional information you'd like. (250 character max)" id="problemSummaryForm"/>
+          <ReactCSSTransitionGroup
+          transitionName="example"
+          transitionAppear={true}
+          transitionAppearTimeout={2000}
+          transitionEnter={false}
+          transitionLeave={false}>
+            <Link to={`/welcome`}>
+                <img src={require('../../assets/redX.svg')} id="closeRedXFeed" width="40" height="40" alt="Close button, red X symbol" />
+            </Link>
+            <div id="welcomeNewProjectHeader">
+              New Project
+            </div>
+            <div id="createProblemBox">
+                <form id="welcomeCreateProjectForm">
+                  <fieldset id="fieldSetNoBorder">
+                    <label htmlFor="problemTitleForm" id="problemTitleFormLabel">Project Title<br />
+                        <input type="text" name="problemTitle" required="required" maxLength="70" id="problemTitleForm" autoFocus/>
                       </label><br />
 
-                  <input type="button" value="Create" onClick={this.postProblem} id="submitProblem"/>
-                </fieldset>
-              </form>
-          </div>
+                    <label htmlFor="problemSummaryForm" id="problemSummaryFormLabel">Additional Information<br />
+                        <textarea name="problemSummary" required="required" maxLength="350" 
+                        placeholder="Please provide any additional information you'd like. (250 character max)" id="problemSummaryForm"/>
+                        </label><br />
+
+                    <input type="button" value="Create" onClick={this.postProblem} id="submitProblem"/>
+                  </fieldset>
+                </form>
+            </div>
+          </ReactCSSTransitionGroup>
         </div>
       );
    }

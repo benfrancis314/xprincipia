@@ -6,7 +6,7 @@ export default class WelcomeUserUnit extends React.Component {
    
 	render() {
 		return (
-	    <div id="SPListDiv">
+	    <div id="SPListDivUnitContainer">
             <ul id="welcomeUserProblemsUnitList"> 
                 {this.props.problems.map(this.renderItem)} 
             </ul>	               

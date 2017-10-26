@@ -145,22 +145,64 @@ export default App;
 
 
 function randomImg() {
-  if (Math.random() < 0.1) {
+  if (Math.random() < 0.001) {
     return (
+      // Nietzche Easter Egg
       <div id="easterEggContainer">
         <div id="easterEgg1">
           <div id="easterEggText">
-            man is a rope stretched between the animal and the übermensch &mdash; 
+            {/* A */}
+            what is great in man is that he is a bridge and not a goal:
+            <br />
+            <br />
+            what is lovable in man is that he is an <i>over-going</i> and a <i>going under</i>.
+            {/* B */}
+            {/* I like this one a lot, but a different picture may fit it better. */}
+            {/* fellow creators the creator seeks &mdash;
             <br/>
-            a rope over an abyss. 
+            <br />
+            those who write new values 
+            <br />
+            on new tablets. */}
           </div>
         </div>
       </div>
+
+  // Other Easter Egg Ideas:
+      // Paintings
+            // Sistine Chapel
+            // Newton by William Blake - Leading Favorite for 2nd Egg
+
+      // Quotes
+            // Carl Jung
+            // Terence McKenna
     )
   } 
-  //   else if (Math.random() < 0.25){
-  //   return <img src={require('./assets/heroLogo.svg')} id="middleAlignOrionPrivate" width='70' height='100' alt="Back arrow, blue up arrow" />
-  // } else if (Math.random() < 0.375){
+    else if (Math.random() < 1){
+      // Why isn't this working?
+    return 
+      // Nietzche Easter Egg
+      <div id="easterEggContainer">
+        <div id="easterEgg2">
+          <div id="easterEggText">
+            {/* A */}
+            {/* what is great in man is that he is a bridge and not a goal:
+            <br />
+            <br />
+            what is lovable in man is that he is an <i>over-going</i> and a <i>going under</i>. */}
+            {/* B */}
+            {/* I like this one a lot, but a different picture may fit it better. */}
+            fellow creators the creator seeks &mdash;
+            <br/>
+            <br />
+            those who write new values 
+            <br />
+            on new tablets.
+          </div>
+        </div>
+      </div>  
+      } 
+  //  else if (Math.random() < 0.375){
   //   return <img src={require('./assets/dragonConstellation.svg')} id="middleAlignOrionPrivate" width='70' height='100' alt="Back arrow, blue up arrow" />
   // } else if (Math.random() < 0.5){
   //   return <img src={require('./assets/hunterConstellation.svg')} id="middleAlignOrionPrivate" width='70' height='100' alt="Back arrow, blue up arrow" />

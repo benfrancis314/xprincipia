@@ -938,7 +938,7 @@ letter-spacing: 2px !important;
   width: 90%;
   padding: 2% 5% 2% 5%;
   margin-bottom: 1.1%;
-  background: linear-gradient(left,rgba(0,220,255, 0.06), rgba(0,220,255, 0.07), rgba(0,220,255, 0.02));
+  background: linear-gradient(to right,rgba(0,220,255, 0.06), rgba(0,220,255, 0.07), rgba(0,220,255, 0.02));
 }
 #greenBorder {
   border-color: #00ffdc;
@@ -1130,7 +1130,7 @@ letter-spacing: 2px !important;
   width: 80%;
   padding: 2% 5% 2% 5%;
   margin-bottom: 1.1%;
-  background: linear-gradient(left,rgba(0,220,255, 0.06), rgba(0,220,255, 0.07), rgba(0,220,255, 0.02));
+  background: linear-gradient(to right,rgba(0,220,255, 0.06), rgba(0,220,255, 0.07), rgba(0,220,255, 0.02));
 }
 #answerVote {
   flex: 1 1 auto;
@@ -1212,7 +1212,7 @@ letter-spacing: 2px !important;
 #solutionSummaryForm, #solutionDescriptionForm, 
 #solutionReferencesForm, #problemSummaryForm {
   /*background-color: rgba(0,220,255, 0.05);*/
-  background: linear-gradient(left,rgba(0,220,255, 0.06), rgba(0,220,255, 0.07),rgba(0,220,255, 0.03));
+  background: linear-gradient(to right,rgba(0,220,255, 0.06), rgba(0,220,255, 0.07),rgba(0,220,255, 0.03));
 
 }
 #projectEditSummaryForm {
@@ -1648,7 +1648,7 @@ text-align: center;
 
   transition: all 2s ease 0s;
   background-color: rgba(0,220,255,0.025);
-        background: linear-gradient(left,rgba(0,220,255, 0), rgba(0,220,255, 0.05), rgba(0,220,255, 0));
+        background: linear-gradient(to right,rgba(0,220,255, 0), rgba(0,220,255, 0.05), rgba(0,220,255, 0));
 
   transform: scale(1);
 }
@@ -1662,7 +1662,7 @@ text-align: center;
   /* box-shadow: 0 0 1.5pt 1.5pt rgba(0,220,255,0.5); */
   /* transform: scale(1.005); */
   
-  /*background: linear-gradient(left,rgba(0,220,255, 0.05), rgba(0,220,255, 0.1), rgba(0,220,255, 0.15), rgba(0,220,255, 0.15));*/
+  /*background: linear-gradient(to right,rgba(0,220,255, 0.05), rgba(0,220,255, 0.1), rgba(0,220,255, 0.15), rgba(0,220,255, 0.15));*/
 }
 #explore, #logo {
   margin: 0 auto;
@@ -1731,6 +1731,17 @@ but shrinking screen messes up avatar*/
   transition: all 0.5s ease 0s;
   transform: scale(1);
   color: #ffffff;
+  transition: all 2s ease 0s;
+}
+#logoNameGuide {
+  margin: 0 auto;
+  float: left;
+  margin-left: 5%;
+  transition: all 0.5s ease 0s;
+  transform: scale(1);
+  color: #00dcff !important;
+  transition: all 2s ease 0s;
+  letter-spacing: 14px !important;  
 }
 #avatarHeader {
   flex: 1 1 auto;
@@ -1827,7 +1838,7 @@ padding-bottom: 0%;
 border: 1px solid #dddddd;
 border-width: 1px 0px;
 margin: 0 auto;
-/*margin-top: 5%;*/
+margin-top: 5%;
 transition: all 0.5s ease 0s;
 z-index: 500;
 
@@ -2072,7 +2083,7 @@ cursor: pointer;
   width: 20%;
   background-color: rgba(0,255,220,0.05);
 
-  /*background: linear-gradient(left,rgba(0,220,255, 0), rgba(0,220,255, 0.05), rgba(0,220,255, 0));*/
+  /*background: linear-gradient(to right,rgba(0,220,255, 0), rgba(0,220,255, 0.05), rgba(0,220,255, 0));*/
   background: radial-gradient(circle,rgba(0,255,220, 0), rgba(0,255,220, 0.025), rgba(0,255,220, 0.05));
   /*transition: all 0.75s ease 0s;*/
   background-color: rgba(0,255,220,0.025);
@@ -2103,7 +2114,7 @@ cursor: pointer;
   font-size: 70%;
   margin-top: 0%;
 
-  /*background: linear-gradient(left,rgba(0,220,255, 0), rgba(0,220,255, 0.05), rgba(0,220,255, 0));*/
+  /*background: linear-gradient(to right,rgba(0,220,255, 0), rgba(0,220,255, 0.05), rgba(0,220,255, 0));*/
   background: radial-gradient(circle,rgba(0,220,255, 0), rgba(0,220,255, 0.025), rgba(0,220,255, 0.05));
   /*transition: all 0.75s ease 0s;*/
   background-color: rgba(0,220,255,0.025);
@@ -2117,7 +2128,7 @@ cursor: pointer;
 #introRegisterFullName, #introRegisterUserName, #introRegisterEmail, #introRegisterPassword,
 #registerFullName, #registerUserName, #registerEmail, #registerPassword,
 #loginHeaderEmail, #loginHeaderPassword, #loginEmail, #loginPassword {
-  background: linear-gradient(left,rgba(0,220,255, 0), rgba(0,220,255, 0.05), rgba(0,220,255, 0));
+  background: linear-gradient(to right,rgba(0,220,255, 0), rgba(0,220,255, 0.05), rgba(0,220,255, 0));
   transition: all 0.75s ease 0s;
   background-color: rgba(0,220,255,0.025);
   transform: scale(1);
@@ -2127,12 +2138,12 @@ cursor: pointer;
 #loginHeaderEmail:focus, #loginHeaderPassword:focus, #loginEmail:focus, #loginPassword:focus {
   box-shadow: 0 0 1pt 1pt rgba(0,220,255,0.5) !important;
   transform: scale(1.02);
-  background: linear-gradient(left,rgba(0,220,255, 0.05), rgba(0,220,255, 0.1), rgba(0,220,255, 0.05));
+  background: linear-gradient(to right,rgba(0,220,255, 0.05), rgba(0,220,255, 0.1), rgba(0,220,255, 0.05));
 }
 #loginHeaderEmail:focus, #loginHeaderPassword:focus {
   box-shadow: 0 0 1pt 1pt rgba(0,220,255,0.5) !important;
   transform: scale(1.02);
-  background: linear-gradient(left,rgba(0,220,255, 0), rgba(0,220,255, 0), rgba(0,220,255, 0));
+  background: linear-gradient(to right,rgba(0,220,255, 0), rgba(0,220,255, 0), rgba(0,220,255, 0));
 }
 #loginHeaderEmail {
   display: block;
@@ -2206,7 +2217,7 @@ cursor: pointer;
   background-color: #0f131c;
   width: 6%;
 
-  /*background: linear-gradient(left,rgba(0,220,255, 0), rgba(0,220,255, 0.05), rgba(0,220,255, 0));*/
+  /*background: linear-gradient(to right,rgba(0,220,255, 0), rgba(0,220,255, 0.05), rgba(0,220,255, 0));*/
   background: radial-gradient(circle,rgba(0,220,255, 0), rgba(0,220,255, 0.025), rgba(0,220,255, 0.05));
   /*transition: all 0.75s ease 0s;*/
   background-color: rgba(0,220,255,0.025);
@@ -2219,7 +2230,7 @@ cursor: pointer;
 
  /*box-shadow: 0 0 1pt 1pt rgba(0,220,255,0.5) !important;
  transform: scale(1.02);
- background: linear-gradient(left,rgba(0,220,255, 0.05), rgba(0,220,255, 0.1), rgba(0,220,255, 0.05));*/
+ background: linear-gradient(to right,rgba(0,220,255, 0.05), rgba(0,220,255, 0.1), rgba(0,220,255, 0.05));*/
 }
 #registerHeaderButton {
   font-family: 'Alegreya Sans SC', sans-serif;
@@ -2238,7 +2249,7 @@ cursor: pointer;
   transition: all 0.5s ease 0s;
   background-color: #0f131c;
 
-  /*background: linear-gradient(left,rgba(0,220,255, 0), rgba(0,220,255, 0.05), rgba(0,220,255, 0));*/
+  /*background: linear-gradient(to right,rgba(0,220,255, 0), rgba(0,220,255, 0.05), rgba(0,220,255, 0));*/
   background: radial-gradient(circle,rgba(0,255,220, 0), rgba(0,255,220, 0.025), rgba(0,255,220, 0.05));
   /*transition: all 0.75s ease 0s;*/
   background-color: rgba(0,255,220,0.025);
@@ -2273,7 +2284,7 @@ width: 30%;
 font-size: 90%;
 /*transition: all 0.5s ease 0s;*/
 color: #dddddd;
-background: linear-gradient(left,rgba(255,255,255, 0), rgba(255,255,255, 0.05), rgba(255,255,255, 0));
+background: linear-gradient(to right,rgba(255,255,255, 0), rgba(255,255,255, 0.05), rgba(255,255,255, 0));
 transition: all 0.75s ease 0s;
 background-color: rgba(255,255,255,0.025);
 transform: scale(1);
@@ -2301,7 +2312,7 @@ border: 1px solid rgba(0,220,255,1);*/
 box-shadow: 0 0 1.5pt 1.5pt rgba(255,255,255,0.5);
 transform: scale(1.02);
 cursor: pointer;
-background: linear-gradient(left,rgba(255,255,255, 0.05), rgba(255,255,255, 0.1), rgba(255,255,255, 0.05));
+background: linear-gradient(to right,rgba(255,255,255, 0.05), rgba(255,255,255, 0.1), rgba(255,255,255, 0.05));
 }
 #signup, #register {
 padding-top: 0px;
@@ -2394,9 +2405,9 @@ width: 80%;
 /* padding: 6% 5% 6% 5%; */
 /*margin-bottom: 1.1%;*/
 /*Current*/
-background: linear-gradient(left,rgba(0,220,255, 0.06), rgba(0,220,255, 0.07), rgba(0,220,255, 0.02));
+background: linear-gradient(to right,rgba(0,220,255, 0.06), rgba(0,220,255, 0.07), rgba(0,220,255, 0.02));
 /*Test*/
-/*background: linear-gradient(left,rgba(0,220,255, 0.05), rgba(0,220,255, 0.07), rgba(0,220,255, 0.07), rgba(0,220,255, 0.05));*/
+/*background: linear-gradient(to right,rgba(0,220,255, 0.05), rgba(0,220,255, 0.07), rgba(0,220,255, 0.07), rgba(0,220,255, 0.05));*/
 }
 #introductionProjectsProse {
 font-family: 'Alegreya Sans SC';
@@ -2508,7 +2519,7 @@ border-radius: 3px;
 background-color: rgba(0,255,220,0.05);
 transition: 0.5s all ease 0s;
 
-/*background: linear-gradient(left,rgba(0,220,255, 0), rgba(0,220,255, 0.05), rgba(0,220,255, 0));*/
+/*background: linear-gradient(to right,rgba(0,220,255, 0), rgba(0,220,255, 0.05), rgba(0,220,255, 0));*/
 background: radial-gradient(circle,rgba(0,220,255, 0.01), rgba(0,220,255, 0.025), rgba(0,220,255, 0.05));
 transition: all 0.75s ease 0s;
 background-color: rgba(0,220,255,0.025);
@@ -2789,8 +2800,8 @@ transition: all 2s ease 0s;
   padding: 4px;
   margin-top: 1%;
   margin-bottom: 1%;
-  background: linear-gradient(left,rgba(0,220,255, 0), rgba(0,220,255, 0.25), rgba(0,220,255, 0));
-  /* background: linear-gradient(left,rgba(255,127,127, 0.06), rgba(255,127,127, 0.07), rgba(255,127,127, 0.02)); */
+  background: linear-gradient(to right,rgba(0,220,255, 0), rgba(0,220,255, 0.25), rgba(0,220,255, 0));
+  /* background: linear-gradient(to right,rgba(255,127,127, 0.06), rgba(255,127,127, 0.07), rgba(255,127,127, 0.02)); */
 }
 
 /*End Full Tutorial*/
@@ -3420,7 +3431,7 @@ border: 1px solid #00dcff;
 border-width: 1px 1px 1px 1px;
 border-radius: 0% 0% 45% 45%;
 /*background-color: rgba(15,19,28,0.05);*/
-background: linear-gradient(left,rgba(0,220,255, 0), rgba(0,220,255, 0.075), rgba(0,220,255, 0));
+background: linear-gradient(to right,rgba(0,220,255, 0), rgba(0,220,255, 0.075), rgba(0,220,255, 0));
 
 transition: all 0.75s ease 0s;
 /*box-shadow: 0 0 0pt 0pt rgba(0,220,255,0.5);*/
@@ -3431,7 +3442,7 @@ transform: scale(1);
 #proposalSubProjectsButton:focus, #proposalDevelopButton:focus, #proposalDiscussButton:focus,
 #proposalSubProjectsButton:active, #proposalDevelopButton:active, #proposalDiscussButton:active {
 /*box-shadow: 0 0 2pt 2pt rgba(0,220,255,0.5);*/
-background: linear-gradient(left,rgba(0,220,255, 0), rgba(0,220,255, 0.1), rgba(0,220,255, 0)) !important;
+background: linear-gradient(to right,rgba(0,220,255, 0), rgba(0,220,255, 0.1), rgba(0,220,255, 0)) !important;
 /*background-color: rgba(15,19,28,0.9);*/
 letter-spacing: 7px !important;
 color: #00dcff !important;
@@ -3450,7 +3461,7 @@ margin-top: 0%;
 border: 1px solid #00dcff;
 border-width: 0px 1px 0px 1px;
 border-radius: 0% 0% 0% 0%;
-background: linear-gradient(left,rgba(0,220,255, 0), rgba(0,220,255, 0.075), rgba(0,220,255, 0));
+background: linear-gradient(to right,rgba(0,220,255, 0), rgba(0,220,255, 0.075), rgba(0,220,255, 0));
 
 transition: all 0.75s ease 0s;
 background-color: rgba(0,220,255,0.01);
@@ -3468,8 +3479,8 @@ margin-top: 0%;
 border: 1px solid #00dcff;
 border-width: 1px 1px 0px 1px;
 border-radius: 45% 45% 0% 0%;
-/*background: linear-gradient(left,rgba(0,220,255, 0), rgba(0,220,255, 0.05), rgba(0,220,255, 0));*/
-background: linear-gradient(left,rgba(0,220,255, 0), rgba(0,220,255, 0.075), rgba(0,220,255, 0));
+/*background: linear-gradient(to right,rgba(0,220,255, 0), rgba(0,220,255, 0.05), rgba(0,220,255, 0));*/
+background: linear-gradient(to right,rgba(0,220,255, 0), rgba(0,220,255, 0.075), rgba(0,220,255, 0));
 
 
 transition: all 0.75s ease 0s;
@@ -4019,7 +4030,7 @@ background-color: rgba(0,220,255,0.05);
 cursor: pointer;
 /*font-size: 105%;*/
 box-shadow: 0 0 2px 2px rgba(0,220,255,0.5);
-background: linear-gradient(left,rgba(0,220,255, 0.05), rgba(0,220,255, 0.1), rgba(0,220,255, 0.05));
+background: linear-gradient(to right,rgba(0,220,255, 0.05), rgba(0,220,255, 0.1), rgba(0,220,255, 0.05));
 }
 #solutionUnitActive {
 padding: 10px;
@@ -4151,7 +4162,7 @@ font-family: 'Open Sans';
   width: 80%;
   padding: 2% 5% 2% 5%;
   margin-bottom: 1.1%;
-  background: linear-gradient(left,rgba(0,220,255, 0.06), rgba(0,220,255, 0.07), rgba(0,220,255, 0.02));
+  background: linear-gradient(to right,rgba(0,220,255, 0.06), rgba(0,220,255, 0.07), rgba(0,220,255, 0.02));
 }
 #suggestionText {
   /*Old Styles*/
@@ -4256,11 +4267,11 @@ font-family: 'Open Sans';
   font-size: 120%;
   letter-spacing: 0.25px;
 
-  background: linear-gradient(left,rgba(255,255,255, 0), rgba(255,255,255, 0.05), rgba(255,255,255, 0));
+  background: linear-gradient(to right,rgba(255,255,255, 0), rgba(255,255,255, 0.05), rgba(255,255,255, 0));
   transition: all 0.75s ease 0s;
   background-color: rgba(255,255,255,0.025);
   transform: scale(1);
-  /*background: linear-gradient(left,rgba(255,255,255, 0.15), rgba(255,255,255, 0.1), rgba(255,255,255, 0.1), rgba(255,255,255, 0.05));*/
+  /*background: linear-gradient(to right,rgba(255,255,255, 0.15), rgba(255,255,255, 0.1), rgba(255,255,255, 0.1), rgba(255,255,255, 0.05));*/
 
 
 }
@@ -4271,8 +4282,8 @@ font-family: 'Open Sans';
   box-shadow: 0 0 1.5pt 1.5pt rgba(255,255,255,0.5);
   transform: scale(1.02);
   cursor: pointer;
-  background: linear-gradient(left,rgba(255,255,255, 0.075), rgba(255,255,255, 0.1), rgba(255,255,255, 0.075));
-  /*background: linear-gradient(left,rgba(255,255,255, 0.15), rgba(255,255,255, 0.1), rgba(255,255,255, 0.05), rgba(255,255,255, 0));*/
+  background: linear-gradient(to right,rgba(255,255,255, 0.075), rgba(255,255,255, 0.1), rgba(255,255,255, 0.075));
+  /*background: linear-gradient(to right,rgba(255,255,255, 0.15), rgba(255,255,255, 0.1), rgba(255,255,255, 0.05), rgba(255,255,255, 0));*/
 
 }
 #welcomeIntroductionButtonActive {
@@ -4290,7 +4301,7 @@ font-family: 'Open Sans';
   /*background-color: rgba(255,255,255,0.1);*/
 
 
-  background: linear-gradient(left,rgba(255,255,255, 0), rgba(255,255,255, 0.05), rgba(255,255,255, 0));
+  background: linear-gradient(to right,rgba(255,255,255, 0), rgba(255,255,255, 0.05), rgba(255,255,255, 0));
   transition: all 0.75s ease 0s;
   background-color: rgba(255,255,255,0.025);
   transform: scale(1);
@@ -4299,7 +4310,7 @@ font-family: 'Open Sans';
   box-shadow: 0 0 1.5pt 1.5pt rgba(255,255,255,0.5);
   transform: scale(1.02);
   cursor: pointer;
-  background: linear-gradient(left,rgba(255,255,255, 0.075), rgba(255,255,255, 0.1), rgba(255,255,255, 0.075));
+  background: linear-gradient(to right,rgba(255,255,255, 0.075), rgba(255,255,255, 0.1), rgba(255,255,255, 0.075));
 
 }
 #welcomeBox {
@@ -4442,7 +4453,7 @@ font-family: 'Open Sans';
   cursor: default !important;
 }
 .activeProposalOption div {
-  background: linear-gradient(left,rgba(0,220,255, 0), rgba(0,220,255, 0.075), rgba(0,220,255, 0)) !important;
+  background: linear-gradient(to right,rgba(0,220,255, 0), rgba(0,220,255, 0.075), rgba(0,220,255, 0)) !important;
   /*background-color: rgba(15,19,28,0.9);*/
   letter-spacing: 7px !important;
   color: #00dcff !important;
@@ -4625,13 +4636,20 @@ input#submitWelcomeProblem:hover {
       border: 1px solid #00dcff;
       border-radius: 0% 0% 15% 15%;
       border-width: 1px 0px 1px 0px;
+      /* Old Padding */
       padding: 15px 35px 15px 35px;
+      /* New Padding */
+      /* Padding Top and Bottom at 10px also looks fine */
+      padding: 12px 35px;      
       transition: all 0.5s ease 0s;
       background: linear-gradient(rgba(255,255,255,0.05), rgba(0,220,255,0.1), rgba(0,220,255,0.1), rgba(255,255,255,0.025));
     }
     #welcomeIntroductionLabel {
       letter-spacing: 14px;
+      /* Old width: 90% */
       width: 90%;
+      /* New width 50% to stop XPrincipia Mission showing up everytime going to header */
+      width: 50%;
       margin: 0 auto;
       border: 1px solid #00dcff;
       border-width: 0px 1px 1px 1px;
@@ -5048,6 +5066,19 @@ transition: all 0.5s ease 0s;
 cursor: pointer;
 background-color: rgba(255,127,127,0.15);
 }
+#closeRedXFeed {
+  display: block;
+  margin: 0 auto;
+  margin-top: 2%;
+  margin-bottom: 1%;
+  border: 0px solid #ff7f7f;
+  border-radius: 50%;
+  transition: all 0.5s ease 0s;
+  }
+  #closeRedXFeed:hover {
+  cursor: pointer;
+  background-color: rgba(255,127,127,0.15);
+  }
 #addBlueX {
 display: block;
 margin: 0 auto;
@@ -5287,7 +5318,7 @@ margin-bottom: 1%;
 cursor: pointer;
 color: #ffffff;
 /*background-color: rgba(0,220,255,0.12);*/
-background: linear-gradient(left,rgba(0,220,255, 0.1), rgba(0,220,255, 0.15), rgba(0,220,255, 0.1));
+background: linear-gradient(to right,rgba(0,220,255, 0.1), rgba(0,220,255, 0.15), rgba(0,220,255, 0.1));
 }
 #parentChildrenButton {
 background-color: rgba(0,220,255,0.05);
@@ -6653,7 +6684,7 @@ width: 100%;
 border: 1px solid #00dcff;
 border-width: 1px 0px;
 /*margin-top: 10px;*/
-background: linear-gradient(left,rgba(0,220,255, 0.05), rgba(0,220,255, 0), rgba(0,220,255, 0.05));
+background: linear-gradient(to right,rgba(0,220,255, 0.05), rgba(0,220,255, 0), rgba(0,220,255, 0.05));
 }
 #prosButton, #consButton {
 flex: 1 1 auto;
@@ -6673,7 +6704,7 @@ background-color: rgba(0,220,255,0.05);
 color: #00dcff;
 cursor: pointer;
 box-shadow: 0 0 0px 0px rgba(0,220,255,0.5);
-/*background: linear-gradient(left,rgba(0,220,255, 0), rgba(0,220,255, 0.05), rgba(0,220,255, 0));*/
+/*background: linear-gradient(to right,rgba(0,220,255, 0), rgba(0,220,255, 0.05), rgba(0,220,255, 0));*/
 
 }
 #prosButton:active, #consButton:active {
@@ -7591,8 +7622,11 @@ background-color: #00dcff;
   z-index: 500;
   /* width: 50%; */
   margin: 0 auto;
-  margin-left: 25%;
-  margin-right: 25%;
+  /* margin-left: 25%;
+  margin-right: 25%; */
+  /* I believe the left and right to be more efficient. */
+  left: 26%;
+  right: 26%;
   border: 1px solid #00dcff;
   border-radius: 3px;
   box-shadow: 0 0 2pt 2pt rgba(0,220,255,0.25);
@@ -7607,10 +7641,37 @@ background-color: #00dcff;
   /* background-size: contain; */
   background-position: center center;
   background-repeat: no-repeat;
+  /* With normal background color */
+  /* background-color: rgba(15,19,28,0.9999);   */
+  /* With darker normal color */
+  background-color: rgba(9, 12, 17, 0.95);
+  /* With black background color */
+  /* background-color: rgba(0,0,0,0.88); */
+  background-blend-mode: overlay;
+  text-align: center;
+  padding: 15% 7.5%;
+  color: #00dcff;
+  /* color: #dddddd; */
+  font-size: 125%;
+  letter-spacing: 1px;
+  opacity: 0.8;
+  transition: all 3s ease 0s;
+  transform: scale(1);
+}
+#easterEgg1:hover {
+  opacity: 1;
+  /* transform: scale(1.2);
+  background-color: rgba(15,19,28,1); */
+}
+#easterEgg2 {
+  background-image: url('./newtonBlake.jpg');  
+  /* background-size: contain; */
+  background-position: center center;
+  background-repeat: no-repeat;
   background-color: rgba(15,19,28,0.9999);
   background-blend-mode: overlay;
   text-align: center;
-  padding: 15% 10%;
+  padding: 15% 8%;
   color: #00dcff;
   /* color: #dddddd; */
   font-size: 125%;
@@ -7847,7 +7908,7 @@ width: 70%;
 margin-left: 3%;
 }
 #chatBoxMessages {
-background: linear-gradient(left,rgba(0,220,255, 0.06), rgba(0,220,255, 0.07), rgba(0,220,255, 0.02));
+background: linear-gradient(to right,rgba(0,220,255, 0.06), rgba(0,220,255, 0.07), rgba(0,220,255, 0.02));
 border: 1px solid #333333;
 border-radius: 5px 5px 25% 10px;
 margin-top: 3%;
@@ -7952,7 +8013,7 @@ margin-top: 1%;
   /* border: 1px solid #333333; */
   border-radius: 5px 5px 10px 10px;
   width: 80%;
-  /* background: linear-gradient(left,rgba(0,220,255, 0.06), rgba(0,220,255, 0.07), rgba(0,220,255, 0.02)); */
+  /* background: linear-gradient(to right,rgba(0,220,255, 0.06), rgba(0,220,255, 0.07), rgba(0,220,255, 0.02)); */
   overflow: auto;
 }
 
@@ -7973,7 +8034,7 @@ margin-top: 1%;
 #storySection1 {
   color: black;
   background-color: #D1B794;
-  background: linear-gradient(left,rgba(43, 34, 23, 0.62), rgba(209,183,148, 1), rgba(209,183,148, 0.95), rgba(209,183,148, 0.98), rgba(223, 194, 156, 0.9), rgba(209, 183, 148, 0.98), rgba(209,183,148, 0.98), rgba(194, 168, 135, 0.98), rgba(209,183,148, 0.98), rgba(209,183,148, 0.88), rgba(209,183,148, 0.98), rgba(209,183,148, 0.95), rgba(209,183,148, 1), rgba(0,220,255, 0.1));
+  background: linear-gradient(to right,rgba(43, 34, 23, 0.62), rgba(209,183,148, 1), rgba(209,183,148, 0.95), rgba(209,183,148, 0.98), rgba(223, 194, 156, 0.9), rgba(209, 183, 148, 0.98), rgba(209,183,148, 0.98), rgba(194, 168, 135, 0.98), rgba(209,183,148, 0.98), rgba(209,183,148, 0.88), rgba(209,183,148, 0.98), rgba(209,183,148, 0.95), rgba(209,183,148, 1), rgba(0,220,255, 0.1));
   margin-left: 0;
   border-width: 1px 1px 1px 1px;
   border-radius: 3% 3% 3% 3%;
@@ -7992,7 +8053,7 @@ margin-top: 1%;
 /* Make a section 3, so it can have different "blots" on the paper */
 #storySection2 {
   font-weight: 300;
-  background: linear-gradient(left,rgba(0,220,255, 0.08), rgba(0,220,255, 0.1), rgba(0,220,255, 0.06));
+  background: linear-gradient(to right,rgba(0,220,255, 0.08), rgba(0,220,255, 0.1), rgba(0,220,255, 0.06));
   margin-right: 0;
   border-width: 1px 1px 1px 1px;
   border-radius: 3% 3% 3% 3%;
@@ -8000,7 +8061,7 @@ margin-top: 1%;
 }
 #storySection2:hover {
   font-weight: 300;
-  background: linear-gradient(left,rgba(70, 166, 180, 0.07), rgba(0,220,255, 0.1), rgba(0,220,255, 0.08));
+  background: linear-gradient(to right,rgba(70, 166, 180, 0.07), rgba(0,220,255, 0.1), rgba(0,220,255, 0.08));
   background-color: rgba(0,220,255,0.01);
   margin-right: 0;
   border-width: 1px 1px 1px 1px;
@@ -8167,10 +8228,10 @@ margin-top: 1%;
   padding: 2.5% 0% 2% 0%;
   /* line-height: 0px; */
   transition: all 1s ease 0s;
-  background: linear-gradient(left,rgba(43, 34, 23, 0.62), rgba(209,183,148, 0.98), rgba(209,183,148, 0.7), rgba(209,183,148, 0.25),rgba(0,220,255, 0.06), rgba(0,220,255, 0.09), rgba(0,220,255, 0.09), rgba(0,220,255, 0.1), rgba(0,220,255, 0.06),rgba(0,220,255, 0));
+  background: linear-gradient(to right,rgba(43, 34, 23, 0.62), rgba(209,183,148, 0.98), rgba(209,183,148, 0.7), rgba(209,183,148, 0.25),rgba(0,220,255, 0.06), rgba(0,220,255, 0.09), rgba(0,220,255, 0.09), rgba(0,220,255, 0.1), rgba(0,220,255, 0.06),rgba(0,220,255, 0));
 }
 #storyEnd:hover {
-  background: linear-gradient(left,rgba(43, 34, 23, 0.72), rgba(209,183,148, 0.98), rgba(209,183,148, 0.7), rgba(209,183,148, 0.35),rgba(0,220,255, 0.06), rgba(0,220,255, 0.09), rgba(0,220,255, 0.09), rgba(0,220,255, 0.1), rgba(0,220,255, 0.04),rgba(0,220,255, 0));
+  background: linear-gradient(to right,rgba(43, 34, 23, 0.72), rgba(209,183,148, 0.98), rgba(209,183,148, 0.7), rgba(209,183,148, 0.35),rgba(0,220,255, 0.06), rgba(0,220,255, 0.09), rgba(0,220,255, 0.09), rgba(0,220,255, 0.1), rgba(0,220,255, 0.04),rgba(0,220,255, 0));
   background-color: rgba(0,220,255,0.05);
   /* transform: scale(1.02); */
 }
@@ -8190,11 +8251,11 @@ margin-top: 1%;
   border: 1px solid #333333;
   background-color: rgba(0,220,255, 0.05);
   border-radius: 45% 45% 3px 3px;
-  margin-top: 1.5%;
+  /* margin-top: 1.5%; */
   margin-bottom: 1%;
   text-align: center;
   letter-spacing: 6px;
-  padding: 2px;
+  padding: 2px 0px;
   color: #00dcff;
   transition: all 2s ease 0s;
 }
@@ -8202,7 +8263,7 @@ margin-top: 1%;
   border: 1px solid #00dcff;
   background-color: rgba(0,220,255, 0.05);
   border-radius: 45% 45% 3px 3px;
-  margin-top: 1.5%;
+  /* margin-top: 1.5%; */
   margin-bottom: 1%;
   text-align: center;
   letter-spacing: 8px;
@@ -8213,14 +8274,27 @@ margin-top: 1%;
 #feedBottom {
   border: 1px solid #333333;
   background-color: rgba(0,220,255, 0.05);
-  border-radius: 45% 45% 3px 3px;
-  margin-top: 1.5%;
-  margin-bottom: 1%;
+  border-radius: 3px 3px 45% 45%;
+  margin-bottom: 2%;
+  transition: all 2s ease 0s;
+  /* margin-top: 1%; */
+}
+#feedBottomBlue {
+  border: 1px solid #00dcff;
+  background-color: rgba(0,220,255, 0.05);
+  border-radius: 3px 3px 45% 45%;
+  margin-bottom: 2%;
+  transition: all 2s ease 0s;
+  /* margin-top: 1%; */
 }
 #feedUnitContainer {
   display: flex;
   flex-direction: row;
   width: 100%;
+}
+#feedOptionsBar {
+  display: flex;
+  flex-direction: column;
 }
 #feedOptionsButton {
   /* border: 1px solid #00dcff;
@@ -8244,29 +8318,30 @@ margin-top: 1%;
   background: linear-gradient(top,rgba(0,220,255, 0.075), rgba(0,220,255, 0.05), rgba(0,220,255, 0));
   background-color: rgba(0,220,255,0.01); */
 }
-/* #welcomeProjectAddButton {
+#feedAddButton {
   display: flex;
   flex-direction: column;
   border: 2px solid #00dcff;
   border-radius: 100%;
-  width: 4.5em;
-  height: 4.5em;
+  width: 45px;
+  height: 45px;
   align-items: center; 
   justify-content: center;
   background-color: rgba(0,220,255,0.05);
   margin: 0 auto;
-  box-shadow: 0 0 2pt 2pt rgba(0,220,255,0.5);
+  box-shadow: 0 0 1pt 1pt rgba(0,220,255,0.5);
   transition: all 0.75s ease 0s;
   transform: scale(1);
   margin-bottom: 0.75%;
-  margin-top: 0.5%;
+  /* Margin-top 10, 12.5 & 15 look acceptable */
+  margin-top: 12.5%;
 }
-  #welcomeProjectAddButton:hover {
-  box-shadow: 0 0 1pt 3pt rgba(0,220,255,0.5);
-  transform: scale(1.02);
+  #feedAddButton:hover {
+  /* box-shadow: 0 0 1.5pt 1.5pt rgba(0,220,255,0.5); */
+  transform: scale(1.12);
   cursor: pointer;
   background: radial-gradient(circle, rgba(0,220,255,0.05), rgba(0,220,255,0.05), rgba(0,220,255,0.1), rgba(0,220,255,0.05));
-  } */
+  }
   #feedCircleImg {
     padding: 0px;
     margin: 0 auto;
@@ -8387,19 +8462,19 @@ margin-top: 1%;
   list-style: none;
   }
 #feedUnits {
-  background: linear-gradient(left,rgba(0,220,255, 0.06), rgba(0,220,255, 0.07), rgba(0,220,255, 0.02));
+  background: linear-gradient(to right,rgba(0,220,255, 0.06), rgba(0,220,255, 0.07), rgba(0,220,255, 0.02));
   border: 1px solid #333333;
   border-radius: 5px 5px 25% 10px;
   margin-top: 0%;
   margin-bottom: 3%;
-  padding: 2% 5% 2% 5%;
+  padding: 0.5% 5% 0.5% 5%;
   transition: all 0.75s ease 0s;
   box-shadow: 0 0 0pt 0pt rgba(0,220,255,0.5);
   background-color: rgba(0,220,255,0);
   transform: scale(1);
 }
 #feedUnits:hover {
-  background: linear-gradient(left,rgba(0,220,255, 0.03), rgba(0,220,255, 0.1), rgba(0,220,255, 0));
+  background: linear-gradient(to right,rgba(0,220,255, 0.03), rgba(0,220,255, 0.1), rgba(0,220,255, 0));
   border-color: #00dcff;
   box-shadow: 0 0 1pt 1pt rgba(0,220,255,0.5);  
   background-color: rgba(0,220,255,0.025);
@@ -8443,6 +8518,137 @@ margin-top: 1%;
 }
 
 
+/* New Project Form */
+#welcomeNewProjectHeader {
+  flex: 1 1 auto;
+  color: #dddddd;
+  font-size: 180%;
+  text-align: center;
+  text-decoration: none;
+  margin: 0 auto;
+  margin-top: 0px;
+  margin-bottom: 3px;
+  width: 60%;
+  border: 1px solid #dddddd;
+  border-width: 1px;
+  border-radius: 3px;
+  background-color: rgba(0,220,255, 0.05);
+  /*box-shadow: 0 0 1pt 1pt rgba(255,255,255,0.5);*/
+  transition: all 0.5s ease 0s;
+}
+#welcomeCreateProjectForm {
+  color: #00dcff;
+  height: auto;
+  padding: 0px 5px 5px 5px;
+  width: 100%;
+  margin: 0 auto;
+  /*background-color: rgba(0,220,255,0.025);*/
+ }
+
+
+/* Feed Filters */
+
+#feedFilterContainer {
+  margin-top: 2%;
+  margin-bottom: 4%;
+  transition: all 1s ease 0s;
+  background-color: rgba(0,220,255,0);
+  transform: scale(1);
+  background: radial-gradient(circle, rgba(0,220,255,0.05), rgba(0,220,255,0), rgba(0,220,255,0));  
+  
+}
+#feedFilterContainerHover {
+  margin-top: 2%;
+  margin-bottom: 4%;
+  transition: all 1s ease 0s;
+  transform: scale(1.02);
+  /* background-color: rgba(0,220,255,0.05); */
+  background: radial-gradient(circle, rgba(0,220,255,0.05), rgba(0,220,255,0), rgba(0,220,255,0));  
+}
+#feedFilterUnits, #feedFilterUnitsTop {
+  margin: 0 auto;
+  margin-top: 2%;
+  margin-top: 0.5%;  
+  width: 80%;
+  padding: 2%;
+  border: 1px solid #00dcff;
+  border-width: 0px 1px 0px 1px;
+  /* border-radius: 0% 25% 0% 25%; */
+  border-radius: 0% 50% 0% 50%; 
+  /* 40 looks acceptable, looks more continuous, pro and con, con is looks less DNA symbolic */
+  /* border-radius: 0% 40% 0% 40%;   */
+  /* 100 just for testing, doesn't look right */
+  /* border-radius: 0% 100% 0% 100%;     */
+  text-align: center;
+  letter-spacing: 6px;
+  font-size: 150%;
+  background: linear-gradient(to right, rgba(0,220,255,0.1), rgba(0,220,255,0));
+  transition: all 0.5s ease 0s;
+  transform: scale(1);
+  background-color: rgba(0,220,255,0);
+}
+#feedFilterUnitsTop {
+  margin-top: 0%; 
+  color: #00dcff;
+  font-size: 175% !important;
+}
+#feedFilterUnits:hover, #feedFilterUnitsTop:hover {
+  background: linear-gradient(to right, rgba(0,220,255,0.15), rgba(0,220,255,0), rgba(0,220,255,0.05));
+  transform: scale(1.05);
+  cursor: pointer;
+  background-color: rgba(0,220,255,0.05);
+  border-width: 0px 1px 0px 1px;
+  border-radius: 5% 5% 5% 5%;
+  /* color: #00dcff; */
+}
+#feedFilterSlogan {
+  margin: 0 auto;
+  color: #515151;
+  text-align: center;
+  margin-bottom: 2%;
+  margin-top: 1.5%;
+  font-size: 175%;
+  font-size: 225%;  
+  /*font-style: italic;*/
+  letter-spacing: 8px;
+  width: 70%;
+  transition: all 1s ease 0s;
+}
+#feedFilterSlogan:hover {
+  letter-spacing: 10px;
+}
+#feedFilterSloganBlue {
+  margin: 0 auto;
+  color: #00dcff;
+  text-align: center;
+  margin-bottom: 2%;
+  margin-top: 1.5%;
+  font-size: 175%;
+  font-size: 225%;  
+  /*font-style: italic;*/
+  letter-spacing: 10px;
+  width: 70%;
+  transition: all 1s ease 0s;
+}
+#filterCapTop, #filterCapBottom {
+  border: 1px solid #333333;
+  border: 1px solid #00dcff;
+  border-width: 1px 1px 0px 0px;
+  /* background-color: rgba(0,220,255, 0.05); */
+  background: linear-gradient(to right, rgba(0,220,255,0.15), rgba(0,220,255,0), rgba(0,220,255,0.05));
+  border-radius: 45% 45% 3px 3px;
+  margin: 0 auto;
+  /* margin-top: 1%; */
+  width: 84%;
+  padding-top: 0.5%;
+}
+#filterCapBottom {
+  border-width: 0px 0px 1px 1px;
+  border-radius: 3px 3px 45% 45%;
+  margin-bottom: 2%;
+}
+
+
 
 
 
@@ -8462,9 +8668,19 @@ margin-top: 1%;
 
 #SPListDiv {
   width: 90%;
-  right: 0;
+  /* right: 0; */
+  margin: 0 auto;
+  /* margin-right: 1%; */
+  margin-right: 1%;
+  margin-top: 2%;
+}
+#SPListDivUnitContainer {
+  width: 90%;
+  /* right: 0; */
   margin: 0 auto;
   margin-right: 1%;
+  margin-right: 3%;
+  margin-right: 0%;
   margin-top: 1%;
 }
 #welcomeRightContainer {
@@ -8502,27 +8718,32 @@ margin-top: 1%;
   }
   #welcomeSearchFormContainer {
     text-align: center;
+    /* text-align: right; */
     font-size: 155%;
-    width: 90%;
+    width: 100%;
     margin: 0 auto;
-    /* padding: 0% 0% 0.5% 0%; */
-    /* margin-bottom: 0.5%; */
+    padding: 0% 0% 0.5% 0%;
+    margin-bottom: 0.5%;
     /* margin-top: 0.5%; */
+    margin-bottom: 1.5%;
+    margin-top: 2%;
     }
   #welcomeSearchFormLabel {
-    display: inline-block;
+    /* display: inline-block; */
     color: #888888;
     transition: all 2s ease 0s;
-    letter-spacing: 6px !important;  
+    letter-spacing: 8px !important;  
     font-family: 'Alegreya Sans SC' !important;
     box-shadow: 0 0 0pt 0pt rgba(0,220,255,0.5) !important;   
     border-width: 0px !important;
     outline-width: 0px !important; 
+    margin: 0 auto;
     width: 100%;
+    /* text-align: right; */
   }
   #welcomeSearchFormLabel:active, #welcomeSearchFormLabel:focus {
     transition: all 2s ease 0s;
-    letter-spacing: 8px !important;  
+    letter-spacing: 10px !important;  
   }
   #welcomeSearchFormLabelBlue {
     display: inline-block;
@@ -8564,6 +8785,7 @@ margin-top: 1%;
     border-radius: 3px;
     box-shadow: 0 0 0pt 0pt rgba(0,220,255,0.5);
     width: 94.5%;
+    width: 98.5%;
     height: auto;
     word-wrap: break-word; 
     align-items: center; 
@@ -8575,7 +8797,7 @@ margin-top: 1%;
     margin: 0 auto;
     margin-bottom: 2%;
     
-    background: linear-gradient(left,rgba(0,220,255, 0), rgba(0,220,255, 0.05), rgba(0,220,255, 0));
+    background: linear-gradient(to right,rgba(0,220,255, 0), rgba(0,220,255, 0.05), rgba(0,220,255, 0));
     transition: all 0.75s ease 0s;
     background-color: rgba(0,220,255,0.025);
     transform: scale(1);
@@ -8590,7 +8812,7 @@ margin-top: 1%;
     #welcomeUserProblemsHeader:hover {
     box-shadow: 0 0 1.5pt 1.5pt rgba(0,220,255,0.5);
     transform: scale(1.02);
-    background: linear-gradient(left,rgba(0,255,220, 0.05), rgba(0,220,255, 0.1), rgba(0,220,255, 0.05));
+    background: linear-gradient(to right,rgba(0,255,220, 0.05), rgba(0,220,255, 0.1), rgba(0,220,255, 0.05));
     }
     #welcomeUserProblemsUnitList {
     text-align: center;
@@ -8600,7 +8822,7 @@ margin-top: 1%;
     justify-content: space-around;
     width: 90%;
     margin: 0 auto;
-    margin-right: 1%;
+    /* margin-right: 1%; */
     background-color: rgba(0,220,255,0.0);
     border: 1px solid #00dcff;
     border-width: 0px;
@@ -8627,15 +8849,18 @@ margin-top: 1%;
       font-size: 140%;
       word-wrap: break-word; 
       text-align: center;
-      display: inline-flex;
+      display: flex;
       flex-direction: row;
       justify-content: flex-start;
-      align-items: stretch;
+      align-items: stretch !important;
+      align-content: stretch;
       width: 100%;
       /*background-color: rgba(0,220,255,0.05);*/
     }
     #welcomeProjectPercent {
       text-align: center;
+      align-self: stretch !important;
+      align-self: baseline !important;
       color: #00ffdc !important;
       margin: 0 auto;
       padding: 2% 5% 2% 7%;
@@ -8645,13 +8870,17 @@ margin-top: 1%;
       margin-right: 5%;
       font-size: 150%;
       /* background: linear-gradient(rgba(0,255,220,0), rgba(0,220,255,0.1)); */
-      background: linear-gradient(left,rgba(0,255,220, 0.1), rgba(0,255,220, 0.05), rgba(0,255,220, 0));
+      background: linear-gradient(to right,rgba(0,255,220, 0.1), rgba(0,255,220, 0.05), rgba(0,255,220, 0));
       background-color: rgba(0,255,220,0);
       transition: all 0.5s ease 0s;
       /* transform: scale(1); */
+
+      /* border: 1px solid rgba(0,255,220,0.5);
+      border-width: 0px 1px 1px 0px;
+      border-radius: 0% 0% 50% 0%; */
     }
     #welcomeProjectPercent:hover {
-      /* background: linear-gradient(left,rgba(0,255,220, 0.25), rgba(0,255,220, 0.05), rgba(0,255,220, 0)); */
+      /* background: linear-gradient(to right,rgba(0,255,220, 0.25), rgba(0,255,220, 0.05), rgba(0,255,220, 0)); */
       /* background-color: rgba(0,255,220,0.05); */
       /* transform: scale(0.98); */
     }
@@ -8664,9 +8893,32 @@ margin-top: 1%;
       margin-left: 5%;
       margin-right: 5%;
       font-size: 130%;
+      align-self: stretch !important;
+      align-self: baseline !important;
     }
 
-
+#leaderBoardCapTop, #leaderBoardCapBottom {
+  border: 1px solid #333333;
+  background-color: rgba(0,255,220, 0.05);
+  border-radius: 65% 3px 3px 3px;
+  margin: 0 auto;
+  margin-bottom: 1.5%;
+  text-align: right;
+  letter-spacing: 6%;
+  letter-spacing: 6px;
+  padding: 2px;
+  padding-top: 3px;
+  padding-right: 8%;
+  color: #00ffdc;
+  transition: all 2s ease 0s;
+  margin-top: 1.5%;
+  margin-right: 5%;
+  width: 60%;
+}
+#leaderBoardCapBottom {
+  border-radius: 3px 3px 45% 45%;
+  margin-bottom: 2%;
+}
 
 
 

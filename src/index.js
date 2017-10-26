@@ -7,6 +7,8 @@ ReactGA.initialize('UA-104103231-1'); //Unique Google Analytics tracking number
 
 //Load Components
 
+import ActivityFeedFilter from './components/feed/ActivityFeedFilter.jsx';
+import ActivityFeedProjects from './components/feed/ActivityFeedProjects.jsx';
 import AnswerDeleteForm from './components/answers/AnswerDeleteForm.jsx';
 import AnswerDeleteFormPrivate from './components/answers/AnswerDeleteFormPrivate.jsx';
 import AnswerEditForm from './components/answers/AnswerEditForm.jsx';
@@ -136,6 +138,7 @@ import WelcomeCreateForm from './components/welcome/WelcomeCreateForm.jsx';
 
 
 //Load Containers
+import ActivityFeedContainer from './containers/ActivityFeedContainer.jsx';
 import AnswerContainer from './containers/AnswerContainer.jsx';
 import AnswerContainerPrivate from './containers/AnswerContainerPrivate.jsx';
 import ConsContainer from './containers/ConsContainer.jsx';
@@ -225,9 +228,14 @@ ReactDOM.render(
           <Route path='/welcomecreate' component={WelcomeCreateButton}>
             {/* <IndexRoute component={ChatBoxContainer}></IndexRoute> */}
             {/* <Route path='/chatbox' component={ChatBoxContainer}/> */}
-            <Route path='/welcome' component={TrueEmpty}/>
+            <Route path='/welcome/old' component={TrueEmpty}/>
           </Route>
-          <Route path='/welcome/create' component={WelcomeCreateForm}></Route>
+          <Route path='/welcome/feed' component={ActivityFeedContainer}>
+            <IndexRoute component={ActivityFeedProjects}></IndexRoute>
+            <Route path='/welcome' component={ActivityFeedProjects}></Route>
+            <Route path='/welcome/filter' component={ActivityFeedFilter}></Route>
+            <Route path='/welcome/create' component={WelcomeCreateForm}></Route>
+          </Route>
         </Route>
       </Route>
       <Route path='/search' component={SearchContainer}></Route>

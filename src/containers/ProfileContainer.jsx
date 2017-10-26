@@ -3,7 +3,7 @@ import { Link } from 'react-router';
 import cookie from 'react-cookie';
 import axios from 'axios';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group'; // ES6
-import TutorialProfileContent from '../components/tutorials/TutorialProfileContent.jsx';
+// import TutorialProfileContent from '../components/tutorials/TutorialProfileContent.jsx';
 import {Config} from '../config.js';
 // import $ from 'jquery';
 // import sphere from 'jquery.earth-3d';
@@ -132,7 +132,7 @@ export default class ProfileContainer extends React.Component {
                     {React.cloneElement(this.props.children, {probID: this.state.probID})}
                 </div>
             </div>
-            <TutorialProfileContent />
+            {/* <TutorialProfileContent /> */}
             </ReactCSSTransitionGroup>
         </div>);
     } else {
@@ -170,7 +170,7 @@ export default class ProfileContainer extends React.Component {
                     {React.cloneElement(this.props.children, {probID: this.state.probID})}
                 </div>
             </div>
-            <TutorialProfileContent />
+            {/* <TutorialProfileContent /> */}
             </ReactCSSTransitionGroup>
         </div>
       );

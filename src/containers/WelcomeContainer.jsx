@@ -17,15 +17,15 @@ export default class WelcomeContainer extends React.Component {
   hoverText() {
     $(document).ready(function() {
         // $('#privateContainerMotto').html("NEW PROJECT").fadeIn(7500);
-        $('#welcomeSearchFormLabel').attr('placeholder','XPRINCIPIA MISSION');
-        $('#welcomeSearchFormLabel').attr('id','welcomeSearchFormLabelBlue');
+        $('#logoName').html('XPrincipia mission');
+        $('#logoName').attr('id','logoNameGuide');
     });
   }
   unHoverText() {
       $(document).ready(function() {
           // $('#privateContainerMottoBlue').html("ORGANIZE YOUR THOUGHTS");
-          $('#welcomeSearchFormLabelBlue').attr('placeholder','SEARCH PROJECT TREES');            
-          $('#welcomeSearchFormLabelBlue').attr('id','welcomeSearchFormLabel');
+          $('#logoNameGuide').html('XPrincipia');            
+          $('#logoNameGuide').attr('id','logoName');
       });
   }
 

@@ -8,7 +8,7 @@ import ProblemSolutionsMenu from './ProblemSolutionsMenu.jsx';
 // import ProjectParentChildrenUnitsContainer from '../../containers/ProjectParentChildrenUnitsContainer.jsx';
 import SubProblemContainer from '../../containers/SubProblemContainer.jsx';
 import SubProjectParentUnit from './SubProjectParentUnit.jsx';
-import TutorialProjectContent from '../tutorials/TutorialProjectContent.jsx';
+// import TutorialProjectContent from '../tutorials/TutorialProjectContent.jsx';
 import {Config} from '../../config.js';
 import $ from 'jquery';
 import ScrollableAnchor from 'react-scrollable-anchor';
@@ -228,7 +228,7 @@ unVote() {
           <img src={require('../../assets/tutorial.svg')} id="tutorialProblemButton" width="50" height="50" alt="Back arrow, blue up arrow" />
         </div>*/}
         
-        <TutorialProjectContent />
+        {/* <TutorialProjectContent /> */}
         </ReactCSSTransitionGroup>
       </div>
       );
@@ -288,7 +288,7 @@ unVote() {
           <img src={require('../../assets/tutorial.svg')} id="tutorialProblemButton" width="50" height="50" alt="Back arrow, blue up arrow" />
         </div>*/}
         
-        <TutorialProjectContent />
+        {/* <TutorialProjectContent /> */}
         </ReactCSSTransitionGroup>
       </div>
       );
@@ -344,7 +344,7 @@ unVote() {
           <img src={require('../../assets/tutorial.svg')} id="tutorialProblemButton" width="50" height="50" alt="Back arrow, blue up arrow" />
         </div>*/}
         
-        <TutorialProjectContent />
+        {/* <TutorialProjectContent /> */}
         </ReactCSSTransitionGroup>
       </div>
       );
@@ -402,7 +402,7 @@ unVote() {
           <img src={require('../../assets/tutorial.svg')} id="tutorialProblemButton" width="50" height="50" alt="Back arrow, blue up arrow" />
         </div>*/}
         
-        <TutorialProjectContent />
+        {/* <TutorialProjectContent /> */}
         </ReactCSSTransitionGroup>
       </div>
       );
