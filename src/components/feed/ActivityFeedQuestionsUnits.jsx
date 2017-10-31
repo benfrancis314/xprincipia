@@ -45,7 +45,7 @@ export default class WelcomeUserUnit extends React.Component {
             <div id="feedUnitContainer">
                 <div id="feedListDiv">
                     <ul id="feedUnitList"> 
-                        {this.props.problems.map(this.renderItem)}
+                        {this.props.questions.map(this.renderItem)}
                     </ul>	 
                 </div>
                 <div id="feedOptionsBar">
@@ -65,7 +65,7 @@ export default class WelcomeUserUnit extends React.Component {
             </div>
 		);
 	}
-	renderItem(problem) {
+	renderItem(question) {
   
 
 // For Google Analytics when working
@@ -75,58 +75,68 @@ export default class WelcomeUserUnit extends React.Component {
     //         action: 'Clicked Link',
     //     });
     // }
-if (problem.Private === true) {
+if (question.Private === true) {
         return (
-            <div key={problem.ID} id="nodisplay">
+            <div key={question.ID} id="nodisplay">
             </div>
         );
-
-} else if (problem.ParentType === 1) {
+// We may want to show questions that are on proposals too
+} else if (question.ParentType === 1) {
 
       return (
-      
-            <li key={problem.ID} id="nodisplay">
-            </li>
-      
+    //   If don't want to show proposal questions
+            // <li key={question.ID} id="nodisplay">
+            // </li>
+    //   If we do want to show proposal questions
+            <li key={question.ID} id="feedListUnit">
+            <Link to={{pathname: '/project/'+question.ID +'/subprojects'}} onClick={()=>{this.handleClick()}}>
+                <div id="feedUnits">               
+                    <div id="blueFeed">question on:<span id="feedCaps"> {question.Username}</span></div>
+                    <div id="whiteFeed">{question.Description}</div>
+                    <div id="feedDate">{dateTime(question.CreatedAt)}</div>
+                </div>
+            </Link>
+        </li>
       
       );
 
-} else if (problem.Title === 'Interstellar Civilization') {
+} else if (question.Title === 'Interstellar Civilization') {
 
       return (
       
-        <li key={problem.ID} id="nodisplay">
+        <li key={question.ID} id="nodisplay">
         </li>
       
       
       );
 
-} else if (problem.Title === 'Evolving Humanity') {
+} else if (question.Title === 'Evolving Humanity') {
       return (
-        <li key={problem.ID} id="nodisplay">
+        <li key={question.ID} id="nodisplay">
         </li>
       
       );
-} else if (problem.Title === 'Theoretical Knowledge') {
+} else if (question.Title === 'Theoretical Knowledge') {
       return (
-        <li key={problem.ID} id="nodisplay">
+        <li key={question.ID} id="nodisplay">
         </li>
       
       );
-} else if (problem.Title === 'Technology Development') {
+} else if (question.Title === 'Technology Development') {
       return (
-        <li key={problem.ID} id="nodisplay">
+        <li key={question.ID} id="nodisplay">
         </li>
       
       );
 } else 
       return (
-        <li key={problem.ID} id="feedListUnit">
-            <Link to={{pathname: '/project/'+problem.ID +'/subprojects'}} onClick={()=>{this.handleClick()}}>
-                <div id="feedUnits">               
-                    <div id="blueFeed">project by {problem.OriginalPosterUsername}</div>
-                    <div id="whiteFeed">{problem.Title}</div>
-                    <div id="feedDate">{dateTime(problem.CreatedAt)}</div>
+        <li key={question.ID} id="feedListUnit">
+            <Link to={{pathname: '/project/'+question.ID +'/subprojects'}} onClick={()=>{this.handleClick()}}>
+                <div id="feedUnits">  
+                     {/* Used to say "Question on: ... " or "Q: ... " or just the title */}
+                    <div id="blueFeedProse">question on:<span id="feedCaps"> {question.Description}</span></div>
+                    <div id="whiteFeedProse">{question.Description}</div>
+                    <div id="feedDateProse">{dateTime(question.CreatedAt)}</div>
                 </div>
             </Link>
         </li>

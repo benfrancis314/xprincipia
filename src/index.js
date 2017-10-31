@@ -8,7 +8,8 @@ ReactGA.initialize('UA-104103231-1'); //Unique Google Analytics tracking number
 //Load Components
 
 import ActivityFeedFilter from './components/feed/ActivityFeedFilter.jsx';
-import ActivityFeedProjects from './components/feed/ActivityFeedProjects.jsx';
+import ActivityFeedProjectsUnits from './components/feed/ActivityFeedProjectsUnits.jsx';
+import ActivityFeedQuestionsUnits from './components/feed/ActivityFeedQuestionsUnits.jsx';
 import AnswerDeleteForm from './components/answers/AnswerDeleteForm.jsx';
 import AnswerDeleteFormPrivate from './components/answers/AnswerDeleteFormPrivate.jsx';
 import AnswerEditForm from './components/answers/AnswerEditForm.jsx';
@@ -138,7 +139,8 @@ import WelcomeCreateForm from './components/welcome/WelcomeCreateForm.jsx';
 
 
 //Load Containers
-import ActivityFeedContainer from './containers/ActivityFeedContainer.jsx';
+import ActivityFeedProjectsContainer from './containers/ActivityFeedProjectsContainer.jsx';
+import ActivityFeedQuestionsContainer from './containers/ActivityFeedQuestionsContainer.jsx';
 import AnswerContainer from './containers/AnswerContainer.jsx';
 import AnswerContainerPrivate from './containers/AnswerContainerPrivate.jsx';
 import ConsContainer from './containers/ConsContainer.jsx';
@@ -230,11 +232,15 @@ ReactDOM.render(
             {/* <Route path='/chatbox' component={ChatBoxContainer}/> */}
             <Route path='/welcome/old' component={TrueEmpty}/>
           </Route>
-          <Route path='/welcome/feed' component={ActivityFeedContainer}>
-            <IndexRoute component={ActivityFeedProjects}></IndexRoute>
-            <Route path='/welcome' component={ActivityFeedProjects}></Route>
+          <Route path='/welcome/feed' component={ActivityFeedProjectsContainer}>
+            <IndexRoute component={ActivityFeedProjectsUnits}></IndexRoute>
+            <Route path='/welcome' component={ActivityFeedProjectsUnits}></Route>
             <Route path='/welcome/filter' component={ActivityFeedFilter}></Route>
             <Route path='/welcome/create' component={WelcomeCreateForm}></Route>
+          </Route>
+          <Route path='/welcome/feed/questions' component={ActivityFeedQuestionsContainer}>
+            <IndexRoute component={ActivityFeedQuestionsUnits}></IndexRoute>
+            <Route path='/welcome/questions' component={ActivityFeedQuestionsUnits}></Route>
           </Route>
         </Route>
       </Route>

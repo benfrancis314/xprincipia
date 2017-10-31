@@ -1,14 +1,6 @@
 import React from 'react';
-import axios from 'axios';
 import { Link } from 'react-router';
-import {Config} from '../config.js';
 import $ from 'jquery';
-import ActivityFeedProjects from '../components/feed/ActivityFeedProjects.jsx';
-import ScrollableAnchor from 'react-scrollable-anchor';
-import { configureAnchors } from 'react-scrollable-anchor';
-
-configureAnchors({offset: -20, scrollDuration: 700});
-
 
 // import ReactGA from 'react-ga';
 
@@ -18,64 +10,59 @@ export default class WelcomeUserUnit extends React.Component {
         $(document).ready(function() {
                 $('#feedTitle').html("select filter").fadeIn(7500);
                 $('#feedTitle').attr('id','feedTitleHover');
+                $('#feedBottom').attr('id','feedBottomBlue');
         });
     }
     unHoverFeedText() {
             $(document).ready(function() {
                     $('#feedTitleHover').html("discovery's past");
                     $('#feedTitleHover').attr('id','feedTitle');
+                    $('#feedBottomBlue').attr('id','feedBottom');
             });
     }
     hoverAdd() {
         $(document).ready(function() {
                 $('#feedTitle').html("new project").fadeIn(7500);
                 $('#feedTitle').attr('id','feedTitleHover');
+                $('#feedBottom').attr('id','feedBottomBlue');
         });
     }
     unHoverAdd() {
             $(document).ready(function() {
                     $('#feedTitleHover').html("discovery's past");
                     $('#feedTitleHover').attr('id','feedTitle');
+                    $('#feedBottomBlue').attr('id','feedBottom');
             });
     }
-    constructor(props){
-        super(props);
 
-        this.state = {
-           feedProjects: [],
-           feedQuestions: []
-        }
-    };
-
-    componentDidMount(){
-        var self = this;
-        window.scrollTo(0,0);
-        axios.get( Config.API + '/questions/all').then(function (response) {
-            self.setState({
-                feedQuestions: response.data
-            })
-        }) 
-        return axios.get( Config.API + '/problems/all').then(function (response) {
-            self.setState({
-                feedProjects: response.data
-            })
-        }) 
-
-     }
 	render() {
-        return (
-        <div id="feedContainer">
-            <ScrollableAnchor id={'feed'}>
-                <div id="feedTitle">
-                    discovery's past
+        $(document).ready(function() {
+            $('#feedTitleHover').html("discovery's past");
+            $('#feedTitleHover').attr('id','feedTitle');
+            $('#feedBottomBlue').attr('id','feedBottom');
+        });
+		return (
+            <div id="feedUnitContainer">
+                <div id="feedListDiv">
+                    <ul id="feedUnitList"> 
+                        {this.props.problems.map(this.renderItem)}
+                    </ul>	 
                 </div>
-            </ScrollableAnchor>
-            {/* {React.cloneElement(this.props.children, {problems: this.props.problems})} */}
-            {React.cloneElement(this.props.children, {problems: this.state.feedProjects})}
-            <div id="feedBottom">
-                <br />
+                <div id="feedOptionsBar">
+                    <div id="feedOptionsButton">
+                        <Link to="/welcome/filter" activeClassName="activeBlue">
+                            {/* <a href='#proposals'> */}
+                                <img src={require('../../assets/feedCircle1.svg')} id="feedCircleImg" onMouseOver={this.hoverFeedText} onMouseOut={this.unHoverFeedText} width="60" height="60" alt="User avatar, DNA Helix" />
+                            {/* </a> */}
+                        </Link>
+                    </div>
+                    <Link to="/welcome/create" activeClassName="activeBlue">
+                        <div id="feedAddButton" onMouseOver={this.hoverAdd} onMouseOut={this.unHoverAdd}>
+                            <img src={require('../../assets/blueAdd2.svg')} id="privateNewProjectPlus" width="35" height="35" alt="User avatar, DNA Helix" />
+                        </div>
+                    </Link>
+                </div>
             </div>
-        </div>
 		);
 	}
 	renderItem(problem) {
@@ -97,9 +84,16 @@ if (problem.Private === true) {
 } else if (problem.ParentType === 1) {
 
       return (
-      
-            <li key={problem.ID} id="nodisplay">
-            </li>
+    //   We do actually want to show projects on proposals here:
+        <li key={problem.ID} id="feedListUnit">
+            <Link to={{pathname: '/project/'+problem.ID +'/subprojects'}} onClick={()=>{this.handleClick()}}>
+                <div id="feedUnits">               
+                    <div id="blueFeed">project by <span id="feedCaps">{problem.OriginalPosterUsername}</span></div>
+                    <div id="whiteFeed">{problem.Title}</div>
+                    <div id="feedDate">{dateTime(problem.CreatedAt)}</div>
+                </div>
+            </Link>
+        </li>
       
       
       );
@@ -137,7 +131,7 @@ if (problem.Private === true) {
         <li key={problem.ID} id="feedListUnit">
             <Link to={{pathname: '/project/'+problem.ID +'/subprojects'}} onClick={()=>{this.handleClick()}}>
                 <div id="feedUnits">               
-                    <div id="blueFeed">project by {problem.OriginalPosterUsername}</div>
+                    <div id="blueFeed">project by <span id="feedCaps">{problem.OriginalPosterUsername}</span></div>
                     <div id="whiteFeed">{problem.Title}</div>
                     <div id="feedDate">{dateTime(problem.CreatedAt)}</div>
                 </div>

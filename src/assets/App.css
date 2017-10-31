@@ -4628,7 +4628,8 @@ input#submitWelcomeProblem:hover {
       color: #ffffff;
       text-align: center;
       margin-bottom: 0%;
-      margin-top: 1.5%;
+      /* margin-top: 1.5%; */
+      margin-top: 1%;
       font-size: 260%;
       letter-spacing: 15px;
       width: 70%;
@@ -4646,10 +4647,11 @@ input#submitWelcomeProblem:hover {
     }
     #welcomeIntroductionLabel {
       letter-spacing: 14px;
+      letter-spacing: 12px;
       /* Old width: 90% */
-      width: 90%;
+      /* width: 90%; */
       /* New width 50% to stop XPrincipia Mission showing up everytime going to header */
-      width: 50%;
+      width: 52%;
       margin: 0 auto;
       border: 1px solid #00dcff;
       border-width: 0px 1px 1px 1px;
@@ -4657,7 +4659,8 @@ input#submitWelcomeProblem:hover {
       border-left-color: #515151;*/
       letter-spacing: 16px;
       color: #00dcff;
-      font-size: 90%;      
+      /* font-size: 90%;     */
+      font-size: 85%;    
       /* Old */
       /* font-size: 130%; */
       text-align: center;
@@ -4667,7 +4670,8 @@ input#submitWelcomeProblem:hover {
       /*border-radius: 0% 0% 15% 15%;*/
       border-radius: 0% 0% 40% 40%;
       /*Make sure this refreshes to keep page normal width*/
-      padding: 0.15% 0% 0.35% 0%;
+      /* padding: 0.15% 0% 0.35% 0%; */
+      padding: 0.1% 0% 0.3% 0%;
       background: linear-gradient(rgba(0,255,220,0.05), rgba(0,255,220,0.05), rgba(0,220,255,0));
     }
     #welcomeIntroductionLabel:hover {
@@ -7635,6 +7639,7 @@ background-color: #00dcff;
   text-align: center;
   font-size: 150%;
   color: #ffffff;
+  z-index: 1 !important;
 }
 #easterEgg1 {
   background-image: url('./wandererAboveFog.jpg');  
@@ -7657,6 +7662,7 @@ background-color: #00dcff;
   opacity: 0.8;
   transition: all 3s ease 0s;
   transform: scale(1);
+  z-index: 2 !important;
 }
 #easterEgg1:hover {
   opacity: 1;
@@ -7677,10 +7683,12 @@ background-color: #00dcff;
   font-size: 125%;
   letter-spacing: 1px;
   opacity: 0.8;
+  z-index: 2 !important;
 }
 #easterEggText {
   /* Trying to get the text not to have an opacity */
   opacity: 1 !important;
+  z-index: 3 !important;
 }
 
 
@@ -8472,6 +8480,9 @@ margin-top: 1%;
   box-shadow: 0 0 0pt 0pt rgba(0,220,255,0.5);
   background-color: rgba(0,220,255,0);
   transform: scale(1);
+  /* Attempt to get text to go outside blueFeedProse but not the entire unit, currently does not work */
+  /* white-space: pre-wrap !important; */
+  
 }
 #feedUnits:hover {
   background: linear-gradient(to right,rgba(0,220,255, 0.03), rgba(0,220,255, 0.1), rgba(0,220,255, 0));
@@ -8508,6 +8519,35 @@ margin-top: 1%;
   color: #999999;
   transition: all 0.5s ease 0s;
 }
+#blueFeedProse {
+  color: #00dcff !important;
+  font-size: 90%;
+  padding-left: 5%;
+  /* width: 40%; */
+  width: 85%;
+  border: 1px solid #333333;
+  border-width: 0px 0px 1px 0px;
+  font-family: 'Alegreya Sans SC' !important;
+  text-align: left;
+  /* Attempt to get text to go outside blueFeedProse but not the entire unit, currently does not work */
+  /* white-space: nowrap; */
+}
+#whiteFeedProse {
+  font-family: 'Open Sans' !important;
+  font-size: 105%;
+  padding-left: 2%;
+  padding-right: 2%;
+  padding-top: 1.75%;
+  padding-bottom: 1.75%;
+  border: 1px solid #333333;
+  border-width: 0px 0px 1px 0px;
+  width: 72%;
+  text-align: left;
+}
+#feedDateProse {
+  color: #999999;
+  transition: all 0.5s ease 0s;
+}
 #feedListUnit {
   display: inline-block;
   width: 100%;
@@ -8515,6 +8555,10 @@ margin-top: 1%;
 }
 #feedListUnit:hover * {
   cursor: pointer;
+}
+#feedCaps {
+  /* text-transform: uppercase !important; */
+  /* font-style: italic; */
 }
 
 
@@ -8550,8 +8594,10 @@ margin-top: 1%;
 
 #feedFilterContainer {
   margin-top: 2%;
-  margin-bottom: 4%;
+  /* margin-bottom: 4%; */
+  margin-bottom: 3%;  
   transition: all 1s ease 0s;
+  transition: all 2s ease 0s;
   background-color: rgba(0,220,255,0);
   transform: scale(1);
   background: radial-gradient(circle, rgba(0,220,255,0.05), rgba(0,220,255,0), rgba(0,220,255,0));  
@@ -8561,6 +8607,7 @@ margin-top: 1%;
   margin-top: 2%;
   margin-bottom: 4%;
   transition: all 1s ease 0s;
+  transition: all 2s ease 0s;
   transform: scale(1.02);
   /* background-color: rgba(0,220,255,0.05); */
   background: radial-gradient(circle, rgba(0,220,255,0.05), rgba(0,220,255,0), rgba(0,220,255,0));  
@@ -8605,8 +8652,10 @@ margin-top: 1%;
   margin: 0 auto;
   color: #515151;
   text-align: center;
-  margin-bottom: 2%;
-  margin-top: 1.5%;
+  /* margin-bottom: 2%;
+  margin-top: 1.5%; */
+  margin-bottom: 2.5%;
+  margin-top: 0%;
   font-size: 175%;
   font-size: 225%;  
   /*font-style: italic;*/
@@ -8621,8 +8670,10 @@ margin-top: 1%;
   margin: 0 auto;
   color: #00dcff;
   text-align: center;
-  margin-bottom: 2%;
+  /* margin-bottom: 2%; */
   margin-top: 1.5%;
+  margin-bottom: 2.5%;
+  /* margin-top: 0%; */
   font-size: 175%;
   font-size: 225%;  
   /*font-style: italic;*/
@@ -8727,6 +8778,7 @@ margin-top: 1%;
     /* margin-top: 0.5%; */
     margin-bottom: 1.5%;
     margin-top: 2%;
+    background-color: #0f131c;
     }
   #welcomeSearchFormLabel {
     /* display: inline-block; */
@@ -8739,6 +8791,7 @@ margin-top: 1%;
     outline-width: 0px !important; 
     margin: 0 auto;
     width: 100%;
+    background-color: #0f131c;
     /* text-align: right; */
   }
   #welcomeSearchFormLabel:active, #welcomeSearchFormLabel:focus {

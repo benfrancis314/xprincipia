@@ -4,7 +4,6 @@ import { Link } from 'react-router';
 // import Sound from 'react-sound';
 // Currently unused, may use later. Loading only loads part of page, currently looks weird
 // import ReactCSSTransitionGroup from 'react-addons-css-transition-group'; // ES6
-import ActivityFeedContainer from '../containers/ActivityFeedContainer.jsx';
 import WelcomeUnit from '../components/welcome/WelcomeUnit.jsx';
 import WelcomeUserUnit from '../components/welcome/WelcomeUserUnit.jsx';
 import {Config} from '../config.js';
@@ -77,7 +76,7 @@ export default class WelcomeContainer extends React.Component {
         // }
         componentWillMount(){
         var self = this;
-        window.scrollTo(0,0);
+        // window.scrollTo(0,0);
         return axios.get( Config.API + '/problems/all').then(function (response) {
             self.setState({
                 problems: response.data,
@@ -154,8 +153,7 @@ export default class WelcomeContainer extends React.Component {
               </form>
           </div> */}
           <div id="welcomeUserUnitsContainer">
-              {React.cloneElement(this.props.children, {problems: this.state.feedProjects})}
-              {/* <ActivityFeedContainer problems={this.state.feedProjects} /> */}
+              {React.cloneElement(this.props.children)}
               
               <div id="welcomeRightContainer">
                 <div id="SPListDiv">
@@ -165,7 +163,7 @@ export default class WelcomeContainer extends React.Component {
                     </div>
                     <form id="welcomeSearchFormContainer">
                       {/* Used to say "SEARCH PROJECT TREES" */}
-                      <input type="search" name="search" placeholder="SEARCH TOP PROJECTS" id="welcomeSearchFormLabel"  onKeyDown={this.queryProblem} autoFocus/>
+                      <input type="search" name="search" placeholder="SEARCH PROJECT TREES" id="welcomeSearchFormLabel"  onKeyDown={this.queryProblem} autoFocus/>
                     </form>
                      {/* {this.props.children} */}
                   {/* </div> */}
