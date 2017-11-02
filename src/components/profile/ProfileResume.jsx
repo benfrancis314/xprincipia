@@ -18,7 +18,6 @@ export default class ProfileResume extends React.Component {
         }
 
 
-        this.onLogout = this.onLogout.bind(this);
         this.onCreatedSolution = this.onCreatedSolution.bind(this)
         this.onVotedSolution = this.onVotedSolution.bind(this)
         this.onCreatedProblem = this.onCreatedProblem.bind(this)
@@ -52,12 +51,6 @@ export default class ProfileResume extends React.Component {
         })
         
     }   
-    onLogout() {
-        cookie.remove('userToken', { path: '/' });
-        cookie.remove('userName', { path: '/' });
-        
-        document.location = "/login";
-    }
     onCreatedSolution() {
         var self = this;
         self.setState({

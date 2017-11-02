@@ -42,7 +42,10 @@ export default class WelcomeUserUnit extends React.Component {
 
         this.state = {
            feedProjects: [],
+           feedProjectsSlice: []
         }
+
+        this.pagingMore = this.pagingMore.bind(this);        
     };
 
     componentDidMount(){
@@ -50,11 +53,22 @@ export default class WelcomeUserUnit extends React.Component {
         // window.scrollTo(0,0);
         return axios.get( Config.API + '/problems/all').then(function (response) {
             self.setState({
-                feedProjects: response.data
+                feedProjects: response.data.reverse(),
+                // feedProjectsSlice: response.data.reverse().slice(1,3)
+                feedProjectsSlice: response.data.reverse().slice(0,9)
             })
         }) 
-
+ 
      }
+     pagingMore() {
+        this.state.feedProjectsSlice = this.state.feedProjects.slice(1,6)
+        alert(this.state.feedProjectsSlice.length)
+        // alert('success')
+     }
+    //  Attempt to get paging to transition from a certain number of projects to a different number
+    //  componentWillReceiveProps(nextState) {
+    //     nextState.feedProjectsSlice = this.state.feedProjectsSlice
+    //   }
 	render() {
         return (
         <div id="feedContainer">
@@ -64,10 +78,13 @@ export default class WelcomeUserUnit extends React.Component {
                 </div>
             </ScrollableAnchor>
             {/* {React.cloneElement(this.props.children, {problems: this.props.problems})} */}
-            {React.cloneElement(this.props.children, {problems: this.state.feedProjects})}
+            {React.cloneElement(this.props.children, {problems: this.state.feedProjectsSlice})}
             <div id="feedBottom">
                 <br />
             </div>
+            {/* <div onClick={this.pagingMore}>
+                Paging
+            </div> */}
         </div>
 		);
 	}

@@ -53,6 +53,7 @@ export default class FullProblem extends React.Component {
 
   shouldComponentUpdate(nextProps, nextState) {
     // only render if probID has changed
+    // Removing cookie part for now, for testing
     nextState =  { userToken: cookie.load('userToken') };
     return nextState.probID !== nextProps.params.probID;
 }

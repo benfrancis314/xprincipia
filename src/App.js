@@ -20,6 +20,7 @@ class App extends React.Component {
 
       this.state = {
           userToken: [],
+          userName: [],
           undefinedPaths: [
           "/project/undefined/suggestions", 
           '/project/undefined/subprojects',
@@ -33,18 +34,41 @@ class App extends React.Component {
         
     };
 
-  componentWillMount() {
-    this.setState( { userToken: cookie.load('userToken') });
+
+
+  componentDidMount() {
+    this.setState( 
+      { userToken: cookie.load('userToken') }
+    );
     axios.defaults.headers.common['Authorization'] = 'Bearer '+cookie.load('userToken');
+    // alert('mountApp');
+  }
+  // componentWillMount() {
+  //   this.setState( { userToken: cookie.load('userToken') });
+  //   axios.defaults.headers.common['Authorization'] = 'Bearer '+cookie.load('userToken');
+  //   alert('mountApp');
+  // }
+  componentWillReceiveProps(nextState) {
+    nextState =  { 
+      userToken: cookie.load('userToken'),
+      // userName: cookie.load('userName')
+    };
+    // alert('changeApp');
   }
  
   onLogin(userToken) {
     this.setState({ userToken });
-    cookie.save('userToken', this.state.userToken, { path: '/' });
+    // I'm removing all of the "path" variables, because they seem to be causing problems. 
+    // cookie.save('userToken', this.state.userToken, { path: '/' });
+    cookie.save('userToken', this.state.userToken);
   }
  
   onLogout() {
-    cookie.remove('userToken', { path: '/' });
+    // I'm removing all of the "path" variables, because they seem to be causing problems. 
+    // cookie.remove('userToken', { path: '/' });
+    cookie.remove('userToken');
+    // This was for testing to see if the userName also had to be removed. 
+    // cookie.remove('userName', { path: '/' });
   }
   hideNotification() {
     $(document).ready(function() {
@@ -145,7 +169,7 @@ export default App;
 
 
 function randomImg() {
-  if (Math.random() < 0.01) {
+  if (Math.random() < 0.001) {
     return (
       // Nietzche Easter Egg
       <div id="easterEggContainer">

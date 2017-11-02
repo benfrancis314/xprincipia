@@ -26,7 +26,7 @@ export default class HeaderAvatar extends React.Component {
         $(document).ready(function() {
             // $('#welcomeSearchFormLabel').attr('placeholder','CINEMATIC GUIDE');
             // $('#welcomeSearchFormLabel').attr('id','welcomeSearchFormLabelBlue');
-            $('#logoName').html("command center").fadeIn(7500);
+            $('#logoName').html("personal quarters").fadeIn(7500);
             $('#logoName').attr('id','logoNameGuide');
         });
       }

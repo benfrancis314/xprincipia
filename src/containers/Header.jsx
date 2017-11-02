@@ -15,16 +15,23 @@ export default class Header extends React.Component {
            username: '',
            password: '',
         }
-        this.queryProblem = this.queryProblem.bind(this);
+        // this.queryProblem = this.queryProblem.bind(this);
         this.postLogin = this.postLogin.bind(this);
     };
 
 
   componentWillMount() {
-    this.state =  { userToken: cookie.load('userToken') };
+    this.state =  { 
+      userToken: cookie.load('userToken')
+    };
+    // alert('mountHeader');
   }
   componentWillReceiveProps(nextState) {
-    nextState =  { userToken: cookie.load('userToken') };
+    nextState =  { 
+      userToken: cookie.load('userToken'),
+      // userName: cookie.load('userName')
+    };
+    // alert('changeHeader');
   }
 
   postLogin() {
@@ -38,18 +45,21 @@ export default class Header extends React.Component {
       password: this.state.password
     })
     .then(function (result) {
+      alert('headerBeforeState');
       self.setState({
         userToken: result.data.token
       })
+      alert('headerAfterState');
       cookie.save('userToken', result.data.token );
       cookie.save('userName', self.state.username)
-      
+      alert('headerAfterCookieSave');
       // Store token/Username in db table
       return axios.post( Config.API + '/auth/saveToken',  {
         username : self.state.username,
         token : "Bearer " + self.state.userToken
       }, {headers: { Authorization: "Bearer " + self.state.userToken }}).then (function (response){
         
+        alert('headerAfterSaveTokenBackend');
         //return to same page
         document.location = window.location.pathname;
       })
@@ -74,17 +84,17 @@ export default class Header extends React.Component {
       });
 }
 
-
-    queryProblem () {
-        var self = this
-        this.state.searchText = document.getElementById('exploreInput').value
-        return axios.get( Config.API + '/problems/search?q='+this.state.searchText).then(function (response) {
-            self.setState({
-              problems: response.data
-            })
-            document.location = '/welcome';
-        })  
-    }
+// Not using since we have no search bar in the header
+    // queryProblem () {
+    //     var self = this
+    //     this.state.searchText = document.getElementById('exploreInput').value
+    //     return axios.get( Config.API + '/problems/search?q='+this.state.searchText).then(function (response) {
+    //         self.setState({
+    //           problems: response.data
+    //         })
+    //         document.location = '/welcome';
+    //     })  
+    // }
 
 // Not using currently
     // submitSearch(e) {

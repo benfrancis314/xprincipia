@@ -53,8 +53,11 @@ export default class ProfileProblemsSolutions extends React.Component {
         
     }   
     onLogout() {
-        cookie.remove('userToken', { path: '/' });
-        cookie.remove('userName', { path: '/' });
+        // I'm removing all of the "path" variables, because they seem to be causing problems. 
+        // cookie.remove('userToken', { path: '/' });
+        // cookie.remove('userName', { path: '/' });
+        cookie.remove('userToken');
+        cookie.remove('userName');
         document.location = "/welcome"; 
     }
     onCreatedSolution() {
@@ -164,14 +167,14 @@ export default class ProfileProblemsSolutions extends React.Component {
         <div>
         <div id="profileSidebarMenu">
             <div id="profileProjectsMenu">
-                <div id="projectsTitleProfile">Projects</div>
-                <div id="createdProblemsButton" onClick={this.onCreatedProblem}>Created</div>
-                <div id="followedProblemsButton" onClick={this.onFollowedProblem}>Voted</div>
+                <div id="projectsTitleProfile">projects</div>
+                <div id="createdProblemsButton" onClick={this.onCreatedProblem}>created</div>
+                <div id="followedProblemsButton" onClick={this.onFollowedProblem}>voted</div>
             </div>
             <div id="profileProposalsMenu">
-                <div id="proposalsTitleProfile">Proposals</div>
-                <div id="createdSolutionsButton" onClick={this.onCreatedSolution}>Created</div>
-                <div id="votedSolutionsButtonActive" onClick={this.onVotedSolution}>Voted</div>
+                <div id="proposalsTitleProfile">proposals</div>
+                <div id="createdSolutionsButton" onClick={this.onCreatedSolution}>created</div>
+                <div id="votedSolutionsButtonActive" onClick={this.onVotedSolution}>voted</div>
             </div>
         </div>
         <div id="profileRightElements">
@@ -186,14 +189,14 @@ export default class ProfileProblemsSolutions extends React.Component {
     <div>
         <div id="profileSidebarMenu">
             <div id="profileProjectsMenu">
-                <div id="projectsTitleProfile">Projects</div>
-                <div id="createdProblemsButton" onClick={this.onCreatedProblem}>Created</div>
-                <div id="followedProblemsButtonActive" onClick={this.onFollowedProblem}>Voted</div>
+                <div id="projectsTitleProfile">projects</div>
+                <div id="createdProblemsButton" onClick={this.onCreatedProblem}>created</div>
+                <div id="followedProblemsButtonActive" onClick={this.onFollowedProblem}>voted</div>
             </div>
             <div id="profileProposalsMenu">
-                <div id="proposalsTitleProfile">Proposals</div>
-                <div id="createdSolutionsButton" onClick={this.onCreatedSolution}>Created</div>
-                <div id="votedSolutionsButton" onClick={this.onVotedSolution}>Voted</div>
+                <div id="proposalsTitleProfile">proposals</div>
+                <div id="createdSolutionsButton" onClick={this.onCreatedSolution}>created</div>
+                <div id="votedSolutionsButton" onClick={this.onVotedSolution}>voted</div>
             </div>
         </div>
         <div id="profileRightElements">

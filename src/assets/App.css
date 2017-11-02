@@ -272,7 +272,8 @@ input:-webkit-autofill {
 
 /* Fixing Autocomplete */
 
-input:-webkit-autofill,
+/* Doesn't work yet, messes up login at header */
+/* input:-webkit-autofill,
 input:-webkit-autofill:hover, 
 input:-webkit-autofill:focus
 input:-webkit-autofill, 
@@ -287,7 +288,7 @@ select:-webkit-autofill:focus {
   box-shadow: 0 0 3px 1000px #0f131c inset;
   transition: all 1ss ease-in-out 0s;
   background-color: #0f131c !important;
-}
+} */
 
 
 
@@ -3588,18 +3589,30 @@ letter-spacing: 7px;
 }
 #userName {
   font-size: 200%;
-  letter-spacing: 6px;
+  /* letter-spacing: 6px; */
+  letter-spacing: 4px;
   text-align: center;
   margin: 0 auto;
-  margin-right: 7%;
+  /* margin-right: 7%; */
+  margin-top: 2%;
   padding: 5px 3px;
   font-family: 'Alegreya Sans SC', sans-serif;
   word-break: break-all;
   overflow: auto;
   border: 1px solid #dddddd;
-  border-width: 0px 1px 1px 0px;
-  border-radius: 0px 0px 20px 0px;
+  /* border-width: 0px 1px 1px 0px; */
+  border-width: 1px;
+  /* border-radius: 0px 0px 20px 0px; */
+  border-radius: 2%;
   background-color: rgba(255,255,255,0.03);
+  background-color: rgb(0,220,255,0.05);
+  transform: scale(1);
+  width: 90%;
+  transition: all 1s ease 0s;
+}
+#userName:hover {
+  transform: scale(1.02);
+
 }
 #userEmail {
   font-size: 155%;
@@ -3620,20 +3633,24 @@ letter-spacing: 7px;
   font-size: 150%;
   font-weight: 100;
   border: 1px solid #00dcff;
-  border-width: 1px 1px 1px 0px;
-  border-radius: 0px 0px 15px 0px;
+  border-color: rgba(0,220,255,0.5);
+  /* border-width: 1px 1px 1px 0px; */
+  border-width: 1px;
+  /* border-radius: 0px 0px 15px 0px; */
+  border-radius: 8px 8px 8px 8px;
   text-align: center;
   text-decoration: none;
-  margin: 10px 0px;
+  margin: 0 auto;
+  /* margin: 10px 0px; */
+  margin-top: 2%;
+  margin-bottom: 2%;
   letter-spacing: 1px;
   transition: all 0.5s ease 0s;
-  /*width: 90%;*/
-  left: 0;
-
-  /*Testing out profile buttons based off shayans feedback*/
-  /*Also changed profile left to being 40% width instead of previously 35%*/
-  width: 80%;
-  padding-left: 10%;
+  /* left: 0; */
+  /* width: 80%; */
+  width: 85%;
+  /* padding-left: 10%; */
+  transform: scale(1);
 }
 #userProblemsSolutionsButton:hover, #notificationsButton:hover,
 #userSettingsButton:hover, #aboutXPButton:hover, 
@@ -3641,6 +3658,7 @@ letter-spacing: 7px;
   background-color: rgba(0,220,255,1);
   color: #0f131c;
   cursor: pointer;
+  transform: scale(1.02);
 }
 #userProblemsSolutionsButton:active, #notificationsButton:active,
 #userSettingsButton:active, #aboutXPButton:active, #logOutButton:active {
@@ -3765,29 +3783,47 @@ letter-spacing: 7px;
 #profileRightUnit {
   border: 1px solid #00dcff;
   border-width: 1px 0px 0px 0px;
-  padding: 2px;
+  /* padding: 2px; */
   transition: all 0.5s ease 0s;
+  transform: scale(1);
+  background: radial-gradient(circle, rgba(0,220,255,0), rgba(0,220,255,0), rgba(0,220,255,0.05), rgba(0,220,255,0));  
+  
 
   /*Exploring the look of gradients as background colors, 
   so far I haven't found anything I like*/
-  /*background: linear-gradient(rgba(0,220,255,0.0), rgba(0,220,255,0.02), rgba(0,220,255,0.0))*/
 }
 #profileRightUnit:hover {
   color: #ffffff;
+  transform: scale(1.02);
   cursor: pointer;
   background-color: rgba(0,220,255,0.05);
+  
 }
 #profileUnitTitle {
   display: block;
-  margin: 5px 0px 0px 0px;
-  padding: 2px 5px 2px 5px;
+  text-transform: lowercase !important; */
+  /* margin: 5px 0px 0px 0px;
+  padding: 2px 5px 2px 5px; */
+  margin: 0 auto;
+  text-align: center;
   font-size: 160%;
-  color: #00dcff !important;
+  /* color: #00dcff !important; */
   line-height: 120%;
   height: auto;
   word-break: break-all;
   overflow: auto;
-  width: 90%;
+  width: 100%;
+  padding: 3% 0%;
+  transition: all 0.5s ease 0s;
+  transform: scale(1);
+  background-color: rgba(0,220,255,0);
+  background: linear-gradient(to right, rgba(0,220,255,0), rgba(0,220,255,0), rgba(0,220,255,0.05), rgba(0,220,255,0));  
+}
+#profileUnitTitle:hover {
+  background: linear-gradient(to right, rgba(0,220,255,0), rgba(0,220,255,0.025), rgba(0,220,255,0.075), rgba(0,220,255,0));    
+  transform: scale(1.02);
+  cursor: pointer;
+  background-color: rgba(0,220,255,0.025);
 }
 #profileUnitSummary {
   font-family: 'Open Sans', sans-serif;
