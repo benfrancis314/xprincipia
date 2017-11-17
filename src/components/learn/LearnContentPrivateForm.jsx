@@ -84,7 +84,7 @@ constructor(props){
            return (
         <div>
           <div id="discussMenuEnd">
-            Notes
+            notes
           </div>
             <div id="suggestionFormComponent">
                 <form id="suggestionForm">

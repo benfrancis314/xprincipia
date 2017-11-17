@@ -93,12 +93,12 @@ this.state.question = document.getElementById('questionTextArea').value
         return (
             <div>
               <div id="discussMenuEnd">
-                Questions
+                questions
               </div>
               <div id="questionFormComponent">
                     <form id="questionForm">
                         <fieldset id='fieldSetNoBorderPadding'>
-                                <textarea name="questionText" required="required" id="questionTextArea" placeholder="Ask questions about this project." ></textarea>
+                                <textarea name="questionText" required="required" id="questionTextArea" placeholder="Ask a question about this proposal." ></textarea>
                                 <input type="button" value="Ask" onClick={this.postQuestion} id="askQuestion"/>
                         </fieldset>
                     </form>
@@ -109,12 +109,12 @@ this.state.question = document.getElementById('questionTextArea').value
         return (
           <div>
             <div id="discussMenuEnd">
-              Questions
+              questions
             </div>
             <div id="questionFormComponent">
                   <form id="questionForm">
                       <fieldset id='fieldSetNoBorderPadding'>
-                              <textarea name="questionText" required="required" id="questionTextArea" placeholder="Ask a question about this project" ></textarea>
+                              <textarea name="questionText" required="required" id="questionTextArea" placeholder="Ask a question about this project." ></textarea>
                               <input type="button" value="Ask" onClick={this.postQuestion} id="askQuestion"/>
                       </fieldset>
                   </form>

@@ -88,7 +88,7 @@ export default class SuggestionEditForm extends React.Component {
         return (
             <div>
               <div id="discussMenuEnd">
-                Suggestions
+                suggestions
               </div>
               <div id="questionFormComponent">
                     <form id="questionForm">
@@ -111,7 +111,7 @@ export default class SuggestionEditForm extends React.Component {
       return (
         <div>
           <div id="discussMenuEnd">
-            Suggestions
+            suggestions
           </div>
           <div id="questionFormComponent">
                 <form id="questionForm">

@@ -78,16 +78,65 @@ componentDidUpdate() {
                 $('#proposalToggleOn').attr('id','proposalToggleOff');
                 $('#solutionUnitActive').attr('id','solutionUnit');			
             });
-		};
+        };
+        
+    if (0) {
       return (
         <div id='fullSolutionContainer'>
             <div id="fullSolution">
                 <div id="solutionIntro">
-                    
                     <Link to={`/project/private/${this.props.params.probID}/subprojects`}>
                         <img src={require('../../assets/redX.svg')} id="closeRedX" width="40" height="40" alt="Close button, red X symbol" />
                     </Link>
                     <h1 id="solutionTitle" onClick={toggleProposal}>{this.state.solutionInfo.Title}</h1>
+                    <div id="proposalCreator">{this.state.solutionInfo.OriginalPosterUsername}</div>
+                    {/*Commented out until functional*/}
+                    {/*<div id="currentVersion">v.112</div>*/}
+                    <p id="solutionSummary">
+                    {this.state.solutionInfo.Summary}x
+                    </p>
+                </div>
+                {React.cloneElement(this.props.children, {solutionInfo: this.state.solutionInfo})}
+            </div>
+            {randomImg()}
+        </div>
+      );
+   } else if (1) {
+    return (
+        <div id='fullSolutionContainer'>
+            <div id="fullSolution">
+                <div id="solutionIntro">
+                    <Link to={`/project/private/${this.props.params.probID}/subprojects`}>
+                        <img src={require('../../assets/redX.svg')} id="closeRedX" width="40" height="40" alt="Close button, red X symbol" />
+                    </Link>
+                    <div id="solutionTitleLabelGreen">
+                        plan
+                    </div>
+                    <h1 id="solutionTitleGreen" onClick={toggleProposal}>{this.state.solutionInfo.Title}</h1>
+                    <div id="proposalCreator">{this.state.solutionInfo.OriginalPosterUsername}</div>
+                    {/*Commented out until functional*/}
+                    {/*<div id="currentVersion">v.112</div>*/}
+                    <p id="solutionSummary">
+                    {this.state.solutionInfo.Summary}
+                    </p>
+                </div>
+                {React.cloneElement(this.props.children, {solutionInfo: this.state.solutionInfo})}
+            </div>
+            {randomImg()}
+        </div>
+      );
+   } else {
+    return (
+        <div id='fullSolutionContainer'>
+            <div id="fullSolution">
+                <div id="solutionIntro">
+                    <Link to={`/project/private/${this.props.params.probID}/subprojects`}>
+                        <img src={require('../../assets/redX.svg')} id="closeRedX" width="40" height="40" alt="Close button, red X symbol" />
+                    </Link>
+                    <div id="solutionTitleLabelRed">
+                        solution
+                    </div>
+                    <h1 id="solutionTitleRed" onClick={toggleProposal}>{this.state.solutionInfo.Title}</h1>
                     <div id="proposalCreator">{this.state.solutionInfo.OriginalPosterUsername}</div>
                     {/*Commented out until functional*/}
                     {/*<div id="currentVersion">v.112</div>*/}
@@ -101,6 +150,7 @@ componentDidUpdate() {
         </div>
       );
    }
+}
 }
 
 function randomImg() {

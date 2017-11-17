@@ -90,7 +90,7 @@ this.state.question = document.getElementById('questionTextArea').value
         return (
             <div>
               <div id="discussMenuEnd">
-                Questions
+                questions
               </div>
               <div id="questionFormComponent">
                     <form id="questionForm">
@@ -106,7 +106,7 @@ this.state.question = document.getElementById('questionTextArea').value
         return (
           <div>
             <div id="discussMenuEnd">
-              Questions
+              questions
             </div>
             <div id="questionFormComponent">
                   <form id="questionForm">

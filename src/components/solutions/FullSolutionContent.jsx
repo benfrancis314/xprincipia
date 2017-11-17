@@ -171,22 +171,22 @@ unVote() {
               </div>
               <div id="createDate">{dateTime(this.state.solutionInfo.CreatedAt)}</div>
               
-              <Link to={`/proposal/${this.props.params.probID}/${this.props.params.solutionID}/delete`}>
+              {/* <Link to={`/proposal/${this.props.params.probID}/${this.props.params.solutionID}/delete`}>
                 <img src={require('../../assets/delete.svg')} id="deleteSolutionButton" width="20" height="20" alt="Edit Button" />              
-              </Link>
+              </Link> */}
 
               <Link to={`/proposal/${this.props.params.probID}/${this.props.params.solutionID}/edit`} activeClassName="activeProposalOption">
                 <div id="proposalDevelopButton">
-                  Develop
+                  develop
                 </div>
               </Link>
               
               <div id="prosConsMenu">
                 <Link to={`/proposal/${this.props.params.probID}/${this.props.params.solutionID}/pros`} activeClassName="activeProsCons">
-                    <div id="prosButton">Pros</div>
+                    <div id="prosButton">pros</div>
                 </Link>
                 <Link to={`/proposal/${this.props.params.probID}/${this.props.params.solutionID}/cons`} activeClassName="activeProsCons">
-                    <div id="consButton">Cons</div>
+                    <div id="consButton">cons</div>
                 </Link>
               </div>
               <div>
@@ -212,22 +212,22 @@ unVote() {
               </div>
               <div id="createDate">{dateTime(this.state.solutionInfo.CreatedAt)}</div>
               
-              <Link to={`/proposal/${this.props.params.probID}/${this.props.params.solutionID}/delete`}>
+              {/* <Link to={`/proposal/${this.props.params.probID}/${this.props.params.solutionID}/delete`}>
                 <img src={require('../../assets/delete.svg')} id="deleteSolutionButton" width="20" height="20" alt="Edit Button" />              
-              </Link>
+              </Link> */}
 
               <Link to={`/proposal/${this.props.params.probID}/${this.props.params.solutionID}/edit`} activeClassName="activeProposalOption">
                 <div id="proposalDevelopButton">
-                  Develop
+                  develop
                 </div>
               </Link>
 
               <div id="prosConsMenu">
                 <Link to={`/proposal/${this.props.params.probID}/${this.props.params.solutionID}/pros`} activeClassName="activeProsCons">
-                    <div id="prosButton">Pros</div>
+                    <div id="prosButton">pros</div>
                 </Link>
                 <Link to={`/proposal/${this.props.params.probID}/${this.props.params.solutionID}/cons`} activeClassName="activeProsCons">
-                    <div id="consButton">Cons</div>
+                    <div id="consButton">cons</div>
                 </Link>
               </div>
               <div>
@@ -260,10 +260,10 @@ unVote() {
 
               <div id="prosConsMenu">
                 <Link to={`/proposal/${this.props.params.probID}/${this.props.params.solutionID}/pros`} activeClassName="activeProsCons">
-                    <div id="prosButton">Pros</div>
+                    <div id="prosButton">pros</div>
                 </Link>
                 <Link to={`/proposal/${this.props.params.probID}/${this.props.params.solutionID}/cons`} activeClassName="activeProsCons">
-                    <div id="consButton">Cons</div>
+                    <div id="consButton">cons</div>
                 </Link>
               </div>
               <div>
@@ -296,10 +296,10 @@ unVote() {
 
               <div id="prosConsMenu">
                 <Link to={`/proposal/${this.props.params.probID}/${this.props.params.solutionID}/pros`} activeClassName="activeProsCons">
-                    <div id="prosButton">Pros</div>
+                    <div id="prosButton">pros</div>
                 </Link>
                 <Link to={`/proposal/${this.props.params.probID}/${this.props.params.solutionID}/cons`} activeClassName="activeProsCons">
-                    <div id="consButton">Cons</div>
+                    <div id="consButton">cons</div>
                 </Link>
               </div>
               <div>

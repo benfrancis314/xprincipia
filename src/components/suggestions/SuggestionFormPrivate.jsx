@@ -89,7 +89,7 @@ this.state.suggestion = document.getElementById('suggestionTextArea').value
       return (
       <div>
         <div id="discussMenuEnd">
-          Suggestions
+          suggestions
         </div>
         <div id="suggestionFormComponent">
               <form id="questionForm">

@@ -117,9 +117,9 @@ export default class WelcomeContainer extends React.Component {
                   XPrincipia Projects
               </div>     
               <Link to="/demo">
-              <div id="welcomeTutorialVideoButton" onClick={this.privateAlert} onMouseOver={this.hoverText} onMouseOut={this.unHoverText}>
-                  <img src={require('../assets/videoPlay3.svg')} id="welcomeVideoLogo" width="25" height="25" alt="Video player symbol, link to tutorial"/>
-              </div>
+                <div id="welcomeTutorialVideoButton" onClick={this.privateAlert} onMouseOver={this.hoverText} onMouseOut={this.unHoverText}>
+                    <img src={require('../assets/videoPlay3.svg')} id="welcomeVideoLogo" width="22" height="22" alt="Video player symbol, link to tutorial"/>
+                </div>
               </Link>
           </div>
           {/* <div id="privateContainerMottoContainer">
@@ -163,7 +163,7 @@ export default class WelcomeContainer extends React.Component {
                     </div>
                     <form id="welcomeSearchFormContainer">
                       {/* Used to say "SEARCH PROJECT TREES" */}
-                      <input type="search" name="search" placeholder="SEARCH PROJECT TREES" id="welcomeSearchFormLabel"  onKeyDown={this.queryProblem} autoFocus/>
+                      <input type="search" name="search" placeholder="SEARCH PROJECT TREES" id="welcomeSearchFormLabel"  onKeyDown={this.queryProblem} autoFocus autoComplete="off" />
                     </form>
                      {/* {this.props.children} */}
                   {/* </div> */}

@@ -69,7 +69,7 @@ componentWillReceiveProps (nextProps){
             <div>
                 <Link to={`/project/${this.state.solutionInfo.ProblemID}/proposal/${this.props.parentID}`}>
                     <div id="parentButton">
-                        <span id='blue'>Proposal: </span>{this.state.solutionInfo.Title}
+                        <span id='blue'>proposal: </span>{this.state.solutionInfo.Title}
                     </div>
                 </Link>
             </div>
@@ -79,7 +79,7 @@ componentWillReceiveProps (nextProps){
             <div>
                 <Link to={`/welcome`}>
                     <div id="parentButton">
-                        <span id='blue'>Parent: </span>XPrincipia Projects
+                        <span id='blue'>parent: </span>xprincipia projects
                     </div>
                 </Link>
             </div>
@@ -90,7 +90,7 @@ componentWillReceiveProps (nextProps){
 			<div>
                 <Link to={`/project/${this.props.parentID}/subprojects`}>
                     <div id="parentButton">
-                        <span id='blue'>Parent: </span>{this.state.parent.Title}
+                        <span id='blue'>parent: </span>{this.state.parent.Title}
                     </div>
                 </Link>
             </div>

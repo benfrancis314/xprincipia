@@ -45,19 +45,19 @@ export default class ProblemDiscussPrivateMenu extends React.Component {
             transitionEnter={false}
             transitionLeave={false}>
                 <div id="projectInteractDiscussMenu">
-                    <div id="proposalsTitleRightSB">Brainstorm</div>
+                    <div id="proposalsTitleRightSB">brainstorm</div>
                             <div id="sidebarDiscussMenu">
                                 <div id="discussGroup1">
                                     <Link to={`/project/private/${this.props.params.probID}/questions`} activeClassName="activeWhiteBorder">
-                                        <div id="SBDiscussButton">Questions</div>
+                                        <div id="SBDiscussButton">questions</div>
                                     </Link>
 
                                     <Link to={`/project/private/${this.props.params.probID}/suggestions`} activeClassName="activeWhiteBorder">
-                                        <div id="SBDiscussButton">Suggestions</div>
+                                        <div id="SBDiscussButton">suggestions</div>
                                     </Link>
 
                                     <Link to={`/project/private/${this.props.params.probID}/open`} activeClassName="activeWhiteBorder">
-                                        <div id="SBDiscussButton">Open Brainstorm</div>
+                                        <div id="SBDiscussButton">open brainstorm</div>
                                     </Link>
                                 </div>
                             </div>

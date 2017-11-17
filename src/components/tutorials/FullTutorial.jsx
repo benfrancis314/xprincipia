@@ -290,23 +290,23 @@ export default class Tutorial extends React.Component {
                         <div id="fullTutorialEmbed">
                                 <img src={require('../../assets/redX.svg')} id="closeRedX" width="40" height="40" alt="Close button, red X symbol" />
                                 <div id="projectInteractDiscussMenu">
-                                    <div id="proposalsTitleRightSB">Discuss</div>
+                                    <div id="proposalsTitleRightSB">discuss</div>
                                             <div id="sidebarDiscussMenu">
                                                 <div id="discussGroup1">
                                                     <Link activeClassName="activeWhiteBorder">
-                                                        <div id="SBDiscussButton">Questions</div>
+                                                        <div id="SBDiscussButton">questions</div>
                                                     </Link>
                                                     <Link activeClassName="activeWhiteBorder">
-                                                        <div id="SBDiscussButton">Suggestions</div>
+                                                        <div id="SBDiscussButton">suggestions</div>
                                                     </Link>
                                                     <Link activeClassName="activeWhiteBorder">
-                                                        <div id="SBDiscussButton">Open Debate</div>
+                                                        <div id="SBDiscussButton">open debate</div>
                                                     </Link>
                                                 </div>
                                             </div>
                                             <div id="questionContainer">
                                                         <div id="discussMenuEnd">
-                                                            Questions
+                                                            questions
                                                         </div>
                                                         <div id="questionFormComponent">
                                                             <form id="questionForm">

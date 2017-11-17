@@ -42,21 +42,61 @@ export default class SolutionUnit extends React.Component {
 
 	renderItem(solution) {
 
-		return (
-			<li key={solution.ID}>
-				<Link to={`/project/${solution.ProblemID}/proposal/${solution.ID}`} >
-					<div id="solutionUnit">
-						<div id="solutionUnitContainer">
-							<div id="solutionPercent">{floatToDecimal(solution.PercentRank)}</div>
-							<div id="solutionUnitTitle">{solution.Title}</div>
+		if (solution.Title.includes('k')) {
+			return (
+					<li key={solution.ID}>
+						<Link to={`/project/${solution.ProblemID}/proposal/${solution.ID}`} >
+							<div id="solutionUnit">
+								<div id="solutionUnitContainer">
+									<div id="solutionPercent">{floatToDecimal(solution.PercentRank)}</div>
+									<div id="solutionUnitTitle">{solution.Title}</div>
+								</div>
+							</div>
+						<div id="proposalToggleOff">
+							{/*{React.cloneElement(<FullSolution probID={solution.ProblemID} solutionID={solution.ID}  />)}*/}
 						</div>
-					</div>
-				<div id="proposalToggleOff">
-					{/*{React.cloneElement(<FullSolution probID={solution.ProblemID} solutionID={solution.ID}  />)}*/}
-				</div>
-				</Link>
-			</li>);
-	}
+						</Link>
+					</li>);
+			} else if (solution.Title.includes('d')) {
+			return (
+				<li key={solution.ID}>
+						<Link to={`/project/${solution.ProblemID}/proposal/${solution.ID}`} >
+							<div id="solutionUnitGreen">
+								<div id="solutionUnitContainer">
+									<div id="solutionPercentGreen">{floatToDecimal(solution.PercentRank)}</div>
+									<div id="solutionUnitTitle">
+										<span id="greenProposal">plan</span>
+										<br />
+										{solution.Title}
+									</div>
+								</div>
+							</div>
+						<div id="proposalToggleOff">
+							{/*{React.cloneElement(<FullSolution probID={solution.ProblemID} solutionID={solution.ID}  />)}*/}
+						</div>
+						</Link>
+					</li>);
+			} else {
+				return (
+					<li key={solution.ID}>
+						<Link to={`/project/${solution.ProblemID}/proposal/${solution.ID}`} >
+							<div id="solutionUnitRed">
+								<div id="solutionUnitContainer">
+									<div id="solutionPercentRed">{floatToDecimal(solution.PercentRank)}</div>
+									<div id="solutionUnitTitle">
+										<span id="redProposal">solution</span>
+										<br />
+										{solution.Title}
+									</div>
+								</div>
+							</div>
+						<div id="proposalToggleOff">
+							{/*{React.cloneElement(<FullSolution probID={solution.ProblemID} solutionID={solution.ID}  />)}*/}
+						</div>
+						</Link>
+					</li>);
+			}
+		}
 }
 
 

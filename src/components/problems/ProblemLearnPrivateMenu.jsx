@@ -41,15 +41,15 @@ export default class ProblemLearnPrivateMenu extends React.Component {
             transitionEnter={false}
             transitionLeave={false}>
                 <div id="projectInteractDiscussMenu">
-                    <div id="proposalsTitleRightSB">Notebook</div>
+                    <div id="proposalsTitleRightSB">notebook</div>
                     <div id="sidebarDiscussMenu">
                         <div id="discussGroup1">
                             <Link to={`/project/private/${this.props.params.probID}/notes`} activeClassName="activeWhiteBorder">
-                                <div id="SBDiscussButton">Notes</div>
+                                <div id="SBDiscussButton">notes</div>
                             </Link>
 
                             <Link to={`/project/private/${this.props.params.probID}/resources`}  activeClassName="activeWhiteBorder">
-                                <div id="SBDiscussButton">Resources</div>
+                                <div id="SBDiscussButton">resources</div>
                             </Link>
 
                             {/*<Link to={`/project/${this.props.params.probID}/learn/wiki`}  activeClassName="activeWhiteBorder">

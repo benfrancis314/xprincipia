@@ -67,30 +67,30 @@ export default class SolutionForm extends React.Component {
         <div id="createSolutionBox">
             <ScrollableAnchor id={'proposalForm'}>
               <div id="proposalFormCreateTitle">
-                    New Proposal
+                    new proposal
               </div>
             </ScrollableAnchor>
 
             <form id="createForm">
               <fieldset id="fieldSetSideBorder">
-                <label htmlFor="solutionTitle" id="projectTitleProposalFormLabel">Project Title<br />
+                <label htmlFor="solutionTitle" id="projectTitleProposalFormLabel">project title<br />
                   <h1 id="proposalCreateProjectTitle">{this.props.projectTitle}</h1>
                 </label><br />
 
-                <label htmlFor="solutionTitle" id="solutionTitleFormLabel">Proposal Title<br />
+                <label htmlFor="solutionTitle" id="solutionTitleFormLabel">proposal title<br />
                     <input type="text" name="solutionTitle" required="required" maxLength="140" id="solutionTitleForm" />
                   </label><br />
 
-                <label htmlFor="solutionSummary" id="solutionSummaryFormLabel">Summary<br />
+                <label htmlFor="solutionSummary" id="solutionSummaryFormLabel">summary<br />
                     <textarea name="solutionSummary" required="required" maxLength="400" placeholder="Please summarize your proposal here. (400 character max)" id="solutionSummaryForm"/>
                   </label><br />
 
-                <label htmlFor="solutionDescription" id="solutionDescriptionFormLabel">Description<br />
+                <label htmlFor="solutionDescription" id="solutionDescriptionFormLabel">description<br />
                     <textarea name="solutionDescription" required="required" placeholder="Please describe your proposal here." id="solutionDescriptionForm">
                     </textarea></label><br />
 
-                <label htmlFor="solutionReferences" id="solutionReferenceFormLabel">References <span id="gray">(Optional)</span><br />
-                    <textarea name="solutionReferences" placeholder="Please provide any references here." id="solutionReferencesForm">
+                <label htmlFor="solutionReferences" id="solutionReferenceFormLabel">sources <span id="gray">(optional)</span><br />
+                    <textarea name="solutionReferences" placeholder="Please provide your sources here." id="solutionReferencesForm">
                     </textarea></label><br />
                   <input type="button" value="Create" onClick={this.postSolution} id="submitSolution"/>
               </fieldset>

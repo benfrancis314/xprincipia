@@ -41,7 +41,8 @@ export default class WelcomeUserUnit extends React.Component {
         super(props);
 
         this.state = {
-           feedQuestions: []
+           feedQuestions: [],
+           feedQuestionsSlice: []
         }
     };
 
@@ -50,7 +51,8 @@ export default class WelcomeUserUnit extends React.Component {
         // window.scrollTo(0,0);
         return axios.get( Config.API + '/questions/all').then(function (response) {
             self.setState({
-                feedQuestions: response.data
+                feedQuestions: response.data.reverse(),
+                feedQuestionsSlice: response.data.reverse().slice(0,10)
             })
         }) 
      }
@@ -63,7 +65,7 @@ export default class WelcomeUserUnit extends React.Component {
                 </div>
             </ScrollableAnchor>
             {/* {React.cloneElement(this.props.children, {problems: this.props.problems})} */}
-            {React.cloneElement(this.props.children, {questions: this.state.feedQuestions})}
+            {React.cloneElement(this.props.children, {questions: this.state.feedQuestionsSlice})}
             <div id="feedBottom">
                 <br />
             </div>

@@ -34,6 +34,20 @@ export default class WelcomeUserUnit extends React.Component {
                     $('#feedBottomBlue').attr('id','feedBottom');
             });
     }
+    hoverLabel() {
+        $(document).ready(function() {
+                $('#feedTitle').html("new questions").fadeIn(7500);
+                $('#feedTitle').attr('id','feedTitleHover');
+                $('#feedBottom').attr('id','feedBottomBlue');
+        });
+    }
+    unHoverLabel() {
+            $(document).ready(function() {
+                    $('#feedTitleHover').html("discovery's past");
+                    $('#feedTitleHover').attr('id','feedTitle');
+                    $('#feedBottomBlue').attr('id','feedBottom');
+            });
+    }
 
 	render() {
         $(document).ready(function() {
@@ -49,6 +63,9 @@ export default class WelcomeUserUnit extends React.Component {
                     </ul>	 
                 </div>
                 <div id="feedOptionsBar">
+                    <div id="feedListType" onMouseOver={this.hoverLabel} onMouseOut={this.unHoverLabel}>
+                        questions
+                    </div>
                     <div id="feedOptionsButton">
                         <Link to="/welcome/filter" activeClassName="activeBlue">
                             {/* <a href='#proposals'> */}
@@ -91,7 +108,7 @@ if (question.Private === true) {
             <li key={question.ID} id="feedListUnit">
             <Link to={{pathname: '/project/'+question.ID +'/subprojects'}} onClick={()=>{this.handleClick()}}>
                 <div id="feedUnits">               
-                    <div id="blueFeed">question on:<span id="feedCaps"> {question.Username}</span></div>
+                    <div id="blueFeed">project:<span id="feedCaps"> {question.Username}</span></div>
                     <div id="whiteFeed">{question.Description}</div>
                     <div id="feedDate">{dateTime(question.CreatedAt)}</div>
                 </div>

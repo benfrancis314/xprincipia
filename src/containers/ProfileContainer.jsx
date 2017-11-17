@@ -5,8 +5,8 @@ import axios from 'axios';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group'; // ES6
 // import TutorialProfileContent from '../components/tutorials/TutorialProfileContent.jsx';
 import {Config} from '../config.js';
-// import $ from 'jquery';
-// import sphere from 'jquery.earth-3d';
+import $ from 'jquery';
+// import earth3d from '../../node_modules/earth3d/jquery.earth-3d';
 
 
 export default class ProfileContainer extends React.Component {
@@ -32,6 +32,9 @@ export default class ProfileContainer extends React.Component {
         this.goToAbout = this.goToAbout.bind(this)
     }
 
+    
+    
+
     componentDidMount(){
         var self = this;
         axios.get( Config.API + '/auth/users/followedSolutions?username='+cookie.load('userName')).then(function (response) {
@@ -55,7 +58,9 @@ export default class ProfileContainer extends React.Component {
                 followedProblems: response.data,
             })
         })
-        
+        // $('#sphere').earth3d({
+        //     dragElement: $('#locations') // where do we catch the mouse drag
+        //   });
     }   
     // Experimental to try to fix logout issues
     componentWillMount() {
@@ -63,14 +68,14 @@ export default class ProfileContainer extends React.Component {
           userToken: cookie.load('userToken'),
           // userName: cookie.load('userName')
         };
-        alert('mountLayout');
+        // alert('mountProfile');
       }
       componentWillReceiveProps(nextState) {
         nextState =  { 
           userToken: cookie.load('userToken'),
           // userName: cookie.load('userName')
         };
-        alert('changeLayout');
+        // alert('changeProfile');
       }
     onLogout() {
         // The usage of the "path" below seems not to logout cookies that have a different path.
@@ -125,6 +130,11 @@ export default class ProfileContainer extends React.Component {
     //     $('#profileContainer').hide().slideDown(1500);
     // });
 
+    $(document).ready(function() {
+        // $('#profileContainer').slideDown(700);
+        $('#profileContainer').slideDown(300);
+    });
+
     if (cookie.load('userName') == null) {
         return (
         <div id="profileContainer">
@@ -141,7 +151,7 @@ export default class ProfileContainer extends React.Component {
                         <br />
                         <br />
                         <div id="earth"></div>
-                        <div id="sphere"></div>
+                        {/* <div id="sphere"></div> */}
                     </div>
                     <div id="userOptions">
                         <br />
@@ -154,29 +164,41 @@ export default class ProfileContainer extends React.Component {
                     {React.cloneElement(this.props.children, {probID: this.state.probID})}
                 </div>
             </div>
-            {/* <TutorialProfileContent /> */}
             </ReactCSSTransitionGroup>
         </div>);
     } else {
      return (
         <div id="profileContainer">
-            <ReactCSSTransitionGroup
+            {/* <ReactCSSTransitionGroup
             transitionName="example"
             transitionAppear={true}
             transitionAppearTimeout={3000}
             transitionEnter={false}
-            transitionLeave={false}>
+            transitionLeave={false}> */}
             <div id="profileBox">
                 <div id="profileLeft">
                     <div id="userInformation">
                         <p id="userName">{cookie.load('userName')}</p>
                         <div id="earth"></div>
-                        <div id="sphere"></div>
+                        {/* <div id="sphere"></div> */}
                     </div>
                     <div id="userOptions">
-                        <Link to={`/mindtemple`} activeClassName="activeBlue">
+                        <div id="profileNotificationsMessagesButtons">
+                            <Link to={`/profile/notifications`} activeClassName="activeRed">
+                                <div id="profileSideNotificationsButton">
+                                    !
+                                </div>
+                            </Link>
+                            <Link to={`/messages`} activeClassName="activeMessagesButton">
+                                <div id="profileSideMessagesButton">
+                                    <img src={require('../assets/comments.svg')} id="profileSideMessagesButtonImg" width="20" height="20" />
+                                </div>
+                            </Link>
+                        </div>
+                                
+                        {/* <Link to={`/mindtemple`} activeClassName="activeBlue">
                             <div id="userProblemsSolutionsButton">private projects</div>
-                        </Link>
+                        </Link> */}
                         <Link to={`/profile`} activeClassName="activeBlue">
                             <div id="userProblemsSolutionsButton">activity</div>
                         </Link>
@@ -193,8 +215,7 @@ export default class ProfileContainer extends React.Component {
                     {React.cloneElement(this.props.children, {probID: this.state.probID})}
                 </div>
             </div>
-            {/* <TutorialProfileContent /> */}
-            </ReactCSSTransitionGroup>
+            {/* </ReactCSSTransitionGroup> */}
         </div>
       );
     }

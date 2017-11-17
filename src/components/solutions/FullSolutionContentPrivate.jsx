@@ -177,16 +177,16 @@ unVote() {
 
               <Link to={`/proposal/private/${this.props.params.probID}/${this.props.params.solutionID}/edit`} activeClassName="activeProposalOption">
                 <div id="proposalDevelopButton">
-                  Develop
+                  develop
                 </div>
               </Link>
 
               <div id="prosConsMenu">
                 <Link to={`/proposal/private/${this.props.params.probID}/${this.props.params.solutionID}/pros`} activeClassName="activeProsCons">
-                    <div id="prosButton">Pros</div>
+                    <div id="prosButton">pros</div>
                 </Link>
                 <Link to={`/proposal/private/${this.props.params.probID}/${this.props.params.solutionID}/cons`} activeClassName="activeProsCons">
-                    <div id="consButton">Cons</div>
+                    <div id="consButton">cons</div>
                 </Link>
               </div>
             
@@ -219,16 +219,16 @@ unVote() {
 
               <Link to={`/proposal/private/${this.props.params.probID}/${this.props.params.solutionID}/edit`} activeClassName="activeProposalOption">
                 <div id="proposalDevelopButton">
-                  Develop
+                  develop
                 </div>
               </Link>
 
               <div id="prosConsMenu">
                 <Link to={`/proposal/private/${this.props.params.probID}/${this.props.params.solutionID}/pros`} activeClassName="activeProsCons">
-                    <div id="prosButton">Pros</div>
+                    <div id="prosButton">pros</div>
                 </Link>
                 <Link to={`/proposal/private/${this.props.params.probID}/${this.props.params.solutionID}/cons`} activeClassName="activeProsCons">
-                    <div id="consButton">Cons</div>
+                    <div id="consButton">cons</div>
                 </Link>
               </div>
             

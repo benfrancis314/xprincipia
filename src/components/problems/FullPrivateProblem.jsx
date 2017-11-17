@@ -4,6 +4,8 @@ import axios from 'axios';
 import cookie from 'react-cookie';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group'; // ES6
 import PrivateProjectProposalsMenu from './PrivateProjectProposalsMenu.jsx';
+import ProblemFollowButton from './ProblemFollowButton.jsx';
+import ProblemTitle from './ProblemTitle.jsx';
 // Not used yet, would like to develop later
 // import ProjectParentChildrenUnitsContainer from '../../containers/ProjectParentChildrenUnitsContainer.jsx';
 import SubProjectPrivateContainer from '../../containers/SubProjectPrivateContainer.jsx';
@@ -188,23 +190,24 @@ unVote() {
           <div id="problemColumn1">
             <SubPrivateProjectParentUnit parentID={this.state.problemInfo.ParentID} parentType={this.state.problemInfo.ParentType} />
             {/*<ProjectParentChildrenUnitsContainer parentID={this.state.problemInfo.ParentID} problemTitle={this.state.problemInfo.Title}/>*/}
-            <div id="problemIntro">
-              <h1 id="problemTitle">{this.state.problemInfo.Title}</h1>
-            </div>
+            <ProblemTitle problemTitle={this.state.problemInfo.Title} />            
             <div id="problemRow1">
-                  <Link><button id="votedProblem" ref='btn' onClick={this.unVote}>
-                      Voted
-                  </button></Link>
+                <Link to={`/project/private/${this.props.params.probID}/questions`} activeClassName="activeProblemOptionDiscuss">
+                      <div id="SBButtonDiscuss">brainstorm</div>
+                </Link>
+                <div id="problemCenterColumn">
+                  <Link><div id="voteProblem" onClick={this.unVote}>
+                      voted
+                  </div></Link>
                   <a href='#proposals'>
-                    <div id="SBButtonDiscuss" onClick={this.goToProposal}>Proposals</div>
+                    <div id="SBButtonProposal" onClick={this.goToProposal}>proposals</div>
                   </a>
-                  <Link to={`/project/private/${this.props.params.probID}/questions`} activeClassName="activeBlue">
-                      <div id="SBButtonDiscuss">Brainstorm</div>
-                  </Link>
-                  <Link to={`/project/private/${this.props.params.probID}/notes`} activeClassName="activeBlue">
-                    <div id="SBButtonLearn">Notebook</div>
-                  </Link>
-              </div>
+                  <ProblemFollowButton />
+                </div>
+                <Link to={`/project/private/${this.props.params.probID}/notes`} activeClassName="activeProblemOptionLearn">
+                  <div id="SBButtonLearn">notebook</div>
+                </Link>
+            </div>
               <div id="privateFullSettingsButton" onClick={this.privateAlertProject}>
                   <img src={require('../../assets/lock2Blue.svg')} id="fullProblemLockLogo" width="20" height="20" alt="Gear logo, link to settings"/>
               </div>
@@ -260,23 +263,24 @@ unVote() {
           <div id="problemColumn1">
             <SubPrivateProjectParentUnit parentID={this.state.problemInfo.ParentID} parentType={this.state.problemInfo.ParentType} />
             {/*<ProjectParentChildrenUnitsContainer parentID={this.state.problemInfo.ParentID} problemTitle={this.state.problemInfo.Title}/>*/}
-            <div id="problemIntro">
-              <h1 id="problemTitle">{this.state.problemInfo.Title}</h1>
-            </div>
+            <ProblemTitle problemTitle={this.state.problemInfo.Title} />            
             <div id="problemRow1">
+                <Link to={`/project/private/${this.props.params.probID}/questions`} activeClassName="activeProblemOptionDiscuss">
+                      <div id="SBButtonDiscuss">brainstorm</div>
+                </Link>
+                <div id="problemCenterColumn">
                   <Link><div id="voteProblem" onClick={this.submitVote}>
-                      Vote
+                      vote
                   </div></Link>
                   <a href='#proposals'>
-                    <div id="SBButtonDiscuss" onClick={this.goToProposal}>Proposals</div>
+                    <div id="SBButtonProposal" onClick={this.goToProposal}>proposals</div>
                   </a>
-                  <Link to={`/project/private/${this.props.params.probID}/questions`} activeClassName="activeBlue">
-                      <div id="SBButtonDiscuss">Brainstorm</div>
-                  </Link>
-                  <Link to={`/project/private/${this.props.params.probID}/notes`} activeClassName="activeBlue">
-                    <div id="SBButtonLearn">Notebook</div>
-                  </Link>
-              </div>
+                  <ProblemFollowButton />
+                </div>
+                <Link to={`/project/private/${this.props.params.probID}/notes`} activeClassName="activeProblemOptionLearn">
+                  <div id="SBButtonLearn">notebook</div>
+                </Link>
+            </div>
               <div id="privateFullSettingsButton" onClick={this.privateAlertProject}>
                   <img src={require('../../assets/lock2Blue.svg')} id="fullProblemLockLogo" width="20" height="20" alt="Gear logo, link to settings"/>
               </div>

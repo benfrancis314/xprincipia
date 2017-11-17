@@ -72,7 +72,7 @@ export default class FullSolutionDescription extends React.Component {
               </p>
             </div>
             <div>
-              <div id="solutionFormLabel">REFERENCES</div>
+              <div id="solutionFormLabel">SOURCES</div>
               <p id="solutionReferences">
                  {this.state.solutionInfo.References}
               </p>

@@ -7,35 +7,35 @@ import $ from 'jquery';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group'; // ES6
 
 
-export default class WelcomeCreateForm extends React.Component {
+export default class ProfileMessagesForm extends React.Component {
 
   constructor(){
     super();
     
     //ProblemForm structure in backend
     this.state= {
-      title: '',
-      field: '',
-      description: '',
-      summary: '',
+      member1: '',
+      member2: '',
+      message: '',
     }
 
-    this.postProblem = this.postProblem.bind(this);
+    this.postMessage = this.postMessage.bind(this);
     // this.toggle = this.toggle.bind(this);
   };
 
-  postProblem() {
-    this.state.title = document.getElementById('problemTitleForm').value
-    this.state.summary = document.getElementById('problemSummaryForm').value
+  postMessage() {
+    this.state.member1 = document.getElementById('problemTitleForm').value
+    this.state.member2 = cookie.load('userName')
+    this.state.message = document.getElementById('problemSummaryForm').value
     return axios.post( Config.API + '/auth/problems/create', {
-        username: cookie.load('userName'),
-        parentID: this.props.params.probID,
-        title : this.state.title,
-        summary : this.state.summary,
-        // Not sure if necessary
+        // username: cookie.load('userName'),
+        // parentID: this.props.params.probID,
+        member1 : this.state.member1,
+        member2 : this.state.member2,
+        message : this.state.message,
       })
       .then(function (response) {
-        document.location = '/welcome' 
+        document.location = '/messages' 
       })
       .catch(function (error) {
           $(document).ready(function() {
@@ -58,31 +58,34 @@ export default class WelcomeCreateForm extends React.Component {
   render() {
       return (
         <div>
-          <ReactCSSTransitionGroup
-          transitionName="example"
-          transitionAppear={true}
-          transitionAppearTimeout={2000}
-          transitionEnter={false}
-          transitionLeave={false}>
-            <Link to={`/welcome`}>
+            <div id="messagesHeader">
+                conversations
+            </div>
+            <ReactCSSTransitionGroup
+            transitionName="example"
+            transitionAppear={true}
+            transitionAppearTimeout={2000}
+            transitionEnter={false}
+            transitionLeave={false}>
+            <Link to={`/messages`}>
                 <img src={require('../../assets/redX.svg')} id="closeRedXFeed" width="40" height="40" alt="Close button, red X symbol" />
             </Link>
-            <div id="welcomeNewProjectHeader">
-              New Project
-            </div>
+            {/* <div id="welcomeNewProjectHeader">
+              new message
+            </div> */}
             <div id="createProblemBox">
                 <form id="welcomeCreateProjectForm">
                   <fieldset id="fieldSetNoBorder">
-                    <label htmlFor="problemTitleForm" id="problemTitleFormLabel">Project Title<br />
+                    <label htmlFor="problemTitleForm" id="problemTitleFormLabel">Recipient<br />
                         <input type="text" name="problemTitle" required="required" maxLength="70" id="problemTitleForm" autoFocus/>
                       </label><br />
 
-                    <label htmlFor="problemSummaryForm" id="problemSummaryFormLabel">Additional Information<br />
+                    <label htmlFor="problemSummaryForm" id="problemSummaryFormLabel">Message<br />
                         <textarea name="problemSummary" required="required" maxLength="350" 
-                        placeholder="Please provide any additional information you'd like. (350 character max)" id="problemSummaryForm"/>
+                        placeholder="Start a dialogue with a fellow member." id="problemSummaryForm"/>
                         </label><br />
 
-                    <input type="button" value="Create" onClick={this.postProblem} id="submitProblem"/>
+                    <input type="button" value="send" onClick={this.postMessage} id="submitProblem"/>
                   </fieldset>
                 </form>
             </div>

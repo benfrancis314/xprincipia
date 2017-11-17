@@ -83,12 +83,17 @@ import ProblemLearnPrivateMenu from './components/problems/ProblemLearnPrivateMe
 import ProblemLeftSB from './components/problems/ProblemLeftSB.jsx';
 import ProblemSolutionsMenu from './components/problems/ProblemSolutionsMenu.jsx';
 import ProblemTopSolutions from './components/problems/ProblemTopSolutions.jsx';
+import ProjectDeleteForm from './components/problems/ProjectDeleteForm.jsx';
 import ProjectEditForm from './components/problems/ProjectEditForm.jsx';
 import ProjectEditPrivateForm from './components/problems/ProjectEditPrivateForm.jsx';
 import ProjectFlagForm from './components/problems/ProjectFlagForm.jsx';
 import ProfileAbout from './components/profile/ProfileAbout.jsx';
 import ProfileCareers from './components/profile/ProfileCareers.jsx';
 import ProfileDisclaimer from './components/profile/ProfileDisclaimer.jsx';
+import ProfileMessagesAddButton from './components/profile/ProfileMessagesAddButton.jsx';
+import ProfileMessagesCenter from './components/profile/ProfileMessagesCenter.jsx';
+import ProfileMessagesForm from './components/profile/ProfileMessagesForm.jsx';
+import ProfileMessagesUnit from './components/profile/ProfileMessagesUnit.jsx';
 import ProfileNotifications from './components/profile/ProfileNotifications.jsx';
 import ProfileProblemsSolutions from './components/profile/ProfileProblemsSolutions.jsx';
 import ProfileResume from './components/profile/ProfileResume.jsx';
@@ -99,7 +104,6 @@ import ProposalDiscussMenuPrivate from './components/solutions/ProposalDiscussMe
 import ProposalLearnMenu from './components/solutions/ProposalLearnMenu.jsx';
 import ProposalSubProjectsButton from './components/solutions/ProposalSubProjectsButton.jsx';
 import ProposalSubProjectsButtonPrivate from './components/solutions/ProposalSubProjectsButtonPrivate.jsx';
-
 import ProsDeleteForm from './components/proscons/ProsDeleteForm.jsx';
 import ProsDeleteFormPrivate from './components/proscons/ProsDeleteFormPrivate.jsx';
 import ProsEditForm from './components/proscons/ProsEditForm.jsx';
@@ -157,6 +161,7 @@ import LearnResourcesContainerPrivate from './containers/LearnResourcesContainer
 import LoginContainer from './containers/LoginContainer.jsx';
 import MindTempleContainer from './containers/MindTempleContainer.jsx';
 import NewsFeedContainer from './containers/NewsFeedContainer.jsx';
+import OverviewContainer from './containers/OverviewContainer.jsx';
 import ProfileAboutContainer from './containers/ProfileAboutContainer.jsx';
 import ProfileContainer from './containers/ProfileContainer.jsx';
 import ProfileContainer2 from './containers/ProfileContainer2.jsx';
@@ -220,6 +225,7 @@ ReactDOM.render(
     <Route path='/instructions' component={Instructions}></Route>
     <IndexRoute component={Layout}></IndexRoute>
     <Route path='/home' component={Layout}>
+      <Route path='/overview' component={OverviewContainer}></Route>
       <IndexRoute component={FullProblem}></IndexRoute>
       <Route path='/entrance' component={EntranceContainer}></Route>
       <Route path='/welcome/container' component={WelcomeContainer}>
@@ -260,6 +266,12 @@ ReactDOM.render(
         <Route path='/profile' component={ProfileProblemsSolutions}></Route>
         <Route path='/profile/resume' component={ProfileResume}></Route>
         <Route path='/profile/feedback' component={FeedbackForm}></Route>
+        <Route path='/messages/container' component={ProfileMessagesCenter}>
+          <IndexRoute component={ProfileMessagesAddButton}></IndexRoute>
+          <Route path='/messages' component={ProfileMessagesAddButton}></Route>
+          <Route path='/messages/new' component={ProfileMessagesForm}></Route>
+          <Route path='/messages/1' component={ProfileMessagesUnit}></Route>
+        </Route>
         <Route path='/profile/notifications' component={ProfileNotifications}></Route>
         <Route path='/profile/about/container' component={ProfileAboutContainer}>
           <IndexRoute component={ProfileAbout}></IndexRoute>
@@ -438,6 +450,7 @@ ReactDOM.render(
           <Route path='/project/:probID/create' component={ProblemForm}></Route>
           <Route path='/project/:probID/edit' component={ProjectEditForm}></Route>
           <Route path='/project/:probID/flag' component={ProjectFlagForm}></Route>
+          <Route path='/project/:probID/delete' component={ProjectDeleteForm}></Route>
           <Route path='/project/:probID/subprojects' component={Empty}></Route>
         </Route>
         <Route path='/project/:probID/solutions' component={ProblemSolutionsMenu}>

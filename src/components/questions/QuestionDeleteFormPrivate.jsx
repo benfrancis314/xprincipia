@@ -53,7 +53,7 @@ deleteQuestion() {
         return (
             <div>
               <div id="discussMenuEnd">
-                Questions
+                questions
               </div>
               <div id="questionFormComponent">
                     <form id="questionForm">
@@ -76,7 +76,7 @@ deleteQuestion() {
       return (
         <div>
           <div id="discussMenuEnd">
-            Questions
+            questions
           </div>
           <div id="questionFormComponent">
                 <form id="questionForm">

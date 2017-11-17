@@ -90,7 +90,7 @@ postFreeForm() {
       return (
       <div>
         <div id="discussMenuEnd">
-          Open Brainstorm
+          open brainstorm
         </div>
         <div id="questionFormComponent">
               <form id="questionForm">

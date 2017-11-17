@@ -80,21 +80,61 @@ if (problem.ParentType === 1) {
             </div>
         );
 
-} else {
+// Ensure to copy this so that it works for Goals and Problems too
+// This makes text smaller if problem length is larger
+} else if (problem.Title.length > 50) {
+return (
+	<Link key={problem.ID} to={'/project/private/'+problem.ID +'/subprojects'} onClick={handleClick}>
+		<li key={problem.ID} id="SPUnit">
+			<div id="SPHeader">
+				<div id="SPTitleSmall">{problem.Title}</div>
+				<div id="SPPercent">{problem.Rank}</div>
+			</div>
+		</li>
+	</Link>
+
+);
+} else if (problem.Title.includes('s')) {
     return (
-
         <Link key={problem.ID} to={'/project/'+problem.ID +'/subprojects'} onClick={handleClick}>
-					<li key={problem.ID} id="SPUnit">
-						<div id="SPHeader">
-							<div id="SPTitle">{problem.Title}</div>
-							<div id="SPPercent">{problem.Rank}</div>
-							{/*<div>
-								<img src={require('../assets/voteArrow.png')} id="SPVote" width="20" height="20" alt="Vote arrow, blue up arrow" />
-							</div>*/}
-						</div>
-					</li>
-				</Link>
+			<li key={problem.ID} id="SPUnit">
+				<div id="SPHeader">
+					<div id="SPTitle">{problem.Title}</div>
+					<div id="SPPercent">{problem.Rank}</div>
+				</div>
+			</li>
+		</Link>
 
+	);
+} else if (problem.Title.includes('e')) {
+    return (
+        <Link key={problem.ID} to={'/project/'+problem.ID +'/subprojects'} onClick={handleClick}>
+			<li key={problem.ID} id="SPUnit">
+				<div id="SPHeaderGreen">
+					<div id="SPTitleGreen">
+						<span id="green">goal</span>
+						<br />
+						{problem.Title}
+					</div>
+					<div id="SPPercent">{problem.Rank}</div>
+				</div>
+			</li>
+		</Link>
+	);
+} else {
+	return (
+        <Link key={problem.ID} to={'/project/'+problem.ID +'/subprojects'} onClick={handleClick}>
+			<li key={problem.ID} id="SPUnit">
+				<div id="SPHeaderRed">
+					<div id="SPTitleRed">
+						<span id="red">problem</span>
+						<br />
+						{problem.Title}
+					</div>
+					<div id="SPPercent">{problem.Rank}</div>
+				</div>
+			</li>
+		</Link>
 	)};
   }
 }

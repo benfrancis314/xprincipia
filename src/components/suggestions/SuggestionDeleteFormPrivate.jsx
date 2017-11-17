@@ -56,7 +56,7 @@ deleteSuggestion() {
         return (
             <div>
               <div id="discussMenuEnd">
-                Suggestions
+                suggestions
               </div>
               <div id="questionFormComponent">
                     <form id="questionForm">
@@ -79,7 +79,7 @@ deleteSuggestion() {
       return (
         <div>
           <div id="discussMenuEnd">
-            Suggestions
+            suggestions
           </div>
           <div id="questionFormComponent">
                 <form id="questionForm">

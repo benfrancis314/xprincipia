@@ -34,6 +34,20 @@ export default class WelcomeUserUnit extends React.Component {
                     $('#feedBottomBlue').attr('id','feedBottom');
             });
     }
+    hoverLabel() {
+        $(document).ready(function() {
+                $('#feedTitle').html("new projects").fadeIn(7500);
+                $('#feedTitle').attr('id','feedTitleHover');
+                $('#feedBottom').attr('id','feedBottomBlue');
+        });
+    }
+    unHoverLabel() {
+            $(document).ready(function() {
+                    $('#feedTitleHover').html("discovery's past");
+                    $('#feedTitleHover').attr('id','feedTitle');
+                    $('#feedBottomBlue').attr('id','feedBottom');
+            });
+    }
 
 	render() {
         $(document).ready(function() {
@@ -44,11 +58,15 @@ export default class WelcomeUserUnit extends React.Component {
 		return (
             <div id="feedUnitContainer">
                 <div id="feedListDiv">
+                    
                     <ul id="feedUnitList"> 
                         {this.props.problems.map(this.renderItem)}
                     </ul>	 
                 </div>
                 <div id="feedOptionsBar">
+                    <div id="feedListType" onMouseOver={this.hoverLabel} onMouseOut={this.unHoverLabel}>
+                        projects
+                    </div>
                     <div id="feedOptionsButton">
                         <Link to="/welcome/filter" activeClassName="activeBlue">
                             {/* <a href='#proposals'> */}
