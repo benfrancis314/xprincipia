@@ -18,6 +18,7 @@ export default class FullSolution extends React.Component {
     };
     //initialize the component with this state
     componentDidMount(){
+        ReactDOM.findDOMNode(this).scrollIntoView();
       var self = this;
       return axios.get( Config.API + '/solutions/ID?id='+this.props.params.solutionID).then(function (response) {
           self.setState({
@@ -67,7 +68,7 @@ export default class FullSolution extends React.Component {
   }
 
 componentDidUpdate() {
-        ReactDOM.findDOMNode(this).scrollIntoView();
+        // ReactDOM.findDOMNode(this).scrollIntoView();
   }   
 
    render() {

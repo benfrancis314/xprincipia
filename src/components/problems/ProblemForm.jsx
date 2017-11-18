@@ -85,7 +85,7 @@ export default class ProblemForm extends React.Component {
                     </label><br />
 
 
-                    <div id="projectFormRadioContainer">
+                    {/* <div id="projectFormRadioContainer">
                       <div id="projectFormRadioColumn">
                         <div id="projectFormRadioRow1">
                           project
@@ -119,7 +119,48 @@ export default class ProblemForm extends React.Component {
                           </label>
                         </div>
                       </div>
+                    </div> */}
+
+
+                    <div id="projectFormRadioContainer">
+                      <div id="projectFormRadioColumn">
+                        <div id="projectFormRadioRow1">
+                          project
+                        </div>
+                         <br />
+                        {/* <div id="projectFormRadioRow"> */}
+                          {/* <label id="projectRadioButtonContainer"> */}
+                            <input type="radio" checked="checked" name="project" id="problemRadioInput" />
+                            {/* <span id="checkmark1"></span> */}
+                          {/* </label> */}
+                        {/* </div> */}
+                      </div>
+                      <div id="projectFormRadioColumn">
+                        <div id="projectFormRadioRow2">
+                          goal
+                        </div>
+                        <br />
+                        {/* <div id="projectFormRadioRow"> */}
+                          {/* <label id="projectRadioButtonContainer"> */}
+                            <input type="radio" name="project" id="problemRadioInput" />
+                            {/* <span id="checkmark2"></span> */}
+                          {/* </label> */}
+                        {/* </div> */}
+                      </div>
+                      <div id="projectFormRadioColumn">
+                        <div id="projectFormRadioRow3">
+                          problem
+                        </div>
+                        {/* <div id="projectFormRadioRow"> */}
+                          {/* <label id="projectRadioButtonContainer"> */}
+                          <br />
+                            <input type="radio" name="project" id="problemRadioInput" />
+                            {/* <span id="checkmark3"></span> */}
+                          {/* </label> */}
+                        {/* </div> */}
+                      </div>
                     </div>
+
 
                   {/* <select id ="dropDownProblemForm" name="problemType">
                     <option id="dropDownProject" value="project">project</option>

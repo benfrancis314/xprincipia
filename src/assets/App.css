@@ -6826,13 +6826,11 @@ border-color: #00dcff;
 }
 /*Radio Buttons styling*/
 
-input[type=radio] {
+/* input[type=radio] {
 position: absolute;
-/*visibility: hidden;*/
-/*display: none;*/
-}
+} */
 
-label {
+/* label {
 display: inline-block;
 }
 
@@ -6843,14 +6841,14 @@ background: orange !important;
 
 label + input[type=radio] + label {
 border-left: 3px solid green;
-}
-.radio-group {
+} */
+/* .radio-group {
 border: 1px solid white;
 display: inline-block;
 margin: 20px;
 border-radius: 10px;
 overflow: hidden;
-}
+} */
 #learnContentText {
 /*Old Text*/
 /*font-family: 'Open Sans';
@@ -7013,7 +7011,6 @@ word-wrap: break-word;
 #solutionTitleRed {
   box-shadow: 0 0 1pt 1pt rgba(255,127,127,0.5);
   background: linear-gradient(to right,rgba(0,220,255, 0.05), rgba(0,220,255, 0.1), rgba(0,220,255, 0.05));
-  
   border: 1px solid #ff7f7f;
   background-color: rgba(255,127,127,0.05);
   margin-top: 0%;
@@ -7024,6 +7021,7 @@ word-wrap: break-word;
   margin-bottom: 0.25%;
   color: #00ffdc;
   margin-top: 1%;
+  background: radial-gradient(to top, rgba(0,255,220, 0.1), rgba(0,255,220, 0.02), rgba(0,255,220, 0));  
 }
 #solutionTitleLabelRed {
   text-align: center;
@@ -7031,6 +7029,7 @@ word-wrap: break-word;
   margin-bottom: 0.25%;
   color: #ff7f7f;
   margin-top: 1%;
+  background: radial-gradient(to top, rgba(255,127,127, 0.1), rgba(255,127,127, 0.02), rgba(255,127,127, 0));
 }
 #solutionUnitGreen:hover {
   box-shadow: 0 0 2px 2px rgba(0,255,220,0.5);
@@ -10541,6 +10540,28 @@ transition: all 1s ease 0s;
   /* background: radial-gradient(circle, rgba(255,127,127,0.05), rgba(255,127,127,0.1), rgba(255,127,127,0.05), rgba(255,127,127,0), rgba(255,127,127,0)); */
 }
 /* END GOAL, PROBLEM, PROJECT RADIO BUTTONS */
+
+#problemRadioInput {
+  display: block;
+  width: 10%;
+  margin: 0 auto;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /* select {
   font-family: 'Alegreya Sans SC';

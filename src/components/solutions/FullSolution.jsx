@@ -18,6 +18,7 @@ export default class FullSolution extends React.Component {
     };
     //initialize the component with this state
     componentDidMount(){
+        ReactDOM.findDOMNode(this).scrollIntoView();
       var self = this;
       return axios.get( Config.API + '/solutions/ID?id='+this.props.params.solutionID).then(function (response) {
           self.setState({
@@ -50,11 +51,7 @@ export default class FullSolution extends React.Component {
   }
 
 componentDidUpdate() {
-    if ((window.location.href.includes('#') == false) || (window.location.href.includes('question') == false)) {    
-        // Need to stop refresh from happening when clicking on Discuss, etc. OR doesn't work here, but I think this is right track.
-        return ReactDOM.findDOMNode(this).scrollIntoView();
-    }
-    // Previously, this created a feedback loop of updating that slowed the site when I used an IF/ELSE statement. Using an IF .. == false seems to avoid issue, but good to be aware of it being possible here. 
+ 
   }   
 
    render() {
