@@ -1,20 +1,17 @@
 import React from 'react';
 import { browserHistory } from 'react-router';
-import Header from '../containers/Header.jsx';
-import Footer from '../containers/Footer.jsx';
 
 export default class Error404 extends React.Component {
    render() {
       return (
       <div>
-          <Header />
           <div>
           <div id="welcomeIntroductionLabel">
               ben francis &amp; tom frawley
           </div>
           <div id="welcomeContainerBanner">
               <div id="welcomeContainerTitle">
-                  Pebbles over Boulders
+                  WORLDS OUT OF TIME
               </div>     
               <div id="storyReadingTime" onClick={this.privateAlert}>
                 ~5 min.
@@ -241,7 +238,6 @@ export default class Error404 extends React.Component {
             END
           </div>
           {/* {randomImg()} */}
-          {/* <Footer /> */}
       </div>
       );
    }

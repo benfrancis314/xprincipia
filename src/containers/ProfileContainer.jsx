@@ -3,7 +3,7 @@ import { Link } from 'react-router';
 import cookie from 'react-cookie';
 import axios from 'axios';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group'; // ES6
-// import TutorialProfileContent from '../components/tutorials/TutorialProfileContent.jsx';
+import EarthSphere from '../components/profile/EarthSphere.jsx';
 import {Config} from '../config.js';
 import $ from 'jquery';
 // import earth3d from '../../node_modules/earth3d/jquery.earth-3d';
@@ -151,7 +151,7 @@ export default class ProfileContainer extends React.Component {
                         <br />
                         <br />
                         <div id="earth"></div>
-                        {/* <div id="sphere"></div> */}
+                        <EarthSphere />
                     </div>
                     <div id="userOptions">
                         <br />

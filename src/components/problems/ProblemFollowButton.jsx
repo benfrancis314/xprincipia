@@ -18,7 +18,7 @@ export default class ProblemFollowButton extends React.Component {
         return (
             <div>
                 <Link>
-                    <div id="SBButtonFollowed">untrack</div>
+                    <div id="SBButtonFollowed">tracking</div>
                     {/* Also consider "Monitor" */}
                 </Link>
             </div>);

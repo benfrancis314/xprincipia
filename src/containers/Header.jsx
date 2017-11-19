@@ -24,14 +24,11 @@ export default class Header extends React.Component {
     this.state =  { 
       userToken: cookie.load('userToken')
     };
-    // alert('mountHeader');
   }
   componentWillReceiveProps(nextState) {
     nextState =  { 
       userToken: cookie.load('userToken'),
-      // userName: cookie.load('userName')
     };
-    // alert('changeHeader');
   }
 
   postLogin() {

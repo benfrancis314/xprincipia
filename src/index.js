@@ -2,8 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Router, Route, IndexRoute, browserHistory } from 'react-router';
 import App from './App';
-import ReactGA from 'react-ga';
-ReactGA.initialize('UA-104103231-1'); //Unique Google Analytics tracking number
+// import ReactGA from 'react-ga';
+// ReactGA.initialize('UA-104103231-1'); //Unique Google Analytics tracking number
 
 //Load Components
 
@@ -205,26 +205,18 @@ ReactDOM.render(
   // When we have Google Analytics working it should be:
   // <Router onUpdate={fireTracking} history={browserHistory}>
   <Router history={browserHistory}>
-    <Route path='/' component={App}>
-    <IndexRoute component={Intro}></IndexRoute>
-    <Route path='/intro' component={Intro}></Route>
-    <IndexRoute component={Intro}></IndexRoute>
-    <Route path='/welcome/tutorial' component={TutorialWelcomePage}>
-      <IndexRoute component={TutorialWelcomeButton}></IndexRoute>
-      <Route path='/welcome/tutorial/hide' component={ProfileProblemsSolutions}></Route>
-      <Route path='/welcome/tutorial/show' component={TutorialWelcomeContent}></Route>
-    </Route>
-    <Route path='/shortstory' component={ShortStoryContainer}></Route>
-    <Route path='/error' component={ErrorContainer}>
-      <IndexRoute component={Redirection}></IndexRoute>
-      <Route path='/404' component={Error404}></Route>
-      <Route path='/redirection' component={Redirection}></Route>
-      <Route path='/load' component={Load}></Route>
-    </Route>
+    <Route path='/' component={App}>    
     <Route path='/newsfeed' component={NewsFeedContainer}></Route>
     <Route path='/instructions' component={Instructions}></Route>
     <IndexRoute component={Layout}></IndexRoute>
+    <Route path='/shortstory' component={ShortStoryContainer}></Route>
     <Route path='/home' component={Layout}>
+      <Route path='/error' component={ErrorContainer}>
+        <IndexRoute component={Redirection}></IndexRoute>
+        <Route path='/404' component={Error404}></Route>
+        <Route path='/redirection' component={Redirection}></Route>
+        <Route path='/load' component={Load}></Route>
+      </Route>
       <Route path='/overview' component={OverviewContainer}></Route>
       <IndexRoute component={FullProblem}></IndexRoute>
       <Route path='/entrance' component={EntranceContainer}></Route>

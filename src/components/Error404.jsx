@@ -1,6 +1,5 @@
 import React from 'react';
 import { browserHistory } from 'react-router';
-import Header from '../containers/Header.jsx';
 
 export default class Error404 extends React.Component {
    render() {
@@ -8,7 +7,6 @@ export default class Error404 extends React.Component {
            browserHistory.goBack()},1500)
       return (
       <div>
-        <Header />
             <div id="errorContainer">
                 <div id="error">
                     <img src={require('../assets/gear2.svg')} id="errorGear" width="250" height="250" alt="User avatar, DNA Helix" />

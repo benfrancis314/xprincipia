@@ -5627,7 +5627,8 @@ width: 100%;
 /* OLD */
 /* width: 60%; */
 /* NEW */
-width: 79%;
+/* width: 79%; */
+width: 78%;
 /* Note: width: 80 matches the title exactly */
 margin: 0 auto;
 margin-top: 1%;
@@ -5782,17 +5783,24 @@ background-color: rgba(0, 255, 220, 1);
 color: #dddddd;
 border: 1px solid #dddddd;
 border-radius: 3px 3px 25% 3px;
+border-radius: 3px 3px 35% 3px;
 text-align: center;
 font-family: 'Alegreya Sans SC', sans-serif;
 transition: all 0.5s ease 0s;
 transform: scale(1);
 padding: 1% 0% 2% 0%;
+padding: 2% 0% 3% 0%;
 letter-spacing: 4px;
 margin: 0 auto;
+margin-top: 1%;
+box-shadow: 0 0 1pt 1pt rgba(255,255,255,0.5);
+
   
-font-size: 135%;
+/* font-size: 135%; */
+font-size: 145%;
 background-color: rgba(255,255,255,0.025);
-width: 8em;
+/* width: 8em; */
+width: 9em;
 background: linear-gradient(to right, rgba(0,220,255,0.05), rgba(0,220,255,0.04), rgba(0,220,255,0));
 }
 #SBButtonLearn {
@@ -5874,6 +5882,8 @@ transform: scale(1.02);
   }
 #problemTitle, #problemTitleGreen, #problemTitleRed {
 background-color: rgba(0,220,255,0.1);
+/* Trying radial background */
+background: radial-gradient(circle, rgba(0,220,255,0.05), rgba(0,220,255,0.075), rgba(0,220,255,0.1));
 color: rgba(255,255,255,1);
 font-size: 210%;
 letter-spacing: 4px;
@@ -7788,6 +7798,10 @@ cursor: pointer;
 #aboutButton:active, #careersButton:active {
 background-color: rgba(0,220,255,0.15);
 color: #00dcff;
+}
+#careersSign {
+  font-size: 115%;
+  letter-spacing: 110%;
 }
 /*#profileAboutReturn:hover {
 cursor: pointer;

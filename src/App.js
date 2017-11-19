@@ -41,35 +41,21 @@ class App extends React.Component {
       { userToken: cookie.load('userToken') }
     );
     axios.defaults.headers.common['Authorization'] = 'Bearer '+cookie.load('userToken');
-    // alert('mountApp');
   }
-  // componentWillMount() {
-  //   this.setState( { userToken: cookie.load('userToken') });
-  //   axios.defaults.headers.common['Authorization'] = 'Bearer '+cookie.load('userToken');
-  //   alert('mountApp');
-  // }
   componentWillReceiveProps(nextState) {
     nextState =  { 
       userToken: cookie.load('userToken'),
-      // userName: cookie.load('userName')
     };
-    // alert('changeApp');
   }
  
-  onLogin(userToken) {
-    this.setState({ userToken });
-    // I'm removing all of the "path" variables, because they seem to be causing problems. 
-    // cookie.save('userToken', this.state.userToken, { path: '/' });
-    cookie.save('userToken', this.state.userToken);
-  }
+  // onLogin(userToken) {
+  //   this.setState({ userToken });
+  //   cookie.save('userToken', this.state.userToken);
+  // }
  
-  onLogout() {
-    // I'm removing all of the "path" variables, because they seem to be causing problems. 
-    // cookie.remove('userToken', { path: '/' });
-    cookie.remove('userToken');
-    // This was for testing to see if the userName also had to be removed. 
-    // cookie.remove('userName', { path: '/' });
-  }
+  // onLogout() {
+  //   cookie.remove('userToken');
+  // }
   hideNotification() {
     $(document).ready(function() {
         $('#notificationShow').attr('id','notification');
