@@ -152,6 +152,9 @@ a {
 input:focus, textarea:focus {
   box-shadow: 0 0 1pt 1pt rgba(0,220,255,0.5) !important;
 }
+input[type=radio]:focus {
+  box-shadow: 0 0 0pt 0pt rgba(0,220,255,0.5) !important;
+}
 #invisible {
   display: none;
 }
@@ -255,10 +258,10 @@ ol, ul {
     box-shadow: inset 0 0 6px rgba(0,220,255,0.1); 
 }
 ::-webkit-scrollbar-corner {
-  display: none;
+  display: none !important;
 }
 ::-webkit-resizer {
-  display: none;
+  display: none !important;
 }
 
 /*Fixing autofill problem*/
@@ -640,6 +643,34 @@ padding-bottom: 5px !important;
 font-size: 100% !important;
 letter-spacing: 2px !important;
 }
+
+
+/* Footer Earth */
+
+#footerImgContainer {
+  width: 100%;
+  text-align: center;
+  margin: 0 auto;
+}
+#footerImg {
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  /* background-image: url('./earthDark.svg');   */
+  background-position: top right;
+  background: linear-gradient(rgba(15, 19, 28, 1), rgba(15, 19, 28, 0));
+  /* padding: 6% 5% 0% 5%;   */
+  opacity: 0.5;
+  /* width: 100%; */
+  transition: all 1s ease 0s;
+  /* height: 100; */
+  height: 100;
+  text-align: center;
+  margin: 0 auto;
+}
+#footerImg:hover {
+  opacity: 0;
+}
+
 
 
 /*Tutorials*/
@@ -1321,14 +1352,11 @@ input, textarea {
   color: #ffffff;
   background-color: inherit;
   text-align: center;
-  /*border: 1px solid #ffffff;*/
   border: 1px solid #00dcff;
   border-radius: 3px;
   padding: 3px 8px 3px 8px;
   display: block;
-  /*float: left;*/
   margin-bottom: 10px;
-  /*margin-left: 7%;*/
   width: 80%;
   resize: none;
   margin: 0 auto;
@@ -5801,7 +5829,7 @@ font-size: 145%;
 background-color: rgba(255,255,255,0.025);
 /* width: 8em; */
 width: 9em;
-background: linear-gradient(to right, rgba(0,220,255,0.05), rgba(0,220,255,0.04), rgba(0,220,255,0));
+background: linear-gradient(to right, rgba(0,220,255,0.05), rgba(0,220,255,0.05), rgba(0,220,255,0.04), rgba(0,220,255,0));
 }
 #SBButtonLearn {
   padding-right: 10px;
@@ -5810,7 +5838,7 @@ background: linear-gradient(to right, rgba(0,220,255,0.05), rgba(0,220,255,0.04)
 #SBButtonDiscuss {
 border-radius: 0px;
 border-radius: 3px 3px 3px 25%;
-background: linear-gradient(to left, rgba(0,220,255,0.05), rgba(0,220,255,0.04), rgba(0,220,255,0));
+background: linear-gradient(to left, rgba(0,220,255,0.05), rgba(0,220,255,0.05), rgba(0,220,255,0.04), rgba(0,220,255,0));
 padding-left: 10px;
 /* transform:rotateY(12deg); */
 }
@@ -7101,7 +7129,8 @@ margin: 0 auto;
 font-size: 80%;
 text-align: center;
 letter-spacing: 8px;
-padding: 5px 0px 5px 0px;
+/* padding: 5px 0px 5px 0px; */
+padding: 0px 0px 5px 0px;
 width: 100%;
 transition: all 0.5s ease 0s;
 }
@@ -10416,8 +10445,8 @@ margin-top: 1%;
 
 #projectFormRadioContainer {
   margin: 0 auto;
-  margin-top: 1%;
-  margin-bottom: 1%;
+  margin-top: 0%;
+  margin-bottom: 1.5%;
   display: flex;
   flex-direction: row;
   width: 100%;
@@ -10430,14 +10459,16 @@ margin-top: 1%;
 #projectFormRadioRow {
   margin: 0 auto;
   /* margin-left: 20%; */
+  margin-top: 1%;
+  margin-bottom: 2%;
   text-align: center;
   width: 100%;
 }
 #projectFormRadioRow1, #projectFormRadioRow2, #projectFormRadioRow3 {
   color: #00dcff;
   text-align: center;
-  letter-spacing: 4px;
-  font-size: 120%;
+  letter-spacing: 6px;
+  font-size: 130%;
 }
 #projectFormRadioRow2 {
   color: #00ffdc;
@@ -10474,44 +10505,53 @@ margin-top: 1%;
   left: 0;
   height: 30px;
   width: 30px;
-  background-color: #00dcff;
+  background-color: #0f131c;
+  border: 1px solid #00dcff;
   border-radius: 50%;
   transition: all 1s ease 0s;
-  background: radial-gradient(circle, rgba(0,220,255,0.25), rgba(0,220,255,0));
+  background: radial-gradient(circle, rgba(0,220,255,0), rgba(0,220,255,0.1), rgba(0,220,255,0.3));
   margin: 0 auto;
   /* width: 8em; */
 }
 #checkmark2 {
-  background-color: #00ffdc;
-  background: radial-gradient(circle, rgba(0,255,220,0.25), rgba(0,255,220,0));
-  
+  background-color: #0f131c;
+  background: radial-gradient(circle, rgba(0,255,220,0), rgba(0,255,220,0.1), rgba(0,255,220,0.3));
+  border-color: #00ffdc;
 }
 #checkmark3 {
-  background-color: #ff7f7f;
-  background: radial-gradient(circle, rgba(255,127,127,0.25), rgba(255,127,127,0));
-  
+  background-color: #0f131c;
+  background: radial-gradient(circle, rgba(255,127,127,0), rgba(255,127,127,0.1), rgba(255,127,127,0.3));
+  border-color: #ff7f7f;
 }
 
 /* On mouse-over, add a grey background color */
-#projectRadioButtonContainer:hover input ~ #checkmark1, #projectRadioButtonContainer:hover input ~ #checkmark2, #projectRadioButtonContainer:hover input ~ #checkmark3 {
-  background-color: #ccc;
+#projectRadioButtonContainer:hover input ~ #checkmark1 {
+  background-color: #00dcff;
+  transition: all 1s ease 0s;
+}
+#projectRadioButtonContainer:hover input ~ #checkmark2 {
+  background-color: #00ffdc;
+  transition: all 1s ease 0s;
+}
+#projectRadioButtonContainer:hover input ~ #checkmark3 {
+  background-color: #ff7f7f;
   transition: all 1s ease 0s;
 }
 
 /* When the radio button is checked, add a blue background */
 #projectRadioButtonContainer input:checked ~ #checkmark1 {
   background-color: #00dcff;
-  background: radial-gradient(circle, rgba(0,220,255,0.75), rgba(0,220,255,0));
+  /* background: radial-gradient(circle, rgba(0,220,255,0.75), rgba(0,220,255,0)); */
   transition: all 1s ease 0s;
 }
 #projectRadioButtonContainer input:checked ~ #checkmark2 {
   background-color: #00ffdc;
-  background: radial-gradient(circle, rgba(0,255,220,0.75), rgba(0,255,220,0));  
+  /* background: radial-gradient(circle, rgba(0,255,220,0.75), rgba(0,255,220,0));   */
   transition: all 1s ease 0s;
 }
 #projectRadioButtonContainer input:checked ~ #checkmark3 {
   background-color: #ff7f7f;
-  background: radial-gradient(circle, rgba(255,127,127,0.75), rgba(255,127,127,0));  
+  /* background: radial-gradient(circle, rgba(255,127,127,0.75), rgba(255,127,127,0));   */
   transition: all 1s ease 0s;
 }
 
@@ -10559,8 +10599,18 @@ transition: all 1s ease 0s;
   display: block;
   width: 10%;
   margin: 0 auto;
+  text-align: center;
 }
-
+#projectFormRadioColumn {
+  /* background: radial-gradient(circle, rgba(0,220,255,0.05), rgba(0,220,255, 0));
+  transition: all 0.5s ease 0s;
+  transform: scale(1); */
+}
+#projectFormRadioColumn:hover {
+  /* background: radial-gradient(circle, rgba(0,220,255,0.07), rgba(0,220,255, 0));
+  background-color: rgba(0,220,255,0.05);
+  transform: scale(1.02); */
+}
 
 
 

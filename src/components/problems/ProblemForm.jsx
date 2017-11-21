@@ -81,18 +81,18 @@ export default class ProblemForm extends React.Component {
               <form id="createForm">
                 <fieldset id="fieldSetNoBorder">
                   <label htmlFor="problemTitleForm" id="problemTitleFormLabel">Project Title<br />
-                      <input type="text" name="problemTitle" required="required" maxLength="70" id="problemTitleForm" autoFocus/>
+                      <input type="text" name="problemTitle" required="required" maxLength="70" id="problemTitleForm" />
                     </label><br />
 
 
-                    {/* <div id="projectFormRadioContainer">
+                    <div id="projectFormRadioContainer">
                       <div id="projectFormRadioColumn">
                         <div id="projectFormRadioRow1">
-                          project
+                          project <span id="gray">(default)</span>
                         </div>
                         <div id="projectFormRadioRow">
                           <label id="projectRadioButtonContainer">
-                            <input type="radio" checked="checked" name="radio" />
+                            <input type="radio" name="projectType" value="project"/>
                             <span id="checkmark1"></span>
                           </label>
                         </div>
@@ -103,7 +103,7 @@ export default class ProblemForm extends React.Component {
                         </div>
                         <div id="projectFormRadioRow">
                           <label id="projectRadioButtonContainer">
-                            <input type="radio" name="radio" />
+                            <input type="radio" name="projectType" value="goal" />
                             <span id="checkmark2"></span>
                           </label>
                         </div>
@@ -114,52 +114,41 @@ export default class ProblemForm extends React.Component {
                         </div>
                         <div id="projectFormRadioRow">
                           <label id="projectRadioButtonContainer">
-                            <input type="radio" name="radio" />
+                            <input type="radio" name="projectType" value="problem" />
                             <span id="checkmark3"></span>
                           </label>
                         </div>
                       </div>
-                    </div> */}
+                    </div>
 
 
-                    <div id="projectFormRadioContainer">
+                    {/* <div id="projectFormRadioContainer">
                       <div id="projectFormRadioColumn">
                         <div id="projectFormRadioRow1">
                           project
                         </div>
                          <br />
-                        {/* <div id="projectFormRadioRow"> */}
-                          {/* <label id="projectRadioButtonContainer"> */}
                             <input type="radio" checked="checked" name="project" id="problemRadioInput" />
-                            {/* <span id="checkmark1"></span> */}
-                          {/* </label> */}
-                        {/* </div> */}
                       </div>
                       <div id="projectFormRadioColumn">
                         <div id="projectFormRadioRow2">
                           goal
                         </div>
                         <br />
-                        {/* <div id="projectFormRadioRow"> */}
-                          {/* <label id="projectRadioButtonContainer"> */}
                             <input type="radio" name="project" id="problemRadioInput" />
-                            {/* <span id="checkmark2"></span> */}
-                          {/* </label> */}
-                        {/* </div> */}
                       </div>
                       <div id="projectFormRadioColumn">
                         <div id="projectFormRadioRow3">
                           problem
                         </div>
-                        {/* <div id="projectFormRadioRow"> */}
-                          {/* <label id="projectRadioButtonContainer"> */}
                           <br />
                             <input type="radio" name="project" id="problemRadioInput" />
-                            {/* <span id="checkmark3"></span> */}
-                          {/* </label> */}
-                        {/* </div> */}
                       </div>
                     </div>
+ */}
+
+
+
 
 
                   {/* <select id ="dropDownProblemForm" name="problemType">
