@@ -70,7 +70,7 @@ if (problem.Private === true) {
 } else 
       return (
         <li key={problem.ID} id="welcomeUserProblemsUnit">
-            <Link to={{pathname: '/project/'+problem.ID +'/subprojects'}} onClick={()=>{this.handleClick()}}>
+            <Link to={'/project/'+problem.ID +'/subprojects'}>
                 <div id="welcomeUserProblemsHeader">
                     <div id="welcomeUserProblemsTitle">
                         <div id="welcomeProjectPercent">

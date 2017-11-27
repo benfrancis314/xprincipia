@@ -63,31 +63,31 @@ export default class ProfileContainer extends React.Component {
         //   });
     }   
     // Experimental to try to fix logout issues
-    componentWillMount() {
-        this.state =  { 
-          userToken: cookie.load('userToken'),
-          // userName: cookie.load('userName')
-        };
-        // alert('mountProfile');
-      }
-      componentWillReceiveProps(nextState) {
-        nextState =  { 
-          userToken: cookie.load('userToken'),
-          // userName: cookie.load('userName')
-        };
-        // alert('changeProfile');
-      }
+    // componentWillMount() {
+    //     this.state =  { 
+    //       userToken: cookie.load('userToken'),
+    //       // userName: cookie.load('userName')
+    //     };
+    //     // alert('mountProfile');
+    //   }
+    //   componentWillReceiveProps(nextState) {
+    //     nextState =  { 
+    //       userToken: cookie.load('userToken'),
+    //       // userName: cookie.load('userName')
+    //     };
+    //     // alert('changeProfile');
+    //   }
     onLogout() {
         // The usage of the "path" below seems not to logout cookies that have a different path.
         // Although I'm uncertain why those cookies have different paths, it is best to avoid the issue. 
         // cookie.remove('userToken', { path: '/' });
         // cookie.remove('userName', { path: '/' });
-        alert('logoutBeforeRemove');
+        // alert('logoutBeforeRemove');
         cookie.remove('userToken');
         cookie.remove('userName');
-        alert('logoutAfterRemove');
+        // alert('logoutAfterRemove');
         document.location = "/welcome";
-        alert('logoutAfterRefresh');
+        // alert('logoutAfterRefresh');
     }
     onCreatedSolution() {
         var self = this;

@@ -145,7 +145,7 @@ if (problem.Private === true) {
 } else 
       return (
         <li key={problem.ID} id="feedListUnit">
-            <Link to={{pathname: '/project/'+problem.ID +'/subprojects'}} onClick={()=>{this.handleClick()}}>
+            <Link to={'/project/'+problem.ID +'/subprojects'}>
                 <div id="feedUnits">               
                     <div id="blueFeed">project by {problem.OriginalPosterUsername}</div>
                     <div id="whiteFeed">{problem.Title}</div>

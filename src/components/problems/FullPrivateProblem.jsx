@@ -175,8 +175,24 @@ unVote() {
 
 
    render() {
-     
-       if (this.state.vote ===true) {  
+     if (cookie.load("userName") !== this.state.problemInfo.OriginalPosterUsername) {
+       return (
+         <div id="privateProjectError">
+           <span id="blue">This project appears to be private</span>
+           <br />
+           <br />
+           We apologize for the error, please let us know the error in the
+           <br />
+           <Link to={`/profile/feedback`}>
+            <span id="blueButton">FEEDBACK </span>
+            section in your personal quarters. 
+          </Link>
+           <br />
+         </div>
+       )
+     }
+       
+    else if (this.state.vote ===true) {  
            return (
       <div id="fullWide">
         <div id="maxContainerColumn">

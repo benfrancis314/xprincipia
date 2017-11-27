@@ -7,20 +7,20 @@ import axios from 'axios';
 
 export default class Layout extends React.Component {
 
-  componentDidMount() {
-    this.state =  { 
-      userToken: cookie.load('userToken'),
-    };
-  }
-  componentWillReceiveProps(nextState) {
-    nextState =  { 
-      userToken: cookie.load('userToken'),
-    };
-  }
-  onLogin(userToken) {
-    this.setState({ userToken });
-    cookie.save('userToken', this.state.userToken);
-  }
+  // componentDidMount() {
+  //   this.state =  { 
+  //     userToken: cookie.load('userToken'),
+  //   };
+  // }
+  // componentWillReceiveProps(nextState) {
+  //   nextState =  { 
+  //     userToken: cookie.load('userToken'),
+  //   };
+  // }
+  // onLogin(userToken) {
+  //   this.setState({ userToken });
+  //   cookie.save('userToken', this.state.userToken);
+  // }
 
   render() {
       return (

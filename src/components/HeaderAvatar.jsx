@@ -71,6 +71,24 @@ export default class HeaderAvatar extends React.Component {
               $('#logoNameGuide').attr('id','logoName');
           });
       }
+      hoverNotebook() {
+        $(document).ready(function() {
+            $('#logoName').html("universal notebook").fadeIn(7500);
+            $('#logoName').attr('id','logoNameGuide');
+        });
+      }
+      unHoverNotebook() {
+          $(document).ready(function() {
+              $('#logoNameGuide').html('XPrincipia');            
+              $('#logoNameGuide').attr('id','logoName');
+          });
+      }
+    showNotebook() {
+        $(document).ready(function() {           
+            $('#notebookContainer').attr('id','notebookContainerShow');
+        });
+    }
+
 
 
 // Need to load notifications
@@ -108,16 +126,23 @@ export default class HeaderAvatar extends React.Component {
     
         return (
             <div id="headerOptionsContainer">
-                    <Link to="/messages" activeClassName="activePrivate">
-                        <div id="headerMessagesButton" onMouseOver={this.hoverMessagesHeader} onMouseOut={this.unHoverMessagesHeader}>
-                            <img src={require('../assets/comments.svg')} id="mindTempleButton" width="30" height="30" alt="Gear logo, link to settings"/>
-                        </div>
-                    </Link>
-                    <Link to="/mindtemple" id="whiteHeader" activeClassName="activePrivate">
-                        <div id="headerTempleName" onMouseOver={this.hoverMindTemple} onMouseOut={this.unHoverMindTemple}>
-                            <img src={require('../assets/templeSoftWhite.svg')} id="mindTempleButton" width="30" height="30" alt="Gear logo, link to settings"/>
-                        </div>
-                    </Link>
+                    <div id="headerTabContainer">
+                        <Link>
+                            <div id="notebookHeaderButton" onClick ={this.showNotebook} onMouseOver={this.hoverNotebook} onMouseOut={this.unHoverNotebook}>
+                                <img src={require('../assets/notebookWhite.svg')} id="mindTempleButton" width="30" height="30" alt="Gear logo, link to settings"/>
+                            </div>
+                        </Link>
+                        <Link to="/messages" activeClassName="activePrivate">
+                            <div id="headerMessagesButton" onMouseOver={this.hoverMessagesHeader} onMouseOut={this.unHoverMessagesHeader}>
+                                <img src={require('../assets/comments.svg')} id="mindTempleButton" width="30" height="30" alt="Gear logo, link to settings"/>
+                            </div>
+                        </Link>
+                        <Link to="/mindtemple" id="whiteHeader" activeClassName="activePrivate">
+                            <div id="headerTempleName" onMouseOver={this.hoverMindTemple} onMouseOut={this.unHoverMindTemple}>
+                                <img src={require('../assets/templeSoftWhite.svg')} id="mindTempleButton" width="30" height="30" alt="Gear logo, link to settings"/>
+                            </div>
+                        </Link>
+                    </div>
                     <Link to="/profile" id="whiteHeader" activeClassName="activeProfile">
                         <div id="headerName" onMouseOver={this.hoverProfile} onMouseOut={this.unHoverProfile}>
                             {cookie.load("userName")}

@@ -3,6 +3,7 @@ import axios from 'axios'
 import cookie from 'react-cookie'
 import './assets/App.css';
 import './assets/index.css';
+import NotebookContainer from './containers/NotebookContainer.jsx';
 import { Link } from 'react-router';
 import $ from 'jquery';
 
@@ -122,9 +123,11 @@ class App extends React.Component {
             <div id="privateAlertContent">This space is entirely <span id="blue">private</span></div>
             <div id="privateAlertReturn" onClick={this.hidePrivateNotification}>Return</div>
         </div>
-        <div onMouseOver={this.hideEasterEgg}>
+        <NotebookContainer />
+
+        {/* <div onMouseOver={this.hideEasterEgg}>
         {randomImg()}
-        </div>
+        </div> */}
       </div>
       );
     

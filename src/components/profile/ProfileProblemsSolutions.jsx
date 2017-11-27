@@ -18,7 +18,6 @@ export default class ProfileProblemsSolutions extends React.Component {
         }
 
 
-        this.onLogout = this.onLogout.bind(this);
         this.onCreatedSolution = this.onCreatedSolution.bind(this)
         this.onVotedSolution = this.onVotedSolution.bind(this)
         this.onCreatedProblem = this.onCreatedProblem.bind(this)
@@ -52,14 +51,6 @@ export default class ProfileProblemsSolutions extends React.Component {
         })
         
     }   
-    onLogout() {
-        // I'm removing all of the "path" variables, because they seem to be causing problems. 
-        // cookie.remove('userToken', { path: '/' });
-        // cookie.remove('userName', { path: '/' });
-        cookie.remove('userToken');
-        cookie.remove('userName');
-        document.location = "/welcome"; 
-    }
     onCreatedSolution() {
         var self = this;
         self.setState({

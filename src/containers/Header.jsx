@@ -22,12 +22,20 @@ export default class Header extends React.Component {
 
   componentWillMount() {
     this.state =  { 
-      userToken: cookie.load('userToken')
+      userToken: cookie.load('userToken'),
+      username: cookie.load('userToken')
     };
   }
+// TESTING, don't use
+  // componentDidMount() {
+  //   this.state =  { 
+  //     userToken: cookie.load('userToken')
+  //   };
+  // }
   componentWillReceiveProps(nextState) {
     nextState =  { 
       userToken: cookie.load('userToken'),
+      username: cookie.load('userToken')
     };
   }
 
@@ -42,22 +50,20 @@ export default class Header extends React.Component {
       password: this.state.password
     })
     .then(function (result) {
-      alert('headerBeforeState');
+      // alert('headerBeforeState');
       self.setState({
         userToken: result.data.token
       })
-      alert('headerAfterState');
+      // alert('headerAfterState');
       cookie.save('userToken', result.data.token );
       cookie.save('userName', self.state.username)
-      alert('headerAfterCookieSave');
+      // alert('headerAfterCookieSave');
       // Store token/Username in db table
       return axios.post( Config.API + '/auth/saveToken',  {
         username : self.state.username,
         token : "Bearer " + self.state.userToken
-      }, {headers: { Authorization: "Bearer " + self.state.userToken }}).then (function (response){
-        
-        alert('headerAfterSaveTokenBackend');
-        //return to same page
+      }, 
+      {headers: { Authorization: "Bearer " + self.state.userToken }}).then (function (response) {
         document.location = window.location.pathname;
       })
     })

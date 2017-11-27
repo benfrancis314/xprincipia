@@ -104,7 +104,7 @@ if (problem.Private === true) {
       return (
     //   We do actually want to show projects on proposals here:
         <li key={problem.ID} id="feedListUnit">
-            <Link to={{pathname: '/project/'+problem.ID +'/subprojects'}} onClick={()=>{this.handleClick()}}>
+            <Link to={'/project/'+problem.ID +'/subprojects'}>
                 <div id="feedUnits">               
                     <div id="blueFeed">project by <span id="feedCaps">{problem.OriginalPosterUsername}</span></div>
                     <div id="whiteFeed">{problem.Title}</div>
@@ -147,7 +147,7 @@ if (problem.Private === true) {
 } else 
       return (
         <li key={problem.ID} id="feedListUnit">
-            <Link to={{pathname: '/project/'+problem.ID +'/subprojects'}} onClick={()=>{this.handleClick()}}>
+            <Link to={'/project/'+problem.ID +'/subprojects'}>
                 <div id="feedUnits">               
                     <div id="blueFeed">project by <span id="feedCaps">{problem.OriginalPosterUsername}</span></div>
                     <div id="whiteFeed">{problem.Title}</div>
