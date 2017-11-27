@@ -5,6 +5,7 @@ import axios from 'axios';
 import cookie from 'react-cookie';
 import $ from 'jquery';
 import {Config} from '../../config.js';
+import {OnUnload} from 'react-window-mixins';
 
 
 export default class NotebookFull extends React.Component {
@@ -16,7 +17,8 @@ export default class NotebookFull extends React.Component {
         }
 
     this.updateNotebook = this.updateNotebook.bind(this);
-        
+    // var OnUnload = require("react-window-mixins").OnUnload;
+    
     };
     //initialize the component with this state
     componentWillMount(){
@@ -85,6 +87,7 @@ export default class NotebookFull extends React.Component {
       });
   
   }
+// ON UNMOUNT, SAVE PROJECT
 componentWillUnmount() {
     //Read field items into component state
     this.state.title = document.getElementById('notebookFullTitle').value
@@ -123,7 +126,6 @@ componentWillUnmount() {
   
   }
 
-// ON UNMOUNT, SAVE PROJECT
 
 
 
@@ -131,7 +133,7 @@ componentWillUnmount() {
     
 
       return (
-        <div id="notebookFullContainer" onBeforeUpload={this.updateNotebook}>
+        <div id="notebookFullContainer">
             <input id="notebookFullTitle" placeholder="notes title"></input>
             <textarea id="notebookFullContent" placeholder="Brainstorm or record your thoughts" autoFocus ></textarea>
             <textarea placeholder="sources" id="notebookFullResources"></textarea>
