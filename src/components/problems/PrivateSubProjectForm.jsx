@@ -73,7 +73,7 @@ export default class ProblemForm extends React.Component {
             </Link>
           {/*</ScrollableAnchor>*/}
           <div id="SBButtonNoHover">
-            New Sub Project
+            new sub project
           </div>
           <div id="createProblemBox">
               <form id="createForm">
@@ -82,8 +82,46 @@ export default class ProblemForm extends React.Component {
                       <input type="text" name="problemTitle" required="required" maxLength="70" id="problemTitleForm" autoFocus/>
                     </label><br />
 
+
+
+                    <div id="projectFormRadioContainer">
+                      <div id="projectFormRadioColumn">
+                        <div id="projectFormRadioRow1">
+                          project <span id="gray">(default)</span>
+                        </div>
+                        <div id="projectFormRadioRow">
+                          <label id="projectRadioButtonContainer">
+                            <input type="radio" name="projectType" value="project"/>
+                            <span id="checkmark1"></span>
+                          </label>
+                        </div>
+                      </div>
+                      <div id="projectFormRadioColumn">
+                        <div id="projectFormRadioRow2">
+                          goal
+                        </div>
+                        <div id="projectFormRadioRow">
+                          <label id="projectRadioButtonContainer">
+                            <input type="radio" name="projectType" value="goal" />
+                            <span id="checkmark2"></span>
+                          </label>
+                        </div>
+                      </div>
+                      <div id="projectFormRadioColumn">
+                        <div id="projectFormRadioRow3">
+                          problem
+                        </div>
+                        <div id="projectFormRadioRow">
+                          <label id="projectRadioButtonContainer">
+                            <input type="radio" name="projectType" value="problem" />
+                            <span id="checkmark3"></span>
+                          </label>
+                        </div>
+                      </div>
+                    </div>
+
                   <label htmlFor="problemSummaryForm" id="problemSummaryFormLabel">Additional Information<br />
-                      <textarea name="problemSummary" required="required" maxLength="350" 
+                      <textarea name="problemSummary" maxLength="350" 
                       placeholder="Please provide any additional information you'd like. (350 character max)" id="problemSummaryForm"/>
                       </label><br />
 

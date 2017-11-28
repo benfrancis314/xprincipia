@@ -18,25 +18,32 @@ export default class ProblemDiscussMenu extends React.Component {
     
     // Is this necessary?
         componentDidMount(){
-        var self = this;
+            // Not using this currently, keep in case we decide to switch back
+            // ReactDOM.findDOMNode(this).scrollIntoView();
+            // window.scrollBy(0, -70);
+            var self = this;
         return axios.get( Config.API + '/solutions/problemID?id='+this.props.params.probID).then(function (response) {
             self.setState({
                 solutions: response.data
             })
         })
-        
     }
 
 // Not using this currently, keep in case we decide to switch back
 // componentDidUpdate() {
 //         ReactDOM.findDOMNode(this).scrollIntoView();
+//         window.scrollBy(0, -70);
 //   }      
 
+
+
+
    render() {
+       
       return (
         <div>
             <Link to={`/project/${this.props.params.probID}/subprojects`}>
-                <img src={require('../../assets/redX.svg')} id="closeRedX" width="40" height="40" alt="Close button, red X symbol" />
+                <img src={require('../../assets/redX.svg')} id="closeRedX" width="30" height="30" alt="Close button, red X symbol" />
             </Link>
             <ReactCSSTransitionGroup
             transitionName="example"

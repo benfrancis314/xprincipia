@@ -5,10 +5,23 @@ import axios from 'axios';
 import cookie from 'react-cookie';
 import $ from 'jquery';
 import {Config} from '../../config.js';
-import {OnUnload} from 'react-window-mixins';
+// import {OnUnload} from 'react-window-mixins';
+// import Beforeunload from 'react-beforeunload';
 
+// React.createClass({
+//     mixins: [ OnUnload ],
+  
+//     onUnload: function() {
+//       // Clean up any resources
+//     },
+  
+//     onBeforeUnload: function() {
+//       return 'Are you sure you want to leave the page?';
+//     }
+//   });
 
 export default class NotebookFull extends React.Component {
+   
     constructor(props){
         super(props);
 
@@ -128,23 +141,29 @@ componentWillUnmount() {
 
 
 
-
    render() {
     
 
       return (
-        <div id="notebookFullContainer">
-            <input id="notebookFullTitle" placeholder="notes title"></input>
-            <textarea id="notebookFullContent" placeholder="Brainstorm or record your thoughts" autoFocus ></textarea>
-            <textarea placeholder="sources" id="notebookFullResources"></textarea>
-            {/* <div id="noteBookSaveButton">
-                save
-            </div> */}
-            <div onClick={this.updateNotebook} id="notebookFullTimeStamp">
-            {/* Update each time saved */}
-                updated: [timestamp] save
-            </div>
-        </div>
+        // <div>
+            // <Beforeunload onBeforeunload={this.updateNotebook}>
+                <div id="notebookFullContainer">
+                    <input id="notebookFullTitle" placeholder="notes title"></input>
+                    <textarea id="notebookFullContent" placeholder="Brainstorm or record your thoughts" autoFocus ></textarea>
+                    <div id="notebookFullSourcesTitle">
+                        sources
+                    </div>
+                    <textarea id="notebookFullResources" placeholder="sources"></textarea>
+                    {/* <div id="noteBookSaveButton">
+                        save
+                    </div> */}
+                    <div onClick={this.updateNotebook} id="notebookFullTimeStamp">
+                    {/* Update each time saved */}
+                        updated: [timestamp] save!
+                    </div>
+                </div>
+            // </Beforeunload>
+        // </div>
       );
     }
 }

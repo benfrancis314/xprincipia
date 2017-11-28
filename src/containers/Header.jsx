@@ -14,6 +14,7 @@ export default class Header extends React.Component {
         this.state = {
            username: '',
            password: '',
+           userToken: '',
         }
         // this.queryProblem = this.queryProblem.bind(this);
         this.postLogin = this.postLogin.bind(this);
@@ -23,7 +24,7 @@ export default class Header extends React.Component {
   componentWillMount() {
     this.state =  { 
       userToken: cookie.load('userToken'),
-      username: cookie.load('userToken')
+      username: cookie.load('userName')
     };
   }
 // TESTING, don't use
@@ -35,7 +36,7 @@ export default class Header extends React.Component {
   componentWillReceiveProps(nextState) {
     nextState =  { 
       userToken: cookie.load('userToken'),
-      username: cookie.load('userToken')
+      username: cookie.load('userName')
     };
   }
 
@@ -114,16 +115,17 @@ if (this.state.userToken === undefined ){
               <Link to="/welcome"><div id="logoName">XPrincipia</div></Link>
             </div>
             {/*Login in header*/}
-            <input type="text" name="email" required="required" maxLength="30" placeholder="Username" id="loginHeaderEmail" autoFocus />
-            <input type="password" name="password" required="required" maxLength="30" placeholder="Password" id="loginHeaderPassword" />            
-            <input type="submit" value="Login" onClick={this.postLogin} id="loginHeaderSubmitButton" />           
+            <input type="text" name="email" required="required" maxLength="30" placeholder="username" id="loginHeaderEmail" autoFocus />
+            <input type="password" name="password" required="required" maxLength="30" placeholder="password" id="loginHeaderPassword" />            
+            <input type="submit" value="login" onClick={this.postLogin} id="loginHeaderSubmitButton" />           
             {/*Attempt to get the login button to just be an arrow*/}
             {/*<input type="image" src={require('../assets/rightArrowWhite.svg')} onClick={this.postLogin} id="loginHeaderSubmitImage" alt="Submit login arrow, blue right arrow"/>*/}
             <div id="registerHeaderButton">
                 <Link to="/register">
-                    Register
+                    register
                 </Link>
             </div>
+            {/* {this.state.username}! */}
         </div>
       );
     } else {

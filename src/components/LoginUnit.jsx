@@ -36,8 +36,6 @@ export default class LoginUnit extends React.Component {
         userToken: result.data.token
       })
       // I am removing the "path" here because it is currently causing problems. 
-      // cookie.save('userToken', result.data.token, { path: '/' });
-      // cookie.save('userName', self.state.username, { path: '/' })
       cookie.save('userToken', result.data.token);
       cookie.save('userName', self.state.username)
       

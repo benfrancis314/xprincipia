@@ -102,25 +102,25 @@ class App extends React.Component {
         {/*Error alert below*/}
         <div id="notification">
           <div id="notificationHeader">!</div>
-          <div id="notificationContent">We apologize for this error. In your <span id="blue">Personal Headquarters</span>, please tell us the error under <span id="blue">Feedback</span>.</div>
+          <div id="notificationContent">we apologize for this error. in your <span id="blue">personal headquarters</span>, please tell us the error under <span id="blue">feedback</span>.</div>
           <div id="notificationLoginRegisterContainer">
             <Link to='/login'>
-              <div id="notificationLogin" onClick={this.hideNotification}>Login</div>
+              <div id="notificationLogin" onClick={this.hideNotification}>login</div>
             </Link>
             <Link to='/register'>
-            <div id="notificationRegister" onClick={this.hideNotification}>Register</div>
+            <div id="notificationRegister" onClick={this.hideNotification}>register</div>
             </Link>
           </div>
           <Link to='/profile/feedback'>
-              <div id="notificationFeedbackShow" onClick={this.hideNotification}>Feedback</div>
+              <div id="notificationFeedbackShow" onClick={this.hideNotification}>feedback</div>
           </Link>
-          <div id="notificationReturn" onClick={this.hideNotification}>Return</div>
+          <div id="notificationReturn" onClick={this.hideNotification}>return</div>
         </div>
         <div id="privateAlert">
             <div id="privateAlertHeader">
                 <img src={require('./assets/lock2Blue.svg')} id="lockAlert" width="30" height="30" onClick={this.privateAlert} alt="Logo logo, signifying this is private"/>
             </div>
-            <div id="privateAlertContent">This space is entirely <span id="blue">private</span></div>
+            <div id="privateAlertContent">this space is entirely <span id="blue">private</span></div>
             <div id="privateAlertReturn" onClick={this.hidePrivateNotification}>Return</div>
         </div>
         <NotebookContainer />

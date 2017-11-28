@@ -175,24 +175,24 @@ unVote() {
 
 
    render() {
-     if (cookie.load("userName") !== this.state.problemInfo.OriginalPosterUsername) {
-       return (
-         <div id="privateProjectError">
-           <span id="blue">This project appears to be private</span>
-           <br />
-           <br />
-           We apologize for the error, please let us know the error in the
-           <br />
-           <Link to={`/profile/feedback`}>
-            <span id="blueButton">FEEDBACK </span>
-            section in your personal quarters. 
-          </Link>
-           <br />
-         </div>
-       )
-     }
+    //  if (cookie.load("userName") !== this.state.problemInfo.OriginalPosterUsername) {
+    //    return (
+    //      <div id="privateProjectError">
+    //        <span id="blue">This project appears to be private</span>
+    //        <br />
+    //        <br />
+    //        We apologize for the error, please let us know the error in the
+    //        <br />
+    //        <Link to={`/profile/feedback`}>
+    //         <span id="blueButton">FEEDBACK </span>
+    //         section in your personal quarters. 
+    //       </Link>
+    //        <br />
+    //      </div>
+    //    )
+    //  }
        
-    else if (this.state.vote ===true) {  
+    if (this.state.vote ===true) {  
            return (
       <div id="fullWide">
         <div id="maxContainerColumn">
@@ -212,9 +212,12 @@ unVote() {
                       <div id="SBButtonDiscuss">brainstorm</div>
                 </Link>
                 <div id="problemCenterColumn">
-                  <Link><div id="voteProblem" onClick={this.unVote}>
-                      voted
+                  <Link><div id="voteProblem" onClick={this.submitVote}>
+                      up
                   </div></Link>
+                  {/* <Link><div id="voteProblem" onClick={this.unVote}>
+                      down
+                  </div></Link> */}
                   <a href='#proposals'>
                     <div id="SBButtonProposal" onClick={this.goToProposal}>proposals</div>
                   </a>
@@ -225,10 +228,10 @@ unVote() {
                 </Link>
             </div>
               <div id="privateFullSettingsButton" onClick={this.privateAlertProject}>
-                  <img src={require('../../assets/lock2Blue.svg')} id="fullProblemLockLogo" width="20" height="20" alt="Gear logo, link to settings"/>
+                  <img src={require('../../assets/lock2Blue.svg')} id="fullProblemLockLogo" width="18" height="18" alt="Gear logo, link to settings"/>
               </div>
               <Link to={`/project/private/${this.props.params.probID}/edit`}>
-                <img src={require('../../assets/editBlue.svg')} id="editProjectButton" width="20" height="20" alt="Edit Button" />
+                <img src={require('../../assets/editBlue.svg')} id="editProjectButton" width="18" height="18" alt="Edit Button" />
               </Link>
 
               <div id="projectPercentGreen">{this.state.problemInfo.Rank}</div>
@@ -285,8 +288,11 @@ unVote() {
                       <div id="SBButtonDiscuss">brainstorm</div>
                 </Link>
                 <div id="problemCenterColumn">
-                  <Link><div id="voteProblem" onClick={this.submitVote}>
-                      vote
+                  {/* <Link><div id="voteProblem" onClick={this.submitVote}>
+                      up
+                  </div></Link> */}
+                  <Link><div id="voteProblem" onClick={this.unVote}>
+                      down
                   </div></Link>
                   <a href='#proposals'>
                     <div id="SBButtonProposal" onClick={this.goToProposal}>proposals</div>
@@ -298,10 +304,10 @@ unVote() {
                 </Link>
             </div>
               <div id="privateFullSettingsButton" onClick={this.privateAlertProject}>
-                  <img src={require('../../assets/lock2Blue.svg')} id="fullProblemLockLogo" width="20" height="20" alt="Gear logo, link to settings"/>
+                  <img src={require('../../assets/lock2Blue.svg')} id="fullProblemLockLogo" width="18" height="18" alt="Gear logo, link to settings"/>
               </div>
               <Link to={`/project/private/${this.props.params.probID}/edit`}>
-                <img src={require('../../assets/editBlue.svg')} id="editProjectButton" width="20" height="20" alt="Edit Button" />
+                <img src={require('../../assets/editBlue.svg')} id="editProjectButton" width="18" height="18" alt="Edit Button" />
               </Link>
 
               <div id="projectPercent">{this.state.problemInfo.Rank}</div>

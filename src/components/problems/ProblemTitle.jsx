@@ -8,7 +8,6 @@ import ProblemSolutionsMenu from './ProblemSolutionsMenu.jsx';
 // import ProjectParentChildrenUnitsContainer from '../../containers/ProjectParentChildrenUnitsContainer.jsx';
 import SubProblemContainer from '../../containers/SubProblemContainer.jsx';
 import SubProjectParentUnit from './SubProjectParentUnit.jsx';
-// import TutorialProjectContent from '../tutorials/TutorialProjectContent.jsx';
 import {Config} from '../../config.js';
 import $ from 'jquery';
 import ScrollableAnchor from 'react-scrollable-anchor';
@@ -46,6 +45,20 @@ export default class ProblemTitle extends React.Component {
 
    render() {
      
+    // window.onscroll = function() {scrollFunction()};
+    
+    // function scrollFunction() {
+    //     if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+    //         document.getElementById("problemIntro").style.position = "fixed";
+    //         document.getElementById("problemIntro").style.top = "0";
+    //         document.getElementById("problemIntro").style.backgroundColor = "#0f131c";
+    //     } else {
+    //       document.getElementById("problemIntro").style.position = "initial";
+    //       document.getElementById("problemIntro").style.top = "auto";           
+    //     }
+    // }
+
+
       if (0) {
         return (
           <div id="problemIntro">

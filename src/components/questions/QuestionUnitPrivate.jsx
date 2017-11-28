@@ -10,6 +10,13 @@ export default class QuestionUnitPrivate extends React.Component {
 constructor(props){
      super(props);
 
+
+    this.state = {
+        questions: [],
+        voteHash: {},
+    }
+
+
         this.renderItem = this.renderItem.bind(this)
 
     };
@@ -20,12 +27,12 @@ constructor(props){
 //     return this.state.probID !== nextProps.params.probID;
 // }
 
-    componentWillReceiveProps (props) {
+    componentDidMount (props) {
     var self = this
-    self.setState({
-        voteHash : {},
-    })
-    props.questions.forEach( function (question){
+    // self.setState({
+    //     voteHash : {},
+    // })
+    this.props.questions.forEach( function (question){
         axios.get( Config.API + "/auth/vote/isVotedOn?type=2&typeID=" + question.ID + "&username=" + cookie.load("userName"))
         .then( function (response) {  
             const voteHash = self.state.voteHash;
@@ -35,6 +42,9 @@ constructor(props){
                 voteHash,
             })
         })  
+    })
+    self.setState({
+        questions: this.props.questions
     })
 }
 

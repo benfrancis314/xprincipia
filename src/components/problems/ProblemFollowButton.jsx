@@ -5,7 +5,7 @@ export default class ProblemFollowButton extends React.Component {
   
 
    render() {
-       if (0) {
+       if (1) {
        return (
         <div>
             <Link>

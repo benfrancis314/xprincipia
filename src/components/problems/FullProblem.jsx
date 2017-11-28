@@ -1,4 +1,5 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 import { Link  } from 'react-router';
 import axios from 'axios';
 import cookie from 'react-cookie';
@@ -35,6 +36,8 @@ export default class FullProblem extends React.Component {
 
     componentDidMount(){
       var self = this;
+      // ReactDOM.findDOMNode(this).scrollIntoView();
+
       window.scrollTo(0,0);
       axios.get( Config.API + '/problems/ID?id='+this.props.params.probID).then(function (response) {
 
@@ -45,7 +48,7 @@ export default class FullProblem extends React.Component {
     })
 
           
-    axios.get( Config.API + "/auth/vote/isVotedOn?type=0&typeID=" + this.props.params.probID + "&username=" + cookie.load("userName"))
+    axios.get( Config.API + "/vote/isVotedOn?type=0&typeID=" + this.props.params.probID + "&username=" + cookie.load("userName"))
           .then( function (response){
             self.setState({
               vote: response.data
@@ -81,7 +84,7 @@ export default class FullProblem extends React.Component {
     })
 
           
-    axios.get( Config.API + "/auth/vote/isVotedOn?type=0&typeID=" + nextProps.params.probID + "&username=" + cookie.load("userName"))
+    axios.get( Config.API + "/vote/isVotedOn?type=0&typeID=" + nextProps.params.probID + "&username=" + cookie.load("userName"))
           .then( function (response){
             self.setState({
               vote: response.data
@@ -178,6 +181,7 @@ unVote() {
    render() {
      
       if (cookie.load('userName') === 'xpadmin') {
+        
         return (
           <div id="maxContainerColumn">
         <ReactCSSTransitionGroup

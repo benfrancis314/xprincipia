@@ -29,7 +29,7 @@ export default class NotebookUnit extends React.Component {
             <div id="notebookUnitHeader">
                 notebooks
             </div>
-            <div>
+            <div id="notebookAddButton">
                 plus button
             </div>
             <div id="notebootUnitList">

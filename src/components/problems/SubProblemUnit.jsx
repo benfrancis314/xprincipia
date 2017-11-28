@@ -67,13 +67,13 @@ export default class SubProblemUnit extends React.Component {
 	}
 	renderItem(problem) {
 
-				function handleClick() {
-					ReactGA.event({
-							category: 'Project',
-							action: 'Clicked Link',
-					});
-					// alert('success');
-    }
+	// 			function handleClick() {
+	// 				ReactGA.event({
+	// 						category: 'Project',
+	// 						action: 'Clicked Link',
+	// 				});
+	// 				// alert('success');
+    // }
 if (problem.ParentType === 1) {
         return (
             <div key={problem.ID} id="nodisplay">
@@ -84,7 +84,7 @@ if (problem.ParentType === 1) {
 // This makes text smaller if problem length is larger
 } else if (problem.Title.length > 50) {
 return (
-	<Link key={problem.ID} to={'/project/private/'+problem.ID +'/subprojects'} onClick={handleClick}>
+	<Link key={problem.ID} to={'/project/private/'+problem.ID +'/subprojects'}>
 		<li key={problem.ID} id="SPUnit">
 			<div id="SPHeader">
 				<div id="SPTitleSmall">{problem.Title}</div>
@@ -96,7 +96,7 @@ return (
 );
 } else if (problem.Title.includes('s')) {
     return (
-        <Link key={problem.ID} to={'/project/'+problem.ID +'/subprojects'} onClick={handleClick}>
+        <Link key={problem.ID} to={'/project/'+problem.ID +'/subprojects'}>
 			<li key={problem.ID} id="SPUnit">
 				<div id="SPHeader">
 					<div id="SPTitle">{problem.Title}</div>
@@ -108,7 +108,7 @@ return (
 	);
 } else if (problem.Title.includes('e')) {
     return (
-        <Link key={problem.ID} to={'/project/'+problem.ID +'/subprojects'} onClick={handleClick}>
+        <Link key={problem.ID} to={'/project/'+problem.ID +'/subprojects'}>
 			<li key={problem.ID} id="SPUnit">
 				<div id="SPHeaderGreen">
 					<div id="SPTitleGreen">
@@ -123,7 +123,7 @@ return (
 	);
 } else {
 	return (
-        <Link key={problem.ID} to={'/project/'+problem.ID +'/subprojects'} onClick={handleClick}>
+        <Link key={problem.ID} to={'/project/'+problem.ID +'/subprojects'}>
 			<li key={problem.ID} id="SPUnit">
 				<div id="SPHeaderRed">
 					<div id="SPTitleRed">

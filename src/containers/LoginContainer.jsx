@@ -14,7 +14,6 @@ export default class LoginContainer extends React.Component {
   // onLogin(userId) {
   //   this.setState({ userId });
   //   // I'm removing all of the "path" variables, because they seem to be causing problems. 
-  //   // cookie.save('userId', this.state.userId, { path: '/' });
   //   cookie.save('userId', this.state.userId);
     
   // }

@@ -18,10 +18,7 @@ export default class QuestionForm extends React.Component {
 
 postQuestion() {
   //Read field items into component state
-// document.getElementById('questionTextArea').style.whiteSpace = "pre";
 this.state.question = document.getElementById('questionTextArea').value
-// Proof that the text spacing works up until this point
-// alert(this.state.question);
 
   //if User is on a solution post with type 1
   //solutionID will be available in props
@@ -64,7 +61,7 @@ this.state.question = document.getElementById('questionTextArea').value
         description : this.state.question,
       })
       .then(function (result) {
-        document.location = window.location.pathname 
+        // document.location = window.location.pathname 
       })
       .catch(function (error) {
           $(document).ready(function() {
@@ -83,7 +80,6 @@ this.state.question = document.getElementById('questionTextArea').value
           });
       });
     }
-
   }
 
 
@@ -115,7 +111,7 @@ this.state.question = document.getElementById('questionTextArea').value
                   <form id="questionForm">
                       <fieldset id='fieldSetNoBorderPadding'>
                               <textarea name="questionText" required="required" id="questionTextArea" placeholder="Ask a question about this project." ></textarea>
-                              <input type="button" value="Ask" onClick={this.postQuestion} id="askQuestion"/>
+                              <input type="button" value="Ask" onClick={(event) => { this.postQuestion; this.props.handler;}} id="askQuestion"/>
                       </fieldset>
                   </form>
             </div>

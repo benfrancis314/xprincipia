@@ -75,7 +75,7 @@ export default class ProblemForm extends React.Component {
             </Link>
           {/*</ScrollableAnchor>*/}
           <div id="SBButtonNoHover">
-            New Sub Project
+            new sub project
           </div>
           <div id="createProblemBox">
               <form id="createForm">
@@ -121,47 +121,8 @@ export default class ProblemForm extends React.Component {
                       </div>
                     </div>
 
-
-                    {/* <div id="projectFormRadioContainer">
-                      <div id="projectFormRadioColumn">
-                        <div id="projectFormRadioRow1">
-                          project
-                        </div>
-                         <br />
-                            <input type="radio" checked="checked" name="project" id="problemRadioInput" />
-                      </div>
-                      <div id="projectFormRadioColumn">
-                        <div id="projectFormRadioRow2">
-                          goal
-                        </div>
-                        <br />
-                            <input type="radio" name="project" id="problemRadioInput" />
-                      </div>
-                      <div id="projectFormRadioColumn">
-                        <div id="projectFormRadioRow3">
-                          problem
-                        </div>
-                          <br />
-                            <input type="radio" name="project" id="problemRadioInput" />
-                      </div>
-                    </div>
- */}
-
-
-
-
-
-                  {/* <select id ="dropDownProblemForm" name="problemType">
-                    <option id="dropDownProject" value="project">project</option>
-                    <option id="dropDownGoal" value="goal">goal</option>
-                    <option id="dropDownProblem" value="problem">problem</option>
-                  </select> */}
-
-
-
-
                   <label htmlFor="problemSummaryForm" id="problemSummaryFormLabel">Additional Information<br />
-                      <textarea name="problemSummary" required="required" maxLength="350" 
+                      <textarea name="problemSummary" maxLength="350" 
                       placeholder="Please provide any additional information you'd like. (350 character max)" id="problemSummaryForm"/>
                       </label><br />
 
