@@ -73,7 +73,7 @@ export default class ProblemForm extends React.Component {
           {/*ScrollableAnchor doesn't work right now, not sure why*/}
           {/*<ScrollableAnchor id={'newSubProject'}>*/}
             <Link to={`/project/private/${this.props.params.probID}/proposal/${this.props.params.solutionID}/subprojects`}>
-                <img src={require('../../assets/redX.svg')} id="closeRedX" width="40" height="40" alt="Close button, red X symbol" />
+                <img src={require('../../assets/redX.svg')} id="closeRedX" width="30" height="30" alt="Close button, red X symbol" />
             </Link>
           {/*</ScrollableAnchor>*/}
           <div id="SBButtonNoHover">
@@ -85,6 +85,46 @@ export default class ProblemForm extends React.Component {
                   <label htmlFor="problemTitleForm" id="problemTitleFormLabel">Project Title<br />
                       <input type="text" name="problemTitle" required="required" maxLength="70" id="problemTitleForm" autoFocus/>
                     </label><br />
+
+
+
+                    <div id="projectFormRadioContainer">
+                      <div id="projectFormRadioColumn">
+                        <div id="projectFormRadioRow1">
+                          project <span id="gray">(default)</span>
+                        </div>
+                        <div id="projectFormRadioRow">
+                          <label id="projectRadioButtonContainer">
+                            <input type="radio" name="projectType" value="0"/>
+                            <span id="checkmark1"></span>
+                          </label>
+                        </div>
+                      </div>
+                      <div id="projectFormRadioColumn">
+                        <div id="projectFormRadioRow2">
+                          goal
+                        </div>
+                        <div id="projectFormRadioRow">
+                          <label id="projectRadioButtonContainer">
+                            <input type="radio" name="projectType" value="1" />
+                            <span id="checkmark2"></span>
+                          </label>
+                        </div>
+                      </div>
+                      <div id="projectFormRadioColumn">
+                        <div id="projectFormRadioRow3">
+                          problem
+                        </div>
+                        <div id="projectFormRadioRow">
+                          <label id="projectRadioButtonContainer">
+                            <input type="radio" name="projectType" value="2" />
+                            <span id="checkmark3"></span>
+                          </label>
+                        </div>
+                      </div>
+                    </div>
+
+                    
 
                   <label htmlFor="problemSummaryForm" id="problemSummaryFormLabel">Additional Information<br />
                       <textarea name="problemSummary" required="required" maxLength="350" 

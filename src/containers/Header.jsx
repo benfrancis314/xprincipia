@@ -33,12 +33,13 @@ export default class Header extends React.Component {
   //     userToken: cookie.load('userToken')
   //   };
   // }
-  componentWillReceiveProps(nextState) {
-    nextState =  { 
-      userToken: cookie.load('userToken'),
-      username: cookie.load('userName')
-    };
-  }
+  
+  // componentWillReceiveProps(nextState) {
+    // nextState =  { 
+      // userToken: cookie.load('userToken'),
+      // username: cookie.load('userName')
+    // };
+  // }
 
   postLogin() {
     var self = this
@@ -55,10 +56,8 @@ export default class Header extends React.Component {
       self.setState({
         userToken: result.data.token
       })
-      // alert('headerAfterState');
       cookie.save('userToken', result.data.token );
       cookie.save('userName', self.state.username)
-      // alert('headerAfterCookieSave');
       // Store token/Username in db table
       return axios.post( Config.API + '/auth/saveToken',  {
         username : self.state.username,

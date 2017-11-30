@@ -65,7 +65,7 @@ export default class WelcomeCreateForm extends React.Component {
           transitionEnter={false}
           transitionLeave={false}>
             <Link to={`/welcome`}>
-                <img src={require('../../assets/redX.svg')} id="closeRedXFeed" width="40" height="40" alt="Close button, red X symbol" />
+                <img src={require('../../assets/redX.svg')} id="closeRedXFeed" width="30" height="30" alt="Close button, red X symbol" />
             </Link>
             <div id="welcomeNewProjectHeader">
               new project
@@ -85,7 +85,7 @@ export default class WelcomeCreateForm extends React.Component {
                           </div>
                           <div id="projectFormRadioRow">
                             <label id="projectRadioButtonContainer">
-                              <input type="radio" name="projectType" value="project"/>
+                              <input type="radio" name="projectType" value="0"/>
                               <span id="checkmark1"></span>
                             </label>
                           </div>
@@ -96,7 +96,7 @@ export default class WelcomeCreateForm extends React.Component {
                           </div>
                           <div id="projectFormRadioRow">
                             <label id="projectRadioButtonContainer">
-                              <input type="radio" name="projectType" value="goal" />
+                              <input type="radio" name="projectType" value="1" />
                               <span id="checkmark2"></span>
                             </label>
                           </div>
@@ -107,7 +107,7 @@ export default class WelcomeCreateForm extends React.Component {
                           </div>
                           <div id="projectFormRadioRow">
                             <label id="projectRadioButtonContainer">
-                              <input type="radio" name="projectType" value="problem" />
+                              <input type="radio" name="projectType" value="2" />
                               <span id="checkmark3"></span>
                             </label>
                           </div>

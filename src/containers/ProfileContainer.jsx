@@ -78,14 +78,9 @@ export default class ProfileContainer extends React.Component {
     //     // alert('changeProfile');
     //   }
     onLogout() {
-        // The usage of the "path" below seems not to logout cookies that have a different path.
-        // Although I'm uncertain why those cookies have different paths, it is best to avoid the issue. 
-        // alert('logoutBeforeRemove');
         cookie.remove('userToken');
         cookie.remove('userName');
-        // alert('logoutAfterRemove');
         document.location = "/welcome";
-        // alert('logoutAfterRefresh');
     }
     onCreatedSolution() {
         var self = this;
@@ -206,7 +201,9 @@ export default class ProfileContainer extends React.Component {
                         <Link to={`/profile/about`} activeClassName="activeBlue">
                             <div id="aboutXPButton">about xprincipia</div>
                         </Link>
-                        <div id="logOutButton" onClick={this.onLogout}>Logout</div>
+                        <Link to ={`/welcome`}>
+                            <div id="logOutButton" onClick={this.onLogout}>Logout</div>
+                        </Link>
                     </div>
                 </div>
                 <div id="profileRight">

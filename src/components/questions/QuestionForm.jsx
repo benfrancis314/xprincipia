@@ -88,19 +88,19 @@ this.state.question = document.getElementById('questionTextArea').value
    render() {
     if (this.props.params.solutionID){
         return (
-            <div>
-              <div id="discussMenuEnd">
-                questions
-              </div>
-              <div id="questionFormComponent">
-                    <form id="questionForm">
-                        <fieldset id='fieldSetNoBorderPadding'>
-                                <textarea name="questionText" required="required" id="questionTextArea" placeholder="Ask a question you have about this project or view those asked by your peers. " ></textarea>
-                                <input type="button" value="Ask" onClick={this.postQuestion} id="askQuestion"/>
-                        </fieldset>
-                    </form>
-              </div>
+          <div>
+            <div id="discussMenuEnd">
+              questions
             </div>
+            <div id="questionFormComponent">
+                <form id="questionForm">
+                  <fieldset id='fieldSetNoBorderPadding'>
+                    <textarea name="questionText" required="required" id="questionTextArea" placeholder="Ask a question you have about this project or view those asked by your peers. " ></textarea>
+                    <input type="button" value="Ask" onClick={this.postQuestion} id="askQuestion"/>
+                  </fieldset>
+                </form>
+            </div>
+          </div>
         );
     } else {
         return (
@@ -109,12 +109,12 @@ this.state.question = document.getElementById('questionTextArea').value
               questions
             </div>
             <div id="questionFormComponent">
-                  <form id="questionForm">
-                      <fieldset id='fieldSetNoBorderPadding'>
-                              <textarea name="questionText" required="required" id="questionTextArea" placeholder="Ask a question you have about this project or view those asked by your peers. " ></textarea>
-                              <input type="button" value="Ask" onClick={this.postQuestion} id="askQuestion"/>
-                      </fieldset>
-                  </form>
+              <form id="questionForm">
+                <fieldset id='fieldSetNoBorderPadding'>
+                  <textarea name="questionText" required="required" id="questionTextArea" placeholder="Ask a question you have about this project or view those asked by your peers. " ></textarea>
+                  <input type="button" value="Ask" onClick={this.postQuestion} id="askQuestion"/>
+                </fieldset>
+              </form>
             </div>
           </div>
 

@@ -69,7 +69,7 @@ export default class ProblemForm extends React.Component {
           {/*ScrollableAnchor doesn't work right now, not sure why*/}
           {/*<ScrollableAnchor id={'newSubProject'}>*/}
             <Link to={`/project/private/${this.props.params.probID}/subprojects`}>
-                <img src={require('../../assets/redX.svg')} id="closeRedX" width="40" height="40" alt="Close button, red X symbol" />
+                <img src={require('../../assets/redX.svg')} id="closeRedX" width="30" height="30" alt="Close button, red X symbol" />
             </Link>
           {/*</ScrollableAnchor>*/}
           <div id="SBButtonNoHover">
@@ -91,7 +91,7 @@ export default class ProblemForm extends React.Component {
                         </div>
                         <div id="projectFormRadioRow">
                           <label id="projectRadioButtonContainer">
-                            <input type="radio" name="projectType" value="project"/>
+                            <input type="radio" name="projectType" value="0"/>
                             <span id="checkmark1"></span>
                           </label>
                         </div>
@@ -102,7 +102,7 @@ export default class ProblemForm extends React.Component {
                         </div>
                         <div id="projectFormRadioRow">
                           <label id="projectRadioButtonContainer">
-                            <input type="radio" name="projectType" value="goal" />
+                            <input type="radio" name="projectType" value="1" />
                             <span id="checkmark2"></span>
                           </label>
                         </div>
@@ -113,7 +113,7 @@ export default class ProblemForm extends React.Component {
                         </div>
                         <div id="projectFormRadioRow">
                           <label id="projectRadioButtonContainer">
-                            <input type="radio" name="projectType" value="problem" />
+                            <input type="radio" name="projectType" value="2" />
                             <span id="checkmark3"></span>
                           </label>
                         </div>

@@ -265,10 +265,10 @@ ol, ul {
     -webkit-box-shadow: inset 0 0 6px rgba(0,220,255,0.1); 
     box-shadow: inset 0 0 6px rgba(0,220,255,0.1); 
 }
-::-webkit-scrollbar-corner {
+::-webkit-scrollbar-corner, ::-webkit-scrollbar-corner:horizontal {
   display: none !important;
 }
-::-webkit-resizer {
+::-webkit-resizer, ::-webkit-resizer:horizontal {
   display: none !important;
 }
 
@@ -1076,7 +1076,8 @@ letter-spacing: 2px !important;
   box-shadow: 0 0 0pt 0pt rgba(255,127,127,0) inset;
 }
 #commentSBButtonUser {
-  border-radius: 0px 0px 0px 3px;
+  /* border-radius: 0px 0px 0px 3px; */
+  border-radius: 0px 0px 0px 0px;
 }
 #editSBButton {
   border-width: 1px 0px 1px 0px;
@@ -1096,17 +1097,17 @@ letter-spacing: 2px !important;
 #flagSBButton, #deleteSBButton {
   color: #ff7f7f;
   border: 1px solid #ff7f7f;
-  border-radius: 0px 0px 0px 2px;
+  border-radius: 0px 0px 0px 0px;
   box-shadow: 0 0 0pt 0pt rgba(255,127,127,0.5) inset;
   transition: all 0.5s ease 0s;
 }
 #flagSBButton:active, #deleteSBButton:active {
-  color: #0f131c !important;
-  background-color: #ff7f7f;
+  cursor: pointer;
+  box-shadow: 0 0 20pt 20pt rgba(255,127,127,0.5) inset;
 }
 #flagSBButton:hover, #deleteSBButton:hover {
   cursor: pointer;
-  box-shadow: 0 0 2pt 2pt rgba(255,127,127,0.5) inset;
+  box-shadow: 0 0 20pt 20pt rgba(255,127,127,0.25) inset;
 }
 #editSBButton:hover, #editSBButtonAnswer:hover {
   cursor: pointer;
@@ -1795,7 +1796,7 @@ but shrinking screen messes up avatar*/
   font-size: 140%;
   text-align: center;
   letter-spacing: 8px;
-  padding: 4px;
+  padding: 4px 4px 2px 4px;
   width: 100%;
   transition: all 0.5s ease 0s;
   background-color: rgba(0,220,255,0.05);
@@ -1805,7 +1806,6 @@ but shrinking screen messes up avatar*/
   transform: scale(1);
   margin: 0 auto;
   margin-top: 0.39%;
-  margin-right: 0px;
   flex: 1 1 auto;
 }
 #headerName:hover, #headerNameNotifications:hover {
@@ -1873,6 +1873,7 @@ but shrinking screen messes up avatar*/
 }
 #headerMessagesButton:hover {
   background-color: rgba(0,220,255,0.05);
+  border-width: 1px;
   /* background: radial-gradient(circle, rgba(0,220,255,0.05), rgba(0,220,255,0.2));   */
   box-shadow: 0 0 0.5pt 0.5pt rgba(255,127,127,0.5) inset;
 }
@@ -5169,20 +5170,24 @@ input#submitWelcomeProblem:hover {
 #suggestionTextArea, #commentTextArea,
 #proTextArea, #conTextArea, 
 #resourcesTextArea, #learnContentTextArea, 
-#freeFormTextArea {
-text-align: left;
-font-family: 'Open Sans', sans-serif;
-color: #ffffff;
-border: 1px solid #dddddd;
-height: 4em;
-resize: none;
-background-color: rgba(0,220,255, 0.05);
-margin: 0 auto;
-width: 70%;
-line-height: 150%;
+#freeFormTextArea, #questionFlagTextArea {
+  text-align: left;
+  font-family: 'Open Sans', sans-serif;
+  color: #ffffff;
+  border: 1px solid #dddddd;
+  height: 4em;
+  resize: none;
+  background-color: rgba(0,220,255, 0.05);
+  margin: 0 auto;
+  width: 70%;
+  line-height: 150%;
 }
 #learnContentTextArea {
-height: 12em;
+  height: 12em;
+}
+#questionFlagTextArea {
+  border-color: #ff7f7f !important;
+  border-width: 0px;
 }
 #askQuestion, #addSuggestion, #addAnswer {
 font-size: 110%;
@@ -5444,26 +5449,24 @@ padding: 3px 0px 3px 0px;
 margin-top: -1%;
 }
 #deleteLogo {
-/*display: block;
-margin: 0 auto;*/
-/*vertical-align: middle;*/
-padding: 3px;
+  transition: all 0.5s ease 0s;
+}
+#flagSBButton:hover #deleteLogo, #deleteSBButton:hover #deleteLogo {
+  transform: scale(1.2);
 }
 #editLogo {
-/*margin: 0 auto;*/
-/*border: #00dcff;*/
 padding: 3px;
+transition: all 0.5s ease 0s;
 /*vertical-align: middle;*/
 }
-/* #commentLogo {
-} */
-#editLogo:hover {
-cursor: pointer;
-/*box-shadow: 0 0 1pt 1pt rgba(255,127,127,0.5);*/
+#editSBButtonUser:hover #editLogo {
+transform: scale(1.2);
 }
-#commentLogo:hover {
-cursor: pointer;
-/*box-shadow: 0 0 1pt 1pt rgba(0,220,255,0.5);*/
+#commentLogo {
+  transition: all 0.5s ease 0s;
+}
+#commentSBButtonUser:hover #commentLogo, #commentSBButton:hover #editLogo {
+  transform: scale(1.2);
 }
 
 #flagSolutionButton, #deleteSolutionButton {
@@ -5524,7 +5527,6 @@ margin-top: 5px;
 text-align: left;
 font-family: 'Open Sans', sans-serif;
 color: #ffffff;
-border: 1px solid #dddddd;
 height: 4em;
 resize: none;
 margin-top: 2%;
@@ -5562,6 +5564,59 @@ transition: all 0.5s ease 0s;
 cursor: pointer;
 box-shadow: 0 0 2pt 2pt rgba(0,220,255,0.5);
 }
+
+/* New flag styling */
+
+#flagContainer {
+  margin-bottom: 5%;
+  margin-top: 1%;
+}
+#flagHeader {
+  color: #ff7f7f;
+  text-align: center;
+  letter-spacing: 6px;
+  padding: 6px 0px;
+  font-size: 135%;
+  box-shadow: 0 0 1pt 1pt rgba(255,127,127,0.5);
+  background-color: rgba(0,220,255,0.05);
+  border: 1px solid #ffffff;
+  border-radius: 3px;
+  width: 90%;
+  margin: 0 auto;
+  margin-bottom: 7px;
+}
+
+#flagProblemButton {
+  position: absolute;
+  top: 0;
+  right: 0px;
+  border: 1px solid rgba(255,127,127,0.25);
+  border-width: 0px 0px 1px 1px;
+  border-radius: 0% 0% 0% 45%;
+  padding: 4px 10px 4px 12px;
+  transition: all 0.5s ease 0s;
+  z-index: 510;
+}
+#flagProblemButton:hover {
+  border: 1px solid rgba(255,127,127, 1);
+  border-width: 0px 0px 1px 1px;
+  box-shadow: 0 0 10pt 10pt rgba(255,127,127,0.25) inset;
+  transform: scale(1.2);
+  cursor: pointer;
+}
+#flagProblemLogo {
+  transition: all 0.5s ease 0s;
+  opacity: 0.25;
+  vertical-align: middle;
+}
+#flagProblemButton:hover #flagProblemLogo {
+  /* transform: scale(1.2); */
+  opacity: 1;
+}
+
+
+
+
 
 
 
@@ -5755,7 +5810,7 @@ margin: 0 auto;
 position: initial;
 top: auto;
 background-color: initial;
-z-index: 500;
+z-index: 10;
 }
 #problemPercent {
 color: rgba(0,255,220,1);
@@ -6012,6 +6067,7 @@ z-index: 500;
   padding-bottom: 0.25%;
   width: 80%;
   background: radial-gradient(to top, rgba(0,255,220, 0.1), rgba(0,255,220, 0.05), rgba(0,255,220, 0));
+  z-index: -1;
 }
 #problemTypeLabelRed {
   margin: 0 auto;
@@ -7451,8 +7507,6 @@ background-color: inherit;
 border: 1px solid #ffffff;
 height: 8em;
 resize: none;
-/*margin: 0 auto !important;
-display: block;*/
 }
 
 /*End Profile Additions*/
@@ -7944,7 +7998,7 @@ border-color: #ff7f7f !important;
 #deleteButton, #editButton, #flagButton, #returnButton, #returnButtonProject, #editButtonProject, #deleteButtonProject {
 font-size: 120%;
 color: #ff7f7f;
-background-color: rgba(255,127,127,0);
+background-color: rgba(0,220,255,0.05);
 border: 1px solid #ff7f7f;
 border-radius: 2px;
 margin-top: 5px;
@@ -7973,7 +8027,7 @@ cursor: pointer;
 color: #0f131c;
 background-color: #00ffdc;
 }
-#deleteButton:hover, #deleteButtonProject:hover {
+#deleteButton:hover, #deleteButtonProject:hover, #flagButton:hover {
 cursor: pointer;
 color: #0f131c;
 background-color: rgba(255,127,127,1);
@@ -9872,12 +9926,12 @@ margin-top: 1%;
 
 /* NOTIFICATIONS AND MESSAGES IN HEADER */
 
-#headerOptionsContainerNotifications {
+/* #headerOptionsContainerNotifications {
   display: inline-flex;
   flex-direction: row;
   justify-content: space-around;
   width: 32%;
-}
+} */
 
 #headerNotificationsButton {
   color: #ff7f7f;
@@ -10462,7 +10516,6 @@ margin-top: 1%;
   transition: all 1s ease 0s;
   background: radial-gradient(circle, rgba(0,220,255,0), rgba(0,220,255,0.1), rgba(0,220,255,0.3));
   margin: 0 auto;
-  /* width: 8em; */
 }
 #checkmark2 {
   background-color: #0f131c;
@@ -10492,17 +10545,14 @@ margin-top: 1%;
 /* When the radio button is checked, add a blue background */
 #projectRadioButtonContainer input:checked ~ #checkmark1 {
   background-color: #00dcff;
-  /* background: radial-gradient(circle, rgba(0,220,255,0.75), rgba(0,220,255,0)); */
   transition: all 1s ease 0s;
 }
 #projectRadioButtonContainer input:checked ~ #checkmark2 {
   background-color: #00ffdc;
-  /* background: radial-gradient(circle, rgba(0,255,220,0.75), rgba(0,255,220,0));   */
   transition: all 1s ease 0s;
 }
 #projectRadioButtonContainer input:checked ~ #checkmark3 {
   background-color: #ff7f7f;
-  /* background: radial-gradient(circle, rgba(255,127,127,0.75), rgba(255,127,127,0));   */
   transition: all 1s ease 0s;
 }
 
@@ -10517,7 +10567,6 @@ margin-top: 1%;
 /* Show the indicator (dot/circle) when checked */
 #projectRadioButtonContainer input:checked ~ #checkmark1:after, #projectRadioButtonContainer input:checked ~ #checkmark2:after, #projectRadioButtonContainer input:checked ~ #checkmark3:after {
   display: block;
-  /* display: inline; */
   transition: all 1s ease 0s;
 }
 
@@ -10526,42 +10575,19 @@ margin-top: 1%;
  top: 0px;
  margin: 0 auto;
  position: relative;
-/* left: 5px; */
 width: 8px;
 height: 20px;
-/* border-radius: 50%; */
 background: linear-gradient(rgba(0,220,255,0), rgba(0,220,255,0));
-
-/* background: linear-gradient(to right, rgba(0,220,255,0.05), rgba(0,220,255,0.1), rgba(0,220,255,0.05), rgba(0,220,255,0), rgba(0,220,255,0)); */
 width: 8em;
 transition: all 1s ease 0s;
 }
-/* #projectRadioButtonContainer #checkmark2:after { */
-  /* background: #00ffdc; */
-  /* background: linear-gradient(to right, rgba(0,255,220,0.05), rgba(0,255,220,0.1), rgba(0,255,220,0.05), rgba(0,255,220,0), rgba(0,255,220,0)); */
-/* } */
-/* #projectRadioButtonContainer #checkmark3:after { */
-  /* background: #ff7f7f; */
-  /* background: radial-gradient(circle, rgba(255,127,127,0.05), rgba(255,127,127,0.1), rgba(255,127,127,0.05), rgba(255,127,127,0), rgba(255,127,127,0)); */
-/* } */
-/* END GOAL, PROBLEM, PROJECT RADIO BUTTONS */
-
 #problemRadioInput {
   display: block;
   width: 10%;
   margin: 0 auto;
   text-align: center;
 }
-/* #projectFormRadioColumn { */
-  /* background: radial-gradient(circle, rgba(0,220,255,0.05), rgba(0,220,255, 0));
-  transition: all 0.5s ease 0s;
-  transform: scale(1); */
-/* } */
-/* #projectFormRadioColumn:hover { */
-  /* background: radial-gradient(circle, rgba(0,220,255,0.07), rgba(0,220,255, 0));
-  background-color: rgba(0,220,255,0.05);
-  transform: scale(1.02); */
-/* } */
+
 
 
 

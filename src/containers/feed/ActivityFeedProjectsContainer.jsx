@@ -1,7 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import { Link } from 'react-router';
-import {Config} from '../config.js';
+import {Config} from '../../config.js';
 import $ from 'jquery';
 import ScrollableAnchor from 'react-scrollable-anchor';
 import { configureAnchors } from 'react-scrollable-anchor';
@@ -51,7 +51,7 @@ export default class WelcomeUserUnit extends React.Component {
     componentDidMount(){
         var self = this;
         // window.scrollTo(0,0);
-        return axios.get( Config.API + '/problems/all').then(function (response) {
+        return axios.get( Config.API + '/problems/feed').then(function (response) {
             self.setState({
                 feedProjects: response.data.reverse(),
                 // feedProjectsSlice: response.data.reverse().slice(1,3)

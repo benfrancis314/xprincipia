@@ -233,6 +233,9 @@ unVote() {
               <Link to={`/project/private/${this.props.params.probID}/edit`}>
                 <img src={require('../../assets/editBlue.svg')} id="editProjectButton" width="18" height="18" alt="Edit Button" />
               </Link>
+              <Link to={`/project/private/${this.props.params.probID}/delete`}>
+                <img src={require('../../assets/redX.svg')} id="editProjectButton" width="20" height="20" alt="Edit Button" />
+              </Link>
 
               <div id="projectPercentGreen">{this.state.problemInfo.Rank}</div>
               <div id="fullProblem">
@@ -240,7 +243,7 @@ unVote() {
                   {this.state.problemInfo.Summary}
                 </p>
               </div>
-                {React.cloneElement(this.props.children)}
+                {React.cloneElement(this.props.children, {creator:this.state.problemInfo.OriginalPosterUsername})}
               </div>
             {React.cloneElement(<SubProjectPrivateContainer probID={this.props.params.probID} />)}
             <ScrollableAnchor id={'proposals'}>
@@ -309,6 +312,9 @@ unVote() {
               <Link to={`/project/private/${this.props.params.probID}/edit`}>
                 <img src={require('../../assets/editBlue.svg')} id="editProjectButton" width="18" height="18" alt="Edit Button" />
               </Link>
+              <Link to={`/project/${this.props.params.probID}/delete`}>
+              <img src={require('../../assets/redX.svg')} id="editProjectButton" width="20" height="20" alt="Edit Button" />
+            </Link>
 
               <div id="projectPercent">{this.state.problemInfo.Rank}</div>
               <div id="fullProblem">
@@ -316,7 +322,7 @@ unVote() {
                   {this.state.problemInfo.Summary}
                 </p>
               </div>
-                {React.cloneElement(this.props.children)}
+              {React.cloneElement(this.props.children, {creator: this.state.problemInfo.OriginalPosterUsername})}
               </div>
             {React.cloneElement(<SubProjectPrivateContainer probID={this.props.params.probID} />)}
             <ScrollableAnchor id={'proposals'}>

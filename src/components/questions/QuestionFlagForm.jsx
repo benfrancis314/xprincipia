@@ -90,23 +90,60 @@ postQuestion() {
 
    render() {
       return (
-      <div id="questionFormComponent">
-            <form id="flagForm">
-                <fieldset>
-                    <legend>Reason for Flag</legend>
-                    {/*Place holder isn't working, not sure why, should be:
-                    placeholder="Optional: Is this flag due to bad culture, illogical content, 
-                         or another reason" */}
-                         <textarea name="questionText" required="required" id="questionFlagTextArea" 
-                          autoFocus ></textarea>
-                         <br />
-                         <div onClick={this.postQuestion} id="flagButton">Submit</div>
-                          <Link to={`/project/${this.props.params.probID}/questions`}>
-                            <div id="returnButton">Exit</div>
-                         </Link>
-                </fieldset>
-            </form>
-      </div>
+        <div id="flagContainer">
+          <div>
+          <div id="flagHeader">
+            flag reasoning
+          </div>
+
+          <div id="projectFormRadioContainer">
+            <div id="projectFormRadioColumn">
+              <div id="projectFormRadioRow3">
+                misplaced
+                 {/* <span id="gray">(default)</span> */}
+              </div>
+              <div id="projectFormRadioRow">
+                <label id="projectRadioButtonContainer">
+                  <input type="radio" name="flagType" value="0"/>
+                  <span id="checkmark3"></span>
+                </label>
+              </div>
+            </div>
+            <div id="projectFormRadioColumn">
+              <div id="projectFormRadioRow3">
+                inaccurate
+              </div>
+              <div id="projectFormRadioRow">
+                <label id="projectRadioButtonContainer">
+                  <input type="radio" name="flagType" value="1" />
+                  <span id="checkmark3"></span>
+                </label>
+              </div>
+            </div>
+            <div id="projectFormRadioColumn">
+              <div id="projectFormRadioRow3">
+                bad culture
+              </div>
+              <div id="projectFormRadioRow">
+                <label id="projectRadioButtonContainer">
+                  <input type="radio" name="flagType" value="2" />
+                  <span id="checkmark3"></span>
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <form id="flagForm">
+            <textarea id="questionTextArea" name="questionText" placeholder="Help us understand this flag, if you would like. " 
+            autoFocus ></textarea>
+            <br />
+            <div onClick={this.postQuestion} id="flagButton">submit</div>
+            <Link to={`/project/${this.props.params.probID}/questions`}>
+              <div id="returnButton">exit</div>
+            </Link>
+          </form>
+          </div>
+        </div>
 
       );
    }

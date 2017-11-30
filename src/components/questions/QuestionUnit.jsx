@@ -209,12 +209,11 @@ constructor(props){
                         {question.Description}
                     </div>
 				</div>
-                    {/*<Link to={`/project/${question.TypeID}/question/${question.ID}/flag`}>
-                        <div id="flagSBButton">
-                            <img src={require('.../src/assets/flag.svg')} id="deleteLogo" width="11" height="11" alt="Delete Button, Red X" />
-                            Flag
-                        </div>
-                    </Link>*/}
+                <Link to={`/project/${question.TypeID}/question/${question.ID}/flag`}>
+                    <div id="flagSBButton">
+                        <img src={require('../../assets/flag.svg')} id="deleteLogo" width="24" height="24" alt="Delete Button, Red X" />
+                    </div>
+                </Link>
                 <Link to={`/project/${question.TypeID}/question/${question.ID}/answers`} activeClassName="activeGlow">
                     <div id="commentSBButtonUser">
                             <img src={require('../../assets/comments.svg')} id="commentLogo" width="24" height="24" alt="Comments Button" />

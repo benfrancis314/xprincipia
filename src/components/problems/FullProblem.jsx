@@ -59,7 +59,7 @@ export default class FullProblem extends React.Component {
   shouldComponentUpdate(nextProps, nextState) {
     // only render if probID has changed
     // Removing cookie part for now, for testing
-    nextState =  { userToken: cookie.load('userToken') };
+    // nextState =  { userToken: cookie.load('userToken') };
     return nextState.probID !== nextProps.params.probID;
 }
 
@@ -180,7 +180,7 @@ unVote() {
 
    render() {
      
-      if (cookie.load('userName') === 'xpadmin') {
+      if (cookie.load('userName') === 'benfrancis') {
         
         return (
           <div id="maxContainerColumn">
@@ -436,8 +436,11 @@ unVote() {
           transitionAppearTimeout={2000}
           transitionEnter={false}
           transitionLeave={false}>
-
+        
         <div id="problemColumn1">
+          <div id="flagProblemButton">
+            <img src={require('../../assets/flag.svg')} id="flagProblemLogo" width="24" height="24" alt="Delete Button, Red X" />
+          </div>
           <SubProjectParentUnit parentID={this.state.problemInfo.ParentID} parentType={this.state.problemInfo.ParentType} />
           {/*<ProjectParentChildrenUnitsContainer parentID={this.state.problemInfo.ParentID} problemTitle={this.state.problemInfo.Title}/>*/}
           <ProblemTitle problemTitle={this.state.problemInfo.Title} />

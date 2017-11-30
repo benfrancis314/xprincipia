@@ -52,7 +52,7 @@ export default class ProjectEditForm extends React.Component {
     }
 
   render() {
-    if (cookie.load('userName') === 'benfrancis')  {
+    if (cookie.load('userName') === this.props.creator)  {
     
     return (
         <div id="createSolutionBox">
@@ -62,7 +62,7 @@ export default class ProjectEditForm extends React.Component {
                     <div>Are you sure you would like to delete this proposal?</div>
                     <br />
                     <div onClick={this.deleteProject} id="deleteButton">Delete</div>
-                    <Link to={`/project/${this.props.params.probID}/subprojects`}>
+                    <Link to={`/project/private/${this.props.params.probID}/subprojects`}>
                         <div id="returnButton">Exit</div>
                     </Link>
             </fieldset>
@@ -75,9 +75,14 @@ export default class ProjectEditForm extends React.Component {
           <form id="solutionDeleteForm">
             <fieldset id="editFormFieldset">
                 <legend id="redLegend">Delete</legend>
-                    <div>WOOPS: You shouldn't be allowed here, we apoligize for the confusion.</div>
+                    <div><span id="red">ERROR: </span>We apologize, there was a mistake. 
                     <br />
-                    <Link to={`/project/${this.props.params.probID}/subprojects`}>
+                    <br />
+                    Please inform of us of the mistake in the <span id="blue">feedback</span> section
+                    <br />
+                    in your personal quarters.</div>
+                    <br />
+                    <Link to={`/project/private/${this.props.params.probID}/subprojects`}>
                         <div id="returnButton">Exit</div>
                     </Link>
             </fieldset>

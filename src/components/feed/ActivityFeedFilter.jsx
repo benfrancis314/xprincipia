@@ -34,7 +34,7 @@ unHoverFilter() {
                 transitionEnter={false}
                 transitionLeave={false}>
                     <Link to={`/welcome`}>
-                        <img src={require('../../assets/redX.svg')} id="closeRedXFeed" width="40" height="40" alt="Close button, red X symbol" />
+                        <img src={require('../../assets/redX.svg')} id="closeRedXFeed" width="30" height="30" alt="Close button, red X symbol" />
                     </Link>
                     <div id="feedFilterContainer">
                         <div id="filterCapTop">
@@ -50,29 +50,41 @@ unHoverFilter() {
                                 projects
                             </div>
                         </Link>
-                        <div id="feedFilterUnits">
-                            proposals
-                        </div>
+                        <Link to ={'/welcome/proposals'}>
+                            <div id="feedFilterUnits">
+                                proposals
+                            </div>
+                        </Link>
                         <Link to ={'/welcome/questions'}>
                             <div id="feedFilterUnits">
                                 questions
                             </div>
                         </Link>
-                        <div id="feedFilterUnits">
-                            suggestions
-                        </div>
-                        <div id="feedFilterUnits">
-                            debate
-                        </div>
-                        <div id="feedFilterUnits">
-                            resources
-                        </div>
-                        <div id="feedFilterUnits">
-                            lessons
-                        </div>
-                        <div id="filterCapBottom">
-                            <br />
-                        </div>
+                        <Link to ={'/welcome/suggestions'}>
+                            <div id="feedFilterUnits">
+                                suggestions
+                            </div>
+                        </Link>
+                        <Link to ={'/welcome/debate'}>
+                            <div id="feedFilterUnits">
+                                debate
+                            </div>
+                        </Link>
+                        <Link to ={'/welcome/resources'}>
+                            <div id="feedFilterUnits">
+                                resources
+                            </div>
+                        </Link>
+                        <Link to ={'/welcome/lessons'}>
+                            <div id="feedFilterUnits">
+                                lessons
+                            </div>
+                        </Link>
+                        <Link to ={'/welcome/questions'}>
+                            <div id="filterCapBottom">
+                                <br />
+                            </div>
+                        </Link>
                     </div>
                     <div id="feedFilterSlogan" onMouseOver={this.hoverFilter} onMouseOut={this.unHoverFilter}>
                         CARPE NOCTUM

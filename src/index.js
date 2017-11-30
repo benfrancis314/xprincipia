@@ -8,8 +8,13 @@ import App from './App';
 //Load Components
 
 import ActivityFeedFilter from './components/feed/ActivityFeedFilter.jsx';
+import ActivityFeedDebateUnits from './components/feed/ActivityFeedDebateUnits.jsx';
+import ActivityFeedLessonsUnits from './components/feed/ActivityFeedLessonsUnits.jsx';
 import ActivityFeedProjectsUnits from './components/feed/ActivityFeedProjectsUnits.jsx';
+import ActivityFeedProposalsUnits from './components/feed/ActivityFeedProposalsUnits.jsx';
 import ActivityFeedQuestionsUnits from './components/feed/ActivityFeedQuestionsUnits.jsx';
+import ActivityFeedResourcesUnits from './components/feed/ActivityFeedResourcesUnits.jsx';
+import ActivityFeedSuggestionsUnits from './components/feed/ActivityFeedSuggestionsUnits.jsx';
 import AnswerDeleteForm from './components/answers/AnswerDeleteForm.jsx';
 import AnswerDeleteFormPrivate from './components/answers/AnswerDeleteFormPrivate.jsx';
 import AnswerEditForm from './components/answers/AnswerEditForm.jsx';
@@ -84,6 +89,7 @@ import ProblemLeftSB from './components/problems/ProblemLeftSB.jsx';
 import ProblemSolutionsMenu from './components/problems/ProblemSolutionsMenu.jsx';
 import ProblemTopSolutions from './components/problems/ProblemTopSolutions.jsx';
 import ProjectDeleteForm from './components/problems/ProjectDeleteForm.jsx';
+import ProjectDeletePrivateForm from './components/problems/ProjectDeletePrivateForm.jsx';
 import ProjectEditForm from './components/problems/ProjectEditForm.jsx';
 import ProjectEditPrivateForm from './components/problems/ProjectEditPrivateForm.jsx';
 import ProjectFlagForm from './components/problems/ProjectFlagForm.jsx';
@@ -143,8 +149,13 @@ import WelcomeCreateForm from './components/welcome/WelcomeCreateForm.jsx';
 
 
 //Load Containers
-import ActivityFeedProjectsContainer from './containers/ActivityFeedProjectsContainer.jsx';
-import ActivityFeedQuestionsContainer from './containers/ActivityFeedQuestionsContainer.jsx';
+import ActivityFeedDebateContainer from './containers/feed/ActivityFeedDebateContainer.jsx';
+import ActivityFeedLessonsContainer from './containers/feed/ActivityFeedLessonsContainer.jsx';
+import ActivityFeedProjectsContainer from './containers/feed/ActivityFeedProjectsContainer.jsx';
+import ActivityFeedProposalsContainer from './containers/feed/ActivityFeedProposalsContainer.jsx';
+import ActivityFeedQuestionsContainer from './containers/feed/ActivityFeedQuestionsContainer.jsx';
+import ActivityFeedResourcesContainer from './containers/feed/ActivityFeedResourcesContainer.jsx';
+import ActivityFeedSuggestionsContainer from './containers/feed/ActivityFeedSuggestionsContainer.jsx';
 import AnswerContainer from './containers/AnswerContainer.jsx';
 import AnswerContainerPrivate from './containers/AnswerContainerPrivate.jsx';
 import ConsContainer from './containers/ConsContainer.jsx';
@@ -236,9 +247,29 @@ ReactDOM.render(
             <Route path='/welcome/filter' component={ActivityFeedFilter}></Route>
             <Route path='/welcome/create' component={WelcomeCreateForm}></Route>
           </Route>
+          <Route path='/welcome/feed/proposals' component={ActivityFeedProposalsContainer}>
+            <IndexRoute component={ActivityFeedProposalsUnits}></IndexRoute>
+            <Route path='/welcome/proposals' component={ActivityFeedProposalsUnits}></Route>
+          </Route>
           <Route path='/welcome/feed/questions' component={ActivityFeedQuestionsContainer}>
             <IndexRoute component={ActivityFeedQuestionsUnits}></IndexRoute>
             <Route path='/welcome/questions' component={ActivityFeedQuestionsUnits}></Route>
+          </Route>
+          <Route path='/welcome/feed/suggestions' component={ActivityFeedSuggestionsContainer}>
+            <IndexRoute component={ActivityFeedSuggestionsUnits}></IndexRoute>
+            <Route path='/welcome/suggestions' component={ActivityFeedSuggestionsUnits}></Route>
+          </Route>
+          <Route path='/welcome/feed/debate' component={ActivityFeedDebateContainer}>
+            <IndexRoute component={ActivityFeedDebateUnits}></IndexRoute>
+            <Route path='/welcome/debate' component={ActivityFeedDebateUnits}></Route>
+          </Route>
+          <Route path='/welcome/feed/resources' component={ActivityFeedResourcesContainer}>
+            <IndexRoute component={ActivityFeedResourcesUnits}></IndexRoute>
+            <Route path='/welcome/resources' component={ActivityFeedResourcesUnits}></Route>
+          </Route>
+          <Route path='/welcome/feed/lessons' component={ActivityFeedLessonsContainer}>
+            <IndexRoute component={ActivityFeedLessonsUnits}></IndexRoute>
+            <Route path='/welcome/lessons' component={ActivityFeedLessonsUnits}></Route>
           </Route>
         </Route>
       </Route>
@@ -280,6 +311,7 @@ ReactDOM.render(
           <IndexRoute component={Empty}></IndexRoute>
           <Route path='/project/private/:probID/create' component={PrivateSubProjectForm}></Route>
           <Route path='/project/private/:probID/edit' component={ProjectEditPrivateForm}></Route>
+          <Route path='/project/private/:probID/delete' component={ProjectDeletePrivateForm}></Route>
           <Route path='/project/private/:probID/flag' component={ProjectFlagForm}></Route>
           <Route path='/project/private/:probID/subprojects' component={Empty}></Route>
         </Route>
