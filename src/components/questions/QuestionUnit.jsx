@@ -26,7 +26,7 @@ constructor(props){
         voteHash : {},
     })
     props.questions.forEach( function (question){
-        axios.get( Config.API + "/auth/vote/isVotedOn?type=2&typeID=" + question.ID + "&username=" + cookie.load("userName"))
+        axios.get( Config.API + "/vote/isVotedOn?type=2&typeID=" + question.ID + "&username=" + cookie.load("userName"))
         .then( function (response) {  
             const voteHash = self.state.voteHash;
 
@@ -110,6 +110,11 @@ constructor(props){
        if (this.state.voteHash[question.ID] === true && question.Username === cookie.load('userName')) {
            return (
             <li key={question.ID} id="questionUnit"> 
+            <Link to={`/proposal/${this.props.params.probID}/${this.props.params.solutionID}/flag`} activeClassName="activeProposalFlagButton">
+                    <div id="flagProposalButton">
+                        <img src={require('../../assets/flag.svg')} id="dayProposalLogo" width="24" height="24" alt="Delete Button, Red X" />
+                    </div>
+                </Link>
                     <div id="suggestionContent">
                         <div id="discussHeader">
                             <span id="discussPercent">{floatToDecimal(question.PercentRank)}</span>

@@ -157,32 +157,32 @@ componentWillUnmount() {
 testUnsavedTest1() {
   if (document.getElementById('notebookSavedLabel') == null) {
     // this.updateNotebook()
-    setTimeout(this.testUnsavedTest2(), 500);
+    setTimeout(this.testUnsavedTest2(), 1000);
   }
 }
 testUnsavedTest2() {
   if (document.getElementById('notebookSavedLabel') == null) {
     // this.updateNotebook()
-    setTimeout(this.testUnsavedTest3(), 500);
+    setTimeout(this.testUnsavedTest3(), 1000);
   }
 }
 testUnsavedTest3() {
   if (document.getElementById('notebookSavedLabel') == null) {
     // this.updateNotebook()
-    setTimeout(this.testUnsavedTest4(), 500);
+    setTimeout(this.testUnsavedTest4(), 1000);
   }
 }
 testUnsavedTest4() {
   if (document.getElementById('notebookSavedLabel') == null) {
     // this.updateNotebook()
-    setTimeout(this.testUnsaved(), 500);
+    setTimeout(this.testUnsaved(), 1000);
   }
 }
 
 testUnsaved() {
   if (document.getElementById('notebookSavedLabel') == null) {
-    this.updateNotebook()
-    // setTimeout(this.updateNotebook(), 1000);
+    // this.updateNotebook()
+    setTimeout(this.updateNotebook(), 1000);
   }
 }
 
@@ -206,12 +206,12 @@ testUnsaved() {
         // <div>
             // <Beforeunload onBeforeunload={this.updateNotebook}>
                 <div id="notebookFullContainer">
-                    <input id="notebookFullTitle" placeholder="notes title" type="text"></input>
+                    <input id="notebookFullTitle" placeholder="notes title" type="text" onChange={this.unSaved}></input>
                     <textarea id="notebookFullContent" placeholder="Brainstorm or record your thoughts" autoFocus onChange={this.unSaved}></textarea>
                     <div id="notebookFullSourcesTitle">
                         sources
                     </div>
-                    <textarea id="notebookFullResources" ></textarea>
+                    <textarea id="notebookFullResources" onChange={this.unSaved} ></textarea>
                     {/* <div id="noteBookSaveButton">
                         save
                     </div> */}

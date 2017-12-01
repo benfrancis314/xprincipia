@@ -45,7 +45,7 @@ hideNotebook() {
    render() {
     
       return (
-        <div id="notebookContainerShow">
+        <div id="notebookContainer">
             <div id="notebookButtonRow">
                 {/* <img src={require('../assets/save2.svg')} id="saveNotebookButton" onClick={this.saveNotebook.bind(this)} width="30" height="30" alt="Close button, red X symbol" /> */}
                 <img src={require('../assets/redX.svg')} id="exitNotebookButton" onClick={this.hideNotebook.bind(this)} width="30" height="30" alt="Close button, red X symbol" />  

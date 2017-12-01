@@ -1111,6 +1111,12 @@ letter-spacing: 2px !important;
   box-shadow: 0 0 0pt 0pt rgba(255,127,127,0.5) inset;
   transition: all 0.5s ease 0s;
 }
+#flagSBButton #deleteLogo {
+  opacity: 0.5;
+}
+#flagSBButton:hover #deleteLogo {
+  opacity: 1;
+}
 #flagSBButton:active, #deleteSBButton:active {
   cursor: pointer;
   box-shadow: 0 0 20pt 20pt rgba(255,127,127,0.5) inset;
@@ -5180,7 +5186,7 @@ input#submitWelcomeProblem:hover {
 #suggestionTextArea, #commentTextArea,
 #proTextArea, #conTextArea, 
 #resourcesTextArea, #learnContentTextArea, #learnContentSummary,  
-#freeFormTextArea, #questionFlagTextArea {
+#freeFormTextArea, #questionFlagTextArea, #flagTextArea {
   text-align: left;
   font-family: 'Open Sans', sans-serif;
   color: #ffffff;
@@ -5648,6 +5654,65 @@ box-shadow: 0 0 2pt 2pt rgba(0,220,255,0.5);
   transform: scale(1.2);
   opacity: 1;
 }
+#treeProblemButton {
+  position: absolute;
+  top: 0;
+  left: 0px;
+  border: 1px solid rgba(255,255,255,0.5);
+  border-width: 0px 1px 1px 0px;
+  border-radius: 0% 0% 45% 0%;
+  padding: 8px 14px 8px 12px;
+  transition: all 0.5s ease 0s;
+  z-index: 515;
+}
+#treeProblemButton:hover, .activeProblemTreeButton div {
+  border: 1px solid rgba(255,255,255, 1) !important;
+  border-width: 0px 1px 1px 0px !important;
+  box-shadow: 0 0 10pt 10pt rgba(255,255,255,0.25) inset;
+  transform: scale(1.2);
+  cursor: pointer;
+}
+#treeProblemLogo {
+  transition: all 0.5s ease 0s;
+  opacity: 0.5;
+  vertical-align: middle;
+}
+#treeProblemButton:hover #treeProblemLogo, .activeProblemTreeButton div #treeProblemLogo {
+  /* transform: scale(1.2); */
+  opacity: 1;
+}
+#exitTreeButton {
+  position: absolute;
+  top: 0;
+  left: 0px;
+  /* border: 1px solid rgba(255,127,127,0.25);
+  border-width: 0px 1px 1px 0px;
+  border-radius: 0% 0% 45% 0%; */
+  padding: 6px 20px 8px 12px;
+  transition: all 0.5s ease 0s;
+  z-index: 515;
+}
+#exitTreeButton:hover {
+  /* border: 1px solid rgba(255,127,127,1) !important;
+  border-width: 0px 1px 1px 0px !important;
+  box-shadow: 0 0 10pt 10pt rgba(255,127,127,0.25) inset; */
+  transform: scale(1.2);
+  cursor: pointer;
+  background: radial-gradient(circle, rgba(255,127,127,0.05), rgba(255,127,127,0.04), rgba(255,127,127,0))
+}
+#exitTreeLogo {
+  transition: all 0.5s ease 0s;
+  opacity: 0.75;
+  vertical-align: middle;
+}
+#exitTreeButton:hover #exitTreeLogo {
+  /* transform: scale(1.2); */
+  opacity: 1;
+}
+
+
+
+
 
 /* Proposal Day Button */
 #proposalDayButton {
@@ -9609,51 +9674,31 @@ margin-top: 1%;
 #overViewWide {
   background: radial-gradient(circle, rgba(0,220,255,0.075), rgba(0,220,255,0), rgba(0,220,255,0), rgba(0,220,255,0));  
   width: 100%;  
+  position: relative;
 }
 #overViewX {
   display: block;
   margin: 0 auto;
-  margin-top: 1%;
-  margin-bottom: 2%;
+  margin-top: 0.5%;
+  margin-bottom: 1%;
   border: 0px solid #ff7f7f;
   border-radius: 50%;
   transition: all 0.5s ease 0s;
+  opacity: 0.5;
 }
 #overViewX:hover {
   cursor: pointer;
   background-color: rgba(255,127,127,0.15);
+  transform: scale(1.2);
+  opacity: 1;
 }
 #overViewHeader {
-  /* Style 1 */
-  /* text-align: center;
-  letter-spacing: 12px;
-  font-size: 150%;
-  width: 100%;
-  margin: 0 auto;
-  margin-top: 1%;
-  margin-bottom: 1%;
-  border: 1px solid rgba(0,220,255,0.75);
-  border-width: 0px 0px 1px 0px;
-  border-radius: 0px 0px 9% 9%;
-  padding-top: 1%;
-  padding-bottom: 1%;
-  padding: 12px 0px;      
-  transition: all 0.5s ease 0s;
-  background: linear-gradient(rgba(255,255,255,0.05), rgba(0,220,255,0.1), rgba(0,220,255,0.1), rgba(255,255,255,0.025));
-
-  color: #ffffff;
-  letter-spacing: 15px;
-  width: 70%;
-  border: 1px solid #00dcff;
-  border-radius: 0% 0% 15% 15%;
-  border-width: 1px 0px 1px 0px; */
-
   text-align: center;
   width: 100%;
   border: 1px solid rgba(0,220,255,0.75);  
   border-radius: 0% 0% 50% 50%;
   border-width: 0px 0px 1px 0px;
-  padding-top: 0%;
+  padding-top: 1%;
   padding-bottom: 0.5%;
   margin: 0 auto;
   margin-bottom: 0.5%;
@@ -9770,6 +9815,8 @@ margin-top: 1%;
 #overViewRowUnitTop3 {
   transform: scale(1.1);
   color: #00dcff;
+  font-size: 110%;
+  background: linear-gradient(to right, rgba(255,255,255,0.09), rgba(0,220,255,0.06), rgba(0,220,255,0.04), rgba(0,220,255,0.06), rgba(255,255,255,0.09));    
 }    
 #overViewRowUnit4, #overViewRowUnitTop4 {
   border-radius: 5px 5px 25% 10px;
@@ -10762,6 +10809,7 @@ transition: all 1s ease 0s;
   border-width: 0px !important;
   outline-width: 0px !important; 
   width: 100%;
+  /* text-transform: lowercase !important; */
 }
 #notebookFullTitle::placeholder {
   font-family: 'Alegreya Sans SC';
@@ -10847,6 +10895,7 @@ transition: all 1s ease 0s;
   padding: 1% 0%;
   font-size: 90%;
   padding: 3%;
+  /* text-transform: lowercase !important; */
 }
 #notebookUnit:hover {
   cursor: pointer;

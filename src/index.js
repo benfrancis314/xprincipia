@@ -230,7 +230,6 @@ ReactDOM.render(
         <Route path='/redirection' component={Redirection}></Route>
         <Route path='/load' component={Load}></Route>
       </Route>
-      <Route path='/overview' component={OverviewContainer}></Route>
       <IndexRoute component={FullProblem}></IndexRoute>
       <Route path='/entrance' component={EntranceContainer}></Route>
       <Route path='/welcome/container' component={WelcomeContainer}>
@@ -469,6 +468,7 @@ ReactDOM.render(
               </Route>
         </Route>
       </Route>
+      <Route path='/project/:probID/tree' component={OverviewContainer}></Route>
       <Route path='/project/:probID' component={FullProblem}>
         <IndexRoute component={Empty}></IndexRoute>
         <Route path='/project/:probID/create' component={ProblemForm}></Route>

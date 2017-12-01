@@ -24,10 +24,10 @@ this.state.question = document.getElementById('questionTextArea').value
   //solutionID will be available in props
   if(this.props.params.solutionID){
     axios.post( Config.API + '/auth/questions/create', {
-    type:'1',
-    typeID: this.props.params.solutionID,
-    username: cookie.load('userName'),
-    description : this.state.question,
+      type:'1',
+      typeID: this.props.params.solutionID,
+      username: cookie.load('userName'),
+      description : this.state.question,
   })
     .then(function (result) {
       document.location = window.location.pathname 

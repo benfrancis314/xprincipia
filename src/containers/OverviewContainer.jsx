@@ -1,11 +1,55 @@
 import React from 'react';
+import axios from 'axios';
 import { Link } from 'react-router';
+import {Config} from '../config.js';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group'; // ES6
+import OverviewGrandChildUnits from '../components/overview/OverviewGrandChildUnits.jsx';
+import OverviewChildUnits from '../components/overview/OverviewChildUnits.jsx';
+import OverviewUnits from '../components/overview/OverviewUnits.jsx';
+import OverviewGrandParentUnits from '../components/overview/OverviewGrandParentUnits.jsx';
+import OverviewParentUnits from '../components/overview/OverviewParentUnits.jsx';
+
 
 
 
 export default class ErrorContainer extends React.Component {
-   render() {
+
+    constructor(props){
+        super(props);
+
+        this.state = {
+            parentID: [],
+            parentTitle: [],
+            parentID: [],
+            parentTitle: [],
+            probID: [],
+            problemInfo: [],
+            level1Problems: [],
+            level2Problems: [],
+            level3Problems: [],
+            level4Problems: [],
+            level5Problems: [],
+        }
+    };
+    componentDidMount(){
+        var self = this;
+            axios.get( Config.API + '/problems/subproblems?id='+this.props.params.probID).then(function (response) {
+                self.setState({
+                    // probID: this.props.params.probID,
+                    level4Problems: response.data,
+                })
+            })
+            axios.get( Config.API + '/problems/ID?id='+this.props.params.probID).then(function (response) {
+                self.setState({
+                    problemInfo: response.data,
+                    // parentID: response.data.parentID
+                })
+            })
+       
+    }
+
+
+    render() {
       return (
         <div id="overViewWide">
             <ReactCSSTransitionGroup
@@ -14,177 +58,24 @@ export default class ErrorContainer extends React.Component {
                 transitionAppearTimeout={2000}
                 transitionEnter={false}
                 transitionLeave={false}>
+                <Link to={`/project/${this.props.params.probID}/subprojects`}>
+                    <div id="exitTreeButton">
+                        <img src={require('../assets/redX.svg')} id="exitTreeLogo" width="35" height="35" alt="Delete Button, Red X" />
+                    </div>
+                </Link>
             {/* Link this to current project (top of projects column) */}
-            {/* <Link to={`/welcome`}> */}
+            {/* <Link to={`/project/${this.props.params.probID}/subprojects`}>
                 <img src={require('../assets/redX.svg')} id="overViewX" width="30" height="30" alt="Close button, red X symbol" />
-            {/* </Link> */}
+            </Link> */}
             <div id="overViewHeader">
                 <img src={require('../assets/treeWhite1.svg')} width="50" height="50" alt="User avatar, DNA Helix" />
             </div>
             <div id="overViewContainer">
-                <div id="overViewColumn">
-                    <div id="overViewLineageLabel1">
-                        grand parent
-                    </div>
-                    <div id="overViewAddButton">
-                        <img src={require('../assets/blueAdd2.svg')} id="privateNewProjectPlus" width="30" height="30" alt="User avatar, DNA Helix" />
-                    </div>
-                    <div id="overViewRowUnitTop1">
-                        {/* <div id="overViewVoteButton">
-                            &#9650;
-                        </div> */}
-                        <div id="overViewTitle">
-                            human-based general artificial intelligence
-                        </div>
-                        <div id="overViewViewButton">
-                            view
-                        </div>
-                    </div>
-                    <div id="overViewRowUnit1">
-                        <div id="overViewTitle">
-                            rationalty-based general artificial intelligence
-                        </div>
-                        <div id="overViewViewButton">
-                            view
-                        </div>
-                    </div>
-                    <div id="overViewRowUnit1">
-                        <div id="overViewTitle">
-                            1Test Title3
-                        </div>
-                        <div id="overViewViewButton">
-                            view
-                        </div>
-                    </div>
-                </div>
-                <div id="overViewColumn">
-                    <div id="overViewLineageLabel2">
-                        parent
-                    </div>
-                    <div id="overViewAddButton">
-                        <img src={require('../assets/blueAdd2.svg')} id="privateNewProjectPlus" width="30" height="30" alt="User avatar, DNA Helix" />
-                    </div>
-                    <div id="overViewRowUnitTop2">
-                        <div id="overViewTitle">
-                            Describing the human mind
-                        </div>
-                        <div id="overViewViewButton">
-                            view
-                        </div>
-                    </div>
-                    <div id="overViewRowUnit2">
-                        <div id="overViewTitle">
-                            Designing our artificial mind
-                        </div>
-                        <div id="overViewViewButton">
-                            view
-                        </div>
-                    </div>
-                    <div id="overViewRowUnit2">
-                        <div id="overViewTitle">
-                            Programming the artificial mind
-                        </div>
-                        <div id="overViewViewButton">
-                            view
-                        </div>
-                    </div>
-                </div>
-                <div id="overViewColumn">
-                    <div id="overViewLineageLabel3">
-                        project
-                    </div>
-                    <div id="overViewAddButton">
-                        <img src={require('../assets/blueAdd2.svg')} id="privateNewProjectPlus" width="30" height="30" alt="User avatar, DNA Helix" />
-                    </div>
-                    <div id="overViewRowUnitTop3">
-                        <div id="overViewTitle">
-                            Information Flow
-                        </div>
-                        <div id="overViewViewButton">
-                            view
-                        </div>
-                    </div>
-                    <div id="overViewRowUnit3">
-                        <div id="overViewTitle">
-                            Consciousness
-                        </div>
-                        <div id="overViewViewButton">
-                            view
-                        </div>
-                    </div>
-                    <div id="overViewRowUnit3">
-                        <div id="overViewTitle">
-                            Unconscious
-                        </div>
-                        <div id="overViewViewButton">
-                            view
-                        </div>
-                    </div>
-                </div>
-                <div id="overViewColumn">
-                    <div id="overViewLineageLabel4">
-                        children
-                    </div>
-                    <div id="overViewAddButton">
-                        <img src={require('../assets/blueAdd2.svg')} id="privateNewProjectPlus" width="30" height="30" alt="User avatar, DNA Helix" />
-                    </div>
-                    <div id="overViewRowUnitTop4">
-                        <div id="overViewTitle">
-                            Thoughts
-                        </div>
-                        <div id="overViewViewButton">
-                            view
-                        </div>
-                    </div>
-                    <div id="overViewRowUnit4">
-                        <div id="overViewTitle">
-                            Emotions
-                        </div>
-                        <div id="overViewViewButton">
-                            view
-                        </div>
-                    </div>
-                    <div id="overViewRowUnit4">
-                        <div id="overViewTitle">
-                            4Test Title3
-                        </div>
-                        <div id="overViewViewButton">
-                            view
-                        </div>
-                    </div>
-                </div>
-                <div id="overViewColumn">
-                    <div id="overViewLineageLabel5">
-                        grand children
-                    </div>
-                    <div id="overViewAddButton">
-                        <img src={require('../assets/blueAdd2.svg')} id="privateNewProjectPlus" width="30" height="30" alt="User avatar, DNA Helix" />
-                    </div>
-                    <div id="overViewRowUnitTop5">
-                        <div id="overViewTitle">
-                            5Test Title1
-                        </div>
-                        <div id="overViewViewButton">
-                            view
-                        </div>
-                    </div>
-                    <div id="overViewRowUnit5">
-                        <div id="overViewTitle">
-                            5Test Title2
-                        </div>
-                        <div id="overViewViewButton">
-                            view
-                        </div>
-                    </div>
-                    <div id="overViewRowUnit5">
-                        <div id="overViewTitle">
-                            5Test Title3
-                        </div>
-                        <div id="overViewViewButton">
-                            view
-                        </div>
-                    </div>
-                </div>
+                <OverviewGrandParentUnits problems={this.state.level4Problems} />
+                <OverviewParentUnits problems={this.state.level4Problems} />
+                <OverviewUnits problems={this.state.level4Problems} projectTitle={this.state.problemInfo.Title} projectID={this.props.params.probID} parentID={this.state.problemInfo.ParentID} projectTitle={this.state.problemInfo.Title}/>
+                <OverviewChildUnits problems={this.state.level4Problems} />
+                <OverviewGrandChildUnits problems={this.state.level4Problems} />
             </div>
             </ReactCSSTransitionGroup>
         </div>

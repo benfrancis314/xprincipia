@@ -190,6 +190,11 @@ unVote() {
           transitionAppearTimeout={2000}
           transitionEnter={false}
           transitionLeave={false}>
+          <Link to={`/project/${this.props.params.probID}/tree`} activeClassName="activeProblemTreeButton">
+            <div id="treeProblemButton">
+              <img src={require('../../assets/treeWhite1.svg')} id="treeProblemLogo" width="24" height="24" alt="Project Tree Button, white tree" />
+            </div>
+          </Link>
           <Link to={`/project/${this.props.params.probID}/flag`} activeClassName="activeProblemFlagButton">
             <div id="flagProblemButton">
               <img src={require('../../assets/flag.svg')} id="flagProblemLogo" width="24" height="24" alt="Delete Button, Red X" />
