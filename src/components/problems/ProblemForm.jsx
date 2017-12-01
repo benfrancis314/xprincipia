@@ -39,6 +39,8 @@ export default class ProblemForm extends React.Component {
       parentID: this.props.params.probID,
       title : this.state.title,
       summary : this.state.summary,
+      parentTitle : this.props.parentTitle,
+
       // Not sure if necessary
       // Private: false
     })
@@ -80,7 +82,7 @@ export default class ProblemForm extends React.Component {
           <div id="createProblemBox">
               <form id="createForm">
                 <fieldset id="fieldSetNoBorder">
-                  <label htmlFor="problemTitleForm" id="problemTitleFormLabel">Project Title<br />
+                    <label htmlFor="problemTitleForm" id="problemTitleFormLabel">Project Title<br />
                       <input type="text" name="problemTitle" required="required" maxLength="70" id="problemTitleForm" />
                     </label><br />
 

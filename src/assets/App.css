@@ -240,9 +240,6 @@ ol, ul {
     width: 12px;
     height: 12px;
 }
-::-webkit-scrollbar-button {
-  display: none;
-}
 ::-webkit-scrollbar-track {
     -webkit-box-shadow: inset 0 0 6px rgba(0,220,255,0); 
     box-shadow: inset 0 0 6px rgba(0,220,255,0); 
@@ -266,11 +263,24 @@ ol, ul {
     box-shadow: inset 0 0 6px rgba(0,220,255,0.1); 
 }
 ::-webkit-scrollbar-corner, ::-webkit-scrollbar-corner:horizontal {
+  /* display: none !important; */
+  background-color: #0f131c !important;
+}
+/* ::-webkit-resizer:horizontal {
   display: none !important;
 }
-::-webkit-resizer, ::-webkit-resizer:horizontal {
+::-webkit-scrollbar-button:horizontal {
   display: none !important;
 }
+::-webkit-scrollbar-thumb:horizontal {
+  display: none !important;
+}
+::-webkit-scrollbar-track-piece:horizontal {
+  display: none !important;
+}
+::-webkit-scrollbar-track:horizontal {
+  display: none !important;
+}  */
 
 /*Fixing autofill problem*/
 input:-webkit-autofill {
@@ -5169,7 +5179,7 @@ input#submitWelcomeProblem:hover {
 #questionTextArea, #answerTextArea, 
 #suggestionTextArea, #commentTextArea,
 #proTextArea, #conTextArea, 
-#resourcesTextArea, #learnContentTextArea, 
+#resourcesTextArea, #learnContentTextArea, #learnContentSummary,  
 #freeFormTextArea, #questionFlagTextArea {
   text-align: left;
   font-family: 'Open Sans', sans-serif;
@@ -5184,6 +5194,9 @@ input#submitWelcomeProblem:hover {
 }
 #learnContentTextArea {
   height: 12em;
+}
+#learnContentSummary {
+  height: 4em;
 }
 #questionFlagTextArea {
   border-color: #ff7f7f !important;
@@ -5597,9 +5610,9 @@ box-shadow: 0 0 2pt 2pt rgba(0,220,255,0.5);
   transition: all 0.5s ease 0s;
   z-index: 510;
 }
-#flagProblemButton:hover {
-  border: 1px solid rgba(255,127,127, 1);
-  border-width: 0px 0px 1px 1px;
+#flagProblemButton:hover, .activeProblemFlagButton div {
+  border: 1px solid rgba(255,127,127, 1) !important;
+  border-width: 0px 0px 1px 1px !important;
   box-shadow: 0 0 10pt 10pt rgba(255,127,127,0.25) inset;
   transform: scale(1.2);
   cursor: pointer;
@@ -5609,12 +5622,67 @@ box-shadow: 0 0 2pt 2pt rgba(0,220,255,0.5);
   opacity: 0.25;
   vertical-align: middle;
 }
-#flagProblemButton:hover #flagProblemLogo {
+#flagProblemButton:hover #flagProblemLogo, .activeProblemFlagButton div #flagProblemLogo {
   /* transform: scale(1.2); */
   opacity: 1;
 }
+#flagProposalButton {
+  position: absolute;
+  top: 0;
+  right: 0px;
+  border: 1px solid rgba(255,127,127,0.25);
+  border-width: 0px 0px 1px 1px;
+  border-radius: 0% 0% 0% 45%;
+  padding: 4px 10px 4px 12px;
+  transition: all 0.5s ease 0s;
+  z-index: 510;
+}
+#flagProposalButton:hover, .activeProblemFlagButton div {
+  border: 1px solid rgba(255,127,127, 1) !important;
+  border-width: 0px 0px 1px 1px !important;
+  box-shadow: 0 0 10pt 10pt rgba(255,127,127,0.25) inset;
+  padding: 6px 12px 6px 14px;
+  cursor: pointer;
+}
+#flagProposalButton:hover #flagProblemLogo, .activeProposalFlagButton div #flagProblemLogo {
+  transform: scale(1.2);
+  opacity: 1;
+}
 
-
+/* Proposal Day Button */
+#proposalDayButton {
+  position: absolute;
+  top: 0;
+  left: 0px;
+  border: 1px solid rgba(15,19,28, 0.25);
+  border-width: 1px 1px 0px 0px;
+  border-radius: 0% 0% 45% 0%;
+  padding: 4px 12px 4px 10px;
+  transition: all 0.5s ease 0s;
+  z-index: 510;
+}
+#proposalDayButton:hover{
+  border: 1px solid rgba(15,19,28, 1) !important;
+  border-width: 0px 0px 1px 1px !important;
+  box-shadow: 0 0 10pt 10pt rgba(15,19,28,0.25) inset;
+  transform: scale(1.2);
+  cursor: pointer;
+}
+#dayProposalLogo {
+  transition: all 0.5s ease 0s;
+  opacity: 0.25;
+  vertical-align: middle;
+}
+#proposalDayButton:hover #dayProposalLogo {
+  /* transform: scale(1.2); */
+  opacity: 1;
+}
+#fullSolutionDay {
+  background-color: #dddddd !important;
+}
+#solutionTitleDay, #solutionCreatorDay, #solutionSummaryDay, #solutionDescriptionDay, #solutionReferencesDay {
+  color: #0f131c !important;
+}
 
 
 
@@ -6791,7 +6859,8 @@ box-shadow: 0 0 1pt 1pt rgba(255,255,255,0.5);
 width: 85%;
 }
 #fullSolution {
-width: 70%;
+  position: relative;
+  width: 70%;
 border: 1px solid #00dcff;
 border-radius: 3px;
 /*background-color: rgba(255,255,255,0.05);*/
@@ -6840,6 +6909,7 @@ white-space: pre-wrap !important;
 #solutionDescription, #solutionReferences {
 padding-top: 3%;
 margin-top: 0%;
+font-size: 110%;
 }
 /*End Right Solutions SB*/
 
@@ -10597,13 +10667,15 @@ transition: all 1s ease 0s;
 
 #notebookContainerShow {
   position: fixed;
-  /* top: 8vh; */
   top: 3vh;
   z-index: 500;
-  width: 75%;
+  /* width: 75%; */
+  width: 80%;
   margin: 0 auto;
-  margin-left: 12.5%;
-  margin-right: 12.5%;
+  /* margin-left: 12.5%;
+  margin-right: 12.5%; */
+  margin-left: 10%;
+  margin-right: 10%;
   border: 1px solid #00dcff;
   border-radius: 7%;
   box-shadow: 0 0 2pt 2pt rgba(0,220,255,0.25);
@@ -10621,20 +10693,52 @@ transition: all 1s ease 0s;
 display: none;
 transition: all 1s ease 0s;
 }
+#notebookButtonRow {
+  display: flex;
+  width: 30%;
+  margin: 0 auto;
+  flex-direction: row;
+  justify-content: space-around;
+  /* margin-top: 1%;
+  margin-bottom: 2%; */
+}
 #exitNotebookButton {
   display: block;
   margin: 0 auto;
-  margin-top: 1%;
-  margin-bottom: 2%;
+  margin-top: 5%;
+  margin-bottom: 5%;
   border: 0px solid #ff7f7f;
   border-radius: 50%;
   transition: all 1s ease 0s;
+  opacity: 0.5;
   }
 #exitNotebookButton:hover {
   cursor: pointer;
   background-color: rgba(255,127,127,0.15);
   transform: scale(1.2);
+  opacity: 1;
 }
+#saveNotebookButton {
+  display: block;
+  margin: 0 auto;
+  padding-top: 5%;
+  margin-bottom: 5%;
+  border-radius: 0% 0% 25% 25%;
+  transition: all 2s ease 0s;
+  }
+#saveNotebookButton:hover {
+  cursor: pointer;
+  background-color: rgba(0,220,255,0.15);
+  border: 1px solid #00dcff;
+  border-width: 0px 1px;
+  background: linear-gradient(rgba(0,220,255,0.15), rgba(0,220,255,0.05), rgba(0,220,255,0));
+  transform: scale(1.2);
+  box-shadow: 0 0 1pt 1pt rgba(0,220,255,0.5);   
+}
+#saveNotebookButton:active {
+  background-color: #00dcff;
+}
+
 #notebookContainerRow {
   display: flex;
   flex-direction: row;
@@ -10652,15 +10756,26 @@ transition: all 1s ease 0s;
 } */
 #notebookFullTitle {
   font-family: 'Alegreya Sans SC';
+  border: 0px solid #00dcff!important;
+  letter-spacing: 2px;
+  box-shadow: 0 0 0pt 0pt rgba(0,220,255,0.5) !important;   
+  border-width: 0px !important;
+  outline-width: 0px !important; 
+  width: 100%;
 }
 #notebookFullTitle::placeholder {
   font-family: 'Alegreya Sans SC';
   color: #dddddd;
 }
+#notebookFullTitle:focus, #notebookFullTitle:active, #notebookFullContent:focus, #notebookFullContent:active, #notebookFullResources:focus, #notebookFullResources:active {
+  box-shadow: 0 0 0pt 0pt rgba(0,220,255,0.25) !important;
+  border: 0px solid #00dcff!important;
+  border-width: 0px 0px !important;
+}
 #notebookFullContent {
   background: linear-gradient(to bottom right, rgba(0,220,255,0.05), rgba(0,220,255,0.04), rgba(0,220, 255));
   margin: 0 auto;
-  height: 50vh;
+  height: 45vh;
   padding: 5% 2.5%;
   margin: 0% 2.5%;
   border-width: 0px !important;
@@ -10669,18 +10784,22 @@ transition: all 1s ease 0s;
   width: 90%;
   font-size: 80%;
   margin-bottom: 2%;
+  line-height: 100%;
 }
-#notebookFullContent:focus, #notebookFullContent:active {
-  box-shadow: 0 0 0pt 0pt rgba(0,220,255,0.25) !important;
-  /* border-width: 0px !important; */
+#notebookFullSourcesTitle {
+  color: #00dcff;
 }
 #notebookFullResources {
   height: 50px;
   font-family: 'Open Sans';
+  border: 0px solid #ffffff;
+  border-width: 0px;
+  font-size: 80%;
 }
 #notebookFullResources::placeholder {
   font-family: 'Alegreya Sans SC';
   color: #dddddd;
+  text-align: center;
 }
 #notebookFullTimeStamp {
   text-align: center;
@@ -10698,7 +10817,20 @@ transition: all 1s ease 0s;
 }
 #notebookUnitHeader {
   text-align: center;
-
+  letter-spacing: 6px;
+  font-size: 125%;
+}
+#notebookSavedLabel {
+  text-align: center;
+  letter-spacing: 4px;
+  color: #00dcff;
+  transition: all 1s ease 0s;
+}
+#notebookUnsavedLabel {
+  text-align: center;
+  letter-spacing: 4px;
+  color: #555555;
+  transition: all 1s ease 0s;
 }
 #notebookUnitList {
   display: flex;
@@ -10706,12 +10838,44 @@ transition: all 1s ease 0s;
   justify-content: space-around;
 }
 #notebookUnit {
-  box-shadow: 0 0 2pt 2pt rgba(0,220,255,0.25);
-  background-color: rgba(0,220,255,0.05);  
+  border: 1px solid #00dcff;
+  border-width: 1px 1px 1px 0px;
+  border-radius: 0 0 15% 15;
+  box-shadow: 0 0 1pt 1pt rgba(0,220,255,0.25);
+  background: linear-gradient(to right, rgba(0,220,255,0), rgba(0,220,255,0.04), rgba(0,220,255,0.05)); 
+  margin-top: 10%; 
+  padding: 1% 0%;
+  font-size: 90%;
+  padding: 3%;
 }
 #notebookUnit:hover {
   cursor: pointer;
+  background-color: rgba(0,220,255,0.05);
+  background: linear-gradient(to right, rgba(0,220,255,0.02), rgba(0,220,255,0.04), rgba(0,220,255,0.07)); 
 }
+#notebookAddButton {
+  display: flex;
+  flex-direction: column;
+  border: 2px solid #00dcff;
+  border-radius: 100%;
+  width: 45px;
+  height: 45px;
+  align-items: center; 
+  justify-content: center;
+  background-color: rgba(0,220,255,0.05);
+  margin: 0 auto;
+  box-shadow: 0 0 1pt 1pt rgba(0,220,255,0.5);
+  transition: all 0.75s ease 0s;
+  transform: scale(1);
+  margin-bottom: 5%;
+  margin-top: 5%;
+}
+  #notebookAddButton:hover {
+  /* box-shadow: 0 0 1.5pt 1.5pt rgba(0,220,255,0.5); */
+  transform: scale(1.12);
+  cursor: pointer;
+  background: radial-gradient(circle, rgba(0,220,255,0.05), rgba(0,220,255,0.05), rgba(0,220,255,0.1), rgba(0,220,255,0.05));
+  }
 
 
 

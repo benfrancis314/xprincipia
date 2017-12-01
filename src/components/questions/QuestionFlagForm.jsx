@@ -134,7 +134,7 @@ postQuestion() {
           </div>
 
           <form id="flagForm">
-            <textarea id="questionTextArea" name="questionText" placeholder="Help us understand this flag, if you would like. " 
+            <textarea id="questionTextArea" name="questionText" placeholder="Why should this project be moved, altered or removed?" 
             autoFocus ></textarea>
             <br />
             <div onClick={this.postQuestion} id="flagButton">submit</div>

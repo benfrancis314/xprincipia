@@ -25,21 +25,15 @@ export default class NotebookUnit extends React.Component {
     
 
       return (
-        <div id="notebookUnitContainer">
-            <div id="notebookUnitHeader">
-                notebooks
-            </div>
-            <div id="notebookAddButton">
-                plus button
-            </div>
-            <div id="notebootUnitList">
-                <div id="notebookUnit">
+        <div id="fullWide">   
+            <ul id="notebootUnitList">
+                <li id="notebookUnit">
                     Ending Aging Notes
-                </div>
-                <div id="notebookUnit">
+                </li>
+                <li id="notebookUnit">
                     Artificial Intelligence Notes
-                </div>
-            </div>
+                </li>
+            </ul>
         </div>
       );
     }

@@ -30,7 +30,12 @@ export default class NotebookFull extends React.Component {
         }
 
     this.updateNotebook = this.updateNotebook.bind(this);
-    // var OnUnload = require("react-window-mixins").OnUnload;
+    this.unSaved = this.unSaved.bind(this);
+    this.testUnsaved = this.testUnsaved.bind(this);
+    this.testUnsavedTest1 = this.testUnsavedTest1.bind(this);
+    this.testUnsavedTest2 = this.testUnsavedTest2.bind(this);
+    this.testUnsavedTest3 = this.testUnsavedTest3.bind(this);
+    this.testUnsavedTest4 = this.testUnsavedTest4.bind(this);
     
     };
     //initialize the component with this state
@@ -78,8 +83,11 @@ export default class NotebookFull extends React.Component {
       references: self.state.references
     })
     .then(function (result) {
-        // alert('sucess');
-    //  document.location = '/project/' + self.props.params.probID + '/proposal/' + self.props.params.solutionID
+        $(document).ready(function() {
+            $('#notebookUnsavedLabel').html("saved").fadeIn(7500);
+            $('#notebookUnsavedLabel').attr('id','notebookSavedLabel');
+            // alert( 'success');
+        });
     })
       .catch(function (error) {
         // console.log(error.response.data)
@@ -98,7 +106,6 @@ export default class NotebookFull extends React.Component {
               } 
           });
       });
-  
   }
 // ON UNMOUNT, SAVE PROJECT
 componentWillUnmount() {
@@ -116,7 +123,6 @@ componentWillUnmount() {
       references: self.state.references
     })
     .then(function (result) {
-        alert('sucess');
     //  document.location = '/project/' + self.props.params.probID + '/proposal/' + self.props.params.solutionID
     })
       .catch(function (error) {
@@ -139,31 +145,83 @@ componentWillUnmount() {
   
   }
 
+  unSaved() {
+    $(document).ready(function() {
+        $('#notebookSavedLabel').html("unsaved").fadeIn(7500);
+        $('#notebookSavedLabel').attr('id','notebookUnsavedLabel');
+    });
+    setTimeout(this.testUnsavedTest1, 1000);
+    // We want to make sure it is unsaved after 1s and 5s, to make sure
+    // it is unsaved for at least 5 seconds between saves
+  }
+testUnsavedTest1() {
+  if (document.getElementById('notebookSavedLabel') == null) {
+    // this.updateNotebook()
+    setTimeout(this.testUnsavedTest2(), 500);
+  }
+}
+testUnsavedTest2() {
+  if (document.getElementById('notebookSavedLabel') == null) {
+    // this.updateNotebook()
+    setTimeout(this.testUnsavedTest3(), 500);
+  }
+}
+testUnsavedTest3() {
+  if (document.getElementById('notebookSavedLabel') == null) {
+    // this.updateNotebook()
+    setTimeout(this.testUnsavedTest4(), 500);
+  }
+}
+testUnsavedTest4() {
+  if (document.getElementById('notebookSavedLabel') == null) {
+    // this.updateNotebook()
+    setTimeout(this.testUnsaved(), 500);
+  }
+}
 
+testUnsaved() {
+  if (document.getElementById('notebookSavedLabel') == null) {
+    this.updateNotebook()
+    // setTimeout(this.updateNotebook(), 1000);
+  }
+}
 
    render() {
-    
+
+// Attempts at Google Docs-like saving every 5 seconds
+// Working version is immediately outside of render
+// if (document.getElementById('notebookSavedLabel') == null) {
+//   setInterval(this.updateNotebook, 5000);
+// }
+
+// $('#notebookFullContent').change(function(){
+//   if (document.getElementById('notebookUnsavedLabel') !== null) {
+//     alert('ifWorks')
+//     setTimeout(this.updateNotebook, 1000);
+//   }
+// })
+
 
       return (
         // <div>
             // <Beforeunload onBeforeunload={this.updateNotebook}>
                 <div id="notebookFullContainer">
-                    <input id="notebookFullTitle" placeholder="notes title"></input>
-                    <textarea id="notebookFullContent" placeholder="Brainstorm or record your thoughts" autoFocus ></textarea>
+                    <input id="notebookFullTitle" placeholder="notes title" type="text"></input>
+                    <textarea id="notebookFullContent" placeholder="Brainstorm or record your thoughts" autoFocus onChange={this.unSaved}></textarea>
                     <div id="notebookFullSourcesTitle">
                         sources
                     </div>
-                    <textarea id="notebookFullResources" placeholder="sources"></textarea>
+                    <textarea id="notebookFullResources" ></textarea>
                     {/* <div id="noteBookSaveButton">
                         save
                     </div> */}
-                    <div onClick={this.updateNotebook} id="notebookFullTimeStamp">
-                    {/* Update each time saved */}
-                        updated: [timestamp] save!
-                    </div>
+                    {/* <div onClick={this.updateNotebook} id="notebookFullTimeStamp"> */}
+                    {/* Possibly update date each time saved */}
+                        {/* updated: [timestamp] save! */}
+                    {/* </div> */}
                 </div>
-            // </Beforeunload>
-        // </div>
+            //  </Beforeunload>
+        //  </div>
       );
     }
 }

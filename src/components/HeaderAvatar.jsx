@@ -13,7 +13,7 @@ export default class HeaderAvatar extends React.Component {
             $('#logoName').html("conversations").fadeIn(7500);
             $('#logoName').attr('id','logoNameGuide');
             // Also an option for red font
-            $('#logoName').attr('id','logoNameGuideRed');
+            // $('#logoName').attr('id','logoNameGuideRed');
         });
       }
     unHoverMessagesHeader() {

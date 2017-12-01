@@ -15,6 +15,7 @@ export default class FullSolution extends React.Component {
             solutionID: [],
             probID: []
         }
+        this.dayMode = this.dayMode.bind(this);
     };
     //initialize the component with this state
     componentDidMount(){
@@ -54,6 +55,18 @@ componentDidUpdate() {
  
   }   
 
+
+  dayMode() {
+    $(document).ready(function() {
+        $('#fullSolution').attr('id','fullSolutionDay');
+        $('#solutionTitle').attr('id','solutionTitleDay');
+        $('#solutionCreator').attr('id','solutionCreatorDay');
+        $('#solutionSummary').attr('id','solutionSummaryDay');
+        $('#solutionDescription').attr('id','solutionDescriptionDay');
+        $('#solutionReferences').attr('id','solutionReferencesDay');
+    });
+  }
+
    render() {
     //    No longer used but would like to use this in the future.
     //    Problem is it toggles the solution units in order from first to last, not the one selected
@@ -64,15 +77,22 @@ componentDidUpdate() {
         //     });
         // };
         
-    if (0) {
+    if (1) {
     
-
       return (
         <div id='fullSolutionContainer'>
             <div id="fullSolution">
+                <Link to={`/proposal/${this.props.params.probID}/${this.props.params.solutionID}/flag`} activeClassName="activeProposalFlagButton">
+                    <div id="flagProposalButton">
+                        <img src={require('../../assets/flag.svg')} id="dayProposalLogo" width="24" height="24" alt="Delete Button, Red X" />
+                    </div>
+                </Link>
+                {/* <div id="proposalDayButton" onClick={this.dayMode}>
+                    <img src={require('../../assets/moonDark.svg')} id="flagProblemLogo" width="24" height="24" alt="Delete Button, Red X" />
+                </div> */}
                 <div id="solutionIntro">
                     <Link to={`/project/${this.props.params.probID}/subprojects`}>
-                        <img src={require('../../assets/redX.svg')} id="closeRedX" width="40" height="40" alt="Close button, red X symbol" />
+                        <img src={require('../../assets/redX.svg')} id="closeRedX" width="30" height="30" alt="Close button, red X symbol" />
                     </Link>
                     <h1 id="solutionTitle" >{this.state.solutionInfo.Title}</h1>
                     <div id="proposalCreator">{this.state.solutionInfo.OriginalPosterUsername}</div>
@@ -93,7 +113,7 @@ componentDidUpdate() {
             <div id="fullSolution">
                 <div id="solutionIntro">
                     <Link to={`/project/${this.props.params.probID}/subprojects`}>
-                        <img src={require('../../assets/redX.svg')} id="closeRedX" width="40" height="40" alt="Close button, red X symbol" />
+                        <img src={require('../../assets/redX.svg')} id="closeRedX" width="30" height="30" alt="Close button, red X symbol" />
                     </Link>
                     <div id="solutionTitleLabelGreen">
                         plan
@@ -117,7 +137,7 @@ componentDidUpdate() {
             <div id="fullSolution">
                 <div id="solutionIntro">
                     <Link to={`/project/${this.props.params.probID}/subprojects`}>
-                        <img src={require('../../assets/redX.svg')} id="closeRedX" width="40" height="40" alt="Close button, red X symbol" />
+                        <img src={require('../../assets/redX.svg')} id="closeRedX" width="30" height="30" alt="Close button, red X symbol" />
                     </Link>
                     <div id="solutionTitleLabelRed">
                         solution

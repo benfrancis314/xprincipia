@@ -190,6 +190,11 @@ unVote() {
           transitionAppearTimeout={2000}
           transitionEnter={false}
           transitionLeave={false}>
+          <Link to={`/project/${this.props.params.probID}/flag`} activeClassName="activeProblemFlagButton">
+            <div id="flagProblemButton">
+              <img src={require('../../assets/flag.svg')} id="flagProblemLogo" width="24" height="24" alt="Delete Button, Red X" />
+            </div>
+          </Link>
 
         <div id="problemColumn1">
           <SubProjectParentUnit parentID={this.state.problemInfo.ParentID} parentType={this.state.problemInfo.ParentType} />
@@ -228,7 +233,7 @@ unVote() {
                 {this.state.problemInfo.Summary}
               </p>
             </div>
-              {React.cloneElement(this.props.children)}
+              {React.cloneElement(this.props.children, {parentTitle: this.state.problemInfo.Title})}
             </div>
           {React.cloneElement(<SubProblemContainer probID={this.props.params.probID} />)}
           <ScrollableAnchor id={'proposals'}>
@@ -257,6 +262,11 @@ unVote() {
           transitionAppearTimeout={2000}
           transitionEnter={false}
           transitionLeave={false}>
+          <Link to={`/project/${this.props.params.probID}/flag`} activeClassName="activeProblemFlagButton">
+            <div id="flagProblemButton">
+              <img src={require('../../assets/flag.svg')} id="flagProblemLogo" width="24" height="24" alt="Delete Button, Red X" />
+            </div>
+          </Link>
 
         <div id="problemColumn1">
           <SubProjectParentUnit parentID={this.state.problemInfo.ParentID} parentType={this.state.problemInfo.ParentType} />
@@ -317,6 +327,11 @@ unVote() {
           transitionAppearTimeout={2000}
           transitionEnter={false}
           transitionLeave={false}>
+          <Link to={`/project/${this.props.params.probID}/flag`} activeClassName="activeProblemFlagButton">
+            <div id="flagProblemButton">
+              <img src={require('../../assets/flag.svg')} id="flagProblemLogo" width="24" height="24" alt="Delete Button, Red X" />
+            </div>
+          </Link>
 
         <div id="problemColumn1">
           <SubProjectParentUnit parentID={this.state.problemInfo.ParentID} parentType={this.state.problemInfo.ParentType} />
@@ -377,6 +392,11 @@ unVote() {
           transitionAppearTimeout={2000}
           transitionEnter={false}
           transitionLeave={false}>
+          <Link to={`/project/${this.props.params.probID}/flag`} activeClassName="activeProblemFlagButton">
+            <div id="flagProblemButton">
+              <img src={require('../../assets/flag.svg')} id="flagProblemLogo" width="24" height="24" alt="Delete Button, Red X" />
+            </div>
+          </Link>
 
         <div id="problemColumn1">
           <SubProjectParentUnit parentID={this.state.problemInfo.ParentID} parentType={this.state.problemInfo.ParentType} />
@@ -436,11 +456,12 @@ unVote() {
           transitionAppearTimeout={2000}
           transitionEnter={false}
           transitionLeave={false}>
-        
+          <Link to={`/project/${this.props.params.probID}/flag`} activeClassName="activeProblemFlagButton">
+            <div id="flagProblemButton">
+              <img src={require('../../assets/flag.svg')} id="flagProblemLogo" width="24" height="24" alt="Delete Button, Red X" />
+            </div>
+          </Link>
         <div id="problemColumn1">
-          <div id="flagProblemButton">
-            <img src={require('../../assets/flag.svg')} id="flagProblemLogo" width="24" height="24" alt="Delete Button, Red X" />
-          </div>
           <SubProjectParentUnit parentID={this.state.problemInfo.ParentID} parentType={this.state.problemInfo.ParentType} />
           {/*<ProjectParentChildrenUnitsContainer parentID={this.state.problemInfo.ParentID} problemTitle={this.state.problemInfo.Title}/>*/}
           <ProblemTitle problemTitle={this.state.problemInfo.Title} />

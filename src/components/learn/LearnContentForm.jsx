@@ -89,9 +89,20 @@ constructor(props){
             <div id="suggestionFormComponent">
                 <form id="suggestionForm">
                     <fieldset id='fieldSetNoBorderPadding'>
-                        {/*<legend>Create a Lesson</legend>*/}
+                            <label htmlFor="problemTitleForm" id="problemTitleFormLabel">lesson title<br />
+                              <input type="text" name="problemTitle" required="required" maxLength="70" id="problemTitleForm" />
+                            </label><br />
+
+                            <label htmlFor="problemTitleForm" id="problemTitleFormLabel">overview<br />
+                            <textarea name="suggestionText" required="required" id="learnContentSummary" 
+                            placeholder="Give an overview of your lesson." ></textarea>
+                            </label><br />
+
+                            <label htmlFor="problemTitleForm" id="problemTitleFormLabel">overview<br />
                             <textarea name="suggestionText" required="required" id="learnContentTextArea" 
                             placeholder="Create a lesson to help others understand this project, promoting future advancement." ></textarea>
+                            </label><br />
+
                             <input type="button" value="Create" onClick={this.postLearnItem} id="addSuggestion"/>
                     </fieldset>
                 </form>

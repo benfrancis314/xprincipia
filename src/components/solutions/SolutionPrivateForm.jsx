@@ -81,6 +81,42 @@ export default class SolutionPrivateForm extends React.Component {
                     <input type="text" name="solutionTitle" required="required" maxLength="140" id="solutionTitleForm" />
                   </label><br />
 
+                  <div id="projectFormRadioContainer">
+                      <div id="projectFormRadioColumn">
+                        <div id="projectFormRadioRow1">
+                          proposal
+                        </div>
+                        <div id="projectFormRadioRow">
+                          <label id="projectRadioButtonContainer">
+                            <input type="radio" name="projectType" value="0"/>
+                            <span id="checkmark1"></span>
+                          </label>
+                        </div>
+                      </div>
+                      <div id="projectFormRadioColumn">
+                        <div id="projectFormRadioRow2">
+                          plan
+                        </div>
+                        <div id="projectFormRadioRow">
+                          <label id="projectRadioButtonContainer">
+                            <input type="radio" name="projectType" value="1" />
+                            <span id="checkmark2"></span>
+                          </label>
+                        </div>
+                      </div>
+                      <div id="projectFormRadioColumn">
+                        <div id="projectFormRadioRow3">
+                          solution
+                        </div>
+                        <div id="projectFormRadioRow">
+                          <label id="projectRadioButtonContainer">
+                            <input type="radio" name="projectType" value="2" />
+                            <span id="checkmark3"></span>
+                          </label>
+                        </div>
+                      </div>
+                    </div>
+
                 <label htmlFor="solutionSummary" id="solutionSummaryFormLabel">summary<br />
                     <textarea name="solutionSummary" required="required" maxLength="400" placeholder="Please summarize your proposal here. (400 character max)" id="solutionSummaryForm"/>
                   </label><br />

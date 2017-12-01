@@ -59,6 +59,7 @@ import Instructions from './components/tutorials/Instructions.jsx';
 import Intro from './components/tutorials/Intro.jsx';
 import Introduction from './components/Introduction.jsx';
 import Layout from './components/Layout.jsx';
+import LearnContentButton from './components/learn/LearnContentButton.jsx';
 import LearnContentDeleteForm from './components/learn/LearnContentDeleteForm.jsx';
 import LearnContentDeletePrivateForm from './components/learn/LearnContentDeletePrivateForm.jsx';
 import LearnContentEditForm from './components/learn/LearnContentEditForm.jsx';
@@ -131,6 +132,7 @@ import SolutionDeleteForm from './components/solutions/SolutionDeleteForm.jsx';
 import SolutionDeleteFormPrivate from './components/solutions/SolutionDeleteFormPrivate.jsx';
 import SolutionEditForm from './components/solutions/SolutionEditForm.jsx';
 import SolutionEditFormPrivate from './components/solutions/SolutionEditFormPrivate.jsx';
+import SolutionFlagForm from './components/solutions/SolutionFlagForm.jsx';
 import SolutionForm from './components/solutions/SolutionForm.jsx';
 import SuggestionDeleteForm from './components/suggestions/SuggestionDeleteForm.jsx';
 import SuggestionDeleteFormPrivate from './components/suggestions/SuggestionDeleteFormPrivate.jsx';
@@ -468,15 +470,12 @@ ReactDOM.render(
         </Route>
       </Route>
       <Route path='/project/:probID' component={FullProblem}>
-        <IndexRoute component={SideBarProblem}></IndexRoute>
-        <Route path='/project/:probID/sideBar' component={SideBarProblem}>
-          <IndexRoute component={Empty}></IndexRoute>
-          <Route path='/project/:probID/create' component={ProblemForm}></Route>
-          <Route path='/project/:probID/edit' component={ProjectEditForm}></Route>
-          <Route path='/project/:probID/flag' component={ProjectFlagForm}></Route>
-          <Route path='/project/:probID/delete' component={ProjectDeleteForm}></Route>
-          <Route path='/project/:probID/subprojects' component={Empty}></Route>
-        </Route>
+        <IndexRoute component={Empty}></IndexRoute>
+        <Route path='/project/:probID/create' component={ProblemForm}></Route>
+        <Route path='/project/:probID/edit' component={ProjectEditForm}></Route>
+        <Route path='/project/:probID/flag' component={ProjectFlagForm}></Route>
+        <Route path='/project/:probID/delete' component={ProjectDeleteForm}></Route>
+        <Route path='/project/:probID/subprojects' component={Empty}></Route>
         <Route path='/project/:probID/solutions' component={ProblemSolutionsMenu}>
           <IndexRoute component={ProblemTopSolutions}></IndexRoute>
           <Route path='/project/:probID/solutions/create' component={SolutionForm}></Route>
@@ -487,6 +486,7 @@ ReactDOM.render(
             <Route path='/project/:probID/proposal/:solutionID' component={ProposalSubProjectsButton}></Route>
             <Route path='/proposal/:probID/:solutionID/delete' component={SolutionDeleteForm}></Route>
             <Route path='/proposal/:probID/:solutionID/edit' component={SolutionEditForm}></Route>
+            <Route path='/proposal/:probID/:solutionID/flag' component={SolutionFlagForm}></Route>
             <Route path='/project/:probID/proposal/:solutionID/subprojects' component={SubProjectProposalContainer}></Route>
             <Route path='/project/:probID/proposal/:solutionID/subprojects/create' component={ProblemFormProposal}></Route>
             <Route path='/project/:probID/proposal/:solutionID/related' component={RelatedProposalsContainer}></Route>
@@ -530,8 +530,9 @@ ReactDOM.render(
             </Route>
             <Route path='/project/:probID/proposal/:solutionID/learn' component={ProposalLearnMenu}>
               <Route path='/project/:probID/proposal/:solutionID/learn/content/full' component={LearnContentContainerPrivate}>
-                <IndexRoute component={LearnContentForm}></IndexRoute>
-                <Route path='/project/:probID/proposal/:solutionID/learn/content' component={LearnContentForm}></Route>
+                <IndexRoute component={LearnContentButton}></IndexRoute>
+                <Route path='/project/:probID/proposal/:solutionID/learn/content' component={LearnContentButton}></Route>
+                <Route path='/project/:probID/proposal/:solutionID/learn/content/new' component={LearnContentForm}></Route>
                 <Route path='/project/:probID/proposal/:solutionID/learn/content/:learnItemID/edit' component={LearnContentEditForm}></Route>
                 <Route path='/project/:probID/proposal/:solutionID/learn/content/:learnItemID/flag' component={LearnContentFlagForm}></Route>
                 <Route path='/project/:probID/proposal/:solutionID/learn/content/:learnItemID/delete' component={LearnContentDeleteForm}></Route>
@@ -614,8 +615,9 @@ ReactDOM.render(
           {/*<IndexRoute component={ProblemLearnMenu}></IndexRoute>*/}
         <Route path='/project/:probID/learn' component={ProblemLearnMenu}>
               <Route path='/project/:probID/learn/content/full' component={LearnContentContainer1}>
-                <IndexRoute component={LearnContentForm}></IndexRoute>
-                <Route path='/project/:probID/learn/content' component={LearnContentForm}></Route>
+                <IndexRoute component={LearnContentButton}></IndexRoute>
+                <Route path='/project/:probID/learn/content' component={LearnContentButton}></Route>
+                <Route path='/project/:probID/learn/content/new' component={LearnContentForm}></Route>
                 <Route path='/project/:probID/learn/content/:learnItemID/edit' component={LearnContentEditForm}></Route>
                 <Route path='/project/:probID/learn/content/:learnItemID/flag' component={LearnContentFlagForm}></Route>
                 <Route path='/project/:probID/learn/content/:learnItemID/delete' component={LearnContentDeleteForm}></Route>

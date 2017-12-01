@@ -32,7 +32,7 @@ export default class ProposalDiscussMenu extends React.Component {
       return (
         <div>
             <Link to={`/project/${this.props.params.probID}/proposal/${this.props.params.solutionID}`}>
-                <img src={require('../../assets/redX.svg')} id="closeRedX" width="40" height="40" alt="Close button, red X symbol" />
+                <img src={require('../../assets/redX.svg')} id="closeRedX" width="30" height="30" alt="Close button, red X symbol" />
             </Link>
             <ReactCSSTransitionGroup
             transitionName="example"
