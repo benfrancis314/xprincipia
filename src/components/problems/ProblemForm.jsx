@@ -40,8 +40,9 @@ export default class ProblemForm extends React.Component {
       parentType : '0',
       parentID: this.props.params.probID,
       parentTitle : this.props.parentTitle,
-      grandParentID : this.props.gParentID,
+      grandParentID : String(this.props.gParentID),
       grandParentTitle: this.props.gParentTitle,
+      ggParentID : String(this.props.ggParentID),
 
       // Not sure if necessary
       // Private: false
@@ -80,6 +81,7 @@ export default class ProblemForm extends React.Component {
           {/*</ScrollableAnchor>*/}
           <div id="SBButtonNoHover">
             new sub project
+            x{this.props.ggParentID}x
           </div>
           <div id="createProblemBox">
               <form id="createForm">

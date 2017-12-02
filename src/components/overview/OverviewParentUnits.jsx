@@ -6,8 +6,8 @@ import $ from 'jquery';
 
 export default class SubProblemUnit extends React.Component {
 
-  constructor(){
-  super();
+  constructor(props){
+  super(props);
   this.state = {
 	  problems: []
   }
@@ -15,20 +15,28 @@ export default class SubProblemUnit extends React.Component {
   };
 
 
-		// Not sure what this is used for
-    // componentDidMount(){
-    //   var self = this;
-	  // if (self.props.problem != null ){
-		//   self.setState({problems: this.props.problems})
-	  // }
-    //   return
-    // }
+componentWillMount(props) {
+    var self = this;
+    return axios.get( Config.API + '/problems/subproblems?id='+String(this.props.grandParentID)).then(function (response) {
+        self.setState({
+            problems: response.data,
+        })
+    })
+}
 
-    //On recieving new props
   componentWillReceiveProps(nextProps){
-	  var self = this
-	  self.setState({problems: nextProps.problems})
-  }
+    var self = this;
+        return axios.get( Config.API + '/problems/subproblems?id='+String(nextProps.grandParentID)).then(function (response) {
+            self.setState({
+                problems: response.data,
+            })
+        })
+}
+    //On recieving new props
+//   componentWillReceiveProps(nextProps){
+// 	  var self = this
+// 	  self.setState({problems: nextProps.problems})
+//   }
 
 
 	render() {
@@ -36,6 +44,8 @@ export default class SubProblemUnit extends React.Component {
         <div id="overViewColumn">
             <div id="overViewLineageLabel2">
                 parent
+                x{this.props.grandParentID}x
+                yxxy
             </div>
             <Link to={`/project/${this.props.probID}/create`} activeClassName="activePrivateCreateButton">
                 <div id="overViewAddButton">
@@ -45,7 +55,7 @@ export default class SubProblemUnit extends React.Component {
 			<ul> 
                 <div id="overViewRowUnitTop2">
                     <div id="overViewTitle">
-                        Describing the human mind
+                        {this.props.parentTitle}
                     </div>
                     <div id="overViewViewButton">
                         view

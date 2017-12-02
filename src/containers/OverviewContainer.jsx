@@ -70,18 +70,20 @@ export default class ErrorContainer extends React.Component {
             <div id="overViewHeader">
                 <img src={require('../assets/treeWhite1.svg')} width="50" height="50" alt="User avatar, DNA Helix" />
                 <br />
-                x{this.props.params.probID}x
+                {/* x{this.props.params.probID}x
                 <br />
                 x{this.state.problemInfo.ID}x
                 <br />
-                x{this.state.problemInfo.Title}x
+                x{this.state.problemInfo.Title}x */}
                 <br />
                 x{this.state.problemInfo.ParentID}x
+                <br />
+                x{this.state.problemInfo.GrandParentID}x
             </div>
             <div id="overViewContainer">
                 <OverviewGrandParentUnits problems={this.state.level4Problems} />
-                <OverviewParentUnits problems={this.state.level4Problems} />
-                <OverviewUnits problems={this.state.level4Problems} projectTitle={this.state.problemInfo.Title} projectID={this.props.params.probID} parentID={this.state.problemInfo.ParentID} />
+                <OverviewParentUnits parentTitle={this.state.problemInfo.ParentTitle} grandParentID={this.state.problemInfo.GrandParentID}/>
+                <OverviewUnits projectTitle={this.state.problemInfo.Title} projectID={this.props.params.probID} parentID={this.state.problemInfo.ParentID} />
                 <OverviewChildUnits problems={this.state.level4Problems} />
                 <OverviewGrandChildUnits problems={this.state.level4Problems} />
             </div>

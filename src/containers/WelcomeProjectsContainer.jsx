@@ -77,9 +77,8 @@ export default class WelcomeContainer extends React.Component {
         componentWillMount(){
         var self = this;
         // window.scrollTo(0,0);
-        return axios.get( Config.API + '/problems/all').then(function (response) {
+        axios.get( Config.API + '/problems/filter/byvote').then(function (response) {
             self.setState({
-                problems: response.data,
                 userproblems: response.data,
                 feedProjects: response.data
             })
@@ -101,6 +100,11 @@ export default class WelcomeContainer extends React.Component {
               } 
           });
       });
+      axios.get( Config.API + '/problems/all').then(function (response) {
+        self.setState({
+            problems: response.data,
+        })
+    }) 
      }
 
     //  startSound () {
@@ -163,7 +167,7 @@ export default class WelcomeContainer extends React.Component {
                     </div>
                     <form id="welcomeSearchFormContainer">
                       {/* Used to say "SEARCH PROJECT TREES" */}
-                      <input type="search" name="search" placeholder="SEARCH PROJECT TREES" id="welcomeSearchFormLabel"  onKeyDown={this.queryProblem} autoFocus autoComplete="off" />
+                      <input type="search" name="search" placeholder="SEARCH PROJECT TREES" id="welcomeSearchFormLabel" onKeyDown={this.queryProblem} autoFocus autoComplete="off" />
                     </form>
                      {/* {this.props.children} */}
                   {/* </div> */}

@@ -16,7 +16,7 @@ export default class SubProblemUnit extends React.Component {
   };
 
 
-componentDidMount(){
+componentWillReceiveProps(nextProps){
     var self = this;
         return axios.get( Config.API + '/problems/subproblems?id='+this.props.parentID).then(function (response) {
             self.setState({
@@ -46,8 +46,8 @@ componentDidMount(){
         <div id="overViewColumn">
             <div id="overViewLineageLabel3">
                 project
-                {this.props.parentID}
-                {this.state.problems.length}
+                {/* {this.props.parentID}
+                {this.state.problems.length} */}
             </div>
             <Link to={`/project/${this.props.projectID}/tree/create`} activeClassName="activePrivateCreateButton">
                 <div id="overViewAddButton">
