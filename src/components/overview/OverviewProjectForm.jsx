@@ -40,8 +40,8 @@ export default class ProblemForm extends React.Component {
       parentType : '0',
       parentID: this.props.params.probID,
       parentTitle : this.props.parentTitle,
-      grandParentID : this.props.gParentID,
-      grandParentTitle: this.props.gParentTitle,
+      grandParentID : 'testGPID',
+      grandParentTitle: 'testGPTitle',
 
       // Not sure if necessary
       // Private: false
@@ -71,10 +71,10 @@ export default class ProblemForm extends React.Component {
 
   render() {
       return (
-        <div>
+        <div id="overviewProjectForm">
           {/*ScrollableAnchor doesn't work right now, not sure why*/}
           {/*<ScrollableAnchor id={'newSubProject'}>*/}
-            <Link to={`/project/${this.props.params.probID}/subprojects`}>
+            <Link to={`/project/${this.props.params.probID}/tree`}>
                 <img src={require('../../assets/redX.svg')} id="closeRedX" width="30" height="30" alt="Close button, red X symbol" />
             </Link>
           {/*</ScrollableAnchor>*/}
@@ -92,7 +92,7 @@ export default class ProblemForm extends React.Component {
                     <div id="projectFormRadioContainer">
                       <div id="projectFormRadioColumn">
                         <div id="projectFormRadioRow1">
-                          project <span id="gray">(default)</span>
+                          project
                         </div>
                         <div id="projectFormRadioRow">
                           <label id="projectRadioButtonContainer">

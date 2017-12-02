@@ -192,7 +192,7 @@ unVote() {
           transitionLeave={false}>
           <Link to={`/project/${this.props.params.probID}/tree`} activeClassName="activeProblemTreeButton">
             <div id="treeProblemButton">
-              <img src={require('../../assets/treeWhite1.svg')} id="treeProblemLogo" width="24" height="24" alt="Project Tree Button, white tree" />
+              <img src={require('../../assets/treeWhite1.svg')} id="treeProblemLogo" width="30" height="30" alt="Project Tree Button, white tree" />
             </div>
           </Link>
           <Link to={`/project/${this.props.params.probID}/flag`} activeClassName="activeProblemFlagButton">
@@ -238,7 +238,7 @@ unVote() {
                 {this.state.problemInfo.Summary}
               </p>
             </div>
-              {React.cloneElement(this.props.children, {parentTitle: this.state.problemInfo.Title})}
+              {React.cloneElement(this.props.children, {parentTitle: this.state.problemInfo.Title, gParentID: this.state.problemInfo.ParentID, gParentTitle: this.state.problemInfo.ParentTitle} )}
             </div>
           {React.cloneElement(<SubProblemContainer probID={this.props.params.probID} />)}
           <ScrollableAnchor id={'proposals'}>
@@ -267,6 +267,11 @@ unVote() {
           transitionAppearTimeout={2000}
           transitionEnter={false}
           transitionLeave={false}>
+          <Link to={`/project/${this.props.params.probID}/tree`} activeClassName="activeProblemTreeButton">
+            <div id="treeProblemButton">
+              <img src={require('../../assets/treeWhite1.svg')} id="treeProblemLogo" width="30" height="30" alt="Project Tree Button, white tree" />
+            </div>
+          </Link>
           <Link to={`/project/${this.props.params.probID}/flag`} activeClassName="activeProblemFlagButton">
             <div id="flagProblemButton">
               <img src={require('../../assets/flag.svg')} id="flagProblemLogo" width="24" height="24" alt="Delete Button, Red X" />
@@ -332,6 +337,11 @@ unVote() {
           transitionAppearTimeout={2000}
           transitionEnter={false}
           transitionLeave={false}>
+          <Link to={`/project/${this.props.params.probID}/tree`} activeClassName="activeProblemTreeButton">
+            <div id="treeProblemButton">
+              <img src={require('../../assets/treeWhite1.svg')} id="treeProblemLogo" width="30" height="30" alt="Project Tree Button, white tree" />
+            </div>
+          </Link>
           <Link to={`/project/${this.props.params.probID}/flag`} activeClassName="activeProblemFlagButton">
             <div id="flagProblemButton">
               <img src={require('../../assets/flag.svg')} id="flagProblemLogo" width="24" height="24" alt="Delete Button, Red X" />
@@ -397,6 +407,11 @@ unVote() {
           transitionAppearTimeout={2000}
           transitionEnter={false}
           transitionLeave={false}>
+          <Link to={`/project/${this.props.params.probID}/tree`} activeClassName="activeProblemTreeButton">
+            <div id="treeProblemButton">
+              <img src={require('../../assets/treeWhite1.svg')} id="treeProblemLogo" width="30" height="30" alt="Project Tree Button, white tree" />
+            </div>
+          </Link>
           <Link to={`/project/${this.props.params.probID}/flag`} activeClassName="activeProblemFlagButton">
             <div id="flagProblemButton">
               <img src={require('../../assets/flag.svg')} id="flagProblemLogo" width="24" height="24" alt="Delete Button, Red X" />
@@ -461,6 +476,11 @@ unVote() {
           transitionAppearTimeout={2000}
           transitionEnter={false}
           transitionLeave={false}>
+          <Link to={`/project/${this.props.params.probID}/tree`} activeClassName="activeProblemTreeButton">
+            <div id="treeProblemButton">
+              <img src={require('../../assets/treeWhite1.svg')} id="treeProblemLogo" width="30" height="30" alt="Project Tree Button, white tree" />
+            </div>
+          </Link>
           <Link to={`/project/${this.props.params.probID}/flag`} activeClassName="activeProblemFlagButton">
             <div id="flagProblemButton">
               <img src={require('../../assets/flag.svg')} id="flagProblemLogo" width="24" height="24" alt="Delete Button, Red X" />

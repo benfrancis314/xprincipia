@@ -6,11 +6,12 @@ import $ from 'jquery';
 
 export default class SubProblemUnit extends React.Component {
 
-  constructor(){
-  super();
-  this.state = {
-	  problems: []
-  }
+  constructor(props){
+    super(props);
+    
+    this.state = {
+        problems: []
+    }
 
   };
 
@@ -24,14 +25,15 @@ componentDidMount(){
         })
 }
 
-componentWillReceiveProps (nextProps){
-    var self = this;
-    return axios.get( Config.API + '/problems/subproblems?id='+nextProps.parentID).then(function (response) {
-        self.setState({
-            problems: response.data
-        })
-    }) 
-}
+// componentWillReceiveProps (nextProps){
+//     var self = this;
+//         return axios.get( Config.API + '/problems/subproblems?id='+nextProps.parentID).then(function (response) {
+//             self.setState({
+//                 problems: response.data
+//             })
+//         }) 
+// }
+
     //On recieving new props
 //   componentWillReceiveProps(nextProps){
 // 	  var self = this
@@ -47,7 +49,7 @@ componentWillReceiveProps (nextProps){
                 {this.props.parentID}
                 {this.state.problems.length}
             </div>
-            <Link to={`/project/${this.props.probID}/create`} activeClassName="activePrivateCreateButton">
+            <Link to={`/project/${this.props.projectID}/tree/create`} activeClassName="activePrivateCreateButton">
                 <div id="overViewAddButton">
                     <img src={require('../../assets/blueAdd2.svg')} id="privateNewProjectPlus" width="30" height="30" alt="User avatar, DNA Helix" />
                 </div>

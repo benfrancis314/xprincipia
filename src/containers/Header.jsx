@@ -18,8 +18,29 @@ export default class Header extends React.Component {
         }
         // this.queryProblem = this.queryProblem.bind(this);
         this.postLogin = this.postLogin.bind(this);
+        // this.toggleFullScreen = this.toggleFullScreen.bind(this);
     };
 
+    // toggleFullScreen() {
+    //   if ((document.fullScreenElement && document.fullScreenElement !== null) ||    
+    //    (!document.mozFullScreen && !document.webkitIsFullScreen)) {
+    //     if (document.documentElement.requestFullScreen) {  
+    //       document.documentElement.requestFullScreen();  
+    //     } else if (document.documentElement.mozRequestFullScreen) {  
+    //       document.documentElement.mozRequestFullScreen();  
+    //     } else if (document.documentElement.webkitRequestFullScreen) {  
+    //       document.documentElement.webkitRequestFullScreen(Element.ALLOW_KEYBOARD_INPUT);  
+    //     }  
+    //   } else {  
+    //     if (document.cancelFullScreen) {  
+    //       document.cancelFullScreen();  
+    //     } else if (document.mozCancelFullScreen) {  
+    //       document.mozCancelFullScreen();  
+    //     } else if (document.webkitCancelFullScreen) {  
+    //       document.webkitCancelFullScreen();  
+    //     }  
+    //   }  
+    // }
 
   componentWillMount() {
     this.state =  { 
@@ -111,7 +132,11 @@ if (this.state.userToken === undefined ){
       return (
         <div id="header">
             <div id="logo">
-              <Link to="/welcome"><div id="logoName">XPrincipia</div></Link>
+              <Link to="/welcome">
+                <div id="logoName">
+                  XPrincipia
+                </div>
+              </Link>
             </div>
             {/*Login in header*/}
             <input type="text" name="email" required="required" maxLength="30" placeholder="username" id="loginHeaderEmail" autoFocus />
@@ -131,7 +156,11 @@ if (this.state.userToken === undefined ){
         return (
             <div id="header">
                 <div id="logo">
-                <Link to="/welcome"><div id="logoName">XPrincipia</div></Link>
+                  <Link to="/welcome">
+                    <div id="logoName">
+                      XPrincipia
+                    </div>
+                  </Link>
                 </div>
                 {/*<div id="explore">
                     <form id="exploreFormHeader">

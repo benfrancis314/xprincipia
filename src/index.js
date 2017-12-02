@@ -77,6 +77,7 @@ import LearnResourcesForm from './components/learn/LearnResourcesForm.jsx';
 import LearnResourcesPrivateForm from './components/learn/LearnResourcesPrivateForm.jsx';
 import Load from './components/Load.jsx';
 import LoginUnit from './components/LoginUnit.jsx';
+import OverviewProjectForm from './components/overview/OverviewProjectForm.jsx';
 import PrivateProjectForm from './components/problems/PrivateProjectForm.jsx';
 import PrivateSubProjectForm from './components/problems/PrivateSubProjectForm.jsx';
 import ProblemForm from './components/problems/ProblemForm.jsx';
@@ -468,7 +469,11 @@ ReactDOM.render(
               </Route>
         </Route>
       </Route>
-      <Route path='/project/:probID/tree' component={OverviewContainer}></Route>
+      <Route path='/project/:probID/tree/container' component={OverviewContainer}>
+        <IndexRoute component={TrueEmpty}></IndexRoute>
+        <Route path='/project/:probID/tree' component={TrueEmpty}></Route>
+        <Route path='/project/:probID/tree/create' component={OverviewProjectForm}></Route>
+      </Route>
       <Route path='/project/:probID' component={FullProblem}>
         <IndexRoute component={Empty}></IndexRoute>
         <Route path='/project/:probID/create' component={ProblemForm}></Route>
