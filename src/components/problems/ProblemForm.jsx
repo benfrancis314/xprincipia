@@ -81,7 +81,6 @@ export default class ProblemForm extends React.Component {
           {/*</ScrollableAnchor>*/}
           <div id="SBButtonNoHover">
             new sub project
-            x{this.props.ggParentID}x
           </div>
           <div id="createProblemBox">
               <form id="createForm">

@@ -4,10 +4,10 @@ import { Link } from 'react-router';
 import {Config} from '../config.js';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group'; // ES6
 import OverviewGrandChildUnits from '../components/overview/OverviewGrandChildUnits.jsx';
-import OverviewChildUnits from '../components/overview/OverviewChildUnits.jsx';
-import OverviewUnits from '../components/overview/OverviewUnits.jsx';
-import OverviewGrandParentUnits from '../components/overview/OverviewGrandParentUnits.jsx';
-import OverviewParentUnits from '../components/overview/OverviewParentUnits.jsx';
+import OverviewChildContainer from '../components/overview/OverviewChildContainer.jsx';
+import OverviewProjectContainer from '../components/overview/OverviewProjectContainer.jsx';
+import OverviewGrandParentContainer from '../components/overview/OverviewGrandParentContainer.jsx';
+import OverviewParentContainer from '../components/overview/OverviewParentContainer.jsx';
 
 
 
@@ -47,6 +47,17 @@ export default class ErrorContainer extends React.Component {
             })
        
     }
+    componentWillReceiveProps(nextProps) {
+        var self = this;
+        // window.scrollTo(0,0);
+        axios.get( Config.API + '/problems/ID?id='+nextProps.params.probID).then(function (response) {
+  
+            //set Problem Data
+            self.setState({
+                problemInfo: response.data
+            })
+      })
+    }
 
 
     render() {
@@ -81,10 +92,10 @@ export default class ErrorContainer extends React.Component {
                 x{this.state.problemInfo.GrandParentID}x
             </div>
             <div id="overViewContainer">
-                <OverviewGrandParentUnits problems={this.state.level4Problems} />
-                <OverviewParentUnits parentTitle={this.state.problemInfo.ParentTitle} grandParentID={this.state.problemInfo.GrandParentID}/>
-                <OverviewUnits projectTitle={this.state.problemInfo.Title} projectID={this.props.params.probID} parentID={this.state.problemInfo.ParentID} />
-                <OverviewChildUnits problems={this.state.level4Problems} />
+                <OverviewGrandParentContainer grandParentTitle={this.state.problemInfo.GrandParentTitle} grandParentID={this.state.problemInfo.GrandParentID} ggParentID={this.state.problemInfo.GGParentID} />
+                <OverviewParentContainer parentTitle={this.state.problemInfo.ParentTitle} parentID={this.state.problemInfo.ParentID} grandParentID={this.state.problemInfo.GrandParentID}/>
+                <OverviewProjectContainer projectTitle={this.state.problemInfo.Title} projectID={this.props.params.probID} parentID={this.state.problemInfo.ParentID} />
+                <OverviewChildContainer projectID={this.props.params.probID} />
                 <OverviewGrandChildUnits problems={this.state.level4Problems} />
             </div>
             {this.props.children}

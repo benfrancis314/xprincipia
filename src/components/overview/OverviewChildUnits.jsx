@@ -4,25 +4,16 @@ import { Link } from 'react-router';
 import {Config} from '../../config.js';
 import $ from 'jquery';
 
-export default class SubProblemUnit extends React.Component {
+export default class OverviewChildUnits extends React.Component {
 
-  constructor(){
-  super();
-  this.state = {
-	  problems: []
-  }
+  constructor(props){
+    super(props);
+    this.state = {
+        problems: []
+    }
 
   };
 
-
-		// Not sure what this is used for
-    // componentDidMount(){
-    //   var self = this;
-	  // if (self.props.problem != null ){
-		//   self.setState({problems: this.props.problems})
-	  // }
-    //   return
-    // }
 
     //On recieving new props
   componentWillReceiveProps(nextProps){
@@ -43,14 +34,14 @@ export default class SubProblemUnit extends React.Component {
                 </div>
 			</Link>
 			<ul> 
-                <div id="overViewRowUnitTop4">
+                {/* <div id="overViewRowUnitTop4">
                     <div id="overViewTitle">
                         Thoughts
                     </div>
                     <div id="overViewViewButton">
                         view
                     </div>
-                </div>
+                </div> */}
 				{this.state.problems.map(this.renderItem)}
 			</ul>
 		</div>

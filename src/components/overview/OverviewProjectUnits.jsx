@@ -15,31 +15,19 @@ export default class SubProblemUnit extends React.Component {
 
   };
 
-
-componentWillReceiveProps(nextProps){
-    var self = this;
-        return axios.get( Config.API + '/problems/subproblems?id='+this.props.parentID).then(function (response) {
-            self.setState({
-                problems: response.data,
-            })
-        })
+  componentWillReceiveProps(nextProps){
+    var self = this
+    self.setState({problems: nextProps.problems})
 }
 
-// componentWillReceiveProps (nextProps){
+// componentWillReceiveProps(nextProps){
 //     var self = this;
-//         return axios.get( Config.API + '/problems/subproblems?id='+nextProps.parentID).then(function (response) {
+//         return axios.get( Config.API + '/problems/subproblems?id='+this.props.parentID).then(function (response) {
 //             self.setState({
-//                 problems: response.data
+//                 problems: response.data,
 //             })
-//         }) 
+//         })
 // }
-
-    //On recieving new props
-//   componentWillReceiveProps(nextProps){
-// 	  var self = this
-// 	  self.setState({problems: nextProps.problems})
-//   }
-
 
 	render() {
 		return (
@@ -70,7 +58,7 @@ componentWillReceiveProps(nextProps){
 		</div>
 		);
 	}
-	renderItem(problem) {
+	renderItem(problem, props) {
         // var self = this;
         // if (problem.Title == this.props.projectID) {
         //     return (
@@ -83,6 +71,11 @@ componentWillReceiveProps(nextProps){
             <div key={problem.ID} id="nodisplay">
             </div>
         );
+    } else if (problem.Title == props.projectTitle) {
+        return (
+            <div key={problem.ID} id="nodisplay">
+            </div>
+        );
     } else {
 
         return (
@@ -90,6 +83,7 @@ componentWillReceiveProps(nextProps){
                 <li key={problem.ID} id="overViewRowUnit3">
                     <div id="overViewTitle">
                         {problem.Title}
+                        x{props.projectTitle}x
                     </div>
                     <Link to={'/project/'+problem.ID +'/subprojects'}>
                         <div id="overViewViewButton">
