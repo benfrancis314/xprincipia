@@ -33,7 +33,7 @@ constructor(props){
        return (
             <div>
                 <div id="suggestionContainer">
-                    {this.props.children}
+                    {React.cloneElement(this.props.children, {parentTitle: this.props.parentTitle})}
                     <LearnResourcesUnit1 resources={this.state.resources} />
                 </div>  
             </div>

@@ -101,57 +101,27 @@ if (question.Private === true) {
 } else if (question.ParentType === 1) {
 
       return (
-    //   If don't want to show proposal questions
-            // <li key={question.ID} id="nodisplay">
-            // </li>
-    //   If we do want to show proposal questions
-            <li key={question.ID} id="feedListUnit">
-            <Link to={{pathname: '/project/'+question.ID +'/subprojects'}} onClick={()=>{this.handleClick()}}>
-                <div id="feedUnits">               
-                    <div id="blueFeed">project:<span id="feedCaps"> {question.Username}</span></div>
-                    <div id="whiteFeed">{question.Description}</div>
-                    <div id="feedDate">{dateTime(question.CreatedAt)}</div>
-                </div>
-            </Link>
-        </li>
-      
-      );
-
-} else if (question.Title === 'Interstellar Civilization') {
-
-      return (
-      
-        <li key={question.ID} id="nodisplay">
-        </li>
-      
-      
-      );
-
-} else if (question.Title === 'Evolving Humanity') {
-      return (
-        <li key={question.ID} id="nodisplay">
-        </li>
-      
-      );
-} else if (question.Title === 'Theoretical Knowledge') {
-      return (
-        <li key={question.ID} id="nodisplay">
-        </li>
-      
-      );
-} else if (question.Title === 'Technology Development') {
-      return (
-        <li key={question.ID} id="nodisplay">
-        </li>
+        <div key={question.ID} id="nodisplay">
+        </div>
+        // Setup for questions on solutions too, may need new field for its secondary parent, the project of the solution
+        // <li key={question.ID} id="feedListUnit">
+        //     <Link to={'/project/'+question.ID +'/subprojects'}>
+        //         <div id="feedUnits">               
+        //             <div id="blueFeed">project:<span id="feedCaps"> {question.ParentTitle}</span></div>
+        //             <div id="whiteFeed">{question.Description}</div>
+        //             <div id="feedDate">{dateTime(question.CreatedAt)}</div>
+        //         </div>
+        //     </Link>
+        // </li>
       
       );
 } else 
       return (
         <li key={question.ID} id="feedListUnit">
-            <Link to={{pathname: '/project/'+question.ID +'/subprojects'}} onClick={()=>{this.handleClick()}}>
+            <Link to={'/project/'+question.TypeID +'/question/'+question.ID +'/answers'}>
                 <div id="feedUnits">  
                      {/* Used to say "Question on: ... " or "Q: ... " or just the title */}
-                    <div id="blueFeedProse">question on:<span id="feedCaps"> {question.Description}</span></div>
+                    <div id="blueFeedProse">project:<span id="feedCaps"> {question.ParentTitle}</span></div>
                     <div id="whiteFeedProse">{question.Description}</div>
                     <div id="feedDateProse">{dateTime(question.CreatedAt)}</div>
                 </div>

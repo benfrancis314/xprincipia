@@ -68,7 +68,7 @@ export default class ProblemDiscussMenu extends React.Component {
                                     </Link>
                                 </div>
                             </div>
-                            {React.cloneElement(this.props.children, {probID: this.state.probID})}
+                            {React.cloneElement(this.props.children, {probID: this.state.probID, parentTitle: this.props.parentTitle})}
                     <div id="proposalsTitleRightSBEnd"><br /></div>
                 </div>
             </ReactCSSTransitionGroup>

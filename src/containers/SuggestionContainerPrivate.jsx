@@ -33,14 +33,14 @@ constructor(props){
     if (this.props.params.solutionID){
         return (
             <div id="suggestionContainer">
-                {this.props.children}
+                {React.cloneElement(this.props.children, {parentTitle: this.props.parentTitle})}
                 <SuggestionProposalUnitPrivate suggestions={this.state.suggestions} probID={this.props.params.probID} solutionID={this.props.params.solutionID} />
             </div>
         );
     } else {
         return (
             <div id="suggestionContainer">
-                {this.props.children}
+                {React.cloneElement(this.props.children, {parentTitle: this.props.parentTitle})}
                 <SuggestionUnitPrivate suggestions={this.state.suggestions} />
             </div>
       

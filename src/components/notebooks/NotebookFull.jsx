@@ -13,6 +13,7 @@ export default class NotebookFull extends React.Component {
 
         this.state = {
             solutionInfo: [],
+            // timer: '0',
         }
 
         this.updateNotebook = this.updateNotebook.bind(this);
@@ -164,7 +165,11 @@ componentWillUnmount() {
         $('#notebookSavedLabel').html("unsaved").fadeIn(7500);
         $('#notebookSavedLabel').attr('id','notebookUnsavedLabel');
     });
-    setTimeout(this.testUnsavedTest1, 1000);
+    // self.setState({
+    //   timer: '0',
+    // })
+    setTimeout(this.testUnsavedTest1(), 1000);
+    
     // We want to make sure it is unsaved after 1s and 5s, to make sure
     // it is unsaved for at least 5 seconds between saves
   }
@@ -173,12 +178,15 @@ testUnsavedTest1() {
     // this.updateNotebook()
     setTimeout(this.testUnsavedTest2(), 1000);
   }
+  // self.setState({
+  //   timer: '1',
+  // })
 }
 testUnsavedTest2() {
   if (document.getElementById('notebookSavedLabel') == null) {
     // this.updateNotebook()
     setTimeout(this.testUnsavedTest3(), 1000);
-  }
+}
 }
 testUnsavedTest3() {
   if (document.getElementById('notebookSavedLabel') == null) {

@@ -1,7 +1,6 @@
 import React from 'react';
 import axios from 'axios';
 import LearnContentUnit1 from '../components/learn/LearnContentUnit1.jsx';
-import SideBarMore from '../components/SideBarMore.jsx';
 import {Config} from '../config.js'
 
 export default class LearnContentContainer1 extends React.Component {
@@ -32,9 +31,8 @@ constructor(props){
    render() {
        return (
             <div id="suggestionContainer">
-                {this.props.children}
+                {React.cloneElement(this.props.children, {parentTitle: this.props.parentTitle})}
                 <LearnContentUnit1 learnItems={this.state.learnItems} />
-                <SideBarMore />
             </div>  
       );
     }  

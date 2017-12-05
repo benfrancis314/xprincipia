@@ -37,14 +37,14 @@ export default class QuestionContainer extends React.Component {
     if (this.props.params.solutionID){
         return (
             <div id="questionContainer">
-                {this.props.children}
+                {React.cloneElement(this.props.children, {parentTitle: this.props.parentTitle})}
                 <QuestionProposalUnit questions={this.state.questions} probID={this.props.params.probID} />
             </div>
         );
     } else {
         return (
             <div id="questionContainer">
-                {this.props.children}
+                {React.cloneElement(this.props.children, {parentTitle: this.props.parentTitle})}
                 <QuestionUnit questions={this.state.questions} />
             </div>
       
