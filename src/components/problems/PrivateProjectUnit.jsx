@@ -65,9 +65,51 @@ export default class PrivateProjectUnit extends React.Component {
                         });
                         // alert('success');
         }
-        if (problem.Private === true && (problem.OriginalPosterUsername === cookie.load('userName'))) {
+        if (problem.Private === true && (problem.OriginalPosterUsername === cookie.load('userName')) && problem.Title.length > 50) {
+        return (
+            <Link key={problem.ID} to={'/project/private/'+problem.ID +'/subprojects'}>
+                <li key={problem.ID} id="SPUnit">
+                    <div id="SPHeader">
+                        <div id="SPTitleSmall">{problem.Title}</div>
+                        <div id="SPPercent">{problem.Rank}</div>
+                    </div>
+                </li>
+            </Link>
+        
+        );
+        } else if (problem.Private === true && (problem.OriginalPosterUsername === cookie.load('userName')) && problem.Class == '2') {
             return (
-               <Link key={problem.ID} to={'/project/private/'+problem.ID +'/subprojects'} onClick={handleClick}>
+                <Link key={problem.ID} to={'/project/private/'+problem.ID +'/subprojects'}>
+                    <li key={problem.ID} id="SPUnit">
+                        <div id="SPHeaderRed">
+                            <div id="SPTitleRed">
+                                <span id="red">problem</span>
+                                <br />
+                                {problem.Title}
+                            </div>
+                            <div id="SPPercent">{problem.Rank}</div>
+                        </div>
+                    </li>
+                </Link>
+            );
+        } else if (problem.Private === true && (problem.OriginalPosterUsername === cookie.load('userName')) && problem.Class == '1') {
+            return (
+                <Link key={problem.ID} to={'/project/private/'+problem.ID +'/subprojects'}>
+                    <li key={problem.ID} id="SPUnit">
+                        <div id="SPHeaderGreen">
+                            <div id="SPTitleGreen">
+                                <span id="green">goal</span>
+                                <br />
+                                {problem.Title}
+                            </div>
+                            <div id="SPPercent">{problem.Rank}</div>
+                        </div>
+                    </li>
+                </Link>
+            );
+        } else if (problem.Private === true && (problem.OriginalPosterUsername === cookie.load('userName'))) {
+            return (
+               <Link key={problem.ID} to={'/project/private/'+problem.ID +'/subprojects'}>
                     <li id="SPPrivateUnit">
                         <div id="SPHeaderPrivate">
                             <div id="SPTitle">{problem.Title}</div>

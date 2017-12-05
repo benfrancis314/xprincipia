@@ -1,10 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router';
 import axios from 'axios';
-import CommentProposalUnitPrivate from '../components/comments/CommentProposalUnitPrivate.jsx';
-import CommentUnitPrivate from '../components/comments/CommentUnitPrivate.jsx';
-import SideBarMore from '../components/SideBarMore.jsx';
-import {Config} from '../config.js';
+import CommentProposalUnitPrivate from '../../components/comments/CommentProposalUnitPrivate.jsx';
+import CommentUnitPrivate from '../../components/comments/CommentUnitPrivate.jsx';
+import SideBarMore from '../../components/SideBarMore.jsx';
+import {Config} from '../../config.js';
 import $ from 'jquery';
 
 export default class SuggestionCommentContainer extends React.Component {
@@ -73,7 +73,7 @@ export default class SuggestionCommentContainer extends React.Component {
                 <div id="answerQuestionHeader">
                     <Link to={`/project/private/${this.props.params.probID}/proposal/${this.props.params.solutionID}/suggestions`}>
                         <div id="backSolutionArrowDiv">
-                            <img src={require('../assets/upArrow.svg')} id="backSolutionArrow" width="50" height="30" alt="Back arrow, blue up arrow" />
+                            <img src={require('../../assets/upArrow.svg')} id="backSolutionArrow" width="50" height="30" alt="Back arrow, blue up arrow" />
                         </div>
                     </Link>
                     <div id="answerQuestionLabel">Return to Suggestions</div>
@@ -109,7 +109,7 @@ export default class SuggestionCommentContainer extends React.Component {
                 <div id="answerQuestionHeader">
                     <Link to={`/project/private/${this.props.params.probID}/suggestions`}>
                         <div id="backSolutionArrowDiv">
-                            <img src={require('../assets/upArrow.svg')} id="backSolutionArrow" width="50" height="30" alt="Back arrow, blue up arrow" />
+                            <img src={require('../../assets/upArrow.svg')} id="backSolutionArrow" width="50" height="30" alt="Back arrow, blue up arrow" />
                         </div>
                     </Link>
                     <div id="answerQuestionLabel">Return to Suggestions</div>

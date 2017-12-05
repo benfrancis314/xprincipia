@@ -29,7 +29,7 @@ export default class OverviewGrandParentUnits extends React.Component {
             <div id="overViewLineageLabel2">
                 parent
                 {/* x{this.props.grandParentID}x */}
-                yxxy
+                {/* yxxy */}
             </div>
             <Link to={`/project/${this.props.probID}/create`} activeClassName="activePrivateCreateButton">
                 <div id="overViewAddButton">

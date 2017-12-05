@@ -83,7 +83,7 @@ export default class SubProblemUnit extends React.Component {
                 <li key={problem.ID} id="overViewRowUnit3">
                     <div id="overViewTitle">
                         {problem.Title}
-                        x{props.projectTitle}x
+                        {/* x{props.projectTitle}x */}
                     </div>
                     <Link to={'/project/'+problem.ID +'/subprojects'}>
                         <div id="overViewViewButton">

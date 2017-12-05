@@ -5,20 +5,6 @@ import axios from 'axios';
 import cookie from 'react-cookie';
 import $ from 'jquery';
 import {Config} from '../../config.js';
-// import {OnUnload} from 'react-window-mixins';
-// import Beforeunload from 'react-beforeunload';
-
-// React.createClass({
-//     mixins: [ OnUnload ],
-  
-//     onUnload: function() {
-//       // Clean up any resources
-//     },
-  
-//     onBeforeUnload: function() {
-//       return 'Are you sure you want to leave the page?';
-//     }
-//   });
 
 export default class NotebookFull extends React.Component {
    
@@ -29,19 +15,18 @@ export default class NotebookFull extends React.Component {
             solutionInfo: [],
         }
 
-    this.updateNotebook = this.updateNotebook.bind(this);
-    this.unSaved = this.unSaved.bind(this);
-    this.testUnsaved = this.testUnsaved.bind(this);
-    this.testUnsavedTest1 = this.testUnsavedTest1.bind(this);
-    this.testUnsavedTest2 = this.testUnsavedTest2.bind(this);
-    this.testUnsavedTest3 = this.testUnsavedTest3.bind(this);
-    this.testUnsavedTest4 = this.testUnsavedTest4.bind(this);
-    
+        this.updateNotebook = this.updateNotebook.bind(this);
+        this.unSaved = this.unSaved.bind(this);
+        this.testUnsaved = this.testUnsaved.bind(this);
+        this.testUnsavedTest1 = this.testUnsavedTest1.bind(this);
+        this.testUnsavedTest2 = this.testUnsavedTest2.bind(this);
+        this.testUnsavedTest3 = this.testUnsavedTest3.bind(this);
+        this.testUnsavedTest4 = this.testUnsavedTest4.bind(this);
     };
     //initialize the component with this state
     componentWillMount(){
       var self = this;
-      return axios.get( Config.API + '/solutions/ID?id='+5).then(function (response) {
+      return axios.get( Config.API + '/solutions/ID?id='+this.props.currentNotebook).then(function (response) {
           self.setState({
               solutionInfo: response.data,
           })
@@ -68,6 +53,35 @@ export default class NotebookFull extends React.Component {
           });
       });
   }
+  componentWillReceiveProps(nextProps){
+    var self = this;
+    return axios.get( Config.API + '/solutions/ID?id='+nextProps.currentNotebook).then(function (response) {
+        self.setState({
+            solutionInfo: response.data,
+        })
+        document.getElementById('notebookFullTitle').value = self.state.solutionInfo.Title;
+        document.getElementById('notebookFullContent').value = self.state.solutionInfo.Description;
+        document.getElementById('notebookFullResources').value = self.state.solutionInfo.References;
+
+  })
+    .catch(function (error) {
+      // console.log(error.response.data)
+        $(document).ready(function() {
+            $('#notification').attr('id','notificationShow').hide().slideDown();
+            if (error.response.data != '') {
+              $('#notificationContent').text(error.response.data);
+            }
+            else if (error.response.data == '[object Object]') {
+              return (
+                $(document).ready(function() {
+                  $('#notificationLoginRegisterContainer').attr('id','notificationLoginRegisterContainerShow');
+                  $('#notificationContent').html('Please <span id="blue">login </span>to contribute');
+                })
+              );
+            } 
+        });
+    });
+}
   updateNotebook() {
     //Read field items into component state
     this.state.title = document.getElementById('notebookFullTitle').value
@@ -75,7 +89,7 @@ export default class NotebookFull extends React.Component {
     this.state.references = document.getElementById('notebookFullResources').value
 
   var self = this;
-  axios.put( Config.API + '/auth/solutions/update?id='+5, {
+  axios.put( Config.API + '/auth/solutions/update?id='+this.props.currentNotebook, {
       username: cookie.load('userName'),
       title : self.state.title,
       summary : self.state.summary,
@@ -206,6 +220,7 @@ testUnsaved() {
         // <div>
             // <Beforeunload onBeforeunload={this.updateNotebook}>
                 <div id="notebookFullContainer">
+                  {/* {this.props.currentNotebook} */}
                     <input id="notebookFullTitle" placeholder="notes title" type="text" onChange={this.unSaved}></input>
                     <textarea id="notebookFullContent" placeholder="Brainstorm or record your thoughts" autoFocus onChange={this.unSaved}></textarea>
                     <div id="notebookFullSourcesTitle">

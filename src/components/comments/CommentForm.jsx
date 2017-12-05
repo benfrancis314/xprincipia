@@ -6,8 +6,8 @@ import $ from 'jquery';
 
 export default class CommentForm extends React.Component {
 
-constructor(){
-  super();
+constructor(props){
+  super(props);
 
   this.state= {
     comment: '',
@@ -21,45 +21,45 @@ postComment() {
   this.state.comment = document.getElementById('commentTextArea').value
 
 // Testing to see if this can be used to make comments elsewhere
-  if (this.props.params.proID) {
-    //   axios.post( Config.API + '/auth/comments/create', {
-    //   type:'5',
-    //   suggestionID: this.props.params.suggID,
-    //   username: cookie.load('userName'),
-    //   description : this.state.comment
-    // })
-    //   .then(function (result) {
-    //     document.location = window.location.pathname 
-    //   })
-    //   .catch(function (error) {
-    //     alert('error')
-    //       $(document).ready(function() {
-    //           $('#notification').attr('id','notificationShow').hide().slideDown();
+  if (this.props.params.suggID) {
+    axios.post( Config.API + '/auth/comments/create', {
+      type:'5',
+      // suggestionID: this.props.params.suggID,
+      parentID: this.props.params.freeFormID,
+      parentType: '3',
+      username: cookie.load('userName'),
+      description : this.state.comment
+    })
+    .then(function (result) {
+      document.location = window.location.pathname 
+    })
+          .catch(function (error) {
+              $(document).ready(function() {
+                  $('#notification').attr('id','notificationShow').hide().slideDown();
 
-    //             if (error.response.data == '[object Object]') {
-    //               return (
-    //                 $(document).ready(function() {
-    //                   $('#notificationLoginRegisterContainer').attr('id','notificationLoginRegisterContainerShow');
-    //                   $('#notificationContent').html('Please <span id="blue">login </span>to add a suggestion');
-    //                 })
-    //               );
-    //             }  else if (error.response.data != '') {
-    //           $('#notificationContent').text(error.response.data);
-    //           }
-    //       });
-    //   });
-
-    //else post to problem
-    //probID will be used
-  } else {
+                    if (error.response.data == '[object Object]') {
+                      return (
+                        $(document).ready(function() {
+                          $('#notificationLoginRegisterContainer').attr('id','notificationLoginRegisterContainerShow');
+                          $('#notificationContent').html('Please <span id="blue">login </span>to add a comment');
+                        })
+                      );
+                    }  else if (error.response.data != '') {
+                  $('#notificationContent').text(error.response.data);
+                  }
+              });
+          });
+  } else if (this.props.params.freeFormID) {
         axios.post( Config.API + '/auth/comments/create', {
         type:'5',
-        suggestionID: this.props.params.suggID,
+        // suggestionID: this.props.params.suggID,
+        parentID: this.props.params.freeFormID,
+        parentType: '6',
         username: cookie.load('userName'),
         description : this.state.comment
       })
       .then(function (result) {
-        document.location = window.location.pathname 
+        document.location = window.location.pathname; 
       })
             .catch(function (error) {
                 $(document).ready(function() {
@@ -77,7 +77,9 @@ postComment() {
                     }
                 });
             });
-}
+  } else {
+    alert('comment form not working for suggestions or debate');
+  }
 }
 
 

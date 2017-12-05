@@ -1127,7 +1127,7 @@ letter-spacing: 2px !important;
 }
 #editSBButton:hover, #editSBButtonAnswer:hover {
   cursor: pointer;
-  box-shadow: 0 0 2pt 2pt rgba(0,220,255,0.5) inset;
+  box-shadow: 0 0 20pt 20pt rgba(0,220,255,0.25) inset;
 }
 #flagSBButton:active {
   color: #ff7f7f;
@@ -1136,6 +1136,7 @@ letter-spacing: 2px !important;
 #editSBButton:active, #editSBButtonAnswer:active {
   color: #00ffdc;
   background-color: inherit;
+  box-shadow: 0 0 20pt 20pt rgba(0,220,255,0.5) inset;
 }
 
 #answerProblem fieldset {
@@ -4410,6 +4411,7 @@ font-family: 'Open Sans';
   flex-direction: row;
   font-family: 'Open Sans';
   padding-top: 10px;
+  transition: all 1s ease 0s;
 }
 #prosConsUnit {
   display: flex;
@@ -4439,6 +4441,33 @@ font-family: 'Open Sans';
   padding: 1% 5% 1% 5%;
   margin-bottom: 1.1%;
   background: linear-gradient(to right,rgba(0,220,255, 0.06), rgba(0,220,255, 0.07), rgba(0,220,255, 0.02));
+  position: relative;
+  transition: all 0.5s ease 0s;
+}
+#suggestionContentHover {
+  /*Old Styles*/
+  /*flex: 3 3 auto;
+  font-family: 'Open Sans';
+  border: 1px solid #dddddd;
+  border-width: 1px 0px 1px 1px;
+  border-radius: 3px 0px 0px 3px;
+  width: 80%;
+  padding: 15px;
+  margin-bottom: 1.1%;
+  background-color: rgba(0,220,255,0.05);*/
+
+  flex: 3 3 auto;
+  font-family: 'Open Sans';
+  border: 1px solid #dddddd;
+  border-radius: 5px 0px 25% 10px;
+  width: 80%;
+  padding: 1% 5% 1% 5%;
+  margin-bottom: 1.1%;
+  background-color: rgba(0,220,255,0.05);
+  /* background: linear-gradient(to right,rgba(0,220,255, 0.02), rgba(0,220,255, 0.07), rgba(0,220,255, 0.07)); */
+  /* background: linear-gradient(to right,rgba(0,220,255, 0.06), rgba(0,220,255, 0.07), rgba(0,220,255, 0.02));   */
+  position: relative;
+  transition: all 0.5s ease 0s;
 }
 #suggestionText {
   /*Old Styles*/
@@ -5712,6 +5741,47 @@ box-shadow: 0 0 2pt 2pt rgba(0,220,255,0.5);
 }
 
 
+#debateThreadButton {
+  position: absolute;
+  top: 11%;
+  right: 8px;
+  /* border: 1px solid rgba(255,127,127,0.25);
+  border-width: 0px 0px 1px 1px;
+  border-radius: 0% 0% 0% 45%; */
+  padding: 4px 10px 4px 12px;
+  transition: all 1s ease 0s;
+  z-index: 510;
+  transform: rotate(0deg);
+  background-color: rgba(0,220,255,0);
+  background: radial-gradient(circle , rgba(0,220,255,0.05), rgba(0,220,255,0), rgba(0,220,255,0));
+}
+#debateThreadButton:hover {
+  /* border: 1px solid rgba(0,220,255, 1) !important;
+  border-width: 0px !important;
+  border-radius: 5% 25% 5% 5%;
+  box-shadow: 0 0 1pt 1pt rgba(0,220,255,0.25); */
+  /* transform: scale(1.2); */
+  cursor: pointer;
+  /* transform: scale(1.2) rotate(90deg); */
+  transform: scale(1.1) rotate(90deg);
+  top: 8%;
+  right: 16px;
+}
+#flagProblemLogo {
+  transition: all 0.5s ease 0s;
+  /* opacity: 0.25; */
+  opacity: 1;
+  vertical-align: middle;
+}
+#debateDiscussButton:hover #flagProblemLogo {
+  /* transform: scale(1.2); */
+  opacity: 1;
+}
+
+
+
+
+
 
 
 
@@ -6119,9 +6189,14 @@ transform: scale(1.02);
   cursor: default !important;
   border-color: #00dcff !important;
   background-color: rgba(0,220,255,0.05) !important;
-  background: linear-gradient(to left, rgba(0,220,255,0.1), rgba(0,220,255,0.05), rgba(0,220,255,0.02)) !important;
   box-shadow: 0 0 1px 1px rgba(0,220,255,1)!important;
   transform: scale(1.02)!important;
+}
+.activeProblemOptionDiscuss div {
+  background: linear-gradient(to left, rgba(0,220,255,0.1), rgba(0,220,255,0.05), rgba(0,220,255,0.02)) !important;  
+}
+.activeProblemOptionLearn div {
+  background: linear-gradient(to right, rgba(0,220,255,0.1), rgba(0,220,255,0.05), rgba(0,220,255,0.02)) !important;  
 }
 #SBButtonProposal, #SBButtonFollow, #SBButtonFollowed {
   flex: 1 1 auto;
@@ -7074,6 +7149,27 @@ border-width: 0px 0px 1px 0px;
 /*Old Styles*/
 margin-right: 10px;
 font-size: 120%;
+}
+#discussHoverText {
+  /* display: none; */
+  position: absolute;
+  top: 3%;
+  right: 13%;
+  color: #00dcff;
+  transition: all 1s ease 0s;
+  letter-spacing: 4px;
+  opacity: 0;
+  font-size: 180%;
+}
+#discussHoverTextShow {
+  position: absolute;
+  top: 3%;
+  right: 13%;
+  color: #00dcff;
+  transition: all 1s ease 0s;
+  letter-spacing: 6px;
+  opacity: 1;
+  font-size: 180%;
 }
 
 /*End Discuss SB*/

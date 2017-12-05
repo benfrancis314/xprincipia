@@ -84,7 +84,7 @@ if (problem.ParentType === 1) {
 // This makes text smaller if problem length is larger
 } else if (problem.Title.length > 50) {
 return (
-	<Link key={problem.ID} to={'/project/private/'+problem.ID +'/subprojects'}>
+	<Link key={problem.ID} to={'/project/'+problem.ID +'/subprojects'}>
 		<li key={problem.ID} id="SPUnit">
 			<div id="SPHeader">
 				<div id="SPTitleSmall">{problem.Title}</div>
@@ -94,19 +94,22 @@ return (
 	</Link>
 
 );
-} else if (problem.Title.includes('s')) {
+} else if (problem.Class == '2') {
     return (
-        <Link key={problem.ID} to={'/project/'+problem.ID +'/subprojects'}>
+		<Link key={problem.ID} to={'/project/'+problem.ID +'/subprojects'}>
 			<li key={problem.ID} id="SPUnit">
-				<div id="SPHeader">
-					<div id="SPTitle">{problem.Title}</div>
+				<div id="SPHeaderRed">
+					<div id="SPTitleRed">
+						<span id="red">problem</span>
+						<br />
+						{problem.Title}
+					</div>
 					<div id="SPPercent">{problem.Rank}</div>
 				</div>
 			</li>
 		</Link>
-
 	);
-} else if (problem.Title.includes('e')) {
+} else if (problem.Class == '1') {
     return (
         <Link key={problem.ID} to={'/project/'+problem.ID +'/subprojects'}>
 			<li key={problem.ID} id="SPUnit">
@@ -125,12 +128,8 @@ return (
 	return (
         <Link key={problem.ID} to={'/project/'+problem.ID +'/subprojects'}>
 			<li key={problem.ID} id="SPUnit">
-				<div id="SPHeaderRed">
-					<div id="SPTitleRed">
-						<span id="red">problem</span>
-						<br />
-						{problem.Title}
-					</div>
+				<div id="SPHeader">
+					<div id="SPTitle">{problem.Title}</div>
 					<div id="SPPercent">{problem.Rank}</div>
 				</div>
 			</li>

@@ -2,27 +2,62 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Link } from 'react-router';
 import axios from 'axios';
+import cookie from 'react-cookie';
 import {Config} from '../config.js';
-import NotebookFull from '../components/profile/NotebookFull.jsx';
-import NotebookUnit from '../components/profile/NotebookUnit.jsx';
+import NotebookFull from '../components/notebooks/NotebookFull.jsx';
+import NotebookUnit from '../components/notebooks/NotebookUnit.jsx';
 import $ from 'jquery';
 
 
 export default class NotebookContainer extends React.Component {
-//   constructor(props){
-//         super(props);
+  constructor(){
+        super();
 
-//         this.state = {
-//             solutionInfo: [],
-//             solutionID: [],
-//             probID: []
-//         }
-//     };
+        this.state = {
+            currentNotebook: '',
+        }
+    };
 
 
 // When mounting and getting the call, do an IF statement first,
 // where IF there is the notebookContainerShow, THEN mount, otherwise don't.
 // This will prevent it from always mounting and make the site faster
+
+
+componentWillMount(){
+    var self = this;
+    // Axios call getting most recent notebook
+    // return axios.get( Config.API + '/solutions/ID?id='+this.props.currentNotebook).then(function (response) {
+        self.setState({
+            // Set to result of axios call getting most recent notebook
+            currentNotebook: '5',
+        })
+//   })
+//     .catch(function (error) {
+//       // console.log(error.response.data)
+//         $(document).ready(function() {
+//             $('#notification').attr('id','notificationShow').hide().slideDown();
+//             if (error.response.data != '') {
+//               $('#notificationContent').text(error.response.data);
+//             }
+//             else if (error.response.data == '[object Object]') {
+//               return (
+//                 $(document).ready(function() {
+//                   $('#notificationLoginRegisterContainer').attr('id','notificationLoginRegisterContainerShow');
+//                   $('#notificationContent').html('Please <span id="blue">login </span>to contribute');
+//                 })
+//               );
+//             } 
+//         });
+//     });
+}
+// componentWillReceiveProps(nextState) {
+//     nextState =  { 
+//         currentNotebook: '6',
+//     };
+//   }
+
+
 
 
 saveNotebook() {
@@ -42,6 +77,53 @@ hideNotebook() {
     });
 }
 
+createNotebook() {    
+  var self = this;
+  axios.post( Config.API + '/auth/notebooks/create', {
+      username: cookie.load('userName'),
+      title : 'test',
+      description : '',
+      sources: '',
+    })
+    .then(function (result, self) {
+        // $(document).ready(function() {
+        //     $('#notebookUnsavedLabel').html("saved").fadeIn(7500);
+        //     $('#notebookUnsavedLabel').attr('id','notebookSavedLabel');
+        //     // alert( 'success');
+        // });
+
+        // Go to new notebook
+        alert('success');
+        // document.location = '/project/' + self.props.probID + '/subprojects'
+    })
+      .catch(function (error) {
+        // console.log(error.response.data)
+          $(document).ready(function() {
+              $('#notification').attr('id','notificationShow').hide().slideDown();
+              if (error.response.data != '') {
+                $('#notificationContent').text(error.response.data);
+              }
+              else if (error.response.data == '[object Object]') {
+                return (
+                  $(document).ready(function() {
+                    $('#notificationLoginRegisterContainer').attr('id','notificationLoginRegisterContainerShow');
+                    $('#notificationContent').html('Please <span id="blue">login </span>to contribute');
+                  })
+                );
+              } 
+          });
+      });
+      self.setState({
+        // Set to result of axios call getting most recent notebook
+        currentNotebook: '6',
+    });
+    alert('afterStateChange');
+  }
+
+
+
+
+
    render() {
     
       return (
@@ -58,14 +140,14 @@ hideNotebook() {
                 <div id="notebookSavedLabel">
                     saved
                 </div>
-                <div id="notebookAddButton" 
+                <div id="notebookAddButton" onClick={this.createNotebook}
                 /* onMouseOver={this.hoverAdd} onMouseOut={this.unHoverAdd} */
                 >
                     <img src={require('../assets/blueAdd2.svg')} id="privateNewProjectPlus" width="35" height="35" alt="User avatar, DNA Helix" />
                 </div>
                 <NotebookUnit />
             </div>
-                <NotebookFull ref="full" />
+                <NotebookFull ref="full" currentNotebook={this.state.currentNotebook} />
             </div>
         </div>
       );

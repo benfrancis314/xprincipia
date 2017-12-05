@@ -21,7 +21,8 @@ export default class ProblemTitle extends React.Component {
         super(props);
 
         this.state = {
-            problemTitle: this.props.problemTitle
+            problemTitle: this.props.problemTitle,
+            problemClass: this.props.problemClass
         }
     };
 
@@ -38,7 +39,8 @@ export default class ProblemTitle extends React.Component {
   componentWillReceiveProps(nextProps){
       var self = this;
           self.setState({
-              problemTitle: nextProps.problemTitle
+              problemTitle: nextProps.problemTitle,
+              problemClass: nextProps.problemClass
           })
     }
 
@@ -59,15 +61,17 @@ export default class ProblemTitle extends React.Component {
     // }
 
 
-      if (0) {
-        return (
-          <div id="problemIntro">
-            <h1 id="problemTitle">{this.state.problemTitle}</h1>
-          </div>
-      );
-      }
+      
 
-       else if (1) {  
+    if (this.state.problemClass == '2') {
+    return (
+
+     <div id="problemIntro">
+         <div id="problemTypeLabelRed">problem</div>
+         <h1 id="problemTitleRed">{this.state.problemTitle}</h1>
+     </div>
+    );  
+    } else if (this.state.problemClass == '1') {  
            return (
 
             <div id="problemIntro">
@@ -76,15 +80,15 @@ export default class ProblemTitle extends React.Component {
             </div>
       );
 
-       } else {
-           return (
-
-            <div id="problemIntro">
-                <div id="problemTypeLabelRed">problem</div>
-                <h1 id="problemTitleRed">{this.state.problemTitle}</h1>
-            </div>
+       
+    } else {
+        return (
+          <div id="problemIntro">
+            <h1 id="problemTitle">{this.state.problemTitle}</h1>
+          </div>
       );
+      }
     }
-}}
+}
 
  

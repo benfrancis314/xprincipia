@@ -15,8 +15,8 @@ export default class ProblemForm extends React.Component {
     //ProblemForm structure in backend
     this.state= {
       title: '',
-      // field: '',
       summary: '',
+      class: '',
     }
 
     this.postProblem = this.postProblem.bind(this);
@@ -31,6 +31,13 @@ export default class ProblemForm extends React.Component {
     //Read field items into component state
     this.state.title = document.getElementById('problemTitleForm').value
     this.state.summary = document.getElementById('problemSummaryForm').value
+    if (document.getElementById('projectClass2').checked) {
+      this.state.class = '2' 
+    } else if (document.getElementById('projectClass1').checked) {
+      this.state.class = '1' 
+    } else {
+      this.state.class = '0' 
+    }
   
     var self = this
     axios.post( Config.API + '/auth/problems/create', {
@@ -43,9 +50,8 @@ export default class ProblemForm extends React.Component {
       grandParentID : String(this.props.gParentID),
       grandParentTitle: this.props.gParentTitle,
       ggParentID : String(this.props.ggParentID),
+      class : this.state.class,
 
-      // Not sure if necessary
-      // Private: false
     })
     .then(function (result) {
       //redirect back to the last page     
@@ -97,7 +103,7 @@ export default class ProblemForm extends React.Component {
                         </div>
                         <div id="projectFormRadioRow">
                           <label id="projectRadioButtonContainer">
-                            <input type="radio" name="projectType" value="0"/>
+                            <input type="radio" id="projectClass0" name="projectType" value="0"/>
                             <span id="checkmark1"></span>
                           </label>
                         </div>
@@ -108,7 +114,7 @@ export default class ProblemForm extends React.Component {
                         </div>
                         <div id="projectFormRadioRow">
                           <label id="projectRadioButtonContainer">
-                            <input type="radio" name="projectType" value="1" />
+                            <input type="radio" id="projectClass1" name="projectType" value="1" />
                             <span id="checkmark2"></span>
                           </label>
                         </div>
@@ -119,7 +125,7 @@ export default class ProblemForm extends React.Component {
                         </div>
                         <div id="projectFormRadioRow">
                           <label id="projectRadioButtonContainer">
-                            <input type="radio" name="projectType" value="2" />
+                            <input type="radio" id="projectClass2" name="projectType" value="2" />
                             <span id="checkmark3"></span>
                           </label>
                         </div>

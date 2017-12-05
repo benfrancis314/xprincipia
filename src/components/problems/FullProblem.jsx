@@ -204,7 +204,7 @@ unVote() {
         <div id="problemColumn1">
           <SubProjectParentUnit parentID={this.state.problemInfo.ParentID} parentType={this.state.problemInfo.ParentType} />
           {/*<ProjectParentChildrenUnitsContainer parentID={this.state.problemInfo.ParentID} problemTitle={this.state.problemInfo.Title}/>*/}
-          <ProblemTitle problemTitle={this.state.problemInfo.Title} />
+          <ProblemTitle problemTitle={this.state.problemInfo.Title} problemClass={this.state.problemInfo.Class} />
           <div id="problemRow1">
               <Link to={`/project/${this.props.params.probID}/questions`} activeClassName="activeProblemOptionDiscuss">
                     <div id="SBButtonDiscuss">discuss</div>
@@ -282,7 +282,7 @@ unVote() {
         <div id="problemColumn1">
           <SubProjectParentUnit parentID={this.state.problemInfo.ParentID} parentType={this.state.problemInfo.ParentType} />
           {/*<ProjectParentChildrenUnitsContainer parentID={this.state.problemInfo.ParentID} problemTitle={this.state.problemInfo.Title}/>*/}
-          <ProblemTitle problemTitle={this.state.problemInfo.Title} />
+          <ProblemTitle problemTitle={this.state.problemInfo.Title} problemClass={this.state.problemInfo.Class} />
           <div id="problemRow1">
               <Link to={`/project/${this.props.params.probID}/questions`} activeClassName="activeProblemOptionDiscuss">
                     <div id="SBButtonDiscuss">discuss</div>
@@ -352,7 +352,7 @@ unVote() {
         <div id="problemColumn1">
           <SubProjectParentUnit parentID={this.state.problemInfo.ParentID} parentType={this.state.problemInfo.ParentType} />
           {/*<ProjectParentChildrenUnitsContainer parentID={this.state.problemInfo.ParentID} problemTitle={this.state.problemInfo.Title}/>*/}
-          <ProblemTitle problemTitle={this.state.problemInfo.Title} />
+          <ProblemTitle problemTitle={this.state.problemInfo.Title} problemClass={this.state.problemInfo.Class} />
           <div id="problemRow1">
               <Link to={`/project/${this.props.params.probID}/questions`} activeClassName="activeProblemOptionDiscuss">
                     <div id="SBButtonDiscuss">discuss</div>
@@ -422,7 +422,7 @@ unVote() {
         <div id="problemColumn1">
           <SubProjectParentUnit parentID={this.state.problemInfo.ParentID} parentType={this.state.problemInfo.ParentType} />
           {/*<ProjectParentChildrenUnitsContainer parentID={this.state.problemInfo.ParentID} problemTitle={this.state.problemInfo.Title}/>*/}
-          <ProblemTitle problemTitle={this.state.problemInfo.Title} />
+          <ProblemTitle problemTitle={this.state.problemInfo.Title} problemClass={this.state.problemInfo.Class} />
           <div id="problemRow1">
             <Link to={`/project/${this.props.params.probID}/questions`} activeClassName="activeProblemOptionDiscuss">
                   <div id="SBButtonDiscuss">discuss</div>
@@ -490,7 +490,7 @@ unVote() {
         <div id="problemColumn1">
           <SubProjectParentUnit parentID={this.state.problemInfo.ParentID} parentType={this.state.problemInfo.ParentType} />
           {/*<ProjectParentChildrenUnitsContainer parentID={this.state.problemInfo.ParentID} problemTitle={this.state.problemInfo.Title}/>*/}
-          <ProblemTitle problemTitle={this.state.problemInfo.Title} />
+          <ProblemTitle problemTitle={this.state.problemInfo.Title} problemClass={this.state.problemInfo.Class} />
           <div id="problemRow1">
               <Link to={`/project/${this.props.params.probID}/questions`} activeClassName="activeProblemOptionDiscuss">
                     <div id="SBButtonDiscuss">discuss</div>

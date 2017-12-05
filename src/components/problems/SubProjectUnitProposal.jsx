@@ -79,11 +79,52 @@ if (problem.ParentType === 0) {
             <div key={problem.ID} id="nodisplay">
             </div>
         );
+} else if (problem.Title.length > 50) {
+return (
+	<Link key={problem.ID} to={'/project/'+problem.ID +'/subprojects'}>
+		<li key={problem.ID} id="SPUnit">
+			<div id="SPHeader">
+				<div id="SPTitleSmall">{problem.Title}</div>
+				<div id="SPPercent">{problem.Rank}</div>
+			</div>
+		</li>
+	</Link>
 
+);
+} else if (problem.Class == '2') {
+	return (
+		<Link key={problem.ID} to={'/project/'+problem.ID +'/subprojects'}>
+			<li key={problem.ID} id="SPUnit">
+				<div id="SPHeaderRed">
+					<div id="SPTitleRed">
+						<span id="red">problem</span>
+						<br />
+						{problem.Title}
+					</div>
+					<div id="SPPercent">{problem.Rank}</div>
+				</div>
+			</li>
+		</Link>
+	);
+} else if (problem.Class == '1') {
+	return (
+		<Link key={problem.ID} to={'/project/'+problem.ID +'/subprojects'}>
+			<li key={problem.ID} id="SPUnit">
+				<div id="SPHeaderGreen">
+					<div id="SPTitleGreen">
+						<span id="green">goal</span>
+						<br />
+						{problem.Title}
+					</div>
+					<div id="SPPercent">{problem.Rank}</div>
+				</div>
+			</li>
+		</Link>
+	);
 } else {
     return (
 
-        <Link key={problem.ID} to={'/project/'+problem.ID +'/subprojects'} onClick={handleClick}>
+        <Link key={problem.ID} to={'/project/'+problem.ID +'/subprojects'}>
 			<li key={problem.ID} id="SPUnit">
 				<div id="SPHeader">
 					<div id="SPTitle">{problem.Title}</div>

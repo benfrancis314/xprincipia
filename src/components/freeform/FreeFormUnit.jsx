@@ -6,19 +6,41 @@ import {Config} from '../../config.js';
 import $ from 'jquery';
 
 export default class FreeFormUnit extends React.Component {
+
+
+    hoverThread() {
+        $(document).ready(function() {
+            // $('#discussHoverText').html("view discussion").fadeIn(7500);
+            $('#suggestionContent').attr('id','suggestionContentHover');
+            $('#discussHoverText').attr('id','discussHoverTextShow');
+            
+        });
+    }
+    unHoverThread() {
+        $(document).ready(function() {
+            // $('#discussHoverText').html("");
+            $('#suggestionContentHover').attr('id','suggestionContent');
+            $('#discussHoverTextShow').attr('id','discussHoverText');
+            
+        });
+    }
+
     constructor(props){
         super(props);
 
-         this.renderItem = this.renderItem.bind(this)
+         this.renderItem = this.renderItem.bind(this);
     };
   
+
+
+
     componentWillReceiveProps (props) {
         var self = this
         self.setState({
             voteHash : {},
         })
         props.freeForms.forEach( function (freeForm){
-            axios.get( Config.API + "/auth/vote/isVotedOn?type=6&typeID=" + freeForm.ID + "&username=" + cookie.load("userName"))
+            axios.get( Config.API + "/vote/isVotedOn?type=6&typeID=" + freeForm.ID + "&username=" + cookie.load("userName"))
             .then( function (response) {  
                 const voteHash = self.state.voteHash;
 
@@ -97,6 +119,7 @@ export default class FreeFormUnit extends React.Component {
           });
       });
 }
+
   
        if (this.state.voteHash[freeForm.ID] === true && freeForm.Username === cookie.load('userName')) {
            return (
@@ -104,7 +127,7 @@ export default class FreeFormUnit extends React.Component {
 				<div id="suggestionContent">
 					<div id="discussHeader">
                         <span id="discussPercent">{floatToDecimal(freeForm.PercentRank)}</span>
-					    {freeForm.Username}
+                        {freeForm.Username}
                     </div>
                     <div id="suggestionText">
                         {freeForm.Description}
@@ -134,24 +157,30 @@ export default class FreeFormUnit extends React.Component {
         return (
        <li key={freeForm.ID} id="suggestionUnit">
 				<div id="suggestionContent">
+                    <Link to={`/project/${freeForm.TypeID}/freeform/${freeForm.ID}/comments`}>
+                        <div id="debateThreadButton" onMouseOver={this.hoverThread} onMouseOut={this.unHoverThread}>
+                            <img src={require('../../assets/list4.svg')} id="debateThreadLogo" width="50" height="50" alt="Delete Button, Red X" />
+                        </div>
+                    </Link>
+                    <div id="discussHoverText">debate</div>
 					<div id="discussHeader">
                         <span id="discussPercent">{floatToDecimal(freeForm.PercentRank)}</span>
-					    {freeForm.Username}
+					    <span id="discussUsername">{freeForm.Username}</span> 
                     </div>
                     <div id="suggestionText">
                         {freeForm.Description}
                     </div>
 				</div>
-                    <Link to={`/project/${freeForm.TypeID}/freeform/${freeForm.ID}/delete`}>
-                        <div id="deleteSBButton">
-                            <img src={require('../../assets/delete.svg')} id="editLogo" width="18" height="18" alt="Delete Button" />
-                        </div>
-                    </Link>
-                    <Link to={`/project/${freeForm.TypeID}/freeform/${freeForm.ID}/edit`}>
-                        <div id="editSBButtonAnswer">
-                            <img src={require('../../assets/editBlue.svg')} id="editLogo" width="18" height="18" alt="Edit Button" />
-                        </div>
-                    </Link>
+                <Link to={`/project/${freeForm.TypeID}/freeform/${freeForm.ID}/delete`}>
+                    <div id="deleteSBButton">
+                        <img src={require('../../assets/delete.svg')} id="editLogo" width="18" height="18" alt="Delete Button" />
+                    </div>
+                </Link>
+                <Link to={`/project/${freeForm.TypeID}/freeform/${freeForm.ID}/edit`}>
+                    <div id="editSBButtonAnswer">
+                        <img src={require('../../assets/editBlue.svg')} id="editLogo" width="18" height="18" alt="Edit Button" />
+                    </div>
+                </Link>
 				{/*<Link  to={`/project/${freeForm.TypeID}/freeform/${freeForm.ID}/comments`} activeClassName="activeBlue">
                     <div id="commentSBButtonUser">
                             <img src={require('../../assets/comments.svg')} id="commentLogo" width="24" height="24" alt="Comments Button" />
