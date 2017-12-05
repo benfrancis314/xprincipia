@@ -36,7 +36,7 @@ export default class FullSolutionContent extends React.Component {
           })
     })
     
-    axios.get( Config.API + "/auth/vote/isVotedOn?type=1&typeID=" + this.props.params.solutionID + "&username=" + cookie.load("userName"))
+    axios.get( Config.API + "/vote/isVotedOn?type=1&typeID=" + this.props.params.solutionID + "&username=" + cookie.load("userName"))
           .then( function (response){
             console.log(response.data)
             self.setState({
@@ -305,7 +305,7 @@ unVote() {
               <div>
             {/*{React.cloneElement(<ProsContainer probID={this.state.probID} solutionID={this.state.solutionID} /> )}*/}
             {/*{React.cloneElement(<ConsContainer probID={this.state.probID} solutionID={this.state.solutionID} /> )}*/}
-              {this.props.children}
+            {React.cloneElement(this.props.children, {creator:this.state.solutionInfo.OriginalPosterUsername} )}
               {React.cloneElement(<FullSolutionDescription solutionInfo={ this.state.solutionInfo} solutionID={this.props.params.solutionID}/> )}            </div>
         </div>
       );

@@ -8,102 +8,124 @@ import $ from 'jquery';
 export default class ProsFlagForm extends React.Component {
 
   constructor(){
-  super();
-
-  this.state= {
-    pro: '',
-  }
-
-    this.postPro = this.postPro.bind(this);
-  };
-
-postPro() {
-  //Read field items into component state
-  this.state.pro = document.getElementById('questionTextArea').value
-
-  //if User is on a solution post with type 1
-  //solutionID will be available in props
-  if(this.props.solutionID){
-    axios.post( Config.API + '/auth/pros/create', {
-    type:'1',
-    typeID: this.props.solutionID,
-    username: cookie.load('userName'),
-    description : this.state.pro,
-  })
-    .then(function (result) {
-      document.location = window.location.pathname 
-    })
-      .catch(function (error) {
-        // console.log(error.response.data)
-          $(document).ready(function() {
-              $('#notification').attr('id','notificationShow').hide().slideDown();
-              if (error.response.data != '') {
-                $('#notificationContent').text(error.response.data);
-              }
-              else if (error.response.data == '[object Object]') {
-                return (
-                  $(document).ready(function() {
-                    $('#notificationLoginRegisterContainer').attr('id','notificationLoginRegisterContainerShow');
-                    $('#notificationContent').html('Please <span id="blue">login </span>to contribute');
-                  })
-                );
-              } 
-          });
-      });
-    } 
-
-    //else post to problem
-    //probID will be used
-    else {
-      axios.post( Config.API + '/auth/pros/create', {
-      type:'0',
-      typeID: this.props.probID,
-      username: cookie.load('userName'),
-      description : this.state.pro,
-    })
-      .then(function (result) {
-        document.location = window.location.pathname 
-      })
-      .catch(function (error) {
-        // console.log(error.response.data)
-          $(document).ready(function() {
-              $('#notification').attr('id','notificationShow').hide().slideDown();
-              if (error.response.data != '') {
-                $('#notificationContent').text(error.response.data);
-              }
-              else if (error.response.data == '[object Object]') {
-                return (
-                  $(document).ready(function() {
-                    $('#notificationLoginRegisterContainer').attr('id','notificationLoginRegisterContainerShow');
-                    $('#notificationContent').html('Please <span id="blue">login </span>to contribute');
-                  })
-                );
-              } 
-          });
-      });
+    super();
+    
+    this.state= {
+      parentType: '0',
+      parentID: [],
+      description: '',
+      reason: '',
+      submitUser: '',
+      flagUser: '',
     }
 
+    this.flagPro = this.flagPro.bind(this);
+  };
+
+  flagPro() {
+  //Read field items into component state
+  this.state.description = document.getElementById('questionTextArea').value
+  if (document.getElementById('flagReason3').checked) {
+    this.state.reason = '3'  
+  } else if (document.getElementById('flagReason2').checked) {
+    this.state.reason = '2' 
+  } else if (document.getElementById('flagReason1').checked) {
+    this.state.reason = '1' 
+  } else {
+    this.state.reason = '0' 
   }
+
+  var self = this;
+  axios.post( Config.API + '/auth/flags/create', {
+    parentType: '9',
+    parentID: this.props.params.proID,
+    submitUser: cookie.load('userName'),
+    // flagUser: this.props.creator,
+    reason: this.state.reason,
+    description : this.state.description,
+  })
+  .then(function (result) {
+    document.location = '/proposal/'+ self.props.params.probID + self.props.params.solutionID + '/pros'
+  })
+    .catch(function (error) {
+      // console.log(error.response.data)
+        $(document).ready(function() {
+            $('#notification').attr('id','notificationShow').hide().slideDown();
+            if (error.response.data != '') {
+              $('#notificationContent').text(error.response.data);
+            }
+            else if (error.response.data == '[object Object]') {
+              return (
+                $(document).ready(function() {
+                  $('#notificationLoginRegisterContainer').attr('id','notificationLoginRegisterContainerShow');
+                  $('#notificationContent').html('Please <span id="blue">login </span>to contribute');
+                })
+              );
+            } 
+        });
+    });
+
+}
   
 
 
 
    render() {
       return (
-      <div id="questionFormComponent">
-            <form id="flagForm">
-                <fieldset>
-                    <legend>Reason for Flag</legend>
-                         <textarea name="questionText" required="required" id="questionFlagTextArea" autoFocus ></textarea>
-                         <br />
-                         <div onClick={this.postPro} id="flagButton">Submit</div>
-                         {/*Link not working at the moment and not being used*/}
-                         {/*<Link to='/project/${pro.TypeID}/pros'>*/}
-                            <div id="returnButton">Exit</div>
-                         {/*</Link>*/}
-                </fieldset>
-            </form>
-      </div>
+        <div id="flagContainer">
+          <div>
+          <div id="flagHeader">
+            flag reasoning
+          </div>
+
+          <div id="projectFormRadioContainer">
+            <div id="projectFormRadioColumn">
+              <div id="projectFormRadioRow3">
+                misplaced
+                 {/* <span id="gray">(default)</span> */}
+              </div>
+              <div id="projectFormRadioRow">
+                <label id="projectRadioButtonContainer">
+                  <input type="radio" id="flagReason1" name="flagType" value="1"/>
+                  <span id="checkmark3"></span>
+                </label>
+              </div>
+            </div>
+            <div id="projectFormRadioColumn">
+              <div id="projectFormRadioRow3">
+                inaccurate
+              </div>
+              <div id="projectFormRadioRow">
+                <label id="projectRadioButtonContainer">
+                  <input type="radio" id="flagReason2" name="flagType" value="2" />
+                  <span id="checkmark3"></span>
+                </label>
+              </div>
+            </div>
+            <div id="projectFormRadioColumn">
+              <div id="projectFormRadioRow3">
+                bad culture
+              </div>
+              <div id="projectFormRadioRow">
+                <label id="projectRadioButtonContainer">
+                  <input type="radio" id="flagReason3" name="flagType" value="3" />
+                  <span id="checkmark3"></span>
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <form id="flagForm">
+            <textarea id="questionTextArea" name="questionText" placeholder="Why should this project be moved, altered or removed?" 
+            autoFocus ></textarea>
+            <br />
+            <div onClick={this.flagPro} id="flagButton">submit</div>
+            <Link to={`/proposal/${this.props.params.probID}/${this.props.params.solutionID}/pros`}>
+              <div id="returnButton">exit</div>
+            </Link>
+          </form>
+          </div>
+        </div>
 
       );
    }

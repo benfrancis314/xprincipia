@@ -20,7 +20,7 @@ export default class CommentUnit extends React.Component {
             voteHash : {},
         })
         props.comments.forEach( function (comment){
-            axios.get( Config.API + "/auth/vote/isVotedOn?type=5&typeID=" + comment.ID + "&username=" + cookie.load("userName"))
+            axios.get( Config.API + "/vote/isVotedOn?type=5&typeID=" + comment.ID + "&username=" + cookie.load("userName"))
             .then( function (response) {  
                 const voteHash = self.state.voteHash;
 

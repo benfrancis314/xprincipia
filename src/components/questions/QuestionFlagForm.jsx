@@ -8,82 +8,64 @@ import $ from 'jquery';
 export default class QuestionFlagForm extends React.Component {
 
   constructor(){
-  super();
-
-  this.state= {
-    question: '',
-  }
+    super();
+    
+    this.state= {
+      parentType: '0',
+      parentID: [],
+      description: '',
+      reason: '',
+      submitUser: '',
+      flagUser: '',
+    }
 
     this.flagQuestion = this.flagQuestion.bind(this);
   };
 
-flagQuestion() {
+  flagQuestion() {
   //Read field items into component state
-  this.state.question = document.getElementById('questionTextArea').value
-
-  //if User is on a solution post with type 1
-  //solutionID will be available in props
-  if(this.props.solutionID){
-    axios.post( Config.API + '/auth/questions/create', {
-    type:'1',
-    typeID: this.props.solutionID,
-    username: cookie.load('userName'),
-    description : this.state.question,
-  })
-    .then(function (result) {
-      document.location = window.location.pathname 
-    })
-      .catch(function (error) {
-        // console.log(error.response.data)
-          $(document).ready(function() {
-              $('#notification').attr('id','notificationShow').hide().slideDown();
-              if (error.response.data != '') {
-                $('#notificationContent').text(error.response.data);
-              }
-              else if (error.response.data == '[object Object]') {
-                return (
-                  $(document).ready(function() {
-                    $('#notificationLoginRegisterContainer').attr('id','notificationLoginRegisterContainerShow');
-                    $('#notificationContent').html('Please <span id="blue">login </span>to contribute');
-                  })
-                );
-              } 
-          });
-      });
-    } 
-
-    //else post to problem
-    //probID will be used
-    else {
-      axios.post( Config.API + '/auth/questions/create', {
-      type:'0',
-      typeID: this.props.probID,
-      username: cookie.load('userName'),
-      description : this.state.question,
-    })
-      .then(function (result) {
-        document.location = window.location.pathname 
-      })
-      .catch(function (error) {
-        // console.log(error.response.data)
-          $(document).ready(function() {
-              $('#notification').attr('id','notificationShow').hide().slideDown();
-              if (error.response.data != '') {
-                $('#notificationContent').text(error.response.data);
-              }
-              else if (error.response.data == '[object Object]') {
-                return (
-                  $(document).ready(function() {
-                    $('#notificationLoginRegisterContainer').attr('id','notificationLoginRegisterContainerShow');
-                    $('#notificationContent').html('Please <span id="blue">login </span>to contribute');
-                  })
-                );
-              } 
-          });
-      });
-    }
-
+  this.state.description = document.getElementById('questionTextArea').value
+  if (document.getElementById('flagReason3').checked) {
+    this.state.reason = '3'  
+  } else if (document.getElementById('flagReason2').checked) {
+    this.state.reason = '2' 
+  } else if (document.getElementById('flagReason1').checked) {
+    this.state.reason = '1' 
+  } else {
+    this.state.reason = '0' 
   }
+
+  var self = this;
+  axios.post( Config.API + '/auth/flags/create', {
+    parentType: '2',
+    parentID: this.props.params.questID,
+    submitUser: cookie.load('userName'),
+    // flagUser: this.props.creator,
+    reason: this.state.reason,
+    description : this.state.description,
+  })
+  .then(function (result) {
+    document.location = '/project/'+ self.props.params.probID + '/questions'
+  })
+    .catch(function (error) {
+      // console.log(error.response.data)
+        $(document).ready(function() {
+            $('#notification').attr('id','notificationShow').hide().slideDown();
+            if (error.response.data != '') {
+              $('#notificationContent').text(error.response.data);
+            }
+            else if (error.response.data == '[object Object]') {
+              return (
+                $(document).ready(function() {
+                  $('#notificationLoginRegisterContainer').attr('id','notificationLoginRegisterContainerShow');
+                  $('#notificationContent').html('Please <span id="blue">login </span>to contribute');
+                })
+              );
+            } 
+        });
+    });
+
+}
   
 
 
@@ -104,7 +86,7 @@ flagQuestion() {
               </div>
               <div id="projectFormRadioRow">
                 <label id="projectRadioButtonContainer">
-                  <input type="radio" name="flagType" value="0"/>
+                  <input type="radio" id="flagReason1" name="flagType" value="1"/>
                   <span id="checkmark3"></span>
                 </label>
               </div>
@@ -115,7 +97,7 @@ flagQuestion() {
               </div>
               <div id="projectFormRadioRow">
                 <label id="projectRadioButtonContainer">
-                  <input type="radio" name="flagType" value="1" />
+                  <input type="radio" id="flagReason2" name="flagType" value="2" />
                   <span id="checkmark3"></span>
                 </label>
               </div>
@@ -126,7 +108,7 @@ flagQuestion() {
               </div>
               <div id="projectFormRadioRow">
                 <label id="projectRadioButtonContainer">
-                  <input type="radio" name="flagType" value="2" />
+                  <input type="radio" id="flagReason3" name="flagType" value="3" />
                   <span id="checkmark3"></span>
                 </label>
               </div>

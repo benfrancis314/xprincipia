@@ -19,7 +19,7 @@ export default class SuggestionProposalUnit extends React.Component {
             voteHash : {},
         })
         props.suggestions.forEach( function (suggestion){
-            axios.get( Config.API + "/auth/vote/isVotedOn?type=3&typeID=" + suggestion.ID + "&username=" + cookie.load("userName"))
+            axios.get( Config.API + "/vote/isVotedOn?type=3&typeID=" + suggestion.ID + "&username=" + cookie.load("userName"))
             .then( function (response) {  
                 const voteHash = self.state.voteHash;
 

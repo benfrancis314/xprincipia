@@ -45,7 +45,7 @@ export default class FreeFormFlagForm extends React.Component {
     description : this.state.description,
   })
   .then(function (result) {
-    document.location = '/project/'+ self.props.params.probID + '/subprojects'
+    document.location = '/project/'+ self.props.params.probID + '/freeforms' 
   })
     .catch(function (error) {
       // console.log(error.response.data)

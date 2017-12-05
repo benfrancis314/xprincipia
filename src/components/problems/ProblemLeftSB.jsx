@@ -45,7 +45,7 @@ export default class ProblemLeftSB extends React.Component {
           });
       });
           
-    axios.get( Config.API + "/auth/vote/isVotedOn?type=0&typeID=" + this.props.params.probID + "&username=" + cookie.load("userName"))
+    axios.get( Config.API + "/vote/isVotedOn?type=0&typeID=" + this.props.params.probID + "&username=" + cookie.load("userName"))
           .then( function (response){
             console.log(response.data)
             self.setState({

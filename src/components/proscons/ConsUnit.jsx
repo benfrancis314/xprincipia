@@ -17,7 +17,7 @@ export default class ConsUnit extends React.Component {
             voteHash : {},
         })
         props.cons.forEach( function (con){
-            axios.get( Config.API + "/auth/vote/isVotedOn?type=10&typeID=" + con.ID + "&username=" + cookie.load("userName"))
+            axios.get( Config.API + "/vote/isVotedOn?type=10&typeID=" + con.ID + "&username=" + cookie.load("userName"))
             .then( function (response) {  
                 const voteHash = self.state.voteHash;
 
