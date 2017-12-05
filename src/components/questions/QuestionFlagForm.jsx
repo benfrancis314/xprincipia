@@ -14,10 +14,10 @@ export default class QuestionFlagForm extends React.Component {
     question: '',
   }
 
-    this.postQuestion = this.postQuestion.bind(this);
+    this.flagQuestion = this.flagQuestion.bind(this);
   };
 
-postQuestion() {
+flagQuestion() {
   //Read field items into component state
   this.state.question = document.getElementById('questionTextArea').value
 
@@ -137,7 +137,7 @@ postQuestion() {
             <textarea id="questionTextArea" name="questionText" placeholder="Why should this project be moved, altered or removed?" 
             autoFocus ></textarea>
             <br />
-            <div onClick={this.postQuestion} id="flagButton">submit</div>
+            <div onClick={this.flagQuestion} id="flagButton">submit</div>
             <Link to={`/project/${this.props.params.probID}/questions`}>
               <div id="returnButton">exit</div>
             </Link>

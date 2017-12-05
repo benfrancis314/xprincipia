@@ -4444,18 +4444,7 @@ font-family: 'Open Sans';
   position: relative;
   transition: all 0.5s ease 0s;
 }
-#suggestionContentHover {
-  /*Old Styles*/
-  /*flex: 3 3 auto;
-  font-family: 'Open Sans';
-  border: 1px solid #dddddd;
-  border-width: 1px 0px 1px 1px;
-  border-radius: 3px 0px 0px 3px;
-  width: 80%;
-  padding: 15px;
-  margin-bottom: 1.1%;
-  background-color: rgba(0,220,255,0.05);*/
-
+#suggestionContentHover, #suggestionContentHoverVote {
   flex: 3 3 auto;
   font-family: 'Open Sans';
   border: 1px solid #dddddd;
@@ -4468,6 +4457,10 @@ font-family: 'Open Sans';
   /* background: linear-gradient(to right,rgba(0,220,255, 0.06), rgba(0,220,255, 0.07), rgba(0,220,255, 0.02));   */
   position: relative;
   transition: all 0.5s ease 0s;
+}
+#suggestionContentHoverVote {
+  background-color: rgba(0,255,220,0.05);
+  /* background: linear-gradient(to right,rgba(0,220,255, 0.06), rgba(0,220,255, 0.07), rgba(0,220,255, 0.02));   */
 }
 #suggestionText {
   /*Old Styles*/
@@ -4488,6 +4481,9 @@ font-family: 'Open Sans';
   border-width: 0px 0px 1px 0px;
   width: 82%;
   white-space: pre-wrap !important;
+}
+#suggestionText:hover {
+  cursor: pointer;
 }
 #suggestionVote, #suggestionVoteNoComments {
   flex: 1 1 auto;
@@ -4545,6 +4541,26 @@ font-family: 'Open Sans';
 }
 #suggestionVote:focus, #suggestionVoteNoComments:focus {
   box-shadow: 0 0 0pt 0pt rgba(0,255,220,0.5);
+}
+#suggestionVoteNoCommentsHover {
+  flex: 1 1 auto;
+  color: #0f131c;
+  background-color: #00ffdc;
+  border: 1px solid #00ffdc;
+  border-width: 1px 1px 1px 0px;
+  border-radius: 2px 2px 0px 0px;
+  cursor: pointer;
+  height: 37px;
+  min-width: 101.94px;
+  text-align: center;
+  font-size: 120%;
+  padding: 0px 12px 0px 13px;;
+  letter-spacing: 4px;
+  margin: 0 auto;
+  transition: all 0.5s ease 0s;
+  box-shadow: 0 0 0pt 0pt rgba(255,127,127,0.5);
+  border-width: 1px 1px 1px 1px;
+  min-width: 103.27px;
 }
 
 /*End Suggestion*/
@@ -7260,7 +7276,7 @@ font-size: 115%;*/
 max-width: 584.31px;
 line-height: 150%;
 font-family: 'Open Sans' !important;
-font-size: 125%;
+/* font-size: 125%; */
 padding-left: 2%;
 padding-right: 2%;
 padding-top: 1.75%;

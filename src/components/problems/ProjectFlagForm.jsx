@@ -19,7 +19,6 @@ export default class ProjectEditForm extends React.Component {
       flagUser: '',
     }
 
-    this.whichOption = this.whichOption.bind(this);
     this.flagProject = this.flagProject.bind(this);
   };
 
@@ -43,7 +42,6 @@ export default class ProjectEditForm extends React.Component {
       parentID: this.props.params.probID,
       submitUser: cookie.load('userName'),
       flagUser: this.props.creator,
-      // Creator not used since it broke the ability to click on discuss and learn
       reason: this.state.reason,
       description : this.state.description,
     })
@@ -69,11 +67,6 @@ export default class ProjectEditForm extends React.Component {
       });
   
   }
-
-whichOption() {
-  // alert(this.state.selectedOption);
-  alert('whichOptionSuccess');
-}
 
 render() {
   

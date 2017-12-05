@@ -77,7 +77,7 @@ export default class Tutorial extends React.Component {
                     <br />
                 </div>
             </div>
-            <div id="tutorialTableContents">
+            {/* <div id="tutorialTableContents">
                 <a href='#tutorialIndex1'>
                     <div id="tutorialIndexNumber">
                         I. Projects
@@ -405,16 +405,6 @@ export default class Tutorial extends React.Component {
                                             </div>
                                         </Link>
                                     </li>
-                                    {/* <li>
-                                        <Link >
-                                            <div id="solutionUnit">
-                                                <div id="solutionUnitContainer">
-                                                    <div id="solutionPercent">25%</div>
-                                                    <div id="solutionUnitTitle">Mars One's Plan to Colonize Mars</div>
-                                                </div>
-                                            </div>
-                                        </Link>
-                                    </li> */}
                                     <li>
                                         <Link >
                                             <div id="solutionUnit">
@@ -542,22 +532,6 @@ export default class Tutorial extends React.Component {
                                                     </button> 
                                                 <br /><br /> 
                                             </li>
-                                            {/* Commenting out second pro for now to save space */}
-                                            {/* <li id="prosConsUnit">
-                                                    <div id="suggestionContent">
-                                                        <div id="discussHeader">
-                                                            <span id="discussPercent">50%</span>
-                                                            joel.sirjord
-                                                        </div>
-                                                        <div id="suggestionText">
-                                                            Sample Pro 2
-                                                        </div>
-                                                    </div>
-                                                    <button type="button" id="suggestionVoteNoComments">
-                                                        Vote
-                                                    </button> 
-                                                <br /><br /> 
-                                            </li> */}
                                         </ul>
                                         </div>    
                                         <div> 
@@ -585,7 +559,6 @@ export default class Tutorial extends React.Component {
                                             <div id="solutionFormLabel">References</div>
                                             <p id="solutionReferences">
                                                 https://www.space.com/37200-read-elon-musk-spacex-mars-colony-plan.html
-                                                {/* http://online.liebertpub.com/doi/pdfplus/10.1089/space.2017.29009.emu */}
                                             </p>
                                             </div>
                                             <br />
@@ -706,10 +679,10 @@ export default class Tutorial extends React.Component {
                         <div id="fullTutorialMotto" onMouseOver={this.hoverText} onMouseOut={this.unHoverText}>
                             NULLIUS IN VERBA
                         </div>
-                    </div>
+                    </div> */}
             </ReactCSSTransitionGroup>
           </div>
-      );
+      ); 
    }
 }
 

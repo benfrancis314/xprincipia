@@ -70,9 +70,9 @@ export default class SubProjectPrivateUnit extends React.Component {
         );
 
 // Ensure to copy this so that it works for Goals and Problems too
-	} else if (problem.Title.length > 50) {
-    return (
-        <Link key={problem.ID} to={'/project/private/'+problem.ID +'/subprojects'} onClick={handleClick}>
+} else if (problem.Title.length > 50) {
+	return (
+		<Link key={problem.ID} to={'/project/private/'+problem.ID +'/subprojects'}>
 			<li key={problem.ID} id="SPUnit">
 				<div id="SPHeader">
 					<div id="SPTitleSmall">{problem.Title}</div>
@@ -80,55 +80,51 @@ export default class SubProjectPrivateUnit extends React.Component {
 				</div>
 			</li>
 		</Link>
-
+	
 	);
-
-
-
-	} else if (problem.Title.includes('x')) {
-    return (
-        <Link key={problem.ID} to={'/project/private/'+problem.ID +'/subprojects'} onClick={handleClick}>
-			<li key={problem.ID} id="SPUnit">
-				<div id="SPHeader">
-					<div id="SPTitle">{problem.Title}</div>
-					<div id="SPPercent">{problem.Rank}</div>
-				</div>
-			</li>
-		</Link>
-
-	);
-} else if (problem.Title.includes('e')) {
-    return (
-        <Link key={problem.ID} to={'/project/private/'+problem.ID +'/subprojects'} onClick={handleClick}>
-			<li key={problem.ID} id="SPUnit">
-				<div id="SPHeaderGreen">
-					<div id="SPTitleGreen">
-						<span id="green">goal</span>
-						<br />
-						{problem.Title}
+	} else if (problem.Class == '2') {
+		return (
+			<Link key={problem.ID} to={'/project/private/'+problem.ID +'/subprojects'}>
+				<li key={problem.ID} id="SPUnit">
+					<div id="SPHeaderRed">
+						<div id="SPTitleRed">
+							<span id="red">problem</span>
+							<br />
+							{problem.Title}
+						</div>
+						<div id="SPPercent">{problem.Rank}</div>
 					</div>
-					<div id="SPPercent">{problem.Rank}</div>
-				</div>
-			</li>
-		</Link>
-	);
-} else {
-	return (
-        <Link key={problem.ID} to={'/project/private/'+problem.ID +'/subprojects'} onClick={handleClick}>
-			<li key={problem.ID} id="SPUnit">
-				<div id="SPHeaderRed">
-					<div id="SPTitleRed">
-						<span id="red">problem</span>
-						<br />
-						{problem.Title}
+				</li>
+			</Link>
+		);
+	} else if (problem.Class == '1') {
+		return (
+			<Link key={problem.ID} to={'/project/private/'+problem.ID +'/subprojects'}>
+				<li key={problem.ID} id="SPUnit">
+					<div id="SPHeaderGreen">
+						<div id="SPTitleGreen">
+							<span id="green">goal</span>
+							<br />
+							{problem.Title}
+						</div>
+						<div id="SPPercent">{problem.Rank}</div>
 					</div>
-					<div id="SPPercent">{problem.Rank}</div>
-				</div>
-			</li>
-		</Link>
-	)};
-  }
-}
+				</li>
+			</Link>
+		);
+	} else {
+		return (
+			<Link key={problem.ID} to={'/project/private/'+problem.ID +'/subprojects'}>
+				<li key={problem.ID} id="SPUnit">
+					<div id="SPHeader">
+						<div id="SPTitle">{problem.Title}</div>
+						<div id="SPPercent">{problem.Rank}</div>
+					</div>
+				</li>
+			</Link>
+		)};
+	  }
+	}
 
 //convert float to Decimal
 // function floatToDecimal(float) {
