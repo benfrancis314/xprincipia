@@ -243,7 +243,7 @@ unVote() {
                   {this.state.problemInfo.Summary}
                 </p>
               </div>
-                {React.cloneElement(this.props.children, {creator:this.state.problemInfo.OriginalPosterUsername})}
+                {React.cloneElement(this.props.children, {parentTitle: this.state.problemInfo.Title, gParentID: this.state.problemInfo.ParentID, gParentTitle: this.state.problemInfo.ParentTitle, ggParentID: this.state.problemInfo.GrandParentID, creator:this.state.problemInfo.OriginalPosterUsername})}
               </div>
             {React.cloneElement(<SubProjectPrivateContainer probID={this.props.params.probID} />)}
             <ScrollableAnchor id={'proposals'}>
@@ -322,7 +322,7 @@ unVote() {
                   {this.state.problemInfo.Summary}
                 </p>
               </div>
-              {React.cloneElement(this.props.children, {creator: this.state.problemInfo.OriginalPosterUsername})}
+              {React.cloneElement(this.props.children, {parentTitle: this.state.problemInfo.Title, gParentID: this.state.problemInfo.ParentID, gParentTitle: this.state.problemInfo.ParentTitle, ggParentID: this.state.problemInfo.GrandParentID, creator:this.state.problemInfo.OriginalPosterUsername})}
               </div>
             {React.cloneElement(<SubProjectPrivateContainer probID={this.props.params.probID} />)}
             <ScrollableAnchor id={'proposals'}>

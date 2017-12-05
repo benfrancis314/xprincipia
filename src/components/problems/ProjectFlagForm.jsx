@@ -14,7 +14,7 @@ export default class ProjectEditForm extends React.Component {
       parentType: '0',
       parentID: [],
       description: '',
-      reason: [],
+      reason: '',
       submitUser: '',
       flagUser: '',
     }
@@ -27,15 +27,24 @@ export default class ProjectEditForm extends React.Component {
  flagProject() {
   //Read field items into component state
     this.state.description = document.getElementById('flagTextArea').value
+    if (document.getElementById('flagReason3').checked) {
+      this.state.reason = '3'  
+    } else if (document.getElementById('flagReason2').checked) {
+      this.state.reason = '2' 
+    } else if (document.getElementById('flagReason1').checked) {
+      this.state.reason = '1' 
+    } else {
+      this.state.reason = '0' 
+    }
     // this.state.summary = document.getElementById('projectEditSummaryForm').value
   var self = this;
     axios.post( Config.API + '/auth/flags/create', {
       parentType: '0',
       parentID: this.props.params.probID,
       submitUser: cookie.load('userName'),
-      // flagUser: this.props.creator,
+      flagUser: this.props.creator,
       // Creator not used since it broke the ability to click on discuss and learn
-      reason: '0',
+      reason: this.state.reason,
       description : this.state.description,
     })
     .then(function (result) {
@@ -86,7 +95,7 @@ render() {
           </div>
           <div id="projectFormRadioRow">
             <label id="projectRadioButtonContainer">
-              <input type="radio" name="flagType" value="0" />
+              <input type="radio" id="flagReason1" name="flagType" value="1" />
               <span id="checkmark3"></span>
             </label>
           </div>
@@ -97,7 +106,7 @@ render() {
           </div>
           <div id="projectFormRadioRow">
             <label id="projectRadioButtonContainer">
-              <input type="radio" name="flagType" value="1" />
+              <input type="radio" id="flagReason2" name="flagType" value="2" />
               <span id="checkmark3"></span>
             </label>
           </div>
@@ -108,7 +117,7 @@ render() {
           </div>
           <div id="projectFormRadioRow">
             <label id="projectRadioButtonContainer">
-              <input type="radio" name="flagType" value="2" />
+              <input type="radio" id="flagReason3" name="flagType" value="3" />
               <span id="checkmark3"></span>
             </label>
           </div>
