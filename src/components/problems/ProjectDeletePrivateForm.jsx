@@ -25,7 +25,7 @@ export default class ProjectEditForm extends React.Component {
      var self = this
       axios.delete( Config.API + '/auth/problems/delete?id='+this.props.params.probID, {
           params: {
-            id: this.props.params.problemID,
+            id: this.props.params.probID,
             username: cookie.load('userName')
           }
         })

@@ -6,35 +6,38 @@ import $ from 'jquery';
 
 
 export default class NotebookUnit extends React.Component {
-//   constructor(props){
-//         super(props);
+    constructor(props){
+        super(props);
 
-//         this.state = {
-//             solutionInfo: [],
-//             solutionID: [],
-//             probID: []
-//         }
-//     };
+        this.state = {
+            notebooks: [],
+        }
+
+    };
+
+  componentWillReceiveProps(nextProps){
+	  var self = this
+	  self.setState({
+		  notebooks: nextProps.notebooks,
+	  })
+  }
 
 
 
-
-
-
-   render() {
-    
-
-      return (
+  render() {
+    return (
         <div id="fullWide">   
             <ul id="notebootUnitList">
-                <li id="notebookUnit">
-                    Ending Aging Notes
-                </li>
-                <li id="notebookUnit">
-                    Artificial Intelligence Notes
-                </li>
+                {this.state.problems.map(this.renderItem)}
             </ul>
         </div>
-      );
+    );
+}
+    renderItem(notebook) {
+        return (
+            <li key={notebook.ID} id="notebookUnit">
+                {notebook.Title}
+            </li>
+        );
     }
 }

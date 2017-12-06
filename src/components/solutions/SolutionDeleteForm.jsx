@@ -52,10 +52,11 @@ export default class SolutionDeleteForm extends React.Component {
           });
       });
   }
-
-  render() {
-      return (
-      <div id="createSolutionBox">
+render() {
+  if (cookie.load('userName') === 'benfrancis')  {
+  
+  return (
+    <div id="createSolutionBox">
           <form id="solutionDeleteForm">
             <fieldset id="editFormFieldset">
                 <legend id="redLegend">Delete</legend>
@@ -68,6 +69,24 @@ export default class SolutionDeleteForm extends React.Component {
             </fieldset>
           </form>
       </div>
-      );
-   }
+    );
+  } else {
+      return (
+        <div id="createSolutionBox">
+            <form id="solutionDeleteForm">
+              <fieldset id="editFormFieldset">
+                  <legend id="redLegend">Delete</legend>
+                  <div>CREDENTIAL ERROR: We apologize for the error, 
+                      <br />
+                      please inform us of the problem in the Feedback section in your personal quarters. </div>
+                      <br />
+                      <Link to={`/project/${this.props.params.probID}/proposal/${this.props.params.solutionID}`}>
+                        <div id="returnButton">Exit</div>
+                      </Link>
+              </fieldset>
+            </form>
+        </div>
+      )
+  }
+ }
 }

@@ -109,12 +109,12 @@ export default class LearnContentUnit1 extends React.Component {
                         {learnItem.Description}
                     </div>
 				</div>
-                <Link to={`/project/private/${learnItem.TypeID}/learn/content/${learnItem.ID}/delete`}>
+                <Link to={`/project/${learnItem.TypeID}/learn/content/${learnItem.ID}/delete`}>
                    <div id="deleteSBButton">
                         <img src={require('../../assets/delete.svg')} id="editLogo" width="18" height="18" alt="Delete Button" />
                     </div>
                 </Link>
-                <Link to={`/project/private/${learnItem.TypeID}/learn/content/${learnItem.ID}/edit`}>
+                <Link to={`/project/${learnItem.TypeID}/learn/content/${learnItem.ID}/edit`}>
                     <div id="editSBButtonAnswer">
                         <img src={require('../../assets/editBlue.svg')} id="editLogo" width="18" height="18" alt="Edit Button" />
                     </div>
@@ -142,12 +142,12 @@ export default class LearnContentUnit1 extends React.Component {
                         {learnItem.Description}
                     </div>
 				</div>
-                <Link to={`/project/private/${learnItem.TypeID}/learn/content/${learnItem.ID}/delete`}>
+                <Link to={`/project/${learnItem.TypeID}/learn/content/${learnItem.ID}/delete`}>
                    <div id="deleteSBButton">
                         <img src={require('../../assets/delete.svg')} id="editLogo" width="18" height="18" alt="Delete Button" />
                     </div>
                 </Link>
-                <Link to={`/project/private/${learnItem.TypeID}/learn/content/${learnItem.ID}/edit`}>
+                <Link to={`/project/${learnItem.TypeID}/learn/content/${learnItem.ID}/edit`}>
                     <div id="editSBButtonAnswer">
                         <img src={require('../../assets/editBlue.svg')} id="editLogo" width="18" height="18" alt="Edit Button" />
                     </div>

@@ -15,6 +15,7 @@ export default class NotebookContainer extends React.Component {
 
         this.state = {
             currentNotebook: '',
+            notebooks: [],
         }
     };
 
@@ -27,29 +28,31 @@ export default class NotebookContainer extends React.Component {
 componentWillMount(){
     var self = this;
     // Axios call getting most recent notebook
-    // return axios.get( Config.API + '/solutions/ID?id='+this.props.currentNotebook).then(function (response) {
+    return axios.get( Config.API + '/notebooks/username?username='+cookie.load('userName')).then(function (response) {
         self.setState({
             // Set to result of axios call getting most recent notebook
+
             currentNotebook: '5',
+            notebooks: response.data
         })
-//   })
-//     .catch(function (error) {
-//       // console.log(error.response.data)
-//         $(document).ready(function() {
-//             $('#notification').attr('id','notificationShow').hide().slideDown();
-//             if (error.response.data != '') {
-//               $('#notificationContent').text(error.response.data);
-//             }
-//             else if (error.response.data == '[object Object]') {
-//               return (
-//                 $(document).ready(function() {
-//                   $('#notificationLoginRegisterContainer').attr('id','notificationLoginRegisterContainerShow');
-//                   $('#notificationContent').html('Please <span id="blue">login </span>to contribute');
-//                 })
-//               );
-//             } 
-//         });
-//     });
+  })
+    .catch(function (error) {
+      // console.log(error.response.data)
+        $(document).ready(function() {
+            $('#notification').attr('id','notificationShow').hide().slideDown();
+            if (error.response.data != '') {
+              $('#notificationContent').text(error.response.data);
+            }
+            else if (error.response.data == '[object Object]') {
+              return (
+                $(document).ready(function() {
+                  $('#notificationLoginRegisterContainer').attr('id','notificationLoginRegisterContainerShow');
+                  $('#notificationContent').html('Please <span id="blue">login </span>to contribute');
+                })
+              );
+            } 
+        });
+    });
 }
 // componentWillReceiveProps(nextState) {
 //     nextState =  { 
@@ -66,7 +69,6 @@ saveNotebook() {
     // $(document).ready(function() {           
     //     $('#notebookContainerShow').attr('id','notebookContainer');
     // });
-
 }
 
 hideNotebook() {
@@ -82,8 +84,8 @@ createNotebook() {
   axios.post( Config.API + '/auth/notebooks/create', {
       username: cookie.load('userName'),
       title : 'test',
-      description : '',
-      sources: '',
+      description : 'x',
+      sources: 'x',
     })
     .then(function (result, self) {
         // $(document).ready(function() {
@@ -113,11 +115,12 @@ createNotebook() {
               } 
           });
       });
-      self.setState({
-        // Set to result of axios call getting most recent notebook
-        currentNotebook: '6',
-    });
-    alert('afterStateChange');
+// Note working currently, use when ready
+    //   self.setState({
+    //     // Set to result of axios call getting most recent notebook
+    //     currentNotebook: '6',
+    // });
+    // alert('afterStateChange');
   }
 
 
@@ -145,9 +148,10 @@ createNotebook() {
                 >
                     <img src={require('../assets/blueAdd2.svg')} id="privateNewProjectPlus" width="35" height="35" alt="User avatar, DNA Helix" />
                 </div>
-                <NotebookUnit />
+                {/* <NotebookUnit notebooks={this.state.notebooks}/> */}
+                x{this.state.notebooks.length}x
             </div>
-                <NotebookFull ref="full" currentNotebook={this.state.currentNotebook} />
+                {/* <NotebookFull ref="full" currentNotebook={this.state.currentNotebook} /> */}
             </div>
         </div>
       );

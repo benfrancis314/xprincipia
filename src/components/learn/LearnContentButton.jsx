@@ -6,10 +6,10 @@ export default class WelcomeContainer extends React.Component {
 
    render() {
       return (
-        <div>
-            <Link>
-                <div id="welcomeProjectAddButton" onMouseOver={this.hoverText} onMouseOut={this.unHoverText}>
-                    <img src={require('../../assets/blueAdd2.svg')} id="privateNewProjectPlus" width="40" height="40" alt="User avatar, DNA Helix" />
+        <div id="lessonAddButtonContainer">
+            <Link to={`/project/${this.props.params.probIDID}/learn/content/new`}>
+                <div id="learnLessonAddButton" onMouseOver={this.hoverText} onMouseOut={this.unHoverText}>
+                    new lesson
                 </div>
             </Link>
         </div>

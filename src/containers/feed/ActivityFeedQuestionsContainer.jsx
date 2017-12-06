@@ -55,7 +55,7 @@ export default class WelcomeUserUnit extends React.Component {
                 feedQuestionsSlice: response.data.reverse().slice(0,10)
             })
         }) 
-     }
+    }
 	render() {
         return (
         <div id="feedContainer">
@@ -65,7 +65,7 @@ export default class WelcomeUserUnit extends React.Component {
                 </div>
             </ScrollableAnchor>
             {/* {React.cloneElement(this.props.children, {problems: this.props.problems})} */}
-            {React.cloneElement(this.props.children, {questions: this.state.feedQuestionsSlice})}
+            {React.cloneElement(this.props.children, {questions: this.state.feedQuestions})}
             <div id="feedBottom">
                 <br />
             </div>

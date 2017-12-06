@@ -4444,7 +4444,7 @@ font-family: 'Open Sans';
   position: relative;
   transition: all 0.5s ease 0s;
 }
-#suggestionContentHover, #suggestionContentHoverVote {
+#suggestionContentHover, #suggestionContentHoverVote, #suggestionContentHoverUnvote {
   flex: 3 3 auto;
   font-family: 'Open Sans';
   border: 1px solid #dddddd;
@@ -4459,8 +4459,24 @@ font-family: 'Open Sans';
   transition: all 0.5s ease 0s;
 }
 #suggestionContentHoverVote {
-  background-color: rgba(0,255,220,0.05);
+  background-color: rgba(0,255,220,0.075);
   /* background: linear-gradient(to right,rgba(0,220,255, 0.06), rgba(0,220,255, 0.07), rgba(0,220,255, 0.02));   */
+}
+#suggestionContentHoverUnvote {
+  background-color: rgba(0,255,220,0.05);
+}
+#suggestionContentHoverFlag {
+  background-color: rgba(255,127,127,0.05);
+  flex: 3 3 auto;
+  font-family: 'Open Sans';
+  border: 1px solid #dddddd;
+  border-radius: 5px 0px 25% 10px;
+  width: 80%;
+  padding: 1% 5% 1% 5%;
+  margin-bottom: 1.1%;
+  /* background-color: rgba(0,220,255,0.05); */
+  position: relative;
+  transition: all 0.5s ease 0s;
 }
 #suggestionText {
   /*Old Styles*/
@@ -5760,10 +5776,8 @@ box-shadow: 0 0 2pt 2pt rgba(0,220,255,0.5);
 #debateThreadButton {
   position: absolute;
   top: 11%;
-  right: 8px;
-  /* border: 1px solid rgba(255,127,127,0.25);
-  border-width: 0px 0px 1px 1px;
-  border-radius: 0% 0% 0% 45%; */
+  /* right: 8px; */
+  right: 45px;
   padding: 4px 10px 4px 12px;
   transition: all 1s ease 0s;
   z-index: 510;
@@ -5772,22 +5786,59 @@ box-shadow: 0 0 2pt 2pt rgba(0,220,255,0.5);
   background: radial-gradient(circle , rgba(0,220,255,0.05), rgba(0,220,255,0), rgba(0,220,255,0));
 }
 #debateThreadButton:hover {
-  /* border: 1px solid rgba(0,220,255, 1) !important;
-  border-width: 0px !important;
-  border-radius: 5% 25% 5% 5%;
-  box-shadow: 0 0 1pt 1pt rgba(0,220,255,0.25); */
-  /* transform: scale(1.2); */
   cursor: pointer;
-  /* transform: scale(1.2) rotate(90deg); */
   transform: scale(1.1) rotate(90deg);
   top: 8%;
-  right: 16px;
+  /* right: 32px; */
 }
-#debateDiscussButton:hover #flagProblemLogo {
-  /* transform: scale(1.2); */
+#flagDiscussButton {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  padding: 10px 11px 4px 3px;
+  transition: all 1s ease 0s;
+  z-index: 510;
+  opacity: 0.25;
+  background-color: rgba(0,220,255,0);
+  background: radial-gradient(circle , rgba(0,220,255,0.05), rgba(0,220,255,0), rgba(0,220,255,0));
+}
+#flagDiscussButton:hover {
   opacity: 1;
+  transform: scale(1.2);
+  cursor: pointer;
 }
-
+#editDiscussButton {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  padding: 10px 3px 4px 11px;
+  transition: all 1s ease 0s;
+  z-index: 510;
+  opacity: 0.25;
+  background-color: rgba(0,220,255,0);
+  background: radial-gradient(circle , rgba(0,220,255,0.05), rgba(0,220,255,0), rgba(0,220,255,0));
+}
+#editDiscussButton:hover {
+  opacity: 1;
+  transform: scale(1.2);
+  cursor: pointer;
+}
+#deleteDiscussButton {
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+  padding: 10px 3px 4px 11px;
+  transition: all 1s ease 0s;
+  z-index: 510;
+  opacity: 0.25;
+  background-color: rgba(0,220,255,0);
+  background: radial-gradient(circle , rgba(0,220,255,0.05), rgba(0,220,255,0), rgba(0,220,255,0));
+}
+#deleteDiscussButton:hover {
+  opacity: 1;
+  transform: scale(1.2);
+  cursor: pointer;
+}
 
 
 
@@ -6191,8 +6242,8 @@ background: linear-gradient(to left, rgba(0,220,255,0.1), rgba(0,220,255,0.05), 
 box-shadow: 0 0 1px 1px rgba(0,220,255,1);
 transform: scale(1.02);
 }
-#SSButtonLearn:hover {
-  background: linear-gradient(to right, rgba(0,220,255,0.1), rgba(0,220,255,0.05), rgba(0,220,255,0.02));  
+#SBButtonLearn:hover {
+  background: linear-gradient(to right, rgba(0,220,255,0.1), rgba(0,220,255,0.05), rgba(0,220,255,0.02)) !important;  
 }
 .activeProblemOptionDiscuss div, .activeProblemOptionLearn div {
   color: #00dcff !important;
@@ -7159,27 +7210,47 @@ border-width: 0px 0px 1px 0px;
 /*Old Styles*/
 margin-right: 10px;
 font-size: 120%;
+transition: all 1s ease 0s;
 }
-#discussHoverText {
+#discussPercentGreen {
+  /*Old Styles*/
+  margin-right: 10px;
+  font-size: 120%;
+  color: #00ffdc;
+  transition: all 1s ease 0s;
+  }
+#discussHoverText, #discussHoverTextGreen, #discussHoverTextRed {
   /* display: none; */
   position: absolute;
   top: 3%;
-  right: 13%;
+  right: 14%;
   color: #00dcff;
   transition: all 1s ease 0s;
   letter-spacing: 4px;
   opacity: 0;
   font-size: 180%;
 }
-#discussHoverTextShow {
+#discussHoverTextGreen {
+  color: pink;
+}
+#discussHoverTextRed {
+  color: #ff7f7f;
+}
+#discussHoverTextShow, #discussHoverTextShowGreen, #discussHoverTextShowRed {
   position: absolute;
   top: 3%;
-  right: 13%;
+  right: 14%;
   color: #00dcff;
   transition: all 1s ease 0s;
   letter-spacing: 6px;
   opacity: 1;
   font-size: 180%;
+}
+#discussHoverTextShowGreen {
+  color: #00ffdc;
+}
+#discussHoverTextShowRed {
+  color: #ff7f7f;
 }
 
 /*End Discuss SB*/
@@ -7321,6 +7392,81 @@ color: rgba(0,220,255,1);
 transform: scale(1.02);
 cursor: pointer;
 }
+
+#lessonAddButtonContainer {
+  width: 60%;
+  margin: 0 auto;
+  border: 1px solid #dddddd;
+  border-width: 1px 0px 0px 0px;
+  padding-top: 2.5%;
+  padding-bottom: 2.5%;
+}
+#learnLessonAddButton {
+  margin: 0 auto;
+  margin-top: 2%;
+  margin-top: 0.5%;  
+  width: 80%;
+  padding: 2%;
+  border: 1px solid #00dcff;
+  text-align: center;
+  letter-spacing: 6px;
+  font-size: 150%;
+  transition: all 0.5s ease 0s;
+  transform: scale(1);
+  background-color: rgba(0,220,255,0);
+  background: linear-gradient(to right, rgba(0,220,255,0.15), rgba(0,220,255,0), rgba(0,220,255,0.15));
+  background-color: rgba(0,220,255,0.05);
+  border-width: 0px 1px;
+  border-radius: 5%;
+}
+#learnLessonAddButton:hover {
+  letter-spacing: 8px;
+  background: linear-gradient(circle, rgba(0,220,255,0.2), rgba(0,220,255,0), rgba(0,220,255,0.2));
+  background-color: rgba(0,220,255,0.05);
+  border-width: 1px;
+  transform: scale(1.05);
+  cursor: pointer;
+  color: #00dcff;
+  border-radius: 3px;
+  /* color: #00dcff; */
+}
+#lessonTitleForm {
+  font-family: 'Alegreya Sans SC', sans-serif;
+  font-size: 170%;
+  color: #ffffff;
+  margin: 0 auto;
+  margin-top: 1%;
+  margin-bottom: 1%;
+  letter-spacing: 4px;
+  border: 1px solid #ffffff;
+  border-radius: 3px;
+  box-shadow: 0 0 1pt 1pt rgba(255,255,255,0.5);
+  background-color: rgba(0,220,255, 0.05);
+  padding: 6px 0px 5px 0px;
+}
+
+#resourceTitleForm {
+  width: 70%;
+  font-family: 'Alegreya Sans SC';
+  text-align: center;
+  height: auto;
+  min-height: 10px;
+  max-height: 100px;
+  margin-top: 1%;
+  background: radial-gradient(rgba(0,220,255, 0), rgba(0,220,255, 0.1));
+}
+#resourceURLForm {
+  width: 70%;
+  font-family: 'Alegreya Sans SC';
+  text-align: center;
+  height: auto;
+  min-height: 10px;
+  max-height: 100px;
+  margin-top: 1%;
+  background: radial-gradient(rgba(0,220,255, 0), rgba(0,220,255, 0.1));
+}
+
+
 /*End Learn SB*/
 
 

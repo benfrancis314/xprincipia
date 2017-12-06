@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router';
 import axios from 'axios';
 import cookie from 'react-cookie';
 import {Config} from '../../config.js';
@@ -86,12 +87,15 @@ constructor(props){
           <div id="discussMenuEnd">
             Lessons
           </div>
+          <Link to={`/project/${this.props.params.probID}/learn/content`}>
+                <img src={require('../../assets/redX.svg')} id="closeRedX" width="30" height="30" alt="Close button, red X symbol" />
+            </Link>
             <div id="suggestionFormComponent">
                 <form id="suggestionForm">
                     <fieldset id='fieldSetNoBorderPadding'>
-                            <label htmlFor="problemTitleForm" id="problemTitleFormLabel">lesson title<br />
-                              <input type="text" name="problemTitle" required="required" maxLength="70" id="problemTitleForm" />
-                            </label><br />
+                            {/* <label htmlFor="problemTitleForm" id="problemTitleFormLabel">lesson title<br /> */}
+                              <input type="text" name="problemTitle" placeholder="LESSON TITLE" required="required" maxLength="70" id="lessonTitleForm" />
+                            {/* </label><br /> */}
 
                             <label htmlFor="problemTitleForm" id="problemTitleFormLabel">overview<br />
                             <textarea name="suggestionText" required="required" id="learnContentSummary" 

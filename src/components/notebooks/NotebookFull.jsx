@@ -27,14 +27,13 @@ export default class NotebookFull extends React.Component {
     //initialize the component with this state
     componentWillMount(){
       var self = this;
-      return axios.get( Config.API + '/solutions/ID?id='+this.props.currentNotebook).then(function (response) {
+      return axios.get( Config.API + '/auth/notebooks/username/top?username='+cookie.load('userName')).then(function (response) {
           self.setState({
-              solutionInfo: response.data,
+              notebook: response.data,
           })
-          document.getElementById('notebookFullTitle').value = self.state.solutionInfo.Title;
-          document.getElementById('notebookFullContent').value = self.state.solutionInfo.Description;
-          document.getElementById('notebookFullResources').value = self.state.solutionInfo.References;
-
+          document.getElementById('notebookFullTitle').value = self.state.notebook.Title;
+          document.getElementById('notebookFullContent').value = self.state.notebook.Description;
+          document.getElementById('notebookFullResources').value = self.state.notebook.Sources;
     })
       .catch(function (error) {
         // console.log(error.response.data)

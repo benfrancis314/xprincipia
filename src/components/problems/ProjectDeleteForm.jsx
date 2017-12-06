@@ -23,14 +23,15 @@ export default class ProjectEditForm extends React.Component {
     
   //   Delete proposal
      var self = this
-      axios.delete( Config.API + '/auth/problems/delete?id='+this.props.params.probID, {
+    alert('problemDeleteStart'); 
+     axios.delete( Config.API + '/auth/problems/delete?id='+this.props.params.probID, {
           params: {
-            id: this.props.params.problemID,
+            id: this.props.params.probID,
             username: cookie.load('userName')
           }
         })
         .then(function (result) {
-        document.location = '/welcome'
+            document.location = '/welcome'
       })
         .catch(function (error) {
           // console.log(error.response.data)
@@ -58,7 +59,7 @@ export default class ProjectEditForm extends React.Component {
         <div id="createSolutionBox">
           <form id="solutionDeleteForm">
             <fieldset id="editFormFieldset">
-                <legend id="redLegend">Delete</legend>
+                <legend id="redLegend">Delete{this.props.params.probID}</legend>
                     <div>Are you sure you would like to delete this proposal?</div>
                     <br />
                     <div onClick={this.deleteProject} id="deleteButton">Delete</div>
@@ -75,7 +76,9 @@ export default class ProjectEditForm extends React.Component {
           <form id="solutionDeleteForm">
             <fieldset id="editFormFieldset">
                 <legend id="redLegend">Delete</legend>
-                    <div>WOOPS: You shouldn't be allowed here, we apoligize for the confusion.</div>
+                    <div>CREDENTIAL ERROR: We apologize for the error, 
+                      <br />
+                      please inform us of the problem in the Feedback section in your personal quarters. </div>
                     <br />
                     <Link to={`/project/${this.props.params.probID}/subprojects`}>
                         <div id="returnButton">Exit</div>

@@ -80,6 +80,10 @@ export default class ProfileContainer extends React.Component {
     onLogout() {
         cookie.remove('userToken');
         cookie.remove('userName');
+        // Logging out twice because it requires two logouts to work currently,
+        // Note sure why. Long term problem is not addressed by this
+        cookie.remove('userToken');
+        cookie.remove('userName');
         document.location = "/welcome";
     }
     onCreatedSolution() {

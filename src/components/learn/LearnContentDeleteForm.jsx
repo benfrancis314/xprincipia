@@ -1,4 +1,5 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 import axios from 'axios';
 import cookie from 'react-cookie';
 import { Link } from 'react-router';
@@ -16,6 +17,13 @@ export default class LearnContentDeleteForm extends React.Component {
 
     this.deleteLearnItem = this.deleteLearnItem.bind(this);
   };
+
+  componentDidMount(){
+    var self = this;
+    ReactDOM.findDOMNode(this).scrollIntoView();    
+}
+
+
 
 deleteLearnItem() {
 //Delete question

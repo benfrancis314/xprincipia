@@ -21,7 +21,7 @@ export default class CommentDebateContainer extends React.Component {
         componentDidMount(){
         var self = this;
         // Need to do & in URL query with parentType also
-         axios.get( Config.API + '/comments/parentID?id='+this.props.params.freeFormID).then(function (response) {
+         axios.get( Config.API + '/comments/parentID?id='+this.props.params.freeFormID+'&parentType=6').then(function (response) {
             self.setState({
                 comments: response.data,
             })
