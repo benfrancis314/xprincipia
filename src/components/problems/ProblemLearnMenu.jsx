@@ -44,30 +44,15 @@ export default class ProblemLearnMenu extends React.Component {
                     <div id="proposalsTitleRightSB">Learn</div>
                     <div id="sidebarDiscussMenu">
                         <div id="discussGroup1">
-                            <Link to={`/project/${this.props.params.probID}/learn/content`} activeClassName="activeWhiteBorder">
+                            <Link to={`/project/${this.props.params.probID}/learn/content/full`} activeClassName="activeWhiteBorder">
                                 <div id="SBDiscussButton">Lessons</div>
                             </Link>
 
-                            <Link to={`/project/${this.props.params.probID}/learn/resources`}  activeClassName="activeWhiteBorder">
+                            <Link to={`/project/${this.props.params.probID}/learn/resources/full`}  activeClassName="activeWhiteBorder">
                                 <div id="SBDiscussButton">Resources</div>
                             </Link>
-
-                            {/*<Link to={`/project/${this.props.params.probID}/learn/wiki`}  activeClassName="activeWhiteBorder">
-                                <div id="SBDiscussButton">Wiki</div>
-                            </Link>*/}
                         </div>
                     </div>
-                    {/*Old*/}
-                    {/*<div id="solutionsLearnHeader">
-                        <Link to={`/project/${this.props.params.probID}/learn/content`} activeClassName="activeWhite">
-                            <div id="contentLearnButtonRightSB">Lessons</div>
-                        </Link>
-
-                        <Link to={`/project/${this.props.params.probID}/learn/resources`}  activeClassName="activeWhite">
-                            <div id="resourcesLearnButtonRightSB">Resources</div>
-                        </Link>
-                    </div>*/}
-
                     {React.cloneElement(this.props.children, {probID: this.state.probID, parentTitle: this.props.parentTitle})}
                     <div id="proposalsTitleRightSBEnd"><br /></div>
                 </div>

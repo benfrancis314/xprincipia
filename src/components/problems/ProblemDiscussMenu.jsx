@@ -55,16 +55,16 @@ export default class ProblemDiscussMenu extends React.Component {
                     <div id="proposalsTitleRightSB">DISCUSS</div>
                             <div id="sidebarDiscussMenu">
                                 <div id="discussGroup1">
-                                    <Link to={`/project/${this.props.params.probID}/questions`} activeClassName="activeWhiteBorder">
+                                    <Link to={`/project/${this.props.params.probID}/questions/container`} activeClassName="activeWhiteBorder">
                                         <div id="SBDiscussButton">questions</div>
                                     </Link>
 
-                                    <Link to={`/project/${this.props.params.probID}/suggestions`} activeClassName="activeWhiteBorder">
+                                    <Link to={`/project/${this.props.params.probID}/suggestions/container`} activeClassName="activeWhiteBorder">
                                         <div id="SBDiscussButton">suggestions</div>
                                     </Link>
 
-                                    <Link to={`/project/${this.props.params.probID}/freeforms`} activeClassName="activeWhiteBorder">
-                                        <div id="SBDiscussButton">open debate</div>
+                                    <Link to={`/project/${this.props.params.probID}/freeforms/container`} activeClassName="activeWhiteBorder">
+                                        <div id="SBDiscussButton">debates</div>
                                     </Link>
                                 </div>
                             </div>

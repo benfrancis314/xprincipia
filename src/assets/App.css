@@ -5258,12 +5258,20 @@ input#submitWelcomeProblem:hover {
   margin: 0 auto;
   width: 70%;
   line-height: 150%;
+  background: radial-gradient(circle, rgba(0,220,255, 0), rgba(0,220,255, 0.1));    
 }
 #learnContentTextArea {
   height: 12em;
+  background: radial-gradient(circle, rgba(0,220,255, 0), rgba(0,220,255, 0.1));  
 }
 #learnContentSummary {
   height: 4em;
+  background: radial-gradient(circle, rgba(0,220,255, 0), rgba(0,220,255, 0.1));  
+}
+#resourcesTextArea {
+  height: 3em;
+  line-height: 125%;
+  padding-top: 2% !important;
 }
 #questionFlagTextArea {
   border-color: #ff7f7f !important;
@@ -5284,6 +5292,8 @@ border: 1px solid #00dcff;
 border-width: 1px 1px 1px 1px;
 border-radius: 3px 3px 3px 3px;
 background-color: rgba(0,220,255, 0.05);
+font-family: 'Alegreya Sans SC';
+text-transform: lowercase !important;
 }
 #addAnswer {
 color: #00dcff;
@@ -5456,7 +5466,7 @@ background-color: #00dcff;
 
 /*Logos*/
 
-#closeRedX {
+#closeRedX, #closeRedXNoMargin {
 display: block;
 margin: 0 auto;
 margin-top: 1%;
@@ -5465,10 +5475,14 @@ border: 0px solid #ff7f7f;
 border-radius: 50%;
 transition: all 0.5s ease 0s;
 }
-#closeRedX:hover {
+#closeRedX:hover, #closeRedXNoMargin:hover {
 cursor: pointer;
 background-color: rgba(255,127,127,0.15);
 transform: scale(1.2);
+}
+#closeRedXNoMargin {
+  margin-top: 0%;
+  margin-bottom: 0.5%;
 }
 #closeRedXFeed {
   display: block;
@@ -7059,6 +7073,7 @@ border-radius: 3px 3px 3px 3px;
 background-color: rgba(0,220,255, 0.05);
 box-shadow: 0 0 1pt 1pt rgba(255,255,255,0.5);
 width: 85%;
+text-transform: lowercase !important;
 }
 #fullSolution {
   position: relative;
@@ -7133,6 +7148,7 @@ width: 60%;
 background-color: rgba(0,220,255,0);
 transition: all 0.2s ease 0s;
 padding: 3px 0px;
+text-transform: lowercase !important;
 }
 #SBDiscussButton:hover, #SBDiscussButtonEnd:hover {
 background-color: rgba(0,220,255,0.15);
@@ -7443,26 +7459,30 @@ cursor: pointer;
   box-shadow: 0 0 1pt 1pt rgba(255,255,255,0.5);
   background-color: rgba(0,220,255, 0.05);
   padding: 6px 0px 5px 0px;
+  background: radial-gradient(circle, rgba(0,220,255, 0), rgba(0,220,255, 0.1));    
 }
 
 #resourceTitleForm {
-  width: 70%;
+  width: 80%;
+  letter-spacing: 4px;
   font-family: 'Alegreya Sans SC';
   text-align: center;
   height: auto;
   min-height: 10px;
   max-height: 100px;
   margin-top: 1%;
+  border-color: #ffffff;
   background: radial-gradient(rgba(0,220,255, 0), rgba(0,220,255, 0.1));
 }
 #resourceURLForm {
-  width: 70%;
+  width: 60%;
   font-family: 'Alegreya Sans SC';
   text-align: center;
   height: auto;
   min-height: 10px;
   max-height: 100px;
   margin-top: 1%;
+  margin-bottom: 1.5%;
   background: radial-gradient(rgba(0,220,255, 0), rgba(0,220,255, 0.1));
 }
 

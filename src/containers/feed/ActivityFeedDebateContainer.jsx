@@ -41,8 +41,8 @@ export default class WelcomeUserUnit extends React.Component {
         super(props);
 
         this.state = {
-           feedQuestions: [],
-           feedQuestionsSlice: []
+           feedDebates: [],
+           feedDebatesSlice: []
         }
     };
 
@@ -51,11 +51,11 @@ export default class WelcomeUserUnit extends React.Component {
         // window.scrollTo(0,0);
         return axios.get( Config.API + '/freeForms/feed').then(function (response) {
             self.setState({
-                feedQuestions: response.data.reverse(),
-                feedQuestionsSlice: response.data.reverse().slice(0,10)
+                feedDebates: response.data.reverse(),
+                feedDebatesSlice: response.data.reverse().slice(0,10)
             })
         }) 
-     }
+    }
 	render() {
         return (
         <div id="feedContainer">
@@ -65,80 +65,34 @@ export default class WelcomeUserUnit extends React.Component {
                 </div>
             </ScrollableAnchor>
             {/* {React.cloneElement(this.props.children, {problems: this.props.problems})} */}
-            {React.cloneElement(this.props.children, {questions: this.state.feedQuestionsSlice})}
+            {React.cloneElement(this.props.children, {debates: this.state.feedDebates})}
             <div id="feedBottom">
                 <br />
             </div>
         </div>
 		);
 	}
-	renderItem(problem) {
+// 	renderItem(problem) {
   
+// if (question.Private === true) {
+//         return (
+//             <div key={problem.ID} id="nodisplay">
+//             </div>
+//         );
 
-// For Google Analytics when working
-    // function handleClick() {
-    //     ReactGA.event({
-    //         category: 'Project',
-    //         action: 'Clicked Link',
-    //     });
-    // }
-if (problem.Private === true) {
-        return (
-            <div key={problem.ID} id="nodisplay">
-            </div>
-        );
-
-} else if (problem.ParentType === 1) {
-
-      return (
-      
-            <li key={problem.ID} id="nodisplay">
-            </li>
-      
-      
-      );
-
-} else if (problem.Title === 'Interstellar Civilization') {
-
-      return (
-      
-        <li key={problem.ID} id="nodisplay">
-        </li>
-      
-      
-      );
-
-} else if (problem.Title === 'Evolving Humanity') {
-      return (
-        <li key={problem.ID} id="nodisplay">
-        </li>
-      
-      );
-} else if (problem.Title === 'Theoretical Knowledge') {
-      return (
-        <li key={problem.ID} id="nodisplay">
-        </li>
-      
-      );
-} else if (problem.Title === 'Technology Development') {
-      return (
-        <li key={problem.ID} id="nodisplay">
-        </li>
-      
-      );
-} else 
-      return (
-        <li key={problem.ID} id="feedListUnit">
-            <Link to={'/project/'+problem.ID +'/subprojects'}>
-                <div id="feedUnits">               
-                    <div id="blueFeed">project by {problem.OriginalPosterUsername}</div>
-                    <div id="whiteFeed">{problem.Title}</div>
-                    <div id="feedDate">{dateTime(problem.CreatedAt)}</div>
-                </div>
-            </Link>
-        </li>
-      );
-   }
+// } else 
+//       return (
+//         <li key={question.ID} id="feedListUnit">
+//             <Link to={'/project/'+question.TypeID +'/subprojects'}>
+//                 <div id="feedUnits">               
+//                     <div id="blueFeed">on {question.ParentTitle}</div>
+//                     <div id="whiteFeed">{question.Description}</div>
+//                     <div id="feedDate">{dateTime(question.CreatedAt)}</div>
+//                 </div>
+//             </Link>
+//         </li>
+//       );
+//    }
 }
 
 // function floatToDecimal(float) {

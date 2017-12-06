@@ -36,7 +36,7 @@ export default class WelcomeUserUnit extends React.Component {
     }
     hoverLabel() {
         $(document).ready(function() {
-                $('#feedTitle').html("new projects").fadeIn(7500);
+                $('#feedTitle').html("new lessons").fadeIn(7500);
                 $('#feedTitle').attr('id','feedTitleHover');
                 $('#feedBottom').attr('id','feedBottomBlue');
         });
@@ -58,14 +58,13 @@ export default class WelcomeUserUnit extends React.Component {
 		return (
             <div id="feedUnitContainer">
                 <div id="feedListDiv">
-                    
                     <ul id="feedUnitList"> 
-                        {this.props.problems.map(this.renderItem)}
+                        {this.props.lessons.map(this.renderItem)}
                     </ul>	 
                 </div>
                 <div id="feedOptionsBar">
                     <div id="feedListType" onMouseOver={this.hoverLabel} onMouseOut={this.unHoverLabel}>
-                        projects
+                        lessons
                     </div>
                     <div id="feedOptionsButton">
                         <Link to="/welcome/filter" activeClassName="activeBlue">
@@ -83,7 +82,7 @@ export default class WelcomeUserUnit extends React.Component {
             </div>
 		);
 	}
-	renderItem(problem) {
+	renderItem(lesson) {
   
 
 // For Google Analytics when working
@@ -93,65 +92,38 @@ export default class WelcomeUserUnit extends React.Component {
     //         action: 'Clicked Link',
     //     });
     // }
-if (problem.Private === true) {
+if (lesson.Private === true) {
         return (
-            <div key={problem.ID} id="nodisplay">
+            <div key={lesson.ID} id="nodisplay">
             </div>
         );
-
-} else if (problem.ParentType === 1) {
-
-      return (
-    //   We do actually want to show projects on proposals here:
-        <li key={problem.ID} id="feedListUnit">
-            <Link to={'/project/'+problem.ID +'/subprojects'}>
-                <div id="feedUnits">               
-                    <div id="blueFeed">project by <span id="feedCaps">{problem.OriginalPosterUsername}</span></div>
-                    <div id="whiteFeed">{problem.Title}</div>
-                    <div id="feedDate">{dateTime(problem.CreatedAt)}</div>
-                </div>
-            </Link>
-        </li>
-      
-      
-      );
-
-} else if (problem.Title === 'Interstellar Civilization') {
+// We may want to show questions that are on proposals too
+} else if (lesson.ParentType === 1) {
 
       return (
-      
-        <li key={problem.ID} id="nodisplay">
-        </li>
-      
-      
-      );
-
-} else if (problem.Title === 'Evolving Humanity') {
-      return (
-        <li key={problem.ID} id="nodisplay">
-        </li>
-      
-      );
-} else if (problem.Title === 'Theoretical Knowledge') {
-      return (
-        <li key={problem.ID} id="nodisplay">
-        </li>
-      
-      );
-} else if (problem.Title === 'Technology Development') {
-      return (
-        <li key={problem.ID} id="nodisplay">
-        </li>
+        <div key={lesson.ID} id="nodisplay">
+        </div>
+        // Setup for questions on solutions too, may need new field for its secondary parent, the project of the solution
+        // <li key={question.ID} id="feedListUnit">
+        //     <Link to={'/project/'+question.ID +'/subprojects'}>
+        //         <div id="feedUnits">               
+        //             <div id="blueFeed">project:<span id="feedCaps"> {question.ParentTitle}</span></div>
+        //             <div id="whiteFeed">{question.Description}</div>
+        //             <div id="feedDate">{dateTime(question.CreatedAt)}</div>
+    //         </div>
+        //     </Link>
+        // </li>
       
       );
 } else 
       return (
-        <li key={problem.ID} id="feedListUnit">
-            <Link to={'/project/'+problem.ID +'/subprojects'}>
-                <div id="feedUnits">               
-                    <div id="blueFeed">project by <span id="feedCaps">{problem.OriginalPosterUsername}</span></div>
-                    <div id="whiteFeed">{problem.Title}</div>
-                    <div id="feedDate">{dateTime(problem.CreatedAt)}</div>
+        <li key={lesson.ID} id="feedListUnit">
+            <Link to={'/project/'+lesson.TypeID +'/lesson/'+lesson.ID +'/answers'}>
+                <div id="feedUnits">  
+                     {/* Used to say "Question on: ... " or "Q: ... " or just the title */}
+                    <div id="blueFeedProse">project:<span id="feedCaps"> {lesson.ParentTitle}</span></div>
+                    <div id="whiteFeedProse">{lesson.Description}</div>
+                    <div id="feedDateProse">{dateTime(lesson.CreatedAt)}</div>
                 </div>
             </Link>
         </li>

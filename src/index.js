@@ -430,14 +430,14 @@ ReactDOM.render(
               <Route path='/project/private/:probID/question/:questID/flag' component={QuestionFlagForm}></Route>
               <Route path='/project/private/:probID/question/:questID/delete' component={QuestionDeleteFormPrivate}></Route>
             </Route> 
-            <Route path='/project/:probID/question/:questID/answers/container' component={AnswerContainerPrivate}>
+            <Route path='/project/private/:probID/question/:questID/answers/container' component={AnswerContainerPrivate}>
               <IndexRoute component={AnswerFormPrivate}></IndexRoute>
               <Route path='/project/private/:probID/question/:questID/answers' component={AnswerFormPrivate}></Route>
               <Route path='/project/private/:probID/question/:questID/answer/:answerID/edit' component={AnswerEditFormPrivate}></Route>
               <Route path='/project/private/:probID/question/:questID/answer/:answerID/flag' component={AnswerFlagForm}></Route>
               <Route path='/project/private/:probID/question/:questID/answer/:answerID/delete' component={AnswerDeleteFormPrivate}></Route>
             </Route>
-            <Route path='/project/:probID/suggestions/container' component={SuggestionContainerPrivate}>
+            <Route path='/project/private/:probID/suggestions/container' component={SuggestionContainerPrivate}>
               <IndexRoute component={SuggestionFormPrivate}></IndexRoute>
               <Route path='/project/private/:probID/suggestions' component={SuggestionFormPrivate}></Route>
               <Route path='/project/private/:probID/suggestion/:suggID/edit' component={SuggestionEditFormPrivate}></Route>
@@ -552,7 +552,7 @@ ReactDOM.render(
                 <Route path='/project/:probID/proposal/:solutionID/learn/content/:learnItemID/flag' component={LearnContentFlagForm}></Route>
                 <Route path='/project/:probID/proposal/:solutionID/learn/content/:learnItemID/delete' component={LearnContentDeleteForm}></Route>
               </Route>
-              <Route path='/project/:probID/learn/resources/full' component={LearnResourcesContainerPrivate}>
+              <Route path='/project/:probID/proposal/:solutionID/learn/resources/full' component={LearnResourcesContainerPrivate}>
                 <IndexRoute component={LearnResourcesForm}></IndexRoute>
                 <Route path='/project/:probID/proposal/:solutionID/learn/resources' component={LearnResourcesForm}></Route>
                 <Route path='/project/:probID/proposal/:solutionID/learn/resources/:resourceID/edit' component={LearnResourcesEditForm}></Route>
@@ -643,7 +643,7 @@ ReactDOM.render(
                 <Route path='/project/:probID/learn/content/:learnItemID/edit' component={LearnContentEditForm}></Route>
                 <Route path='/project/:probID/learn/content/:learnItemID/flag' component={LearnContentFlagForm}></Route>
                 <Route path='/project/:probID/learn/content/:learnItemID/delete' component={LearnContentDeleteForm}></Route>
-             </Route>
+              </Route>
               <Route path='/project/:probID/learn/resources/full' component={LearnResourcesContainer1}>
                 <IndexRoute component={LearnResourcesForm}></IndexRoute>
                 <Route path='/project/:probID/learn/resources' component={LearnResourcesForm}></Route>

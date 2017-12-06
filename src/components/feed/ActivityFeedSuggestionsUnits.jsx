@@ -36,7 +36,7 @@ export default class WelcomeUserUnit extends React.Component {
     }
     hoverLabel() {
         $(document).ready(function() {
-                $('#feedTitle').html("new questions").fadeIn(7500);
+                $('#feedTitle').html("new suggestions").fadeIn(7500);
                 $('#feedTitle').attr('id','feedTitleHover');
                 $('#feedBottom').attr('id','feedBottomBlue');
         });
@@ -59,12 +59,12 @@ export default class WelcomeUserUnit extends React.Component {
             <div id="feedUnitContainer">
                 <div id="feedListDiv">
                     <ul id="feedUnitList"> 
-                        {this.props.questions.map(this.renderItem)}
+                        {this.props.suggestions.map(this.renderItem)}
                     </ul>	 
                 </div>
                 <div id="feedOptionsBar">
                     <div id="feedListType" onMouseOver={this.hoverLabel} onMouseOut={this.unHoverLabel}>
-                        questions
+                        suggestions
                     </div>
                     <div id="feedOptionsButton">
                         <Link to="/welcome/filter" activeClassName="activeBlue">
@@ -82,7 +82,7 @@ export default class WelcomeUserUnit extends React.Component {
             </div>
 		);
 	}
-	renderItem(question) {
+	renderItem(suggestion) {
   
 
 // For Google Analytics when working
@@ -92,68 +92,41 @@ export default class WelcomeUserUnit extends React.Component {
     //         action: 'Clicked Link',
     //     });
     // }
-if (question.Private === true) {
+if (suggestion.Private === true) {
         return (
-            <div key={question.ID} id="nodisplay">
+            <div key={suggestion.ID} id="nodisplay">
             </div>
         );
-// We may want to show questions that are on proposals too
-} else if (question.ParentType === 1) {
+// We may want to show suggestions that are on proposals too
+} else if (suggestion.ParentType === 1) {
 
       return (
-    //   If don't want to show proposal questions
-            // <li key={question.ID} id="nodisplay">
-            // </li>
-    //   If we do want to show proposal questions
-            <li key={question.ID} id="feedListUnit">
-            <Link to={{pathname: '/project/'+question.ID +'/subprojects'}} onClick={()=>{this.handleClick()}}>
-                <div id="feedUnits">               
-                    <div id="blueFeed">project:<span id="feedCaps"> {question.Username}</span></div>
-                    <div id="whiteFeed">{question.Description}</div>
-                    <div id="feedDate">{dateTime(question.CreatedAt)}</div>
-                </div>
-            </Link>
-        </li>
-      
-      );
-
-} else if (question.Title === 'Interstellar Civilization') {
-
-      return (
-      
-        <li key={question.ID} id="nodisplay">
-        </li>
-      
-      
-      );
-
-} else if (question.Title === 'Evolving Humanity') {
-      return (
-        <li key={question.ID} id="nodisplay">
-        </li>
-      
-      );
-} else if (question.Title === 'Theoretical Knowledge') {
-      return (
-        <li key={question.ID} id="nodisplay">
-        </li>
-      
-      );
-} else if (question.Title === 'Technology Development') {
-      return (
-        <li key={question.ID} id="nodisplay">
-        </li>
+        // //   If don't want to show proposal suggestions
+        //         // <li key={suggestion.ID} id="nodisplay">
+        //         // </li>
+        // //   If we do want to show proposal suggestions
+        //         <li key={suggestion.ID} id="feedListUnit">
+        //         <Link to={{pathname: '/project/'+suggestion.ID +'/subprojects'}} onClick={()=>{this.handleClick()}}>
+        //             <div id="feedUnits">               
+        //                 <div id="blueFeed">project:<span id="feedCaps"> {suggestion.Username}</span></div>
+        //                 <div id="whiteFeed">{suggestion.Description}</div>
+        //                 <div id="feedDate">{dateTime(suggestion.CreatedAt)}</div>
+        //             </div>
+        //         </Link>
+        //     </li>
+        <div key={suggestion.ID} id="nodisplay">
+        </div>
       
       );
 } else 
       return (
-        <li key={question.ID} id="feedListUnit">
-            <Link to={{pathname: '/project/'+question.ID +'/subprojects'}} onClick={()=>{this.handleClick()}}>
+        <li key={suggestion.ID} id="feedListUnit">
+            <Link to={'/project/'+suggestion.ID +'/subprojects'}>
                 <div id="feedUnits">  
-                     {/* Used to say "Question on: ... " or "Q: ... " or just the title */}
-                    <div id="blueFeedProse">question on:<span id="feedCaps"> {question.Description}</span></div>
-                    <div id="whiteFeedProse">{question.Description}</div>
-                    <div id="feedDateProse">{dateTime(question.CreatedAt)}</div>
+                     {/* Used to say "suggestion on: ... " or "Q: ... " or just the title */}
+                    <div id="blueFeedProse">suggestion on:<span id="feedCaps"> {suggestion.Description}</span></div>
+                    <div id="whiteFeedProse">{suggestion.Description}</div>
+                    <div id="feedDateProse">{dateTime(suggestion.CreatedAt)}</div>
                 </div>
             </Link>
         </li>

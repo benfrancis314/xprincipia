@@ -26,6 +26,13 @@ export default class SolutionPrivateForm extends React.Component {
     this.state.summary = document.getElementById('solutionSummaryForm').value
     this.state.description = document.getElementById('solutionDescriptionForm').value
     this.state.references = document.getElementById('solutionReferencesForm').value
+    if (document.getElementById('proposalClass2').checked) {
+      this.state.class = '2' 
+    } else if (document.getElementById('proposalClass1').checked) {
+      this.state.class = '1' 
+    } else {
+      this.state.class = '0' 
+    }
 
     var self = this
     axios.post( Config.API + '/auth/solutions/create', {
@@ -34,7 +41,9 @@ export default class SolutionPrivateForm extends React.Component {
         title : this.state.title,
         summary : this.state.summary,
         description : this.state.description,
-        references: this.state.references
+        references: this.state.references,
+        class : this.state.class,
+        parentTitle: this.props.parentTitle,
       })
       .then(function (result) {
         document.location = '/project/private/' + self.props.probID + '/subprojects'
@@ -88,7 +97,7 @@ export default class SolutionPrivateForm extends React.Component {
                         </div>
                         <div id="projectFormRadioRow">
                           <label id="projectRadioButtonContainer">
-                            <input type="radio" name="projectType" value="0"/>
+                            <input type="radio" id="proposalClass0" name="projectType" value="0"/>
                             <span id="checkmark1"></span>
                           </label>
                         </div>
@@ -99,7 +108,7 @@ export default class SolutionPrivateForm extends React.Component {
                         </div>
                         <div id="projectFormRadioRow">
                           <label id="projectRadioButtonContainer">
-                            <input type="radio" name="projectType" value="1" />
+                            <input type="radio" id="proposalClass1" name="projectType" value="1" />
                             <span id="checkmark2"></span>
                           </label>
                         </div>
@@ -110,7 +119,7 @@ export default class SolutionPrivateForm extends React.Component {
                         </div>
                         <div id="projectFormRadioRow">
                           <label id="projectRadioButtonContainer">
-                            <input type="radio" name="projectType" value="2" />
+                            <input type="radio" id="proposalClass2" name="projectType" value="2" />
                             <span id="checkmark3"></span>
                           </label>
                         </div>

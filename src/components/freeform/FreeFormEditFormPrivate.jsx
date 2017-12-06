@@ -88,7 +88,7 @@ updateFreeForm() {
         return (
             <div>
               <div id="discussMenuEnd">
-                Open Debate
+                debates
               </div>
               <div id="questionFormComponent">
                     <form id="questionForm">
@@ -111,7 +111,7 @@ updateFreeForm() {
       return (
         <div>
           <div id="discussMenuEnd">
-            Open Debate
+            debates
           </div>
           <div id="questionFormComponent">
                 <form id="questionForm">

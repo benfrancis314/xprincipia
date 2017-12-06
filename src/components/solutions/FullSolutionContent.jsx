@@ -190,7 +190,7 @@ unVote() {
                 </Link>
               </div>
               <div>
-              {this.props.children}
+              {React.cloneElement(this.props.children, {creator:this.state.solutionInfo.OriginalPosterUsername, parentTitle: this.props.parentTitle} )}
               {React.cloneElement(<FullSolutionDescription solutionInfo={ this.state.solutionInfo} solutionID={this.props.params.solutionID}/> )}
             </div>
         </div>
@@ -231,7 +231,7 @@ unVote() {
                 </Link>
               </div>
               <div>
-              {this.props.children}
+              {React.cloneElement(this.props.children, {creator:this.state.solutionInfo.OriginalPosterUsername, parentTitle: this.props.parentTitle} )}
               {React.cloneElement(<FullSolutionDescription solutionInfo={ this.state.solutionInfo} solutionID={this.props.params.solutionID}/> )}            
               </div>
         </div>
@@ -267,7 +267,7 @@ unVote() {
                 </Link>
               </div>
               <div>
-              {this.props.children}
+              {React.cloneElement(this.props.children, {creator:this.state.solutionInfo.OriginalPosterUsername, parentTitle: this.props.parentTitle} )}
               {React.cloneElement(<FullSolutionDescription solutionInfo={ this.state.solutionInfo} solutionID={this.props.params.solutionID}/> )}
             </div>
         </div>
@@ -305,7 +305,7 @@ unVote() {
               <div>
             {/*{React.cloneElement(<ProsContainer probID={this.state.probID} solutionID={this.state.solutionID} /> )}*/}
             {/*{React.cloneElement(<ConsContainer probID={this.state.probID} solutionID={this.state.solutionID} /> )}*/}
-            {React.cloneElement(this.props.children, {creator:this.state.solutionInfo.OriginalPosterUsername} )}
+              {React.cloneElement(this.props.children, {creator:this.state.solutionInfo.OriginalPosterUsername, parentTitle: this.props.parentTitle} )}
               {React.cloneElement(<FullSolutionDescription solutionInfo={ this.state.solutionInfo} solutionID={this.props.params.solutionID}/> )}            </div>
         </div>
       );

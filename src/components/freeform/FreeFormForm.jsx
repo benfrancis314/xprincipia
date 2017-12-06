@@ -28,7 +28,8 @@ postFreeForm() {
       type:'1',
       typeID: this.props.params.solutionID,
       username: cookie.load('userName'),
-      description : this.state.freeForm
+      description : this.state.freeForm,
+      parentTitle: this.props.parentTitle,
     })
       .then(function (result) {
         document.location = window.location.pathname 
@@ -57,7 +58,8 @@ postFreeForm() {
       type:'0',
       typeID: this.props.params.probID,
       username: cookie.load('userName'),
-      description : this.state.freeForm
+      description : this.state.freeForm,
+      parentTitle: this.props.parentTitle,
     })
       .then(function (result) {
         document.location = window.location.pathname 
@@ -90,13 +92,13 @@ postFreeForm() {
       return (
       <div>
         <div id="discussMenuEnd">
-          Open Debate
+          debates
         </div>
         <div id="questionFormComponent">
               <form id="questionForm">
                   <fieldset id='fieldSetNoBorderPadding'>
                       {/*<legend>FreeForm Discussion</legend>*/}
-                          <textarea name="questionText" required="required" id="freeFormTextArea" placeholder="Start or join a debate with your peers about this project. " ></textarea>
+                          <textarea name="questionText" required="required" id="freeFormTextArea" placeholder="Begin or join a debate with your peers about this project. " ></textarea>
                           <input type="button" value="Add" onClick={this.postFreeForm} id="askQuestion"/>
                   </fieldset>
               </form>

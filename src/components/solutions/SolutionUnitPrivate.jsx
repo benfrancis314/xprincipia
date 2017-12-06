@@ -42,22 +42,27 @@ export default class SolutionUnit extends React.Component {
 
 	renderItem(solution) {
 
-	if (solution.Title.includes('k')) {
+	if (solution.Class == '2') {
     return (
 			<li key={solution.ID}>
 				<Link to={`/project/private/${solution.ProblemID}/proposal/${solution.ID}`} >
-					<div id="solutionUnit">
+					<div id="solutionUnitRed">
 						<div id="solutionUnitContainer">
-							<div id="solutionPercent">{floatToDecimal(solution.PercentRank)}</div>
-							<div id="solutionUnitTitle">{solution.Title}</div>
+							<div id="solutionPercentRed">{floatToDecimal(solution.PercentRank)}</div>
+							<div id="solutionUnitTitle">
+								<span id="redProposal">solution</span>
+								<br />
+								{solution.Title}
+							</div>
 						</div>
 					</div>
 				<div id="proposalToggleOff">
 					{/*{React.cloneElement(<FullSolution probID={solution.ProblemID} solutionID={solution.ID}  />)}*/}
 				</div>
 				</Link>
-			</li>);
-	} else if (solution.Title.includes('d')) {
+			</li>
+			);
+	} else if (solution.Class == '1') {
     return (
 		<li key={solution.ID}>
 				<Link to={`/project/private/${solution.ProblemID}/proposal/${solution.ID}`} >
@@ -80,21 +85,18 @@ export default class SolutionUnit extends React.Component {
 		return (
 			<li key={solution.ID}>
 				<Link to={`/project/private/${solution.ProblemID}/proposal/${solution.ID}`} >
-					<div id="solutionUnitRed">
+					<div id="solutionUnit">
 						<div id="solutionUnitContainer">
-							<div id="solutionPercentRed">{floatToDecimal(solution.PercentRank)}</div>
-							<div id="solutionUnitTitle">
-								<span id="redProposal">solution</span>
-								<br />
-								{solution.Title}
-							</div>
+							<div id="solutionPercent">{floatToDecimal(solution.PercentRank)}</div>
+							<div id="solutionUnitTitle">{solution.Title}</div>
 						</div>
 					</div>
 				<div id="proposalToggleOff">
 					{/*{React.cloneElement(<FullSolution probID={solution.ProblemID} solutionID={solution.ID}  />)}*/}
 				</div>
 				</Link>
-			</li>);
+			</li>
+		);
 	}
 }
 }

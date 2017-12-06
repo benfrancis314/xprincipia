@@ -53,7 +53,7 @@ export default class ProposalDiscussMenu extends React.Component {
                                     </Link>
 
                                     <Link to={`/project/${this.props.params.probID}/proposal/${this.props.params.solutionID}/debates`} activeClassName="activeWhiteBorder">
-                                        <div id="SBDiscussButton">open debate</div>
+                                        <div id="SBDiscussButton">debates</div>
                                     </Link>
                                 </div>
                             </div>

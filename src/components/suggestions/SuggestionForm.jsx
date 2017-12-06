@@ -29,6 +29,7 @@ this.state.suggestion = document.getElementById('suggestionTextArea').value
       typeID: this.props.params.solutionID,
       username: cookie.load('userName'),
       description : this.state.suggestion,
+      parentTitle: this.props.parentTitle,
     })
       .then(function (result) {
         document.location = window.location.pathname 
@@ -60,6 +61,7 @@ this.state.suggestion = document.getElementById('suggestionTextArea').value
       typeID: this.props.params.probID,
       username: cookie.load('userName'),
       description : this.state.suggestion,
+      parentTitle: this.props.parentTitle,
     })
       .then(function (result) {
         document.location = window.location.pathname 

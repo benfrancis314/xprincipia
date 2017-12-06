@@ -57,7 +57,7 @@ deleteFreeform() {
         return (
             <div>
               <div id="discussMenuEnd">
-                Open Debate
+                debates
               </div>
               <div id="questionFormComponent">
                     <form id="questionForm">
@@ -80,7 +80,7 @@ deleteFreeform() {
       return (
         <div>
             <div id="discussMenuEnd">
-              Open Debate
+              debates
             </div>
             <div id="questionFormComponent">
                   <form id="questionForm">

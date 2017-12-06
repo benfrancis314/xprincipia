@@ -10,14 +10,18 @@ constructor(props){
         super(props);
 
         this.state = {
-            learnItem: []
+            title: '',
+            summary: '',
+            description: '',
         }
             this.postLearnItem = this.postLearnItem.bind(this);
         
     };
     postLearnItem() {
   //Read field items into component state
-      this.state.learnItem = document.getElementById('learnContentTextArea').value
+      this.state.title = document.getElementById('lessonTitleForm').value
+      this.state.summary = document.getElementById('learnContentSummary').value
+      this.state.description = document.getElementById('learnContentTextArea').value
 
 
   //if User is on a solution post with type 1
@@ -27,7 +31,10 @@ constructor(props){
       type:'1',
       typeID: this.props.params.solutionID,
       username: cookie.load('userName'),
-      description : this.state.learnItem
+      title: this.state.title,
+      summary: this.state.summary,
+      description : this.state.learnItem,
+      parentTitle: this.props.parentTitle,
     })
       .then(function (result) {
         document.location = window.location.pathname 
@@ -57,7 +64,10 @@ constructor(props){
       type:'0',
       typeID: this.props.params.probID,
       username: cookie.load('userName'),
-      description : this.state.learnItem
+      title: this.state.title,
+      summary: this.state.summary,
+      description : this.state.learnItem,
+      parentTitle: this.props.parentTitle,
     })
       .then(function (result) {
         document.location = window.location.pathname 
@@ -88,7 +98,7 @@ constructor(props){
             Lessons
           </div>
           <Link to={`/project/${this.props.params.probID}/learn/content`}>
-                <img src={require('../../assets/redX.svg')} id="closeRedX" width="30" height="30" alt="Close button, red X symbol" />
+                <img src={require('../../assets/redX.svg')} id="closeRedXNoMargin" width="30" height="30" alt="Close button, red X symbol" />
             </Link>
             <div id="suggestionFormComponent">
                 <form id="suggestionForm">

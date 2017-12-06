@@ -110,7 +110,7 @@ if (question.Private === true) {
         //             <div id="blueFeed">project:<span id="feedCaps"> {question.ParentTitle}</span></div>
         //             <div id="whiteFeed">{question.Description}</div>
         //             <div id="feedDate">{dateTime(question.CreatedAt)}</div>
-        //         </div>
+    //         </div>
         //     </Link>
         // </li>
       

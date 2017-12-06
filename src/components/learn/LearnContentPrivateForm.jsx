@@ -26,7 +26,8 @@ constructor(props){
       type:'1',
       typeID: this.props.params.solutionID,
       username: cookie.load('userName'),
-      description : this.state.learnItem
+      description : this.state.learnItem,
+      parentTitle: this.props.parentTitle,
     })
       .then(function (result) {
         document.location = window.location.pathname 
@@ -56,7 +57,8 @@ constructor(props){
       type:'0',
       typeID: this.props.params.probID,
       username: cookie.load('userName'),
-      description : this.state.learnItem
+      description : this.state.learnItem,
+      parentTitle: this.props.parentTitle,
     })
       .then(function (result) {
         document.location = window.location.pathname 

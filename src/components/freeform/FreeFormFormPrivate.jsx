@@ -28,7 +28,8 @@ postFreeForm() {
       type:'1',
       typeID: this.props.params.solutionID,
       username: cookie.load('userName'),
-      description : this.state.freeForm
+      description : this.state.freeForm,
+      parentTitle: this.props.parentTitle,
     })
       .then(function (result) {
         document.location = window.location.pathname 
@@ -57,7 +58,8 @@ postFreeForm() {
       type:'0',
       typeID: this.props.params.probID,
       username: cookie.load('userName'),
-      description : this.state.freeForm
+      description : this.state.freeForm,
+      parentTitle: this.props.parentTitle,
     })
       .then(function (result) {
         document.location = window.location.pathname 
