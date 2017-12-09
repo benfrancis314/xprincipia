@@ -216,7 +216,7 @@ unVote() {
                 <a href='#proposals'>
                   <div id="SBButtonProposal" onClick={this.goToProposal}>proposals</div>
                 </a>
-                <ProblemFollowButton />
+                <ProblemFollowButton probID={this.props.params.probID} username={cookie.load('userName')}/>
               </div>
               <Link to={`/project/${this.props.params.probID}/learn/resources`} activeClassName="activeProblemOptionLearn">
                 <div id="SBButtonLearn">learn</div>
@@ -294,7 +294,7 @@ unVote() {
                 <a href='#proposals'>
                   <div id="SBButtonProposal" onClick={this.goToProposal}>proposals</div>
                 </a>
-                <ProblemFollowButton />
+                <ProblemFollowButton probID={this.props.params.probID} username={cookie.load('userName')} />
               </div>
               <Link to={`/project/${this.props.params.probID}/learn/resources`} activeClassName="activeProblemOptionLearn">
                 <div id="SBButtonLearn">learn</div>
@@ -364,7 +364,7 @@ unVote() {
                 <a href='#proposals'>
                   <div id="SBButtonProposal" onClick={this.goToProposal}>proposals</div>
                 </a>
-                <ProblemFollowButton />
+                <ProblemFollowButton probID={this.props.params.probID} username={cookie.load('userName')} />
               </div>
               <Link to={`/project/${this.props.params.probID}/learn/resources`} activeClassName="activeProblemOptionLearn">
                 <div id="SBButtonLearn">learn</div>
@@ -434,7 +434,7 @@ unVote() {
               <a href='#proposals'>
                 <div id="SBButtonProposal" onClick={this.goToProposal}>proposals</div>
               </a>
-              <ProblemFollowButton />
+              <ProblemFollowButton probID={this.props.params.probID} username={cookie.load('userName')} />
             </div>
             <Link to={`/project/${this.props.params.probID}/learn/resources`} activeClassName="activeProblemOptionLearn">
               <div id="SBButtonLearn">learn</div>
@@ -502,7 +502,7 @@ unVote() {
                 <a href='#proposals'>
                   <div id="SBButtonProposal" onClick={this.goToProposal}>proposals</div>
                 </a>
-                <ProblemFollowButton />
+                <ProblemFollowButton probID={this.props.params.probID} username={cookie.load('userName')} />
               </div>
               <Link to={`/project/${this.props.params.probID}/learn/resources`} activeClassName="activeProblemOptionLearn">
                 <div id="SBButtonLearn">learn</div>

@@ -22,11 +22,12 @@ constructor(props){
   //solutionID will be available in props
   if (this.props.params.solutionID) {
       axios.post( Config.API + '/auth/resources/create', {
-      type:'1',
-      typeID: this.props.params.solutionID,
-      username: cookie.load('userName'),
-      description : this.state.resource,
-      parentTitle: this.props.parentTitle,
+        type:'1',
+        typeID: this.props.params.solutionID,
+        username: cookie.load('userName'),
+        description : this.state.resource,
+        parentTitle: this.props.parentTitle,
+        private: '1',
     })
       .then(function (result) {
         document.location = window.location.pathname 

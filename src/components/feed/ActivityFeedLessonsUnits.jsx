@@ -121,7 +121,7 @@ if (lesson.Private === true) {
             <Link to={'/project/'+lesson.TypeID +'/lesson/'+lesson.ID +'/answers'}>
                 <div id="feedUnits">  
                      {/* Used to say "Question on: ... " or "Q: ... " or just the title */}
-                    <div id="blueFeedProse">project:<span id="feedCaps"> {lesson.ParentTitle}</span></div>
+                    <div id="blueFeedProse"><span id="feedCaps"> {lesson.ParentTitle}</span></div>
                     <div id="whiteFeedProse">{lesson.Description}</div>
                     <div id="feedDateProse">{dateTime(lesson.CreatedAt)}</div>
                 </div>

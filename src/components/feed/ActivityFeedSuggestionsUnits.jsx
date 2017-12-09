@@ -124,7 +124,7 @@ if (suggestion.Private === true) {
             <Link to={'/project/'+suggestion.ID +'/subprojects'}>
                 <div id="feedUnits">  
                      {/* Used to say "suggestion on: ... " or "Q: ... " or just the title */}
-                    <div id="blueFeedProse">suggestion on:<span id="feedCaps"> {suggestion.Description}</span></div>
+                    <div id="blueFeedProse"><span id="feedCaps"> {suggestion.ParentTitle}</span></div>
                     <div id="whiteFeedProse">{suggestion.Description}</div>
                     <div id="feedDateProse">{dateTime(suggestion.CreatedAt)}</div>
                 </div>

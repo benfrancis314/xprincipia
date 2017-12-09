@@ -29,6 +29,7 @@ this.state.question = document.getElementById('questionTextArea').value
       username: cookie.load('userName'),
       description : this.state.question,
       parentTitle: this.props.parentTitle,
+      private: '0',
   })
     .then(function (result) {
       document.location = window.location.pathname 
@@ -56,11 +57,12 @@ this.state.question = document.getElementById('questionTextArea').value
     else {
 
       axios.post( Config.API + '/auth/questions/create', {
-      type:'0',
-      typeID: this.props.params.probID,
-      username: cookie.load('userName'),
-      description : this.state.question,
-      parentTitle : this.props.parentTitle,
+        type:'0',
+        typeID: this.props.params.probID,
+        username: cookie.load('userName'),
+        description : this.state.question,
+        parentTitle : this.props.parentTitle,
+        private: '0',
     })
       .then(function (result) {
         document.location = window.location.pathname 

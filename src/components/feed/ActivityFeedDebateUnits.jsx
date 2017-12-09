@@ -122,7 +122,7 @@ if (debate.Private === true) {
             <Link to={'/project/'+debate.TypeID +'/freeform/'+debate.ID +'/comments'}>
                 <div id="feedUnits">  
                      {/* Used to say "Question on: ... " or "Q: ... " or just the title */}
-                    <div id="blueFeedProse">project:<span id="feedCaps"> {debate.ParentTitle}</span></div>
+                    <div id="blueFeedProse"><span id="feedCaps"> {debate.ParentTitle}</span></div>
                     <div id="whiteFeedProse">{debate.Description}</div>
                     <div id="feedDateProse">{dateTime(debate.CreatedAt)}</div>
                 </div>

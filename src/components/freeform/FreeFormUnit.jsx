@@ -11,6 +11,26 @@ export default class FreeFormUnit extends React.Component {
         super(props);
 
          this.renderItem = this.renderItem.bind(this);
+        //  this.hoverThread = this.hoverThread.bind(this);
+        //  this.hoverVote = this.hoverVote.bind(this);
+        //  this.hoverFlag = this.hoverFlag.bind(this);
+        //  this.hoverEdit = this.hoverEdit.bind(this);
+        //  this.hoverDelete = this.hoverDelete.bind(this);
+        //  this.unHoverThread = this.unHoverThread.bind(this);
+        //  this.unHoverVote = this.unHoverVote.bind(this);
+        //  this.unHoverFlag = this.unHoverFlag.bind(this);
+        //  this.unHoverEdit = this.unHoverEdit.bind(this);
+        //  this.unHoverDelete = this.unHoverDelete.bind(this);
+        //  this.hoverThreadVoted = this.hoverThreadVoted.bind(this);
+        //  this.hoverVoteVoted = this.hoverVoteVoted.bind(this);
+        //  this.hoverFlagVoted = this.hoverFlagVoted.bind(this);
+        //  this.hoverEditVoted = this.hoverEditVoted.bind(this);
+        //  this.hoverDeleteVoted = this.hoverDeleteVoted.bind(this);
+        //  this.unHoverThreadVoted = this.unHoverThreadVoted.bind(this);
+        //  this.unHoverVoteVoted = this.unHoverVoteVoted.bind(this);
+        //  this.unHoverFlagVoted = this.unHoverFlagVoted.bind(this);
+        //  this.unHoverEditVoted = this.unHoverEditVoted.bind(this);
+        //  this.unHoverDeleteVoted = this.unHoverDeleteVoted.bind(this);
     };
   
 
@@ -106,6 +126,7 @@ export default class FreeFormUnit extends React.Component {
            return (
        <li key={freeForm.ID} id="suggestionUnit">
 				<div id="suggestionContentHoverVote">
+                x{freeForm.ID}x
                     <Link to={`/project/${freeForm.TypeID}/freeform/${freeForm.ID}/comments`}>
                         <div id="debateThreadButton" onMouseOver={hoverThreadVoted} onMouseOut={unHoverThreadVoted}>
                             <img src={require('../../assets/list4.svg')} id="debateThreadLogo" width="50" height="50" alt="Delete Button, Red X" />
@@ -144,6 +165,7 @@ export default class FreeFormUnit extends React.Component {
         return (
        <li key={freeForm.ID} id="suggestionUnit">
 				<div id="suggestionContent">
+                x{freeForm.ID}x
                     <Link to={`/project/${freeForm.TypeID}/freeform/${freeForm.ID}/comments`}>
                         <div id="debateThreadButton" onMouseOver={hoverThread} onMouseOut={unHoverThread}>
                             <img src={require('../../assets/list4.svg')} id="debateThreadLogo" width="50" height="50" alt="Delete Button, Red X" />
@@ -183,6 +205,7 @@ export default class FreeFormUnit extends React.Component {
         return (
        <li key={freeForm.ID} id="suggestionUnit">
 				<div id="suggestionContentHoverVote">
+                x{freeForm.ID}x
                     <Link to={`/project/${freeForm.TypeID}/freeform/${freeForm.ID}/comments`}>
                         <div id="debateThreadButton" onMouseOver={hoverThreadVoted} onMouseOut={unHoverThreadVoted}>
                             <img src={require('../../assets/list4.svg')} id="debateThreadLogo" width="50" height="50" alt="Delete Button, Red X" />
@@ -207,52 +230,40 @@ export default class FreeFormUnit extends React.Component {
     } else {
     return (
        <li key={freeForm.ID} id="suggestionUnit">
-				<div id="suggestionContent">
-                    <Link to={`/project/${freeForm.TypeID}/freeform/${freeForm.ID}/comments`}>
-                        <div id="debateThreadButton" onMouseOver={hoverThread} onMouseOut={unHoverThread}>
-                            <img src={require('../../assets/list4.svg')} id="debateThreadLogo" width="50" height="50" alt="Delete Button, Red X" />
-                        </div>
-                    </Link>
-                    <Link to={`/project/${freeForm.TypeID}/freeform/${freeForm.ID}/flag`}>
-                        <div id="flagDiscussButton" onMouseOver={hoverFlag} onMouseOut={unHoverFlag}>
-                            <img src={require('../../assets/flag.svg')} id="deleteLogo" width="24" height="24" alt="Delete Button, Red X" />
-                        </div>
-                    </Link>
-                    <div id="discussHoverText">debate</div>
-					<div id="discussHeader">
-                        <span id="discussPercent">{floatToDecimal(freeForm.PercentRank)}</span>
-					    {freeForm.Username}
+            {/* <div id="suggestionContent"> */}
+            <div id={'suggestionContent'+String(freeForm.ID)}>
+            x{freeForm.ID}xy
+                <Link to={`/project/${freeForm.TypeID}/freeform/${freeForm.ID}/comments`}>
+                    <div id="debateThreadButton" onMouseOver={hoverThread} onMouseOut={unHoverThread}>
+                        <img src={require('../../assets/list4.svg')} id="debateThreadLogo" width="50" height="50" alt="Delete Button, Red X" />
                     </div>
-                    <div id="suggestionText" onClick={submitVote} onMouseOver={hoverVote} onMouseOut={unHoverVote}>
-                        {freeForm.Description}
+                </Link>
+                <Link to={`/project/${freeForm.TypeID}/freeform/${freeForm.ID}/flag`}>
+                    <div id="flagDiscussButton" onMouseOver={hoverFlag} onMouseOut={unHoverFlag}>
+                        <img src={require('../../assets/flag.svg')} id="deleteLogo" width="24" height="24" alt="Delete Button, Red X" />
                     </div>
-				</div>
-                    {/*<Link to={`/project/${freeForm.TypeID}/freeform/${freeForm.ID}/flag`}>
-                        <div id="flagSBButton">
-                            <img src={require('.../src/assets/flag.svg')} id="deleteLogo" width="11" height="11" alt="Delete Button, Red X" />
-                            Flag
-                        </div>
-                    </Link>*/}
-				{/*<Link  to={`/project/${freeForm.TypeID}/freeform/${freeForm.ID}/comments`} activeClassName="activeBlue">
-                    <div id="commentSBButtonUser">
-                            <img src={require('../../assets/comments.svg')} id="commentLogo" width="24" height="24" alt="Comments Button" />
-                    </div>
-                </Link> */}
-                
-                {/* <button type="button" onClick={submitVote} id="suggestionVoteNoComments">
-                    Vote
-                </button>             
-                <br /><br />  */}
+                </Link>
+                <div id="discussHoverText">debate</div>
+                <div id="discussHeader">
+                    <span id="discussPercent">{floatToDecimal(freeForm.PercentRank)}</span>
+                    {freeForm.Username}
+                </div>
+                <div id="suggestionText" onClick={submitVote} onMouseOver={hoverVote} onMouseOut={unHoverVote}>
+                    {freeForm.Description}
+                </div>
+            </div>
         </li>);
-  }
-
+}
 
 function hoverThread() {
     $(document).ready(function() {
-        // $('#discussHoverText').html("view discussion").fadeIn(7500);
-        $('#suggestionContent').attr('id','suggestionContentHover');
+        // $('#suggestionContent:contains(x'+String(freeForm.ID)+'x)').attr('id','suggestionContentHover');
+        $('#suggestionContent'+String(freeForm.ID)).attr('id','suggestionContentHover');
+        // $('#suggestionContent').attr('id','suggestionContentHover');
         $('#discussHoverText').attr('id','discussHoverTextShow');
+        // $('#discussHoverTextShow').html(String(freeForm.ID)).fadeIn(7500);
     });
+    // alert(freeForm.ID)
 }
 function unHoverThread() {
     $(document).ready(function() {
@@ -427,6 +438,7 @@ function unHoverDeleteVoted() {
         $('#discussHoverTextRed').html("voted").fadeIn(7500);
         $('#discussHoverTextRed').attr('id','discussHoverTextShowGreen');
     });
+
 }
 }
 }

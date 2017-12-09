@@ -25,7 +25,7 @@ export default class SuggestionCommentContainer extends React.Component {
 
         componentDidMount(){
         var self = this;
-         axios.get( Config.API + '/comments/suggestionID?id='+this.props.params.suggID).then(function (response) {
+         axios.get( Config.API + '/comments/parentType?id='+this.props.params.suggID+'&parentType=3').then(function (response) {
             self.setState({
                 comments: response.data,
             })
@@ -36,9 +36,14 @@ export default class SuggestionCommentContainer extends React.Component {
             })
         }) 
     }
-  componentWillReceiveProps(newProps){
+  componentWillReceiveProps(nextProps){
     var self = this;
-      axios.get( Config.API + '/suggestions/ID?id='+newProps.params.suggID).then(function (response) {
+    axios.get( Config.API + '/comments/parentType?id='+nextProps.params.suggID+'&parentType=3').then(function (response) {
+        self.setState({
+            comments: response.data,
+        })
+    })  
+      axios.get( Config.API + '/suggestions/ID?id='+nextProps.params.suggID).then(function (response) {
           self.setState({
               suggestion: response.data
           })
@@ -60,13 +65,7 @@ export default class SuggestionCommentContainer extends React.Component {
                 );
               } 
           });
-      });
-    axios.get( Config.API + '/auth/comments/suggestionID?id='+this.props.params.suggID).then(function (response) {
-        self.setState({
-            comments: response.data,
-        })
-    })        
-
+      });       
   }
 
  
@@ -84,23 +83,21 @@ export default class SuggestionCommentContainer extends React.Component {
                     <div id="answerQuestionLabel">Return to Suggestions</div>
                 </div>
                 {/*Suggestion being commented on*/}
-                <div id="answerQuestionUnit">
-                    <div id="answerQuestionContent">
-                        <div id="discussHeader">
-                            <span id="discussPercent">
-                                {floatToDecimal(this.state.suggestion.PercentRank)}
-                            </span>
-                            {this.state.suggestion.Username}
-                        </div>
-                        <div id="suggestionText">
-                            {this.state.suggestion.Description}
+                <Link to={`/project/${this.props.params.probID}/proposal/${this.props.params.solutionID}/suggestions`}>
+                    <div id="answerQuestionUnit">
+                        <div id="answerQuestionContent">
+                            <div id="discussHeader">
+                                <span id="discussPercent">
+                                    {floatToDecimal(this.state.suggestion.PercentRank)}
+                                </span>
+                                {this.state.suggestion.Username}
+                            </div>
+                            <div id="suggestionText">
+                                {this.state.suggestion.Description}
+                            </div>
                         </div>
                     </div>
-                    {/*<button type="button" onClick={submitVote} id="suggestionVote">
-                        Vote
-                    </button> */}
-                    <br /><br /> 
-                </div>
+                </Link>
                 {this.props.children}
                 <CommentProposalUnit comments={this.state.comments} probID={this.props.params.probID} solutionID={this.props.params.solutionID} suggID={this.props.params.suggID} commentID={this.props.params.commentID} />
                 <SideBarMore />
@@ -135,7 +132,7 @@ export default class SuggestionCommentContainer extends React.Component {
                     {/*<button type="button" onClick={submitVote} id="suggestionVote">
                         Vote
                     </button> */}
-                    <br /><br /> 
+                    {/* <br /><br />  */}
             </div>
                 {this.props.children}
                 <CommentUnit comments={this.state.comments} probID={this.props.params.probID} suggID={this.props.params.suggID} commentID={this.props.params.commentID} />

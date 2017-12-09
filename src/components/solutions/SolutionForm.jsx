@@ -45,6 +45,7 @@ export default class SolutionForm extends React.Component {
         description : this.state.description,
         references: this.state.references,
         class : this.state.class,
+        private: '0',
       })
       .then(function (result) {
         document.location = '/project/' + self.props.probID + '/subprojects'

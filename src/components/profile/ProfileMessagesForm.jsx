@@ -14,8 +14,8 @@ export default class ProfileMessagesForm extends React.Component {
     
     //ProblemForm structure in backend
     this.state= {
-      member1: '',
-      member2: '',
+      user1: '',
+      user2: '',
       message: '',
     }
 
@@ -24,20 +24,32 @@ export default class ProfileMessagesForm extends React.Component {
   };
 
   postMessage() {
-    this.state.member1 = document.getElementById('problemTitleForm').value
-    this.state.member2 = cookie.load('userName')
+    this.state.user1 = cookie.load('userName')
+    this.state.user2 = document.getElementById('problemTitleForm').value
     this.state.message = document.getElementById('problemSummaryForm').value
-    return axios.post( Config.API + '/auth/problems/create', {
+    axios.post( Config.API + '/auth/messages/create', {
         // username: cookie.load('userName'),
         // parentID: this.props.params.probID,
-        member1 : this.state.member1,
-        member2 : this.state.member2,
-        message : this.state.message,
+        user1 : this.state.user1,
+        user2 : this.state.user2,
+        description : this.state.message,
+      })
+      axios.post( Config.API + '/auth/conversations/create', {
+        // username: cookie.load('userName'),
+        // parentID: this.props.params.probID,
+        user1 : this.state.user1,
+        user2 : this.state.user2,
       })
       .then(function (response) {
         document.location = '/messages' 
+
+        // Direct them to their new conversation they just created
       })
       .catch(function (error) {
+
+        // May want to redirect them if there is an error, 
+        // If error is because conversation already exi
+
           $(document).ready(function() {
               $('#notification').attr('id','notificationShow').hide().slideDown();
 

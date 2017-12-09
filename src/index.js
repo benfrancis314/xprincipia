@@ -163,7 +163,7 @@ import AnswerContainer from './containers/AnswerContainer.jsx';
 import AnswerContainerPrivate from './containers/AnswerContainerPrivate.jsx';
 import CommentAnswerContainer from './containers/comments/CommentAnswerContainer.jsx';
 import CommentAnswerContainerPrivate from './containers/comments/CommentAnswerContainerPrivate.jsx';
-import CommentCommentContainer from './containers/comments/CommentCommentContainer.jsx';
+import CommentSubCommentContainer from './containers/comments/CommentSubCommentContainer.jsx';
 import CommentCommentContainerPrivate from './containers/comments/CommentCommentContainerPrivate.jsx';
 import CommentDebateContainer from './containers/comments/CommentDebateContainer.jsx';
 import CommentDebateContainerPrivate from './containers/comments/CommentDebateContainerPrivate.jsx';
@@ -179,7 +179,6 @@ import EntranceContainer from './containers/EntranceContainer.jsx';
 import ErrorContainer from './containers/ErrorContainer.jsx';
 import FreeFormContainer from './containers/FreeFormContainer.jsx';
 import FreeFormContainerPrivate from './containers/FreeFormContainerPrivate.jsx';
-import FreeFormCommentContainer from './containers/FreeFormCommentContainer.jsx';
 import LearnContentContainer1 from './containers/LearnContentContainer1.jsx';
 import LearnContentContainerPrivate from './containers/LearnContentContainerPrivate.jsx';
 import LearnResourcesContainer1 from './containers/LearnResourcesContainer1.jsx';
@@ -305,7 +304,7 @@ ReactDOM.render(
           <IndexRoute component={ProfileMessagesAddButton}></IndexRoute>
           <Route path='/messages' component={ProfileMessagesAddButton}></Route>
           <Route path='/messages/new' component={ProfileMessagesForm}></Route>
-          <Route path='/messages/1' component={ProfileMessagesUnit}></Route>
+          <Route path='/messages/:message' component={ProfileMessagesUnit}></Route>
         </Route>
         <Route path='/profile/notifications' component={ProfileNotifications}></Route>
         <Route path='/profile/about/container' component={ProfileAboutContainer}>
@@ -458,7 +457,6 @@ ReactDOM.render(
               <Route path='/project/private/:probID/open/:freeFormID/flag' component={FreeFormFlagForm}></Route>
               <Route path='/project/private/:probID/open/:freeFormID/delete' component={FreeFormDeleteFormPrivate}></Route>
             </Route>
-            <Route path='/project/private/:probID/freeform/:freeID/comments' component={FreeFormCommentContainer}></Route>
         </Route>
           {/*<IndexRoute component={ProblemLearnMenu}></IndexRoute>*/}
         <Route path='/project/private/:probID/learn' component={ProblemLearnPrivateMenu}>
@@ -632,7 +630,13 @@ ReactDOM.render(
               <Route path='/project/:probID/freeform/:freeFormID/comment/:commentID/flag' component={CommentFlagForm}></Route>
               <Route path='/project/:probID/freeform/:freeFormID/comment/:commentID/delete' component={CommentDeleteForm}></Route>
             </Route>
-            <Route path='/project/:probID/freeform/:freeID/comments' component={FreeFormCommentContainer}></Route>
+            <Route path='/project/:probID/comment/:commentID/container' component={CommentSubCommentContainer}>
+              <IndexRoute component={CommentForm}></IndexRoute>
+              <Route path='/project/:probID/comment/:commentID/subcomments' component={CommentForm}></Route>
+              <Route path='/project/:probID/comment/:commentID/subcomment/:subcommentID/edit' component={CommentEditForm}></Route>
+              <Route path='/project/:probID/comment/:commentID/subcomment/:subcommentID/flag' component={CommentFlagForm}></Route>
+              <Route path='/project/:probID/comment/:commentID/subcomment/:subcommentID/delete' component={CommentDeleteForm}></Route>
+            </Route>
         </Route>
           {/*<IndexRoute component={ProblemLearnMenu}></IndexRoute>*/}
         <Route path='/project/:probID/learn' component={ProblemLearnMenu}>

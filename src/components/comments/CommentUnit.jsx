@@ -7,20 +7,43 @@ import $ from 'jquery';
 
 export default class CommentUnit extends React.Component {
 
- constructor(props){
-     super(props);
+    constructor(props){
+        super(props);
 
-        this.renderItem = this.renderItem.bind(this)
-        // this.submitVote = this.submitVote.bind(this)
+         this.renderItem = this.renderItem.bind(this);
+        //  this.hoverThread = this.hoverThread.bind(this);
+        //  this.hoverVote = this.hoverVote.bind(this);
+        //  this.hoverFlag = this.hoverFlag.bind(this);
+        //  this.hoverEdit = this.hoverEdit.bind(this);
+        //  this.hoverDelete = this.hoverDelete.bind(this);
+        //  this.unHoverThread = this.unHoverThread.bind(this);
+        //  this.unHoverVote = this.unHoverVote.bind(this);
+        //  this.unHoverFlag = this.unHoverFlag.bind(this);
+        //  this.unHoverEdit = this.unHoverEdit.bind(this);
+        //  this.unHoverDelete = this.unHoverDelete.bind(this);
+        //  this.hoverThreadVoted = this.hoverThreadVoted.bind(this);
+        //  this.hoverVoteVoted = this.hoverVoteVoted.bind(this);
+        //  this.hoverFlagVoted = this.hoverFlagVoted.bind(this);
+        //  this.hoverEditVoted = this.hoverEditVoted.bind(this);
+        //  this.hoverDeleteVoted = this.hoverDeleteVoted.bind(this);
+        //  this.unHoverThreadVoted = this.unHoverThreadVoted.bind(this);
+        //  this.unHoverVoteVoted = this.unHoverVoteVoted.bind(this);
+        //  this.unHoverFlagVoted = this.unHoverFlagVoted.bind(this);
+        //  this.unHoverEditVoted = this.unHoverEditVoted.bind(this);
+        //  this.unHoverDeleteVoted = this.unHoverDeleteVoted.bind(this);
+    };
+  
 
-    }; 
+
+
     componentWillReceiveProps (props) {
         var self = this
         self.setState({
             voteHash : {},
         })
         props.comments.forEach( function (comment){
-            axios.get( Config.API + "/vote/isVotedOn?type=5&typeID=" + comment.ID + "&username=" + cookie.load("userName"))
+            // This has Type 6 here, may need to change
+            axios.get( Config.API + "/vote/isVotedOn?type=6&typeID=" + comment.ID + "&username=" + cookie.load("userName"))
             .then( function (response) {  
                 const voteHash = self.state.voteHash;
 
@@ -31,25 +54,25 @@ export default class CommentUnit extends React.Component {
             })  
         })
     }
+
 	render() {
 		return (
 	    <div>
-			<ul> {this.props.comments.map(this.renderItem)} </ul>
-	               
+			<ul> {this.props.comments.map(this.renderItem)} </ul>    
 	    </div>
 		);
 	}
+	renderItem(comment) {
 
-   renderItem(comment) {
        function  submitVote() {
        axios.post( Config.API + '/auth/vote/create', {
-           Type: 5,
+           Type: 6,
            TypeID: comment.ID,
            username : cookie.load("userName"),
            
         })
         .then(function (result) {
-            document.location = window.location.pathname 
+            document.location = window.location.pathname;
         })
       .catch(function (error) {
         // console.log(error.response.data)
@@ -68,13 +91,13 @@ export default class CommentUnit extends React.Component {
               }
           });
       });
-       }
-        function unVote() {
-        axios.delete( Config.API + '/auth/vote/delete' ,{
-            params: {
-            type: 5,
-            typeID: comment.ID,
-            username: cookie.load('userName')
+  }
+      function unVote() {
+      axios.delete( Config.API + '/auth/vote/delete' ,{
+        params: {
+          type: 6,
+          typeID: comment.ID,
+          username: cookie.load('userName')
         }
         })
         .then(function (result) {
@@ -97,93 +120,322 @@ export default class CommentUnit extends React.Component {
               }
           });
       });
-  }
+}
+
+  
        if (this.state.voteHash[comment.ID] === true && comment.Username === cookie.load('userName')) {
            return (
-            <li key={comment.ID} id="answerUnit">
-                    <div id="answerContent">
-                        <div id="discussHeaderGreen">
-                            <span id="discussPercent">{floatToDecimal(comment.PercentRank)}</span>
-                            {comment.Username}
+       <li key={comment.ID} id="suggestionUnit">
+				<div id="commentContentHoverVote">
+                    <Link to={`/project/${this.props.probID}/comment/${comment.ID}/subcomments`}>
+                        <div id="debateThreadButton" onMouseOver={hoverThreadVoted} onMouseOut={unHoverThreadVoted}>
+                            <img src={require('../../assets/list4.svg')} id="debateThreadLogo" width="50" height="50" alt="Delete Button, Red X" />
                         </div>
-                        <div id="suggestionText">
-                            {comment.Description}
+                    </Link>
+                    <Link to={`/project/${this.props.probID}/comment/${comment.ID}/edit`}>
+                        <div id="editDiscussButton" onMouseOver={hoverEditVoted} onMouseOut={unHoverEditVoted}>
+                            <img src={require('../../assets/editBlue.svg')} id="editLogo" width="18" height="18" alt="Edit Button" />
                         </div>
-                    </div>
-                <Link to={`/project/${this.props.probID}/suggestion/${this.props.suggID}/comment/${comment.ID}/delete`}>
-                    <div id="deleteSBButton">
-                        <img src={require('../../assets/delete.svg')} id="editLogo" width="18" height="18" alt="Delete Button" />
-                    </div>
-                </Link>
-                <Link to={`/project/${this.props.probID}/suggestion/${this.props.suggID}/comment/${comment.ID}/edit`}>
-                    <div id="editSBButtonAnswer">
-                        <img src={require('../../assets/editBlue.svg')} id="editLogo" width="18" height="18" alt="Edit Button" />
-                    </div>
-                </Link>
-                <button type="button" onClick={unVote} id="suggestionVoted">
-                    Voted
-                </button>
-            </li>);
-    }  else if ( comment.Username === cookie.load('userName')) {
-        return (
-            <li key={comment.ID} id="answerUnit">
-                <div id="answerContent">
-                    <div id="discussHeaderGreen">
+                    </Link>
+                    <Link to={`/project/${this.props.probID}/comment/${comment.ID}/delete`}>
+                        <div id="deleteDiscussButton" onMouseOver={hoverDeleteVoted} onMouseOut={unHoverDeleteVoted}>
+                            <img src={require('../../assets/delete.svg')} id="editLogo" width="18" height="18" alt="Delete Button" />
+                        </div>
+                    </Link>
+                    <div id="discussHoverText">comments</div>
+					<div id="discussHeader">
                         <span id="discussPercent">{floatToDecimal(comment.PercentRank)}</span>
                         {comment.Username}
                     </div>
-                    <div id="suggestionText">
+                    <div id="suggestionText" onClick={unVote} onMouseOver={hoverVoteVoted} onMouseOut={unHoverVoteVoted}>
                         {comment.Description}
                     </div>
-                </div>
-                <Link to={`/project/${this.props.probID}/suggestion/${this.props.suggID}/comment/${comment.ID}/delete`}>
-                    <div id="deleteSBButton">
-                        <img src={require('../../assets/delete.svg')} id="editLogo" width="18" height="18" alt="Delete Button" />
+				</div>
+				{/*<Link  to={`/project/${comment.TypeID}/comment/${comment.ID}/comments`} activeClassName="activeBlue">
+                    <div id="commentSBButtonUser">
+                            <img src={require('../../assets/comments.svg')} id="commentLogo" width="24" height="24" alt="Comments Button" />
                     </div>
-                </Link>
-                <Link to={`/project/${this.props.probID}/suggestion/${this.props.suggID}/comment/${comment.ID}/edit`}>
-                    <div id="editSBButtonAnswer">
-                        <img src={require('../../assets/editBlue.svg')} id="editLogo" width="18" height="18" alt="Edit Button" />
+                </Link> */}
+                {/* <button type="button" id="suggestionVoted">
+                    Voted
+                </button>             
+                <br /><br />  */}
+        </li>);
+    }  else if ( comment.Username === cookie.load('userName')) {
+        return (
+       <li key={comment.ID} id="suggestionUnit">
+				<div id="commentContent">
+                    <Link to={`/project/${this.props.probID}/comment/${comment.ID}/subcomments`}>
+                        <div id="debateThreadButton" onMouseOver={hoverThread} onMouseOut={unHoverThread}>
+                            <img src={require('../../assets/list4.svg')} id="debateThreadLogo" width="50" height="50" alt="Delete Button, Red X" />
+                        </div>
+                    </Link>
+                    <Link to={`/project/${this.props.probID}/comment/${comment.ID}/edit`}>
+                        <div id="editDiscussButton" onMouseOver={hoverEdit} onMouseOut={unHoverEdit}>
+                            <img src={require('../../assets/editBlue.svg')} id="editLogo" width="18" height="18" alt="Edit Button" />
+                        </div>
+                    </Link>
+                    <Link to={`/project/${this.props.probID}/comment/${comment.ID}/delete`}>
+                        <div id="deleteDiscussButton" onMouseOver={hoverDelete} onMouseOut={unHoverDelete}>
+                            <img src={require('../../assets/delete.svg')} id="editLogo" width="18" height="18" alt="Delete Button" />
+                        </div>
+                    </Link>
+                    <div id="discussHoverText">comments</div>
+					<div id="discussHeader">
+                        <span id="discussPercent">{floatToDecimal(comment.PercentRank)}</span>
+					    <span id="discussUsername">{comment.Username}</span> 
                     </div>
-                </Link>
-                <button type="button" onClick={submitVote} id="suggestionVote">
+                    <div id="suggestionText" onClick={submitVote} onMouseOver={hoverVote} onMouseOut={unHoverVote}>
+                        {comment.Description}
+                    </div>
+				</div>
+                
+				{/*<Link  to={`/project/${comment.TypeID}/comment/${comment.ID}/comments`} activeClassName="activeBlue">
+                    <div id="commentSBButtonUser">
+                            <img src={require('../../assets/comments.svg')} id="commentLogo" width="24" height="24" alt="Comments Button" />
+                    </div>
+                </Link> */}
+                {/* <button type="button" onClick={submitVote} id="suggestionVote">
                     Vote
-                </button>
-            </li>);
+                </button>             
+                <br /><br />  */}
+        </li>);
     } else if (this.state.voteHash[comment.ID] === true) {
         return (
-        <li key={comment.ID} id="answerUnit">
-		    <div id="answerContent">
-					<div id="discussHeaderGreen">
+       <li key={comment.ID} id="suggestionUnit">
+				<div id="commentContentHoverVote">
+                    <Link to={`/project/${this.props.probID}/comment/${comment.ID}/subcomments`}>
+                        <div id="debateThreadButton" onMouseOver={hoverThreadVoted} onMouseOut={unHoverThreadVoted}>
+                            <img src={require('../../assets/list4.svg')} id="debateThreadLogo" width="50" height="50" alt="Delete Button, Red X" />
+                        </div>
+                    </Link>
+                    <Link to={`/project/${this.props.probID}/comment/${comment.ID}/flag`}>
+                        <div id="flagDiscussButton" onMouseOver={hoverFlagVoted} onMouseOut={unHoverFlagVoted}>
+                            <img src={require('../../assets/flag.svg')} id="deleteLogo" width="24" height="24" alt="Delete Button, Red X" />
+                        </div>
+                    </Link>
+                    <div id="discussHoverTextShowGreen">voted</div>
+					<div id="discussHeader">
                         <span id="discussPercent">{floatToDecimal(comment.PercentRank)}</span>
 					    {comment.Username}
                     </div>
-                    <div id="suggestionText">
+                    <div id="suggestionText" onClick={unVote} onMouseOver={hoverVoteVoted} onMouseOut={unHoverVoteVoted}>
                         {comment.Description}
                     </div>
-			</div>
-            <button type="button" onClick={unVote} id="suggestionVotedNoComments">
-                Voted
-            </button>
+				</div>
         </li>);
-       } else {
-        return (
-        <li key={comment.ID} id="answerUnit">
-		    <div id="answerContent">
-					<div id="discussHeaderGreen">
+
+    } else {
+    return (
+       <li key={comment.ID} id="suggestionUnit">
+				<div id="commentContent">
+                    <Link to={`/project/${this.props.probID}/comment/${comment.ID}/subcomments`}>
+                        <div id="debateThreadButton" onMouseOver={hoverThread} onMouseOut={unHoverThread}>
+                            <img src={require('../../assets/list4.svg')} id="debateThreadLogo" width="50" height="50" alt="Delete Button, Red X" />
+                        </div>
+                    </Link>
+                    <Link to={`/project/${this.props.probID}/comment/${comment.ID}/flag`}>
+                        <div id="flagDiscussButton" onMouseOver={hoverFlag} onMouseOut={unHoverFlag}>
+                            <img src={require('../../assets/flag.svg')} id="deleteLogo" width="24" height="24" alt="Delete Button, Red X" />
+                        </div>
+                    </Link>
+                    <div id="discussHoverText">comments</div>
+					<div id="discussHeader">
                         <span id="discussPercent">{floatToDecimal(comment.PercentRank)}</span>
 					    {comment.Username}
                     </div>
-                    <div id="suggestionText">
+                    <div id="suggestionText" onClick={submitVote} onMouseOver={hoverVote} onMouseOut={unHoverVote}>
                         {comment.Description}
                     </div>
-			</div>
-            <button type="button" onClick={submitVote} id="suggestionVoteNoComments">
-                Vote
-            </button>
+				</div>
         </li>);
-   }
-}}
+}
+
+function hoverThread() {
+    $(document).ready(function() {
+        // $('#discussHoverText').html("view discussion").fadeIn(7500);
+        $('#commentContent').attr('id','commentContentHover');
+        $('#discussHoverText').attr('id','discussHoverTextShow');
+    });
+    // alert(comment.ID)
+}
+function unHoverThread() {
+    $(document).ready(function() {
+        // $('#discussHoverText').html("");
+        $('#commentContentHover').attr('id','commentContent');
+        $('#discussHoverTextShow').attr('id','discussHoverText');
+    });
+}
+function hoverVote() {
+    $(document).ready(function() {
+        // $('#discussHoverText').html("view discussion").fadeIn(7500);
+        // $('#suggestionVoteNoComments').attr('id','suggestionVoteNoCommentsHover');
+        $('#commentContent').attr('id','commentContentHoverVote');
+        $('#discussHoverText').attr('id','discussHoverTextGreen');
+        $('#discussHoverTextGreen').html("vote").fadeIn(7500);
+        $('#discussHoverTextGreen').attr('id','discussHoverTextShowGreen');
+        $('#discussPercent').attr('id','discussPercentGreen');
+        
+    });
+}
+function unHoverVote() {
+    $(document).ready(function() {
+        // $('#suggestionVoteNoCommentsHover').attr('id','suggestionVoteNoComments');  
+        $('#commentContentHoverVote').attr('id','commentContent');  
+        $('#discussHoverTextShowGreen').attr('id','discussHoverTextGreen');
+        $('#discussHoverTextGreen').html("comments").fadeIn(7500);
+        $('#discussHoverTextGreen').attr('id','discussHoverText');
+        $('#discussPercentGreen').attr('id','discussPercent');   
+    });
+}
+function hoverFlag() {
+    $(document).ready(function() {
+        // $('#commentContent').attr('id','commentContentHoverFlag');
+        $('#commentContent').attr('id','commentContentHoverFlag');
+        $('#discussHoverText').attr('id','discussHoverTextRed');
+        $('#discussHoverTextRed').html("flag").fadeIn(7500);
+        $('#discussHoverTextRed').attr('id','discussHoverTextShowRed');            
+    });
+}
+function unHoverFlag() {
+    $(document).ready(function() {
+        // $('#commentContentHoverFlag').attr('id','commentContent');  
+        $('#commentContentHoverFlag').attr('id','commentContent');  
+        $('#discussHoverTextShowRed').attr('id','discussHoverTextRed');
+        $('#discussHoverTextRed').html("comments").fadeIn(7500);
+        $('#discussHoverTextRed').attr('id','discussHoverText');
+    });
+}
+function hoverEdit() {
+    $(document).ready(function() {
+        // $('#discussHoverText').html("view discussion").fadeIn(7500);
+        $('#commentContent').attr('id','commentContentHover');
+        $('#discussHoverText').html("edit").fadeIn(7500);
+        $('#discussHoverText').attr('id','discussHoverTextShow');
+    });
+}
+function unHoverEdit() {
+    $(document).ready(function() {
+        // $('#discussHoverText').html("");
+        $('#commentContentHover').attr('id','commentContent');
+        $('#discussHoverTextShow').attr('id','discussHoverText');
+        $('#discussHoverText').html("comments").fadeIn(7500);
+    });
+}
+function hoverDelete() {
+    $(document).ready(function() {
+        // $('#commentContent').attr('id','commentContentHoverFlag');
+        $('#commentContent').attr('id','commentContentHoverFlag');
+        $('#discussHoverText').attr('id','discussHoverTextRed');
+        $('#discussHoverTextRed').html("delete").fadeIn(7500);
+        $('#discussHoverTextRed').attr('id','discussHoverTextShowRed');            
+    });
+}
+function unHoverDelete() {
+    $(document).ready(function() {
+        // $('#commentContentHoverFlag').attr('id','commentContent');  
+        $('#commentContentHoverFlag').attr('id','commentContent');  
+        $('#discussHoverTextShowRed').attr('id','discussHoverTextRed');
+        $('#discussHoverTextRed').html("comments").fadeIn(7500);
+        $('#discussHoverTextRed').attr('id','discussHoverText');
+    });
+}
+function hoverThreadVoted() {
+    $(document).ready(function() {
+        // $('#discussHoverText').html("view discussion").fadeIn(7500);
+        $('#commentContentHoverVote').attr('id','commentContentHover');
+        $('#discussHoverTextShowGreen').attr('id','discussHoverText');
+        $('#discussHoverText').html("comments").fadeIn(7500);
+        $('#discussHoverText').attr('id','discussHoverTextShow');
+    });
+}
+function unHoverThreadVoted() {
+    $(document).ready(function() {
+        // $('#discussHoverText').html("");
+        $('#commentContentHover').attr('id','commentContentHoverVote');
+        $('#discussHoverTextShow').attr('id','discussHoverTextShowGreen');
+        $('#discussHoverTextShowGreen').html("voted").fadeIn(7500);
+    });
+}
+function hoverVoteVoted() {
+    $(document).ready(function() {
+        // $('#discussHoverText').html("view discussion").fadeIn(7500);
+        // $('#suggestionVoteNoComments').attr('id','suggestionVoteNoCommentsHover');
+        $('#commentContentHoverVote').attr('id','commentContentHoverUnvote');
+        $('#discussHoverTextShowGreen').attr('id','discussHoverTextGreen');
+        $('#discussHoverTextGreen').html("unvote").fadeIn(7500);
+        $('#discussHoverTextGreen').attr('id','discussHoverTextShowGreen');
+        $('#discussPercent').attr('id','discussPercentGreen');
+        
+    });
+}
+function unHoverVoteVoted() {
+    $(document).ready(function() {
+        // $('#suggestionVoteNoCommentsHover').attr('id','suggestionVoteNoComments');  
+        $('#commentContentHoverUnvote').attr('id','commentContentHoverVote');  
+        $('#discussHoverTextShowGreen').attr('id','discussHoverTextGreen');
+        $('#discussHoverTextGreen').html("voted").fadeIn(7500);
+        $('#discussHoverTextGreen').attr('id','discussHoverTextShowGreen');
+        // $('#discussHoverTextGreen').attr('id','discussHoverText');
+        $('#discussPercentGreen').attr('id','discussPercent');   
+    });
+}
+function hoverFlagVoted() {
+    $(document).ready(function() {
+        // $('#commentContent').attr('id','commentContentHoverFlag');
+        $('#commentContentHoverVote').attr('id','commentContentHoverFlag');
+        $('#discussHoverText').attr('id','discussHoverTextRed');
+        $('#discussHoverTextRed').html("flag").fadeIn(7500);
+        $('#discussHoverTextRed').attr('id','discussHoverTextShowRed');            
+    });
+}
+function unHoverFlagVoted() {
+    $(document).ready(function() {
+        // $('#commentContentHoverFlag').attr('id','commentContent');  
+        $('#commentContentHoverFlag').attr('id','commentContentHoverVote');  
+        $('#discussHoverTextShowRed').attr('id','discussHoverTextRed');
+        $('#discussHoverTextRed').html("voted").fadeIn(7500);
+        $('#discussHoverTextRed').attr('id','discussHoverText');
+    });
+}
+function hoverEditVoted() {
+    $(document).ready(function() {
+        // $('#discussHoverText').html("view discussion").fadeIn(7500);
+        $('#commentContentHoverVote').attr('id','commentContentHover');
+        $('#discussHoverText').html("edit").fadeIn(7500);
+        $('#discussHoverText').attr('id','discussHoverTextShow');
+    });
+}
+function unHoverEditVoted() {
+    $(document).ready(function() {
+        // $('#discussHoverText').html("");
+        $('#commentContentHover').attr('id','commentContentHoverVote');
+        $('#discussHoverTextShow').attr('id','discussHoverText');
+        $('#discussHoverText').html("voted").fadeIn(7500);
+        $('#discussHoverText').attr('id','discussHoverTextShowGreen');
+    });
+}
+function hoverDeleteVoted() {
+    $(document).ready(function() {
+        // $('#commentContent').attr('id','commentContentHoverFlag');
+        $('#commentContentHoverGreen').attr('id','commentContentHoverFlag');
+        $('#discussHoverTextShowGreen').attr('id','discussHoverTextRed');
+        $('#discussHoverTextRed').html("delete").fadeIn(7500);
+        $('#discussHoverTextRed').attr('id','discussHoverTextShowRed');            
+    });
+}
+function unHoverDeleteVoted() {
+    $(document).ready(function() {
+        // $('#commentContentHoverFlag').attr('id','commentContent');  
+        $('#commentContentHoverFlag').attr('id','commentContentHoverGreen');  
+        $('#discussHoverTextShowRed').attr('id','discussHoverTextRed');
+        $('#discussHoverTextRed').html("voted").fadeIn(7500);
+        $('#discussHoverTextRed').attr('id','discussHoverTextShowGreen');
+    });
+
+}
+}
+}
 
 //convert float to Decimal
 function floatToDecimal(float) {

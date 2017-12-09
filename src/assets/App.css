@@ -969,6 +969,7 @@ letter-spacing: 2px !important;
   border-radius: 3px 3px 3px 3px;
   background-color: rgba(0,220,255,0.05);
   box-shadow: 0 0 1pt 1pt rgba(255,255,255,0.5);
+  text-transform: lowercase !important;
 }
 #answerQuestionContent {
   /*Old Styles*/
@@ -982,9 +983,13 @@ letter-spacing: 2px !important;
   border: 1px solid #00dcff;
   border-radius: 5px 0px 25% 10px;
   width: 90%;
-  padding: 2% 5% 2% 5%;
+  padding: 1% 5% 1% 5%;
   margin-bottom: 1.1%;
   background: linear-gradient(to right,rgba(0,220,255, 0.06), rgba(0,220,255, 0.07), rgba(0,220,255, 0.02));
+  transition: all 0.5s ease 0s;
+}
+#answerQuestionContent:hover {
+  background-color: rgba(0,220,255,0.05);
 }
 #greenBorder {
   border-color: #00ffdc;
@@ -4421,7 +4426,12 @@ font-family: 'Open Sans';
   width: 90%;
   margin: 0 auto;
 }
-#suggestionContent {
+/* Attempt to get desired changes in CSS using parent selectors */
+/* #suggestionContent > #debateThreadButton {
+  background-color: rgba(0,220,255,0.05) !important;
+} */
+#suggestionContent, #commentContent, #suggestionContent24, #suggestionContent25, #suggestionContent26, #suggestionContent27,
+#suggestionContent28, #suggestionContent29, #suggestionContent30  {
   /*Old Styles*/
   /*flex: 3 3 auto;
   font-family: 'Open Sans';
@@ -4444,7 +4454,7 @@ font-family: 'Open Sans';
   position: relative;
   transition: all 0.5s ease 0s;
 }
-#suggestionContentHover, #suggestionContentHoverVote, #suggestionContentHoverUnvote {
+#suggestionContentHover, #suggestionContentHoverVote, #suggestionContentHoverUnvote, #commentContentHover, #commentContentHoverVote, #commentContentHoverUnvote {
   flex: 3 3 auto;
   font-family: 'Open Sans';
   border: 1px solid #dddddd;
@@ -4458,14 +4468,14 @@ font-family: 'Open Sans';
   position: relative;
   transition: all 0.5s ease 0s;
 }
-#suggestionContentHoverVote {
+#suggestionContentHoverVote, #commentContentHoverVote {
   background-color: rgba(0,255,220,0.075);
   /* background: linear-gradient(to right,rgba(0,220,255, 0.06), rgba(0,220,255, 0.07), rgba(0,220,255, 0.02));   */
 }
-#suggestionContentHoverUnvote {
+#suggestionContentHoverUnvote, #commentContentHoverUnvote {
   background-color: rgba(0,255,220,0.05);
 }
-#suggestionContentHoverFlag {
+#suggestionContentHoverFlag, #commentContentHoverFlag {
   background-color: rgba(255,127,127,0.05);
   flex: 3 3 auto;
   font-family: 'Open Sans';
@@ -6475,7 +6485,9 @@ background-color: rgba(255,255,255,0.025);
 white-space: pre-wrap !important;
 }
 #problemSummary {
-  font-size: 120%;
+  /* font-size: 120%; */
+  font-size: 110%;
+  background: radial-gradient(circle, rgba(0,220,255, 0.1), rgba(0,220,255, 0), rgba(0,220,255, 0));   
 }
 
 
@@ -7030,10 +7042,6 @@ border-width: 1px 1px 1px 1px;
 border-radius: 3px 3px 3px 3px;
 background-color: rgba(0,220,255, 0.05);
 box-shadow: 0 0 1pt 1pt rgba(255,255,255,0.5);
-
-/*Considering making this title white, possibly units instead*/
-/*background-color: rgba(0,220,255,0.1);*/
-
 }
 #proposalsTitleRightSBEnd {
 flex: 1 1 auto;
@@ -9441,6 +9449,7 @@ margin-top: 1%;
   box-shadow: 0 0 0pt 0pt rgba(0,220,255,0.5);
   background-color: rgba(0,220,255,0);
   transform: scale(1);
+  word-wrap: break-word; 
   /* Attempt to get text to go outside blueFeedProse but not the entire unit, currently does not work */
   /* white-space: pre-wrap !important; */
   
@@ -9583,6 +9592,7 @@ margin-top: 1%;
   border-width: 0px 1px 0px 1px;
   /* border-radius: 0% 25% 0% 25%; */
   border-radius: 0% 50% 0% 50%; 
+  
   /* 40 looks acceptable, looks more continuous, pro and con, con is looks less DNA symbolic */
   /* border-radius: 0% 40% 0% 40%;   */
   /* 100 just for testing, doesn't look right */
@@ -11009,12 +11019,12 @@ transition: all 1s ease 0s;
   top: 3vh;
   z-index: 500;
   /* width: 75%; */
-  width: 80%;
+  width: 86%;
   margin: 0 auto;
   /* margin-left: 12.5%;
   margin-right: 12.5%; */
-  margin-left: 10%;
-  margin-right: 10%;
+  margin-left: 7%;
+  margin-right: 7%;
   border: 1px solid #00dcff;
   border-radius: 7%;
   box-shadow: 0 0 2pt 2pt rgba(0,220,255,0.25);
@@ -11124,7 +11134,7 @@ transition: all 1s ease 0s;
   width: 90%;
   font-size: 80%;
   margin-bottom: 2%;
-  line-height: 100%;
+  line-height: 125%;
 }
 #notebookFullSourcesTitle {
   color: #00dcff;
@@ -11176,23 +11186,54 @@ transition: all 1s ease 0s;
   display: flex;
   flex-direction : column;
   justify-content: space-around;
+  max-height: 50px !important;
+  overflow: scroll !important;
 }
 #notebookUnit {
-  border: 1px solid #00dcff;
-  border-width: 1px 1px 1px 0px;
-  border-radius: 0 0 15% 15;
+  /* border: 1px solid #00dcff;
+  border-width: 1px 1px 1px 1px;
+  border-radius: 0 0 25% 25%;
   box-shadow: 0 0 1pt 1pt rgba(0,220,255,0.25);
-  background: linear-gradient(to right, rgba(0,220,255,0), rgba(0,220,255,0.04), rgba(0,220,255,0.05)); 
+  background-color: rgba(0,220,255,0.025);
+  background: linear-gradient(rgba(0,220,255,0), rgba(0,220,255,0.06), rgba(0,220,255,0.04)); 
   margin-top: 10%; 
   padding: 1% 0%;
   font-size: 90%;
   padding: 3%;
-  /* text-transform: lowercase !important; */
+  transition: all 1s ease 0s !important;
+  transform: scale(1); */
+
+  margin: 0 auto;
+  margin-top: 2%;
+  margin-top: 0.5%;  
+  width: 98%;
+  padding: 2.5%;
+  border: 1px solid #00dcff;
+  border-width: 0px 1px 0px 1px;
+  /* border-radius: 0% 50% 0% 50%; */
+  border-radius: 0% 40% 0% 40%; 
+  text-align: center;
+  letter-spacing: 2px;
+  font-size: 80%;
+  background: linear-gradient(to right, rgba(0,220,255,0.1), rgba(0,220,255,0));
+  transition: all 0.5s ease 0s;
+  transform: scale(1);
+  background-color: rgba(0,220,255,0);
 }
 #notebookUnit:hover {
+  /* cursor: pointer;
+  transition: all 0.5s ease 0s !important;
+  transform: scale(1.1);
+  background-color: rgba(0,220,255,0.05);
+  background: linear-gradient(rgba(0,220,255,0.02), rgba(0,220,255,0.06), rgba(0,220,255,0.04));    */
+  /* background: linear-gradient(rgba(0,220,255,0.03), rgba(0,220,255,0.06), rgba(0,220,255,0.07));  */
+
+  background: linear-gradient(to right, rgba(0,220,255,0.15), rgba(0,220,255,0), rgba(0,220,255,0.05));
+  transform: scale(1.05);
   cursor: pointer;
   background-color: rgba(0,220,255,0.05);
-  background: linear-gradient(to right, rgba(0,220,255,0.02), rgba(0,220,255,0.04), rgba(0,220,255,0.07)); 
+  border-width: 0px 1px 0px 1px;
+  border-radius: 5% 5% 5% 5%;
 }
 #notebookAddButton {
   display: flex;
@@ -11218,7 +11259,24 @@ transition: all 1s ease 0s;
   background: radial-gradient(circle, rgba(0,220,255,0.05), rgba(0,220,255,0.05), rgba(0,220,255,0.1), rgba(0,220,255,0.05));
   }
 
-
+  #notebookID {
+    color: red;
+  }
+#notebookID1 {
+  color: blue;
+}
+#notebookID2 {
+  color: green;
+}
+#notebookID3 {
+  color: orange;
+}
+#notebookID4 {
+  color: purple;
+}
+#notebookID5 {
+  color: yellow;
+}
 
 
 

@@ -26,13 +26,14 @@ constructor(props){
   //solutionID will be available in props
   if (this.props.params.solutionID) {
       axios.post( Config.API + '/auth/resources/create', {
-      type:'1',
-      typeID: this.props.params.solutionID,
-      username: cookie.load('userName'),
-      title: this.state.title,
-      summary: this.state.summary,
-      description : this.state.resource,
-      parentTitle: this.props.parentTitle,
+        type:'1',
+        typeID: this.props.params.solutionID,
+        username: cookie.load('userName'),
+        title: this.state.title,
+        summary: this.state.summary,
+        description : this.state.resource,
+        parentTitle: this.props.parentTitle,
+        private: '0',
     })
       .then(function (result) {
         document.location = window.location.pathname 
@@ -59,13 +60,14 @@ constructor(props){
     //probID will be used
   } else {
       axios.post( Config.API + '/auth/resources/create', {
-      type:'0',
-      typeID: this.props.params.probID,
-      username: cookie.load('userName'),
-      title: this.state.title,
-      summary: this.state.summary,
-      description : this.state.resource,
-      parentTitle: this.props.parentTitle,
+        type:'0',
+        typeID: this.props.params.probID,
+        username: cookie.load('userName'),
+        title: this.state.title,
+        summary: this.state.summary,
+        description : this.state.resource,
+        parentTitle: this.props.parentTitle,
+        private: '0',
     })
       .then(function (result) {
         document.location = window.location.pathname 

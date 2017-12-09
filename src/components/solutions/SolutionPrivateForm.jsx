@@ -44,6 +44,7 @@ export default class SolutionPrivateForm extends React.Component {
         references: this.state.references,
         class : this.state.class,
         parentTitle: this.props.parentTitle,
+        private: '1',
       })
       .then(function (result) {
         document.location = '/project/private/' + self.props.probID + '/subprojects'

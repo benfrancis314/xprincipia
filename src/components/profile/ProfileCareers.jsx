@@ -5,21 +5,22 @@ export default class ProfileAbout extends React.Component {
       return (
         <div>
               <div id="aboutProseDescriptions">
-              <span id="blue">XPrincipia is a startup</span>. We envision a world where our 
-                                greatest dreams are accomplished, our most daunting problems solved
-                                 by an inspired citizenry, connecteed through the internet. 
+              <span id="blue">XPrincipia is a startup</span>. We envision a world where
+                                humanity's greatest goals are accomplished and most daunting problems solved, 
+                                all by an inspired citizenry connected through the internet. 
                  <br />
                  <br />
-              <span id="blue">XPrincipia is also a young company</span>, attempting to survive. 
+              <span id="blue">However, XPrincipia is currently a young company</span>, attempting to survive. 
                 We need help on this journey, yet have little to give.
                 <br />
                 <br />
               <span id="blue">If you are interested </span>in working with us, 
-                either as volunteer or long-term for equity, then the following is for you:
+                either as a volunteer or as a long-term employee, then the following is for you:
                  <br />
                  <br />
               <div id="careersSign">
-                <span id="blue">We are looking</span> for <span id="blue">high-level team members</span>. 
+                <span id="blue">We are looking</span> for <span id="blue">high-level team members <br />
+                who are passionate about progressing humanity and civilization</span>. 
                     <br />
                     <br />
                     {/* <span id="blue">XPrincipia</span> is a startup looking for <span id="blue">high-level team members</span>. 
@@ -35,7 +36,7 @@ export default class ProfileAbout extends React.Component {
                     3. <span id="blue">Science</span> or <span id='blue'>Technology Consultation</span>
                     </div>
                     <br />
-                    <span id="blue">In design</span>, we aim to create an experience that connects art and science as intimately as their natures allow. 
+                    <span id="blue">In website design</span>, we aim to create an experience that connects art and science as intimately as their natures allow. 
                     {/* Would be cool to weave in the Einstein quote about mystery, art and science */}
                     <br />
                     <br />

@@ -8,6 +8,8 @@ import NotebookFull from '../components/notebooks/NotebookFull.jsx';
 import NotebookUnit from '../components/notebooks/NotebookUnit.jsx';
 import $ from 'jquery';
 
+var tomquickfix = 2
+
 
 export default class NotebookContainer extends React.Component {
   constructor(){
@@ -16,9 +18,14 @@ export default class NotebookContainer extends React.Component {
         this.state = {
             currentNotebook: '',
             notebooks: [],
+            rerender: '',
         }
+        this.renderItem = this.renderItem.bind(this)        
+        this.createNotebook = this.createNotebook.bind(this)
+        this.newNotebook = this.newNotebook.bind(this)
+        this.bigNotebook = this.bigNotebook.bind(this)
+        // this.hoverThread = this.hoverThread.bind(this)
     };
-
 
 // When mounting and getting the call, do an IF statement first,
 // where IF there is the notebookContainerShow, THEN mount, otherwise don't.
@@ -28,31 +35,32 @@ export default class NotebookContainer extends React.Component {
 componentWillMount(){
     var self = this;
     // Axios call getting most recent notebook
-    return axios.get( Config.API + '/notebooks/username?username='+cookie.load('userName')).then(function (response) {
-        self.setState({
-            // Set to result of axios call getting most recent notebook
+//     return axios.get( Config.API + '/notebooks/username?username='+cookie.load('userName')).then(function (response) {
+//         self.setState({
+//             // Set to result of axios call getting most recent notebook
 
-            currentNotebook: '5',
-            notebooks: response.data
-        })
-  })
-    .catch(function (error) {
-      // console.log(error.response.data)
-        $(document).ready(function() {
-            $('#notification').attr('id','notificationShow').hide().slideDown();
-            if (error.response.data != '') {
-              $('#notificationContent').text(error.response.data);
-            }
-            else if (error.response.data == '[object Object]') {
-              return (
-                $(document).ready(function() {
-                  $('#notificationLoginRegisterContainer').attr('id','notificationLoginRegisterContainerShow');
-                  $('#notificationContent').html('Please <span id="blue">login </span>to contribute');
-                })
-              );
-            } 
-        });
-    });
+//             currentNotebook: '1',
+//             notebooks: response.data,
+//             rerender: '0',
+//         })
+//   })
+//     .catch(function (error) {
+//       // console.log(error.response.data)
+//         $(document).ready(function() {
+//             $('#notification').attr('id','notificationShow').hide().slideDown();
+//             if (error.response.data != '') {
+//               $('#notificationContent').text(error.response.data);
+//             }
+//             else if (error.response.data == '[object Object]') {
+//               return (
+//                 $(document).ready(function() {
+//                   $('#notificationLoginRegisterContainer').attr('id','notificationLoginRegisterContainerShow');
+//                   $('#notificationContent').html('Please <span id="blue">login </span>to contribute');
+//                 })
+//               );
+//             } 
+//         });
+//     });
 }
 // componentWillReceiveProps(nextState) {
 //     nextState =  { 
@@ -78,25 +86,45 @@ hideNotebook() {
         $('#notebookContainerShow').attr('id','notebookContainer');
     });
 }
+newNotebook() {
+    var self = this;
+    alert('initiateNewNotebook');
+    // alert(notebookID)
+
+    // self.setState({
+    //     currentNotebook: notebookID,
+    // });
+    self.setState({
+        currentNotebook: '2',
+    });
+    // bigNotebook();
+    // alert('successChangeNotebook');
+} 
+
+bigNotebook() {
+    var self = this;
+    self.setState({
+        currentNotebook: tomquickfix
+    })
+}
 
 createNotebook() {    
   var self = this;
   axios.post( Config.API + '/auth/notebooks/create', {
-      username: cookie.load('userName'),
-      title : 'test',
-      description : 'x',
-      sources: 'x',
-    })
-    .then(function (result, self) {
-        // $(document).ready(function() {
-        //     $('#notebookUnsavedLabel').html("saved").fadeIn(7500);
-        //     $('#notebookUnsavedLabel').attr('id','notebookSavedLabel');
-        //     // alert( 'success');
-        // });
-
-        // Go to new notebook
-        alert('success');
-        // document.location = '/project/' + self.props.probID + '/subprojects'
+        username: cookie.load('userName'),
+        title : 'new notebook',
+        description : '',
+        sources: '',
+        })
+    
+    .then(function (result) {
+        axios.get( Config.API + '/notebooks/username?username='+cookie.load('userName')).then(function (response) {
+            self.setState({
+                currentNotebook: '2',
+                notebooks: response.data,
+                rerender: '1',
+            })
+      })
     })
       .catch(function (error) {
         // console.log(error.response.data)
@@ -115,13 +143,17 @@ createNotebook() {
               } 
           });
       });
+    }
 // Note working currently, use when ready
     //   self.setState({
     //     // Set to result of axios call getting most recent notebook
-    //     currentNotebook: '6',
+    //     currentNotebook: '3',
     // });
     // alert('afterStateChange');
-  }
+    // this.setState({
+    //     rerender: '1',
+    // });
+
 
 
 
@@ -137,7 +169,7 @@ createNotebook() {
             </div>
             <div id="notebookContainerRow">
                 <div id="notebookUnitContainer">
-                <div id="notebookUnitHeader">
+                <div id="notebookUnitHeader" onClick={this.newNotebook}>
                     notebooks
                 </div>
                 <div id="notebookSavedLabel">
@@ -148,12 +180,72 @@ createNotebook() {
                 >
                     <img src={require('../assets/blueAdd2.svg')} id="privateNewProjectPlus" width="35" height="35" alt="User avatar, DNA Helix" />
                 </div>
-                {/* <NotebookUnit notebooks={this.state.notebooks}/> */}
+                <div id="fullWide">   
+                    <ul id="notebootUnitList">
+                        {this.state.notebooks.map(this.renderItem)}
+                    </ul>
+                </div>
+                {/* <NotebookUnit notebooks={this.state.notebooks} switchNotebook={this.newNotebook} test={'1'} /> */}
                 x{this.state.notebooks.length}x
             </div>
-                {/* <NotebookFull ref="full" currentNotebook={this.state.currentNotebook} /> */}
+                {/* <NotebookFull ref="full"  */}
+                // currentNotebook={tomquickfix} 
+                currentNotebook={this.state.currentNotebook}
+                />
+                x{tomquickfix}x
             </div>
         </div>
       );
     }
+    renderItem(notebook) {
+        // $(document).ready(function() {
+            
+            // $(document).ready(function() {           
+            //     // $('#notebookContainerShow').attr('id','notebookContainer');
+            //     $("#notebookID").click(
+            //         function(){
+            //         // alert('successfuljQuery' + $("#notebookUnit").text());
+            //             alert('5');
+    
+            //         // $('#notebookID').attr('id','blue');
+            //         }
+            //     );
+            // });  
+
+            
+        // });
+        
+        return (
+            <li key={notebook.ID} id="notebookUnit" 
+                // onClick={this.bigNotebook}
+                >
+                {notebook.Title}
+                <div id="notebookID">
+                    {notebook.ID}
+                </div>
+                {/* <NotebookSubUnit id={notebook.ID} testAlert={this.testAlert} title={notebook.Title}/> */}
+            </li>
+        );
+    function hoverNotebook(notebookTitle) {
+        // var self = this;
+        // $(document).ready(function() {
+        //     $('#notebookID').attr('id','discussHoverTextShow'+String(notebook.ID));
+        // });
+        tomquickfix = notebook.ID
+        // notebookstate(tomquickfix)
+        alert(tomquickfix)
+        // alert(notebook.ID)
+
+        // newNotebook()
+
+        // self.setState({
+        //         currentNotebook: '2',
+        //     });
+    }
 }
+}
+// function notebookstate(noteid) {
+//     NotebookContainer.setState({
+//         currentNotebook: noteid
+//     })
+// }

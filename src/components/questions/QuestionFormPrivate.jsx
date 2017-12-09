@@ -28,6 +28,8 @@ this.state.question = document.getElementById('questionTextArea').value
     typeID: this.props.params.solutionID,
     username: cookie.load('userName'),
     description : this.state.question,
+    parentTitle: this.props.parentTitle,
+    private: '1',
   })
     .then(function (result) {
       document.location = window.location.pathname 
@@ -59,6 +61,8 @@ this.state.question = document.getElementById('questionTextArea').value
         typeID: this.props.params.probID,
         username: cookie.load('userName'),
         description : this.state.question,
+        parentTitle: this.props.parentTitle,
+        private: '1',
       })
       .then(function (result) {
         // document.location = window.location.pathname 

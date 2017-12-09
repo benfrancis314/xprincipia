@@ -30,6 +30,7 @@ postFreeForm() {
       username: cookie.load('userName'),
       description : this.state.freeForm,
       parentTitle: this.props.parentTitle,
+      private: '0',
     })
       .then(function (result) {
         document.location = window.location.pathname 
@@ -60,6 +61,7 @@ postFreeForm() {
       username: cookie.load('userName'),
       description : this.state.freeForm,
       parentTitle: this.props.parentTitle,
+      private: '0',
     })
       .then(function (result) {
         document.location = window.location.pathname 

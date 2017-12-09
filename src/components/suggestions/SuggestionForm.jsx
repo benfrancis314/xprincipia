@@ -25,11 +25,12 @@ this.state.suggestion = document.getElementById('suggestionTextArea').value
   if (this.props.params.solutionID) {
 
       axios.post( Config.API + '/auth/suggestions/create', {
-      type:'1',
-      typeID: this.props.params.solutionID,
-      username: cookie.load('userName'),
-      description : this.state.suggestion,
-      parentTitle: this.props.parentTitle,
+        type:'1',
+        typeID: this.props.params.solutionID,
+        username: cookie.load('userName'),
+        description : this.state.suggestion,
+        parentTitle: this.props.parentTitle,
+        private: '0',
     })
       .then(function (result) {
         document.location = window.location.pathname 
@@ -57,11 +58,12 @@ this.state.suggestion = document.getElementById('suggestionTextArea').value
   } else {
 
       axios.post( Config.API + '/auth/suggestions/create', {
-      type:'0',
-      typeID: this.props.params.probID,
-      username: cookie.load('userName'),
-      description : this.state.suggestion,
-      parentTitle: this.props.parentTitle,
+        type:'0',
+        typeID: this.props.params.probID,
+        username: cookie.load('userName'),
+        description : this.state.suggestion,
+        parentTitle: this.props.parentTitle,
+        private: '0',
     })
       .then(function (result) {
         document.location = window.location.pathname 

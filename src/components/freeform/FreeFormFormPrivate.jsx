@@ -25,11 +25,12 @@ postFreeForm() {
   if (this.props.params.solutionID) {
 
       axios.post( Config.API + '/auth/freeForms/create', {
-      type:'1',
-      typeID: this.props.params.solutionID,
-      username: cookie.load('userName'),
-      description : this.state.freeForm,
-      parentTitle: this.props.parentTitle,
+        type:'1',
+        typeID: this.props.params.solutionID,
+        username: cookie.load('userName'),
+        description : this.state.freeForm,
+        parentTitle: this.props.parentTitle,
+        private: '1',
     })
       .then(function (result) {
         document.location = window.location.pathname 
@@ -55,11 +56,12 @@ postFreeForm() {
     //probID will be used
   } else {
       axios.post( Config.API + '/auth/freeForms/create', {
-      type:'0',
-      typeID: this.props.params.probID,
-      username: cookie.load('userName'),
-      description : this.state.freeForm,
-      parentTitle: this.props.parentTitle,
+        type:'0',
+        typeID: this.props.params.probID,
+        username: cookie.load('userName'),
+        description : this.state.freeForm,
+        parentTitle: this.props.parentTitle,
+        private: '1',
     })
       .then(function (result) {
         document.location = window.location.pathname 
