@@ -125,8 +125,7 @@ export default class FreeFormUnit extends React.Component {
        if (this.state.voteHash[freeForm.ID] === true && freeForm.Username === cookie.load('userName')) {
            return (
        <li key={freeForm.ID} id="suggestionUnit">
-				<div id="suggestionContentHoverVote">
-                x{freeForm.ID}x
+				<div id="suggestionContentHoverVote" className={freeForm.ID}>
                     <Link to={`/project/${freeForm.TypeID}/freeform/${freeForm.ID}/comments`}>
                         <div id="debateThreadButton" onMouseOver={hoverThreadVoted} onMouseOut={unHoverThreadVoted}>
                             <img src={require('../../assets/list4.svg')} id="debateThreadLogo" width="50" height="50" alt="Delete Button, Red X" />
@@ -151,21 +150,11 @@ export default class FreeFormUnit extends React.Component {
                         {freeForm.Description}
                     </div>
 				</div>
-				{/*<Link  to={`/project/${freeForm.TypeID}/freeform/${freeForm.ID}/comments`} activeClassName="activeBlue">
-                    <div id="commentSBButtonUser">
-                            <img src={require('../../assets/comments.svg')} id="commentLogo" width="24" height="24" alt="Comments Button" />
-                    </div>
-                </Link> */}
-                {/* <button type="button" id="suggestionVoted">
-                    Voted
-                </button>             
-                <br /><br />  */}
         </li>);
     }  else if ( freeForm.Username === cookie.load('userName')) {
         return (
        <li key={freeForm.ID} id="suggestionUnit">
-				<div id="suggestionContent">
-                x{freeForm.ID}x
+				<div id={'suggestionContent'} className={freeForm.ID}>
                     <Link to={`/project/${freeForm.TypeID}/freeform/${freeForm.ID}/comments`}>
                         <div id="debateThreadButton" onMouseOver={hoverThread} onMouseOut={unHoverThread}>
                             <img src={require('../../assets/list4.svg')} id="debateThreadLogo" width="50" height="50" alt="Delete Button, Red X" />
@@ -190,22 +179,11 @@ export default class FreeFormUnit extends React.Component {
                         {freeForm.Description}
                     </div>
 				</div>
-                
-				{/*<Link  to={`/project/${freeForm.TypeID}/freeform/${freeForm.ID}/comments`} activeClassName="activeBlue">
-                    <div id="commentSBButtonUser">
-                            <img src={require('../../assets/comments.svg')} id="commentLogo" width="24" height="24" alt="Comments Button" />
-                    </div>
-                </Link> */}
-                {/* <button type="button" onClick={submitVote} id="suggestionVote">
-                    Vote
-                </button>             
-                <br /><br />  */}
         </li>);
     } else if (this.state.voteHash[freeForm.ID] === true) {
         return (
        <li key={freeForm.ID} id="suggestionUnit">
-				<div id="suggestionContentHoverVote">
-                x{freeForm.ID}x
+				<div id="suggestionContentHoverVote" className={freeForm.ID}>
                     <Link to={`/project/${freeForm.TypeID}/freeform/${freeForm.ID}/comments`}>
                         <div id="debateThreadButton" onMouseOver={hoverThreadVoted} onMouseOut={unHoverThreadVoted}>
                             <img src={require('../../assets/list4.svg')} id="debateThreadLogo" width="50" height="50" alt="Delete Button, Red X" />
@@ -231,8 +209,7 @@ export default class FreeFormUnit extends React.Component {
     return (
        <li key={freeForm.ID} id="suggestionUnit">
             {/* <div id="suggestionContent"> */}
-            <div id={'suggestionContent'+String(freeForm.ID)}>
-            x{freeForm.ID}xy
+            <div id={'suggestionContent'} className={freeForm.ID}>
                 <Link to={`/project/${freeForm.TypeID}/freeform/${freeForm.ID}/comments`}>
                     <div id="debateThreadButton" onMouseOver={hoverThread} onMouseOut={unHoverThread}>
                         <img src={require('../../assets/list4.svg')} id="debateThreadLogo" width="50" height="50" alt="Delete Button, Red X" />
@@ -257,186 +234,170 @@ export default class FreeFormUnit extends React.Component {
 
 function hoverThread() {
     $(document).ready(function() {
-        // $('#suggestionContent:contains(x'+String(freeForm.ID)+'x)').attr('id','suggestionContentHover');
-        $('#suggestionContent'+String(freeForm.ID)).attr('id','suggestionContentHover');
-        // $('#suggestionContent').attr('id','suggestionContentHover');
-        $('#discussHoverText').attr('id','discussHoverTextShow');
-        // $('#discussHoverTextShow').html(String(freeForm.ID)).fadeIn(7500);
+        $('div.'+freeForm.ID).attr('class','suggestionContentClassBlue');
+        $('.suggestionContentClassBlue > #discussHoverText').attr('id','discussHoverTextShow');
     });
     // alert(freeForm.ID)
 }
 function unHoverThread() {
     $(document).ready(function() {
         // $('#discussHoverText').html("");
-        $('#suggestionContentHover').attr('id','suggestionContent');
-        $('#discussHoverTextShow').attr('id','discussHoverText');
+        $('div.suggestionContentClassBlue').attr('class',freeForm.ID);
+        // $('div#suggestionContentHover').attr('id','suggestionContent');
+        $('div#discussHoverTextShow').attr('id','discussHoverText');
     });
 }
 function hoverVote() {
     $(document).ready(function() {
-        // $('#discussHoverText').html("view discussion").fadeIn(7500);
-        // $('#suggestionVoteNoComments').attr('id','suggestionVoteNoCommentsHover');
-        $('#suggestionContent').attr('id','suggestionContentHoverVote');
-        $('#discussHoverText').attr('id','discussHoverTextGreen');
+        // $('#suggestionContent').attr('id','suggestionContentHoverVote');
+        // $('#discussHoverText').attr('id','discussHoverTextGreen');
+        // $('#discussHoverTextGreen').html("vote").fadeIn(7500);
+        // $('#discussHoverTextGreen').attr('id','discussHoverTextShowGreen');
+        // $('#discussPercent').attr('id','discussPercentGreen');
+
+        $('div.'+freeForm.ID).attr('class','suggestionContentClassGreen');
+        $('.suggestionContentClassGreen > #discussHoverTextGreen').attr('id','discussHoverTextShow');    
         $('#discussHoverTextGreen').html("vote").fadeIn(7500);
-        $('#discussHoverTextGreen').attr('id','discussHoverTextShowGreen');
-        $('#discussPercent').attr('id','discussPercentGreen');
-        
+        $('#discussHoverTextGreen').attr('id','discussHoverTextShowGreen');    
     });
 }
 function unHoverVote() {
     $(document).ready(function() {
-        // $('#suggestionVoteNoCommentsHover').attr('id','suggestionVoteNoComments');  
-        $('#suggestionContentHoverVote').attr('id','suggestionContent');  
-        $('#discussHoverTextShowGreen').attr('id','discussHoverTextGreen');
-        $('#discussHoverTextGreen').html("debate").fadeIn(7500);
-        $('#discussHoverTextGreen').attr('id','discussHoverText');
-        $('#discussPercentGreen').attr('id','discussPercent');   
+        // $('#suggestionContentHoverVote').attr('id','suggestionContent');  
+        // $('#discussHoverTextShowGreen').attr('id','discussHoverTextGreen');
+        // $('#discussHoverTextGreen').html("debate").fadeIn(7500);
+        // $('#discussHoverTextGreen').attr('id','discussHoverText');
+        // $('#discussPercentGreen').attr('id','discussPercent');   
+
+        $('div.suggestionContentClassGreen').attr('class',freeForm.ID);
+        $('div#discussHoverTextShowGreen').attr('id','discussHoverText');
     });
 }
 function hoverFlag() {
     $(document).ready(function() {
         // $('#suggestionContent').attr('id','suggestionContentHoverFlag');
-        $('#suggestionContent').attr('id','suggestionContentHoverFlag');
-        $('#discussHoverText').attr('id','discussHoverTextRed');
-        $('#discussHoverTextRed').html("flag").fadeIn(7500);
-        $('#discussHoverTextRed').attr('id','discussHoverTextShowRed');            
+        // $('#discussHoverText').attr('id','discussHoverTextRed');
+        // $('#discussHoverTextRed').html("flag").fadeIn(7500);
+        // $('#discussHoverTextRed').attr('id','discussHoverTextShowRed');            
     });
 }
 function unHoverFlag() {
     $(document).ready(function() {
         // $('#suggestionContentHoverFlag').attr('id','suggestionContent');  
-        $('#suggestionContentHoverFlag').attr('id','suggestionContent');  
-        $('#discussHoverTextShowRed').attr('id','discussHoverTextRed');
-        $('#discussHoverTextRed').html("debate").fadeIn(7500);
-        $('#discussHoverTextRed').attr('id','discussHoverText');
+        // $('#discussHoverTextShowRed').attr('id','discussHoverTextRed');
+        // $('#discussHoverTextRed').html("debate").fadeIn(7500);
+        // $('#discussHoverTextRed').attr('id','discussHoverText');
     });
 }
 function hoverEdit() {
     $(document).ready(function() {
-        // $('#discussHoverText').html("view discussion").fadeIn(7500);
-        $('#suggestionContent').attr('id','suggestionContentHover');
-        $('#discussHoverText').html("edit").fadeIn(7500);
-        $('#discussHoverText').attr('id','discussHoverTextShow');
+        // $('#suggestionContent').attr('id','suggestionContentHover');
+        // $('#discussHoverText').html("edit").fadeIn(7500);
+        // $('#discussHoverText').attr('id','discussHoverTextShow');
     });
 }
 function unHoverEdit() {
     $(document).ready(function() {
-        // $('#discussHoverText').html("");
-        $('#suggestionContentHover').attr('id','suggestionContent');
-        $('#discussHoverTextShow').attr('id','discussHoverText');
-        $('#discussHoverText').html("debate").fadeIn(7500);
+        // $('#suggestionContentHover').attr('id','suggestionContent');
+        // $('#discussHoverTextShow').attr('id','discussHoverText');
+        // $('#discussHoverText').html("debate").fadeIn(7500);
     });
 }
 function hoverDelete() {
     $(document).ready(function() {
         // $('#suggestionContent').attr('id','suggestionContentHoverFlag');
-        $('#suggestionContent').attr('id','suggestionContentHoverFlag');
-        $('#discussHoverText').attr('id','discussHoverTextRed');
-        $('#discussHoverTextRed').html("delete").fadeIn(7500);
-        $('#discussHoverTextRed').attr('id','discussHoverTextShowRed');            
+        // $('#discussHoverText').attr('id','discussHoverTextRed');
+        // $('#discussHoverTextRed').html("delete").fadeIn(7500);
+        // $('#discussHoverTextRed').attr('id','discussHoverTextShowRed');            
     });
 }
 function unHoverDelete() {
     $(document).ready(function() {
         // $('#suggestionContentHoverFlag').attr('id','suggestionContent');  
-        $('#suggestionContentHoverFlag').attr('id','suggestionContent');  
-        $('#discussHoverTextShowRed').attr('id','discussHoverTextRed');
-        $('#discussHoverTextRed').html("debate").fadeIn(7500);
-        $('#discussHoverTextRed').attr('id','discussHoverText');
+        // $('#discussHoverTextShowRed').attr('id','discussHoverTextRed');
+        // $('#discussHoverTextRed').html("debate").fadeIn(7500);
+        // $('#discussHoverTextRed').attr('id','discussHoverText');
     });
 }
 function hoverThreadVoted() {
     $(document).ready(function() {
-        // $('#discussHoverText').html("view discussion").fadeIn(7500);
-        $('#suggestionContentHoverVote').attr('id','suggestionContentHover');
-        $('#discussHoverTextShowGreen').attr('id','discussHoverText');
-        $('#discussHoverText').html("debate").fadeIn(7500);
-        $('#discussHoverText').attr('id','discussHoverTextShow');
+        // $('#suggestionContentHoverVote').attr('id','suggestionContentHover');
+        // $('#discussHoverTextShowGreen').attr('id','discussHoverText');
+        // $('#discussHoverText').html("debate").fadeIn(7500);
+        // $('#discussHoverText').attr('id','discussHoverTextShow');
     });
 }
 function unHoverThreadVoted() {
     $(document).ready(function() {
-        // $('#discussHoverText').html("");
-        $('#suggestionContentHover').attr('id','suggestionContentHoverVote');
-        $('#discussHoverTextShow').attr('id','discussHoverTextShowGreen');
-        $('#discussHoverTextShowGreen').html("voted").fadeIn(7500);
+        // $('#suggestionContentHover').attr('id','suggestionContentHoverVote');
+        // $('#discussHoverTextShow').attr('id','discussHoverTextShowGreen');
+        // $('#discussHoverTextShowGreen').html("voted").fadeIn(7500);
     });
 }
 function hoverVoteVoted() {
     $(document).ready(function() {
-        // $('#discussHoverText').html("view discussion").fadeIn(7500);
-        // $('#suggestionVoteNoComments').attr('id','suggestionVoteNoCommentsHover');
-        $('#suggestionContentHoverVote').attr('id','suggestionContentHoverUnvote');
-        $('#discussHoverTextShowGreen').attr('id','discussHoverTextGreen');
-        $('#discussHoverTextGreen').html("unvote").fadeIn(7500);
-        $('#discussHoverTextGreen').attr('id','discussHoverTextShowGreen');
-        $('#discussPercent').attr('id','discussPercentGreen');
+        // $('#suggestionContentHoverVote').attr('id','suggestionContentHoverUnvote');
+        // $('#discussHoverTextShowGreen').attr('id','discussHoverTextGreen');
+        // $('#discussHoverTextGreen').html("unvote").fadeIn(7500);
+        // $('#discussHoverTextGreen').attr('id','discussHoverTextShowGreen');
+        // $('#discussPercent').attr('id','discussPercentGreen');
         
     });
 }
 function unHoverVoteVoted() {
     $(document).ready(function() {
-        // $('#suggestionVoteNoCommentsHover').attr('id','suggestionVoteNoComments');  
-        $('#suggestionContentHoverUnvote').attr('id','suggestionContentHoverVote');  
-        $('#discussHoverTextShowGreen').attr('id','discussHoverTextGreen');
-        $('#discussHoverTextGreen').html("voted").fadeIn(7500);
-        $('#discussHoverTextGreen').attr('id','discussHoverTextShowGreen');
-        // $('#discussHoverTextGreen').attr('id','discussHoverText');
-        $('#discussPercentGreen').attr('id','discussPercent');   
+        // $('#suggestionContentHoverUnvote').attr('id','suggestionContentHoverVote');  
+        // $('#discussHoverTextShowGreen').attr('id','discussHoverTextGreen');
+        // $('#discussHoverTextGreen').html("voted").fadeIn(7500);
+        // $('#discussHoverTextGreen').attr('id','discussHoverTextShowGreen');
+        // $('#discussPercentGreen').attr('id','discussPercent');   
     });
 }
 function hoverFlagVoted() {
     $(document).ready(function() {
-        // $('#suggestionContent').attr('id','suggestionContentHoverFlag');
-        $('#suggestionContentHoverVote').attr('id','suggestionContentHoverFlag');
-        $('#discussHoverText').attr('id','discussHoverTextRed');
-        $('#discussHoverTextRed').html("flag").fadeIn(7500);
-        $('#discussHoverTextRed').attr('id','discussHoverTextShowRed');            
+        // $('#suggestionContentHoverVote').attr('id','suggestionContentHoverFlag');
+        // $('#discussHoverText').attr('id','discussHoverTextRed');
+        // $('#discussHoverTextRed').html("flag").fadeIn(7500);
+        // $('#discussHoverTextRed').attr('id','discussHoverTextShowRed');            
     });
 }
 function unHoverFlagVoted() {
     $(document).ready(function() {
-        // $('#suggestionContentHoverFlag').attr('id','suggestionContent');  
-        $('#suggestionContentHoverFlag').attr('id','suggestionContentHoverVote');  
-        $('#discussHoverTextShowRed').attr('id','discussHoverTextRed');
-        $('#discussHoverTextRed').html("voted").fadeIn(7500);
-        $('#discussHoverTextRed').attr('id','discussHoverText');
+        // $('#suggestionContentHoverFlag').attr('id','suggestionContentHoverVote');  
+        // $('#discussHoverTextShowRed').attr('id','discussHoverTextRed');
+        // $('#discussHoverTextRed').html("voted").fadeIn(7500);
+        // $('#discussHoverTextRed').attr('id','discussHoverText');
     });
 }
 function hoverEditVoted() {
     $(document).ready(function() {
-        // $('#discussHoverText').html("view discussion").fadeIn(7500);
-        $('#suggestionContentHoverVote').attr('id','suggestionContentHover');
-        $('#discussHoverText').html("edit").fadeIn(7500);
-        $('#discussHoverText').attr('id','discussHoverTextShow');
+        // $('#suggestionContentHoverVote').attr('id','suggestionContentHover');
+        // $('#discussHoverText').html("edit").fadeIn(7500);
+        // $('#discussHoverText').attr('id','discussHoverTextShow');
     });
 }
 function unHoverEditVoted() {
     $(document).ready(function() {
-        // $('#discussHoverText').html("");
-        $('#suggestionContentHover').attr('id','suggestionContentHoverVote');
-        $('#discussHoverTextShow').attr('id','discussHoverText');
-        $('#discussHoverText').html("voted").fadeIn(7500);
-        $('#discussHoverText').attr('id','discussHoverTextShowGreen');
+        // $('#suggestionContentHover').attr('id','suggestionContentHoverVote');
+        // $('#discussHoverTextShow').attr('id','discussHoverText');
+        // $('#discussHoverText').html("voted").fadeIn(7500);
+        // $('#discussHoverText').attr('id','discussHoverTextShowGreen');
     });
 }
 function hoverDeleteVoted() {
     $(document).ready(function() {
-        // $('#suggestionContent').attr('id','suggestionContentHoverFlag');
-        $('#suggestionContentHoverGreen').attr('id','suggestionContentHoverFlag');
-        $('#discussHoverTextShowGreen').attr('id','discussHoverTextRed');
-        $('#discussHoverTextRed').html("delete").fadeIn(7500);
-        $('#discussHoverTextRed').attr('id','discussHoverTextShowRed');            
+        // $('#suggestionContentHoverGreen').attr('id','suggestionContentHoverFlag');
+        // $('#discussHoverTextShowGreen').attr('id','discussHoverTextRed');
+        // $('#discussHoverTextRed').html("delete").fadeIn(7500);
+        // $('#discussHoverTextRed').attr('id','discussHoverTextShowRed');            
     });
 }
 function unHoverDeleteVoted() {
     $(document).ready(function() {
-        // $('#suggestionContentHoverFlag').attr('id','suggestionContent');  
-        $('#suggestionContentHoverFlag').attr('id','suggestionContentHoverGreen');  
-        $('#discussHoverTextShowRed').attr('id','discussHoverTextRed');
-        $('#discussHoverTextRed').html("voted").fadeIn(7500);
-        $('#discussHoverTextRed').attr('id','discussHoverTextShowGreen');
+        // $('#suggestionContentHoverFlag').attr('id','suggestionContentHoverGreen');  
+        // $('#discussHoverTextShowRed').attr('id','discussHoverTextRed');
+        // $('#discussHoverTextRed').html("voted").fadeIn(7500);
+        // $('#discussHoverTextRed').attr('id','discussHoverTextShowGreen');
     });
 
 }

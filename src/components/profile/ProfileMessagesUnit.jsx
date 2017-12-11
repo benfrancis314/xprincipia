@@ -1,7 +1,10 @@
 import React from 'react';
 import {Link} from 'react-router';
+import axios from 'axios'
 import cookie from 'react-cookie';
+import {Config} from '../../config.js';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group'; // ES6
+import $ from 'jquery';
 
 
 
@@ -10,13 +13,66 @@ export default class ProfileNotifications extends React.Component {
         super(props);
 
         this.state= {
-            member1: 'XPrincipia',
-            member2: 'benfrancis',
+            messages: [],
+            description: '',
         }
 
         this.renderItem = this.renderItem.bind(this)
+        this.postMessage = this.postMessage.bind(this)
     // this.submitVote = this.submitVote.bind(this)
 };
+
+componentDidMount(){
+    var self = this;
+    return axios.get( Config.API + '/messages/convo?user1='+this.props.params.user1+'&user2='+this.props.params.user2).then(function (response) {
+        self.setState({
+            messages: response.data
+        })
+    })  
+}
+componentWillReceiveProps (nextProps){
+    var self = this;
+    return axios.get( Config.API + '/messages/convo?user1='+nextProps.params.user1+'&user2='+nextProps.params.user2).then(function (response) {
+        self.setState({
+            messages: response.data
+        })
+    })  
+}
+postMessage() {
+    this.state.description = document.getElementById('conversationEntry').value
+    axios.post( Config.API + '/auth/messages/create', {
+        user1 : this.props.params.user1,
+        user2 : this.props.params.user2,
+        description : this.state.description,
+      })
+      .then(function (response) {
+        // return axios.get( Config.API + '/messages/convo?user1='+nextProps.params.user1+'&user2='+nextProps.params.user2).then(function (response) {
+        //     self.setState({
+        //         messages: response.data
+        //     })
+        // })  
+            document.location = window.location.pathname 
+            // alert('success ')
+        
+      })
+      .catch(function (error) {
+          $(document).ready(function() {
+              $('#notification').attr('id','notificationShow').hide().slideDown();
+
+                if (error.response.data == '[object Object]') {
+                  return (
+                    $(document).ready(function() {
+                      $('#notificationLoginRegisterContainer').attr('id','notificationLoginRegisterContainerShow');
+                      $('#notificationContent').html('Please <span id="blue">login </span>to create a project');
+                    })
+                  );
+                }  else if (error.response.data != '') {
+                $('#notificationContent').text(error.response.data);
+              }
+          });
+      });
+    };
+
 
 // Attempt to keep autofocus on without page always scrolling down to it
 // componentDidMount() {
@@ -45,38 +101,18 @@ export default class ProfileNotifications extends React.Component {
                 <br />
             </div>
             <div id="conversationInstructions">
-                XPrincipia
+                {this.props.params.user2}
+                {this.state.messages.length}
+                {/* <br />
+                {this.props.params.user1} */}
             </div>
-            <form id='conversationSubmit' onSubmit={this.onSubmit} action=''>
-                <textarea id="conversationEntry" value={this.state.message} onChange={this.updateInputValue} autoFocus autoComplete="off"></textarea>
-                <input id="conversationSubmitButton" type='submit' ></input>
+            <form id='conversationSubmit'>
+                <textarea id="conversationEntry" autoFocus autoComplete="off"></textarea>
+                <input id="conversationSubmitButton" type="button" value="submit" onClick={this.postMessage}></input>
             </form>
             <ul id="conversationMessagesList"> 
-                {/* {this.props.displayItems.map(this.renderItem)}  */}
-                <li>
-                    <div id='conversationMessages1'> 
-                        <div id="blueConversation1">XPrincipia</div>
-                        <div id="whiteConversation1">message message</div>
-                    </div>
-                </li>
-                <li>
-                    <div id='conversationMessages2'> 
-                        <div id="blueConversation2">benfrancis</div>
-                        <div id="whiteConversation2">dialoge dialogue</div>
-                    </div>
-                </li>
-                <li>
-                    <div id='conversationMessages2'> 
-                        <div id="blueConversation2">benfrancis</div>
-                        <div id="whiteConversation2">dialoge dialogue</div>
-                    </div>
-                </li>
-                <li>
-                    <div id='conversationMessages1'> 
-                        <div id="blueConversation1">XPrincipia</div>
-                        <div id="whiteConversation1">dialoge dialogue</div>
-                    </div>
-                </li>
+                {this.state.messages.map(this.renderItem)} 
+
             </ul>
             {/* <div id="textBoxBottom">
                 <br />
@@ -90,36 +126,32 @@ export default class ProfileNotifications extends React.Component {
 		);
 	}
 
-   renderItem(item) {
-       if (cookie.load('userName') == this.state.member1) {
+   renderItem(message) {
+       if (cookie.load('userName') == this.props.params.user1) {
         return (
-            <Link key={item.ID} to={`/proposal/${item.ProblemID}/${item.ID}/solutions`} >
-                <li><div id="messagesUnit">
-                    <div id="messageTitle">
-                        Test Title
-                        {/*{item.Title}*/}
+            <li key={message.ID}>
+                <div id='conversationMessages2'> 
+                    <div id="blueConversation2">
+                        {this.props.params.user1}
                     </div>
-                    <div id="unitSummary">
-                        Test Summary
-                        {/*{item.Summary}*/}
+                    <div id="whiteConversation2">
+                        {message.Description}
                     </div>
-                </div></li>
-            </Link>
+                </div>
+            </li>
         );
     } else {
         return (
-            <Link key={item.ID} to={`/proposal/${item.ProblemID}/${item.ID}/solutions`} >
-                <li><div id="messagesUnit">
-                    <div id="messageTitle">
-                        Test Title
-                        {/*{item.Title}*/}
+            <li key={message.ID}>
+                <div id='conversationMessages1'> 
+                    <div id="blueConversation1">
+                        {this.props.params.user2}
                     </div>
-                    <div id="unitSummary">
-                        Test Summary
-                        {/*{item.Summary}*/}
+                    <div id="whiteConversation1">
+                        {message.Description}
                     </div>
-                </div></li>
-            </Link>
+                </div>
+            </li>
         )
     }
    }

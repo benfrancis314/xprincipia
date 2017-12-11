@@ -304,7 +304,7 @@ ReactDOM.render(
           <IndexRoute component={ProfileMessagesAddButton}></IndexRoute>
           <Route path='/messages' component={ProfileMessagesAddButton}></Route>
           <Route path='/messages/new' component={ProfileMessagesForm}></Route>
-          <Route path='/messages/:message' component={ProfileMessagesUnit}></Route>
+          <Route path='/messages/:user1/:user2' component={ProfileMessagesUnit}></Route>
         </Route>
         <Route path='/profile/notifications' component={ProfileNotifications}></Route>
         <Route path='/profile/about/container' component={ProfileAboutContainer}>

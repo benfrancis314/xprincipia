@@ -10,13 +10,13 @@ export default class ProfileNotifications extends React.Component {
         super(props);
 
         this.state = {
-            conversations: []
+            conversations: [],
         }
 
         this.renderItem = this.renderItem.bind(this)
     // this.submitVote = this.submitVote.bind(this)
 };
-componentWillMount() {
+componentDidMount() {
     var self = this;
     return axios.get( Config.API + '/conversations/username?user1='+cookie.load('userName')+'&user2='+cookie.load('userName')).then(function (response) {
         self.setState({
@@ -46,39 +46,37 @@ componentWillReceiveProps(nextProps) {
                 </div>
             </Link>
             <ul> 
+                {/* {this.state.conversations.length} */}
                 {this.state.conversations.map(this.renderItem)}
-                <br />
-                b{this.state.conversations.length}b
 			</ul>
 		</div>
 		);
 	}
 	renderItem(conversation) {
-        if(conversation.user1 == cookie.load('userName')) {
+        // if(conversation.User1 == cookie.load('userName')) {
+        if(1) {
             return (
-            <Link key={conversation.ID} to="/messages/3" activeClassName="activeMessage">
+            <Link key={conversation.ID} to={`messages/${conversation.User1}/${conversation.User2}`} activeClassName="activeMessage">
                 <li key={conversation.ID}>
                     <div id="messagesUnit">
                         <div id="messageTitle">
-                            x{conversation.user1}
+                            {conversation.User2}
                         </div>
                     </div>
                 </li>
             </Link>
         );
-    } else {
-        return (
-        <Link key={conversation.ID} to={'/messages/'+conversation.ID} activeClassName="activeMessage">
-            <li key={conversation.ID}>
-                <div id="messagesUnit">
-                    <div id="messageTitle">
-                        y{String(conversation.user2)}x
-                        y{String(conversation.user1)}y
-                        z{String(conversation.ID)}z
+        } else {
+            return (
+            <Link key={conversation.ID} to={`messages/${conversation.User2}/${conversation.User1}`} activeClassName="activeMessage">
+                <li key={conversation.ID}>
+                    <div id="messagesUnit">
+                        <div id="messageTitle">
+                            {conversation.User1}
+                        </div>
                     </div>
-                </div>
-            </li>
-        </Link>
+                </li>
+            </Link>
         );
     }
    }

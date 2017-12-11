@@ -4430,19 +4430,18 @@ font-family: 'Open Sans';
 /* #suggestionContent > #debateThreadButton {
   background-color: rgba(0,220,255,0.05) !important;
 } */
+.suggestionContentClassBlue, .suggestionContentClassGreen, .suggestionContentClassRed {
+  background-color: rgba(0,220,255,0.05) !important;
+  transform: scale(1.02);
+}
+.suggestionContentClassGreen {
+  background-color: rgba(0,255,220,0.05) !important;
+}
+.suggestionContentClassRed {
+  background-color: rgba(255,127,127,0.05) !important;
+}
 #suggestionContent, #commentContent, #suggestionContent24, #suggestionContent25, #suggestionContent26, #suggestionContent27,
 #suggestionContent28, #suggestionContent29, #suggestionContent30  {
-  /*Old Styles*/
-  /*flex: 3 3 auto;
-  font-family: 'Open Sans';
-  border: 1px solid #dddddd;
-  border-width: 1px 0px 1px 1px;
-  border-radius: 3px 0px 0px 3px;
-  width: 80%;
-  padding: 15px;
-  margin-bottom: 1.1%;
-  background-color: rgba(0,220,255,0.05);*/
-
   flex: 3 3 auto;
   font-family: 'Open Sans';
   border: 1px solid #dddddd;
@@ -10734,7 +10733,7 @@ margin-top: 1%;
   background-color: rgba(0,220,255, 0.05);
   border-radius: 45% 45% 3px 3px;
   margin: 0 auto;
-  margin-top: 1.5%;
+  margin-top: 0.5%;
   margin-bottom: 1%;
   /*padding-top: 0.5%;*/
   width: 95%;
@@ -10760,7 +10759,7 @@ margin-top: 1%;
   margin-top: 2%;
   margin-bottom: 2%;
   margin-left: 3%;
-  padding: 2% 5% 2% 5%;
+  padding: 0.25% 5% 1% 5%;
   width: 70%;
   }
   #conversationMessages2 {
@@ -10775,7 +10774,7 @@ margin-top: 1%;
     
     text-align: right;
     right: 3%;
-    padding: 2% 5% 2% 5%;
+    padding: 0.25% 5% 1% 5%;
     width: 70%;
   }
   #blueConversation1 {
@@ -10806,7 +10805,7 @@ margin-top: 1%;
   padding-bottom: 1.75%;
   border: 1px solid #333333;
   border-width: 0px 0px 1px 0px;
-  width: 72%;
+  width: 90%;
   }
   #whiteConversation2 {
     font-family: 'Open Sans' !important;
@@ -10820,7 +10819,7 @@ margin-top: 1%;
     margin: 0 auto;
     margin-right: 0;
     text-align: right;
-    width: 72%;
+    width: 90%;
     }
   /* #conversationSubmit {
   } */
