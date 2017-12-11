@@ -4433,12 +4433,15 @@ font-family: 'Open Sans';
 .suggestionContentClassBlue, .suggestionContentClassGreen, .suggestionContentClassRed {
   background-color: rgba(0,220,255,0.05) !important;
   transform: scale(1.02);
+  transition: all 1s ease 0s;
 }
 .suggestionContentClassGreen {
   background-color: rgba(0,255,220,0.05) !important;
+  transition: all 1s ease 0s;
 }
 .suggestionContentClassRed {
   background-color: rgba(255,127,127,0.05) !important;
+  transition: all 1s ease 0s;
 }
 #suggestionContent, #commentContent, #suggestionContent24, #suggestionContent25, #suggestionContent26, #suggestionContent27,
 #suggestionContent28, #suggestionContent29, #suggestionContent30  {
@@ -4452,6 +4455,7 @@ font-family: 'Open Sans';
   background: linear-gradient(to right,rgba(0,220,255, 0.06), rgba(0,220,255, 0.07), rgba(0,220,255, 0.02));
   position: relative;
   transition: all 0.5s ease 0s;
+  transition: all 1s ease 0s;
 }
 #suggestionContentHover, #suggestionContentHoverVote, #suggestionContentHoverUnvote, #commentContentHover, #commentContentHoverVote, #commentContentHoverUnvote {
   flex: 3 3 auto;
@@ -7259,7 +7263,7 @@ transition: all 1s ease 0s;
 #discussHoverTextRed {
   color: #ff7f7f;
 }
-#discussHoverTextShow, #discussHoverTextShowGreen, #discussHoverTextShowRed {
+#discussHoverTextShow, #discussHoverTextShowGreen, #discussHoverTextShowRed, #discussHoverTextShowVoted {
   position: absolute;
   top: 3%;
   right: 14%;
@@ -7269,7 +7273,7 @@ transition: all 1s ease 0s;
   opacity: 1;
   font-size: 180%;
 }
-#discussHoverTextShowGreen {
+#discussHoverTextShowGreen, #discussHoverTextShowVoted {
   color: #00ffdc;
 }
 #discussHoverTextShowRed {

@@ -141,7 +141,7 @@ export default class FreeFormUnit extends React.Component {
                             <img src={require('../../assets/delete.svg')} id="editLogo" width="18" height="18" alt="Delete Button" />
                         </div>
                     </Link>
-                    <div id="discussHoverText">debate</div>
+                    <div id="discussHoverTextShowVoted">voted</div>
 					<div id="discussHeader">
                         <span id="discussPercent">{floatToDecimal(freeForm.PercentRank)}</span>
                         {freeForm.Username}
@@ -194,7 +194,7 @@ export default class FreeFormUnit extends React.Component {
                             <img src={require('../../assets/flag.svg')} id="deleteLogo" width="24" height="24" alt="Delete Button, Red X" />
                         </div>
                     </Link>
-                    <div id="discussHoverTextShowGreen">voted</div>
+                    <div id="discussHoverTextShowVoted">voted</div>
 					<div id="discussHeader">
                         <span id="discussPercent">{floatToDecimal(freeForm.PercentRank)}</span>
 					    {freeForm.Username}
@@ -220,7 +220,7 @@ export default class FreeFormUnit extends React.Component {
                         <img src={require('../../assets/flag.svg')} id="deleteLogo" width="24" height="24" alt="Delete Button, Red X" />
                     </div>
                 </Link>
-                <div id="discussHoverText">debate</div>
+                <div id="discussHoverText"></div>
                 <div id="discussHeader">
                     <span id="discussPercent">{floatToDecimal(freeForm.PercentRank)}</span>
                     {freeForm.Username}
@@ -236,14 +236,12 @@ function hoverThread() {
     $(document).ready(function() {
         $('div.'+freeForm.ID).attr('class','suggestionContentClassBlue');
         $('.suggestionContentClassBlue > #discussHoverText').attr('id','discussHoverTextShow');
+        $('#discussHoverTextShow').html("debate").fadeIn(7500);
     });
-    // alert(freeForm.ID)
 }
 function unHoverThread() {
     $(document).ready(function() {
-        // $('#discussHoverText').html("");
         $('div.suggestionContentClassBlue').attr('class',freeForm.ID);
-        // $('div#suggestionContentHover').attr('id','suggestionContent');
         $('div#discussHoverTextShow').attr('id','discussHoverText');
     });
 }
@@ -256,7 +254,7 @@ function hoverVote() {
         // $('#discussPercent').attr('id','discussPercentGreen');
 
         $('div.'+freeForm.ID).attr('class','suggestionContentClassGreen');
-        $('.suggestionContentClassGreen > #discussHoverTextGreen').attr('id','discussHoverTextShow');    
+        $('.suggestionContentClassGreen > #discussHoverText').attr('id','discussHoverTextGreen');    
         $('#discussHoverTextGreen').html("vote").fadeIn(7500);
         $('#discussHoverTextGreen').attr('id','discussHoverTextShowGreen');    
     });
@@ -270,7 +268,8 @@ function unHoverVote() {
         // $('#discussPercentGreen').attr('id','discussPercent');   
 
         $('div.suggestionContentClassGreen').attr('class',freeForm.ID);
-        $('div#discussHoverTextShowGreen').attr('id','discussHoverText');
+        $('div#discussHoverTextShowGreen').attr('id','discussHoverTextGreen');
+        $('div#discussHoverTextGreen').attr('id','discussHoverText');
     });
 }
 function hoverFlag() {
@@ -278,7 +277,12 @@ function hoverFlag() {
         // $('#suggestionContent').attr('id','suggestionContentHoverFlag');
         // $('#discussHoverText').attr('id','discussHoverTextRed');
         // $('#discussHoverTextRed').html("flag").fadeIn(7500);
-        // $('#discussHoverTextRed').attr('id','discussHoverTextShowRed');            
+        // $('#discussHoverTextRed').attr('id','discussHoverTextShowRed');
+
+        $('div.'+freeForm.ID).attr('class','suggestionContentClassRed');
+        $('.suggestionContentClassRed > #discussHoverText').attr('id','discussHoverTextRed');    
+        $('#discussHoverTextRed').html("flag").fadeIn(7500);
+        $('#discussHoverTextRed').attr('id','discussHoverTextShowRed');              
     });
 }
 function unHoverFlag() {
@@ -287,6 +291,10 @@ function unHoverFlag() {
         // $('#discussHoverTextShowRed').attr('id','discussHoverTextRed');
         // $('#discussHoverTextRed').html("debate").fadeIn(7500);
         // $('#discussHoverTextRed').attr('id','discussHoverText');
+
+        $('div.suggestionContentClassRed').attr('class',freeForm.ID);
+        $('div#discussHoverTextShowRed').attr('id','discussHoverTextRed');
+        $('div#discussHoverTextRed').attr('id','discussHoverText');
     });
 }
 function hoverEdit() {
@@ -294,6 +302,10 @@ function hoverEdit() {
         // $('#suggestionContent').attr('id','suggestionContentHover');
         // $('#discussHoverText').html("edit").fadeIn(7500);
         // $('#discussHoverText').attr('id','discussHoverTextShow');
+
+        $('div.'+freeForm.ID).attr('class','suggestionContentClassBlue');
+        $('.suggestionContentClassBlue > #discussHoverText').attr('id','discussHoverTextShow');
+        $('#discussHoverTextShow').html("edit").fadeIn(7500);
     });
 }
 function unHoverEdit() {
@@ -301,6 +313,9 @@ function unHoverEdit() {
         // $('#suggestionContentHover').attr('id','suggestionContent');
         // $('#discussHoverTextShow').attr('id','discussHoverText');
         // $('#discussHoverText').html("debate").fadeIn(7500);
+
+        $('div.suggestionContentClassBlue').attr('class',freeForm.ID);
+        $('div#discussHoverTextShow').attr('id','discussHoverText');
     });
 }
 function hoverDelete() {
@@ -308,7 +323,12 @@ function hoverDelete() {
         // $('#suggestionContent').attr('id','suggestionContentHoverFlag');
         // $('#discussHoverText').attr('id','discussHoverTextRed');
         // $('#discussHoverTextRed').html("delete").fadeIn(7500);
-        // $('#discussHoverTextRed').attr('id','discussHoverTextShowRed');            
+        // $('#discussHoverTextRed').attr('id','discussHoverTextShowRed'); 
+        
+        $('div.'+freeForm.ID).attr('class','suggestionContentClassRed');
+        $('.suggestionContentClassRed > #discussHoverText').attr('id','discussHoverTextRed');    
+        $('#discussHoverTextRed').html("delete").fadeIn(7500);
+        $('#discussHoverTextRed').attr('id','discussHoverTextShowRed');
     });
 }
 function unHoverDelete() {
@@ -317,6 +337,10 @@ function unHoverDelete() {
         // $('#discussHoverTextShowRed').attr('id','discussHoverTextRed');
         // $('#discussHoverTextRed').html("debate").fadeIn(7500);
         // $('#discussHoverTextRed').attr('id','discussHoverText');
+
+        $('div.suggestionContentClassRed').attr('class',freeForm.ID);
+        $('div#discussHoverTextShowRed').attr('id','discussHoverTextRed');
+        $('div#discussHoverTextRed').attr('id','discussHoverText');
     });
 }
 function hoverThreadVoted() {
@@ -325,6 +349,10 @@ function hoverThreadVoted() {
         // $('#discussHoverTextShowGreen').attr('id','discussHoverText');
         // $('#discussHoverText').html("debate").fadeIn(7500);
         // $('#discussHoverText').attr('id','discussHoverTextShow');
+
+        $('div.'+freeForm.ID).attr('class','suggestionContentClassBlue');
+        $('.suggestionContentClassBlue > #discussHoverTextShowVoted').attr('id','discussHoverTextShow');
+        $('#discussHoverTextShow').html("debate").fadeIn(7500);
     });
 }
 function unHoverThreadVoted() {
@@ -332,6 +360,10 @@ function unHoverThreadVoted() {
         // $('#suggestionContentHover').attr('id','suggestionContentHoverVote');
         // $('#discussHoverTextShow').attr('id','discussHoverTextShowGreen');
         // $('#discussHoverTextShowGreen').html("voted").fadeIn(7500);
+
+        $('div.suggestionContentClassBlue').attr('class',freeForm.ID);
+        $('div#discussHoverTextShow').attr('id','discussHoverTextShowVoted');
+        $('div#discussHoverTextShowVoted').html("voted").fadeIn(7500);
     });
 }
 function hoverVoteVoted() {
@@ -341,6 +373,11 @@ function hoverVoteVoted() {
         // $('#discussHoverTextGreen').html("unvote").fadeIn(7500);
         // $('#discussHoverTextGreen').attr('id','discussHoverTextShowGreen');
         // $('#discussPercent').attr('id','discussPercentGreen');
+
+        $('div.'+freeForm.ID).attr('class','suggestionContentClassGreen');
+        $('.suggestionContentClassGreen > #discussHoverTextShowVoted').attr('id','discussHoverTextGreen');    
+        $('#discussHoverTextGreen').html("unvote").fadeIn(7500);
+        $('#discussHoverTextGreen').attr('id','discussHoverTextShowVoted'); 
         
     });
 }
@@ -351,6 +388,11 @@ function unHoverVoteVoted() {
         // $('#discussHoverTextGreen').html("voted").fadeIn(7500);
         // $('#discussHoverTextGreen').attr('id','discussHoverTextShowGreen');
         // $('#discussPercentGreen').attr('id','discussPercent');   
+
+        $('div.suggestionContentClassGreen').attr('class',freeForm.ID);
+        $('div#discussHoverTextShowVoted').attr('id','discussHoverTextGreen');
+        $('div#discussHoverTextGreen').attr('id','discussHoverTextShowVoted');
+        $('div#discussHoverTextShowVoted').html("voted").fadeIn(7500);
     });
 }
 function hoverFlagVoted() {
@@ -358,7 +400,12 @@ function hoverFlagVoted() {
         // $('#suggestionContentHoverVote').attr('id','suggestionContentHoverFlag');
         // $('#discussHoverText').attr('id','discussHoverTextRed');
         // $('#discussHoverTextRed').html("flag").fadeIn(7500);
-        // $('#discussHoverTextRed').attr('id','discussHoverTextShowRed');            
+        // $('#discussHoverTextRed').attr('id','discussHoverTextShowRed');    
+        
+        $('div.'+freeForm.ID).attr('class','suggestionContentClassRed');
+        $('.suggestionContentClassRed > #discussHoverTextShowVoted').attr('id','discussHoverTextRed');    
+        $('#discussHoverTextRed').html("flag").fadeIn(7500);
+        $('#discussHoverTextRed').attr('id','discussHoverTextShowRed');  
     });
 }
 function unHoverFlagVoted() {
@@ -367,6 +414,11 @@ function unHoverFlagVoted() {
         // $('#discussHoverTextShowRed').attr('id','discussHoverTextRed');
         // $('#discussHoverTextRed').html("voted").fadeIn(7500);
         // $('#discussHoverTextRed').attr('id','discussHoverText');
+
+        $('div.suggestionContentClassRed').attr('class',freeForm.ID);
+        $('div#discussHoverTextShowRed').attr('id','discussHoverTextRed');
+        $('div#discussHoverTextRed').attr('id','discussHoverTextShowVoted');
+        $('div#discussHoverTextShowVoted').html("voted").fadeIn(7500);
     });
 }
 function hoverEditVoted() {
@@ -374,6 +426,10 @@ function hoverEditVoted() {
         // $('#suggestionContentHoverVote').attr('id','suggestionContentHover');
         // $('#discussHoverText').html("edit").fadeIn(7500);
         // $('#discussHoverText').attr('id','discussHoverTextShow');
+
+        $('div.'+freeForm.ID).attr('class','suggestionContentClassBlue');
+        $('.suggestionContentClassBlue > #discussHoverTextShowVoted').attr('id','discussHoverTextShow');
+        $('#discussHoverTextShow').html("edit").fadeIn(7500);
     });
 }
 function unHoverEditVoted() {
@@ -382,6 +438,10 @@ function unHoverEditVoted() {
         // $('#discussHoverTextShow').attr('id','discussHoverText');
         // $('#discussHoverText').html("voted").fadeIn(7500);
         // $('#discussHoverText').attr('id','discussHoverTextShowGreen');
+
+        $('div.suggestionContentClassBlue').attr('class',freeForm.ID);
+        $('div#discussHoverTextShow').attr('id','discussHoverTextShowVoted');
+        $('div#discussHoverTextShowVoted').html("voted").fadeIn(7500);
     });
 }
 function hoverDeleteVoted() {
@@ -389,7 +449,12 @@ function hoverDeleteVoted() {
         // $('#suggestionContentHoverGreen').attr('id','suggestionContentHoverFlag');
         // $('#discussHoverTextShowGreen').attr('id','discussHoverTextRed');
         // $('#discussHoverTextRed').html("delete").fadeIn(7500);
-        // $('#discussHoverTextRed').attr('id','discussHoverTextShowRed');            
+        // $('#discussHoverTextRed').attr('id','discussHoverTextShowRed');    
+        
+        $('div.'+freeForm.ID).attr('class','suggestionContentClassRed');
+        $('.suggestionContentClassRed > #discussHoverTextShowVoted').attr('id','discussHoverTextRed');    
+        $('#discussHoverTextRed').html("delete").fadeIn(7500);
+        $('#discussHoverTextRed').attr('id','discussHoverTextShowRed');
     });
 }
 function unHoverDeleteVoted() {
@@ -398,6 +463,11 @@ function unHoverDeleteVoted() {
         // $('#discussHoverTextShowRed').attr('id','discussHoverTextRed');
         // $('#discussHoverTextRed').html("voted").fadeIn(7500);
         // $('#discussHoverTextRed').attr('id','discussHoverTextShowGreen');
+
+        $('div.suggestionContentClassRed').attr('class',freeForm.ID);
+        $('div#discussHoverTextShowRed').attr('id','discussHoverTextRed');
+        $('div#discussHoverTextRed').attr('id','discussHoverTextShowVoted');
+        $('div#discussHoverTextShowVoted').html("voted").fadeIn(7500);
     });
 
 }
