@@ -6589,6 +6589,7 @@ width: 100%;
 margin: 0 auto;
 margin-top: 0.5%;
 overflow-x: scroll;
+position: relative;
 }
 #SPUnitList li {
 display: inline-block;
@@ -11447,6 +11448,71 @@ transition: all 1s ease 0s;
 #notebookID5 {
   color: yellow;
 }
+
+
+
+
+
+/* Branches, Pathways and Linking*/
+
+
+/* Branches */
+
+#branchesProjectButton {
+  /* With branch logo 1 */
+  position: absolute;
+  left: -15px;
+  top: 20%;
+  /* margin: 0 auto; */
+  border: 1px solid rgba(255,255,255,0.25);
+  border-width: 1px 1px 1px 0px;
+  border-radius: 0% 10% 35% 0%;
+  padding: 14px 5px 14px 5px;
+  transition: all 0.5s ease 0s;
+  z-index: 510;
+  transform: scale(2);
+  
+
+  /* With branch logo 2 */
+  /* transform: scale(3);
+  padding: 5px 5px 5px 5px; */
+  width: 45px;
+}
+#branchesProjectButton:hover, .activeBranchesProjectButton div {
+  /* With branch logo 1 */
+  border: 1px solid rgba(255,255,255, 1) !important;
+  border-width: 1px 1px 1px 0px !important;
+  box-shadow: 0 0 20pt 20pt rgba(255,255,255,0.25) inset;
+  border-radius: 0% 10% 25% 0%;
+  /* transform: scale(2.2); */
+  cursor: pointer;
+  left: 0px;
+  top: 25%;
+  padding: 5px 17px 5px 12px;
+
+  /* With branch logo 2 */
+  /* transform: scale(3.2);
+  padding: 0px; */
+  width: 100%;
+  background-color: rgba(15, 19, 28, 0.99);
+  box-shadow: 0 0 20pt 20pt rgba(255,255,255,0.05) inset;  
+}
+#branchesProjectImg {
+  transition: all 0.5s ease 0s;
+  opacity: 0.25;
+  vertical-align: middle;
+}
+#branchesProjectButton:hover #branchesProjectImg, .activebranchesProjectButton div #branchesProjectImg {
+  /* transform: scale(1.2); */
+  opacity: 1;
+}
+
+
+
+
+
+
+
 
 
 

@@ -20,6 +20,7 @@ export default class ProfileContainer extends React.Component {
             createdProblems: [],
             currentItems:[],
             currentType: 'solution',
+            notifications: [],
         }
 
 
@@ -60,6 +61,11 @@ export default class ProfileContainer extends React.Component {
                 followedProblems: response.data,
             })
         })
+        axios.get( Config.API + '/notifications/new?username='+cookie.load("userName")).then(function (response) {
+            self.setState({
+                notifications: response.data,
+            })
+        }) 
         // $('#sphere').earth3d({
         //     dragElement: $('#locations') // where do we catch the mouse drag
         //   });
@@ -121,8 +127,13 @@ export default class ProfileContainer extends React.Component {
     }
 
     resetNotificationsProfile(props) {
+        var self = this;
         this.props.resetNotifications();
-        // alert('resetNotificationsProfile')
+        axios.get( Config.API + '/notifications/clear?username='+cookie.load("userName")).then(function (response) {
+            self.setState({
+                notifications: [],
+            })
+        }) 
     }
 
    render() {
@@ -224,7 +235,8 @@ export default class ProfileContainer extends React.Component {
                     </div>
                 </div>
                 <div id="profileRight">
-                    {React.cloneElement(this.props.children, {probID: this.state.probID, resetNotifications: this.resetNotificationsProfile})}
+                    {/* x{this.state.notifications.length}x */}
+                    {React.cloneElement(this.props.children, {probID: this.state.probID, resetNotifications: this.resetNotificationsProfile, notifications: this.state.notifications})}
                 </div>
             </div>
             {/* </ReactCSSTransitionGroup> */}

@@ -16,19 +16,37 @@ constructor(props){
     }
 
     this.renderItem = this.renderItem.bind(this)
+    this.resetNotificationsList = this.resetNotificationsList.bind(this)    
 };
 componentDidMount(props){
     var self = this;
         return axios.get( Config.API + '/notifications/new?username='+cookie.load("userName")).then(function (response) {
-            self.setState({
-                notifications: response.data
-            })
+    self.setState({
+        // notifications: response.data
+        notifications: self.props.notifications
+    })
         }) 
-
-    self.props.resetNotifications()
 }
 componentWillReceiveProps(nextProps) {
     // nextProps.resetNotifications()
+    var self = this;
+    return axios.get( Config.API + '/notifications/new?username='+cookie.load("userName")).then(function (response) {
+        
+    self.setState({
+        // notifications: response.data
+        notifications: nextProps.notifications
+    })
+})
+}
+
+
+resetNotificationsList(props) {
+    this.props.resetNotifications();
+    // return axios.get( Config.API + '/notifications/clear?username='+cookie.load("userName")).then(function (response) {
+    //     self.setState({
+    //         notifications: [],
+    //     })
+    // }) 
 }
 
 hoverClearUpdates() {
@@ -47,12 +65,13 @@ unHoverClearUpdates() {
 }
 
 	render() {
+        // this.props.resetNotifications()
 		return (
 	    <div id="fullWide">
             <div id="notificationsHeader" >
                 updates
             </div>
-            <div id="notificationsCheckButton" onClick={this.props.resetNotifications} onMouseOver={this.hoverClearUpdates} onMouseOut={this.unHoverClearUpdates}>
+            <div id="notificationsCheckButton" onClick={this.resetNotificationsList} onMouseOver={this.hoverClearUpdates} onMouseOut={this.unHoverClearUpdates}>
                 <img src={require('../../assets/checkRed1.svg')} id="newMessageAddButtonImg" width="40" height="40" alt="Check mark, clears updates" />
             </div>
             <ul> 

@@ -43,6 +43,8 @@ resetNotifications() {
   this.setState({
       notificationLayout: '0'
     })
+  axios.get( Config.API + '/notifications/clear?username='+cookie.load("userName")).then(function (response) {
+  }) 
     // alert('resetNotifications');
     // When we get it working, instead of setting it to 0, set it to real value:
   // var self = this;

@@ -47,6 +47,11 @@ export default class SubProblemUnit extends React.Component {
 		return (
 	    <div id="SPwrapper">
 			<ul id="SPUnitList"> 
+				{/* <Link to={`/project/branches`} activeClassName="activeBranchesProjectButton">
+					<div id="branchesProjectButton">
+						<img src={require('../../assets/branchWhite1.svg')} id="branchesProjectImg" width="50" height="50" alt="User avatar, DNA Helix" />
+					</div>
+				</Link> */}
 				<li>
 					<img src={require('../../assets/leftArrow.svg')} id="SParrowImg" width="50" height="50" alt="User avatar, DNA Helix" />
 				</li>

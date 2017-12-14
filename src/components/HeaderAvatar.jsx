@@ -126,7 +126,7 @@ componentDidMount(){
 
    render() {
         
-    if (this.props.notification !== ('0' || undefined)) {
+    if (this.props.notification != ('0' || undefined)) {
     // if (1) {
         return (
             <div id="headerOptionsContainerNotifications">
