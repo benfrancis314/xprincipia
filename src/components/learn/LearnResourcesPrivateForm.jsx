@@ -84,7 +84,7 @@ constructor(props){
 
     componentDidMount(){
         var self = this;
-            return axios.get( Config.API + '/auth/resources/typeID?id='+this.props.params.probID+'&dataType=0').then(function (response) {
+            return axios.get( Config.API + '/resources/typeID?id='+this.props.params.probID+'&dataType=0').then(function (response) {
                 self.setState({
                     resources: response.data
                 })

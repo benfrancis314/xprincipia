@@ -28,7 +28,8 @@ postComment() {
       parentID: this.props.params.suggID,
       parentType: '3',
       username: cookie.load('userName'),
-      description : this.state.comment
+      description : this.state.comment,
+      typeID: this.props.params.probID,
     })
     .then(function (result) {
       document.location = window.location.pathname 
@@ -56,7 +57,8 @@ postComment() {
         parentID: this.props.params.freeFormID,
         parentType: '6',
         username: cookie.load('userName'),
-        description : this.state.comment
+        description : this.state.comment,
+        typeID: this.props.params.probID,
       })
       .then(function (result) {
         document.location = window.location.pathname; 
@@ -84,7 +86,8 @@ postComment() {
         parentID: this.props.params.commentID,
         parentType: '5',
         username: cookie.load('userName'),
-        description : this.state.comment
+        description : this.state.comment,
+        typeID: this.props.params.probID,
       })
       .then(function (result) {
         document.location = window.location.pathname; 

@@ -170,7 +170,7 @@ export default class FreeFormUnit extends React.Component {
                             <img src={require('../../assets/delete.svg')} id="editLogo" width="18" height="18" alt="Delete Button" />
                         </div>
                     </Link>
-                    <div id="discussHoverText">debate</div>
+                    <div id="discussHoverText"></div>
 					<div id="discussHeader">
                         <span id="discussPercent">{floatToDecimal(freeForm.PercentRank)}</span>
 					    <span id="discussUsername">{freeForm.Username}</span> 

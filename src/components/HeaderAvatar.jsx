@@ -1,10 +1,40 @@
 import React from 'react';
-import {  Link  } from 'react-router';
+import {Link} from 'react-router';
+import axios from 'axios';
 import cookie from 'react-cookie';
+import {Config} from '../config.js';
 import $ from 'jquery';
 
 
 export default class HeaderAvatar extends React.Component {
+
+constructor(props){
+    super(props);
+
+    this.state = {
+        notification: '',
+        
+    }
+
+    // this.renderItem = this.renderItem.bind(this)
+};
+componentDidMount(){
+    var self = this;
+        // return axios.get( Config.API + '/notifications/number?username='+cookie.load("userName")).then(function (response) {
+            self.setState({
+                notification: this.props.notification
+            })
+        // }) 
+}
+// componentWillReceiveProps(nextState) {
+//     var self = this;
+//     return axios.get( Config.API + '/notifications/number?username='+cookie.load("userName")).then(function (response) {
+//         nextState({
+//             notification: response.data
+//         })
+//     }) 
+// }
+
 
     hoverMessagesHeader() {
         $(document).ready(function() {
@@ -96,30 +126,38 @@ export default class HeaderAvatar extends React.Component {
 
    render() {
         
-    if (0) {
+    if (this.props.notification !== ('0' || undefined)) {
+    // if (1) {
         return (
             <div id="headerOptionsContainerNotifications">
-                    <Link to="/messages" activeClassName="activePrivate">
-                        <div id="headerMessagesButton" onMouseOver={this.hoverMessagesHeader} onMouseOut={this.unHoverMessagesHeader}>
-                            <img src={require('../assets/comments.svg')} id="messagesHeaderImg" width="30" height="30" alt="Gear logo, link to settings"/>
+            {/* <div id="headerOptionsContainer"> */}
+                <div id="headerTabContainer">
+                    <Link>
+                        <div id="notebookHeaderButton" onClick ={this.showNotebook} onMouseOver={this.hoverNotebook} onMouseOut={this.unHoverNotebook}>
+                            <img src={require('../assets/notebookWhite.svg')} id="mindTempleButton" width="30" height="30" alt="Gear logo, link to settings"/>
                         </div>
                     </Link>
-                    <Link to="/mindtemple" activeClassName="activePrivate">
+                    <Link to="/messages" activeClassName="activePrivate">
+                        <div id="headerMessagesButton" onMouseOver={this.hoverMessagesHeader} onMouseOut={this.unHoverMessagesHeader}>
+                            <img src={require('../assets/comments.svg')} id="mindTempleButton" width="30" height="30" alt="Gear logo, link to settings"/>
+                        </div>
+                    </Link>
+                    <Link to="/mindtemple" id="whiteHeader" activeClassName="activePrivate">
                         <div id="headerTempleName" onMouseOver={this.hoverMindTemple} onMouseOut={this.unHoverMindTemple}>
                             <img src={require('../assets/templeSoftWhite.svg')} id="mindTempleButton" width="30" height="30" alt="Gear logo, link to settings"/>
                         </div>
                     </Link>
-                    <Link to="/profile" activeClassName="activeProfile">
-                        <div id="headerNameNotifications" onMouseOver={this.hoverProfile} onMouseOut={this.unHoverProfile}>
-                            {cookie.load("userName")}
-                        </div>
-                    </Link>
-                    <Link to="/profile/notifications" activeClassName="activeNotifications">
-                        <div id="headerNotificationsButton" onMouseOver={this.hoverNotificationsHeader} onMouseOut={this.unHoverNotificationsHeader}>
-                            4
-                        </div>
-                    </Link>
-                    
+                </div>
+                <Link to="/profile" activeClassName="activeProfile">
+                    <div id="headerNameNotifications" onMouseOver={this.hoverProfile} onMouseOut={this.unHoverProfile}>
+                        {cookie.load("userName")}
+                    </div>
+                </Link>
+                <Link to="/profile/notifications" activeClassName="activeNotifications">
+                    <div id="headerNotificationsButton" onMouseOver={this.hoverNotificationsHeader} onMouseOut={this.unHoverNotificationsHeader}>
+                        {this.props.notification}
+                    </div>
+                </Link>
             </div>
         );
     } else {

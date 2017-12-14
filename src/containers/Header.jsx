@@ -15,6 +15,7 @@ export default class Header extends React.Component {
            username: '',
            password: '',
            userToken: '',
+           notification: '',
         }
         // this.queryProblem = this.queryProblem.bind(this);
         this.postLogin = this.postLogin.bind(this);
@@ -42,12 +43,21 @@ export default class Header extends React.Component {
     //   }  
     // }
 
-  componentWillMount() {
-    this.state =  { 
-      userToken: cookie.load('userToken'),
-      username: cookie.load('userName')
-    };
+// Used WillMount before, not sure if advantage either way
+  // componentWillMount() {
+  //   this.state =  { 
+  //     userToken: cookie.load('userToken'),
+  //     username: cookie.load('userName')
+  //   }
+  // }
+componentDidMount(){
+  var self = this;
+  self.setState =  { 
+    userToken: cookie.load('userToken'),
+    username: cookie.load('userName'),
+    notification: this.props.notification,
   }
+}
 // TESTING, don't use
   // componentDidMount() {
   //   this.state =  { 
@@ -170,7 +180,7 @@ if (this.state.userToken === undefined ){
                         <input onKeyPress={this.submitSearch}  id="submitExplore" />
                     </form>
                 </div>*/}
-                <HeaderAvatar />
+                <HeaderAvatar notification={this.props.notification}/>
             </div>
       );  
 

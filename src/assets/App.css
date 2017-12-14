@@ -1818,7 +1818,7 @@ but shrinking screen messes up avatar*/
   font-size: 140%;
   text-align: center;
   letter-spacing: 8px;
-  padding: 4px 4px 2px 4px;
+  padding: 4px 4px 4px 4px;
   width: 100%;
   transition: all 0.5s ease 0s;
   background-color: rgba(0,220,255,0.05);
@@ -1857,6 +1857,12 @@ but shrinking screen messes up avatar*/
   width: 28%;
   /* With notebook */
   width: 33%;
+}
+#headerOptionsContainerNotifications {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  width: 37%;
 }
 #headerTabContainer {
   display: flex;
@@ -4443,6 +4449,10 @@ font-family: 'Open Sans';
   background-color: rgba(255,127,127,0.05) !important;
   transition: all 1s ease 0s;
 }
+.suggestionContentClassSelect {
+  transform: scale(1.02);
+  transition: all 1s ease 0s;
+}
 #suggestionContent, #commentContent, #suggestionContent24, #suggestionContent25, #suggestionContent26, #suggestionContent27,
 #suggestionContent28, #suggestionContent29, #suggestionContent30  {
   flex: 3 3 auto;
@@ -4590,6 +4600,9 @@ font-family: 'Open Sans';
   box-shadow: 0 0 0pt 0pt rgba(255,127,127,0.5);
   border-width: 1px 1px 1px 1px;
   min-width: 103.27px;
+}
+#suggestionTextHide {
+  display: none;
 }
 
 /*End Suggestion*/
@@ -4822,9 +4835,10 @@ font-family: 'Open Sans';
 }
 .activeNotifications div {
   background-color: rgba(255,127,127,0.12) !important;
-  box-shadow: 0 0 0.5pt 0.5pt rgba(255,127,127,1) inset !important;
-  transform: scale(1.02) !important;
+  border-radius: 0px 3px 3px 0px !important;
+  transform: scale(1.05) !important;
   cursor: default !important;
+  background: linear-gradient(to right, rgba(255,127,127,0), rgba(255,127,127,0.15), rgba(255,127,127,0.25)) !important; 
 }
 
 /*Doesn't work since it highlights the entire box*/
@@ -7249,7 +7263,8 @@ transition: all 1s ease 0s;
 #discussHoverText, #discussHoverTextGreen, #discussHoverTextRed {
   /* display: none; */
   position: absolute;
-  top: 3%;
+  /* top: 3%; */
+  top: 5px;
   right: 14%;
   color: #00dcff;
   transition: all 1s ease 0s;
@@ -7265,7 +7280,8 @@ transition: all 1s ease 0s;
 }
 #discussHoverTextShow, #discussHoverTextShowGreen, #discussHoverTextShowRed, #discussHoverTextShowVoted {
   position: absolute;
-  top: 3%;
+  /* top: 3%; */
+  top: 5px;
   right: 14%;
   color: #00dcff;
   transition: all 1s ease 0s;
@@ -7496,9 +7512,147 @@ cursor: pointer;
   margin-bottom: 1.5%;
   background: radial-gradient(rgba(0,220,255, 0), rgba(0,220,255, 0.1));
 }
+#resourceURLText {
+  
+  /* padding-left: 2%;
+  padding-right: 2%;
+  padding-top: 1.75%;
+  padding-bottom: 1.75%;
+  border: 1px solid #333333;
+  border-width: 0px 0px 1px 0px;
+  width: 82%;
+  white-space: pre-wrap !important; */
+  
+  
+  
+  font-family: 'Alegreya Sans SC';
+  text-align: center;
+  height: auto;
+  min-height: 10px;
+  max-height: 100px;
+  /* margin: 0 auto; */
+  margin-top: 2%;
+  margin-bottom: 0.5%;
+  /* background: radial-gradient(rgba(0,220,255, 0), rgba(0,220,255, 0.1)); */
+  transition: all 1s ease 0s;
+  transform: scale(1);
+  overflow: auto;
+  word-break: break-all;
+  text-decoration: underline;
+  max-width: 584.31px;
+  line-height: 150%;
+  font-family: 'Open Sans' !important;
+  font-size: 145%;
+  padding-left: 2%;
+  padding-right: 2%;
+  /* padding-top: 1.75%; */
+  /* padding-bottom: 1.75%; */
+  /* border: 1px solid #333333; */
+  /* border-width: 0px 0px 1px 0px; */
+  width: 82%;
+  white-space: pre-wrap !important;
+  color: #ffffff;
+}
+#resourceURLText:hover {
+color: rgba(0,220,255,1);
+transform: scale(1.02);
+cursor: pointer;
+}
+#resourceTitleText {
+  margin: 0 auto;
+  text-align: center;
+  font-size: 135%;
+}
+#resourceHeader {
+  color: #00dcff !important;
+  font-size: 115%;
+  padding-left: 0.5%;
+  width: 82%;
+  border: 1px solid #333333;
+  border-width: 0px 0px 1px 0px;
+}
+#shrunkText {
+  font-size: 95%;
+  font-family: 'Open Sans';
+  color: #cccccc;
+}
+
+
+/* Lesson Styling */
+#learnLessonTitle, #learnLessonTitleHover {
+  width: 60%;
+  margin: 0 auto;
+  margin-top: 2%;  
+  padding: 1%;
+  border: 1px solid #00dcff;
+  text-align: center;
+  letter-spacing: 6px;
+  font-size: 150%;
+  transition: all 0.5s ease 0s;
+  transform: scale(1);
+  border-width: 0px 1px;
+  border-radius: 5%;
+}
+#learnLessonTitle:hover, #learnLessonTitleHover {
+  letter-spacing: 8px;
+  background: linear-gradient(circle, rgba(0,220,255,0.2), rgba(0,220,255,0), rgba(0,220,255,0.2));
+  background-color: rgba(0,220,255,0.05);
+  border-width: 1px;
+  transform: scale(1.05);
+  cursor: pointer;
+  color: #00dcff;
+  border-radius: 3px;
+  /* color: #00dcff; */
+}
+#learnLessonSummary, #learnLessonSummaryBlue {
+  font-family: 'Open Sans';
+  width: 65%;
+  padding: 2%;
+  margin-top: 0.5%;  
+  line-height: 125%;
+  color: #dddddd;
+  transition: all 0.5s ease 0s;
+}
+#learnLessonSummaryBlue {
+  color: #00dcff;
+  transform: scale(1.1);
+}
+#learnLessonSummary:hover, #learnLessonSummaryBlue:hover {
+  cursor: pointer;
+}
+#lessonCompleteButton {
+  width: 60%;
+  margin: 0 auto;
+  margin-top: 3%;  
+  margin-bottom: 1.5%;
+  padding: 1%;
+  border: 1px solid #00dcff;
+  text-align: center;
+  letter-spacing: 6px;
+  font-size: 150%;
+  transition: all 0.5s ease 0s;
+  transform: scale(1);
+  border-width: 0px 1px;
+  border-radius: 5%;
+
+  background-color: rgba(0,220,255,0);
+  background: linear-gradient(to right, rgba(0,220,255,0.15), rgba(0,220,255,0), rgba(0,220,255,0.15));
+  /* background-color: rgba(0,220,255,0.05); */
+}
+#lessonCompleteButton:hover {
+  letter-spacing: 8px;
+  background: linear-gradient(circle, rgba(0,220,255,0.2), rgba(0,220,255,0), rgba(0,220,255,0.2));
+  background-color: rgba(0,220,255,0.05);
+  border-width: 1px;
+  transform: scale(1.05);
+  cursor: pointer;
+  color: #00dcff;
+  border-radius: 3px;
+}
 
 
 /*End Learn SB*/
+
 
 
 
@@ -9367,7 +9521,13 @@ margin-top: 1%;
   width: 100%;
   margin: 0 auto;
   margin-right: 0;
-  }
+  transition: all 0.5s ease 0s;
+  /* background: radial-gradient(rgba(0,220,255,0.1), rgba(0,220,255,0), rgba(0,220,255,0)) */
+  /* background: linear-gradient(rgba(0,220,255,0), rgba(0,220,255,0.1), rgba(0,220,255,0))   */
+}
+#welcomeProblemsUnitList:hover {
+  /* background: radial-gradient(rgba(0,220,255,0.1), rgba(0,220,255,0.05), rgba(0,220,255,0))   */
+}
 #welcomeProblemsUnitList li {
   /*display: block;*/
   /*margin-left: 5%;
@@ -10348,12 +10508,6 @@ margin-top: 1%;
 
 /* NOTIFICATIONS AND MESSAGES IN HEADER */
 
-/* #headerOptionsContainerNotifications {
-  display: inline-flex;
-  flex-direction: row;
-  justify-content: space-around;
-  width: 32%;
-} */
 
 #headerNotificationsButton {
   color: #ff7f7f;
@@ -10363,27 +10517,40 @@ margin-top: 1%;
   padding: 4px;
   width: 100%;
   transition: all 0.5s ease 0s;
-  background-color: rgba(255,127,127,0.05);
-  border: 1px solid #ff7f7f;
-  border-radius: 15px;
+  
   margin-bottom: 0px;
   transform: scale(1);
   margin: 0 auto;
   margin-top: 0.39%;
+  margin-top: 2px;
   margin-right: 0px;
   flex: 1 1 auto;
   padding-left: 6px;
-  padding-right: 0px;
-
-  /* Once we have counter working, use this */
+  padding-right: 6px;
   padding-bottom: 6px;
   padding-top: 2px;
+
+  /* background-color: rgba(255,127,127,0.05); */
+  border: 1px solid #ff7f7f;
+  border-width: 0px;
+  border-radius: 7px;
+  background: linear-gradient(to right, rgba(255,127,127,0), rgba(255,127,127,0), rgba(255,127,127,0.15))
+
 }
 #headerNotificationsButton:hover {
   background-color: rgba(255,127,127,0.12);
-  box-shadow: 0 0 0.5pt 0.5pt rgba(255,127,127,1) inset;
-  transform: scale(1.02);
+  /* box-shadow: 0 0 0.5pt 0.5pt rgba(255,127,127,1) inset; */
+  border-radius: 0px 3px 3px 0px;
+  /* border-width: 1px 1px 1px 1px; */
+
+  transform: scale(1.05);
+  /* margin-top: 4px;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  padding-right: 4px;
+  padding-left: 8px; */
   cursor: pointer;
+  background: linear-gradient(to right, rgba(255,127,127,0), rgba(255,127,127,0.15), rgba(255,127,127,0.25));  
 }
 
 
@@ -10809,7 +10976,7 @@ margin-top: 1%;
   padding-bottom: 1.75%;
   border: 1px solid #333333;
   border-width: 0px 0px 1px 0px;
-  width: 90%;
+  width: 80%;
   }
   #whiteConversation2 {
     font-family: 'Open Sans' !important;
@@ -10823,7 +10990,7 @@ margin-top: 1%;
     margin: 0 auto;
     margin-right: 0;
     text-align: right;
-    width: 90%;
+    width: 80%;
     }
   /* #conversationSubmit {
   } */

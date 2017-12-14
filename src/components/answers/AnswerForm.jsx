@@ -24,6 +24,8 @@ axios.post( Config.API + '/auth/answers/create', {
   questionID: this.props.params.questID,
   username: cookie.load('userName'),
   description : this.state.answer,
+  type: '2',
+  typeID: this.props.params.probID,
 })
 .then(function (result) {
   document.location = window.location.pathname 

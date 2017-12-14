@@ -189,9 +189,9 @@ createNotebook() {
                 x{this.state.notebooks.length}x
             </div>
                 {/* <NotebookFull ref="full"  */}
-                // currentNotebook={tomquickfix} 
+                {/* // currentNotebook={tomquickfix} 
                 currentNotebook={this.state.currentNotebook}
-                />
+                /> */}
                 x{tomquickfix}x
             </div>
         </div>

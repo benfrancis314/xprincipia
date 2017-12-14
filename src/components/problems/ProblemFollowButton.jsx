@@ -28,6 +28,15 @@ axios.get( Config.API + "/tracker/istracked?trackerType=0&typeID=" + this.props.
         })
   })       
 }
+componentWillReceiveProps(nextProps){
+  var self = this;
+  axios.get( Config.API + "/tracker/istracked?trackerType=0&typeID=" + nextProps.probID + "&username=" + nextProps.username)
+        .then( function (response){
+          self.setState({
+            tracked: response.data,
+          })
+    })       
+}
 
 
 testTracked() {

@@ -30,6 +30,8 @@ export default class ProfileContainer extends React.Component {
         this.onFollowedProblem = this.onFollowedProblem.bind(this)
 
         this.goToAbout = this.goToAbout.bind(this)
+
+        this.resetNotificationsProfile = this.resetNotificationsProfile.bind(this)
     }
 
     
@@ -118,7 +120,10 @@ export default class ProfileContainer extends React.Component {
         window.location.href='http://www.xprincipia.com'
     }
 
-
+    resetNotificationsProfile(props) {
+        this.props.resetNotifications();
+        // alert('resetNotificationsProfile')
+    }
 
    render() {
     // Currently does it twice and is glitchy, would like to add back in later
@@ -128,8 +133,8 @@ export default class ProfileContainer extends React.Component {
     // });
 
     $(document).ready(function() {
-        $('#profileContainer').slideDown(700);
-        // $('#profileContainer').slideDown(300);
+        // $('#profileContainer').slideDown(700);
+        $('#profileContainer').slideDown(300);
     });
 
     if (cookie.load('userName') == null) {
@@ -166,6 +171,14 @@ export default class ProfileContainer extends React.Component {
     } else {
      return (
         <div id="profileContainer">
+
+            {/* <div onClick={this.resetNotificationsProfile}>
+                XXXX
+            </div>
+            <div onClick={this.props.resetNotifications}>
+                YYYY
+            </div> */}
+
             {/* <ReactCSSTransitionGroup
             transitionName="example"
             transitionAppear={true}
@@ -211,7 +224,7 @@ export default class ProfileContainer extends React.Component {
                     </div>
                 </div>
                 <div id="profileRight">
-                    {React.cloneElement(this.props.children, {probID: this.state.probID})}
+                    {React.cloneElement(this.props.children, {probID: this.state.probID, resetNotifications: this.resetNotificationsProfile})}
                 </div>
             </div>
             {/* </ReactCSSTransitionGroup> */}

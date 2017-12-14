@@ -33,7 +33,7 @@ constructor(props){
         username: cookie.load('userName'),
         title: this.state.title,
         summary: this.state.summary,
-        description : this.state.learnItem,
+        description : this.state.description,
         parentTitle: this.props.parentTitle,
         private: '0',
     })
@@ -67,7 +67,7 @@ constructor(props){
         username: cookie.load('userName'),
         title: this.state.title,
         summary: this.state.summary,
-        description : this.state.learnItem,
+        description : this.state.description,
         parentTitle: this.props.parentTitle,
         private: '0',
     })
@@ -101,28 +101,28 @@ constructor(props){
           </div>
           <Link to={`/project/${this.props.params.probID}/learn/content`}>
                 <img src={require('../../assets/redX.svg')} id="closeRedXNoMargin" width="30" height="30" alt="Close button, red X symbol" />
-            </Link>
-            <div id="suggestionFormComponent">
-                <form id="suggestionForm">
-                    <fieldset id='fieldSetNoBorderPadding'>
-                            {/* <label htmlFor="problemTitleForm" id="problemTitleFormLabel">lesson title<br /> */}
-                              <input type="text" name="problemTitle" placeholder="LESSON TITLE" required="required" maxLength="70" id="lessonTitleForm" />
-                            {/* </label><br /> */}
+          </Link>
+          <div id="suggestionFormComponent">
+              <form id="suggestionForm">
+                  <fieldset id='fieldSetNoBorderPadding'>
+                    {/* <label htmlFor="problemTitleForm" id="problemTitleFormLabel">lesson title<br /> */}
+                      <input type="text" name="problemTitle" placeholder="LESSON TITLE" required="required" maxLength="70" id="lessonTitleForm" />
+                    {/* </label><br /> */}
 
-                            <label htmlFor="problemTitleForm" id="problemTitleFormLabel">overview<br />
-                            <textarea name="suggestionText" required="required" id="learnContentSummary" 
-                            placeholder="Give an overview of your lesson." ></textarea>
-                            </label><br />
+                    <label htmlFor="problemTitleForm" id="problemTitleFormLabel">overview<br />
+                    <textarea name="suggestionText" required="required" id="learnContentSummary" 
+                    placeholder="Give an overview of your lesson." ></textarea>
+                    </label><br />
 
-                            <label htmlFor="problemTitleForm" id="problemTitleFormLabel">overview<br />
-                            <textarea name="suggestionText" required="required" id="learnContentTextArea" 
-                            placeholder="Create a lesson to help others understand this project, promoting future advancement." ></textarea>
-                            </label><br />
+                    <label htmlFor="problemTitleForm" id="problemTitleFormLabel">overview<br />
+                    <textarea name="suggestionText" required="required" id="learnContentTextArea" 
+                    placeholder="Create a lesson to help others understand this project, promoting future advancement." ></textarea>
+                    </label><br />
 
-                            <input type="button" value="Create" onClick={this.postLearnItem} id="addSuggestion"/>
-                    </fieldset>
-                </form>
-            </div>
+                    <input type="button" value="Create" onClick={this.postLearnItem} id="addSuggestion"/>
+                  </fieldset>
+              </form>
+          </div>
         </div>
       );
     }  

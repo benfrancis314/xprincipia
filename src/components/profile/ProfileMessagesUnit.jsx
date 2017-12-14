@@ -15,10 +15,12 @@ export default class ProfileNotifications extends React.Component {
         this.state= {
             messages: [],
             description: '',
+            rerender: ''
         }
 
         this.renderItem = this.renderItem.bind(this)
         this.postMessage = this.postMessage.bind(this)
+        this.causeRerender = this.causeRerender.bind(this)
     // this.submitVote = this.submitVote.bind(this)
 };
 
@@ -26,7 +28,8 @@ componentDidMount(){
     var self = this;
     return axios.get( Config.API + '/messages/convo?user1='+this.props.params.user1+'&user2='+this.props.params.user2).then(function (response) {
         self.setState({
-            messages: response.data
+            messages: response.data,
+            rerender: '0',
         })
     })  
 }
@@ -34,9 +37,11 @@ componentWillReceiveProps (nextProps){
     var self = this;
     return axios.get( Config.API + '/messages/convo?user1='+nextProps.params.user1+'&user2='+nextProps.params.user2).then(function (response) {
         self.setState({
-            messages: response.data
+            messages: response.data,
+            rerender: '0',
         })
     })  
+
 }
 postMessage() {
     this.state.description = document.getElementById('conversationEntry').value
@@ -79,9 +84,12 @@ postMessage() {
 //     window.scrollTo(0,0);
 // }
 
-
+causeRerender() {
+    alert('rerender');
+}
 
 	render() {
+        // setInterval(this.causeRerender(), 5000);
 		return (
 	    <div id="conversationContainer">
             <ReactCSSTransitionGroup
@@ -102,7 +110,6 @@ postMessage() {
             </div>
             <div id="conversationInstructions">
                 {this.props.params.user2}
-                {this.state.messages.length}
                 {/* <br />
                 {this.props.params.user1} */}
             </div>
@@ -127,12 +134,12 @@ postMessage() {
 	}
 
    renderItem(message) {
-       if (cookie.load('userName') == this.props.params.user1) {
+       if (cookie.load('userName') == message.User1) {
         return (
             <li key={message.ID}>
                 <div id='conversationMessages2'> 
                     <div id="blueConversation2">
-                        {this.props.params.user1}
+                        {message.User1}
                     </div>
                     <div id="whiteConversation2">
                         {message.Description}
@@ -145,7 +152,7 @@ postMessage() {
             <li key={message.ID}>
                 <div id='conversationMessages1'> 
                     <div id="blueConversation1">
-                        {this.props.params.user2}
+                        {message.User1}
                     </div>
                     <div id="whiteConversation1">
                         {message.Description}
