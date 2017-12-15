@@ -184,6 +184,10 @@ ol, ul {
   color: #00ffdc !important;
   font-family: 'Open Sans' !important;
 }
+#greenSmall {
+  color: #00ffdc !important;
+  font-size: 90% !important;  
+}
 #red {
   color: #ff7f7f !important;
 }
@@ -1420,6 +1424,7 @@ input#submitProblem, input#submitSolution {
   font-family: 'Alegreya Sans SC', sans-serif;
   transition: all 0.5s ease 0s;
   letter-spacing: 2px;
+  text-transform: lowercase !important;
 }
 input#submitProblem:hover, input#submitSolution:hover {
   color: #0f131c;
@@ -3206,11 +3211,15 @@ margin-top: 0.5%;
   color: #888888;
   transition: all 2s ease 0s;
 }
-#privateContainerMottoBlue {
+#privateContainerMottoBlue, #privateContainerMottoWhite {
   display: inline-block;
   color: #00dcff;
   transition: all 2s ease 0s;
   letter-spacing: 7px;
+}
+#privateContainerMottoWhite {
+  color: #ffffff;
+  letter-spacing: 6px;
 }
 #privateSettingsGear {
   margin: 0 auto;
@@ -3557,6 +3566,7 @@ letter-spacing: 7px !important;
 color: #00dcff !important;
 cursor: pointer;
 border-color: #00dcff !important;
+text-transform: lowercase !important;
 }
 #proposalDiscussButton {
 text-align: center;
@@ -5816,8 +5826,8 @@ box-shadow: 0 0 2pt 2pt rgba(0,220,255,0.5);
 
 #debateThreadButton {
   position: absolute;
-  top: 11%;
-  /* right: 8px; */
+  /* top: 11%; */
+  top: 10px;
   right: 45px;
   padding: 4px 10px 4px 12px;
   transition: all 1s ease 0s;
@@ -5829,8 +5839,8 @@ box-shadow: 0 0 2pt 2pt rgba(0,220,255,0.5);
 #debateThreadButton:hover {
   cursor: pointer;
   transform: scale(1.1) rotate(90deg);
-  top: 8%;
-  /* right: 32px; */
+  /* top: 8%; */
+  top: 3px;
 }
 #flagDiscussButton {
   position: absolute;
@@ -5880,7 +5890,24 @@ box-shadow: 0 0 2pt 2pt rgba(0,220,255,0.5);
   transform: scale(1.2);
   cursor: pointer;
 }
-
+#numberDiscussButton {
+  position: absolute;
+  bottom: 0px;
+  right: 63px;
+  padding: 4px 10px 10px 3px;
+  color: #00dcff;
+  font-size: 125%;
+  transition: all 1s ease 0s;
+  z-index: 510;
+  opacity: 0.5;
+  background-color: rgba(0,220,255,0);
+  background: radial-gradient(circle , rgba(0,220,255,0.05), rgba(0,220,255,0), rgba(0,220,255,0));
+}
+#numberDiscussButton:hover {
+  opacity: 1;
+  transform: scale(1.2);
+  cursor: pointer;
+}
 
 
 
@@ -6579,6 +6606,7 @@ letter-spacing: 6px;
 width: 100%;
 margin: 0 auto;
 text-align:center;
+position: relative;
 }
 #SPUnitList {
 text-align: center;
@@ -6596,6 +6624,7 @@ display: inline-block;
 /*display: inline;*/
 margin: 2% 1% 4% 1%;
 list-style-type: none;
+position: relative;
 }
 #SPUnitListProposal {
 text-align: center;
@@ -11459,57 +11488,168 @@ transition: all 1s ease 0s;
 /* Branches */
 
 #branchesProjectButton {
-  /* With branch logo 1 */
   position: absolute;
   left: -15px;
-  top: 20%;
-  /* margin: 0 auto; */
+  top: 4%;
   border: 1px solid rgba(255,255,255,0.25);
-  border-width: 1px 1px 1px 0px;
+  border-width: 0px;
   border-radius: 0% 10% 35% 0%;
-  padding: 14px 5px 14px 5px;
-  transition: all 0.5s ease 0s;
+  transition: all 2s ease 0s;
   z-index: 510;
-  transform: scale(2);
-  
-
-  /* With branch logo 2 */
-  /* transform: scale(3);
-  padding: 5px 5px 5px 5px; */
   width: 45px;
 }
+#branchesProjectButton #branchesProjectImg {
+  transform: scale(2);
+  padding: 0px 5px 30px 5px;
+  margin-top: 35px;
+  top: 27%;
+  transition: all 2s ease 0s;
+  opacity: 0.25;
+  vertical-align: middle;
+  display: default;
+}
+#branchesProjectImg {
+  cursor: pointer;
+}
 #branchesProjectButton:hover, .activeBranchesProjectButton div {
-  /* With branch logo 1 */
   border: 1px solid rgba(255,255,255, 1) !important;
   border-width: 1px 1px 1px 0px !important;
   box-shadow: 0 0 20pt 20pt rgba(255,255,255,0.25) inset;
   border-radius: 0% 10% 25% 0%;
-  /* transform: scale(2.2); */
-  cursor: pointer;
   left: 0px;
-  top: 25%;
-  padding: 5px 17px 5px 12px;
-
-  /* With branch logo 2 */
-  /* transform: scale(3.2);
-  padding: 0px; */
-  width: 100%;
+  top: 0%;
+  width: 95%;
   background-color: rgba(15, 19, 28, 0.99);
   box-shadow: 0 0 20pt 20pt rgba(255,255,255,0.05) inset;  
-}
-#branchesProjectImg {
-  transition: all 0.5s ease 0s;
-  opacity: 0.25;
-  vertical-align: middle;
+  transition: all 1s ease 0s;
 }
 #branchesProjectButton:hover #branchesProjectImg, .activebranchesProjectButton div #branchesProjectImg {
-  /* transform: scale(1.2); */
   opacity: 1;
+  display: none !important;
+  transition: all 1s ease 0s;
+}
+#branchesProjectButton:hover #branchUnitList {
+  display: flex !important;
+  transition: all 1s ease 0s;
 }
 
 
-
-
+#branchUnitList {
+  display: none;
+  text-align: center;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  margin: 0 auto;
+  margin-top: 0.5%;
+  overflow-x: scroll;
+  position: relative;
+  transition: all 1s ease 0s;
+  }
+  #branchUnitList li {
+  display: inline-block;
+  margin: 2% 1% 4% 1%;
+  list-style-type: none;
+  position: relative;
+  }
+  #branchUnitListProposal {
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  margin: 0 auto;
+  margin-top: 0.5%;
+  overflow-x: scroll;
+  }
+  #branchUnitListProposal li {
+  display: inline-block;
+  margin: 4% 1% 4% 1%;
+  list-style-type: none;
+  }
+  #branchUnit {
+  display: inline-block;
+  width: 14em;
+  margin: 0% 5% 0% 5%;  
+  }
+  #subProblemUnit {
+  display: block;
+  }
+#branchTitle {
+  margin: 0 auto;
+  padding: 5px 10px 5px 10px;
+  font-size: 100%;
+  color: #dddddd;
+  word-wrap: break-word; 
+  word-break: break-word;
+  overflow: auto;
+  text-align: center;
+  transition: all 0.5s ease 0s;
+}
+  #branchHeader:hover #branchTitle{
+  color: #ffffff;
+  cursor: pointer;
+  }
+  #branchHeader {
+  display: inline-flex;
+  flex-direction: column;
+  /* border: 2px solid #00dcff; */
+  border: 2px solid #dddddd;
+  border-radius: 100%;
+  border-radius: 100%;
+  width: 12em;
+  height: 12em;
+  color: #dddddd;
+  font-size: 100%;
+  text-align: center;
+  word-wrap: break-word; 
+  word-break: break-word;
+  overflow: auto;
+  align-items: center; 
+  justify-content: center;
+  background-color: rgba(0,220,255,0.05);
+  margin: 0 auto;
+  /* box-shadow: 0 0 2pt 2pt rgba(0, 220, 255, 0.5); */
+  box-shadow: 0 0 2pt 2pt rgba(255, 255, 255, 0.5);
+  transition: all 0.75s ease 0s;
+  transform: scale(1);
+  margin-top: 1%;
+  padding: 5px 10px 5px 10px;
+  }
+  .branchText {
+    font-size: 80% !important;
+    width: 15em !important;
+    height: 15em !important;
+    box-shadow: 0 0 1pt 3pt rgba(255,255,255,0.5) !important;
+    /* transform: scale(1.02) !important; */
+    cursor: pointer !important;
+    background: radial-gradient(circle, rgba(0,220,255,0.05), rgba(0,220,255,0.05), rgba(0,220,255,0.1), rgba(0,220,255,0.05)) !important;
+    transition: all 0.75s ease 0s !important;
+    /* min-width: 12em !important;
+    min-height: 12em !important; */
+    font-family: 'Open Sans';
+  }
+  #branchHeader:hover {
+  /* box-shadow: 0 0 1pt 3pt rgba(0,220,255,0.5); */
+  box-shadow: 0 0 1pt 3pt rgba(255,255,255,0.5);
+  transform: scale(1.02);
+  cursor: pointer !important;
+  background: radial-gradient(circle, rgba(0,220,255,0.05), rgba(0,220,255,0.05), rgba(0,220,255,0.1), rgba(0,220,255,0.05));
+  }
+  #branchArrowImg {
+    background-color: inherit;
+    box-shadow: 0 0 0pt 0pt rgba(0,220,255,0.5);
+    /*border: 1px solid #00dcff;*/
+    margin: 0 auto;
+    vertical-align: middle;
+    padding: 5px;
+    transition: all 0.5s ease 0s;
+    visibility: hidden;
+  }
+  #branchArrowImg:hover {
+    box-shadow: 0 0 1pt 1pt rgba(0,220,255,0.5);
+    cursor: pointer;
+  }
 
 
 

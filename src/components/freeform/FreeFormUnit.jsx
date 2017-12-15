@@ -32,7 +32,13 @@ export default class FreeFormUnit extends React.Component {
         //  this.unHoverEditVoted = this.unHoverEditVoted.bind(this);
         //  this.unHoverDeleteVoted = this.unHoverDeleteVoted.bind(this);
     };
-  
+    componentDidMount() {
+        var self = this
+        self.setState({
+            voteHash : {},
+            debateNumber : [],
+        })
+    }
 
 
 
@@ -40,6 +46,7 @@ export default class FreeFormUnit extends React.Component {
         var self = this
         self.setState({
             voteHash : {},
+            debateNumber : {},
         })
         props.freeForms.forEach( function (freeForm){
             axios.get( Config.API + "/vote/isVotedOn?type=6&typeID=" + freeForm.ID + "&username=" + cookie.load("userName"))
@@ -51,6 +58,14 @@ export default class FreeFormUnit extends React.Component {
                     voteHash,
                 })
             })  
+            axios.get( Config.API + '/comments/number?parent_id='+freeForm.ID).then(function (response) {
+                const debateNumber = self.state.debateNumber;
+                
+                debateNumber[freeForm.ID] = response.data
+                self.setState({
+                    debateNumber,
+                })
+            })
         })
     }
 
@@ -62,7 +77,6 @@ export default class FreeFormUnit extends React.Component {
 		);
 	}
 	renderItem(freeForm) {
-
        function  submitVote() {
        axios.post( Config.API + '/auth/vote/create', {
            Type: 6,
@@ -141,7 +155,14 @@ export default class FreeFormUnit extends React.Component {
                             <img src={require('../../assets/delete.svg')} id="editLogo" width="18" height="18" alt="Delete Button" />
                         </div>
                     </Link>
-                    <div id="discussHoverTextShowVoted">voted</div>
+                    <Link to={`/project/${freeForm.TypeID}/freeform/${freeForm.ID}/comments`}>
+                        <div id="numberDiscussButton" onMouseOver={hoverThreadVoted} onMouseOut={unHoverThreadVoted}>
+                            {this.state.debateNumber[freeForm.ID]}
+                        </div>
+                    </Link>
+                    <div id="discussHoverTextShowVoted">
+                    voted
+                    </div>
 					<div id="discussHeader">
                         <span id="discussPercent">{floatToDecimal(freeForm.PercentRank)}</span>
                         {freeForm.Username}
@@ -170,10 +191,15 @@ export default class FreeFormUnit extends React.Component {
                             <img src={require('../../assets/delete.svg')} id="editLogo" width="18" height="18" alt="Delete Button" />
                         </div>
                     </Link>
+                    <Link to={`/project/${freeForm.TypeID}/freeform/${freeForm.ID}/comments`}>
+                        <div id="numberDiscussButton" onMouseOver={hoverThread} onMouseOut={unHoverThread}>
+                            {this.state.debateNumber[freeForm.ID]}
+                        </div>
+                    </Link>
                     <div id="discussHoverText"></div>
 					<div id="discussHeader">
                         <span id="discussPercent">{floatToDecimal(freeForm.PercentRank)}</span>
-					    <span id="discussUsername">{freeForm.Username}</span> 
+					    {freeForm.Username}
                     </div>
                     <div id="suggestionText" onClick={submitVote} onMouseOver={hoverVote} onMouseOut={unHoverVote}>
                         {freeForm.Description}
@@ -194,10 +220,17 @@ export default class FreeFormUnit extends React.Component {
                             <img src={require('../../assets/flag.svg')} id="deleteLogo" width="24" height="24" alt="Delete Button, Red X" />
                         </div>
                     </Link>
-                    <div id="discussHoverTextShowVoted">voted</div>
+                    <Link to={`/project/${freeForm.TypeID}/freeform/${freeForm.ID}/comments`}>
+                        <div id="numberDiscussButton" onMouseOver={hoverThreadVoted} onMouseOut={unHoverThreadVoted}>
+                            {this.state.debateNumber[freeForm.ID]}
+                        </div>
+                    </Link>
+                    <div id="discussHoverTextShowVoted">
+                    voted
+                    </div>
 					<div id="discussHeader">
                         <span id="discussPercent">{floatToDecimal(freeForm.PercentRank)}</span>
-					    {freeForm.Username}
+                        {freeForm.Username}
                     </div>
                     <div id="suggestionText" onClick={unVote} onMouseOver={hoverVoteVoted} onMouseOut={unHoverVoteVoted}>
                         {freeForm.Description}
@@ -218,6 +251,11 @@ export default class FreeFormUnit extends React.Component {
                 <Link to={`/project/${freeForm.TypeID}/freeform/${freeForm.ID}/flag`}>
                     <div id="flagDiscussButton" onMouseOver={hoverFlag} onMouseOut={unHoverFlag}>
                         <img src={require('../../assets/flag.svg')} id="deleteLogo" width="24" height="24" alt="Delete Button, Red X" />
+                    </div>
+                </Link>
+                <Link to={`/project/${freeForm.TypeID}/freeform/${freeForm.ID}/comments`}>
+                    <div id="numberDiscussButton" onMouseOver={hoverThread} onMouseOut={unHoverThread}>
+                        {this.state.debateNumber[freeForm.ID]}
                     </div>
                 </Link>
                 <div id="discussHoverText"></div>

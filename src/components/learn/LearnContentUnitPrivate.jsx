@@ -14,7 +14,12 @@ export default class LearnContentUnit1 extends React.Component {
     };
   
 
-
+    componentDidMount() {
+        var self = this
+        self.setState({
+            voteHash : {},
+        })
+    }
 
     componentWillReceiveProps (props) {
         var self = this

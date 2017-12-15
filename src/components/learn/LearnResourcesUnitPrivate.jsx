@@ -33,7 +33,12 @@ export default class LearnResourcesUnit extends React.Component {
         //  this.unHoverDeleteVoted = this.unHoverDeleteVoted.bind(this);
     };
   
-
+    componentDidMount() {
+        var self = this
+        self.setState({
+            voteHash : {},
+        })
+    }
 
 
     componentWillReceiveProps (props) {

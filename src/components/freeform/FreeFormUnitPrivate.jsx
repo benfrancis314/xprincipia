@@ -34,7 +34,12 @@ export default class FreeFormUnit extends React.Component {
     };
   
 
-
+    componentDidMount() {
+        var self = this
+        self.setState({
+            voteHash : {},
+        })
+    }
 
     componentWillReceiveProps (props) {
         var self = this

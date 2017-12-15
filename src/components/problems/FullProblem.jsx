@@ -40,8 +40,6 @@ export default class FullProblem extends React.Component {
 
       window.scrollTo(0,0);
       axios.get( Config.API + '/problems/ID?id='+this.props.params.probID).then(function (response) {
-
-          //set Problem Data
           self.setState({
               problemInfo: response.data
           })
@@ -57,27 +55,13 @@ export default class FullProblem extends React.Component {
   }
 
   shouldComponentUpdate(nextProps, nextState) {
-    // only render if probID has changed
-    // Removing cookie part for now, for testing
-    // nextState =  { userToken: cookie.load('userToken') };
     return nextState.probID !== nextProps.params.probID;
 }
-
-// First draft of attempt, this one seems not to work
-// componentWillUpdate (nextProps, nextState){
-//         //  may need to use componentDidUpate instead, since it acts on DOM after rendering/the data is updated
-//         // called as soon as shouldComponentUpdate returns as true
-//     // perform any preparations for an upcoming update
-//     // window.scrollTo(0,0);
-//     // this still seems to cause the reload
-// }
 
   componentWillReceiveProps(nextProps){
       var self = this;
       // window.scrollTo(0,0);
       axios.get( Config.API + '/problems/ID?id='+nextProps.params.probID).then(function (response) {
-
-          //set Problem Data
           self.setState({
               problemInfo: response.data
           })

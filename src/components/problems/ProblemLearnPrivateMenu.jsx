@@ -10,15 +10,27 @@ export default class ProblemLearnPrivateMenu extends React.Component {
         super(props);
 
         this.state = {
-            solutions: []
+            solutions: [],
+            lessonNumber: '',
+            resourceNumber: '',
         }
 
     };
     componentDidMount(){
         var self = this;
-        return axios.get( Config.API + '/solutions/problemID?id='+this.props.params.probID).then(function (response) {
+        axios.get( Config.API + '/solutions/problemID?id='+this.props.params.probID).then(function (response) {
             self.setState({
                 solutions: response.data
+            })
+        })
+        axios.get( Config.API + '/learnItems/number?id='+this.props.params.probID).then(function (response) {
+            self.setState({
+                lessonNumber: response.data
+            })
+        })
+        axios.get( Config.API + '/resources/number?id='+this.props.params.probID).then(function (response) {
+            self.setState({
+                resourceNumber: response.data
             })
         })
     }
@@ -45,11 +57,17 @@ export default class ProblemLearnPrivateMenu extends React.Component {
                     <div id="sidebarDiscussMenu">
                         <div id="discussGroup1">
                             <Link to={`/project/private/${this.props.params.probID}/notes`} activeClassName="activeWhiteBorder">
-                                <div id="SBDiscussButton">notes</div>
+                                <div id="SBDiscussButton">
+                                    notes
+                                    <span id="greenSmall">  {this.state.lessonNumber}</span>
+                                </div>
                             </Link>
 
                             <Link to={`/project/private/${this.props.params.probID}/resources`}  activeClassName="activeWhiteBorder">
-                                <div id="SBDiscussButton">resources</div>
+                                <div id="SBDiscussButton">
+                                    resources
+                                    <span id="greenSmall">  {this.state.resourceNumber}</span>
+                                </div>
                             </Link>
 
                             {/*<Link to={`/project/${this.props.params.probID}/learn/wiki`}  activeClassName="activeWhiteBorder">

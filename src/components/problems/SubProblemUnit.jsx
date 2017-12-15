@@ -1,21 +1,33 @@
 import React from 'react';
 import {Link} from 'react-router';
-import ReactGA from 'react-ga';
 import $ from 'jquery';
+import ProjectBranchesList from './ProjectBranchesList.jsx';
 
 export default class SubProblemUnit extends React.Component {
 
 	hoverText() {
-			$(document).ready(function() {
-					$('#privateContainerMotto').html("NEW SUB PROJECT").fadeIn(7500);
-					$('#privateContainerMotto').attr('id','privateContainerMottoBlue');
-			});
+		$(document).ready(function() {
+			$('#privateContainerMotto').html("NEW SUB PROJECT").fadeIn(7500);
+			$('#privateContainerMotto').attr('id','privateContainerMottoBlue');
+		});
 	}
 	unHoverText() {
-			$(document).ready(function() {
-					$('#privateContainerMottoBlue').html("PROJECT BREAKDOWN");
-					$('#privateContainerMottoBlue').attr('id','privateContainerMotto');
-			});
+		$(document).ready(function() {
+			$('#privateContainerMottoBlue').html("PROJECT BREAKDOWN");
+			$('#privateContainerMottoBlue').attr('id','privateContainerMotto');
+		});
+	}
+	hoverBranch() {
+		$(document).ready(function() {
+			$('#privateContainerMotto').html("ALTERNATE BREAKDOWNS").fadeIn(7500);
+			$('#privateContainerMotto').attr('id','privateContainerMottoBlue');
+		});
+	}
+	unHoverBranch() {
+		$(document).ready(function() {
+			$('#privateContainerMottoBlue').html("PROJECT BREAKDOWN");
+			$('#privateContainerMottoBlue').attr('id','privateContainerMotto');
+		});
 	}
 
   constructor(){
@@ -23,7 +35,8 @@ export default class SubProblemUnit extends React.Component {
   this.state = {
 	  problems: []
   }
-
+  this.renderItem = this.renderItem.bind(this);
+  
   };
 
 
@@ -46,12 +59,13 @@ export default class SubProblemUnit extends React.Component {
 	render() {
 		return (
 	    <div id="SPwrapper">
-			<ul id="SPUnitList"> 
-				{/* <Link to={`/project/branches`} activeClassName="activeBranchesProjectButton">
-					<div id="branchesProjectButton">
-						<img src={require('../../assets/branchWhite1.svg')} id="branchesProjectImg" width="50" height="50" alt="User avatar, DNA Helix" />
+			{/* <Link to={`/project/branches`} activeClassName="activeBranchesProjectButton"> */}
+					<div id="branchesProjectButton" onMouseOver={this.hoverBranch} onMouseOut={this.unHoverBranch}>
+						<img src={require('../../assets/branchWhite1.svg')} id="branchesProjectImg" width="60" height="60" alt="User avatar, DNA Helix" />
+						<ProjectBranchesList probID={this.props.probID} />
 					</div>
-				</Link> */}
+			{/* </Link> */}
+			<ul id="SPUnitList"> 
 				<li>
 					<img src={require('../../assets/leftArrow.svg')} id="SParrowImg" width="50" height="50" alt="User avatar, DNA Helix" />
 				</li>

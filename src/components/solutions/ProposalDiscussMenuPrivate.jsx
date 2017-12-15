@@ -11,21 +11,40 @@ export default class ProposalDiscussMenu extends React.Component {
         super(props);
 
         this.state = {
-            solutions: []
+            solutions: [],
+            questionNumber: '',
+            suggestionNumber: '',
+            debateNumber: '',
         }
 
     };
     
-    // Add back in when ready
-    //     componentDidMount(){
-    //     var self = this;
-    //     return axios.get( Config.API + '/solutions/problemID?id='+this.props.params.probID).then(function (response) {
-    //         self.setState({
-    //             solutions: response.data
-    //         })
-    //     })
-        
-    // }
+    componentDidMount(){
+        // Not using this currently, keep in case we decide to switch back
+        // ReactDOM.findDOMNode(this).scrollIntoView();
+        // window.scrollBy(0, -70);
+        var self = this;
+    axios.get( Config.API + '/solutions/problemID?id='+this.props.params.probID).then(function (response) {
+        self.setState({
+            solutions: response.data
+        })
+    })
+    axios.get( Config.API + '/questions/number?id='+this.props.params.probID).then(function (response) {
+        self.setState({
+            questionNumber: response.data
+        })
+    })
+    axios.get( Config.API + '/suggestions/number?id='+this.props.params.probID).then(function (response) {
+        self.setState({
+            suggestionNumber: response.data
+        })
+    })
+    axios.get( Config.API + '/freeForms/number?id='+this.props.params.probID).then(function (response) {
+        self.setState({
+            debateNumber: response.data
+        })
+    })
+}
     
 
    render() {
@@ -45,15 +64,24 @@ export default class ProposalDiscussMenu extends React.Component {
                             <div id="sidebarDiscussMenu">
                                 <div id="discussGroup1">
                                     <Link to={`/project/private/${this.props.params.probID}/proposal/${this.props.params.solutionID}/questions`} activeClassName="activeWhiteBorder">
-                                        <div id="SBDiscussButton">questions</div>
+                                        <div id="SBDiscussButton">
+                                            questions
+                                            <span id="greenSmall">  {this.state.questionNumber}</span>
+                                        </div>
                                     </Link>
 
                                     <Link to={`/project/private/${this.props.params.probID}/proposal/${this.props.params.solutionID}/suggestions`} activeClassName="activeWhiteBorder">
-                                        <div id="SBDiscussButton">suggestions</div>
+                                        <div id="SBDiscussButton">
+                                            suggestions
+                                            <span id="greenSmall">  {this.state.suggestionNumber}</span>
+                                        </div>
                                     </Link>
 
                                     <Link to={`/project/private/${this.props.params.probID}/proposal/${this.props.params.solutionID}/debates`} activeClassName="activeWhiteBorder">
-                                        <div id="SBDiscussButton">open brainstorm</div>
+                                        <div id="SBDiscussButton">
+                                            open brainstorm
+                                            <span id="greenSmall">  {this.state.debateNumber}</span>
+                                        </div>
                                     </Link>
                                 </div>
                             </div>

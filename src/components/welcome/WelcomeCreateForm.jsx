@@ -15,18 +15,17 @@ export default class WelcomeCreateForm extends React.Component {
     //ProblemForm structure in backend
     this.state= {
       title: '',
-      description: '',
       summary: '',
       class: '',
     }
 
-    this.postProblem = this.postProblem.bind(this);
+    this.postWelcomeProblem = this.postWelcomeProblem.bind(this);
     // this.toggle = this.toggle.bind(this);
   };
 
-  postProblem() {
-    this.state.title = document.getElementById('problemTitleForm').value
-    this.state.summary = document.getElementById('problemSummaryForm').value
+  postWelcomeProblem() {
+    this.state.title = document.getElementById('problemCreateTitleForm').value
+    this.state.summary = document.getElementById('problemCreateSummaryForm').value
     if (document.getElementById('projectClass2').checked) {
       this.state.class = '2' 
     } else if (document.getElementById('projectClass1').checked) {
@@ -35,9 +34,10 @@ export default class WelcomeCreateForm extends React.Component {
       this.state.class = '0' 
     }
 
-    return axios.post( Config.API + '/auth/problems/create', {
+    var self = this
+    axios.post( Config.API + '/auth/problems/create', {
         username: cookie.load('userName'),
-        parentID: this.props.params.probID,
+        parentID: '0',
         title : this.state.title,
         summary : this.state.summary,
         class : this.state.class,
@@ -82,8 +82,8 @@ export default class WelcomeCreateForm extends React.Component {
             <div id="createProblemBox">
                 <form id="welcomeCreateProjectForm">
                   <fieldset id="fieldSetNoBorder">
-                    <label htmlFor="problemTitleForm" id="problemTitleFormLabel">Project Title<br />
-                        <input type="text" name="problemTitle" required="required" maxLength="70" id="problemTitleForm" autoFocus/>
+                    <label htmlFor="problemCreateTitleForm" id="problemTitleFormLabel">Project Title<br />
+                        <input type="text" name="problemTitle" required="required" maxLength="70" id="problemCreateTitleForm" autoFocus/>
                       </label><br />
 
 
@@ -123,9 +123,9 @@ export default class WelcomeCreateForm extends React.Component {
                         </div>
                       </div>
 
-                    <label htmlFor="problemSummaryForm" id="problemSummaryFormLabel">Additional Information<br />
+                    <label htmlFor="problemCreateSummaryForm" id="problemSummaryFormLabel">Additional Information<br />
                         <textarea name="problemSummary" maxLength="350" 
-                        placeholder="Please provide any additional information you'd like. (350 character max)" id="problemSummaryForm"/>
+                        placeholder="Please provide any additional information you'd like. (350 character max)" id="problemCreateSummaryForm"/>
                         </label><br />
 
                     <input type="button" value="Create" onClick={this.postProblem} id="submitProblem"/>

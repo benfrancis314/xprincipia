@@ -90,6 +90,7 @@ import ProblemLearnPrivateMenu from './components/problems/ProblemLearnPrivateMe
 import ProblemLeftSB from './components/problems/ProblemLeftSB.jsx';
 import ProblemSolutionsMenu from './components/problems/ProblemSolutionsMenu.jsx';
 import ProblemTopSolutions from './components/problems/ProblemTopSolutions.jsx';
+import ProjectBranchForm from './components/problems/ProjectBranchForm.jsx';
 import ProjectDeleteForm from './components/problems/ProjectDeleteForm.jsx';
 import ProjectDeletePrivateForm from './components/problems/ProjectDeletePrivateForm.jsx';
 import ProjectEditForm from './components/problems/ProjectEditForm.jsx';
@@ -485,6 +486,7 @@ ReactDOM.render(
       <Route path='/project/:probID' component={FullProblem}>
         <IndexRoute component={Empty}></IndexRoute>
         <Route path='/project/:probID/create' component={ProblemForm}></Route>
+        <Route path='/project/:probID/create/breakdown' component={ProjectBranchForm}></Route>
         <Route path='/project/:probID/edit' component={ProjectEditForm}></Route>
         <Route path='/project/:probID/flag' component={ProjectFlagForm}></Route>
         <Route path='/project/:probID/delete' component={ProjectDeleteForm}></Route>
