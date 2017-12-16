@@ -55,19 +55,23 @@ export default class SubProblemContainer extends React.Component {
                     $('#privateContainerMottoWhite').attr('id','privateContainerMotto');
             });
     }
-    componentDidMount(){
-        var self = this;
-        axios.get( Config.API + '/problems/subproblems?id='+this.props.probID).then(function (response) {
-            self.setState({
-                problems: response.data
-            })
-        })  
-        axios.get( Config.API + '/breakdowns/byproblem?parentID='+this.props.probID).then(function (response) {
-            self.setState({
-                branches: response.data
-            })
-        })  
-    }
+    // componentDidMount(){
+    //     var self = this;
+    //     axios.get( Config.API + '/problems/subproblems?id='+this.props.probID).then(function (response) {
+    //         self.setState({
+    //             problems: response.data
+    //         })
+    //     })  
+    //     axios.get( Config.API + '/breakdowns/byproblem?parentID='+this.props.probID).then(function (response) {
+    //         self.setState({
+    //             branches: response.data
+    //         })
+    //     })  
+    // }
+    // shouldComponentUpdate(nextProps, nextState) {
+    //     return this.props.probID !== nextProps.probID;
+    // }
+    
     componentWillReceiveProps (nextProps){
         var self = this;
         axios.get( Config.API + '/problems/subproblems?id='+nextProps.probID).then(function (response) {
@@ -223,20 +227,35 @@ export default class SubProblemContainer extends React.Component {
                     $(document).ready(function() {
                         $('.branchText').html(branch.Title).fadeIn(7500);
                         $('div.branchText').attr('class',branch.ID);
+                        $('#privateContainerMottoRed').html("ALTERNATE BREAKDOWNS").fadeIn(7500);
+                        $('#privateContainerMottoRed').attr('id','privateContainerMottoBlue');
                     });
                 }
+                function branchChange() {
+                    // CURRENTLY DISABLED PART NECESSARY TO ADD NEW PROJECTS IN EACH BREAKDOWN
+                    // NEED TO DISABLE RERENDER OF PROBLEMS WHEN FULLPROBLEM RERENDERS FROM STATE CHANGE
+                    // this.props.differentBreakdown(branch.ID);
+                    var self = this;
+                    axios.get( Config.API + '/problems/breakdown?breakdownID='+branch.ID).then(function (response) {
+                        self.setState({
+                            problems: response.data
+                        })
+                    })  
+                    $(document).ready(function() {
+                        $('#privateContainerMottoBlue').html("PROJECTS CHANGED").fadeIn(7500);
+                        $('#privateContainerMottoBlue').attr('id','privateContainerMottoRed');
+                    });
+                }
+
                     // Use if title is longer than certain amount
                 //  if (branch.Title.length > 50) {
                     // if (1) {
                 return (
-                    <Link key={branch.ID} to={'/project/'+branch.ParentID +'/subprojects/'+branch.ParentID}>
                         <li key={branch.ID} id="branchUnit">
-                            <div id="branchHeader" className={branch.ID} onMouseOver={hoverBranchText} onMouseOut={unHoverBranchText}>
+                            <div id="branchHeader" className={branch.ID} onClick={branchChange.bind(this)} onMouseOver={hoverBranchText} onMouseOut={unHoverBranchText}>
                                 {branch.Title}
                             </div>
-                        </li>
-                    </Link>
-                
+                        </li>                
                 );
             }
                   

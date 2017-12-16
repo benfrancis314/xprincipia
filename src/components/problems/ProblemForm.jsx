@@ -51,7 +51,7 @@ export default class ProblemForm extends React.Component {
       grandParentTitle: this.props.gParentTitle,
       ggParentID : String(this.props.ggParentID),
       class : this.state.class,
-
+      breakdownID : this.props.breakdownID,
     })
     .then(function (result) {
       //redirect back to the last page     
@@ -79,6 +79,7 @@ export default class ProblemForm extends React.Component {
   render() {
       return (
         <div>
+          XXX{this.props.breakdownID}YYY
           {/*ScrollableAnchor doesn't work right now, not sure why*/}
           {/*<ScrollableAnchor id={'newSubProject'}>*/}
             <Link to={`/project/${this.props.params.probID}/subprojects`}>

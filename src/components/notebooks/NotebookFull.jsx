@@ -12,17 +12,21 @@ export default class NotebookFull extends React.Component {
         super(props);
 
         this.state = {
-            solutionInfo: [],
             // timer: '0',
+            notebook: [],
         }
 
         this.updateNotebook = this.updateNotebook.bind(this);
+        this.unSavedTitle = this.unSavedTitle.bind(this);
         this.unSaved = this.unSaved.bind(this);
         this.testUnsaved = this.testUnsaved.bind(this);
         this.testUnsavedTest1 = this.testUnsavedTest1.bind(this);
         this.testUnsavedTest2 = this.testUnsavedTest2.bind(this);
         this.testUnsavedTest3 = this.testUnsavedTest3.bind(this);
         this.testUnsavedTest4 = this.testUnsavedTest4.bind(this);
+        this.showDelete = this.showDelete.bind(this);
+        this.hideDelete = this.hideDelete.bind(this);
+        
     };
     //initialize the component with this state
     componentWillMount(){
@@ -35,23 +39,6 @@ export default class NotebookFull extends React.Component {
           document.getElementById('notebookFullContent').value = self.state.notebook.Description;
           document.getElementById('notebookFullResources').value = self.state.notebook.Sources;
     })
-      .catch(function (error) {
-        // console.log(error.response.data)
-          $(document).ready(function() {
-              $('#notification').attr('id','notificationShow').hide().slideDown();
-              if (error.response.data != '') {
-                $('#notificationContent').text(error.response.data);
-              }
-              else if (error.response.data == '[object Object]') {
-                return (
-                  $(document).ready(function() {
-                    $('#notificationLoginRegisterContainer').attr('id','notificationLoginRegisterContainerShow');
-                    $('#notificationContent').html('Please <span id="blue">login </span>to contribute');
-                  })
-                );
-              } 
-          });
-      });
   }
   componentWillReceiveProps(nextProps){
     var self = this;
@@ -62,34 +49,18 @@ export default class NotebookFull extends React.Component {
         document.getElementById('notebookFullTitle').value = self.state.notebook.Title;
         document.getElementById('notebookFullContent').value = self.state.notebook.Description;
         document.getElementById('notebookFullResources').value = self.state.notebook.References;
-
   })
-    .catch(function (error) {
-      // console.log(error.response.data)
-        $(document).ready(function() {
-            $('#notification').attr('id','notificationShow').hide().slideDown();
-            if (error.response.data != '') {
-              $('#notificationContent').text(error.response.data);
-            }
-            else if (error.response.data == '[object Object]') {
-              return (
-                $(document).ready(function() {
-                  $('#notificationLoginRegisterContainer').attr('id','notificationLoginRegisterContainerShow');
-                  $('#notificationContent').html('Please <span id="blue">login </span>to contribute');
-                })
-              );
-            } 
-        });
-    });
 }
   updateNotebook() {
+    
+    // if (document.getElementById('notebookSavedLabel') == null) {
     //Read field items into component state
     this.state.title = document.getElementById('notebookFullTitle').value
     this.state.description = document.getElementById('notebookFullContent').value
     this.state.references = document.getElementById('notebookFullResources').value
 
   var self = this;
-  axios.put( Config.API + '/auth/notebooks/update?id='+this.props.currentNotebook, {
+  axios.put( Config.API + '/auth/notebooks/update?id='+self.state.notebook.ID, {
       username: cookie.load('userName'),
       title : self.state.title,
       summary : self.state.summary,
@@ -100,7 +71,6 @@ export default class NotebookFull extends React.Component {
         $(document).ready(function() {
             $('#notebookUnsavedLabel').html("saved").fadeIn(7500);
             $('#notebookUnsavedLabel').attr('id','notebookSavedLabel');
-            // alert( 'success');
         });
     })
       .catch(function (error) {
@@ -120,7 +90,8 @@ export default class NotebookFull extends React.Component {
               } 
           });
       });
-  }
+  // }
+}
 // ON UNMOUNT, SAVE PROJECT
 componentWillUnmount() {
     //Read field items into component state
@@ -158,7 +129,18 @@ componentWillUnmount() {
       });
   
   }
+  unSavedTitle() {
+    $(document).ready(function() {
+        $('#notebookSavedLabel').html("unsaved").fadeIn(7500);
+        $('#notebookSavedLabel').attr('id','notebookUnsavedLabel');
+    });
+    // self.setState({
+    //   timer: '0',
+    // })
+    // setTimeout(this.props.updateList(), 10000);
 
+    setTimeout(this.testUnsavedTest1(), 1000);
+  }
   unSaved() {
     $(document).ready(function() {
         $('#notebookSavedLabel').html("unsaved").fadeIn(7500);
@@ -168,13 +150,9 @@ componentWillUnmount() {
     //   timer: '0',
     // })
     setTimeout(this.testUnsavedTest1(), 1000);
-    
-    // We want to make sure it is unsaved after 1s and 5s, to make sure
-    // it is unsaved for at least 5 seconds between saves
   }
 testUnsavedTest1() {
   if (document.getElementById('notebookSavedLabel') == null) {
-    // this.updateNotebook()
     setTimeout(this.testUnsavedTest2(), 1000);
   }
   // self.setState({
@@ -183,28 +161,42 @@ testUnsavedTest1() {
 }
 testUnsavedTest2() {
   if (document.getElementById('notebookSavedLabel') == null) {
-    // this.updateNotebook()
     setTimeout(this.testUnsavedTest3(), 1000);
 }
 }
 testUnsavedTest3() {
   if (document.getElementById('notebookSavedLabel') == null) {
-    // this.updateNotebook()
     setTimeout(this.testUnsavedTest4(), 1000);
   }
 }
 testUnsavedTest4() {
   if (document.getElementById('notebookSavedLabel') == null) {
-    // this.updateNotebook()
     setTimeout(this.testUnsaved(), 1000);
   }
 }
 
 testUnsaved() {
-  if (document.getElementById('notebookSavedLabel') == null) {
-    // this.updateNotebook()
+  if (document.getElementById('notebookSavedLabel') != true) {
+    this.updateNotebook()
     setTimeout(this.updateNotebook(), 1000);
   }
+}
+hideNotebook() {
+  // Get this to automatically save a notebook if one is open
+  this.updateNotebook()
+  $(document).ready(function() {           
+      $('#notebookContainerShow').attr('id','notebookContainer');
+  });
+}
+showDelete() {
+  $(document).ready(function() {           
+      $('#notebookDeleteContainer').attr('id','notebookDeleteContainerShow');
+  });
+}
+hideDelete() {
+  $(document).ready(function() {           
+      $('#notebookDeleteContainerShow').attr('id','notebookDeleteContainer');
+  });
 }
 
    render() {
@@ -225,13 +217,17 @@ testUnsaved() {
 
       return (
         <div id="notebookFullContainer">
+            <div id="notebookButtonRow">
+                {/* <img src={require('../assets/save2.svg')} id="saveNotebookButton" onClick={this.saveNotebook.bind(this)} width="30" height="30" alt="Close button, red X symbol" /> */}
+                <img src={require('../../assets/redX.svg')} id="exitNotebookButton" onClick={this.hideNotebook.bind(this)} width="30" height="30" alt="Close button, red X symbol" />  
+            </div>
           {/* {this.props.currentNotebook} */}
-            <input id="notebookFullTitle" placeholder="notes title" type="text" onChange={this.unSaved}></input>
-            <textarea id="notebookFullContent" placeholder="Brainstorm or record your thoughts" autoFocus onChange={this.unSaved}></textarea>
+            <input id="notebookFullTitle" placeholder="notebook title" type="text" onChange={this.unSavedTitle}></input>
+            <textarea id="notebookFullContent" placeholder="Brainstorm or record your thoughts. " autoFocus onChange={this.unSaved}></textarea>
             <div id="notebookFullSourcesTitle">
                 sources
             </div>
-            <textarea id="notebookFullResources" onChange={this.unSaved} ></textarea>
+            <textarea id="notebookFullResources" onChange={this.unSaved}  placeholder="add sources here"></textarea>
             {/* <div id="noteBookSaveButton">
                 save
             </div> */}
@@ -239,6 +235,20 @@ testUnsaved() {
             {/* Possibly update date each time saved */}
                 {/* updated: [timestamp] save! */}
             {/* </div> */}
+            <div id="notebookDeleteButton" onClick={this.showDelete}>
+              delete
+            </div>
+            <div id="notebookDeleteContainer">
+              confirm to permanently delete notebook
+              <div id="notebookDeleteOptions">
+                <div id="notebookDeleteReturn" onClick={this.hideDelete}>
+                  return
+                </div>
+                <div id="notebookDeleteConfirm">
+                  delete
+                </div>
+              </div>
+            </div>
         </div>
       );
     }
