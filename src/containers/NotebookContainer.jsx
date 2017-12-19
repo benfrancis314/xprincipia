@@ -28,6 +28,8 @@ export default class NotebookContainer extends React.Component {
         this.saveNotebookClick = this.saveNotebookClick.bind(this)
         this.hoverUnsaved = this.hoverUnsaved.bind(this)
         this.unHoverUnsaved = this.unHoverUnsaved.bind(this)
+        this.hoverNewNotebook = this.hoverNewNotebook.bind(this)
+        this.unHoverNewNotebook = this.unHoverNewNotebook.bind(this)
     };
 
 // When mounting and getting the call, do an IF statement first,
@@ -131,6 +133,21 @@ updateList() {
   })
 }
 
+hoverNewNotebook() {
+    $(document).ready(function() {
+        $('#notebookUnitHeader').html("new notebook").fadeIn(7500);
+        $('#notebookUnitHeader').attr('id','notebookUnitHeaderBlue');
+    });
+    // alert('hoversaved')
+}
+
+unHoverNewNotebook() {
+    $(document).ready(function() {
+        $('#notebookUnitHeaderBlue').html("notebooks").fadeIn(7500);
+        $('#notebookUnitHeaderBlue').attr('id','notebookUnitHeader');
+    });
+}
+
 hoverUnsaved() {
     $(document).ready(function() {
         $('#notebookUnsavedLabel').html("save").fadeIn(7500);
@@ -138,6 +155,7 @@ hoverUnsaved() {
     });
     // alert('hoversaved')
 }
+
 unHoverUnsaved() {
     $(document).ready(function() {
         $('#notebookSaveLabel').html("unsaved").fadeIn(7500);
@@ -162,7 +180,7 @@ saveNotebookClick() {
                 <div id="notebookContainerRow">
                     <div id="notebookUnitContainer">
                         <div id="notebookAddButton" onClick={this.createNotebook}
-                            onMouseOver={this.hoverAdd} onMouseOut={this.unHoverAdd}>
+                            onMouseOver={this.hoverNewNotebook} onMouseOut={this.unHoverNewNotebook}>
                                 <img src={require('../assets/blueAdd2.svg')} id="privateNewProjectPlus" width="30" height="30" alt="User avatar, DNA Helix" />
                         </div>
                         <div id="notebookUnitHeader">

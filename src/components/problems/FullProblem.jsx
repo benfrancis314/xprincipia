@@ -164,10 +164,10 @@ unVote() {
     }
 
     differentBreakdown(breakdown) {
-    //   this.setState({
-    //     breakdownID: breakdown,
-    // })
-      this.refs.branch.changeBreakdownForm(breakdown);
+      this.setState({
+        breakdownID: breakdown,
+      })
+      // this.refs.branch.changeBreakdownForm(breakdown);
     }
 
 

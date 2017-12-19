@@ -26,6 +26,8 @@ export default class NotebookFull extends React.Component {
         this.testUnsavedTest4 = this.testUnsavedTest4.bind(this);
         this.showDelete = this.showDelete.bind(this);
         this.hideDelete = this.hideDelete.bind(this);
+        this.hoverCloseNotebook = this.hoverCloseNotebook.bind(this)
+        this.unHoverCloseNotebook = this.unHoverCloseNotebook.bind(this)
         
     };
     //initialize the component with this state
@@ -199,6 +201,21 @@ hideDelete() {
   });
 }
 
+hoverCloseNotebook() {
+  $(document).ready(function() {
+      $('#notebookUnitHeader').html("save and exit").fadeIn(7500);
+      $('#notebookUnitHeader').attr('id','notebookUnitHeaderRed');
+  });
+  // alert('hoversaved')
+}
+
+unHoverCloseNotebook() {
+  $(document).ready(function() {
+      $('#notebookUnitHeaderRed').html("notebooks").fadeIn(7500);
+      $('#notebookUnitHeaderRed').attr('id','notebookUnitHeader');
+  });
+}
+
    render() {
 
 // Attempts at Google Docs-like saving every 5 seconds
@@ -219,7 +236,7 @@ hideDelete() {
         <div id="notebookFullContainer">
             <div id="notebookButtonRow">
                 {/* <img src={require('../assets/save2.svg')} id="saveNotebookButton" onClick={this.saveNotebook.bind(this)} width="30" height="30" alt="Close button, red X symbol" /> */}
-                <img src={require('../../assets/redX.svg')} id="exitNotebookButton" onClick={this.hideNotebook.bind(this)} width="30" height="30" alt="Close button, red X symbol" />  
+                <img src={require('../../assets/redX.svg')} id="exitNotebookButton" onClick={this.hideNotebook.bind(this)} onMouseOver={this.hoverCloseNotebook} onMouseOut={this.unHoverCloseNotebook} width="30" height="30" alt="Close button, red X symbol" />  
             </div>
           {/* {this.props.currentNotebook} */}
             <input id="notebookFullTitle" placeholder="notebook title" type="text" onChange={this.unSavedTitle}></input>

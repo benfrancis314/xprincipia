@@ -11246,8 +11246,8 @@ transition: all 1s ease 0s;
   margin: 0 auto;
   margin-top: 5%;
   margin-bottom: 5%;
-  /* border: 0px solid #ff7f7f;
-  border-radius: 50%; */
+  border: 0px solid #ff7f7f;
+  border-radius: 50%;
   transition: all 1s ease 0s;
   opacity: 0.5;
   }
@@ -11368,10 +11368,20 @@ transition: all 1s ease 0s;
   margin-right: 2%;
   margin-left: 2%;
 }
-#notebookUnitHeader {
+#notebookUnitHeader, #notebookUnitHeaderBlue, #notebookUnitHeaderRed {
   text-align: center;
   letter-spacing: 6px;
   font-size: 155%;
+  transition: all 1s ease 0s;
+  color: #00dcff;
+}
+#notebookUnitHeaderBlue {
+  color: #00dcff;
+  letter-spacing: 4px;
+}
+#notebookUnitHeaderRed {
+  color: #ff7f7f;
+  letter-spacing: 4px;
 }
 #notebookSavedLabel, #notebookSaveLabel {
   text-align: center;
@@ -11482,6 +11492,8 @@ transition: all 1s ease 0s;
   }
   #notebookDeleteButton:hover {
     transform: scale(1.02);
+    letter-spacing: 8px;
+    cursor: pointer;
   }
   #notebookDeleteContainer {
     display: none;
@@ -11499,34 +11511,30 @@ transition: all 1s ease 0s;
   flex-direction: row;
   justify-content: space-around;
 }
-#notebookDeleteReturn {
+#notebookDeleteReturn, #notebookDeleteConfirm {
   color: #00dcff;
   letter-spacing: 2px;
-  padding: 3px;
-  border-color: #00dcff;
+  padding: 5px 10px;
+  width: 8em;
+  border: 1px solid #00dcff;
   border-radius: 3px;
   transition: all 0.5s ease 0s;
-  background: radial-gradient(circle, rgba(0,220,255,0), rgba(0,220,255,1), rgba(0,220,255,1))
+  background: radial-gradient(circle, rgba(0,220,255,0), rgba(0,220,255,0.1), rgba(0,220,255,0.1));
+  margin: 8px 0px;
 }
-#notebookDeleteReturn:hover {
+#notebookDeleteReturn:hover, #notebookDeleteConfirm:hover {
   transform: scale(1.02);
   background-color: #00dcff;
   color: #0f131c;
+  cursor: pointer;
 }
 #notebookDeleteConfirm {
   color: #ff7f7f;
-  letter-spacing: 2px;
-  padding: 3px;
-  border-color: #ff7f7f;
-  border-radius: 3px;
-  transition: all 1s ease 0s;
-  background: radial-gradient(circle, rgba(255,127,127,0), rgba(255,127,127,1), rgba(255,127,127,1))
-  
+  border: 1px solid #ff7f7f;
+  background: radial-gradient(circle, rgba(255,127,127,0), rgba(255,127,127,0.1), rgba(255,127,127,0.1));
 }
 #notebookDeleteConfirm:hover {
-  transform: scale(1.02);
   background-color: #ff7f7f;
-  color: #0f131c;
 }
 
 
