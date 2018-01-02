@@ -11324,7 +11324,7 @@ transition: all 1s ease 0s;
   border-width: 0px 0px !important;
 }
 #notebookFullContent {
-  background: linear-gradient(to bottom right, rgba(0,220,255,0.05), rgba(0,220,255,0.04), rgba(0,220, 255));
+  /* background: linear-gradient(to bottom right, rgba(0,220,255,0.05), rgba(0,220,255,0.04), rgba(0,220, 255)); */
   margin: 0 auto;
   height: 55vh !important;
   padding: 3% 2.5%;
