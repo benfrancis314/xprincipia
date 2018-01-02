@@ -34,6 +34,8 @@ export default class FullProblem extends React.Component {
         this.submitVote = this.submitVote.bind(this)
         this.unVote = this.unVote.bind(this)
         this.differentBreakdown = this.differentBreakdown.bind(this)
+        this.hoverVoteNumber = this.hoverVoteNumber.bind(this)
+        this.unHoverVoteNumber = this.unHoverVoteNumber.bind(this)
     };
 
     componentDidMount(){
@@ -169,7 +171,16 @@ unVote() {
       })
       // this.refs.branch.changeBreakdownForm(breakdown);
     }
-
+    hoverVoteNumber() {
+      $(document).ready(function() {
+            $('#voteProblem').attr('id','voteProblemHover');               
+        });
+    }
+    unHoverVoteNumber() {
+      $(document).ready(function() {
+            $('#voteProblemHover').attr('id','voteProblem');              
+        });
+    }
 
    render() {
      
@@ -505,14 +516,24 @@ unVote() {
               {this.state.problemInfo.OriginalPosterUsername}
             </div>
 
-            <div id="projectPercent">{this.state.problemInfo.Rank}</div>
-            <div id="fullProblem">
-              <p id="problemSummary">
-                {this.state.problemInfo.Summary}
-              </p>
+            <div id="projectMidColumnContainer">
+              <div id="projectMidColumnLeft">
+                xxx
+                {/* New Component in here, so IF statement can be used, & for list */}
+              </div>
+              <div id="projectMidColumnRight">
+                <div id="projectPercent" onClick={this.submitVote} onMouseOver={this.hoverVoteNumber} onMouseOut={this.unHoverVoteNumber}>
+                  {this.state.problemInfo.Rank}
+                </div>
+                <div id="fullProblem">
+                  <p id="problemSummary">
+                    {this.state.problemInfo.Summary}
+                  </p>
+                </div>
+                </div>
+              </div>
             </div>
-              {React.cloneElement(this.props.children, {parentTitle: this.state.problemInfo.Title, gParentID: this.state.problemInfo.ParentID, gParentTitle: this.state.problemInfo.ParentTitle, ggParentID: this.state.problemInfo.GrandParentID, creator:this.state.problemInfo.OriginalPosterUsername, breakdownID:this.state.breakdownID})}
-            </div>
+          {React.cloneElement(this.props.children, {parentTitle: this.state.problemInfo.Title, gParentID: this.state.problemInfo.ParentID, gParentTitle: this.state.problemInfo.ParentTitle, ggParentID: this.state.problemInfo.GrandParentID, creator:this.state.problemInfo.OriginalPosterUsername, breakdownID:this.state.breakdownID})}
           {React.cloneElement(<SubProblemContainer probID={this.props.params.probID}  differentBreakdown={this.differentBreakdown} />)}
           <ScrollableAnchor id={'proposals'}>
             {React.cloneElement(<ProblemSolutionsMenu probID={this.props.params.probID} projectTitle={this.state.problemInfo.Title} />)}

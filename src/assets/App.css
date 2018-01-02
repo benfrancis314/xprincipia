@@ -6218,7 +6218,7 @@ background: linear-gradient(rgba(0,255,220,0), rgba(0,255,220,0.1));
 /*transform: scale(1.2);*/
 font-size: 570%;
 }
-#voteProblem {
+#voteProblem, #voteProblemHover {
 flex: 1 1 auto;
 text-align: center;
 color: #00ffdc;
@@ -6239,12 +6239,12 @@ font-size: 125%;
 border-radius: 3px 3px 3px 35%;
 /* width: 7em; */
 }
-#voteProblem:hover {
+#voteProblem:hover, #voteProblemHover {
 cursor: pointer; 
 color: #0f131c;
 background-color: rgba(0, 255, 220, 1);
 }
-#votedProblem {
+#votedProblem, #votedProblemHover {
 flex: 1 1 auto;
 text-align: center;
 background-color: rgba(0, 255, 220, 1);
@@ -6260,7 +6260,7 @@ margin: 0 auto;
 font-size: 115%;
 width: 8em;
 }
-#votedProblem:hover {
+#votedProblem:hover, #votedProblemHover {
 cursor: pointer; 
 color: #0f131c;
 background-color: #00ffdc;
@@ -11718,6 +11718,60 @@ transition: all 1s ease 0s;
     box-shadow: 0 0 1pt 1pt rgba(0,220,255,0.5);
     cursor: pointer;
   }
+
+
+
+
+
+/* New Project Styling, with 2 Column Middle */
+
+#projectMidColumnContainer {
+  display: flex;
+  width: 100%;
+  flex-direction: row;
+  margin-top: 0.5%;
+  margin-bottom: 2%;
+}
+#projectMidColumnLeft {
+  /* display: flex; */
+  width: 40%;
+  /* flex: 3 1 auto; */
+}
+#projectMidColumnRight {
+  width: 60%;
+  /* flex: 2 1 auto; */
+}
+#projectPercent {
+  /* background: linear-gradient(to bottom right, rgba(0,255,220,0), rgba(0,220,255,0.1)) !important;   */
+  background: linear-gradient(180deg, rgba(0,255,220,0), rgba(0,255,220,0), rgba(0,220,255,0.03), rgba(0,220,255,0.1)) !important;
+  /* transition: all 25s ease 0s; */
+}
+#projectPercentGreen {
+  /* background: linear-gradient(to bottom right, rgba(0,255,220,0), rgba(0,220,255,0.1)) !important;   */
+  background: linear-gradient(180deg, rgba(0,255,220,0), rgba(0,220,255,0.1)) !important;
+  transition: all 0.5s ease 0s;
+}
+#projectPercent:hover, #projectPercentGreen:hover {
+  cursor: pointer;
+  /* background: linear-gradient(180deg, rgba(0,255,220,0), rgba(0,255,220,0), rgba(0,220,255,0.07), rgba(0,220,255,0.1)) !important;
+  background-color: #0f131c;   */
+}
+#problemSummary {
+  min-width: 65% !important;
+  width: 65% !important;
+  margin: 0 auto !important;
+  /* margin: auto !important; */
+  /* margin-right: 0 !important; */
+  /* right: 0 !important; */
+  padding: 22px 10% 24px 10%;
+  /* border: 1px solid #00dcff;
+  border-radius: 0% 15% 15% 15%;
+  border-width: 0px 1px 1px 0px; */
+}
+#fullProblem {
+  width: 100% !important;
+}
+
 
 
 
