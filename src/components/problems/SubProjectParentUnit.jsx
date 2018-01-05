@@ -1,7 +1,10 @@
 import React from 'react';
 import { Link  } from 'react-router';
 import axios from 'axios';
-import {Config} from '../../config.js'
+import {Config} from '../../config.js';
+import $ from 'jquery';
+import ParentListContainer from './ParentListContainer.jsx';
+
 
 export default class FullProblem extends React.Component {
   constructor(props){
@@ -12,6 +15,9 @@ export default class FullProblem extends React.Component {
             solutionInfo: []
 
         }
+        this.hoverParentListButton = this.hoverParentListButton.bind(this);
+        this.unHoverParentListButton = this.unHoverParentListButton.bind(this);
+        
     };
 
 
@@ -61,6 +67,27 @@ componentWillReceiveProps (nextProps){
             })
         }) 
 }
+
+
+hoverParentListButton() {
+    $(document).ready(function() {
+        // $('#privateContainerMotto').html("ALTERNATE PARENTS").fadeIn(7500);
+        // $('#privateContainerMotto').attr('id','privateContainerMottoBlue');
+    });
+}
+unHoverParentListButton() {
+    $(document).ready(function() {
+        // $('#privateContainerMottoBlue').html("PROJECT BREAKDOWN");
+        // $('#privateContainerMottoBlue').attr('id','privateContainerMotto');
+    });
+}
+showParentList() {
+    $(document).ready(function() {
+        $('#parentListContainer').attr('id','parentListContainerShow');
+        $('#parentListImg').attr('id','parentListImgHover');
+    });
+}
+
    render() {
 
     if (this.props.parentType === 1) {
@@ -87,12 +114,20 @@ componentWillReceiveProps (nextProps){
 		}
 	else {
 		 return (
-			<div>
+            //  If possible, only show this if a project has multiple parents
+            //  Using an IF statement. 
+			<div id="fullWide">
+            <ParentListContainer />
+            <div id="parentButtonContainer">
                 <Link to={`/project/${this.props.parentID}/subprojects`}>
                     <div id="parentButton">
-                        <span id='blue'>parent: </span>{this.state.parent.Title}
+                        <span id="parentText"><span id='blue'>parent: </span>{this.state.parent.Title}</span>
                     </div>
                 </Link>
+                <div id="parentListButton" onMouseOver={this.hoverParentListButton} onMouseOut={this.unHoverParentListButton}>
+                    <img src={require('../../assets/alternateBlue1.svg')} id="parentListImg" width="45" height="45" alt="Project Tree Button, white tree"  onClick={this.showParentList}/>
+                </div>
+            </div>
             </div>
 			);
 		}

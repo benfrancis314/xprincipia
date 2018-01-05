@@ -17,10 +17,17 @@ export default class SolutionForm extends React.Component {
       references: '',
       class: '',
       parentTitle: this.props.parentTitle,
+      img: '',
     }
 
     this.postSolution = this.postSolution.bind(this);
+    this.updateImg = this.updateImg.bind(this);
   };
+
+  updateImg() {
+    this.state.img = document.getElementById("myFile");
+    alert('success img update');
+  }
 
   postSolution() {
     //Read field items into component state
@@ -137,6 +144,10 @@ export default class SolutionForm extends React.Component {
                 <label htmlFor="solutionDescription" id="solutionDescriptionFormLabel">description<br />
                     <textarea name="solutionDescription" required="required" placeholder="Please describe your proposal here." id="solutionDescriptionForm">
                     </textarea></label><br />
+
+                <div>
+                  <input type="file" id="myFile" />
+                </div>
 
                 <label htmlFor="solutionReferences" id="solutionReferenceFormLabel">sources <span id="gray">(optional)</span><br />
                     <textarea name="solutionReferences" placeholder="Please provide your sources here." id="solutionReferencesForm">

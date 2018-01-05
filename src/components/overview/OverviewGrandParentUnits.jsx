@@ -27,7 +27,7 @@ export default class OverviewGrandParentUnits extends React.Component {
 		return (
         <div id="overViewColumn">
             <div id="overViewLineageLabel2">
-                parent
+                grand parent
                 {/* x{this.props.grandParentID}x */}
                 {/* yxxy */}
             </div>

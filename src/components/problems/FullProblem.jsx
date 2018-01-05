@@ -7,6 +7,8 @@ import ReactCSSTransitionGroup from 'react-addons-css-transition-group'; // ES6
 import ProblemFollowButton from './ProblemFollowButton.jsx';
 import ProblemSolutionsMenu from './ProblemSolutionsMenu.jsx';
 import ProblemTitle from './ProblemTitle.jsx';
+import ProjectVoteButton from './ProjectVoteButton.jsx';
+import ProjectActivity from './ProjectActivity.jsx';
 // Not used yet, would like to develop later
 // import ProjectParentChildrenUnitsContainer from '../../containers/ProjectParentChildrenUnitsContainer.jsx';
 import SubProblemContainer from '../../containers/SubProblemContainer.jsx';
@@ -518,7 +520,7 @@ unVote() {
 
             <div id="projectMidColumnContainer">
               <div id="projectMidColumnLeft">
-                xxx
+                <ProjectActivity />
                 {/* New Component in here, so IF statement can be used, & for list */}
               </div>
               <div id="projectMidColumnRight">

@@ -81,6 +81,7 @@ import OverviewProjectForm from './components/overview/OverviewProjectForm.jsx';
 import PrivateProjectForm from './components/problems/PrivateProjectForm.jsx';
 import PrivateSubProjectForm from './components/problems/PrivateSubProjectForm.jsx';
 import ProblemForm from './components/problems/ProblemForm.jsx';
+import ProblemFormContainer from './components/problems/ProblemFormContainer.jsx';
 import ProblemFormProposal from './components/problems/ProblemFormProposal.jsx';
 import ProblemFormProposalPrivate from './components/problems/ProblemFormProposalPrivate.jsx';
 import ProblemDiscussMenu from './components/problems/ProblemDiscussMenu.jsx';
@@ -96,6 +97,7 @@ import ProjectDeletePrivateForm from './components/problems/ProjectDeletePrivate
 import ProjectEditForm from './components/problems/ProjectEditForm.jsx';
 import ProjectEditPrivateForm from './components/problems/ProjectEditPrivateForm.jsx';
 import ProjectFlagForm from './components/problems/ProjectFlagForm.jsx';
+import ProjectLinkForm from './components/problems/ProjectLinkForm.jsx';
 import ProfileAbout from './components/profile/ProfileAbout.jsx';
 import ProfileCareers from './components/profile/ProfileCareers.jsx';
 import ProfileDisclaimer from './components/profile/ProfileDisclaimer.jsx';
@@ -485,7 +487,11 @@ ReactDOM.render(
       </Route>
       <Route path='/project/:probID' component={FullProblem}>
         <IndexRoute component={Empty}></IndexRoute>
-        <Route path='/project/:probID/create' component={ProblemForm}></Route>
+        <Route path='/project/:probID/add' component={ProblemFormContainer}>
+          <IndexRoute component={ProblemForm}></IndexRoute>
+          <Route path='/project/:probID/create' component={ProblemForm}></Route>
+          <Route path='/project/:probID/link' component={ProjectLinkForm}></Route>
+        </Route>
         <Route path='/project/:probID/create/breakdown' component={ProjectBranchForm}></Route>
         <Route path='/project/:probID/edit' component={ProjectEditForm}></Route>
         <Route path='/project/:probID/flag' component={ProjectFlagForm}></Route>

@@ -5,9 +5,10 @@ import cookie from 'react-cookie';
 import { Link } from 'react-router';
 import axios from 'axios';
 import {Config} from '../../config.js';
+import ProjectLinkUnits from './ProjectLinkUnits.jsx';
 import $ from 'jquery';
 
-export default class ProblemForm extends React.Component {
+export default class ProjectLinkForm extends React.Component {
 
   constructor(){
     super();
@@ -17,15 +18,28 @@ export default class ProblemForm extends React.Component {
       title: '',
       summary: '',
       class: '',
+      userproblems : [],
+      searchText: [],
     }
 
     this.postProblem = this.postProblem.bind(this);
+    this.queryProblem = this.queryProblem.bind(this);    
   };
 
 // componentDidUpdate() {
 //         ReactDOM.findDOMNode(this).scrollIntoView();
 //   }      
+queryProblem () {
+    //get search text box data
+   this.state.searchText = document.getElementById('problemTitleFormSearch').value
 
+   var self = this
+   return axios.get( Config.API + '/problems/search?q='+this.state.searchText).then(function (response) {
+       self.setState({
+         userproblems: response.data
+       })
+   })
+ }
   postProblem() {
     
     //Read field items into component state
@@ -79,59 +93,16 @@ export default class ProblemForm extends React.Component {
   render() {
       return (
         <div>
-          {/* XXX{this.props.breakdownID}YYY */}
           <div id="createProblemBox">
-              <form id="createForm">
-                <fieldset id="fieldSetNoBorder">
-                    <label htmlFor="problemTitleForm" id="problemTitleFormLabel">sub project title<br />
-                      <input type="text" name="problemTitle" required="required" maxLength="70" id="problemTitleForm" autoFocus/>
+              <form id="linkForm">
+                <fieldset id="fieldSetNoBorderNoPaddingBottom">
+                    <label htmlFor="problemTitleForm" id="problemTitleFormLabel">search existing projects<br />
+                      <input type="text" name="problemTitle" required="required" maxLength="70" id="problemTitleFormSearch" onKeyDown={this.queryProblem} autoFocus autoComplete="off" />
                     </label><br />
 
-
-                    <div id="projectFormRadioContainer">
-                      <div id="projectFormRadioColumn">
-                        <div id="projectFormRadioRow1">
-                          project <span id="grayLessSpacing">(default)</span>
-                        </div>
-                        <div id="projectFormRadioRow">
-                          <label id="projectRadioButtonContainer">
-                            <input type="radio" id="projectClass0" name="projectType" value="0"/>
-                            <span id="checkmark1"></span>
-                          </label>
-                        </div>
-                      </div>
-                      <div id="projectFormRadioColumn">
-                        <div id="projectFormRadioRow2">
-                          goal
-                        </div>
-                        <div id="projectFormRadioRow">
-                          <label id="projectRadioButtonContainer">
-                            <input type="radio" id="projectClass1" name="projectType" value="1" />
-                            <span id="checkmark2"></span>
-                          </label>
-                        </div>
-                      </div>
-                      <div id="projectFormRadioColumn">
-                        <div id="projectFormRadioRow3">
-                          problem
-                        </div>
-                        <div id="projectFormRadioRow">
-                          <label id="projectRadioButtonContainer">
-                            <input type="radio" id="projectClass2" name="projectType" value="2" />
-                            <span id="checkmark3"></span>
-                          </label>
-                        </div>
-                      </div>
-                    </div>
-
-                  <label htmlFor="problemSummaryForm" id="problemSummaryFormLabel">Additional Information<br />
-                      <textarea name="problemSummary" maxLength="350" 
-                      placeholder="Please provide any additional information you'd like. (350 character max)" id="problemSummaryForm"/>
-                      </label><br />
-
-                  <input type="button" value="Create" onClick={this.postProblem} id="submitProblem"/>
                 </fieldset>
               </form>
+              <ProjectLinkUnits problems={this.state.userproblems} />
           </div>
         </div>
 
