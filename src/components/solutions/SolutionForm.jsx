@@ -22,11 +22,32 @@ export default class SolutionForm extends React.Component {
 
     this.postSolution = this.postSolution.bind(this);
     this.updateImg = this.updateImg.bind(this);
+    this.showPDF = this.showPDF.bind(this);
+    this.showProse = this.showProse.bind(this);
   };
 
   updateImg() {
     this.state.img = document.getElementById("myFile");
-    alert('success img update');
+  }
+
+  showPDF() {
+    $(document).ready(function() {
+      $('#pdfProposalContainer').attr('id','pdfProposalContainerShow');    
+      $('#proseProposalContainerShow').attr('id','proseProposalContainer');  
+      $('#proposalFormButtonLeft').attr('id','proposalFormButtonLeftActive');  
+      $('#proposalFormButtonRightActive').attr('id','proposalFormButtonRight');                          
+    });
+  }
+
+
+
+  showProse() {
+    $(document).ready(function() {
+      $('#pdfProposalContainerShow').attr('id','pdfProposalContainer');    
+      $('#proseProposalContainer').attr('id','proseProposalContainerShow');
+      $('#proposalFormButtonRight').attr('id','proposalFormButtonRightActive');   
+      $('#proposalFormButtonLeftActive').attr('id','proposalFormButtonLeft');        
+    });
   }
 
   postSolution() {
@@ -79,6 +100,39 @@ export default class SolutionForm extends React.Component {
   }
 
   render() {
+
+
+// javascript code for # of files selected, from: https://tympanus.net/codrops/2015/09/15/styling-customizing-file-inputs-smart-way/
+    // var inputs = document.querySelectorAll( '.inputfile' );
+    // Array.prototype.forEach.call( inputs, function( input )
+    // {
+    //   var label	 = input.nextElementSibling,
+    //     labelVal = label.innerHTML;
+    
+    //   input.addEventListener( 'change', function( e )
+    //   {
+    //     var fileName = '';
+    //     if( this.files && this.files.length > 1 )
+    //       fileName = ( this.getAttribute( 'data-multiple-caption' ) || '' ).replace( '{count}', this.files.length );
+    //     else
+    //       fileName = e.target.value.split( '\\' ).pop();
+    
+    //     if( fileName )
+    //       label.querySelector( 'span' ).innerHTML = fileName;
+    //     else
+    //       label.innerHTML = labelVal;
+    //   });
+    // });
+
+
+    $( '#fileProposalLabel [type=file]' ).on( 'click', function updateFileName( event ){
+        var $input = $( this );
+    
+        setTimeout( function delayResolution(){
+            $input.parent().text( $input.val().replace(/([^\\]*\\)*/,'') )
+        }, 0 )
+    } );
+
       return (
       <div>
         {randomImg()}
@@ -138,17 +192,38 @@ export default class SolutionForm extends React.Component {
 
 
                 <label htmlFor="solutionSummary" id="solutionSummaryFormLabel">summary<br />
-                    <textarea name="solutionSummary" required="required" maxLength="400" placeholder="Please summarize your proposal here. (400 character max)" id="solutionSummaryForm"/>
-                  </label><br />
+                  <textarea name="solutionSummary" required="required" maxLength="400" placeholder="Please summarize your proposal here. (400 character max)" id="solutionSummaryForm"/>
+                </label><br />
 
-                <label htmlFor="solutionDescription" id="solutionDescriptionFormLabel">description<br />
-                    <textarea name="solutionDescription" required="required" placeholder="Please describe your proposal here." id="solutionDescriptionForm">
-                    </textarea></label><br />
-
-                <div>
-                  <input type="file" id="myFile" />
+                <div id="solutionDescriptionFormLabel">
+                  description
+                </div>
+                <div id="proposalFormButtonContainer">
+                  <div id="proposalFormButtonLeftActive" onClick={this.showPDF}>
+                      pdf
+                  </div>
+                  <div id="proposalFormButtonRight" onClick={this.showProse}>
+                      prose
+                  </div>
                 </div>
 
+                <div id="pdfProposalContainerShow">
+                  <label id="fileProposalLabel">
+                    upload pdf
+                    <input type="file" id="fileProposal"/>
+                  </label>
+                </div>
+
+
+                <div id="proseProposalContainer">
+                  {/* <label htmlFor="solutionDescription" id="solutionDescriptionFormLabel">description<br /> */}
+                    <textarea name="solutionDescription" required="required" placeholder="Please describe your proposal here." id="solutionDescriptionForm">
+                    </textarea>
+                  {/* </label> */}
+                </div>
+
+
+                <br />
                 <label htmlFor="solutionReferences" id="solutionReferenceFormLabel">sources <span id="gray">(optional)</span><br />
                     <textarea name="solutionReferences" placeholder="Please provide your sources here." id="solutionReferencesForm">
                     </textarea></label><br />

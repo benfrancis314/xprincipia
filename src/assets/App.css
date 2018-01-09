@@ -91,6 +91,8 @@ body {
   background-attachment: fixed;
   background-position: top center;
   background-color: #121621; */
+
+  background: linear-gradient(rgba(0,220,255,0.04), rgba(0,220,255,0), rgba(0,220,255,0), rgba(0,220,255,0), rgba(0,220,255,0));
 }
 #maxContainerRow {
   width: 100%;
@@ -187,6 +189,9 @@ ol, ul {
 #greenSmall {
   color: #00ffdc !important;
   font-size: 90% !important;  
+  margin-bottom: 12px !important;
+  margin-left: 5px !important;
+  /* padding-left: 5px !important; */
 }
 #red {
   color: #ff7f7f !important;
@@ -1277,12 +1282,17 @@ letter-spacing: 2px !important;
   font-family: 'Open Sans';
   text-align: left;
   height: 5em;
+  transition: all 1s ease 0s;
 }
 #solutionSummaryForm, #solutionDescriptionForm, 
 #solutionReferencesForm, #problemSummaryForm {
-  /*background-color: rgba(0,220,255, 0.05);*/
-  background: linear-gradient(to right,rgba(0,220,255, 0.06), rgba(0,220,255, 0.07),rgba(0,220,255, 0.03));
-
+  /* background: linear-gradient(to right,rgba(0,220,255, 0.06), rgba(0,220,255, 0.07),rgba(0,220,255, 0.03)); */
+  background: radial-gradient(circle, rgba(0,220,255, 0), rgba(0,220,255, 0.1));     
+}
+#solutionSummaryForm:active, #solutionReferencesForm:focus, #solutionReferencesForm:active, #solutionSummaryForm:focus {
+  /* background: radial-gradient(circle, rgba(0,220,255, 0), rgba(0,220,255, 0.12));      */
+  /* background-color: rgba(0,220,255,0.05); */
+  transform: scale(1.02);
 }
 #projectEditSummaryForm {
   font-family: 'Open Sans';
@@ -1367,8 +1377,15 @@ letter-spacing: 2px !important;
 #solutionTitleForm {
   font-family: 'Alegreya Sans SC';
   border-color: #dddddd;
-  background-color: rgba(0,220,255, 0.05);
+  /* background-color: rgba(0,220,255, 0.05); */
   margin: 0 auto;
+  background: radial-gradient(circle, rgba(0,220,255, 0.1), rgba(0,220,255, 0), rgba(0,220,255, 0));   
+  transition: all 1s ease 0s;
+}
+#solutionTitleForm:active, #solutionTitleForm:focus {
+  background: radial-gradient(circle, rgba(0,220,255, 0.12), rgba(0,220,255, 0), rgba(0,220,255, 0));   
+  background-color: rgba(0,220,255,0.05);
+  transform: scale(1.02);
 }
 #solutionEditReferencesForm {
   margin-bottom: 3%;
@@ -3561,7 +3578,7 @@ cursor: pointer;
 
 #proposalSubProjectsButton {
 text-align: center;
-font-size: 175%;
+font-size: 150%;
 letter-spacing: 6px;
 width: 50%;
 margin: 0 auto;
@@ -3571,13 +3588,12 @@ margin-top: 0%;
 border: 1px solid #00dcff;
 border-width: 1px 1px 1px 1px;
 border-radius: 0% 0% 45% 45%;
-/*background-color: rgba(15,19,28,0.05);*/
 background: linear-gradient(to right,rgba(0,220,255, 0), rgba(0,220,255, 0.075), rgba(0,220,255, 0));
 
 transition: all 0.75s ease 0s;
-/*box-shadow: 0 0 0pt 0pt rgba(0,220,255,0.5);*/
 background-color: rgba(0,220,255,0.01);
 transform: scale(1);
+text-transform: lowercase !important;
 }
 #proposalSubProjectsButton:hover, #proposalDevelopButton:hover, #proposalDiscussButton:hover,
 #proposalSubProjectsButton:focus, #proposalDevelopButton:focus, #proposalDiscussButton:focus,
@@ -3589,11 +3605,11 @@ letter-spacing: 7px !important;
 color: #00dcff !important;
 cursor: pointer;
 border-color: #00dcff !important;
-text-transform: lowercase !important;
+transform: scale(1.05);
 }
 #proposalDiscussButton {
 text-align: center;
-font-size: 175%;
+font-size: 150%;
 letter-spacing: 6px;
 width: 50%;
 margin: 0 auto;
@@ -3608,10 +3624,11 @@ background: linear-gradient(to right,rgba(0,220,255, 0), rgba(0,220,255, 0.075),
 transition: all 0.75s ease 0s;
 background-color: rgba(0,220,255,0.01);
 transform: scale(1);
+text-transform: lowercase !important;
 }
 #proposalDevelopButton {
 text-align: center;
-font-size: 175%;
+font-size: 150%;
 letter-spacing: 6px;
 width: 50%;
 margin: 0 auto;
@@ -3628,6 +3645,7 @@ background: linear-gradient(to right,rgba(0,220,255, 0), rgba(0,220,255, 0.075),
 transition: all 0.75s ease 0s;
 background-color: rgba(0,220,255,0.01);
 transform: scale(1);
+text-transform: lowercase !important;
 }
 /*#proposalDevelopButton {
 letter-spacing: 2px;
@@ -4863,8 +4881,11 @@ font-family: 'Open Sans';
 .activeProsCons div {
   background-color: rgba(0,220,255,0.05) !important;
   color: #00dcff !important;
-  cursor: pointer !important;
+  cursor: default !important;
   box-shadow: 0 0 0px 0px rgba(0,220,255,0.5) !important;
+  background: linear-gradient(to right,rgba(0,220,255, 0), rgba(0,220,255, 0.05), rgba(0,220,255, 0)) !important;
+  letter-spacing: 12px !important;
+  transform: scale(1.05) !important;
 }
 .activeNotifications div {
   background-color: rgba(255,127,127,0.12) !important;
@@ -5153,6 +5174,9 @@ input#submitWelcomeProblem:hover {
   width: 100%;
   min-height: 80vh;
   /* height: 100%; */
+
+  /* New universal background */
+  /* background: linear-gradient(rgba(0,220,255,0.04), rgba(0,220,255,0), rgba(0,220,255,0), rgba(0,220,255,0), rgba(0,220,255,0));   */
 }
 #main::-webkit-scrollbar-track {
   -webkit-box-shadow: inset 0 0 6px rgba(0,220,255,0); 
@@ -6122,10 +6146,10 @@ border-color: #dddddd;
 
 
 #problemRow1, #problemRow2 {
-display: inline-flex;
+display: flex;
 justify-content: space-between;
 align-items: center;
-align-content: flex-start;
+/* align-content: flex-start; */
 width: 100%;
 }
 #problemRow1 {
@@ -7188,8 +7212,8 @@ margin-top: 1%;
 }
 #solutionDescriptionFormLabel {
 color: #00dcff;
-/*font-size: 150%;*/
-/*margin-left: 5%;*/
+font-size: 125%;
+margin-top: 4%;
 text-align: center;
 }
 #solutionSummaryLabel {
@@ -7576,27 +7600,18 @@ cursor: pointer;
   margin-bottom: 1.5%;
   background: radial-gradient(rgba(0,220,255, 0), rgba(0,220,255, 0.1));
 }
-#resourceURLText {
-  
-  /* padding-left: 2%;
-  padding-right: 2%;
-  padding-top: 1.75%;
-  padding-bottom: 1.75%;
-  border: 1px solid #333333;
-  border-width: 0px 0px 1px 0px;
+#resourceURLTextContainer {
   width: 82%;
-  white-space: pre-wrap !important; */
-  
-  
-  
+  margin-top: 2%;
+  margin-bottom: 0.5%;
+}
+#resourceURLText {
   font-family: 'Alegreya Sans SC';
   text-align: center;
   height: auto;
   min-height: 10px;
   max-height: 100px;
-  /* margin: 0 auto; */
-  margin-top: 2%;
-  margin-bottom: 0.5%;
+  margin: 0 auto;
   /* background: radial-gradient(rgba(0,220,255, 0), rgba(0,220,255, 0.1)); */
   transition: all 1s ease 0s;
   transform: scale(1);
@@ -7606,26 +7621,25 @@ cursor: pointer;
   max-width: 584.31px;
   line-height: 150%;
   font-family: 'Open Sans' !important;
-  font-size: 145%;
+  font-size: 135%;
   padding-left: 2%;
   padding-right: 2%;
-  /* padding-top: 1.75%; */
-  /* padding-bottom: 1.75%; */
-  /* border: 1px solid #333333; */
-  /* border-width: 0px 0px 1px 0px; */
   width: 82%;
   white-space: pre-wrap !important;
-  color: #ffffff;
+  color: #00dcff;
+  text-align: center;
 }
 #resourceURLText:hover {
-color: rgba(0,220,255,1);
+color: rgba(0,255,220,1);
 transform: scale(1.02);
 cursor: pointer;
 }
 #resourceTitleText {
   margin: 0 auto;
   text-align: center;
-  font-size: 135%;
+  font-size: 185%;
+  color: #ffffff;
+  letter-spacing: 2px;
 }
 #resourceHeader {
   color: #00dcff !important;
@@ -7932,21 +7946,24 @@ flex: 1 1 auto;
 margin: 0 auto;
 font-size: 120%;
 text-align: center;
-letter-spacing: 15px;
+letter-spacing: 6px;
 padding: 7px;
 width: 20em;
 text-align: center;
-transition: all 0.5s ease 0s;
+transition: all 1s ease 0s;
 box-shadow: 0 0 0pt 0pt rgba(0,220,255,0.5);
 background-color: rgba(0,220,255,0);
+background: linear-gradient(to right,rgba(0,220,255, 0), rgba(0,220,255, 0.025), rgba(0,220,255, 0));
+
 }
 #prosButton:hover, #consButton:hover, #prosButton:focus, #consButton:focus, #prosButton:active, #consButton:active {
 background-color: rgba(0,220,255,0.05);
 color: #00dcff;
 cursor: pointer;
 box-shadow: 0 0 0px 0px rgba(0,220,255,0.5);
-/*background: linear-gradient(to right,rgba(0,220,255, 0), rgba(0,220,255, 0.05), rgba(0,220,255, 0));*/
-
+background: linear-gradient(to right,rgba(0,220,255, 0), rgba(0,220,255, 0.05), rgba(0,220,255, 0));
+letter-spacing: 12px;
+transform: scale(1.05);
 }
 #prosButton:active, #consButton:active {
 background-color: rgba(0,220,255,0.15);
@@ -11761,19 +11778,12 @@ transition: all 1s ease 0s;
   /* margin-bottom: 2%; */
 }
 #projectMidColumnLeft {
-  /* display: flex; */
   width: 40%;
-  /* flex: 3 1 auto; */
-  overflow: scroll;
-  max-height: 32vh;
+  /* overflow: scroll; */
+  /* max-height: 32vh; */
   padding-bottom: 0.5%;
-  /* position: relative;
-  z-index: -500; */
   transition: all 2s ease 0s;
   transform: scale(1);
-  /* border: 1px solid rgba(0,220,255,0.1);
-  border-width: 1px 1px 1px 0px;
-  border-radius: 0px 15px 15px 0px; */
 }
 #projectMidColumnLeft:hover {
   /* overflow: auto; */
@@ -12218,12 +12228,12 @@ transition: all 1s ease 0s;
 #parentListButton {
   position: absolute;
   top: -8px;
-  right: 21%;
+  right: 21.1%;
   /* border: 1px solid rgba(255,255,255,0.5);
   border-width: 0px 1px 1px 1px;
   border-radius: 0% 0% 35% 0%; */
   /* padding: 8px 14px 8px 12px; */
-  transition: all 1s ease 0s;
+  transition: all 0.5s ease 0s;
   z-index: 600;
 }
 #parentListButton:hover{
@@ -12233,11 +12243,12 @@ transition: all 1s ease 0s;
   transform: scale(1.1);
   cursor: pointer;
   top: -5px;
+  right: 21%;
   /* right: -60px; */
 }
 #parentListImg, #parentListImgHover {
-  transition: all 1s ease 0s;
-  opacity: 0.5;
+  transition: all 0.5s ease 0s;
+  opacity: 0.75;
   vertical-align: middle;
   /* transform: scale(0.5); */
   /* transform: rotate(90deg); */
@@ -12287,23 +12298,38 @@ transition: all 1s ease 0s;
   padding-top: 1.5%;
 }
 #parentListTitle {
+  width: 94%;
   margin: 0 auto;
   /* margin-top: 1%; */
   text-align: center;
   font-size: 145%;
   letter-spacing: 4px;
   color: #00dcff;
-  margin-top: 1%;
+  color: #888888;
+  margin-top: 2%;
   margin-bottom: 0%;
+  border: 1px solid #888888;
+  border-width: 0px;
+  border-radius: 3px;
+  box-shadow: 0 0 1pt 1pt rgb(136, 136, 136);
+  background: radial-gradient(circle, rgba(136, 136, 136, 0), rgba(136, 136, 136, 0.05), rgba(136, 136, 136, 0.15));
+  background-color: rgba(136, 136, 136, 0);
+  transition: all 1s ease 0s;
+}
+#parentListTitle:hover {
+  transform: scale(1.05);
+  background: radial-gradient(circle, rgba(136, 136, 136, 0), rgba(136, 136, 136, 0.01), rgba(136, 136, 136, 0.17));
+  background-color: rgba(136, 136, 136, 0.05);
+  box-shadow: 0 0 1.5pt 1.5pt rgb(136, 136, 136);
 }
 #parentListUnitList {
   width: 100%;
-  padding: 2% 0%;
+  padding: 0% 0% 0% 2%;
   margin: 0 auto;
 }
 #parentListUnit {
     border: 1px solid #00dcff;
-    border-width: 1px 0px 0px 0px;
+    border-width: 0px 0px 1px 0px;
     /* background: radial-gradient(circle, rgba(0,220,255,0), rgba(0,220,255,0), rgba(0,220,255,0.05), rgba(0,220,255,0));   */
     text-transform: lowercase !important;
     margin: 0 auto;
@@ -12368,14 +12394,332 @@ transition: all 1s ease 0s;
 /* File Input */
 
 
-#myFile {
+#fileProposalLabel {
+  overflow: hidden;
+  position: relative;
+  color: #ffffff;
+  background: radial-gradient(circle, rgba(0,220,255,0.15), rgba(0,220,255,0.05), rgba(0,220,255,0));
+  
+  padding: 18px 18px;
+  border: 1px solid rgba(255,255,255,0.5);
+  /* border-radius: 25%; */
+  border-radius: 15%;
+  width: 30%;
+  margin: 0 auto;
+  margin-top: 3.5%;
+  margin-bottom: 6%;
+  transition: all 1s ease 0s;
+  box-shadow: 0 0 1pt 1px rgba(255,255,255,0.75);
+  opacity: 1;
+  letter-spacing: 2px;
+  font-size: 140%;
+}
+#fileProposalLabel:hover {
+  opacity: 1;
+  transform: scale(1.1);
+  border-color: rgba(255,255,255,1);
+  border-radius: 7.5%;
+  background: radial-gradient(circle, rgba(0,220,255,0.15), rgba(0,220,255,0.075), rgba(0,220,255,0.05));
+  background-color: rgba(0,220,255,0.05);
+  box-shadow: 0 0 2pt 2px rgba(255,255,255,1);
+  cursor: pointer;
+  letter-spacing: 3px;
+}
 
+#fileProposalLabel [type=file] {
+  cursor: inherit;
+  display: block;
+  font-size: 999px;
+  filter: alpha(opacity=0);
+  min-height: 100%;
+  min-width: 100%;
+  opacity: 0;
+  position: absolute;
+  right: 0;
+  text-align: right;
+  top: 0;
+}
+
+
+/* Attempt at file input styling from:
+https://tympanus.net/codrops/2015/09/15/styling-customizing-file-inputs-smart-way/ */
+/* Accompanying html:
+<input type="file" name="file" id="fileProposal" className="inputfile" data-multiple-caption="{count} files selected" multiple />
+<label htmlFor="file" id="fileProposalLabel">Choose a file</label> */
+/* .inputfile {
+	width: 0.1px;
+	height: 0.1px;
+	opacity: 0;
+	overflow: hidden;
+	position: absolute;
+	z-index: -1;
+}
+.inputfile + label {
+  font-size: 1.25em;
+  font-weight: 700;
+  color: white;
+  background-color: black;
+  display: inline-block;
+}
+
+.inputfile:focus + label,
+.inputfile + label:hover {
+  background-color: red;
+}
+.inputfile + label {
+	cursor: pointer; /* "hand" cursor 
+}
+.inputfile:focus + label {
+	outline: 1px dotted #000;
+	outline: -webkit-focus-ring-color auto 5px;
+}
+.inputfile + label * {
+	pointer-events: none;
+} */
+
+
+#proposalFormButtonContainer {
+  display: flex;
+  flex-direction: row;
+  width: 70%;
+  margin: 0 auto;
+  /* margin-top: 4%; */
+  margin-top: 1%;
+  justify-content: center;
+}
+#proposalFormButtonLeft, #proposalFormButtonRight, #proposalFormButtonLeftActive, #proposalFormButtonRightActive {
+  flex: 1 1 auto;
+  color: #dddddd;
+  font-size: 125%;
+  padding: 2px 0px;
+  text-align: center;
+  text-decoration: none;
+  margin: 0 auto;
+  margin-top: 0px;
+  margin-bottom: 3px;
+  width: 8em;
+  border: 1px solid #dddddd;
+  border-width: 1px;
+  border-radius: 3px 0px 0px 3px;
+  background-color: rgba(0,220,255, 0.05);
+  /*box-shadow: 0 0 1pt 1pt rgba(255,255,255,0.5);*/
+  transition: all 1s ease 0s;
+  letter-spacing: 2px;
+}
+#proposalFormButtonRight, #proposalFormButtonRightActive {
+  border-radius: 0px 3px 3px 0px;
+  border-width: 1px 1px 1px 0px;
+}
+#proposalFormButtonLeft:hover, #proposalFormButtonRight:hover, #proposalFormButtonLeftActive, #proposalFormButtonRightActive {
+  background: linear-gradient(to right, rgba(0,220,255,0.1), rgba(0,220,255,0)) !important;
+  width: 9em !important;
+  border-color: #00dcff !important;
+  color: #00dcff !important;
+  letter-spacing: 3px;
+  cursor: pointer;
+}
+#proposalFormButtonRight:hover, #proposalFormButtonRightActive {
+  background: linear-gradient(to left, rgba(0,220,255,0.1), rgba(0,220,255,0)) !important;
+}
+#pdfProposalContainer {
+  display: none;
+  width: 100%;
+  margin: 0 auto;
+}
+#pdfProposalContainerShow {
+  width: 100%;
+  margin: 0 auto;
+}
+#proseProposalContainer {
+  display: none;
+  width: 100%;
+  margin: 0 auto;
+}
+#proseProposalContainerShow {
+  width: 100%;
+  margin: 0 auto;
 }
 
 
 
 
 
+
+
+
+
+/* New Project Module Simplification Styling */
+
+#projectMajorButtonRow, #projectMajorButtonRowRight {
+  display: flex;
+  flex-direction: row;
+  width: 96%;
+  margin: 0 auto;
+}
+#projectMajorButtonRowRight {
+  /* width: 64%;
+  margin-right: 2%; */
+}
+#buttonHide1, #buttonHide2, #buttonHide3, #buttonHide4, #buttonHide5 {
+  display: none;
+  transition: all 1s ease 0s;
+}
+#projectActionGroupShow {
+  transition: all 1s ease 0s;
+  width: 100%;
+  margin: 0 auto;
+  position: relative;
+}
+#projectActionGroup {
+  display: none;
+  transition: all 1s ease 0s;
+  position: relative;
+  width: 100%;
+}
+#projectActivityGroupShow {
+  transition: all 1s ease 0s;
+  width: 100%;
+  margin: 0 auto;
+  position: relative;
+}
+#projectActivityGroup {
+  display: none;
+  transition: all 1s ease 0s;
+  position: relative;
+  width: 100%;
+}
+#projectInfoGroupShow {
+  transition: all 1s ease 0s;
+  width: 100%;
+  margin: 0 auto;
+  position: relative;
+}
+#projectInfoGroup {
+  display: none;
+  transition: all 1s ease 0s;
+  position: relative;
+  width: 100%;
+}
+#projectActionButton, #projectActivityButton, #projectInfoButton, #projectActivityButton2, #projectActivityButton3, #projectInfoButton2, #projectInfoButton3 {
+  position: relative;
+  /* width: 26%; */
+  width: 28%;
+  margin: 0 auto;
+  text-align: center;
+  border: 1px solid #00dcff;
+  border-radius: 3px;
+  /* padding: 22px 24px; */
+  /* padding: 24px 26px; */
+  padding: 30px 26px;
+  letter-spacing: 4px;
+  /* margin-top: 5%; */
+  margin-top: 1.5%;
+  margin-bottom: 4.5%;
+  color: #00dcff;
+  background: radial-gradient(circle, rgba(0,220,255, 0.15), rgba(0,220,255, 0.05), rgba(0,220,255, 0));   
+  transition: all 1s ease 0s;
+  box-shadow: 0 0 1pt 1pt rgba(0,220,255,0.5);  
+  /* font-size: 195%; */
+  font-size: 205%;
+  top: 28px;
+}
+#projectInfoButton3, #projectActivityButton3 {
+  width: 60% !important;
+}
+#projectActionButton:hover, #projectActivityButton:hover, #projectInfoButton:hover, #projectActivityButton2:hover, #projectInfoButton2:hover, #projectActivityButton3:hover, #projectInfoButton3:hover {
+  cursor: pointer;
+  letter-spacing: 5px;
+  background: radial-gradient(circle, rgba(0,220,255, 0.15), rgba(0,220,255, 0.1), rgba(0,220,255, 0));   
+  transform: scale(1.05);
+  background-color: rgba(0,220,255,0.05);
+  box-shadow: 0 0 1.5pt 1.5pt rgba(0,220,255,1);  
+}
+#projectActionButton:hover {
+  top: 30px;
+}
+#projectActivityButton, #projectInfoButton {
+  /* width: 30%; */
+  position: relative;
+  top: 26px;
+  background: radial-gradient(circle, rgba(0,220,255, 0.14), rgba(0,220,255, 0.05), rgba(0,220,255, 0));     
+  /* transform: rotate3d(45deg, 90deg, 0deg) !important;     */
+  transform: rotateX(1.5deg) rotateY(15deg);
+}
+#projectInfoButton {
+  transform: rotateX(1.5deg) rotateY(-15deg);
+}
+#projectActivityButton:hover {
+  top: 30px;
+}
+#projectInfoButton:hover {
+  top: 30px;
+}
+#projectMidColumnLeftStart {
+  /* width: 50%; */
+  width: 100%;
+  margin-bottom: 2%;
+  margin-left: 0px !important;
+  left: 0;
+}
+#projectMidColumnRightStart {
+  /* width: 50%; */
+  width: 100%;
+  margin-bottom: 2%;
+  margin-right: 0px !important;
+  right: 0;
+}
+#projectHideButton1, #projectHideButton2, #projectHideButton3 {
+  position: absolute;
+  padding: 20px 4px 20px 8px;
+  border: 1px solid rgba(255,127,127,1);
+  border-width: 1px 0px 1px 0px;
+  opacity: 0.5;
+  transition: all 0.5s ease 0s;
+}
+#projectHideButton1 {
+  right: 0;
+  top: 10px;
+  border-width: 1px 0px 1px 1px;
+  border-radius: 45% 0px 0px 45%;
+  background: linear-gradient(to right, rgba(255,127,127,0), rgba(255,127,127,0), rgba(255,127,127,0.1));  
+}
+#projectHideButton2 {
+  left: 0;
+  bottom: -50px;
+  padding: 8px 20px;
+  border-width: 1px 1px 1px 0px;
+  border-radius:  0px 25% 25% 0px;
+  background: linear-gradient(to left, rgba(255,127,127,0), rgba(255,127,127,0), rgba(255,127,127,0.1));  
+}
+#projectHideButton3 {
+  right: 0;
+  bottom: -70px;
+  border-width: 1px 0px 1px 1px;
+  border-radius: 45% 0px 0px 45%;
+  background: linear-gradient(to right, rgba(255,127,127,0), rgba(255,127,127,0), rgba(255,127,127,0.1));  
+}
+#projectHideButton1:hover, #projectHideButton2:hover, #projectHideButton3:hover {
+  opacity: 1;
+  background-color: rgba(255,127,127,0.05);
+  transform: scale(1.1);
+  cursor: pointer;
+  box-shadow: 0 0 1pt 1px rgba(255,127,127,1);  
+}
+#projectHideButton1:hover {
+  right: 4px;
+  background: linear-gradient(to right, rgba(255,127,127,0), rgba(255,127,127,0.05), rgba(255,127,127,0.15));      
+}
+#projectHideButton2:hover {
+  left: 7px;
+  background: linear-gradient(to left, rgba(255,127,127,0), rgba(255,127,127,0.05), rgba(255,127,127,0.15));      
+}
+#projectHideButton3:hover {
+  right: 4px;
+  background: linear-gradient(to right, rgba(255,127,127,0), rgba(255,127,127,0.05), rgba(255,127,127,0.15));      
+}
+#projectModuleClose1, #projectModuleClose2, #projectModuleClose3 {
+  vertical-align: middle;
+}
 
 
 

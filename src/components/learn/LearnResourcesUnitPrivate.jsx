@@ -5,46 +5,28 @@ import cookie from 'react-cookie';
 import {Config} from '../../config.js';
 import $ from 'jquery';
 
-export default class LearnResourcesUnit extends React.Component {
+export default class LearnResourcesUnit1 extends React.Component {
 
     constructor(props){
         super(props);
 
          this.renderItem = this.renderItem.bind(this);
-        //  this.hoverThread = this.hoverThread.bind(this);
-        //  this.hoverVote = this.hoverVote.bind(this);
-        //  this.hoverFlag = this.hoverFlag.bind(this);
-        //  this.hoverEdit = this.hoverEdit.bind(this);
-        //  this.hoverDelete = this.hoverDelete.bind(this);
-        //  this.unHoverThread = this.unHoverThread.bind(this);
-        //  this.unHoverVote = this.unHoverVote.bind(this);
-        //  this.unHoverFlag = this.unHoverFlag.bind(this);
-        //  this.unHoverEdit = this.unHoverEdit.bind(this);
-        //  this.unHoverDelete = this.unHoverDelete.bind(this);
-        //  this.hoverThreadVoted = this.hoverThreadVoted.bind(this);
-        //  this.hoverVoteVoted = this.hoverVoteVoted.bind(this);
-        //  this.hoverFlagVoted = this.hoverFlagVoted.bind(this);
-        //  this.hoverEditVoted = this.hoverEditVoted.bind(this);
-        //  this.hoverDeleteVoted = this.hoverDeleteVoted.bind(this);
-        //  this.unHoverThreadVoted = this.unHoverThreadVoted.bind(this);
-        //  this.unHoverVoteVoted = this.unHoverVoteVoted.bind(this);
-        //  this.unHoverFlagVoted = this.unHoverFlagVoted.bind(this);
-        //  this.unHoverEditVoted = this.unHoverEditVoted.bind(this);
-        //  this.unHoverDeleteVoted = this.unHoverDeleteVoted.bind(this);
     };
-  
     componentDidMount() {
         var self = this
         self.setState({
             voteHash : {},
+            debateNumber : [],
         })
     }
+
 
 
     componentWillReceiveProps (props) {
         var self = this
         self.setState({
             voteHash : {},
+            debateNumber : {},
         })
         props.resources.forEach( function (resource){
             axios.get( Config.API + "/vote/isVotedOn?type=8&typeID=" + resource.ID + "&username=" + cookie.load("userName"))
@@ -56,6 +38,14 @@ export default class LearnResourcesUnit extends React.Component {
                     voteHash,
                 })
             })  
+            axios.get( Config.API + '/comments/number?parent_id='+resource.ID + '&parent_type=8').then(function (response) {
+                const debateNumber = self.state.debateNumber;
+                
+                debateNumber[resource.ID] = response.data
+                self.setState({
+                    debateNumber,
+                })
+            })
         })
     }
 
@@ -67,10 +57,9 @@ export default class LearnResourcesUnit extends React.Component {
 		);
 	}
 	renderItem(resource) {
-
-       function  submitVote() {
+       function submitVote() {
        axios.post( Config.API + '/auth/vote/create', {
-           Type: 6,
+           Type: 8,
            TypeID: resource.ID,
            username : cookie.load("userName"),
            
@@ -79,7 +68,6 @@ export default class LearnResourcesUnit extends React.Component {
             document.location = window.location.pathname;
         })
       .catch(function (error) {
-        // console.log(error.response.data)
           $(document).ready(function() {
               $('#notification').attr('id','notificationShow').hide().slideDown();
 
@@ -99,7 +87,7 @@ export default class LearnResourcesUnit extends React.Component {
       function unVote() {
       axios.delete( Config.API + '/auth/vote/delete' ,{
         params: {
-          type: 6,
+          type: 8,
           typeID: resource.ID,
           username: cookie.load('userName')
         }
@@ -108,7 +96,6 @@ export default class LearnResourcesUnit extends React.Component {
             document.location = window.location.pathname 
         })
       .catch(function (error) {
-        // console.log(error.response.data)
           $(document).ready(function() {
               $('#notification').attr('id','notificationShow').hide().slideDown();
 
@@ -146,13 +133,30 @@ export default class LearnResourcesUnit extends React.Component {
                             <img src={require('../../assets/delete.svg')} id="editLogo" width="18" height="18" alt="Delete Button" />
                         </div>
                     </Link>
-                    <div id="discussHoverTextShowVoted">voted</div>
+                    <Link to={`/project/private/${resource.TypeID}/resources/${resource.ID}/comments`}>
+                        <div id="numberDiscussButton" onMouseOver={hoverThreadVoted} onMouseOut={unHoverThreadVoted}>
+                            {this.state.debateNumber[resource.ID]}
+                        </div>
+                    </Link>
+                    <div id="discussHoverTextShowVoted">
+                        voted
+                    </div>
 					<div id="discussHeader">
                         <span id="discussPercent">{floatToDecimal(resource.PercentRank)}</span>
-                        {resource.Username}
+					    {resource.Username}
                     </div>
-                    <div id="suggestionText" onClick={unVote} onMouseOver={hoverVoteVoted} onMouseOut={unHoverVoteVoted}>
-                        {resource.Description}
+                    <div id="resourceURLTextContainer">
+                        <div id="resourceTitleText">
+                            {resource.Title}
+                        </div>
+                        <div id="resourceURLText">
+                            <a href={url(resource.Description)} target="_blank">
+                                {resource.Summary}
+                            </a>
+                        </div>
+                    </div>
+                    <div id="suggestionText" onClick={submitVote} onMouseOver={hoverVote} onMouseOut={unHoverVote}>
+                        <span id="shrunkText">{resource.Description}</span>
                     </div>
 				</div>
         </li>);
@@ -175,13 +179,28 @@ export default class LearnResourcesUnit extends React.Component {
                             <img src={require('../../assets/delete.svg')} id="editLogo" width="18" height="18" alt="Delete Button" />
                         </div>
                     </Link>
+                    <Link to={`/project/private/${resource.TypeID}/resources/${resource.ID}/comments`}>
+                        <div id="numberDiscussButton" onMouseOver={hoverThread} onMouseOut={unHoverThread}>
+                            {this.state.debateNumber[resource.ID]}
+                        </div>
+                    </Link>
                     <div id="discussHoverText"></div>
 					<div id="discussHeader">
                         <span id="discussPercent">{floatToDecimal(resource.PercentRank)}</span>
-					    <span id="discussUsername">{resource.Username}</span> 
+					    {resource.Username}
+                    </div>
+                    <div id="resourceURLTextContainer">
+                        <div id="resourceTitleText">
+                            {resource.Title}
+                        </div>
+                        <div id="resourceURLText">
+                            <a href={url(resource.Description)} target="_blank">
+                                {resource.Summary}
+                            </a>
+                        </div>
                     </div>
                     <div id="suggestionText" onClick={submitVote} onMouseOver={hoverVote} onMouseOut={unHoverVote}>
-                        {resource.Description}
+                        <span id="shrunkText">{resource.Description}</span>
                     </div>
 				</div>
         </li>);
@@ -199,13 +218,30 @@ export default class LearnResourcesUnit extends React.Component {
                             <img src={require('../../assets/flag.svg')} id="deleteLogo" width="24" height="24" alt="Delete Button, Red X" />
                         </div>
                     </Link>
-                    <div id="discussHoverTextShowVoted">voted</div>
+                    <Link to={`/project/private/${resource.TypeID}/resources/${resource.ID}/comments`}>
+                        <div id="numberDiscussButton" onMouseOver={hoverThreadVoted} onMouseOut={unHoverThreadVoted}>
+                            {this.state.debateNumber[resource.ID]}
+                        </div>
+                    </Link>
+                    <div id="discussHoverTextShowVoted">
+                        voted
+                    </div>
 					<div id="discussHeader">
                         <span id="discussPercent">{floatToDecimal(resource.PercentRank)}</span>
 					    {resource.Username}
                     </div>
-                    <div id="suggestionText" onClick={unVote} onMouseOver={hoverVoteVoted} onMouseOut={unHoverVoteVoted}>
-                        {resource.Description}
+                    <div id="resourceURLTextContainer">
+                        <div id="resourceTitleText">
+                            {resource.Title}
+                        </div>
+                        <div id="resourceURLText">
+                            <a href={url(resource.Description)} target="_blank">
+                                {resource.Summary}
+                            </a>
+                        </div>
+                    </div>
+                    <div id="suggestionText" onClick={submitVote} onMouseOver={hoverVote} onMouseOut={unHoverVote}>
+                        <span id="shrunkText">{resource.Description}</span>
                     </div>
 				</div>
         </li>);
@@ -213,7 +249,6 @@ export default class LearnResourcesUnit extends React.Component {
     } else {
     return (
        <li key={resource.ID} id="suggestionUnit">
-            {/* <div id="suggestionContent"> */}
             <div id={'suggestionContent'} className={resource.ID}>
                 <Link to={`/project/private/${resource.TypeID}/resources/${resource.ID}/comments`}>
                     <div id="debateThreadButton" onMouseOver={hoverThread} onMouseOut={unHoverThread}>
@@ -225,13 +260,28 @@ export default class LearnResourcesUnit extends React.Component {
                         <img src={require('../../assets/flag.svg')} id="deleteLogo" width="24" height="24" alt="Delete Button, Red X" />
                     </div>
                 </Link>
+                <Link to={`/project/private/${resource.TypeID}/resources/${resource.ID}/comments`}>
+                    <div id="numberDiscussButton" onMouseOver={hoverThread} onMouseOut={unHoverThread}>
+                        {this.state.debateNumber[resource.ID]}
+                    </div>
+                </Link>
                 <div id="discussHoverText"></div>
                 <div id="discussHeader">
                     <span id="discussPercent">{floatToDecimal(resource.PercentRank)}</span>
                     {resource.Username}
                 </div>
+                <div id="resourceURLTextContainer">
+                    <div id="resourceTitleText">
+                        {resource.Title}
+                    </div>
+                    <div id="resourceURLText">
+                        <a href={url(resource.Description)} target="_blank">
+                            {resource.Summary}
+                        </a>
+                    </div>
+                </div>
                 <div id="suggestionText" onClick={submitVote} onMouseOver={hoverVote} onMouseOut={unHoverVote}>
-                    {resource.Description}
+                    <span id="shrunkText">{resource.Description}</span>
                 </div>
             </div>
         </li>);
@@ -294,7 +344,7 @@ function unHoverEdit() {
     });
 }
 function hoverDelete() {
-    $(document).ready(function() {  
+    $(document).ready(function() {      
         $('div.'+resource.ID).attr('class','suggestionContentClassRed');
         $('.suggestionContentClassRed > #discussHoverText').attr('id','discussHoverTextRed');    
         $('#discussHoverTextRed').html("delete").fadeIn(7500);
@@ -394,6 +444,25 @@ function floatToDecimal(float) {
 	return Math.round(float*100)+'%';
 }
 
+function url(resourceURL){
+
+    if (resourceURL.includes('https://') || resourceURL.includes('http://')) {
+        return ( resourceURL );
+
+    } 
+    else if (
+        (resourceURL.substring(0,3) !== 'www.')  &&  
+        (
+            (resourceURL.includes('.com')) || (resourceURL.includes('.org')) || (resourceURL.includes('.edu')) || (resourceURL.includes('.gov')) || (resourceURL.includes('.net')) )
+            ) 
+        {
+        return ( 'https://' + resourceURL );
+    }
+
+    else {
+        return ( 'https://www.google.com/#q=' + resourceURL );
+    }
+}
 
 
 

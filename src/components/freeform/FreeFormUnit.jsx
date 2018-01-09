@@ -11,26 +11,6 @@ export default class FreeFormUnit extends React.Component {
         super(props);
 
          this.renderItem = this.renderItem.bind(this);
-        //  this.hoverThread = this.hoverThread.bind(this);
-        //  this.hoverVote = this.hoverVote.bind(this);
-        //  this.hoverFlag = this.hoverFlag.bind(this);
-        //  this.hoverEdit = this.hoverEdit.bind(this);
-        //  this.hoverDelete = this.hoverDelete.bind(this);
-        //  this.unHoverThread = this.unHoverThread.bind(this);
-        //  this.unHoverVote = this.unHoverVote.bind(this);
-        //  this.unHoverFlag = this.unHoverFlag.bind(this);
-        //  this.unHoverEdit = this.unHoverEdit.bind(this);
-        //  this.unHoverDelete = this.unHoverDelete.bind(this);
-        //  this.hoverThreadVoted = this.hoverThreadVoted.bind(this);
-        //  this.hoverVoteVoted = this.hoverVoteVoted.bind(this);
-        //  this.hoverFlagVoted = this.hoverFlagVoted.bind(this);
-        //  this.hoverEditVoted = this.hoverEditVoted.bind(this);
-        //  this.hoverDeleteVoted = this.hoverDeleteVoted.bind(this);
-        //  this.unHoverThreadVoted = this.unHoverThreadVoted.bind(this);
-        //  this.unHoverVoteVoted = this.unHoverVoteVoted.bind(this);
-        //  this.unHoverFlagVoted = this.unHoverFlagVoted.bind(this);
-        //  this.unHoverEditVoted = this.unHoverEditVoted.bind(this);
-        //  this.unHoverDeleteVoted = this.unHoverDeleteVoted.bind(this);
     };
     componentDidMount() {
         var self = this
@@ -58,7 +38,7 @@ export default class FreeFormUnit extends React.Component {
                     voteHash,
                 })
             })  
-            axios.get( Config.API + '/comments/number?parent_id='+freeForm.ID).then(function (response) {
+            axios.get( Config.API + '/comments/number?parent_id='+freeForm.ID + '&parent_type=6').then(function (response) {
                 const debateNumber = self.state.debateNumber;
                 
                 debateNumber[freeForm.ID] = response.data
@@ -77,7 +57,7 @@ export default class FreeFormUnit extends React.Component {
 		);
 	}
 	renderItem(freeForm) {
-       function  submitVote() {
+       function submitVote() {
        axios.post( Config.API + '/auth/vote/create', {
            Type: 6,
            TypeID: freeForm.ID,
@@ -88,7 +68,6 @@ export default class FreeFormUnit extends React.Component {
             document.location = window.location.pathname;
         })
       .catch(function (error) {
-        // console.log(error.response.data)
           $(document).ready(function() {
               $('#notification').attr('id','notificationShow').hide().slideDown();
 
@@ -117,7 +96,6 @@ export default class FreeFormUnit extends React.Component {
             document.location = window.location.pathname 
         })
       .catch(function (error) {
-        // console.log(error.response.data)
           $(document).ready(function() {
               $('#notification').attr('id','notificationShow').hide().slideDown();
 
@@ -241,7 +219,6 @@ export default class FreeFormUnit extends React.Component {
     } else {
     return (
        <li key={freeForm.ID} id="suggestionUnit">
-            {/* <div id="suggestionContent"> */}
             <div id={'suggestionContent'} className={freeForm.ID}>
                 <Link to={`/project/${freeForm.TypeID}/freeform/${freeForm.ID}/comments`}>
                     <div id="debateThreadButton" onMouseOver={hoverThread} onMouseOut={unHoverThread}>
@@ -285,12 +262,6 @@ function unHoverThread() {
 }
 function hoverVote() {
     $(document).ready(function() {
-        // $('#suggestionContent').attr('id','suggestionContentHoverVote');
-        // $('#discussHoverText').attr('id','discussHoverTextGreen');
-        // $('#discussHoverTextGreen').html("vote").fadeIn(7500);
-        // $('#discussHoverTextGreen').attr('id','discussHoverTextShowGreen');
-        // $('#discussPercent').attr('id','discussPercentGreen');
-
         $('div.'+freeForm.ID).attr('class','suggestionContentClassGreen');
         $('.suggestionContentClassGreen > #discussHoverText').attr('id','discussHoverTextGreen');    
         $('#discussHoverTextGreen').html("vote").fadeIn(7500);
@@ -299,12 +270,6 @@ function hoverVote() {
 }
 function unHoverVote() {
     $(document).ready(function() {
-        // $('#suggestionContentHoverVote').attr('id','suggestionContent');  
-        // $('#discussHoverTextShowGreen').attr('id','discussHoverTextGreen');
-        // $('#discussHoverTextGreen').html("debate").fadeIn(7500);
-        // $('#discussHoverTextGreen').attr('id','discussHoverText');
-        // $('#discussPercentGreen').attr('id','discussPercent');   
-
         $('div.suggestionContentClassGreen').attr('class',freeForm.ID);
         $('div#discussHoverTextShowGreen').attr('id','discussHoverTextGreen');
         $('div#discussHoverTextGreen').attr('id','discussHoverText');
@@ -312,11 +277,6 @@ function unHoverVote() {
 }
 function hoverFlag() {
     $(document).ready(function() {
-        // $('#suggestionContent').attr('id','suggestionContentHoverFlag');
-        // $('#discussHoverText').attr('id','discussHoverTextRed');
-        // $('#discussHoverTextRed').html("flag").fadeIn(7500);
-        // $('#discussHoverTextRed').attr('id','discussHoverTextShowRed');
-
         $('div.'+freeForm.ID).attr('class','suggestionContentClassRed');
         $('.suggestionContentClassRed > #discussHoverText').attr('id','discussHoverTextRed');    
         $('#discussHoverTextRed').html("flag").fadeIn(7500);
@@ -325,11 +285,6 @@ function hoverFlag() {
 }
 function unHoverFlag() {
     $(document).ready(function() {
-        // $('#suggestionContentHoverFlag').attr('id','suggestionContent');  
-        // $('#discussHoverTextShowRed').attr('id','discussHoverTextRed');
-        // $('#discussHoverTextRed').html("debate").fadeIn(7500);
-        // $('#discussHoverTextRed').attr('id','discussHoverText');
-
         $('div.suggestionContentClassRed').attr('class',freeForm.ID);
         $('div#discussHoverTextShowRed').attr('id','discussHoverTextRed');
         $('div#discussHoverTextRed').attr('id','discussHoverText');
@@ -337,10 +292,6 @@ function unHoverFlag() {
 }
 function hoverEdit() {
     $(document).ready(function() {
-        // $('#suggestionContent').attr('id','suggestionContentHover');
-        // $('#discussHoverText').html("edit").fadeIn(7500);
-        // $('#discussHoverText').attr('id','discussHoverTextShow');
-
         $('div.'+freeForm.ID).attr('class','suggestionContentClassBlue');
         $('.suggestionContentClassBlue > #discussHoverText').attr('id','discussHoverTextShow');
         $('#discussHoverTextShow').html("edit").fadeIn(7500);
@@ -348,21 +299,12 @@ function hoverEdit() {
 }
 function unHoverEdit() {
     $(document).ready(function() {
-        // $('#suggestionContentHover').attr('id','suggestionContent');
-        // $('#discussHoverTextShow').attr('id','discussHoverText');
-        // $('#discussHoverText').html("debate").fadeIn(7500);
-
         $('div.suggestionContentClassBlue').attr('class',freeForm.ID);
         $('div#discussHoverTextShow').attr('id','discussHoverText');
     });
 }
 function hoverDelete() {
-    $(document).ready(function() {
-        // $('#suggestionContent').attr('id','suggestionContentHoverFlag');
-        // $('#discussHoverText').attr('id','discussHoverTextRed');
-        // $('#discussHoverTextRed').html("delete").fadeIn(7500);
-        // $('#discussHoverTextRed').attr('id','discussHoverTextShowRed'); 
-        
+    $(document).ready(function() {      
         $('div.'+freeForm.ID).attr('class','suggestionContentClassRed');
         $('.suggestionContentClassRed > #discussHoverText').attr('id','discussHoverTextRed');    
         $('#discussHoverTextRed').html("delete").fadeIn(7500);
@@ -371,11 +313,6 @@ function hoverDelete() {
 }
 function unHoverDelete() {
     $(document).ready(function() {
-        // $('#suggestionContentHoverFlag').attr('id','suggestionContent');  
-        // $('#discussHoverTextShowRed').attr('id','discussHoverTextRed');
-        // $('#discussHoverTextRed').html("debate").fadeIn(7500);
-        // $('#discussHoverTextRed').attr('id','discussHoverText');
-
         $('div.suggestionContentClassRed').attr('class',freeForm.ID);
         $('div#discussHoverTextShowRed').attr('id','discussHoverTextRed');
         $('div#discussHoverTextRed').attr('id','discussHoverText');
@@ -383,11 +320,6 @@ function unHoverDelete() {
 }
 function hoverThreadVoted() {
     $(document).ready(function() {
-        // $('#suggestionContentHoverVote').attr('id','suggestionContentHover');
-        // $('#discussHoverTextShowGreen').attr('id','discussHoverText');
-        // $('#discussHoverText').html("debate").fadeIn(7500);
-        // $('#discussHoverText').attr('id','discussHoverTextShow');
-
         $('div.'+freeForm.ID).attr('class','suggestionContentClassBlue');
         $('.suggestionContentClassBlue > #discussHoverTextShowVoted').attr('id','discussHoverTextShow');
         $('#discussHoverTextShow').html("debate").fadeIn(7500);
@@ -395,10 +327,6 @@ function hoverThreadVoted() {
 }
 function unHoverThreadVoted() {
     $(document).ready(function() {
-        // $('#suggestionContentHover').attr('id','suggestionContentHoverVote');
-        // $('#discussHoverTextShow').attr('id','discussHoverTextShowGreen');
-        // $('#discussHoverTextShowGreen').html("voted").fadeIn(7500);
-
         $('div.suggestionContentClassBlue').attr('class',freeForm.ID);
         $('div#discussHoverTextShow').attr('id','discussHoverTextShowVoted');
         $('div#discussHoverTextShowVoted').html("voted").fadeIn(7500);
@@ -406,12 +334,6 @@ function unHoverThreadVoted() {
 }
 function hoverVoteVoted() {
     $(document).ready(function() {
-        // $('#suggestionContentHoverVote').attr('id','suggestionContentHoverUnvote');
-        // $('#discussHoverTextShowGreen').attr('id','discussHoverTextGreen');
-        // $('#discussHoverTextGreen').html("unvote").fadeIn(7500);
-        // $('#discussHoverTextGreen').attr('id','discussHoverTextShowGreen');
-        // $('#discussPercent').attr('id','discussPercentGreen');
-
         $('div.'+freeForm.ID).attr('class','suggestionContentClassGreen');
         $('.suggestionContentClassGreen > #discussHoverTextShowVoted').attr('id','discussHoverTextGreen');    
         $('#discussHoverTextGreen').html("unvote").fadeIn(7500);
@@ -421,12 +343,6 @@ function hoverVoteVoted() {
 }
 function unHoverVoteVoted() {
     $(document).ready(function() {
-        // $('#suggestionContentHoverUnvote').attr('id','suggestionContentHoverVote');  
-        // $('#discussHoverTextShowGreen').attr('id','discussHoverTextGreen');
-        // $('#discussHoverTextGreen').html("voted").fadeIn(7500);
-        // $('#discussHoverTextGreen').attr('id','discussHoverTextShowGreen');
-        // $('#discussPercentGreen').attr('id','discussPercent');   
-
         $('div.suggestionContentClassGreen').attr('class',freeForm.ID);
         $('div#discussHoverTextShowVoted').attr('id','discussHoverTextGreen');
         $('div#discussHoverTextGreen').attr('id','discussHoverTextShowVoted');
@@ -434,12 +350,7 @@ function unHoverVoteVoted() {
     });
 }
 function hoverFlagVoted() {
-    $(document).ready(function() {
-        // $('#suggestionContentHoverVote').attr('id','suggestionContentHoverFlag');
-        // $('#discussHoverText').attr('id','discussHoverTextRed');
-        // $('#discussHoverTextRed').html("flag").fadeIn(7500);
-        // $('#discussHoverTextRed').attr('id','discussHoverTextShowRed');    
-        
+    $(document).ready(function() {       
         $('div.'+freeForm.ID).attr('class','suggestionContentClassRed');
         $('.suggestionContentClassRed > #discussHoverTextShowVoted').attr('id','discussHoverTextRed');    
         $('#discussHoverTextRed').html("flag").fadeIn(7500);
@@ -448,11 +359,6 @@ function hoverFlagVoted() {
 }
 function unHoverFlagVoted() {
     $(document).ready(function() {
-        // $('#suggestionContentHoverFlag').attr('id','suggestionContentHoverVote');  
-        // $('#discussHoverTextShowRed').attr('id','discussHoverTextRed');
-        // $('#discussHoverTextRed').html("voted").fadeIn(7500);
-        // $('#discussHoverTextRed').attr('id','discussHoverText');
-
         $('div.suggestionContentClassRed').attr('class',freeForm.ID);
         $('div#discussHoverTextShowRed').attr('id','discussHoverTextRed');
         $('div#discussHoverTextRed').attr('id','discussHoverTextShowVoted');
@@ -461,10 +367,6 @@ function unHoverFlagVoted() {
 }
 function hoverEditVoted() {
     $(document).ready(function() {
-        // $('#suggestionContentHoverVote').attr('id','suggestionContentHover');
-        // $('#discussHoverText').html("edit").fadeIn(7500);
-        // $('#discussHoverText').attr('id','discussHoverTextShow');
-
         $('div.'+freeForm.ID).attr('class','suggestionContentClassBlue');
         $('.suggestionContentClassBlue > #discussHoverTextShowVoted').attr('id','discussHoverTextShow');
         $('#discussHoverTextShow').html("edit").fadeIn(7500);
@@ -472,11 +374,6 @@ function hoverEditVoted() {
 }
 function unHoverEditVoted() {
     $(document).ready(function() {
-        // $('#suggestionContentHover').attr('id','suggestionContentHoverVote');
-        // $('#discussHoverTextShow').attr('id','discussHoverText');
-        // $('#discussHoverText').html("voted").fadeIn(7500);
-        // $('#discussHoverText').attr('id','discussHoverTextShowGreen');
-
         $('div.suggestionContentClassBlue').attr('class',freeForm.ID);
         $('div#discussHoverTextShow').attr('id','discussHoverTextShowVoted');
         $('div#discussHoverTextShowVoted').html("voted").fadeIn(7500);
@@ -484,11 +381,6 @@ function unHoverEditVoted() {
 }
 function hoverDeleteVoted() {
     $(document).ready(function() {
-        // $('#suggestionContentHoverGreen').attr('id','suggestionContentHoverFlag');
-        // $('#discussHoverTextShowGreen').attr('id','discussHoverTextRed');
-        // $('#discussHoverTextRed').html("delete").fadeIn(7500);
-        // $('#discussHoverTextRed').attr('id','discussHoverTextShowRed');    
-        
         $('div.'+freeForm.ID).attr('class','suggestionContentClassRed');
         $('.suggestionContentClassRed > #discussHoverTextShowVoted').attr('id','discussHoverTextRed');    
         $('#discussHoverTextRed').html("delete").fadeIn(7500);
@@ -497,11 +389,6 @@ function hoverDeleteVoted() {
 }
 function unHoverDeleteVoted() {
     $(document).ready(function() {
-        // $('#suggestionContentHoverFlag').attr('id','suggestionContentHoverGreen');  
-        // $('#discussHoverTextShowRed').attr('id','discussHoverTextRed');
-        // $('#discussHoverTextRed').html("voted").fadeIn(7500);
-        // $('#discussHoverTextRed').attr('id','discussHoverTextShowGreen');
-
         $('div.suggestionContentClassRed').attr('class',freeForm.ID);
         $('div#discussHoverTextShowRed').attr('id','discussHoverTextRed');
         $('div#discussHoverTextRed').attr('id','discussHoverTextShowVoted');

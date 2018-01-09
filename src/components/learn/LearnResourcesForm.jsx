@@ -111,7 +111,7 @@ constructor(props){
                         {/*<legend>Add a Resource</legend>*/}
                             <input type="text" placeholder="resource title" id="resourceTitleForm"/>
                             <input type="text" placeholder="URL" id="resourceURLForm"/>
-                            <textarea name="suggestionText" required="required" id="resourcesTextArea" placeholder="If you would like, describe the resource or explain its purpose. " ></textarea>
+                            <textarea name="suggestionText" required="required" id="resourcesTextArea" placeholder="Please describe the resource or explain its purpose. " ></textarea>
                             <input type="button" value="Add" onClick={this.postResource} id="addSuggestion"/>
                     </fieldset>
                 </form>

@@ -38,6 +38,14 @@ export default class FullProblem extends React.Component {
         this.differentBreakdown = this.differentBreakdown.bind(this)
         this.hoverVoteNumber = this.hoverVoteNumber.bind(this)
         this.unHoverVoteNumber = this.unHoverVoteNumber.bind(this)
+        this.showActions = this.showActions.bind(this)
+        this.hideActions = this.hideActions.bind(this)
+        this.showActivity = this.showActivity.bind(this)
+        this.hideActivity = this.hideActivity.bind(this)
+        this.showInfo = this.showInfo.bind(this)
+        this.hideInfo = this.hideInfo.bind(this)
+        // this.showActivity2 = this.showActivity2.bind(this)
+        // this.showInfo2 = this.showInfo2.bind(this)
     };
 
     componentDidMount(){
@@ -183,6 +191,143 @@ unVote() {
             $('#voteProblemHover').attr('id','voteProblem');              
         });
     }
+    showActions() {
+      $(document).ready(function() {
+            $('#projectActionGroup').attr('id','projectActionGroupShow');
+            $('#projectActionButton').attr('id','buttonHide1');      
+            
+            // IF 
+            if(document.getElementById('projectInfoGroupShow')) {
+              // MOVE ACTIVITY TO LEFT
+            }
+
+        });
+    }
+    hideActions() {
+      $(document).ready(function() {
+            $('#projectActionGroupShow').attr('id','projectActionGroup');   
+            $('#buttonHide1').attr('id','projectActionButton');              
+        });
+    }
+    showActivity() {
+      $(document).ready(function() {
+            $('#projectActivityGroup').attr('id','projectActivityGroupShow');
+            $('#projectActivityButton').attr('id','buttonHide2');  
+            $('#projectActivityButton2').attr('id','buttonHide2');   
+            $('#projectMidColumnLeft').attr('id','projectMidColumnLeftStart');          
+            
+            
+            
+
+            
+            // MOVE BRIEF TO RIGHT
+            // CHANGE BRIEF ID FROM projectHide5 TO projectInfoButton2
+
+            if(document.getElementById('projectInfoGroupShow')) {
+              $('#projectActivityButton3').attr('id','buttonHide4');
+              
+            } else {
+              $('#buttonHide5').attr('id','projectInfoButton3');
+              // HIDE CURRENT BRIEF BUTTON, projectInfoButton
+              $('#projectInfoButton').attr('id','buttonHide3');
+              $('#projectInfoButton2').attr('id','buttonHide3');
+            }
+            
+
+        });
+    }
+    hideActivity() {
+      $(document).ready(function() {
+            $('#projectActivityGroupShow').attr('id','projectActivityGroup');  
+            // $('#buttonHide4').attr('id','projectActivityButton2'); 
+            $('#projectMajorButtonRowRight').attr('id','projectMajorButtonRow'); 
+
+            //  WHEN HIDE ACTIVITY, NEED TO SWITCH BRIEF BUTTON BACK TOO
+            $('#projectInfoButton3').attr('id','buttonHide5');
+            // ALSO NEED TO MAKE LINEAR BUTTON VISIBLE AGAIN
+            
+            if(document.getElementById('projectInfoGroupShow')) {
+              $('#buttonHide4').attr('id','projectActivityButton3');  
+            }
+            else {
+              $('#buttonHide3').attr('id','projectInfoButton');
+              // $('#buttonHide4').attr('id','projectActivityButton2'); 
+               
+              $('#buttonHide2').attr('id','projectActivityButton2');  
+              $('#projectMidColumnLeftStart').attr('id','projectMidColumnLeft'); 
+            }
+
+
+
+            // CURRENT PROBLEM: WHEN HIDE ACTIVITY AND RIGHT BRIEF IS UP, RESHOWS BRIEF BUTTONS
+        });
+    }
+    showInfo() {
+      $(document).ready(function() {
+            $('#projectInfoGroup').attr('id','projectInfoGroupShow');
+            $('#projectInfoButton').attr('id','buttonHide3');   
+            $('#projectInfoButton2').attr('id','buttonHide3');                 
+            // $('#projectMidColumnRight').attr('id','projectMidColumnRightStart');
+            $('#projectMajorButtonRow').attr('id','projectMajorButtonRowRight');             
+            $('#projectInfoButton3').attr('id','buttonHide5'); 
+            
+            
+
+            if(document.getElementById('projectActivityGroupShow')) {
+              
+            } else {
+              $('#buttonHide4').attr('id','projectActivityButton3');
+              // HIDE CURRENT BRIEF BUTTON, projectInfoButton
+              $('#projectActivityButton').attr('id','buttonHide4');
+              $('#projectActivityButton2').attr('id','buttonHide4');
+              $('#projectMidColumnRight').attr('id','projectMidColumnRightStart');
+            }
+
+        });
+    }
+    hideInfo() {
+      $(document).ready(function() {
+            $('#projectInfoGroupShow').attr('id','projectInfoGroup');   
+            // $('#buttonHide5').attr('id','projectInfoButton2');              
+            $('#projectMidColumnRightStart').attr('id','projectMidColumnRight');             
+        
+
+        // USE IF STATEMENT, IF ACTIVITY LABEL IS ON SCREEN, THEN ... :
+              if (document.getElementById('projectActivityGroupShow')) {
+                // ... MAKE INFO BUTTON APPEAR TO RIGHT, NOT LINEAR
+                $('#buttonHide5').attr('id','projectInfoButton3');  
+              }
+              else {
+                $('#buttonHide3').attr('id','projectInfoButton2'); 
+                $('#buttonHide4').attr('id','projectActivityButton');
+                $('#projectActivityButton3').attr('id','buttonHide4'); 
+                $('#buttonHide2').attr('id','projectActivityButton2'); 
+
+              }
+              // WHEN HIDE INFO, IF ACTIVITY IS NOT OPEN, CLOSE LEFT AND OPEN LINEAR ACTIVITY
+
+              });
+    }
+    // showActivity2() {
+    //   $(document).ready(function() {
+    //         $('#projectActivityGroup').attr('id','projectActivityGroupShow');
+    //         $('#projectActivityButton').attr('id','buttonHide2');     
+    //         $('#projectMidColumnLeft').attr('id','projectMidColumnLeftStart');          
+    //         $('#projectMajorButtonRow').attr('id','projectMajorButtonRowRight'); 
+    //         $('#projectActivityButton2').attr('id','buttonHide4'); 
+            
+            
+
+    //     });
+    // }
+    // showInfo2() {
+    //   $(document).ready(function() {
+    //         $('#projectInfoGroup').attr('id','projectInfoGroupShow');
+    //         $('#projectInfoButton2').attr('id','buttonHide5');     
+    //         $('#projectInfoButton').attr('id','buttonHide3');  
+    //         $('#projectMidColumnRight').attr('id','projectMidColumnRightStart');            
+    //     });
+    // }
 
    render() {
      
@@ -497,40 +642,76 @@ unVote() {
           <SubProjectParentUnit parentID={this.state.problemInfo.ParentID} parentType={this.state.problemInfo.ParentType} />
           {/*<ProjectParentChildrenUnitsContainer parentID={this.state.problemInfo.ParentID} problemTitle={this.state.problemInfo.Title}/>*/}
           <ProblemTitle problemTitle={this.state.problemInfo.Title} problemClass={this.state.problemInfo.Class} />
-          <div id="problemRow1">
-              <Link to={`/project/${this.props.params.probID}/questions`} activeClassName="activeProblemOptionDiscuss">
-                    <div id="SBButtonDiscuss">discuss</div>
-              </Link>
-              <div id="problemCenterColumn">
-                <Link><div id="voteProblem" onClick={this.submitVote}>
-                    vote
-                </div></Link>
-                <a href='#proposals'>
-                  <div id="SBButtonProposal" onClick={this.goToProposal}>proposals</div>
-                </a>
-                <ProblemFollowButton probID={this.props.params.probID} username={cookie.load('userName')} />
-              </div>
-              <Link to={`/project/${this.props.params.probID}/learn/resources`} activeClassName="activeProblemOptionLearn">
-                <div id="SBButtonLearn">learn</div>
-              </Link>
-          </div>
+          <div id="projectActionGroup">
+            <div id="problemRow1">
+                <Link to={`/project/${this.props.params.probID}/questions`} activeClassName="activeProblemOptionDiscuss">
+                      <div id="SBButtonDiscuss">discuss</div>
+                </Link>
+                <div id="problemCenterColumn">
+                  <Link><div id="voteProblem" onClick={this.submitVote}>
+                      vote
+                  </div></Link>
+                  <a href='#proposals'>
+                    <div id="SBButtonProposal" onClick={this.goToProposal}>proposals</div>
+                  </a>
+                  <ProblemFollowButton probID={this.props.params.probID} username={cookie.load('userName')} />
+                </div>
+                <Link to={`/project/${this.props.params.probID}/learn/resources`} activeClassName="activeProblemOptionLearn">
+                  <div id="SBButtonLearn">learn</div>
+                </Link>
+            </div>
             <div id="projectCreator">
               {this.state.problemInfo.OriginalPosterUsername}
             </div>
+            <div id="projectHideButton1" onClick={this.hideActions}>
+              <img src={require('../../assets/redX2.svg')} id="projectModuleClose1" width="18" height="18" alt="Project Tree Button, white tree"  onClick={this.hideParentList} />
+            </div>
+          </div>
+          <div id="projectMajorButtonRow">
+            <div id="projectActivityButton" onClick={this.showActivity}>
+              activity
+            </div>
+            <div id="projectActionButton" onClick={this.showActions}>
+              actions
+            </div>
+            <div id="projectInfoButton" onClick={this.showInfo}>
+              {/* or info or synopsis */}
+              brief
+            </div>
+          </div>
+          
+          
 
             <div id="projectMidColumnContainer">
-              <div id="projectMidColumnLeft">
-                <ProjectActivity />
-                {/* New Component in here, so IF statement can be used, & for list */}
-              </div>
-              <div id="projectMidColumnRight">
-                <div id="projectPercent" onClick={this.submitVote} onMouseOver={this.hoverVoteNumber} onMouseOut={this.unHoverVoteNumber}>
-                  {this.state.problemInfo.Rank}
+              <div id="projectMidColumnLeftStart">
+                <div id="projectActivityGroup">
+                  <ProjectActivity />
+                  <div id="projectHideButton2" onClick={this.hideActivity}>
+                    <img src={require('../../assets/redX2.svg')} id="projectModuleClose2" width="22" height="22" alt="Project Tree Button, white tree"  onClick={this.hideParentList} />
+                  </div>
                 </div>
-                <div id="fullProblem">
-                  <p id="problemSummary">
-                    {this.state.problemInfo.Summary}
-                  </p>
+                <div id="buttonHide4" onClick={this.showActivity}>
+                  activity
+                </div>
+                {/* New Component in here, so IF statement can be used, & for list */}
+                {/* What is above comment for? */}
+              </div>
+              <div id="projectMidColumnRightStart">
+                <div id="projectInfoGroup">
+                  <div id="projectPercent" onClick={this.submitVote} onMouseOver={this.hoverVoteNumber} onMouseOut={this.unHoverVoteNumber}>
+                    {this.state.problemInfo.Rank}
+                  </div>
+                  <div id="fullProblem">
+                    <p id="problemSummary">
+                      {this.state.problemInfo.Summary}
+                    </p>
+                  </div>
+                  <div id="projectHideButton3" onClick={this.hideInfo}>
+                    <img src={require('../../assets/redX2.svg')} id="projectModuleClose3" width="18" height="18" alt="Project Tree Button, white tree"  onClick={this.hideParentList} />
+                  </div>
+                </div>
+                <div id="buttonHide5" onClick={this.showInfo}>
+                  brief
                 </div>
                 </div>
               </div>
@@ -541,11 +722,6 @@ unVote() {
             {React.cloneElement(<ProblemSolutionsMenu probID={this.props.params.probID} projectTitle={this.state.problemInfo.Title} />)}
           </ScrollableAnchor>
 
-        {/*<div id="tutorialProblemButtonDiv">
-          <img src={require('../../assets/tutorial.svg')} id="tutorialProblemButton" width="50" height="50" alt="Back arrow, blue up arrow" />
-        </div>*/}
-        
-        {/* <TutorialProjectContent /> */}
         </ReactCSSTransitionGroup>
       </div>
       );
