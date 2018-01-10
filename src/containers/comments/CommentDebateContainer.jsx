@@ -71,31 +71,29 @@ export default class CommentDebateContainer extends React.Component {
         return (
             <div id="answerContainer">
                 <div id="answerQuestionHeader">
-                    <Link to={`/project/${this.props.params.probID}/proposal/${this.props.params.freeFormID}/freeforms`}>
+                    <Link to={`/project/${this.props.params.probID}/proposal/${this.props.params.solutionID}/freeforms`}>
                         <div id="backSolutionArrowDiv">
                             <img src={require('../../assets/upArrow.svg')} id="backSolutionArrow" width="50" height="30" alt="Back arrow, blue up arrow" />
                         </div>
                     </Link>
                     <div id="answerQuestionLabel">return to debates</div>
                 </div>
-                {/*Suggestion being commented on*/}
-                <div id="answerQuestionUnit">
-                    <div id="answerQuestionContent">
-                        <div id="discussHeader">
-                            <span id="discussPercent">
-                                {floatToDecimal(this.state.debate.PercentRank)}
-                            </span>
-                            {this.state.debate.Username}
-                        </div>
-                        <div id="suggestionText">
-                            {this.state.debate.Description}
+                {/*Element being commented on*/}
+                <Link to={`/project/${this.props.params.probID}/proposal/${this.props.params.solutionID}/freeforms`}>
+                    <div id="answerQuestionUnit">
+                        <div id="answerQuestionContent">
+                            <div id="discussHeader">
+                                <span id="discussPercent">
+                                    {floatToDecimal(this.state.debate.PercentRank)}
+                                </span>
+                                {this.state.debate.Username}
+                            </div>
+                            <div id="suggestionText">
+                                {this.state.debate.Description}
+                            </div>
                         </div>
                     </div>
-                    {/*<button type="button" onClick={submitVote} id="suggestionVote">
-                        Vote
-                    </button> */}
-                    {/* <br /><br />  */}
-                </div>
+                </Link>
                 {this.props.children}
                 <CommentProposalUnit comments={this.state.comments} probID={this.props.params.probID} solutionID={this.props.params.solutionID} suggID={this.props.params.freeFormID} commentID={this.props.params.commentID} />
             </div>);
@@ -113,24 +111,20 @@ export default class CommentDebateContainer extends React.Component {
                     </Link>
                     <div id="answerQuestionLabel">return to debates</div>
                 </div>
-                {/*Suggestion being commented on*/}
+                {/*Element being commented on*/}
                 <Link to={`/project/${this.props.params.probID}/freeforms`}>
-                <div id="answerQuestionUnit">
-                    <div id="answerQuestionContent">
-                        <div id="discussHeader">
-                            <span id="discussPercent">
-                                {floatToDecimal(this.state.debate.PercentRank)}
-                            </span>
-                            {this.state.debate.Username}
+                    <div id="answerQuestionUnit">
+                        <div id="answerQuestionContent">
+                            <div id="discussHeader">
+                                <span id="discussPercent">
+                                    {floatToDecimal(this.state.debate.PercentRank)}
+                                </span>
+                                {this.state.debate.Username}
+                            </div>
+                            <div id="suggestionText">
+                                {this.state.debate.Description}
+                            </div>
                         </div>
-                        <div id="suggestionText">
-                            {this.state.debate.Description}
-                        </div>
-                    </div>
-                    {/* <button type="button" onClick={submitVote} id="suggestionVote">
-                        Vote
-                    </button>
-                    <br /><br />  */}
                     </div>
                 </Link>
                 {this.props.children}

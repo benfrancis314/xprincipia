@@ -118,22 +118,22 @@ export default class FreeFormUnit extends React.Component {
            return (
        <li key={freeForm.ID} id="suggestionUnit">
 				<div id="suggestionContentHoverVote" className={freeForm.ID}>
-                    <Link to={`/project/${this.props.probID}/proposal/${freeForm.TypeID}/freeform/${freeForm.ID}/comments`}>
+                    <Link to={`/project/${this.props.probID}/proposal/${freeForm.TypeID}/debate/${freeForm.ID}/comments`}>
                         <div id="debateThreadButton" onMouseOver={hoverThreadVoted} onMouseOut={unHoverThreadVoted}>
                             <img src={require('../../assets/list4.svg')} id="debateThreadLogo" width="50" height="50" alt="Delete Button, Red X" />
                         </div>
                     </Link>
-                    <Link to={`/project/${this.props.probID}/proposal/${freeForm.TypeID}/freeform/${freeForm.ID}/edit`}>
+                    <Link to={`/project/${this.props.probID}/proposal/${freeForm.TypeID}/debate/${freeForm.ID}/edit`}>
                         <div id="editDiscussButton" onMouseOver={hoverEditVoted} onMouseOut={unHoverEditVoted}>
                             <img src={require('../../assets/editBlue.svg')} id="editLogo" width="18" height="18" alt="Edit Button" />
                         </div>
                     </Link>
-                    <Link to={`/project/${this.props.probID}/proposal/${freeForm.TypeID}/freeform/${freeForm.ID}/delete`}>
+                    <Link to={`/project/${this.props.probID}/proposal/${freeForm.TypeID}/debate/${freeForm.ID}/delete`}>
                         <div id="deleteDiscussButton" onMouseOver={hoverDeleteVoted} onMouseOut={unHoverDeleteVoted}>
                             <img src={require('../../assets/delete.svg')} id="editLogo" width="18" height="18" alt="Delete Button" />
                         </div>
                     </Link>
-                    <Link to={`/project/${this.props.probID}/proposal/${freeForm.TypeID}/freeform/${freeForm.ID}/comments`}>
+                    <Link to={`/project/${this.props.probID}/proposal/${freeForm.TypeID}/debate/${freeForm.ID}/comments`}>
                         <div id="numberDiscussButton" onMouseOver={hoverThreadVoted} onMouseOut={unHoverThreadVoted}>
                             {this.state.debateNumber[freeForm.ID]}
                         </div>
@@ -154,22 +154,22 @@ export default class FreeFormUnit extends React.Component {
         return (
        <li key={freeForm.ID} id="suggestionUnit">
 				<div id={'suggestionContent'} className={freeForm.ID}>
-                    <Link to={`/project/${this.props.probID}/proposal/${freeForm.TypeID}/freeform/${freeForm.ID}/comments`}>
+                    <Link to={`/project/${this.props.probID}/proposal/${freeForm.TypeID}/debate/${freeForm.ID}/comments`}>
                         <div id="debateThreadButton" onMouseOver={hoverThread} onMouseOut={unHoverThread}>
                             <img src={require('../../assets/list4.svg')} id="debateThreadLogo" width="50" height="50" alt="Delete Button, Red X" />
                         </div>
                     </Link>
-                    <Link to={`/project/${this.props.probID}/proposal/${freeForm.TypeID}/freeform/${freeForm.ID}/edit`}>
+                    <Link to={`/project/${this.props.probID}/proposal/${freeForm.TypeID}/debate/${freeForm.ID}/edit`}>
                         <div id="editDiscussButton" onMouseOver={hoverEdit} onMouseOut={unHoverEdit}>
                             <img src={require('../../assets/editBlue.svg')} id="editLogo" width="18" height="18" alt="Edit Button" />
                         </div>
                     </Link>
-                    <Link to={`/project/${this.props.probID}/proposal/${freeForm.TypeID}/freeform/${freeForm.ID}/delete`}>
+                    <Link to={`/project/${this.props.probID}/proposal/${freeForm.TypeID}/debate/${freeForm.ID}/delete`}>
                         <div id="deleteDiscussButton" onMouseOver={hoverDelete} onMouseOut={unHoverDelete}>
                             <img src={require('../../assets/delete.svg')} id="editLogo" width="18" height="18" alt="Delete Button" />
                         </div>
                     </Link>
-                    <Link to={`/project/${this.props.probID}/proposal/${freeForm.TypeID}/freeform/${freeForm.ID}/comments`}>
+                    <Link to={`/project/${this.props.probID}/proposal/${freeForm.TypeID}/debate/${freeForm.ID}/comments`}>
                         <div id="numberDiscussButton" onMouseOver={hoverThread} onMouseOut={unHoverThread}>
                             {this.state.debateNumber[freeForm.ID]}
                         </div>
@@ -188,17 +188,17 @@ export default class FreeFormUnit extends React.Component {
         return (
        <li key={freeForm.ID} id="suggestionUnit">
 				<div id="suggestionContentHoverVote" className={freeForm.ID}>
-                    <Link to={`/project/${this.props.probID}/proposal/${freeForm.TypeID}/freeform/${freeForm.ID}/comments`}>
+                    <Link to={`/project/${this.props.probID}/proposal/${freeForm.TypeID}/debate/${freeForm.ID}/comments`}>
                         <div id="debateThreadButton" onMouseOver={hoverThreadVoted} onMouseOut={unHoverThreadVoted}>
                             <img src={require('../../assets/list4.svg')} id="debateThreadLogo" width="50" height="50" alt="Delete Button, Red X" />
                         </div>
                     </Link>
-                    <Link to={`/project/${this.props.probID}/proposal/${freeForm.TypeID}/freeform/${freeForm.ID}/flag`}>
+                    <Link to={`/project/${this.props.probID}/proposal/${freeForm.TypeID}/debate/${freeForm.ID}/flag`}>
                         <div id="flagDiscussButton" onMouseOver={hoverFlagVoted} onMouseOut={unHoverFlagVoted}>
                             <img src={require('../../assets/flag.svg')} id="deleteLogo" width="24" height="24" alt="Delete Button, Red X" />
                         </div>
                     </Link>
-                    <Link to={`/project/${this.props.probID}/proposal/${freeForm.TypeID}/freeform/${freeForm.ID}/comments`}>
+                    <Link to={`/project/${this.props.probID}/proposal/${freeForm.TypeID}/debate/${freeForm.ID}/comments`}>
                         <div id="numberDiscussButton" onMouseOver={hoverThreadVoted} onMouseOut={unHoverThreadVoted}>
                             {this.state.debateNumber[freeForm.ID]}
                         </div>
@@ -220,17 +220,17 @@ export default class FreeFormUnit extends React.Component {
     return (
        <li key={freeForm.ID} id="suggestionUnit">
             <div id={'suggestionContent'} className={freeForm.ID}>
-                <Link to={`/project/${this.props.probID}/proposal/${freeForm.TypeID}/freeform/${freeForm.ID}/comments`}>
+                <Link to={`/project/${this.props.probID}/proposal/${freeForm.TypeID}/debate/${freeForm.ID}/comments`}>
                     <div id="debateThreadButton" onMouseOver={hoverThread} onMouseOut={unHoverThread}>
                         <img src={require('../../assets/list4.svg')} id="debateThreadLogo" width="50" height="50" alt="Delete Button, Red X" />
                     </div>
                 </Link>
-                <Link to={`/project/${this.props.probID}/proposal/${freeForm.TypeID}/freeform/${freeForm.ID}/flag`}>
+                <Link to={`/project/${this.props.probID}/proposal/${freeForm.TypeID}/debate/${freeForm.ID}/flag`}>
                     <div id="flagDiscussButton" onMouseOver={hoverFlag} onMouseOut={unHoverFlag}>
                         <img src={require('../../assets/flag.svg')} id="deleteLogo" width="24" height="24" alt="Delete Button, Red X" />
                     </div>
                 </Link>
-                <Link to={`/project/${this.props.probID}/proposal/${freeForm.TypeID}/freeform/${freeForm.ID}/comments`}>
+                <Link to={`/project/${this.props.probID}/proposal/${freeForm.TypeID}/debate/${freeForm.ID}/comments`}>
                     <div id="numberDiscussButton" onMouseOver={hoverThread} onMouseOut={unHoverThread}>
                         {this.state.debateNumber[freeForm.ID]}
                     </div>

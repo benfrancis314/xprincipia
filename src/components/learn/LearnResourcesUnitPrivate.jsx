@@ -150,7 +150,7 @@ export default class LearnResourcesUnit1 extends React.Component {
                             {resource.Title}
                         </div>
                         <div id="resourceURLText">
-                            <a href={url(resource.Description)} target="_blank">
+                            <a href={url(resource.Summary)} target="_blank">
                                 {resource.Summary}
                             </a>
                         </div>
@@ -194,7 +194,7 @@ export default class LearnResourcesUnit1 extends React.Component {
                             {resource.Title}
                         </div>
                         <div id="resourceURLText">
-                            <a href={url(resource.Description)} target="_blank">
+                            <a href={url(resource.Summary)} target="_blank">
                                 {resource.Summary}
                             </a>
                         </div>
@@ -235,7 +235,7 @@ export default class LearnResourcesUnit1 extends React.Component {
                             {resource.Title}
                         </div>
                         <div id="resourceURLText">
-                            <a href={url(resource.Description)} target="_blank">
+                            <a href={url(resource.Summary)} target="_blank">
                                 {resource.Summary}
                             </a>
                         </div>
@@ -275,7 +275,7 @@ export default class LearnResourcesUnit1 extends React.Component {
                         {resource.Title}
                     </div>
                     <div id="resourceURLText">
-                        <a href={url(resource.Description)} target="_blank">
+                        <a href={url(resource.Summary)} target="_blank">
                             {resource.Summary}
                         </a>
                     </div>

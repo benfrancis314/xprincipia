@@ -134,7 +134,7 @@ export default class LearnContentUnit1 extends React.Component {
                         </div>
                     </Link>
                     <Link to={`/project/${learnItem.TypeID}/learn/content/${learnItem.ID}/comments`}>
-                        <div id="numberDiscussButton" onMouseOver={hoverThreadVoted} onMouseOut={unHoverThreadVoted}>
+                        <div id="numberLearnButton" onMouseOver={hoverThreadVoted} onMouseOut={unHoverThreadVoted}>
                             {this.state.debateNumber[learnItem.ID]}
                         </div>
                     </Link>
@@ -178,7 +178,7 @@ export default class LearnContentUnit1 extends React.Component {
                         </div>
                     </Link>
                     <Link to={`/project/${learnItem.TypeID}/learn/content/${learnItem.ID}/comments`}>
-                        <div id="numberDiscussButton" onMouseOver={hoverThreadVoted} onMouseOut={unHoverThreadVoted}>
+                        <div id="numberLearnButton" onMouseOver={hoverThreadVoted} onMouseOut={unHoverThreadVoted}>
                             {this.state.debateNumber[learnItem.ID]}
                         </div>
                     </Link>
@@ -217,7 +217,7 @@ export default class LearnContentUnit1 extends React.Component {
                         </div>
                     </Link>
                     <Link to={`/project/${learnItem.TypeID}/learn/content/${learnItem.ID}/comments`}>
-                        <div id="numberDiscussButton" onMouseOver={hoverThreadVoted} onMouseOut={unHoverThreadVoted}>
+                        <div id="numberLearnButton" onMouseOver={hoverThreadVoted} onMouseOut={unHoverThreadVoted}>
                             {this.state.debateNumber[learnItem.ID]}
                         </div>
                     </Link>
@@ -258,7 +258,7 @@ export default class LearnContentUnit1 extends React.Component {
                     </div>
                 </Link>
                 <Link to={`/project/${learnItem.TypeID}/learn/content/${learnItem.ID}/comments`}>
-                    <div id="numberDiscussButton" onMouseOver={hoverThreadVoted} onMouseOut={unHoverThreadVoted}>
+                    <div id="numberLearnButton" onMouseOver={hoverThreadVoted} onMouseOut={unHoverThreadVoted}>
                         {this.state.debateNumber[learnItem.ID]}
                     </div>
                 </Link>

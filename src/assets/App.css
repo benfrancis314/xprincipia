@@ -994,7 +994,7 @@ letter-spacing: 2px !important;
   flex: 3 3 auto;
   font-family: 'Open Sans';
   border: 1px solid #00dcff;
-  border-radius: 5px 0px 25% 10px;
+  border-radius: 5px 3px 25% 10px;
   width: 90%;
   padding: 1% 5% 1% 5%;
   margin-bottom: 1.1%;
@@ -4483,6 +4483,9 @@ font-family: 'Open Sans';
   width: 90%;
   margin: 0 auto;
 }
+#prosConsContainer {
+  margin-top: 2%;
+}
 /* Attempt to get desired changes in CSS using parent selectors */
 /* #suggestionContent > #debateThreadButton {
   background-color: rgba(0,220,255,0.05) !important;
@@ -4509,7 +4512,7 @@ font-family: 'Open Sans';
   flex: 3 3 auto;
   font-family: 'Open Sans';
   border: 1px solid #dddddd;
-  border-radius: 5px 0px 25% 10px;
+  border-radius: 5px 3px 25% 10px;
   width: 80%;
   padding: 1% 5% 1% 5%;
   margin-bottom: 1.1%;
@@ -4522,7 +4525,7 @@ font-family: 'Open Sans';
   flex: 3 3 auto;
   font-family: 'Open Sans';
   border: 1px solid #dddddd;
-  border-radius: 5px 0px 25% 10px;
+  border-radius: 5px 3px 25% 10px;
   width: 80%;
   padding: 1% 5% 1% 5%;
   margin-bottom: 1.1%;
@@ -4544,7 +4547,7 @@ font-family: 'Open Sans';
   flex: 3 3 auto;
   font-family: 'Open Sans';
   border: 1px solid #dddddd;
-  border-radius: 5px 0px 25% 10px;
+  border-radius: 5px 3px 25% 10px;
   width: 80%;
   padding: 1% 5% 1% 5%;
   margin-bottom: 1.1%;
@@ -4552,13 +4555,11 @@ font-family: 'Open Sans';
   position: relative;
   transition: all 0.5s ease 0s;
 }
-#suggestionText {
+#suggestionText, #suggestionTextCaps {
   /*Old Styles*/
-  /*font-family: 'Open Sans';
-  margin: 7px;
+  /* margin: 7px;
   margin-top: 10px;
-  font-size: 115%;
-  line-height: 150%;*/
+  font-size: 115%; */
 
   line-height: 150%;
   font-family: 'Open Sans' !important;
@@ -4572,8 +4573,15 @@ font-family: 'Open Sans';
   width: 82%;
   white-space: pre-wrap !important;
 }
-#suggestionText:hover {
+#suggestionText:hover, #suggestionTextCaps:hover {
   cursor: pointer;
+}
+#suggestionTextCaps {
+  /* text-transform: lowercase !important; */
+  font-family: 'Alegreya Sans SC' !important;
+  font-size: 195%;
+  letter-spacing: 2px;
+  line-height: 125%;
 }
 #suggestionVote, #suggestionVoteNoComments {
   flex: 1 1 auto;
@@ -5894,8 +5902,8 @@ box-shadow: 0 0 2pt 2pt rgba(0,220,255,0.5);
 }
 #debateThreadButton:hover {
   cursor: pointer;
-  transform: scale(1.1) rotate(90deg);
-  /* top: 8%; */
+  /* transform: scale(1.1) rotate(90deg); */
+  transform: scale(0.9) rotate(90deg);
   top: 3px;
 }
 #flagDiscussButton {
@@ -5946,9 +5954,9 @@ box-shadow: 0 0 2pt 2pt rgba(0,220,255,0.5);
   transform: scale(1.2);
   cursor: pointer;
 }
-#numberDiscussButton {
+#numberDiscussButton, #numberLearnButton {
   position: absolute;
-  bottom: 0px;
+  bottom: 2.5%;
   right: 63px;
   padding: 4px 10px 10px 3px;
   color: #00dcff;
@@ -5959,7 +5967,10 @@ box-shadow: 0 0 2pt 2pt rgba(0,220,255,0.5);
   background-color: rgba(0,220,255,0);
   background: radial-gradient(circle , rgba(0,220,255,0.05), rgba(0,220,255,0), rgba(0,220,255,0));
 }
-#numberDiscussButton:hover {
+#numberLearnButton {
+  bottom: 4%;
+}
+#numberDiscussButton:hover, #numberLearnButton:hover {
   opacity: 1;
   transform: scale(1.2);
   cursor: pointer;

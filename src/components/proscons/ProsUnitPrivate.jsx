@@ -118,22 +118,22 @@ export default class ProsUnit extends React.Component {
            return (
        <li key={pro.ID} id="prosConsUnit">
 				<div id="suggestionContentHoverVote" className={pro.ID}>
-                    <Link to={`/project/private/${this.props.probID}/${pro.TypeID}/pros/${pro.ID}/comments`}>
+                    <Link to={`/project/private/${this.props.probID}/proposal/${pro.TypeID}/pros/${pro.ID}/comments`}>
                         <div id="debateThreadButton" onMouseOver={hoverThreadVoted} onMouseOut={unHoverThreadVoted}>
                             <img src={require('../../assets/list4.svg')} id="debateThreadLogo" width="50" height="50" alt="Delete Button, Red X" />
                         </div>
                     </Link>
-                    <Link to={`/project/private/${this.props.probID}/${pro.TypeID}/pros/${pro.ID}/edit`}>
+                    <Link to={`/project/private/${this.props.probID}/proposal/${pro.TypeID}/pros/${pro.ID}/edit`}>
                         <div id="editDiscussButton" onMouseOver={hoverEditVoted} onMouseOut={unHoverEditVoted}>
                             <img src={require('../../assets/editBlue.svg')} id="editLogo" width="18" height="18" alt="Edit Button" />
                         </div>
                     </Link>
-                    <Link to={`/project/private/${this.props.probID}/${pro.TypeID}/pros/${pro.ID}/delete`}>
+                    <Link to={`/project/private/${this.props.probID}/proposal/${pro.TypeID}/pros/${pro.ID}/delete`}>
                         <div id="deleteDiscussButton" onMouseOver={hoverDeleteVoted} onMouseOut={unHoverDeleteVoted}>
                             <img src={require('../../assets/delete.svg')} id="editLogo" width="18" height="18" alt="Delete Button" />
                         </div>
                     </Link>
-                    <Link to={`/project/private/${this.props.probID}/${pro.TypeID}/pros/${pro.ID}/comments`}>
+                    <Link to={`/project/private/${this.props.probID}/proposal/${pro.TypeID}/pros/${pro.ID}/comments`}>
                         <div id="numberDiscussButton" onMouseOver={hoverThreadVoted} onMouseOut={unHoverThreadVoted}>
                             {this.state.debateNumber[pro.ID]}
                         </div>
@@ -154,22 +154,22 @@ export default class ProsUnit extends React.Component {
         return (
        <li key={pro.ID} id="prosConsUnit">
 				<div id={'suggestionContent'} className={pro.ID}>
-                    <Link to={`/project/private/${this.props.probID}/${pro.TypeID}/pros/${pro.ID}/comments`}>
+                    <Link to={`/project/private/${this.props.probID}/proposal/${pro.TypeID}/pros/${pro.ID}/comments`}>
                         <div id="debateThreadButton" onMouseOver={hoverThread} onMouseOut={unHoverThread}>
                             <img src={require('../../assets/list4.svg')} id="debateThreadLogo" width="50" height="50" alt="Delete Button, Red X" />
                         </div>
                     </Link>
-                    <Link to={`/project/private/${this.props.probID}/${pro.TypeID}/pros/${pro.ID}/edit`}>
+                    <Link to={`/project/private/${this.props.probID}/proposal/${pro.TypeID}/pros/${pro.ID}/edit`}>
                         <div id="editDiscussButton" onMouseOver={hoverEdit} onMouseOut={unHoverEdit}>
                             <img src={require('../../assets/editBlue.svg')} id="editLogo" width="18" height="18" alt="Edit Button" />
                         </div>
                     </Link>
-                    <Link to={`/project/private/${this.props.probID}/${pro.TypeID}/pros/${pro.ID}/delete`}>
+                    <Link to={`/project/private/${this.props.probID}/proposal/${pro.TypeID}/pros/${pro.ID}/delete`}>
                         <div id="deleteDiscussButton" onMouseOver={hoverDelete} onMouseOut={unHoverDelete}>
                             <img src={require('../../assets/delete.svg')} id="editLogo" width="18" height="18" alt="Delete Button" />
                         </div>
                     </Link>
-                    <Link to={`/project/private/${this.props.probID}/${pro.TypeID}/pros/${pro.ID}/comments`}>
+                    <Link to={`/project/private/${this.props.probID}/proposal/${pro.TypeID}/pros/${pro.ID}/comments`}>
                         <div id="numberDiscussButton" onMouseOver={hoverThread} onMouseOut={unHoverThread}>
                             {this.state.debateNumber[pro.ID]}
                         </div>
@@ -188,17 +188,17 @@ export default class ProsUnit extends React.Component {
         return (
        <li key={pro.ID} id="prosConsUnit">
 				<div id="suggestionContentHoverVote" className={pro.ID}>
-                    <Link to={`/project/private/${this.props.probID}/${pro.TypeID}/pros/${pro.ID}/comments`}>
+                    <Link to={`/project/private/${this.props.probID}/proposal/${pro.TypeID}/pros/${pro.ID}/comments`}>
                         <div id="debateThreadButton" onMouseOver={hoverThreadVoted} onMouseOut={unHoverThreadVoted}>
                             <img src={require('../../assets/list4.svg')} id="debateThreadLogo" width="50" height="50" alt="Delete Button, Red X" />
                         </div>
                     </Link>
-                    <Link to={`/project/private/${this.props.probID}/${pro.TypeID}/pros/${pro.ID}/flag`}>
+                    <Link to={`/project/private/${this.props.probID}/proposal/${pro.TypeID}/pros/${pro.ID}/flag`}>
                         <div id="flagDiscussButton" onMouseOver={hoverFlagVoted} onMouseOut={unHoverFlagVoted}>
                             <img src={require('../../assets/flag.svg')} id="deleteLogo" width="24" height="24" alt="Delete Button, Red X" />
                         </div>
                     </Link>
-                    <Link to={`/project/private/${this.props.probID}/${pro.TypeID}/pros/${pro.ID}/comments`}>
+                    <Link to={`/project/private/${this.props.probID}/proposal/${pro.TypeID}/pros/${pro.ID}/comments`}>
                         <div id="numberDiscussButton" onMouseOver={hoverThreadVoted} onMouseOut={unHoverThreadVoted}>
                             {this.state.debateNumber[pro.ID]}
                         </div>
@@ -220,17 +220,17 @@ export default class ProsUnit extends React.Component {
     return (
        <li key={pro.ID} id="prosConsUnit">
             <div id={'suggestionContent'} className={pro.ID}>
-                <Link to={`/project/private/${this.props.probID}/${pro.TypeID}/pros/${pro.ID}/comments`}>
+                <Link to={`/project/private/${this.props.probID}/proposal/${pro.TypeID}/pros/${pro.ID}/comments`}>
                     <div id="debateThreadButton" onMouseOver={hoverThread} onMouseOut={unHoverThread}>
                         <img src={require('../../assets/list4.svg')} id="debateThreadLogo" width="50" height="50" alt="Delete Button, Red X" />
                     </div>
                 </Link>
-                <Link to={`/project/private/${this.props.probID}/${pro.TypeID}/pros/${pro.ID}/flag`}>
+                <Link to={`/project/private/${this.props.probID}/proposal/${pro.TypeID}/pros/${pro.ID}/flag`}>
                     <div id="flagDiscussButton" onMouseOver={hoverFlag} onMouseOut={unHoverFlag}>
                         <img src={require('../../assets/flag.svg')} id="deleteLogo" width="24" height="24" alt="Delete Button, Red X" />
                     </div>
                 </Link>
-                <Link to={`/project/private/${this.props.probID}/${pro.TypeID}/pros/${pro.ID}/comments`}>
+                <Link to={`/project/private/${this.props.probID}/proposal/${pro.TypeID}/pros/${pro.ID}/comments`}>
                     <div id="numberDiscussButton" onMouseOver={hoverThread} onMouseOut={unHoverThread}>
                         {this.state.debateNumber[pro.ID]}
                     </div>

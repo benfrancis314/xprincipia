@@ -7,7 +7,7 @@ import SideBarMore from '../../components/SideBarMore.jsx';
 import {Config} from '../../config.js';
 import $ from 'jquery';
 
-export default class CommentDebateContainer extends React.Component {
+export default class CommentProContainer extends React.Component {
    constructor(props){
         super(props);
 
@@ -21,12 +21,12 @@ export default class CommentDebateContainer extends React.Component {
         componentDidMount(){
         var self = this;
         // Need to do & in URL query with parentType also
-         axios.get( Config.API + '/comments/parentType?id='+this.props.params.answerID+'&parentType=4').then(function (response) {
+         axios.get( Config.API + '/comments/parentType?id='+this.props.params.proID+'&parentType=9').then(function (response) {
             self.setState({
                 comments: response.data,
             })
         })  
-        axios.get( Config.API + '/answers/ID?id='+this.props.params.answerID).then(function (response) {
+        axios.get( Config.API + '/pros/ID?id='+this.props.params.proID).then(function (response) {
             self.setState({
                 debate: response.data
             })
@@ -34,12 +34,12 @@ export default class CommentDebateContainer extends React.Component {
     }
   componentWillReceiveProps(nextProps){
     var self = this;
-        axios.get( Config.API + '/comments/parentType?id='+nextProps.params.answerID+'&parentType=4').then(function (response) {
+        axios.get( Config.API + '/comments/parentType?id='+nextProps.params.proID+'&parentType=9').then(function (response) {
             self.setState({
                 comments: response.data,
             })
         })  
-        axios.get( Config.API + '/answers/ID?id='+nextProps.params.answerID).then(function (response) {
+        axios.get( Config.API + '/pros/ID?id='+nextProps.params.proID).then(function (response) {
             self.setState({
               debate: response.data
             })
@@ -67,53 +67,19 @@ export default class CommentDebateContainer extends React.Component {
  
    render() {
 
-    if (this.props.params.solutionID){
         return (
-            <div id="answerContainer">
+            <div id="prosConsContainer">
                 <div id="answerQuestionHeader">
-                    <Link to={`/project/${this.props.params.probID}/proposal/${this.props.params.solutionID}/question/${this.props.params.questID}/answers`}>
+                    <Link to={`/project/private/${this.props.params.probID}/proposal/${this.props.params.solutionID}/pros/${this.props.params.proID}/container`}>
                         <div id="backSolutionArrowDiv">
                             <img src={require('../../assets/upArrow.svg')} id="backSolutionArrow" width="50" height="30" alt="Back arrow, blue up arrow" />
                         </div>
                     </Link>
-                    <div id="answerQuestionLabel">return to answers</div>
+                    <div id="answerQuestionLabel">return to pros</div>
                 </div>
                 {/*Element being commented on*/}
-                <Link to={`/project/${this.props.params.probID}/proposal/${this.props.params.solutionID}/question/${this.props.params.questID}/answers`}>
-                    <div id="answerQuestionUnit">
-                        <div id="answerQuestionContent">
-                            <div id="discussHeader">
-                                <span id="discussPercent">
-                                    {floatToDecimal(this.state.debate.PercentRank)}
-                                </span>
-                                {this.state.debate.Username}
-                            </div>
-                            <div id="suggestionText">
-                                {this.state.debate.Description}
-                            </div>
-                        </div>
-                    </div>
-                </Link>
-                {this.props.children}
-                <CommentProposalUnit comments={this.state.comments} probID={this.props.params.probID} solutionID={this.props.params.solutionID} suggID={this.props.params.answerID} commentID={this.props.params.commentID} />
-            </div>);
-
-
-
-    } else {
-        return (
-            <div id="answerContainer">
-                <div id="answerQuestionHeader">
-                    <Link to={`/project/${this.props.params.probID}/question/${this.props.params.questID}/answers`}>
-                        <div id="backSolutionArrowDiv">
-                            <img src={require('../../assets/upArrow.svg')} id="backSolutionArrow" width="50" height="30" alt="Back arrow, blue up arrow" />
-                        </div>
-                    </Link>
-                    <div id="answerQuestionLabel">return to answers</div>
-                </div>
-                {/*Element being commented on*/}
-                <Link to={`/project/${this.props.params.probID}/question/${this.props.params.questID}/answers`}>
-                    <div id="answerQuestionUnit">
+                <Link to={`/project/private/${this.props.params.probID}/proposal/${this.props.params.solutionID}/pros/${this.props.params.proID}/container`}>
+                    <div id="prosConsUnit">
                         <div id="answerQuestionContent">
                             <div id="discussHeader">
                                 <span id="discussPercent">
@@ -133,7 +99,6 @@ export default class CommentDebateContainer extends React.Component {
         );
     }
   }
-}
 function floatToDecimal(float) {
 	return Math.round(float*100)+'%';
 };

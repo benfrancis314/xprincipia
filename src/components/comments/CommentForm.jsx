@@ -30,6 +30,7 @@ postComment() {
       username: cookie.load('userName'),
       description : this.state.comment,
       typeID: this.props.params.probID,
+      private: '0',
     })
     .then(function (result) {
       document.location = window.location.pathname 
@@ -50,15 +51,44 @@ postComment() {
                   }
               });
           });
+    } else if (this.props.params.answerID) {
+      axios.post( Config.API + '/auth/comments/create', {
+      type:'5',
+      parentID: this.props.params.answerID,
+      parentType: '4',
+      username: cookie.load('userName'),
+      description : this.state.comment,
+      typeID: this.props.params.probID,
+      private: '0',
+    })
+    .then(function (result) {
+      document.location = window.location.pathname; 
+    })
+          .catch(function (error) {
+              $(document).ready(function() {
+                  $('#notification').attr('id','notificationShow').hide().slideDown();
+
+                    if (error.response.data == '[object Object]') {
+                      return (
+                        $(document).ready(function() {
+                          $('#notificationLoginRegisterContainer').attr('id','notificationLoginRegisterContainerShow');
+                          $('#notificationContent').html('Please <span id="blue">login </span>to add a comment');
+                        })
+                      );
+                    }  else if (error.response.data != '') {
+                  $('#notificationContent').text(error.response.data);
+                  }
+              });
+          });
   } else if (this.props.params.freeFormID) {
         axios.post( Config.API + '/auth/comments/create', {
         type:'5',
-        // suggestionID: this.props.params.suggID,
         parentID: this.props.params.freeFormID,
         parentType: '6',
         username: cookie.load('userName'),
         description : this.state.comment,
         typeID: this.props.params.probID,
+        private: '0',
       })
       .then(function (result) {
         document.location = window.location.pathname; 
@@ -79,15 +109,131 @@ postComment() {
                     }
                 });
             });
+    } else if (this.props.params.learnItemID) {
+      axios.post( Config.API + '/auth/comments/create', {
+      type:'5',
+      parentID: this.props.params.learnItemID,
+      parentType: '7',
+      username: cookie.load('userName'),
+      description : this.state.comment,
+      typeID: this.props.params.probID,
+      private: '0',
+    })
+    .then(function (result) {
+      document.location = window.location.pathname; 
+    })
+          .catch(function (error) {
+              $(document).ready(function() {
+                  $('#notification').attr('id','notificationShow').hide().slideDown();
+  
+                    if (error.response.data == '[object Object]') {
+                      return (
+                        $(document).ready(function() {
+                          $('#notificationLoginRegisterContainer').attr('id','notificationLoginRegisterContainerShow');
+                          $('#notificationContent').html('Please <span id="blue">login </span>to add a comment');
+                        })
+                      );
+                    }  else if (error.response.data != '') {
+                  $('#notificationContent').text(error.response.data);
+                  }
+              });
+          });
+    } else if (this.props.params.resourceID) {
+      axios.post( Config.API + '/auth/comments/create', {
+      type:'5',
+      parentID: this.props.params.resourceID,
+      parentType: '8',
+      username: cookie.load('userName'),
+      description : this.state.comment,
+      typeID: this.props.params.probID,
+      private: '0',
+    })
+    .then(function (result) {
+      document.location = window.location.pathname; 
+    })
+          .catch(function (error) {
+              $(document).ready(function() {
+                  $('#notification').attr('id','notificationShow').hide().slideDown();
+  
+                    if (error.response.data == '[object Object]') {
+                      return (
+                        $(document).ready(function() {
+                          $('#notificationLoginRegisterContainer').attr('id','notificationLoginRegisterContainerShow');
+                          $('#notificationContent').html('Please <span id="blue">login </span>to add a comment');
+                        })
+                      );
+                    }  else if (error.response.data != '') {
+                  $('#notificationContent').text(error.response.data);
+                  }
+              });
+          });
+  } else if (this.props.params.proID) {
+    axios.post( Config.API + '/auth/comments/create', {
+    type:'5',
+    parentID: this.props.params.proID,
+    parentType: '9',
+    username: cookie.load('userName'),
+    description : this.state.comment,
+    typeID: this.props.params.probID,
+    private: '0',
+  })
+  .then(function (result) {
+    document.location = window.location.pathname; 
+  })
+        .catch(function (error) {
+            $(document).ready(function() {
+                $('#notification').attr('id','notificationShow').hide().slideDown();
+
+                  if (error.response.data == '[object Object]') {
+                    return (
+                      $(document).ready(function() {
+                        $('#notificationLoginRegisterContainer').attr('id','notificationLoginRegisterContainerShow');
+                        $('#notificationContent').html('Please <span id="blue">login </span>to add a comment');
+                      })
+                    );
+                  }  else if (error.response.data != '') {
+                $('#notificationContent').text(error.response.data);
+                }
+            });
+        });
+    } else if (this.props.params.conID) {
+      axios.post( Config.API + '/auth/comments/create', {
+      type:'5',
+      parentID: this.props.params.conID,
+      parentType: '10',
+      username: cookie.load('userName'),
+      description : this.state.comment,
+      typeID: this.props.params.probID,
+      private: '0',
+    })
+    .then(function (result) {
+      document.location = window.location.pathname; 
+    })
+          .catch(function (error) {
+              $(document).ready(function() {
+                  $('#notification').attr('id','notificationShow').hide().slideDown();
+  
+                    if (error.response.data == '[object Object]') {
+                      return (
+                        $(document).ready(function() {
+                          $('#notificationLoginRegisterContainer').attr('id','notificationLoginRegisterContainerShow');
+                          $('#notificationContent').html('Please <span id="blue">login </span>to add a comment');
+                        })
+                      );
+                    }  else if (error.response.data != '') {
+                  $('#notificationContent').text(error.response.data);
+                  }
+              });
+          });
     } else if (this.props.params.commentID) {
         axios.post( Config.API + '/auth/comments/create', {
         type:'5',
-        // suggestionID: this.props.params.suggID,
         parentID: this.props.params.commentID,
         parentType: '5',
         username: cookie.load('userName'),
         description : this.state.comment,
         typeID: this.props.params.probID,
+        private: '0',
       })
       .then(function (result) {
         document.location = window.location.pathname; 
@@ -131,8 +277,23 @@ postComment() {
             </form>
           </div>
         </div>
-
       );
+    } else if(this.props.params.answerID) {
+      return (
+      <div>
+        <div id="discussMenuEnd">
+          comments
+        </div>
+        <div id="answerFormComponent">
+          <form id="answerForm">
+              <fieldset id="fieldSetNoBorderPadding">
+                  {/*<legend>Comments</legend>*/}
+                      <textarea name="answerText" required="required" id="commentTextArea" placeholder="Discuss this answer or view the current discussion of your peers. " autoFocus ></textarea>
+                      <input type="button" value="Add" onClick={this.postComment} id="addAnswerGreen"/>
+              </fieldset>
+          </form>
+        </div>
+      </div>);
     } else if(this.props.params.freeFormID) {
       return (
       <div>
@@ -149,6 +310,70 @@ postComment() {
           </form>
         </div>
       </div>);
+    } else if(this.props.params.learnItemID) {
+      return (
+      <div>
+        <div id="discussMenuEnd">
+          comments
+        </div>
+        <div id="answerFormComponent">
+          <form id="answerForm">
+              <fieldset id="fieldSetNoBorderPadding">
+                  {/*<legend>Comments</legend>*/}
+                      <textarea name="answerText" required="required" id="commentTextArea" placeholder="Discuss this lesson or view the current discussion of your peers. " autoFocus ></textarea>
+                      <input type="button" value="Add" onClick={this.postComment} id="addAnswerGreen"/>
+              </fieldset>
+          </form>
+        </div>
+      </div>);
+    } else if(this.props.params.resourceID) {
+      return (
+      <div>
+        <div id="discussMenuEnd">
+          comments
+        </div>
+        <div id="answerFormComponent">
+          <form id="answerForm">
+              <fieldset id="fieldSetNoBorderPadding">
+                  {/*<legend>Comments</legend>*/}
+                      <textarea name="answerText" required="required" id="commentTextArea" placeholder="Discuss this resource or view the current discussion of your peers. " autoFocus ></textarea>
+                      <input type="button" value="Add" onClick={this.postComment} id="addAnswerGreen"/>
+              </fieldset>
+          </form>
+        </div>
+      </div>);
+    } else if(this.props.params.proID) {
+      return (
+      <div>
+        <div id="discussMenuEnd">
+          comments
+        </div>
+        <div id="answerFormComponent">
+          <form id="answerForm">
+              <fieldset id="fieldSetNoBorderPadding">
+                  {/*<legend>Comments</legend>*/}
+                      <textarea name="answerText" required="required" id="commentTextArea" placeholder="Discuss this pro or view the current discussion of your peers. " autoFocus ></textarea>
+                      <input type="button" value="Add" onClick={this.postComment} id="addAnswerGreen"/>
+              </fieldset>
+          </form>
+        </div>
+      </div>);
+    } else if(this.props.params.conID) {
+      return (
+      <div>
+        <div id="discussMenuEnd">
+          comments
+        </div>
+        <div id="answerFormComponent">
+          <form id="answerForm">
+              <fieldset id="fieldSetNoBorderPadding">
+                  {/*<legend>Comments</legend>*/}
+                      <textarea name="answerText" required="required" id="commentTextArea" placeholder="Discuss this con or view the current discussion of your peers. " autoFocus ></textarea>
+                      <input type="button" value="Add" onClick={this.postComment} id="addAnswerGreen"/>
+              </fieldset>
+          </form>
+        </div>
+      </div>);
         } else if(this.props.params.commentID) {
           return (
           <div>
@@ -159,7 +384,7 @@ postComment() {
               <form id="answerForm">
                   <fieldset id="fieldSetNoBorderPadding">
                       {/*<legend>Comments</legend>*/}
-                          <textarea name="answerText" required="required" id="commentTextArea" placeholder="Give logical arguments to help advance this debate. " autoFocus ></textarea>
+                          <textarea name="answerText" required="required" id="commentTextArea" placeholder="Discuss this comment or view the current discussion of your peers. " autoFocus ></textarea>
                           <input type="button" value="Add" onClick={this.postComment} id="addAnswerGreen"/>
                   </fieldset>
               </form>
@@ -169,13 +394,13 @@ postComment() {
         return (
           <div>
             <div id="discussMenuEnd">
-              arguments
+              comments
             </div>
             <div id="answerFormComponent">
               <form id="answerForm">
                   <fieldset id="fieldSetNoBorderPadding">
                       {/*<legend>Comments</legend>*/}
-                          <textarea name="answerText" required="required" id="commentTextArea" placeholder="Give logical arguments to help advance this debate. " autoFocus ></textarea>
+                          <textarea name="answerText" required="required" id="commentTextArea" placeholder="Discuss or view the current discussion of your peers. " autoFocus ></textarea>
                           <input type="button" value="Add" onClick={this.postComment} id="addAnswerGreen"/>
                   </fieldset>
               </form>
