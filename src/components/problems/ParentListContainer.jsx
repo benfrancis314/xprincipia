@@ -60,7 +60,7 @@ export default class Empty extends React.Component {
                 </div>
                 <div id="parentListQuestion" onClick={this.showParentListQuestion}>
                     {/* On click, make text below visible */}
-                    <img src={require('../../assets/tutorial.svg')} id="parentListQuestionImg" width="25" height="25" alt="Project Tree Button, white tree" />
+                    <img src={require('../../assets/questionRed2.svg')} id="parentListQuestionImg" width="25" height="25" alt="Project Tree Button, white tree" />
                 </div>
                 <div id="parentListExplain" onClick={this.hideParentListQuestion}>
                     Existing projects can be linked to other projects as sub projects. 

@@ -86,6 +86,15 @@ export default class SubProblemContainer extends React.Component {
         })  
     }
 
+    shouldComponentUpdate (nextProps, nextState) {
+        
+            return nextProps.rerender;
+            // return true;
+        // WANT TO RETURN FALSE IF RERENDER FROM FULL PROBLEM
+
+        // return a boolean value
+    }
+
 // Is this being used?
 //         //On recieving next props
 //     componentWillReceiveProps(nextProps){
@@ -234,7 +243,7 @@ export default class SubProblemContainer extends React.Component {
                 function branchChange() {
                     // CURRENTLY DISABLED PART NECESSARY TO ADD NEW PROJECTS IN EACH BREAKDOWN
                     // NEED TO DISABLE RERENDER OF PROBLEMS WHEN FULLPROBLEM RERENDERS FROM STATE CHANGE
-                    // this.props.differentBreakdown(branch.ID);
+                    this.props.differentBreakdown(branch.ID);
                     var self = this;
                     axios.get( Config.API + '/problems/breakdown?breakdownID='+branch.ID).then(function (response) {
                         self.setState({

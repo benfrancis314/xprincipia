@@ -21,14 +21,17 @@ export default class SolutionForm extends React.Component {
     }
 
     this.postSolution = this.postSolution.bind(this);
-    this.updateImg = this.updateImg.bind(this);
     this.showPDF = this.showPDF.bind(this);
     this.showProse = this.showProse.bind(this);
+    this.testFileInput = this.testFileInput.bind(this);
   };
 
-  updateImg() {
-    this.state.img = document.getElementById("myFile");
+  testFileInput() {
+    // alert(document.getElementById("fileProposal").HTMLInputElement.files);
+    // alert(document.getElementById("fileProposal").value);
+    alert('end');
   }
+
 
   showPDF() {
     $(document).ready(function() {
@@ -125,13 +128,13 @@ export default class SolutionForm extends React.Component {
     // });
 
 
-    $( '#fileProposalLabel [type=file]' ).on( 'click', function updateFileName( event ){
-        var $input = $( this );
+    // $( '#fileProposalLabel [type=file]' ).on( 'click', function updateFileName( event ){
+    //     var $input = $( this );
     
-        setTimeout( function delayResolution(){
-            $input.parent().text( $input.val().replace(/([^\\]*\\)*/,'') )
-        }, 0 )
-    } );
+    //     setTimeout( function delayResolution(){
+    //         $input.parent().text( $input.val().replace(/([^\\]*\\)*/,'') )
+    //     }, 0 )
+    // } );
 
       return (
       <div>
@@ -208,12 +211,13 @@ export default class SolutionForm extends React.Component {
                 </div>
 
                 <div id="pdfProposalContainerShow">
-                  <label id="fileProposalLabel">
-                    upload pdf
-                    <input type="file" id="fileProposal"/>
-                  </label>
+                  {/* <label id="fileProposalLabel">
+                    upload pdf */}
+                    {/* Add "multiple" in input attributes if we want them to be able to do multiple */}
+                    <input type="file" id="fileProposal" />
+                  {/* </label> */}
                 </div>
-
+              <div onClick={this.testFileInput}>testHTML</div>
 
                 <div id="proseProposalContainer">
                   {/* <label htmlFor="solutionDescription" id="solutionDescriptionFormLabel">description<br /> */}

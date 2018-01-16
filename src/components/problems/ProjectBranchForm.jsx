@@ -66,7 +66,7 @@ componentDidMount() {
             <Link to={`/project/${this.props.params.probID}/subprojects`}>
                 <img src={require('../../assets/redX.svg')} id="closeRedX" width="30" height="30" alt="Close button, red X symbol" />
             </Link>
-          <div id="SBButtonNoHover">
+          <div id="branchFormTitle">
             new breakdown
           </div>
           <div id="createProblemBox">

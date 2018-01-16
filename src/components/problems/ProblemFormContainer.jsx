@@ -32,7 +32,7 @@ export default class ProblemFormContainer extends React.Component {
                     </div>
                 </Link>
             </div>
-            {React.cloneElement(this.props.children, {probID: this.props.probID, parentTitle: this.props.parentTitle})}
+            {React.cloneElement(this.props.children, {probID: this.props.probID, parentTitle: this.props.parentTitle,  breakdownID:this.props.breakdownID})}
         </div>
 
       );

@@ -80,6 +80,7 @@ export default class ProblemForm extends React.Component {
   render() {
       return (
         <div>
+          XX{this.props.breakdownID}XX
           <div id="createProblemBox">
               <form id="createForm">
                 <fieldset id="fieldSetNoBorder">

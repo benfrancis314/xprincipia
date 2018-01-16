@@ -48,7 +48,7 @@ componentWillReceiveProps(nextProps){
 				<li>
 					<img src={require('../../assets/leftArrow.svg')} id="branchArrowImg" width="50" height="50" alt="User avatar, DNA Helix" />
 				</li>
-				<Link to={`/project/${this.props.probID}/create/breakdown`} activeClassName="activePrivateCreateButton">
+				<Link to={`/project/${this.props.probID}/create/breakdown`} activeClassName="activeBranchCreateButton">
 					<li id="branchUnit">
 						<div id="branchHeader" onMouseOver={this.hoverNewBranch} onMouseOut={this.unHoverNewBranch}>
 							<img src={require('../../assets/blueAdd2.svg')} id="privateNewProjectPlus" width="80" height="80" alt="User avatar, DNA Helix" />
