@@ -19,8 +19,8 @@ constructor(props){
     postResource() {
   //Read field items into component state
   this.state.title = document.getElementById('resourceTitleForm').value
-  this.state.summary = document.getElementById('resourceURLForm').value
-  this.state.resource = document.getElementById('resourcesTextArea').value
+  this.state.summary = document.getElementById('resourcesTextArea').value
+  this.state.resource = document.getElementById('resourceURLForm').value
 
   //if User is on a solution post with type 1
   //solutionID will be available in props

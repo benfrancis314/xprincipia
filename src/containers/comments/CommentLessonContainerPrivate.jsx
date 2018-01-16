@@ -1,8 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router';
 import axios from 'axios';
-import CommentProposalUnit from '../../components/comments/CommentProposalUnit.jsx';
-import CommentUnit from '../../components/comments/CommentUnit.jsx';
+import CommentProposalUnitPrivate from '../../components/comments/CommentProposalUnitPrivate.jsx';
+import CommentUnitPrivate from '../../components/comments/CommentUnitPrivate.jsx';
 import {Config} from '../../config.js';
 import $ from 'jquery';
 
@@ -98,7 +98,7 @@ export default class CommentDebateContainer extends React.Component {
                     </div>
                 </Link>
                 {this.props.children}
-                <CommentProposalUnit comments={this.state.comments} probID={this.props.params.probID} solutionID={this.props.params.solutionID} suggID={this.props.params.learnItemID} commentID={this.props.params.commentID} />
+                <CommentProposalUnitPrivate comments={this.state.comments} probID={this.props.params.probID} solutionID={this.props.params.solutionID} suggID={this.props.params.learnItemID} commentID={this.props.params.commentID} />
             </div>);
 
 
@@ -131,7 +131,7 @@ export default class CommentDebateContainer extends React.Component {
                     </div>
                 </Link>
                 {this.props.children}
-                <CommentUnit comments={this.state.comments} probID={this.props.params.probID} suggID={this.props.params.learnItemID} commentID={this.props.params.commentID} />
+                <CommentUnitPrivate comments={this.state.comments} probID={this.props.params.probID} suggID={this.props.params.learnItemID} commentID={this.props.params.commentID} />
             </div>
         );
     }

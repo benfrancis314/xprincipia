@@ -25,6 +25,7 @@ this.state.con = document.getElementById('conTextArea').value
       type:'1',
       typeID: this.props.params.solutionID,
       description : this.state.con,
+      parentID: this.props.params.probID,
     })
       .then(function (result) {
         document.location = window.location.pathname 

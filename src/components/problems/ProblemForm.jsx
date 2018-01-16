@@ -52,6 +52,7 @@ export default class ProblemForm extends React.Component {
       ggParentID : String(this.props.ggParentID),
       class : this.state.class,
       breakdownID : this.props.breakdownID,
+      private: '0',
     })
     .then(function (result) {
       //redirect back to the last page     
@@ -79,7 +80,6 @@ export default class ProblemForm extends React.Component {
   render() {
       return (
         <div>
-          {/* XXX{this.props.breakdownID}YYY */}
           <div id="createProblemBox">
               <form id="createForm">
                 <fieldset id="fieldSetNoBorder">

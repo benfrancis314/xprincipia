@@ -6081,7 +6081,7 @@ border-width: 0px 1px 1px 1px;
 border-radius: 0px 0px 3px 3px;
 letter-spacing: 1px;
 color: #ffffff;
-transition: all 0.5s ease 0s;
+transition: all 1s ease 0s;
 margin: 0 auto;
 margin-left: 25%;
 margin-right: 25%;
@@ -6094,6 +6094,7 @@ text-transform: lowercase !important;
 #parentButton:hover, #parentButton:active, #parentButtonHover:hover, #parentButtonHover:active {
 cursor: pointer;
 color: #ffffff;
+transform: scale(1.02);
 /*background-color: rgba(0,220,255,0.12);*/
 background: linear-gradient(to right,rgba(0,220,255, 0.1), rgba(0,220,255, 0.15), rgba(0,220,255, 0.1));
 }
@@ -8781,6 +8782,9 @@ background-color: #00dcff;
   background-color: rgba(0, 220, 255, 0.25);
   cursor: pointer;
 }
+#notificationLoginHide {
+  display: none;
+}
 #notificationRegister {
   flex: 1 1 auto;
   color: #00ffdc;
@@ -8794,6 +8798,9 @@ background-color: #00dcff;
 #notificationRegister:hover {
   background-color: rgba(0, 255, 220, 0.25);
   cursor: pointer;
+}
+#notificationRegisterHide {
+  display: none;
 }
 #notificationFeedbackShow {
   color: #00dcff;
@@ -9616,9 +9623,7 @@ margin-top: 1%;
   /* background: radial-gradient(rgba(0,220,255,0.1), rgba(0,220,255,0), rgba(0,220,255,0)) */
   /* background: linear-gradient(rgba(0,220,255,0), rgba(0,220,255,0.1), rgba(0,220,255,0))   */
 }
-#welcomeProblemsUnitList:hover {
-  /* background: radial-gradient(rgba(0,220,255,0.1), rgba(0,220,255,0.05), rgba(0,220,255,0))   */
-}
+
 #welcomeProblemsUnitList li {
   /*display: block;*/
   /*margin-left: 5%;
@@ -9718,6 +9723,36 @@ margin-top: 1%;
 #feedUnits:hover #feedDate {
   color: #00dcff;
 }
+#omniActivityUnit {
+  background: linear-gradient(to right,rgba(0,220,255, 0.01), rgba(0,220,255, 0.04), rgba(0,220,255, 0));
+  padding-top: 10px;
+  padding-bottom: 10px;
+  margin: 0 auto;
+  width: 95%;
+  border: 1px solid rgb(136, 136, 136, 0.5);
+  border-radius: 3px 3px 10px 15%;
+  transition: all 0.5s ease 0s;
+  box-shadow: 0 0 0.5pt 0.5pt rgba(0,220,255,0.5);
+  margin-bottom: 2.25%;
+  background-color: rgba(0,220,255,0.04);
+  text-align: center;
+  color: #ffffff;
+  letter-spacing: 1px;
+  font-family: 'Alegreya Sans SC', sans-serif;
+  font-size: 90%;
+  overflow: auto;
+  opacity: 0.9;
+}
+#omniActivityUnit:hover {
+  cursor: pointer;
+  box-shadow: 0 0 1.5px 1.5px rgba(0,220,255,1);
+  background: linear-gradient(to right,rgba(0,220,255, 0.05), rgba(0,220,255, 0.1), rgba(0,220,255, 0.05));
+  opacity: 0.9;
+  transform: scale(1.02);
+}
+#omniActivityDate {
+  font-size: 90%;
+}
 #blueFeed {
   color: #00dcff !important;
   font-size: 90%;
@@ -9780,6 +9815,7 @@ margin-top: 1%;
 #feedListUnit:hover * {
   cursor: pointer;
 }
+
 /* #feedCaps { */
   /* text-transform: uppercase !important; */
   /* font-style: italic; */
@@ -10778,42 +10814,6 @@ margin-top: 1%;
   cursor: pointer;
   /* background: radial-gradient(circle, rgba(0,220,255,0.05), rgba(0,220,255,0.05), rgba(0,220,255,0.1), rgba(0,220,255,0.05)); */
   }
-/* #notificationsUnit {
-  border: 1px solid #ff7f7f;
-  border-width: 0px 1px 0px 1px;
-  border-radius: 25% 0% 25% 0%;
-  transition: all 0.5s ease 0s;
-  transform: scale(1);
-  width: 60%;
-  margin: 0 auto;
-
-  font-family: 'Open Sans';
-
-  display: block;
-  margin: 0 auto;
-  text-align: center;
-  font-size: 100%;
-  line-height: 120%;
-  height: auto;
-  overflow: auto;
-  padding: 3% 10%;
-  transition: all 0.5s ease 0s;
-  transform: scale(1);
-  background-color: rgba(0,220,255,0);
-  background: linear-gradient(to right, rgba(0,220,255,0), rgba(0,220,255,0), rgba(255,127,127,0.05), rgba(0,220,255,0));  
-
-}
-#notificationsUnit:hover {
-  color: #ffffff;
-  transform: scale(1.02);
-  cursor: pointer;
-  background-color: rgba(255,127,127,0.05);
-  border-width: 0px 1px;
-  border-radius: 0%;
-  margin-top: 2%;
-  margin-bottom: 2%;
-} */
-
 #notificationsUnit {
   padding-top: 10px;
   padding-bottom: 10px;
@@ -10834,7 +10834,6 @@ margin-top: 1%;
 }
 #notificationsUnit:hover {
   cursor: pointer;
-  /*font-size: 105%;*/
   box-shadow: 0 0 2px 2px rgba(255,127,127,0.5);
   background: linear-gradient(to right,rgba(255,127,127, 0.05), rgba(255,127,127, 0.1), rgba(255,127,127, 0.05));
 }
@@ -11865,7 +11864,7 @@ transition: all 1s ease 0s;
   font-family: 'Alegreya Sans SC' !important;
   text-align: left;
 }
-#whiteFeedProject {
+#whiteFeedProject, #whiteFeedProjectDescription {
     font-family: 'Alegreya Sans SC' !important;
     font-size: 105%;
     padding-left: 2%;
@@ -11876,14 +11875,15 @@ transition: all 1s ease 0s;
     border-width: 0px 0px 0px 0px;
     width: 72%;
 }
+#whiteFeedProjectDescription {
+  font-family: 'Open Sans' !important;
+  font-size: 80%;
+}
 
 #feedContainerProject {
   width: 95%;
   /* opacity: 0.5; */
   transition: all 2s ease 0s;
-}
-#feedContainerProject:hover {
-  /* opacity: 1; */
 }
 #feedUnitsProject {
   background: linear-gradient(to right,rgba(0,220,255, 0.06), rgba(0,220,255, 0.07), rgba(0,220,255, 0.02));
@@ -11896,7 +11896,9 @@ transition: all 1s ease 0s;
   background-color: rgba(0,220,255,0);
   transform: scale(1);
   word-wrap: break-word; 
-  opacity: 0.5;
+  opacity: 0.75;
+  width: 85%;
+  margin: 0% 0% 0% 3%;
   /* Attempt to get text to go outside blueFeedProse but not the entire unit, currently does not work */
   /* white-space: pre-wrap !important; */
   
@@ -11908,14 +11910,6 @@ transition: all 1s ease 0s;
   background-color: rgba(0,220,255,0.025);
   transform: scale(1.02);
   opacity: 1;
-}
-#feedListUnitProject {
-  display: inline-block;
-  width: 85%;
-  margin: 0% 0% 0% 3%;
-}
-#feedListUnitProject:hover * {
-  cursor: pointer;
 }
 #feedTitleProject {
   border: 1px solid #333333;
@@ -11938,6 +11932,7 @@ transition: all 1s ease 0s;
   transition: all 2s ease 0s;
   text-align: left;
   padding-left: 5%;
+  padding-bottom: 1%;
   line-height: 75%;
 }
 #projectActivityLabel:hover {
@@ -12049,6 +12044,10 @@ transition: all 1s ease 0s;
   border-radius: 0px 0px 3px 3px;
   
 }
+#linkUnitContainer {
+  width: 100%;
+  margin: 0 auto;
+}
 #linkUnit {
   display: flex;
   flex-direction: row;
@@ -12075,6 +12074,25 @@ transition: all 1s ease 0s;
   background: linear-gradient(to right,rgba(0,255,220, 0.05), rgba(0,220,255, 0.1), rgba(0,220,255, 0.05));
   cursor: pointer;
 }
+.linkAccentuate {
+  box-shadow: 0 0 1.5pt 1.5pt rgba(0,220,255,0.5) !important;
+  transform: scale(1.02) !important;
+  background: linear-gradient(to right,rgba(0,255,220, 0.05), rgba(0,220,255, 0.1), rgba(0,220,255, 0.05)) !important;
+  cursor: default !important;
+}
+.linkAccentuate #linkUnitTitle {
+  transform: scale(1.05) !important;
+  color: #00dcff !important;
+  letter-spacing: 1px !important;
+}
+#linkUnitHide {
+  display: none;
+  transition: all 0.5s ease 0s;
+}
+.hide {
+  display: none !important;
+  transition: all 0.5s ease 0s;
+}
   #linkUnitID {
     text-align: center;
     align-self: stretch !important;
@@ -12094,35 +12112,7 @@ transition: all 1s ease 0s;
   }
   #linkUnitID:hover {
     opacity: 1;
-  }
-  #linkUnitProto {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: stretch !important;
-    align-content: stretch;
-    text-align: center;
-    height: auto;
-    word-wrap: break-word; 
-    margin: 0 auto;
-    /* margin-bottom: 1%; */
-    width: 60%;
-    font-size: 120%;
-    border: 1px solid rgba(0,220,255,0);
-    border-radius: 3px;
-    background-color: rgba(0,220,255,0);
-    background: linear-gradient(to right,rgba(0,220,255, 0), rgba(0,220,255, 0), rgba(0,220,255, 0));
-    transition: all 0.75s ease 0s;
-    transform: scale(1); 
-  }
-  #linkUnitTitleProto {
-    margin: 0 auto;
-    /* padding: 2% 0% 2% 0%; */
-    text-align: center;
-    text-align: left;
-    margin-left: 5%;
-    align-self: stretch !important;
-    align-self: baseline !important;
+    transform: scale(1.05);
   }
   #linkUnitIDLabel {
     transition: all 1s ease 0s;
@@ -12157,8 +12147,109 @@ transition: all 1s ease 0s;
     font-size: 130%;
     align-self: stretch !important;
     align-self: baseline !important;
+    transition: all 1s ease 0s;
   }
-  
+  #linkUnit:hover #linkUnitTitle {
+    transform: scale(1.05);
+    color: #00dcff;
+    letter-spacing: 1px;
+  }
+#linkConfirmContainer {
+  display: none;
+}
+.linkConfirmContainerShow {
+  display: flex  !important;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: stretch !important;
+  align-content: stretch;
+  text-align: center;
+  height: auto;
+  word-wrap: break-word; 
+  margin: 0 auto;
+  margin-bottom: 1%;
+  width: 40%;
+  /* border: 1px solid #00dcff;
+  border-radius: 3px; */
+  /* background-color: rgba(0,220,255,0.025); */
+  transition: all 0.75s ease 0s;
+  /* box-shadow: 0 0 1.5pt 1.5pt rgba(0,220,255,0.5); */
+  transform: scale(1.02);
+  /* background: linear-gradient(to right,rgba(0,255,220, 0.05), rgba(0,220,255, 0.1), rgba(0,220,255, 0.05)); */
+  cursor: pointer;
+  margin-top: 2%;
+  margin-bottom: 2%;
+}
+.linkConfirmContainerShow {
+  transform: scale(1.05);
+}
+#linkConfirmExit {
+  margin: 0 auto;
+  padding: 3px;
+  color: #ff7f7f;
+  border: 1px solid #ff7f7f;
+  border-radius: 3px;
+  transition: all 1s ease 0s;
+  letter-spacing: 4px;
+  font-size: 145%;
+  padding: 0px 15px;
+  box-shadow: 0 0 1.5pt 1.5pt rgba(255,127,127,0.5);
+  width: 6em;
+  font-size: 175%;
+  background-color: rgba(255,127,127,0.05);
+  background: linear-gradient(to right, rgba(255,127,127,0.05), rgba(255,127,127,0), rgba(255,127,127,0));
+}
+#linkConfirmExit:hover {
+  box-shadow: 0 0 2pt 2pt rgba(255,127,127,0.5);
+  transform: scale(1.05);
+  background-color: rgba(255,127,127,0.1);
+  /* background: linear-gradient(to right, rgba(255,127,127,0.1), rgba(255,127,127,0.05), rgba(255,127,127,0)); */
+}
+#linkConfirmExitX {
+  margin: 0 auto;
+  margin-top: 1%;
+  margin-bottom: 1%;
+  transition: all 0.5s ease 0s;
+  vertical-align: middle;
+  border: 0px solid #ff7f7f;
+  border-radius: 50%;
+}
+#linkConfirmText {
+  font-size: 120%;
+}
+#linkConfirmButton {
+  margin: 0 auto;
+  padding: 3px;
+  color: #00dcff;
+  border: 1px solid #00dcff;
+  border-radius: 3px;
+  transition: all 1s ease 0s;
+  letter-spacing: 4px;
+  font-size: 145%;
+  padding: 0px 15px;
+  box-shadow: 0 0 1.5pt 1.5pt rgba(0,220,255,0.5);
+  width: 6em;
+  font-size: 175%;
+  background-color: rgba(0,220,255,0.05);
+  background: linear-gradient(to left, rgba(0,220,255,0.05), rgba(0,220,255,0), rgba(0,220,255,0));
+
+}
+#linkConfirmButton:hover {
+  box-shadow: 0 0 2pt 2pt rgba(0,220,255,0.5);
+  transform: scale(1.05);
+  background-color: rgba(0,220,255,0.1);
+  /* background: linear-gradient(to left, rgba(0,220,255,0.1), rgba(0,220,255,0.05), rgba(0,220,255,0)); */
+
+}
+
+
+
+
+
+
+
+
+
   #projectIDExplainShow {
     position: fixed;
     top: 25vh;
@@ -12170,7 +12261,7 @@ transition: all 1s ease 0s;
     border: 1px solid #00dcff;
     border-radius: 7%;
     box-shadow: 0 0 2pt 2pt rgba(0,220,255,0.25);
-    background-color: rgba(15,19,28,0.9);
+    background-color: rgba(15,19,28,0.95);
     padding: 15px 5px ;
     text-align: center;
     font-size: 150%;
@@ -12205,21 +12296,49 @@ transition: all 1s ease 0s;
     transform: scale(1.02);
     cursor: pointer;
   }
+  #linkInstructionsContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 60%;
+    padding: 0% 0% 0.5% 0%;
+    margin-bottom: 0.5%;
+    line-height: 100%;
+  }
   #linkInstructions {
-    text-align: center;
+    text-align: left;
     font-size: 175%;
     letter-spacing: 6px;
     width: 100%;
     margin: 0 auto;
-    padding: 0% 0% 0.5% 0%;
-    margin-bottom: 0.5%;
+    padding: 0% 0% 0% 4%;
     margin-top: 0%;
 
     display: inline-block;
     color: #888888;
     transition: all 2s ease 0s;
-    line-height: 100%;
   }
+  #linkExplainButton {
+    width: 44%;
+    color: #ff7f7f;
+    letter-spacing: 1px;
+    font-size: 175%;
+    opacity: 0.75;
+    transition: all 1s ease 0s;
+  }
+  #linkExplainButton:hover {
+    opacity: 1;
+    transform: scale(1.05);
+    cursor: pointer;
+    letter-spacing: 2px;
+    width: 49%;
+  }
+
+
+
+
+
+
 
 
 /* Parents Button */
@@ -12271,9 +12390,6 @@ transition: all 1s ease 0s;
   opacity: 1;
   /* transform: rotate(135deg); */
 }
-#parentText {
-
-}
 #parentTextBlue {
   color: #00dcff;
 }
@@ -12316,10 +12432,10 @@ transition: all 1s ease 0s;
   font-size: 145%;
   letter-spacing: 4px;
   color: #00dcff;
-  color: #888888;
+  color: #ff7f7f;
   margin-top: 2%;
   margin-bottom: 0%;
-  border: 1px solid #888888;
+  border: 1px solid #ff7f7f;
   border-width: 0px;
   border-radius: 3px;
   box-shadow: 0 0 1pt 1pt rgb(136, 136, 136);
@@ -12327,12 +12443,12 @@ transition: all 1s ease 0s;
   background-color: rgba(136, 136, 136, 0);
   transition: all 1s ease 0s;
 }
-#parentListTitle:hover {
+/* #parentListTitle:hover {
   transform: scale(1.05);
   background: radial-gradient(circle, rgba(136, 136, 136, 0), rgba(136, 136, 136, 0.01), rgba(136, 136, 136, 0.17));
   background-color: rgba(136, 136, 136, 0.05);
   box-shadow: 0 0 1.5pt 1.5pt rgb(136, 136, 136);
-}
+} */
 #parentListUnitList {
   width: 100%;
   padding: 0% 0% 0% 2%;
@@ -12367,9 +12483,6 @@ transition: all 1s ease 0s;
     cursor: pointer;
     /* background-color: rgba(0,220,255,0.025); */
   }
-#parentListQuestion {
-
-}
 #parentListQuestionImg, #parentListQuestionImgSelect {
   transition: all 0.5s ease 0s;
   opacity: 0.5;
@@ -12567,10 +12680,6 @@ https://tympanus.net/codrops/2015/09/15/styling-customizing-file-inputs-smart-wa
   width: 96%;
   margin: 0 auto;
 }
-#projectMajorButtonRowRight {
-  /* width: 64%;
-  margin-right: 2%; */
-}
 #buttonHide1, #buttonHide2, #buttonHide3, #buttonHide4, #buttonHide5 {
   display: none;
   transition: all 1s ease 0s;
@@ -12733,6 +12842,67 @@ https://tympanus.net/codrops/2015/09/15/styling-customizing-file-inputs-smart-wa
 }
 
 
+
+/* PASSWORD RESET */
+
+#passwordResetContainer {
+  width: 100%;
+  margin: 0 auto;
+  background: linear-gradient(to bottom, rgba(0,220,255,0.1), rgba(0,220,255,0.05), rgba(0,220,255,0), rgba(0,220,255,0), rgba(0,220,255,0))
+}
+#passwordResetStartContainer {
+  width: 100%;
+  margin-top: 10%;
+  text-align: center;
+}
+#passwordResetFinishContainer {
+  width: 100%;
+  margin-top: 10%;
+  text-align: center;
+}
+#passwordResetStartLabel, #passwordResetFinishLabel {
+  color: #00dcff;
+  margin-bottom: 0.5%;
+  letter-spacing: 4px;
+  font-size: 245%;
+}
+#resetEmailInput, #resetPasswordInput {
+  font-family: 'Alegreya Sans SC' !important;
+  width: 50%;
+  font-size: 240%;
+  background: radial-gradient(circle, rgba(0,220,255, 0.1), rgba(0,220,255, 0), rgba(0,220,255, 0));   
+  letter-spacing: 4px;
+  transition: all 1s ease 0s;
+}
+#resetEmailInput:hover, #resetPasswordInput:hover {
+  transform: scale(1.05);
+  background: radial-gradient(circle, rgba(0,220,255, 0.05), rgba(0,220,255, 0.05), rgba(0,220,255, 0));   
+  background-color: rgba(0,220,255,0.05);
+}
+#resetEmailSubmit, #newPasswordSubmit {
+  font-size: 180%;
+  color: #00dcff;
+  background-color: rgba(0,220,255, 0.05);
+  border: 1px solid #00dcff;
+  border-radius: 2px;
+  margin-top: 2%;
+  width: 20%;
+  transition: all 0.5s ease 0s;
+  padding: 3px 0px 3px 0px;
+  
+  border: 1px solid #00dcff;
+  border-width: 1px 1px 1px 1px;
+  border-radius: 3px 3px 3px 3px;
+  background-color: rgba(0,220,255, 0.05);
+  font-family: 'Alegreya Sans SC';
+  letter-spacing: 2px;
+}
+#resetEmailSubmit:hover, #newPasswordSubmit:hover, #resetEmailSubmit:active, #newPasswordSubmit:active {
+  color: #0f131c;
+  background-color: rgba(0,220,255,1);
+  cursor: pointer;
+  transform: scale(1.05);
+}
 
 
 

@@ -25,6 +25,7 @@ this.state.pro = document.getElementById('proTextArea').value
     type:'1',
     typeID: this.props.params.solutionID,
     description : this.state.pro,
+    parentID: this.props.params.probID,
   })
   .then(function (result) {
     document.location = window.location.pathname 

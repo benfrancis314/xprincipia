@@ -30,6 +30,7 @@ this.state.question = document.getElementById('questionTextArea').value
     description : this.state.question,
     parentTitle: this.props.parentTitle,
     private: '1',
+    parentID: this.props.params.probID,
   })
     .then(function (result) {
       document.location = window.location.pathname 

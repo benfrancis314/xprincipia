@@ -9,14 +9,18 @@ constructor(props){
         super(props);
 
         this.state = {
-            resources: []
+          title: '',
+          summary: '',  
+          resource: '',
         }
             this.postResource = this.postResource.bind(this);
         
     };
     postResource() {
   //Read field items into component state
-  this.state.resource = document.getElementById('resourcesTextArea').value
+  this.state.title = document.getElementById('resourceTitleForm').value
+  this.state.summary = document.getElementById('resourcesTextArea').value
+  this.state.resource = document.getElementById('resourceURLForm').value
 
   //if User is on a solution post with type 1
   //solutionID will be available in props
@@ -25,6 +29,8 @@ constructor(props){
         type:'1',
         typeID: this.props.params.solutionID,
         username: cookie.load('userName'),
+        title: this.state.title,
+        summary: this.state.summary,
         description : this.state.resource,
         parentTitle: this.props.parentTitle,
         private: '1',
@@ -54,11 +60,14 @@ constructor(props){
     //probID will be used
   } else {
       axios.post( Config.API + '/auth/resources/create', {
-      type:'0',
-      typeID: this.props.params.probID,
-      username: cookie.load('userName'),
-      description : this.state.resource,
-      parentTitle: this.props.parentTitle,
+        type:'0',
+        typeID: this.props.params.probID,
+        username: cookie.load('userName'),
+        title: this.state.title,
+        summary: this.state.summary,
+        description : this.state.resource,
+        parentTitle: this.props.parentTitle,
+        private: '1',
     })
       .then(function (result) {
         document.location = window.location.pathname 
@@ -100,7 +109,9 @@ constructor(props){
                 <form id="questionForm">
                     <fieldset id='fieldSetNoBorderPadding'>
                         {/*<legend>Add a Resource</legend>*/}
-                            <textarea name="suggestionText" required="required" id="resourcesTextArea" placeholder="Please enter the URL of your resource." ></textarea>
+                            <input type="text" placeholder="resource title" id="resourceTitleForm"/>
+                            <input type="text" placeholder="URL" id="resourceURLForm"/>
+                            <textarea name="suggestionText" required="required" id="resourcesTextArea" placeholder="Please describe the resource or explain its purpose. " ></textarea>
                             <input type="button" value="Add" onClick={this.postResource} id="addSuggestion"/>
                     </fieldset>
                 </form>

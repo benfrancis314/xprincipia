@@ -213,11 +213,11 @@ export default class LearnResourcesUnit1 extends React.Component {
                             <img src={require('../../assets/list4.svg')} id="debateThreadLogo" width="50" height="50" alt="Delete Button, Red X" />
                         </div>
                     </Link>
-                    <Link to={`/project/private/${resource.TypeID}/resources/${resource.ID}/flag`}>
+                    {/* <Link to={`/project/private/${resource.TypeID}/resources/${resource.ID}/flag`}>
                         <div id="flagDiscussButton" onMouseOver={hoverFlagVoted} onMouseOut={unHoverFlagVoted}>
                             <img src={require('../../assets/flag.svg')} id="deleteLogo" width="24" height="24" alt="Delete Button, Red X" />
                         </div>
-                    </Link>
+                    </Link> */}
                     <Link to={`/project/private/${resource.TypeID}/resources/${resource.ID}/comments`}>
                         <div id="numberDiscussButton" onMouseOver={hoverThreadVoted} onMouseOut={unHoverThreadVoted}>
                             {this.state.debateNumber[resource.ID]}
@@ -255,11 +255,11 @@ export default class LearnResourcesUnit1 extends React.Component {
                         <img src={require('../../assets/list4.svg')} id="debateThreadLogo" width="50" height="50" alt="Delete Button, Red X" />
                     </div>
                 </Link>
-                <Link to={`/project/private/${resource.TypeID}/resources/${resource.ID}/flag`}>
+                {/* <Link to={`/project/private/${resource.TypeID}/resources/${resource.ID}/flag`}>
                     <div id="flagDiscussButton" onMouseOver={hoverFlag} onMouseOut={unHoverFlag}>
                         <img src={require('../../assets/flag.svg')} id="deleteLogo" width="24" height="24" alt="Delete Button, Red X" />
                     </div>
-                </Link>
+                </Link> */}
                 <Link to={`/project/private/${resource.TypeID}/resources/${resource.ID}/comments`}>
                     <div id="numberDiscussButton" onMouseOver={hoverThread} onMouseOut={unHoverThread}>
                         {this.state.debateNumber[resource.ID]}

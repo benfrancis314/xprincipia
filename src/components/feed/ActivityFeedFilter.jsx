@@ -40,13 +40,13 @@ unHoverFilter() {
                         <div id="filterCapTop">
                             <br />
                         </div>
-                        {/* <Link to ={'/welcome'}>
+                        <Link to ={'/welcome'}>
                             <div id="feedFilterUnitsTop">
                                 omni
                             </div>
-                        </Link> */}
-                        <Link to ={'/welcome'}>
-                            <div id="feedFilterUnitsTop">
+                        </Link>
+                        <Link to ={'/welcome/projects'}>
+                            <div id="feedFilterUnits">
                                 projects
                             </div>
                         </Link>

@@ -3,7 +3,6 @@ import { Link } from 'react-router';
 import axios from 'axios';
 import CommentProposalUnit from '../../components/comments/CommentProposalUnit.jsx';
 import CommentUnit from '../../components/comments/CommentUnit.jsx';
-import SideBarMore from '../../components/SideBarMore.jsx';
 import {Config} from '../../config.js';
 import $ from 'jquery';
 
@@ -100,7 +99,6 @@ export default class SuggestionCommentContainer extends React.Component {
                 </Link>
                 {this.props.children}
                 <CommentProposalUnit comments={this.state.comments} probID={this.props.params.probID} solutionID={this.props.params.solutionID} suggID={this.props.params.suggID} commentID={this.props.params.commentID} />
-                <SideBarMore />
             </div>);
 
 
@@ -136,7 +134,6 @@ export default class SuggestionCommentContainer extends React.Component {
             </div>
                 {this.props.children}
                 <CommentUnit comments={this.state.comments} probID={this.props.params.probID} suggID={this.props.params.suggID} commentID={this.props.params.commentID} />
-                <SideBarMore />
             </div>
         );
     }

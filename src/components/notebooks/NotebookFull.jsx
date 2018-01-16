@@ -16,6 +16,7 @@ export default class NotebookFull extends React.Component {
             notebook: [],
         }
 
+        this.deleteNotebook = this.deleteNotebook.bind(this);
         this.updateNotebook = this.updateNotebook.bind(this);
         this.unSavedTitle = this.unSavedTitle.bind(this);
         this.unSaved = this.unSaved.bind(this);
@@ -216,6 +217,40 @@ unHoverCloseNotebook() {
   });
 }
 
+deleteNotebook() {
+  //Delete question
+        var self = this
+        axios.delete( Config.API + '/auth/notebooks/delete?id='+this.props.currentNotebook, {
+          params: {
+            id: this.props.currentNotebook,
+            username: cookie.load('userName')
+          }
+        })
+        .then(function (result) {
+          // OR GO SOMEWHERE ELSE?
+          document.location = window.location.pathname 
+        })
+        .catch(function (error) {
+          // console.log(error.response.data)
+            $(document).ready(function() {
+                $('#notification').attr('id','notificationShow').hide().slideDown();
+                if (error.response.data != '') {
+                  $('#notificationContent').text(error.response.data);
+                }
+                else if (error.response.data == '[object Object]') {
+                  return (
+                    $(document).ready(function() {
+                      $('#notificationLoginRegisterContainer').attr('id','notificationLoginRegisterContainerShow');
+                      $('#notificationContent').html('Please <span id="blue">login </span>to<span id="red"> delete</span>');
+                    })
+                  );
+                } 
+            });
+        });
+      }
+
+
+
    render() {
 
 // Attempts at Google Docs-like saving every 5 seconds
@@ -261,7 +296,7 @@ unHoverCloseNotebook() {
                 <div id="notebookDeleteReturn" onClick={this.hideDelete}>
                   return
                 </div>
-                <div id="notebookDeleteConfirm">
+                <div id="notebookDeleteConfirm" onClick={this.deleteNotebook}>
                   delete
                 </div>
               </div>

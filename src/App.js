@@ -60,6 +60,8 @@ class App extends React.Component {
   hideNotification() {
     $(document).ready(function() {
         $('#notificationShow').attr('id','notification');
+        $('#notificationLoginHide').attr('id','notificationLogin');
+        $('#notificationRegisterHide').attr('id','notificationRegister');
      });
   };
   hidePrivateNotification() {

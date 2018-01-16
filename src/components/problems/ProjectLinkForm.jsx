@@ -102,7 +102,7 @@ queryProblem () {
 
                 </fieldset>
               </form>
-              <ProjectLinkUnits problems={this.state.userproblems} />
+              <ProjectLinkUnits problems={this.state.userproblems} probID={this.props.probID} parentTitle={this.props.parentTitle} />
           </div>
         </div>
 

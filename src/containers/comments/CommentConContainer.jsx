@@ -94,7 +94,7 @@ export default class CommentConContainer extends React.Component {
                     </div>
                 </Link>
                 {this.props.children}
-                <CommentUnit comments={this.state.comments} probID={this.props.params.probID} suggID={this.props.params.suggID} commentID={this.props.params.commentID} />
+                <CommentProposalUnit comments={this.state.comments} probID={this.props.params.probID} suggID={this.props.params.suggID} commentID={this.props.params.commentID} />
             </div>
         );
     }

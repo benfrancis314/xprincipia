@@ -55,6 +55,7 @@ postComment() {
       axios.post( Config.API + '/auth/comments/create', {
       type:'5',
       parentID: this.props.params.answerID,
+      backupParentID: this.props.params.questID,
       parentType: '4',
       username: cookie.load('userName'),
       description : this.state.comment,

@@ -31,6 +31,7 @@ postFreeForm() {
         description : this.state.freeForm,
         parentTitle: this.props.parentTitle,
         private: '1',
+        parentID: this.props.params.probID,
     })
       .then(function (result) {
         document.location = window.location.pathname 

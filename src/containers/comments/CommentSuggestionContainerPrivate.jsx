@@ -98,7 +98,6 @@ export default class SuggestionCommentContainer extends React.Component {
                 </div>
                 {this.props.children}
                 <CommentProposalUnitPrivate comments={this.state.comments} probID={this.props.params.probID} solutionID={this.props.params.solutionID} suggID={this.props.params.suggID} commentID={this.props.params.commentID} />
-                <SideBarMore />
             </div>);
 
 
@@ -134,7 +133,6 @@ export default class SuggestionCommentContainer extends React.Component {
             </div>
                 {this.props.children}
                 <CommentUnitPrivate comments={this.state.comments} probID={this.props.params.probID} suggID={this.props.params.suggID} commentID={this.props.params.commentID} />
-                <SideBarMore />
             </div>
         );
     }

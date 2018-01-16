@@ -685,7 +685,7 @@ unVote() {
             <div id="projectMidColumnContainer">
               <div id="projectMidColumnLeftStart">
                 <div id="projectActivityGroup">
-                  <ProjectActivity />
+                  <ProjectActivity probID={this.props.params.probID} />
                   <div id="projectHideButton2" onClick={this.hideActivity}>
                     <img src={require('../../assets/redX2.svg')} id="projectModuleClose2" width="22" height="22" alt="Project Tree Button, white tree"  onClick={this.hideParentList} />
                   </div>
@@ -716,7 +716,7 @@ unVote() {
                 </div>
               </div>
             </div>
-          {React.cloneElement(this.props.children, {parentTitle: this.state.problemInfo.Title, gParentID: this.state.problemInfo.ParentID, gParentTitle: this.state.problemInfo.ParentTitle, ggParentID: this.state.problemInfo.GrandParentID, creator:this.state.problemInfo.OriginalPosterUsername, breakdownID:this.state.breakdownID})}
+          {React.cloneElement(this.props.children, {probID:this.props.params.probID, parentTitle: this.state.problemInfo.Title, gParentID: this.state.problemInfo.ParentID, gParentTitle: this.state.problemInfo.ParentTitle, ggParentID: this.state.problemInfo.GrandParentID, creator:this.state.problemInfo.OriginalPosterUsername, breakdownID:this.state.breakdownID})}
           {React.cloneElement(<SubProblemContainer probID={this.props.params.probID}  differentBreakdown={this.differentBreakdown} />)}
           <ScrollableAnchor id={'proposals'}>
             {React.cloneElement(<ProblemSolutionsMenu probID={this.props.params.probID} projectTitle={this.state.problemInfo.Title} />)}

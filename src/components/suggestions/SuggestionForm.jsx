@@ -31,6 +31,7 @@ this.state.suggestion = document.getElementById('suggestionTextArea').value
         description : this.state.suggestion,
         parentTitle: this.props.parentTitle,
         private: '0',
+        parentID: this.props.params.probID,
     })
       .then(function (result) {
         document.location = window.location.pathname 

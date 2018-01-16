@@ -48,6 +48,10 @@ export default class ProblemForm extends React.Component {
       title : this.state.title,
       summary : this.state.summary,
       class : this.state.class,
+      backupID: this.props.params.probID,
+      private: '0',
+
+      // NEED TO SPECIFY PROJECT ID HERE TOO
      
       // Not sure if necessary
       // Private: false

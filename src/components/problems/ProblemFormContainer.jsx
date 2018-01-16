@@ -8,7 +8,12 @@ import {Config} from '../../config.js';
 import $ from 'jquery';
 
 export default class ProblemFormContainer extends React.Component {
+    constructor(){
+        super();
 
+        this.state = {
+        }
+    };
   render() {
       return (
         <div>
@@ -27,7 +32,7 @@ export default class ProblemFormContainer extends React.Component {
                     </div>
                 </Link>
             </div>
-            {this.props.children}
+            {React.cloneElement(this.props.children, {probID: this.props.probID, parentTitle: this.props.parentTitle})}
         </div>
 
       );

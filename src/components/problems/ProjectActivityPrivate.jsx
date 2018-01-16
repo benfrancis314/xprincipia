@@ -80,7 +80,7 @@ renderItem(problem) {
       return (
     //   We do actually want to show projects on proposals here:
         // <li key={problem.ID} id="feedListUnit">
-        //     <Link to={'/project/'+problem.ID +'/subprojects'}>
+        //     <Link to={'/project/private/'+problem.ID +'/subprojects'}>
         //         <div id="feedUnits">               
         //             <div id="blueFeed">project by <span id="feedCaps">{problem.OriginalPosterUsername}</span></div>
         //             <div id="whiteFeed">{problem.Title}</div>
@@ -99,7 +99,7 @@ renderItem(problem) {
 
     return (
         <li key={problem.ID} id="feedListUnit">
-            <Link to={'/project/'+problem.ProblemID +'/subprojects'}>
+            <Link to={'/project/private/'+problem.ProblemID +'/subprojects'}>
                 <div id="feedUnitsProject">               
                     <div id="blueFeedProject">new sub project</div>
                     <div id="whiteFeedProject">
@@ -113,7 +113,7 @@ renderItem(problem) {
 
     return (
         <li key={problem.ID} id="feedListUnit">
-            <Link to={'/project/'+problem.ProblemID +'/subprojects'}>
+            <Link to={'/project/private/'+problem.ProblemID +'/subprojects'}>
                 <div id="feedUnitsProject">               
                     <div id="blueFeedProject">new proposal</div>
                     <div id="whiteFeedProject">
@@ -126,7 +126,7 @@ renderItem(problem) {
     } else if (problem.Type == '2') {
         return (
         <li key={problem.ID} id="feedListUnit">
-            <Link to={'/project/'+problem.ProblemID +'/question/'+problem.TypeID +'/answers'}>
+            <Link to={'/project/private/'+problem.ProblemID +'/question/'+problem.TypeID +'/answers'}>
                 <div id="feedUnitsProject">               
                     <div id="blueFeedProject">new question</div>
                     <div id="whiteFeedProjectDescription">
@@ -138,7 +138,7 @@ renderItem(problem) {
     } else if (problem.Type == '3') {
         return (
         <li key={problem.ID} id="feedListUnit">
-            <Link to={'/project/'+problem.ProblemID +'/suggestion/'+problem.TypeID +'/comments'}>
+            <Link to={'/project/private/'+problem.ProblemID +'/suggestion/'+problem.TypeID +'/comments'}>
                 <div id="feedUnitsProject">               
                     <div id="blueFeedProject">new suggestion</div>
                     <div id="whiteFeedProjectDescription">
@@ -159,7 +159,7 @@ renderItem(problem) {
     } else if (problem.Type == '6') {
         return (
         <li key={problem.ID} id="feedListUnit">
-            <Link to={'/project/'+problem.ProblemID +'/freeform/'+problem.TypeID +'/comments'}>
+            <Link to={'/project/private/'+problem.ProblemID +'/freeform/'+problem.TypeID +'/comments'}>
                 <div id="feedUnitsProject">               
                     <div id="blueFeedProject">new debate</div>
                     <div id="whiteFeedProjectDescription">
@@ -173,7 +173,7 @@ renderItem(problem) {
     } else if (problem.Type == '7') {
         return (
         <li key={problem.ID} id="feedListUnit">
-            <Link to={'/project/'+problem.ProblemID +'/learn/content/'+problem.TypeID +'/comments'}>
+            <Link to={'/project/private/'+problem.ProblemID +'/learn/content/'+problem.TypeID +'/comments'}>
                 <div id="feedUnitsProject">               
                     <div id="blueFeedProject">new lesson</div>
                     <div id="whiteFeedProject">
@@ -185,7 +185,7 @@ renderItem(problem) {
     } else if (problem.Type == '8') {
         return (
         <li key={problem.ID} id="feedListUnit">
-            <Link to={'/project/'+problem.ProblemID +'/learn/resources/'+problem.TypeID +'/comments'}>
+            <Link to={'/project/private/'+problem.ProblemID +'/learn/resources/'+problem.TypeID +'/comments'}>
                 <div id="feedUnitsProject">               
                     <div id="blueFeedProject">new resource</div>
                     <div id="whiteFeedProject">
@@ -205,7 +205,7 @@ renderItem(problem) {
     } else {
           return (
             <li key={problem.ID} id="feedListUnit">
-                <Link to={'/project/'+problem.ID +'/subprojects'}>
+                <Link to={'/project/private/'+problem.ID +'/subprojects'}>
                     <div id="feedUnitsProject">               
                         <div id="blueFeedProject">new update</div>
                         <div id="whiteFeedProject">
@@ -218,132 +218,3 @@ renderItem(problem) {
         }
        }
     }
-
-
-    
-//     } else {
-//         return (
-            
-                
-//                 <li 
-//                 // key={problem.ID} 
-//                 id="feedListUnitProject">
-//                     {/* <Link to={'/project/'+problem.ID +'/subprojects'}> */}
-//                         <div id="feedUnitsProject">               
-//                             <div id="blueFeedProject">new sub project</div>
-//                             <div id="whiteFeedProject">
-//                                 mining the asteroid belt
-//                                 {/* {problem.Title} */}
-//                             </div>
-//                         </div>
-//                     {/* </Link> */}
-//                 </li>
-//                 <li 
-//                 // key={problem.ID} 
-//                 id="feedListUnitProject">
-//                     {/* <Link to={'/project/'+problem.ID +'/subprojects'}> */}
-//                         <div id="feedUnitsProject">               
-//                             <div id="blueFeedProject">new sub project</div>
-//                             <div id="whiteFeedProject">
-//                                 mining the asteroid belt
-//                                 {/* {problem.Title} */}
-//                             </div>
-//                         </div>
-//                     {/* </Link> */}
-//                 </li>
-//                 <li 
-//                 // key={problem.ID} 
-//                 id="feedListUnitProject">
-//                     {/* <Link to={'/project/'+problem.ID +'/subprojects'}> */}
-//                         <div id="feedUnitsProject">               
-//                             <div id="blueFeedProject">new sub project</div>
-//                             <div id="whiteFeedProject">
-//                                 mining the asteroid belt
-//                                 {/* {problem.Title} */}
-//                             </div>
-//                         </div>
-//                     {/* </Link> */}
-//                 </li>
-                
-//                 {/* <div id="feedBottom">
-//                     <br />
-//                 </div> */}
-//                 {/* <div onClick={this.pagingMore}>
-//                     Paging
-//                 </div> */}
-//             </div>
-            
-//         );
-//     }
-// }
-
-// // USE AS IF STATEMENT TO CUSTOMIZE ACTIVITY TO TYPE (question vs. project, etc.)
-//     renderItem(problem) {
-        
-    
-//       if (problem.Private === true) {
-//               return (
-//                   <div key={problem.ID} id="nodisplay">
-//                   </div>
-//               );
-      
-//       } else if (problem.ParentType === 1) {
-      
-//             return (
-            
-//                   <li key={problem.ID} id="nodisplay">
-//                   </li>
-            
-            
-//             );
-      
-//       } else if (problem.Title === 'Interstellar Civilization') {
-      
-//             return (
-            
-//               <li key={problem.ID} id="nodisplay">
-//               </li>
-            
-            
-//             );
-      
-//       } else if (problem.Title === 'Evolving Humanity') {
-//             return (
-//               <li key={problem.ID} id="nodisplay">
-//               </li>
-            
-//             );
-//       } else if (problem.Title === 'Theoretical Knowledge') {
-//             return (
-//               <li key={problem.ID} id="nodisplay">
-//               </li>
-            
-//             );
-//       } else if (problem.Title === 'Technology Development') {
-//             return (
-//               <li key={problem.ID} id="nodisplay">
-//               </li>
-            
-//             );
-//       } else 
-//             return (
-//               <li key={problem.ID} id="feedListUnit">
-//                   <Link to={'/project/'+problem.ID +'/subprojects'}>
-//                       <div id="feedUnits">               
-//                           <div id="blueFeed">project by {problem.OriginalPosterUsername}</div>
-//                           <div id="whiteFeed">{problem.Title}</div>
-//                           <div id="feedDate">{dateTime(problem.CreatedAt)}</div>
-//                       </div>
-//                   </Link>
-//               </li>
-//             );
-//          }
-//       }
-
-
-// function dateTime(str) {
-//     if(str != undefined){
-//        var result = str.substring(0,10);
-//        return result
-//     }
-// }

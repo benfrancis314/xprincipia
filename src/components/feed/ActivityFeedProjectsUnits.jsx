@@ -103,15 +103,17 @@ if (problem.Private === true) {
 
       return (
     //   We do actually want to show projects on proposals here:
-        <li key={problem.ID} id="feedListUnit">
-            <Link to={'/project/'+problem.ID +'/subprojects'}>
-                <div id="feedUnits">               
-                    <div id="blueFeed">project by <span id="feedCaps">{problem.OriginalPosterUsername}</span></div>
-                    <div id="whiteFeed">{problem.Title}</div>
-                    <div id="feedDate">{dateTime(problem.CreatedAt)}</div>
-                </div>
-            </Link>
-        </li>
+        // <li key={problem.ID} id="feedListUnit">
+        //     <Link to={'/project/'+problem.ID +'/subprojects'}>
+        //         <div id="feedUnits">               
+        //             <div id="blueFeed">project by <span id="feedCaps">{problem.OriginalPosterUsername}</span></div>
+        //             <div id="whiteFeed">{problem.Title}</div>
+        //             <div id="feedDate">{dateTime(problem.CreatedAt)}</div>
+        //         </div>
+        //     </Link>
+        // </li>
+        <div key={problem.ID} id="nodisplay">
+        </div>
       
       
       );

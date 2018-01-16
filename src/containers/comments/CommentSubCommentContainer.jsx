@@ -49,12 +49,12 @@ export default class CommentSubCommentContainer extends React.Component {
 
  
    render() {
-
-    if (this.props.params.solutionID){
+    // PROPOSAL SUGGESTIONS
+    if ((this.props.params.solutionID) && (this.state.comment.ParentType == '3')){
         return (
             <div id="answerContainer">
                 <div id="answerQuestionHeader">
-                    <Link to={`/project/${this.props.params.probID}/proposal/${this.props.params.commentID}/comments`}>
+                    <Link to={`/project/${this.props.params.probID}/proposal/${this.props.params.solutionID}/suggestion/${this.state.comment.ParentID}/comments`}>
                         <div id="backSolutionArrowDiv">
                             <img src={require('../../assets/upArrow.svg')} id="backSolutionArrow" width="50" height="30" alt="Back arrow, blue up arrow" />
                         </div>
@@ -62,42 +62,7 @@ export default class CommentSubCommentContainer extends React.Component {
                     <div id="answerQuestionLabel">return to comments</div>
                 </div>
                 {/*Suggestion being commented on*/}
-                <div id="answerQuestionUnit">
-                    <div id="answerQuestionContent">
-                        <div id="discussHeader">
-                            <span id="discussPercent">
-                                {floatToDecimal(this.state.comment.PercentRank)}
-                            </span>
-                            {this.state.comment.Username}
-                        </div>
-                        <div id="suggestionText">
-                            {this.state.comment.Description}
-                        </div>
-                    </div>
-                    {/*<button type="button" onClick={submitVote} id="suggestionVote">
-                        Vote
-                    </button> */}
-                    {/* <br /><br />  */}
-                </div>
-                {this.props.children}
-                <CommentProposalUnit comments={this.state.subcomments} probID={this.props.params.probID} solutionID={this.props.params.solutionID} suggID={this.props.params.commentID} commentID={this.props.params.commentID} />
-            </div>);
-
-
-
-    } else if (this.state.comment.ParentType == '6') {
-        return (
-            <div id="answerContainer">
-                <div id="answerQuestionHeader">
-                    <Link to={`/project/${this.props.params.probID}/freeform/${this.state.comment.ParentID}/comments`}>
-                        <div id="backSolutionArrowDiv">
-                            <img src={require('../../assets/upArrow.svg')} id="backSolutionArrow" width="50" height="30" alt="Back arrow, blue up arrow" />
-                        </div>
-                    </Link>
-                    <div id="answerQuestionLabel">return to comments</div>
-                </div>
-                {/*Suggestion being commented on*/}
-                <Link to={`/project/${this.props.params.probID}/freeform/${this.state.comment.ParentID}/comments`}>
+                <Link to={`/project/${this.props.params.probID}/proposal/${this.props.params.solutionID}/suggestion/${this.state.comment.ParentID}/comments`}>
                     <div id="answerQuestionUnit">
                         <div id="answerQuestionContent">
                             <div id="discussHeader">
@@ -113,9 +78,348 @@ export default class CommentSubCommentContainer extends React.Component {
                     </div>
                 </Link>
                 {this.props.children}
-                <CommentUnit comments={this.state.subcomments} probID={this.props.params.probID} suggID={this.props.params.suggID} commentID={this.props.params.commentID} />
+                <CommentProposalUnit comments={this.state.subcomments} probID={this.props.params.probID} solutionID={this.props.params.solutionID} suggID={this.props.params.commentID} commentID={this.props.params.commentID} />
+            </div>);
+    // PROPOSAL ANSWERS
+    } else if ((this.props.params.solutionID) && (this.state.comment.ParentType == '4')) {
+    return (
+        <div id="answerContainer">
+            <div id="answerQuestionHeader">
+                <Link to={`/project/${this.props.params.probID}/proposal/${this.props.params.solutionID}/question/${this.state.comment.BackupParentID}/answer/${this.state.comment.BackupParentID}/comments`}>
+                    <div id="backSolutionArrowDiv">
+                        <img src={require('../../assets/upArrow.svg')} id="backSolutionArrow" width="50" height="30" alt="Back arrow, blue up arrow" />
+                    </div>
+                </Link>
+                <div id="answerQuestionLabel">return to comments</div>
             </div>
-        );
+            {/*Suggestion being commented on*/}
+            <Link to={`/project/${this.props.params.probID}/proposal/${this.props.params.solutionID}/question/${this.state.comment.BackupParentID}/answer/${this.state.comment.BackupParentID}/comments`}>
+                <div id="answerQuestionUnit">
+                    <div id="answerQuestionContent">
+                        <div id="discussHeader">
+                            <span id="discussPercent">
+                                {floatToDecimal(this.state.comment.PercentRank)}
+                            </span>
+                            {this.state.comment.Username}
+                        </div>
+                        <div id="suggestionText">
+                            {this.state.comment.Description}
+                        </div>
+                    </div>
+                </div>
+            </Link>
+            {this.props.children}
+            <CommentProposalUnit comments={this.state.subcomments} probID={this.props.params.probID} solutionID={this.props.params.solutionID} suggID={this.props.params.commentID} commentID={this.props.params.commentID} />
+        </div>);
+    // PROPOSAL COMMENTS
+    } else if ((this.props.params.solutionID) && (this.state.comment.ParentType == '5')){
+        return (
+            <div id="answerContainer">
+                <div id="answerQuestionHeader">
+                    <Link to={`/project/${this.props.params.probID}/proposal/${this.props.params.solutionID}/comment/${this.state.comment.ParentID}/subcomments`}>
+                        <div id="backSolutionArrowDiv">
+                            <img src={require('../../assets/upArrow.svg')} id="backSolutionArrow" width="50" height="30" alt="Back arrow, blue up arrow" />
+                        </div>
+                    </Link>
+                    <div id="answerQuestionLabel">return to comments</div>
+                </div>
+                {/*Suggestion being commented on*/}
+                <Link to={`/project/${this.props.params.probID}/proposal/${this.props.params.solutionID}/comment/${this.state.comment.ParentID}/subcomments`}>
+                    <div id="answerQuestionUnit">
+                        <div id="answerQuestionContent">
+                            <div id="discussHeader">
+                                <span id="discussPercent">
+                                    {floatToDecimal(this.state.comment.PercentRank)}
+                                </span>
+                                {this.state.comment.Username}
+                            </div>
+                            <div id="suggestionText">
+                                {this.state.comment.Description}
+                            </div>
+                        </div>
+                    </div>
+                </Link>
+                {this.props.children}
+                <CommentProposalUnit comments={this.state.subcomments} probID={this.props.params.probID} solutionID={this.props.params.solutionID} suggID={this.props.params.commentID} commentID={this.props.params.commentID} />
+            </div>);
+    // PROPOSAL DEBATE
+    } else if ((this.props.params.solutionID) && (this.state.comment.ParentType == '6')){
+        return (
+            <div id="answerContainer">
+                <div id="answerQuestionHeader">
+                    <Link to={`/project/${this.props.params.probID}/proposal/${this.props.params.solutionID}/suggestion/${this.state.comment.ParentID}/comments`}>
+                        <div id="backSolutionArrowDiv">
+                            <img src={require('../../assets/upArrow.svg')} id="backSolutionArrow" width="50" height="30" alt="Back arrow, blue up arrow" />
+                        </div>
+                    </Link>
+                    <div id="answerQuestionLabel">return to comments</div>
+                </div>
+                {/*Suggestion being commented on*/}
+                <Link to={`/project/${this.props.params.probID}/proposal/${this.props.params.solutionID}/suggestion/${this.state.comment.ParentID}/comments`}>
+                    <div id="answerQuestionUnit">
+                        <div id="answerQuestionContent">
+                            <div id="discussHeader">
+                                <span id="discussPercent">
+                                    {floatToDecimal(this.state.comment.PercentRank)}
+                                </span>
+                                {this.state.comment.Username}
+                            </div>
+                            <div id="suggestionText">
+                                {this.state.comment.Description}
+                            </div>
+                        </div>
+                    </div>
+                </Link>
+                {this.props.children}
+                <CommentProposalUnit comments={this.state.subcomments} probID={this.props.params.probID} solutionID={this.props.params.solutionID} suggID={this.props.params.commentID} commentID={this.props.params.commentID} />
+            </div>);
+    // PROPOSAL PROS
+    } else if ((this.props.params.solutionID) && (this.state.comment.ParentType == '9')){
+        return (
+            <div id="answerContainer">
+                <div id="answerQuestionHeader">
+                    <Link to={`/project/${this.props.params.probID}/proposal/${this.props.params.solutionID}/pros/${this.state.comment.ParentID}/comments`}>
+                        <div id="backSolutionArrowDiv">
+                            <img src={require('../../assets/upArrow.svg')} id="backSolutionArrow" width="50" height="30" alt="Back arrow, blue up arrow" />
+                        </div>
+                    </Link>
+                    <div id="answerQuestionLabel">return to comments</div>
+                </div>
+                {/*Suggestion being commented on*/}
+                <Link to={`/project/${this.props.params.probID}/proposal/${this.props.params.solutionID}/pros/${this.state.comment.ParentID}/comments`}>
+                    <div id="answerQuestionUnit">
+                        <div id="answerQuestionContent">
+                            <div id="discussHeader">
+                                <span id="discussPercent">
+                                    {floatToDecimal(this.state.comment.PercentRank)}
+                                </span>
+                                {this.state.comment.Username}
+                            </div>
+                            <div id="suggestionText">
+                                {this.state.comment.Description}
+                            </div>
+                        </div>
+                    </div>
+                </Link>
+                {this.props.children}
+                <CommentProposalUnit comments={this.state.subcomments} probID={this.props.params.probID} solutionID={this.props.params.solutionID} suggID={this.props.params.commentID} commentID={this.props.params.commentID} />
+            </div>);
+    // PROPOSAL CONS
+    } else if ((this.props.params.solutionID) && (this.state.comment.ParentType == '10')){
+        return (
+            <div id="answerContainer">
+                <div id="answerQuestionHeader">
+                    <Link to={`/project/${this.props.params.probID}/proposal/${this.props.params.solutionID}/cons/${this.state.comment.ParentID}/comments`}>
+                        <div id="backSolutionArrowDiv">
+                            <img src={require('../../assets/upArrow.svg')} id="backSolutionArrow" width="50" height="30" alt="Back arrow, blue up arrow" />
+                        </div>
+                    </Link>
+                    <div id="answerQuestionLabel">return to comments</div>
+                </div>
+                {/*Suggestion being commented on*/}
+                <Link to={`/project/${this.props.params.probID}/proposal/${this.props.params.solutionID}/cons/${this.state.comment.ParentID}/comments`}>
+                    <div id="answerQuestionUnit">
+                        <div id="answerQuestionContent">
+                            <div id="discussHeader">
+                                <span id="discussPercent">
+                                    {floatToDecimal(this.state.comment.PercentRank)}
+                                </span>
+                                {this.state.comment.Username}
+                            </div>
+                            <div id="suggestionText">
+                                {this.state.comment.Description}
+                            </div>
+                        </div>
+                    </div>
+                </Link>
+                {this.props.children}
+                <CommentProposalUnit comments={this.state.subcomments} probID={this.props.params.probID} solutionID={this.props.params.solutionID} suggID={this.props.params.commentID} commentID={this.props.params.commentID} />
+            </div>);
+        } else if  (this.state.comment.ParentType == '3'){
+            return (
+                <div id="answerContainer">
+                    <div id="answerQuestionHeader">
+                        <Link to={`/project/${this.props.params.probID}/suggestion/${this.state.comment.ParentID}/comments`}>
+                            <div id="backSolutionArrowDiv">
+                                <img src={require('../../assets/upArrow.svg')} id="backSolutionArrow" width="50" height="30" alt="Back arrow, blue up arrow" />
+                            </div>
+                        </Link>
+                        <div id="answerQuestionLabel">return to comments</div>
+                    </div>
+                    {/*Suggestion being commented on*/}
+                    <Link to={`/project/${this.props.params.solutionID}/suggestion/${this.state.comment.ParentID}/comments`}>
+                        <div id="answerQuestionUnit">
+                            <div id="answerQuestionContent">
+                                <div id="discussHeader">
+                                    <span id="discussPercent">
+                                        {floatToDecimal(this.state.comment.PercentRank)}
+                                    </span>
+                                    {this.state.comment.Username}
+                                </div>
+                                <div id="suggestionText">
+                                    {this.state.comment.Description}
+                                </div>
+                            </div>
+                        </div>
+                    </Link>
+                    {this.props.children}
+                    <CommentUnit comments={this.state.subcomments} probID={this.props.params.probID} solutionID={this.props.params.solutionID} suggID={this.props.params.commentID} commentID={this.props.params.commentID} />
+                </div>);
+        // PROPOSAL ANSWERS
+        } else if (this.state.comment.ParentType == '4') {
+        return (
+            <div id="answerContainer">
+                <div id="answerQuestionHeader">
+                    <Link to={`/project/${this.props.params.probID}/question/${this.state.comment.BackupParentID}/answer/${this.state.comment.BackupParentID}/comments`}>
+                        <div id="backSolutionArrowDiv">
+                            <img src={require('../../assets/upArrow.svg')} id="backSolutionArrow" width="50" height="30" alt="Back arrow, blue up arrow" />
+                        </div>
+                    </Link>
+                    <div id="answerQuestionLabel">return to comments</div>
+                </div>
+                {/*Suggestion being commented on*/}
+                <Link to={`/project/${this.props.params.probID}/question/${this.state.comment.BackupParentID}/answer/${this.state.comment.BackupParentID}/comments`}>
+                    <div id="answerQuestionUnit">
+                        <div id="answerQuestionContent">
+                            <div id="discussHeader">
+                                <span id="discussPercent">
+                                    {floatToDecimal(this.state.comment.PercentRank)}
+                                </span>
+                                {this.state.comment.Username}
+                            </div>
+                            <div id="suggestionText">
+                                {this.state.comment.Description}
+                            </div>
+                        </div>
+                    </div>
+                </Link>
+                {this.props.children}
+                <CommentUnit comments={this.state.subcomments} probID={this.props.params.probID} solutionID={this.props.params.solutionID} suggID={this.props.params.commentID} commentID={this.props.params.commentID} />
+            </div>);
+        // PROPOSAL COMMENTS
+        } else if (this.state.comment.ParentType == '5') {
+            return (
+                <div id="answerContainer">
+                    <div id="answerQuestionHeader">
+                        <Link to={`/project/${this.props.params.probID}/comment/${this.state.comment.ParentID}/subcomments`}>
+                            <div id="backSolutionArrowDiv">
+                                <img src={require('../../assets/upArrow.svg')} id="backSolutionArrow" width="50" height="30" alt="Back arrow, blue up arrow" />
+                            </div>
+                        </Link>
+                        <div id="answerQuestionLabel">return to comments</div>
+                    </div>
+                    {/*Suggestion being commented on*/}
+                    <Link to={`/project/${this.props.params.probID}/comment/${this.state.comment.ParentID}/subcomments`}>
+                        <div id="answerQuestionUnit">
+                            <div id="answerQuestionContent">
+                                <div id="discussHeader">
+                                    <span id="discussPercent">
+                                        {floatToDecimal(this.state.comment.PercentRank)}
+                                    </span>
+                                    {this.state.comment.Username}
+                                </div>
+                                <div id="suggestionText">
+                                    {this.state.comment.Description}
+                                </div>
+                            </div>
+                        </div>
+                    </Link>
+                    {this.props.children}
+                    <CommentUnit comments={this.state.subcomments} probID={this.props.params.probID} solutionID={this.props.params.solutionID} suggID={this.props.params.commentID} commentID={this.props.params.commentID} />
+                </div>);
+        // PROPOSAL DEBATE
+        } else if (this.state.comment.ParentType == '6') {
+            return (
+                <div id="answerContainer">
+                    <div id="answerQuestionHeader">
+                        <Link to={`/project/${this.props.params.probID}/suggestion/${this.state.comment.ParentID}/comments`}>
+                            <div id="backSolutionArrowDiv">
+                                <img src={require('../../assets/upArrow.svg')} id="backSolutionArrow" width="50" height="30" alt="Back arrow, blue up arrow" />
+                            </div>
+                        </Link>
+                        <div id="answerQuestionLabel">return to comments</div>
+                    </div>
+                    {/*Suggestion being commented on*/}
+                    <Link to={`/project/${this.props.params.probID}/suggestion/${this.state.comment.ParentID}/comments`}>
+                        <div id="answerQuestionUnit">
+                            <div id="answerQuestionContent">
+                                <div id="discussHeader">
+                                    <span id="discussPercent">
+                                        {floatToDecimal(this.state.comment.PercentRank)}
+                                    </span>
+                                    {this.state.comment.Username}
+                                </div>
+                                <div id="suggestionText">
+                                    {this.state.comment.Description}
+                                </div>
+                            </div>
+                        </div>
+                    </Link>
+                    {this.props.children}
+                    <CommentUnit comments={this.state.subcomments} probID={this.props.params.probID} solutionID={this.props.params.solutionID} suggID={this.props.params.commentID} commentID={this.props.params.commentID} />
+                </div>);
+        // PROPOSAL PROS
+        } else if (this.state.comment.ParentType == '7') {
+            return (
+                <div id="answerContainer">
+                    <div id="answerQuestionHeader">
+                        <Link to={`/project/${this.props.params.probID}/learn/content/${this.state.comment.ParentID}/comments`}>
+                            <div id="backSolutionArrowDiv">
+                                <img src={require('../../assets/upArrow.svg')} id="backSolutionArrow" width="50" height="30" alt="Back arrow, blue up arrow" />
+                            </div>
+                        </Link>
+                        <div id="answerQuestionLabel">return to comments</div>
+                    </div>
+                    {/*Suggestion being commented on*/}
+                    <Link to={`/project/${this.props.params.probID}/learn/content/${this.state.comment.ParentID}/comments`}>
+                        <div id="answerQuestionUnit">
+                            <div id="answerQuestionContent">
+                                <div id="discussHeader">
+                                    <span id="discussPercent">
+                                        {floatToDecimal(this.state.comment.PercentRank)}
+                                    </span>
+                                    {this.state.comment.Username}
+                                </div>
+                                <div id="suggestionText">
+                                    {this.state.comment.Description}
+                                </div>
+                            </div>
+                        </div>
+                    </Link>
+                    {this.props.children}
+                    <CommentUnit comments={this.state.subcomments} probID={this.props.params.probID} solutionID={this.props.params.solutionID} suggID={this.props.params.commentID} commentID={this.props.params.commentID} />
+                </div>);
+        // PROPOSAL CONS
+        } else if (this.state.comment.ParentType == '8'){
+            return (
+                <div id="answerContainer">
+                    <div id="answerQuestionHeader">
+                        <Link to={`/project/${this.props.params.probID}/learn/resources/${this.state.comment.ParentID}/comments`}>
+                            <div id="backSolutionArrowDiv">
+                                <img src={require('../../assets/upArrow.svg')} id="backSolutionArrow" width="50" height="30" alt="Back arrow, blue up arrow" />
+                            </div>
+                        </Link>
+                        <div id="answerQuestionLabel">return to comments</div>
+                    </div>
+                    {/*Suggestion being commented on*/}
+                    <Link to={`/project/${this.props.params.probID}/learn/resources/${this.state.comment.ParentID}/comments`}>
+                        <div id="answerQuestionUnit">
+                            <div id="answerQuestionContent">
+                                <div id="discussHeader">
+                                    <span id="discussPercent">
+                                        {floatToDecimal(this.state.comment.PercentRank)}
+                                    </span>
+                                    {this.state.comment.Username}
+                                </div>
+                                <div id="suggestionText">
+                                    {this.state.comment.Description}
+                                </div>
+                            </div>
+                        </div>
+                    </Link>
+                    {this.props.children}
+                    <CommentUnit comments={this.state.subcomments} probID={this.props.params.probID} solutionID={this.props.params.solutionID} suggID={this.props.params.commentID} commentID={this.props.params.commentID} />
+                </div>);
     } else {
         return (
             <div id="answerContainer">

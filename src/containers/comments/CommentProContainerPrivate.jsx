@@ -1,8 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router';
 import axios from 'axios';
-import CommentProposalUnit from '../../components/comments/CommentProposalUnit.jsx';
-import CommentUnit from '../../components/comments/CommentUnit.jsx';
+import CommentProposalUnitPrivate from '../../components/comments/CommentProposalUnitPrivate.jsx';
+import CommentUnitPrivate from '../../components/comments/CommentUnitPrivate.jsx';
 import SideBarMore from '../../components/SideBarMore.jsx';
 import {Config} from '../../config.js';
 import $ from 'jquery';
@@ -94,7 +94,7 @@ export default class CommentProContainer extends React.Component {
                     </div>
                 </Link>
                 {this.props.children}
-                <CommentUnit comments={this.state.comments} probID={this.props.params.probID} suggID={this.props.params.suggID} commentID={this.props.params.commentID} />
+                <CommentProposalUnitPrivate comments={this.state.comments} probID={this.props.params.probID} suggID={this.props.params.suggID} commentID={this.props.params.commentID} />
             </div>
         );
     }

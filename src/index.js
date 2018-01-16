@@ -10,6 +10,7 @@ import App from './App';
 import ActivityFeedFilter from './components/feed/ActivityFeedFilter.jsx';
 import ActivityFeedDebateUnits from './components/feed/ActivityFeedDebateUnits.jsx';
 import ActivityFeedLessonsUnits from './components/feed/ActivityFeedLessonsUnits.jsx';
+import ActivityFeedOmniUnits from './components/feed/ActivityFeedOmniUnits.jsx';
 import ActivityFeedProjectsUnits from './components/feed/ActivityFeedProjectsUnits.jsx';
 import ActivityFeedProposalsUnits from './components/feed/ActivityFeedProposalsUnits.jsx';
 import ActivityFeedQuestionsUnits from './components/feed/ActivityFeedQuestionsUnits.jsx';
@@ -78,6 +79,9 @@ import LearnResourcesPrivateForm from './components/learn/LearnResourcesPrivateF
 import Load from './components/Load.jsx';
 import LoginUnit from './components/LoginUnit.jsx';
 import OverviewProjectForm from './components/overview/OverviewProjectForm.jsx';
+import PasswordResetContainer from './components/profile/PasswordResetContainer.jsx';
+import PasswordResetFinish from './components/profile/PasswordResetFinish.jsx';
+import PasswordResetStart from './components/profile/PasswordResetStart.jsx';
 import PrivateProjectForm from './components/problems/PrivateProjectForm.jsx';
 import PrivateSubProjectForm from './components/problems/PrivateSubProjectForm.jsx';
 import ProblemForm from './components/problems/ProblemForm.jsx';
@@ -157,6 +161,7 @@ import WelcomeCreateForm from './components/welcome/WelcomeCreateForm.jsx';
 //Load Containers
 import ActivityFeedDebateContainer from './containers/feed/ActivityFeedDebateContainer.jsx';
 import ActivityFeedLessonsContainer from './containers/feed/ActivityFeedLessonsContainer.jsx';
+import ActivityFeedOmniContainer from './containers/feed/ActivityFeedOmniContainer.jsx';
 import ActivityFeedProjectsContainer from './containers/feed/ActivityFeedProjectsContainer.jsx';
 import ActivityFeedProposalsContainer from './containers/feed/ActivityFeedProposalsContainer.jsx';
 import ActivityFeedQuestionsContainer from './containers/feed/ActivityFeedQuestionsContainer.jsx';
@@ -241,6 +246,13 @@ ReactDOM.render(
     <IndexRoute component={Layout}></IndexRoute>
     <Route path='/shortstory' component={ShortStoryContainer}></Route>
     <Route path='/home' component={Layout}>
+      {/* Add :user param later. */}
+      <Route path='/passwordreset' component={PasswordResetContainer}>
+        <IndexRoute component={PasswordResetStart}></IndexRoute>
+        <Route path='/passwordreset/start' component={PasswordResetStart}></Route>
+        <Route path='/passwordreset/finish/:userID' component={PasswordResetFinish}></Route>
+      </Route>
+
       <Route path='/error' component={ErrorContainer}>
         <IndexRoute component={Redirection}></IndexRoute>
         <Route path='/404' component={Error404}></Route>
@@ -259,11 +271,15 @@ ReactDOM.render(
             {/* <Route path='/chatbox' component={ChatBoxContainer}/> */}
             <Route path='/welcome/old' component={TrueEmpty}/>
           </Route>
-          <Route path='/welcome/feed' component={ActivityFeedProjectsContainer}>
+          <Route path='/welcome/feed' component={ActivityFeedOmniContainer}>
             <IndexRoute component={ActivityFeedProjectsUnits}></IndexRoute>
-            <Route path='/welcome' component={ActivityFeedProjectsUnits}></Route>
+            <Route path='/welcome' component={ActivityFeedOmniUnits}></Route>
             <Route path='/welcome/filter' component={ActivityFeedFilter}></Route>
             <Route path='/welcome/create' component={WelcomeCreateForm}></Route>
+          </Route>
+          <Route path='/welcome/feed/projects' component={ActivityFeedProjectsContainer}>
+            <IndexRoute component={ActivityFeedProposalsUnits}></IndexRoute>
+            <Route path='/welcome/projects' component={ActivityFeedProjectsUnits}></Route>
           </Route>
           <Route path='/welcome/feed/proposals' component={ActivityFeedProposalsContainer}>
             <IndexRoute component={ActivityFeedProposalsUnits}></IndexRoute>
@@ -403,7 +419,7 @@ ReactDOM.render(
                 <Route path='/project/private/:probID/proposal/:solutionID/comment/:commentID/subcomment/:subcommentID/delete' component={CommentDeleteFormPrivate}></Route>
               </Route>
             </Route>
-            <Route path='/project/private/:probID/proposal/:solutionID/learn' component={ProposalLearnMenu}>
+            {/* <Route path='/project/private/:probID/proposal/:solutionID/learn' component={ProposalLearnMenu}>
               <Route path='/project/private/:probID/proposal/:solutionID/learn/content/full' component={LearnContentContainer1}>
                 <IndexRoute component={LearnContentForm}></IndexRoute>
                 <Route path='/project/private/:probID/proposal/:solutionID/learn/content' component={LearnContentForm}></Route>
@@ -433,7 +449,7 @@ ReactDOM.render(
                 <Route path='/project/private/:probID/proposal/:solutionID/learn/resources/:resourceID/comment/:commentID/flag' component={CommentFlagForm}></Route>
                 <Route path='/project/private/:probID/proposal/:solutionID/learn/resources/:resourceID/comment/:commentID/delete' component={CommentDeleteFormPrivate}></Route>
               </Route>
-            </Route>
+            </Route> */}
             <Route path='/proposal/private/:probID/:solutionID/pros' component={ProsContainerPrivate}>
               <IndexRoute component={ProsFormPrivate}></IndexRoute>
               <Route path='/project/private/:probID/:solutionID/pros/pros' component={ProsFormPrivate}></Route>
@@ -647,7 +663,7 @@ ReactDOM.render(
                 <Route path='/project/:probID/proposal/:solutionID/comment/:commentID/subcomment/:subcommentID/delete' component={CommentDeleteForm}></Route>
               </Route>
             </Route>
-            <Route path='/project/:probID/proposal/:solutionID/learn' component={ProposalLearnMenu}>
+            {/* <Route path='/project/:probID/proposal/:solutionID/learn' component={ProposalLearnMenu}>
               <Route path='/project/:probID/proposal/:solutionID/learn/content/full' component={LearnContentContainerPrivate}>
                 <IndexRoute component={LearnContentButton}></IndexRoute>
                 <Route path='/project/:probID/proposal/:solutionID/learn/content' component={LearnContentButton}></Route>
@@ -678,7 +694,7 @@ ReactDOM.render(
                 <Route path='/project/:probID/proposal/:solutoinID/learn/resources/:resourceID/comment/:commentID/flag' component={CommentFlagForm}></Route>
                 <Route path='/project/:probID/proposal/:solutionID/learn/resources/:resourceID/comment/:commentID/delete' component={CommentDeleteForm}></Route>
               </Route>
-            </Route>
+            </Route> */}
 
               <Route path='/project/:probID/proposal/:solutionID/pros' component={ProsContainer}>
                 <IndexRoute component={ProsForm}></IndexRoute>
