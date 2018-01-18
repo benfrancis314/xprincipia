@@ -8,15 +8,14 @@ import $ from 'jquery';
 export default class ProblemFollowButton extends React.Component {
   
 
-  constructor(props){
-    super(props);
+  constructor(){
+    super();
 
     this.state = {
       tracked: '',
     }
     this.track = this.track.bind(this)
     this.unTrack = this.unTrack.bind(this)
-    this.testTracked = this.testTracked.bind(this)
 };
 
 componentDidMount(){
@@ -38,11 +37,6 @@ componentWillReceiveProps(nextProps){
     })       
 }
 
-
-testTracked() {
-  alert(this.state.tracked);
-}
-
 track() {
     var self = this
       axios.post( Config.API + '/auth/tracker/track', {
@@ -54,7 +48,6 @@ track() {
           document.location = window.location.pathname 
       })
     .catch(function (error) {
-      // console.log(error.response.data)
         $(document).ready(function() {
             $('#notification').attr('id','notificationShow').hide().slideDown();
 
@@ -75,13 +68,11 @@ track() {
   
 unTrack() {
   var self = this
-  alert('untrack state')
     axios.delete( Config.API + '/auth/tracker/untrack?trackerType=0&typeID=' + this.props.probID + '&username=' + this.props.username)
     .then(function (result) {
         document.location = window.location.pathname 
     })
   .catch(function (error) {
-    // console.log(error.response.data)
       $(document).ready(function() {
           $('#notification').attr('id','notificationShow').hide().slideDown();
 
@@ -106,7 +97,7 @@ unTrack() {
             <div>
               <Link>
                 <div id="SBButtonFollowed" onClick={this.unTrack}>
-                    tracking
+                  tracking
                 </div>
               </Link>
             </div>
@@ -116,7 +107,7 @@ unTrack() {
             <div>
               <Link>
                 <div id="SBButtonFollow" onClick={this.track}>
-                    track
+                  track
                 </div>
               </Link>
             </div>

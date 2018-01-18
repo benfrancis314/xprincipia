@@ -38,7 +38,7 @@ export default class WelcomeUserUnit extends React.Component {
     }
     hoverLabel() {
         $(document).ready(function() {
-                $('#feedTitle').html("new projects").fadeIn(7500);
+                $('#feedTitle').html("all activity").fadeIn(7500);
                 $('#feedTitle').attr('id','feedTitleHover');
                 $('#feedBottom').attr('id','feedBottomBlue');
         });
@@ -151,10 +151,25 @@ if (problem.Private === true) {
       <div key={problem.ID} id="nodisplay">
       </div> 
     );
+    } else if (problem.Type == '0') {
+        return (
+        <li key={problem.ID} id="feedListUnit">
+            <Link to={'/project/'+problem.ProblemID +'/subprojects'}>
+                <div id="omniActivityUnit">
+                    new sub project in:
+                    <br />
+                    <span id="blueUpdate">
+                        {problem.Description}
+                    </span>
+                    {/* <br />
+                    <span id="omniActivityDate">{problem.CreatedAt}</span> */}
+                </div>
+            </Link>
+        </li>);
     } else if (problem.Type == '2') {
         return (
         <li key={problem.ID} id="feedListUnit">
-            <Link to={'/project/'+problem.ProblemID +'/question'+problem.TypeID}>
+            <Link to={'/project/'+problem.ProblemID +'/question/'+problem.TypeID +'/answers'}>
                 <div id="omniActivityUnit">
                     new question in:
                     <br />
@@ -169,7 +184,7 @@ if (problem.Private === true) {
     } else if (problem.Type == '3') {
         return (
         <li key={problem.ID} id="feedListUnit">
-            <Link to={'/project/'+problem.ID +'/subprojects'}>
+            <Link to={'/project/'+problem.ID +'/suggestion/'+problem.TypeID +'/comments'}>
                 <div id="omniActivityUnit">
                     new suggestion in:
                     <br />
@@ -193,7 +208,7 @@ if (problem.Private === true) {
     } else if (problem.Type == '6') {
         return (
         <li key={problem.ID} id="feedListUnit">
-            <Link to={'/project/'+problem.ID +'/subprojects'}>
+            <Link to={'/project/'+problem.ID +'/freeform/'+problem.TypeID +'/comments'}>
                 <div id="omniActivityUnit">
                     new debate in:
                     <br />
@@ -210,7 +225,7 @@ if (problem.Private === true) {
     } else if (problem.Type == '7') {
         return (
         <li key={problem.ID} id="feedListUnit">
-            <Link to={'/project/'+problem.ID +'/subprojects'}>
+            <Link to={'/project/'+problem.ID +'/learn/content/'+problem.TypeID +'/coments'}>
             <div id="omniActivityUnit">
                 new lesson in:
                 <br />
@@ -225,7 +240,7 @@ if (problem.Private === true) {
     } else if (problem.Type == '8') {
         return (
         <li key={problem.ID} id="feedListUnit">
-            <Link to={'/project/'+problem.ID +'/subprojects'}>
+            <Link to={'/project/'+problem.ID +'/learn/resources/'+problem.TypeID +'/comments'}>
             <div id="omniActivityUnit">
                 new resource in:
                 <br />

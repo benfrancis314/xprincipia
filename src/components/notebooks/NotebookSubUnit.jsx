@@ -1,8 +1,7 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import { Link } from 'react-router';
-import axios from 'axios';
-import $ from 'jquery';
+// import { Link } from 'react-router';
+// import axios from 'axios';
+// import $ from 'jquery';
 
 
 export default class NotebookUnit extends React.Component {

@@ -18,7 +18,7 @@ export default class ProsConsCommentContainer extends React.Component {
     };
         componentDidMount(){
         var self = this;
-         axios.get( Config.API + '/auth/comments/proID?id='+this.props.params.proID).then(function (response) {
+         axios.get( Config.API + '/comments/proID?id='+this.props.params.proID).then(function (response) {
             self.setState({
                 comments: response.data,
             })

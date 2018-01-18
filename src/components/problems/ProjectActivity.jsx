@@ -49,9 +49,7 @@ render() {
                 {/* {React.cloneElement(this.props.children, {problems: this.state.feedProjectsSlice})} */}
                 </div>
                 <div id="projectNoActivity">
-                  NO ACTIVITY
-                  x{this.props.probID}x
-                  
+                  NO ACTIVITY                  
                 </div>      
             </div>
         );

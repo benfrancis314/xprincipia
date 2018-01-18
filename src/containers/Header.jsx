@@ -3,23 +3,25 @@ import {Link} from 'react-router';
 import cookie from 'react-cookie';
 import axios from 'axios';
 import HeaderAvatar from '../components/HeaderAvatar.jsx';
+// import SearchUnit from '../components/search/SearchUnit.jsx';
 import {Config} from '../config.js';
 import $ from 'jquery';
 
 export default class Header extends React.Component {
 
-    constructor(props){
-        super(props);
+    constructor(){
+        super();
 
         this.state = {
            username: '',
            password: '',
            userToken: '',
            notification: '',
+           userproblems : [],
+           searchText: [],
         }
-        // this.queryProblem = this.queryProblem.bind(this);
+        this.queryProblem = this.queryProblem.bind(this);
         this.postLogin = this.postLogin.bind(this);
-        // this.toggleFullScreen = this.toggleFullScreen.bind(this);
     };
 
     // toggleFullScreen() {
@@ -52,11 +54,11 @@ export default class Header extends React.Component {
   // }
 componentDidMount(){
   var self = this;
-  self.setState =  { 
+  self.setState({ 
     userToken: cookie.load('userToken'),
     username: cookie.load('userName'),
     notification: this.props.notification,
-  }
+  })
 }
 // TESTING, don't use
   // componentDidMount() {
@@ -118,23 +120,17 @@ componentDidMount(){
       });
 }
 
-// Not using since we have no search bar in the header
-    // queryProblem () {
-    //     var self = this
-    //     this.state.searchText = document.getElementById('exploreInput').value
-    //     return axios.get( Config.API + '/problems/search?q='+this.state.searchText).then(function (response) {
-    //         self.setState({
-    //           problems: response.data
-    //         })
-    //         document.location = '/welcome';
-    //     })  
-    // }
+queryProblem () {
+  //get search text box data
+ this.state.searchText = document.getElementById('logoName').value
 
-// Not using currently
-    // submitSearch(e) {
-    //     // if (e.keyCode === 13)
-    //         document.location = '/search';
-    // }
+ var self = this
+ return axios.get( Config.API + '/problems/search?q='+this.state.searchText).then(function (response) {
+     self.setState({
+       userproblems: response.data
+     })
+ })
+}
 
    render() {
 
@@ -156,10 +152,9 @@ if (this.state.userToken === undefined ){
             {/*<input type="image" src={require('../assets/rightArrowWhite.svg')} onClick={this.postLogin} id="loginHeaderSubmitImage" alt="Submit login arrow, blue right arrow"/>*/}
             <div id="registerHeaderButton">
                 <Link to="/register">
-                    register
+                    join
                 </Link>
             </div>
-            {/* {this.state.username}! */}
         </div>
       );
     } else {
@@ -167,20 +162,26 @@ if (this.state.userToken === undefined ){
             <div id="header">
                 <div id="logo">
                   <Link to="/welcome">
+                  {/* Old Logo */}
                     <div id="logoName">
                       XPrincipia
                     </div>
+                    {/* Logo as search bar */}
+                    {/* <input type="search" name="search"
+                            placeholder="XPrincipia" id="logoName"  
+                            onKeyDown={this.queryProblem} autoFocus autoComplete="off" /> */}
                   </Link>
                 </div>
-                {/*<div id="explore">
+                {/* <div id="explore">
                     <form id="exploreFormHeader">
                         <input type="search" name="search"
-                            placeholder="Explore" id="exploreHeaderInput"  
-                            onKeyDown={this.queryProblem} />
+                            placeholder="explore" id="exploreHeaderInput"  
+                            onKeyDown={this.queryProblem} autoFocus autoComplete="off" />
                         <input onKeyPress={this.submitSearch}  id="submitExplore" />
                     </form>
-                </div>*/}
+                </div> */}
                 <HeaderAvatar notification={this.props.notification}/>
+                {/* <SearchUnit problems={this.state.userproblems} /> */}
             </div>
       );  
 

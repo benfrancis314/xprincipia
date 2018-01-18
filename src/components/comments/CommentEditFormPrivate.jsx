@@ -19,7 +19,7 @@ export default class CommentEditForm extends React.Component {
 
   componentWillMount(){
       var self = this;
-        return axios.get( Config.API + '/auth/comments/ID?id='+this.props.params.commentID).then(function (response) {
+        return axios.get( Config.API + '/comments/ID?id='+this.props.params.commentID).then(function (response) {
           self.setState({
               comment: response.data
           })

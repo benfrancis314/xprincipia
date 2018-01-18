@@ -20,12 +20,12 @@ export default class AnswerContainer extends React.Component {
     };
     componentDidMount(){
         var self = this;
-        axios.get( Config.API + '/auth/answers/questionID?id='+this.props.params.questID).then(function (response) {
+        axios.get( Config.API + '/answers/questionID?id='+this.props.params.questID).then(function (response) {
             self.setState({
                 answers: response.data,
             })
         })
-        axios.get( Config.API + '/auth/questions/ID?id='+this.props.params.questID).then(function (response) {
+        axios.get( Config.API + '/questions/ID?id='+this.props.params.questID).then(function (response) {
             self.setState({
                 question: response.data
             })
@@ -35,7 +35,7 @@ export default class AnswerContainer extends React.Component {
     // Strategy for updating state
   componentWillReceiveProps(newProps){
     var self = this;
-      axios.get( Config.API + '/auth/questions/ID?id='+newProps.params.questID).then(function (response) {
+      axios.get( Config.API + '/questions/ID?id='+newProps.params.questID).then(function (response) {
           self.setState({
               question: response.data
           })
@@ -58,7 +58,7 @@ export default class AnswerContainer extends React.Component {
               } 
           });
       });
-    axios.get( Config.API + '/auth/answers/questionID?id='+this.props.params.questID).then(function (response) {
+    axios.get( Config.API + '/answers/questionID?id='+this.props.params.questID).then(function (response) {
         self.setState({
             answers: response.data,
         })
@@ -81,26 +81,28 @@ export default class AnswerContainer extends React.Component {
                 </Link>
                 <div id="answerQuestionLabel">Return to Questions</div>
             </div>
-            <div id="answerQuestionUnit"> 
-                    <div id="answerQuestionContent">
-                        <div id="discussHeader">
-                            <span id="discussPercent">
-                            
-                                {floatToDecimal(this.state.question.PercentRank)}
-                            </span>
-                            {/*Test Username*/}
-                            {/*{this.state.question.Username}*/}
+            <Link to={`/project/private/${this.props.params.probID}/proposal/${this.props.params.solutionID}/questions`}>
+                <div id="answerQuestionUnit"> 
+                        <div id="answerQuestionContent">
+                            <div id="discussHeader">
+                                <span id="discussPercent">
+                                
+                                    {floatToDecimal(this.state.question.PercentRank)}
+                                </span>
+                                {/*Test Username*/}
+                                {/*{this.state.question.Username}*/}
+                            </div>
+                            <div id="suggestionText">
+                                {/*Test Description*/}
+                                <span id="blueOpen">Q: </span>{this.state.question.Description}
+                            </div>
                         </div>
-                        <div id="suggestionText">
-                            {/*Test Description*/}
-                            <span id="blueOpen">Q: </span>{this.state.question.Description}
-                        </div>
-                    </div>
-                    {/*<button type="button" id="suggestionVote" onClick={submitVote}>
-                        Vote
-                    </button>*/}
-                    <br/><br/> 
-            </div>
+                        {/*<button type="button" id="suggestionVote" onClick={submitVote}>
+                            Vote
+                        </button>*/}
+                        <br/><br/> 
+                </div>
+            </Link>
 
                 {this.props.children}
                 {/*<QuestionUnit questions={this.state.questions}/>*/}

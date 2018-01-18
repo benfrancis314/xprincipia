@@ -10,24 +10,29 @@ export default class QuestionUnit extends React.Component {
     constructor(props){
         super(props);
 
+        this.state = {
+            voteHash : {},
+            debateNumber : [],
+        }
+
          this.renderItem = this.renderItem.bind(this);
     };
     componentDidMount() {
-        var self = this
-        self.setState({
-            voteHash : {},
-            debateNumber : [],
-        })
+        // var self = this
+        // self.setState({
+        //     voteHash : {},
+        //     debateNumber : [],
+        // })
     }
 
 
 
     componentWillReceiveProps (props) {
         var self = this
-        self.setState({
-            voteHash : {},
-            debateNumber : {},
-        })
+        // self.setState({
+        //     voteHash : {},
+        //     debateNumber : {},
+        // })
         props.questions.forEach( function (question){
             axios.get( Config.API + "/vote/isVotedOn?type=2&typeID=" + question.ID + "&username=" + cookie.load("userName"))
             .then( function (response) {  

@@ -22,7 +22,7 @@ export default class VersionForm extends React.Component {
   };
   componentWillMount(){
       var self = this;
-      return axios.get( Config.API + '/auth/solutions/ID?id='+this.props.params.solutionID).then(function (response) {
+      return axios.get( Config.API + '/solutions/ID?id='+this.props.params.solutionID).then(function (response) {
           //if parent ID is 0 then the problem is at the root of the tree
           // return id as the parentID for routing purposes
           //set other data

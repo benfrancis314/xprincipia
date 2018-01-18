@@ -57,7 +57,7 @@ export default class SolutionUnit extends React.Component {
 							</div>
 						</div>
 					<div id="proposalToggleOff">
-						{/*{React.cloneElement(<FullSolution probID={solution.ProblemID} solutionID={solution.ID}  />)}*/}
+						{/* <FullSolution probID={solution.ProblemID} solutionID={solution.ID}  /> */}
 					</div>
 					</Link>
 				</li>
@@ -77,7 +77,7 @@ export default class SolutionUnit extends React.Component {
 								</div>
 							</div>
 						<div id="proposalToggleOff">
-							{/*{React.cloneElement(<FullSolution probID={solution.ProblemID} solutionID={solution.ID}  />)}*/}
+							{/*<FullSolution probID={solution.ProblemID} solutionID={solution.ID}  />*/}
 						</div>
 						</Link>
 					</li>);
@@ -92,7 +92,7 @@ export default class SolutionUnit extends React.Component {
 								</div>
 							</div>
 						<div id="proposalToggleOff">
-							{/*{React.cloneElement(<FullSolution probID={solution.ProblemID} solutionID={solution.ID}  />)}*/}
+							{/*<FullSolution probID={solution.ProblemID} solutionID={solution.ID}  />*/}
 						</div>
 						</Link>
 					</li>

@@ -14,7 +14,7 @@ export default class ProjectParentChildrenUnitsContainer extends React.Component
     };
     componentDidMount(){
         var self = this;
-        return axios.get( Config.API + '/auth/problems/subproblems?id='+this.props.parentID).then(function (response) {
+        return axios.get( Config.API + '/problems/subproblems?id='+this.props.parentID).then(function (response) {
             self.setState({
                 problems: response.data
             })

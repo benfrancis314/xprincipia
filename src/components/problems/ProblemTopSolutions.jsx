@@ -4,8 +4,8 @@ import axios from 'axios';
 import {Config} from '../../config.js';
 
 export default class ProblemSolutionsMenu extends React.Component {
-  constructor(props){
-        super(props);
+  constructor(){
+        super();
 
         this.state = {
             solutions: [],
@@ -34,7 +34,6 @@ export default class ProblemSolutionsMenu extends React.Component {
    render() {
     
     if (this.state.solutions === null) {
-        // alert('a1');
         return (
             <div>
                 XP

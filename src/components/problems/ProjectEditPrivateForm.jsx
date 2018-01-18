@@ -21,7 +21,7 @@ export default class ProjectEditPrivateForm extends React.Component {
 
   componentWillMount() {
       var self = this;
-      return axios.get( Config.API + '/auth/problems/ID?id='+this.props.params.probID).then(function (response) {
+      return axios.get( Config.API + '/problems/ID?id='+this.props.params.probID).then(function (response) {
         //if parent ID is 0 then the problem is at the root of the tree
         // return id as the parentID for routing purposes
         //set other data

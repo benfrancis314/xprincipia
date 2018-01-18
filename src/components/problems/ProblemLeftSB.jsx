@@ -20,7 +20,7 @@ export default class ProblemLeftSB extends React.Component {
     };
     componentDidMount(){
       var self = this;
-      axios.get( Config.API + '/auth/problems/ID?id='+this.props.params.probID).then(function (response) {
+      axios.get( Config.API + '/problems/ID?id='+this.props.params.probID).then(function (response) {
 
           //set Problem Data
           self.setState({
@@ -57,7 +57,7 @@ export default class ProblemLeftSB extends React.Component {
 
   componentWillReceiveProps(newProps){
     var self = this;
-      return axios.get( Config.API + '/auth/problems/ID?id='+newProps.params.probID).then(function (response) {
+      return axios.get( Config.API + '/problems/ID?id='+newProps.params.probID).then(function (response) {
         //set problem data
         self.setState({
             problemInfo: response.data,
@@ -93,7 +93,7 @@ export default class ProblemLeftSB extends React.Component {
         })
         .then(function (result) {
             // alert("Thank you, your vote has been recorded.")
-          return axios.get( Config.API + '/auth/problems/ID?id='+self.props.params.probID).then(function (response) {
+          return axios.get( Config.API + '/problems/ID?id='+self.props.params.probID).then(function (response) {
           
             //set problem data
             self.setState({

@@ -98,7 +98,7 @@ shouldComponentUpdate(nextProps, nextState) {
            
         })
         .then(function (result) {
-          return axios.get( Config.API + '/auth/problems/ID?id='+self.props.params.probID).then(function (response) {
+          return axios.get( Config.API + '/problems/ID?id='+self.props.params.probID).then(function (response) {
           
             //set problem data
             self.setState({
@@ -143,7 +143,7 @@ unVote() {
       
         .then(function (result) {
             // alert('success')
-            return axios.get( Config.API + '/auth/problems/ID?id='+self.props.params.probID).then(function (response) {
+            return axios.get( Config.API + '/problems/ID?id='+self.props.params.probID).then(function (response) {
             //set problem data
             self.setState({
                 problemInfo: response.data,

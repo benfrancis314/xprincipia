@@ -1,9 +1,9 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 import { Link } from 'react-router';
 import axios from 'axios';
 import AnswerProposalUnit from '../components/answers/AnswerProposalUnit.jsx';
 import AnswerUnit from '../components/answers/AnswerUnit.jsx';
-import SideBarMore from '../components/SideBarMore.jsx';
 import {Config} from '../config.js';
 import $ from 'jquery';
 
@@ -19,6 +19,8 @@ export default class AnswerContainer extends React.Component {
         // this.submitVote = this.submitVote.bind(this)
     };
     componentDidMount(){
+        // ReactDOM.findDOMNode(this).scrollIntoView();
+        // window.scrollBy(0, -70);
         var self = this;
         axios.get( Config.API + '/answers/questionID?id='+this.props.params.questID).then(function (response) {
             self.setState({
@@ -81,29 +83,30 @@ export default class AnswerContainer extends React.Component {
                         </Link>
                         <div id="answerQuestionLabel">Return to Questions</div>
                     </div>
-                    <div id="answerQuestionUnit"> 
-                            <div id="answerQuestionContent">
-                                <div id="discussHeader">
-                                    <span id="discussPercent">
-                                        {floatToDecimal(this.state.question.PercentRank)}
-                                    </span>
-                                    {/*Test Username*/}
-                                    {this.state.question.Username}
+                    <Link to={`/project/${this.props.params.probID}/proposal/${this.props.params.solutionID}/questions`}>
+                        <div id="answerQuestionUnit"> 
+                                <div id="answerQuestionContent">
+                                    <div id="discussHeader">
+                                        <span id="discussPercent">
+                                            {floatToDecimal(this.state.question.PercentRank)}
+                                        </span>
+                                        {/*Test Username*/}
+                                        {this.state.question.Username}
+                                    </div>
+                                    <div id="suggestionText">
+                                        {/*Test Description*/}
+                                        <span id="blueOpen">Q: </span>{this.state.question.Description}
+                                    </div>
                                 </div>
-                                <div id="suggestionText">
-                                    {/*Test Description*/}
-                                    <span id="blueOpen">Q: </span>{this.state.question.Description}
-                                </div>
-                            </div>
-                            {/*<button type="button" id="suggestionVote" onClick={submitVote}>
-                                Vote
-                            </button>*/}
-                            <br/><br/> 
-                    </div>
+                                {/*<button type="button" id="suggestionVote" onClick={submitVote}>
+                                    Vote
+                                </button>*/}
+                                <br/><br/> 
+                        </div>
+                    </Link>
                 {this.props.children}
                 {/*<QuestionUnit questions={this.state.questions}/>*/}
                 <AnswerProposalUnit answers={this.state.answers} probID={this.props.params.probID} solutionID={this.props.params.solutionID} questID={this.props.params.questID} answerID={this.props.params.answerID} />
-                <SideBarMore />
             </div>);
 
 
@@ -122,30 +125,31 @@ export default class AnswerContainer extends React.Component {
             </Link>
             <div id="answerQuestionLabel">Return to Questions</div>
         </div>
-        <div id="answerQuestionUnit"> 
-                <div id="answerQuestionContent">
-					<div id="discussHeader">
-                        <span id="discussPercent">
-                            {floatToDecimal(this.state.question.PercentRank)}
-                        </span>
-					    {/*Test Username*/}
-                        {this.state.question.Username}
+        <Link to={`/project/${this.props.params.probID}/questions`}>
+            <div id="answerQuestionUnit"> 
+                    <div id="answerQuestionContent">
+                        <div id="discussHeader">
+                            <span id="discussPercent">
+                                {floatToDecimal(this.state.question.PercentRank)}
+                            </span>
+                            {/*Test Username*/}
+                            {this.state.question.Username}
+                        </div>
+                        <div id="suggestionText">
+                            {/*Test Description*/}
+                            <span id="blueOpen">Q: </span>{this.state.question.Description}
+                        </div>
                     </div>
-                    <div id="suggestionText">
-                        {/*Test Description*/}
-                        <span id="blueOpen">Q: </span>{this.state.question.Description}
-                    </div>
-				</div>
-                {/*<button type="button" id="suggestionVote" onClick={submitVote}>
-                    Vote
-                </button>*/}
-                <br/><br/> 
-        </div>
+                    {/*<button type="button" id="suggestionVote" onClick={submitVote}>
+                        Vote
+                    </button>*/}
+                    <br/><br/> 
+            </div>
+        </Link>
 
             {this.props.children}
             {/*<QuestionUnit questions={this.state.questions}/>*/}
             <AnswerUnit answers={this.state.answers} probID={this.props.params.probID} questID={this.props.params.questID} answerID={this.props.params.answerID} />
-            <SideBarMore />
         </div>
       );
    }

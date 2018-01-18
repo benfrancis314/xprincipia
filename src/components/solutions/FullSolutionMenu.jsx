@@ -18,7 +18,7 @@ export default class FullSolutionMenu extends React.Component {
     //initialize the component with this state
     componentDidMount(){
       var self = this;
-      return axios.get( Config.API + '/auth/solutions/ID?id='+this.props.params.solutionID).then(function (response) {
+      return axios.get( Config.API + '/solutions/ID?id='+this.props.params.solutionID).then(function (response) {
           self.setState({
               solutionInfo: response.data,
           })
@@ -45,7 +45,7 @@ export default class FullSolutionMenu extends React.Component {
   //On recieving new props
   componentWillReceiveProps(newProps){
     var self = this;
-      return axios.get( Config.API + '/auth/solutions/ID?id='+newProps.params.solutionID).then(function (response) {
+      return axios.get( Config.API + '/solutions/ID?id='+newProps.params.solutionID).then(function (response) {
           self.setState({
               solutionInfo: response.data,  
           })

@@ -38,7 +38,6 @@ export default class FullSolutionContent extends React.Component {
     
     axios.get( Config.API + "/vote/isVotedOn?type=1&typeID=" + this.props.params.solutionID + "&username=" + cookie.load("userName"))
           .then( function (response){
-            console.log(response.data)
             self.setState({
               vote: response.data
             })
@@ -50,7 +49,7 @@ export default class FullSolutionContent extends React.Component {
     // }
     componentWillReceiveProps(nextProps){
       var self = this;
-        return axios.get( Config.API + '/auth/solutions/ID?id='+nextProps.params.solutionID).then(function (response) {
+        return axios.get( Config.API + '/solutions/ID?id='+nextProps.params.solutionID).then(function (response) {
             self.setState({
                 solutionInfo: response.data,
                 solutionID: nextProps.params.solutionID,

@@ -18,7 +18,7 @@ export default class LearnResourcesEmbed extends React.Component {
 
   componentWillMount(){
       var self = this; ///TODO Change Resouces to resources when backend Changes
-        return axios.get( Config.API + '/auth/resources/ID?id='+this.props.params.resourceID).then(function (response) {
+        return axios.get( Config.API + '/resources/ID?id='+this.props.params.resourceID).then(function (response) {
           self.setState({
               resource: response.data
           })
@@ -46,7 +46,7 @@ export default class LearnResourcesEmbed extends React.Component {
   
   componentWillReceiveProps(newProps){
     var self = this;
-      return axios.get( Config.API + '/auth/resources/ID?id='+newProps.params.resourceID).then(function (response) {
+      return axios.get( Config.API + '/resources/ID?id='+newProps.params.resourceID).then(function (response) {
           //if parent ID is 0 then the problem is at the root of the tree
           // return id as the parentID for routing purposes
           //set other data

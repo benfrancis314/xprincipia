@@ -1,6 +1,6 @@
 import React from 'react';
 import {Link} from 'react-router';
-import axios from 'axios';
+// import axios from 'axios';
 import cookie from 'react-cookie';
 import {Config} from '../config.js';
 import $ from 'jquery';
@@ -133,7 +133,7 @@ componentDidMount(){
             {/* <div id="headerOptionsContainer"> */}
                 <div id="headerTabContainer">
                     <Link>
-                        <div id="notebookHeaderButton" onClick ={this.showNotebook} onMouseOver={this.hoverNotebook} onMouseOut={this.unHoverNotebook}>
+                        <div id="notebookHeaderButton" onClick={this.showNotebook} onMouseOver={this.hoverNotebook} onMouseOut={this.unHoverNotebook}>
                             <img src={require('../assets/notebookWhite.svg')} id="mindTempleButton" width="30" height="30" alt="Gear logo, link to settings"/>
                         </div>
                     </Link>
@@ -166,7 +166,7 @@ componentDidMount(){
             <div id="headerOptionsContainer">
                     <div id="headerTabContainer">
                         <Link>
-                            <div id="notebookHeaderButton" onClick ={this.showNotebook} onMouseOver={this.hoverNotebook} onMouseOut={this.unHoverNotebook}>
+                            <div id="notebookHeaderButton" onClick={this.showNotebook} onMouseOver={this.hoverNotebook} onMouseOut={this.unHoverNotebook}>
                                 <img src={require('../assets/notebookWhite.svg')} id="mindTempleButton" width="30" height="30" alt="Gear logo, link to settings"/>
                             </div>
                         </Link>

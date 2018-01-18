@@ -19,7 +19,7 @@ export default class ProsEditForm extends React.Component {
 
   componentWillMount(){
       var self = this;
-        return axios.get( Config.API + '/auth/pros/ID?id='+this.props.params.proID).then(function (response) {
+        return axios.get( Config.API + '/pros/ID?id='+this.props.params.proID).then(function (response) {
           self.setState({
               pro: response.data
           })

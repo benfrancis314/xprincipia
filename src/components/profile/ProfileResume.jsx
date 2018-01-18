@@ -28,23 +28,23 @@ export default class ProfileResume extends React.Component {
 
     componentDidMount(){
         var self = this;
-        axios.get( Config.API + '/auth/users/followedSolutions?username='+cookie.load('userName')).then(function (response) {
+        axios.get( Config.API + '/users/followedSolutions?username='+cookie.load('userName')).then(function (response) {
             self.setState({
                 followedSolutions: response.data,
                 currentItems: response.data,
             })
         })
-        axios.get( Config.API + '/auth/users/createdSolutions?username='+cookie.load('userName')).then(function (response) {
+        axios.get( Config.API + '/users/createdSolutions?username='+cookie.load('userName')).then(function (response) {
             self.setState({
                 createdSolutions: response.data,
             })
         })
-        axios.get( Config.API + '/auth/users/createdProblems?username='+cookie.load('userName')).then(function (response) {
+        axios.get( Config.API + '/users/createdProblems?username='+cookie.load('userName')).then(function (response) {
             self.setState({
                 createdProblems: response.data,
             })
         })
-         axios.get( Config.API + '/auth/users/followedProblems?username='+cookie.load('userName')).then(function (response) {
+         axios.get( Config.API + '/users/followedProblems?username='+cookie.load('userName')).then(function (response) {
             self.setState({
                 followedProblems: response.data,
             })

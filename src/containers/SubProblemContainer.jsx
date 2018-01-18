@@ -15,7 +15,14 @@ export default class SubProblemContainer extends React.Component {
             branches: []
         }
         this.renderItem = this.renderItem.bind(this);  
-        this.renderBranch = this.renderBranch.bind(this);  
+        this.renderBranch = this.renderBranch.bind(this);
+        this.hoverText = this.hoverText.bind(this);
+        this.unHoverText = this.unHoverText.bind(this);
+        this.hoverBranch = this.hoverBranch.bind(this);
+        this.unHoverBranch = this.unHoverBranch.bind(this);
+        this.hoverNewBranch = this.hoverNewBranch.bind(this);
+        this.unHoverNewBranch = this.unHoverNewBranch.bind(this);
+
         
     };
 
@@ -55,22 +62,19 @@ export default class SubProblemContainer extends React.Component {
                     $('#privateContainerMottoWhite').attr('id','privateContainerMotto');
             });
     }
-    // componentDidMount(){
-    //     var self = this;
-    //     axios.get( Config.API + '/problems/subproblems?id='+this.props.probID).then(function (response) {
-    //         self.setState({
-    //             problems: response.data
-    //         })
-    //     })  
-    //     axios.get( Config.API + '/breakdowns/byproblem?parentID='+this.props.probID).then(function (response) {
-    //         self.setState({
-    //             branches: response.data
-    //         })
-    //     })  
-    // }
-    // shouldComponentUpdate(nextProps, nextState) {
-    //     return this.props.probID !== nextProps.probID;
-    // }
+    componentDidMount(){
+        var self = this;
+        axios.get( Config.API + '/problems/subproblems?id='+this.props.probID).then(function (response) {
+            self.setState({
+                problems: response.data
+            })
+        }) 
+        axios.get( Config.API + '/breakdowns/byproblem?parentID='+this.props.probID).then(function (response) {
+            self.setState({
+                branches: response.data
+            })
+        })   
+    }
     
     componentWillReceiveProps (nextProps){
         var self = this;
@@ -91,17 +95,7 @@ export default class SubProblemContainer extends React.Component {
             return nextProps.rerender;
             // return true;
         // WANT TO RETURN FALSE IF RERENDER FROM FULL PROBLEM
-
-        // return a boolean value
     }
-
-// Is this being used?
-//         //On recieving next props
-//     componentWillReceiveProps(nextProps){
-//         var self = this
-//         self.setState({problems: nextProps.problems})
-//         console.log(self.state.problems)
-//     }
 
 
     render() {
@@ -111,7 +105,6 @@ export default class SubProblemContainer extends React.Component {
                 //     <SubProblemUnit problems={this.state.problems} probID={this.props.probID} />
                 // </div>
                 <div id="SPwrapper">
-                    {/* <Link to={`/project/branches`} activeClassName="activeBranchesProjectButton"> */}
                             <div id="branchesProjectButton" onMouseOver={this.hoverBranch} onMouseOut={this.unHoverBranch}>
                                 <img src={require('../assets/branchWhite1.svg')} id="branchesProjectImg" width="60" height="60" alt="User avatar, DNA Helix" />
                                 <div id="branchUnitList"> 
@@ -131,7 +124,6 @@ export default class SubProblemContainer extends React.Component {
                                     </li>
                                 </div>
                             </div>
-                    {/* </Link> */}
                     <ul id="SPUnitList"> 
                         <li>
                             <img src={require('../assets/leftArrow.svg')} id="SParrowImg" width="50" height="50" alt="User avatar, DNA Helix" />
@@ -152,22 +144,11 @@ export default class SubProblemContainer extends React.Component {
             );
         }
         renderItem(problem) {
-            
-                // 			function handleClick() {
-                // 				ReactGA.event({
-                // 						category: 'Project',
-                // 						action: 'Clicked Link',
-                // 				});
-                // 				// alert('success');
-                // }
             if (problem.ParentType === 1) {
                     return (
                         <div key={problem.ID} id="nodisplay">
                         </div>
                     );
-            
-            // Ensure to copy this so that it works for Goals and Problems too
-            // This makes text smaller if problem length is larger
             } else if (problem.Title.length > 50) {
             return (
                 <Link key={problem.ID} to={'/project/'+problem.ID +'/subprojects'}>
@@ -178,7 +159,6 @@ export default class SubProblemContainer extends React.Component {
                         </div>
                     </li>
                 </Link>
-            
             );
             } else if (problem.Class == '2') {
                 return (

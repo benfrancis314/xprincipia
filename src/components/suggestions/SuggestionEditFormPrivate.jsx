@@ -19,7 +19,7 @@ export default class SuggestionEditForm extends React.Component {
 
   componentWillMount(){
       var self = this;
-        return axios.get( Config.API + '/auth/suggestions/ID?id='+this.props.params.suggID).then(function (response) {
+        return axios.get( Config.API + '/suggestions/ID?id='+this.props.params.suggID).then(function (response) {
           self.setState({
               suggestion: response.data
           })

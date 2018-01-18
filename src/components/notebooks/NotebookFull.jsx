@@ -34,7 +34,8 @@ export default class NotebookFull extends React.Component {
     //initialize the component with this state
     componentWillMount(){
       var self = this;
-      return axios.get( Config.API + '/notebooks/username/top?username='+cookie.load('userName')).then(function (response) {
+      if (cookie.load('userName') !== undefined) { 
+          return axios.get( Config.API + '/notebooks/username/top?username='+cookie.load('userName')).then(function (response) {
           self.setState({
               notebook: response.data,
           })
@@ -42,6 +43,7 @@ export default class NotebookFull extends React.Component {
           document.getElementById('notebookFullContent').value = self.state.notebook.Description;
           document.getElementById('notebookFullResources').value = self.state.notebook.Sources;
     })
+  }
   }
   componentWillReceiveProps(nextProps){
     var self = this;

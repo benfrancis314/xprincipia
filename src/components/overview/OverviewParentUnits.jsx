@@ -1,8 +1,8 @@
 import React from 'react';
-import axios from 'axios';
+// import axios from 'axios';
 import { Link } from 'react-router';
-import {Config} from '../../config.js';
-import $ from 'jquery';
+// import {Config} from '../../config.js';
+// import $ from 'jquery';
 
 export default class SubProblemUnit extends React.Component {
 

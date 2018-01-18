@@ -332,9 +332,24 @@ select:-webkit-autofill:focus {
 /*End Global*/
 
 
+/* MOBILE STARTS HERE */
 
 /*Media Queries*/
+
+
+
+
 @media screen and (max-width: 1100px) { 
+
+/* ADDITIONS FROM PHONE SIZE */
+/* Probable list:
+  1. projectMajorButtonRow
+  
+  
+  */
+
+
+
 /*Login Page*/
 #fullProblem, #fullSolution {
 width: 100% !important;
@@ -428,11 +443,11 @@ margin: 0 auto !important;
 margin-top: 2% !important;
 transition: all 0.2s ease 0s !important;
 }
-#welcomeProblemsHeader:hover, 
-#welcomeProblemsHeader1:hover,
-#welcomeProblemsHeader2:hover,
-#welcomeProblemsHeader3:hover,
-#welcomeProblemsHeader4:hover {
+#welcomeProblemsHeader:hover, #welcomeProblemsHeader:active, #welcomeProblemsHeader:focus, 
+#welcomeProblemsHeader1:hover, #welcomeProblemsHeader1:active, #welcomeProblemsHeader1:focus,
+#welcomeProblemsHeader2:hover, #welcomeProblemsHeader2:active, #welcomeProblemsHeader2:focus,
+#welcomeProblemsHeader3:hover, #welcomeProblemsHeader3:active, #welcomeProblemsHeader3:focus,
+#welcomeProblemsHeader4:hover, #welcomeProblemsHeader4:active, #welcomeProblemsHeader4:focus {
 box-shadow: 0 0 2pt 2pt rgba(0,220,255,0.5) !important;
 }
 #welcomeProblemsUnitList {
@@ -539,14 +554,14 @@ width: 100% !important;
 /*display: block;*/
 /*flex-direction: column;*/
 border: 1px solid #00dcff !important;
-border-radius: 0% !important;
+border-radius: 25% !important;
 box-shadow: 0 0 0pt 0pt rgba(0,220,255,0.5) !important;
 width: 94.5% !important;
 height: auto !important;
 word-wrap: break-word !important; 
 align-items: center !important; 
 justify-content: center !important;
-background-color: rgba(0,220,255,0) !important;
+/* background-color: rgba(0,220,255,0) !important; */
 margin-bottom: 5% !important;
 background-size: cover !important;
 position: relative !important;
@@ -870,6 +885,97 @@ margin-right: 0px !important;
 
 
 }
+
+
+
+
+
+
+
+
+/* IPHONE 8 PLUS SIZE */
+
+@media screen and (max-width: 800px) {
+  
+  /* WELCOME PAGE */
+    #welcomeIntroductionLabel {
+      width: 80% !important;
+      letter-spacing: 2px !important;
+      margin-bottom: 2% !important;
+    }
+    #welcomeTutorialVideoButton {
+      width: 18% !important;
+    }
+    #welcomeContainerTitle {
+      font-size: 180% !important;
+      letter-spacing: 3px !important;
+      padding: 6px 5px !important;  
+      width: 80% !important;
+    }
+    #welcomeUserUnitsContainer {
+      flex-direction: column !important;
+    }
+  
+  /* PROJECT PAGE */
+  
+  #projectMajorButtonRow {
+    flex-direction: column !important;
+  }
+  #projectActivityButton, #projectActionButton, #projectInfoButton,
+  #projectActivityButton1, #projectActionButton1, #projectInfoButton1,
+  #projectActivityButton2, #projectActionButton2, #projectInfoButton2,
+  #projectActivityButton3, #projectActionButton3, #projectInfoButton3 {
+    width: 80% !important;
+    transform: rotateX(0deg) rotateY(0deg) !important;
+  }
+  #projectContainerMottoContainer {
+    margin-top: 2% !important;
+  }
+  #privateNewProjectPlus {
+    transform: scale(0.7) !important;
+  }
+  #grayLessSpacing {
+    display: none !important;
+  }
+  
+  #branchFormTitle {
+    width: 90% !important;
+  }
+  #SPUnit {
+    width: 25em !important;
+    border-radius: 3px !important;
+  }
+  #projectMidColumnContainer {
+    flex-direction: row !important;
+  }
+  /* NOTE: TREE AND FLAG ARE DISABLED ON MOBILE FOR NOW */
+  #treeProblemButton {
+    display: none !important;
+  }
+  #flagProblemButton {
+    display: none !important;
+  }
+  
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 @media screen and (max-width: 600px) {
 
@@ -2531,9 +2637,6 @@ font-size: 70%;
 letter-spacing: normal;
 color: #dddddd;
 line-height: 170%;
-/*background-color: rgba(0,220,255,0.05);*/
-/*border: 1px solid #00dcff;*/
-/*border-width: 1px 0px;*/
 width: 70%;
 margin: 0 auto;
 margin-top: 2%;
@@ -2542,12 +2645,11 @@ margin-bottom: 6%;
 border: 1px solid #333333;
 border-radius: 5px 5px 10px 10px;
 width: 80%;
-/* padding: 6% 5% 6% 5%; */
-/*margin-bottom: 1.1%;*/
 /*Current*/
-background: linear-gradient(to right,rgba(0,220,255, 0.06), rgba(0,220,255, 0.07), rgba(0,220,255, 0.02));
+/* background: linear-gradient(to right,rgba(0,220,255, 0.06), rgba(0,220,255, 0.07), rgba(0,220,255, 0.02)); */
 /*Test*/
-/*background: linear-gradient(to right,rgba(0,220,255, 0.05), rgba(0,220,255, 0.07), rgba(0,220,255, 0.07), rgba(0,220,255, 0.05));*/
+background: radial-gradient(to right,rgba(0,220,255, 0), rgba(0,220,255, 0), rgba(0,220,255, 0.1));
+
 }
 #introductionProjectsProse {
 font-family: 'Alegreya Sans SC';
@@ -3333,7 +3435,7 @@ border: 1px solid #00dcff;
 border-width: 0px 1px 1px 1px;
 border-radius: 0% 0% 25% 25%;
 transition: all 0.5s ease 0s;
-background: linear-gradient(right, rgba(255,255,255,0.025), rgba(0,220,255,0.1), rgba(255,255,255,0.025));
+background: linear-gradient(to left, rgba(255,255,255,0.025), rgba(0,220,255,0.1), rgba(255,255,255,0.025));
 }
 #privateContainerSettingsButton:hover {
 cursor: pointer;
@@ -3352,7 +3454,7 @@ border: 1px solid #00dcff;
 border-width: 0px 1px 1px 1px;
 border-radius: 0% 0% 25% 25%;
 transition: all 0.5s ease 0s;
-background: linear-gradient(right, rgba(255,255,255,0.025), rgba(0,220,255,0.1), rgba(255,255,255,0.025));
+background: linear-gradient(to left, rgba(255,255,255,0.025), rgba(0,220,255,0.1), rgba(255,255,255,0.025));
 }
 #privateFullSettingsButton:hover {
 cursor: pointer;
@@ -4945,11 +5047,11 @@ font-family: 'Open Sans';
   /* Old */
   /* background: linear-gradient(rgba(0,255,220,0), rgba(0,220,255,0.1)); */
 }
-#welcomeProblemsHeader:hover, 
-#welcomeProblemsHeader1:hover,
-#welcomeProblemsHeader2:hover,
-#welcomeProblemsHeader3:hover,
-#welcomeProblemsHeader4:hover {
+#welcomeProblemsHeader:hover, #welcomeProblemsHeader:active, #welcomeProblemsHeader:focus, 
+#welcomeProblemsHeader1:hover, #welcomeProblemsHeader1:active, #welcomeProblemsHeader1:focus,
+#welcomeProblemsHeader2:hover, #welcomeProblemsHeader2:active, #welcomeProblemsHeader2:focus,
+#welcomeProblemsHeader3:hover, #welcomeProblemsHeader3:active, #welcomeProblemsHeader3:focus,
+#welcomeProblemsHeader4:hover, #welcomeProblemsHeader4:active, #welcomeProblemsHeader4:focus  {
   box-shadow: 0 0 1pt 3pt rgba(0,220,255,0.5);
 }
 #welcomeProblemsHeader1,
@@ -4991,10 +5093,10 @@ font-family: 'Open Sans';
 #welcomeProblemsHeader4 {
   background-image: url('./turingMachine.jpg');
 }
-#welcomeProblemsHeader1:hover,
-#welcomeProblemsHeader2:hover,
-#welcomeProblemsHeader3:hover,
-#welcomeProblemsHeader4:hover {
+#welcomeProblemsHeader1:hover, #welcomeProblemsHeader1:active, #welcomeProblemsHeader1:focus,
+#welcomeProblemsHeader2:hover, #welcomeProblemsHeader2:active, #welcomeProblemsHeader2:focus,
+#welcomeProblemsHeader3:hover, #welcomeProblemsHeader3:active, #welcomeProblemsHeader3:focus,
+#welcomeProblemsHeader4:hover, #welcomeProblemsHeader4:active, #welcomeProblemsHeader4:focus  {
   background-color: rgba(15,19,28,0.5);
   transform: scale(1.02);
 }
@@ -5052,7 +5154,7 @@ input#submitWelcomeProblem:hover {
     border-width: 0px 1px 1px 1px;
     border-radius: 0% 0% 25% 25%;
     transition: all 0.5s ease 0s;
-    background: linear-gradient(right, rgba(255,255,255,0.025), rgba(0,220,255,0.1), rgba(255,255,255,0.025));
+    background: linear-gradient(to left, rgba(255,255,255,0.025), rgba(0,220,255,0.1), rgba(255,255,255,0.025));
 
     /* background-size: contain;
     background-repeat: no-repeat;
@@ -7143,9 +7245,7 @@ border-width: 1px;
 border-radius: 3px;
 background-color: rgba(0,220,255, 0.05);
 box-shadow: 0 0 1pt 1pt rgba(255,255,255,0.5);
-
-/*Considering making this title white, possibly units instead*/
-/*background-color: rgba(0,220,255,0.1);*/
+text-transform: lowercase !important;
 
 }
 #proposalsTitleRightSB {
@@ -9285,7 +9385,7 @@ margin-top: 1%;
   border-width: 0px 1px 1px 1px;
   border-radius: 0% 0% 25% 25%;
   transition: all 0.5s ease 0s;
-  background: linear-gradient(right, rgba(255,255,255,0.025), rgba(0,220,255,0.1), rgba(255,255,255,0.025));
+  background: linear-gradient(to left, rgba(255,255,255,0.025), rgba(0,220,255,0.1), rgba(255,255,255,0.025));
 }
 #storyCapitalProse1 {
   font-size: 145%;
@@ -9720,7 +9820,7 @@ margin-top: 1%;
   /* white-space: pre-wrap !important; */
   
 }
-#feedUnits:hover {
+#feedUnits:hover, #feedUnits:active, #feedUnits:focus {
   background: linear-gradient(to right,rgba(0,220,255, 0.03), rgba(0,220,255, 0.1), rgba(0,220,255, 0));
   border-color: #00dcff;
   box-shadow: 0 0 1pt 1pt rgba(0,220,255,0.5);  
@@ -9732,8 +9832,10 @@ margin-top: 1%;
 }
 #omniActivityUnit {
   background: linear-gradient(to right,rgba(0,220,255, 0.01), rgba(0,220,255, 0.04), rgba(0,220,255, 0));
-  padding-top: 10px;
-  padding-bottom: 10px;
+  /* padding-top: 10px;
+  padding-bottom: 10px; */
+  padding-top: 5px;
+  padding-bottom: 5px;
   margin: 0 auto;
   width: 95%;
   border: 1px solid rgb(136, 136, 136, 0.5);
@@ -9750,7 +9852,7 @@ margin-top: 1%;
   overflow: auto;
   opacity: 0.9;
 }
-#omniActivityUnit:hover {
+#omniActivityUnit:hover, #omniActivityUnit:active, #omniActivityUnit:focus {
   cursor: pointer;
   box-shadow: 0 0 1.5px 1.5px rgba(0,220,255,1);
   background: linear-gradient(to right,rgba(0,220,255, 0.05), rgba(0,220,255, 0.1), rgba(0,220,255, 0.05));
@@ -11625,19 +11727,22 @@ transition: all 1s ease 0s;
   border-width: 0px;
   border-radius: 0% 10% 35% 0%;
   /* transition: all 2s ease 0s; */
-  transition: all 1.5s ease 0s;
+  transition: all 1.15s ease 0s;
   z-index: 510;
   width: 45px;
+  height: 245px !important;
 }
 #branchesProjectButton #branchesProjectImg {
   transform: scale(2);
   padding: 0px 5px 30px 5px;
   margin-top: 35px;
   top: 27%;
-  transition: all 2s ease 0s;
+  transition: all 4s ease 0s;
   opacity: 0.25;
   vertical-align: middle;
   display: default;
+  /* opacity: 1; */
+  /* z-index: 600; */
 }
 #branchesProjectImg {
   cursor: pointer;
@@ -11655,8 +11760,10 @@ transition: all 1s ease 0s;
   transition: all 1s ease 0s;
 }
 #branchesProjectButton:hover #branchesProjectImg, .activebranchesProjectButton div #branchesProjectImg {
-  opacity: 1;
+  /* opacity: 1; */
   display: none !important;
+  opacity: 0;
+  z-index: -400;
   transition: all 1s ease 0s;
 }
 #branchesProjectButton:hover #branchUnitList {
@@ -11914,8 +12021,8 @@ transition: all 1s ease 0s;
   background: linear-gradient(to right,rgba(0,220,255, 0.06), rgba(0,220,255, 0.07), rgba(0,220,255, 0.02));
   border: 1px solid #333333;
   border-radius: 5px 5px 33% 5px;
-  margin-top: 1.5%;
-  padding: 0.5% 5% 0.5% 5%;
+  /* padding: 0.5% 5% 0.5% 5%; */
+  padding: 0.5% 0% 0.5% 5%;
   transition: all 0.75s ease 0s;
   box-shadow: 0 0 0pt 0pt rgba(0,220,255,0.5);
   background-color: rgba(0,220,255,0);
@@ -11923,7 +12030,7 @@ transition: all 1s ease 0s;
   word-wrap: break-word; 
   opacity: 0.75;
   width: 85%;
-  margin: 0% 0% 0% 3%;
+  margin: 1% 0% 0% 3%;
   /* Attempt to get text to go outside blueFeedProse but not the entire unit, currently does not work */
   /* white-space: pre-wrap !important; */
   
@@ -12922,6 +13029,33 @@ transition: all 1s ease 0s;
   background-color: rgba(0,220,255,1);
   cursor: pointer;
   transform: scale(1.05);
+}
+
+
+#searchContainer {
+  position: fixed;
+  top: 3vh;
+  z-index: 5000;
+  /* width: 75%; */
+  width: 86%;
+  margin: 0 auto;
+  /* margin-left: 12.5%;
+  margin-right: 12.5%; */
+  margin-left: 7%;
+  margin-right: 7%;
+  border: 1px solid #00dcff;
+  border-radius: 7%;
+  box-shadow: 0 0 2pt 2pt rgba(0,220,255,0.25);
+  /* background-color: rgba(15,19,28,0.9); */
+  background-color: rgba(15,19,28,1);
+  /* background: radial-gradient(circle, rgba(15,19,28,0.95), rgba(15,19,28,0.95), rgba(15,19,28,0.95), rgba(15,19,28,0.75), rgba(15,19,28,0.99), rgba(15,19,28,0.99), rgba(15,19,28,0.99), rgba(15,19,28,0.75)); */
+  text-align: center;
+  font-size: 150%;
+  color: #ffffff;
+  padding: 0% 0% 1% 0%;
+  overflow: scroll;
+  transition: all 1s ease 0s;
+  height: 92vh !important;
 }
 
 

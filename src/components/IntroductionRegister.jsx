@@ -167,17 +167,17 @@ return axios.post( Config.API + '/register', {
       <div id="introRegisterContainer">
         {/*<ScrollableAnchor id={'register'}>*/}
           <div id="introRegisterJoin">
-            Join XPrincipia
+            join xprincipia
           </div>
         {/*</ScrollableAnchor>*/}
         <div id="introRegister">
             <form >
-                <input type="text" name="fullname" required="required" maxLength="30" placeholder="Full Name" id="introRegisterFullName" />
-                <input type="text" name="username" required="required" maxLength="30" placeholder="Username" id="introRegisterUserName" />
-                <input type="email" name="email" required="required" maxLength="30" placeholder="Email" id="introRegisterEmail" />
-                <input type="password" name="password" required="required" maxLength="30" placeholder="Password" id="introRegisterPassword"/>
-                <input type="submit" value="Register" onClick={this.postRegister} id="submitRegisterIntroduction"/>
-                <Link to='/login'><div id="registerButtonIntroduction">Login</div></Link>
+                <input type="text" name="fullname" required="required" maxLength="30" placeholder="full name" id="introRegisterFullName" />
+                <input type="text" name="username" required="required" maxLength="30" placeholder="username" id="introRegisterUserName" />
+                <input type="email" name="email" required="required" maxLength="30" placeholder="email" id="introRegisterEmail" />
+                <input type="password" name="password" required="required" maxLength="30" placeholder="password" id="introRegisterPassword"/>
+                <input type="submit" value="join" onClick={this.postRegister} id="submitRegisterIntroduction"/>
+                <Link to='/login'><div id="registerButtonIntroduction">login</div></Link>
             </form>
         </div>
       </div>

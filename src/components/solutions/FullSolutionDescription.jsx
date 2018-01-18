@@ -23,7 +23,7 @@ export default class FullSolutionDescription extends React.Component {
 // This doesn't work
     // componentWillReceiveProps(nextProps){
     //     var self = this;
-    //         return axios.get( Config.API + '/auth/solutions/ID?id='+nextProps.solutionID).then(function (response) {
+    //         return axios.get( Config.API + '/solutions/ID?id='+nextProps.solutionID).then(function (response) {
     //             self.setState({
     //                 solutionInfo: response.data,
     //                 // solutionID: nextProps.solutionID,

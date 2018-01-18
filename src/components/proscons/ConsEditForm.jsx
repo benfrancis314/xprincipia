@@ -19,7 +19,7 @@ export default class ConsEditForm extends React.Component {
 
   componentWillMount(){
       var self = this;
-        return axios.get( Config.API + '/auth/cons/ID?id='+this.props.params.conID).then(function (response) {
+        return axios.get( Config.API + '/cons/ID?id='+this.props.params.conID).then(function (response) {
           self.setState({
               con: response.data
           })

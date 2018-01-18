@@ -19,7 +19,7 @@ export default class LearnContentEditForm extends React.Component {
 
   componentWillMount(){
       var self = this;
-        return axios.get( Config.API + '/auth/learnItems/ID?id='+this.props.params.learnItemID).then(function (response) {
+        return axios.get( Config.API + '/learnItems/ID?id='+this.props.params.learnItemID).then(function (response) {
           self.setState({
               learnItem: response.data
           })
