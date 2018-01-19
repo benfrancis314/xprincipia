@@ -79,8 +79,8 @@ export default class WelcomeUserUnit extends React.Component {
                 })
                   .then(function (result) {
                     // Currently there is a problem
-                    document.location = '/project/'+ this.props.probID + '/subprojects'
-                    // document.location = window.location.pathname 
+                    // document.location = '/project/'+ this.props.probID + '/subprojects'
+                    document.location = window.location.pathname 
                     // alert('test');
                   })
                     .catch(function (error) {

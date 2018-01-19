@@ -12,7 +12,8 @@ export default class SubProblemContainer extends React.Component {
 
         this.state = {
             problems: [],
-            branches: []
+            branches: [],
+            probID: '',
         }
         this.renderItem = this.renderItem.bind(this);  
         this.renderBranch = this.renderBranch.bind(this);
@@ -22,8 +23,6 @@ export default class SubProblemContainer extends React.Component {
         this.unHoverBranch = this.unHoverBranch.bind(this);
         this.hoverNewBranch = this.hoverNewBranch.bind(this);
         this.unHoverNewBranch = this.unHoverNewBranch.bind(this);
-
-        
     };
 
     hoverText() {
@@ -64,9 +63,12 @@ export default class SubProblemContainer extends React.Component {
     }
     componentDidMount(){
         var self = this;
+        this.setState({
+            probID: self.props.probID,
+        })
         axios.get( Config.API + '/problems/subproblems?id='+this.props.probID).then(function (response) {
             self.setState({
-                problems: response.data
+                problems: response.data,
             })
         }) 
         axios.get( Config.API + '/breakdowns/byproblem?parentID='+this.props.probID).then(function (response) {
@@ -78,9 +80,12 @@ export default class SubProblemContainer extends React.Component {
     
     componentWillReceiveProps (nextProps){
         var self = this;
+        this.setState({
+            probID: nextProps.probID,
+        })
         axios.get( Config.API + '/problems/subproblems?id='+nextProps.probID).then(function (response) {
             self.setState({
-                problems: response.data
+                problems: response.data,
             })
         }) 
         axios.get( Config.API + '/breakdowns/byproblem?parentID='+nextProps.probID).then(function (response) {
@@ -92,38 +97,39 @@ export default class SubProblemContainer extends React.Component {
 
     shouldComponentUpdate (nextProps, nextState) {
         
-            return nextProps.rerender;
-            // return true;
-        // WANT TO RETURN FALSE IF RERENDER FROM FULL PROBLEM
+            if((nextState.probID !== nextProps.probID) 
+            || (nextState.problems !== this.state.problems)) {
+                return true
+            } else {
+                return false
+            }
     }
 
 
     render() {
             return (
-            // OLD: Using SubProblemUnit as separate component
-                // <div id="sidebarSBProjects">
-                //     <SubProblemUnit problems={this.state.problems} probID={this.props.probID} />
-                // </div>
                 <div id="SPwrapper">
-                            <div id="branchesProjectButton" onMouseOver={this.hoverBranch} onMouseOut={this.unHoverBranch}>
-                                <img src={require('../assets/branchWhite1.svg')} id="branchesProjectImg" width="60" height="60" alt="User avatar, DNA Helix" />
-                                <div id="branchUnitList"> 
-                                    <li>
-                                        <img src={require('../assets/leftArrow.svg')} id="branchArrowImg" width="50" height="50" alt="User avatar, DNA Helix" />
-                                    </li>
-                                    <Link to={`/project/${this.props.probID}/create/breakdown`} activeClassName="activePrivateCreateButton">
-                                        <li id="branchUnit">
-                                            <div id="branchHeader" onMouseOver={this.hoverNewBranch} onMouseOut={this.unHoverNewBranch}>
-                                                <img src={require('../assets/blueAdd2.svg')} id="privateNewProjectPlus" width="80" height="80" alt="User avatar, DNA Helix" />
-                                            </div>
-                                        </li>
-                                    </Link>
-                                    {this.state.branches.map(this.renderBranch)}
-                                    <li>
-                                        <img src={require('../assets/rightArrow.svg')} id="branchArrowImg" width="50" height="50" alt="User avatar, DNA Helix" />
-                                    </li>
-                                </div>
-                            </div>
+                    {/* NOT USING BREAKDOWNS FOR NOW */}
+                    {/* DO NOT DELETE */}
+                    {/* <div id="branchesProjectButton" onMouseOver={this.hoverBranch} onMouseOut={this.unHoverBranch}>
+                        <img src={require('../assets/branchWhite1.svg')} id="branchesProjectImg" width="60" height="60" alt="User avatar, DNA Helix" />
+                        <div id="branchUnitList"> 
+                            <li>
+                                <img src={require('../assets/leftArrow.svg')} id="branchArrowImg" width="50" height="50" alt="User avatar, DNA Helix" />
+                            </li>
+                            <Link to={`/project/${this.props.probID}/create/breakdown`} activeClassName="activePrivateCreateButton">
+                                <li id="branchUnit">
+                                    <div id="branchHeader" onMouseOver={this.hoverNewBranch} onMouseOut={this.unHoverNewBranch}>
+                                        <img src={require('../assets/blueAdd2.svg')} id="privateNewProjectPlus" width="80" height="80" alt="User avatar, DNA Helix" />
+                                    </div>
+                                </li>
+                            </Link>
+                            {this.state.branches.map(this.renderBranch)}
+                            <li>
+                                <img src={require('../assets/rightArrow.svg')} id="branchArrowImg" width="50" height="50" alt="User avatar, DNA Helix" />
+                            </li>
+                        </div>
+                    </div> */}
                     <ul id="SPUnitList"> 
                         <li>
                             <img src={require('../assets/leftArrow.svg')} id="SParrowImg" width="50" height="50" alt="User avatar, DNA Helix" />
@@ -152,7 +158,7 @@ export default class SubProblemContainer extends React.Component {
             } else if (problem.Title.length > 50) {
             return (
                 <Link key={problem.ID} to={'/project/'+problem.ID +'/subprojects'}>
-                    <li key={problem.ID} id="SPUnit">
+                    <li id="SPUnit">
                         <div id="SPHeader">
                             <div id="SPTitleSmall">{problem.Title}</div>
                             <div id="SPPercent">{problem.Rank}</div>
@@ -163,7 +169,7 @@ export default class SubProblemContainer extends React.Component {
             } else if (problem.Class == '2') {
                 return (
                     <Link key={problem.ID} to={'/project/'+problem.ID +'/subprojects'}>
-                        <li key={problem.ID} id="SPUnit">
+                        <li id="SPUnit">
                             <div id="SPHeaderRed">
                                 <div id="SPTitleRed">
                                     <span id="red">problem</span>
@@ -178,7 +184,7 @@ export default class SubProblemContainer extends React.Component {
             } else if (problem.Class == '1') {
                 return (
                     <Link key={problem.ID} to={'/project/'+problem.ID +'/subprojects'}>
-                        <li key={problem.ID} id="SPUnit">
+                        <li id="SPUnit">
                             <div id="SPHeaderGreen">
                                 <div id="SPTitleGreen">
                                     <span id="green">goal</span>
@@ -193,7 +199,7 @@ export default class SubProblemContainer extends React.Component {
             } else {
                 return (
                     <Link key={problem.ID} to={'/project/'+problem.ID +'/subprojects'}>
-                        <li key={problem.ID} id="SPUnit">
+                        <li id="SPUnit">
                             <div id="SPHeader">
                                 <div id="SPTitle">{problem.Title}</div>
                                 <div id="SPPercent">{problem.Rank}</div>

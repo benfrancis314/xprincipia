@@ -759,7 +759,7 @@ width: 100% !important;
 #proposalFormCreateTitle {
 width: 100% !important;
 }
-#createForm {
+#createForm, #createProjectForm {
 padding: 0px 0px 5px 0px !important;
 width: 100% !important;
 }
@@ -1337,7 +1337,7 @@ letter-spacing: 2px !important;
 #createProblemBox {
   margin-top: 0%;
 }
-#createForm, #linkForm {
+#createForm, #linkForm, #createProjectForm {
   color: #00dcff;
   height: auto;
   padding: 0px 5px 5px 5px;
@@ -6398,20 +6398,18 @@ flex: 1 1 auto;
 text-align: center;
 color: #00ffdc;
 border: 1px solid #00ffdc;
-border-radius: 3px 0px 0px 3px;
+border-radius: 3px 3px 3px 35%;
 text-align: center;
 font-family: 'Alegreya Sans SC', sans-serif;
 transition: all 0.5s ease 0s;
 padding: 0.7% 0%;
 letter-spacing: 2px;
 margin: 0 auto; 
-font-size: 115%;
+font-size: 125%; 
 width: 8em;
 background-color: rgba(255,255,255,0.025);
-
 /* Testing styles */
-font-size: 125%; 
-border-radius: 3px 3px 3px 35%;
+
 /* width: 7em; */
 }
 #voteProblem:hover, #voteProblemHover {
@@ -6425,14 +6423,14 @@ text-align: center;
 background-color: rgba(0, 255, 220, 1);
 color: #0f131c;
 border: 1px solid #00ffdc;
-border-radius: 3px 0px 0px 3px;
+border-radius: 3px 3px 3px 35%;
 text-align: center;
 font-family: 'Alegreya Sans SC', sans-serif;
 transition: all 0.5s ease 0s;
 padding: 0.7% 0%;
 letter-spacing: 2px;
 margin: 0 auto; 
-font-size: 115%;
+font-size: 125%; 
 width: 8em;
 }
 #votedProblem:hover, #votedProblemHover {
@@ -11921,6 +11919,7 @@ transition: all 1s ease 0s;
 }
 #projectMidColumnLeft {
   width: 40%;
+  width: 50%;
   /* overflow: scroll; */
   /* max-height: 32vh; */
   padding-bottom: 0.5%;
@@ -11949,7 +11948,8 @@ transition: all 1s ease 0s;
 #projectMidColumnRight {
   width: 60%;
   margin-top: 0.5%;
-  /* flex: 2 1 auto; */
+  margin-right: 0px !important;
+  /* right: 0 !important; */
 }
 #projectPercent {
   /* background: linear-gradient(to bottom right, rgba(0,255,220,0), rgba(0,220,255,0.1)) !important;   */
@@ -12029,7 +12029,7 @@ transition: all 1s ease 0s;
   transform: scale(1);
   word-wrap: break-word; 
   opacity: 0.75;
-  width: 85%;
+  width: 75%;
   margin: 1% 0% 0% 3%;
   /* Attempt to get text to go outside blueFeedProse but not the entire unit, currently does not work */
   /* white-space: pre-wrap !important; */
@@ -12561,17 +12561,18 @@ transition: all 1s ease 0s;
   margin: 0 auto;
   /* margin-top: 1%; */
   text-align: center;
-  font-size: 145%;
+  font-size: 130%;
+  padding: 1.5% 0% 1.25% 0%;
   letter-spacing: 4px;
   color: #00dcff;
-  color: #ff7f7f;
+  /* color: #ff7f7f; */
   margin-top: 2%;
-  margin-bottom: 0%;
-  border: 1px solid #180909;
+  margin-bottom: 2%;
+  border: 1px solid #00dcff;
   border-width: 0px;
-  border-radius: 3px;
-  box-shadow: 0 0 1pt 1pt rgb(136, 136, 136);
-  background: radial-gradient(circle, rgba(136, 136, 136, 0), rgba(136, 136, 136, 0.05), rgba(136, 136, 136, 0.15));
+  border-radius: 3px 3px 12.5% 12.5%;
+  box-shadow: 0 0 1pt 1pt #00dcff;
+  background: radial-gradient(circle, rgba(0,220,255, 0.125), rgba(0,220,255, 0.075), rgba(0,220,255, 0));
   background-color: rgba(136, 136, 136, 0);
   transition: all 1s ease 0s;
 }
@@ -12587,33 +12588,30 @@ transition: all 1s ease 0s;
   margin: 0 auto;
 }
 #parentListUnit {
-    border: 1px solid #00dcff;
-    border-width: 0px 0px 1px 0px;
-    /* background: radial-gradient(circle, rgba(0,220,255,0), rgba(0,220,255,0), rgba(0,220,255,0.05), rgba(0,220,255,0));   */
     text-transform: lowercase !important;
+    background-color: rgba(0,220,255,0.1);
+    background: radial-gradient(circle, rgba(0,220,255,0.05), rgba(0,220,255,0.075), rgba(0,220,255,0.1));
+    color: #dddddd;
+    /* font-size: 210%; */
+    letter-spacing: 4px;
+    border: 1px solid #dddddd;
+    border-radius: 3px;
+    box-shadow: 0 0 1pt 1pt rgba(255,255,255,0.5);
     margin: 0 auto;
-    text-align: center;
-    font-size: 90%;
-    line-height: 120%;
-    height: auto;
-    width: 90%;
-    padding: 3% 0%;
+    margin: 0% 10% 0% 10%;
     transition: all 1s ease 0s;
-    transform: scale(1);
-    background-color: rgba(0,220,255,0);
-    background: linear-gradient(to right, rgba(0,220,255,0), rgba(0,220,255,0), rgba(0,220,255,0.05), rgba(0,220,255,0));  
+    z-index: 500;
+    margin-top: 1%;
+    opacity: 0.9;
   }
   #parentListUnit:hover {
     color: #ffffff;
-    background-color: rgba(0,220,255,0.1);
-    border-width: 1px 0px;
-    border-radius: 0% 0% 12% 12%;
+    background-color: rgba(0,220,255,0.05);
     margin-top: 2%;
     margin-bottom: 2%;
-    /* background: linear-gradient(to right, rgba(0,220,255,0), rgba(0,220,255,0.025), rgba(0,220,255,0.075), rgba(0,220,255,0));     */
     transform: scale(1.02);
     cursor: pointer;
-    /* background-color: rgba(0,220,255,0.025); */
+    opacity: 1;
   }
 #parentListQuestion {
   margin-top: 2%;
@@ -12837,15 +12835,19 @@ transition: all 1s ease 0s;
 }
 #projectInfoGroupShow {
   transition: all 1s ease 0s;
-  width: 100%;
+  width: 100% !important;
   margin: 0 auto;
+  margin-right: 0px !important;
+  right: 0 !important;
   position: relative;
 }
 #projectInfoGroup {
   display: none;
   transition: all 1s ease 0s;
   position: relative;
-  width: 100%;
+  width: 100% !important;
+  margin-right: 0px !important;
+  right: 0 !important;
 }
 #projectActionButton, #projectActivityButton, #projectInfoButton, #projectActivityButton2, #projectActivityButton3, #projectInfoButton2, #projectInfoButton3 {
   position: relative;
@@ -12884,7 +12886,7 @@ transition: all 1s ease 0s;
 #projectActionButton:hover {
   top: 30px;
 }
-#projectActivityButton, #projectInfoButton {
+#projectActivityButton, #projectInfoButton, #projectActivityButton2, #projectInfoButton2 {
   /* width: 30%; */
   position: relative;
   top: 26px;
@@ -12892,28 +12894,31 @@ transition: all 1s ease 0s;
   /* transform: rotate3d(45deg, 90deg, 0deg) !important;     */
   transform: rotateX(1.5deg) rotateY(15deg);
 }
-#projectInfoButton {
+#projectInfoButton, #projectInfoButton2 {
   transform: rotateX(1.5deg) rotateY(-15deg);
 }
-#projectActivityButton:hover {
+#projectActivityButton:hover, #projectActivityButton2:hover {
   top: 30px;
 }
-#projectInfoButton:hover {
+#projectInfoButton:hover, #projectInfoButton2:hover {
   top: 30px;
 }
 #projectMidColumnLeftStart {
-  /* width: 50%; */
-  width: 100%;
+  /* Old width, may still be needed in certain scenarios */
+  /* width: 100%; */
   margin-bottom: 2%;
   margin-left: 0px !important;
   left: 0;
+  /* Attempt to fix too wide issue */
+  width: 50%;
 }
 #projectMidColumnRightStart {
-  /* width: 50%; */
-  width: 100%;
+  /* width: 100%; */
   margin-bottom: 2%;
   margin-right: 0px !important;
-  right: 0;
+  right: 0 !important;
+  /* Attempt to fix too wide issue */
+  width: 50%;
 }
 #projectHideButton1, #projectHideButton2, #projectHideButton3 {
   position: absolute;

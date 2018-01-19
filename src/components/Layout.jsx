@@ -15,20 +15,6 @@ export default class Layout extends React.Component {
     }
     this.resetNotifications = this.resetNotifications.bind(this)
 };
-  // componentDidMount() {
-  //   this.state =  { 
-  //     userToken: cookie.load('userToken'),
-  //   };
-  // }
-  // componentWillReceiveProps(nextState) {
-  //   nextState =  { 
-  //     userToken: cookie.load('userToken'),
-  //   };
-  // }
-  // onLogin(userToken) {
-  //   this.setState({ userToken });
-  //   cookie.save('userToken', this.state.userToken);
-  // }
 
   componentDidMount(){
     var self = this;

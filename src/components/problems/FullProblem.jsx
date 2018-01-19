@@ -175,7 +175,17 @@ unVote() {
     showActions() {
       $(document).ready(function() {
             $('#projectActionGroup').attr('id','projectActionGroupShow');
-            $('#projectActionButton').attr('id','buttonHide1');      
+            $('#projectActionButton').attr('id','buttonHide1');  
+            
+            if ((document.getElementById('projectActivityButton2')) && (document.getElementById('projectInfoButton2'))) {
+              $('#projectActionGroup').attr('id','projectActionGroupShow');
+              $('#projectActionButton').attr('id','buttonHide1');  
+            }
+            else if(document.getElementById('projectActivityButton2')) {
+              $('#projectMidColumnLeft').attr('id','projectMidColumnLeftStart'); 
+              $('#projectActivityButton2').attr('id','buttonHide2');
+              $('#buttonHide4').attr('id','projectActivityButton3');  
+            }
         });
     }
     hideActions() {
@@ -206,14 +216,25 @@ unVote() {
     hideActivity() {
       $(document).ready(function() {
             $('#projectActivityGroupShow').attr('id','projectActivityGroup');  
-            // $('#buttonHide4').attr('id','projectActivityButton2'); 
             $('#projectMajorButtonRowRight').attr('id','projectMajorButtonRow'); 
-            //  WHEN HIDE ACTIVITY, NEED TO SWITCH BRIEF BUTTON BACK TOO
             $('#projectInfoButton3').attr('id','buttonHide5');
-            // ALSO NEED TO MAKE LINEAR BUTTON VISIBLE AGAIN
-            
-            if(document.getElementById('projectInfoGroupShow')) {
+
+            if ((document.getElementById('projectInfoGroupShow')) && (document.getElementById('projectActionGroupShow'))) {
               $('#buttonHide4').attr('id','projectActivityButton3');  
+            }
+            else if((document.getElementById('projectInfoGroupShow')) && document.getElementById('projectActionButton')) {
+              // $('#buttonHide4').attr('id','projectActivityButton3');  
+              $('#projectMidColumnLeftStart').attr('id','projectMidColumnLeft'); 
+              // $('#buttonHide2').attr('id','projectActivityButton2'); 
+              // A 
+              // $('#buttonHide4').attr('id','projectActivityButton2');
+              // B
+              $('#buttonHide4').attr('id','projectActivityButton3');
+            }
+            else if(document.getElementById('projectInfoGroupShow')) {
+              // $('#buttonHide4').attr('id','projectActivityButton3');  
+              $('#projectMidColumnLeftStart').attr('id','projectMidColumnLeft'); 
+              $('#buttonHide2').attr('id','projectActivityButton2');  
             }
             else {
               $('#buttonHide3').attr('id','projectInfoButton');
@@ -231,19 +252,17 @@ unVote() {
             // $('#projectMidColumnRight').attr('id','projectMidColumnRightStart');
             $('#projectMajorButtonRow').attr('id','projectMajorButtonRowRight');             
             $('#projectInfoButton3').attr('id','buttonHide5'); 
-            
-            
 
             if(document.getElementById('projectActivityGroupShow')) {
-              
+            } else if (document.getElementById('projectActivityButton')) {
+              $('#buttonHide4').attr('id','projectActivityButton3');
+              $('#projectActivityButton').attr('id','buttonHide2');
+              $('#projectMidColumnRight').attr('id','projectMidColumnRightStart');
             } else {
               $('#buttonHide4').attr('id','projectActivityButton3');
-              // HIDE CURRENT BRIEF BUTTON, projectInfoButton
-              $('#projectActivityButton').attr('id','buttonHide4');
-              $('#projectActivityButton2').attr('id','buttonHide4');
+              $('#projectActivityButton2').attr('id','buttonHide2');
               $('#projectMidColumnRight').attr('id','projectMidColumnRightStart');
             }
-
         });
     }
     hideInfo() {
@@ -258,10 +277,17 @@ unVote() {
                 // ... MAKE INFO BUTTON APPEAR TO RIGHT, NOT LINEAR
                 $('#buttonHide5').attr('id','projectInfoButton3');  
               }
+              else if(document.getElementById('projectActivityButton3')) {
+                $('#buttonHide3').attr('id','projectInfoButton2'); 
+                $('#buttonHide4').attr('id','projectActivityButton');
+                $('#projectActivityButton2').attr('id','buttonHide2'); 
+                $('#buttonHide2').attr('id','projectActivityButton2'); 
+                $('#projectActivityButton3').attr('id','buttonHide4'); 
+              }
               else {
                 $('#buttonHide3').attr('id','projectInfoButton2'); 
                 $('#buttonHide4').attr('id','projectActivityButton');
-                $('#projectActivityButton3').attr('id','buttonHide4'); 
+                $('#projectActivityButton2').attr('id','buttonHide2'); 
                 $('#buttonHide2').attr('id','projectActivityButton2'); 
 
               }
@@ -294,7 +320,7 @@ unVote() {
               </div>
             </Link>
           <div id="problemColumn1">
-            <SubProjectParentUnit parentID={this.state.problemInfo.ParentID} parentType={this.state.problemInfo.ParentType} />
+            <SubProjectParentUnit probID={this.props.params.probID} parentID={this.state.problemInfo.ParentID} parentType={this.state.problemInfo.ParentType} />
             <ProblemTitle problemTitle={this.state.problemInfo.Title} problemClass={this.state.problemInfo.Class} />
             <div id="projectActionGroup">
               <div id="problemRow1">
@@ -371,9 +397,9 @@ unVote() {
                 </div>
               </div>
             {React.cloneElement(this.props.children, {probID:this.props.params.probID, parentTitle: this.state.problemInfo.Title, gParentID: this.state.problemInfo.ParentID, gParentTitle: this.state.problemInfo.ParentTitle, ggParentID: this.state.problemInfo.GrandParentID, creator:this.state.problemInfo.OriginalPosterUsername, breakdownID:this.state.breakdownID})}
-            {React.cloneElement(<SubProblemContainer probID={this.props.params.probID}  differentBreakdown={this.differentBreakdown} rerender={this.state.breakdownRerender} />)}
+            <SubProblemContainer probID={this.props.params.probID}  differentBreakdown={this.differentBreakdown} rerender={this.state.breakdownRerender} />
             <ScrollableAnchor id={'proposals'}>
-              {React.cloneElement(<ProblemSolutionsMenu probID={this.props.params.probID} projectTitle={this.state.problemInfo.Title} />)}
+              <ProblemSolutionsMenu probID={this.props.params.probID} projectTitle={this.state.problemInfo.Title} />
             </ScrollableAnchor>
   
           </ReactCSSTransitionGroup>
@@ -405,7 +431,7 @@ unVote() {
                 </div>
               </Link>
             <div id="problemColumn1">
-              <SubProjectParentUnit parentID={this.state.problemInfo.ParentID} parentType={this.state.problemInfo.ParentType} />
+              <SubProjectParentUnit probID={this.props.params.probID} parentID={this.state.problemInfo.ParentID} parentType={this.state.problemInfo.ParentType} />
               <ProblemTitle problemTitle={this.state.problemInfo.Title} problemClass={this.state.problemInfo.Class} />
               <div id="projectActionGroup">
                 <div id="problemRow1">
@@ -479,9 +505,9 @@ unVote() {
                   </div>
                 </div>
               {React.cloneElement(this.props.children, {probID:this.props.params.probID, parentTitle: this.state.problemInfo.Title, gParentID: this.state.problemInfo.ParentID, gParentTitle: this.state.problemInfo.ParentTitle, ggParentID: this.state.problemInfo.GrandParentID, creator:this.state.problemInfo.OriginalPosterUsername, breakdownID:this.state.breakdownID})}
-              {React.cloneElement(<SubProblemContainer probID={this.props.params.probID}  differentBreakdown={this.differentBreakdown} rerender={this.state.breakdownRerender} />)}
+              <SubProblemContainer probID={this.props.params.probID}  differentBreakdown={this.differentBreakdown} rerender={this.state.breakdownRerender} />
               <ScrollableAnchor id={'proposals'}>
-                {React.cloneElement(<ProblemSolutionsMenu probID={this.props.params.probID} projectTitle={this.state.problemInfo.Title} />)}
+                <ProblemSolutionsMenu probID={this.props.params.probID} projectTitle={this.state.problemInfo.Title} />
               </ScrollableAnchor>
     
             </ReactCSSTransitionGroup>
@@ -508,7 +534,7 @@ unVote() {
                 </div>
               </Link>
             <div id="problemColumn1">
-              <SubProjectParentUnit parentID={this.state.problemInfo.ParentID} parentType={this.state.problemInfo.ParentType} />
+              <SubProjectParentUnit probID={this.props.params.probID} parentID={this.state.problemInfo.ParentID} parentType={this.state.problemInfo.ParentType} />
               <ProblemTitle problemTitle={this.state.problemInfo.Title} problemClass={this.state.problemInfo.Class} />
               <div id="projectActionGroup">
                 <div id="problemRow1">
@@ -582,9 +608,9 @@ unVote() {
                   </div>
                 </div>
               {React.cloneElement(this.props.children, {probID:this.props.params.probID, parentTitle: this.state.problemInfo.Title, gParentID: this.state.problemInfo.ParentID, gParentTitle: this.state.problemInfo.ParentTitle, ggParentID: this.state.problemInfo.GrandParentID, creator:this.state.problemInfo.OriginalPosterUsername, breakdownID:this.state.breakdownID})}
-              {React.cloneElement(<SubProblemContainer probID={this.props.params.probID}  differentBreakdown={this.differentBreakdown} rerender={this.state.breakdownRerender} />)}
+              <SubProblemContainer probID={this.props.params.probID}  differentBreakdown={this.differentBreakdown} rerender={this.state.breakdownRerender} />
               <ScrollableAnchor id={'proposals'}>
-                {React.cloneElement(<ProblemSolutionsMenu probID={this.props.params.probID} projectTitle={this.state.problemInfo.Title} />)}
+                <ProblemSolutionsMenu probID={this.props.params.probID} projectTitle={this.state.problemInfo.Title} />
               </ScrollableAnchor>
     
             </ReactCSSTransitionGroup>
@@ -611,7 +637,7 @@ unVote() {
             </div>
           </Link>
         <div id="problemColumn1">
-          <SubProjectParentUnit parentID={this.state.problemInfo.ParentID} parentType={this.state.problemInfo.ParentType} />
+          <SubProjectParentUnit probID={this.props.params.probID} parentID={this.state.problemInfo.ParentID} parentType={this.state.problemInfo.ParentType} />
           <ProblemTitle problemTitle={this.state.problemInfo.Title} problemClass={this.state.problemInfo.Class} />
           <div id="projectActionGroup">
             <div id="problemRow1">
@@ -713,7 +739,7 @@ unVote() {
             </div>
           </Link>
         <div id="problemColumn1">
-          <SubProjectParentUnit parentID={this.state.problemInfo.ParentID} parentType={this.state.problemInfo.ParentType} />
+          <SubProjectParentUnit probID={this.props.params.probID} parentID={this.state.problemInfo.ParentID} parentType={this.state.problemInfo.ParentType} />
           <ProblemTitle problemTitle={this.state.problemInfo.Title} problemClass={this.state.problemInfo.Class} />
           <div id="projectActionGroup">
             <div id="problemRow1">
@@ -784,9 +810,9 @@ unVote() {
               </div>
             </div>
           {React.cloneElement(this.props.children, {probID:this.props.params.probID, parentTitle: this.state.problemInfo.Title, gParentID: this.state.problemInfo.ParentID, gParentTitle: this.state.problemInfo.ParentTitle, ggParentID: this.state.problemInfo.GrandParentID, creator:this.state.problemInfo.OriginalPosterUsername, breakdownID:this.state.breakdownID})}
-          {React.cloneElement(<SubProblemContainer probID={this.props.params.probID}  differentBreakdown={this.differentBreakdown} rerender={this.state.breakdownRerender} />)}
+          <SubProblemContainer probID={this.props.params.probID}  differentBreakdown={this.differentBreakdown} rerender={this.state.breakdownRerender} />
           <ScrollableAnchor id={'proposals'}>
-            {React.cloneElement(<ProblemSolutionsMenu probID={this.props.params.probID} projectTitle={this.state.problemInfo.Title} />)}
+            <ProblemSolutionsMenu probID={this.props.params.probID} projectTitle={this.state.problemInfo.Title} />
           </ScrollableAnchor>
 
         </ReactCSSTransitionGroup>

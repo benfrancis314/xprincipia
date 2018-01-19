@@ -65,7 +65,7 @@ queryProblem () {
       grandParentTitle: this.props.gParentTitle,
       ggParentID : String(this.props.ggParentID),
       class : this.state.class,
-      breakdownID : this.props.breakdownID,
+      breakdownID : String(this.props.breakdownID),
     })
     .then(function (result) {
       //redirect back to the last page     
@@ -93,6 +93,7 @@ queryProblem () {
   render() {
       return (
         <div>
+          {/* {this.props.breakdownID}x */}
           <div id="createProblemBox">
               <form id="linkForm">
                 <fieldset id="fieldSetNoBorderNoPaddingBottom">

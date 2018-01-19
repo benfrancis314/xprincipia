@@ -4,19 +4,20 @@ import $ from 'jquery';
 
 
 
-export default class Empty extends React.Component {
+export default class ParentListContainer extends React.Component {
     
     constructor(props){
         super(props);
 
         this.state = {
+            parentList: [],
         }
+        this.renderItem = this.renderItem.bind(this);  
         this.showParentListQuestion = this.showParentListQuestion.bind(this);
         this.hideParentListQuestion = this.hideParentListQuestion.bind(this);
         this.hideParentList = this.hideParentList.bind(this);
         
     };
-
     showParentListQuestion() {
         $(document).ready(function() {
             // $('#privateContainerMotto').html("ALTERNATE PARENTS").fadeIn(7500);
@@ -48,15 +49,7 @@ export default class Empty extends React.Component {
                     </div>
                 </div>
                 <div id="parentListUnitList">
-                    <div id="parentListUnit">
-                        ecological measurements against climate change
-                    </div>
-                    <div id="parentListUnit">
-                        wildlife conservation studies
-                    </div>
-                    <div id="parentListUnit">
-                        parent title 1
-                    </div>
+                    {this.props.parentList.map(this.renderItem)}
                 </div>
                 <div id="parentListQuestion" onClick={this.showParentListQuestion}>
                     {/* On click, make text below visible */}
@@ -70,4 +63,14 @@ export default class Empty extends React.Component {
             </div>
       );
    }
+
+   renderItem(parent) {
+        return (
+            <Link key={parent.ID} to={`/project/${parent.ID}/subprojects`} activeClassName="activeProblemFlagButton">
+                <div id="parentListUnit">
+                    {parent.Title}
+                </div>  
+            </Link>  
+        );
+    }
 }

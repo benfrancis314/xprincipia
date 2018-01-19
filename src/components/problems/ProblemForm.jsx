@@ -51,7 +51,7 @@ export default class ProblemForm extends React.Component {
       grandParentTitle: this.props.gParentTitle,
       ggParentID : String(this.props.ggParentID),
       class : this.state.class,
-      breakdownID : this.props.breakdownID,
+      breakdownID : String(this.props.breakdownID),
       private: '0',
     })
     .then(function (result) {
@@ -80,9 +80,8 @@ export default class ProblemForm extends React.Component {
   render() {
       return (
         <div>
-          XX{this.props.breakdownID}XX
           <div id="createProblemBox">
-              <form id="createForm">
+              <form id="createProjectForm">
                 <fieldset id="fieldSetNoBorder">
                     <label htmlFor="problemTitleForm" id="problemTitleFormLabel">sub project title<br />
                       <input type="text" name="problemTitle" required="required" maxLength="70" id="problemTitleForm" autoFocus/>

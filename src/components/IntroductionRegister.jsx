@@ -69,8 +69,8 @@ constructor(){
           self.setState({
             userToken: result.data.token
           })
-          cookie.save('userToken', self.state.userToken );
-          cookie.save('userName', self.state.username)
+          cookie.save('userToken', self.state.userToken, { path: '/' } );
+          cookie.save('userName', self.state.username, { path: '/' })
           
           // Store token/Username in db table
           return axios.post( Config.API + '/auth/saveToken',  {
@@ -129,8 +129,8 @@ return axios.post( Config.API + '/register', {
       self.setState({
         userToken: result.data.token
       })
-      cookie.save('userToken', self.state.userToken );
-      cookie.save('userName', self.state.username)
+      cookie.save('userToken', self.state.userToken, { path: '/' } );
+      cookie.save('userName', self.state.username, { path: '/' })
       
       // Store token/Username in db table
       return axios.post( Config.API + '/auth/saveToken',  {
