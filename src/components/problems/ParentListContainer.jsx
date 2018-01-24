@@ -52,8 +52,10 @@ export default class ParentListContainer extends React.Component {
                     {this.props.parentList.map(this.renderItem)}
                 </div>
                 <div id="parentListQuestion" onClick={this.showParentListQuestion}>
-                    {/* On click, make text below visible */}
-                    <img src={require('../../assets/questionRed2.svg')} id="parentListQuestionImg" width="25" height="25" alt="Project Tree Button, white tree" />
+                    {/* <img src={require('../../assets/questionRed2.svg')} id="parentListQuestionImg" width="25" height="25" alt="Project Tree Button, white tree" /> */}
+                    <div id="parentListQuestionImg">
+                        . . .
+                    </div>
                 </div>
                 <div id="parentListExplain" onClick={this.hideParentListQuestion}>
                     Existing projects can be linked to other projects as sub projects. 

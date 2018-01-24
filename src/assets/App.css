@@ -750,8 +750,8 @@ padding-top: 1% !important;
 padding-bottom: 1% !important;
 }
 #voteProblem, #votedProblem, #SBButtonDiscuss, #SBButtonLearn {
-width: 12em !important;
-font-size: 130% !important;
+/* width: 12em !important; */
+/* font-size: 130% !important; */
 }
 #projectInteractMenu, #projectInteractDiscussMenu {
 width: 100% !important;
@@ -955,7 +955,162 @@ margin-right: 0px !important;
   #flagProblemButton {
     display: none !important;
   }
-  
+  #parentButton {
+    width: 80% !important;
+    letter-spacing: 2px !important;
+    margin: 0 auto !important;
+    margin-bottom: 3% !important;
+  }
+  #parentListButton {
+    right: 2% !important;
+  }
+  #problemTitle {
+    font-size: 180% !important;
+    letter-spacing: 3px !important;
+  }
+  #projectMidColumnContainer {
+    flex-direction: column !important;
+  }
+  #projectMidColumnLeft {
+    width: 100% !important;
+  }
+  #projectMidColumnLeftStart {
+    width: 100% !important;
+    margin-top: 2% !important;
+    margin-bottom: 2% !important;
+  }
+  #projectMidColumnRight {
+    width: 100% !important;
+  }
+  #projectMidColumnRightStart {
+    width: 100% !important;
+  }
+  #projectHideButton2 {
+    margin-bottom: 45px !important;
+    right: 0 !important;
+    left: default !important;
+    left: auto !important;
+    left: inherit !important;
+    border-width: 1px 0px 1px 1px !important;
+    border-radius:  25% 0px 0px 25% !important;
+    background: linear-gradient(to right, rgba(255,127,127,0), rgba(255,127,127,0), rgba(255,127,127,0.1)) !important;  
+  }
+  #feedContainer {
+    width: 90% !important;
+    margin-top: 5% !important;
+    margin-left: 0 !important;
+    right: 0 !important;
+  }
+  #feedUnitsProject {
+    right: 0 !important;
+    padding: 0.5% 5% 0.5% 0% !important;
+    margin: 1% 3% 0% 0% !important;
+    /* margin: 0 auto !important; */
+  }
+  #problemSummary {
+    width: 95% !important;
+    margin: 0 auto !important;
+    margin-left: 2px !important;
+    margin-bottom: 2% !important;
+  }
+  #projectHideButton3 {
+    bottom: 0px !important;
+  }
+  /* #projectActivityLabel {
+    margin-right: 0px !important;
+    text-align: right !important;
+    padding-right: 5% !important;
+  } */
+  #projectCreator {
+    display: none !important;
+  }
+  #SBButtonDiscuss {
+    border-radius: 35% 35% 3px 3px !important;
+  }
+  #SBButtonLearn {
+    border-radius: 3px 3px 35% 35% !important;
+  }
+  #problemCenterColumn {
+    flex-direction: column !important;
+    /* width: 50%; */
+  }
+  #votedProblem, #voteProblem {
+    width: 8em !important;
+    border-radius: 0px !important;
+    border-width: 0px 1px !important;
+    transform: scale(1) !important;
+  }
+  #SBButtonProposal {
+    width: 8em !important;
+    border-radius: 0px !important;
+    border-width: 0px 1px !important;
+    transform: scale(1) !important;
+  }
+  #SBButtonFollowed {
+    width: 8em !important;
+    border-radius: 0px !important;
+    border-width: 0px 1px !important;
+    transform: scale(1) !important;
+  }
+  #SPHeader {
+    border-radius: 3px 3px 25% 25% !important;
+    }
+
+
+    /* HEADER */
+    #headerOptionsContainer, #headerOptionsContainerNotifications {
+      width: 100% !important;
+      justify-content: center !important;
+      margin-bottom: 1% !important;
+    }
+    #mindTempleButton {
+      width: 20px !important;
+      height: 20px !important;
+    }
+    #logoName {
+      margin-bottom: 0% !important;
+      font-size: 160% !important;
+    }
+    #headerName {
+      font-size: 120% !important;
+      letter-spacing: 2px !important;
+      padding-left: 3px !important;
+      padding-right: 3px !important;
+    }
+    #notebookHeaderButton, #headerTempleName, #headerMessagesButton, #headerName {
+      height: 30px !important;
+    }
+    #headerName {
+      border-radius: 0px 5px 5px 0px !important;
+      border-width: 1px 1px 1px 0px !important;
+      padding-top: 0px !important; 
+      padding-bottom: 0px !important;
+      height: 32px !important;
+      vertical-align: middle !important;
+    }
+    #headerTempleName {
+      border-radius: 0px !important;
+    }
+
+
+    /* PROPOSALS */
+
+    #proposalDiscussButton, #proposalSubProjectsButton, #proposalDevelopButton {
+      font-size: 130% !important;
+    }
+    #proposalSubProjectsButton {
+      padding-bottom: 6px !important;
+    }
+
+    /* NOTEBOOK */ 
+    #notebookContainerShow {
+      width: 100% !important;
+    }
+
+
+
+
+
   }
 
 
@@ -1109,6 +1264,7 @@ letter-spacing: 2px !important;
 }
 #answerQuestionContent:hover {
   background-color: rgba(0,220,255,0.05);
+  transform: scale(1.02);
 }
 #greenBorder {
   border-color: #00ffdc;
@@ -1444,6 +1600,7 @@ letter-spacing: 2px !important;
   letter-spacing: 1px;
   margin: 0 auto;
   margin-top: 1%;
+  text-transform: lowercase !important;
 }
 #projectTitleProposalFormLabel{
   /*margin-top: 4%;*/
@@ -1829,9 +1986,7 @@ text-align: center;
 #header {
   border: 1px solid #00dcff;
   border-width: 1px 0px 1px 0px;
-  /* overflow: hidden; */
   width: 100%;
-  /* Old display: inline-flex adds small gap below header */
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -1840,15 +1995,11 @@ text-align: center;
   text-align: center;
   padding: 3px 0px 2px 0px;
   font-size: 110%;
-
-  /*Testing light blue background header*/
   box-shadow: 0 0 0pt 0pt rgba(0,220,255,0.5);
-  background-color: rgba(0,220,255,0.05);
 
   transition: all 2s ease 0s;
   background-color: rgba(0,220,255,0.025);
   background: linear-gradient(to right,rgba(0,220,255, 0), rgba(0,220,255, 0.05), rgba(0,220,255, 0));
-
   transform: scale(1);
 }
 #header:hover, #header:active, #header:focus {
@@ -1919,9 +2070,8 @@ text-align: center;
   font-weight: 100;
   letter-spacing: 16px;
   flex: 1 1 auto;
-/*Changing the width to 100% gets rid of gap on right
-but shrinking screen messes up avatar*/
-  width: 33%;
+  /* width: 33%; */
+  width: 32%;
 }
 #logoName {
   margin: 0 auto;
@@ -3713,6 +3863,7 @@ cursor: pointer;
 border-color: #00dcff !important;
 transform: scale(1.05);
 }
+
 #proposalDiscussButton {
 text-align: center;
 font-size: 150%;
@@ -3739,39 +3890,16 @@ letter-spacing: 6px;
 width: 50%;
 margin: 0 auto;
 padding: 0.6% 0% 0.5% 0%;
-/*margin-bottom: 0.5%;*/
 margin-top: 0%;
 border: 1px solid #00dcff;
 border-width: 1px 1px 0px 1px;
 border-radius: 45% 45% 0% 0%;
-/*background: linear-gradient(to right,rgba(0,220,255, 0), rgba(0,220,255, 0.05), rgba(0,220,255, 0));*/
 background: linear-gradient(to right,rgba(0,220,255, 0), rgba(0,220,255, 0.075), rgba(0,220,255, 0));
-
-
 transition: all 0.75s ease 0s;
 background-color: rgba(0,220,255,0.01);
 transform: scale(1);
 text-transform: lowercase !important;
 }
-/*#proposalDevelopButton {
-letter-spacing: 2px;
-width: 20%;
-margin: 0 auto;
-padding: 3px;
-transition: all 0.5s ease 0s;
-border: 1px solid #00dcff;
-border-width: 1px 1px;
-border-radius: 3px 3px 35% 35%;
-background-color: rgba(0,220,255,0.05);
-color: #00dcff;
-text-align: center;
-font-size: 140%;
-}
-#proposalDevelopButton:hover {
-background-color: #00dcff;
-color: #0f131c;
-cursor: pointer;
-}*/
 #privateContainerMottoProposal {
 display: inline-block;
 color: #888888;
@@ -4592,6 +4720,10 @@ font-family: 'Open Sans';
 #prosConsContainer {
   margin-top: 2%;
 }
+#wide90 {
+  width: 95%;
+  margin: 0 auto;
+}
 /* Attempt to get desired changes in CSS using parent selectors */
 /* #suggestionContent > #debateThreadButton {
   background-color: rgba(0,220,255,0.05) !important;
@@ -4613,8 +4745,7 @@ font-family: 'Open Sans';
   transform: scale(1.02);
   transition: all 1s ease 0s;
 }
-#suggestionContent, #commentContent, #suggestionContent24, #suggestionContent25, #suggestionContent26, #suggestionContent27,
-#suggestionContent28, #suggestionContent29, #suggestionContent30  {
+#suggestionContent, #commentContent {
   flex: 3 3 auto;
   font-family: 'Open Sans';
   border: 1px solid #dddddd;
@@ -4622,10 +4753,11 @@ font-family: 'Open Sans';
   width: 80%;
   padding: 1% 5% 1% 5%;
   margin-bottom: 1.1%;
-  background: linear-gradient(to right,rgba(0,220,255, 0.06), rgba(0,220,255, 0.07), rgba(0,220,255, 0.02));
+  background: linear-gradient(to right,rgba(0,220,255, 0.01), rgba(0,220,255, 0.02), rgba(0,220,255, 0));
+  /* background: linear-gradient(to right,rgba(0,220,255, 0.06), rgba(0,220,255, 0.07), rgba(0,220,255, 0.02)); */
   position: relative;
   transition: all 0.5s ease 0s;
-  transition: all 1s ease 0s;
+  background-color: rgba(0,220,255,0.05);
 }
 #suggestionContentHover, #suggestionContentHoverVote, #suggestionContentHoverUnvote, #commentContentHover, #commentContentHoverVote, #commentContentHoverUnvote {
   flex: 3 3 auto;
@@ -4661,6 +4793,13 @@ font-family: 'Open Sans';
   position: relative;
   transition: all 0.5s ease 0s;
 }
+#suggestionContent:active {
+  background-color: rgba(0,220,255,0.2);
+  background: linear-gradient(to right,rgba(0,220,255, 0.2), rgba(0,220,255, 0.15), rgba(0,220,255, 0.05));
+}
+#suggestionContentHoverVote:active {
+  background: linear-gradient(to right,rgba(0,255,220, 0.2), rgba(0,255,220, 0.15), rgba(0,255,220, 0.05));
+}
 #suggestionText, #suggestionTextCaps {
   /*Old Styles*/
   /* margin: 7px;
@@ -4681,6 +4820,9 @@ font-family: 'Open Sans';
 }
 #suggestionText:hover, #suggestionTextCaps:hover {
   cursor: pointer;
+}
+#suggestionText:active, #suggestionText:focus {
+  box-shadow: 0 0 0 0 rgba(0,220,255,0) !important;
 }
 #suggestionTextCaps {
   /* text-transform: lowercase !important; */
@@ -5372,6 +5514,7 @@ input#submitWelcomeProblem:hover {
   background-color: rgba(0,220,255, 0.05);
   /*box-shadow: 0 0 1pt 1pt rgba(255,255,255,0.5);*/
   transition: all 0.5s ease 0s;
+  text-transform: lowercase !important;
 }
 #SBButton:hover, #SBButton1:hover {
   background-color: rgba(0,220,255,0.05);
@@ -5460,6 +5603,7 @@ input#submitWelcomeProblem:hover {
   width: 70%;
   line-height: 150%;
   background: radial-gradient(circle, rgba(0,220,255, 0), rgba(0,220,255, 0.1));    
+  transition: all 1s ease 0s;
 }
 #learnContentTextArea {
   height: 12em;
@@ -5477,6 +5621,18 @@ input#submitWelcomeProblem:hover {
 #questionFlagTextArea {
   border-color: #ff7f7f !important;
   border-width: 0px;
+}
+#questionTextArea:active, #answerTextArea:active, 
+#suggestionTextArea:active, #commentTextArea:active,
+#proTextArea:active, #conTextArea:active, 
+#resourcesTextArea:active, #learnContentTextArea:active, #learnContentSummary:active,  
+#freeFormTextArea:active, #questionFlagTextArea:active, #flagTextArea:active,
+#questionTextArea:focus, #answerTextArea:focus, 
+#suggestionTextArea:focus, #commentTextArea:focus,
+#proTextArea:focus, #conTextArea:focus, 
+#resourcesTextArea:focus, #learnContentTextArea:focus, #learnContentSummary:focus,  
+#freeFormTextArea:focus, #questionFlagTextArea:focus, #flagTextArea:focus {
+  transform: scale(1.02);
 }
 #askQuestion, #addSuggestion, #addAnswer {
 font-size: 110%;
@@ -6510,22 +6666,16 @@ transform: scale(1.02);
   background-color: rgba(0, 255, 220, 1);
   color: #dddddd;
   border: 1px solid #dddddd;
-  border-radius: 0px 3px 3px 0px;
   text-align: center;
   font-family: 'Alegreya Sans SC', sans-serif;
   transition: all 0.5s ease 0s;
   padding: 0.7% 0%;
   letter-spacing: 2px;
   margin: 0 auto;
-  font-size: 115%;
   background-color: rgba(255,255,255,0.025);
   width: 8em;
-  
-  /* Testing new style */
   font-size: 125%;  
-  border-radius: 5px;
   border-radius: 3px 3px 35% 3px;
-  /* width: 7em; */
   }
   #SBButtonProposal {
   border-radius: 0px;
@@ -7884,6 +8034,7 @@ text-align: center;
 transition: all 0.5s ease 0s;
 
 background-color: rgba(255,255,255,0.025);
+text-transform: lowercase !important;
 }
 #voteSolution:hover, 
 #versionsButton:hover {
@@ -7921,6 +8072,7 @@ margin-bottom: 5%;
 width: 8em;
 text-align: center;
 transition: all 0.5s ease 0s;
+text-transform: lowercase !important;
 }
 #votedSolution:hover {
 cursor: pointer;
@@ -8754,9 +8906,10 @@ transition: opacity .5s ease-in;
 
 /*Flags, Edit and Delete*/
 
-/*#redLegend {
-color: #ff7f7f;
-}*/
+#redLegend {
+/* color: #ff7f7f; */
+text-transform: lowercase !important;
+}
 
 /*#redFieldset {
 border-color: #ff7f7f;
@@ -10742,10 +10895,8 @@ margin-top: 1%;
   font-size: 140%;
   text-align: center;
   letter-spacing: 8px;
-  padding: 4px;
   width: 100%;
   transition: all 0.5s ease 0s;
-  
   margin-bottom: 0px;
   transform: scale(1);
   margin: 0 auto;
@@ -10753,12 +10904,12 @@ margin-top: 1%;
   margin-top: 2px;
   margin-right: 0px;
   flex: 1 1 auto;
-  padding-left: 6px;
-  padding-right: 6px;
+  padding-left: 4px;
+  padding-right: 4px;
   padding-bottom: 6px;
   padding-top: 2px;
 
-  /* background-color: rgba(255,127,127,0.05); */
+  background-color: rgba(255,127,127,0.05);
   border: 1px solid #ff7f7f;
   border-width: 0px;
   border-radius: 7px;
@@ -10766,17 +10917,10 @@ margin-top: 1%;
 
 }
 #headerNotificationsButton:hover {
-  background-color: rgba(255,127,127,0.12);
-  /* box-shadow: 0 0 0.5pt 0.5pt rgba(255,127,127,1) inset; */
+  /* background-color: rgba(255,127,127,0.12); */
+  background-color: rgba(255,127,127,0.05);
   border-radius: 0px 3px 3px 0px;
-  /* border-width: 1px 1px 1px 1px; */
-
   transform: scale(1.05);
-  /* margin-top: 4px;
-  padding-top: 2px;
-  padding-bottom: 2px;
-  padding-right: 4px;
-  padding-left: 8px; */
   cursor: pointer;
   background: linear-gradient(to right, rgba(255,127,127,0), rgba(255,127,127,0.15), rgba(255,127,127,0.25));  
 }
@@ -12561,16 +12705,16 @@ transition: all 1s ease 0s;
   margin: 0 auto;
   /* margin-top: 1%; */
   text-align: center;
-  font-size: 130%;
-  padding: 1.5% 0% 1.25% 0%;
-  letter-spacing: 4px;
+  font-size: 110%;
+  padding: 1.25% 0% 1% 0%;
+  letter-spacing: 3px;
   color: #00dcff;
   /* color: #ff7f7f; */
   margin-top: 2%;
-  margin-bottom: 2%;
+  margin-bottom: 3%;
   border: 1px solid #00dcff;
   border-width: 0px;
-  border-radius: 3px 3px 12.5% 12.5%;
+  border-radius: 3px 3px 12% 12%;
   box-shadow: 0 0 1pt 1pt #00dcff;
   background: radial-gradient(circle, rgba(0,220,255, 0.125), rgba(0,220,255, 0.075), rgba(0,220,255, 0));
   background-color: rgba(136, 136, 136, 0);
@@ -12607,14 +12751,16 @@ transition: all 1s ease 0s;
   #parentListUnit:hover {
     color: #ffffff;
     background-color: rgba(0,220,255,0.05);
-    margin-top: 2%;
-    margin-bottom: 2%;
-    transform: scale(1.02);
+    margin-top: 3%;
+    margin-bottom: 3%;
+    transform: scale(1.05);
     cursor: pointer;
     opacity: 1;
   }
 #parentListQuestion {
   margin-top: 2%;
+  color: #ff7f7f;
+  font-size: 150%;
 }
 #parentListQuestionImg, #parentListQuestionImgSelect {
   transition: all 1s ease 0s;
@@ -12696,35 +12842,43 @@ transition: all 1s ease 0s;
   top: 0;
 } */
 #fileProposal {
-  color: #ffffff !important;
+  color: #00dcff !important;
   background-color: #0f131c !important;
-  border: 1px solid #00dcff !important;
-  border-radius: 25% !important;
-  margin: 0 auto !important;
-  font-family: 'Alegreya Sans SC' !important;
+  font-family: 'Alegreya Sans SC';
 
   overflow: hidden;
   position: relative;
   color: #ffffff;
-  background: radial-gradient(circle, rgba(0,220,255,0.15), rgba(0,220,255,0.05), rgba(0,220,255,0));
-  
-  padding: 18px 18px;
+  /* background: radial-gradient(circle, rgba(0,220,255,0.15), rgba(0,220,255,0.05), rgba(0,220,255,0)); */
+  background: linear-gradient(to right, rgba(0,220,255,0.15), rgba(0,220,255,0.05), rgba(0,220,255,0));
+
+  padding: 18px 18px 18px 25%;
   border: 1px solid rgba(255,255,255,0.5);
-  /* border-radius: 25%; */
-  border-radius: 15%;
-  width: 30%;
+  border-radius: 3px 15% 15% 3px;
+  border-width: 1px 1px 1px 1px;
+  border-right-color: rgba(255,255,255,0.15);
+  /* width: 30%; */
+  width: 70%;
   margin: 0 auto;
   margin-top: 3.5%;
   margin-bottom: 6%;
   transition: all 1s ease 0s;
-  box-shadow: 0 0 1pt 1px rgba(255,255,255,0.75);
+  /* box-shadow: 0 0 1pt 1px rgba(255,255,255,0.75); */
   opacity: 1;
   letter-spacing: 2px;
-  font-size: 140%;
+  font-size: 110%;
+
+  vertical-align: bottom;
+  text-align: right !important;
+  transform: scale(1.05);
+  text-transform: lowercase !important;
 }
-#pdfProposalContainerShow [type=file] {
-  margin-top: 5px;
-  text-align: center;
+#fileProposal:hover {
+  background-color: rgba(0,220,255,0.1);
+  transform: scale(1.1);
+  cursor: pointer;
+  box-shadow: 0 0 1.5pt 1.5px rgba(255,255,255,1);
+  letter-spacing: 3px;
 }
 
 #proposalFormButtonContainer {
@@ -12778,6 +12932,8 @@ transition: all 1s ease 0s;
 #pdfProposalContainerShow {
   width: 100%;
   margin: 0 auto;
+  margin-top: 3%;
+  text-align: center;
 }
 #proseProposalContainer {
   display: none;

@@ -86,6 +86,9 @@ import PrivateProjectForm from './components/problems/PrivateProjectForm.jsx';
 import PrivateSubProjectForm from './components/problems/PrivateSubProjectForm.jsx';
 import ProblemForm from './components/problems/ProblemForm.jsx';
 import ProblemFormContainer from './components/problems/ProblemFormContainer.jsx';
+import ProblemFormContainerPrivate from './components/problems/ProblemFormContainerPrivate.jsx';
+import ProblemFormContainerProposal from './components/problems/ProblemFormContainerProposal.jsx';
+import ProblemFormContainerProposalPrivate from './components/problems/ProblemFormContainerProposalPrivate.jsx';
 import ProblemFormProposal from './components/problems/ProblemFormProposal.jsx';
 import ProblemFormProposalPrivate from './components/problems/ProblemFormProposalPrivate.jsx';
 import ProblemDiscussMenu from './components/problems/ProblemDiscussMenu.jsx';
@@ -343,7 +346,11 @@ ReactDOM.render(
         <IndexRoute component={SideBarProblem}></IndexRoute>
         <Route path='/project/private/:probID/sideBar' component={SideBarProblem}>
           <IndexRoute component={Empty}></IndexRoute>
-          <Route path='/project/private/:probID/create' component={PrivateSubProjectForm}></Route>
+          <Route path='/project/private/:probID/create' component={ProblemFormContainerPrivate}>
+              <IndexRoute component={PrivateSubProjectForm}></IndexRoute>
+              <Route path='/project/private/:probID/create' component={PrivateSubProjectForm}></Route>
+              <Route path='/project/private/:probID/link' component={ProjectLinkForm}></Route>
+          </Route>
           <Route path='/project/private/:probID/edit' component={ProjectEditPrivateForm}></Route>
           <Route path='/project/private/:probID/delete' component={ProjectDeletePrivateForm}></Route>
           <Route path='/project/private/:probID/flag' component={ProjectFlagForm}></Route>
@@ -360,7 +367,11 @@ ReactDOM.render(
             <Route path='/proposal/private/:probID/:solutionID/delete' component={SolutionDeleteFormPrivate}></Route>
             <Route path='/proposal/private/:probID/:solutionID/edit' component={SolutionEditFormPrivate}></Route>
             <Route path='/project/private/:probID/proposal/:solutionID/subprojects' component={SubProjectProposalPrivateContainer}></Route>
-            <Route path='/project/private/:probID/proposal/:solutionID/subprojects/create' component={ProblemFormProposalPrivate}></Route>
+            <Route path='/project/private/:probID/proposal/:solutionID/subprojects/create' component={ProblemFormContainerProposalPrivate}>
+              <IndexRoute component={ProblemFormProposalPrivate}></IndexRoute>
+              <Route path='/project/private/:probID/proposal/:solutionID/create' component={ProblemFormProposalPrivate}></Route>
+              <Route path='/project/private/:probID/proposal/:solutionID/link' component={ProjectLinkForm}></Route>
+            </Route>
             <Route path='/project/private/:probID/proposal/:solutionID/related' component={RelatedProposalsContainer}></Route>
             <Route path='/project/private/:probID/proposal/:solutionID/discuss' component={ProposalDiscussMenuPrivate}>
               <IndexRoute component={QuestionContainer}></IndexRoute>
@@ -473,10 +484,10 @@ ReactDOM.render(
             </Route>                
             <Route path='/project/:probID/proposal/:solutionID/cons/:conID/container' component={CommentConContainerPrivate}>
               <IndexRoute component={CommentFormPrivate}></IndexRoute>
-              <Route path='/project/:probID/proposal/:solutionID/cons/:conID/comments' component={CommentFormPrivate}></Route>
-              <Route path='/project/:probID/proposal/:solutionID/cons/:conID/comment/:commentID/edit' component={CommentEditFormPrivate}></Route>
-              <Route path='/project/:probID/proposal/:solutionID/cons/:conID/comment/:commentID/flag' component={CommentFlagForm}></Route>
-              <Route path='/project/:probID/proposal/:solutionID/cons/:conID/comment/:commentID/delete' component={CommentDeleteFormPrivate}></Route>
+              <Route path='/project/private/:probID/proposal/:solutionID/cons/:conID/comments' component={CommentFormPrivate}></Route>
+              <Route path='/project/private/:probID/proposal/:solutionID/cons/:conID/comment/:commentID/edit' component={CommentEditFormPrivate}></Route>
+              <Route path='/project/private/:probID/proposal/:solutionID/cons/:conID/comment/:commentID/flag' component={CommentFlagForm}></Route>
+              <Route path='/project/private/:probID/proposal/:solutionID/cons/:conID/comment/:commentID/delete' component={CommentDeleteFormPrivate}></Route>
             </Route>   
           </Route>
           <Route path='/proposal/private/:probID/:solutionID/versions' component={VersionsContainer}></Route>
@@ -602,7 +613,11 @@ ReactDOM.render(
             <Route path='/proposal/:probID/:solutionID/edit' component={SolutionEditForm}></Route>
             <Route path='/proposal/:probID/:solutionID/flag' component={SolutionFlagForm}></Route>
             <Route path='/project/:probID/proposal/:solutionID/subprojects' component={SubProjectProposalContainer}></Route>
-            <Route path='/project/:probID/proposal/:solutionID/subprojects/create' component={ProblemFormProposal}></Route>
+            <Route path='/project/:probID/proposal/:solutionID/subprojects/create' component={ProblemFormContainerProposal}>
+              <IndexRoute component={ProblemFormProposal}></IndexRoute>
+              <Route path='/project/:probID/proposal/:solutionID/create' component={ProblemFormProposal}></Route>
+              <Route path='/project/:probID/proposal/:solutionID/link' component={ProjectLinkForm}></Route>
+            </Route>
             <Route path='/project/:probID/proposal/:solutionID/related' component={RelatedProposalsContainer}></Route>
             <Route path='/project/:probID/proposal/:solutionID/discuss' component={ProposalDiscussMenu}>
               <IndexRoute component={QuestionContainer}></IndexRoute>
@@ -696,12 +711,12 @@ ReactDOM.render(
               </Route>
             </Route> */}
 
-              <Route path='/project/:probID/proposal/:solutionID/pros' component={ProsContainer}>
+              <Route path='/project/:probID/proposal/:solutionID/pros/container' component={ProsContainer}>
                 <IndexRoute component={ProsForm}></IndexRoute>
-                <Route path='/project/:probID/:solutionID/pros/pros' component={ProsForm}></Route>
-                <Route path='/project/:probID/:solutionID/pros/:proID/edit' component={ProsEditForm}></Route>
-                <Route path='/project/:probID/:solutionID/pros/:proID/flag' component={ProsFlagForm}></Route>
-                <Route path='/project/:probID/:solutionID/pros/:proID/delete' component={ProsDeleteForm}></Route>
+                <Route path='/project/:probID/proposal/:solutionID/pros' component={ProsForm}></Route>
+                <Route path='/project/:probID/proposal/:solutionID/pros/:proID/edit' component={ProsEditForm}></Route>
+                <Route path='/project/:probID/proposal/:solutionID/pros/:proID/flag' component={ProsFlagForm}></Route>
+                <Route path='/project/:probID/proposal/:solutionID/pros/:proID/delete' component={ProsDeleteForm}></Route>
               </Route>
               <Route path='/project/:probID/proposal/:solutionID/pros/:proID/container' component={CommentProContainer}>
                 <IndexRoute component={CommentForm}></IndexRoute>
@@ -710,12 +725,12 @@ ReactDOM.render(
                 <Route path='/project/:probID/proposal/:solutionID/pros/:proID/comment/:commentID/flag' component={CommentFlagForm}></Route>
                 <Route path='/project/:probID/proposal/:solutionID/pros/:proID/comment/:commentID/delete' component={CommentDeleteForm}></Route>
               </Route>
-              <Route path='/project/:probID/proposal/:solutionID/cons/:conID/container' component={ConsContainer}>
+              <Route path='/project/:probID/proposal/:solutionID/cons/container' component={ConsContainer}>
                 <IndexRoute component={ConsForm}></IndexRoute>
-                <Route path='/project/:probID/:solutionID/cons' component={ConsForm}></Route>
-                <Route path='/project/:probID/:solutionID/cons/:conID/edit' component={ConsEditForm}></Route>
-                <Route path='/project/:probID/:solutionID/cons/:conID/flag' component={ConsFlagForm}></Route>
-                <Route path='/project/:probID/:solutionID/cons/:conID/delete' component={ConsDeleteForm}></Route>
+                <Route path='/project/:probID/proposal/:solutionID/cons' component={ConsForm}></Route>
+                <Route path='/project/:probID/proposal/:solutionID/cons/:conID/edit' component={ConsEditForm}></Route>
+                <Route path='/project/:probID/proposal/:solutionID/cons/:conID/flag' component={ConsFlagForm}></Route>
+                <Route path='/project/:probID/proposal/:solutionID/cons/:conID/delete' component={ConsDeleteForm}></Route>
               </Route>         
               <Route path='/project/:probID/proposal/:solutionID/cons/:conID/container' component={CommentConContainer}>
                 <IndexRoute component={CommentForm}></IndexRoute>

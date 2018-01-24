@@ -27,7 +27,7 @@ deleteLearnItem() {
         }
       })
       .then(function (result) {
-        document.location = '/project/private/'+ self.props.params.probID + '/notes'
+        // document.location = '/project/private/'+ self.props.params.probID + '/notes'
       })
       .catch(function (error) {
         // console.log(error.response.data)
@@ -62,11 +62,13 @@ deleteLearnItem() {
           <div id="questionFormComponent">
                 <form id="questionForm">
                     <fieldset>
-                        <legend>Delete Note</legend>
+                        <legend>delete note</legend>
                             <div>Are you sure you would like to delete this lesson?</div>
                             <br />
-                            <div onClick={this.deleteLearnItem} id="deleteButton">Delete</div>
-                              <Link to={`/project/private/${this.props.params.probID}/notes`}>
+                            <Link to={`/project/private/${this.props.params.probID}/notes`}>
+                                <div onClick={this.deleteLearnItem} id="deleteButton">Delete</div>
+                            </Link>
+                            <Link to={`/project/private/${this.props.params.probID}/notes`}>
                                 <div id="returnButton">Exit</div>
                             </Link>
                     </fieldset>

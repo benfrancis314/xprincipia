@@ -3,6 +3,8 @@ import axios from 'axios';
 import cookie from 'react-cookie';
 import {Config} from '../../config.js';
 import $ from 'jquery';
+import { Link } from 'react-router';
+
 
 export default class ProsForm extends React.Component {
 
@@ -26,10 +28,10 @@ this.state.pro = document.getElementById('proTextArea').value
     typeID: this.props.params.solutionID,
     description : this.state.pro,
     parentID: this.props.params.probID,
+    private: '1',
   })
   .then(function (result) {
-    document.location = window.location.pathname 
-    // scroll to pros again
+    document.getElementById("suggestionForm").reset();
   })
       .catch(function (error) {
         // console.log(error.response.data)
@@ -56,15 +58,16 @@ this.state.pro = document.getElementById('proTextArea').value
       return (
       <div>
         <div id="discussMenuEnd">
-          Pros
+          pro
         </div>
         <div id="suggestionFormComponent">
               <form id="suggestionForm">
                   <fieldset  id='fieldSetNoBorderPadding'>
-                      {/*<legend>Pros</legend>*/}
-                          <textarea name="suggestionText" required="required" id="proTextArea" placeholder="Add a pro towards the merit of this proposal. " autoFocus ></textarea>
+                          <textarea name="suggestionText" required="required" id="proTextArea" placeholder="Describe something that gives merit to this proposal. " autoFocus ></textarea>
                           {/*Replace with blueAdd button*/}
-                          <input type="button" value="Add" onClick={this.postPro} id="addProsCons"/>
+                          <Link to={`/project/private/${this.props.params.probID}/proposal/${this.props.params.solutionID}/pros`}>
+                            <input type="button" value="Add" onClick={this.postPro} id="addProsCons"/>
+                          </Link>
                   </fieldset>
               </form>
         </div>

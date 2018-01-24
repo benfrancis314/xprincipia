@@ -78,10 +78,8 @@ export default class WelcomeUserUnit extends React.Component {
                     breakdownTitle: 'original breakdown',
                 })
                   .then(function (result) {
-                    // Currently there is a problem
-                    // document.location = '/project/'+ this.props.probID + '/subprojects'
-                    document.location = window.location.pathname 
-                    // alert('test');
+                    // document.location = window.location.pathname 
+                    // alert('link success');
                   })
                     .catch(function (error) {
                         $(document).ready(function() {
@@ -144,9 +142,11 @@ if (problem.Private === true) {
                 {/* <div id="linkConfirmText">
                     confirm link?
                 </div> */}
-                <div id="linkConfirmButton"  onClick={createLink.bind(this)}>
-                    link
-                </div>
+                <Link to={`/project/${this.props.parentTitle}/subprojects`}>
+                    <div id="linkConfirmButton"  onClick={createLink.bind(this)}>
+                        link
+                    </div>
+                </Link>
             </div>
         </div>
       );

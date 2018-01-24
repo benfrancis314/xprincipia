@@ -4,6 +4,7 @@ import cookie from 'react-cookie';
 import {Config} from '../../config.js';
 import $ from 'jquery';
 import ScrollableAnchor from 'react-scrollable-anchor';
+import { Link  } from 'react-router';
 
 export default class SolutionForm extends React.Component {
 
@@ -27,9 +28,7 @@ export default class SolutionForm extends React.Component {
   };
 
   testFileInput() {
-    // alert(document.getElementById("fileProposal").HTMLInputElement.files);
-    // alert(document.getElementById("fileProposal").value);
-    alert('end');
+    alert(document.getElementById("fileProposal").value);
   }
 
 
@@ -79,10 +78,8 @@ export default class SolutionForm extends React.Component {
         private: '0',
       })
       .then(function (result) {
-        document.location = '/project/' + self.props.probID + '/subprojects'
-        // Not sure why that is here, will delete if no utility found
-        // window.location.hash = "problemSummary";
-
+        // document.location = '/project/' + self.props.probID + '/subprojects'
+        document.getElementById("solutionsTitleRightSB").scrollIntoView();
       })
       .catch(function (error) {
           $(document).ready(function() {
@@ -103,38 +100,6 @@ export default class SolutionForm extends React.Component {
   }
 
   render() {
-
-
-// javascript code for # of files selected, from: https://tympanus.net/codrops/2015/09/15/styling-customizing-file-inputs-smart-way/
-    // var inputs = document.querySelectorAll( '.inputfile' );
-    // Array.prototype.forEach.call( inputs, function( input )
-    // {
-    //   var label	 = input.nextElementSibling,
-    //     labelVal = label.innerHTML;
-    
-    //   input.addEventListener( 'change', function( e )
-    //   {
-    //     var fileName = '';
-    //     if( this.files && this.files.length > 1 )
-    //       fileName = ( this.getAttribute( 'data-multiple-caption' ) || '' ).replace( '{count}', this.files.length );
-    //     else
-    //       fileName = e.target.value.split( '\\' ).pop();
-    
-    //     if( fileName )
-    //       label.querySelector( 'span' ).innerHTML = fileName;
-    //     else
-    //       label.innerHTML = labelVal;
-    //   });
-    // });
-
-
-    // $( '#fileProposalLabel [type=file]' ).on( 'click', function updateFileName( event ){
-    //     var $input = $( this );
-    
-    //     setTimeout( function delayResolution(){
-    //         $input.parent().text( $input.val().replace(/([^\\]*\\)*/,'') )
-    //     }, 0 )
-    // } );
 
       return (
       <div>
@@ -211,12 +176,9 @@ export default class SolutionForm extends React.Component {
                 </div>
 
                 <div id="pdfProposalContainerShow">
-                  {/* <label id="fileProposalLabel">
-                    upload pdf */}
-                    {/* Add "multiple" in input attributes if we want them to be able to do multiple */}
-                    <input type="file" id="fileProposal" />
-                  {/* </label> */}
+                    <input type="file" id="fileProposal" accept=".pdf"/>
                 </div>
+
               <div onClick={this.testFileInput}>testHTML</div>
 
                 <div id="proseProposalContainer">
@@ -231,7 +193,9 @@ export default class SolutionForm extends React.Component {
                 <label htmlFor="solutionReferences" id="solutionReferenceFormLabel">sources <span id="gray">(optional)</span><br />
                     <textarea name="solutionReferences" placeholder="Please provide your sources here." id="solutionReferencesForm">
                     </textarea></label><br />
-                  <input type="button" value="Create" onClick={this.postSolution} id="submitSolution"/>
+                  <Link to={`/project/${this.props.probID}/subprojects`}>
+                      <input type="button" value="Create" onClick={this.postSolution} id="submitSolution"/>
+                  </Link>
               </fieldset>
             </form>
         </div>

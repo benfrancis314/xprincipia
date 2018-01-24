@@ -3,6 +3,8 @@ import axios from 'axios';
 import cookie from 'react-cookie';
 import {Config} from '../../config.js';
 import $ from 'jquery';
+import { Link } from 'react-router';
+
 
 export default class QuestionForm extends React.Component {
 
@@ -15,6 +17,7 @@ export default class QuestionForm extends React.Component {
 
     this.postQuestion = this.postQuestion.bind(this);
   };
+  
 
 postQuestion() {
   //Read field items into component state
@@ -24,16 +27,17 @@ this.state.question = document.getElementById('questionTextArea').value
   //solutionID will be available in props
   if(this.props.params.solutionID){
     axios.post( Config.API + '/auth/questions/create', {
-    type:'1',
-    typeID: this.props.params.solutionID,
-    username: cookie.load('userName'),
-    description : this.state.question,
-    parentTitle: this.props.parentTitle,
-    private: '1',
-    parentID: this.props.params.probID,
+      type:'1',
+      typeID: this.props.params.solutionID,
+      username: cookie.load('userName'),
+      description : this.state.question,
+      parentTitle: this.props.parentTitle,
+      private: '1',
+      parentID: this.props.params.probID,
   })
     .then(function (result) {
-      document.location = window.location.pathname 
+      // document.location = window.location.pathname 
+      document.getElementById("questionForm").reset();
     })
       .catch(function (error) {
           $(document).ready(function() {
@@ -62,11 +66,11 @@ this.state.question = document.getElementById('questionTextArea').value
         typeID: this.props.params.probID,
         username: cookie.load('userName'),
         description : this.state.question,
-        parentTitle: this.props.parentTitle,
+        parentTitle : this.props.parentTitle,
         private: '1',
-      })
+    })
       .then(function (result) {
-        // document.location = window.location.pathname 
+        document.getElementById("questionForm").reset();
       })
       .catch(function (error) {
           $(document).ready(function() {
@@ -85,6 +89,7 @@ this.state.question = document.getElementById('questionTextArea').value
           });
       });
     }
+
   }
 
 
@@ -92,19 +97,21 @@ this.state.question = document.getElementById('questionTextArea').value
    render() {
     if (this.props.params.solutionID){
         return (
-            <div>
-              <div id="discussMenuEnd">
-                questions
-              </div>
-              <div id="questionFormComponent">
-                    <form id="questionForm">
-                        <fieldset id='fieldSetNoBorderPadding'>
-                                <textarea name="questionText" required="required" id="questionTextArea" placeholder="Ask a question about this proposal." ></textarea>
-                                <input type="button" value="Ask" onClick={this.postQuestion} id="askQuestion"/>
-                        </fieldset>
-                    </form>
-              </div>
+          <div>
+            <div id="discussMenuEnd">
+              questions
             </div>
+            <div id="questionFormComponent">
+                <form id="questionForm">
+                  <fieldset id='fieldSetNoBorderPadding'>
+                    <textarea name="questionText" required="required" id="questionTextArea" placeholder="Ask a question you have about this project or view those asked by your peers. " ></textarea>
+                    <Link to={`/project/private/${this.props.params.probID}/proposal/${this.props.params.solutionID}/questions`}>
+                      <input type="button" value="Ask" onClick={this.postQuestion} id="askQuestion"/>
+                    </Link>
+                  </fieldset>
+                </form>
+            </div>
+          </div>
         );
     } else {
         return (
@@ -113,12 +120,14 @@ this.state.question = document.getElementById('questionTextArea').value
               questions
             </div>
             <div id="questionFormComponent">
-                  <form id="questionForm">
-                      <fieldset id='fieldSetNoBorderPadding'>
-                              <textarea name="questionText" required="required" id="questionTextArea" placeholder="Ask a question about this project." ></textarea>
-                              <input type="button" value="Ask" onClick={(event) => { this.postQuestion; this.props.handler;}} id="askQuestion"/>
-                      </fieldset>
-                  </form>
+              <form id="questionForm">
+                <fieldset id='fieldSetNoBorderPadding'>
+                  <textarea name="questionText" required="required" id="questionTextArea" placeholder="Ask a question you have about this project or view those asked by your peers. " ></textarea>
+                  <Link to={`/project/private/${this.props.params.probID}/questions`}>
+                    <input type="button" value="Ask" onClick={this.postQuestion} id="askQuestion"/>
+                  </Link>
+                </fieldset>
+              </form>
             </div>
           </div>
 

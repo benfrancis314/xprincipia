@@ -27,7 +27,23 @@ constructor(props){
                     freeForms: response.data
                 })
             }) 
+        }
     }
+    componentWillReceiveProps(nextProps){
+        var self = this;
+        if(this.props.params.solutionID){
+            return axios.get( Config.API + '/freeForms/typeID?id='+nextProps.params.solutionID+'&dataType=1').then(function (response) {
+                self.setState({
+                    freeForms: response.data
+                })
+            })  
+        } else {
+            return axios.get( Config.API + '/freeForms/typeID?id='+nextProps.params.probID+'&dataType=0').then(function (response) {
+                self.setState({
+                    freeForms: response.data
+                })
+            }) 
+        }
     }
    render() {
         if (this.props.params.solutionID){

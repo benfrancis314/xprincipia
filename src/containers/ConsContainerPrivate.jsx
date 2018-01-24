@@ -24,6 +24,15 @@ constructor(props){
                 })
             })  
         } 
+    componentWillReceiveProps(nextProps){
+        var self = this;
+        // if(this.props.solutionID){
+            return axios.get( Config.API + '/cons/typeID?id='+nextProps.params.solutionID+'&dataType=1').then(function (response) {
+                self.setState({
+                    cons: response.data
+                })
+            })  
+        } 
     //     } else {
     //         return axios.get( Config.API + '/cons/typeID?id='+this.props.probID+'&dataType=0').then(function (response) {
     //             self.setState({
@@ -47,7 +56,7 @@ constructor(props){
           transitionEnter={false}
           transitionLeave={false}>*/}
           {this.props.children}
-          {React.cloneElement(<ConsUnitPrivate cons={this.state.cons} probID={this.props.params.probID} solutionID={this.props.params.solutionID} /> )}
+          <ConsUnitPrivate cons={this.state.cons} probID={this.props.params.probID} solutionID={this.props.params.solutionID} />
         {/*</ReactCSSTransitionGroup>*/}
         </div>    
       );

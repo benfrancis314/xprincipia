@@ -51,13 +51,13 @@ export default class SuggestionEditForm extends React.Component {
     this.state.suggestion = document.getElementById('questionEditTextArea').value
 
     axios.put( Config.API + '/auth/suggestions/update?id='+this.props.params.suggID, {
-        type:'0',
-        typeID: this.props.params.probID,
+        // type:'0',
+        // typeID: this.props.params.probID,
         username: cookie.load('userName'),
         description : this.state.suggestion,
       })
         .then(function (result) {
-          document.location = window.location.pathname 
+          // document.location = window.location.pathname 
         })
       .catch(function (error) {
         // console.log(error.response.data)

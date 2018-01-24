@@ -27,7 +27,7 @@ deleteResource() {
         }
       })
       .then(function (result) {
-        document.location = '/project/private/'+ self.props.params.probID + '/resources'
+        // document.location = '/project/private/'+ self.props.params.probID + '/resources'
       })
       .catch(function (error) {
         // console.log(error.response.data)
@@ -63,7 +63,9 @@ deleteResource() {
                         <legend>Delete Resource</legend>
                             <div>Are you sure you would like to delete this resource?</div>
                             <br />
-                            <div onClick={this.deleteResource} id="deleteButton">Delete</div>
+                            <Link to={`/project/private/${this.props.params.probID}/resources`}>
+                                <div onClick={this.deleteResource} id="deleteButton">Delete</div>
+                            </Link>
                             <Link to={`/project/private/${this.props.params.probID}/resources`}>
                                 <div id="returnButton">Exit</div>
                             </Link>

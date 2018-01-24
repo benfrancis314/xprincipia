@@ -51,13 +51,13 @@ updateLearnItem() {
   this.state.learnItem = document.getElementById('questionEditTextArea').value
   var self = this
   axios.put( Config.API + '/auth/learnItems/update?id='+this.props.params.learnItemID, {
-      type:'0',
-      typeID: this.props.params.probID,
-      username: cookie.load('userName'),
+      // type:'0',
+      // typeID: this.props.params.probID,
+      // username: cookie.load('userName'),
       description : self.state.learnItem,
     })
       .then(function (result) {
-        document.location = '/project/'+ self.props.params.probID + '/learn/content'
+        // document.location = '/project/'+ self.props.params.probID + '/learn/content'
       })
       .catch(function (error) {
         // console.log(error.response.data)
@@ -95,8 +95,10 @@ updateLearnItem() {
                         <legend id="redLegend">Edit Lesson</legend>
                             <textarea name="questionText" required="required" id="questionEditTextArea" autoFocus ></textarea>
                             <br />
-                            <div onClick={this.updateLearnItem} id="editButton">Submit</div>
-                              <Link to={`/project/${this.state.learnItem.TypeID}/learn/content`}>
+                            <Link to={`/project/${this.state.learnItem.TypeID}/learn/content`}>
+                              <div onClick={this.updateLearnItem} id="editButton">Submit</div>
+                            </Link>
+                            <Link to={`/project/${this.state.learnItem.TypeID}/learn/content`}>
                               <div id="returnButton">Exit</div>
                             </Link>
                     </fieldset>

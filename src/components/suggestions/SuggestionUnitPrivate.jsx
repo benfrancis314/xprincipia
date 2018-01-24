@@ -10,41 +10,27 @@ export default class SuggestionUnit extends React.Component {
     constructor(props){
         super(props);
 
-         this.renderItem = this.renderItem.bind(this);
-    };
-    componentDidMount() {
-        var self = this
-        self.setState({
+        this.state = {
             voteHash : {},
             debateNumber : [],
-        })
-    }
+        }
 
+         this.renderItem = this.renderItem.bind(this);
+    };
 
-
-    componentWillReceiveProps (props) {
+    componentWillReceiveProps (nextProps) {
         var self = this
-        self.setState({
-            voteHash : {},
-            debateNumber : {},
-        })
-        props.suggestions.forEach( function (suggestion){
+        nextProps.suggestions.forEach( function (suggestion){
             axios.get( Config.API + "/vote/isVotedOn?type=3&typeID=" + suggestion.ID + "&username=" + cookie.load("userName"))
             .then( function (response) {  
                 const voteHash = self.state.voteHash;
 
                 voteHash[suggestion.ID] = response.data
-                self.setState({
-                    voteHash,
-                })
             })  
             axios.get( Config.API + '/comments/number?parent_id='+suggestion.ID + '&parent_type=3').then(function (response) {
                 const debateNumber = self.state.debateNumber;
                 
                 debateNumber[suggestion.ID] = response.data
-                self.setState({
-                    debateNumber,
-                })
             })
         })
     }
@@ -65,7 +51,7 @@ export default class SuggestionUnit extends React.Component {
            
         })
         .then(function (result) {
-            document.location = window.location.pathname;
+            // document.location = window.location.pathname;
         })
       .catch(function (error) {
           $(document).ready(function() {
@@ -93,7 +79,7 @@ export default class SuggestionUnit extends React.Component {
         }
         })
         .then(function (result) {
-            document.location = window.location.pathname 
+            // document.location = window.location.pathname 
         })
       .catch(function (error) {
           $(document).ready(function() {
@@ -145,9 +131,11 @@ export default class SuggestionUnit extends React.Component {
                         <span id="discussPercent">{floatToDecimal(suggestion.PercentRank)}</span>
                         {suggestion.Username}
                     </div>
-                    <div id="suggestionText" onClick={unVote} onMouseOver={hoverVoteVoted} onMouseOut={unHoverVoteVoted}>
-                        {suggestion.Description}
-                    </div>
+                    <Link to={`/project/private/${suggestion.TypeID}/suggestions`}>
+                        <div id="suggestionText" onClick={unVote} onMouseOver={hoverVoteVoted} onMouseOut={unHoverVoteVoted}>
+                            {suggestion.Description}
+                        </div>
+                    </Link>
 				</div>
         </li>);
     }  else if ( suggestion.Username === cookie.load('userName')) {
@@ -179,9 +167,11 @@ export default class SuggestionUnit extends React.Component {
                         <span id="discussPercent">{floatToDecimal(suggestion.PercentRank)}</span>
 					    {suggestion.Username}
                     </div>
-                    <div id="suggestionText" onClick={submitVote} onMouseOver={hoverVote} onMouseOut={unHoverVote}>
-                        {suggestion.Description}
-                    </div>
+                    <Link to={`/project/private/${suggestion.TypeID}/suggestions`}>
+                        <div id="suggestionText" onClick={submitVote} onMouseOver={hoverVote} onMouseOut={unHoverVote}>
+                            {suggestion.Description}
+                        </div>
+                    </Link>
 				</div>
         </li>);
     } else if (this.state.voteHash[suggestion.ID] === true) {
@@ -193,11 +183,11 @@ export default class SuggestionUnit extends React.Component {
                             <img src={require('../../assets/list4.svg')} id="debateThreadLogo" width="50" height="50" alt="Delete Button, Red X" />
                         </div>
                     </Link>
-                    {/* <Link to={`/project/private/${suggestion.TypeID}/suggestion/${suggestion.ID}/flag`}>
+                    <Link to={`/project/private/${suggestion.TypeID}/suggestion/${suggestion.ID}/flag`}>
                         <div id="flagDiscussButton" onMouseOver={hoverFlagVoted} onMouseOut={unHoverFlagVoted}>
                             <img src={require('../../assets/flag.svg')} id="deleteLogo" width="24" height="24" alt="Delete Button, Red X" />
                         </div>
-                    </Link> */}
+                    </Link>
                     <Link to={`/project/private/${suggestion.TypeID}/suggestion/${suggestion.ID}/comments`}>
                         <div id="numberDiscussButton" onMouseOver={hoverThreadVoted} onMouseOut={unHoverThreadVoted}>
                             {this.state.debateNumber[suggestion.ID]}
@@ -210,9 +200,11 @@ export default class SuggestionUnit extends React.Component {
                         <span id="discussPercent">{floatToDecimal(suggestion.PercentRank)}</span>
                         {suggestion.Username}
                     </div>
-                    <div id="suggestionText" onClick={unVote} onMouseOver={hoverVoteVoted} onMouseOut={unHoverVoteVoted}>
-                        {suggestion.Description}
-                    </div>
+                    <Link to={`/project/private/${suggestion.TypeID}/suggestions`}>
+                        <div id="suggestionText" onClick={unVote} onMouseOver={hoverVoteVoted} onMouseOut={unHoverVoteVoted}>
+                            {suggestion.Description}
+                        </div>
+                    </Link>
 				</div>
         </li>);
 
@@ -225,11 +217,11 @@ export default class SuggestionUnit extends React.Component {
                         <img src={require('../../assets/list4.svg')} id="debateThreadLogo" width="50" height="50" alt="Delete Button, Red X" />
                     </div>
                 </Link>
-                {/* <Link to={`/project/private/${suggestion.TypeID}/suggestion/${suggestion.ID}/flag`}>
+                <Link to={`/project/private/${suggestion.TypeID}/suggestion/${suggestion.ID}/flag`}>
                     <div id="flagDiscussButton" onMouseOver={hoverFlag} onMouseOut={unHoverFlag}>
                         <img src={require('../../assets/flag.svg')} id="deleteLogo" width="24" height="24" alt="Delete Button, Red X" />
                     </div>
-                </Link> */}
+                </Link>
                 <Link to={`/project/private/${suggestion.TypeID}/suggestion/${suggestion.ID}/comments`}>
                     <div id="numberDiscussButton" onMouseOver={hoverThread} onMouseOut={unHoverThread}>
                         {this.state.debateNumber[suggestion.ID]}
@@ -240,9 +232,11 @@ export default class SuggestionUnit extends React.Component {
                     <span id="discussPercent">{floatToDecimal(suggestion.PercentRank)}</span>
                     {suggestion.Username}
                 </div>
-                <div id="suggestionText" onClick={submitVote} onMouseOver={hoverVote} onMouseOut={unHoverVote}>
-                    {suggestion.Description}
-                </div>
+                <Link to={`/project/private/${suggestion.TypeID}/suggestions`}>
+                    <div id="suggestionText" onClick={submitVote} onMouseOver={hoverVote} onMouseOut={unHoverVote}>
+                        {suggestion.Description}
+                    </div>
+                </Link>
             </div>
         </li>);
 }
@@ -403,3 +397,5 @@ function unHoverDeleteVoted() {
 function floatToDecimal(float) {
 	return Math.round(float*100)+'%';
 }
+
+

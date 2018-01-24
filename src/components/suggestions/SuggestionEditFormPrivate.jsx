@@ -57,7 +57,7 @@ export default class SuggestionEditForm extends React.Component {
         description : this.state.suggestion,
       })
         .then(function (result) {
-          document.location = window.location.pathname 
+          // document.location = window.location.pathname 
         })
       .catch(function (error) {
         // console.log(error.response.data)

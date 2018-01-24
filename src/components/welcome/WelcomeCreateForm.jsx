@@ -44,7 +44,7 @@ export default class WelcomeCreateForm extends React.Component {
 
       })
       .then(function (response) {
-        document.location = '/welcome' 
+        // document.location = '/welcome' 
       })
       .catch(function (error) {
           $(document).ready(function() {
@@ -127,8 +127,9 @@ export default class WelcomeCreateForm extends React.Component {
                         <textarea name="problemSummary" maxLength="350" 
                         placeholder="Please provide any additional information you'd like. (350 character max)" id="problemCreateSummaryForm"/>
                         </label><br />
-
-                    <input type="button" value="Create" onClick={this.postProblem} id="submitProblem"/>
+                    <Link to={`/welcome`}>
+                        <input type="button" value="Create" onClick={this.postProblem} id="submitProblem"/>
+                    </Link>
                   </fieldset>
                 </form>
             </div>

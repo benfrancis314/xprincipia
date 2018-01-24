@@ -34,40 +34,20 @@ export default class AnswerContainer extends React.Component {
         }) 
              
     }
-    // Strategy for updating state
-  componentWillReceiveProps(newProps){
-    var self = this;
-      axios.get( Config.API + '/questions/ID?id='+newProps.params.questID).then(function (response) {
-          self.setState({
-              question: response.data
-          })
-          
+    componentWillReceiveProps(nextProps){
+        var self = this;
+        axios.get( Config.API + '/answers/questionID?id='+nextProps.params.questID).then(function (response) {
+            self.setState({
+                answers: response.data,
+            })
         })
-      .catch(function (error) {
-        // console.log(error.response.data)
-          $(document).ready(function() {
-              $('#notification').attr('id','notificationShow').hide().slideDown();
-              if (error.response.data != '') {
-                $('#notificationContent').text(error.response.data);
-              }
-              else if (error.response.data == '[object Object]') {
-                return (
-                  $(document).ready(function() {
-                    $('#notificationLoginRegisterContainer').attr('id','notificationLoginRegisterContainerShow');
-                    $('#notificationContent').html('Please <span id="blue">login </span>to contribute');
-                  })
-                );
-              } 
-          });
-      });
-    axios.get( Config.API + '/answers/questionID?id='+this.props.params.questID).then(function (response) {
-        self.setState({
-            answers: response.data,
-        })
-    })        
-
-  }
-å
+        axios.get( Config.API + '/questions/ID?id='+nextProps.params.questID).then(function (response) {
+            self.setState({
+                question: response.data
+            })
+        }) 
+             
+    }
  
    render() {
 
@@ -95,7 +75,8 @@ export default class AnswerContainer extends React.Component {
                                     </div>
                                     <div id="suggestionText">
                                         {/*Test Description*/}
-                                        <span id="blueOpen">Q: </span>{this.state.question.Description}
+                                        {/* <span id="blueOpen">Q: </span> */}
+                                        {this.state.question.Description}
                                     </div>
                                 </div>
                                 {/*<button type="button" id="suggestionVote" onClick={submitVote}>
@@ -132,12 +113,11 @@ export default class AnswerContainer extends React.Component {
                             <span id="discussPercent">
                                 {floatToDecimal(this.state.question.PercentRank)}
                             </span>
-                            {/*Test Username*/}
                             {this.state.question.Username}
                         </div>
                         <div id="suggestionText">
-                            {/*Test Description*/}
-                            <span id="blueOpen">Q: </span>{this.state.question.Description}
+                            {/* <span id="blueOpen">Q: </span> */}
+                            {this.state.question.Description}
                         </div>
                     </div>
                     {/*<button type="button" id="suggestionVote" onClick={submitVote}>

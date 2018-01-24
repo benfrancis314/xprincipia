@@ -75,7 +75,8 @@ deleteComment() {
                           <div>Are you sure you would like to delete this comment?</div>
                           <br />
                           <Link to={`/project/${this.props.params.probID}/proposal/${this.props.params.solutionID}/suggestion/${this.props.params.suggID}/comments`}>
-                              <div onClick={this.deleteComment} id="deleteButton">Delete</div>                          </Link>
+                              <div onClick={this.deleteComment} id="deleteButton">Delete</div>                          
+                          </Link>
                           <Link to={`/project/${this.props.params.probID}/proposal/${this.props.params.solutionID}/suggestion/${this.props.params.suggID}/comments`}>
                               <div id="returnButton">Exit</div>
                           </Link>
@@ -92,7 +93,8 @@ deleteComment() {
                           <div>Are you sure you would like to delete this comment?</div>
                           <br />
                           <Link to={`/project/${this.props.params.probID}/proposal/${this.props.params.solutionID}/question/${this.props.params.questID}/answers/${this.props.params.answerID}/comments`}>
-                              <div onClick={this.deleteComment} id="deleteButton">Delete</div>                          </Link>
+                              <div onClick={this.deleteComment} id="deleteButton">Delete</div>                          
+                          </Link>
                           <Link to={`/project/${this.props.params.probID}/proposal/${this.props.params.solutionID}/question/${this.props.params.questID}/answers/${this.props.params.answerID}/comments`}>
                               <div id="returnButton">Exit</div>
                           </Link>
@@ -109,7 +111,8 @@ deleteComment() {
                           <div>Are you sure you would like to delete this comment?</div>
                           <br />
                           <Link to={`/project/${this.props.params.probID}/proposal/${this.props.params.solutionID}/comment/${this.props.params.commentID}/subcomments`}>
-                              <div onClick={this.deleteComment} id="deleteButton">Delete</div>                          </Link>
+                              <div onClick={this.deleteComment} id="deleteButton">Delete</div>                          
+                          </Link>
                           <Link to={`/project/${this.props.params.probID}/proposal/${this.props.params.solutionID}/comment/${this.props.params.commentID}/subcomments`}>
                               <div id="returnButton">Exit</div>
                           </Link>
@@ -126,7 +129,8 @@ deleteComment() {
                           <div>Are you sure you would like to delete this comment?</div>
                           <br />
                           <Link to={`/project/${this.props.params.probID}/proposal/${this.props.params.solutionID}/debate/${this.props.params.freeFormID}/comments`}>
-                              <div onClick={this.deleteComment} id="deleteButton">Delete</div>                          </Link>
+                              <div onClick={this.deleteComment} id="deleteButton">Delete</div>                          
+                          </Link>
                           <Link to={`/project/${this.props.params.probID}/proposal/${this.props.params.solutionID}/debate/${this.props.params.freeFormID}/comments`}>
                               <div id="returnButton">Exit</div>
                           </Link>
@@ -143,7 +147,8 @@ deleteComment() {
                           <div>Are you sure you would like to delete this comment?</div>
                           <br />
                           <Link to={`/project/${this.props.params.probID}/proposal/${this.props.params.solutionID}/pros/${this.props.params.proID}/comments`}>
-                              <div onClick={this.deleteComment} id="deleteButton">Delete</div>                          </Link>
+                              <div onClick={this.deleteComment} id="deleteButton">Delete</div>                          
+                          </Link>
                           <Link to={`/project/${this.props.params.probID}/proposal/${this.props.params.solutionID}/pros/${this.props.params.proID}/comments`}>
                               <div id="returnButton">Exit</div>
                           </Link>
@@ -160,7 +165,8 @@ deleteComment() {
                           <div>Are you sure you would like to delete this comment?</div>
                           <br />
                           <Link to={`/project/${this.props.params.probID}/proposal/${this.props.params.solutionID}/cons/${this.props.params.conID}/comments`}>
-                              <div onClick={this.deleteComment} id="deleteButton">Delete</div>                          </Link>
+                              <div onClick={this.deleteComment} id="deleteButton">Delete</div>                          
+                          </Link>
                           <Link to={`/project/${this.props.params.probID}/proposal/${this.props.params.solutionID}/cons/${this.props.params.conID}/comments`}>
                               <div id="returnButton">Exit</div>
                           </Link>
@@ -177,7 +183,8 @@ deleteComment() {
                           <div>Are you sure you would like to delete this comment?</div>
                           <br />
                           <Link to={`/project/${this.props.params.probID}/suggestion/${this.props.params.suggID}/comments`}>
-                              <div onClick={this.deleteComment} id="deleteButton">Delete</div>                          </Link>
+                              <div onClick={this.deleteComment} id="deleteButton">Delete</div>                          
+                          </Link>
                           <Link to={`/project/${this.props.params.probID}/suggestion/${this.props.params.suggID}/comments`}>
                               <div id="returnButton">Exit</div>
                           </Link>
@@ -194,7 +201,8 @@ deleteComment() {
                           <div>Are you sure you would like to delete this comment?</div>
                           <br />
                           <Link to={`/project/${this.props.params.probID}/question/${this.props.params.questID}/answers/${this.props.params.answerID}/comments`}>
-                              <div onClick={this.deleteComment} id="deleteButton">Delete</div>                          </Link>
+                              <div onClick={this.deleteComment} id="deleteButton">Delete</div>                          
+                          </Link>
                           <Link to={`/project/${this.props.params.probID}/question/${this.props.params.questID}/answers/${this.props.params.answerID}/comments`}>
                               <div id="returnButton">Exit</div>
                           </Link>
@@ -212,7 +220,7 @@ deleteComment() {
                           <br />
                           <Link to={`/project/${this.props.params.probID}/comment/${this.props.params.commentID}/subcomments`}>
                               <div onClick={this.deleteComment} id="deleteButton">Delete</div>                          
-                        </Link>
+                          </Link>
                           <Link to={`/project/${this.props.params.probID}/comment/${this.props.params.commentID}/subcomments`}>
                               <div id="returnButton">Exit</div>
                           </Link>
@@ -229,7 +237,8 @@ deleteComment() {
                           <div>Are you sure you would like to delete this comment?</div>
                           <br />
                           <Link to={`/project/${this.props.params.probID}/freeform/${this.props.params.freeFormID}/comments`}>
-                              <div onClick={this.deleteComment} id="deleteButton">Delete</div>                          </Link>
+                              <div onClick={this.deleteComment} id="deleteButton">Delete</div>                         
+                          </Link>
                           <Link to={`/project/${this.props.params.probID}/freeform/${this.props.params.freeFormID}/comments`}>
                               <div id="returnButton">Exit</div>
                           </Link>
@@ -246,7 +255,8 @@ deleteComment() {
                           <div>Are you sure you would like to delete this comment?</div>
                           <br />
                           <Link to={`/project/${this.props.params.probID}/learn/content/${this.props.params.learnItemID}/comments`}>
-                              <div onClick={this.deleteComment} id="deleteButton">Delete</div>                          </Link>
+                              <div onClick={this.deleteComment} id="deleteButton">Delete</div>                          
+                          </Link>
                           <Link to={`/project/${this.props.params.probID}/learn/content/${this.props.params.learnItemID}/comments`}>
                               <div id="returnButton">Exit</div>
                           </Link>
@@ -263,7 +273,8 @@ deleteComment() {
                           <div>Are you sure you would like to delete this comment?</div>
                           <br />
                           <Link to={`/project/${this.props.params.probID}/learn/resources/${this.props.params.resourceID}/comments`}>
-                              <div onClick={this.deleteComment} id="deleteButton">Delete</div>                          </Link>
+                              <div onClick={this.deleteComment} id="deleteButton">Delete</div>                          
+                          </Link>
                           <Link to={`/project/${this.props.params.probID}/learn/resources/${this.props.params.resourceID}/comments`}>
                               <div id="returnButton">Exit</div>
                           </Link>

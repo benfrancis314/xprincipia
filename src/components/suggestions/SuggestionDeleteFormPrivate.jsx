@@ -27,7 +27,7 @@ deleteSuggestion() {
       }
     })
     .then(function (result) {
-        document.location = window.location.pathname 
+        // document.location = window.location.pathname 
     })
       .catch(function (error) {
         // console.log(error.response.data)

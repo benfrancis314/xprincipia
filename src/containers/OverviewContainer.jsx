@@ -3,7 +3,7 @@ import axios from 'axios';
 import { Link } from 'react-router';
 import {Config} from '../config.js';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group'; // ES6
-import OverviewGrandChildUnits from '../components/overview/OverviewGrandChildUnits.jsx';
+import OverviewGrandChildContainer from '../components/overview/OverviewGrandChildContainer.jsx';
 import OverviewChildContainer from '../components/overview/OverviewChildContainer.jsx';
 import OverviewProjectContainer from '../components/overview/OverviewProjectContainer.jsx';
 import OverviewGrandParentContainer from '../components/overview/OverviewGrandParentContainer.jsx';
@@ -29,6 +29,7 @@ export default class ErrorContainer extends React.Component {
             level3Problems: [],
             level4Problems: [],
             level5Problems: [],
+            topChild: [],
         }
     };
     componentDidMount(){
@@ -45,18 +46,40 @@ export default class ErrorContainer extends React.Component {
                     // parentID: response.data.parentID
                 })
             })
+            // axios.get( Config.API + '/problems/topchild?id='+this.props.params.probID).then(function (response) {
+            //     self.setState({
+            //         topChild: response.data,
+            //     })
+            // })
+            axios.get( Config.API + '/problems/topchild?id='+this.props.projectID).then(function (response) {
+                self.setState({
+                    topChild: response.data
+                })
+            }) 
        
     }
     componentWillReceiveProps(nextProps) {
         var self = this;
-        // window.scrollTo(0,0);
-        axios.get( Config.API + '/problems/ID?id='+nextProps.params.probID).then(function (response) {
-  
-            //set Problem Data
+        axios.get( Config.API + '/problems/subproblems?id='+nextProps.params.probID).then(function (response) {
             self.setState({
-                problemInfo: response.data
+                level4Problems: response.data,
             })
-      })
+        })
+        axios.get( Config.API + '/problems/ID?id='+nextProps.params.probID).then(function (response) {
+            self.setState({
+                problemInfo: response.data,
+            })
+        })
+        // axios.get( Config.API + '/problems/topchild?id='+nextProps.params.probID).then(function (response) {
+        //     self.setState({
+        //         topChild: response.data,
+        //     })
+        // })
+        axios.get( Config.API + '/problems/topchild?id='+nextProps.projectID).then(function (response) {
+            self.setState({
+                topChild: response.data
+            })
+        }) 
     }
 
 
@@ -96,7 +119,12 @@ export default class ErrorContainer extends React.Component {
                 <OverviewParentContainer parentTitle={this.state.problemInfo.ParentTitle} parentID={this.state.problemInfo.ParentID} grandParentID={this.state.problemInfo.GrandParentID}/>
                 <OverviewProjectContainer projectTitle={this.state.problemInfo.Title} projectID={this.props.params.probID} parentID={this.state.problemInfo.ParentID} />
                 <OverviewChildContainer projectID={this.props.params.probID} />
-                <OverviewGrandChildUnits problems={this.state.level4Problems} />
+                {/* xxx{this.state.topChild.ProblemID}xxxTest
+                <br />
+                xxx{this.state.topChild}xxxTotal
+                <br />
+                xxx{this.state.topChild.length}xxxLength */}
+                <OverviewGrandChildContainer topChild={this.state.topChild} projectID={this.props.params.probID} problems={this.state.level4Problems} />
             </div>
             {this.props.children}
             </ReactCSSTransitionGroup>

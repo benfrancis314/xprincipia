@@ -56,7 +56,7 @@ updateResource() {
       description : self.state.resource,
     })
       .then(function (result) {
-        document.location = '/project/'+ self.props.params.probID + '/learn/resources'
+        // document.location = '/project/'+ self.props.params.probID + '/learn/resources'
       })
       .catch(function (error) {
         // console.log(error.response.data)
@@ -94,7 +94,9 @@ updateResource() {
                         <legend id="redLegend">Edit Resource</legend>
                             <textarea name="questionText" required="required" id="questionEditTextArea" autoFocus ></textarea>
                             <br />
-                            <div onClick={this.updateResource} id="editButton">Submit</div>
+                            <Link to={`/project/${this.state.resource.TypeID}/learn/resources`}>
+                              <div onClick={this.updateResource} id="editButton">Submit</div>
+                            </Link>
                             <Link to={`/project/${this.state.resource.TypeID}/learn/resources`}>
                               <div id="returnButton">Exit</div>
                             </Link>

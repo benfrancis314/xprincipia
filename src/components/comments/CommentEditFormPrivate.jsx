@@ -46,39 +46,70 @@ export default class CommentEditForm extends React.Component {
       });
   }
 
-updateComment() {
-  //Read field items into component state
-  this.state.comment = document.getElementById('commentEditTextArea').value
-
-  var self = this
-  axios.put( Config.API + '/auth/comments/update?id='+this.props.params.commentID, {
-      // type:'5',
-      typeID: self.props.params.commentID,
-      username: cookie.load('userName'),
-      description : self.state.comment,
-    })
-      .then(function (result) {
-        // document.location = '/project/private/' + self.props.params.probID + '/suggestion/' + self.props.params.suggID + '/comments'
-        document.location = window.location.pathname 
-      })
-      .catch(function (error) {
-        // console.log(error.response.data)
-          $(document).ready(function() {
-              $('#notification').attr('id','notificationShow').hide().slideDown();
-              if (error.response.data != '') {
-                $('#notificationContent').text(error.response.data);
-              }
-              else if (error.response.data == '[object Object]') {
-                return (
-                  $(document).ready(function() {
-                    $('#notificationLoginRegisterContainer').attr('id','notificationLoginRegisterContainerShow');
-                    $('#notificationContent').html('Please <span id="blue">login </span>to contribute');
-                  })
-                );
-              } 
+  updateComment() {
+    //Read field items into component state
+    this.state.comment = document.getElementById('commentEditTextArea').value
+  
+  if (this.props.params.subcommentID) {
+      var self = this
+      axios.put( Config.API + '/auth/comments/update?id='+this.props.params.subcommentID, {
+          // type:'5',
+          typeID: self.props.params.subcommentID,
+          username: cookie.load('userName'),
+          description : self.state.comment,
+        })
+          .then(function (result) {
+            // document.location = '/project/private/' + self.props.params.probID + '/suggestion/' + self.props.params.suggID + '/comments'
+            document.location = window.location.pathname 
+          })
+          .catch(function (error) {
+            // console.log(error.response.data)
+              $(document).ready(function() {
+                  $('#notification').attr('id','notificationShow').hide().slideDown();
+                  if (error.response.data != '') {
+                    $('#notificationContent').text(error.response.data);
+                  }
+                  else if (error.response.data == '[object Object]') {
+                    return (
+                      $(document).ready(function() {
+                        $('#notificationLoginRegisterContainer').attr('id','notificationLoginRegisterContainerShow');
+                        $('#notificationContent').html('Please <span id="blue">login </span>to contribute');
+                      })
+                    );
+                  } 
+              });
           });
-      });
-    }
+  } else {
+    var self = this
+    axios.put( Config.API + '/auth/comments/update?id='+this.props.params.commentID, {
+        // type:'5',
+        typeID: self.props.params.commentID,
+        username: cookie.load('userName'),
+        description : self.state.comment,
+      })
+        .then(function (result) {
+          // document.location = '/project/private/' + self.props.params.probID + '/suggestion/' + self.props.params.suggID + '/comments'
+          document.location = window.location.pathname 
+        })
+        .catch(function (error) {
+          // console.log(error.response.data)
+            $(document).ready(function() {
+                $('#notification').attr('id','notificationShow').hide().slideDown();
+                if (error.response.data != '') {
+                  $('#notificationContent').text(error.response.data);
+                }
+                else if (error.response.data == '[object Object]') {
+                  return (
+                    $(document).ready(function() {
+                      $('#notificationLoginRegisterContainer').attr('id','notificationLoginRegisterContainerShow');
+                      $('#notificationContent').html('Please <span id="blue">login </span>to contribute');
+                    })
+                  );
+                } 
+            });
+        });
+      }
+  }
 
   
   

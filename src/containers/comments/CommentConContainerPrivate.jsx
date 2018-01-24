@@ -70,7 +70,7 @@ export default class CommentProContainer extends React.Component {
         return (
             <div id="prosConsContainer">
                 <div id="answerQuestionHeader">
-                    <Link to={`/project/private/${this.props.params.probID}/proposal/${this.props.params.solutionID}/pros/${this.props.params.proID}/container`}>
+                    <Link to={`/project/private/${this.props.params.probID}/proposal/${this.props.params.solutionID}/pros`}>
                         <div id="backSolutionArrowDiv">
                             <img src={require('../../assets/upArrow.svg')} id="backSolutionArrow" width="50" height="30" alt="Back arrow, blue up arrow" />
                         </div>
@@ -78,7 +78,7 @@ export default class CommentProContainer extends React.Component {
                     <div id="answerQuestionLabel">return to cons</div>
                 </div>
                 {/*Element being commented on*/}
-                <Link to={`/project/private/${this.props.params.probID}/proposal/${this.props.params.solutionID}/pros/${this.props.params.proID}/container`}>
+                <Link to={`/project/private/${this.props.params.probID}/proposal/${this.props.params.solutionID}/pros`}>
                     <div id="prosConsUnit">
                         <div id="answerQuestionContent">
                             <div id="discussHeader">
@@ -94,7 +94,9 @@ export default class CommentProContainer extends React.Component {
                     </div>
                 </Link>
                 {this.props.children}
-                <CommentProposalUnitPrivate comments={this.state.comments} probID={this.props.params.probID} suggID={this.props.params.suggID} commentID={this.props.params.commentID} />
+                <div id="wide90">
+                    <CommentProposalUnitPrivate comments={this.state.comments} probID={this.props.params.probID} suggID={this.props.params.suggID} commentID={this.props.params.commentID} />
+                </div>
             </div>
         );
     }

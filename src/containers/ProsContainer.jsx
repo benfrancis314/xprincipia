@@ -23,22 +23,22 @@ constructor(props){
                 })
             })  
         } 
-    //     else {
-    //         return axios.get( Config.API + '/pros/typeID?id='+this.props.params.probID+'&dataType=0').then(function (response) {
-    //             self.setState({
-    //                 pros: response.data
-    //             })
-    //         }) 
-    //     }
-    // }
+    componentWillReceiveProps(nextProps){
+        var self = this;
+        return axios.get( Config.API + '/pros/typeID?id='+nextProps.params.solutionID+'&dataType=1').then(function (response) {
+            self.setState({
+                pros: response.data
+            })
+        })  
+    } 
    render() {
-           return (
-                <div id="suggestionContainer">
-                    <Link to={`/project/${this.props.params.probID}/proposal/${this.props.params.solutionID}`}>
-                        <div >
-                            <img src={require('../assets/redX.svg')} id="closeRedX" width="35" height="35" alt="Close button, red X symbol" />
-                        </div>
-                    </Link>
+        return (
+            <div id="suggestionContainer">
+                <Link to={`/project/${this.props.params.probID}/proposal/${this.props.params.solutionID}`}>
+                    <div >
+                        <img src={require('../assets/redX.svg')} id="closeRedX" width="35" height="35" alt="Close button, red X symbol" />
+                    </div>
+                </Link>
                 {/*<ReactCSSTransitionGroup
                 transitionName="example"
                 transitionAppear={true}
@@ -46,9 +46,9 @@ constructor(props){
                 transitionEnter={false}
                 transitionLeave={false}>*/}
                 {this.props.children}
-                {React.cloneElement(<ProsUnit pros={this.state.pros} probID={this.props.params.probID} solutionID={this.props.params.solutionID} /> )}
+                <ProsUnit pros={this.state.pros} probID={this.props.params.probID} solutionID={this.props.params.solutionID} />
                 {/*</ReactCSSTransitionGroup>*/}
-                </div>    
+            </div>    
       );
    }
 }

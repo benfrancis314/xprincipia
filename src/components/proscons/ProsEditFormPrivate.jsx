@@ -52,13 +52,13 @@ updatePro() {
 
   var self = this
   axios.put( Config.API + '/auth/pros/update?id='+this.props.params.proID, {
-      type:'1',
-      typeID: this.props.params.solutionID,
-      username: cookie.load('userName'),
+      // type:'1',
+      // typeID: this.props.params.solutionID,
+      // username: cookie.load('userName'),
       description : this.state.pro,
     })
       .then(function (result) {
-        document.location = '/proposal/private/' + self.props.params.probID + '/' + self.props.params.solutionID + '/pros'
+        // document.location = '/proposal/private/' + self.props.params.probID + '/' + self.props.params.solutionID + '/pros'
       })
       .catch(function (error) {
         // console.log(error.response.data)
@@ -89,10 +89,12 @@ updatePro() {
       <div id="questionFormComponent">
             <form id="questionForm">
                 <fieldset>
-                    <legend id="redLegend">Edit Pro</legend>
+                    <legend id="redLegend">edit pro</legend>
                          <textarea name="questionText" required="required" id="proEditTextArea" autoFocus ></textarea>
                          <br />
-                         <div onClick={this.updatePro} id="editButton">Submit</div>
+                         <Link to={`/proposal/private/${this.props.params.probID}/${this.props.params.solutionID}/pros`}>
+                          <div onClick={this.updatePro} id="editButton">Submit</div>
+                         </Link>
                          <Link to={`/proposal/private/${this.props.params.probID}/${this.props.params.solutionID}/pros`}>
                           <div id="returnButton">Exit</div>
                          </Link>

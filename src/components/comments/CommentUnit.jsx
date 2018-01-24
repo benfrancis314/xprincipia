@@ -9,43 +9,29 @@ export default class CommentUnit extends React.Component {
 
     constructor(props){
         super(props);
+        
+        this.state = {
+            voteHash : {},
+            debateNumber : [],
+        }
 
          this.renderItem = this.renderItem.bind(this);
     };
-    componentDidMount() {
-        var self = this
-        self.setState({
-            voteHash : {},
-            debateNumber : [],
-        })
-    }
-
-
 
     componentWillReceiveProps (props) {
         var self = this
-        self.setState({
-            voteHash : {},
-            debateNumber : {},
-        })
         props.comments.forEach( function (comment){
             axios.get( Config.API + "/vote/isVotedOn?type=5&typeID=" + comment.ID + "&username=" + cookie.load("userName"))
             .then( function (response) {  
                 const voteHash = self.state.voteHash;
 
                 voteHash[comment.ID] = response.data
-                self.setState({
-                    voteHash,
-                })
             })  
-            axios.get( Config.API + '/comments/number?parentID='+comment.ID)
+            axios.get( Config.API + '/comments/number?parent_id='+comment.ID + '&parent_type=5')
             .then(function (response) {
                 const debateNumber = self.state.debateNumber;
                 
                 debateNumber[comment.ID] = response.data
-                self.setState({
-                    debateNumber,
-                })
             })
         })
     }
@@ -66,7 +52,7 @@ export default class CommentUnit extends React.Component {
            
         })
         .then(function (result) {
-            document.location = window.location.pathname;
+            // document.location = window.location.pathname;
         })
       .catch(function (error) {
           $(document).ready(function() {
@@ -94,7 +80,7 @@ export default class CommentUnit extends React.Component {
         }
         })
         .then(function (result) {
-            document.location = window.location.pathname 
+            // document.location = window.location.pathname 
         })
       .catch(function (error) {
           $(document).ready(function() {
@@ -146,9 +132,11 @@ export default class CommentUnit extends React.Component {
                         <span id="discussPercent">{floatToDecimal(comment.PercentRank)}</span>
                         {comment.Username}
                     </div>
-                    <div id="suggestionText" onClick={unVote} onMouseOver={hoverVoteVoted} onMouseOut={unHoverVoteVoted}>
-                        {comment.Description}
-                    </div>
+                    <Link to={window.location.pathname}>
+                        <div id="suggestionText" onClick={unVote} onMouseOver={hoverVoteVoted} onMouseOut={unHoverVoteVoted}>
+                            {comment.Description}
+                        </div>
+                    </Link>
 				</div>
         </li>);
     }  else if ( comment.Username === cookie.load('userName')) {
@@ -180,9 +168,11 @@ export default class CommentUnit extends React.Component {
                         <span id="discussPercent">{floatToDecimal(comment.PercentRank)}</span>
 					    {comment.Username}
                     </div>
-                    <div id="suggestionText" onClick={submitVote} onMouseOver={hoverVote} onMouseOut={unHoverVote}>
-                        {comment.Description}
-                    </div>
+                    <Link to={window.location.pathname}>
+                        <div id="suggestionText" onClick={submitVote} onMouseOver={hoverVote} onMouseOut={unHoverVote}>
+                            {comment.Description}
+                        </div>
+                    </Link>
 				</div>
         </li>);
     } else if (this.state.voteHash[comment.ID] === true) {
@@ -205,15 +195,17 @@ export default class CommentUnit extends React.Component {
                         </div>
                     </Link>
                     <div id="discussHoverTextShowVoted">
-                    voted
+                        voted
                     </div>
 					<div id="discussHeader">
                         <span id="discussPercent">{floatToDecimal(comment.PercentRank)}</span>
                         {comment.Username}
                     </div>
-                    <div id="suggestionText" onClick={unVote} onMouseOver={hoverVoteVoted} onMouseOut={unHoverVoteVoted}>
-                        {comment.Description}
-                    </div>
+                    <Link to={window.location.pathname}>
+                        <div id="suggestionText" onClick={unVote} onMouseOver={hoverVoteVoted} onMouseOut={unHoverVoteVoted}>
+                            {comment.Description}
+                        </div>
+                    </Link>
 				</div>
         </li>);
 
@@ -241,9 +233,11 @@ export default class CommentUnit extends React.Component {
                     <span id="discussPercent">{floatToDecimal(comment.PercentRank)}</span>
                     {comment.Username}
                 </div>
-                <div id="suggestionText" onClick={submitVote} onMouseOver={hoverVote} onMouseOut={unHoverVote}>
-                    {comment.Description}
-                </div>
+                <Link to={window.location.pathname}>
+                    <div id="suggestionText" onClick={submitVote} onMouseOver={hoverVote} onMouseOut={unHoverVote}>
+                        {comment.Description}
+                    </div>
+                </Link>
             </div>
         </li>);
 }

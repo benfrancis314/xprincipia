@@ -17,40 +17,21 @@ export default class QuestionUnit extends React.Component {
 
          this.renderItem = this.renderItem.bind(this);
     };
-    componentDidMount() {
-        // var self = this
-        // self.setState({
-        //     voteHash : {},
-        //     debateNumber : [],
-        // })
-    }
 
-
-
-    componentWillReceiveProps (props) {
+    componentWillReceiveProps (nextProps) {
         var self = this
-        // self.setState({
-        //     voteHash : {},
-        //     debateNumber : {},
-        // })
-        props.questions.forEach( function (question){
+        nextProps.questions.forEach( function (question){
             axios.get( Config.API + "/vote/isVotedOn?type=2&typeID=" + question.ID + "&username=" + cookie.load("userName"))
             .then( function (response) {  
                 const voteHash = self.state.voteHash;
 
                 voteHash[question.ID] = response.data
-                self.setState({
-                    voteHash,
-                })
             })  
             axios.get( Config.API + '/answers/number?questionID='+question.ID)
             .then(function (response) {
                 const debateNumber = self.state.debateNumber;
                 
                 debateNumber[question.ID] = response.data
-                self.setState({
-                    debateNumber,
-                })
             })
         })
     }
@@ -63,7 +44,7 @@ export default class QuestionUnit extends React.Component {
 		);
 	}
 	renderItem(question) {
-       function  submitVote() {
+       function submitVote() {
        axios.post( Config.API + '/auth/vote/create', {
            Type: 2,
            TypeID: question.ID,
@@ -71,7 +52,7 @@ export default class QuestionUnit extends React.Component {
            
         })
         .then(function (result) {
-            document.location = window.location.pathname;
+            // document.location = window.location.pathname;
         })
       .catch(function (error) {
           $(document).ready(function() {
@@ -99,7 +80,7 @@ export default class QuestionUnit extends React.Component {
         }
         })
         .then(function (result) {
-            document.location = window.location.pathname 
+            // document.location = window.location.pathname 
         })
       .catch(function (error) {
           $(document).ready(function() {
@@ -145,15 +126,17 @@ export default class QuestionUnit extends React.Component {
                         </div>
                     </Link>
                     <div id="discussHoverTextShowVoted">
-                    voted
+                        voted
                     </div>
 					<div id="discussHeader">
                         <span id="discussPercent">{floatToDecimal(question.PercentRank)}</span>
                         {question.Username}
                     </div>
-                    <div id="suggestionText" onClick={unVote} onMouseOver={hoverVoteVoted} onMouseOut={unHoverVoteVoted}>
-                        {question.Description}
-                    </div>
+                    <Link to={`/project/${question.TypeID}/questions`}>
+                        <div id="suggestionText" onClick={unVote} onMouseOver={hoverVoteVoted} onMouseOut={unHoverVoteVoted}>
+                            {question.Description}
+                        </div>
+                    </Link>
 				</div>
         </li>);
     }  else if ( question.Username === cookie.load('userName')) {
@@ -185,9 +168,11 @@ export default class QuestionUnit extends React.Component {
                         <span id="discussPercent">{floatToDecimal(question.PercentRank)}</span>
 					    {question.Username}
                     </div>
-                    <div id="suggestionText" onClick={submitVote} onMouseOver={hoverVote} onMouseOut={unHoverVote}>
-                        {question.Description}
-                    </div>
+                    <Link to={`/project/${question.TypeID}/questions`}>
+                        <div id="suggestionText" onClick={submitVote} onMouseOver={hoverVote} onMouseOut={unHoverVote}>
+                            {question.Description}
+                        </div>
+                    </Link>
 				</div>
         </li>);
     } else if (this.state.voteHash[question.ID] === true) {
@@ -216,9 +201,11 @@ export default class QuestionUnit extends React.Component {
                         <span id="discussPercent">{floatToDecimal(question.PercentRank)}</span>
                         {question.Username}
                     </div>
-                    <div id="suggestionText" onClick={unVote} onMouseOver={hoverVoteVoted} onMouseOut={unHoverVoteVoted}>
-                        {question.Description}
-                    </div>
+                    <Link to={`/project/${question.TypeID}/questions`}>
+                        <div id="suggestionText" onClick={unVote} onMouseOver={hoverVoteVoted} onMouseOut={unHoverVoteVoted}>
+                            {question.Description}
+                        </div>
+                    </Link>
 				</div>
         </li>);
 
@@ -246,9 +233,11 @@ export default class QuestionUnit extends React.Component {
                     <span id="discussPercent">{floatToDecimal(question.PercentRank)}</span>
                     {question.Username}
                 </div>
-                <div id="suggestionText" onClick={submitVote} onMouseOver={hoverVote} onMouseOut={unHoverVote}>
-                    {question.Description}
-                </div>
+                <Link to={`/project/${question.TypeID}/questions`}>
+                    <div id="suggestionText" onClick={submitVote} onMouseOver={hoverVote} onMouseOut={unHoverVote}>
+                        {question.Description}
+                    </div>
+                </Link>
             </div>
         </li>);
 }

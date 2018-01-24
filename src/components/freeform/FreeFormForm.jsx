@@ -3,6 +3,7 @@ import axios from 'axios';
 import cookie from 'react-cookie';
 import {Config} from '../../config.js';
 import $ from 'jquery';
+import { Link } from 'react-router';
 
 export default class FreeFormForm extends React.Component {
 
@@ -34,7 +35,7 @@ postFreeForm() {
       parentID: this.props.params.probID,
     })
       .then(function (result) {
-        document.location = window.location.pathname 
+        document.getElementById("questionForm").reset();
       })
       .catch(function (error) {
           $(document).ready(function() {
@@ -65,7 +66,7 @@ postFreeForm() {
       private: '0',
     })
       .then(function (result) {
-        document.location = window.location.pathname 
+        document.getElementById("questionForm").reset();
       })
       .catch(function (error) {
         // console.log(error.response.data)
@@ -92,6 +93,7 @@ postFreeForm() {
 
 
    render() {
+    if (this.props.params.solutionID){
       return (
       <div>
         <div id="discussMenuEnd">
@@ -102,15 +104,37 @@ postFreeForm() {
                   <fieldset id='fieldSetNoBorderPadding'>
                       {/*<legend>FreeForm Discussion</legend>*/}
                           <textarea name="questionText" required="required" id="freeFormTextArea" placeholder="Begin or join a debate with your peers about this project. " ></textarea>
-                          <input type="button" value="Add" onClick={this.postFreeForm} id="askQuestion"/>
+                          <Link to={`/project/${this.props.params.probID}/proposal/${this.props.params.solutionID}/debates`}>
+                            <input type="button" value="Add" onClick={this.postFreeForm} id="askQuestion"/>
+                          </Link>
                   </fieldset>
               </form>
         </div>
       </div>
 
       );
+   } else {
+     return (
+      <div>
+        <div id="discussMenuEnd">
+          debates
+        </div>
+        <div id="questionFormComponent">
+              <form id="questionForm">
+                  <fieldset id='fieldSetNoBorderPadding'>
+                      {/*<legend>FreeForm Discussion</legend>*/}
+                          <textarea name="questionText" required="required" id="freeFormTextArea" placeholder="Begin or join a debate with your peers about this project. " ></textarea>
+                          <Link to={`/project/${this.props.params.probID}/freeforms`}>
+                            <input type="button" value="Add" onClick={this.postFreeForm} id="askQuestion"/>
+                          </Link>
+                  </fieldset>
+              </form>
+        </div>
+      </div>
+     );
    }
-   }
+  }
+}
 
 
 // Old placeholder: Engage in open debate with your peers about this project. 

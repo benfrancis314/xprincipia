@@ -10,41 +10,28 @@ export default class AnswerUnit extends React.Component {
     constructor(props){
         super(props);
 
-         this.renderItem = this.renderItem.bind(this);
-    };
-    componentDidMount() {
-        var self = this
-        self.setState({
+        this.state = {
             voteHash : {},
             debateNumber : [],
-        })
-    }
+        }
 
+         this.renderItem = this.renderItem.bind(this);
+    };
 
-
-    componentWillReceiveProps (props) {
+    componentWillReceiveProps (nextProps) {
         var self = this
-        self.setState({
-            voteHash : {},
-            debateNumber : {},
-        })
-        props.answers.forEach( function (answer){
+        nextProps.answers.forEach( function (answer){
             axios.get( Config.API + "/vote/isVotedOn?type=4&typeID=" + answer.ID + "&username=" + cookie.load("userName"))
             .then( function (response) {  
                 const voteHash = self.state.voteHash;
 
                 voteHash[answer.ID] = response.data
-                self.setState({
-                    voteHash,
-                })
             })  
             axios.get( Config.API + '/comments/number?parent_id='+answer.ID + '&parent_type=4').then(function (response) {
                 const debateNumber = self.state.debateNumber;
                 
                 debateNumber[answer.ID] = response.data
-                self.setState({
-                    debateNumber,
-                })
+
             })
         })
     }
@@ -193,11 +180,11 @@ export default class AnswerUnit extends React.Component {
                             <img src={require('../../assets/list4.svg')} id="debateThreadLogo" width="50" height="50" alt="Delete Button, Red X" />
                         </div>
                     </Link>
-                    {/* <Link to={`/project/private/${this.props.probID}/question/${this.props.questID}/answer/${answer.ID}/flag`}>
+                    <Link to={`/project/private/${this.props.probID}/question/${this.props.questID}/answer/${answer.ID}/flag`}>
                         <div id="flagDiscussButton" onMouseOver={hoverFlagVoted} onMouseOut={unHoverFlagVoted}>
                             <img src={require('../../assets/flag.svg')} id="deleteLogo" width="24" height="24" alt="Delete Button, Red X" />
                         </div>
-                    </Link> */}
+                    </Link>
                     <Link to={`/project/private/${this.props.probID}/question/${this.props.questID}/answer/${answer.ID}/comments`}>
                         <div id="numberDiscussButton" onMouseOver={hoverThreadVoted} onMouseOut={unHoverThreadVoted}>
                             {this.state.debateNumber[answer.ID]}
@@ -225,11 +212,11 @@ export default class AnswerUnit extends React.Component {
                         <img src={require('../../assets/list4.svg')} id="debateThreadLogo" width="50" height="50" alt="Delete Button, Red X" />
                     </div>
                 </Link>
-                {/* <Link to={`/project/private/${this.props.probID}/question/${this.props.questID}/answer/${answer.ID}/flag`}>
+                <Link to={`/project/private/${this.props.probID}/question/${this.props.questID}/answer/${answer.ID}/flag`}>
                     <div id="flagDiscussButton" onMouseOver={hoverFlag} onMouseOut={unHoverFlag}>
                         <img src={require('../../assets/flag.svg')} id="deleteLogo" width="24" height="24" alt="Delete Button, Red X" />
                     </div>
-                </Link> */}
+                </Link>
                 <Link to={`/project/private/${this.props.probID}/question/${this.props.questID}/answer/${answer.ID}/comments`}>
                     <div id="numberDiscussButton" onMouseOver={hoverThread} onMouseOut={unHoverThread}>
                         {this.state.debateNumber[answer.ID]}
@@ -403,3 +390,4 @@ function unHoverDeleteVoted() {
 function floatToDecimal(float) {
 	return Math.round(float*100)+'%';
 }
+

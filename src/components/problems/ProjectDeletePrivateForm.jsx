@@ -30,7 +30,7 @@ export default class ProjectEditForm extends React.Component {
           }
         })
         .then(function (result) {
-        document.location = '/welcome'
+        // document.location = '/welcome'
       })
         .catch(function (error) {
           // console.log(error.response.data)

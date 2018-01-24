@@ -18,6 +18,20 @@ export default class CommentProContainer extends React.Component {
 
         // this.submitVote = this.submitVote.bind(this)
     };
+    componentWillMount(){
+        var self = this;
+        // Need to do & in URL query with parentType also
+         axios.get( Config.API + '/comments/parentType?id='+this.props.params.proID+'&parentType=9').then(function (response) {
+            self.setState({
+                comments: response.data,
+            })
+        })  
+        axios.get( Config.API + '/pros/ID?id='+this.props.params.proID).then(function (response) {
+            self.setState({
+                debate: response.data
+            })
+        }) 
+    }
         componentDidMount(){
         var self = this;
         // Need to do & in URL query with parentType also
@@ -70,7 +84,7 @@ export default class CommentProContainer extends React.Component {
         return (
             <div id="prosConsContainer">
                 <div id="answerQuestionHeader">
-                    <Link to={`/project/${this.props.params.probID}/proposal/${this.props.params.solutionID}/pros/${this.props.params.proID}/container`}>
+                    <Link to={`/project/${this.props.params.probID}/proposal/${this.props.params.solutionID}/pros`}>
                         <div id="backSolutionArrowDiv">
                             <img src={require('../../assets/upArrow.svg')} id="backSolutionArrow" width="50" height="30" alt="Back arrow, blue up arrow" />
                         </div>
@@ -78,7 +92,7 @@ export default class CommentProContainer extends React.Component {
                     <div id="answerQuestionLabel">return to pros</div>
                 </div>
                 {/*Element being commented on*/}
-                <Link to={`/project/${this.props.params.probID}/proposal/${this.props.params.solutionID}/pros/${this.props.params.proID}/container`}>
+                <Link to={`/project/${this.props.params.probID}/proposal/${this.props.params.solutionID}/pros`}>
                     <div id="prosConsUnit">
                         <div id="answerQuestionContent">
                             <div id="discussHeader">
@@ -94,7 +108,9 @@ export default class CommentProContainer extends React.Component {
                     </div>
                 </Link>
                 {this.props.children}
-                <CommentProposalUnit comments={this.state.comments} probID={this.props.params.probID} suggID={this.props.params.suggID} commentID={this.props.params.commentID} />
+                <div id="wide90">
+                    <CommentProposalUnit comments={this.state.comments} probID={this.props.params.probID} suggID={this.props.params.suggID} commentID={this.props.params.commentID} />
+                </div>
             </div>
         );
     }

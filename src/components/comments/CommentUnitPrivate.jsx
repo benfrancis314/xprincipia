@@ -9,43 +9,29 @@ export default class CommentUnit extends React.Component {
 
     constructor(props){
         super(props);
+        
+        this.state = {
+            voteHash : {},
+            debateNumber : [],
+        }
 
          this.renderItem = this.renderItem.bind(this);
     };
-    componentDidMount() {
-        var self = this
-        self.setState({
-            voteHash : {},
-            debateNumber : [],
-        })
-    }
-
-
 
     componentWillReceiveProps (props) {
         var self = this
-        self.setState({
-            voteHash : {},
-            debateNumber : {},
-        })
         props.comments.forEach( function (comment){
             axios.get( Config.API + "/vote/isVotedOn?type=5&typeID=" + comment.ID + "&username=" + cookie.load("userName"))
             .then( function (response) {  
                 const voteHash = self.state.voteHash;
 
                 voteHash[comment.ID] = response.data
-                self.setState({
-                    voteHash,
-                })
             })  
-            axios.get( Config.API + '/comments/number?parentID='+comment.ID)
+            axios.get( Config.API + '/comments/number?parent_id='+comment.ID + '&parent_type=5')
             .then(function (response) {
                 const debateNumber = self.state.debateNumber;
                 
                 debateNumber[comment.ID] = response.data
-                self.setState({
-                    debateNumber,
-                })
             })
         })
     }
@@ -66,7 +52,7 @@ export default class CommentUnit extends React.Component {
            
         })
         .then(function (result) {
-            document.location = window.location.pathname;
+            // document.location = window.location.pathname;
         })
       .catch(function (error) {
           $(document).ready(function() {
@@ -94,7 +80,7 @@ export default class CommentUnit extends React.Component {
         }
         })
         .then(function (result) {
-            document.location = window.location.pathname 
+            // document.location = window.location.pathname 
         })
       .catch(function (error) {
           $(document).ready(function() {
@@ -119,22 +105,22 @@ export default class CommentUnit extends React.Component {
            return (
        <li key={comment.ID} id="suggestionUnit">
 				<div id="suggestionContentHoverVote" className={comment.ID}>
-                    <Link to={`/project/private/${comment.TypeID}/comment/${comment.ID}/subcomments`}>
+                    <Link to={`/project/${comment.TypeID}/comment/${comment.ID}/subcomments`}>
                         <div id="debateThreadButton" onMouseOver={hoverThreadVoted} onMouseOut={unHoverThreadVoted}>
                             <img src={require('../../assets/list4.svg')} id="debateThreadLogo" width="50" height="50" alt="Delete Button, Red X" />
                         </div>
                     </Link>
-                    <Link to={`/project/private/${comment.TypeID}/comment/${comment.ParentID}/subcomment/${comment.ID}/edit`}>
+                    <Link to={`/project/${comment.TypeID}/comment/${comment.ParentID}/subcomment/${comment.ID}/edit`}>
                         <div id="editDiscussButton" onMouseOver={hoverEditVoted} onMouseOut={unHoverEditVoted}>
                             <img src={require('../../assets/editBlue.svg')} id="editLogo" width="18" height="18" alt="Edit Button" />
                         </div>
                     </Link>
-                    <Link to={`/project/private/${comment.TypeID}/comment/${comment.ParentID}/subcomment/${comment.ID}/delete`}>
+                    <Link to={`/project/${comment.TypeID}/comment/${comment.ParentID}/subcomment/${comment.ID}/delete`}>
                         <div id="deleteDiscussButton" onMouseOver={hoverDeleteVoted} onMouseOut={unHoverDeleteVoted}>
                             <img src={require('../../assets/delete.svg')} id="editLogo" width="18" height="18" alt="Delete Button" />
                         </div>
                     </Link>
-                    <Link to={`/project/private/${comment.TypeID}/comment/${comment.ID}/subcomments`}>
+                    <Link to={`/project/${comment.TypeID}/comment/${comment.ID}/subcomments`}>
                         <div id="numberDiscussButton" onMouseOver={hoverThreadVoted} onMouseOut={unHoverThreadVoted}>
                             {this.state.debateNumber[comment.ID]}
                         </div>
@@ -146,31 +132,33 @@ export default class CommentUnit extends React.Component {
                         <span id="discussPercent">{floatToDecimal(comment.PercentRank)}</span>
                         {comment.Username}
                     </div>
-                    <div id="suggestionText" onClick={unVote} onMouseOver={hoverVoteVoted} onMouseOut={unHoverVoteVoted}>
-                        {comment.Description}
-                    </div>
+                    <Link to={window.location.pathname}>
+                        <div id="suggestionText" onClick={unVote} onMouseOver={hoverVoteVoted} onMouseOut={unHoverVoteVoted}>
+                            {comment.Description}
+                        </div>
+                    </Link>
 				</div>
         </li>);
     }  else if ( comment.Username === cookie.load('userName')) {
         return (
        <li key={comment.ID} id="suggestionUnit">
 				<div id={'suggestionContent'} className={comment.ID}>
-                    <Link to={`/project/private/${comment.TypeID}/comment/${comment.ID}/subcomments`}>
+                    <Link to={`/project/${comment.TypeID}/comment/${comment.ID}/subcomments`}>
                         <div id="debateThreadButton" onMouseOver={hoverThread} onMouseOut={unHoverThread}>
                             <img src={require('../../assets/list4.svg')} id="debateThreadLogo" width="50" height="50" alt="Delete Button, Red X" />
                         </div>
                     </Link>
-                    <Link to={`/project/private/${comment.TypeID}/comment/${comment.ParentID}/subcomment/${comment.ID}/edit`}>
+                    <Link to={`/project/${comment.TypeID}/comment/${comment.ParentID}/subcomment/${comment.ID}/edit`}>
                         <div id="editDiscussButton" onMouseOver={hoverEdit} onMouseOut={unHoverEdit}>
                             <img src={require('../../assets/editBlue.svg')} id="editLogo" width="18" height="18" alt="Edit Button" />
                         </div>
                     </Link>
-                    <Link to={`/project/private/${comment.TypeID}/comment/${comment.ParentID}/subcomment/${comment.ID}/delete`}>
+                    <Link to={`/project/${comment.TypeID}/comment/${comment.ParentID}/subcomment/${comment.ID}/delete`}>
                         <div id="deleteDiscussButton" onMouseOver={hoverDelete} onMouseOut={unHoverDelete}>
                             <img src={require('../../assets/delete.svg')} id="editLogo" width="18" height="18" alt="Delete Button" />
                         </div>
                     </Link>
-                    <Link to={`/project/private/${comment.TypeID}/comment/${comment.ID}/subcomments`}>
+                    <Link to={`/project/${comment.TypeID}/comment/${comment.ID}/subcomments`}>
                         <div id="numberDiscussButton" onMouseOver={hoverThread} onMouseOut={unHoverThread}>
                             {this.state.debateNumber[comment.ID]}
                         </div>
@@ -180,40 +168,44 @@ export default class CommentUnit extends React.Component {
                         <span id="discussPercent">{floatToDecimal(comment.PercentRank)}</span>
 					    {comment.Username}
                     </div>
-                    <div id="suggestionText" onClick={submitVote} onMouseOver={hoverVote} onMouseOut={unHoverVote}>
-                        {comment.Description}
-                    </div>
+                    <Link to={window.location.pathname}>
+                        <div id="suggestionText" onClick={submitVote} onMouseOver={hoverVote} onMouseOut={unHoverVote}>
+                            {comment.Description}
+                        </div>
+                    </Link>
 				</div>
         </li>);
     } else if (this.state.voteHash[comment.ID] === true) {
         return (
        <li key={comment.ID} id="suggestionUnit">
 				<div id="suggestionContentHoverVote" className={comment.ID}>
-                    <Link to={`/project/private/${comment.TypeID}/comment/${comment.ID}/subcomments`}>
+                    <Link to={`/project/${comment.TypeID}/comment/${comment.ID}/subcomments`}>
                         <div id="debateThreadButton" onMouseOver={hoverThreadVoted} onMouseOut={unHoverThreadVoted}>
                             <img src={require('../../assets/list4.svg')} id="debateThreadLogo" width="50" height="50" alt="Delete Button, Red X" />
                         </div>
                     </Link>
-                    <Link to={`/project/private/${comment.TypeID}/comment/${comment.ParentID}/subcomment/${comment.ID}/flag`}>
+                    <Link to={`/project/${comment.TypeID}/comment/${comment.ParentID}/subcomment/${comment.ID}/flag`}>
                         <div id="flagDiscussButton" onMouseOver={hoverFlagVoted} onMouseOut={unHoverFlagVoted}>
                             <img src={require('../../assets/flag.svg')} id="deleteLogo" width="24" height="24" alt="Delete Button, Red X" />
                         </div>
                     </Link>
-                    <Link to={`/project/private/${comment.TypeID}/comment/${comment.ID}/subcomments`}>
+                    <Link to={`/project/${comment.TypeID}/comment/${comment.ID}/subcomments`}>
                         <div id="numberDiscussButton" onMouseOver={hoverThreadVoted} onMouseOut={unHoverThreadVoted}>
                             {this.state.debateNumber[comment.ID]}
                         </div>
                     </Link>
                     <div id="discussHoverTextShowVoted">
-                    voted
+                        voted
                     </div>
 					<div id="discussHeader">
                         <span id="discussPercent">{floatToDecimal(comment.PercentRank)}</span>
                         {comment.Username}
                     </div>
-                    <div id="suggestionText" onClick={unVote} onMouseOver={hoverVoteVoted} onMouseOut={unHoverVoteVoted}>
-                        {comment.Description}
-                    </div>
+                    <Link to={window.location.pathname}>
+                        <div id="suggestionText" onClick={unVote} onMouseOver={hoverVoteVoted} onMouseOut={unHoverVoteVoted}>
+                            {comment.Description}
+                        </div>
+                    </Link>
 				</div>
         </li>);
 
@@ -221,17 +213,17 @@ export default class CommentUnit extends React.Component {
     return (
        <li key={comment.ID} id="suggestionUnit">
             <div id={'suggestionContent'} className={comment.ID}>
-                <Link to={`/project/private/${comment.TypeID}/comment/${comment.ID}/subcomments`}>
+                <Link to={`/project/${comment.TypeID}/comment/${comment.ID}/subcomments`}>
                     <div id="debateThreadButton" onMouseOver={hoverThread} onMouseOut={unHoverThread}>
                         <img src={require('../../assets/list4.svg')} id="debateThreadLogo" width="50" height="50" alt="Delete Button, Red X" />
                     </div>
                 </Link>
-                <Link to={`/project/private/${comment.TypeID}/comment/${comment.ParentID}/subcomment/${comment.ID}/flag`}>
+                <Link to={`/project/${comment.TypeID}/comment/${comment.ParentID}/subcomment/${comment.ID}/flag`}>
                     <div id="flagDiscussButton" onMouseOver={hoverFlag} onMouseOut={unHoverFlag}>
                         <img src={require('../../assets/flag.svg')} id="deleteLogo" width="24" height="24" alt="Flag Button, Red Flag" />
                     </div>
                 </Link>
-                <Link to={`/project/private/${comment.TypeID}/comment/${comment.ID}/subcomments`}>
+                <Link to={`/project/${comment.TypeID}/comment/${comment.ID}/subcomments`}>
                     <div id="numberDiscussButton" onMouseOver={hoverThread} onMouseOut={unHoverThread}>
                         {this.state.debateNumber[comment.ID]}
                     </div>
@@ -241,9 +233,11 @@ export default class CommentUnit extends React.Component {
                     <span id="discussPercent">{floatToDecimal(comment.PercentRank)}</span>
                     {comment.Username}
                 </div>
-                <div id="suggestionText" onClick={submitVote} onMouseOver={hoverVote} onMouseOut={unHoverVote}>
-                    {comment.Description}
-                </div>
+                <Link to={window.location.pathname}>
+                    <div id="suggestionText" onClick={submitVote} onMouseOver={hoverVote} onMouseOut={unHoverVote}>
+                        {comment.Description}
+                    </div>
+                </Link>
             </div>
         </li>);
 }
@@ -404,25 +398,5 @@ function unHoverDeleteVoted() {
 function floatToDecimal(float) {
 	return Math.round(float*100)+'%';
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 

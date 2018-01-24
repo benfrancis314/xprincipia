@@ -85,7 +85,7 @@ export default class CommentSubCommentContainer extends React.Component {
     return (
         <div id="answerContainer">
             <div id="answerQuestionHeader">
-                <Link to={`/project/${this.props.params.probID}/proposal/${this.props.params.solutionID}/question/${this.state.comment.BackupParentID}/answer/${this.state.comment.BackupParentID}/comments`}>
+                <Link to={`/project/${this.props.params.probID}/proposal/${this.props.params.solutionID}/question/${this.state.comment.BackupParentID}/answer/${this.state.comment.ParentID}/comments`}>
                     <div id="backSolutionArrowDiv">
                         <img src={require('../../assets/upArrow.svg')} id="backSolutionArrow" width="50" height="30" alt="Back arrow, blue up arrow" />
                     </div>
@@ -93,7 +93,7 @@ export default class CommentSubCommentContainer extends React.Component {
                 <div id="answerQuestionLabel">return to comments</div>
             </div>
             {/*Suggestion being commented on*/}
-            <Link to={`/project/${this.props.params.probID}/proposal/${this.props.params.solutionID}/question/${this.state.comment.BackupParentID}/answer/${this.state.comment.BackupParentID}/comments`}>
+            <Link to={`/project/${this.props.params.probID}/proposal/${this.props.params.solutionID}/question/${this.state.comment.BackupParentID}/answer/${this.state.comment.ParentID}/comments`}>
                 <div id="answerQuestionUnit">
                     <div id="answerQuestionContent">
                         <div id="discussHeader">
@@ -270,7 +270,7 @@ export default class CommentSubCommentContainer extends React.Component {
         return (
             <div id="answerContainer">
                 <div id="answerQuestionHeader">
-                    <Link to={`/project/${this.props.params.probID}/question/${this.state.comment.BackupParentID}/answer/${this.state.comment.BackupParentID}/comments`}>
+                    <Link to={`/project/${this.props.params.probID}/question/${this.state.comment.BackupParentID}/answer/${this.state.comment.ParentID}/comments`}>
                         <div id="backSolutionArrowDiv">
                             <img src={require('../../assets/upArrow.svg')} id="backSolutionArrow" width="50" height="30" alt="Back arrow, blue up arrow" />
                         </div>
@@ -278,7 +278,7 @@ export default class CommentSubCommentContainer extends React.Component {
                     <div id="answerQuestionLabel">return to comments</div>
                 </div>
                 {/*Suggestion being commented on*/}
-                <Link to={`/project/${this.props.params.probID}/question/${this.state.comment.BackupParentID}/answer/${this.state.comment.BackupParentID}/comments`}>
+                <Link to={`/project/${this.props.params.probID}/question/${this.state.comment.BackupParentID}/answer/${this.state.comment.ParentID}/comments`}>
                     <div id="answerQuestionUnit">
                         <div id="answerQuestionContent">
                             <div id="discussHeader">

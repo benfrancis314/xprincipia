@@ -64,10 +64,9 @@ export default class ProjectEditForm extends React.Component {
       summary : self.state.summary
     })
     .then(function (result) {
-      document.location = '/project/'+ self.props.params.probID + '/subprojects'
+      // document.location = '/project/'+ self.props.params.probID + '/subprojects'
     })
       .catch(function (error) {
-        // console.log(error.response.data)
           $(document).ready(function() {
               $('#notification').attr('id','notificationShow').hide().slideDown();
               if (error.response.data != '') {

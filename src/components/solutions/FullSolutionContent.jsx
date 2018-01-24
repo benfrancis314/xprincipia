@@ -49,13 +49,21 @@ export default class FullSolutionContent extends React.Component {
     // }
     componentWillReceiveProps(nextProps){
       var self = this;
-        return axios.get( Config.API + '/solutions/ID?id='+nextProps.params.solutionID).then(function (response) {
+        axios.get( Config.API + '/solutions/ID?id='+nextProps.params.solutionID).then(function (response) {
             self.setState({
                 solutionInfo: response.data,
                 solutionID: nextProps.params.solutionID,
-                probID: nextProps.params.probID
+                probID: nextProps.params.probID,
+                rank: response.data.Rank
             })
           })
+        axios.get( Config.API + "/vote/isVotedOn?type=1&typeID=" + nextProps.params.solutionID + "&username=" + cookie.load("userName"))
+          .then( function (response){
+            self.setState({
+              vote: response.data
+            })
+      })     
+    
      }
 
   deleteSolution() {
@@ -97,7 +105,7 @@ export default class FullSolutionContent extends React.Component {
            
         })
         .then(function (result) {
-            document.location = window.location.pathname;
+            // document.location = window.location.pathname;
         })
       .catch(function (error) {
         // console.log(error.response.data)
@@ -131,8 +139,7 @@ unVote() {
                 vote: false
 
             })
-            document.location = window.location.pathname 
-            // Scroll back to proposal
+            // document.location = window.location.pathname 
         })
       .catch(function (error) {
         // console.log(error.response.data)
@@ -161,7 +168,9 @@ unVote() {
                 {this.state.solutionInfo.Rank}
             </div>
             <div id="voteVersionsMenu">
-                <Link><div id="votedSolution" onClick={this.unVote}>Voted</div></Link>
+              <Link to={`/project/${this.props.params.probID}/proposal/${this.props.params.solutionID}`}>
+                <div id="votedSolution" onClick={this.unVote}>Voted</div>
+              </Link>
                 {/*<Link to={`/proposal/${this.props.params.probID}/${this.props.params.solutionID}/versions`}>
                     <div id="versionsButton">
                             Versions
@@ -190,7 +199,7 @@ unVote() {
               </div>
               <div>
               {React.cloneElement(this.props.children, {creator:this.state.solutionInfo.OriginalPosterUsername, parentTitle: this.props.parentTitle} )}
-              {React.cloneElement(<FullSolutionDescription solutionInfo={ this.state.solutionInfo} solutionID={this.props.params.solutionID}/> )}
+              <FullSolutionDescription solutionInfo={ this.state.solutionInfo} solutionID={this.props.params.solutionID}/>
             </div>
         </div>
                );
@@ -202,7 +211,9 @@ unVote() {
                 {this.state.solutionInfo.Rank}
             </div>
             <div id="voteVersionsMenu">
-                <Link><div id="voteSolution" onClick={this.submitVote}>Vote</div></Link>
+              <Link to={`/project/${this.props.params.probID}/proposal/${this.props.params.solutionID}`}>
+                <div id="voteSolution" onClick={this.submitVote}>Vote</div>
+              </Link>
                 {/*<Link to={`/proposal/${this.props.params.probID}/${this.props.params.solutionID}/versions`}>
                     <div id="versionsButton">
                             Versions
@@ -231,7 +242,7 @@ unVote() {
               </div>
               <div>
               {React.cloneElement(this.props.children, {creator:this.state.solutionInfo.OriginalPosterUsername, parentTitle: this.props.parentTitle} )}
-              {React.cloneElement(<FullSolutionDescription solutionInfo={ this.state.solutionInfo} solutionID={this.props.params.solutionID}/> )}            
+              <FullSolutionDescription solutionInfo={ this.state.solutionInfo} solutionID={this.props.params.solutionID}/>         
               </div>
         </div>
 
@@ -243,7 +254,9 @@ unVote() {
                 {this.state.solutionInfo.Rank}
             </div>
             <div id="voteVersionsMenu">
-                    <Link><div id="votedSolution" onClick={this.unVote}>Voted</div></Link>
+                    <Link to={`/project/${this.props.params.probID}/proposal/${this.props.params.solutionID}`}>
+                      <div id="votedSolution" onClick={this.unVote}>Voted</div>
+                    </Link>
                     {/*<Link to={`/proposal/${this.props.params.probID}/${this.props.params.solutionID}/versions`}>
                         <div id="versionsButton">
                                 Versions
@@ -267,19 +280,21 @@ unVote() {
               </div>
               <div>
               {React.cloneElement(this.props.children, {creator:this.state.solutionInfo.OriginalPosterUsername, parentTitle: this.props.parentTitle} )}
-              {React.cloneElement(<FullSolutionDescription solutionInfo={ this.state.solutionInfo} solutionID={this.props.params.solutionID}/> )}
+              <FullSolutionDescription solutionInfo={ this.state.solutionInfo} solutionID={this.props.params.solutionID}/>
             </div>
         </div>
 
       ); 
-            } else {
+  } else {
     return (
       <div>
             <div id="ProposalPercentFull">
                 {this.state.solutionInfo.Rank}
             </div>
             <div id="voteVersionsMenu">
-                    <Link><div id="voteSolution" onClick={this.submitVote}>Vote</div></Link>
+              <Link to={`/project/${this.props.params.probID}/proposal/${this.props.params.solutionID}`}>
+                <div id="voteSolution" onClick={this.submitVote}>Vote</div>
+              </Link>
                     {/*<Link to={`/proposal/${this.props.params.probID}/${this.props.params.solutionID}/versions`}>
                         <div id="versionsButton">
                                 Versions
@@ -295,17 +310,18 @@ unVote() {
 
               <div id="prosConsMenu">
                 <Link to={`/project/${this.props.params.probID}/proposal/${this.props.params.solutionID}/pros`} activeClassName="activeProsCons">
-                    <div id="prosButton">pros</div>
+                    <div id="prosButton">pro</div>
                 </Link>
                 <Link to={`/project/${this.props.params.probID}/proposal/${this.props.params.solutionID}/cons`} activeClassName="activeProsCons">
-                    <div id="consButton">cons</div>
+                    <div id="consButton">contra</div>
                 </Link>
               </div>
               <div>
-            {/*{React.cloneElement(<ProsContainer probID={this.state.probID} solutionID={this.state.solutionID} /> )}*/}
-            {/*{React.cloneElement(<ConsContainer probID={this.state.probID} solutionID={this.state.solutionID} /> )}*/}
+            {/*<ProsContainer probID={this.state.probID} solutionID={this.state.solutionID} />*/}
+            {/*<ConsContainer probID={this.state.probID} solutionID={this.state.solutionID} />*/}
               {React.cloneElement(this.props.children, {creator:this.state.solutionInfo.OriginalPosterUsername, parentTitle: this.props.parentTitle} )}
-              {React.cloneElement(<FullSolutionDescription solutionInfo={ this.state.solutionInfo} solutionID={this.props.params.solutionID}/> )}            </div>
+              <FullSolutionDescription solutionInfo={ this.state.solutionInfo} solutionID={this.props.params.solutionID}/>           
+            </div>
         </div>
       );
    }}}

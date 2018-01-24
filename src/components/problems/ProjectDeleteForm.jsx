@@ -31,7 +31,7 @@ export default class ProjectEditForm extends React.Component {
           }
         })
         .then(function (result) {
-            document.location = '/welcome'
+            // document.location = '/welcome'
       })
         .catch(function (error) {
           // console.log(error.response.data)
@@ -60,9 +60,11 @@ export default class ProjectEditForm extends React.Component {
           <form id="solutionDeleteForm">
             <fieldset id="editFormFieldset">
                 <legend id="redLegend">Delete{this.props.params.probID}</legend>
-                    <div>Are you sure you would like to delete this proposal?</div>
+                    <div>Are you sure you would like to delete this project?</div>
                     <br />
-                    <div onClick={this.deleteProject} id="deleteButton">Delete</div>
+                    <Link to={`/project/${this.props.params.probID}/subprojects`}>
+                        <div onClick={this.deleteProject} id="deleteButton">Delete</div>
+                    </Link>
                     <Link to={`/project/${this.props.params.probID}/subprojects`}>
                         <div id="returnButton">Exit</div>
                     </Link>

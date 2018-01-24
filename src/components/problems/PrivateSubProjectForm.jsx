@@ -50,7 +50,7 @@ export default class ProblemForm extends React.Component {
     })
     .then(function (result) {
       //redirect back to the last page     
-      document.location = '/project/private/'+self.props.params.probID+'/subprojects'
+      // document.location = '/project/private/'+self.props.params.probID+'/subprojects'
     })
       .catch(function (error) {
           $(document).ready(function() {
@@ -131,8 +131,9 @@ export default class ProblemForm extends React.Component {
                       <textarea name="problemSummary" maxLength="350" 
                       placeholder="Please provide any additional information you'd like. (350 character max)" id="problemSummaryForm"/>
                       </label><br />
-
-                  <input type="button" value="Create" onClick={this.postProblem} id="submitProblem"/>
+                  <Link to={`/project/private/${this.props.params.probID}/subprojects`}>
+                      <input type="button" value="Create" onClick={this.postProblem} id="submitProblem"/>
+                  </Link>
                 </fieldset>
               </form>
           </div>

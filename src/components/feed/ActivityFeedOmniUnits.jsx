@@ -119,38 +119,12 @@ if (problem.Private === true) {
 
       return (
     //   We do actually want to show projects on proposals here:
-        // <li key={problem.ID} id="feedListUnit">
-        //     <Link to={'/project/'+problem.ID +'/subprojects'}>
-        //         <div id="feedUnits">               
-        //             <div id="blueFeed">project by <span id="feedCaps">{problem.OriginalPosterUsername}</span></div>
-        //             <div id="whiteFeed">{problem.Title}</div>
-        //             <div id="feedDate">{dateTime(problem.CreatedAt)}</div>
-        //         </div>
-        //     </Link>
-        // </li>
         <div key={problem.ID} id="nodisplay">
         </div>
       
       );
 
 // NEED MORE IF STATEMENTS TO SEE IF THEY'RE ON PROPOSALS
-
-} else if (problem.ParentType === 1) {
-
-    return (
-  //   We do actually want to show projects on proposals here:
-      // <li key={problem.ID} id="feedListUnit">
-      //     <Link to={'/project/'+problem.ID +'/subprojects'}>
-      //         <div id="feedUnits">               
-      //             <div id="blueFeed">project by <span id="feedCaps">{problem.OriginalPosterUsername}</span></div>
-      //             <div id="whiteFeed">{problem.Title}</div>
-      //             <div id="feedDate">{dateTime(problem.CreatedAt)}</div>
-      //         </div>
-      //     </Link>
-      // </li>
-      <div key={problem.ID} id="nodisplay">
-      </div> 
-    );
     } else if (problem.Type == '0') {
         return (
         <li key={problem.ID} id="feedListUnit">
@@ -184,7 +158,7 @@ if (problem.Private === true) {
     } else if (problem.Type == '3') {
         return (
         <li key={problem.ID} id="feedListUnit">
-            <Link to={'/project/'+problem.ID +'/suggestion/'+problem.TypeID +'/comments'}>
+            <Link to={'/project/'+problem.ProblemID +'/suggestion/'+problem.TypeID +'/comments'}>
                 <div id="omniActivityUnit">
                     new suggestion in:
                     <br />
@@ -208,7 +182,7 @@ if (problem.Private === true) {
     } else if (problem.Type == '6') {
         return (
         <li key={problem.ID} id="feedListUnit">
-            <Link to={'/project/'+problem.ID +'/freeform/'+problem.TypeID +'/comments'}>
+            <Link to={'/project/'+problem.ProblemID +'/freeform/'+problem.TypeID +'/comments'}>
                 <div id="omniActivityUnit">
                     new debate in:
                     <br />
@@ -225,7 +199,7 @@ if (problem.Private === true) {
     } else if (problem.Type == '7') {
         return (
         <li key={problem.ID} id="feedListUnit">
-            <Link to={'/project/'+problem.ID +'/learn/content/'+problem.TypeID +'/coments'}>
+            <Link to={'/project/'+problem.ProblemID +'/learn/content/'+problem.TypeID +'/coments'}>
             <div id="omniActivityUnit">
                 new lesson in:
                 <br />
@@ -240,7 +214,7 @@ if (problem.Private === true) {
     } else if (problem.Type == '8') {
         return (
         <li key={problem.ID} id="feedListUnit">
-            <Link to={'/project/'+problem.ID +'/learn/resources/'+problem.TypeID +'/comments'}>
+            <Link to={'/project/'+problem.ProblemID +'/learn/resources/'+problem.TypeID +'/comments'}>
             <div id="omniActivityUnit">
                 new resource in:
                 <br />
@@ -263,7 +237,7 @@ if (problem.Private === true) {
     } else {
           return (
             <li key={problem.ID} id="feedListUnit">
-                <Link to={'/project/'+problem.ID +'/subprojects'}>
+                <Link to={'/project/'+problem.ProblemID +'/subprojects'}>
                     <div id="omniActivityUnit">
                         update in:
                         <br />

@@ -94,7 +94,7 @@ showParentList() {
                 </Link>
             </div>
       );		 
-} else if (this.props.parentID === 0) {
+    } else if ((this.props.parentID === 0)&&(this.state.parentList.length > 0)) {
 		return (
             <div id="fullWide">
                 <ParentListContainer parentList={this.state.parentList}/>
@@ -110,12 +110,25 @@ showParentList() {
                 </div>
             </div>
             );
-		}
-	else {
-		 return (
-            //  If possible, only show this if a project has multiple parents
-            //  Using an IF statement. 
-			<div id="fullWide">
+    } else if (this.props.parentID === 0) {
+        return (
+            <div id="fullWide">
+                {/* <ParentListContainer parentList={this.state.parentList}/> */}
+                <div id="parentButtonContainer">
+                    <Link to={`/welcome`}>
+                        <div id="parentButton">
+                            <span id='blue'>parent: </span>xprincipia projects
+                        </div>
+                    </Link>
+                    {/* <div id="parentListButton" onMouseOver={this.hoverParentListButton} onMouseOut={this.unHoverParentListButton}>
+                        <img src={require('../../assets/alternateBlue1.svg')} id="parentListImg" width="45" height="45" alt="Project Tree Button, white tree"  onClick={this.showParentList}/>
+                    </div> */}
+                </div>
+            </div>
+            );
+    } else if (this.state.parentList.length > 0) {
+		return (
+            <div id="fullWide">
                 <ParentListContainer parentList={this.state.parentList}/>
                 <div id="parentButtonContainer">
                     <Link to={`/project/${this.props.parentID}/subprojects`}>
@@ -126,6 +139,25 @@ showParentList() {
                     <div id="parentListButton" onMouseOver={this.hoverParentListButton} onMouseOut={this.unHoverParentListButton}>
                         <img src={require('../../assets/alternateBlue1.svg')} id="parentListImg" width="45" height="45" alt="Project Tree Button, white tree"  onClick={this.showParentList}/>
                     </div>
+                </div>
+            </div>
+            );
+		}
+	else {
+		 return (
+            //  If possible, only show this if a project has multiple parents
+            //  Using an IF statement. 
+			<div id="fullWide">
+                {/* <ParentListContainer parentList={this.state.parentList}/> */}
+                <div id="parentButtonContainer">
+                    <Link to={`/project/${this.props.parentID}/subprojects`}>
+                        <div id="parentButton">
+                            <span id="parentText"><span id='blue'>parent: </span>{this.state.parent.Title}</span>
+                        </div>
+                    </Link>
+                    {/* <div id="parentListButton" onMouseOver={this.hoverParentListButton} onMouseOut={this.unHoverParentListButton}>
+                        <img src={require('../../assets/alternateBlue1.svg')} id="parentListImg" width="45" height="45" alt="Project Tree Button, white tree"  onClick={this.showParentList}/>
+                    </div> */}
                 </div>
             </div>
 			);

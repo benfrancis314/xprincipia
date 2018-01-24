@@ -50,29 +50,32 @@ export default class ProblemForm extends React.Component {
       grandParentID : String(this.props.gParentID),
       grandParentTitle: this.props.gParentTitle,
       ggParentID : String(this.props.ggParentID),
-      class : this.state.class,
-      breakdownID : String(this.props.breakdownID),
+      class : String(this.state.class),
+      // Breakdown not used yet
+      // breakdownID : String(this.props.breakdownID),
+      breakdownID: '0',
       private: '0',
     })
     .then(function (result) {
       //redirect back to the last page     
-      document.location = '/project/'+self.props.params.probID+'/subprojects'
+      // document.location = '/project/'+self.props.params.probID+'/subprojects'
     })
       .catch(function (error) {
         // alert('why not working');
           $(document).ready(function() {
-              $('#notification').attr('id','notificationShow').hide().slideDown();
-
-                if (error.response.data == '[object Object]') {
-                  return (
-                    $(document).ready(function() {
-                      $('#notificationLoginRegisterContainer').attr('id','notificationLoginRegisterContainerShow');
-                      $('#notificationContent').html('Please <span id="blue">login </span>to create a project');
-                    })
-                  );
-                }  else if (error.response.data != '') {
-              $('#notificationContent').text(error.response.data);
-              }
+              if (error.response.data == '[object Object]') {
+                return (
+                  $(document).ready(function() {
+                    // Usually outside IF statement, revert when 400 error is fixed
+                    $('#notification').attr('id','notificationShow').hide().slideDown();
+                    $('#notificationLoginRegisterContainer').attr('id','notificationLoginRegisterContainerShow');
+                    $('#notificationContent').html('Please <span id="blue">login </span>to create a project');
+                  })
+                );
+              }  else if (error.response.data != '') {
+                // Not using until 400 error is fixed
+                // $('#notificationContent').text(error.response.data);
+            }
           });
       });
   }
@@ -124,12 +127,16 @@ export default class ProblemForm extends React.Component {
                       </div>
                     </div>
 
-                  <label htmlFor="problemSummaryForm" id="problemSummaryFormLabel">Additional Information<br />
+                  <label htmlFor="problemSummaryForm" id="problemSummaryFormLabel">
+                      Additional Information
+                      <br />
                       <textarea name="problemSummary" maxLength="350" 
                       placeholder="Please provide any additional information you'd like. (350 character max)" id="problemSummaryForm"/>
-                      </label><br />
-
-                  <input type="button" value="Create" onClick={this.postProblem} id="submitProblem"/>
+                  </label>
+                  <br />
+                  <Link to={`/project/${this.props.params.probID}/subprojects`}>
+                      <input type="button" value="Create" onClick={this.postProblem} id="submitProblem"/>
+                  </Link>
                 </fieldset>
               </form>
           </div>

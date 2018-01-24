@@ -51,13 +51,13 @@ updateQuestion() {
   this.state.question = document.getElementById('questionEditTextArea').value
 
   axios.put( Config.API + '/auth/questions/update?id='+this.props.params.questID, {
-      type:'0',
-      typeID: this.props.params.probID,
+      // type:'0',
+      // typeID: this.props.params.probID,
       username: cookie.load('userName'),
       description : this.state.question,
     })
       .then(function (result) {
-        document.location = window.location.pathname 
+        // document.location = window.location.pathname 
       })
       .catch(function (error) {
         // console.log(error.response.data)

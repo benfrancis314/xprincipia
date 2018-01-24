@@ -3,6 +3,7 @@ import axios from 'axios';
 import cookie from 'react-cookie';
 import {Config} from '../../config.js';
 import $ from 'jquery';
+import { Link } from 'react-router';
 
 export default class LearnResourcesForm extends React.Component {
 constructor(props){
@@ -36,7 +37,7 @@ constructor(props){
         private: '1',
     })
       .then(function (result) {
-        document.location = window.location.pathname 
+        document.getElementById("questionForm").reset();
       })
       .catch(function (error) {
         alert('error')
@@ -70,7 +71,7 @@ constructor(props){
         private: '1',
     })
       .then(function (result) {
-        document.location = window.location.pathname 
+        document.getElementById("questionForm").reset();
       })
       .catch(function (error) {
           $(document).ready(function() {
@@ -103,7 +104,7 @@ constructor(props){
            return (
         <div>
           <div id="discussMenuEnd">
-            Resources
+            resources
           </div>
             <div id="suggestionFormComponent">
                 <form id="questionForm">
@@ -112,7 +113,9 @@ constructor(props){
                             <input type="text" placeholder="resource title" id="resourceTitleForm"/>
                             <input type="text" placeholder="URL" id="resourceURLForm"/>
                             <textarea name="suggestionText" required="required" id="resourcesTextArea" placeholder="Please describe the resource or explain its purpose. " ></textarea>
-                            <input type="button" value="Add" onClick={this.postResource} id="addSuggestion"/>
+                            <Link to={`/project/private/${this.props.params.probID}/resources`}>
+                              <input type="button" value="Add" onClick={this.postResource} id="addSuggestion"/>
+                            </Link>
                     </fieldset>
                 </form>
             </div>

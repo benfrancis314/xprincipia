@@ -45,24 +45,25 @@ export default class NotebookFull extends React.Component {
     })
   }
   }
-  componentWillReceiveProps(nextProps){
+  componentWillReceiveProps(nextProps, nextState){
     var self = this;
-    return axios.get( Config.API + '/notebooks/ID?id='+nextProps.currentNotebook).then(function (response) {
+    axios.get( Config.API + '/notebooks/ID?id='+nextProps.currentNotebook).then(function (response) {
         self.setState({
             notebook: response.data,
         })
         document.getElementById('notebookFullTitle').value = self.state.notebook.Title;
         document.getElementById('notebookFullContent').value = self.state.notebook.Description;
         document.getElementById('notebookFullResources').value = self.state.notebook.References;
-  })
+    })
 }
-  updateNotebook() {
-    
-    // if (document.getElementById('notebookSavedLabel') == null) {
-    //Read field items into component state
-    this.state.title = document.getElementById('notebookFullTitle').value
-    this.state.description = document.getElementById('notebookFullContent').value
-    this.state.references = document.getElementById('notebookFullResources').value
+
+
+
+
+updateNotebook() {
+  this.state.title = document.getElementById('notebookFullTitle').value
+  this.state.description = document.getElementById('notebookFullContent').value
+  this.state.references = document.getElementById('notebookFullResources').value
 
   var self = this;
   axios.put( Config.API + '/auth/notebooks/update?id='+self.state.notebook.ID, {
@@ -114,6 +115,7 @@ componentWillUnmount() {
     })
     .then(function (result) {
     //  document.location = '/project/' + self.props.params.probID + '/proposal/' + self.props.params.solutionID
+    alert('success unmount');
     })
       .catch(function (error) {
         // console.log(error.response.data)

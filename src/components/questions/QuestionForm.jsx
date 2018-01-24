@@ -3,6 +3,8 @@ import axios from 'axios';
 import cookie from 'react-cookie';
 import {Config} from '../../config.js';
 import $ from 'jquery';
+import { Link } from 'react-router';
+
 
 export default class QuestionForm extends React.Component {
 
@@ -15,6 +17,7 @@ export default class QuestionForm extends React.Component {
 
     this.postQuestion = this.postQuestion.bind(this);
   };
+  
 
 postQuestion() {
   //Read field items into component state
@@ -33,7 +36,8 @@ this.state.question = document.getElementById('questionTextArea').value
       parentID: this.props.params.probID,
   })
     .then(function (result) {
-      document.location = window.location.pathname 
+      // document.location = window.location.pathname 
+      document.getElementById("questionForm").reset();
     })
       .catch(function (error) {
           $(document).ready(function() {
@@ -66,7 +70,7 @@ this.state.question = document.getElementById('questionTextArea').value
         private: '0',
     })
       .then(function (result) {
-        document.location = window.location.pathname 
+        document.getElementById("questionForm").reset();
       })
       .catch(function (error) {
           $(document).ready(function() {
@@ -101,7 +105,9 @@ this.state.question = document.getElementById('questionTextArea').value
                 <form id="questionForm">
                   <fieldset id='fieldSetNoBorderPadding'>
                     <textarea name="questionText" required="required" id="questionTextArea" placeholder="Ask a question you have about this project or view those asked by your peers. " ></textarea>
-                    <input type="button" value="Ask" onClick={this.postQuestion} id="askQuestion"/>
+                    <Link to={`/project/${this.props.params.probID}/proposal/${this.props.params.solutionID}/questions`}>
+                      <input type="button" value="Ask" onClick={this.postQuestion} id="askQuestion"/>
+                    </Link>
                   </fieldset>
                 </form>
             </div>
@@ -117,7 +123,9 @@ this.state.question = document.getElementById('questionTextArea').value
               <form id="questionForm">
                 <fieldset id='fieldSetNoBorderPadding'>
                   <textarea name="questionText" required="required" id="questionTextArea" placeholder="Ask a question you have about this project or view those asked by your peers. " ></textarea>
-                  <input type="button" value="Ask" onClick={this.postQuestion} id="askQuestion"/>
+                  <Link to={`/project/${this.props.params.probID}/questions`}>
+                    <input type="button" value="Ask" onClick={this.postQuestion} id="askQuestion"/>
+                  </Link>
                 </fieldset>
               </form>
             </div>

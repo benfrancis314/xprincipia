@@ -57,7 +57,7 @@ updateLearnItem() {
       description : self.state.learnItem,
     })
       .then(function (result) {
-        document.location = '/project/private/'+ self.props.params.probID + '/notes'
+        // document.location = '/project/private/'+ self.props.params.probID + '/notes'
       })
       .catch(function (error) {
         // console.log(error.response.data)
@@ -95,8 +95,10 @@ updateLearnItem() {
                         <legend id="redLegend">Edit Lesson</legend>
                             <textarea name="questionText" required="required" id="questionEditTextArea" autoFocus ></textarea>
                             <br />
-                            <div onClick={this.updateLearnItem} id="editButton">Submit</div>
-                              <Link to={`/project/private/${this.state.learnItem.TypeID}/notes`}>
+                            <Link to={`/project/private/${this.state.learnItem.TypeID}/notes`}>
+                              <div onClick={this.updateLearnItem} id="editButton">Submit</div>
+                            </Link>
+                            <Link to={`/project/private/${this.state.learnItem.TypeID}/notes`}>
                               <div id="returnButton">Exit</div>
                             </Link>
                     </fieldset>

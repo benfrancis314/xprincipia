@@ -46,8 +46,8 @@ export default class FullProblem extends React.Component {
 
     componentDidMount(){
       var self = this;
-      // ReactDOM.findDOMNode(this).scrollIntoView();
-      window.scrollTo(0,0);
+      ReactDOM.findDOMNode(this).scrollIntoView();
+      // window.scrollTo(0,0);
       axios.get( Config.API + '/problems/ID?id='+this.props.params.probID).then(function (response) {
           self.setState({
               problemInfo: response.data
@@ -95,23 +95,25 @@ export default class FullProblem extends React.Component {
                 problemInfo: response.data,
                 // vote: true,
             })
-            document.location = window.location.pathname 
+            // document.location = window.location.pathname 
           })
           
         })
       .catch(function (error) {
           $(document).ready(function() {
-              $('#notification').attr('id','notificationShow').hide().slideDown();
+            // MOVED NOTIFICATION SHOW INTO ONLY FOR IF NOT LOGGED IN,
+            // BECAUSE ERROR OCCURS TOO OFTEN
                 if (error.response.data == '[object Object]') {
                   return (
                     $(document).ready(function() {
+                      $('#notification').attr('id','notificationShow').hide().slideDown();
                       $('#notificationLoginRegisterContainer').attr('id','notificationLoginRegisterContainerShow');
                       $('#notificationFeedbackShow').attr('id','notificationFeedback');
                       $('#notificationContent').html('Please <span id="blue">login </span>to vote');
                     })
                   );
                 }  else if (error.response.data != '') {
-                $('#notificationContent').text(error.response.data);
+                // $('#notificationContent').text(error.response.data);
               }
           });
       });
@@ -119,7 +121,9 @@ export default class FullProblem extends React.Component {
 
 unVote() {
       var self = this;
-      self.refs.btn.setAttribute("disabled", "disabled");
+      // I believe something about the double click disable broke,
+      // look at old versions to find the fix
+      // self.refs.btn.setAttribute("disabled", "disabled");
       axios.delete( Config.API + '/auth/vote/delete' ,{
         params: {
           type: 0,
@@ -131,24 +135,26 @@ unVote() {
             self.setState({
                 problemInfo: response.data,
             })
-            document.location = window.location.pathname 
+            // document.location = window.location.pathname 
             // Below is for double click problem, if needed
             // self.refs.btn.removeAttribute("disabled");
         })
         })
       .catch(function (error) {
           $(document).ready(function() {
-              $('#notification').attr('id','notificationShow').hide().slideDown();
+            // MOVED NOTIFICATION SHOW INTO ONLY FOR IF NOT LOGGED IN,
+            // BECAUSE ERROR OCCURS TOO OFTEN
                 if (error.response.data == '[object Object]') {
                   return (
                     $(document).ready(function() {
+                      $('#notification').attr('id','notificationShow').hide().slideDown();
                       $('#notificationLoginRegisterContainer').attr('id','notificationLoginRegisterContainerShow');
                       $('#notificationFeedbackShow').attr('id','notificationFeedback');
                       $('#notificationContent').html('Please <span id="blue">login </span>to vote');
                     })
                   );
                 }  else if (error.response.data != '') {
-                $('#notificationContent').text(error.response.data);
+                // $('#notificationContent').text(error.response.data);
               }
           });
       });
@@ -328,9 +334,11 @@ unVote() {
                         <div id="SBButtonDiscuss">discuss</div>
                   </Link>
                   <div id="problemCenterColumn">
-                    <Link><div id="voteProblem" onClick={this.submitVote}>
-                        vote
-                    </div></Link>
+                    <Link to={`/project/${this.props.params.probID}/subprojects`}>
+                      <div id="voteProblem" onClick={this.submitVote}>
+                          vote
+                      </div>
+                    </Link>
                     <a href='#proposals'>
                       <div id="SBButtonProposal" onClick={this.goToProposal}>proposals</div>
                     </a>
@@ -439,9 +447,11 @@ unVote() {
                           <div id="SBButtonDiscuss">discuss</div>
                     </Link>
                     <div id="problemCenterColumn">
-                      <Link><div id="votedProblem" onClick={this.unVote}>
-                          voted
-                      </div></Link>
+                      <Link to={`/project/${this.props.params.probID}/subprojects`}>
+                        <div id="votedProblem" onClick={this.unVote}>
+                            voted
+                        </div>
+                      </Link>
                       <a href='#proposals'>
                         <div id="SBButtonProposal" onClick={this.goToProposal}>proposals</div>
                       </a>
@@ -542,9 +552,11 @@ unVote() {
                           <div id="SBButtonDiscuss">discuss</div>
                     </Link>
                     <div id="problemCenterColumn">
-                      <Link><div id="voteProblem" onClick={this.submitVote}>
-                          vote
-                      </div></Link>
+                      <Link to={`/project/${this.props.params.probID}/subprojects`}>
+                        <div id="voteProblem" onClick={this.submitVote}>
+                            vote
+                        </div>
+                      </Link>
                       <a href='#proposals'>
                         <div id="SBButtonProposal" onClick={this.goToProposal}>proposals</div>
                       </a>
@@ -645,9 +657,11 @@ unVote() {
                       <div id="SBButtonDiscuss">discuss</div>
                 </Link>
                 <div id="problemCenterColumn">
-                  <Link><div id="votedProblem" onClick={this.unVote}>
-                      voted
-                  </div></Link>
+                  <Link to={`/project/${this.props.params.probID}/subprojects`}>
+                    <div id="votedProblem" onClick={this.unVote}>
+                        voted
+                    </div>
+                  </Link>
                   <a href='#proposals'>
                     <div id="SBButtonProposal" onClick={this.goToProposal}>proposals</div>
                   </a>
@@ -747,9 +761,11 @@ unVote() {
                       <div id="SBButtonDiscuss">discuss</div>
                 </Link>
                 <div id="problemCenterColumn">
-                  <Link><div id="voteProblem" onClick={this.submitVote}>
-                      vote
-                  </div></Link>
+                  <Link to={`/project/${this.props.params.probID}/subprojects`}>
+                    <div id="voteProblem" onClick={this.submitVote}>
+                        vote
+                    </div>
+                  </Link>
                   <a href='#proposals'>
                     <div id="SBButtonProposal" onClick={this.goToProposal}>proposals</div>
                   </a>

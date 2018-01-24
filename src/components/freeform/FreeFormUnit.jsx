@@ -10,41 +10,27 @@ export default class FreeFormUnit extends React.Component {
     constructor(props){
         super(props);
 
-         this.renderItem = this.renderItem.bind(this);
-    };
-    componentDidMount() {
-        var self = this
-        self.setState({
+        this.state = {
             voteHash : {},
             debateNumber : [],
-        })
-    }
+        }
 
+         this.renderItem = this.renderItem.bind(this);
+    };
 
-
-    componentWillReceiveProps (props) {
+    componentWillReceiveProps (nextProps) {
         var self = this
-        self.setState({
-            voteHash : {},
-            debateNumber : {},
-        })
-        props.freeForms.forEach( function (freeForm){
+        nextProps.freeForms.forEach( function (freeForm){
             axios.get( Config.API + "/vote/isVotedOn?type=6&typeID=" + freeForm.ID + "&username=" + cookie.load("userName"))
             .then( function (response) {  
                 const voteHash = self.state.voteHash;
 
                 voteHash[freeForm.ID] = response.data
-                self.setState({
-                    voteHash,
-                })
             })  
             axios.get( Config.API + '/comments/number?parent_id='+freeForm.ID + '&parent_type=6').then(function (response) {
                 const debateNumber = self.state.debateNumber;
                 
                 debateNumber[freeForm.ID] = response.data
-                self.setState({
-                    debateNumber,
-                })
             })
         })
     }
@@ -65,7 +51,7 @@ export default class FreeFormUnit extends React.Component {
            
         })
         .then(function (result) {
-            document.location = window.location.pathname;
+            // document.location = window.location.pathname;
         })
       .catch(function (error) {
           $(document).ready(function() {
@@ -93,7 +79,7 @@ export default class FreeFormUnit extends React.Component {
         }
         })
         .then(function (result) {
-            document.location = window.location.pathname 
+            // document.location = window.location.pathname 
         })
       .catch(function (error) {
           $(document).ready(function() {
@@ -145,9 +131,11 @@ export default class FreeFormUnit extends React.Component {
                         <span id="discussPercent">{floatToDecimal(freeForm.PercentRank)}</span>
                         {freeForm.Username}
                     </div>
-                    <div id="suggestionText" onClick={unVote} onMouseOver={hoverVoteVoted} onMouseOut={unHoverVoteVoted}>
-                        {freeForm.Description}
-                    </div>
+                    <Link to={`/project/${freeForm.TypeID}/freeforms`}>
+                        <div id="suggestionText" onClick={unVote} onMouseOver={hoverVoteVoted} onMouseOut={unHoverVoteVoted}>
+                            {freeForm.Description}
+                        </div>
+                    </Link>
 				</div>
         </li>);
     }  else if ( freeForm.Username === cookie.load('userName')) {
@@ -179,9 +167,11 @@ export default class FreeFormUnit extends React.Component {
                         <span id="discussPercent">{floatToDecimal(freeForm.PercentRank)}</span>
 					    {freeForm.Username}
                     </div>
-                    <div id="suggestionText" onClick={submitVote} onMouseOver={hoverVote} onMouseOut={unHoverVote}>
-                        {freeForm.Description}
-                    </div>
+                    <Link to={`/project/${freeForm.TypeID}/freeforms`}>
+                        <div id="suggestionText" onClick={submitVote} onMouseOver={hoverVote} onMouseOut={unHoverVote}>
+                            {freeForm.Description}
+                        </div>
+                    </Link>
 				</div>
         </li>);
     } else if (this.state.voteHash[freeForm.ID] === true) {
@@ -210,9 +200,11 @@ export default class FreeFormUnit extends React.Component {
                         <span id="discussPercent">{floatToDecimal(freeForm.PercentRank)}</span>
                         {freeForm.Username}
                     </div>
-                    <div id="suggestionText" onClick={unVote} onMouseOver={hoverVoteVoted} onMouseOut={unHoverVoteVoted}>
-                        {freeForm.Description}
-                    </div>
+                    <Link to={`/project/${freeForm.TypeID}/freeforms`}>
+                        <div id="suggestionText" onClick={unVote} onMouseOver={hoverVoteVoted} onMouseOut={unHoverVoteVoted}>
+                            {freeForm.Description}
+                        </div>
+                    </Link>
 				</div>
         </li>);
 
@@ -240,9 +232,11 @@ export default class FreeFormUnit extends React.Component {
                     <span id="discussPercent">{floatToDecimal(freeForm.PercentRank)}</span>
                     {freeForm.Username}
                 </div>
-                <div id="suggestionText" onClick={submitVote} onMouseOver={hoverVote} onMouseOut={unHoverVote}>
-                    {freeForm.Description}
-                </div>
+                <Link to={`/project/${freeForm.TypeID}/freeforms`}>
+                    <div id="suggestionText" onClick={submitVote} onMouseOver={hoverVote} onMouseOut={unHoverVote}>
+                        {freeForm.Description}
+                    </div>
+                </Link>
             </div>
         </li>);
 }

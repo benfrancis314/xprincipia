@@ -4,6 +4,7 @@ import cookie from 'react-cookie';
 import {Config} from '../../config.js';
 import $ from 'jquery';
 import ScrollableAnchor from 'react-scrollable-anchor';
+import { Link  } from 'react-router';
 
 export default class SolutionPrivateForm extends React.Component {
 
@@ -47,10 +48,8 @@ export default class SolutionPrivateForm extends React.Component {
         private: '1',
       })
       .then(function (result) {
-        document.location = '/project/private/' + self.props.probID + '/subprojects'
-        // Not sure why that is here, will delete if no utility found
-        // window.location.hash = "problemSummary";
-
+        // document.location = '/project/private/' + self.props.probID + '/subprojects'
+        document.getElementById("solutionsTitleRightSB").scrollIntoView();
       })
       .catch(function (error) {
           $(document).ready(function() {
@@ -138,7 +137,9 @@ export default class SolutionPrivateForm extends React.Component {
                 <label htmlFor="solutionReferences" id="solutionReferenceFormLabel">sources <span id="gray">(optional)</span><br />
                     <textarea name="solutionReferences" placeholder="Please provide your sources here." id="solutionReferencesForm">
                     </textarea></label><br />
-                  <input type="button" value="Create" onClick={this.postSolution} id="submitSolution"/>
+                  <Link to={`/project/private/${this.props.probID}/subprojects`}>
+                      <input type="button" value="Create" onClick={this.postSolution} id="submitSolution"/>
+                  </Link>
               </fieldset>
             </form>
         </div>

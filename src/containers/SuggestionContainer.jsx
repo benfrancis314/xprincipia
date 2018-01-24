@@ -29,6 +29,22 @@ constructor(props){
             }) 
         }
     }
+    componentWillReceiveProps(nextProps){
+        var self = this;
+        if(this.props.params.solutionID){
+            return axios.get( Config.API + '/suggestions/typeID?id='+nextProps.params.solutionID+'&dataType=1').then(function (response) {
+                self.setState({
+                    suggestions: response.data
+                })
+            })  
+        } else {
+            return axios.get( Config.API + '/suggestions/typeID?id='+nextProps.params.probID+'&dataType=0').then(function (response) {
+                self.setState({
+                    suggestions: response.data
+                })
+            }) 
+        }
+    }
    render() {
     if (this.props.params.solutionID){
         return (

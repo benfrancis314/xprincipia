@@ -28,8 +28,9 @@ constructor(props){
   //solutionID will be available in props
   if (this.props.params.solutionID) {
       axios.post( Config.API + '/auth/learnItems/create', {
-        type:'1',
+        type: '1',
         typeID: this.props.params.solutionID,
+        parentID: this.props.params.probID,
         username: cookie.load('userName'),
         title: this.state.title,
         summary: this.state.summary,
@@ -38,7 +39,7 @@ constructor(props){
         private: '0',
     })
       .then(function (result) {
-        document.location = window.location.pathname 
+        document.getElementById("suggestionForm").reset();
       })
       .catch(function (error) {
         alert('error')
@@ -72,21 +73,23 @@ constructor(props){
         private: '0',
     })
       .then(function (result) {
-        document.location = window.location.pathname 
+        document.getElementById("suggestionForm").reset();
       })
       .catch(function (error) {
           $(document).ready(function() {
-              $('#notification').attr('id','notificationShow').hide().slideDown();
+              // CHANGING ERROR TO NOT GO OFF UNLESS NOT LOGGED IN,
+              // NOT SURE WHY CURRENT ERROR IS OCCURING UPON CREATION
 
                 if (error.response.data == '[object Object]') {
                   return (
                     $(document).ready(function() {
+                      $('#notification').attr('id','notificationShow').hide().slideDown();
                       $('#notificationLoginRegisterContainer').attr('id','notificationLoginRegisterContainerShow');
                       $('#notificationContent').html('Please <span id="blue">login </span>to create a lesson');
                     })
                   );
                 }  else if (error.response.data != '') {
-              $('#notificationContent').text(error.response.data);
+              // $('#notificationContent').text(error.response.data);
               }
           });
       });
@@ -114,12 +117,13 @@ constructor(props){
                     placeholder="Give an overview of your lesson." ></textarea>
                     </label><br />
 
-                    <label htmlFor="problemTitleForm" id="problemTitleFormLabel">overview<br />
+                    <label htmlFor="problemTitleForm" id="problemTitleFormLabel">lesson<br />
                     <textarea name="suggestionText" required="required" id="learnContentTextArea" 
                     placeholder="Create a lesson to help others understand this project, promoting future advancement." ></textarea>
                     </label><br />
-
-                    <input type="button" value="Create" onClick={this.postLearnItem} id="addSuggestion"/>
+                    <Link to={`/project/${this.props.params.probID}/learn/content`}>
+                      <input type="button" value="Create" onClick={this.postLearnItem} id="addSuggestion"/>
+                    </Link>
                   </fieldset>
               </form>
           </div>

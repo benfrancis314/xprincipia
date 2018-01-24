@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router';
 import axios from 'axios';
 import cookie from 'react-cookie';
 import {Config} from '../../config.js';
@@ -9,14 +10,18 @@ constructor(props){
         super(props);
 
         this.state = {
-            learnItem: []
+            title: '',
+            summary: '',
+            description: '',
         }
             this.postLearnItem = this.postLearnItem.bind(this);
         
     };
     postLearnItem() {
   //Read field items into component state
-      this.state.learnItem = document.getElementById('learnContentTextArea').value
+      this.state.title = document.getElementById('lessonTitleForm').value
+      this.state.summary = document.getElementById('learnContentSummary').value
+      this.state.description = document.getElementById('learnContentTextArea').value
 
 
   //if User is on a solution post with type 1
@@ -26,12 +31,14 @@ constructor(props){
         type:'1',
         typeID: this.props.params.solutionID,
         username: cookie.load('userName'),
-        description : this.state.learnItem,
+        title: this.state.title,
+        summary: this.state.summary,
+        description : this.state.description,
         parentTitle: this.props.parentTitle,
         private: '1',
     })
       .then(function (result) {
-        document.location = window.location.pathname 
+        document.getElementById("suggestionForm").reset();
       })
       .catch(function (error) {
         alert('error')
@@ -58,12 +65,14 @@ constructor(props){
         type:'0',
         typeID: this.props.params.probID,
         username: cookie.load('userName'),
-        description : this.state.learnItem,
+        title: this.state.title,
+        summary: this.state.summary,
+        description : this.state.description,
         parentTitle: this.props.parentTitle,
         private: '1',
     })
       .then(function (result) {
-        document.location = window.location.pathname 
+        document.getElementById("suggestionForm").reset();
       })
       .catch(function (error) {
           $(document).ready(function() {
@@ -88,18 +97,33 @@ constructor(props){
            return (
         <div>
           <div id="discussMenuEnd">
-            notes
+            Lessons
           </div>
-            <div id="suggestionFormComponent">
-                <form id="suggestionForm">
-                    <fieldset id='fieldSetNoBorderPadding'>
-                        {/*<legend>Create a Lesson</legend>*/}
-                            <textarea name="suggestionText" required="required" id="learnContentTextArea" 
-                            placeholder="Create new notes for your project" ></textarea>
-                            <input type="button" value="Create" onClick={this.postLearnItem} id="addSuggestion"/>
-                    </fieldset>
-                </form>
-            </div>
+          <Link to={`/project/private/${this.props.params.probID}/learn/content`}>
+                <img src={require('../../assets/redX.svg')} id="closeRedXNoMargin" width="30" height="30" alt="Close button, red X symbol" />
+          </Link>
+          <div id="suggestionFormComponent">
+              <form id="suggestionForm">
+                  <fieldset id='fieldSetNoBorderPadding'>
+                    {/* <label htmlFor="problemTitleForm" id="problemTitleFormLabel">lesson title<br /> */}
+                      <input type="text" name="problemTitle" placeholder="LESSON TITLE" required="required" maxLength="70" id="lessonTitleForm" />
+                    {/* </label><br /> */}
+
+                    <label htmlFor="problemTitleForm" id="problemTitleFormLabel">overview<br />
+                    <textarea name="suggestionText" required="required" id="learnContentSummary" 
+                    placeholder="Give an overview of your lesson." ></textarea>
+                    </label><br />
+
+                    <label htmlFor="problemTitleForm" id="problemTitleFormLabel">overview<br />
+                    <textarea name="suggestionText" required="required" id="learnContentTextArea" 
+                    placeholder="Create a lesson to help others understand this project, promoting future advancement." ></textarea>
+                    </label><br />
+                    <Link to={`/project/private/${this.props.params.probID}/learn/content`}>
+                      <input type="button" value="Create" onClick={this.postLearnItem} id="addSuggestion"/>
+                    </Link>
+                  </fieldset>
+              </form>
+          </div>
         </div>
       );
     }  

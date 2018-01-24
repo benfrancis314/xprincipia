@@ -10,42 +10,28 @@ export default class CommentUnit extends React.Component {
     constructor(props){
         super(props);
 
-         this.renderItem = this.renderItem.bind(this);
-    };
-    componentDidMount() {
-        var self = this
-        self.setState({
+        this.state = {
             voteHash : {},
             debateNumber : [],
-        })
-    }
+        }
 
+         this.renderItem = this.renderItem.bind(this);
+    };
 
-
-    componentWillReceiveProps (props) {
+    componentWillReceiveProps (nextProps) {
         var self = this
-        self.setState({
-            voteHash : {},
-            debateNumber : {},
-        })
-        props.comments.forEach( function (comment){
+        nextProps.comments.forEach( function (comment){
             axios.get( Config.API + "/vote/isVotedOn?type=5&typeID=" + comment.ID + "&username=" + cookie.load("userName"))
             .then( function (response) {  
                 const voteHash = self.state.voteHash;
 
                 voteHash[comment.ID] = response.data
-                self.setState({
-                    voteHash,
-                })
             })  
             axios.get( Config.API + '/comments/number?parentID='+comment.ID)
             .then(function (response) {
                 const debateNumber = self.state.debateNumber;
                 
                 debateNumber[comment.ID] = response.data
-                self.setState({
-                    debateNumber,
-                })
             })
         })
     }

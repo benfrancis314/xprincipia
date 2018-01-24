@@ -50,7 +50,7 @@ export default class SubProblemUnit extends React.Component {
 				<li>
 					<img src={require('../../assets/leftArrow.svg')} id="SParrowImg" width="50" height="50" alt="User avatar, DNA Helix" />
 				</li>
-				<Link to={`/project/${this.props.probID}/proposal/${this.props.solutionID}/subprojects/create`} activeClassName="activePrivateCreateButton">
+				<Link to={`/project/${this.props.probID}/proposal/${this.props.solutionID}/create`} activeClassName="activePrivateCreateButton">
 						<li id="SPUnit">
 								<div id="SPHeader" onMouseOver={this.hoverText} onMouseOut={this.unHoverText}>
 										<img src={require('../../assets/blueAdd2.svg')} id="privateNewProjectPlus" width="80" height="80" alt="User avatar, DNA Helix" />

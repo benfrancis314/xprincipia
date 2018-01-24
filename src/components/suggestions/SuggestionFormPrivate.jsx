@@ -3,6 +3,7 @@ import axios from 'axios';
 import cookie from 'react-cookie';
 import {Config} from '../../config.js';
 import $ from 'jquery';
+import { Link } from 'react-router';
 
 export default class SuggestionForm extends React.Component {
 
@@ -34,7 +35,8 @@ this.state.suggestion = document.getElementById('suggestionTextArea').value
         parentID: this.props.params.probID,
     })
       .then(function (result) {
-        document.location = window.location.pathname 
+        // document.location = window.location.pathname 
+        document.getElementById("questionForm").reset();
       })
       .catch(function (error) {
         alert('error')
@@ -67,7 +69,8 @@ this.state.suggestion = document.getElementById('suggestionTextArea').value
         private: '1',
     })
       .then(function (result) {
-        document.location = window.location.pathname 
+        // document.location = window.location.pathname 
+        document.getElementById("questionForm").reset();
       })
       .catch(function (error) {
           $(document).ready(function() {
@@ -91,6 +94,7 @@ this.state.suggestion = document.getElementById('suggestionTextArea').value
 
 
    render() {
+    if (this.props.params.solutionID){
       return (
       <div>
         <div id="discussMenuEnd">
@@ -99,14 +103,33 @@ this.state.suggestion = document.getElementById('suggestionTextArea').value
         <div id="suggestionFormComponent">
               <form id="questionForm">
                   <fieldset  id='fieldSetNoBorderPadding'>
-                      {/*<legend>Suggestions</legend>*/}
-                          <textarea name="suggestionText" required="required" id="suggestionTextArea" placeholder="Plant the seed of an idea or suggest a direction to take the project. " ></textarea>
-                          <input type="button" value="Add" onClick={this.postSuggestion} id="addSuggestion"/>
+                    <textarea name="suggestionText" required="required" id="suggestionTextArea" placeholder="Give a suggestion you have about this project or view those given by your peers. " ></textarea>
+                    <Link to={`/project/private/${this.props.params.probID}/proposal/${this.props.params.solutionID}/suggestions`}>
+                      <input type="button" value="Add" onClick={this.postSuggestion} id="addSuggestion"/>
+                    </Link>
                   </fieldset>
               </form>
         </div>
       </div>
 
       );
+   } else {
+     return (
+    <div>
+    <div id="discussMenuEnd">
+      suggestions
+    </div>
+    <div id="suggestionFormComponent">
+          <form id="questionForm">
+              <fieldset  id='fieldSetNoBorderPadding'>
+                <textarea name="suggestionText" required="required" id="suggestionTextArea" placeholder="Give a suggestion you have about this project or view those given by your peers. " ></textarea>
+                <Link to={`/project/private/${this.props.params.probID}/suggestions`}>
+                  <input type="button" value="Add" onClick={this.postSuggestion} id="addSuggestion"/>
+                </Link>
+              </fieldset>
+          </form>
+    </div>
+  </div>);
    }
+  }
 }

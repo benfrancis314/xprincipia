@@ -3,6 +3,7 @@ import axios from 'axios';
 import cookie from 'react-cookie';
 import {Config} from '../../config.js';
 import $ from 'jquery';
+import { Link } from 'react-router';
 
 export default class ConsForm extends React.Component {
 
@@ -26,9 +27,10 @@ this.state.con = document.getElementById('conTextArea').value
       typeID: this.props.params.solutionID,
       description : this.state.con,
       parentID: this.props.params.probID,
+      private: '1',
     })
       .then(function (result) {
-        document.location = window.location.pathname 
+        document.getElementById("suggestionForm").reset();
         // scroll to cons again
       })
       .catch(function (error) {
@@ -56,15 +58,16 @@ this.state.con = document.getElementById('conTextArea').value
       return (
       <div>
         <div id="discussMenuEnd">
-          Cons
+          contra
         </div>
         <div id="suggestionFormComponent">
               <form id="suggestionForm">
                   <fieldset  id='fieldSetNoBorderPadding'>
                       {/*<legend>Pros</legend>*/}
-                          <textarea name="suggestionText" required="required" id="conTextArea" placeholder="Add a con towards the merit of this proposal. " autoFocus ></textarea>
-                          {/*Replace with blueAdd button*/}
-                          <input type="button" value="Add" onClick={this.postCon} id="addProsCons"/>
+                          <textarea name="suggestionText" required="required" id="conTextArea" placeholder="Describe a way this proposal could improve. " autoFocus ></textarea>
+                          <Link to={`/project/private/${this.props.params.probID}/proposal/${this.props.params.solutionID}/cons`}>
+                            <input type="button" value="Add" onClick={this.postCon} id="addProsCons"/>
+                          </Link>
                   </fieldset>
               </form>
         </div>

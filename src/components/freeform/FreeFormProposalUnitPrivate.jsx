@@ -10,41 +10,29 @@ export default class FreeFormUnit extends React.Component {
     constructor(props){
         super(props);
 
-         this.renderItem = this.renderItem.bind(this);
-    };
-    componentDidMount() {
-        var self = this
-        self.setState({
+        this.state = {
             voteHash : {},
             debateNumber : [],
-        })
-    }
+        }
+
+         this.renderItem = this.renderItem.bind(this);
+    };
 
 
-
-    componentWillReceiveProps (props) {
+    componentWillReceiveProps (nextProps) {
         var self = this
-        self.setState({
-            voteHash : {},
-            debateNumber : {},
-        })
-        props.freeForms.forEach( function (freeForm){
+
+        nextProps.freeForms.forEach( function (freeForm){
             axios.get( Config.API + "/vote/isVotedOn?type=6&typeID=" + freeForm.ID + "&username=" + cookie.load("userName"))
             .then( function (response) {  
                 const voteHash = self.state.voteHash;
 
                 voteHash[freeForm.ID] = response.data
-                self.setState({
-                    voteHash,
-                })
             })  
             axios.get( Config.API + '/comments/number?parent_id='+freeForm.ID + '&parent_type=6').then(function (response) {
                 const debateNumber = self.state.debateNumber;
                 
                 debateNumber[freeForm.ID] = response.data
-                self.setState({
-                    debateNumber,
-                })
             })
         })
     }
@@ -65,7 +53,7 @@ export default class FreeFormUnit extends React.Component {
            
         })
         .then(function (result) {
-            document.location = window.location.pathname;
+            // document.location = window.location.pathname;
         })
       .catch(function (error) {
           $(document).ready(function() {
@@ -93,7 +81,7 @@ export default class FreeFormUnit extends React.Component {
         }
         })
         .then(function (result) {
-            document.location = window.location.pathname 
+            // document.location = window.location.pathname 
         })
       .catch(function (error) {
           $(document).ready(function() {
@@ -145,9 +133,11 @@ export default class FreeFormUnit extends React.Component {
                         <span id="discussPercent">{floatToDecimal(freeForm.PercentRank)}</span>
                         {freeForm.Username}
                     </div>
-                    <div id="suggestionText" onClick={unVote} onMouseOver={hoverVoteVoted} onMouseOut={unHoverVoteVoted}>
-                        {freeForm.Description}
-                    </div>
+                    <Link to={`/project/private/${this.props.probID}/proposal/${freeForm.TypeID}/debates`}>
+                        <div id="suggestionText" onClick={unVote} onMouseOver={hoverVoteVoted} onMouseOut={unHoverVoteVoted}>
+                            {freeForm.Description}
+                        </div>
+                    </Link>
 				</div>
         </li>);
     }  else if ( freeForm.Username === cookie.load('userName')) {
@@ -179,9 +169,11 @@ export default class FreeFormUnit extends React.Component {
                         <span id="discussPercent">{floatToDecimal(freeForm.PercentRank)}</span>
 					    {freeForm.Username}
                     </div>
-                    <div id="suggestionText" onClick={submitVote} onMouseOver={hoverVote} onMouseOut={unHoverVote}>
-                        {freeForm.Description}
-                    </div>
+                    <Link to={`/project/private/${this.props.probID}/proposal/${freeForm.TypeID}/debates`}>
+                        <div id="suggestionText" onClick={submitVote} onMouseOver={hoverVote} onMouseOut={unHoverVote}>
+                            {freeForm.Description}
+                        </div>
+                    </Link>
 				</div>
         </li>);
     } else if (this.state.voteHash[freeForm.ID] === true) {
@@ -193,11 +185,11 @@ export default class FreeFormUnit extends React.Component {
                             <img src={require('../../assets/list4.svg')} id="debateThreadLogo" width="50" height="50" alt="Delete Button, Red X" />
                         </div>
                     </Link>
-                    {/* <Link to={`/project/private/${this.props.probID}/proposal/${freeForm.TypeID}/debate/${freeForm.ID}/flag`}>
+                    <Link to={`/project/private/${this.props.probID}/proposal/${freeForm.TypeID}/debate/${freeForm.ID}/flag`}>
                         <div id="flagDiscussButton" onMouseOver={hoverFlagVoted} onMouseOut={unHoverFlagVoted}>
                             <img src={require('../../assets/flag.svg')} id="deleteLogo" width="24" height="24" alt="Delete Button, Red X" />
                         </div>
-                    </Link> */}
+                    </Link>
                     <Link to={`/project/private/${this.props.probID}/proposal/${freeForm.TypeID}/debate/${freeForm.ID}/comments`}>
                         <div id="numberDiscussButton" onMouseOver={hoverThreadVoted} onMouseOut={unHoverThreadVoted}>
                             {this.state.debateNumber[freeForm.ID]}
@@ -210,9 +202,11 @@ export default class FreeFormUnit extends React.Component {
                         <span id="discussPercent">{floatToDecimal(freeForm.PercentRank)}</span>
                         {freeForm.Username}
                     </div>
-                    <div id="suggestionText" onClick={unVote} onMouseOver={hoverVoteVoted} onMouseOut={unHoverVoteVoted}>
-                        {freeForm.Description}
-                    </div>
+                    <Link to={`/project/private/${this.props.probID}/proposal/${freeForm.TypeID}/debates`}>
+                        <div id="suggestionText" onClick={unVote} onMouseOver={hoverVoteVoted} onMouseOut={unHoverVoteVoted}>
+                            {freeForm.Description}
+                        </div>
+                    </Link>
 				</div>
         </li>);
 
@@ -225,11 +219,11 @@ export default class FreeFormUnit extends React.Component {
                         <img src={require('../../assets/list4.svg')} id="debateThreadLogo" width="50" height="50" alt="Delete Button, Red X" />
                     </div>
                 </Link>
-                {/* <Link to={`/project/private/${this.props.probID}/proposal/${freeForm.TypeID}/debate/${freeForm.ID}/flag`}>
+                <Link to={`/project/private/${this.props.probID}/proposal/${freeForm.TypeID}/debate/${freeForm.ID}/flag`}>
                     <div id="flagDiscussButton" onMouseOver={hoverFlag} onMouseOut={unHoverFlag}>
                         <img src={require('../../assets/flag.svg')} id="deleteLogo" width="24" height="24" alt="Delete Button, Red X" />
                     </div>
-                </Link> */}
+                </Link>
                 <Link to={`/project/private/${this.props.probID}/proposal/${freeForm.TypeID}/debate/${freeForm.ID}/comments`}>
                     <div id="numberDiscussButton" onMouseOver={hoverThread} onMouseOut={unHoverThread}>
                         {this.state.debateNumber[freeForm.ID]}
@@ -240,9 +234,11 @@ export default class FreeFormUnit extends React.Component {
                     <span id="discussPercent">{floatToDecimal(freeForm.PercentRank)}</span>
                     {freeForm.Username}
                 </div>
-                <div id="suggestionText" onClick={submitVote} onMouseOver={hoverVote} onMouseOut={unHoverVote}>
-                    {freeForm.Description}
-                </div>
+                <Link to={`/project/private/${this.props.probID}/proposal/${freeForm.TypeID}/debates`}>
+                    <div id="suggestionText" onClick={submitVote} onMouseOver={hoverVote} onMouseOut={unHoverVote}>
+                        {freeForm.Description}
+                    </div>
+                </Link>
             </div>
         </li>);
 }
@@ -406,465 +402,3 @@ function floatToDecimal(float) {
 
 
 
-
-
-// import React from 'react';
-// import { Link } from 'react-router';
-// import axios from 'axios';
-// import cookie from 'react-cookie';
-// import {Config} from '../../config.js';
-// import $ from 'jquery';
-
-// export default class FreeFormUnit extends React.Component {
-//     constructor(props){
-//         super(props);
-
-//          this.renderItem = this.renderItem.bind(this)
-//     };
-  
-//     componentWillReceiveProps (props) {
-//         var self = this
-//         self.setState({
-//             voteHash : {},
-//         })
-//         props.freeForms.forEach( function (freeForm){
-//             axios.get( Config.API + "/vote/isVotedOn?type=6&typeID=" + freeForm.ID + "&username=" + cookie.load("userName"))
-//             .then( function (response) {  
-//                 const voteHash = self.state.voteHash;
-
-//                 voteHash[freeForm.ID] = response.data
-//                 self.setState({
-//                     voteHash,
-//                 })
-//             })  
-//         })
-//     }
-
-// 	render() {
-// 		return (
-// 	    <div>
-// 			<ul> {this.props.freeForms.map(this.renderItem)} </ul>
-	               
-// 	    </div>
-// 		);
-// 	}
-// 	renderItem(freeForm) {
-
-//        function  submitVote() {
-//        axios.post( Config.API + '/auth/vote/create', {
-//            Type: 6,
-//            TypeID: freeForm.ID,
-//            username : cookie.load("userName"),
-           
-//         })
-//         .then(function (result) {
-//             document.location = window.location.pathname;
-//         })
-//       .catch(function (error) {
-//         // console.log(error.response.data)
-//           $(document).ready(function() {
-//               $('#notification').attr('id','notificationShow').hide().slideDown();
-
-//                 if (error.response.data == '[object Object]') {
-//                   return (
-//                     $(document).ready(function() {
-//                       $('#notificationLoginRegisterContainer').attr('id','notificationLoginRegisterContainerShow');
-//                       $('#notificationContent').html('Please <span id="blue">login </span>to vote');
-//                     })
-//                   );
-//                 }  else if (error.response.data != '') {
-//                 $('#notificationContent').text(error.response.data);
-//               }
-//           });
-//       });
-//   }
-//       function unVote() {
-//       axios.delete( Config.API + '/auth/vote/delete' ,{
-//         params: {
-//           type: 6,
-//           typeID: freeForm.ID,
-//           username: cookie.load('userName')
-//         }
-//         })
-//         .then(function (result) {
-//             document.location = window.location.pathname 
-//         })
-//       .catch(function (error) {
-//         // console.log(error.response.data)
-//           $(document).ready(function() {
-//               $('#notification').attr('id','notificationShow').hide().slideDown();
-
-//                 if (error.response.data == '[object Object]') {
-//                   return (
-//                     $(document).ready(function() {
-//                       $('#notificationLoginRegisterContainer').attr('id','notificationLoginRegisterContainerShow');
-//                       $('#notificationContent').html('Please <span id="blue">login </span>to vote');
-//                     })
-//                   );
-//                 }  else if (error.response.data != '') {
-//                 $('#notificationContent').text(error.response.data);
-//               }
-//           });
-//       });
-// }
-  
-//        if (this.state.voteHash[freeForm.ID] === true && freeForm.Username === cookie.load('userName')) {
-//            return (
-//        <li key={freeForm.ID} id="suggestionUnit">
-// 				<div id="suggestionContent">
-// 					<div id="discussHeader">
-//                         <span id="discussPercent">{floatToDecimal(freeForm.PercentRank)}</span>
-// 					    {freeForm.Username}
-//                     </div>
-//                     <div id="suggestionText">
-//                         {freeForm.Description}
-//                     </div>
-// 				</div>
-//                     <Link to={`/project/${this.props.probID}/proposal/${freeForm.TypeID}/debate/${freeForm.ID}/delete`}>
-//                         <div id="deleteSBButton">
-//                             <img src={require('../../assets/delete.svg')} id="editLogo" width="18" height="18" alt="Delete Button" />
-//                         </div>
-//                     </Link>
-//                     <Link to={`/project/${this.props.probID}/proposal/${freeForm.TypeID}/debate/${freeForm.ID}/edit`}>
-//                         <div id="editSBButtonAnswer">
-//                             <img src={require('../../assets/editBlue.svg')} id="editLogo" width="18" height="18" alt="Edit Button" />
-//                         </div>
-//                     </Link>
-// 				{/*<Link  to={`/project/${freeForm.TypeID}/freeform/${freeForm.ID}/comments`} activeClassName="activeBlue">
-//                     <div id="commentSBButtonUser">
-//                             <img src={require('../../assets/comments.svg')} id="commentLogo" width="24" height="24" alt="Comments Button" />
-//                     </div>
-//                 </Link> */}
-//                 <button type="button" onClick={unVote} id="suggestionVoted">
-//                     Voted
-//                 </button>             
-//                 <br /><br /> 
-//         </li>);
-//     }  else if ( freeForm.Username === cookie.load('userName')) {
-//         return (
-//        <li key={freeForm.ID} id="suggestionUnit">
-// 				<div id="suggestionContent">
-// 					<div id="discussHeader">
-//                         <span id="discussPercent">{floatToDecimal(freeForm.PercentRank)}</span>
-// 					    {freeForm.Username}
-//                     </div>
-//                     <div id="suggestionText">
-//                         {freeForm.Description}
-//                     </div>
-// 				</div>
-//                     <Link to={`/project/${this.props.probID}/proposal/${freeForm.TypeID}/debate/${freeForm.ID}/delete`}>
-//                         <div id="deleteSBButton">
-//                             <img src={require('../../assets/delete.svg')} id="editLogo" width="18" height="18" alt="Delete Button" />
-//                         </div>
-//                     </Link>
-//                     <Link to={`/project/${this.props.probID}/proposal/${freeForm.TypeID}/debate/${freeForm.ID}/edit`}>
-//                         <div id="editSBButtonAnswer">
-//                             <img src={require('../../assets/editBlue.svg')} id="editLogo" width="18" height="18" alt="Edit Button" />
-//                         </div>
-//                     </Link>
-// 				{/*<Link  to={`/project/${freeForm.TypeID}/freeform/${freeForm.ID}/comments`} activeClassName="activeBlue">
-//                     <div id="commentSBButtonUser">
-//                             <img src={require('../../assets/comments.svg')} id="commentLogo" width="24" height="24" alt="Comments Button" />
-//                     </div>
-//                 </Link> */}
-//                 <button type="button" onClick={submitVote} id="suggestionVote">
-//                     Vote
-//                 </button>             
-//                 <br /><br /> 
-//         </li>);
-//     } else if (this.state.voteHash[freeForm.ID] === true) {
-//         return (
-//        <li key={freeForm.ID} id="suggestionUnit">
-// 				<div id="suggestionContent">
-// 					<div id="discussHeader">
-//                         <span id="discussPercent">{floatToDecimal(freeForm.PercentRank)}</span>
-// 					    {freeForm.Username}
-//                     </div>
-//                     <div id="suggestionText">
-//                         {freeForm.Description}
-//                     </div>
-// 				</div>
-//                     {/*<Link to={`/project/${freeForm.TypeID}/freeform/${freeForm.ID}/flag`}>
-//                         <div id="flagSBButton">
-//                             <img src={require('.../src/assets/flag.svg')} id="deleteLogo" width="11" height="11" alt="Delete Button, Red X" />
-//                             Flag
-//                         </div>
-//                     </Link>*/}
-// 				{/*<Link  to={`/project/${freeForm.TypeID}/freeform/${freeForm.ID}/comments`} activeClassName="activeBlue">
-//                     <div id="commentSBButtonUser">
-//                             <img src={require('../../assets/comments.svg')} id="commentLogo" width="24" height="24" alt="Comments Button" />
-//                     </div>
-//                 </Link> */}
-//                 <button type="button" onClick={unVote} id="suggestionVoted">
-//                     Voted
-//                 </button>             
-//                 <br /><br /> 
-//         </li>);
-
-//     } else {
-//     return (
-//        <li key={freeForm.ID} id="suggestionUnit">
-// 				<div id="suggestionContent">
-// 					<div id="discussHeader">
-//                         <span id="discussPercent">{floatToDecimal(freeForm.PercentRank)}</span>
-// 					    {freeForm.Username}
-//                     </div>
-//                     <div id="suggestionText">
-//                         {freeForm.Description}
-//                     </div>
-// 				</div>
-//                     {/*<Link to={`/project/${freeForm.TypeID}/freeform/${freeForm.ID}/flag`}>
-//                         <div id="flagSBButton">
-//                             <img src={require('.../src/assets/flag.svg')} id="deleteLogo" width="11" height="11" alt="Delete Button, Red X" />
-//                             Flag
-//                         </div>
-//                     </Link>*/}
-// 				{/*<Link  to={`/project/${freeForm.TypeID}/freeform/${freeForm.ID}/comments`} activeClassName="activeBlue">
-//                     <div id="commentSBButtonUser">
-//                             <img src={require('../../assets/comments.svg')} id="commentLogo" width="24" height="24" alt="Comments Button" />
-//                     </div>
-//                 </Link> */}
-//                 <button type="button" onClick={submitVote} id="suggestionVoteNoComments">
-//                     Vote
-//                 </button>             
-//                 <br /><br /> 
-//         </li>);
-//   }
-// }}
-
-// //convert float to Decimal
-// function floatToDecimal(float) {
-// 	return Math.round(float*100)+'%';
-// }
-
-
-
-
-// import React from 'react';
-// import { Link } from 'react-router';
-// import axios from 'axios';
-// import cookie from 'react-cookie';
-// import {Config} from '../../config.js';
-// import $ from 'jquery';
-
-// export default class FreeFormUnit extends React.Component {
-//     constructor(props){
-//         super(props);
-
-//          this.renderItem = this.renderItem.bind(this)
-//     };
-  
-//     componentWillReceiveProps (props) {
-//         var self = this
-//         self.setState({
-//             voteHash : {},
-//         })
-//         props.freeForms.forEach( function (freeForm){
-//             axios.get( Config.API + "/vote/isVotedOn?type=6&typeID=" + freeForm.ID + "&username=" + cookie.load("userName"))
-//             .then( function (response) {  
-//                 const voteHash = self.state.voteHash;
-
-//                 voteHash[freeForm.ID] = response.data
-//                 self.setState({
-//                     voteHash,
-//                 })
-//             })  
-//         })
-//     }
-
-// 	render() {
-// 		return (
-// 	    <div>
-// 			<ul> {this.props.freeForms.map(this.renderItem)} </ul>
-	               
-// 	    </div>
-// 		);
-// 	}
-// 	renderItem(freeForm) {
-
-//        function  submitVote() {
-//        axios.post( Config.API + '/auth/vote/create', {
-//            Type: 6,
-//            TypeID: freeForm.ID,
-//            username : cookie.load("userName"),
-           
-//         })
-//         .then(function (result) {
-//             document.location = window.location.pathname;
-//         })
-//       .catch(function (error) {
-//         // console.log(error.response.data)
-//           $(document).ready(function() {
-//               $('#notification').attr('id','notificationShow').hide().slideDown();
-
-//                 if (error.response.data == '[object Object]') {
-//                   return (
-//                     $(document).ready(function() {
-//                       $('#notificationLoginRegisterContainer').attr('id','notificationLoginRegisterContainerShow');
-//                       $('#notificationContent').html('Please <span id="blue">login </span>to vote');
-//                     })
-//                   );
-//                 }  else if (error.response.data != '') {
-//                 $('#notificationContent').text(error.response.data);
-//               }
-//           });
-//       });
-//   }
-//       function unVote() {
-//       axios.delete( Config.API + '/auth/vote/delete' ,{
-//         params: {
-//           type: 6,
-//           typeID: freeForm.ID,
-//           username: cookie.load('userName')
-//         }
-//         })
-//         .then(function (result) {
-//             document.location = window.location.pathname 
-//         })
-//       .catch(function (error) {
-//         // console.log(error.response.data)
-//           $(document).ready(function() {
-//               $('#notification').attr('id','notificationShow').hide().slideDown();
-
-//                 if (error.response.data == '[object Object]') {
-//                   return (
-//                     $(document).ready(function() {
-//                       $('#notificationLoginRegisterContainer').attr('id','notificationLoginRegisterContainerShow');
-//                       $('#notificationContent').html('Please <span id="blue">login </span>to vote');
-//                     })
-//                   );
-//                 }  else if (error.response.data != '') {
-//                 $('#notificationContent').text(error.response.data);
-//               }
-//           });
-//       });
-// }
-  
-//        if (this.state.voteHash[freeForm.ID] === true && freeForm.Username === cookie.load('userName')) {
-//            return (
-//        <li key={freeForm.ID} id="suggestionUnit">
-// 				<div id="suggestionContent">
-// 					<div id="discussHeader">
-//                         <span id="discussPercent">{floatToDecimal(freeForm.PercentRank)}</span>
-// 					    {freeForm.Username}
-//                     </div>
-//                     <div id="suggestionText">
-//                         {freeForm.Description}
-//                     </div>
-// 				</div>
-//                     <Link to={`/project/private/${this.props.probID}/proposal/${this.props.solutionID}/debate/${freeForm.ID}/delete`}>
-//                         <div id="deleteSBButton">
-//                             <img src={require('../../assets/delete.svg')} id="editLogo" width="18" height="18" alt="Delete Button" />
-//                         </div>
-//                     </Link>
-//                     <Link to={`/project/private/${this.props.probID}/proposal/${this.props.solutionID}/debate/${freeForm.ID}/edit`}>
-//                         <div id="editSBButtonAnswer">
-//                             <img src={require('../../assets/editBlue.svg')} id="editLogo" width="18" height="18" alt="Edit Button" />
-//                         </div>
-//                     </Link>
-// 				{/*<Link  to={`/project/${freeForm.TypeID}/freeform/${freeForm.ID}/comments`} activeClassName="activeBlue">
-//                     <div id="commentSBButtonUser">
-//                             <img src={require('../../assets/comments.svg')} id="commentLogo" width="24" height="24" alt="Comments Button" />
-//                     </div>
-//                 </Link> */}
-//                 <button type="button" onClick={unVote} id="suggestionVoted">
-//                     Voted
-//                 </button>             
-//                 <br /><br /> 
-//         </li>);
-//     }  else if ( freeForm.Username === cookie.load('userName')) {
-//         return (
-//        <li key={freeForm.ID} id="suggestionUnit">
-// 				<div id="suggestionContent">
-// 					<div id="discussHeader">
-//                         <span id="discussPercent">{floatToDecimal(freeForm.PercentRank)}</span>
-// 					    {freeForm.Username}
-//                     </div>
-//                     <div id="suggestionText">
-//                         {freeForm.Description}
-//                     </div>
-// 				</div>
-//                     <Link to={`/project/private/${this.props.probID}/proposal/${this.props.solutionID}/debate/${freeForm.ID}/delete`}>
-//                         <div id="deleteSBButton">
-//                             <img src={require('../../assets/delete.svg')} id="editLogo" width="18" height="18" alt="Delete Button" />
-//                         </div>
-//                     </Link>
-//                     <Link to={`/project/private/${this.props.probID}/proposal/${this.props.solutionID}/debate/${freeForm.ID}/edit`}>
-//                         <div id="editSBButtonAnswer">
-//                             <img src={require('../../assets/editBlue.svg')} id="editLogo" width="18" height="18" alt="Edit Button" />
-//                         </div>
-//                     </Link>
-// 				{/*<Link  to={`/project/${freeForm.TypeID}/freeform/${freeForm.ID}/comments`} activeClassName="activeBlue">
-//                     <div id="commentSBButtonUser">
-//                             <img src={require('../../assets/comments.svg')} id="commentLogo" width="24" height="24" alt="Comments Button" />
-//                     </div>
-//                 </Link> */}
-//                 <button type="button" onClick={submitVote} id="suggestionVote">
-//                     Vote
-//                 </button>             
-//                 <br /><br /> 
-//         </li>);
-//     } else if (this.state.voteHash[freeForm.ID] === true) {
-//         return (
-//        <li key={freeForm.ID} id="suggestionUnit">
-// 				<div id="suggestionContent">
-// 					<div id="discussHeader">
-//                         <span id="discussPercent">{floatToDecimal(freeForm.PercentRank)}</span>
-// 					    {freeForm.Username}
-//                     </div>
-//                     <div id="suggestionText">
-//                         {freeForm.Description}
-//                     </div>
-// 				</div>
-//                     {/*<Link to={`/project/${freeForm.TypeID}/freeform/${freeForm.ID}/flag`}>
-//                         <div id="flagSBButton">
-//                             <img src={require('.../src/assets/flag.svg')} id="deleteLogo" width="11" height="11" alt="Delete Button, Red X" />
-//                             Flag
-//                         </div>
-//                     </Link>*/}
-// 				{/*<Link  to={`/project/${freeForm.TypeID}/freeform/${freeForm.ID}/comments`} activeClassName="activeBlue">
-//                     <div id="commentSBButtonUser">
-//                             <img src={require('../../assets/comments.svg')} id="commentLogo" width="24" height="24" alt="Comments Button" />
-//                     </div>
-//                 </Link> */}
-//                 <button type="button" onClick={unVote} id="suggestionVoted">
-//                     Voted
-//                 </button>             
-//                 <br /><br /> 
-//         </li>);
-
-//     } else {
-//     return (
-//        <li key={freeForm.ID} id="suggestionUnit">
-// 				<div id="suggestionContent">
-// 					<div id="discussHeader">
-//                         <span id="discussPercent">{floatToDecimal(freeForm.PercentRank)}</span>
-// 					    {freeForm.Username}
-//                     </div>
-//                     <div id="suggestionText">
-//                         {freeForm.Description}
-//                     </div>
-// 				</div>
-//                     {/*<Link to={`/project/${freeForm.TypeID}/freeform/${freeForm.ID}/flag`}>
-//                         <div id="flagSBButton">
-//                             <img src={require('.../src/assets/flag.svg')} id="deleteLogo" width="11" height="11" alt="Delete Button, Red X" />
-//                             Flag
-//                         </div>
-//                     </Link>*/}
-// 				{/*<Link  to={`/project/${freeForm.TypeID}/freeform/${freeForm.ID}/comments`} activeClassName="activeBlue">
-//                     <div id="commentSBButtonUser">
-//                             <img src={require('../../assets/comments.svg')} id="commentLogo" width="24" height="24" alt="Comments Button" />
-//                     </div>
-//                 </Link> */}
-//                 <button type="button" onClick={submitVote} id="suggestionVoteNoComments">
-//                     Vote
-//                 </button>             
-//                 <br /><br /> 
-//         </li>);
-//   }
-// }}
-
-// //convert float to Decimal
-// function floatToDecimal(float) {
-// 	return Math.round(float*100)+'%';
-// }

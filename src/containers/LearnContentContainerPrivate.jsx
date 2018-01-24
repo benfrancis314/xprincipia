@@ -12,7 +12,7 @@ constructor(props){
         }
         
     };
-    componentWillMount(){
+    componentDidMount(){
         var self = this;
         if(this.props.params.solutionID){
             return axios.get( Config.API + '/learnItems/typeID?id='+this.props.params.solutionID+'&dataType=1').then(function (response) {
@@ -22,6 +22,22 @@ constructor(props){
             })  
         } else {
             return axios.get( Config.API + '/learnItems/typeID?id='+this.props.params.probID+'&dataType=0').then(function (response) {
+                self.setState({
+                    learnItems: response.data
+                })
+            }) 
+        }
+    }
+    componentWillReceiveProps(nextProps){
+        var self = this;
+        if(this.props.params.solutionID){
+            return axios.get( Config.API + '/learnItems/typeID?id='+nextProps.params.solutionID+'&dataType=1').then(function (response) {
+                self.setState({
+                    learnItems: response.data
+                })
+            })  
+        } else {
+            return axios.get( Config.API + '/learnItems/typeID?id='+nextProps.params.probID+'&dataType=0').then(function (response) {
                 self.setState({
                     learnItems: response.data
                 })

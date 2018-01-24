@@ -28,10 +28,9 @@ deleteQuestion() {
         }
       })
       .then(function (result) {
-        document.location = window.location.pathname 
+        // document.location = window.location.pathname 
       })
       .catch(function (error) {
-        // console.log(error.response.data)
           $(document).ready(function() {
               $('#notification').attr('id','notificationShow').hide().slideDown();
               if (error.response.data != '') {
@@ -84,7 +83,9 @@ deleteQuestion() {
                         <legend>Delete Question</legend>
                             <div>Are you sure you would like to delete this question?</div>
                             <br />
-                              <div onClick={this.deleteQuestion} id="deleteButton">Delete</div>
+                            <Link to={`/project/${this.props.params.probID}/questions`}>
+                                <div onClick={this.deleteQuestion} id="deleteButton">Delete</div>
+                            </Link>
                             <Link to={`/project/${this.props.params.probID}/questions`}>
                                 <div id="returnButton">Exit</div>
                             </Link>
