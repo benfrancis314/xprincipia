@@ -74,7 +74,9 @@ class App extends React.Component {
 
   handleClick() {
     ReactGA.event({
+        // Replace with "Created project", "voted question", etc. 
         category: 'Navigation',
+        // Replace action with project ID, etc. for various things
         action: 'Clicked Link',
     });
     alert('click');
