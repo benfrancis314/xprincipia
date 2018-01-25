@@ -19,6 +19,8 @@ constructor(props){
 
 postComment() {
   //Read field items into component state
+  var self = this;
+  self.refs.btn.setAttribute("disabled", "disabled");
   this.state.comment = document.getElementById('commentTextArea').value
 
 // Testing to see if this can be used to make comments elsewhere
@@ -36,6 +38,7 @@ postComment() {
     .then(function (result) {
       // document.location = window.location.pathname 
       document.getElementById("answerForm").reset();
+      self.refs.btn.removeAttribute("disabled");
     })
           .catch(function (error) {
               $(document).ready(function() {
@@ -67,6 +70,7 @@ postComment() {
     .then(function (result) {
       // document.location = window.location.pathname; 
       document.getElementById("answerForm").reset();
+      self.refs.btn.removeAttribute("disabled");
     })
           .catch(function (error) {
               $(document).ready(function() {
@@ -97,6 +101,7 @@ postComment() {
       .then(function (result) {
         // document.location = window.location.pathname; 
         document.getElementById("answerForm").reset();
+        self.refs.btn.removeAttribute("disabled");
       })
             .catch(function (error) {
                 $(document).ready(function() {
@@ -127,6 +132,7 @@ postComment() {
     .then(function (result) {
       // document.location = window.location.pathname; 
       document.getElementById("answerForm").reset();
+      self.refs.btn.removeAttribute("disabled");
     })
           .catch(function (error) {
               $(document).ready(function() {
@@ -157,6 +163,7 @@ postComment() {
     .then(function (result) {
       // document.location = window.location.pathname; 
       document.getElementById("answerForm").reset();
+      self.refs.btn.removeAttribute("disabled");
     })
           .catch(function (error) {
               $(document).ready(function() {
@@ -187,6 +194,7 @@ postComment() {
   .then(function (result) {
     // document.location = window.location.pathname; 
     document.getElementById("answerForm").reset();
+    self.refs.btn.removeAttribute("disabled");
   })
         .catch(function (error) {
             $(document).ready(function() {
@@ -217,6 +225,7 @@ postComment() {
     .then(function (result) {
       // document.location = window.location.pathname; 
       document.getElementById("answerForm").reset();
+      self.refs.btn.removeAttribute("disabled");
     })
           .catch(function (error) {
               $(document).ready(function() {
@@ -247,6 +256,7 @@ postComment() {
       .then(function (result) {
         // document.location = window.location.pathname; 
         document.getElementById("answerForm").reset();
+        self.refs.btn.removeAttribute("disabled");
       })
             .catch(function (error) {
                 $(document).ready(function() {
@@ -282,7 +292,7 @@ postComment() {
                     {/*<legend>Comments</legend>*/}
                         <textarea name="answerText" required="required" id="commentTextArea" placeholder="Discuss this suggestion or view the current discussion of your peers. " autoFocus ></textarea>
                         <Link to={window.location.pathname}>
-                          <input type="button" value="Add" onClick={this.postComment} id="addAnswerGreen"/>
+                          <input type="button" ref='btn' value="Add" onClick={this.postComment} id="addAnswerGreen"/>
                         </Link>
                 </fieldset>
             </form>
@@ -301,7 +311,7 @@ postComment() {
                   {/*<legend>Comments</legend>*/}
                       <textarea name="answerText" required="required" id="commentTextArea" placeholder="Discuss this answer or view the current discussion of your peers. " autoFocus ></textarea>
                       <Link to={window.location.pathname}>
-                        <input type="button" value="Add" onClick={this.postComment} id="addAnswerGreen"/>
+                        <input type="button" ref='btn' value="Add" onClick={this.postComment} id="addAnswerGreen"/>
                       </Link>
               </fieldset>
           </form>
@@ -319,7 +329,7 @@ postComment() {
                   {/*<legend>Comments</legend>*/}
                       <textarea name="answerText" required="required" id="commentTextArea" placeholder="Give logical arguments to help advance this debate. " autoFocus ></textarea>
                       <Link to={window.location.pathname}>
-                        <input type="button" value="Add" onClick={this.postComment} id="addAnswerGreen"/>
+                        <input type="button" ref='btn' value="Add" onClick={this.postComment} id="addAnswerGreen"/>
                       </Link>
               </fieldset>
           </form>
@@ -337,7 +347,7 @@ postComment() {
                   {/*<legend>Comments</legend>*/}
                       <textarea name="answerText" required="required" id="commentTextArea" placeholder="Discuss this lesson or view the current discussion of your peers. " autoFocus ></textarea>
                       <Link to={window.location.pathname}>
-                        <input type="button" value="Add" onClick={this.postComment} id="addAnswerGreen"/>
+                        <input type="button" ref='btn' value="Add" onClick={this.postComment} id="addAnswerGreen"/>
                       </Link>
               </fieldset>
           </form>
@@ -355,7 +365,7 @@ postComment() {
                   {/*<legend>Comments</legend>*/}
                       <textarea name="answerText" required="required" id="commentTextArea" placeholder="Discuss this resource or view the current discussion of your peers. " autoFocus ></textarea>
                       <Link to={window.location.pathname}>
-                        <input type="button" value="Add" onClick={this.postComment} id="addAnswerGreen"/>
+                        <input type="button" ref='btn' value="Add" onClick={this.postComment} id="addAnswerGreen"/>
                       </Link>
               </fieldset>
           </form>
@@ -373,7 +383,7 @@ postComment() {
                   {/*<legend>Comments</legend>*/}
                       <textarea name="answerText" required="required" id="commentTextArea" placeholder="Discuss this pro or view the current discussion of your peers. " autoFocus ></textarea>
                       <Link to={window.location.pathname}>
-                        <input type="button" value="Add" onClick={this.postComment} id="addAnswerGreen"/>
+                        <input type="button" ref='btn' value="Add" onClick={this.postComment} id="addAnswerGreen"/>
                       </Link>
               </fieldset>
           </form>
@@ -392,7 +402,7 @@ postComment() {
                       <textarea name="answerText" required="required" id="commentTextArea" placeholder="Discuss this con or view the current discussion of your peers. " autoFocus ></textarea>
                       {/* <Link to={`/project/${this.props.params.probID}/proposal/${this.props.params.solutionID}/cons/${this.props.params.conID}/comments`}> */}
                       <Link to={window.location.pathname}>
-                        <input type="button" value="Add" onClick={this.postComment} id="addAnswerGreen"/>
+                        <input type="button" ref='btn' value="Add" onClick={this.postComment} id="addAnswerGreen"/>
                       </Link>
               </fieldset>
           </form>
@@ -410,7 +420,7 @@ postComment() {
                       {/*<legend>Comments</legend>*/}
                           <textarea name="answerText" required="required" id="commentTextArea" placeholder="Discuss this comment or view the current discussion of your peers. " autoFocus ></textarea>
                           <Link to={window.location.pathname}>
-                            <input type="button" value="Add" onClick={this.postComment} id="addAnswerGreen"/>
+                            <input type="button" ref='btn' value="Add" onClick={this.postComment} id="addAnswerGreen"/>
                           </Link>
                   </fieldset>
               </form>
@@ -428,7 +438,7 @@ postComment() {
                       {/*<legend>Comments</legend>*/}
                           <textarea name="answerText" required="required" id="commentTextArea" placeholder="Discuss or view the current discussion of your peers. " autoFocus ></textarea>
                           <Link to={window.location.pathname}>
-                            <input type="button" value="Add" onClick={this.postComment} id="addAnswerGreen"/>
+                            <input type="button" ref='btn' value="Add" onClick={this.postComment} id="addAnswerGreen"/>
                           </Link>
                   </fieldset>
               </form>

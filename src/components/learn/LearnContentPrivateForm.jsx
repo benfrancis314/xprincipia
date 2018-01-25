@@ -18,6 +18,8 @@ constructor(props){
         
     };
     postLearnItem() {
+      var self = this;
+      self.refs.btn.setAttribute("disabled", "disabled");
   //Read field items into component state
       this.state.title = document.getElementById('lessonTitleForm').value
       this.state.summary = document.getElementById('learnContentSummary').value
@@ -39,6 +41,7 @@ constructor(props){
     })
       .then(function (result) {
         document.getElementById("suggestionForm").reset();
+        self.refs.btn.removeAttribute("disabled");
       })
       .catch(function (error) {
         alert('error')
@@ -73,6 +76,7 @@ constructor(props){
     })
       .then(function (result) {
         document.getElementById("suggestionForm").reset();
+        self.refs.btn.removeAttribute("disabled");
       })
       .catch(function (error) {
           $(document).ready(function() {
@@ -119,7 +123,7 @@ constructor(props){
                     placeholder="Create a lesson to help others understand this project, promoting future advancement." ></textarea>
                     </label><br />
                     <Link to={`/project/private/${this.props.params.probID}/learn/content`}>
-                      <input type="button" value="Create" onClick={this.postLearnItem} id="addSuggestion"/>
+                      <input type="button" ref='btn' value="Create" onClick={this.postLearnItem} id="addSuggestion"/>
                     </Link>
                   </fieldset>
               </form>

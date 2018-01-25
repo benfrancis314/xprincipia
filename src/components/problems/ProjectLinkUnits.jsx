@@ -9,11 +9,6 @@ export default class WelcomeUserUnit extends React.Component {
     constructor(){
         super();
 
-        this.state = {
-            currentNotebook: '',
-            notebooks: [],
-            rerender: '',
-        }
         this.hideExplain = this.hideExplain.bind(this);
         this.renderItem = this.renderItem.bind(this);
         this.linkIDExplain = this.linkIDExplain.bind(this)           
@@ -66,8 +61,14 @@ export default class WelcomeUserUnit extends React.Component {
 
 
         function createLink() {
+            $(document).ready(function() {
+                $('div.linkConfirmContainerShow').attr('class',problem.ID+'Confirm');      
 
+                $('div.linkAccentuate').attr('class',problem.ID);
+                
+            });
             var self = this;
+            self.refs.btn.setAttribute("disabled", "disabled");
             // Axios call getting most recent notebook
                 axios.post( Config.API + '/auth/link/create', {
                     problemID: String(problem.ID),
@@ -80,6 +81,9 @@ export default class WelcomeUserUnit extends React.Component {
                   .then(function (result) {
                     // document.location = window.location.pathname 
                     // alert('link success');
+                    self.refs.btn.removeAttribute("disabled");
+                    document.getElementById("linkForm").reset();
+                    // document.getElementById("SPUnitList").scrollIntoView();
                   })
                     .catch(function (error) {
                         $(document).ready(function() {
@@ -97,7 +101,8 @@ export default class WelcomeUserUnit extends React.Component {
                             }
                         });
                     });
-                  }
+                    
+        }
 
 
         function clickLink() {
@@ -142,8 +147,8 @@ if (problem.Private === true) {
                 {/* <div id="linkConfirmText">
                     confirm link?
                 </div> */}
-                <Link to={`/project/${this.props.parentTitle}/subprojects`}>
-                    <div id="linkConfirmButton"  onClick={createLink.bind(this)}>
+                <Link to={window.location.pathname}>
+                    <div id="linkConfirmButton" ref='btn' onClick={createLink.bind(this)}>
                         link
                     </div>
                 </Link>

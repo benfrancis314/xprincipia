@@ -52,7 +52,7 @@ export default class AnswerUnit extends React.Component {
            
         })
         .then(function (result) {
-            document.location = window.location.pathname;
+            // document.location = window.location.pathname;
         })
       .catch(function (error) {
           $(document).ready(function() {
@@ -80,7 +80,7 @@ export default class AnswerUnit extends React.Component {
         }
         })
         .then(function (result) {
-            document.location = window.location.pathname 
+            // document.location = window.location.pathname 
         })
       .catch(function (error) {
           $(document).ready(function() {
@@ -132,9 +132,11 @@ export default class AnswerUnit extends React.Component {
                         <span id="discussPercent">{floatToDecimal(answer.PercentRank)}</span>
                         {answer.Username}
                     </div>
-                    <div id="suggestionText" onClick={unVote} onMouseOver={hoverVoteVoted} onMouseOut={unHoverVoteVoted}>
-                        {answer.Description}
-                    </div>
+                    <Link to={window.location.pathname}>
+                        <div id="suggestionText" onClick={unVote} onMouseOver={hoverVoteVoted} onMouseOut={unHoverVoteVoted}>
+                            {answer.Description}
+                        </div>
+                    </Link>
 				</div>
         </li>);
     }  else if ( answer.Username === cookie.load('userName')) {
@@ -166,9 +168,11 @@ export default class AnswerUnit extends React.Component {
                         <span id="discussPercent">{floatToDecimal(answer.PercentRank)}</span>
 					    {answer.Username}
                     </div>
-                    <div id="suggestionText" onClick={submitVote} onMouseOver={hoverVote} onMouseOut={unHoverVote}>
-                        {answer.Description}
-                    </div>
+                    <Link to={window.location.pathname}>
+                        <div id="suggestionText" onClick={submitVote} onMouseOver={hoverVote} onMouseOut={unHoverVote}>
+                            {answer.Description}
+                        </div>
+                    </Link>
 				</div>
         </li>);
     } else if (this.state.voteHash[answer.ID] === true) {
@@ -197,9 +201,11 @@ export default class AnswerUnit extends React.Component {
                         <span id="discussPercent">{floatToDecimal(answer.PercentRank)}</span>
                         {answer.Username}
                     </div>
-                    <div id="suggestionText" onClick={unVote} onMouseOver={hoverVoteVoted} onMouseOut={unHoverVoteVoted}>
-                        {answer.Description}
-                    </div>
+                    <Link to={window.location.pathname}>
+                        <div id="suggestionText" onClick={unVote} onMouseOver={hoverVoteVoted} onMouseOut={unHoverVoteVoted}>
+                            {answer.Description}
+                        </div>
+                    </Link>
 				</div>
         </li>);
 
@@ -227,9 +233,11 @@ export default class AnswerUnit extends React.Component {
                     <span id="discussPercent">{floatToDecimal(answer.PercentRank)}</span>
                     {answer.Username}
                 </div>
-                <div id="suggestionText" onClick={submitVote} onMouseOver={hoverVote} onMouseOut={unHoverVote}>
-                    {answer.Description}
-                </div>
+                <Link to={window.location.pathname}>
+                    <div id="suggestionText" onClick={submitVote} onMouseOver={hoverVote} onMouseOut={unHoverVote}>
+                        {answer.Description}
+                    </div>
+                </Link>
             </div>
         </li>);
 }

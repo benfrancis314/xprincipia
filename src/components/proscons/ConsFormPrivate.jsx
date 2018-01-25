@@ -19,7 +19,10 @@ constructor(){
 
 postCon() {
   //Read field items into component state
-this.state.con = document.getElementById('conTextArea').value
+  var self = this;
+  self.refs.btn.setAttribute("disabled", "disabled");
+
+  this.state.con = document.getElementById('conTextArea').value
 
   axios.post( Config.API + '/auth/cons/create', {
       username: cookie.load('userName'),
@@ -31,6 +34,7 @@ this.state.con = document.getElementById('conTextArea').value
     })
       .then(function (result) {
         document.getElementById("suggestionForm").reset();
+        self.refs.btn.removeAttribute("disabled");
         // scroll to cons again
       })
       .catch(function (error) {
@@ -66,7 +70,7 @@ this.state.con = document.getElementById('conTextArea').value
                       {/*<legend>Pros</legend>*/}
                           <textarea name="suggestionText" required="required" id="conTextArea" placeholder="Describe a way this proposal could improve. " autoFocus ></textarea>
                           <Link to={`/project/private/${this.props.params.probID}/proposal/${this.props.params.solutionID}/cons`}>
-                            <input type="button" value="Add" onClick={this.postCon} id="addProsCons"/>
+                            <input type="button" ref='btn' value="Add" onClick={this.postCon} id="addProsCons"/>
                           </Link>
                   </fieldset>
               </form>

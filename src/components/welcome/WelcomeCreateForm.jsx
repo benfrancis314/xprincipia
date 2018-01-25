@@ -24,6 +24,9 @@ export default class WelcomeCreateForm extends React.Component {
   };
 
   postWelcomeProblem() {
+    var self = this;
+    self.refs.btn.setAttribute("disabled", "disabled");
+
     this.state.title = document.getElementById('problemCreateTitleForm').value
     this.state.summary = document.getElementById('problemCreateSummaryForm').value
     if (document.getElementById('projectClass2').checked) {
@@ -45,6 +48,7 @@ export default class WelcomeCreateForm extends React.Component {
       })
       .then(function (response) {
         // document.location = '/welcome' 
+        self.refs.btn.removeAttribute("disabled");
       })
       .catch(function (error) {
           $(document).ready(function() {
@@ -128,7 +132,7 @@ export default class WelcomeCreateForm extends React.Component {
                         placeholder="Please provide any additional information you'd like. (350 character max)" id="problemCreateSummaryForm"/>
                         </label><br />
                     <Link to={`/welcome`}>
-                        <input type="button" value="Create" onClick={this.postProblem} id="submitProblem"/>
+                        <input type="button" ref='btn' value="Create" onClick={this.postProblem} id="submitProblem"/>
                     </Link>
                   </fieldset>
                 </form>

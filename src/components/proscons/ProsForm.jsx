@@ -20,7 +20,9 @@ constructor(){
 
 postPro() {
   //Read field items into component state
-this.state.pro = document.getElementById('proTextArea').value
+  var self = this;
+  self.refs.btn.setAttribute("disabled", "disabled");
+  this.state.pro = document.getElementById('proTextArea').value
 
  axios.post( Config.API + '/auth/pros/create', {
     username: cookie.load('userName'),
@@ -32,6 +34,7 @@ this.state.pro = document.getElementById('proTextArea').value
   })
   .then(function (result) {
     document.getElementById("suggestionForm").reset();
+    self.refs.btn.removeAttribute("disabled");
   })
       .catch(function (error) {
         // console.log(error.response.data)
@@ -66,7 +69,7 @@ this.state.pro = document.getElementById('proTextArea').value
                           <textarea name="suggestionText" required="required" id="proTextArea" placeholder="Describe something that gives merit to this proposal. " autoFocus ></textarea>
                           {/*Replace with blueAdd button*/}
                           <Link to={`/project/${this.props.params.probID}/proposal/${this.props.params.solutionID}/pros`}>
-                            <input type="button" value="Add" onClick={this.postPro} id="addProsCons"/>
+                            <input type="button" ref='btn' value="Add" onClick={this.postPro} id="addProsCons"/>
                           </Link>
                   </fieldset>
               </form>

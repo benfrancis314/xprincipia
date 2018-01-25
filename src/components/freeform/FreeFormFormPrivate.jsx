@@ -19,6 +19,8 @@ export default class FreeFormForm extends React.Component {
 
 postFreeForm() {
   //Read field items into component state
+  var self = this;
+  self.refs.btn.setAttribute("disabled", "disabled");
   this.state.freeForm = document.getElementById('freeFormTextArea').value
 
   //if User is on a solution post with type 1
@@ -36,6 +38,7 @@ postFreeForm() {
     })
       .then(function (result) {
         document.getElementById("questionForm").reset();
+        self.refs.btn.removeAttribute("disabled");
       })
       .catch(function (error) {
           $(document).ready(function() {
@@ -67,6 +70,7 @@ postFreeForm() {
     })
       .then(function (result) {
         document.getElementById("questionForm").reset();
+        self.refs.btn.removeAttribute("disabled");
       })
       .catch(function (error) {
         // console.log(error.response.data)
@@ -106,7 +110,7 @@ postFreeForm() {
                       {/*<legend>FreeForm Discussion</legend>*/}
                           <textarea name="questionText" required="required" id="freeFormTextArea" placeholder="Begin or join a debate with your peers about this project. " ></textarea>
                           <Link to={`/project/private/${this.props.params.probID}/proposal/${this.props.params.solutionID}/debates`}>
-                            <input type="button" value="Add" onClick={this.postFreeForm} id="askQuestion"/>
+                            <input type="button" ref='btn' value="Add" onClick={this.postFreeForm} id="askQuestion"/>
                           </Link>
                   </fieldset>
               </form>
@@ -127,7 +131,7 @@ postFreeForm() {
                       {/*<legend>FreeForm Discussion</legend>*/}
                           <textarea name="questionText" required="required" id="freeFormTextArea" placeholder="Begin or join a debate with your peers about this project. " ></textarea>
                           <Link to={`/project/private/${this.props.params.probID}/open`}>
-                            <input type="button" value="Add" onClick={this.postFreeForm} id="askQuestion"/>
+                            <input type="button" ref='btn' value="Add" onClick={this.postFreeForm} id="askQuestion"/>
                           </Link>
                   </fieldset>
               </form>

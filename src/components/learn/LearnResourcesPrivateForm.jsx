@@ -19,6 +19,9 @@ constructor(props){
     };
     postResource() {
   //Read field items into component state
+  var self = this;
+  self.refs.btn.setAttribute("disabled", "disabled");
+
   this.state.title = document.getElementById('resourceTitleForm').value
   this.state.summary = document.getElementById('resourcesTextArea').value
   this.state.resource = document.getElementById('resourceURLForm').value
@@ -38,6 +41,7 @@ constructor(props){
     })
       .then(function (result) {
         document.getElementById("questionForm").reset();
+        self.refs.btn.removeAttribute("disabled");
       })
       .catch(function (error) {
         alert('error')
@@ -72,6 +76,7 @@ constructor(props){
     })
       .then(function (result) {
         document.getElementById("questionForm").reset();
+        self.refs.btn.removeAttribute("disabled");
       })
       .catch(function (error) {
           $(document).ready(function() {
@@ -114,7 +119,7 @@ constructor(props){
                             <input type="text" placeholder="URL" id="resourceURLForm"/>
                             <textarea name="suggestionText" required="required" id="resourcesTextArea" placeholder="Please describe the resource or explain its purpose. " ></textarea>
                             <Link to={`/project/private/${this.props.params.probID}/resources`}>
-                              <input type="button" value="Add" onClick={this.postResource} id="addSuggestion"/>
+                              <input type="button" ref='btn' value="Add" onClick={this.postResource} id="addSuggestion"/>
                             </Link>
                     </fieldset>
                 </form>

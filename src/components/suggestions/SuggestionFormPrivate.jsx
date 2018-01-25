@@ -19,7 +19,9 @@ constructor(){
 
 postSuggestion() {
   //Read field items into component state
-this.state.suggestion = document.getElementById('suggestionTextArea').value
+  var self = this;
+  self.refs.btn.setAttribute("disabled", "disabled");
+  this.state.suggestion = document.getElementById('suggestionTextArea').value
 
   //if User is on a solution post with type 1
   //solutionID will be available in props
@@ -37,6 +39,7 @@ this.state.suggestion = document.getElementById('suggestionTextArea').value
       .then(function (result) {
         // document.location = window.location.pathname 
         document.getElementById("questionForm").reset();
+        self.refs.btn.removeAttribute("disabled");
       })
       .catch(function (error) {
         alert('error')
@@ -71,6 +74,7 @@ this.state.suggestion = document.getElementById('suggestionTextArea').value
       .then(function (result) {
         // document.location = window.location.pathname 
         document.getElementById("questionForm").reset();
+        self.refs.btn.removeAttribute("disabled");
       })
       .catch(function (error) {
           $(document).ready(function() {
@@ -105,7 +109,7 @@ this.state.suggestion = document.getElementById('suggestionTextArea').value
                   <fieldset  id='fieldSetNoBorderPadding'>
                     <textarea name="suggestionText" required="required" id="suggestionTextArea" placeholder="Give a suggestion you have about this project or view those given by your peers. " ></textarea>
                     <Link to={`/project/private/${this.props.params.probID}/proposal/${this.props.params.solutionID}/suggestions`}>
-                      <input type="button" value="Add" onClick={this.postSuggestion} id="addSuggestion"/>
+                      <input type="button" ref='btn' value="Add" onClick={this.postSuggestion} id="addSuggestion"/>
                     </Link>
                   </fieldset>
               </form>
@@ -124,7 +128,7 @@ this.state.suggestion = document.getElementById('suggestionTextArea').value
               <fieldset  id='fieldSetNoBorderPadding'>
                 <textarea name="suggestionText" required="required" id="suggestionTextArea" placeholder="Give a suggestion you have about this project or view those given by your peers. " ></textarea>
                 <Link to={`/project/private/${this.props.params.probID}/suggestions`}>
-                  <input type="button" value="Add" onClick={this.postSuggestion} id="addSuggestion"/>
+                  <input type="button" ref='btn' value="Add" onClick={this.postSuggestion} id="addSuggestion"/>
                 </Link>
               </fieldset>
           </form>

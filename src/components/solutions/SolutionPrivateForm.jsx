@@ -23,6 +23,9 @@ export default class SolutionPrivateForm extends React.Component {
 
   postSolution() {
     //Read field items into component state
+    var self = this;
+    self.refs.btn.setAttribute("disabled", "disabled");
+
     this.state.title = document.getElementById('solutionTitleForm').value
     this.state.summary = document.getElementById('solutionSummaryForm').value
     this.state.description = document.getElementById('solutionDescriptionForm').value
@@ -50,6 +53,7 @@ export default class SolutionPrivateForm extends React.Component {
       .then(function (result) {
         // document.location = '/project/private/' + self.props.probID + '/subprojects'
         document.getElementById("solutionsTitleRightSB").scrollIntoView();
+        self.refs.btn.removeAttribute("disabled");
       })
       .catch(function (error) {
           $(document).ready(function() {
@@ -138,7 +142,7 @@ export default class SolutionPrivateForm extends React.Component {
                     <textarea name="solutionReferences" placeholder="Please provide your sources here." id="solutionReferencesForm">
                     </textarea></label><br />
                   <Link to={`/project/private/${this.props.probID}/subprojects`}>
-                      <input type="button" value="Create" onClick={this.postSolution} id="submitSolution"/>
+                      <input type="button" ref='btn' value="Create" onClick={this.postSolution} id="submitSolution"/>
                   </Link>
               </fieldset>
             </form>

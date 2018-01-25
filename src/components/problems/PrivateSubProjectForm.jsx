@@ -27,7 +27,8 @@ export default class ProblemForm extends React.Component {
 //   }      
 
   postProblem() {
-    
+    var self = this;
+    self.refs.btn.setAttribute("disabled", "disabled");
     //Read field items into component state
     this.state.title = document.getElementById('problemTitleForm').value
     this.state.summary = document.getElementById('problemSummaryForm').value
@@ -51,6 +52,7 @@ export default class ProblemForm extends React.Component {
     .then(function (result) {
       //redirect back to the last page     
       // document.location = '/project/private/'+self.props.params.probID+'/subprojects'
+      self.refs.btn.removeAttribute("disabled");
     })
       .catch(function (error) {
           $(document).ready(function() {
@@ -132,7 +134,7 @@ export default class ProblemForm extends React.Component {
                       placeholder="Please provide any additional information you'd like. (350 character max)" id="problemSummaryForm"/>
                       </label><br />
                   <Link to={`/project/private/${this.props.params.probID}/subprojects`}>
-                      <input type="button" value="Create" onClick={this.postProblem} id="submitProblem"/>
+                      <input type="button" ref='btn' value="Create" onClick={this.postProblem} id="submitProblem"/>
                   </Link>
                 </fieldset>
               </form>

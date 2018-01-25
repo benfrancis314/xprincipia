@@ -27,7 +27,8 @@ export default class ProblemForm extends React.Component {
 //   }      
 
   postProblem() {
-    
+    var self = this;
+    self.refs.btn.setAttribute("disabled", "disabled");
     //Read field items into component state
     this.state.title = document.getElementById('problemTitleForm').value
     this.state.summary = document.getElementById('problemSummaryForm').value
@@ -39,7 +40,6 @@ export default class ProblemForm extends React.Component {
       this.state.class = '0' 
     }
   
-    var self = this
     axios.post( Config.API + '/auth/problems/create', {
       username: cookie.load('userName'),
       title : this.state.title,
@@ -59,6 +59,8 @@ export default class ProblemForm extends React.Component {
     .then(function (result) {
       //redirect back to the last page     
       // document.location = '/project/'+self.props.params.probID+'/subprojects'
+      self.refs.btn.removeAttribute("disabled");
+      window.scrollTo(0,0);
     })
       .catch(function (error) {
         // alert('why not working');
@@ -135,7 +137,7 @@ export default class ProblemForm extends React.Component {
                   </label>
                   <br />
                   <Link to={`/project/${this.props.params.probID}/subprojects`}>
-                      <input type="button" value="Create" onClick={this.postProblem} id="submitProblem"/>
+                      <input type="button" ref='btn' value="Create" onClick={this.postProblem} id="submitProblem"/>
                   </Link>
                 </fieldset>
               </form>

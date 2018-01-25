@@ -3,6 +3,7 @@ import axios from 'axios';
 import cookie from 'react-cookie';
 import {Config} from '../../config.js';
 import $ from 'jquery';
+import { Link } from 'react-router';
 
 export default class AnswerForm extends React.Component {
 
@@ -18,15 +19,22 @@ constructor(){
 
 postAnswer() { 
   //Read field items into component state
+  var self = this;
+  self.refs.btn.setAttribute("disabled", "disabled");
+
   this.state.answer = document.getElementById('answerTextArea').value
 // Ajax post answer request
-axios.post( Config.API + '/auth/answers/create', {
+  axios.post( Config.API + '/auth/answers/create', {
   questionID: this.props.params.questID,
   username: cookie.load('userName'),
   description : this.state.answer,
+  type: '2',
+  typeID: this.props.params.probID,
+  private: '1',
 })
 .then(function (result) {
-  document.location = window.location.pathname 
+  document.getElementById("answerForm").reset();
+  self.refs.btn.removeAttribute("disabled");
 })
       .catch(function (error) {
           $(document).ready(function() {
@@ -61,8 +69,10 @@ axios.post( Config.API + '/auth/answers/create', {
               {/*B*/}
               {/*<fieldset id="greenBorder">*/}
                   {/*<legend>Answers</legend>*/}
-                      <textarea name="answerText" required="required" id="answerTextArea" placeholder="Provide possible answers to your question." autoFocus ></textarea>
-                      <input type="button" value="Answer" onClick={this.postAnswer} id="addAnswerGreen" />
+                      <textarea name="answerText" required="required" id="answerTextArea" placeholder="Answer this question or view the answers of your peers. " autoFocus ></textarea>
+                      <Link to={window.location.pathname}>
+                          <input type="button" ref='btn' value="Answer" onClick={this.postAnswer} id="addAnswerGreen" />
+                      </Link>
               </fieldset>
           </form>
         </div>

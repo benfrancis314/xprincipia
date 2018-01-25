@@ -21,7 +21,9 @@ export default class QuestionForm extends React.Component {
 
 postQuestion() {
   //Read field items into component state
-this.state.question = document.getElementById('questionTextArea').value
+  var self = this;
+  self.refs.btn.setAttribute("disabled", "disabled");
+  this.state.question = document.getElementById('questionTextArea').value
 
   //if User is on a solution post with type 1
   //solutionID will be available in props
@@ -38,6 +40,7 @@ this.state.question = document.getElementById('questionTextArea').value
     .then(function (result) {
       // document.location = window.location.pathname 
       document.getElementById("questionForm").reset();
+      self.refs.btn.removeAttribute("disabled");
     })
       .catch(function (error) {
           $(document).ready(function() {
@@ -71,6 +74,7 @@ this.state.question = document.getElementById('questionTextArea').value
     })
       .then(function (result) {
         document.getElementById("questionForm").reset();
+        self.refs.btn.removeAttribute("disabled");
       })
       .catch(function (error) {
           $(document).ready(function() {
@@ -106,7 +110,7 @@ this.state.question = document.getElementById('questionTextArea').value
                   <fieldset id='fieldSetNoBorderPadding'>
                     <textarea name="questionText" required="required" id="questionTextArea" placeholder="Ask a question you have about this project or view those asked by your peers. " ></textarea>
                     <Link to={`/project/${this.props.params.probID}/proposal/${this.props.params.solutionID}/questions`}>
-                      <input type="button" value="Ask" onClick={this.postQuestion} id="askQuestion"/>
+                      <input type="button" ref='btn' value="Ask" onClick={this.postQuestion} id="askQuestion"/>
                     </Link>
                   </fieldset>
                 </form>
@@ -124,7 +128,7 @@ this.state.question = document.getElementById('questionTextArea').value
                 <fieldset id='fieldSetNoBorderPadding'>
                   <textarea name="questionText" required="required" id="questionTextArea" placeholder="Ask a question you have about this project or view those asked by your peers. " ></textarea>
                   <Link to={`/project/${this.props.params.probID}/questions`}>
-                    <input type="button" value="Ask" onClick={this.postQuestion} id="askQuestion"/>
+                    <input type="button" ref='btn' value="Ask" onClick={this.postQuestion} id="askQuestion"/>
                   </Link>
                 </fieldset>
               </form>
