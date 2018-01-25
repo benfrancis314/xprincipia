@@ -2,8 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Router, Route, IndexRoute, browserHistory } from 'react-router';
 import App from './App';
-// import ReactGA from 'react-ga';
-// ReactGA.initialize('UA-104103231-1'); //Unique Google Analytics tracking number
+import ReactGA from 'react-ga';
+ReactGA.initialize('UA-104103231-1'); //Unique Google Analytics tracking number
 
 //Load Components
 
@@ -23,7 +23,6 @@ import AnswerEditFormPrivate from './components/answers/AnswerEditFormPrivate.js
 import AnswerFlagForm from './components/answers/AnswerFlagForm.jsx';
 import AnswerForm from './components/answers/AnswerForm.jsx';
 import AnswerFormPrivate from './components/answers/AnswerFormPrivate.jsx';
-// import ChatBoxContainer from './components/chatbox/ChatBoxContainer.jsx'
 import CommentDeleteForm from './components/comments/CommentDeleteForm.jsx';
 import CommentDeleteFormPrivate from './components/comments/CommentDeleteFormPrivate.jsx';
 import CommentEditForm from './components/comments/CommentEditForm.jsx';
@@ -233,16 +232,16 @@ import './assets/index.css';
 // window.location argument we push to the ReactGA.pageview() function. 
 // It will really depend how we have set up React Router.
 
-// function fireTracking() {
-//     ReactGA.pageview(window.location.hash);
-// }
 
-
+function fireTracking() {
+  ReactGA.pageview(window.location.hash);
+}
 
 ReactDOM.render(
   // When we have Google Analytics working it should be:
-  // <Router onUpdate={fireTracking} history={browserHistory}>
-  <Router history={browserHistory}>
+  <Router 
+  onUpdate={fireTracking} 
+   history={browserHistory}>
     <Route path='/' component={App}>    
     <Route path='/newsfeed' component={NewsFeedContainer}></Route>
     <Route path='/instructions' component={Instructions}></Route>

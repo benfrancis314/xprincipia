@@ -6,12 +6,8 @@ import './assets/index.css';
 import NotebookContainer from './containers/NotebookContainer.jsx';
 import { Link } from 'react-router';
 import $ from 'jquery';
-
-// Not sure if these are needed, trying to figure out activity feed
-// import stream from 'getstream';
-// import stream from 'getstream-node';
-
-// x
+import ReactGA from 'react-ga';
+ReactGA.initialize('UA-104103231-1'); //Unique Google Analytics tracking number
 
 
 
@@ -75,6 +71,16 @@ class App extends React.Component {
      });
   };
     
+
+  handleClick() {
+    ReactGA.event({
+        category: 'Navigation',
+        action: 'Clicked Link',
+    });
+    alert('click');
+}
+
+
   render() {
     //Check if user is logged in
     // if (this.state.userToken === undefined ){
@@ -100,6 +106,13 @@ class App extends React.Component {
     //Return the rest of the renderings
       return (
       <div className="App">
+
+<br />
+<a onClick={()=>{this.handleClick()}}>Link</a>
+<br />
+<br />
+
+
         {this.props.children}
         {/*Error alert below*/}
         <div id="notification">
