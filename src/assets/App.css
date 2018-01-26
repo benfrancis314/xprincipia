@@ -12876,7 +12876,7 @@ transition: all 1s ease 0s;
 #fileProposal:hover {
   background-color: rgba(0,220,255,0.1);
   transform: scale(1.1);
-  cursor: pointer;
+  cursor: pointer !important;
   box-shadow: 0 0 1.5pt 1.5px rgba(255,255,255,1);
   letter-spacing: 3px;
 }

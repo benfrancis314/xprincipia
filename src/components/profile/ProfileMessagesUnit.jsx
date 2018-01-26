@@ -44,6 +44,9 @@ componentWillReceiveProps (nextProps){
 
 }
 postMessage() {
+    var self = this;
+    self.refs.btn.setAttribute("disabled", "disabled");
+
     this.state.description = document.getElementById('conversationEntry').value
     axios.post( Config.API + '/auth/messages/create', {
         user1 : this.props.params.user1,
@@ -56,8 +59,9 @@ postMessage() {
         //         messages: response.data
         //     })
         // })  
-            document.location = window.location.pathname 
-            // alert('success ')
+        document.getElementById("conversationSubmit").reset();
+        self.refs.btn.removeAttribute("disabled");
+
         
       })
       .catch(function (error) {
@@ -115,7 +119,9 @@ causeRerender() {
             </div>
             <form id='conversationSubmit'>
                 <textarea id="conversationEntry" autoFocus autoComplete="off"></textarea>
-                <input id="conversationSubmitButton" type="button" value="submit" onClick={this.postMessage}></input>
+                <Link to={window.location.pathname}>
+                    <input id="conversationSubmitButton" ref='btn' type="button" value="submit" onClick={this.postMessage}></input>
+                </Link>
             </form>
             <ul id="conversationMessagesList"> 
                 {this.state.messages.map(this.renderItem)} 

@@ -119,8 +119,8 @@ export default class ErrorContainer extends React.Component {
                 <OverviewParentContainer parentTitle={this.state.problemInfo.ParentTitle} parentID={this.state.problemInfo.ParentID} grandParentID={this.state.problemInfo.GrandParentID}/>
                 <OverviewProjectContainer projectTitle={this.state.problemInfo.Title} projectID={this.props.params.probID} parentID={this.state.problemInfo.ParentID} />
                 <OverviewChildContainer projectID={this.props.params.probID} />
-                {/* xxx{this.state.topChild.ProblemID}xxxTest
-                <br />
+                xxx{this.state.topChild.ProjectID}xxxTest
+                {/* <br />
                 xxx{this.state.topChild}xxxTotal
                 <br />
                 xxx{this.state.topChild.length}xxxLength */}

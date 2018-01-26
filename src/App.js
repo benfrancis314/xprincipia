@@ -108,13 +108,6 @@ class App extends React.Component {
     //Return the rest of the renderings
       return (
       <div className="App">
-
-<br />
-<a onClick={()=>{this.handleClick()}}>Link</a>
-<br />
-<br />
-
-
         {this.props.children}
         {/*Error alert below*/}
         <div id="notification">
@@ -145,6 +138,9 @@ class App extends React.Component {
         {/* <div onMouseOver={this.hideEasterEgg}>
         {randomImg()}
         </div> */}
+        <div onClick={()=>{this.handleClick()}}>
+          <br />
+        </div>
       </div>
       );
     

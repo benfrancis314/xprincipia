@@ -24,6 +24,9 @@ export default class ProfileMessagesForm extends React.Component {
   };
 
   postMessage() {
+    var self = this;
+    self.refs.btn.setAttribute("disabled", "disabled");
+
     this.state.user1 = cookie.load('userName')
     this.state.user2 = document.getElementById('problemTitleForm').value
     this.state.message = document.getElementById('problemSummaryForm').value
@@ -41,7 +44,8 @@ export default class ProfileMessagesForm extends React.Component {
         user2 : this.state.user2,
       })
       .then(function (response) {
-        document.location = '/messages' 
+        document.getElementById("welcomeCreateProjectForm").reset();
+        self.refs.btn.removeAttribute("disabled");
 
         // Direct them to their new conversation they just created
       })
@@ -96,8 +100,9 @@ export default class ProfileMessagesForm extends React.Component {
                         <textarea name="problemSummary" required="required" maxLength="350" 
                         placeholder="Start a dialogue with a fellow member." id="problemSummaryForm"/>
                         </label><br />
-
-                    <input type="button" value="send" onClick={this.postMessage} id="submitProblem"/>
+                    <Link to={window.location.pathname}>
+                      <input type="button" ref='btn' value="send" onClick={this.postMessage} id="submitProblem"/>
+                    </Link>
                   </fieldset>
                 </form>
             </div>

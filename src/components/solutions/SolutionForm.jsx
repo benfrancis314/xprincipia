@@ -5,10 +5,24 @@ import {Config} from '../../config.js';
 import $ from 'jquery';
 import ScrollableAnchor from 'react-scrollable-anchor';
 import { Link  } from 'react-router';
+import AWS from 'aws-sdk/dist/aws-sdk-react-native';
+
+// var myCredentials = new AWS.CognitoIdentityCredentials({IdentityPoolId:'IDENTITY_POOL_ID'});
+// var myConfig = new AWS.Config({
+//   credentials: myCredentials, region: 'us-east-2'
+// });
+var s3 = new AWS.S3();
+
+
+
+
+
+
 
 export default class SolutionForm extends React.Component {
-
+  
   constructor(props){
+    
     super(props);
 
     this.state= {
@@ -18,14 +32,31 @@ export default class SolutionForm extends React.Component {
       references: '',
       class: '',
       parentTitle: this.props.parentTitle,
-      img: '',
+      file: '',
+
     }
 
     this.postSolution = this.postSolution.bind(this);
     this.showPDF = this.showPDF.bind(this);
     this.showProse = this.showProse.bind(this);
     this.testFileInput = this.testFileInput.bind(this);
+
   };
+
+
+  componentDidMount(){
+    var self = this;
+    self.setState({
+      file: document.getElementById("fileProposal").value
+    })
+  }
+
+  componentWillReceiveProps(nextState){
+    var self = this;      
+    self.setState({
+        file: document.getElementById("fileProposal").value
+    })
+  }
 
   testFileInput() {
     alert(document.getElementById("fileProposal").value);
@@ -57,10 +88,15 @@ export default class SolutionForm extends React.Component {
     var self = this
     self.refs.btn.setAttribute("disabled", "disabled");
 
+    // FILE UPLOAD
+    this.state.file = document.getElementById("fileProposal").value
+
     this.state.title = document.getElementById('solutionTitleForm').value
     this.state.summary = document.getElementById('solutionSummaryForm').value
     this.state.description = document.getElementById('solutionDescriptionForm').value
     this.state.references = document.getElementById('solutionReferencesForm').value
+
+    alert(this.state.file);
     if (document.getElementById('proposalClass2').checked) {
       this.state.class = '2' 
     } else if (document.getElementById('proposalClass1').checked) {
@@ -68,6 +104,23 @@ export default class SolutionForm extends React.Component {
     } else {
       this.state.class = '0' 
     }
+
+     var params = {
+      Body: this.state.file, 
+      Bucket: "xprincipiabucket", 
+      Key: "HappyFace.jpg"
+     };
+     s3.putObject(params, function(err, data) {
+       if (err) console.log(err, err.stack); // an error occurred
+       else     console.log(data);           // successful response
+       /*
+       data = {
+        ETag: "\"6805f2cfc46c0f04559748bb039d69ae\"", 
+        VersionId: "tpf3zF08nBplQK1XLOefGskR7mGDwcDk"
+       }
+       */
+     });
+
 
     axios.post( Config.API + '/auth/solutions/create', {
         username: cookie.load('userName'),
@@ -179,7 +232,9 @@ export default class SolutionForm extends React.Component {
                 </div>
 
                 <div id="pdfProposalContainerShow">
-                    <input type="file" id="fileProposal" accept=".pdf"/>
+                    <input type="file" id="fileProposal" 
+                    // accept=".pdf"
+                    />
                 </div>
 
               <div onClick={this.testFileInput}>testHTML</div>
