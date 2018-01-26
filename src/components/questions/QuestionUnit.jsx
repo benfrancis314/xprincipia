@@ -45,6 +45,8 @@ export default class QuestionUnit extends React.Component {
 	}
 	renderItem(question) {
        function submitVote() {
+        var self = this
+        self.refs.votebtn.setAttribute("disabled", "disabled");
        axios.post( Config.API + '/auth/vote/create', {
            Type: 2,
            TypeID: question.ID,
@@ -53,25 +55,31 @@ export default class QuestionUnit extends React.Component {
         })
         .then(function (result) {
             // document.location = window.location.pathname;
+            self.refs.votebtn.removeAttribute("disabled");
         })
       .catch(function (error) {
           $(document).ready(function() {
-              $('#notification').attr('id','notificationShow').hide().slideDown();
+            //   $('#notification').attr('id','notificationShow').hide().slideDown();
+            // HIDE ERROR UNLESS NOT LOGGED IN
 
                 if (error.response.data == '[object Object]') {
                   return (
                     $(document).ready(function() {
+                      $('#notification').attr('id','notificationShow').hide().slideDown();
                       $('#notificationLoginRegisterContainer').attr('id','notificationLoginRegisterContainerShow');
                       $('#notificationContent').html('Please <span id="blue">login </span>to vote');
                     })
                   );
                 }  else if (error.response.data != '') {
-                $('#notificationContent').text(error.response.data);
+                // $('#notificationContent').text(error.response.data);
               }
           });
+          self.refs.votebtn.removeAttribute("disabled");
       });
   }
       function unVote() {
+        var self = this
+        self.refs.votebtn.setAttribute("disabled", "disabled");
       axios.delete( Config.API + '/auth/vote/delete' ,{
         params: {
           type: 2,
@@ -81,22 +89,25 @@ export default class QuestionUnit extends React.Component {
         })
         .then(function (result) {
             // document.location = window.location.pathname 
+            self.refs.votebtn.removeAttribute("disabled");
         })
       .catch(function (error) {
           $(document).ready(function() {
-              $('#notification').attr('id','notificationShow').hide().slideDown();
+            // HIDE ERROR UNLESS NOT LOGGED IN
 
                 if (error.response.data == '[object Object]') {
                   return (
                     $(document).ready(function() {
+                      $('#notification').attr('id','notificationShow').hide().slideDown();
                       $('#notificationLoginRegisterContainer').attr('id','notificationLoginRegisterContainerShow');
                       $('#notificationContent').html('Please <span id="blue">login </span>to vote');
                     })
                   );
                 }  else if (error.response.data != '') {
-                $('#notificationContent').text(error.response.data);
+                // $('#notificationContent').text(error.response.data);
               }
           });
+          self.refs.votebtn.removeAttribute("disabled");
       });
 }
 
@@ -133,7 +144,7 @@ export default class QuestionUnit extends React.Component {
                         {question.Username}
                     </div>
                     <Link to={`/project/${question.TypeID}/questions`}>
-                        <div id="suggestionText" onClick={unVote} onMouseOver={hoverVoteVoted} onMouseOut={unHoverVoteVoted}>
+                        <div id="suggestionText" ref='votebtn' onClick={unVote.bind(this)} onMouseOver={hoverVoteVoted} onMouseOut={unHoverVoteVoted}>
                             {question.Description}
                         </div>
                     </Link>
@@ -169,7 +180,7 @@ export default class QuestionUnit extends React.Component {
 					    {question.Username}
                     </div>
                     <Link to={`/project/${question.TypeID}/questions`}>
-                        <div id="suggestionText" onClick={submitVote} onMouseOver={hoverVote} onMouseOut={unHoverVote}>
+                        <div id="suggestionText" ref='votebtn' onClick={submitVote.bind(this)} onMouseOver={hoverVote} onMouseOut={unHoverVote}>
                             {question.Description}
                         </div>
                     </Link>
@@ -202,7 +213,7 @@ export default class QuestionUnit extends React.Component {
                         {question.Username}
                     </div>
                     <Link to={`/project/${question.TypeID}/questions`}>
-                        <div id="suggestionText" onClick={unVote} onMouseOver={hoverVoteVoted} onMouseOut={unHoverVoteVoted}>
+                        <div id="suggestionText" ref='votebtn' onClick={unVote.bind(this)} onMouseOver={hoverVoteVoted} onMouseOut={unHoverVoteVoted}>
                             {question.Description}
                         </div>
                     </Link>
@@ -234,7 +245,7 @@ export default class QuestionUnit extends React.Component {
                     {question.Username}
                 </div>
                 <Link to={`/project/${question.TypeID}/questions`}>
-                    <div id="suggestionText" onClick={submitVote} onMouseOver={hoverVote} onMouseOut={unHoverVote}>
+                    <div id="suggestionText" ref='votebtn' onClick={submitVote.bind(this)} onMouseOver={hoverVote} onMouseOut={unHoverVote}>
                         {question.Description}
                     </div>
                 </Link>
@@ -533,7 +544,7 @@ function floatToDecimal(float) {
 //                         <span id="discussPercent">{floatToDecimal(question.PercentRank)}</span>
 //                         {question.Username}
 //                     </div>
-//                     <div id="suggestionText" onClick={unVote} onMouseOver={hoverVoteVoted} onMouseOut={unHoverVoteVoted}>
+//                     <div id="suggestionText" ref='votebtn' onClick={unVote.bind(this)} onMouseOver={hoverVoteVoted} onMouseOut={unHoverVoteVoted}>
 //                         {question.Description}
 //                     </div>
 // 				</div>
@@ -562,7 +573,7 @@ function floatToDecimal(float) {
 //                         <span id="discussPercent">{floatToDecimal(question.PercentRank)}</span>
 // 					    <span id="discussUsername">{question.Username}</span> 
 //                     </div>
-//                     <div id="suggestionText" onClick={submitVote} onMouseOver={hoverVote} onMouseOut={unHoverVote}>
+//                     <div id="suggestionText" ref='votebtn' onClick={submitVote.bind(this)} onMouseOver={hoverVote} onMouseOut={unHoverVote}>
 //                         {question.Description}
 //                     </div>
 // 				</div>
@@ -586,7 +597,7 @@ function floatToDecimal(float) {
 //                         <span id="discussPercent">{floatToDecimal(question.PercentRank)}</span>
 // 					    {question.Username}
 //                     </div>
-//                     <div id="suggestionText" onClick={unVote} onMouseOver={hoverVoteVoted} onMouseOut={unHoverVoteVoted}>
+//                     <div id="suggestionText" ref='votebtn' onClick={unVote.bind(this)} onMouseOver={hoverVoteVoted} onMouseOut={unHoverVoteVoted}>
 //                         {question.Description}
 //                     </div>
 // 				</div>
@@ -612,7 +623,7 @@ function floatToDecimal(float) {
 //                     <span id="discussPercent">{floatToDecimal(question.PercentRank)}</span>
 //                     {question.Username}
 //                 </div>
-//                 <div id="suggestionText" onClick={submitVote} onMouseOver={hoverVote} onMouseOut={unHoverVote}>
+//                 <div id="suggestionText" ref='votebtn' onClick={submitVote.bind(this)} onMouseOver={hoverVote} onMouseOut={unHoverVote}>
 //                     {question.Description}
 //                 </div>
 //             </div>

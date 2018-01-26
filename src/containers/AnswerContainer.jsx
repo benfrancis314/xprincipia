@@ -79,7 +79,7 @@ export default class AnswerContainer extends React.Component {
                                         {this.state.question.Description}
                                     </div>
                                 </div>
-                                {/*<button type="button" id="suggestionVote" onClick={submitVote}>
+                                {/*<button type="button" id="suggestionVote" ref='votebtn' onClick={submitVote}>
                                     Vote
                                 </button>*/}
                                 <br/><br/> 
@@ -120,7 +120,7 @@ export default class AnswerContainer extends React.Component {
                             {this.state.question.Description}
                         </div>
                     </div>
-                    {/*<button type="button" id="suggestionVote" onClick={submitVote}>
+                    {/*<button type="button" id="suggestionVote" ref='votebtn' onClick={submitVote}>
                         Vote
                     </button>*/}
                     <br/><br/> 

@@ -98,6 +98,8 @@ export default class FullSolutionContent extends React.Component {
       });
   }
   submitVote() {
+      var self = this
+      self.refs.solbtn.setAttribute("disabled", "disabled");
        axios.post( Config.API + '/auth/vote/create', {
            Type: 1,
            TypeID: this.state.solutionInfo.ID,
@@ -106,6 +108,7 @@ export default class FullSolutionContent extends React.Component {
         })
         .then(function (result) {
             // document.location = window.location.pathname;
+            self.refs.solbtn.removeAttribute("disabled");
         })
       .catch(function (error) {
         // console.log(error.response.data)
@@ -123,10 +126,12 @@ export default class FullSolutionContent extends React.Component {
                 $('#notificationContent').text(error.response.data);
               }
           });
+          self.refs.solbtn.removeAttribute("disabled");
       });
   }
 unVote() {
     var self = this
+    self.refs.solbtn.setAttribute("disabled", "disabled");
       axios.delete( Config.API + '/auth/vote/delete' ,{
         params: {
           type: 1,
@@ -140,6 +145,7 @@ unVote() {
 
             })
             // document.location = window.location.pathname 
+            self.refs.solbtn.removeAttribute("disabled");
         })
       .catch(function (error) {
         // console.log(error.response.data)
@@ -157,6 +163,7 @@ unVote() {
                 $('#notificationContent').text(error.response.data);
               }
           });
+          self.refs.solbtn.removeAttribute("disabled");
       });
         
     }
@@ -169,7 +176,7 @@ unVote() {
             </div>
             <div id="voteVersionsMenu">
               <Link to={`/project/${this.props.params.probID}/proposal/${this.props.params.solutionID}`}>
-                <div id="votedSolution" onClick={this.unVote}>Voted</div>
+                <div id="votedSolution" ref='solbtn' onClick={this.unVote}>Voted</div>
               </Link>
                 {/*<Link to={`/proposal/${this.props.params.probID}/${this.props.params.solutionID}/versions`}>
                     <div id="versionsButton">
@@ -212,7 +219,7 @@ unVote() {
             </div>
             <div id="voteVersionsMenu">
               <Link to={`/project/${this.props.params.probID}/proposal/${this.props.params.solutionID}`}>
-                <div id="voteSolution" onClick={this.submitVote}>Vote</div>
+                <div id="voteSolution" ref='solbtn' onClick={this.submitVote}>Vote</div>
               </Link>
                 {/*<Link to={`/proposal/${this.props.params.probID}/${this.props.params.solutionID}/versions`}>
                     <div id="versionsButton">
@@ -255,7 +262,7 @@ unVote() {
             </div>
             <div id="voteVersionsMenu">
                     <Link to={`/project/${this.props.params.probID}/proposal/${this.props.params.solutionID}`}>
-                      <div id="votedSolution" onClick={this.unVote}>Voted</div>
+                      <div id="votedSolution" ref='solbtn' onClick={this.unVote}>Voted</div>
                     </Link>
                     {/*<Link to={`/proposal/${this.props.params.probID}/${this.props.params.solutionID}/versions`}>
                         <div id="versionsButton">
@@ -293,7 +300,7 @@ unVote() {
             </div>
             <div id="voteVersionsMenu">
               <Link to={`/project/${this.props.params.probID}/proposal/${this.props.params.solutionID}`}>
-                <div id="voteSolution" onClick={this.submitVote}>Vote</div>
+                <div id="voteSolution" ref='solbtn' onClick={this.submitVote}>Vote</div>
               </Link>
                     {/*<Link to={`/proposal/${this.props.params.probID}/${this.props.params.solutionID}/versions`}>
                         <div id="versionsButton">

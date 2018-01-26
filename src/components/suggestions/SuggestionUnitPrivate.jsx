@@ -44,6 +44,8 @@ export default class SuggestionUnit extends React.Component {
 	}
 	renderItem(suggestion) {
        function submitVote() {
+        var self = this
+        self.refs.votebtn.setAttribute("disabled", "disabled");
        axios.post( Config.API + '/auth/vote/create', {
            Type: 3,
            TypeID: suggestion.ID,
@@ -52,25 +54,30 @@ export default class SuggestionUnit extends React.Component {
         })
         .then(function (result) {
             // document.location = window.location.pathname;
+            self.refs.votebtn.removeAttribute("disabled");
         })
       .catch(function (error) {
           $(document).ready(function() {
-              $('#notification').attr('id','notificationShow').hide().slideDown();
+            //   $('#notification').attr('id','notificationShow').hide().slideDown();
 
                 if (error.response.data == '[object Object]') {
                   return (
                     $(document).ready(function() {
+                      $('#notification').attr('id','notificationShow').hide().slideDown();
                       $('#notificationLoginRegisterContainer').attr('id','notificationLoginRegisterContainerShow');
                       $('#notificationContent').html('Please <span id="blue">login </span>to vote');
                     })
                   );
                 }  else if (error.response.data != '') {
-                $('#notificationContent').text(error.response.data);
+                // $('#notificationContent').text(error.response.data);
               }
           });
+          self.refs.votebtn.removeAttribute("disabled");
       });
   }
       function unVote() {
+        var self = this
+        self.refs.votebtn.setAttribute("disabled", "disabled");
       axios.delete( Config.API + '/auth/vote/delete' ,{
         params: {
           type: 3,
@@ -80,22 +87,25 @@ export default class SuggestionUnit extends React.Component {
         })
         .then(function (result) {
             // document.location = window.location.pathname 
+            self.refs.votebtn.removeAttribute("disabled");
         })
       .catch(function (error) {
           $(document).ready(function() {
-              $('#notification').attr('id','notificationShow').hide().slideDown();
+            //   $('#notification').attr('id','notificationShow').hide().slideDown();
 
                 if (error.response.data == '[object Object]') {
                   return (
                     $(document).ready(function() {
+                      $('#notification').attr('id','notificationShow').hide().slideDown();
                       $('#notificationLoginRegisterContainer').attr('id','notificationLoginRegisterContainerShow');
                       $('#notificationContent').html('Please <span id="blue">login </span>to vote');
                     })
                   );
                 }  else if (error.response.data != '') {
-                $('#notificationContent').text(error.response.data);
+                // $('#notificationContent').text(error.response.data);
               }
           });
+          self.refs.votebtn.removeAttribute("disabled");
       });
 }
 
@@ -132,7 +142,7 @@ export default class SuggestionUnit extends React.Component {
                         {suggestion.Username}
                     </div>
                     <Link to={`/project/private/${suggestion.TypeID}/suggestions`}>
-                        <div id="suggestionText" onClick={unVote} onMouseOver={hoverVoteVoted} onMouseOut={unHoverVoteVoted}>
+                        <div id="suggestionText" ref='votebtn' onClick={unVote.bind(this)} onMouseOver={hoverVoteVoted} onMouseOut={unHoverVoteVoted}>
                             {suggestion.Description}
                         </div>
                     </Link>
@@ -168,7 +178,7 @@ export default class SuggestionUnit extends React.Component {
 					    {suggestion.Username}
                     </div>
                     <Link to={`/project/private/${suggestion.TypeID}/suggestions`}>
-                        <div id="suggestionText" onClick={submitVote} onMouseOver={hoverVote} onMouseOut={unHoverVote}>
+                        <div id="suggestionText" ref='votebtn' onClick={submitVote.bind(this)} onMouseOver={hoverVote} onMouseOut={unHoverVote}>
                             {suggestion.Description}
                         </div>
                     </Link>
@@ -201,7 +211,7 @@ export default class SuggestionUnit extends React.Component {
                         {suggestion.Username}
                     </div>
                     <Link to={`/project/private/${suggestion.TypeID}/suggestions`}>
-                        <div id="suggestionText" onClick={unVote} onMouseOver={hoverVoteVoted} onMouseOut={unHoverVoteVoted}>
+                        <div id="suggestionText" ref='votebtn' onClick={unVote.bind(this)} onMouseOver={hoverVoteVoted} onMouseOut={unHoverVoteVoted}>
                             {suggestion.Description}
                         </div>
                     </Link>
@@ -233,7 +243,7 @@ export default class SuggestionUnit extends React.Component {
                     {suggestion.Username}
                 </div>
                 <Link to={`/project/private/${suggestion.TypeID}/suggestions`}>
-                    <div id="suggestionText" onClick={submitVote} onMouseOver={hoverVote} onMouseOut={unHoverVote}>
+                    <div id="suggestionText" ref='votebtn' onClick={submitVote.bind(this)} onMouseOver={hoverVote} onMouseOut={unHoverVote}>
                         {suggestion.Description}
                     </div>
                 </Link>

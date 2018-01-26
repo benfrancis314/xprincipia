@@ -45,7 +45,9 @@ export default class LearnContentUnit1 extends React.Component {
 		);
 	}
 	renderItem(learnItem) {
-       function submitVote() {
+    function submitVote() {
+       var self = this
+       self.refs.votebtn.setAttribute("disabled", "disabled");
        axios.post( Config.API + '/auth/vote/create', {
            Type: 7,
            TypeID: learnItem.ID,
@@ -54,25 +56,30 @@ export default class LearnContentUnit1 extends React.Component {
         })
         .then(function (result) {
             // document.location = window.location.pathname;
+            self.refs.votebtn.removeAttribute("disabled");
         })
       .catch(function (error) {
           $(document).ready(function() {
-              $('#notification').attr('id','notificationShow').hide().slideDown();
+            //   $('#notification').attr('id','notificationShow').hide().slideDown();
 
                 if (error.response.data == '[object Object]') {
                   return (
                     $(document).ready(function() {
+                      $('#notification').attr('id','notificationShow').hide().slideDown();
                       $('#notificationLoginRegisterContainer').attr('id','notificationLoginRegisterContainerShow');
                       $('#notificationContent').html('Please <span id="blue">login </span>to vote');
                     })
                   );
                 }  else if (error.response.data != '') {
-                $('#notificationContent').text(error.response.data);
+                // $('#notificationContent').text(error.response.data);
               }
           });
+          self.refs.votebtn.removeAttribute("disabled");
       });
   }
       function unVote() {
+        var self = this
+        self.refs.votebtn.setAttribute("disabled", "disabled");
       axios.delete( Config.API + '/auth/vote/delete' ,{
         params: {
           type: 7,
@@ -82,22 +89,25 @@ export default class LearnContentUnit1 extends React.Component {
         })
         .then(function (result) {
             // document.location = window.location.pathname 
+            self.refs.votebtn.removeAttribute("disabled");
         })
       .catch(function (error) {
           $(document).ready(function() {
-              $('#notification').attr('id','notificationShow').hide().slideDown();
+            //   $('#notification').attr('id','notificationShow').hide().slideDown();
 
                 if (error.response.data == '[object Object]') {
                   return (
                     $(document).ready(function() {
+                      $('#notification').attr('id','notificationShow').hide().slideDown();
                       $('#notificationLoginRegisterContainer').attr('id','notificationLoginRegisterContainerShow');
                       $('#notificationContent').html('Please <span id="blue">login </span>to vote');
                     })
                   );
                 }  else if (error.response.data != '') {
-                $('#notificationContent').text(error.response.data);
+                // $('#notificationContent').text(error.response.data);
               }
           });
+          self.refs.votebtn.removeAttribute("disabled");
       });
 }
 
@@ -135,7 +145,7 @@ export default class LearnContentUnit1 extends React.Component {
                         {learnItem.Title}
                     </div>
                     <Link to={`/project/${learnItem.TypeID}/learn/content`}>
-                        <div id="learnLessonSummary" onClick={unVote} onMouseOver={hoverVoteVoted} onMouseOut={unHoverVoteVoted}>
+                        <div id="learnLessonSummary" ref='votebtn' onClick={unVote.bind(this)} onMouseOver={hoverVoteVoted} onMouseOut={unHoverVoteVoted}>
                             {learnItem.Summary}
                         </div>
                     </Link>
@@ -180,7 +190,7 @@ export default class LearnContentUnit1 extends React.Component {
                         {learnItem.Title}
                     </div>
                     <Link to={`/project/${learnItem.TypeID}/learn/content`}>
-                        <div id="learnLessonSummary" onClick={unVote} onMouseOver={hoverVote} onMouseOut={unHoverVote}>
+                        <div id="learnLessonSummary" ref='votebtn' onClick={submitVote.bind(this)} onMouseOver={hoverVote} onMouseOut={unHoverVote}>
                             {learnItem.Summary}
                         </div>
                     </Link>
@@ -220,7 +230,7 @@ export default class LearnContentUnit1 extends React.Component {
                         {learnItem.Title}
                     </div>
                     <Link to={`/project/${learnItem.TypeID}/learn/content`}>
-                        <div id="learnLessonSummary" onClick={unVote} onMouseOver={hoverVoteVoted} onMouseOut={unHoverVoteVoted}>
+                        <div id="learnLessonSummary" ref='votebtn' onClick={unVote.bind(this)} onMouseOver={hoverVoteVoted} onMouseOut={unHoverVoteVoted}>
                             {learnItem.Summary}
                         </div>
                     </Link>
@@ -262,7 +272,7 @@ export default class LearnContentUnit1 extends React.Component {
                     {learnItem.Title}
                 </div>
                 <Link to={`/project/${learnItem.TypeID}/learn/content`}>
-                    <div id="learnLessonSummary" onClick={submitVote} onMouseOver={hoverVote} onMouseOut={unHoverVote}>
+                    <div id="learnLessonSummary" ref='votebtn' onClick={submitVote.bind(this)} onMouseOver={hoverVote} onMouseOut={unHoverVote}>
                         {learnItem.Summary}
                     </div>
                 </Link>

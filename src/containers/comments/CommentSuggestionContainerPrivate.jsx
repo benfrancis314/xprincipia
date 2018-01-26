@@ -91,7 +91,7 @@ export default class SuggestionCommentContainer extends React.Component {
                             {this.state.suggestion.Description}
                         </div>
                     </div>
-                    {/*<button type="button" onClick={submitVote} id="suggestionVote">
+                    {/*<button type="button" ref='votebtn' onClick={submitVote} id="suggestionVote">
                         Vote
                     </button> */}
                     <br /><br /> 
@@ -126,7 +126,7 @@ export default class SuggestionCommentContainer extends React.Component {
                             {this.state.suggestion.Description}
                         </div>
                     </div>
-                    {/*<button type="button" onClick={submitVote} id="suggestionVote">
+                    {/*<button type="button" ref='votebtn' onClick={submitVote} id="suggestionVote">
                         Vote
                     </button> */}
                     <br /><br /> 

@@ -44,6 +44,8 @@ export default class LearnResourcesUnit1 extends React.Component {
 	}
 	renderItem(resource) {
        function submitVote() {
+        var self = this
+        self.refs.votebtn.setAttribute("disabled", "disabled");
        axios.post( Config.API + '/auth/vote/create', {
            Type: 8,
            TypeID: resource.ID,
@@ -52,25 +54,30 @@ export default class LearnResourcesUnit1 extends React.Component {
         })
         .then(function (result) {
             // document.location = window.location.pathname;
+            self.refs.votebtn.removeAttribute("disabled");
         })
       .catch(function (error) {
           $(document).ready(function() {
-              $('#notification').attr('id','notificationShow').hide().slideDown();
+            //   $('#notification').attr('id','notificationShow').hide().slideDown();
 
                 if (error.response.data == '[object Object]') {
                   return (
                     $(document).ready(function() {
+                      $('#notification').attr('id','notificationShow').hide().slideDown();
                       $('#notificationLoginRegisterContainer').attr('id','notificationLoginRegisterContainerShow');
                       $('#notificationContent').html('Please <span id="blue">login </span>to vote');
                     })
                   );
                 }  else if (error.response.data != '') {
-                $('#notificationContent').text(error.response.data);
+                // $('#notificationContent').text(error.response.data);
               }
           });
+          self.refs.votebtn.removeAttribute("disabled");
       });
   }
       function unVote() {
+        var self = this
+        self.refs.votebtn.setAttribute("disabled", "disabled");
       axios.delete( Config.API + '/auth/vote/delete' ,{
         params: {
           type: 8,
@@ -80,22 +87,25 @@ export default class LearnResourcesUnit1 extends React.Component {
         })
         .then(function (result) {
             // document.location = window.location.pathname 
+            self.refs.votebtn.removeAttribute("disabled");
         })
       .catch(function (error) {
           $(document).ready(function() {
-              $('#notification').attr('id','notificationShow').hide().slideDown();
+            //   $('#notification').attr('id','notificationShow').hide().slideDown();
 
                 if (error.response.data == '[object Object]') {
                   return (
                     $(document).ready(function() {
+                      $('#notification').attr('id','notificationShow').hide().slideDown();
                       $('#notificationLoginRegisterContainer').attr('id','notificationLoginRegisterContainerShow');
                       $('#notificationContent').html('Please <span id="blue">login </span>to vote');
                     })
                   );
                 }  else if (error.response.data != '') {
-                $('#notificationContent').text(error.response.data);
+                // $('#notificationContent').text(error.response.data);
               }
           });
+          self.refs.votebtn.removeAttribute("disabled");
       });
 }
 
@@ -142,7 +152,7 @@ export default class LearnResourcesUnit1 extends React.Component {
                         </div>
                     </div>
                     <Link to={`/project/${resource.TypeID}/learn/resources`}>
-                        <div id="suggestionText" onClick={submitVote} onMouseOver={hoverVote} onMouseOut={unHoverVote}>
+                        <div id="suggestionText" ref='votebtn' onClick={unVote.bind(this)} onMouseOver={hoverVote} onMouseOut={unHoverVote}>
                             <span id="shrunkText">{resource.Description}</span>
                         </div>
                     </Link>
@@ -188,7 +198,7 @@ export default class LearnResourcesUnit1 extends React.Component {
                         </div>
                     </div>
                     <Link to={`/project/${resource.TypeID}/learn/resources`}>
-                        <div id="suggestionText" onClick={submitVote} onMouseOver={hoverVote} onMouseOut={unHoverVote}>
+                        <div id="suggestionText" ref='votebtn' onClick={submitVote.bind(this)} onMouseOver={hoverVote} onMouseOut={unHoverVote}>
                             <span id="shrunkText">{resource.Description}</span>
                         </div>
                     </Link>
@@ -231,7 +241,7 @@ export default class LearnResourcesUnit1 extends React.Component {
                         </div>
                     </div>
                     <Link to={`/project/${resource.TypeID}/learn/resources`}>
-                        <div id="suggestionText" onClick={submitVote} onMouseOver={hoverVote} onMouseOut={unHoverVote}>
+                        <div id="suggestionText" ref='votebtn' onClick={unVote.bind(this)} onMouseOver={hoverVote} onMouseOut={unHoverVote}>
                             <span id="shrunkText">{resource.Description}</span>
                         </div>
                     </Link>
@@ -273,7 +283,7 @@ export default class LearnResourcesUnit1 extends React.Component {
                     </div>
                 </div>
                 <Link to={`/project/${resource.TypeID}/learn/resources`}>
-                    <div id="suggestionText" onClick={submitVote} onMouseOver={hoverVote} onMouseOut={unHoverVote}>
+                    <div id="suggestionText" ref='votebtn' onClick={submitVote.bind(this)} onMouseOver={hoverVote} onMouseOut={unHoverVote}>
                         <span id="shrunkText">{resource.Description}</span>
                     </div>
                 </Link>

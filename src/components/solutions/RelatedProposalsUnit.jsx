@@ -55,7 +55,7 @@ constructor(props){
                             </div>
                         </div>
                         {/*Add back in vote when voting is ready*/}
-                        {/*<button type="button" id="suggestionVote" onClick={submitVote}>
+                        {/*<button type="button" id="suggestionVote" ref='votebtn' onClick={submitVote.bind(this)}>
                             Vote
                         </button>*/}
                     </li>
@@ -71,7 +71,7 @@ constructor(props){
                             </div>
                         </div>
                         {/*Add back in vote when voting is ready*/}
-                        {/*<button type="button" id="suggestionVote" onClick={submitVote}>
+                        {/*<button type="button" id="suggestionVote" ref='votebtn' onClick={submitVote.bind(this)}>
                             Vote
                         </button>*/}
                     </li>
@@ -95,7 +95,7 @@ constructor(props){
                         </div>
                     </div>
                     {/*Add back in vote when voting is ready*/}
-                    {/*<button type="button" id="suggestionVote" onClick={submitVote}>
+                    {/*<button type="button" id="suggestionVote" ref='votebtn' onClick={submitVote.bind(this)}>
                         Vote
                     </button>*/}
             </li>);

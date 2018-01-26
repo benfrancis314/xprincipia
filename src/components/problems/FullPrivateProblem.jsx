@@ -84,6 +84,7 @@ export default class FullProblem extends React.Component {
 
   submitVote() {
       var self = this
+      self.refs.probbtn.setAttribute("disabled", "disabled");
        axios.post( Config.API + '/auth/vote/create', {
            Type: 0,
            TypeID: this.state.problemInfo.ID,
@@ -96,6 +97,7 @@ export default class FullProblem extends React.Component {
                 // vote: true,
             })
             // document.location = window.location.pathname 
+            self.refs.probbtn.removeAttribute("disabled");
           })
           
         })
@@ -114,11 +116,13 @@ export default class FullProblem extends React.Component {
                 $('#notificationContent').text(error.response.data);
               }
           });
+          self.refs.probbtn.removeAttribute("disabled");
       });
   }
 
 unVote() {
       var self = this;
+      self.refs.probbtn.setAttribute("disabled", "disabled");
       // I believe something about the double click disable broke,
       // look at old versions to find the fix
       // self.refs.btn.setAttribute("disabled", "disabled");
@@ -136,6 +140,7 @@ unVote() {
             // document.location = window.location.pathname 
             // Below is for double click problem, if needed
             // self.refs.btn.removeAttribute("disabled");
+            self.refs.probbtn.removeAttribute("disabled");
         })
         })
       .catch(function (error) {
@@ -153,6 +158,7 @@ unVote() {
                 $('#notificationContent').text(error.response.data);
               }
           });
+          self.refs.probbtn.removeAttribute("disabled");
       });
         
     }
@@ -331,7 +337,7 @@ unVote() {
                   </Link>
                   <div id="problemCenterColumn">
                     <Link to={`/project/private/${this.props.params.probID}/subprojects`}>
-                      <div id="voteProblem" onClick={this.submitVote}>
+                      <div id="voteProblem" ref='probbtn' onClick={this.submitVote}>
                           vote
                       </div>
                     </Link>
@@ -382,7 +388,7 @@ unVote() {
                 </div>
                 <div id="projectMidColumnRightStart">
                   <div id="projectInfoGroup">
-                    <div id="projectPercent" onClick={this.submitVote} onMouseOver={this.hoverVoteNumber} onMouseOut={this.unHoverVoteNumber}>
+                    <div id="projectPercent" ref='probbtn' onClick={this.submitVote} onMouseOver={this.hoverVoteNumber} onMouseOut={this.unHoverVoteNumber}>
                       {this.state.problemInfo.Rank}
                     </div>
                     <div id="fullProblem">
@@ -443,7 +449,7 @@ unVote() {
                     </Link>
                     <div id="problemCenterColumn">
                       <Link to={`/project/private/${this.props.params.probID}/subprojects`}>
-                        <div id="votedProblem" onClick={this.unVote}>
+                        <div id="votedProblem" ref='probbtn' onClick={this.unVote}>
                             voted
                         </div>
                       </Link>
@@ -491,7 +497,7 @@ unVote() {
                   </div>
                   <div id="projectMidColumnRightStart">
                     <div id="projectInfoGroup">
-                      <div id="projectPercent" onClick={this.submitVote} onMouseOver={this.hoverVoteNumber} onMouseOut={this.unHoverVoteNumber}>
+                      <div id="projectPercent" ref='probbtn' onClick={this.submitVote} onMouseOver={this.hoverVoteNumber} onMouseOut={this.unHoverVoteNumber}>
                         {this.state.problemInfo.Rank}
                       </div>
                       <div id="fullProblem">
@@ -547,7 +553,7 @@ unVote() {
                     </Link>
                     <div id="problemCenterColumn">
                       <Link to={`/project/private/${this.props.params.probID}/subprojects`}>
-                        <div id="voteProblem" onClick={this.submitVote}>
+                        <div id="voteProblem" ref='probbtn' onClick={this.submitVote}>
                             vote
                         </div>
                       </Link>
@@ -595,7 +601,7 @@ unVote() {
                   </div>
                   <div id="projectMidColumnRightStart">
                     <div id="projectInfoGroup">
-                      <div id="projectPercent" onClick={this.submitVote} onMouseOver={this.hoverVoteNumber} onMouseOut={this.unHoverVoteNumber}>
+                      <div id="projectPercent" ref='probbtn' onClick={this.submitVote} onMouseOver={this.hoverVoteNumber} onMouseOut={this.unHoverVoteNumber}>
                         {this.state.problemInfo.Rank}
                       </div>
                       <div id="fullProblem">

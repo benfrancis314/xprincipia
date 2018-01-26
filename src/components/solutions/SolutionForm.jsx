@@ -7,11 +7,17 @@ import ScrollableAnchor from 'react-scrollable-anchor';
 import { Link  } from 'react-router';
 import AWS from 'aws-sdk/dist/aws-sdk-react-native';
 
-// var myCredentials = new AWS.CognitoIdentityCredentials({IdentityPoolId:'IDENTITY_POOL_ID'});
-// var myConfig = new AWS.Config({
-//   credentials: myCredentials, region: 'us-east-2'
-// });
+AWS.config.region = 'us-east-1'; // Region
+AWS.config.credentials = new AWS.CognitoIdentityCredentials({
+    IdentityPoolId: 'us-east-1:48435c33-63c3-4825-a3de-0c06e01d2c90',
+});
+
+
 var s3 = new AWS.S3();
+
+
+
+// FROM 
 
 
 

@@ -91,7 +91,7 @@ export default class CommentDebateContainer extends React.Component {
                                 {this.state.debate.Description}
                             </div>
                         </div>
-                        {/*<button type="button" onClick={submitVote} id="suggestionVote">
+                        {/*<button type="button" ref='votebtn' onClick={submitVote} id="suggestionVote">
                             Vote
                         </button> */}
                         {/* <br /><br />  */}

@@ -124,6 +124,7 @@ export default class FullSolutionContent extends React.Component {
                 $('#notificationContent').text(error.response.data);
               }
           });
+          self.refs.solbtn.removeAttribute("disabled");
       });
   }
 unVote() {
@@ -159,6 +160,7 @@ unVote() {
                 $('#notificationContent').text(error.response.data);
               }
           });
+          self.refs.solbtn.removeAttribute("disabled");
       });
         
     }
@@ -171,7 +173,7 @@ unVote() {
             </div>
             <div id="voteVersionsMenu">
               <Link to={`/project/private/${this.props.params.probID}/proposal/${this.props.params.solutionID}`}>
-                <div id="votedSolution" onClick={this.unVote}>Voted</div>
+                <div id="votedSolution" ref='solbtn' onClick={this.submitVote}>Voted</div>
               </Link>
                 {/*<Link to={`/proposal/private/${this.props.params.probID}/${this.props.params.solutionID}/versions`}>
                     <div id="versionsButton">
@@ -215,7 +217,7 @@ unVote() {
             </div>
             <div id="voteVersionsMenu">
               <Link to={`/project/private/${this.props.params.probID}/proposal/${this.props.params.solutionID}`}>
-                <div id="voteSolution" onClick={this.submitVote}>Vote</div>
+                <div id="voteSolution" ref='solbtn' onClick={this.submitVote}>Vote</div>
               </Link>
                 {/*<Link to={`/proposal/private/${this.props.params.probID}/${this.props.params.solutionID}/versions`}>
                     <div id="versionsButton">

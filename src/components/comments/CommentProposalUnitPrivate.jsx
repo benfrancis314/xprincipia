@@ -45,6 +45,8 @@ export default class CommentUnit extends React.Component {
 	}
 	renderItem(comment) {
        function  submitVote() {
+        var self = this
+        self.refs.votebtn.setAttribute("disabled", "disabled");
        axios.post( Config.API + '/auth/vote/create', {
            Type: 5,
            TypeID: comment.ID,
@@ -52,26 +54,31 @@ export default class CommentUnit extends React.Component {
            
         })
         .then(function (result) {
-            document.location = window.location.pathname;
+            // document.location = window.location.pathname;
+            self.refs.votebtn.removeAttribute("disabled");
         })
       .catch(function (error) {
           $(document).ready(function() {
-              $('#notification').attr('id','notificationShow').hide().slideDown();
+            //   $('#notification').attr('id','notificationShow').hide().slideDown();
 
                 if (error.response.data == '[object Object]') {
                   return (
                     $(document).ready(function() {
+                      $('#notification').attr('id','notificationShow').hide().slideDown();
                       $('#notificationLoginRegisterContainer').attr('id','notificationLoginRegisterContainerShow');
                       $('#notificationContent').html('Please <span id="blue">login </span>to vote');
                     })
                   );
                 }  else if (error.response.data != '') {
-                $('#notificationContent').text(error.response.data);
+                // $('#notificationContent').text(error.response.data);
               }
           });
+          self.refs.votebtn.removeAttribute("disabled");
       });
   }
       function unVote() {
+        var self = this
+        self.refs.votebtn.setAttribute("disabled", "disabled");
       axios.delete( Config.API + '/auth/vote/delete' ,{
         params: {
           type: 5,
@@ -80,23 +87,26 @@ export default class CommentUnit extends React.Component {
         }
         })
         .then(function (result) {
-            document.location = window.location.pathname 
+            // document.location = window.location.pathname 
+            self.refs.votebtn.removeAttribute("disabled");
         })
       .catch(function (error) {
           $(document).ready(function() {
-              $('#notification').attr('id','notificationShow').hide().slideDown();
+            //   $('#notification').attr('id','notificationShow').hide().slideDown();
 
                 if (error.response.data == '[object Object]') {
                   return (
                     $(document).ready(function() {
+                      $('#notification').attr('id','notificationShow').hide().slideDown();
                       $('#notificationLoginRegisterContainer').attr('id','notificationLoginRegisterContainerShow');
                       $('#notificationContent').html('Please <span id="blue">login </span>to vote');
                     })
                   );
                 }  else if (error.response.data != '') {
-                $('#notificationContent').text(error.response.data);
+                // $('#notificationContent').text(error.response.data);
               }
           });
+          self.refs.votebtn.removeAttribute("disabled");
       });
 }
 
@@ -132,9 +142,11 @@ export default class CommentUnit extends React.Component {
                         <span id="discussPercent">{floatToDecimal(comment.PercentRank)}</span>
                         {comment.Username}
                     </div>
-                    <div id="suggestionText" onClick={unVote} onMouseOver={hoverVoteVoted} onMouseOut={unHoverVoteVoted}>
-                        {comment.Description}
-                    </div>
+                    <Link to={window.location.pathname}>
+                        <div id="suggestionText" ref='votebtn' onClick={unVote.bind(this)} onMouseOver={hoverVoteVoted} onMouseOut={unHoverVoteVoted}>
+                            {comment.Description}
+                        </div>
+                    </Link>
 				</div>
         </li>);
     }  else if ( comment.Username === cookie.load('userName')) {
@@ -166,9 +178,11 @@ export default class CommentUnit extends React.Component {
                         <span id="discussPercent">{floatToDecimal(comment.PercentRank)}</span>
 					    {comment.Username}
                     </div>
-                    <div id="suggestionText" onClick={submitVote} onMouseOver={hoverVote} onMouseOut={unHoverVote}>
-                        {comment.Description}
-                    </div>
+                    <Link to={window.location.pathname}>
+                        <div id="suggestionText" ref='votebtn' onClick={submitVote.bind(this)} onMouseOver={hoverVote} onMouseOut={unHoverVote}>
+                            {comment.Description}
+                        </div>
+                    </Link>
 				</div>
         </li>);
     } else if (this.state.voteHash[comment.ID] === true) {
@@ -197,9 +211,11 @@ export default class CommentUnit extends React.Component {
                         <span id="discussPercent">{floatToDecimal(comment.PercentRank)}</span>
                         {comment.Username}
                     </div>
-                    <div id="suggestionText" onClick={unVote} onMouseOver={hoverVoteVoted} onMouseOut={unHoverVoteVoted}>
-                        {comment.Description}
-                    </div>
+                    <Link to={window.location.pathname}>
+                        <div id="suggestionText" ref='votebtn' onClick={unVote.bind(this)} onMouseOver={hoverVoteVoted} onMouseOut={unHoverVoteVoted}>
+                            {comment.Description}
+                        </div>
+                    </Link>
 				</div>
         </li>);
 
@@ -227,9 +243,11 @@ export default class CommentUnit extends React.Component {
                     <span id="discussPercent">{floatToDecimal(comment.PercentRank)}</span>
                     {comment.Username}
                 </div>
-                <div id="suggestionText" onClick={submitVote} onMouseOver={hoverVote} onMouseOut={unHoverVote}>
-                    {comment.Description}
-                </div>
+                <Link to={window.location.pathname}>
+                    <div id="suggestionText" ref='votebtn' onClick={submitVote.bind(this)} onMouseOver={hoverVote} onMouseOut={unHoverVote}>
+                        {comment.Description}
+                    </div>
+                </Link>
             </div>
         </li>);
 }
