@@ -17,8 +17,10 @@ export default class OverviewChildUnits extends React.Component {
 
     //On recieving new props
   componentWillReceiveProps(nextProps){
-	  var self = this
-	  self.setState({problems: nextProps.problems})
+        var self = this
+        self.setState({
+            problems: nextProps.problems
+            })
   }
 
 
@@ -34,14 +36,18 @@ export default class OverviewChildUnits extends React.Component {
                 </div>
 			</Link>
 			<ul> 
-                {/* <div id="overViewRowUnitTop4">
-                    <div id="overViewTitle">
-                        Thoughts
+                <Link to={`/project/${this.props.topChild.ID}/tree`}>
+                    <div id="overViewRowUnitTop4">
+                        <div id="overViewTitle">
+                            {this.props.topChild.Title}
+                        </div>
+                        <Link to={`/project/${this.props.topChild.ID}/subprojects`}>
+                            <div id="overViewViewButton">
+                                view
+                            </div>
+                        </Link>
                     </div>
-                    <div id="overViewViewButton">
-                        view
-                    </div>
-                </div> */}
+                </Link>
 				{this.state.problems.map(this.renderItem)}
 			</ul>
 		</div>

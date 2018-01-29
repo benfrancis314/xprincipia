@@ -71,9 +71,11 @@ export default class SubProblemUnit extends React.Component {
                         <div id="overViewTitle">
                             {problem.Title}
                         </div>
-                        <div id="overViewViewButton">
-                            view
-                        </div>
+                        <Link to={`/project/${this.problem.ID}/subprojects`}>
+                            <div id="overViewViewButton">
+                                view
+                            </div>
+                        </Link>
                     </li>
                 </Link>
             );

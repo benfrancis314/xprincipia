@@ -15,7 +15,7 @@ export default class FullSolution extends React.Component {
             solutionID: [],
             probID: []
         }
-        this.dayMode = this.dayMode.bind(this);
+        // this.dayMode = this.dayMode.bind(this);
     };
     //initialize the component with this state
     componentDidMount(){
@@ -56,16 +56,16 @@ componentDidUpdate() {
   }   
 
 
-  dayMode() {
-    $(document).ready(function() {
-        $('#fullSolution').attr('id','fullSolutionDay');
-        $('#solutionTitle').attr('id','solutionTitleDay');
-        $('#solutionCreator').attr('id','solutionCreatorDay');
-        $('#solutionSummary').attr('id','solutionSummaryDay');
-        $('#solutionDescription').attr('id','solutionDescriptionDay');
-        $('#solutionReferences').attr('id','solutionReferencesDay');
-    });
-  }
+//   dayMode() {
+//     $(document).ready(function() {
+//         $('#fullSolution').attr('id','fullSolutionDay');
+//         $('#solutionTitle').attr('id','solutionTitleDay');
+//         $('#solutionCreator').attr('id','solutionCreatorDay');
+//         $('#solutionSummary').attr('id','solutionSummaryDay');
+//         $('#solutionDescription').attr('id','solutionDescriptionDay');
+//         $('#solutionReferences').attr('id','solutionReferencesDay');
+//     });
+//   }
 
    render() {
     //    No longer used but would like to use this in the future.

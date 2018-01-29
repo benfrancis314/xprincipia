@@ -118,10 +118,7 @@ export default class OverviewContainer extends React.Component {
                 <OverviewGrandParentContainer grandParentTitle={this.state.problemInfo.GrandParentTitle} grandParentID={this.state.problemInfo.GrandParentID} ggParentID={this.state.problemInfo.GGParentID} />
                 <OverviewParentContainer parentTitle={this.state.problemInfo.ParentTitle} parentID={this.state.problemInfo.ParentID} grandParentID={this.state.problemInfo.GrandParentID}/>
                 <OverviewProjectContainer projectTitle={this.state.problemInfo.Title} projectID={this.props.params.probID} parentID={this.state.problemInfo.ParentID} />
-                <OverviewChildContainer projectID={this.props.params.probID} />
-                xxx{String(this.state.topChild.ID)}xxxTitle
-                <br />
-                yyy{this.props.params.probID}yyyParam
+                <OverviewChildContainer topChild={this.state.topChild} projectID={this.props.params.probID} />
                 <OverviewGrandChildContainer topChild={this.state.topChild} projectID={this.props.params.probID} problems={this.state.level4Problems} />
             </div>
             {this.props.children}

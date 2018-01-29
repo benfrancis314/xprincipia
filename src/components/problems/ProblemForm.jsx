@@ -63,7 +63,7 @@ export default class ProblemForm extends React.Component {
       window.scrollTo(0,0);
     })
       .catch(function (error) {
-        // alert('why not working');
+        // alert(error.response.data);
           $(document).ready(function() {
               if (error.response.data == '[object Object]') {
                 return (
@@ -85,6 +85,7 @@ export default class ProblemForm extends React.Component {
   render() {
       return (
         <div>
+          {/* XXX   {this.props.ggParentID}GGPARENT ID */}
           <div id="createProblemBox">
               <form id="createProjectForm">
                 <fieldset id="fieldSetNoBorder">

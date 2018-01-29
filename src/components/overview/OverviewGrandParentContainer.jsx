@@ -36,6 +36,7 @@ export default class SubProblemContainer extends React.Component {
     render() {
             return (
                 <div id="sidebarSBProjects">
+                    {/* GrandParentID */}
                     <OverviewGrandParentUnits problems={this.state.problems} grandParentID={this.props.grandParentID} grandParentTitle={this.props.grandParentTitle} ggParentID={this.props.ggParentID}/>
                 </div>
             );

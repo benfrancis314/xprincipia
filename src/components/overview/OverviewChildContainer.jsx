@@ -36,9 +36,8 @@ export default class OverviewChildContainer extends React.Component {
     render() {
             return (
                 <div id="sidebarSBProjects">
-                    <OverviewChildUnits problems={this.state.problems} />
+                    <OverviewChildUnits topChild={this.props.topChild} problems={this.state.problems} />
                 </div>
-            
             );
         }
     }

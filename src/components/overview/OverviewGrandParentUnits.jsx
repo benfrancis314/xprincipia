@@ -28,8 +28,6 @@ export default class OverviewGrandParentUnits extends React.Component {
         <div id="overViewColumn">
             <div id="overViewLineageLabel2">
                 grand parent
-                {/* x{this.props.grandParentID}x */}
-                {/* yxxy */}
             </div>
             <Link to={`/project/${this.props.probID}/create`} activeClassName="activePrivateCreateButton">
                 <div id="overViewAddButton">
@@ -37,12 +35,12 @@ export default class OverviewGrandParentUnits extends React.Component {
                 </div>
 			</Link>
 			<ul> 
-            <Link to={`/project/${this.props.grandParentID}/tree`}>
+                <Link to={`/project/${this.props.grandParentID}/tree`}>
                     <div id="overViewRowUnitTop2">
                         <div id="overViewTitle">
                             {this.props.grandParentTitle}
                         </div>
-                        <Link to={'/project/${this.props.ggParentID}/subprojects'}>
+                        <Link to={`/project/${this.props.ggParentID}/subprojects`}>
                             <div id="overViewViewButton">
                                 view
                             </div>
