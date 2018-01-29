@@ -97,9 +97,9 @@ renderItem(problem) {
 
     return (
         <li key={problem.ID} id="feedListUnit">
-            <Link to={'/project/'+problem.ProblemID +'/subprojects'}>
+            <Link to={'/project/'+problem.TypeID +'/subprojects'}>
                 <div id="feedUnitsProject">               
-                    <div id="blueFeedProject">new sub project</div>
+                    <div id="blueFeedProject">new sub project:</div>
                     <div id="whiteFeedProject">
                         {problem.Description}
                     </div>
@@ -107,13 +107,13 @@ renderItem(problem) {
             </Link>  
         </li>
     );
-} else if (problem.Type == '0') {
+} else if (problem.Type == '1') {
 
     return (
         <li key={problem.ID} id="feedListUnit">
-            <Link to={'/project/'+problem.ProblemID +'/subprojects'}>
+            <Link to={'/project/'+problem.ProblemID +'/proposal/'+problem.TypeID}>
                 <div id="feedUnitsProject">               
-                    <div id="blueFeedProject">new proposal</div>
+                    <div id="blueFeedProject">new proposal:</div>
                     <div id="whiteFeedProject">
                         {problem.Description}
                     </div>
@@ -126,7 +126,7 @@ renderItem(problem) {
         <li key={problem.ID} id="feedListUnit">
             <Link to={'/project/'+problem.ProblemID +'/question/'+problem.TypeID +'/answers'}>
                 <div id="feedUnitsProject">               
-                    <div id="blueFeedProject">new question</div>
+                    <div id="blueFeedProject">new question:</div>
                     <div id="whiteFeedProjectDescription">
                         {problem.Description}
                     </div>
@@ -138,7 +138,7 @@ renderItem(problem) {
         <li key={problem.ID} id="feedListUnit">
             <Link to={'/project/'+problem.ProblemID +'/suggestion/'+problem.TypeID +'/comments'}>
                 <div id="feedUnitsProject">               
-                    <div id="blueFeedProject">new suggestion</div>
+                    <div id="blueFeedProject">new suggestion:</div>
                     <div id="whiteFeedProjectDescription">
                         {problem.Description}
                     </div>
@@ -159,7 +159,7 @@ renderItem(problem) {
         <li key={problem.ID} id="feedListUnit">
             <Link to={'/project/'+problem.ProblemID +'/freeform/'+problem.TypeID +'/comments'}>
                 <div id="feedUnitsProject">               
-                    <div id="blueFeedProject">new debate</div>
+                    <div id="blueFeedProject">new debate:</div>
                     <div id="whiteFeedProjectDescription">
                         {problem.Description}
                     </div>
@@ -173,7 +173,7 @@ renderItem(problem) {
         <li key={problem.ID} id="feedListUnit">
             <Link to={'/project/'+problem.ProblemID +'/learn/content/'+problem.TypeID +'/comments'}>
                 <div id="feedUnitsProject">               
-                    <div id="blueFeedProject">new lesson</div>
+                    <div id="blueFeedProject">new lesson:</div>
                     <div id="whiteFeedProject">
                         {problem.Description}
                     </div>
@@ -185,7 +185,7 @@ renderItem(problem) {
         <li key={problem.ID} id="feedListUnit">
             <Link to={'/project/'+problem.ProblemID +'/learn/resources/'+problem.TypeID +'/comments'}>
                 <div id="feedUnitsProject">               
-                    <div id="blueFeedProject">new resource</div>
+                    <div id="blueFeedProject">new resource:</div>
                     <div id="whiteFeedProject">
                         {problem.Description}
                     </div>
@@ -205,7 +205,7 @@ renderItem(problem) {
             <li key={problem.ID} id="feedListUnit">
                 <Link to={'/project/'+problem.ID +'/subprojects'}>
                     <div id="feedUnitsProject">               
-                        <div id="blueFeedProject">new update</div>
+                        <div id="blueFeedProject">new update:</div>
                         <div id="whiteFeedProject">
                             {problem.Description}
                         </div>

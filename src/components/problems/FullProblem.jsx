@@ -837,6 +837,7 @@ unVote() {
           <ScrollableAnchor id={'proposals'}>
             <ProblemSolutionsMenu probID={this.props.params.probID} projectTitle={this.state.problemInfo.Title} />
           </ScrollableAnchor>
+          
 
         </ReactCSSTransitionGroup>
       </div>

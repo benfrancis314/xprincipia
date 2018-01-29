@@ -104,8 +104,8 @@ if (proposal.Private === true) {
             <Link to={'/project/'+proposal.ProblemID +'/proposal/'+proposal.ID}>
                 <div id="feedUnits">  
                      {/* Used to say "Question on: ... " or "Q: ... " or just the title */}
-                    <div id="blueFeedProse"><span id="feedCaps">{proposal.ParentTitle}</span></div>
-                    <div id="whiteFeedProse">{proposal.Title}</div>
+                    <div id="blueFeedProse">project:<span id="feedCaps"> {proposal.ParentTitle}</span></div>
+                    <div id="whiteFeed">{proposal.Title}</div>
                     <div id="feedDateProse">{dateTime(proposal.CreatedAt)}</div>
                 </div>
             </Link>

@@ -12,7 +12,7 @@ import OverviewParentContainer from '../components/overview/OverviewParentContai
 
 
 
-export default class ErrorContainer extends React.Component {
+export default class OverviewContainer extends React.Component {
 
     constructor(props){
         super(props);
@@ -51,9 +51,9 @@ export default class ErrorContainer extends React.Component {
             //         topChild: response.data,
             //     })
             // })
-            axios.get( Config.API + '/problems/topchild?id='+this.props.projectID).then(function (response) {
+            axios.get( Config.API + '/problems/topchild?id='+this.props.params.probID).then(function (response) {
                 self.setState({
-                    topChild: response.data
+                    topChild: response.data,
                 })
             }) 
        
@@ -75,9 +75,9 @@ export default class ErrorContainer extends React.Component {
         //         topChild: response.data,
         //     })
         // })
-        axios.get( Config.API + '/problems/topchild?id='+nextProps.projectID).then(function (response) {
+        axios.get( Config.API + '/problems/topchild?id='+nextProps.params.probID).then(function (response) {
             self.setState({
-                topChild: response.data
+                topChild: response.data,
             })
         }) 
     }
@@ -119,11 +119,9 @@ export default class ErrorContainer extends React.Component {
                 <OverviewParentContainer parentTitle={this.state.problemInfo.ParentTitle} parentID={this.state.problemInfo.ParentID} grandParentID={this.state.problemInfo.GrandParentID}/>
                 <OverviewProjectContainer projectTitle={this.state.problemInfo.Title} projectID={this.props.params.probID} parentID={this.state.problemInfo.ParentID} />
                 <OverviewChildContainer projectID={this.props.params.probID} />
-                xxx{this.state.topChild.ProjectID}xxxTest
-                {/* <br />
-                xxx{this.state.topChild}xxxTotal
+                xxx{String(this.state.topChild.ID)}xxxTitle
                 <br />
-                xxx{this.state.topChild.length}xxxLength */}
+                yyy{this.props.params.probID}yyyParam
                 <OverviewGrandChildContainer topChild={this.state.topChild} projectID={this.props.params.probID} problems={this.state.level4Problems} />
             </div>
             {this.props.children}

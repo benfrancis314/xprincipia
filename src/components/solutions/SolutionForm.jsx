@@ -13,14 +13,33 @@ AWS.config.credentials = new AWS.CognitoIdentityCredentials({
 });
 
 
-var s3 = new AWS.S3();
+var s3 = new AWS.S3({apiVersion: '2006-03-01'});
 
 
 
-// FROM 
+// THIS IS THE GET CALL FOR AN ALREADY CREATED OBJECTED
 
-
-
+// var params = {
+//   Bucket: "examplebucket", 
+//   Key: "HappyFace.jpg"
+//  };
+//  s3.getObject(params, function(err, data) {
+//    if (err) console.log(err, err.stack); // an error occurred
+//    else     console.log(data);           // successful response
+//    /*
+//    data = {
+//     AcceptRanges: "bytes", 
+//     ContentLength: 3191, 
+//     ContentType: "image/jpeg", 
+//     ETag: "\"6805f2cfc46c0f04559748bb039d69ae\"", 
+//     LastModified: <Date Representation>, 
+//     Metadata: {
+//     }, 
+//     TagCount: 2, 
+//     VersionId: "null"
+//    }
+//    */
+//  });
 
 
 
@@ -37,7 +56,7 @@ export default class SolutionForm extends React.Component {
       description: '',
       references: '',
       class: '',
-      parentTitle: this.props.parentTitle,
+      parentTitle: '',
       file: '',
 
     }
@@ -53,14 +72,14 @@ export default class SolutionForm extends React.Component {
   componentDidMount(){
     var self = this;
     self.setState({
-      file: document.getElementById("fileProposal").value
+      file: document.getElementById("fileProposal").value,
     })
   }
 
-  componentWillReceiveProps(nextState){
+  componentWillReceiveProps(nextState, nextProps){
     var self = this;      
     self.setState({
-        file: document.getElementById("fileProposal").value
+        file: document.getElementById("fileProposal").value,
     })
   }
 
@@ -112,9 +131,9 @@ export default class SolutionForm extends React.Component {
     }
 
      var params = {
-      Body: this.state.file, 
+      Body: String(this.state.file), 
       Bucket: "xprincipiabucket", 
-      Key: "HappyFace.jpg"
+      Key: String(this.state.file)
      };
      s3.putObject(params, function(err, data) {
        if (err) console.log(err, err.stack); // an error occurred
@@ -137,6 +156,7 @@ export default class SolutionForm extends React.Component {
         references: this.state.references,
         class : this.state.class,
         private: '0',
+        parentTitle: this.props.projectTitle,
       })
       .then(function (result) {
         // document.location = '/project/' + self.props.probID + '/subprojects'

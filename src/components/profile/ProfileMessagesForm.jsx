@@ -25,7 +25,7 @@ export default class ProfileMessagesForm extends React.Component {
 
   postMessage() {
     var self = this;
-    self.refs.btn.setAttribute("disabled", "disabled");
+    self.refs.messagebtn.setAttribute("disabled", "disabled");
 
     this.state.user1 = cookie.load('userName')
     this.state.user2 = document.getElementById('problemTitleForm').value
@@ -45,7 +45,7 @@ export default class ProfileMessagesForm extends React.Component {
       })
       .then(function (response) {
         document.getElementById("welcomeCreateProjectForm").reset();
-        self.refs.btn.removeAttribute("disabled");
+        self.refs.messagebtn.removeAttribute("disabled");
 
         // Direct them to their new conversation they just created
       })
@@ -68,6 +68,7 @@ export default class ProfileMessagesForm extends React.Component {
                 $('#notificationContent').text(error.response.data);
               }
           });
+          self.refs.messagebtn.removeAttribute("disabled");
       });
     };
 

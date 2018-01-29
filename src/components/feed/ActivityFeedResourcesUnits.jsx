@@ -121,8 +121,8 @@ if (resource.Private === true) {
             <Link to={'/project/'+resource.TypeID +'/resource/'+resource.ID +'/comments'}>
                 <div id="feedUnits">  
                      {/* Used to say "Question on: ... " or "Q: ... " or just the title */}
-                    <div id="blueFeedProse"><span id="feedCaps">{resource.ParentTitle}</span></div>
-                    <div id="whiteFeedProse">{resource.Description}</div>
+                    <div id="blueFeedProse">project:<span id="feedCaps">{resource.ParentTitle}</span></div>
+                    <div id="whiteFeed">{resource.Title}</div>
                     <div id="feedDateProse">{dateTime(resource.CreatedAt)}</div>
                 </div>
             </Link>

@@ -13,7 +13,7 @@ export default class ProblemSolutionsMenu extends React.Component {
         }
     };
 
-        componentDidMount(){
+    componentDidMount(){
         var self = this;
         return axios.get( Config.API + '/solutions/problemID?id='+this.props.probID).then(function (response) {
             self.setState({

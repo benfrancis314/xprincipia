@@ -45,7 +45,7 @@ track() {
           trackerType: '0',
       })
       .then(function (result) {
-          document.location = window.location.pathname 
+          // document.location = window.location.pathname 
       })
     .catch(function (error) {
         $(document).ready(function() {
@@ -70,7 +70,7 @@ unTrack() {
   var self = this
     axios.delete( Config.API + '/auth/tracker/untrack?trackerType=0&typeID=' + this.props.probID + '&username=' + this.props.username)
     .then(function (result) {
-        document.location = window.location.pathname 
+        // document.location = window.location.pathname 
     })
   .catch(function (error) {
       $(document).ready(function() {
@@ -95,7 +95,7 @@ unTrack() {
        if (this.state.tracked === true) {
        return (
             <div>
-              <Link>
+              <Link to={window.location.pathname}>
                 <div id="SBButtonFollowed" onClick={this.unTrack}>
                   tracking
                 </div>
@@ -105,7 +105,7 @@ unTrack() {
     } else {
         return (
             <div>
-              <Link>
+              <Link to={window.location.pathname}>
                 <div id="SBButtonFollow" onClick={this.track}>
                   track
                 </div>

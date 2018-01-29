@@ -15,7 +15,8 @@ export default class SolutionPrivateForm extends React.Component {
       title: '',
       summary: '',
       description: '',
-      references: ''
+      references: '',
+      parentTitle: '',
     }
 
     this.postSolution = this.postSolution.bind(this);
@@ -47,7 +48,7 @@ export default class SolutionPrivateForm extends React.Component {
         description : this.state.description,
         references: this.state.references,
         class : this.state.class,
-        parentTitle: this.props.parentTitle,
+        parentTitle: this.props.projectTitle,
         private: '1',
       })
       .then(function (result) {

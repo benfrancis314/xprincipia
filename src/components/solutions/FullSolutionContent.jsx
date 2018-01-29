@@ -198,10 +198,10 @@ unVote() {
               
               <div id="prosConsMenu">
                 <Link to={`/project/${this.props.params.probID}/proposal/${this.props.params.solutionID}/pros`} activeClassName="activeProsCons">
-                    <div id="prosButton">pros</div>
+                    <div id="prosButton">pro</div>
                 </Link>
                 <Link to={`/project/${this.props.params.probID}/proposal/${this.props.params.solutionID}/cons`} activeClassName="activeProsCons">
-                    <div id="consButton">cons</div>
+                    <div id="consButton">contra</div>
                 </Link>
               </div>
               <div>
@@ -241,10 +241,10 @@ unVote() {
 
               <div id="prosConsMenu">
                 <Link to={`/project/${this.props.params.probID}/proposal/${this.props.params.solutionID}/pros`} activeClassName="activeProsCons">
-                    <div id="prosButton">pros</div>
+                    <div id="prosButton">pro</div>
                 </Link>
                 <Link to={`/project/${this.props.params.probID}/proposal/${this.props.params.solutionID}/cons`} activeClassName="activeProsCons">
-                    <div id="consButton">cons</div>
+                    <div id="consButton">contra</div>
                 </Link>
               </div>
               <div>
@@ -279,10 +279,10 @@ unVote() {
 
               <div id="prosConsMenu">
                 <Link to={`/project/${this.props.params.probID}/proposal/${this.props.params.solutionID}/pros`} activeClassName="activeProsCons">
-                    <div id="prosButton">pros</div>
+                    <div id="prosButton">pro</div>
                 </Link>
                 <Link to={`/project/${this.props.params.probID}/proposal/${this.props.params.solutionID}/cons`} activeClassName="activeProsCons">
-                    <div id="consButton">cons</div>
+                    <div id="consButton">contra</div>
                 </Link>
               </div>
               <div>

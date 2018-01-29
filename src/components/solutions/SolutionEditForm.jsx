@@ -73,6 +73,7 @@ export default class EditSolutionForm extends React.Component {
     })
     .then(function (result) {
     //  document.location = '/project/' + self.props.params.probID + '/proposal/' + self.props.params.solutionID
+    // alert(self.state.references)
     })
       .catch(function (error) {
         // console.log(error.response.data)

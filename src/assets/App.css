@@ -200,7 +200,9 @@ ol, ul {
   font-family: 'Roboto Condensed' !important;
 }
 
-
+#white {
+  color: #dddddd !important;
+}
 #whiteOpen {
   color: #dddddd !important;
   font-family: 'Open Sans' !important;
@@ -430,7 +432,7 @@ padding-left: 0px !important;
 background-size: cover !important;
 border: 1px solid #00dcff !important;
 border-width: 1px 1px 1px 1px !important;
-border-radius: 0% !important;
+border-radius: 3px !important;
 box-shadow: 0 0 1pt 1pt rgba(0,220,255,0.5) !important;
 width: 90.5% !important;
 height: auto !important;
@@ -784,7 +786,7 @@ margin-bottom: 5% !important;
 display: flex !important;
 flex-direction: column !important;
 }
-#headerName {
+#headerName, #headerNameNotifications {
 width: 100% !important;
 text-align: center !important;
 margin: 0 auto !important;
@@ -1071,22 +1073,29 @@ margin-right: 0px !important;
       margin-bottom: 0% !important;
       font-size: 160% !important;
     }
-    #headerName {
+    #headerName, #headerNameNotifications {
       font-size: 120% !important;
       letter-spacing: 2px !important;
       padding-left: 3px !important;
       padding-right: 3px !important;
     }
-    #notebookHeaderButton, #headerTempleName, #headerMessagesButton, #headerName {
+    #notebookHeaderButton, #headerTempleName, #headerMessagesButton, #headerName, #headerNameNotifications {
       height: 30px !important;
     }
-    #headerName {
+    #headerName, #headerNameNotifications {
       border-radius: 0px 5px 5px 0px !important;
       border-width: 1px 1px 1px 0px !important;
       padding-top: 0px !important; 
       padding-bottom: 0px !important;
       height: 32px !important;
       vertical-align: middle !important;
+    }
+    #headerNotificationsButton {
+      margin: 0 auto !important;
+      margin-right: 0px !important;
+      right: 0px !important;
+      padding-left: 10px !important;
+      background: linear-gradient(to right, rgba(255,127,127,0), rgba(255,127,127,0), rgba(255,127,127,0.15))
     }
     #headerTempleName {
       border-radius: 0px !important;
@@ -2081,6 +2090,9 @@ text-align: center;
   transform: scale(1);
   color: #ffffff;
   transition: all 2s ease 0s;
+}
+#logoName:hover {
+  letter-spacing: 14px;
 }
 #logoNameGuide {
   margin: 0 auto;
@@ -9961,7 +9973,7 @@ margin-top: 1%;
   border-radius: 5px 5px 25% 10px;
   margin-top: 0%;
   margin-bottom: 3%;
-  padding: 0.5% 5% 0.5% 5%;
+  padding: 1% 5% 0% 5%;
   transition: all 0.75s ease 0s;
   box-shadow: 0 0 0pt 0pt rgba(0,220,255,0.5);
   background-color: rgba(0,220,255,0);
@@ -10022,6 +10034,7 @@ margin-top: 1%;
   border-width: 0px 0px 1px 0px;
   font-family: 'Alegreya Sans SC' !important;
   text-align: left;
+  text-transform: lowercase !important;
 }
 #whiteFeed {
   font-family: 'Alegreya Sans SC' !important;
@@ -10053,11 +10066,11 @@ margin-top: 1%;
 }
 #whiteFeedProse {
   font-family: 'Open Sans' !important;
-  font-size: 105%;
+  font-size: 90%;
   padding-left: 2%;
   padding-right: 2%;
-  padding-top: 1.75%;
-  padding-bottom: 1.75%;
+  padding-top: 1.5%;
+  padding-bottom: 1.5%;
   border: 1px solid #333333;
   border-width: 0px 0px 1px 0px;
   width: 72%;
@@ -10066,6 +10079,7 @@ margin-top: 1%;
 #feedDateProse {
   color: #999999;
   transition: all 0.5s ease 0s;
+  font-size: 80%;
 }
 #feedListUnit {
   display: inline-block;
@@ -10900,7 +10914,6 @@ margin-top: 1%;
   margin-bottom: 0px;
   transform: scale(1);
   margin: 0 auto;
-  margin-top: 0.39%;
   margin-top: 2px;
   margin-right: 0px;
   flex: 1 1 auto;

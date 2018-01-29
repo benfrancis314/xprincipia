@@ -38,7 +38,7 @@ componentWillReceiveProps(nextProps) {
 		return (
 	    <div id="fullWide">
             {this.props.children}
-            <Link to="/messages/1" activeClassName="activeMessage">
+            <Link to={`messages/${cookie.load('userName')}/xprincipia`} activeClassName="activeMessage">
                 <div id="messagesUnitXP">
                     <div id="messageTitle">
                         XPrincipia
@@ -53,8 +53,7 @@ componentWillReceiveProps(nextProps) {
 		);
 	}
 	renderItem(conversation) {
-        // if(conversation.User1 == cookie.load('userName')) {
-        if(1) {
+        if(conversation.User1 == cookie.load('userName')) {
             return (
             <Link key={conversation.ID} to={`messages/${conversation.User1}/${conversation.User2}`} activeClassName="activeMessage">
                 <li key={conversation.ID}>

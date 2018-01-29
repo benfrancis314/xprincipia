@@ -130,7 +130,22 @@ if (problem.Private === true) {
         <li key={problem.ID} id="feedListUnit">
             <Link to={'/project/'+problem.ProblemID +'/subprojects'}>
                 <div id="omniActivityUnit">
-                    new sub project in:
+                    new project:
+                    <br />
+                    <span id="blueUpdate">
+                        {problem.Description}
+                    </span>
+                    {/* <br />
+                    <span id="omniActivityDate">{problem.CreatedAt}</span> */}
+                </div>
+            </Link>
+        </li>);
+    } else if (problem.Type == '1') {
+        return (
+        <li key={problem.ID} id="feedListUnit">
+            <Link to={'/project/'+problem.ProblemID +'/proposal/'+problem.TypeID}>
+                <div id="omniActivityUnit">
+                    new proposal:
                     <br />
                     <span id="blueUpdate">
                         {problem.Description}
