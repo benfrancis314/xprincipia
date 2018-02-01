@@ -13,33 +13,15 @@ AWS.config.credentials = new AWS.CognitoIdentityCredentials({
 });
 
 
-var s3 = new AWS.S3({apiVersion: '2006-03-01'});
+var s3 = new AWS.S3({
+  apiVersion: '2006-03-01',
+  params: {Bucket: 'xprincipiabucket'}
+});
 
-
-
-// THIS IS THE GET CALL FOR AN ALREADY CREATED OBJECTED
-
-// var params = {
-//   Bucket: "examplebucket", 
-//   Key: "HappyFace.jpg"
-//  };
-//  s3.getObject(params, function(err, data) {
-//    if (err) console.log(err, err.stack); // an error occurred
-//    else     console.log(data);           // successful response
-//    /*
-//    data = {
-//     AcceptRanges: "bytes", 
-//     ContentLength: 3191, 
-//     ContentType: "image/jpeg", 
-//     ETag: "\"6805f2cfc46c0f04559748bb039d69ae\"", 
-//     LastModified: <Date Representation>, 
-//     Metadata: {
-//     }, 
-//     TagCount: 2, 
-//     VersionId: "null"
-//    }
-//    */
-//  });
+var params = {
+  Bucket: "xprincipiabucket", 
+  Key: "test key"
+ };
 
 
 
@@ -58,34 +40,42 @@ export default class SolutionForm extends React.Component {
       class: '',
       parentTitle: '',
       file: '',
+      key: '',
 
     }
 
     this.postSolution = this.postSolution.bind(this);
     this.showPDF = this.showPDF.bind(this);
     this.showProse = this.showProse.bind(this);
-    this.testFileInput = this.testFileInput.bind(this);
-
+    // this.testFileInput = this.testFileInput.bind(this);
   };
 
 
   componentDidMount(){
     var self = this;
-    self.setState({
-      file: document.getElementById("fileProposal").value,
-    })
+    // S3 CALL HERE
+    axios.get( Config.API + '/s3call/key').then(function (response) {
+      self.setState({
+          key: response.data,
+          file: document.getElementById("fileProposal").value,
+      })
+  }) 
   }
 
   componentWillReceiveProps(nextState, nextProps){
-    var self = this;      
-    self.setState({
+    var self = this;
+    // S3 CALL HERE      
+    axios.get( Config.API + '/s3call/key').then(function (response) {
+      self.setState({
+        key: response.data,
         file: document.getElementById("fileProposal").value,
+      })
     })
   }
 
-  testFileInput() {
-    alert(document.getElementById("fileProposal").value);
-  }
+  // testFileInput() {
+  //   alert(document.getElementById("fileProposal").value);
+  // }
 
 
   showPDF() {
@@ -114,14 +104,16 @@ export default class SolutionForm extends React.Component {
     self.refs.btn.setAttribute("disabled", "disabled");
 
     // FILE UPLOAD
-    this.state.file = document.getElementById("fileProposal").value
+
+    var files = document.getElementById('fileProposal').files;
+    var file = files[0];
+    this.state.file = file;
 
     this.state.title = document.getElementById('solutionTitleForm').value
     this.state.summary = document.getElementById('solutionSummaryForm').value
     this.state.description = document.getElementById('solutionDescriptionForm').value
     this.state.references = document.getElementById('solutionReferencesForm').value
 
-    alert(this.state.file);
     if (document.getElementById('proposalClass2').checked) {
       this.state.class = '2' 
     } else if (document.getElementById('proposalClass1').checked) {
@@ -130,22 +122,18 @@ export default class SolutionForm extends React.Component {
       this.state.class = '0' 
     }
 
-     var params = {
-      Body: String(this.state.file), 
-      Bucket: "xprincipiabucket", 
-      Key: String(this.state.file)
-     };
-     s3.putObject(params, function(err, data) {
-       if (err) console.log(err, err.stack); // an error occurred
-       else     console.log(data);           // successful response
-       /*
-       data = {
-        ETag: "\"6805f2cfc46c0f04559748bb039d69ae\"", 
-        VersionId: "tpf3zF08nBplQK1XLOefGskR7mGDwcDk"
-       }
-       */
-     });
-
+    s3.upload({
+      Key: String(this.state.key),
+      Body: file,
+      ACL: 'public-read'
+    }, function(err, data) {
+      if (err) {
+        // alert('There was an error uploading your photo: ', err.message);
+        console.log(err.message)
+      } else {
+        // alert('Successfully uploaded photo.');
+      }
+    });
 
     axios.post( Config.API + '/auth/solutions/create', {
         username: cookie.load('userName'),
@@ -157,11 +145,13 @@ export default class SolutionForm extends React.Component {
         class : this.state.class,
         private: '0',
         parentTitle: this.props.projectTitle,
+        key: String(this.state.key),
       })
       .then(function (result) {
         // document.location = '/project/' + self.props.probID + '/subprojects'
         document.getElementById("solutionsTitleRightSB").scrollIntoView();
         self.refs.btn.removeAttribute("disabled");
+        // document.getElementById("createForm").reset();
       })
       .catch(function (error) {
           $(document).ready(function() {
@@ -183,8 +173,12 @@ export default class SolutionForm extends React.Component {
 
   render() {
 
+// console.log(S3GET);
+
       return (
       <div>
+        xxx{this.state.key}xxx
+
         {randomImg()}
         <div id="createSolutionBox">
             <ScrollableAnchor id={'proposalForm'}>
@@ -259,11 +253,10 @@ export default class SolutionForm extends React.Component {
 
                 <div id="pdfProposalContainerShow">
                     <input type="file" id="fileProposal" 
-                    // accept=".pdf"
                     />
                 </div>
 
-              <div onClick={this.testFileInput}>testHTML</div>
+              {/* <div onClick={this.testFileInput}>testHTML</div> */}
 
                 <div id="proseProposalContainer">
                   {/* <label htmlFor="solutionDescription" id="solutionDescriptionFormLabel">description<br /> */}

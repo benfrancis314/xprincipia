@@ -1,6 +1,9 @@
 import React from 'react';
 import axios from 'axios';
-import {Config} from '../../config.js'
+import {Config} from '../../config.js';
+import SolutionPDF from './SolutionPDF.jsx';
+
+
 
 export default class FullSolutionDescription extends React.Component {
   constructor(props){
@@ -52,6 +55,7 @@ export default class FullSolutionDescription extends React.Component {
                   {this.state.solutionInfo.Description}
               </p>
             </div>
+            <SolutionPDF solutionInfo={this.state.solutionInfo} />
             <br />
             <br />
             <br />
@@ -71,6 +75,7 @@ export default class FullSolutionDescription extends React.Component {
                   {this.state.solutionInfo.Description}
               </p>
             </div>
+            <SolutionPDF solutionInfo={this.state.solutionInfo} />
             <div>
               <div id="solutionFormLabel">SOURCES</div>
               <p id="solutionReferences">

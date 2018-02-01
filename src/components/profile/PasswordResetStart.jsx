@@ -3,6 +3,15 @@ import { Link  } from 'react-router';
 import axios from 'axios';
 import {Config} from '../../config.js';
 import $ from 'jquery';
+// import nodemailer from 'nodemailer';
+
+// var transporter = nodemailer.createTransport({
+//   service: 'gmail',
+//   auth: {
+//     user: 'xprincipia@gmail.com',
+//     pass: 'AstroPass123'
+//   }
+// });
 
 export default class PasswordResetStart extends React.Component {
   
