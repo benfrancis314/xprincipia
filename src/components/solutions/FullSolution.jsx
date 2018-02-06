@@ -20,40 +20,33 @@ export default class FullSolution extends React.Component {
     //initialize the component with this state
     componentDidMount(){
         ReactDOM.findDOMNode(this).scrollIntoView();
-      var self = this;
-      return axios.get( Config.API + '/solutions/ID?id='+this.props.params.solutionID).then(function (response) {
-          self.setState({
-              solutionInfo: response.data,
-          })
-          var solutionInfo = self.state.solutionInfo
-          // solutionInfo.CreatedAt = dateTime(solutionInfo.CreatedAt)
-          self.setState({
-              solutionInfo : solutionInfo
-          })
+        var self = this;
+        axios.get( Config.API + '/solutions/ID?id='+this.props.params.solutionID).then(function (response) {
+            self.setState({
+                solutionInfo: response.data,
+                // solutionID: this.props.params.solutionID,
+                // probID: this.props.params.probID
+            })
+            // var solutionInfo = self.state.solutionInfo
+            // // solutionInfo.CreatedAt = dateTime(solutionInfo.CreatedAt)
+            // self.setState({
+            //     solutionInfo : solutionInfo
+            // })
 
-    })
+        })
 }
 
-// shouldComponentUpdate(nextProps, nextState) {
-// //     // only render if solutionID has changed
-//     return (this.state.solutionID !== nextProps.params.solutionID) 
-//     // || (window.location.href.includes('question')))
-// }
   //On recieving next props
   componentWillReceiveProps(nextProps){
     var self = this;
-	    return axios.get( Config.API + '/solutions/ID?id='+nextProps.params.solutionID).then(function (response) {
+	    axios.get( Config.API + '/solutions/ID?id='+nextProps.params.solutionID).then(function (response) {
           self.setState({
               solutionInfo: response.data,
-              solutionID: nextProps.params.solutionID,
-		          probID: nextProps.params.probID
+            //   solutionID: nextProps.params.solutionID,
+		    //       probID: nextProps.params.probID
           })
         })
   }
-
-componentDidUpdate() {
- 
-  }   
 
 
 //   dayMode() {

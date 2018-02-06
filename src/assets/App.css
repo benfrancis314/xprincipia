@@ -12965,6 +12965,13 @@ transition: all 1s ease 0s;
 }
 
 
+/* SHOWING THE PDF */
+
+#proposalPDFContainer {
+  border: 5px solid red;
+}
+
+
 
 
 

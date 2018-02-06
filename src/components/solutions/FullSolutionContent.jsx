@@ -7,8 +7,8 @@ import FullSolutionDescription from './FullSolutionDescription.jsx';
 import $ from 'jquery';
 
 export default class FullSolutionContent extends React.Component {
-  constructor(props){
-        super(props);
+  constructor(){
+        super();
 
         this.state = {
             solutionInfo: [],

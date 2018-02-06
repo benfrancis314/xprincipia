@@ -6,42 +6,30 @@ import SolutionPDF from './SolutionPDF.jsx';
 
 
 export default class FullSolutionDescription extends React.Component {
-  constructor(props){
-        super(props);
+  constructor(){
+        super();
 
         this.state = {
             solutionInfo: [],
-            solutionID: []
+            // solutionID: []
         }
     };
     //initialize the component with this state
     componentDidMount(){
       var self = this;
-      return axios.get( Config.API + '/solutions/ID?id='+this.props.solutionID).then(function (response) {
+      axios.get( Config.API + '/solutions/ID?id='+this.props.solutionID).then(function (response) {
           self.setState({
               solutionInfo: response.data,
-          })
-    }) 
-}
-// This doesn't work
-    // componentWillReceiveProps(nextProps){
-    //     var self = this;
-    //         return axios.get( Config.API + '/solutions/ID?id='+nextProps.solutionID).then(function (response) {
-    //             self.setState({
-    //                 solutionInfo: response.data,
-    //                 // solutionID: nextProps.solutionID,
-    //             })
-    //         })
-    // }
-
-//   On recieving new props
+                })
+            }) 
+        }
   componentWillReceiveProps(nextProps){
 	  var self = this
-	        return axios.get( Config.API + '/solutions/ID?id='+nextProps.solutionID).then(function (response) {
-          self.setState({
-              solutionInfo: response.data,  
-          })
+	    axios.get( Config.API + '/solutions/ID?id='+nextProps.solutionID).then(function (response) {
+            self.setState({
+                solutionInfo: response.data,  
             })
+        })
   }
    render() {
       

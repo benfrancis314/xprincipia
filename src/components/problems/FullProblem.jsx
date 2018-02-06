@@ -49,8 +49,8 @@ export default class FullProblem extends React.Component {
 
     componentDidMount(){
       var self = this;
-      ReactDOM.findDOMNode(this).scrollIntoView();
-      // window.scrollTo(0,0);
+      // ReactDOM.findDOMNode(this).scrollIntoView();
+      window.scrollTo(0,0);
       axios.get( Config.API + '/problems/ID?id='+this.props.params.probID).then(function (response) {
           self.setState({
               problemInfo: response.data

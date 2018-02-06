@@ -173,11 +173,9 @@ export default class SolutionForm extends React.Component {
 
   render() {
 
-// console.log(S3GET);
-
       return (
       <div>
-        xxx{this.state.key}xxx
+        {/* xxx{this.state.key}xxx */}
 
         {randomImg()}
         <div id="createSolutionBox">

@@ -31,7 +31,11 @@ export default class SolutionPDF extends React.Component {
       if (1) {
           return (
         <div> 
-            <img src={this.state.keyURL}/>
+            STRING{String(this.props.solutionInfo.Key)}STRING
+            <iframe id="proposalPDFContainer" src={this.state.keyURL}/>
+            <img id="proposalPDFContainer" src={this.state.keyURL}/>
+
+            {/* <div id="proposalPDFContainer" src={this.state.keyURL}> </div> */}
         </div>
           )
       } else {
