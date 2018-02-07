@@ -167,7 +167,9 @@ export default class WelcomeContainer extends React.Component {
                     </div>
                     <form id="welcomeSearchFormContainer">
                       {/* Used to say "SEARCH PROJECT TREES" */}
-                      <input type="search" name="search" placeholder="SEARCH PROJECT TREES" id="welcomeSearchFormLabel" onKeyDown={this.queryProblem} autoFocus autoComplete="off" />
+                      <input type="search" name="search" placeholder="SEARCH PROJECT TREES" id="welcomeSearchFormLabel" onKeyDown={this.queryProblem} 
+                      // autoFocus 
+                      autoComplete="off" />
                     </form>
                      {/* {this.props.children} */}
                   {/* </div> */}

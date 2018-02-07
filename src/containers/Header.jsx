@@ -172,14 +172,15 @@ if (this.state.userToken === undefined ){
                             onKeyDown={this.queryProblem} autoFocus autoComplete="off" /> */}
                   </Link>
                 </div>
-                {/* <div id="explore">
+                <div id="explore">
                     <form id="exploreFormHeader">
                         <input type="search" name="search"
-                            placeholder="explore" id="exploreHeaderInput"  
+                            // placeholder="explore" 
+                            id="exploreHeaderInput"  
                             onKeyDown={this.queryProblem} autoFocus autoComplete="off" />
                         <input onKeyPress={this.submitSearch}  id="submitExplore" />
                     </form>
-                </div> */}
+                </div>
                 <HeaderAvatar notification={this.props.notification}/>
                 {/* <SearchUnit problems={this.state.userproblems} /> */}
             </div>
