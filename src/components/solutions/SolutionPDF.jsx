@@ -28,8 +28,14 @@ export default class SolutionPDF extends React.Component {
 
    render() {
       
-      if (1) {
+      if (this.props.solutionInfo.Key == '0') {
           return (
+            <div> 
+                {/* NO PDF */}
+            </div>
+          )
+      } else {
+      return (
         <div> 
             STRING{String(this.props.solutionInfo.Key)}STRING
             <iframe id="proposalPDFContainer" src={this.state.keyURL}/>
@@ -37,12 +43,6 @@ export default class SolutionPDF extends React.Component {
 
             {/* <div id="proposalPDFContainer" src={this.state.keyURL}> </div> */}
         </div>
-          )
-      } else {
-      return (
-      <div> 
-          {/* NO PDF */}
-      </div>
       );
    }
 }}

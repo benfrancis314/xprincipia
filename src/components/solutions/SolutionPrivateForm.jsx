@@ -5,10 +5,31 @@ import {Config} from '../../config.js';
 import $ from 'jquery';
 import ScrollableAnchor from 'react-scrollable-anchor';
 import { Link  } from 'react-router';
+import AWS from 'aws-sdk/dist/aws-sdk-react-native';
 
-export default class SolutionPrivateForm extends React.Component {
+AWS.config.region = 'us-east-1'; // Region
+AWS.config.credentials = new AWS.CognitoIdentityCredentials({
+    IdentityPoolId: 'us-east-1:48435c33-63c3-4825-a3de-0c06e01d2c90',
+});
 
+
+var s3 = new AWS.S3({
+  apiVersion: '2006-03-01',
+  params: {Bucket: 'xprincipiabucket'}
+});
+
+var params = {
+  Bucket: "xprincipiabucket", 
+  Key: "test key"
+ };
+
+
+
+
+export default class SolutionForm extends React.Component {
+  
   constructor(props){
+    
     super(props);
 
     this.state= {
@@ -16,21 +37,83 @@ export default class SolutionPrivateForm extends React.Component {
       summary: '',
       description: '',
       references: '',
+      class: '',
       parentTitle: '',
+      file: '',
+      key: '',
+
     }
 
     this.postSolution = this.postSolution.bind(this);
+    this.showPDF = this.showPDF.bind(this);
+    this.showProse = this.showProse.bind(this);
+    // this.testFileInput = this.testFileInput.bind(this);
   };
+
+
+  componentDidMount(){
+    var self = this;
+    // S3 CALL HERE
+    axios.get( Config.API + '/s3call/key').then(function (response) {
+      self.setState({
+          key: response.data,
+          file: document.getElementById("fileProposal").value,
+      })
+  }) 
+  }
+
+  componentWillReceiveProps(nextState, nextProps){
+    var self = this;
+    // S3 CALL HERE      
+    axios.get( Config.API + '/s3call/key').then(function (response) {
+      self.setState({
+        key: response.data,
+        file: document.getElementById("fileProposal").value,
+      })
+    })
+  }
+
+  // testFileInput() {
+  //   alert(document.getElementById("fileProposal").value);
+  // }
+
+
+  showPDF() {
+    $(document).ready(function() {
+      $('#pdfProposalContainer').attr('id','pdfProposalContainerShow');    
+      $('#proseProposalContainerShow').attr('id','proseProposalContainer');  
+      $('#proposalFormButtonLeft').attr('id','proposalFormButtonLeftActive');  
+      $('#proposalFormButtonRightActive').attr('id','proposalFormButtonRight');                          
+    });
+  }
+
+
+
+  showProse() {
+    $(document).ready(function() {
+      $('#pdfProposalContainerShow').attr('id','pdfProposalContainer');    
+      $('#proseProposalContainer').attr('id','proseProposalContainerShow');
+      $('#proposalFormButtonRight').attr('id','proposalFormButtonRightActive');   
+      $('#proposalFormButtonLeftActive').attr('id','proposalFormButtonLeft');        
+    });
+  }
 
   postSolution() {
     //Read field items into component state
-    var self = this;
+    var self = this
     self.refs.btn.setAttribute("disabled", "disabled");
+
+    // FILE UPLOAD
+
+    var files = document.getElementById('fileProposal').files;
+    var file = files[0];
+    this.state.file = file;
 
     this.state.title = document.getElementById('solutionTitleForm').value
     this.state.summary = document.getElementById('solutionSummaryForm').value
     this.state.description = document.getElementById('solutionDescriptionForm').value
     this.state.references = document.getElementById('solutionReferencesForm').value
+
     if (document.getElementById('proposalClass2').checked) {
       this.state.class = '2' 
     } else if (document.getElementById('proposalClass1').checked) {
@@ -39,7 +122,19 @@ export default class SolutionPrivateForm extends React.Component {
       this.state.class = '0' 
     }
 
-    var self = this
+    s3.upload({
+      Key: String(this.state.key),
+      Body: file,
+      ACL: 'public-read'
+    }, function(err, data) {
+      if (err) {
+        // alert('There was an error uploading your photo: ', err.message);
+        console.log(err.message)
+      } else {
+        // alert('Successfully uploaded photo.');
+      }
+    });
+
     axios.post( Config.API + '/auth/solutions/create', {
         username: cookie.load('userName'),
         problemID:this.props.probID,
@@ -48,13 +143,15 @@ export default class SolutionPrivateForm extends React.Component {
         description : this.state.description,
         references: this.state.references,
         class : this.state.class,
-        parentTitle: this.props.projectTitle,
         private: '1',
+        parentTitle: this.props.projectTitle,
+        key: String(this.state.key),
       })
       .then(function (result) {
         // document.location = '/project/private/' + self.props.probID + '/subprojects'
         document.getElementById("solutionsTitleRightSB").scrollIntoView();
         self.refs.btn.removeAttribute("disabled");
+        // document.getElementById("createForm").reset();
       })
       .catch(function (error) {
           $(document).ready(function() {
@@ -75,8 +172,11 @@ export default class SolutionPrivateForm extends React.Component {
   }
 
   render() {
+
       return (
       <div>
+        {/* xxx{this.state.key}xxx */}
+
         {randomImg()}
         <div id="createSolutionBox">
             <ScrollableAnchor id={'proposalForm'}>
@@ -94,6 +194,7 @@ export default class SolutionPrivateForm extends React.Component {
                 <label htmlFor="solutionTitle" id="solutionTitleFormLabel">proposal title<br />
                     <input type="text" name="solutionTitle" required="required" maxLength="140" id="solutionTitleForm" />
                   </label><br />
+
 
                   <div id="projectFormRadioContainer">
                       <div id="projectFormRadioColumn">
@@ -131,14 +232,39 @@ export default class SolutionPrivateForm extends React.Component {
                       </div>
                     </div>
 
+
                 <label htmlFor="solutionSummary" id="solutionSummaryFormLabel">summary<br />
-                    <textarea name="solutionSummary" required="required" maxLength="400" placeholder="Please summarize your proposal here. (400 character max)" id="solutionSummaryForm"/>
-                  </label><br />
+                  <textarea name="solutionSummary" required="required" maxLength="500" placeholder="Please summarize your proposal here. (500 character max)" id="solutionSummaryForm"/>
+                </label><br />
 
-                <label htmlFor="solutionDescription" id="solutionDescriptionFormLabel">description<br />
+                <div id="solutionDescriptionFormLabel">
+                  description
+                </div>
+                <div id="proposalFormButtonContainer">
+                  <div id="proposalFormButtonLeftActive" onClick={this.showPDF}>
+                      pdf
+                  </div>
+                  <div id="proposalFormButtonRight" onClick={this.showProse}>
+                      prose
+                  </div>
+                </div>
+
+                <div id="pdfProposalContainerShow">
+                    <input type="file" id="fileProposal" 
+                    />
+                </div>
+
+              {/* <div onClick={this.testFileInput}>testHTML</div> */}
+
+                <div id="proseProposalContainer">
+                  {/* <label htmlFor="solutionDescription" id="solutionDescriptionFormLabel">description<br /> */}
                     <textarea name="solutionDescription" required="required" placeholder="Please describe your proposal here." id="solutionDescriptionForm">
-                    </textarea></label><br />
+                    </textarea>
+                  {/* </label> */}
+                </div>
 
+
+                <br />
                 <label htmlFor="solutionReferences" id="solutionReferenceFormLabel">sources <span id="gray">(optional)</span><br />
                     <textarea name="solutionReferences" placeholder="Please provide your sources here." id="solutionReferencesForm">
                     </textarea></label><br />

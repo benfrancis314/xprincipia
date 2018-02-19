@@ -41,7 +41,7 @@ export default class SolutionForm extends React.Component {
       parentTitle: '',
       file: '',
       key: '',
-
+      prose: '',
     }
 
     this.postSolution = this.postSolution.bind(this);
@@ -58,6 +58,7 @@ export default class SolutionForm extends React.Component {
       self.setState({
           key: response.data,
           file: document.getElementById("fileProposal").value,
+          prose: '0',
       })
   }) 
   }
@@ -85,6 +86,9 @@ export default class SolutionForm extends React.Component {
       $('#proposalFormButtonLeft').attr('id','proposalFormButtonLeftActive');  
       $('#proposalFormButtonRightActive').attr('id','proposalFormButtonRight');                          
     });
+    this.setState({
+      prose: '0',
+    })
   }
 
 
@@ -96,6 +100,9 @@ export default class SolutionForm extends React.Component {
       $('#proposalFormButtonRight').attr('id','proposalFormButtonRightActive');   
       $('#proposalFormButtonLeftActive').attr('id','proposalFormButtonLeft');        
     });
+    this.setState({
+      prose: '1',
+    })
   }
 
   postSolution() {
@@ -122,20 +129,55 @@ export default class SolutionForm extends React.Component {
       this.state.class = '0' 
     }
 
-    s3.upload({
-      Key: String(this.state.key),
-      Body: file,
-      ACL: 'public-read'
-    }, function(err, data) {
-      if (err) {
-        // alert('There was an error uploading your photo: ', err.message);
-        console.log(err.message)
-      } else {
-        // alert('Successfully uploaded photo.');
-      }
-    });
-
+    if (this.state.prose == '1') {
     axios.post( Config.API + '/auth/solutions/create', {
+        username: cookie.load('userName'),
+        problemID:this.props.probID,
+        title : this.state.title,
+        summary : this.state.summary,
+        description : this.state.description,
+        references: this.state.references,
+        class : this.state.class,
+        private: '0',
+        parentTitle: this.props.projectTitle,
+        key: '',
+      })
+      .then(function (result) {
+        // document.location = '/project/' + self.props.probID + '/subprojects'
+        document.getElementById("solutionsTitleRightSB").scrollIntoView();
+        self.refs.btn.removeAttribute("disabled");
+        // document.getElementById("createForm").reset();
+      })
+      .catch(function (error) {
+          $(document).ready(function() {
+              $('#notification').attr('id','notificationShow').hide().slideDown();
+
+                if (error.response.data == '[object Object]') {
+                  return (
+                    $(document).ready(function() {
+                      $('#notificationLoginRegisterContainer').attr('id','notificationLoginRegisterContainerShow');
+                      $('#notificationContent').html('Please <span id="blue">login </span>to create a project');
+                    })
+                  );
+                }  else if (error.response.data != '') {
+              $('#notificationContent').text(error.response.data);
+              }
+          });
+      });
+    } else {
+      s3.upload({
+        Key: String(this.state.key),
+        Body: file,
+        ACL: 'public-read'
+      }, function(err, data) {
+        if (err) {
+          // alert('There was an error uploading your photo: ', err.message);
+          console.log(err.message)
+        } else {
+          // alert('Successfully uploaded photo.');
+        }
+      });
+      axios.post( Config.API + '/auth/solutions/create', {
         username: cookie.load('userName'),
         problemID:this.props.probID,
         title : this.state.title,
@@ -169,6 +211,7 @@ export default class SolutionForm extends React.Component {
               }
           });
       });
+    }
   }
 
   render() {
@@ -234,7 +277,7 @@ export default class SolutionForm extends React.Component {
 
 
                 <label htmlFor="solutionSummary" id="solutionSummaryFormLabel">summary<br />
-                  <textarea name="solutionSummary" required="required" maxLength="400" placeholder="Please summarize your proposal here. (400 character max)" id="solutionSummaryForm"/>
+                  <textarea name="solutionSummary" required="required" maxLength="500" placeholder="Please summarize your proposal here. (500 character max)" id="solutionSummaryForm"/>
                 </label><br />
 
                 <div id="solutionDescriptionFormLabel">

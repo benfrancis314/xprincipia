@@ -1560,7 +1560,7 @@ letter-spacing: 2px !important;
   /* background: linear-gradient(to right,rgba(0,220,255, 0.06), rgba(0,220,255, 0.07),rgba(0,220,255, 0.03)); */
   background: radial-gradient(circle, rgba(0,220,255, 0), rgba(0,220,255, 0.1));     
 }
-#solutionSummaryForm:active, #solutionReferencesForm:focus, #solutionReferencesForm:active, #solutionSummaryForm:focus {
+#solutionSummaryForm:active, #solutionReferencesForm:focus, #solutionReferencesForm:active, #solutionSummaryForm:focus, #solutionDescriptionForm:focus, #solutionDescriptionForm:active {
   /* background: radial-gradient(circle, rgba(0,220,255, 0), rgba(0,220,255, 0.12));      */
   /* background-color: rgba(0,220,255,0.05); */
   transform: scale(1.02);
@@ -1573,6 +1573,12 @@ letter-spacing: 2px !important;
 }
 #problemDescriptionForm, #problemRequirementsForm, #solutionDescriptionForm, {
   height: 10em;
+}
+#solutionDescriptionForm {
+  height: 15em;
+  margin-top: 2%;
+  border-radius: 3px 3px 5% 5%;
+  transition: all 1s ease 0s;
 }
 #problemTitleForm {
   font-family: 'Alegreya Sans SC', sans-serif;
@@ -12884,20 +12890,21 @@ transition: all 1s ease 0s;
 } */
 #fileProposal {
   color: #00dcff !important;
-  background-color: #0f131c !important;
+  background-color: rgba(15, 19, 28, 1) !important;
   font-family: 'Alegreya Sans SC';
 
   overflow: hidden;
   position: relative;
   color: #ffffff;
   /* background: radial-gradient(circle, rgba(0,220,255,0.15), rgba(0,220,255,0.05), rgba(0,220,255,0)); */
-  background: linear-gradient(to right, rgba(0,220,255,0.15), rgba(0,220,255,0.05), rgba(0,220,255,0));
+  background: radial-gradient(circle, rgba(0,220,255,0), rgba(0,220,255,0.05), rgba(0,220,255,0.05), rgba(0,220,255,0.15), rgba(0,220,255,0.2));
 
   padding: 18px 18px 18px 25%;
   border: 1px solid rgba(255,255,255,0.5);
-  border-radius: 3px 15% 15% 3px;
+  border-radius: 3px 10% 15% 10%;
   border-width: 1px 1px 1px 1px;
   border-right-color: rgba(255,255,255,0.15);
+  border-left-color: rgba(255,255,255,0.15);
   /* width: 30%; */
   width: 70%;
   margin: 0 auto;
@@ -12915,11 +12922,12 @@ transition: all 1s ease 0s;
   text-transform: lowercase !important;
 }
 #fileProposal:hover {
-  background-color: rgba(0,220,255,0.1);
+  background-color: rgba(15, 19, 28, 0.98) !important;
   transform: scale(1.1);
   cursor: pointer !important;
   box-shadow: 0 0 1.5pt 1.5px rgba(255,255,255,1);
   letter-spacing: 3px;
+  background: radial-gradient(circle, rgba(0,220,255,0), rgba(0,220,255,0.05), rgba(0,220,255,0.075), rgba(0,220,255,0.15), rgba(0,220,255,0.2));
 }
 
 #proposalFormButtonContainer {
