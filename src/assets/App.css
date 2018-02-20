@@ -2076,10 +2076,10 @@ text-align: center;
 }
 #exploreHeaderInput {
   color: #dddddd;
-  background-color: inherit;
-  border: 1px solid rgba(0,220,255,0.55);
-  border-width: 1px 0px;
-  border-radius: 3px;
+  /* background-color: inherit; */
+  /* border: 1px solid rgba(0,220,255,0.55); */
+  border-width: 0px 0px !important;
+  border-radius: 10%;
   height: 35px;
   width: 80%;
   letter-spacing: 6px;
@@ -2088,13 +2088,28 @@ text-align: center;
   text-align: center;
   margin: 0 auto;
   font-family: 'Alegreya Sans SC' !important;
-  font-size: 200%;
+  font-size: 140%;
   transition: all 1s ease 0s;
+  /* eye1-5Blue all look good */
+  background-image: url('./eye1Blue.svg');  
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-color: rgba(15,19,28,0.3);
+  background-blend-mode: overlay;
+  background-position: center;
+  /* transform: rotate(90deg); */
+}
+#exploreHeaderInput:hover {
+  transform: scale(1.05);
+  background-color: rgba(15,19,28,0.15);
 }
 #exploreHeaderInput:focus, #exploreHeaderInput:active {
   /* border: 0px solid #00dcff !important; */
-  border: 1px solid rgba(0,220,255,0.55) !important;
-  background: radial-gradient(circle, rgba(0,220,255,0.15), rgba(0,220,255,0.05), rgba(0,220,255,0.05))
+  /* border: 1px solid rgba(0,220,255,0.55) !important; */
+  /* background: radial-gradient(circle, rgba(0,220,255,0.15), rgba(0,220,255,0.05), rgba(0,220,255,0.05)) */
+  /* background-color: rgba(0,220,255,0.1); */
+  background-color: rgba(15,19,28,0.5);
+  transform: scale(1.15);
 } 
 #submitExplore {
   display: none;
@@ -2122,12 +2137,13 @@ text-align: center;
 #logoNameGuide {
   margin: 0 auto;
   float: left;
-  margin-left: 5%;
+  margin-left: 3%;
   transition: all 0.5s ease 0s;
   transform: scale(1);
   color: #00dcff !important;
   transition: all 2s ease 0s;
-  letter-spacing: 14px !important;  
+  /* letter-spacing: 14px !important;   */
+  letter-spacing: 8px !important;  
 }
 #logoNameGuideRed {
   margin: 0 auto;

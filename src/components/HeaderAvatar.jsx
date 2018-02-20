@@ -40,7 +40,7 @@ componentDidMount(){
         $(document).ready(function() {
             // $('#welcomeSearchFormLabel').attr('placeholder','CINEMATIC GUIDE');
             // $('#welcomeSearchFormLabel').attr('id','welcomeSearchFormLabelBlue');
-            $('#logoName').html("conversations").fadeIn(7500);
+            $('#logoName').html("messages").fadeIn(7500);
             $('#logoName').attr('id','logoNameGuide');
             // Also an option for red font
             // $('#logoName').attr('id','logoNameGuideRed');
