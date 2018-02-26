@@ -4,6 +4,7 @@ import cookie from 'react-cookie';
 import axios from 'axios';
 import HeaderAvatar from '../components/HeaderAvatar.jsx';
 // import SearchUnit from '../components/search/SearchUnit.jsx';
+import SearchResults from '../components/search/SearchResults.jsx';
 import {Config} from '../config.js';
 import $ from 'jquery';
 
@@ -122,16 +123,23 @@ componentDidMount(){
 
 queryProblem () {
   //get search text box data
- this.state.searchText = document.getElementById('logoName').value
+  $(document).ready(function() {
+    $('#searchResultsContainerHide').attr('id','searchResultsContainer');
+  });
+ this.state.searchText = document.getElementById('exploreHeaderInput').value
 
  var self = this
  return axios.get( Config.API + '/problems/search?q='+this.state.searchText).then(function (response) {
      self.setState({
        userproblems: response.data
      })
- })
+  })
 }
-
+hideSearch() {
+  $(document).ready(function() {
+      $('#searchResultsContainer').attr('id','searchResultsContainerHide');
+  });
+}
    render() {
 
 if (this.state.userToken === undefined ){
@@ -143,6 +151,15 @@ if (this.state.userToken === undefined ){
                   XPrincipia
                 </div>
               </Link>
+            </div>
+            <div id="explore">
+                <form id="exploreFormHeader">
+                    <input type="search" name="search"
+                        // placeholder="explore" 
+                        id="exploreHeaderInput"  
+                        onKeyDown={this.queryProblem} autoFocus autoComplete="off" />
+                    <input onKeyPress={this.submitSearch}  id="submitExplore" />
+                </form>
             </div>
             {/*Login in header*/}
             <input type="text" name="email" required="required" maxLength="30" placeholder="username" id="loginHeaderEmail" autoFocus />
@@ -159,30 +176,33 @@ if (this.state.userToken === undefined ){
       );
     } else {
         return (
-            <div id="header">
-                <div id="logo">
-                  <Link to="/welcome">
-                  {/* Old Logo */}
-                    <div id="logoName">
-                      XPrincipia
-                    </div>
-                    {/* Logo as search bar */}
-                    {/* <input type="search" name="search"
-                            placeholder="XPrincipia" id="logoName"  
-                            onKeyDown={this.queryProblem} autoFocus autoComplete="off" /> */}
-                  </Link>
-                </div>
-                <div id="explore">
-                    <form id="exploreFormHeader">
-                        <input type="search" name="search"
-                            // placeholder="explore" 
-                            id="exploreHeaderInput"  
-                            onKeyDown={this.queryProblem} autoFocus autoComplete="off" />
-                        <input onKeyPress={this.submitSearch}  id="submitExplore" />
-                    </form>
-                </div>
-                <HeaderAvatar notification={this.props.notification}/>
-                {/* <SearchUnit problems={this.state.userproblems} /> */}
+            <div>
+              <div id="header">
+                  <div id="logo">
+                    <Link to="/welcome">
+                      <div id="logoName">
+                        XPrincipia
+                      </div>
+                    </Link>
+                  </div>
+                  <div id="explore">
+                      <form id="exploreFormHeader">
+                          <input type="search" name="search"
+                              // placeholder="explore" 
+                              id="exploreHeaderInput"  
+                              onKeyDown={this.queryProblem} autoFocus autoComplete="off" />
+                          {/* <input onKeyPress={this.submitSearch}  id="submitExplore" /> */}
+                      </form>
+                  </div>
+                  <HeaderAvatar notification={this.props.notification}/>
+                  {/* <SearchUnit problems={this.state.userproblems} /> */}
+              </div>
+
+              {/* SEARCH RESULTS */}
+              <div id="searchResultsContainerHide">
+                <img src={require('../assets/redX3.svg')} id="searchResultsExitButton" width="20" height="20" alt="exit button" onClick={this.hideSearch} />
+                <SearchResults problems={this.state.userproblems}/>
+              </div>
             </div>
       );  
 
