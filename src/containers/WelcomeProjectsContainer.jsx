@@ -162,17 +162,21 @@ export default class WelcomeContainer extends React.Component {
               <div id="welcomeRightContainer">
                 <div id="SPListDiv">
                 {/* <div id="welcomeRightResults"> */}
+                    <div id="featuredContainer">
+                      <div id="featuredProjectLabel">
+                        featured
+                      </div>
+                      <div id="featuredProjectButton">
+                            general artificial intelligence
+                      </div>
+                    </div>
                     <div id="leaderBoardCapTop">
                           leaderboard
                     </div>
-                    <form id="welcomeSearchFormContainer">
-                      {/* Used to say "SEARCH PROJECT TREES" */}
+                    {/* <form id="welcomeSearchFormContainer">
                       <input type="search" name="search" placeholder="SEARCH PROJECT TREES" id="welcomeSearchFormLabel" onKeyDown={this.queryProblem} 
-                      // autoFocus 
                       autoComplete="off" />
-                    </form>
-                     {/* {this.props.children} */}
-                  {/* </div> */}
+                    </form> */}
                     
                     <WelcomeUserUnit problems={this.state.userproblems} />
                   {/* <div id="leaderBoardCapBottom">
