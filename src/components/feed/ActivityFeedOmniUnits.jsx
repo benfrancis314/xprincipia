@@ -17,7 +17,7 @@ export default class WelcomeUserUnit extends React.Component {
     }
     unHoverFeedText() {
             $(document).ready(function() {
-                    $('#feedTitleHover').html("discovery's past");
+                    $('#feedTitleHover').html("new activity");
                     $('#feedTitleHover').attr('id','feedTitle');
                     $('#feedBottomBlue').attr('id','feedBottom');
             });
@@ -31,7 +31,7 @@ export default class WelcomeUserUnit extends React.Component {
     }
     unHoverAdd() {
             $(document).ready(function() {
-                    $('#feedTitleHover').html("discovery's past");
+                    $('#feedTitleHover').html("new activity");
                     $('#feedTitleHover').attr('id','feedTitle');
                     $('#feedBottomBlue').attr('id','feedBottom');
             });
@@ -45,7 +45,7 @@ export default class WelcomeUserUnit extends React.Component {
     }
     unHoverLabel() {
             $(document).ready(function() {
-                    $('#feedTitleHover').html("discovery's past");
+                    $('#feedTitleHover').html("new activity");
                     $('#feedTitleHover').attr('id','feedTitle');
                     $('#feedBottomBlue').attr('id','feedBottom');
             });
@@ -75,7 +75,7 @@ export default class WelcomeUserUnit extends React.Component {
     }
 	render() {
         $(document).ready(function() {
-            $('#feedTitleHover').html("discovery's past");
+            $('#feedTitleHover').html("new activity");
             $('#feedTitleHover').attr('id','feedTitle');
             $('#feedBottomBlue').attr('id','feedBottom');
         });
@@ -130,9 +130,9 @@ if (problem.Private === true) {
         <li key={problem.ID} id="feedListUnit">
             <Link to={'/project/'+problem.ProblemID +'/subprojects'}>
                 <div id="omniActivityUnit">
-                    new project:
+                    project
                     <br />
-                    <span id="blueUpdate">
+                    <span id="omniTitle">
                         {problem.Description}
                     </span>
                     {/* <br />
@@ -145,9 +145,9 @@ if (problem.Private === true) {
         <li key={problem.ID} id="feedListUnit">
             <Link to={'/project/'+problem.ProblemID +'/proposal/'+problem.TypeID}>
                 <div id="omniActivityUnit">
-                    new proposal:
+                    proposal
                     <br />
-                    <span id="blueUpdate">
+                    <span id="omniTitle">
                         {problem.Description}
                     </span>
                     {/* <br />
@@ -160,9 +160,9 @@ if (problem.Private === true) {
         <li key={problem.ID} id="feedListUnit">
             <Link to={'/project/'+problem.ProblemID +'/question/'+problem.TypeID +'/answers'}>
                 <div id="omniActivityUnit">
-                    new question in:
+                    question in:
                     <br />
-                    <span id="blueUpdate">
+                    <span id="omniTitle">
                         {problem.ProblemTitle}
                     </span>
                     {/* <br />
@@ -175,9 +175,9 @@ if (problem.Private === true) {
         <li key={problem.ID} id="feedListUnit">
             <Link to={'/project/'+problem.ProblemID +'/suggestion/'+problem.TypeID +'/comments'}>
                 <div id="omniActivityUnit">
-                    new suggestion in:
+                    suggestion in:
                     <br />
-                    <span id="blueUpdate">
+                    <span id="omniTitle">
                         {problem.ProblemTitle}
                     </span>
                     {/* <br />
@@ -199,9 +199,9 @@ if (problem.Private === true) {
         <li key={problem.ID} id="feedListUnit">
             <Link to={'/project/'+problem.ProblemID +'/freeform/'+problem.TypeID +'/comments'}>
                 <div id="omniActivityUnit">
-                    new debate in:
+                    debate in:
                     <br />
-                    <span id="blueUpdate">
+                    <span id="omniTitle">
                         {problem.ProblemTitle}
                     </span>
                     {/* <br />
@@ -216,9 +216,9 @@ if (problem.Private === true) {
         <li key={problem.ID} id="feedListUnit">
             <Link to={'/project/'+problem.ProblemID +'/learn/content/'+problem.TypeID +'/coments'}>
             <div id="omniActivityUnit">
-                new lesson in:
+                lesson in:
                 <br />
-                <span id="blueUpdate">
+                <span id="omniTitle">
                     {problem.ProblemTitle}
                 </span>
                 {/* <br />
@@ -231,9 +231,9 @@ if (problem.Private === true) {
         <li key={problem.ID} id="feedListUnit">
             <Link to={'/project/'+problem.ProblemID +'/learn/resources/'+problem.TypeID +'/comments'}>
             <div id="omniActivityUnit">
-                new resource in:
+                resource in:
                 <br />
-                <span id="blueUpdate">
+                <span id="omniTitle">
                     {problem.ProblemTitle}
                 </span>
                 {/* <br />
@@ -256,7 +256,7 @@ if (problem.Private === true) {
                     <div id="omniActivityUnit">
                         update in:
                         <br />
-                        <span id="blueUpdate">
+                        <span id="omniTitle">
                             {problem.ProblemTitle}
                         </span>
                         {/* <br />

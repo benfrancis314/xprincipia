@@ -125,7 +125,6 @@ export default class WelcomeContainer extends React.Component {
             </div>
          </Link>
          {this.props.children}
-         
         </div>
       );
    }

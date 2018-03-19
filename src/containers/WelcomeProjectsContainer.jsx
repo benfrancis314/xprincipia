@@ -12,6 +12,21 @@ import $ from 'jquery';
 
 export default class WelcomeContainer extends React.Component {
    
+  hoverLeaderBoardText() {
+    $(document).ready(function() {
+            $('#leaderBoardCapTop').html("view standings").fadeIn(7500);
+            $('#leaderBoardCapTop').attr('id','leaderBoardCapTopHover');
+            // $('#feedBottom').attr('id','feedBottomBlue');
+    });
+  }
+  unHoverLeaderBoardText() {
+          $(document).ready(function() {
+                  $('#leaderBoardCapTopHover').html("leaderboard");
+                  $('#leaderBoardCapTopHover').attr('id','leaderBoardCapTop');
+                  // $('#feedBottomBlue').attr('id','feedBottom');
+          });
+  }
+
   hoverText() {
     $(document).ready(function() {
         // $('#welcomeSearchFormLabel').attr('placeholder','CINEMATIC GUIDE');
@@ -167,11 +182,17 @@ export default class WelcomeContainer extends React.Component {
                         featured
                       </div>
                       <div id="featuredProjectButton">
-                            general artificial intelligence
+                            the mental world
                       </div>
                     </div>
-                    <div id="leaderBoardCapTop">
+                    <div id="leaderBoardTitleContainer">
+                      <div id="leaderBoardCapTop">
                           leaderboard
+                      </div>
+                      {/* <Link to="/welcome/filter" activeClassName="activeBlue"> */}
+                          <div id="leaderBoardFilterButton" onMouseOver={this.hoverLeaderBoardText} onMouseOut={this.unHoverLeaderBoardText}>
+                          </div>
+                      {/* </Link> */}
                     </div>
                     {/* <form id="welcomeSearchFormContainer">
                       <input type="search" name="search" placeholder="SEARCH PROJECT TREES" id="welcomeSearchFormLabel" onKeyDown={this.queryProblem} 

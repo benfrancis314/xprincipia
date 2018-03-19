@@ -2281,7 +2281,7 @@ padding-bottom: 0%;
 border: 1px solid #dddddd;
 border-width: 1px 0px;
 margin: 0 auto;
-margin-top: 5%;
+/* margin-top: 5%; */
 transition: all 0.5s ease 0s;
 z-index: 500;
 
@@ -10046,10 +10046,11 @@ margin-top: 1%;
   margin-bottom: 2.25%;
   background-color: rgba(0,220,255,0.04);
   text-align: center;
-  color: #ffffff;
+  /* color: #ffffff; */
+  color: #00dcff;
   letter-spacing: 1px;
   font-family: 'Alegreya Sans SC', sans-serif;
-  font-size: 90%;
+  font-size: 80%;
   overflow: auto;
   opacity: 0.9;
 }
@@ -10062,6 +10063,12 @@ margin-top: 1%;
 }
 #omniActivityDate {
   font-size: 90%;
+}
+#omniTitle {
+  font-family: 'Alegreya Sans SC';
+  font-size: 140%;
+  line-height: 150%;
+  color: #ffffff;
 }
 #blueFeed {
   color: #00dcff !important;
@@ -10515,7 +10522,14 @@ margin-top: 1%;
       align-self: baseline !important;
     }
 
-#leaderBoardCapTop, #leaderBoardCapBottom {
+#leaderBoardTitleContainer {
+  display: inline-flex;
+  flex-direction: row;
+  /* justify-content: space-between; */
+  width: 100%;
+  position: relative;
+}
+#leaderBoardCapTop {
   border: 1px solid #333333;
   background-color: rgba(0,255,220, 0.05);
   border-radius: 3px 3px 65% 65%;
@@ -10530,6 +10544,45 @@ margin-top: 1%;
   transition: all 2s ease 0s;
   margin-top: 1.5%;
   width: 70%;
+  background: radial-gradient(rgba(0,220,255,0), rgba(0,220,255,0), rgba(0,220,255,0.05));  
+}
+#leaderBoardCapTopHover {
+  border: 1px solid #00ffdc;
+  background-color: rgba(0,255,220, 0.1);
+  border-radius: 3px 3px 65% 65%;
+  margin: 0 auto;
+  margin-bottom: 1.5%;
+  text-align: center;
+  letter-spacing: 8px;
+  padding: 2px;
+  padding-bottom: 3px;
+  color: #00ffdc;
+  transition: all 2s ease 0s;
+  margin-top: 1.5%;
+  width: 75%;
+  background: radial-gradient(rgba(0,220,255,0), rgba(0,220,255,0), rgba(0,220,255,0.05));  
+}
+#leaderBoardFilterButton {
+  position: absolute;
+  top: 1.5%;
+  right: 5%;
+  margin: 0 auto;
+  vertical-align: middle;
+  transition: all 2s ease 0s;
+  transform:  scale(1) rotate(0deg);
+  background: url('./icosahedronGreen1.svg') no-repeat !important;
+  opacity: 0.5;
+  width: 27px;
+  height: 27px;
+}
+#leaderBoardFilterButton:hover, #leaderBoardFilterButton:active, #leaderBoardFilterButton:focus {
+  transform: scale(1.2) rotate(180deg);
+  width: 35px;
+  height: 35px;
+  right: 4%;
+  opacity: 1 !important;
+  cursor: pointer !important;
+  background: url('./metatronGreen1.svg') no-repeat !important;
 }
 #leaderBoardCapBottom {
   /* ALSO OLD LEADERBOARD CAP TOP STYLE */
@@ -13540,6 +13593,17 @@ transition: all 1s ease 0s;
 
 
 
+/* Greek phrase */
+#greekAcademyPhrase {
+  text-align: center;
+  width: 50%;
+  margin: 0 auto;
+  letter-spacing: 6px;
+  font-size: 110%;
+  color: #515151;
+  margin-top: 3%;
+  margin-bottom: 1%;
+}
 
 
 

@@ -190,7 +190,7 @@ if (this.state.userToken === undefined ){
                           <input type="search" name="search"
                               // placeholder="explore" 
                               id="exploreHeaderInput"  
-                              onKeyDown={this.queryProblem} autoFocus autoComplete="off" />
+                              onChange={this.queryProblem} autoFocus autoComplete="off" />
                           {/* <input onKeyPress={this.submitSearch}  id="submitExplore" /> */}
                       </form>
                   </div>

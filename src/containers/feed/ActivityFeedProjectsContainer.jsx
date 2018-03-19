@@ -21,7 +21,7 @@ export default class WelcomeUserUnit extends React.Component {
     }
     unHoverFeedText() {
             $(document).ready(function() {
-                    $('#feedTitleHover').html("discovery's past");
+                    $('#feedTitleHover').html("new activity");
                     $('#feedTitleHover').attr('id','feedTitle');
             });
     }
@@ -33,7 +33,7 @@ export default class WelcomeUserUnit extends React.Component {
     }
     unHoverAdd() {
             $(document).ready(function() {
-                    $('#feedTitleHover').html("discovery's past");
+                    $('#feedTitleHover').html("new activity");
                     $('#feedTitleHover').attr('id','feedTitle');
             });
     }
@@ -74,7 +74,7 @@ export default class WelcomeUserUnit extends React.Component {
         <div id="feedContainer">
             <ScrollableAnchor id={'feed'}>
                 <div id="feedTitle">
-                    discovery's past
+                    new activity
                 </div>
             </ScrollableAnchor>
             {/* {React.cloneElement(this.props.children, {problems: this.props.problems})} */}

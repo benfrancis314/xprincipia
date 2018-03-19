@@ -4,6 +4,8 @@ import Header from '../containers/Header.jsx';
 import {Config} from '../config.js';
 import cookie from 'react-cookie';
 import axios from 'axios';
+import ReactGA from 'react-ga';
+ReactGA.initialize('UA-104103231-1'); //Unique Google Analytics tracking number
 
 
 export default class Layout extends React.Component {
@@ -40,7 +42,15 @@ resetNotifications() {
   //     })
   // }) 
 }
-
+handleClick() {
+  ReactGA.event({
+      // Replace with "Created project", "voted question", etc. 
+      category: 'Navigation',
+      // Replace action with project ID, etc. for various things
+      action: 'Clicked Link',
+  });
+  // alert('click');
+}
 
   render() {
       return (
@@ -52,6 +62,12 @@ resetNotifications() {
         	<div id="main">
               {React.cloneElement(this.props.children, {resetNotifications: this.resetNotifications})}
         	</div>
+          {/* Need better font for this */}
+          <div id="greekAcademyPhrase" onClick={()=>{this.handleClick()}}>
+            ἀγεωμέτρητος μηδεὶς εἰσίτω
+          </div>
+            {/* English pronounciation */}
+            {/* Ageōmétrētos mēdeìs eisítō */}
           <Footer />
         </div>
       );
