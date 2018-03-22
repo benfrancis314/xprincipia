@@ -1,7 +1,7 @@
 import React from 'react';
 import {Link} from 'react-router';
 import $ from 'jquery';
-import ProjectBranchesList from './ProjectBranchesList.jsx';
+import ProjectBreakdownList from './ProjectBreakdownList.jsx';
 
 export default class SubProblemUnit extends React.Component {
 
@@ -63,7 +63,7 @@ export default class SubProblemUnit extends React.Component {
 			{/* <Link to={`/project/branches`} activeClassName="activeBranchesProjectButton"> */}
 					<div id="branchesProjectButton" onMouseOver={this.hoverBranch} onMouseOut={this.unHoverBranch}>
 						<img src={require('../../assets/branchWhite1.svg')} id="branchesProjectImg" width="60" height="60" alt="User avatar, DNA Helix" />
-						<ProjectBranchesList probID={this.props.probID} />
+						<ProjectBreakdownList probID={this.props.probID} />
 					</div>
 			{/* </Link> */}
 			<ul id="SPUnitList"> 

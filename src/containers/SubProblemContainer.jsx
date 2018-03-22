@@ -1,8 +1,9 @@
 import React from 'react';
 import axios from 'axios';
 import {Link} from 'react-router';
+import BreakdownContainer from './BreakdownContainer.jsx';
 import SubProblemUnit from '../components/problems/SubProblemUnit.jsx';
-import ProjectBranchesList from '../components/problems/ProjectBranchesList.jsx';
+import ProjectBreakdownList from '../components/problems/ProjectBreakdownList.jsx';
 import {Config} from '../config.js';
 import $ from 'jquery';
 
@@ -109,9 +110,7 @@ export default class SubProblemContainer extends React.Component {
     render() {
             return (
                 <div id="SPwrapper">
-                    {/* NOT USING BREAKDOWNS FOR NOW */}
-                    {/* DO NOT DELETE */}
-                    {/* <div id="branchesProjectButton" onMouseOver={this.hoverBranch} onMouseOut={this.unHoverBranch}>
+                    <div id="branchesProjectButton" onMouseOver={this.hoverBranch} onMouseOut={this.unHoverBranch}>
                         <img src={require('../assets/branchWhite1.svg')} id="branchesProjectImg" width="60" height="60" alt="User avatar, DNA Helix" />
                         <div id="branchUnitList"> 
                             <li>
@@ -129,7 +128,7 @@ export default class SubProblemContainer extends React.Component {
                                 <img src={require('../assets/rightArrow.svg')} id="branchArrowImg" width="50" height="50" alt="User avatar, DNA Helix" />
                             </li>
                         </div>
-                    </div> */}
+                    </div>
                     <ul id="SPUnitList"> 
                         <li>
                             <img src={require('../assets/leftArrow.svg')} id="SParrowImg" width="50" height="50" alt="User avatar, DNA Helix" />
