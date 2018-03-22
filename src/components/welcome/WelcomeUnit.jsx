@@ -33,7 +33,9 @@ export default class WelcomeUnit extends React.Component {
                 <Link to={'/project/'+problem.ID +'/subprojects'} >
                     <div id="welcomeProblemsHeader1">
                         <div id="welcomeProblemsTitle">
-                            {problem.Title}
+                            interstellar 
+                            <br />
+                            civilization
                         </div>
                     </div>
                 </Link>
@@ -46,7 +48,9 @@ export default class WelcomeUnit extends React.Component {
                 <Link to={'/project/'+problem.ID +'/subprojects'}>
                     <div id="welcomeProblemsHeader2">
                         <div id="welcomeProblemsTitle">
-                            {problem.Title}
+                            evolving
+                            <br />
+                            humanity
                         </div>
                     </div> 
                 </Link>
@@ -60,7 +64,9 @@ export default class WelcomeUnit extends React.Component {
                 <Link to={'/project/'+problem.ID +'/subprojects'}>
                     <div id="welcomeProblemsHeader3">
                         <div id="welcomeProblemsTitle">
-                            {problem.Title}
+                            describing
+                            <br />
+                            reality
                         </div>
                     </div>
                 </Link>
@@ -73,7 +79,9 @@ export default class WelcomeUnit extends React.Component {
                 <Link to={'/project/'+problem.ID +'/subprojects'}>
                     <div id="welcomeProblemsHeader4">
                         <div id="welcomeProblemsTitle">
-                            {problem.Title}
+                            technology
+                            <br />
+                            development
                         </div>
                     </div>
                 </Link>

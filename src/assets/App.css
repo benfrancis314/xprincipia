@@ -1617,6 +1617,31 @@ letter-spacing: 2px !important;
   margin-top: 1%;
   text-transform: lowercase !important;
 }
+#problemCreateTitleForm {
+  font-family: 'Alegreya Sans SC', sans-serif;
+  color: #ffffff;
+  margin: 0 auto;
+  letter-spacing: 4px;
+  border: 1px solid #ffffff;
+  border-radius: 3px;
+  box-shadow: 0 0 1pt 1pt rgba(255,255,255,0.5);
+  /* background-color: rgba(0,220,255, 0.05); */
+  background: radial-gradient(circle, rgba(0,220,255, 0.1), rgba(0,220,255, 0), rgba(0,220,255, 0));   
+  transition: all 1s ease 0s;
+}
+#problemCreateTitleForm:active, #problemCreateTitleForm:focus {
+  transform: scale(1.02);
+}
+#problemCreateSummaryForm {
+  font-family: 'Open Sans';
+  text-align: left;
+  height: 5em;
+  transition: all 1s ease 0s;
+  background: radial-gradient(circle, rgba(0,220,255, 0), rgba(0,220,255, 0.1));     
+}
+#problemCreateSummaryForm:active, #problemCreateSummaryForm:focus {
+  transform: scale(1.02);
+}
 #projectTitleProposalFormLabel{
   /*margin-top: 4%;*/
   color: #00dcff;
@@ -3039,7 +3064,11 @@ background-image: url('./earthRise.jpg');
 background-image: url('./vitruvianMan.jpg');
 }
 #introductionProjectHeader3 {
-background-image: url('./einstein.jpg');
+  /* Old Einstein image*/
+  /* background-image: url('./einstein.jpg'); */
+  background-image: url('./cavePainting.jpg');
+  background-size: 155% !important; 
+  background-position: 70% 0% !important;
 }
 #introductionProjectHeader4 {
 background-image: url('./turingMachine.jpg');
@@ -5252,6 +5281,9 @@ font-family: 'Open Sans';
 #welcomeProblemsHeader4 {
   background-size: contain;
   background-repeat: no-repeat;
+  /* Less Dark */
+  /* background-color: rgba(15,19,28,0.9); */
+  /* Darker */
   background-color: rgba(15,19,28,0.999);
   background-blend-mode: overlay;
   transition: all 0.5s ease 0s;
@@ -5280,7 +5312,11 @@ font-family: 'Open Sans';
   background-image: url('./vitruvianMan.jpg');
 }
 #welcomeProblemsHeader3 {
-  background-image: url('./einstein.jpg');
+  /* Old Einstein image */
+  /* background-image: url('./einstein.jpg'); */
+  background-image: url('./cavePainting.jpg');
+  background-size: 155% !important; 
+  background-position: 70% 0% !important;
 }
 #welcomeProblemsHeader4 {
   background-image: url('./turingMachine.jpg');
@@ -10295,9 +10331,9 @@ margin-top: 1%;
   width: 90%;
   /* right: 0; */
   margin: 0 auto;
-  /* margin-right: 1%; */
+  /* May need to make 0% margin-right */
   margin-right: 1%;
-  margin-top: 2%;
+  /* margin-top: 2%; */
 }
 #SPListDivUnitContainer {
   width: 90%;
@@ -10534,7 +10570,7 @@ margin-top: 1%;
   background-color: rgba(0,255,220, 0.05);
   border-radius: 3px 3px 65% 65%;
   margin: 0 auto;
-  margin-bottom: 1.5%;
+  margin-bottom: 1%;
   text-align: center;
   letter-spacing: 6%;
   letter-spacing: 6px;
@@ -10542,13 +10578,13 @@ margin-top: 1%;
   padding-bottom: 3px;
   color: #00ffdc;
   transition: all 2s ease 0s;
-  margin-top: 1.5%;
+  margin-top: 1%;
   width: 70%;
   background: radial-gradient(rgba(0,220,255,0), rgba(0,220,255,0), rgba(0,220,255,0.05));  
 }
-#leaderBoardCapTopHover {
+#leaderBoardCapTopHover, #leaderBoardCapTopClick {
   border: 1px solid #00ffdc;
-  background-color: rgba(0,255,220, 0.1);
+  background-color: rgba(0,255,220, 0.15);
   border-radius: 3px 3px 65% 65%;
   margin: 0 auto;
   margin-bottom: 1.5%;
@@ -10560,30 +10596,110 @@ margin-top: 1%;
   transition: all 2s ease 0s;
   margin-top: 1.5%;
   width: 75%;
-  background: radial-gradient(rgba(0,220,255,0), rgba(0,220,255,0), rgba(0,220,255,0.05));  
+  background: radial-gradient(circle, rgba(0,255,220,0), rgba(0,255,220,0), rgba(0,255,220,0.05));
 }
-#leaderBoardFilterButton {
-  position: absolute;
-  top: 1.5%;
-  right: 5%;
+#leaderBoardFilterContainer {
+  width: 100%;
   margin: 0 auto;
+  position: relative;
+}
+#leaderBoardFilterButton, #leaderBoardFilterButtonClick {
+  margin: 0 auto;
+  margin-top: 1.5%;
+  margin-bottom: 1%;
+  padding: 1%;
   vertical-align: middle;
   transition: all 2s ease 0s;
   transform:  scale(1) rotate(0deg);
   background: url('./icosahedronGreen1.svg') no-repeat !important;
   opacity: 0.5;
-  width: 27px;
-  height: 27px;
+  width: 25px;
+  height: 25px;
 }
-#leaderBoardFilterButton:hover, #leaderBoardFilterButton:active, #leaderBoardFilterButton:focus {
+#leaderBoardFilterButton:hover, #leaderBoardFilterButton:active, #leaderBoardFilterButton:focus, #leaderBoardFilterButtonClick {
+  margin-top: 2%;
+  margin-bottom: 2%;
   transform: scale(1.2) rotate(180deg);
-  width: 35px;
-  height: 35px;
-  right: 4%;
+  width: 30px;
+  height: 30px;
+  /* right: 4%; */
   opacity: 1 !important;
   cursor: pointer !important;
   background: url('./metatronGreen1.svg') no-repeat !important;
 }
+#leaderBoardFilterExitLeft, #leaderBoardFilterExitRight {
+  display: none;
+  transition: all 0.5s ease 0s;
+}
+#leaderBoardFilterExitLeftShow {
+  position: absolute;
+  left: 25%;
+  top: 3px;
+  transition: all 0.5s ease 0s;
+  opacity: 0.75;
+  background: radial-gradient(circle, rgba(255,127,127,0.1), rgba(255,127,127,0), rgba(255,127,127,0));
+}
+#leaderBoardFilterExitRightShow {
+  position: absolute;
+  right: 25%;
+  top: 3px;
+  transition: all 0.5s ease 0s;
+  opacity: 0.75;
+  background: radial-gradient(circle, rgba(255,127,127,0.1), rgba(255,127,127,0), rgba(255,127,127,0));
+}
+#leaderBoardFilterExitLeftShow:hover, #leaderBoardFilterExitRightShow:hover {
+  transform: scale(1.2);
+  opacity: 1;
+  cursor: pointer !important;
+}
+
+#leaderBoardSelect {
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100%;
+  margin: 0 auto;
+  margin-bottom: 1.5%;
+  background: radial-gradient(circle, rgba(0,255,220,0.1), rgba(0,255,220,0.05), rgba(0,255,220,0), rgba(0,255,220,0), rgba(0,255,220,0));
+  opacity: 0;
+  transition: all 0.5s ease 0s;
+}
+#leaderBoardSelectShow {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100%;
+  margin: 0 auto;
+  margin-bottom: 1.5%;
+  background: radial-gradient(circle, rgba(0,255,220,0.1), rgba(0,255,220,0.05), rgba(0,255,220,0), rgba(0,255,220,0), rgba(0,255,220,0));
+  opacity: 1;
+  transition: all 0.5s ease 0s;
+}
+#leaderBoardOption {
+  margin: 0 auto;
+  padding: 5px;
+  width: 60%;
+  background: radial-gradient(circle, rgba(0,255,220,0), rgba(0,255,220,0), rgba(0,255,220,0.1));
+  background-color: rgba(0,255,220, 0);
+  border: 1px solid rgba(0,255,220,1);
+  border-radius: 7.5% 7.5% 20% 20%;
+  margin-top: 1.5%;
+  font-family: 'Alegreya Sans SC';
+  font-size: 125%;
+  letter-spacing: 4px;
+  color: #ffffff;
+  text-align: center;
+  opacity: 0.75;
+  transition: all 0.75s ease 0s;
+}
+#leaderBoardOption:hover {
+  opacity: 1;
+  background-color: rgba(0,255,220, 0.05);
+  transform: scale(1.05);
+  cursor: pointer !important;
+}
+
+
 #leaderBoardCapBottom {
   /* ALSO OLD LEADERBOARD CAP TOP STYLE */
   border: 1px solid #333333;
@@ -10611,7 +10727,8 @@ margin-top: 1%;
 #featuredContainer {
   width: 100%;
   margin: 0 auto;
-  margin-bottom: 2%;
+  /* Used to be 2%, now handling margin in #leaderBoardFilterButton */
+  margin-bottom: 0%;
   border: 1px solid rgba(0,220,255,0.25);
   border-width: 0px 0px 1px 0px;
   border-radius: 0% 0% 20% 20%;

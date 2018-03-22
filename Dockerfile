@@ -1,5 +1,5 @@
 FROM node:boron
-MAINTAINER Shayan
+MAINTAINER Ben
 
 # Prepare app directory
 RUN mkdir -p /usr/src/app

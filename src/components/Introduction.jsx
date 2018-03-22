@@ -74,7 +74,7 @@ export default class Introduction extends React.Component {
                 <Link to={`/project/7/subprojects`}>
                     <div id="introductionProjectHeader1">
                         <div id="introductionProjectTitle">
-                            Interstellar Civilization
+                            interstellar civilization
                         </div>
                     </div>
                 </Link>
@@ -86,7 +86,7 @@ export default class Introduction extends React.Component {
                 <Link to={`/project/8/subprojects`}>
                     <div id="introductionProjectHeader2"> 
                         <div id="introductionProjectTitle">
-                            Evolving Humanity
+                            evolving humanity
                         </div>
                     </div>
                 </Link>
@@ -96,7 +96,7 @@ export default class Introduction extends React.Component {
                 <Link to={`/project/9/subprojects`}>
                     <div id="introductionProjectHeader3">
                         <div id="introductionProjectTitle">
-                            Theoretical Knowledge
+                            describing reality
                         </div>
                     </div>
                 </Link>
@@ -107,7 +107,7 @@ export default class Introduction extends React.Component {
                 <Link to={`/project/10/subprojects`}>
                     <div id="introductionProjectHeader4">
                         <div id="introductionProjectTitle">
-                            Technology Development
+                            technology development
                         </div>
                     </div>
                 </Link>

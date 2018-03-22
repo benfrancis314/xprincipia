@@ -130,9 +130,9 @@ causeRerender() {
             {/* <div id="textBoxBottom">
                 <br />
             </div> */}
-            <div id="messageQuillImg">
+            {/* <div id="messageQuillImg">
                 <img src={require('../../assets/quillBlue1.svg')} id="newMessageAddButtonImg" width="40" height="40" alt="User avatar, DNA Helix" />
-            </div>
+            </div> */}
             {/* Have this change the text at top to "start a conversation" */}
             </ReactCSSTransitionGroup>
 	    </div>

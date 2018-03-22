@@ -127,9 +127,9 @@ export default class WelcomeCreateForm extends React.Component {
                         </div>
                       </div>
 
-                    <label htmlFor="problemCreateSummaryForm" id="problemSummaryFormLabel">Additional Information<br />
+                    <label htmlFor="problemCreateSummaryForm" id="problemSummaryFormLabel">synopsis<br />
                         <textarea name="problemSummary" maxLength="350" 
-                        placeholder="Please provide any additional information you'd like. (350 character max)" id="problemCreateSummaryForm"/>
+                        placeholder="Please summarize this project. (350 character max)" id="problemCreateSummaryForm"/>
                         </label><br />
                     <Link to={`/welcome`}>
                         <input type="button" ref='btn' value="Create" onClick={this.postProblem} id="submitProblem"/>

@@ -14,18 +14,35 @@ export default class WelcomeContainer extends React.Component {
    
   hoverLeaderBoardText() {
     $(document).ready(function() {
-            $('#leaderBoardCapTop').html("view standings").fadeIn(7500);
+            $('#leaderBoardCapTop').html("select standing").fadeIn(7500);
             $('#leaderBoardCapTop').attr('id','leaderBoardCapTopHover');
-            // $('#feedBottom').attr('id','feedBottomBlue');
     });
   }
   unHoverLeaderBoardText() {
-          $(document).ready(function() {
-                  $('#leaderBoardCapTopHover').html("leaderboard");
-                  $('#leaderBoardCapTopHover').attr('id','leaderBoardCapTop');
-                  // $('#feedBottomBlue').attr('id','feedBottom');
-          });
+    $(document).ready(function() {
+            $('#leaderBoardCapTopHover').html("leaderboard");
+            $('#leaderBoardCapTopHover').attr('id','leaderBoardCapTop');
+    });
   }
+  showLeaderBoardSelect() {
+    $(document).ready(function() {
+            $('#leaderBoardSelect').attr('id','leaderBoardSelectShow');
+            $('#leaderBoardCapTopHover').attr('id','leaderBoardCapTopClick');
+            $('#leaderBoardFilterButton').attr('id','leaderBoardFilterButtonClick');
+            $('#leaderBoardFilterExitLeft').attr('id','leaderBoardFilterExitLeftShow');
+            $('#leaderBoardFilterExitRight').attr('id','leaderBoardFilterExitRightShow');
+    });
+  }
+  hideLeaderBoardSelect() {
+    $(document).ready(function() {
+            $('#leaderBoardSelectShow').attr('id','leaderBoardSelect');
+            $('#leaderBoardCapTopClick').html("leaderboard");
+            $('#leaderBoardCapTopClick').attr('id','leaderBoardCapTop');
+            $('#leaderBoardFilterButtonClick').attr('id','leaderBoardFilterButton');
+            $('#leaderBoardFilterExitLeftShow').attr('id','leaderBoardFilterExitLeft');
+            $('#leaderBoardFilterExitRightShow').attr('id','leaderBoardFilterExitRight');
+    });
+}
 
   hoverText() {
     $(document).ready(function() {
@@ -172,7 +189,7 @@ export default class WelcomeContainer extends React.Component {
               </form>
           </div> */}
           <div id="welcomeUserUnitsContainer">
-              {React.cloneElement(this.props.children)}
+              {this.props.children}
               
               <div id="welcomeRightContainer">
                 <div id="SPListDiv">
@@ -185,15 +202,29 @@ export default class WelcomeContainer extends React.Component {
                             the mental world
                       </div>
                     </div>
-                    <div id="leaderBoardTitleContainer">
-                      <div id="leaderBoardCapTop">
-                          leaderboard
+                    <div id="leaderBoardFilterContainer">
+                      <div id="leaderBoardFilterButton" onMouseOver={this.hoverLeaderBoardText} onMouseOut={this.unHoverLeaderBoardText} onClick={this.showLeaderBoardSelect}>
                       </div>
-                      {/* <Link to="/welcome/filter" activeClassName="activeBlue"> */}
-                          <div id="leaderBoardFilterButton" onMouseOver={this.hoverLeaderBoardText} onMouseOut={this.unHoverLeaderBoardText}>
-                          </div>
-                      {/* </Link> */}
+                      <img src={require('../assets/redX.svg')} id="leaderBoardFilterExitLeft" width="25" height="25" onClick={this.hideLeaderBoardSelect} />
+                      <img src={require('../assets/redX.svg')} id="leaderBoardFilterExitRight" width="25" height="25" onClick={this.hideLeaderBoardSelect} />
                     </div>
+                    <div id="leaderBoardSelect">
+                      <div id="leaderBoardOption">
+                        users
+                      </div>
+                      <div id="leaderBoardOption">
+                        projects
+                      </div>
+                      <div id="leaderBoardOption">
+                        proposals
+                      </div>
+                    </div>
+
+                    {/* <div id="leaderBoardTitleContainer"> */}
+                    <div id="leaderBoardCapTop">
+                        leaderboard
+                    </div>
+                    {/* </div> */}
                     {/* <form id="welcomeSearchFormContainer">
                       <input type="search" name="search" placeholder="SEARCH PROJECT TREES" id="welcomeSearchFormLabel" onKeyDown={this.queryProblem} 
                       autoComplete="off" />
