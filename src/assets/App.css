@@ -2302,11 +2302,13 @@ font-size: 150%;
 letter-spacing: 16px;
 color: #dddddd;
 padding-top: 0.5%;
-padding-bottom: 0%;
+/* WHEN CREATIVE COMMONS */
+/* padding-bottom: 0%; */
+/* WITHOUT CREATIVE COMMONS */
+padding-bottom: 0.5%;
 border: 1px solid #dddddd;
 border-width: 1px 0px;
 margin: 0 auto;
-/* margin-top: 5%; */
 transition: all 0.5s ease 0s;
 z-index: 500;
 
@@ -9582,6 +9584,11 @@ margin-top: 1%;
   font-family: 'Slabo 27px', serif;
   font-family: 'EB Garamond', 'Slabo 27px',serif;
   padding: 0% 8%;
+  transition: all 1s ease 0s;
+}
+#storySection1:hover {
+  box-shadow: 0 0 1pt 1pt rgba(0,220,255,1);
+  /* transform: scale(1.02); */
 }
 #storySection1 div i {
   font-family: 'EB Garamond', 'Slabo 27px',serif;
@@ -9594,15 +9601,17 @@ margin-top: 1%;
   margin-right: 0;
   border-width: 1px 1px 1px 1px;
   border-radius: 3% 3% 3% 3%;
-  transition: all 0.5s ease 0s;
+  transition: all 1s ease 0s;
 }
 #storySection2:hover {
   font-weight: 300;
   background: linear-gradient(to right,rgba(70, 166, 180, 0.07), rgba(0,220,255, 0.1), rgba(0,220,255, 0.08));
-  background-color: rgba(0,220,255,0.01);
+  background-color: rgba(0,220,255,0.02);
   margin-right: 0;
   border-width: 1px 1px 1px 1px;
   border-radius: 3% 3% 3% 3%;
+  box-shadow: 0 0 1pt 1pt rgba(0,220,255,1);
+  /* transform: scale(1.02); */
 }
 #storySection2 i {
   font-family: 'Encode Sans Expanded';
@@ -13723,8 +13732,12 @@ transition: all 1s ease 0s;
 }
 
 
-
-
+/* BEN PAPER CONTAINER */
+#benPaperContainer {
+  width: 100vw !important;
+  height: 100vh !important;
+  box-shadow: 0 0 1.5pt 1.5pt rgba(0,220,255,0.5) !important;
+}
 
 
 

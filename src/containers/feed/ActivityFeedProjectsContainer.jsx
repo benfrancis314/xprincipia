@@ -130,7 +130,7 @@ if (problem.Private === true) {
         </li>
       
       );
-} else if (problem.Title === 'Theoretical Knowledge') {
+} else if (problem.Title === 'theoretical knowledge') {
       return (
         <li key={problem.ID} id="nodisplay">
         </li>

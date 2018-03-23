@@ -58,7 +58,7 @@ export default class WelcomeUnit extends React.Component {
 
         
         );
-    } else if (problem.Title === 'Theoretical Knowledge') {
+    } else if (problem.Title === 'theoretical knowledge') {
         return (
             <li key={problem.ID} id="welcomeProblemsUnit">
                 <Link to={'/project/'+problem.ID +'/subprojects'}>

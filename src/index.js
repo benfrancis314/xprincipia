@@ -171,6 +171,7 @@ import ActivityFeedResourcesContainer from './containers/feed/ActivityFeedResour
 import ActivityFeedSuggestionsContainer from './containers/feed/ActivityFeedSuggestionsContainer.jsx';
 import AnswerContainer from './containers/AnswerContainer.jsx';
 import AnswerContainerPrivate from './containers/AnswerContainerPrivate.jsx';
+import BenPaperContainer from './containers/BenPaperContainer.jsx';
 import CommentAnswerContainer from './containers/comments/CommentAnswerContainer.jsx';
 import CommentAnswerContainerPrivate from './containers/comments/CommentAnswerContainerPrivate.jsx';
 import CommentConContainer from './containers/comments/CommentConContainer.jsx';
@@ -246,8 +247,9 @@ ReactDOM.render(
     <Route path='/newsfeed' component={NewsFeedContainer}></Route>
     <Route path='/instructions' component={Instructions}></Route>
     <IndexRoute component={Layout}></IndexRoute>
-    <Route path='/shortstory' component={ShortStoryContainer}></Route>
     <Route path='/home' component={Layout}>
+      <Route path='/shortstory' component={ShortStoryContainer}></Route>
+      <Route path='/thementalworld' component={BenPaperContainer}></Route>
       {/* Add :user param later. */}
       <Route path='/passwordreset' component={PasswordResetContainer}>
         <IndexRoute component={PasswordResetStart}></IndexRoute>

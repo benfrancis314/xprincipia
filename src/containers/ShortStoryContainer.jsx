@@ -11,7 +11,7 @@ export default class Error404 extends React.Component {
           </div>
           <div id="welcomeContainerBanner">
               <div id="welcomeContainerTitle">
-                  WORLDS OUT OF TIME
+                  WORLDS ACROSS TIME
               </div>     
               <div id="storyReadingTime" onClick={this.privateAlert}>
                 ~5 min.
@@ -136,7 +136,7 @@ export default class Error404 extends React.Component {
                   </div>
                 <div id="story1Logo10">
                   My heart suddenly began speeding; yet my mind was oddly calm. 
-                  <i>Strange</i>, yes, but I supposed Galileo must have felt similar when his eyes first set upon the godly awe of Jupiter, alone in the canvas of open space. 
+                  <i> Strange</i>, yes, but I supposed Galileo must have felt similar when his eyes first set upon the godly awe of Jupiter, alone in the canvas of open space. 
                   My new-found confidence did not last, however, as a strange hum raised from my lower spine — it climbed vertically until it mounted at my temple where it seemed to <i>burst</i>; confounded, I now sat amongst an entirely new host of reality and apparent geographic location. 
                   <br />
                   <br />
@@ -152,7 +152,7 @@ export default class Error404 extends React.Component {
                 <div id="story1Logo12">
                   In what form it had, it was utterly remote from any produced by natural evolution of carbon-cellular life or by the entirety of man-created culture. 
                   It was both fabulous and disturbing in its glaring distance from any design of which we have known. 
-                  At the next moment I knew my mind was lost; for out from its acting <i>mouth</i> came a linguistic feat and geometric structure incomparable to even the most divine inspirations or visionary accomplishments in all of mammalian-human existence; I understood this to be the daemon communicating with me, and I felt weak in constitution from my incomparable inability to respond. 
+                  At the next moment I knew my mind was lost; for out from its acting <i>mouth</i> came a linguistic feat and geometric structure incomparable to even the most divine inspirations or visionary accomplishments in all of mammalia-human existence; I understood this to be the daemon communicating with me, and I felt weak in constitution from my incomparable inability to respond. 
                   <br />
                   <br />
                 </div>
@@ -203,7 +203,7 @@ export default class Error404 extends React.Component {
                   Hope grew old getting to know the ins and outs of every society she could on her planet. 
                   Hope had a family, daughters, sons, granddaughters, and grandsons. 
                   And Hope died. 
-                  63 years after Hope’s death another ship arrived carrying genetic engineering technology that allowed the human body to become biologically immortal, so that no one like Hope would have to die watching ever again.
+                  63 years after Hope’s death another ship arrived carrying genetic engineering technology that allowed the human body to become biologically immortal, ensuring that no one like Hope would have to die watching ever again.
                   <br />
                   <br />
                   This wasn’t the last miraculous advancement they had missed during their voyage. 
@@ -224,8 +224,8 @@ export default class Error404 extends React.Component {
                 </div>
                 <div id="story2Logo8">
                   It felt as a domed room, cavernous in size and shape. 
-                  Brief blame was held at how they could have made the analytic mistakes they had, but it changed nothing. 
-                  Were it not for an occasional rhythmic movement, like that of an animal in a dreamstate, they may have thought them to be dead. 
+                  Brief blame was held as to how they could have made the analytic mistakes they had, but it changed nothing. 
+                  Were it not for an occasional rhythmic movement, like that of an animal in dreamstate, they may have thought them to be dead. 
                   Up close for the first time, the crew showed a general terror; byzantine hieroglyphs surrounded the dormant beings. 
                   All around them were machines and structures so labyrinthine that a sensation of primitivity held in the face of utter advancement. 
                   No one dared say a word, but throned in the equicenter of the space sat a vast monolith, spherical and layered, rotating and dancing silently about itself and the onlooking, moribund species. 
