@@ -97,7 +97,7 @@ export default class ProjectEditPrivateForm extends React.Component {
 
                         <label htmlFor="problemSummaryForm" id="problemSummaryFormLabel">Additional Information<br />
                             <textarea name="problemSummary" required="required" maxLength="350" 
-                            placeholder="Please provide any additional information you'd like. (250 character max.)" id="projectEditSummaryForm">
+                            placeholder="Please provide any additional information you'd like. (250 ch..)" id="projectEditSummaryForm">
                             </textarea></label><br />
 
                           <br />

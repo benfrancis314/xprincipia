@@ -163,13 +163,14 @@ export default class ProfileContainer extends React.Component {
                         <br />
                         <br />
                         <br />
+                        xxx
                         <div id="earth"></div>
-                        <EarthSphere />
+                        {/* <EarthSphere /> */}
                     </div>
                     <div id="userOptions">
                         <br />
                         <Link to={`/profile/about`} activeClassName="activeBlue">
-                            <div id="aboutXPButton">About XPrincipia</div>
+                            <div id="aboutXPButton">about xprincipia</div>
                         </Link>
                     </div>
                 </div>
@@ -223,14 +224,19 @@ export default class ProfileContainer extends React.Component {
                         <Link to={`/profile`} activeClassName="activeBlue">
                             <div id="userProblemsSolutionsButton">activity</div>
                         </Link>
-                        <Link to={`/profile/feedback`} activeClassName="activeBlue">
-                            <div id="userFeedbackButton">feedback</div>
+                        <Link to={`/profile/passions`} activeClassName="activeBlue">
+                            <div id="userProblemsSolutionsButton">passions</div>
                         </Link>
-                        <Link to={`/profile/about`} activeClassName="activeBlue">
-                            <div id="aboutXPButton">about xprincipia</div>
-                        </Link>
+                        <div id="profileNotificationsMessagesButtons">
+                            <Link to={`/profile/feedback`} activeClassName="activeBlue">
+                                <div id="userFeedbackButton">feedback</div>
+                            </Link>
+                            <Link to={`/profile/about`} activeClassName="activeBlue">
+                                <div id="aboutXPButton">about xp</div>
+                            </Link>
+                        </div>
                         <Link to ={`/welcome`}>
-                            <div id="logOutButton" onClick={this.onLogout}>Logout</div>
+                            <div id="logOutButton" onClick={this.onLogout}>logout</div>
                         </Link>
                     </div>
                 </div>

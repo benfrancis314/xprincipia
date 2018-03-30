@@ -155,6 +155,9 @@ import TrueEmpty from './components/TrueEmpty.jsx';
 import TutorialWelcomeButton from './components/tutorials/TutorialWelcomeButton.jsx';
 import TutorialWelcomeContent from './components/tutorials/TutorialWelcomeContent.jsx';
 import TutorialWelcomePage from './components/tutorials/TutorialWelcomePage.jsx';
+import UserMessages from './components/profile/UserMessages.jsx';
+import UserPassions from './components/profile/UserPassions.jsx';
+import UserProblemsSolutions from './components/profile/UserProblemsSolutions.jsx';
 import VersionForm from './components/versions/VersionForm.jsx';
 import WelcomeCreateButton from './components/welcome/WelcomeCreateButton.jsx';
 import WelcomeCreateForm from './components/welcome/WelcomeCreateForm.jsx';
@@ -218,6 +221,7 @@ import SubProjectProposalContainer from './containers/SubProjectProposalContaine
 import SubProjectProposalPrivateContainer from './containers/SubProjectProposalPrivateContainer.jsx';
 import SuggestionContainer from './containers/SuggestionContainer.jsx';
 import SuggestionContainerPrivate from './containers/SuggestionContainerPrivate.jsx';
+import UserContainer from './containers/UserContainer.jsx'
 import VersionsContainer from './containers/VersionsContainer.jsx'
 import WelcomeContainer from './containers/WelcomeContainer.jsx';
 import WelcomeProjectsContainer from './containers/WelcomeProjectsContainer.jsx';
@@ -322,9 +326,16 @@ ReactDOM.render(
         <Route path='/mindtemple' component={TrueEmpty}></Route>
         <Route path='/mindtemple/create' component={PrivateProjectForm}></Route>
       </Route>
+      <Route path='/user/:username' component={UserContainer}>
+        <IndexRoute component={UserProblemsSolutions}></IndexRoute>
+        <Route path='/user/:username/activity' component={UserProblemsSolutions}></Route>
+        <Route path='/user/:username/passions' component={UserPassions}></Route>
+        <Route path='/user/:username/messages' component={UserMessages}></Route>
+      </Route>
       <Route path='/profile/container' component={ProfileContainer}>
         <IndexRoute component={ProfileProblemsSolutions}></IndexRoute>
         <Route path='/profile' component={ProfileProblemsSolutions}></Route>
+        <Route path='/profile/passions' component={UserPassions}></Route>
         <Route path='/profile/resume' component={ProfileResume}></Route>
         <Route path='/profile/feedback' component={FeedbackForm}></Route>
         <Route path='/messages/container' component={ProfileMessagesCenter}>

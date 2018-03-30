@@ -14,7 +14,7 @@ export default class WelcomeContainer extends React.Component {
    
   hoverLeaderBoardText() {
     $(document).ready(function() {
-            $('#leaderBoardCapTop').html("select standing").fadeIn(7500);
+            $('#leaderBoardCapTop').html("competitions").fadeIn(7500);
             $('#leaderBoardCapTop').attr('id','leaderBoardCapTopHover');
     });
   }
@@ -73,10 +73,12 @@ export default class WelcomeContainer extends React.Component {
            feedProjects: []
         }
         this.queryProblem = this.queryProblem.bind(this);
+        this.selectUsers = this.selectUsers.bind(this);
+        this.selectProjects = this.selectProjects.bind(this);
+        this.selectProposals = this.selectProposals.bind(this);
         // this.startSound = this.startSound.bind(this);
     };
-     queryProblem () {
-         //get search text box data
+    queryProblem () {
         this.state.searchText = document.getElementById('welcomeSearchFormLabel').value
 
         var self = this
@@ -86,37 +88,18 @@ export default class WelcomeContainer extends React.Component {
             })
         })
       .catch(function (error) {
-        // console.log(error.response.data)
-          // $(document).ready(function() {
-          //     $('#notification').attr('id','notificationShow').hide().slideDown();
-          //     if (error.response.data != '') {
-          //       $('#notificationContent').text(error.response.data);
-          //     }
-          //     else if (error.response.data == '[object Object]') {
-          //       return (
-          //         $(document).ready(function() {
-          //           $('#notificationLoginRegisterContainer').attr('id','notificationLoginRegisterContainerShow');
-          //           $('#notificationContent').html('Please <span id="blue">login </span>to contribute');
-          //         })
-          //       );
-          //     } 
-          // });
       });
-        }
-        // componentDidMount(){
-        //   window.scrollTo(0,0);
-        // }
-        componentWillMount(){
-        var self = this;
-        // window.scrollTo(0,0);
-        axios.get( Config.API + '/problems/filter/byvote').then(function (response) {
-            self.setState({
-                userproblems: response.data,
-                feedProjects: response.data
-            })
-        }) 
+    }
+
+    componentWillMount(){
+      var self = this;
+      axios.get( Config.API + '/problems/filter/byvote').then(function (response) {
+          self.setState({
+              userproblems: response.data,
+              feedProjects: response.data
+          })
+      }) 
       .catch(function (error) {
-        // console.log(error.response.data)
           $(document).ready(function() {
               $('#notification').attr('id','notificationShow').hide().slideDown();
               if (error.response.data != '') {
@@ -138,12 +121,93 @@ export default class WelcomeContainer extends React.Component {
         })
     }) 
      }
+  //  componentWillReceiveProps (nextProps){
+
+  //  }
 
     //  startSound () {
     //     var self = this;
 
     //     return  self.setState({ volume: 100 });
     //     }
+
+    selectUsers () {
+      var self = this;
+      axios.get( Config.API + '/users/list').then(function (response) {
+          self.setState({
+              problems: response.data,
+          })
+      }) 
+        .catch(function (error) {
+          $(document).ready(function() {
+              $('#notification').attr('id','notificationShow').hide().slideDown();
+              if (error.response.data != '') {
+                $('#notificationContent').text(error.response.data);
+              }
+              else if (error.response.data == '[object Object]') {
+                return (
+                  $(document).ready(function() {
+                    $('#notificationLoginRegisterContainer').attr('id','notificationLoginRegisterContainerShow');
+                    $('#notificationContent').html('Please <span id="blue">login </span>to contribute');
+                  })
+                );
+              } 
+          });
+      });
+      alert('success');
+    };
+
+    selectProjects () {
+      var self = this;
+      axios.get( Config.API + '/problems/filter/byvote').then(function (response) {
+          self.setState({
+              problems: response.data,
+          })
+      }) 
+      .catch(function (error) {
+          $(document).ready(function() {
+              $('#notification').attr('id','notificationShow').hide().slideDown();
+              if (error.response.data != '') {
+                $('#notificationContent').text(error.response.data);
+              }
+              else if (error.response.data == '[object Object]') {
+                return (
+                  $(document).ready(function() {
+                    $('#notificationLoginRegisterContainer').attr('id','notificationLoginRegisterContainerShow');
+                    $('#notificationContent').html('Please <span id="blue">login </span>to contribute');
+                  })
+                );
+              } 
+          });
+      });
+    };
+
+    selectProposals () {
+      var self = this;
+      axios.get( Config.API + '/problems/all').then(function (response) {
+          self.setState({
+              problems: response.data,
+          })
+      }) 
+      .catch(function (error) {
+          $(document).ready(function() {
+              $('#notification').attr('id','notificationShow').hide().slideDown();
+              if (error.response.data != '') {
+                $('#notificationContent').text(error.response.data);
+              }
+              else if (error.response.data == '[object Object]') {
+                return (
+                  $(document).ready(function() {
+                    $('#notificationLoginRegisterContainer').attr('id','notificationLoginRegisterContainerShow');
+                    $('#notificationContent').html('Please <span id="blue">login </span>to contribute');
+                  })
+                );
+              } 
+          });
+      });
+    };
+
+
    
    render() {
       return (
@@ -209,20 +273,20 @@ export default class WelcomeContainer extends React.Component {
                       <img src={require('../assets/redX.svg')} id="leaderBoardFilterExitRight" width="25" height="25" onClick={this.hideLeaderBoardSelect} />
                     </div>
                     <div id="leaderBoardSelect">
-                      <div id="leaderBoardOption">
+                      <div id="leaderBoardOption" onClick={this.selectUsers}>
                         users
                       </div>
-                      <div id="leaderBoardOption">
+                      <div id="leaderBoardOption" onClick={this.selectProjects}>
                         projects
                       </div>
-                      <div id="leaderBoardOption">
+                      <div id="leaderBoardOption" onClick={this.selectProposals}>
                         proposals
                       </div>
                     </div>
 
                     {/* <div id="leaderBoardTitleContainer"> */}
                     <div id="leaderBoardCapTop">
-                        leaderboard
+                        user leaderboard
                     </div>
                     {/* </div> */}
                     {/* <form id="welcomeSearchFormContainer">
@@ -230,7 +294,12 @@ export default class WelcomeContainer extends React.Component {
                       autoComplete="off" />
                     </form> */}
                     
-                    <WelcomeUserUnit problems={this.state.userproblems} />
+                    {/* <div id="invisibleLeaderboardUsers">
+                      *Users list here*
+                    </div> */}
+                    <div id="visibleLeaderboardProjects">
+                      <WelcomeUserUnit problems={this.state.userproblems} />
+                    </div>
                   {/* <div id="leaderBoardCapBottom">
                   </div> */}
                 </div>

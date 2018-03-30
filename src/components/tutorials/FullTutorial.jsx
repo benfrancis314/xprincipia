@@ -436,7 +436,7 @@ export default class Tutorial extends React.Component {
                                                 </label><br />
 
                                                 <label htmlFor="solutionSummary" id="solutionSummaryFormLabel">Summary<br />
-                                                    <textarea name="solutionSummary" required="required" maxLength="400" placeholder="Please summarize your proposal here. (400 character max)" id="solutionSummaryForm"/>
+                                                    <textarea name="solutionSummary" required="required" maxLength="400" placeholder="Please summarize your proposal here. (400 ch.)" id="solutionSummaryForm"/>
                                                 </label><br />
 
                                                 <label htmlFor="solutionDescription" id="solutionDescriptionFormLabel">Description<br />
@@ -701,7 +701,7 @@ function randomImg() {
     return <img src={require('../../assets/pegasusConstellation.svg')} id="middleAlignOrionIntro" width='70' height='100' alt="Back arrow, blue up arrow" />
     } else if (Math.random() < 0.875){
     return <img src={require('../../assets/archerConstellation.svg')} id="middleAlignOrionIntro" width='70' height='100' alt="Back arrow, blue up arrow" />
-    } else if (Math.random() < 0.1){
+    } else if (Math.random() < 1){
     return <img src={require('../../assets/greatBearConstellation.svg')} id="middleAlignOrionIntro" width='70' height='100' alt="Back arrow, blue up arrow" />
     }
 }

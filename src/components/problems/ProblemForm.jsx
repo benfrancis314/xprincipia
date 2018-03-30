@@ -17,6 +17,7 @@ export default class ProblemForm extends React.Component {
       title: '',
       summary: '',
       class: '',
+      breakdownID: '',
     }
 
     this.postProblem = this.postProblem.bind(this);
@@ -25,6 +26,23 @@ export default class ProblemForm extends React.Component {
 // componentDidUpdate() {
 //         ReactDOM.findDOMNode(this).scrollIntoView();
 //   }      
+
+  componentDidMount(){
+    var self = this;
+    axios.get( Config.API + '/breakdowns/byproblemnumber?parentID='+this.props.params.probID + '&parentNumber=1').then(function (response) {
+        self.setState({
+            breakdownID: response.data.ID,
+        })
+    })   
+  }
+  // componentWillReceiveProps (nextProps){
+  //   var self = this;
+  //   axios.get( Config.API + '/breakdowns/byproblemnumber?parentID='+nextProps.params.probID+'&parentNumber=1').then(function (response) {
+  //       self.setState({
+  //           breakdownID: response.data,
+  //       })
+  //   })   
+  // }
 
   postProblem() {
     var self = this;
@@ -53,7 +71,7 @@ export default class ProblemForm extends React.Component {
       class : String(this.state.class),
       // Breakdown not used yet
       // breakdownID : String(this.props.breakdownID),
-      breakdownID: '0',
+      breakdownID: String(this.state.breakdownID),
       private: '0',
     })
     .then(function (result) {
@@ -61,6 +79,7 @@ export default class ProblemForm extends React.Component {
       // document.location = '/project/'+self.props.params.probID+'/subprojects'
       self.refs.btn.removeAttribute("disabled");
       window.scrollTo(0,0);
+      alert(String(this.state.breakdownID));
     })
       .catch(function (error) {
         // alert(error.response.data);
@@ -134,11 +153,11 @@ export default class ProblemForm extends React.Component {
                       synopsis
                       <br />
                       <textarea name="problemSummary" maxLength="500" 
-                      placeholder="Please provide any additional information you'd like. (500 character max)" id="problemSummaryForm"/>
+                      placeholder="Please provide any additional information you'd like. (500 ch.)" id="problemSummaryForm"/>
                   </label>
                   <br />
                   <Link to={`/project/${this.props.params.probID}/subprojects`}>
-                      <input type="button" ref='btn' value="Create" onClick={this.postProblem} id="submitProblem"/>
+                      <input type="button" ref='btn' value="create" onClick={this.postProblem} id="submitProblem"/>
                   </Link>
                 </fieldset>
               </form>

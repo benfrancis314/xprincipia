@@ -4,11 +4,33 @@ import { Link } from 'react-router';
 
 export default class WelcomeUserUnit extends React.Component {
    
+
+    constructor(props){
+        super(props);
+
+        this.state = {
+           problems : [],
+        }
+    };
+
+    componentDidMount(){
+        var self = this;
+        this.setState({
+            problems: self.props.problems,
+        })
+    }
+    componentWillReceiveProps (nextProps){
+        var self = this;
+        this.setState({
+            problems: nextProps.problems,
+        })
+    }
+
 	render() {
 		return (
 	    <div id="SPListDivUnitContainer">
             <ul id="welcomeUserProblemsUnitList"> 
-                {this.props.problems.map(this.renderItem)} 
+                {this.state.problems.map(this.renderItem)} 
             </ul>	               
 	    </div>
 		);

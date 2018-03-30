@@ -31,13 +31,7 @@ export default class WelcomeUnit extends React.Component {
         return (
             <li key={problem.ID} id="welcomeProblemsUnit">
                 <Link to={'/project/'+problem.ID +'/subprojects'} >
-                    <div id="welcomeProblemsHeader1">
-                        <div id="welcomeProblemsTitle">
-                            interstellar 
-                            <br />
-                            civilization
-                        </div>
-                    </div>
+                    {randomInterstellar()}
                 </Link>
             </li>
         );
@@ -62,13 +56,7 @@ export default class WelcomeUnit extends React.Component {
         return (
             <li key={problem.ID} id="welcomeProblemsUnit">
                 <Link to={'/project/'+problem.ID +'/subprojects'}>
-                    <div id="welcomeProblemsHeader3">
-                        <div id="welcomeProblemsTitle">
-                            describing
-                            <br />
-                            reality
-                        </div>
-                    </div>
+                    {randomReality()}
                 </Link>
             </li>
 
@@ -92,6 +80,54 @@ export default class WelcomeUnit extends React.Component {
     } else 
         return (
             <li key={problem.ID} id="nodisplay"></li>
+        );
+    }
+}
+
+function randomInterstellar() {
+    if (Math.random() < 0.5) {
+      return (
+        <div id="welcomeProblemsHeader1">
+            <div id="welcomeProblemsTitle">
+                interstellar 
+                <br />
+                civilization
+            </div>
+        </div>
+      )
+    } else if (Math.random() < 1){
+      return (
+        <div id="welcomeProblemsHeader1Jupiter">
+            <div id="welcomeProblemsTitle">
+                interstellar 
+                <br />
+                civilization
+            </div>
+        </div>
+      );
+    }
+}
+
+function randomReality() {
+    if (Math.random() < 0.5) {
+        return (
+            <div id="welcomeProblemsHeader3">
+                <div id="welcomeProblemsTitle">
+                    describing
+                    <br />
+                    reality
+                </div>
+            </div>
+        );
+    } else if (Math.random() < 1){
+        return (
+            <div id="welcomeProblemsHeader3Lion">
+                <div id="welcomeProblemsTitle">
+                    describing
+                    <br />
+                    reality
+                </div>
+            </div>
         );
     }
 }

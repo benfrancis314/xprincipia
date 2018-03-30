@@ -88,7 +88,7 @@ function randomImg() {
       return <img src={require('../assets/pegasusConstellation.svg')} id="middleAlignOrionPrivate" width='70' height='100' alt="Back arrow, blue up arrow" />
     } else if (Math.random() < 0.875){
       return <img src={require('../assets/archerConstellation.svg')} id="middleAlignOrionPrivate" width='70' height='100' alt="Back arrow, blue up arrow" />
-    } else if (Math.random() < 0.1){
+    } else if (Math.random() < 1){
       return <img src={require('../assets/greatBearConstellation.svg')} id="middleAlignOrionPrivate" width='70' height='100' alt="Back arrow, blue up arrow" />
     }
 }

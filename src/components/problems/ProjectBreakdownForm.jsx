@@ -5,8 +5,11 @@ import { Link } from 'react-router';
 import axios from 'axios';
 import {Config} from '../../config.js';
 import $ from 'jquery';
+import Load from '../Load.jsx';
+import ProjectBreakdownList from './ProjectBreakdownList.jsx';
 
-export default class ProblemForm extends React.Component {
+
+export default class ProjectBreakdownForm extends React.Component {
 
   constructor(){
     super();
@@ -15,14 +18,30 @@ export default class ProblemForm extends React.Component {
     this.state= {
       title: '',
       summary: '',
+      breakdowns: [],
     }
 
     this.postBranch = this.postBranch.bind(this);
   };
 
-componentDidMount() {
+  componentDidMount(){
+    var self = this;
     ReactDOM.findDOMNode(this).scrollIntoView();
-  }      
+    axios.get( Config.API + '/breakdowns/byproblem?parentID='+this.props.params.probID).then(function (response) {
+        self.setState({
+            breakdowns: response.data
+        })
+    })   
+}
+
+componentWillReceiveProps (nextProps){
+    var self = this;
+    axios.get( Config.API + '/breakdowns/byproblem?parentID='+nextProps.params.probID).then(function (response) {
+        self.setState({
+            breakdowns: response.data
+        })
+    })  
+}
 
   postBranch() {
     //Read field items into component state
@@ -39,7 +58,8 @@ componentDidMount() {
     })
     .then(function (result) {
       //redirect back to the last page     
-      document.location = '/project/'+self.props.params.probID+'/subprojects'
+      // document.location = '/project/'+self.props.params.probID+'/subprojects'
+
     })
       .catch(function (error) {
         // alert('why not working');
@@ -62,10 +82,18 @@ componentDidMount() {
 
   render() {
       return (
-        <div>
+        <div id="breakdownContainer">
+          <div id="breakdownHeaderContainer">
             <Link to={`/project/${this.props.params.probID}/subprojects`}>
-                <img src={require('../../assets/redX.svg')} id="closeRedX" width="30" height="30" alt="Close button, red X symbol" />
+              <div id="breakdownContainerClose" onClick={this.hideBranch}>
+                  <img src={require('../../assets/redX2.svg')} id="breakdownCloseImg" width="22" height="22" alt="Project Tree Button, white tree"  onClick={this.hideParentList} />
+              </div>
             </Link>
+            <div id="breakdownHeader">
+              alternative breakdowns
+            </div>
+          </div>
+          {this.state.breakdowns.map(this.renderBreakdown)}
           <div id="branchFormTitle">
             new breakdown
           </div>
@@ -73,15 +101,17 @@ componentDidMount() {
               <form id="createForm">
                 <fieldset id="fieldSetNoBorder">
                     <label htmlFor="problemTitleForm" id="problemTitleFormLabel">breakdown title<br />
-                      <input type="text" name="problemTitle" required="required" maxLength="70" id="problemTitleForm" />
+                      <input type="text" name="problemTitle" required="required" maxLength="70" id="problemTitleForm" 
+                      placeholder="alternative method of organizing sub projects" />
                     </label><br />
-
+                  {/* 
                   <label htmlFor="problemSummaryForm" id="problemSummaryFormLabel">concept or distinction<br />
                       <textarea name="problemSummary" maxLength="150" 
-                      placeholder="What is the concept behind this breakdown or what makes it distinct? (250 character max)" id="problemSummaryForm"/>
-                      </label><br />
-
-                  <input type="button" value="Create" onClick={this.postBranch} id="submitProblem"/>
+                      placeholder="What is the concept behind this breakdown or what makes it distinct? (250 ch.)" id="problemSummaryForm"/>
+                      </label><br /> */}
+                  <Link to={window.location.pathname}>
+                    <input type="button" value="Create" onClick={this.postBranch} id="submitBreakdown"/>
+                  </Link>
                 </fieldset>
               </form>
           </div>
@@ -89,5 +119,98 @@ componentDidMount() {
 
       );
    }
+   renderBreakdown(breakdown) {
+
+    function hoverBreakdownText() {
+        if (breakdown.Description !== '') {
+            $(document).ready(function() {
+                $('div.'+breakdown.ID).attr('class','branchText');
+                $('.branchText').html(breakdown.Description).fadeIn(7500);
+            });
+        }
+    }
+    function unHoverBreakdownText() {
+        $(document).ready(function() {
+            $('.branchText').html(breakdown.Title).fadeIn(7500);
+            $('div.branchText').attr('class',breakdown.ID);
+            $('#privateContainerMottoRed').html("ALTERNATE BREAKDOWNS").fadeIn(7500);
+            $('#privateContainerMottoRed').attr('id','privateContainerMottoBlue');
+        });
+    }
+    function addBreakdownProject() {
+      var self = this;
+      self.refs.btn.setAttribute("disabled", "disabled");
+      //Read field items into component state
+      this.state.title = document.getElementById('problemTitleForm').value
+      this.state.summary = document.getElementById('problemSummaryForm').value
+      if (document.getElementById('projectClass2').checked) {
+        this.state.class = '2' 
+      } else if (document.getElementById('projectClass1').checked) {
+        this.state.class = '1' 
+      } else {
+        this.state.class = '0' 
+      }
+    
+      axios.post( Config.API + '/auth/problems/create', {
+        username: cookie.load('userName'),
+        title : this.state.title,
+        summary : this.state.summary,
+        parentType : '0',
+        parentID: this.props.params.probID,
+        // parentTitle : this.props.parentTitle,
+        // grandParentID : String(this.props.gParentID),
+        // grandParentTitle: this.props.gParentTitle,
+        // ggParentID : String(this.props.ggParentID),
+        class : String(this.state.class),
+        breakdownID: breakdown.ID,
+        private: '0',
+      })
+      .then(function (result) {
+        self.refs.btn.removeAttribute("disabled");
+        // document.location = window.location.pathname 
+        // window.scrollTo(0,0);
+      })
+        .catch(function (error) {
+            $(document).ready(function() {
+                if (error.response.data == '[object Object]') {
+                  return (
+                    $(document).ready(function() {
+                      $('#notification').attr('id','notificationShow').hide().slideDown();
+                      $('#notificationLoginRegisterContainer').attr('id','notificationLoginRegisterContainerShow');
+                      $('#notificationContent').html('Please <span id="blue">login </span>to create a project');
+                    })
+                  );
+                }  else if (error.response.data != '') {
+              }
+            });
+        });
+    }
+    function showForm() {
+      $(document).ready(function() {
+          $('div.'+breakdown.ID).attr('class','breakdownFormHide');
+          // $('.suggestionContentClassBlue > #discussHoverText').attr('id','discussHoverTextShow');
+          // $('#discussHoverTextShow').html("answers").fadeIn(7500);
+      });
+    }
+    function hideForm() {
+        $(document).ready(function() {
+            $('div.breakdownFormHide').attr('class',breakdown.ID);
+            // $('div#discussHoverTextShow').attr('id','discussHoverText');
+        });
+    }
+
+    return (
+      <div id="breakdownSetsContainer" key={breakdown.ID}>
+            <div id="branchHeaderTitle" 
+            // onMouseOver={hoverBreakdownText} 
+            // onMouseOut={unHoverBreakdownText}
+            onClick={hoverBreakdownText}
+            >
+                {breakdown.Title}
+            </div>
+        <ProjectBreakdownList breakdownID={breakdown.ID} probID={breakdown.ParentID} />
+      </div>               
+    );
+  }
 }
 

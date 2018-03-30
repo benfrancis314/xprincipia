@@ -425,8 +425,10 @@ padding-left: 0px !important;
 }
 #welcomeProblemsHeader, 
 #welcomeProblemsHeader1,
+#welcomeProblemsHeader1Jupiter,
 #welcomeProblemsHeader2,
 #welcomeProblemsHeader3,
+#welcomeProblemsHeader3Lion,
 #welcomeProblemsHeader4 {
 
 background-size: cover !important;
@@ -447,8 +449,10 @@ transition: all 0.2s ease 0s !important;
 }
 #welcomeProblemsHeader:hover, #welcomeProblemsHeader:active, #welcomeProblemsHeader:focus, 
 #welcomeProblemsHeader1:hover, #welcomeProblemsHeader1:active, #welcomeProblemsHeader1:focus,
+#welcomeProblemsHeader1Jupiter:hover, #welcomeProblemsHeader1Jupiter:active, #welcomeProblemsHeader1Jupiter:focus,
 #welcomeProblemsHeader2:hover, #welcomeProblemsHeader2:active, #welcomeProblemsHeader2:focus,
 #welcomeProblemsHeader3:hover, #welcomeProblemsHeader3:active, #welcomeProblemsHeader3:focus,
+#welcomeProblemsHeader3Lion:hover, #welcomeProblemsHeader3Lion:active, #welcomeProblemsHeader3Lion:focus,
 #welcomeProblemsHeader4:hover, #welcomeProblemsHeader4:active, #welcomeProblemsHeader4:focus {
 box-shadow: 0 0 2pt 2pt rgba(0,220,255,0.5) !important;
 }
@@ -477,8 +481,8 @@ margin: 0 auto !important;
 margin-top: 5% !important;
 margin-bottom: 3% !important;
 }
-#welcomeProblemsHeader1, #welcomeProblemsHeader2,
-#welcomeProblemsHeader3, #welcomeProblemsHeader4 {
+#welcomeProblemsHeader1, #welcomeProblemsHeader1Jupiter, #welcomeProblemsHeader2,
+#welcomeProblemsHeader3, #welcomeProblemsHeader3Lion,  #welcomeProblemsHeader4 {
 margin-bottom: 0 !important;
 }
 #exploreWelcomeForm {
@@ -1549,14 +1553,15 @@ letter-spacing: 2px !important;
 }
 #problemSummaryForm, #problemDescriptionForm,
 #problemRequirementsForm, #problemReferencesForm,
-#solutionSummaryForm, #solutionReferencesForm {
+#solutionSummaryForm, #solutionReferencesForm,
+#breakdownProblemSummaryForm {
   font-family: 'Open Sans';
   text-align: left;
   height: 5em;
   transition: all 1s ease 0s;
 }
 #solutionSummaryForm, #solutionDescriptionForm, 
-#solutionReferencesForm, #problemSummaryForm {
+#solutionReferencesForm, #problemSummaryForm, #breakdownProblemSummaryForm {
   /* background: linear-gradient(to right,rgba(0,220,255, 0.06), rgba(0,220,255, 0.07),rgba(0,220,255, 0.03)); */
   background: radial-gradient(circle, rgba(0,220,255, 0), rgba(0,220,255, 0.1));     
 }
@@ -1580,7 +1585,7 @@ letter-spacing: 2px !important;
   border-radius: 3px 3px 5% 5%;
   transition: all 1s ease 0s;
 }
-#problemTitleForm {
+#problemTitleForm, #breakdownProblemTitleForm {
   font-family: 'Alegreya Sans SC', sans-serif;
   color: #ffffff;
   margin: 0 auto;
@@ -1592,7 +1597,7 @@ letter-spacing: 2px !important;
   background: radial-gradient(circle, rgba(0,220,255, 0.1), rgba(0,220,255, 0), rgba(0,220,255, 0));   
   transition: all 1s ease 0s;
 }
-#problemTitleForm:active, #problemTitleForm:focus, #problemSummaryForm:active, #problemSummaryForm:focus {
+#problemTitleForm:active, #problemTitleForm:focus, #problemSummaryForm:active, #problemSummaryForm:focus, #breakdownProblemTitleForm:active, #breakdownProblemTitleForm:focus, #breakdownProblemSummaryForm:active, #breakdownProblemSummaryForm:focus {
   transform: scale(1.02);
 }
 #projectEditTitleForm {
@@ -4043,6 +4048,10 @@ letter-spacing: 7px;
   width: 40%;
   border: 1px solid #00dcff;
   border-width: 0px 1px 0px 0px;
+  /* New style */
+  border-width: 0px 0px 0px 0px;
+  border-radius: 0% 0% 0% 50px;
+  background: linear-gradient(rgba(0,220,255,0), rgba(0,220,255,0.1));
 }
 /* #profileRight {
 } */
@@ -4108,7 +4117,7 @@ letter-spacing: 7px;
 }
 #userProblemsSolutionsButton, #notificationsButton,
 #userSettingsButton, #aboutXPButton, 
-#userFeedbackButton, #logOutButton {
+#userFeedbackButton, #logOutButton, #userMessagesButton {
   background-color: rgba(0,220,255,0);
   color: #00dcff;
   font-family: 'Alegreya Sans SC', sans-serif;
@@ -4133,6 +4142,9 @@ letter-spacing: 7px;
   width: 85%;
   /* padding-left: 10%; */
   transform: scale(1);
+}
+#aboutXPButton, #userFeedbackButton {
+  width: 7.5em;
 }
 #userProblemsSolutionsButton:hover, #notificationsButton:hover,
 #userSettingsButton:hover, #aboutXPButton:hover, 
@@ -4326,15 +4338,21 @@ letter-spacing: 7px;
   margin: 0px;
   text-align: justify;
 }
-#earth {
+#earth, #mercury, #venusAtmosphere, #venusSurface, #mars, #moon, #earthNight, #sun, #milkyWay {
   position: relative;
   width: 250px;
   height: 250px;
   margin: 3em auto;
   margin-bottom: 6.5%;
   margin-top: 5.5%;
-  background: url(earth2Sphere.jpg) 0 0 repeat;
-  background-color: rgba(0,220,255,0.5);
+  /* No Clouds */
+  /* background: url(earthMap2.jpg) 0 0 repeat; */
+  /* Clouds */
+  background: url(earthMapClouds.jpg) 0 0 repeat;
+  /* Cool, but GIF doesn't repeat */
+  /* background: url(earthMapChange.gif) 0 0 repeat; */
+  /* Old background color over Earth */
+  /* background-color: rgba(0,220,255,0.25); */
   background-blend-mode: overlay;
   border-radius: 50%;
   background-size: 630px;
@@ -4351,10 +4369,40 @@ letter-spacing: 7px;
   transition: all 2.5s ease 0s;
   /*transform: scale(1);*/
   /*padding: 10px;*/
-
+}
+#mercury {
+  background: url(mercuryMap.jpg) 0 0 repeat;
+}
+#venusAtmosphere {
+  background: url(venusMapAtmosphere.jpg) 0 0 repeat;
+}
+#venusSurface {
+  background: url(venusMapSurface.jpg) 0 0 repeat;
+}
+#mars {
+  /* background: url(marsMap.png) 0 0 repeat; */
+  background: url(marsMap2.jpg) 0 0 repeat;
+}
+#moon {
+  background: url(moonMap.jpg) 0 0 repeat;
+}
+#earthNight {
+  background: url(earthNightMap.jpg) 0 0 repeat;
+}
+#sun {
+  background: url(sunMap.jpg) 0 0 repeat;
+  width: 350px;
+  height: 350px;
+  box-shadow: inset 20px 0 80px 6px rgba(255,255,255,1);
+  border: 3px outset rgba(255,255,255, 0.05);
+}
+#milkyWay {
+  background: url(milkyWayMap.jpg) 0 0 repeat;
+  width: 350px;
+  height: 350px;
 }
 
-#earth:after {
+#earth:after, #mercury:after, #venusAtmosphere:after, #venusSurface:after, #mars:after, #moon:after, #earthNight:after, #sun:after, #milkyWay:after {
   content: "";
   position: absolute;
   top: 0%;
@@ -4364,8 +4412,11 @@ letter-spacing: 7px;
   border-radius: 50%;
   box-shadow: -80px 15px 80px 10px rgba(0,0,0,.9) inset;
 }
+#sun:after {
+  box-shadow: -80px 15px 80px 10px rgba(255,255,255,0.8) inset;
+}
 
-#earth:before {
+#earth:before, #mercury:before, #venusAtmosphere:before, #venusSurface:before, #mars:before, #moon:before, #earthNight:before, #sun:before, #milkyWay:before {
   content: "";
   position: absolute;
   border-radius: 50%;
@@ -4376,35 +4427,41 @@ letter-spacing: 7px;
   opacity: 0.2;
   background: radial-gradient(circle at 100px 100px, #fff, #000);
 }
-#earth:hover {
-  position: relative;
+#earth:hover, earthNight:hover, #sun:hover, #milkyWay:hover {
   width: 100%;
-  height: 250px;
-  /* margin: 3em auto; */
   margin: 0 auto;
   margin-bottom: 6.5%;
   margin-top: 5.5%;
   background: url(ancientMap.jpg) 0 0 repeat;
-  /* background-color: rgba(0,220,255,0.5); */
-  background-blend-mode: overlay;
-  /* border-radius: 50%; */
-  background-size: 630px;
-  /* animation: rotate 35s linear infinite; */
   transition: transform 3s linear;
-  transform-style: preserve-3d;
-  box-shadow: inset 20px 0 80px 6px rgba(15,19,28,1);
-  color: #000;
 
-  border: 3px outset rgba(0,0,0, 0.05);
   border-width: 1px 1px 1px 0px;
   border-radius: 0px;
-  transition: all 2.5s ease 0s;
-  /*transform: scale(1);*/
-  /*padding: 10px;*/
   background-size: contain;
+  transition: all 2.5s ease 0s;
+}
+#mercury:hover {
+  background: url(mercuryMapTerraform.jpeg) 0 0 repeat;
+  transition: all 2.5s ease 0s;
+  transform: scale(1.05);
+}
+#mars:hover {
+  background: url(marsMapTerraform.png) 0 0 repeat;
+  transition: all 2.5s ease 0s;
+  transform: scale(1.05);
+}
+#venusAtmosphere:hover {
+  background: url(venusMapSurface.jpg) 0 0 repeat;
+  transition: all 2.5s ease 0s;
+  transform: scale(1.05);
+}
+#moon:hover {
+  background: url(moonMapTerraform.jpeg) 0 0 repeat;
+  transition: all 2.5s ease 0s;
+  transform: scale(1.05);
 }
 
-#earth:hover:after {
+#earth:hover:after, #earthNight:hover:after, #sun:hover:after, #milkyWay:hover:after {
   content: "";
   position: absolute;
   top: 0%;
@@ -4415,7 +4472,7 @@ letter-spacing: 7px;
   box-shadow: -80px 15px 80px 10px rgba(0,0,0,.9) inset;
 }
 
-#earth:hover:before {
+#earth:hover:before, #earthNight:hover:before, #sun:hover:before, #milkyWay:hover:before {
   content: "";
   position: absolute;
   border-radius: 0px;
@@ -4426,7 +4483,7 @@ letter-spacing: 7px;
   opacity: 0.2;
   background: linear-gradient(to right, #fff, #000);
 }
-#earth:active {
+#earth:active, #mercury:active, #venusAtmosphere:active, #venusSurface:active, #mars:active, #moon:active, #earthNight:active, #sun:active, #milkyWay:active {
   position: relative;
   width: 100%;
   height: 250px;
@@ -4454,7 +4511,7 @@ letter-spacing: 7px;
   background-size: contain;
 }
 
-#earth:active:after {
+#earth:active:after, #mercury:active:after, #venusAtmosphere:active:after, #venusSurface:active:after, #mars:active:after, #moon:active:after, #earthNight:active:after, #sun:active:after, #milkyWay:active:after {
   content: "";
   position: absolute;
   top: 0%;
@@ -4465,7 +4522,7 @@ letter-spacing: 7px;
   box-shadow: -80px 15px 80px 10px rgba(0,0,0,.9) inset;
 }
 
-#earth:active:before {
+#earth:active:before, #mercury:active:before, #venusAtmosphere:active:before, #venusSurface:active:before, #mars:active:before, #moon:active:before, #earthNight:active:before, #sun:active:before, #milkyWay:active:before {
   content: "";
   position: absolute;
   border-radius: 0px;
@@ -5272,14 +5329,18 @@ font-family: 'Open Sans';
 }
 #welcomeProblemsHeader:hover, #welcomeProblemsHeader:active, #welcomeProblemsHeader:focus, 
 #welcomeProblemsHeader1:hover, #welcomeProblemsHeader1:active, #welcomeProblemsHeader1:focus,
+#welcomeProblemsHeader1Jupiter:hover, #welcomeProblemsHeader1Jupiter:active, #welcomeProblemsHeader1Jupiter:focus,
 #welcomeProblemsHeader2:hover, #welcomeProblemsHeader2:active, #welcomeProblemsHeader2:focus,
 #welcomeProblemsHeader3:hover, #welcomeProblemsHeader3:active, #welcomeProblemsHeader3:focus,
+#welcomeProblemsHeader3Lion:hover, #welcomeProblemsHeader3Lion:active, #welcomeProblemsHeader3Lion:focus,
 #welcomeProblemsHeader4:hover, #welcomeProblemsHeader4:active, #welcomeProblemsHeader4:focus  {
   box-shadow: 0 0 1pt 3pt rgba(0,220,255,0.5);
 }
 #welcomeProblemsHeader1,
+#welcomeProblemsHeader1Jupiter,
 #welcomeProblemsHeader2,
 #welcomeProblemsHeader3,
+#welcomeProblemsHeader3Lion,
 #welcomeProblemsHeader4 {
   background-size: contain;
   background-repeat: no-repeat;
@@ -5310,6 +5371,16 @@ font-family: 'Open Sans';
   background-image: url('./earthRise.jpg');
   /*transform: rotate(20deg);*/
 }
+#welcomeProblemsHeader1Jupiter {
+  background-image: url('./jupiter2.jpg');
+  /* For Jupiter */
+  background-size: 125% !important; 
+  background-position: 0% 50% !important;
+}
+#welcomeProblemsHeader1Jupiter:hover {
+  /* transition: all 3s ease 0s; */
+  /* transform: rotate(180deg) scale(1.02) !important; */
+}
 #welcomeProblemsHeader2 {
   background-image: url('./vitruvianMan.jpg');
 }
@@ -5318,14 +5389,29 @@ font-family: 'Open Sans';
   /* background-image: url('./einstein.jpg'); */
   background-image: url('./cavePainting.jpg');
   background-size: 155% !important; 
-  background-position: 70% 0% !important;
+  background-position: 70% 0% !important;  
+}
+#welcomeProblemsHeader3:hover {
+ /* background-size: 170% !important;  */
+  /* background-position: 50% 50% !important; */
+}
+#welcomeProblemsHeader3Lion {
+  background-image: url('./chauvetCaveLions.jpg');
+  background-size: 175%; 
+  /* Old */
+  /* background-position: 70% 30%; */
+  /* Current */
+  background-position: 100% 0%;
+  /* transition: background-position 3s ease 0s, transform 0.5s ease 0s, background-color 0.5 ease 0s, box-shadow 0.5 ease 0s; */
 }
 #welcomeProblemsHeader4 {
   background-image: url('./turingMachine.jpg');
 }
 #welcomeProblemsHeader1:hover, #welcomeProblemsHeader1:active, #welcomeProblemsHeader1:focus,
+#welcomeProblemsHeader1Jupiter:hover, #welcomeProblemsHeader1Jupiter:active, #welcomeProblemsHeader1Jupiter:focus,
 #welcomeProblemsHeader2:hover, #welcomeProblemsHeader2:active, #welcomeProblemsHeader2:focus,
 #welcomeProblemsHeader3:hover, #welcomeProblemsHeader3:active, #welcomeProblemsHeader3:focus,
+#welcomeProblemsHeader3Lion:hover, #welcomeProblemsHeader3Lion:active, #welcomeProblemsHeader3Lion:focus,
 #welcomeProblemsHeader4:hover, #welcomeProblemsHeader4:active, #welcomeProblemsHeader4:focus  {
   background-color: rgba(15,19,28,0.5);
   transform: scale(1.02);
@@ -10740,7 +10826,10 @@ margin-top: 1%;
   margin-bottom: 0%;
   border: 1px solid rgba(0,220,255,0.25);
   border-width: 0px 0px 1px 0px;
-  border-radius: 0% 0% 20% 20%;
+  /* Old */
+  /* border-radius: 0% 0% 20% 20%; */
+  /* Current */
+  border-radius: 0% 0% 30% 30%;
   background: linear-gradient(rgba(0,220,255,0), rgba(0,220,255,0.05));
 }
 #featuredProjectLabel {
@@ -10762,7 +10851,10 @@ margin-top: 1%;
   border-color: rgba(0,255,220, 0.5);
   border-radius: 5% 5% 30% 30%;
   margin: 0 auto;
-  margin-bottom: 1.5%;
+  /* Old */
+  /* margin-bottom: 1.5%; */
+  /* Current */
+  margin-bottom: 2.25%;
   text-align: center;
   letter-spacing: 6%;
   letter-spacing: 4px;
@@ -11291,7 +11383,7 @@ cursor: pointer !important;
   cursor: pointer;
   transform: scale(1.02);
 }
-#profileSideMessagesButton:hover, .activeMessagesButton div {
+#profileSideMessagesButton:hover, .activeMessagesButton div, #userMessagesButton:hover div {
   cursor: pointer;
   transform: scale(1.02);
   box-shadow: inset 0 0 18px 12px rgba(0,220,255,0.25);   
@@ -12198,26 +12290,32 @@ transition: all 1s ease 0s;
 #branchesProjectImg {
   cursor: pointer;
 }
-#branchesProjectButton:hover, .activeBranchesProjectButton div {
+#branchesProjectButton:hover, .activeBranchesProjectButton div, #branchesProjectButtonClick {
   border: 1px solid rgba(255,255,255, 1) !important;
   border-width: 1px 1px 1px 0px !important;
   box-shadow: 0 0 20pt 20pt rgba(255,255,255,0.25) inset;
   border-radius: 0% 10% 25% 0%;
   left: 0px;
   top: 0%;
-  width: 95%;
+  /* Old */
+  /* width: 95%; */
+  /* Current */
+  width: 60px;
   background-color: rgba(15, 19, 28, 0.99);
   box-shadow: 0 0 20pt 20pt rgba(255,255,255,0.05) inset;  
   transition: all 1s ease 0s;
 }
-#branchesProjectButton:hover #branchesProjectImg, .activebranchesProjectButton div #branchesProjectImg {
-  /* opacity: 1; */
-  display: none !important;
-  opacity: 0;
-  z-index: -400;
+#branchesProjectButton:hover #branchesProjectImg, .activebranchesProjectButton div #branchesProjectImg, #branchesProjectButtonClick #branchesProjectImg {
   transition: all 1s ease 0s;
+  /* Old */
+  /* display: none !important; */
+  /* opacity: 0; */
+  /* z-index: -400; */
+  /* Current */
+  transform: rotate(20deg);
+  opacity: 1;
 }
-#branchesProjectButton:hover #branchUnitList {
+#branchesProjectButton:hover #branchUnitList, #branchesProjectButtonClick #branchUnitList {
   display: flex !important;
   transition: all 1s ease 0s;
 }
@@ -12281,9 +12379,9 @@ transition: all 1s ease 0s;
   cursor: pointer;
   }
   #branchHeader {
+    /* Circular */
   display: inline-flex;
   flex-direction: column;
-  /* border: 2px solid #00dcff; */
   border: 2px solid #dddddd;
   border-radius: 100%;
   border-radius: 100%;
@@ -12299,14 +12397,31 @@ transition: all 1s ease 0s;
   justify-content: center;
   background-color: rgba(0,220,255,0.05);
   margin: 0 auto;
-  /* box-shadow: 0 0 2pt 2pt rgba(0, 220, 255, 0.5); */
   box-shadow: 0 0 2pt 2pt rgba(255, 255, 255, 0.5);
   transition: all 0.75s ease 0s;
   transform: scale(1);
   margin-top: 1%;
   padding: 5px 10px 5px 10px;
   z-index: 400;
-  }
+}
+
+#branchHeaderTitle {
+  /* border: 1px solid #00dcff; */
+  text-align: center;
+  padding: 3px 0px;
+  margin: 0 auto;
+  margin-top: 2%;
+  letter-spacing: 4px;
+  font-family: 'Alegreya Sans SC';
+  font-size: 175%;
+  color: #dddddd;
+  width: 50%;
+  border: 1px solid #dddddd;
+  border-width: 0px 0px 1px 0px;
+  border-radius: 0% 0% 20% 20%;
+  padding: 5px 3% 5px 3%;
+  background: linear-gradient(rgba(0,220,255,0), rgba(0,220,255,0.1));
+}
   .branchText {
     font-size: 80% !important;
     width: 15em !important;
@@ -12326,6 +12441,27 @@ transition: all 1s ease 0s;
   transform: scale(1.02);
   cursor: pointer !important;
   background: radial-gradient(circle, rgba(0,220,255,0.05), rgba(0,220,255,0.05), rgba(0,220,255,0.1), rgba(0,220,255,0.05));
+  }
+  #breakdownSideClose {
+    position: absolute;
+    padding: 20px 4px 20px 8px;
+    border: 1px solid rgba(255,127,127,1);
+    border-width: 1px 1px 1px 0px;
+    border-radius:  0px 25% 25% 0px;
+    opacity: 0.5;
+    transition: all 0.5s ease 0s;
+    left: 0;
+    padding: 25% 20px;
+    background: linear-gradient(to left, rgba(255,127,127,0), rgba(255,127,127,0), rgba(255,127,127,0.1));  
+  }
+  #breakdownSideClose:hover {
+    opacity: 1;
+    background-color: rgba(255,127,127,0.05);
+    transform: scale(1.1);
+    cursor: pointer;
+    box-shadow: 0 0 1pt 1px rgba(255,127,127,1);  
+    left: 7px;
+    background: linear-gradient(to left, rgba(255,127,127,0), rgba(255,127,127,0.05), rgba(255,127,127,0.15));      
   }
   #branchArrowImg {
     background-color: inherit;
@@ -12348,7 +12484,7 @@ transition: all 1s ease 0s;
     text-align: center;
     text-decoration: none;
     margin: 0 auto;
-    margin-top: 0px;
+    margin-top: 2%;
     margin-bottom: 3px;
     width: 40%;
     border: 1px solid #ff7f7f;
@@ -12358,6 +12494,123 @@ transition: all 1s ease 0s;
     box-shadow: 0 0 1pt 1pt rgba(255,255,255,0.5);
     transition: all 0.5s ease 0s;
   }
+  .breakdownFormHide {
+    display: none !important;
+  }
+  #breakdownProjectsList {
+    display: flex;
+    flex-direction: row;
+    padding-bottom: 4%;
+    padding-top: 2%;
+  }
+#submitBreakdown {
+  display: block;
+  color: #00dcff;
+  border: 1px solid #00dcff;
+  background-color: rgba(0,220,255, 0.05);
+  width: 30%;
+  margin: 0 auto;
+  margin-top: 2%;
+  margin-bottom: 1%;
+  font-family: 'Alegreya Sans SC', sans-serif;
+  transition: all 0.5s ease 0s;
+  letter-spacing: 2px;
+  text-transform: lowercase !important;
+}
+input#submitBreakdown:hover {
+  color: #0f131c;
+  border: 1px solid #0f131c;
+  background-color: rgba(0,220,255,1);
+  cursor: pointer;
+}
+#breakdownHeaderContainer {
+  width: 100%;
+  margin: 0 auto;
+  position: relative;
+}
+#breakdownContainerClose {
+  border: 1px solid rgba(255,127,127,1);
+  border-width: 1px 1px 1px 1px;
+  border-radius:  0px 0px 25% 25%;
+  opacity: 0.5;
+  transition: all 1s ease 0s;
+  padding: 20px 0px;
+  margin: 0 auto;
+  width: 90%;
+  background: linear-gradient(rgba(255,127,127,0), rgba(255,127,127,0.05), rgba(255,127,127,0.15));  
+  margin-bottom: 2%;
+}
+#breakdownContainerClose:hover {
+  opacity: 1;
+  background-color: rgba(255,127,127,0.05);
+  transform: scale(1.05);
+  cursor: pointer;
+  box-shadow: 0 0 1pt 1px rgba(255,127,127,1);  
+  /* left: 7px; */
+  background: linear-gradient(rgba(255,127,127,0), rgba(255,127,127,0.05), rgba(255,127,127,0.15));      
+}
+#breakdownHeader {
+  text-align: center;
+  /* This also looks nice */
+  /* color: #dddddd; */
+  /* Current */
+  color: #00dcff;
+  letter-spacing: 4px;
+  font-size: 300%;
+  margin: 0 auto;
+  margin-top: 1%;
+  margin-bottom: 3%;
+  width: 100%;
+  border: 1px solid #00dcff;
+  border-width: 0px 0px 1px 0px;
+  border-radius: 0% 0% 25% 25%;
+  padding: 2px 0px 7px 0px;
+  background: linear-gradient(rgba(0,220,255,0), rgba(0,220,255,0.1));
+}
+.breakdownCreateProjectFormHide {
+  display: none !important;
+  /* position: relative; */
+}
+.breakdownCreateProjectFormShow {
+  display: default !important;
+  position: relative;
+}
+#breakdownContainer {
+  background: radial-gradient(circle, rgba(0,220,255,0.1), rgba(0,220,255,0));
+  border: 1px solid #00dcff;
+  border-radius: 2% 2% 5% 5%;
+  box-shadow: 0 0 1pt 1pt rgba(0,220,255,0.5);
+  margin-bottom: 5%;
+  padding-bottom: 4%;
+  padding-top: 2px;
+}
+#breakdownProjectFormClose {
+  position: absolute;
+  padding: 20px 4px 20px 8px;
+  border: 1px solid rgba(255,127,127,1);
+  border-width: 1px 1px 1px 0px;
+  border-radius:  0px 25% 25% 0px;
+  opacity: 0.5;
+  transition: all 0.5s ease 0s;
+  left: 0;
+  padding: 5% 20px;
+  background: linear-gradient(to left, rgba(255,127,127,0), rgba(255,127,127,0), rgba(255,127,127,0.1));  
+}
+#breakdownProjectFormClose:hover {
+  opacity: 1;
+  background-color: rgba(255,127,127,0.05);
+  transform: scale(1.1);
+  cursor: pointer;
+  box-shadow: 0 0 1pt 1px rgba(255,127,127,1);  
+  left: 7px;
+  background: linear-gradient(to left, rgba(255,127,127,0), rgba(255,127,127,0.05), rgba(255,127,127,0.15));      
+}
+#breakdownCloseImg {
+  vertical-align: middle;
+  text-align: center;
+  display: block;
+  margin: 0 auto;
+}
 
 
 

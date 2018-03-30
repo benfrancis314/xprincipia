@@ -102,7 +102,7 @@ export default class ProfileMessagesForm extends React.Component {
                         placeholder="Start a dialogue with a fellow member." id="problemSummaryForm"/>
                         </label><br />
                     <Link to={window.location.pathname}>
-                      <input type="button" ref='btn' value="send" onClick={this.postMessage} id="submitProblem"/>
+                      <input type="button" ref='messagebtn' value="send" onClick={this.postMessage} id="submitProblem"/>
                     </Link>
                   </fieldset>
                 </form>

@@ -31,8 +31,10 @@ export default class FullProblem extends React.Component {
             parentInfo: [],
             probID: [],
             vote: false,
+            // I don't think we use breakdown ID or breakdownRerender anymore
             breakdownID: '',
             breakdownRerender: true,
+            breakdownOriginal: '',
         }
         this.submitVote = this.submitVote.bind(this)
         this.unVote = this.unVote.bind(this)
@@ -62,6 +64,11 @@ export default class FullProblem extends React.Component {
               vote: response.data
             })
       })       
+        axios.get( Config.API + '/breakdowns/byproblemnumber?parentID='+this.props.params.probID + '&parentNumber=1').then(function (response) {
+            self.setState({
+                breakdownOriginal: response.data.ID,
+            })
+        })   
   }
 
   shouldComponentUpdate(nextProps, nextState) {
@@ -82,6 +89,11 @@ export default class FullProblem extends React.Component {
               vote: response.data
             })
       })       
+    axios.get( Config.API + '/breakdowns/byproblemnumber?parentID='+nextProps.params.probID + '&parentNumber=1').then(function (response) {
+      self.setState({
+          breakdownOriginal: response.data.ID,
+      })
+    })   
   }
 
 
@@ -322,11 +334,11 @@ unVote() {
             transitionAppearTimeout={2000}
             transitionEnter={false}
             transitionLeave={false}>
-            <Link to={`/project/${this.props.params.probID}/tree`} activeClassName="activeProblemTreeButton">
+            {/* <Link to={`/project/${this.props.params.probID}/tree`} activeClassName="activeProblemTreeButton">
               <div id="treeProblemButton">
                 <img src={require('../../assets/treeWhite1.svg')} id="treeProblemLogo" width="30" height="30" alt="Project Tree Button, white tree" />
               </div>
-            </Link>
+            </Link> */}
             <Link to={`/project/${this.props.params.probID}/flag`} activeClassName="activeProblemFlagButton">
               <div id="flagProblemButton">
                 <img src={require('../../assets/flag.svg')} id="flagProblemLogo" width="24" height="24" alt="Delete Button, Red X" />
@@ -412,7 +424,7 @@ unVote() {
                 </div>
               </div>
             {React.cloneElement(this.props.children, {probID:this.props.params.probID, parentTitle: this.state.problemInfo.Title, gParentID: this.state.problemInfo.ParentID, gParentTitle: this.state.problemInfo.ParentTitle, ggParentID: this.state.problemInfo.GrandParentID, creator:this.state.problemInfo.OriginalPosterUsername, breakdownID:this.state.breakdownID})}
-            <SubProblemContainer probID={this.props.params.probID}  differentBreakdown={this.differentBreakdown} rerender={this.state.breakdownRerender} />
+            <SubProblemContainer probID={this.props.params.probID} breakdownOriginal={this.state.breakdownOriginal} differentBreakdown={this.differentBreakdown} rerender={this.state.breakdownRerender} />
             <ScrollableAnchor id={'proposals'}>
               <ProblemSolutionsMenu probID={this.props.params.probID} projectTitle={this.state.problemInfo.Title} />
             </ScrollableAnchor>
@@ -435,11 +447,11 @@ unVote() {
               transitionAppearTimeout={2000}
               transitionEnter={false}
               transitionLeave={false}>
-              <Link to={`/project/${this.props.params.probID}/tree`} activeClassName="activeProblemTreeButton">
+              {/* <Link to={`/project/${this.props.params.probID}/tree`} activeClassName="activeProblemTreeButton">
                 <div id="treeProblemButton">
                   <img src={require('../../assets/treeWhite1.svg')} id="treeProblemLogo" width="30" height="30" alt="Project Tree Button, white tree" />
                 </div>
-              </Link>
+              </Link> */}
               <Link to={`/project/${this.props.params.probID}/flag`} activeClassName="activeProblemFlagButton">
                 <div id="flagProblemButton">
                   <img src={require('../../assets/flag.svg')} id="flagProblemLogo" width="24" height="24" alt="Delete Button, Red X" />
@@ -522,7 +534,7 @@ unVote() {
                   </div>
                 </div>
               {React.cloneElement(this.props.children, {probID:this.props.params.probID, parentTitle: this.state.problemInfo.Title, gParentID: this.state.problemInfo.ParentID, gParentTitle: this.state.problemInfo.ParentTitle, ggParentID: this.state.problemInfo.GrandParentID, creator:this.state.problemInfo.OriginalPosterUsername, breakdownID:this.state.breakdownID})}
-              <SubProblemContainer probID={this.props.params.probID}  differentBreakdown={this.differentBreakdown} rerender={this.state.breakdownRerender} />
+              <SubProblemContainer probID={this.props.params.probID} breakdownOriginal={this.state.breakdownOriginal} differentBreakdown={this.differentBreakdown} rerender={this.state.breakdownRerender} />
               <ScrollableAnchor id={'proposals'}>
                 <ProblemSolutionsMenu probID={this.props.params.probID} projectTitle={this.state.problemInfo.Title} />
               </ScrollableAnchor>
@@ -540,11 +552,11 @@ unVote() {
               transitionAppearTimeout={2000}
               transitionEnter={false}
               transitionLeave={false}>
-              <Link to={`/project/${this.props.params.probID}/tree`} activeClassName="activeProblemTreeButton">
+              {/* <Link to={`/project/${this.props.params.probID}/tree`} activeClassName="activeProblemTreeButton">
                 <div id="treeProblemButton">
                   <img src={require('../../assets/treeWhite1.svg')} id="treeProblemLogo" width="30" height="30" alt="Project Tree Button, white tree" />
                 </div>
-              </Link>
+              </Link> */}
               <Link to={`/project/${this.props.params.probID}/flag`} activeClassName="activeProblemFlagButton">
                 <div id="flagProblemButton">
                   <img src={require('../../assets/flag.svg')} id="flagProblemLogo" width="24" height="24" alt="Delete Button, Red X" />
@@ -627,7 +639,7 @@ unVote() {
                   </div>
                 </div>
               {React.cloneElement(this.props.children, {probID:this.props.params.probID, parentTitle: this.state.problemInfo.Title, gParentID: this.state.problemInfo.ParentID, gParentTitle: this.state.problemInfo.ParentTitle, ggParentID: this.state.problemInfo.GrandParentID, creator:this.state.problemInfo.OriginalPosterUsername, breakdownID:this.state.breakdownID})}
-              <SubProblemContainer probID={this.props.params.probID}  differentBreakdown={this.differentBreakdown} rerender={this.state.breakdownRerender} />
+              <SubProblemContainer probID={this.props.params.probID} breakdownOriginal={this.state.breakdownOriginal} differentBreakdown={this.differentBreakdown} rerender={this.state.breakdownRerender} />
               <ScrollableAnchor id={'proposals'}>
                 <ProblemSolutionsMenu probID={this.props.params.probID} projectTitle={this.state.problemInfo.Title} />
               </ScrollableAnchor>
@@ -645,11 +657,11 @@ unVote() {
           transitionAppearTimeout={2000}
           transitionEnter={false}
           transitionLeave={false}>
-          <Link to={`/project/${this.props.params.probID}/tree`} activeClassName="activeProblemTreeButton">
+          {/* <Link to={`/project/${this.props.params.probID}/tree`} activeClassName="activeProblemTreeButton">
             <div id="treeProblemButton">
               <img src={require('../../assets/treeWhite1.svg')} id="treeProblemLogo" width="30" height="30" alt="Project Tree Button, white tree" />
             </div>
-          </Link>
+          </Link> */}
           <Link to={`/project/${this.props.params.probID}/flag`} activeClassName="activeProblemFlagButton">
             <div id="flagProblemButton">
               <img src={require('../../assets/flag.svg')} id="flagProblemLogo" width="24" height="24" alt="Delete Button, Red X" />
@@ -729,7 +741,7 @@ unVote() {
               </div>
             </div>
           {React.cloneElement(this.props.children, {probID:this.props.params.probID, parentTitle: this.state.problemInfo.Title, gParentID: this.state.problemInfo.ParentID, gParentTitle: this.state.problemInfo.ParentTitle, ggParentID: this.state.problemInfo.GrandParentID, creator:this.state.problemInfo.OriginalPosterUsername, breakdownID:this.state.breakdownID})}
-          <SubProblemContainer probID={this.props.params.probID}  differentBreakdown={this.differentBreakdown} rerender={this.state.breakdownRerender} />
+          <SubProblemContainer probID={this.props.params.probID} breakdownOriginal={this.state.breakdownOriginal} differentBreakdown={this.differentBreakdown} rerender={this.state.breakdownRerender} />
           <ScrollableAnchor id={'proposals'}>
             <ProblemSolutionsMenu probID={this.props.params.probID} projectTitle={this.state.problemInfo.Title} />
           </ScrollableAnchor>
@@ -749,11 +761,11 @@ unVote() {
           transitionAppearTimeout={2000}
           transitionEnter={false}
           transitionLeave={false}>
-          <Link to={`/project/${this.props.params.probID}/tree`} activeClassName="activeProblemTreeButton">
+          {/* <Link to={`/project/${this.props.params.probID}/tree`} activeClassName="activeProblemTreeButton">
             <div id="treeProblemButton">
               <img src={require('../../assets/treeWhite1.svg')} id="treeProblemLogo" width="30" height="30" alt="Project Tree Button, white tree" />
             </div>
-          </Link>
+          </Link> */}
           <Link to={`/project/${this.props.params.probID}/flag`} activeClassName="activeProblemFlagButton">
             <div id="flagProblemButton">
               <img src={require('../../assets/flag.svg')} id="flagProblemLogo" width="24" height="24" alt="Delete Button, Red X" />
@@ -833,7 +845,7 @@ unVote() {
               </div>
             </div>
           {React.cloneElement(this.props.children, {probID:this.props.params.probID, parentTitle: this.state.problemInfo.Title, gParentID: this.state.problemInfo.ParentID, gParentTitle: this.state.problemInfo.ParentTitle, ggParentID: this.state.problemInfo.GrandParentID, creator:this.state.problemInfo.OriginalPosterUsername, breakdownID:this.state.breakdownID})}
-          <SubProblemContainer probID={this.props.params.probID}  differentBreakdown={this.differentBreakdown} rerender={this.state.breakdownRerender} />
+          <SubProblemContainer probID={this.props.params.probID} breakdownOriginal={this.state.breakdownOriginal} differentBreakdown={this.differentBreakdown} rerender={this.state.breakdownRerender} />
           <ScrollableAnchor id={'proposals'}>
             <ProblemSolutionsMenu probID={this.props.params.probID} projectTitle={this.state.problemInfo.Title} />
           </ScrollableAnchor>

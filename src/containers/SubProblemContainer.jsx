@@ -20,6 +20,7 @@ export default class SubProblemContainer extends React.Component {
         this.renderBranch = this.renderBranch.bind(this);
         this.hoverText = this.hoverText.bind(this);
         this.unHoverText = this.unHoverText.bind(this);
+        this.clickBranch = this.clickBranch.bind(this);
         this.hoverBranch = this.hoverBranch.bind(this);
         this.unHoverBranch = this.unHoverBranch.bind(this);
         this.hoverNewBranch = this.hoverNewBranch.bind(this);
@@ -36,6 +37,20 @@ export default class SubProblemContainer extends React.Component {
 		$(document).ready(function() {
 			$('#privateContainerMottoBlue').html("PROJECT BREAKDOWN");
 			$('#privateContainerMottoBlue').attr('id','privateContainerMotto');
+		});
+    }
+    clickBranch() {
+		$(document).ready(function() {
+			$('#privateContainerMotto').html("ALTERNATE BREAKDOWNS").fadeIn(7500);
+            $('#privateContainerMotto').attr('id','privateContainerMottoBlue');
+            $('#branchesProjectButton').attr('id','branchesProjectButtonClick');
+		});
+    }
+    hideBranch() {
+		$(document).ready(function() {
+			$('#privateContainerMottoBlue').html("PROJECT BREAKDOWNS").fadeIn(7500);
+            $('#privateContainerMottoBlue').attr('id','privateContainerMotto');
+            $('#branchesProjectButtonClick').attr('id','branchesProjectButton');
 		});
 	}
 	hoverBranch() {
@@ -67,7 +82,13 @@ export default class SubProblemContainer extends React.Component {
         this.setState({
             probID: self.props.probID,
         })
-        axios.get( Config.API + '/problems/subproblems?id='+this.props.probID).then(function (response) {
+        // We are no longer using this for problems, instaed only getting those of the original breakdown
+        // axios.get( Config.API + '/problems/subproblems?id='+this.props.probID).then(function (response) {
+        //     self.setState({
+        //         problems: response.data,
+        //     })
+        // }) 
+        axios.get( Config.API + '/problems/breakdown?breakdownID='+this.props.breakdownOriginal).then(function (response) {
             self.setState({
                 problems: response.data,
             })
@@ -84,7 +105,13 @@ export default class SubProblemContainer extends React.Component {
         this.setState({
             probID: nextProps.probID,
         })
-        axios.get( Config.API + '/problems/subproblems?id='+nextProps.probID).then(function (response) {
+        // We are no longer using this for problems, instaed only getting those of the original breakdown
+        // axios.get( Config.API + '/problems/subproblems?id='+nextProps.probID).then(function (response) {
+        //     self.setState({
+        //         problems: response.data,
+        //     })
+        // }) 
+        axios.get( Config.API + '/problems/breakdown?breakdownID='+nextProps.breakdownOriginal).then(function (response) {
             self.setState({
                 problems: response.data,
             })
@@ -110,25 +137,11 @@ export default class SubProblemContainer extends React.Component {
     render() {
             return (
                 <div id="SPwrapper">
-                    <div id="branchesProjectButton" onMouseOver={this.hoverBranch} onMouseOut={this.unHoverBranch}>
-                        <img src={require('../assets/branchWhite1.svg')} id="branchesProjectImg" width="60" height="60" alt="User avatar, DNA Helix" />
-                        <div id="branchUnitList"> 
-                            <li>
-                                <img src={require('../assets/leftArrow.svg')} id="branchArrowImg" width="50" height="50" alt="User avatar, DNA Helix" />
-                            </li>
-                            <Link to={`/project/${this.props.probID}/create/breakdown`} activeClassName="activePrivateCreateButton">
-                                <li id="branchUnit">
-                                    <div id="branchHeader" onMouseOver={this.hoverNewBranch} onMouseOut={this.unHoverNewBranch}>
-                                        <img src={require('../assets/blueAdd2.svg')} id="privateNewProjectPlus" width="80" height="80" alt="User avatar, DNA Helix" />
-                                    </div>
-                                </li>
-                            </Link>
-                            {this.state.branches.map(this.renderBranch)}
-                            <li>
-                                <img src={require('../assets/rightArrow.svg')} id="branchArrowImg" width="50" height="50" alt="User avatar, DNA Helix" />
-                            </li>
+                    <Link to={`/project/${this.props.probID}/create/breakdown`} activeClassName="activePrivateCreateButton">
+                        <div id="branchesProjectButton">
+                            <img src={require('../assets/branchWhite1.svg')} onClick={this.clickBranch} id="branchesProjectImg" width="60" height="60" alt="User avatar, DNA Helix" />
                         </div>
-                    </div>
+                    </Link>
                     <ul id="SPUnitList"> 
                         <li>
                             <img src={require('../assets/leftArrow.svg')} id="SParrowImg" width="50" height="50" alt="User avatar, DNA Helix" />
