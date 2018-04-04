@@ -58,7 +58,7 @@ this.state.feedback = document.getElementById('addSuggestion').value
             </div>
             <form id="suggestionForm">
                          <textarea name="feedbackText" required="required" id="feedbackTextArea" placeholder="Please provide feedback on how we can improve your experience at XPrincipia. " autoFocus ></textarea>
-                         <input type="button" value="Submit" onClick={this.postFeedback} id="addSuggestion"/>
+                         <input type="button" value="submit" onClick={this.postFeedback} id="addSuggestion"/>
             </form>
       </div>
 

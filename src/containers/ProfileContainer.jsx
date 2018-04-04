@@ -163,7 +163,7 @@ export default class ProfileContainer extends React.Component {
                         <br />
                         <br />
                         <br />
-                        xxx
+                        {/* xxx */}
                         <div id="earth"></div>
                         {/* <EarthSphere /> */}
                     </div>
@@ -201,8 +201,17 @@ export default class ProfileContainer extends React.Component {
                 <div id="profileLeft">
                     <div id="userInformation">
                         <p id="userName">{cookie.load('userName')}</p>
-                        <div id="earth"></div>
-                        {/* <div id="sphere"></div> */}
+                        <Link to={`/profile/points`} activeClassName="activePoints">
+                            <div id="profileLevelButton">
+                                westward newcomer
+                            </div>
+                            <div id="profilePointsButton">
+                                122
+                            </div>
+                        </Link>
+                        <div id="earthContainer">
+                            <div id="earth"></div>
+                        </div>
                     </div>
                     <div id="userOptions">
                         <div id="profileNotificationsMessagesButtons">

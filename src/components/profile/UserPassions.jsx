@@ -4,7 +4,7 @@ import cookie from 'react-cookie';
 import {Config} from '../../config.js';
 import $ from 'jquery';
 
-export default class FeedbackForm extends React.Component {
+export default class UserPassions extends React.Component {
 constructor(){
   super();
 
@@ -50,18 +50,25 @@ this.state.feedback = document.getElementById('addSuggestion').value
 
 
    render() {
+    
+    if (this.props.params.username == cookie.load('userName')) {
       return (
-
-      <div id="suggestionFormComponent">
-             <div id="feedbackExplanation">
-                Thank you for your feedback.
-            </div>
-            <form id="suggestionForm">
-                         <textarea name="feedbackText" required="required" id="feedbackTextArea" placeholder="Please provide feedback on how we can improve your experience at XPrincipia. " autoFocus ></textarea>
-                         <input type="button" value="Submit" onClick={this.postFeedback} id="addSuggestion"/>
-            </form>
+        <div id="passionsFormContainer">
+              <div id="passionsHeader">
+                  philosophical passions
+              </div>
+              <form id="suggestionForm">
+                  <textarea name="feedbackText" required="required" id="passionsTextArea" placeholder="What are your passions, your fields of interest, or your driving motivations? " autoFocus ></textarea>
+                  <input type="button" value="submit" onClick={this.postFeedback} id="addSuggestion"/>
+              </form>
+        </div>
+      )
+    }
+    
+    return (
+      <div>
+          [see other user's passions here]
       </div>
-
       );
    }
 }

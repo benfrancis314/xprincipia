@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router';
+import $ from 'jquery';
 // import ReactGA from 'react-ga';
 
 export default class WelcomeUserUnit extends React.Component {
@@ -37,7 +38,18 @@ export default class WelcomeUserUnit extends React.Component {
 	}
 	renderItem(problem) {
   
-
+        function hoverLeaderBoardTextVotes() {
+            $(document).ready(function() {
+                    $('#leaderBoardCapTop').html("user points").fadeIn(7500);
+                    $('#leaderBoardCapTop').attr('id','leaderBoardCapTopVotesHover');
+            });
+          }
+          function unHoverLeaderBoardTextVotes() {
+            $(document).ready(function() {
+                    $('#leaderBoardCapTopVotesHover').html("user leaderboard");
+                    $('#leaderBoardCapTopVotesHover').attr('id','leaderBoardCapTop');
+            });
+          }
 // For Google Analytics when working
     // function handleClick() {
     //     ReactGA.event({
@@ -95,7 +107,7 @@ if (problem.Private === true) {
             <Link to={'/project/'+problem.ID +'/subprojects'}>
                 <div id="welcomeUserProblemsHeader">
                     <div id="welcomeUserProblemsTitle">
-                        <div id="welcomeProjectPercent">
+                        <div id="welcomeProjectPercent" onMouseOver={hoverLeaderBoardTextVotes} onMouseOut={unHoverLeaderBoardTextVotes}>
                             {problem.Rank}
                         </div>
                         <div id="welcomeProblemsTitleText">

@@ -185,8 +185,16 @@ componentDidMount(){
                         <div id="headerName" onMouseOver={this.hoverProfile} onMouseOut={this.unHoverProfile}>
                             {cookie.load("userName")}
                         </div>
-                            {/*<div id="commandButton">Command</div>*/}
-                            {/*<img src={require('../assets/dnaAvatar.svg')} id="avatarImage" width="33" height="33" alt="User avatar, DNA Helix" />*/}
+                    </Link>
+                    <Link to="/profile/points" id="whiteHeader" activeClassName="activePointsHeader">
+                        <div id="headerPointsContainer">
+                            <div id="headerLevelTitle">
+                                newcomer
+                            </div>
+                            <div id="headerPointsNumber">
+                                16
+                            </div>
+                        </div>
                     </Link>
             </div>
         );

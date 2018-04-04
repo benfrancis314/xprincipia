@@ -43,7 +43,7 @@ export default class SubProblemContainer extends React.Component {
 		$(document).ready(function() {
 			$('#privateContainerMotto').html("ALTERNATE BREAKDOWNS").fadeIn(7500);
             $('#privateContainerMotto').attr('id','privateContainerMottoBlue');
-            $('#branchesProjectButton').attr('id','branchesProjectButtonClick');
+            // $('#branchesProjectButton').attr('id','branchesProjectButtonClick');
 		});
     }
     hideBranch() {
@@ -138,8 +138,7 @@ export default class SubProblemContainer extends React.Component {
             return (
                 <div id="SPwrapper">
                     <Link to={`/project/${this.props.probID}/create/breakdown`} activeClassName="activePrivateCreateButton">
-                        <div id="branchesProjectButton">
-                            <img src={require('../assets/branchWhite1.svg')} onClick={this.clickBranch} id="branchesProjectImg" width="60" height="60" alt="User avatar, DNA Helix" />
+                        <div id="branchesProjectButton" onMouseOver={this.hoverBranch} onMouseOut={this.unHoverBranch} onClick={this.clickBranch}>
                         </div>
                     </Link>
                     <ul id="SPUnitList"> 

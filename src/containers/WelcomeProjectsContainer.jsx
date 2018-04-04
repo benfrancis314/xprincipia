@@ -20,7 +20,7 @@ export default class WelcomeContainer extends React.Component {
   }
   unHoverLeaderBoardText() {
     $(document).ready(function() {
-            $('#leaderBoardCapTopHover').html("leaderboard");
+            $('#leaderBoardCapTopHover').html("player leaderboard");
             $('#leaderBoardCapTopHover').attr('id','leaderBoardCapTop');
     });
   }
@@ -36,7 +36,7 @@ export default class WelcomeContainer extends React.Component {
   hideLeaderBoardSelect() {
     $(document).ready(function() {
             $('#leaderBoardSelectShow').attr('id','leaderBoardSelect');
-            $('#leaderBoardCapTopClick').html("leaderboard");
+            $('#leaderBoardCapTopClick').html("player leaderboard");
             $('#leaderBoardCapTopClick').attr('id','leaderBoardCapTop');
             $('#leaderBoardFilterButtonClick').attr('id','leaderBoardFilterButton');
             $('#leaderBoardFilterExitLeftShow').attr('id','leaderBoardFilterExitLeft');
@@ -263,7 +263,7 @@ export default class WelcomeContainer extends React.Component {
                         featured
                       </div>
                       <div id="featuredProjectButton">
-                            the mental world
+                            the three world reality
                       </div>
                     </div>
                     <div id="leaderBoardFilterContainer">
@@ -274,7 +274,7 @@ export default class WelcomeContainer extends React.Component {
                     </div>
                     <div id="leaderBoardSelect">
                       <div id="leaderBoardOption" onClick={this.selectUsers}>
-                        users
+                        players
                       </div>
                       <div id="leaderBoardOption" onClick={this.selectProjects}>
                         projects
@@ -286,7 +286,7 @@ export default class WelcomeContainer extends React.Component {
 
                     {/* <div id="leaderBoardTitleContainer"> */}
                     <div id="leaderBoardCapTop">
-                        user leaderboard
+                        player leaderboard
                     </div>
                     {/* </div> */}
                     {/* <form id="welcomeSearchFormContainer">
