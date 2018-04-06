@@ -2192,10 +2192,14 @@ text-align: center;
 }
 #headerName, #headerNameNotifications {
   color: #00dcff;
-  font-size: 140%;
+  /* font-size: 140%; */
+  /* New */
+  font-size: 110%;
   text-align: center;
   letter-spacing: 8px;
-  padding: 4px 4px 4px 4px;
+  /* New */
+  letter-spacing: 6px;
+  padding: 6px 4px 2px 4px;
   width: 100%;
   transition: all 0.5s ease 0s;
   background-color: rgba(0,220,255,0.05);
@@ -2205,7 +2209,9 @@ text-align: center;
   transform: scale(1);
   margin: 0 auto;
   margin-top: 0.39%;
+  min-height: 29px;
   flex: 1 1 auto;
+  vertical-align: middle;
 }
 #headerName:hover, #headerNameNotifications:hover {
   background-color: rgba(0,220,255,0.12);
@@ -4631,7 +4637,7 @@ letter-spacing: 7px;
   z-index: -2;
   background: radial-gradient(rgba(15,19,28,0.9), rgba(15,19,28,0.9), rgba(15,19,28,0.5), rgba(15,19,28,0.1));
 }
-#pointsBackground {
+#pointsBackgroundWest, #pointsBackgroundFuture {
   width: 100%;
   margin: 0 auto;
   height: 100%;
@@ -4639,35 +4645,37 @@ letter-spacing: 7px;
   background-color: rgba(15,19,28,0.9);
   background-blend-mode: overlay;
   background-position: 100% 0%;
-  padding-top: 6%;
+  padding-top: 8%;
+  position: relative;
+  transition: all 1s ease 0s;
+}
+#pointsBackgroundFuture {
+  background: url('./mazeDark3.svg') no-repeat !important;
+  transition: all 1s ease 0s;
+  /* border: 1px solid red; */
 }
 
 #pointsLevelLabel {
   text-align: center;
   margin: 0 auto;
   /* padding: 2px; */
-  width: 60%;
+  width: 90%;
   letter-spacing: 2px;
   color: #00dcff;
   background: linear-gradient(rgba(0,255,220,0), rgba(0,220,255,0.1));
-}
-#pointsTitleContainer {
-  margin: 0 auto;
-  width: 100%;
-  position: relative;
 }
 #pointsLevelTitleWest, #pointsLevelTitleFuture {
   text-align: center;
   margin: 0 auto;
   width: 90%;
-  margin-bottom: 2%;
   color: #ffffff;
-  font-size: 200%;
+  font-size: 225%;
+  /* Testing */
+  font-size: 250%;
   letter-spacing: 4px;
-  /* Old */
-  padding: 18px 0px;
-  /* New */
   padding: 65px 0px;
+  /* Testing */
+  padding: 80px 0px;
   border: 1px solid #00dcff;
   border-radius: 3px 3px 15% 15%;
   background: radial-gradient(rgba(81,81,81,0.5), rgba(0,220,255,0.05));
@@ -4692,24 +4700,49 @@ background-color: rgba(15,19,28,0.5);
 transform: scale(1.03);
 background-image: url('./rooseveltBadlands1.jpg');
 background-size: 110%; 
-background-position: center 45%; 
+background-position: center 48%; 
 }
 #pointsLevelTitleFuture:hover {
   background-image: url('./firmament.jpg'); 
   background-size: 112%; 
   background-position: center 65%;
 }
+#pointsLevelTitleWest:active, #pointsLevelTitleFuture:active {
+  background-color: rgba(15,19,28,0.5);
+  transform: scale(1.05);
+  background-image: url('./rooseveltWest1.jpg');
+  background-size: 120%; 
+  background-position: center 23%;
+}
+#pointsLevelTitleFuture:active {
+  background-image: url('./academy1.jpg');
+  background-size: 130%; 
+  background-position: center 35%;
+}
 #pointsTitleSwitchButtonFuture, #pointsTitleSwitchButtonWest {
   position: absolute;
   top: 0;
   right: 0px;
-  border: 1px solid rgba(255,255,255,0.5);
-  border-width: 0px 1px 1px 0px;
-  border-radius: 0% 0% 45% 0%;
-  border-radius: 0% 0% 35% 0%;
-  padding: 8px 14px 8px 12px;
-  transition: all 0.5s ease 0s;
+  border: 1px solid rgba(0,220,255,1);
+  border-width: 0px 0px 1px 1px;
+  border-radius: 0% 0% 0% 25%;
+  padding: 5px;
+  transition: all 1s ease 0s;
   z-index: 515;
+  box-shadow: 0 0 1pt 1pt rgba(0,220,255,0.5);
+  letter-spacing: 2px;
+  color: #00dcff;
+  width: 6em;
+  text-align: center;
+  background: linear-gradient(rgba(0,220,255,0.05), rgba(0,220,255,0));
+}
+#pointsTitleSwitchButtonFuture:hover, #pointsTitleSwitchButtonWest:hover {
+  box-shadow: 0 0 1pt 1pt rgba(0,220,255,1);
+  transform: scale(1.02);
+  cursor: pointer;
+  background-color: rgba(0,220,255,0.05);
+  letter-spacing: 3px;
+  transition: all 0.5s ease 0s;
 }
 #pointsTitleSwitchButtonFutureHide, #pointsTitleSwitchButtonWestHide {
   display: none;
@@ -4724,10 +4757,14 @@ background-position: center 45%;
   margin: 0 auto;
   width: 100%;
   color: #00ffdc;
-  font-size: 250%;
-  padding: 15px 0px;
+  font-size: 300%;
+  padding: 30px 0px;
   letter-spacing: 4px;  
-  background: radial-gradient(circle, rgba(0,255,220, 0.1), rgba(0,255,220, 0), rgba(0,255,220,0));
+  z-index: 10;
+  /* Green */
+  /* background: radial-gradient(circle, rgba(0,255,220, 0.15), rgba(0,255,220, 0.05), rgba(0,255,220,0), rgba(0,255,220,0)); */
+  /* Blue */
+  background: radial-gradient(circle, rgba(0,220,255, 0.15), rgba(0,220,255, 0.05), rgba(0,220,255,0), rgba(0,220,255,0));
 }
 #pointsNumberDisplay {
   text-align: center;
@@ -4741,6 +4778,8 @@ background-position: center 45%;
   letter-spacing: 4px;
   padding: 1px;
   background: linear-gradient(rgba(0,255,220,0), rgba(0,220,255,0.1));
+  /* background: radial-gradient(circle at bottom,rgba(0,220,255, 0.2), rgba(0,220,255, 0.05), rgba(0,220,255, 0.02), rgba(0,220,255, 0), rgba(0,220,255, 0), rgba(0,220,255, 0));       */
+
 }
 #pointsRankingDisplay {
   text-align: center;
@@ -4773,7 +4812,7 @@ background-position: center 45%;
   text-align: center;
   margin: 0 auto;
   margin-top: 5%;
-  width: 70%;
+  width: 90%;
   letter-spacing: 2px;
   color: #00dcff;
   background: linear-gradient(rgba(0,255,220,0), rgba(0,220,255,0.1));
@@ -4809,6 +4848,11 @@ background-position: center 45%;
   color: #dddddd;
   background: linear-gradient(rgba(0,255,220,0), rgba(0,220,255,0.1));
 }
+#nextLevelTitleContainer {
+  width: 100%;
+  margin: 0 auto;
+  position: relative;
+}
 #nextLevelTitle {
   text-align: center;
   margin: 0 auto;
@@ -4821,6 +4865,27 @@ background-position: center 45%;
   border: 1px solid #00dcff;
   border-radius: 3px 3px 15% 15%;
   background: radial-gradient(rgba(0,220,255,0), rgba(0,220,255,0.05));
+}
+#nextLevelTitleLockLeft {
+  position: absolute;
+  top: 0;
+  left: 0px;
+  width: 5%;
+  background-image: url('./lock2Blue.svg'); 
+  /* background-size: 110%;  */
+  background-repeat: no-repeat;
+  background-position: center;
+}
+#nextLevelTitleLockRight {
+  position: absolute;
+  top: 0;
+  right: 0px;
+  width: 5%;
+  
+  background-image: url('./lock2Blue.svg'); 
+  /* background-size: 110%;  */
+  background-repeat: no-repeat;
+  background-position: center;
 }
 #nextLevelPointsNumberDisplay {
 text-align: center;

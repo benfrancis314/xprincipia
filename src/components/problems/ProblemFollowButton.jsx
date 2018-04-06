@@ -56,7 +56,7 @@ track() {
                   $(document).ready(function() {
                     $('#notificationLoginRegisterContainer').attr('id','notificationLoginRegisterContainerShow');
                     $('#notificationFeedbackShow').attr('id','notificationFeedback');
-                    $('#notificationContent').html('Please <span id="blue">login </span>to vote');
+                    $('#notificationContent').html('Please <span id="blue">login </span>to track');
                   })
                 );
               }  else if (error.response.data != '') {
@@ -81,7 +81,7 @@ unTrack() {
                 $(document).ready(function() {
                   $('#notificationLoginRegisterContainer').attr('id','notificationLoginRegisterContainerShow');
                   $('#notificationFeedbackShow').attr('id','notificationFeedback');
-                  $('#notificationContent').html('Please <span id="blue">login </span>to vote');
+                  $('#notificationContent').html('Please <span id="blue">login </span>to track');
                 })
               );
             }  else if (error.response.data != '') {

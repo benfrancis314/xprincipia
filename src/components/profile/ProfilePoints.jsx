@@ -10,9 +10,31 @@ constructor(){
 
   this.state= {
     // feedback: '',
+    user: [],
+    userPoints: '',
+    level: '',
   }
 
 };
+componentDidMount(){
+  var self = this;
+  axios.get( Config.API + '/users/byusername?username='+cookie.load('userName')).then(function (response) {
+      self.setState({
+          user: response.data,
+          userPoints: response.data.Points,
+          level: response.data.Level,
+      })
+  })
+}
+// componentWillReceiveProps(nextProps){
+//   var self = this;
+//   axios.get( Config.API + '/users/byuser?username='+cookie.load('userName')).then(function (response) {
+//       self.setState({
+//           user: response.data,
+//           userPoints: response.data.Points,
+//       })
+//   })
+// }
 
 hoverEarth() {
   $(document).ready(function() {
@@ -41,52 +63,76 @@ unHoverMars() {
 selectFutureTitle() {
   $(document).ready(function() {
     $('#pointsLevelTitleWest').html("polymath apprentice").fadeIn(7500);
+    $('#pointsTitleSwitchButtonWest').html("future").fadeIn(7500);
     $('#pointsLevelTitleWest').attr('id','pointsLevelTitleFuture');
-    $('#pointsTitleSwitchButtonFuture').attr('id','pointsTitleSwitchButtonFutureHide');
-    $('#pointsTitleSwitchButtonWestHide').attr('id','pointsTitleSwitchButtonWest');
+    $('#pointsTitleSwitchButtonWest').attr('id','pointsTitleSwitchButtonWestHide');
+    $('#pointsTitleSwitchButtonFutureHide').attr('id','pointsTitleSwitchButtonFuture');
+    $('#pointsBackgroundWest').attr('id','pointsBackgroundFuture');
   });
 }
 selectWestTitle() {
   $(document).ready(function() {
     $('#pointsLevelTitleFuture').html("westward newcomer").fadeIn(7500);
+    $('#pointsTitleSwitchButtonFuture').html("frontier").fadeIn(7500);
     $('#pointsLevelTitleFuture').attr('id','pointsLevelTitleWest');
-    $('#pointsTitleSwitchButtonWest').attr('id','pointsTitleSwitchButtonWestHide');
-    $('#pointsTitleSwitchButtonFutureHide').attr('id','pointsTitleSwitchButtonFuture');
-    
+    $('#pointsTitleSwitchButtonFuture').attr('id','pointsTitleSwitchButtonFutureHide');
+    $('#pointsTitleSwitchButtonWestHide').attr('id','pointsTitleSwitchButtonWest');
+    $('#pointsBackgroundFuture').attr('id','pointsBackgroundWest');
+  });
+}
+hoverWestTitle() {
+  $(document).ready(function() {
+    $('#pointsTitleSwitchButtonWest').html("future").fadeIn(7500);
+  });
+}
+unHoverWestTitle() {
+  $(document).ready(function() {
+    $('#pointsTitleSwitchButtonWest').html("frontier").fadeIn(7500);    
+  });
+}
+hoverFutureTitle() {
+  $(document).ready(function() {
+    $('#pointsTitleSwitchButtonFuture').html("frontier").fadeIn(7500);
+  });
+}
+unHoverFutureTitle() {
+  $(document).ready(function() {
+    $('#pointsTitleSwitchButtonFuture').html("future").fadeIn(7500);
   });
 }
 
    render() {
-    
+    // if (Number(this.state.level) <= 1) {
+    //   // Use this when ready, fix less than or equal sign
+    // }
     return (
       <div id="pointsContainer">
-        <div id="pointsBackground">
+        <div id="pointsBackgroundWest">
+          <div id="pointsTitleSwitchButtonWest" onClick={this.selectFutureTitle} onMouseOver={this.hoverWestTitle} onMouseOut={this.unHoverWestTitle}>
+            frontier
+          </div> 
+          <div id="pointsTitleSwitchButtonFutureHide" onClick={this.selectWestTitle} onMouseOver={this.hoverFutureTitle} onMouseOut={this.unHoverFutureTitle}>
+            future
+          </div> 
           <div id="pointsLevelLabel">
-            level i
+            level {this.state.level}
           </div>
-          <div id="pointsTitleContainer">
-            <div id="pointsLevelTitleWest">
-              westward newcomer
-              {/* div here to alternate name title */}
-            </div>
-            <div id="pointsTitleSwitchButtonFuture" onClick={this.selectFutureTitle}>
-              -> future
-            </div>  
-            <div id="pointsTitleSwitchButtonWestHide" onClick={this.selectWestTitle}>
-              -> west
-            </div>   
-          </div>      
+          <div id="pointsLevelTitleWest">
+            westward newcomer
+          </div>
           <div id="pointsNumberContainer">
             <div id="pointsNumberValue">
-              50
+              {this.state.userPoints}
             </div>
             <div id="pointsNumberDisplay">
               prestige
             </div>
           </div>
-          <div id="pointsRankingDisplay">
+          {/* NOT READY YET */}
+          {/* <div id="pointsRankingDisplay">
             top x%
-          </div>
+          </div> */}
+          {/* NOT READY YET */}
           {/* <div id="pointsBreakdownType">
             creation points: <span id="pointsBreakdownNumber">8</span>
           </div>
@@ -115,12 +161,16 @@ selectWestTitle() {
           <div id="nextLevelLabel">
             at level 11
           </div>
-          <div id="nextLevelTitle">
-            [lock] frontiersman [lock]
+          <div id="nextLevelTitleContainer">
+            <div id="nextLevelTitleLockLeft"></div>
+            <div id="nextLevelTitle">
+              frontiersman
+            </div>
+            <div id="nextLevelTitleLockRight"></div>
           </div>
-          <div id="nextLevelPointsRankingDisplay">
+          {/* <div id="nextLevelPointsRankingDisplay">
             enter top x%
-          </div>
+          </div> */}
         </div>
       </div>
       );

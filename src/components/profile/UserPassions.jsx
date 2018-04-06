@@ -9,24 +9,25 @@ constructor(){
   super();
 
   this.state= {
-    feedback: '',
+    passions: '',
   }
 
-  this.postFeedback = this.postFeedback.bind(this);
+  this.postPassions = this.postPassions.bind(this);
 };
 
-postFeedback() {
+postPassions() {
   //Read field items into component state
-this.state.feedback = document.getElementById('addSuggestion').value
+alert('post passions process begin')
 
-
- axios.post( Config.API + '/auth/feedback/create', {
-    username: cookie.load('userName'),
-    description : this.state.feedback,
+  this.state.passions = document.getElementById('passionsTextArea').value
+  
+  var self = this;
+  axios.put( Config.API + '/auth/users/updatePassions?username='+cookie.load('userName'), {
+    passions : self.state.passions
   })
   .then(function (result) {
-    // alert("Thank you for your feedback. We will use this to improve your experience in the future. ")
-    document.location = window.location.pathname 
+    alert('post passions process SUCCESS')
+    // document.location = window.location.pathname 
   })
       .catch(function (error) {
           $(document).ready(function() {
@@ -51,7 +52,7 @@ this.state.feedback = document.getElementById('addSuggestion').value
 
    render() {
     
-    if (this.props.params.username == cookie.load('userName')) {
+    // if (this.props.params.username == cookie.load('userName')) {
       return (
         <div id="passionsFormContainer">
               <div id="passionsHeader">
@@ -59,16 +60,16 @@ this.state.feedback = document.getElementById('addSuggestion').value
               </div>
               <form id="suggestionForm">
                   <textarea name="feedbackText" required="required" id="passionsTextArea" placeholder="What are your passions, your fields of interest, or your driving motivations? " autoFocus ></textarea>
-                  <input type="button" value="submit" onClick={this.postFeedback} id="addSuggestion"/>
+                  <input type="button" value="submit" onClick={this.postPassions} id="addSuggestion"/>
               </form>
         </div>
       )
     }
     
-    return (
-      <div>
-          [see other user's passions here]
-      </div>
-      );
-   }
+  //   return (
+  //     <div>
+  //         [see other user's passions here]
+  //     </div>
+  //     );
+  //  }
 }

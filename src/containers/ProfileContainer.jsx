@@ -56,7 +56,7 @@ export default class ProfileContainer extends React.Component {
                 createdProblems: response.data,
             })
         })
-         axios.get( Config.API + '/users/followedProblems?username='+cookie.load('userName')).then(function (response) {
+        axios.get( Config.API + '/users/followedProblems?username='+cookie.load('userName')).then(function (response) {
             self.setState({
                 followedProblems: response.data,
             })
