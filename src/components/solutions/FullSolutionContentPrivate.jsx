@@ -165,22 +165,19 @@ unVote() {
         
     }
    render() {
-       if (this.state.vote === true && this.state.solutionInfo.OriginalPosterUsername === cookie.load('userName')) {
+       if (this.state.solutionInfo.OriginalPosterUsername === cookie.load('userName')) {
            return (
       <div>
-            <div id="ProposalPercentFullGreen">
+            {/* <div id="ProposalPercentFullGreen">
                 {this.state.solutionInfo.Rank}
-            </div>
-            <div id="voteVersionsMenu">
-              <Link to={`/project/private/${this.props.params.probID}/proposal/${this.props.params.solutionID}`}>
-                <div id="votedSolution" ref='solbtn' onClick={this.submitVote}>Voted</div>
-              </Link>
+            </div> */}
+              {/* <div id="voteVersionsMenu"> */}
                 {/*<Link to={`/proposal/private/${this.props.params.probID}/${this.props.params.solutionID}/versions`}>
                     <div id="versionsButton">
                             Versions
                     </div>
                 </Link>*/}
-              </div>
+              {/* </div> */}
               <div id="createDate">{dateTime(this.state.solutionInfo.CreatedAt)}</div>
               
               <Link to={`/proposal/private/${this.props.params.probID}/${this.props.params.solutionID}/delete`}>
@@ -211,45 +208,7 @@ unVote() {
 
   } else {
       return ( 
-      <div>
-            <div id="ProposalPercentFull">
-                {this.state.solutionInfo.Rank}
-            </div>
-            <div id="voteVersionsMenu">
-              <Link to={`/project/private/${this.props.params.probID}/proposal/${this.props.params.solutionID}`}>
-                <div id="voteSolution" ref='solbtn' onClick={this.submitVote}>Vote</div>
-              </Link>
-                {/*<Link to={`/proposal/private/${this.props.params.probID}/${this.props.params.solutionID}/versions`}>
-                    <div id="versionsButton">
-                            Versions
-                    </div>
-                </Link>*/}
-              </div>
-              <div id="createDate">{dateTime(this.state.solutionInfo.CreatedAt)}</div>
-              
-              <Link to={`/proposal/private/${this.props.params.probID}/${this.props.params.solutionID}/delete`}>
-                <img src={require('../../assets/delete.svg')} id="deleteSolutionButton" width="20" height="20" alt="Edit Button" />              
-              </Link>
-
-              <Link to={`/proposal/private/${this.props.params.probID}/${this.props.params.solutionID}/edit`} activeClassName="activeProposalOption">
-                <div id="proposalDevelopButton">
-                  develop
-                </div>
-              </Link>
-
-              <div id="prosConsMenu">
-                <Link to={`/proposal/private/${this.props.params.probID}/${this.props.params.solutionID}/pros`} activeClassName="activeProsCons">
-                    <div id="prosButton">pro</div>
-                </Link>
-                <Link to={`/proposal/private/${this.props.params.probID}/${this.props.params.solutionID}/cons`} activeClassName="activeProsCons">
-                    <div id="consButton">contra</div>
-                </Link>
-              </div>
-            
-              <div>
-              {this.props.children}
-              <FullSolutionDescription solutionInfo={ this.state.solutionInfo} solutionID={this.props.params.solutionID}/>         
-              </div>
+        <div>
         </div>
 
       ); 

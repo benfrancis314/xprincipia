@@ -92,7 +92,29 @@ unTrack() {
 }
 
    render() {
-       if (this.state.tracked === true) {
+    if ((this.state.tracked === true) && (this.props.private == 1)) {
+      return (
+           <div>
+             <Link to={window.location.pathname}>
+               <div id="SBButtonFollowedPrivate" onClick={this.unTrack}>
+                 tracking
+               </div>
+             </Link>
+           </div>
+      );
+   } else if (this.props.private == 1) {
+       return (
+           <div>
+             <Link to={window.location.pathname}>
+               <div id="SBButtonFollowPrivate" onClick={this.track}>
+                 track
+               </div>
+             </Link>
+           </div>
+           
+       );
+   }
+    else if (this.state.tracked === true) {
        return (
             <div>
               <Link to={window.location.pathname}>

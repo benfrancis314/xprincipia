@@ -13,11 +13,23 @@ export default class QuestionForm extends React.Component {
 
   this.state= {
     question: '',
+    private: '',
   }
 
     this.postQuestion = this.postQuestion.bind(this);
   };
-  
+componentDidMount(){
+    var self = this;
+    if (window.location.pathname.includes('private')) {
+        self.setState({
+            private: '1',
+        })
+    }   else {
+        self.setState({
+            private: '0',
+        })
+    }
+}
 
 postQuestion() {
   //Read field items into component state
@@ -34,7 +46,7 @@ postQuestion() {
       username: cookie.load('userName'),
       description : this.state.question,
       parentTitle: this.props.parentTitle,
-      private: '0',
+      private: this.state.private,
       parentID: this.props.params.probID,
   })
     .then(function (result) {
@@ -70,7 +82,7 @@ postQuestion() {
         username: cookie.load('userName'),
         description : this.state.question,
         parentTitle : this.props.parentTitle,
-        private: '0',
+        private: this.state.private,
     })
       .then(function (result) {
         document.getElementById("questionForm").reset();
@@ -99,30 +111,8 @@ postQuestion() {
 
 
    render() {
-    if (this.props.params.solutionID){
-        return (
-          <div>
-            <div id="discussMenuEnd">
-              questions
-            </div>
-            <div id="questionFormComponent">
-                <form id="questionForm">
-                  <fieldset id='fieldSetNoBorderPadding'>
-                    <textarea name="questionText" required="required" id="questionTextArea" placeholder="Ask a question you have about this project or view those asked by your peers. " ></textarea>
-                    <Link to={`/project/${this.props.params.probID}/proposal/${this.props.params.solutionID}/questions`}>
-                      <input type="button" ref='btn' value="Ask" onClick={this.postQuestion} id="askQuestion"/>
-                    </Link>
-                  </fieldset>
-                </form>
-            </div>
-          </div>
-        );
-    } else {
         return (
           <div id="discussFormContainer">
-            {/* <div id="discussMenuEnd">
-              questions
-            </div> */}
 
             <div id="projectFormRadioContainer">
               <div id="projectFormRadioColumn">
@@ -161,14 +151,11 @@ postQuestion() {
             </div>
 
 
-
-
-
             <div id="questionFormComponent">
               <form id="questionForm">
                 <fieldset id='fieldSetNoBorderPadding'>
                   <textarea name="questionText" required="required" id="questionTextArea" placeholder="Ask a question you have about this project or view those asked by your peers. " ></textarea>
-                  <Link to={`/project/${this.props.params.probID}/questions`}>
+                  <Link to={window.location.pathname}>
                     <input type="button" ref='btn' value="Ask" onClick={this.postQuestion} id="askQuestion"/>
                   </Link>
                 </fieldset>
@@ -178,4 +165,4 @@ postQuestion() {
 
         );
    }
-}}
+}

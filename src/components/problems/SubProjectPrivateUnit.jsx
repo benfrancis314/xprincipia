@@ -76,7 +76,7 @@ export default class SubProjectPrivateUnit extends React.Component {
 			<li key={problem.ID} id="SPUnit">
 				<div id="SPHeader">
 					<div id="SPTitleSmall">{problem.Title}</div>
-					<div id="SPPercent">{problem.Rank}</div>
+					{/* <div id="SPPercent">{problem.Rank}</div> */}
 				</div>
 			</li>
 		</Link>
@@ -87,12 +87,12 @@ export default class SubProjectPrivateUnit extends React.Component {
 			<Link key={problem.ID} to={'/project/private/'+problem.ID +'/subprojects'}>
 				<li key={problem.ID} id="SPUnit">
 					<div id="SPHeaderRed">
-						<div id="SPTitleRed">
+						<div id="SPTitleRedPrivate">
 							<span id="red">problem</span>
 							<br />
 							{problem.Title}
 						</div>
-						<div id="SPPercent">{problem.Rank}</div>
+						{/* <div id="SPPercent">{problem.Rank}</div> */}
 					</div>
 				</li>
 			</Link>
@@ -102,12 +102,12 @@ export default class SubProjectPrivateUnit extends React.Component {
 			<Link key={problem.ID} to={'/project/private/'+problem.ID +'/subprojects'}>
 				<li key={problem.ID} id="SPUnit">
 					<div id="SPHeaderGreen">
-						<div id="SPTitleGreen">
+						<div id="SPTitleGreenPrivate">
 							<span id="green">goal</span>
 							<br />
 							{problem.Title}
 						</div>
-						<div id="SPPercent">{problem.Rank}</div>
+						{/* <div id="SPPercent">{problem.Rank}</div> */}
 					</div>
 				</li>
 			</Link>
@@ -118,7 +118,7 @@ export default class SubProjectPrivateUnit extends React.Component {
 				<li key={problem.ID} id="SPUnit">
 					<div id="SPHeader">
 						<div id="SPTitle">{problem.Title}</div>
-						<div id="SPPercent">{problem.Rank}</div>
+						{/* <div id="SPPercent">{problem.Rank}</div> */}
 					</div>
 				</li>
 			</Link>

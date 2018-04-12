@@ -20,12 +20,12 @@ export default class Introduction extends React.Component {
                 transitionEnter={false}
                 transitionLeave={false}>
             <Link to="/welcome">
-                <img src={require('../assets/redX.svg')} id="closeRedX" width="40" height="40" alt="Close button, red X symbol" />            
+                <img src={require('../assets/redX.svg')} id="closeRedX" width="30" height="30" alt="Close button, red X symbol" />            
             </Link>
           <div id="introductionContainer">
                 <div id="introductionWelcome">
-                    <span id="introductionCapital">W</span>elcome to <span id="introductionCapital"> XP</span>rincipia
-                    <br />
+                    {/* <span id="introductionCapital">W</span>elcome to <span id="introductionCapital"> XP</span>rincipia */}
+                    welcome to xprincipia
                 </div>
                 {/*Considering change to "The Open Frontier of Discovery/Science*/}
                 {/*Not currently using*/}

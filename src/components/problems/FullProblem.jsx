@@ -190,7 +190,7 @@ unVote() {
     hoverVoteNumber() {
       $(document).ready(function() {
             $('#voteProblem').attr('id','voteProblemHover');               
-        });
+      });
     }
     unHoverVoteNumber() {
       $(document).ready(function() {

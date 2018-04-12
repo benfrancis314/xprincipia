@@ -286,7 +286,7 @@ export default class WelcomeContainer extends React.Component {
 
                     {/* <div id="leaderBoardTitleContainer"> */}
                     <div id="leaderBoardCapTop">
-                        player leaderboard
+                        members leaderboard
                     </div>
                     {/* </div> */}
                     {/* <form id="welcomeSearchFormContainer">

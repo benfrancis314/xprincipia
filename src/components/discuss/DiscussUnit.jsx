@@ -5,7 +5,7 @@ import cookie from 'react-cookie';
 import {Config} from '../../config.js';
 import $ from 'jquery';
 
-export default class QuestionUnit extends React.Component {
+export default class DiscussUnit extends React.Component {
 
     constructor(props){
         super(props);

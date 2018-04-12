@@ -14,7 +14,8 @@ constructor(){
     userPoints: '',
     level: '',
   }
-
+  this.changePlanetEarth = this.changePlanetEarth.bind(this)
+  this.changePlanetMars = this.changePlanetMars.bind(this)
 };
 componentDidMount(){
   var self = this;
@@ -99,6 +100,12 @@ unHoverFutureTitle() {
   $(document).ready(function() {
     $('#pointsTitleSwitchButtonFuture').html("future").fadeIn(7500);
   });
+}
+changePlanetEarth() {
+
+}
+changePlanetMars() {
+  
 }
 
    render() {

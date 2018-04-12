@@ -119,7 +119,7 @@ export default class WelcomeContainer extends React.Component {
                 onPlaying={this.handleSongPlaying}
                 onFinishedPlaying={this.handleSongFinishedPlaying} 
                 volume={0}/>*/}
-         <Link to="/introduction">
+         <Link to="/introduction" activeClassName="activeIntroductionButton">
             <div id="welcomeIntroductionLabel" onMouseOver={this.hoverText} onMouseOut={this.unHoverText}>
                 introduction
             </div>

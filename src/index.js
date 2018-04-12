@@ -37,6 +37,7 @@ import ConsEditFormPrivate from './components/proscons/ConsEditFormPrivate.jsx';
 import ConsFlagForm from './components/proscons/ConsFlagForm.jsx';
 import ConsForm from './components/proscons/ConsForm.jsx';
 import ConsFormPrivate from './components/proscons/ConsFormPrivate.jsx';
+import DiscussForm from './components/discuss/DiscussForm.jsx';
 import Empty from './components/Empty.jsx';
 import Error404 from './components/Error404.jsx';
 import FeedbackForm from './components/FeedbackForm.jsx';
@@ -98,6 +99,7 @@ import ProblemLeftSB from './components/problems/ProblemLeftSB.jsx';
 import ProblemSolutionsMenu from './components/problems/ProblemSolutionsMenu.jsx';
 import ProblemTopSolutions from './components/problems/ProblemTopSolutions.jsx';
 import ProjectBreakdownForm from './components/problems/ProjectBreakdownForm.jsx';
+import ProjectBreakdownFormCreate from './components/problems/ProjectBreakdownFormCreate.jsx';
 import ProjectDeleteForm from './components/problems/ProjectDeleteForm.jsx';
 import ProjectDeletePrivateForm from './components/problems/ProjectDeletePrivateForm.jsx';
 import ProjectEditForm from './components/problems/ProjectEditForm.jsx';
@@ -134,8 +136,6 @@ import QuestionDeleteFormPrivate from './components/questions/QuestionDeleteForm
 import QuestionEditForm from './components/questions/QuestionEditForm.jsx';
 import QuestionEditFormPrivate from './components/questions/QuestionEditFormPrivate.jsx';
 import QuestionFlagForm from './components/questions/QuestionFlagForm.jsx';
-import QuestionForm from './components/questions/QuestionForm.jsx';
-import QuestionFormPrivate from './components/questions/QuestionFormPrivate.jsx';
 import Redirection from './components/Redirection.jsx';
 import RegisterUnit from './components/RegisterUnit.jsx';
 import SideBarProblem from './components/problems/SideBarProblem';
@@ -194,6 +194,7 @@ import CommentSuggestionContainer from './containers/comments/CommentSuggestionC
 import CommentSuggestionContainerPrivate from './containers/comments/CommentSuggestionContainerPrivate.jsx';
 import ConsContainer from './containers/ConsContainer.jsx';
 import ConsContainerPrivate from './containers/ConsContainerPrivate.jsx';
+import DiscussContainer from './containers/DiscussContainer.jsx';
 import EntranceContainer from './containers/EntranceContainer.jsx';
 import ErrorContainer from './containers/ErrorContainer.jsx';
 import FreeFormContainer from './containers/FreeFormContainer.jsx';
@@ -212,8 +213,6 @@ import ProfileContainer2 from './containers/ProfileContainer2.jsx';
 import ProjectRelatedParentsContainer from './containers/ProjectRelatedParentsContainer.jsx';
 import ProsContainer from './containers/ProsContainer.jsx';
 import ProsContainerPrivate from './containers/ProsContainerPrivate.jsx';
-import QuestionContainer from './containers/QuestionContainer.jsx';
-import QuestionContainerPrivate from './containers/QuestionContainerPrivate.jsx';
 import RelatedProposalsContainer from './containers/RelatedProposalsContainer.jsx';
 import SearchContainer from './containers/SearchContainer.jsx';
 import ShortStoryContainer from './containers/ShortStoryContainer.jsx';
@@ -388,10 +387,10 @@ ReactDOM.render(
             </Route>
             <Route path='/project/private/:probID/proposal/:solutionID/related' component={RelatedProposalsContainer}></Route>
             <Route path='/project/private/:probID/proposal/:solutionID/discuss' component={ProposalDiscussMenuPrivate}>
-              <IndexRoute component={QuestionContainer}></IndexRoute>
-              <Route path='/project/private/:probID/proposal/:solutionID/question/container' component={QuestionContainerPrivate}>
-                <IndexRoute component={QuestionForm}></IndexRoute>
-                <Route path='/project/private/:probID/proposal/:solutionID/questions' component={QuestionFormPrivate}></Route>
+              <IndexRoute component={DiscussContainer}></IndexRoute>
+              <Route path='/project/private/:probID/proposal/:solutionID/question/container' component={DiscussContainer}>
+                <IndexRoute component={DiscussForm}></IndexRoute>
+                <Route path='/project/private/:probID/proposal/:solutionID/questions' component={DiscussForm}></Route>
                 <Route path='/project/private/:probID/proposal/:solutionID/question/:questID/edit' component={QuestionEditFormPrivate}></Route>
                 <Route path='/project/private/:probID/proposal/:solutionID/question/:questID/flag' component={QuestionFlagForm}></Route>
                 <Route path='/project/private/:probID/proposal/:solutionID/question/:questID/delete' component={QuestionDeleteFormPrivate}></Route>
@@ -509,10 +508,10 @@ ReactDOM.render(
           <Route path='/proposal/private/:probID/:solutionID/versionform' component={VersionForm}></Route>
         </Route>
         <Route path='/project/private/:probID/discuss' component={ProblemDiscussPrivateMenu}>
-            <IndexRoute component={QuestionContainerPrivate}></IndexRoute>
-            <Route path='/project/private/:probID/questions/container' component={QuestionContainerPrivate}>
-              <IndexRoute component={QuestionFormPrivate}></IndexRoute>
-              <Route path='/project/private/:probID/questions' component={QuestionFormPrivate}></Route>
+            <IndexRoute component={DiscussContainer}></IndexRoute>
+            <Route path='/project/private/:probID/questions/container' component={DiscussContainer}>
+              <IndexRoute component={DiscussForm}></IndexRoute>
+              <Route path='/project/private/:probID/questions' component={DiscussForm}></Route>
               <Route path='/project/private/:probID/question/:questID/edit' component={QuestionEditFormPrivate}></Route>
               <Route path='/project/private/:probID/question/:questID/flag' component={QuestionFlagForm}></Route>
               <Route path='/project/private/:probID/question/:questID/delete' component={QuestionDeleteFormPrivate}></Route>
@@ -611,6 +610,7 @@ ReactDOM.render(
           <Route path='/project/:probID/link' component={ProjectLinkForm}></Route>
         </Route>
         <Route path='/project/:probID/create/breakdown' component={ProjectBreakdownForm}></Route>
+        <Route path='/project/:probID/create/breakdown/:bdID' component={ProjectBreakdownFormCreate}></Route>
         <Route path='/project/:probID/edit' component={ProjectEditForm}></Route>
         <Route path='/project/:probID/flag' component={ProjectFlagForm}></Route>
         <Route path='/project/:probID/delete' component={ProjectDeleteForm}></Route>
@@ -634,10 +634,10 @@ ReactDOM.render(
             </Route>
             <Route path='/project/:probID/proposal/:solutionID/related' component={RelatedProposalsContainer}></Route>
             <Route path='/project/:probID/proposal/:solutionID/discuss' component={ProposalDiscussMenu}>
-              <IndexRoute component={QuestionContainer}></IndexRoute>
-              <Route path='/project/:probID/proposal/:solutionID/question/container' component={QuestionContainer}>
-                <IndexRoute component={QuestionForm}></IndexRoute>
-                <Route path='/project/:probID/proposal/:solutionID/questions' component={QuestionForm}></Route>
+              <IndexRoute component={DiscussContainer}></IndexRoute>
+              <Route path='/project/:probID/proposal/:solutionID/question/container' component={DiscussContainer}>
+                <IndexRoute component={DiscussForm}></IndexRoute>
+                <Route path='/project/:probID/proposal/:solutionID/questions' component={DiscussForm}></Route>
                 <Route path='/project/:probID/proposal/:solutionID/question/:questID/edit' component={QuestionEditForm}></Route>
                 <Route path='/project/:probID/proposal/:solutionID/question/:questID/flag' component={QuestionFlagForm}></Route>
                 <Route path='/project/:probID/proposal/:solutionID/question/:questID/delete' component={QuestionDeleteForm}></Route>
@@ -759,10 +759,10 @@ ReactDOM.render(
             <Route path='/proposal/:probID/:solutionID/versionform' component={VersionForm}></Route>
         </Route>
         <Route path='/project/:probID/discuss' component={ProblemDiscussMenu}>
-            <IndexRoute component={QuestionContainer}></IndexRoute>
-            <Route path='/project/:probID/questions/container' component={QuestionContainer}>
-              <IndexRoute component={QuestionForm}></IndexRoute>
-              <Route path='/project/:probID/questions' component={QuestionForm}></Route>
+            <IndexRoute component={DiscussContainer}></IndexRoute>
+            <Route path='/project/:probID/questions/container' component={DiscussContainer}>
+              <IndexRoute component={DiscussForm}></IndexRoute>
+              <Route path='/project/:probID/questions' component={DiscussForm}></Route>
               <Route path='/project/:probID/question/:questID/edit' component={QuestionEditForm}></Route>
               <Route path='/project/:probID/question/:questID/flag' component={QuestionFlagForm}></Route>
               <Route path='/project/:probID/question/:questID/delete' component={QuestionDeleteForm}></Route>

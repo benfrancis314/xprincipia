@@ -44,7 +44,7 @@ hidePrivateNotification() {
                 </Link>
                 <div id="privateContainerBanner">
                     <div id="privateContainerTitle">
-                        Mind Temple
+                        mind temple
                     </div>     
                     <div id="privateContainerSettingsButton" onClick={this.privateAlert}>
                         <img src={require('../assets/lock2Blue.svg')} id="privateSettingsGear" width="20" height="20" alt="Gear logo, link to settings"/>

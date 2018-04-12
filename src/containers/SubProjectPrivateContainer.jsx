@@ -15,7 +15,7 @@ export default class SubProblemContainer extends React.Component {
 
     componentDidMount(){
         var self = this;
-        return axios.get( Config.API + '/problems/subproblems?id='+this.props.probID).then(function (response) {
+        return axios.get( Config.API + '/problems/filter/byrank?parentID='+this.props.probID).then(function (response) {
             self.setState({
                 problems: response.data
             })
@@ -23,20 +23,12 @@ export default class SubProblemContainer extends React.Component {
     }
     componentWillReceiveProps (nextProps){
         var self = this;
-        return axios.get( Config.API + '/problems/subproblems?id='+nextProps.probID).then(function (response) {
+        return axios.get( Config.API + '/problems/filter/byrank?parentID='+nextProps.probID).then(function (response) {
             self.setState({
                 problems: response.data
             })
         }) 
     }
-
-// Is this being used?
-//         //On recieving next props
-//     componentWillReceiveProps(nextProps){
-//         var self = this
-//         self.setState({problems: nextProps.problems})
-//         console.log(self.state.problems)
-//     }
 
 
     render() {

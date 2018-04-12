@@ -2608,9 +2608,7 @@ cursor: pointer;
   width: 20%;
   background-color: rgba(0,255,220,0.05);
 
-  /*background: linear-gradient(to right,rgba(0,220,255, 0), rgba(0,220,255, 0.05), rgba(0,220,255, 0));*/
   background: radial-gradient(circle,rgba(0,255,220, 0), rgba(0,255,220, 0.025), rgba(0,255,220, 0.05));
-  /*transition: all 0.75s ease 0s;*/
   background-color: rgba(0,255,220,0.025);
   transform: scale(1);
 }
@@ -2855,27 +2853,47 @@ padding: 0% 5% 0% 5%;
 z-index: 5;
 }
 #introductionWelcome {
-border: 1px outset #00dcff;
-border-width: 1px 0px 0px 0px;
 padding: 3%;
 padding-bottom: 4%;
 padding-top: 4%;
 margin-top: 1%;
 margin-bottom: 1%;
+/* If capital letters */
 font-size: 160%;
+/* If not */
+/* font-size: 180%; */
 text-align: center;
 letter-spacing: 4px;
-border: 1px solid #dddddd;
-border-radius: 3px;
-background-color: rgba(0,220,255,0.05);
+border: 1px solid #00dcff;
+border-radius: 3px 3px 15% 15%;
+transition: all 2.5s ease 0s;
 
-
-/*Trying out blend color between #ffffff and #0dcff. 
-So far haven't found concept to work. 
-
-Eitherway, interesting color to keep. */
-
-/*border-color: #74ECFF;*/
+background-size: contain;
+background-repeat: no-repeat;
+background-color: rgba(15,19,28,0.999);
+background-blend-mode: overlay;
+background-image: url('./buzzAldrin.jpg');
+background-position: center 8%;
+background-size: 150%;
+}
+#introductionWelcome:hover {
+transform: scale(1.15);
+background-color: rgba(15,19,28,0.5);
+background-size: 100%;
+padding-bottom: 7%;
+padding-top: 7%;
+border-radius: 5px 5px 5px 5px;
+/* color: #00dcff; */
+font-size: 190%;
+/* letter-spacing: 6px; */
+}
+#introductionWelcome:active {
+  /* background-image: url('./newtonBlake.jpg');
+  background-position: center 92%; */
+  background-image: url('./wandererAboveFog2.jpg');
+  /* background-position: center 35%; */
+  background-position: center 0%;
+  background-size: 100%;
 }
 #introductionCapital {
 font-size: 120%;
@@ -3858,12 +3876,7 @@ padding: auto;
 padding-top: 7px 0px;
 font-family: 'Alegreya Sans SC', sans-serif;
 text-align: center;
-transition: all 0.5s ease 0s;
-}
-#privateExploreInput:hover, #privateExploreInput:focus, #privateExploreInput:active, input[type=search]:focus {
-/*background-color: rgba(0,220,255, 0.1);*/
-box-shadow: 0 0 2pt 2pt rgba(0,220,255,0) !important;
-outline: none;
+transition: all 1s ease 0s;
 }
 input[type=search]:focus {
   border: 0px solid #00dcff !important;
@@ -3872,6 +3885,13 @@ input[type=text]:focus, input[type=email]:focus, input[type=password]:focus, inp
 box-shadow: 0 0 0pt 0pt rgba(0,220,255,0) !important;
 outline: none !important;
 }
+#privateExploreInput:hover, #privateExploreInput:focus, #privateExploreInput:active, input[type=search]:focus {
+  /*background-color: rgba(0,220,255, 0.1);*/
+  box-shadow: 0 0 2pt 2pt rgba(0,220,255,0) !important;
+  outline: none;
+  transition: all 1s ease 0s;
+  }
+
 
 
 
@@ -4750,7 +4770,8 @@ background-position: center 48%;
 #pointsNumberContainer {
   margin: 0 auto;
   width: 50%;
-  background: radial-gradient(circle at bottom,rgba(0,255,220, 0.2), rgba(0,255,220, 0.05), rgba(0,255,220, 0.02), rgba(0,255,220, 0), rgba(0,255,220, 0), rgba(0,255,220, 0));      
+  background: radial-gradient(circle, rgba(0,220,255, 0.15), rgba(0,220,255, 0.05), rgba(0,220,255,0.05), rgba(0,220,255,0));
+
 }
 #pointsNumberValue {
   text-align: center;
@@ -4764,7 +4785,7 @@ background-position: center 48%;
   /* Green */
   /* background: radial-gradient(circle, rgba(0,255,220, 0.15), rgba(0,255,220, 0.05), rgba(0,255,220,0), rgba(0,255,220,0)); */
   /* Blue */
-  background: radial-gradient(circle, rgba(0,220,255, 0.15), rgba(0,220,255, 0.05), rgba(0,220,255,0), rgba(0,220,255,0));
+  background: radial-gradient(circle at top,rgba(0,255,220, 0.1), rgba(0,255,220, 0.05), rgba(0,255,220, 0.02), rgba(0,255,220, 0), rgba(0,255,220, 0), rgba(0,255,220, 0));      
 }
 #pointsNumberDisplay {
   text-align: center;
@@ -4839,6 +4860,12 @@ background-position: center 48%;
   width: 100%;
   padding: 5px 0px;
 }
+#userSymbolSelectContainer:hover #earthMini {
+  transform: rotate(23.44deg) scale(1.05);
+}
+#userSymbolSelectContainer:hover #marsMini {
+  transform: rotate(25.19deg) scale(1.05);
+}
 #nextLevelLabel {
   text-align: center;
   margin: 0 auto;
@@ -4852,40 +4879,54 @@ background-position: center 48%;
   width: 100%;
   margin: 0 auto;
   position: relative;
+  border: 1px solid blue;
 }
 #nextLevelTitle {
   text-align: center;
   margin: 0 auto;
-  width: 45%;
-  margin-bottom: 2%;
-  color: #00dcff;
-  font-size: 120%;
+  width: 70%;
+  color: #ffffff;
+  font-size: 125%;
   letter-spacing: 4px;
-  padding: 5px;
+  padding: 20px 0px;
   border: 1px solid #00dcff;
   border-radius: 3px 3px 15% 15%;
-  background: radial-gradient(rgba(0,220,255,0), rgba(0,220,255,0.05));
+  background: radial-gradient(rgba(81,81,81,0.5), rgba(0,220,255,0.05));
+  box-shadow: 0 0 2pt 2pt rgba(0,220,255,1);
+
+  transition: all 1s ease 0s;
+
+  /* background-image: url('./rooseveltWest1.jpg');  */
+  /* background-size: 110%;  */
+  /* background-repeat: no-repeat; */
+  background-color: rgba(15,19,28,0.999);
+  /* background-blend-mode: overlay;
+  background-position: center 23%; */
 }
 #nextLevelTitleLockLeft {
   position: absolute;
   top: 0;
   left: 0px;
   width: 5%;
+  height: 5%;
   background-image: url('./lock2Blue.svg'); 
   /* background-size: 110%;  */
   background-repeat: no-repeat;
   background-position: center;
+  border: 1px solid green;
 }
 #nextLevelTitleLockRight {
   position: absolute;
   top: 0;
   right: 0px;
   width: 5%;
+  height: 5px;
   
   background-image: url('./lock2Blue.svg'); 
   /* background-size: 110%;  */
   background-repeat: no-repeat;
   background-position: center;
+  border: 1px solid green;
 }
 #nextLevelPointsNumberDisplay {
 text-align: center;
@@ -4971,6 +5012,12 @@ border-radius: 0px 0px 25% 25%;
 }
 #marsMini:hover {
   transform: rotate(25.19deg) scale(1.1);
+}
+#earthMini:active, #marsMini:active {
+  transform: rotate(23.44deg) scale(1.2);
+}
+#marsMini:active {
+  transform: rotate(25.19deg) scale(1.2);
 }
 /*End Profile*/
 
@@ -5337,17 +5384,14 @@ font-family: 'Open Sans';
   padding: 1% 5% 1% 5%;
   margin-bottom: 1.1%;
   background-color: rgba(0,220,255,0.05);
-  /* background: linear-gradient(to right,rgba(0,220,255, 0.02), rgba(0,220,255, 0.07), rgba(0,220,255, 0.07)); */
-  /* background: linear-gradient(to right,rgba(0,220,255, 0.06), rgba(0,220,255, 0.07), rgba(0,220,255, 0.02));   */
   position: relative;
   transition: all 0.5s ease 0s;
 }
 #suggestionContentHoverVote, #commentContentHoverVote {
-  background-color: rgba(0,255,220,0.075);
-  /* background: linear-gradient(to right,rgba(0,220,255, 0.06), rgba(0,220,255, 0.07), rgba(0,220,255, 0.02));   */
+  background-color: rgba(0,255,220,0.05);
 }
 #suggestionContentHoverUnvote, #commentContentHoverUnvote {
-  background-color: rgba(0,255,220,0.05);
+  background-color: rgba(0,220,255,0.05);
 }
 #suggestionContentHoverFlag, #commentContentHoverFlag {
   background-color: rgba(255,127,127,0.05);
@@ -5992,24 +6036,27 @@ input#submitWelcomeProblem:hover {
       background-size: 1000px;
       height: initial;
     }
-    #welcomeIntroductionLabel:hover {
-      transform: scale(1.02);
-      background-color: rgba(15,19,28,0.5);
-      font-weight: bold;
-      width: 70%;
-      letter-spacing: 16px;
+    #welcomeIntroductionLabel:hover, .activeIntroductionButton div {
+      transform: scale(1.02) !important;
+      background-color: rgba(15,19,28,0.5) !important;
+      font-weight: bold !important;
+      width: 70% !important;
+      letter-spacing: 16px !important;
 
-      background-color: rgba(0,220,255,0.05);
-      background: linear-gradient(rgba(0,255,220,0.07), rgba(0,255,220,0.05), rgba(0,220,255,0.02));
+      background-color: rgba(0,220,255,0.05) !important;
+      background: linear-gradient(rgba(0,255,220,0.07), rgba(0,255,220,0.05), rgba(0,220,255,0.02)) !important;
 
-      background-size: contain;
-      background-repeat: no-repeat;
-      background-color: rgba(15,19,28,0.8);
-      background-blend-mode: overlay;
-      background-image: url('./crabNebula1.jpg');
-      background-position: center;
-      background-size: 1000px;
-      /* height: initial; */
+      background-size: contain !important;
+      background-repeat: no-repeat !important;
+      background-color: rgba(15,19,28,0.8) !important;
+      background-blend-mode: overlay !important;
+      background-image: url('./crabNebula1.jpg') !important;
+      background-position: center !important;
+      /* May cause difficulty in mobile, if so switch to % */
+      background-size: 1000px !important;
+    }
+    .activeIntroductionButton div {
+      width: 80% !important;
     }
 
 /*End Welcome*/
@@ -6575,7 +6622,8 @@ padding: 3px;
 /*box-shadow: 0 0 1pt 1pt rgba(0,220,255,0.5);*/
 transition: all 0.5s ease 0s;
 z-index: 500;
-margin-bottom: 1%;
+margin-top: 0.5%;
+margin-bottom: 0.5%;
 }
 #editProjectButton:hover, #editProjectButton:active {
 cursor: pointer;
@@ -6763,12 +6811,20 @@ box-shadow: 0 0 2pt 2pt rgba(0,220,255,0.5);
   opacity: 1;
 }
 
-
-#debateThreadButton {
+#discussUnitButtonsContainer {
   position: absolute;
   /* top: 11%; */
   top: 10px;
   right: 45px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+#discussThreadContainer {
+  display: flex;
+  flex-direction: column;
+}
+#debateThreadButton {
   padding: 4px 10px 4px 12px;
   transition: all 1s ease 0s;
   z-index: 510;
@@ -6781,6 +6837,57 @@ box-shadow: 0 0 2pt 2pt rgba(0,220,255,0.5);
   /* transform: scale(1.1) rotate(90deg); */
   transform: scale(0.9) rotate(90deg);
   top: 3px;
+}
+#numberDiscussButton {
+  /* position: absolute;
+  bottom: 2.5%;
+  right: 63px; */
+  padding: 4px 10px 10px 3px;
+  color: #00dcff;
+  font-size: 125%;
+  transition: all 1s ease 0s;
+  z-index: 510;
+  opacity: 0.5;
+  background-color: rgba(0,220,255,0);
+  background: radial-gradient(circle , rgba(0,220,255,0.05), rgba(0,220,255,0), rgba(0,220,255,0));
+}
+#numberDiscussButton:hover {
+  opacity: 1;
+  transform: scale(1.2);
+  cursor: pointer;
+}
+#discussVoteButton, #discussVotedButton {
+  width: 50px;
+  height: 50px;
+  border: 1px solid #00ffdc;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(0,255,220, 0.5), rgba(0,255,220, 0.5), rgba(0,255,220, 0.1), rgba(0,255,220, 0),rgba(0,255,220, 0),rgba(0,255,220, 0.5), rgba(0,255,220, 1), rgba(0,255,220, 1));
+  transition: all 1s ease 0s;
+  margin-top: 2%;
+  margin-bottom: 2%;
+}
+#discussVotedButton {
+  background-color: rgba(0,255,220,1);
+  transform: scale(1.1);
+}
+#discussVoteButton:hover {
+  background: radial-gradient(circle, rgba(0,255,220, 0.5), rgba(0,255,220, 0), rgba(0,255,220, 0), rgba(0,255,220, 0.5),rgba(0,255,220, 1),rgba(0,255,220, 0.5), rgba(0,255,220, 1), rgba(0,255,220, 1));
+  background-color: rgba(0,255,220,1) !important;
+  transition: all 1s ease 0s;
+  transform: scale(1.1);
+}
+#discussVotedButton:hover {
+  transform: scale(1);
+  transition: all 1s ease 0s;
+  background-color: rgba(0,255,220,0);
+}
+#discussVoteButton:active {
+  transition: all 1s ease 0s;
+  transform: scale(1.2);
+}
+#discussVotedButton:active {
+  transition: all 1s ease 0s;
+  transform: scale(1.2);
 }
 #flagDiscussButton {
   position: absolute;
@@ -6830,7 +6937,7 @@ box-shadow: 0 0 2pt 2pt rgba(0,220,255,0.5);
   transform: scale(1.2);
   cursor: pointer;
 }
-#numberDiscussButton, #numberLearnButton {
+#numberLearnButton {
   position: absolute;
   bottom: 2.5%;
   right: 63px;
@@ -6846,7 +6953,7 @@ box-shadow: 0 0 2pt 2pt rgba(0,220,255,0.5);
 #numberLearnButton {
   bottom: 4%;
 }
-#numberDiscussButton:hover, #numberLearnButton:hover {
+#numberLearnButton:hover {
   opacity: 1;
   transform: scale(1.2);
   cursor: pointer;
@@ -7054,15 +7161,15 @@ margin-top: 1%;
 /* NEW */
 justify-content: space-around;
 }
-#problemCenterColumn {
+#problemCenterColumn, #problemCenterColumnPrivate {
   display: flex;
   flex-direction: row;
-  justify-content: center;
   margin: 0 auto;
-
-  /* Testing styles */
   justify-content: space-around;
- width: 50%;
+  width: 50%;
+}
+#problemCenterColumnPrivate {
+  width: 52%;
 }
 
 #problemColumn1 {
@@ -7175,9 +7282,6 @@ margin: 0 auto;
 font-size: 125%; 
 width: 8em;
 background-color: rgba(255,255,255,0.025);
-/* Testing styles */
-
-/* width: 7em; */
 }
 #voteProblem:hover, #voteProblemHover {
 cursor: pointer; 
@@ -7205,6 +7309,58 @@ cursor: pointer;
 color: #0f131c;
 background-color: #00ffdc;
 }
+#voteProblemUp, #voteProblemDown, #voteSolutionUp, #voteSolutionDown {
+  flex: 1 1 auto;
+  border-radius: 3px 3px 3px 35%;
+  margin: 0 auto; 
+  width: 3em;
+  height: 28.25px;
+  transition: all 1s ease 0s;
+  background: url('./arrowVoteGreen.svg') no-repeat !important;
+}
+#voteSolutionUp, #voteSolutionDown {
+  width: 5em;
+  height: 32px;
+  margin-top: 2%;
+  margin-bottom: 2%;
+}
+#voteProblemDown, #voteSolutionDown {
+  border-radius: 3px 3px 3px 35%;
+  transform: rotate(180deg);
+}
+#voteProblemUp:hover, #voteProblemDown:hover, #voteSolutionUp:hover, #voteSolutionDown:hover {
+  cursor: pointer; 
+  transform: scale(1.3);
+  transition: all 0.5s ease 0s;
+}
+#voteProblemDown:hover, #voteSolutionDown:hover {
+  transform: scale(1.3) rotate(180deg);
+}
+#voteProblemUp:active, #voteProblemDown:active, #voteSolutionUp:active, #voteSolutionDown:active {
+  background: url('./arrowVoteBlue.svg') no-repeat !important;
+  transition: all 0.5s ease 0s;
+  transform: scale(1.5);
+}
+#voteProblemDown:active, #voteSolutionDown:active {
+  transform: scale(1.5) rotate(180deg);
+}
+#voteSolutionContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 0 auto;
+  width: 70%;
+}
+#voteSolutionGreenContainer {
+  width: 100%;
+  border: 1px solid #00ffdc;
+  border-width: 0px 0px 1px 0px;
+  border-radius: 0% 0% 20% 20%;
+  padding: 1px;
+  background: linear-gradient(rgba(0,255,220,0), rgba(0,255,220,0), rgba(0,255,220,0.1));
+}
+
+
 #SBButtonDiscuss, #SBButtonLearn {
 flex: 1 1 auto;
 text-align: center;
@@ -7271,7 +7427,7 @@ transform: scale(1.02);
 .activeProblemOptionLearn div {
   background: linear-gradient(to right, rgba(0,220,255,0.1), rgba(0,220,255,0.05), rgba(0,220,255,0.02)) !important;  
 }
-#SBButtonProposal, #SBButtonFollow, #SBButtonFollowed {
+#SBButtonProposal, #SBButtonProposalPrivate, #SBButtonFollow, #SBButtonFollowed, #SBButtonFollowPrivate, #SBButtonFollowedPrivate {
   flex: 1 1 auto;
   text-align: center;
   background-color: rgba(0, 255, 220, 1);
@@ -7288,23 +7444,22 @@ transform: scale(1.02);
   font-size: 125%;  
   border-radius: 3px 3px 35% 3px;
   }
-  #SBButtonProposal {
-  border-radius: 0px;
-
-  /* Testing new styles */
-  border-radius: 3px;
-  /* width: 10em; */
+  #SBButtonProposalPrivate {
+    border-radius: 3px 3px 3px 35%;
   }
-  #SBButtonFollow {
+  #SBButtonProposal {
+  border-radius: 3px;
+  }
+  #SBButtonFollow, #SBButtonFollowPrivate {
     border-color: #00dcff;
     color: #00dcff;
   }
-  #SBButtonFollowed {
+  #SBButtonFollowed, #SBButtonFollowedPrivate {
     border-color: #00dcff;
     color: #0f131c;
     background-color: #00dcff;
   }
-  #SBButtonProposal:hover, #SBButtonFollow:hover {
+  #SBButtonProposal:hover,  #SBButtonProposalPrivate:hover, #SBButtonFollow:hover, #SBButtonFollowPrivate:hover {
   background-color: #00dcff;
   color: #0f131c;
   cursor: pointer;
@@ -7447,7 +7602,7 @@ color: #0f131c;
 cursor: pointer; 
 /*box-shadow: 0 0 2pt 2pt rgba(0,255,220,0.5);*/
 }
-#problemSummary, #problemSummaryLeftSB {
+#problemSummary, #problemSummaryLeftSB, #problemSummaryPrivate {
 margin: -1px 25px 7.5px 25px;
 line-height: 150%;
 /*Previously was 125%, fullproblem was 60% in width*/
@@ -7466,10 +7621,18 @@ background-color: rgba(255,255,255,0.025);
 /*font-weight: 300;*/
 white-space: pre-wrap !important;
 }
-#problemSummary {
+#problemSummary, #problemSummaryPrivate {
   /* font-size: 120%; */
   font-size: 110%;
   background: radial-gradient(circle, rgba(0,220,255, 0.1), rgba(0,220,255, 0), rgba(0,220,255, 0));   
+}
+#problemSummaryPrivate {
+  padding: 5% 35px;
+  border-width: 1px 0px;
+  border-radius: 5% 5% 15% 15%;
+  border-top-color: #515151;
+  border-color: #515151;
+  margin-top: 3%;
 }
 
 
@@ -7651,7 +7814,7 @@ background: radial-gradient(circle, rgba(0,220,255,0.05), rgba(0,220,255,0.05), 
   transform: scale(1.02);
   background: radial-gradient(circle, rgba(255,127,127,0.05), rgba(255,127,127,0.05), rgba(255,127,127,0.1), rgba(255,127,127,0.05));
 }
-#SPTitle, #SPTitleGreen, #SPTitleRed, #SPTitleSmall {
+#SPTitle, #SPTitleGreen, #SPTitleRed, #SPTitleSmall, #SPTitleGreenPrivate, #SPTitleRedPrivate {
 margin: 0 auto;
 padding: 5px 10px 5px 10px;
 /* If project title length becomes an issue, change font-size to normal */
@@ -7665,11 +7828,17 @@ overflow: auto;
 text-align: center;
 transition: all 0.5s ease 0s;
 }
-#SPTitleGreen {
+#SPTitleGreen, #SPTitleGreenPrivate {
   font-size: 100%;
 }
-#SPTitleRed {
+#SPTitleGreenPrivate {
+  padding-top: 0px;
+}
+#SPTitleRed, #SPTitleRedPrivate {
   font-size: 100%;
+}
+#SPTitleRedPrivate {
+  padding-top: 0px;
 }
 #SPTitleSmall {
   font-size: 100%;
@@ -8066,6 +8235,15 @@ box-shadow: 0 0 1pt 1pt rgba(255,255,255,0.5);
 width: 85%;
 text-transform: lowercase !important;
 }
+
+#discussFormContainer {
+  background: radial-gradient(circle, rgba(0,220,255,0.05), rgba(0,220,255,0));
+  padding: 5% 0%;
+}
+
+
+
+
 #fullSolution {
   position: relative;
   width: 70%;
@@ -8125,67 +8303,98 @@ font-size: 110%;
 
 /*Discuss SB*/
 
-#SBDiscussButton {
-flex: 1 1 auto;
-color: #dddddd;
-font-size: 130%;
-border: 1px solid #dddddd;
-border-width: 0px 1px 0px 1px;
-text-align: center;
-text-decoration: none;
-margin: 0 auto;
-/*margin-top: 12px;*/
-width: 60%;
-background-color: rgba(0,220,255,0);
-transition: all 0.2s ease 0s;
-padding: 3px 0px;
-text-transform: lowercase !important;
+#discussSelectButtonLeftActive, #discussSelectButtonRightActive, #discussSelectButtonCenterActive,
+#discussSelectButtonLeftInactive, #discussSelectButtonRightInactive, #discussSelectButtonCenterInactive {
+  flex: 1 1 auto;
+  color: #dddddd;
+  font-size: 110%;
+  text-align: center;
+  text-decoration: none;
+  margin: 0 auto;
+  /* margin-left: 0.5%;
+  margin-right: 0.5%;
+  margin-top: 1%; */
+  width: 60%;
+  background-color: rgba(0,220,255,0);
+  transition: all 0.5s ease 0s;
+  padding: 4px 0px;
+  text-transform: lowercase !important;
+  background: linear-gradient(225deg, rgba(0,220,255,0), rgba(0,220,255,0.05));
+  border: 1px solid #dddddd;
+  border-width: 0px 0px 1px 1px;
+  border-radius: 0px 0px 0px 25%;
+  box-shadow: 0 0 0.5pt 0.5pt rgba(255,255,255,0.5);
 }
-#SBDiscussButton:hover, #SBDiscussButtonEnd:hover {
-background-color: rgba(0,220,255,0.15);
-color: #00dcff;
-cursor: pointer;
-border-color: #00dcff;
+#discussSelectButtonLeftInactive, #discussSelectButtonRightInactive, #discussSelectButtonCenterInactive {
+
 }
-#SBDiscussButtonEnd {
-flex: 1 1 auto;
-color: #dddddd;
-font-size: 130%;
-border: 1px solid #dddddd;
-border-width: 0px 1px 1px 1px;
-text-align: center;
-text-decoration: none;
-margin: 0 auto;
-/*margin-top: 12px;*/
-width: 50%;
-background-color: rgba(0,220,255,0);
-transition: all 0.2s ease 0s;
+#discussSelectButtonRightActive, #discussSelectButtonRightInactive {
+  background: linear-gradient(135deg, rgba(0,220,255,0), rgba(0,220,255,0.05));
+  border-width: 0px 1px 1px 0px;
+  border-radius: 0px 0px 25% 0px;
 }
-#SBDiscussButton1 {
-border-width: 0px 1px 1px 1px;
+#discussSelectButtonCenterActive, #discussSelectButtonCenterInactive {
+  border-width: 0px 1px 1px 1px;
+  border-radius: 0px 0px 0px 0px;
+  background: linear-gradient(rgba(0,220,255,0), rgba(0,220,255,0.05));
+}
+#discussSelectButtonLeftActive:hover, #discussSelectButtonRightActive:hover, #discussSelectButtonCenterActive:hover, 
+#discussSelectButtonLeftInactive:hover, #discussSelectButtonRightInactive:hover, #discussSelectButtonCenterInactive:hover {
+  background-color: rgba(0,220,255,0.05);
+  color: #00dcff;
+  cursor: pointer;
+  border-color: #00dcff;
 }
 #sidebarDiscussMenu {
-display: inline-flex;
-flex-direction: row;
+display: flex;
+flex-direction: column;
 align-items: stretch;
-width: 100%;
-border: 1px solid #00dcff;
-border-width: 0px 0px 0px 0px;
-margin-bottom: 0px;
+width: 70%;
+margin: 0 auto;
+background: radial-gradient(circle, rgba(0,220,255,0.05), rgba(0,220,255,0));
 }
-#discussGroup1, #discussGroup2 {
-flex: 1 1 auto;
-text-align: center;
-border: 1px solid #00dcff;
-border-width: 0px 0px 0px 0px;
-display: inline-flex;
-flex-direction: row;
-justify-content: center;
-width: 100%;
-display: block;
+#discussGroupSelectAllActive, #discussGroupSelectAllInactive {
+  flex: 1 1 auto;
+  color: #00dcff;
+  letter-spacing: 2px;
+  font-size: 160%;
+  border: 1px solid #00dcff;
+  border-width: 0px 1px 1px 1px;
+  border-radius: 0px 0px 25% 25%;
+  text-align: center;
+  text-decoration: none;
+  margin: 0 auto;
+  width: 100%;
+  background-color: rgba(0,220,255,0);
+  transition: all 0.5s ease 0s;
+  padding: 4px 0px;
+  background: linear-gradient(rgba(0,220,255,0.05), rgba(0,220,255,0));
+  box-shadow: 0 0 0.5pt 0.5pt rgba(0,220,255,0.5);
 }
-#discussGroup2 {
-border-width: 0px 0px 0px 0px;
+#discussGroupSelectAllInactive {
+  border-radius: 0px 0px 10% 10%;
+}
+#discussGroupSelectAllActive:hover, #discussGroupSelectAllInactive:hover {
+  background-color: rgba(0,220,255,0.05);
+  color: #00dcff;
+  cursor: pointer !important;
+  border-color: #00dcff;
+}
+#discussGroupSelection {
+  flex: 1 1 auto;
+  text-align: center;
+  /* border: 1px solid #dddddd; */
+  /* border-width: 0px 1px 1px 1px;
+  border-radius: 0px 0px 25% 25%; */
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin: 0 auto;
+  margin-bottom: 2%;
+  width: 90%;
+  border: linear-gradient(rgba(0,220,255,0.05), rgba(0,220,255,0));
+  letter-spacing: 2px;
+  padding-bottom: 3px;
 }
 #discussHeader {
 /*Old Styles*/
@@ -8215,9 +8424,16 @@ border-width: 0px 0px 1px 0px;
 }
 #discussPercent {
 /*Old Styles*/
-margin-right: 10px;
+/* margin-right: 10px; */
 font-size: 120%;
 transition: all 1s ease 0s;
+color: #00ffdc;
+text-align: center;
+font-size: 70%;
+padding-top: 5%;
+padding-bottom: 5%;
+padding-left: 2%;
+letter-spacing: 2px;
 }
 #discussPercentGreen {
   /*Old Styles*/
@@ -8227,39 +8443,44 @@ transition: all 1s ease 0s;
   transition: all 1s ease 0s;
   }
 #discussHoverText, #discussHoverTextGreen, #discussHoverTextRed {
-  /* display: none; */
   position: absolute;
-  /* top: 3%; */
   top: 5px;
   right: 14%;
   color: #00dcff;
   transition: all 1s ease 0s;
-  letter-spacing: 4px;
-  opacity: 0;
-  font-size: 180%;
+  letter-spacing: 2px;
+  opacity: 1;
+  font-size: 110%;
 }
 #discussHoverTextGreen {
-  color: pink;
+  color: #00ffdc;
 }
 #discussHoverTextRed {
   color: #ff7f7f;
 }
 #discussHoverTextShow, #discussHoverTextShowGreen, #discussHoverTextShowRed, #discussHoverTextShowVoted {
   position: absolute;
-  /* top: 3%; */
   top: 5px;
   right: 14%;
   color: #00dcff;
   transition: all 1s ease 0s;
   letter-spacing: 6px;
   opacity: 1;
-  font-size: 180%;
+  font-size: 110%;
 }
 #discussHoverTextShowGreen, #discussHoverTextShowVoted {
   color: #00ffdc;
 }
 #discussHoverTextShowRed {
   color: #ff7f7f;
+}
+#discussNumberValue {
+  opacity: 1;
+  transition: all 0.5s ease 0s;
+}
+#discussNumberValueHide {
+  opacity: 0;
+  transition: all 0.5s ease 0s;
 }
 
 /*End Discuss SB*/
@@ -8770,7 +8991,7 @@ letter-spacing: 8px;
 padding: 5px;
 width: 5em;
 }
-#proposalCreator {
+#proposalCreator, #privateProposalRank, #privateProposalRankActive {
 flex: 1 1 auto;
 margin: 0 auto;
 font-size: 80%;
@@ -8783,18 +9004,43 @@ transition: all 0.5s ease 0s;
 #proposalCreator:hover {
 color: #ffffff;
 }
-#projectCreator {
-flex: 1 1 auto;
-margin: 0 auto;
-font-size: 80%;
-text-align: center;
-letter-spacing: 8px;
-/* padding: 0px 0px 5px 0px; */
-width: 100%;
-transition: all 0.5s ease 0s;
+#privateProposalRank {
+  color: #00ffdc;
+  font-size: 90%;
+  margin-bottom: 2%;
+  transition: all 0.5s ease 0s;
+}
+#privateProposalRankActive {
+  color: #00dcff;
+  font-size: 90%;
+  margin-bottom: 2%;
+  transform: scale(1.2);
+  transition: all 0.5s ease 0s;
+}
+#projectCreator, #privateProjectRank, #privateProjectRankActive {
+  flex: 1 1 auto;
+  margin: 0 auto;
+  font-size: 80%;
+  text-align: center;
+  letter-spacing: 8px;
+  width: 100%;
+  transition: all 0.5s ease 0s;
 }
 #projectCreator:hover {
 color: #ffffff;
+}
+#privateProjectRank {
+  color: #00ffdc;
+  font-size: 90%;
+  margin-bottom: 2%;
+  transition: all 0.5s ease 0s;
+}
+#privateProjectRankActive {
+  color: #00dcff;
+  font-size: 90%;
+  margin-bottom: 2%;
+  transform: scale(1.2);
+  transition: all 0.5s ease 0s;
 }
 #createDate {
 flex: 1 1 auto;
@@ -12192,6 +12438,7 @@ cursor: pointer !important;
   display: flex;
   flex-direction: row;
   width: 100%;
+
 }
 #projectFormRadioColumn {
   display: flex;
@@ -12691,14 +12938,14 @@ transition: all 1s ease 0s;
   height: 100px;
   background: url('./branchWhite1.svg') no-repeat !important;
   /* background: url('./projectTreeWhite2.svg') no-repeat !important; */
-  transform: scale(1.5) rotate(85deg);
+  transform: scale(1.5);
   padding: 0px 5px 30px 5px;
   /* margin-top: 35px; */
   opacity: 0.15;
   /* border: 1px solid red; */
 }
 #branchesProjectButton:hover, .activeBranchesProjectButton div, #branchesProjectButtonClick {
-  left: -45px;
+  left: -65px;
   width: 100px;
   height: 100px;
   /* top: 0%; */
@@ -12707,8 +12954,10 @@ transition: all 1s ease 0s;
   cursor: pointer;
   /* transform: scale(2.25) rotate(20deg); */
   opacity: 1;
-  background: url('./projectTreeWhite2.svg') no-repeat !important;
-  transform: scale(3.25) rotate(85deg);
+  /* ALT */
+  /* background: url('./projectTreeWhite2.svg') no-repeat !important; */
+  background: url('./branchWhite1.svg') no-repeat !important;
+  transform: scale(2.5) rotate(20deg);
 }
 #branchesProjectButton:hover #branchUnitList, #branchesProjectButtonClick #branchUnitList {
   display: flex !important;
@@ -12799,7 +13048,18 @@ transition: all 1s ease 0s;
   padding: 5px 10px 5px 10px;
   z-index: 400;
 }
-
+#breakdownSetsContainer {
+  position: relative;
+}
+#flagBreakdownButton {
+  display: block;
+  margin: 0 auto;
+  transition: all 0.5s ease 0s
+  }
+  #flagBreakdownButton:hover, #flagBreakdownButton:active {
+  cursor: pointer;
+  box-shadow: 0 0 2pt 2pt rgba(255,127,127,0.5);
+  }
 #branchHeaderTitle {
   /* border: 1px solid #00dcff; */
   text-align: center;
@@ -12816,6 +13076,7 @@ transition: all 1s ease 0s;
   border-radius: 0% 0% 20% 20%;
   padding: 5px 3% 5px 3%;
   background: linear-gradient(rgba(0,220,255,0), rgba(0,220,255,0.1));
+  text-transform: lowercase !important;
 }
   .branchText {
     font-size: 80% !important;
@@ -14457,7 +14718,27 @@ input#submitBreakdown:hover {
   color: #515151;
   margin-top: 3%;
   margin-bottom: 1%;
+  transition: all 2s ease 0s;
 }
+/* #greekAcademyPhrase:active {
+  color: #ffffff;
+  padding: 50px 0px;
+  width: 100%;
+  border: 1px solid #00dcff;
+  border-width: 1px 1px 1px 1px;
+  border-radius: 35% 35% 0px 0px;
+  transition: all 2s ease 0s;
+  box-shadow: 0 0 1pt 1pt rgba(0,220,255,1);
+
+
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-color: rgba(15,19,28,0.5);
+  background-blend-mode: overlay;
+  background-image: url('./greekPottery1.jpg');
+  background-position: center;
+  background-size: 100%;
+} */
 
 
 /* BEN PAPER CONTAINER */
