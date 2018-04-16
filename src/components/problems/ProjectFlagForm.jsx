@@ -76,7 +76,7 @@ render() {
         <img src={require('../../assets/redX.svg')} id="exitNotebookButton" width="30" height="30" alt="Close button, red X symbol" /> 
       </Link> */}
       <div>
-      <div id="flagHeader" onClick={this.whichOption}>
+      <div id="flagHeader">
         flag reasoning
       </div>
 

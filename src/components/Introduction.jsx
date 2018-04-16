@@ -24,51 +24,52 @@ export default class Introduction extends React.Component {
             </Link>
           <div id="introductionContainer">
                 <div id="introductionWelcome">
-                    {/* <span id="introductionCapital">W</span>elcome to <span id="introductionCapital"> XP</span>rincipia */}
                     welcome to xprincipia
                 </div>
-                {/*Considering change to "The Open Frontier of Discovery/Science*/}
-                {/*Not currently using*/}
-                {/*<div id="introductionTitle">The Open Frontier of Research</div>*/}
                 <div id="introductionProse">
                     <div id="introductionSection1">
-                        <span id="introductionCapitalProse">within the near future,</span> technologies will<span id="blueOpen"> radically reshape our world</span>.
-                        <br />
-                        <br />
-                        <span id="introductionCapitalProse">human spaceflight, genetic engineering, artificial intelligence</span> and many other advancements will pair to propel humanity towards a new state of civilization,<span id="blueOpen"> possibly within our lifetimes</span>.  
-                        <br />
-                        <br />
-                        <span id="introductionCapitalProse">to reach these goals,</span> we believe as much of the human population as possible should be working<span id="blueOpen"> towards their achievement</span>. 
+                        <div id="introductionSectionHeaderBig">creativity</div>
+                        <div id="introductionSectionHeader1">  
+                            is the great endeavor of humanity
+                        </div>
+                        <div id="introductionSectionProse">
+                            Pure <span id="blueBigger">art </span>is the product of the human’s <span id="blueBigger">creativity</span>, without application to practical problem solving. 
+                            The nature of art may also be applied to the human’s need to solve problems. 
+                            The application of art to the understanding of the world is called <span id="blueBigger">science</span>, and its application to the shaping of the world <span id="blueBigger">technology</span>. 
+                        </div>
                     </div>
                     <div id="introductionSection2">
-                        <br />
-                        <br />
-                        <span id="introductionCapitalProse">XPrincipia </span>is designed as a platform<span id="blueOpen"> to allow this process to occur</span>. 
-                        <br />
-                        <br />
-                        <span id="introductionCapitalProse">our goal is to allow anyone </span>to contribute directly towards this cause and connect these efforts, <span id="blueOpen">similar to how neurons must be connected to create a brain</span>. 
-                        <br />
-                        <br />
+                        <div id="introductionSectionHeader2">
+                            science applied to the internet
+                        </div>
+                        <div id="introductionSectionProse">
+                            As of <span id="blueBigger">12,018 HE</span>, the act of science has been carried out by small groups of people, often connected loosely as they each strived for a greater <span id="blueBigger">science</span>. 
+                            The same can be said of technology. 
+                            However, humanity has created the <span id="blueBigger">internet</span>, allowing for the connectivity of multiple human minds. 
+                            With this great civilization-nervous system, there needs to be a location designed for the task of collective science. 
+                            The same can be said of technology. 
+                        </div>
                     </div>
                     <div id="introductionSection3">
-                        <span id="introductionCapitalProse">we organize this process </span>by allowing users to work together in projects, creating proposals to<span id="blueOpen"> solve problems and achieve goals</span>. 
-                        <br />
-                        <br />
-                        <span id="introductionCapitalProse">to aid you on this journey, </span>you are given a centralized location for your thoughts, organized in<span id="blueOpen"> a private Mind Temple</span>. 
-                        <br />
-                        <br />
-                        <span id="introductionCapitalProse">to join this mission,<span id="green"> please register </span>and<span id="blue"> begin exploring</span></span>. 
+                        <div id="introductionSectionHeader3">
+                            xprincipia as scientific connectivity
+                        </div>
+                        <div id="introductionSectionProse">
+                            XPrincipia is crafted to be this center of mass-creativity, focused upon the understanding and shaping of our world. 
+                            XPrincipia is forever free and open to all of humanity. 
+                            XPrincipia is <span id="blueBigger">science</span> become <span id="blueBigger">internet</span>. 
+                        </div>
                     </div>
                 </div>
 
                 <IntroductionRegister />
-                <Link to="/welcome">
+                {/* <Link to="/welcome">
                     <div id="introductionExploreButton">
                         Explore
                     </div>
-                </Link>
+                </Link> */}
 
-                <div id="introductionProjectsProse"> 
+                {/* <div id="introductionProjectsProse"> 
                     Help humanity reach the stars
                 </div>
                 <Link to={`/project/7/subprojects`}>
@@ -82,7 +83,6 @@ export default class Introduction extends React.Component {
                 <div id="introductionProjectsProse">
                     Purposely evolve the human body and mind
                 </div>
-                {/*Link each to the actual project - check url on active site*/}
                 <Link to={`/project/8/subprojects`}>
                     <div id="introductionProjectHeader2"> 
                         <div id="introductionProjectTitle">
@@ -101,7 +101,6 @@ export default class Introduction extends React.Component {
                     </div>
                 </Link>
                 <div id="introductionProjectsProse">
-                    {/*Design the tools needed for all scopes of our ambitions:*/}
                     Design technologies to shape the world
                 </div>
                 <Link to={`/project/10/subprojects`}>
@@ -110,10 +109,7 @@ export default class Introduction extends React.Component {
                             technology development
                         </div>
                     </div>
-                </Link>
-                {/*<div id="introductionProjectsProse">
-                    Here are the projects towards progressing our technologies, tools which have shaped our history so far, and will continue to shape our future, including advances such as artificial intelligence and nanostructures.
-                </div>*/}
+                </Link> */}
             </div>
             
             {randomImg()}
@@ -143,6 +139,109 @@ if (Math.random() < 0.125) {
   return <img src={require('../assets/greatBearConstellation.svg')} id="middleAlignOrionIntro" width='70' height='100' alt="Back arrow, blue up arrow" />
 }
 }
+
+
+
+
+
+// OLD DRAFTING
+
+
+{/* <div id="introductionSection1">
+    <span id="introductionCapitalProse">within the near future,</span> technologies will<span id="blueOpen"> radically reshape our world</span>.
+    <br />
+    <br />
+    <span id="introductionCapitalProse">human spaceflight, genetic engineering, artificial intelligence</span> and many other advancements will pair to propel humanity towards a new state of civilization,<span id="blueOpen"> possibly within our lifetimes</span>.  
+    <br />
+    <br />
+    <span id="introductionCapitalProse">to reach these goals,</span> we believe as much of the human population as possible should be working<span id="blueOpen"> towards their achievement</span>. 
+</div>
+<div id="introductionSection2">
+    <br />
+    <br />
+    <span id="introductionCapitalProse">XPrincipia </span>is designed as a platform<span id="blueOpen"> to allow this process to occur</span>. 
+    <br />
+    <br />
+    <span id="introductionCapitalProse">our goal is to allow anyone </span>to contribute directly towards this cause and connect these efforts, <span id="blueOpen">similar to how neurons must be connected to create a brain</span>. 
+    <br />
+    <br />
+</div>
+<div id="introductionSection3">
+    <span id="introductionCapitalProse">we organize this process </span>by allowing users to work together in projects, creating proposals to<span id="blueOpen"> solve problems and achieve goals</span>. 
+    <br />
+    <br />
+    <span id="introductionCapitalProse">to aid you on this journey, </span>you are given a centralized location for your thoughts, organized in<span id="blueOpen"> a private Mind Temple</span>. 
+    <br />
+    <br />
+    <span id="introductionCapitalProse">to join this mission,<span id="green"> please register </span>and<span id="blueBigger"> begin exploring</span></span>. 
+</div> */}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// OLDEST DRAFTING
+
 
 
 // Draft 1

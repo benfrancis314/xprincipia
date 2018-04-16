@@ -9,9 +9,10 @@ import $ from 'jquery';
 import ReactGA from 'react-ga';
 ReactGA.initialize('UA-104103231-1'); //Unique Google Analytics tracking number
 
-
-
 class App extends React.Component {
+
+  // platformBrowserDynamic().bootstrapModule(AppModule);
+
     constructor(props){
       super(props);
 

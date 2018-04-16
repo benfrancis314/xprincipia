@@ -25,34 +25,6 @@ export default class Header extends React.Component {
         this.postLogin = this.postLogin.bind(this);
     };
 
-    // toggleFullScreen() {
-    //   if ((document.fullScreenElement && document.fullScreenElement !== null) ||    
-    //    (!document.mozFullScreen && !document.webkitIsFullScreen)) {
-    //     if (document.documentElement.requestFullScreen) {  
-    //       document.documentElement.requestFullScreen();  
-    //     } else if (document.documentElement.mozRequestFullScreen) {  
-    //       document.documentElement.mozRequestFullScreen();  
-    //     } else if (document.documentElement.webkitRequestFullScreen) {  
-    //       document.documentElement.webkitRequestFullScreen(Element.ALLOW_KEYBOARD_INPUT);  
-    //     }  
-    //   } else {  
-    //     if (document.cancelFullScreen) {  
-    //       document.cancelFullScreen();  
-    //     } else if (document.mozCancelFullScreen) {  
-    //       document.mozCancelFullScreen();  
-    //     } else if (document.webkitCancelFullScreen) {  
-    //       document.webkitCancelFullScreen();  
-    //     }  
-    //   }  
-    // }
-
-// Used WillMount before, not sure if advantage either way
-  // componentWillMount() {
-  //   this.state =  { 
-  //     userToken: cookie.load('userToken'),
-  //     username: cookie.load('userName')
-  //   }
-  // }
 componentDidMount(){
   var self = this;
   self.setState({ 
@@ -61,19 +33,7 @@ componentDidMount(){
     notification: this.props.notification,
   })
 }
-// TESTING, don't use
-  // componentDidMount() {
-  //   this.state =  { 
-  //     userToken: cookie.load('userToken')
-  //   };
-  // }
-  
-  // componentWillReceiveProps(nextState) {
-    // nextState =  { 
-      // userToken: cookie.load('userToken'),
-      // username: cookie.load('userName')
-    // };
-  // }
+
 
   postLogin() {
     var self = this
@@ -86,7 +46,6 @@ componentDidMount(){
       password: this.state.password
     })
     .then(function (result) {
-      // alert('headerBeforeState');
       self.setState({
         userToken: result.data.token
       })
@@ -102,7 +61,6 @@ componentDidMount(){
       })
     })
       .catch(function (error) {
-        // console.log(error.response.data)
           $(document).ready(function() {
               $('#notification').attr('id','notificationShow').hide().slideDown();
 

@@ -7,7 +7,7 @@ export default class Empty extends React.Component {
    render() {
       return (
         <div>
-          <Link to={`/project/private/${this.props.params.probID}/proposal/${this.props.params.solutionID}/questions`} activeClassName="activeProposalOption">
+          <Link to={`/project/private/${this.props.params.probID}/proposal/${this.props.params.solutionID}/discuss`} activeClassName="activeProposalOption">
             <div id="proposalDiscussButton">
               brainstorm
             </div>

@@ -14,6 +14,7 @@ export default class QuestionForm extends React.Component {
   this.state= {
     question: '',
     private: '',
+    type: '',
   }
 
     this.postQuestion = this.postQuestion.bind(this);
@@ -36,6 +37,13 @@ postQuestion() {
   var self = this;
   self.refs.btn.setAttribute("disabled", "disabled");
   this.state.question = document.getElementById('questionTextArea').value
+  if (document.getElementById('projectClass2').checked) {
+      this.state.type = '2' 
+    } else if (document.getElementById('projectClass1').checked) {
+      this.state.type = '3' 
+    } else {
+      this.state.type = '6' 
+    }
 
   //if User is on a solution post with type 1
   //solutionID will be available in props
@@ -76,8 +84,8 @@ postQuestion() {
     //probID will be used
     else {
 
-      axios.post( Config.API + '/auth/questions/create', {
-        type:'0',
+      axios.post( Config.API + '/auth/comments/create', {
+        type: this.state.type,
         typeID: this.props.params.probID,
         username: cookie.load('userName'),
         description : this.state.question,

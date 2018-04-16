@@ -179,6 +179,10 @@ ol, ul {
   color: #00dcff !important;
   font-family: 'Open Sans' !important;
 }
+#blueBigger {
+  font-size: 110% !important;
+  color: #00dcff !important;
+}
 #green {
   color: #00ffdc !important;
 }
@@ -3076,37 +3080,75 @@ background: radial-gradient(circle,rgba(0,220,255, 0.025), rgba(0,220,255, 0.05)
   font-family: 'Open Sans';
   background-repeat: no-repeat;
   background-attachment: fixed;
+  transition: all 1s ease 0s;
+}
+#introductionSection1:hover, #introductionSection2:hover, #introductionSection3:hover {
+  color: #00dcff;
 }
 #introductionSection1 {
-  /* background-image: url('./planetsDark.svg');   */
-  /* background-image: url('./orionDark.svg');     */
   background-image: url('./earthDark.svg');  
   background-position: top right;
   padding: 6% 5% 0% 5%;  
 }
 #introductionSection2 {
   background-position: top right;
-  /* background-image: url('./dnaDark5.svg'); */
-  /* Try a tree diagreem here, going downward */
-  /* background-image: url('./grecoDark.svg');   */
   background-image: url('./geodesicDark.svg');    
   padding: 0% 5% 0% 5%;
 }
 #introductionSection3 {
   background-position: top right;  
   background-image: url('./templeDark.svg');
-  /* background-image: url('./dodecahedronDark.svg'); */
   background-image: url('./saturnDark.svg');    
   padding: 0% 5% 6% 5%;
 }
+#introductionSectionProse {
+  text-align: justify;
+  opacity: 0.25;
+  color: #515151;
+  transition: all 1s ease 0s;
+  font-family: 'Open Sans';
+}
+#introductionSectionHeader1, #introductionSectionHeader2, #introductionSectionHeader3 {
+  text-align: center;
+  color: #dddddd;
+  letter-spacing: 2px;
+  font-size: 190%;
+  padding-top: 5%;
+  padding-bottom: 2.5%;
+  opacity: 1;
+  transition: all 1s ease 0s;
+}
+#introductionSectionHeader1 {
+  margin-top: 0%;
+}
+#introductionSection1:hover #introductionSectionProse, #introductionSection2:hover #introductionSectionProse, #introductionSection3:hover #introductionSectionProse {
+  color: #dddddd;
+  opacity: 1;
+}
+#introductionSection1:hover #introductionSectionHeader1, #introductionSection2:hover #introductionSectionHeader2, #introductionSection3:hover #introductionSectionHeader3 {
+  color: #00dcff;
+  /* letter-spacing: 4px; */
+}
+#introductionSectionHeaderBig {
+  text-align: center;
+  color: #dddddd;
+  color: #00dcff;
+  font-size: 350%;
+  letter-spacing: 8px;
+  padding-top: 2%;
+  padding-bottom: 1%;
+  transition: all 1s ease 0s;
+}
+#introductionSection1:hover #introductionSectionHeaderBig {
+  color: #00dcff;
+  transition: all 1s ease 0s;
+  letter-spacing: 12px;
+}
+
 #fullWideIntro {
   width: 100%;
-
-  /* background-image: url('./atomLight.svg');
-  background-repeat: no-repeat;
-  background-position: top left;
-  background-attachment: fixed; */
 }
+
 
 
 /*Circular*/
@@ -6481,7 +6523,7 @@ background-color: #00dcff;
 
 /*Logos*/
 
-#closeRedX, #closeRedXNoMargin, #closeRedXLowOpacity {
+#closeRedX, #closeRedXNoMargin, #closeRedXLowOpacity, #closeRedXBreakdownEdit {
 display: block;
 margin: 0 auto;
 margin-top: 1%;
@@ -6495,7 +6537,7 @@ transition: all 0.5s ease 0s;
   margin-top: 0%;
   margin-bottom: 0%;
 }
-#closeRedX:hover, #closeRedXNoMargin:hover, #closeRedXLowOpacity:hover {
+#closeRedX:hover, #closeRedXNoMargin:hover, #closeRedXLowOpacity:hover, #closeRedXBreakdownEdit:hover {
 cursor: pointer;
 background-color: rgba(255,127,127,0.15);
 transform: scale(1.2);
@@ -6686,7 +6728,7 @@ box-shadow: 0 0 2pt 2pt rgba(0,220,255,0.5);
 
 /* New flag styling */
 
-#flagContainer {
+#flagContainer, #flagContainerBreakdown {
   margin-bottom: 5%;
   margin-top: 1%;
 }
@@ -13051,15 +13093,44 @@ transition: all 1s ease 0s;
 #breakdownSetsContainer {
   position: relative;
 }
-#flagBreakdownButton {
-  display: block;
+#flagBreakdownButton, #editBreakdownButton {
+  position: absolute;
+  top: 0px;
+  right: 0px;
   margin: 0 auto;
-  transition: all 0.5s ease 0s
-  }
-  #flagBreakdownButton:hover, #flagBreakdownButton:active {
+  transition: all 0.5s ease 0s;
+}
+#editBreakdownButton {
+  top: 34px;
+}
+#flagBreakdownButton:hover, #flagBreakdownButton:active, #editBreakdownButton:hover, #editBreakdownButton:active {
   cursor: pointer;
-  box-shadow: 0 0 2pt 2pt rgba(255,127,127,0.5);
-  }
+  /* box-shadow: 0 0 2pt 2pt rgba(255,127,127,0.5); */
+  transform: scale(1.1);
+}
+#flagBreakdownLogo, #editBreakdownLogo {
+  transition: all 0.5s ease 0s;
+  opacity: 0.25;
+  vertical-align: middle;
+}
+#flagBreakdownButton:hover #flagBreakdownLogo, #flagBreakdownButton:active #flagBreakdownLogo, #editBreakdownButton:hover #editBreakdownLogo, #editBreakdownButton:active #editBreakdownLogo {
+  opacity: 1;
+}
+.activeBreakdownFlagButton div, .activeBreakdownEditButton div {
+  border: 1px solid rgba(255,127,127, 1) !important;
+  border-width: 1px 0px 1px 1px !important;
+  border-radius: 15% 0px 0px 15%;
+  box-shadow: 0 0 10pt 10pt rgba(255,127,127,0.25) inset;
+  transform: scale(1.2);
+  cursor: pointer;
+}
+.activeBreakdownEditButton div {
+  border-width: 0px !important;
+  box-shadow: 0 0 0pt 0pt rgba(0,255,220,0.25) inset;
+}
+.activeBreakdownFlagButton div #flagBreakdownLogo, .activeBreakdownEditButton div #editBreakdownLogo {
+  opacity: 1;
+}
 #branchHeaderTitle {
   /* border: 1px solid #00dcff; */
   text-align: center;
@@ -13133,7 +13204,7 @@ transition: all 1s ease 0s;
     box-shadow: 0 0 1pt 1pt rgba(0,220,255,0.5);
     cursor: pointer;
   }
-  #branchFormTitle {
+  #branchFormTitle, #branchFormTitleEdit {
     flex: 1 1 auto;
     color: #dddddd;
     font-size: 180%;
@@ -13149,6 +13220,10 @@ transition: all 1s ease 0s;
     background-color: rgba(0,220,255, 0.05);
     box-shadow: 0 0 1pt 1pt rgba(255,255,255,0.5);
     transition: all 0.5s ease 0s;
+  }
+  #branchFormTitleEdit {
+    border-color: #00dcff;
+    box-shadow: 0 0 1pt 1pt rgba(0,220,255,0.5);
   }
   .breakdownFormHide {
     display: none !important;
@@ -14163,6 +14238,13 @@ input#submitBreakdown:hover {
 #proseProposalContainerShow {
   width: 100%;
   margin: 0 auto;
+}
+#proposalPDF {
+  width: 100%;
+  /* height: 100%; */
+  /* width: 100vw !important; */
+  height: 100vh !important;
+  box-shadow: 0 0 1.5pt 1.5pt rgba(0,220,255,0.5) !important;
 }
 
 

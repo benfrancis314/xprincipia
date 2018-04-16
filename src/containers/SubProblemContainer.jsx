@@ -1,7 +1,6 @@
 import React from 'react';
 import axios from 'axios';
 import {Link} from 'react-router';
-import BreakdownContainer from './BreakdownContainer.jsx';
 import SubProblemUnit from '../components/problems/SubProblemUnit.jsx';
 import ProjectBreakdownList from '../components/problems/ProjectBreakdownList.jsx';
 import {Config} from '../config.js';

@@ -19,45 +19,61 @@ export default class ProjectBreakdownForm extends React.Component {
       title: '',
       summary: '',
       breakdowns: [],
+      breakdownCreateTitle: '',
+      breakdownTitle: '',
     }
 
-    this.postBreakdown = this.postBreakdown.bind(this);
+    this.updateBreakdown = this.updateBreakdown.bind(this);
+    this.postProblemBreakdown = this.postProblemBreakdown.bind(this);
   };
 
-  componentDidMount(){
-    var self = this;
-    ReactDOM.findDOMNode(this).scrollIntoView();
-    axios.get( Config.API + '/breakdowns/byproblem?parentID='+this.props.params.probID).then(function (response) {
-        self.setState({
-            breakdowns: response.data
-        })
-    })   
-}
+    componentDidMount(){
+        var self = this;
+        document.getElementById("closeRedXBreakdownEdit").scrollIntoView();
+        axios.get( Config.API + '/breakdowns/byproblem?parentID='+this.props.params.probID).then(function (response) {
+            self.setState({
+                breakdowns: response.data
+            })
+        })   
+        axios.get( Config.API + '/breakdowns/title?id='+this.props.params.bdID).then(function (response) {
+          self.setState({
+              breakdownTitle: response.data
+          })
+          document.getElementById('problemTitleForm').value = response.data;
+        }) 
+    }
 
-componentWillReceiveProps (nextProps){
-    var self = this;
-    axios.get( Config.API + '/breakdowns/byproblem?parentID='+nextProps.params.probID).then(function (response) {
-        self.setState({
-            breakdowns: response.data
-        })
-    })  
-}
+    componentWillReceiveProps (nextProps){
+        var self = this;
+        document.getElementById("closeRedXBreakdownEdit").scrollIntoView();
+        axios.get( Config.API + '/breakdowns/byproblem?parentID='+nextProps.params.probID).then(function (response) {
+            self.setState({
+                breakdowns: response.data
+            })
+        })  
+        axios.get( Config.API + '/breakdowns/title?id='+nextProps.params.bdID).then(function (response) {
+          self.setState({
+              breakdownTitle: response.data
+          })
+          document.getElementById('problemTitleForm').value = response.data;
+        }) 
+    }
 
-  postBreakdown() {
+  updateBreakdown() {
     //Read field items into component state
     this.state.title = document.getElementById('problemTitleForm').value
+    // this.state.summary = document.getElementById('problemSummaryForm').value
   
     var self = this
-    axios.post( Config.API + '/auth/breakdowns/create', {
+    axios.put( Config.API + '/auth/breakdowns/edit?id='+this.props.params.bdID, {
       username: cookie.load('userName'),
       title : this.state.title,
-      parentID: this.props.params.probID,
-      parentTitle : this.props.parentTitle,
     })
     .then(function (result) {
       document.getElementById("createForm").reset();
     })
       .catch(function (error) {
+        // alert('why not working');
           $(document).ready(function() {
               $('#notification').attr('id','notificationShow').hide().slideDown();
 
@@ -75,6 +91,64 @@ componentWillReceiveProps (nextProps){
       });
   }
 
+
+
+  postProblemBreakdown() {
+    var self = this;
+    // self.refs.btn.setAttribute("disabled", "disabled");
+    //Read field items into component state
+    // this.state.title = document.getElementById('breakdownProblemTitleForm').value
+    this.state.title = document.getElementById(String('title'+String(this.props.breakdownID))).value
+    this.state.summary = document.getElementById('breakdownProblemSummaryForm').value
+    if (document.getElementById('projectClass2').checked) {
+      this.state.class = '2' 
+    } else if (document.getElementById('projectClass1').checked) {
+      this.state.class = '1' 
+    } else {
+      this.state.class = '0' 
+    }
+    
+    axios.post( Config.API + '/auth/problems/create', {
+      username: cookie.load('userName'),
+      title : this.state.title,
+      summary : this.state.summary,
+      parentType : '0',
+      parentID: this.props.probID,
+      parentTitle : '0',
+      parentTitle : '0',
+      grandParentID : '0',
+      grandParentTitle: '0',
+      ggParentID : '0',
+      class : String(this.state.class),
+      breakdownID: String(this.props.breakdownID),
+      private: '0',
+    })
+    .then(function (result) {
+            // document.getElementById("createProjectForm").reset();
+            alert('SUCCESS')
+            // self.refs.btn.removeAttribute("disabled");
+    })
+      .catch(function (error) {
+            alert('failure')
+          $(document).ready(function() {
+              if (error.response.data == '[object Object]') {
+                return (
+                  $(document).ready(function() {
+                    $('#notification').attr('id','notificationShow').hide().slideDown();
+                    $('#notificationLoginRegisterContainer').attr('id','notificationLoginRegisterContainerShow');
+                    $('#notificationContent').html('Please <span id="blue">login </span>to create a project');
+                  })
+                );
+              }  else if (error.response.data != '') {
+            }
+          });
+      });
+  }
+
+
+
+
+
   render() {
       return (
         <div id="breakdownContainer">
@@ -88,28 +162,37 @@ componentWillReceiveProps (nextProps){
               alternative breakdowns
             </div>
           </div>
-          {this.state.breakdowns.map(this.renderBreakdown)}
-          <div id="branchFormTitle">
-            new breakdown
+          
+            
+          
+          <Link to={`/project/${this.props.params.probID}/create/breakdown`}>
+            <img src={require('../../assets/redX.svg')} id="closeRedXBreakdownEdit" width="30" height="30" alt="Close button, red X symbol" />            
+          </Link>
+          <div id="branchFormTitleEdit">
+            edit breakdown
           </div>
           <div id="createProblemBox">
               <form id="createForm">
                 <fieldset id="fieldSetNoBorder">
                     <label htmlFor="problemTitleForm" id="problemTitleFormLabel">breakdown title<br />
                       <input type="text" name="problemTitle" required="required" maxLength="70" id="problemTitleForm" 
-                      placeholder="alternative method of organizing sub projects" />
+                      placeholder="alternative method of organizing sub projects" autoFocus/>
                     </label><br />
                   {/* 
                   <label htmlFor="problemSummaryForm" id="problemSummaryFormLabel">concept or distinction<br />
                       <textarea name="problemSummary" maxLength="150" 
                       placeholder="What is the concept behind this breakdown or what makes it distinct? (250 ch.)" id="problemSummaryForm"/>
                       </label><br /> */}
-                  <Link to={window.location.pathname}>
-                    <input type="button" value="Create" onClick={this.postBreakdown} id="submitBreakdown"/>
+                  <Link to={`/project/${this.props.params.probID}/create/breakdown`}>
+                    <input type="button" value="edit" onClick={this.updateBreakdown} id="submitBreakdown"/>
                   </Link>
                 </fieldset>
               </form>
           </div>
+
+          {this.state.breakdowns.map(this.renderBreakdown)}
+
+
         </div>
 
       );
@@ -193,7 +276,6 @@ componentWillReceiveProps (nextProps){
             // $('div#discussHoverTextShow').attr('id','discussHoverText');
         });
     }
-
     if (breakdown.Username == cookie.load('userName')) {
       return (
         <div id="breakdownSetsContainer" key={breakdown.ID}>
@@ -216,16 +298,20 @@ componentWillReceiveProps (nextProps){
   } else {
     return (
       <div id="breakdownSetsContainer" key={breakdown.ID}>
-        <div id="branchHeaderTitle" onClick={hoverBreakdownText}>
-            {breakdown.Title}
-        </div>
-        <ProjectBreakdownList breakdownTitle={String(breakdown.Title)} breakdownID={breakdown.ID} probID={breakdown.ParentID} />
+            <div id="branchHeaderTitle" 
+            // onMouseOver={hoverBreakdownText} 
+            // onMouseOut={unHoverBreakdownText}
+            onClick={hoverBreakdownText}
+            >
+                {breakdown.Title}
+            </div>
+        <ProjectBreakdownList breakdownTitle={breakdown.Title} breakdownID={breakdown.ID} probID={breakdown.ParentID} />
         <Link to={`/project/${breakdown.ParentID}/create/breakdown/${breakdown.ID}/flag`} activeClassName="activeBreakdownFlagButton">
           <div id="flagBreakdownButton">
             <img src={require('../../assets/flag.svg')} id="flagBreakdownLogo" width="24" height="24" alt="Delete Button, Red X" />
           </div>
         </Link>
-      </div>  
+      </div>               
     );
   }
   }

@@ -20,6 +20,7 @@ export default class ProjectBreakdownForm extends React.Component {
       summary: '',
       breakdowns: [],
       breakdownCreateTitle: '',
+      breakdownTitle: '',
     }
 
     this.postBranch = this.postBranch.bind(this);
@@ -28,12 +29,17 @@ export default class ProjectBreakdownForm extends React.Component {
 
     componentDidMount(){
         var self = this;
-        ReactDOM.findDOMNode(this).scrollIntoView();
+        // ReactDOM.findDOMNode(this).scrollIntoView();
         axios.get( Config.API + '/breakdowns/byproblem?parentID='+this.props.params.probID).then(function (response) {
             self.setState({
                 breakdowns: response.data
             })
         })   
+        axios.get( Config.API + '/breakdowns/title?id='+this.props.params.bdID).then(function (response) {
+          self.setState({
+              breakdownTitle: response.data
+          })
+      }) 
     }
 
     componentWillReceiveProps (nextProps){
@@ -99,9 +105,6 @@ export default class ProjectBreakdownForm extends React.Component {
       this.state.class = '0' 
     }
     
-    alert(this.state.title);
-    alert(this.state.summary);
-
     axios.post( Config.API + '/auth/problems/create', {
       username: cookie.load('userName'),
       title : this.state.title,
@@ -176,7 +179,7 @@ export default class ProjectBreakdownForm extends React.Component {
 							<fieldset id="fieldSetNoBorder">
 								{/* Project Form Breakdown Title */}
 								<label htmlFor="solutionTitle" id="projectTitleProposalFormLabel">breakdown title<br />
-                                    <h1 id="proposalCreateProjectTitle">{this.props.breakdownTitle}</h1>
+                                    <h1 id="proposalCreateProjectTitle">{this.state.breakdownTitle}</h1>
                                 </label><br />
 								<label htmlFor="breakdownProblemTitleForm" id="problemTitleFormLabel">sub project title<br />
 								<input type="text" name="problemTitle" required="required" maxLength="70" id="breakdownProblemTitleForm" />
@@ -356,7 +359,26 @@ export default class ProjectBreakdownForm extends React.Component {
             // $('div#discussHoverTextShow').attr('id','discussHoverText');
         });
     }
-
+    if (breakdown.Username == cookie.load('userName')) {
+      return (
+        <div id="breakdownSetsContainer" key={breakdown.ID}>
+          <div id="branchHeaderTitle" onClick={hoverBreakdownText}>
+              {breakdown.Title}
+          </div>
+          <ProjectBreakdownList breakdownTitle={String(breakdown.Title)} breakdownID={breakdown.ID} probID={breakdown.ParentID} />
+          <Link to={`/project/${breakdown.ParentID}/create/breakdown/${breakdown.ID}/flag`} activeClassName="activeBreakdownFlagButton">
+            <div id="flagBreakdownButton">
+              <img src={require('../../assets/flag.svg')} id="flagBreakdownLogo" width="24" height="24" alt="Delete Button, Red X" />
+            </div>
+          </Link>
+          <Link to={`/project/${breakdown.ParentID}/create/breakdown/${breakdown.ID}/edit`} activeClassName="activeBreakdownEditButton">
+            <div id="editBreakdownButton">
+              <img src={require('../../assets/editBlue.svg')} id="editBreakdownLogo" width="24" height="24" alt="Delete Button, Red X" />
+            </div>
+          </Link>
+        </div>               
+    );
+  } else {
     return (
       <div id="breakdownSetsContainer" key={breakdown.ID}>
             <div id="branchHeaderTitle" 
@@ -367,13 +389,14 @@ export default class ProjectBreakdownForm extends React.Component {
                 {breakdown.Title}
             </div>
         <ProjectBreakdownList breakdownTitle={breakdown.Title} breakdownID={breakdown.ID} probID={breakdown.ParentID} />
-        <Link to={`/project/${breakdown.ParentID}/create/breakdown/flag`} activeClassName="activeProblemFlagButton">
+        <Link to={`/project/${breakdown.ParentID}/create/breakdown/${breakdown.ID}/flag`} activeClassName="activeBreakdownFlagButton">
           <div id="flagBreakdownButton">
-            <img src={require('../../assets/flag.svg')} id="flagProblemLogo" width="24" height="24" alt="Delete Button, Red X" />
+            <img src={require('../../assets/flag.svg')} id="flagBreakdownLogo" width="24" height="24" alt="Delete Button, Red X" />
           </div>
         </Link>
       </div>               
     );
+  }
   }
 }
 

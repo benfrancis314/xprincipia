@@ -316,7 +316,7 @@ voteDown() {
               <ProblemTitle problemTitle={this.state.problemInfo.Title} problemClass={this.state.problemInfo.Class} />
               <div id="projectActionGroup">
                 <div id="problemRow1">
-                    <Link to={`/project/private/${this.props.params.probID}/questions`} activeClassName="activeProblemOptionDiscuss">
+                    <Link to={`/project/private/${this.props.params.probID}/discuss`} activeClassName="activeProblemOptionDiscuss">
                           <div id="SBButtonDiscuss">discuss</div>
                     </Link>
                     <div id="problemCenterColumnPrivate">

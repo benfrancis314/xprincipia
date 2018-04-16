@@ -16,9 +16,6 @@ export default class SubProblemUnit extends React.Component {
 			class: '',
 		}
 		this.renderItem = this.renderItem.bind(this);  
-		// this.postProblemBreakdown = this.postProblemBreakdown.bind(this);
-		// this.showCreateForm = this.showCreateForm.bind(this);
-		// this.hideCreateForm = this.hideCreateForm.bind(this);
     };
     componentDidMount(){
         var self = this;
@@ -38,20 +35,6 @@ export default class SubProblemUnit extends React.Component {
         }) 
 	}
 	
-	
-	  // showCreateForm() {
-		// var self = this;
-		// $(document).ready(function() {
-		// 	$('.breakdownCreateProjectFormHide').attr('class', 'breakdownCreateProjectFormShow');
-		// });
-	  // }
-	  // hideCreateForm() {
-		// var self = this;
-		//   $(document).ready(function() {
-		// 		$('.breakdownCreateProjectFormShow').attr('class', 'breakdownCreateProjectFormHide');
-		//   });
-	  // }
-
 	render() {
 		return (
 			<div id="breakdownProjectsContainer">				
