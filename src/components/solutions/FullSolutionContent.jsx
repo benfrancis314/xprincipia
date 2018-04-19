@@ -178,12 +178,13 @@ unVote() {
               <Link to={`/project/${this.props.params.probID}/proposal/${this.props.params.solutionID}`}>
                 <div id="votedSolution" ref='solbtn' onClick={this.unVote}>Voted</div>
               </Link>
-                {/*<Link to={`/proposal/${this.props.params.probID}/${this.props.params.solutionID}/versions`}>
-                    <div id="versionsButton">
-                            Versions
-                    </div>
-                </Link>*/}
-              </div>
+              <Link to={`/project/${this.props.params.probID}/proposal/${this.props.params.solutionID}/versions`}>
+                  <div id="versionsButton">
+                          versions
+                  </div>
+              </Link>
+            </div>
+              <div id="versionNumber">v.1</div>
               <div id="createDate">{dateTime(this.state.solutionInfo.CreatedAt)}</div>
               
               {/* <Link to={`/proposal/${this.props.params.probID}/${this.props.params.solutionID}/delete`}>
@@ -191,8 +192,11 @@ unVote() {
               </Link> */}
 
               <Link to={`/proposal/${this.props.params.probID}/${this.props.params.solutionID}/edit`} activeClassName="activeProposalOption">
-                <div id="proposalDevelopButton">
-                  develop
+                <img src={require('../../assets/editBlue.svg')} id="editProposalButton" width="20" height="20" alt="Edit Button" />
+              </Link>
+              <Link to={`/project/${this.props.params.probID}/proposal/${this.props.params.solutionID}/versions/create`} activeClassName="activeProposalOption">
+                <div id="newVersionButton">
+                  new version
                 </div>
               </Link>
               
@@ -221,21 +225,21 @@ unVote() {
               <Link to={`/project/${this.props.params.probID}/proposal/${this.props.params.solutionID}`}>
                 <div id="voteSolution" ref='solbtn' onClick={this.submitVote}>Vote</div>
               </Link>
-                {/*<Link to={`/proposal/${this.props.params.probID}/${this.props.params.solutionID}/versions`}>
-                    <div id="versionsButton">
-                            Versions
-                    </div>
-                </Link>*/}
-              </div>
+              <Link to={`/project/${this.props.params.probID}/proposal/${this.props.params.solutionID}/versions`}>
+                  <div id="versionsButton">
+                          versions
+                  </div>
+              </Link>
+            </div>
+              <div id="versionNumber">v. 1</div>
               <div id="createDate">{dateTime(this.state.solutionInfo.CreatedAt)}</div>
-              
-              {/* <Link to={`/proposal/${this.props.params.probID}/${this.props.params.solutionID}/delete`}>
-                <img src={require('../../assets/delete.svg')} id="deleteSolutionButton" width="20" height="20" alt="Edit Button" />              
-              </Link> */}
 
               <Link to={`/proposal/${this.props.params.probID}/${this.props.params.solutionID}/edit`} activeClassName="activeProposalOption">
-                <div id="proposalDevelopButton">
-                  develop
+                <img src={require('../../assets/editBlue.svg')} id="editProjectButton" width="20" height="20" alt="Edit Button" />
+              </Link>
+              <Link to={`/project/${this.props.params.probID}/proposal/${this.props.params.solutionID}/versions/create`} activeClassName="activeProposalOption">
+                <div id="newVersionButton">
+                  new version
                 </div>
               </Link>
 
@@ -264,12 +268,13 @@ unVote() {
                     <Link to={`/project/${this.props.params.probID}/proposal/${this.props.params.solutionID}`}>
                       <div id="votedSolution" ref='solbtn' onClick={this.unVote}>Voted</div>
                     </Link>
-                    {/*<Link to={`/proposal/${this.props.params.probID}/${this.props.params.solutionID}/versions`}>
+                    <Link to={`/project/${this.props.params.probID}/proposal/${this.props.params.solutionID}/versions`}>
                         <div id="versionsButton">
-                                Versions
+                                versions
                         </div>
-                    </Link>*/}
+                    </Link>
               </div>
+              <div id="versionNumber">v. 1</div>
               <div id="createDate">{dateTime(this.state.solutionInfo.CreatedAt)}</div>
               
               {/*<Link to={`/proposal/${this.props.probID}/${this.props.solutionID}/flag`}>
@@ -302,12 +307,13 @@ unVote() {
               <Link to={`/project/${this.props.params.probID}/proposal/${this.props.params.solutionID}`}>
                 <div id="voteSolution" ref='solbtn' onClick={this.submitVote}>Vote</div>
               </Link>
-                    {/*<Link to={`/proposal/${this.props.params.probID}/${this.props.params.solutionID}/versions`}>
-                        <div id="versionsButton">
-                                Versions
-                        </div>
-                    </Link>*/}
-              </div>
+              <Link to={`/project/${this.props.params.probID}/proposal/${this.props.params.solutionID}/versions`}>
+                  <div id="versionsButton">
+                          versions
+                  </div>
+              </Link>
+            </div>
+              <div id="versionNumber">v. 1</div>
               <div id="createDate">{dateTime(this.state.solutionInfo.CreatedAt)}</div>
               
               {/*<Link to={`/proposal/${this.props.probID}/${this.props.solutionID}/flag`}>

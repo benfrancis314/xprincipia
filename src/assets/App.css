@@ -6657,19 +6657,22 @@ box-shadow: 0 0 2pt 2pt rgba(255,127,127,0.5);
 cursor: pointer;
 box-shadow: 0 0 2pt 2pt rgba(0,220,255,0.5);
 }
-#editProjectButton {
+#editProjectButton, #editProposalButton {
 display: block;
 margin: 0 auto;
 padding: 3px;
-/*box-shadow: 0 0 1pt 1pt rgba(0,220,255,0.5);*/
 transition: all 0.5s ease 0s;
 z-index: 500;
 margin-top: 0.5%;
 margin-bottom: 0.5%;
 }
-#editProjectButton:hover, #editProjectButton:active {
+#editProposalButton {
+  opacity: 0.5;
+}
+#editProjectButton:hover, #editProjectButton:active, #editProposalButton:hover, #editProposalButton:active {
 cursor: pointer;
 box-shadow: 0 0 2pt 2pt rgba(0,220,255,0.5);
+opacity: 1;
 }
 #flagProjectButton {
 display: block;
@@ -9186,80 +9189,142 @@ cursor: pointer;
 
 /*Versions*/
 
+#newVersionButton {
+  margin: 0 auto;
+  text-align: center;
+  width: 50%;
+  color: #00dff;
+  padding: 3px;
+  font-size: 130%;
+  letter-spacing: 4px;
+  border: 1px solid #00dcff;
+  border-width: 1px 1px 0px 1px;
+  border-radius: 10% 10% 0px 0px;
+  background: radial-gradient(circle, rgba(0,220,255,0.05), rgba(0,220,255,0.05), rgba(0,220,255,0));
+  transition: all 1s ease 0s;
+}
+#newVersionButton:hover {
+  background-color: rgba(15,19,28,0.9);
+  transform: scale(1.02);
+  cursor: pointer;
+}
+#versionNumber {
+  font-size: 120%;
+  color: #00dcff;
+  text-align: center;
+  letter-spacing: 2px;
+}
+
+
+
+
 #fullVersions {
-width: 100%;
-background-color: inherit;
-/*box-shadow: 0 0 1pt 1pt rgba(0,220,255,0.5);*/
+  width: 100%;
+  background-color: inherit;
+  margin-bottom: 2%;
 }
-/* #developVersionsHeader {
-} */
-#developVersionsButton {
-flex: 1 1 auto;
-color: #00dcff;
-font-size: 120%;
-padding: 5px;
-margin: 0px 0px;
-letter-spacing: 4px;
-text-align: center;
-border: 1px solid #00dcff;
-border-width: 1px 0px 1px 0px;
+#versionsContainerHeader {
+  color: #00dcff;
+  font-size: 150%;
+  padding: 5px;
+  letter-spacing: 4px;
+  text-align: center;
+  border: 1px solid #00dcff;
+  border-width: 1px;
+  border-radius: 3px 3px 25% 25%;
+  margin: 0 auto;
+  width: 80%;
+  background: radial-gradient(circle, rgba(0,220,255,0.05), rgba(0,220,255,0));
+  transition: all 1s ease 0s;
 }
-#developVersionsButton:hover {
-background-color: #00dcff;
-color: #0f131c;
-cursor: pointer;
+#versionsContainerHeader:hover {
+  transform: scale(1.02);
 }
 #versionUnit {
-margin: 0 auto;
-border: 2px solid #00dcff;
-border-width: 0px 0px 1px 0px;
-border-radius: 0px;
-padding-left: 3px;
-padding-bottom: 0px;
-}
-#versionUnit:hover {
-box-shadow: 0 0 2pt 2pt rgba(0,220,255,0.5);
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin: 0 auto;
+  margin-top: 2%;
+  width: 65%;
 }
 #versionUnitTitle {
-display: inline-block;
-text-align: left;
-padding: 5px;
-margin: 0px;
-color: #dddddd;
-margin-bottom: 0px;
-margin-left: 0px;
-letter-spacing: 1px;
-display: flex;
-flex-direction: row;
-flex: 2 2 auto;
+  /* margin: 0 auto;
+  width: 80%;
+  border: 1px solid #00dcff;
+  border-radius: 3px 0px 0px 25%;
+  padding: 12px 0px;
+  background: radial-gradient(circle, rgba(0,220,255,0), rgba(0,220,255,0.05));
+  font-size: 140%;
+  color: #dddddd;
+  text-align: center;
+  letter-spacing: 6px;
+  transition: all 1s ease 0s;
+  height: 20px;
+  vertical-align: middle; */
+
+  width: 8em;
+  height: 20px;
+  padding: 12px 0px;
+  color: #ff7f7f;
+  text-align: center;
+  letter-spacing: 2px;
+  font-size: 100%;
+  border: 1px solid #ff7f7f;
+  border-radius: 0px 3px 25% 0px;
+  background: radial-gradient(circle, rgba(255,127,127,0), rgba(255,127,127,0.05));
+  transition: all 1s ease 0s;
+  box-shadow: 0 0 1pt 1pt rgba(255,127,127,0.5);
 }
-#versionPercent {
-float: left;
-color: #00dcff;
-font-size: 200%;
-padding: 0px 0px 0px 0px;
-margin-top: 0 auto;
-margin-bottom: 0 auto;
-height: auto;
-text-align: left;
-color: #00dcff;
-/*font-family: 'Raleway', sans-serif;*/
-text-align: center;
-width: 3em;
+#versionUnitTitle:hover {
+  box-shadow: 0 0 1pt 1pt rgba(0,220,255,1);
+  transform: scale(1.02);
+  cursor: pointer;
+  background-color: rgba(0,220,255,0.05);
+  width: 70%;
 }
 
-#versionNumber {
-font-size: 120%;
-color: #00dcff;
+
+#versionUnitChangesButton {
+  width: 8em;
+  height: 20px;
+  padding: 12px 0px;
+  color: #ff7f7f;
+  text-align: center;
+  letter-spacing: 2px;
+  font-size: 100%;
+  border: 1px solid #ff7f7f;
+  border-radius: 0px 3px 25% 0px;
+  background: radial-gradient(circle, rgba(255,127,127,0), rgba(255,127,127,0.05));
+  transition: all 1s ease 0s;
+  box-shadow: 0 0 1pt 1pt rgba(255,127,127,0.5);
+}
+#versionUnitChangesButton:hover {
+  background-color: rgba(255,127,127,0.05);
+  box-shadow: 0 0 1pt 1pt rgba(255,127,127,1);
+  transform: scale(1.02);
+  cursor: pointer;
+  margin-left: 3%;
+}
+#versionUnitChanges {
+  font-size: 0%;
+  transition: all 1.5s ease 0s;
 }
 
-/* #changesFrom {
-} */
 #versionFrom {
 color: #00ffdc;
 }
 #versionChangesForm {
 height: 10em;
+}
+#createVersionHeader {
+  text-align: center;
+  font-size: 135%;
+  letter-spacing: 4px;
+  padding: 6px 0px;
+  border: 1px solid #00dcff;
+  border-width: 1px 0px;
+  background: radial-gradient(circle, rgba(15,19,28,0.9), rgba(15,19,28,0));
 }
 #createVersionForm {
 background-color: inherit;
@@ -9273,9 +9338,6 @@ width: 90%;
 margin: 0 auto;
 }
 #createVersionForm textarea {
-background-color: inherit;
-}
-#versionFormFieldset {
 background-color: inherit;
 }
 #editFormFieldset {
@@ -9297,6 +9359,29 @@ border: 1px solid #0f131c;
 background-color: #00dcff;
 cursor: pointer;
 }
+
+
+#versionChangeShow {
+  position: fixed;
+  top: 15vh;
+  z-index: 500;
+  width: 50%;
+  margin: 0 auto;
+  margin-left: 25%;
+  margin-right: 25%;
+  border: 1px solid #ff7f7f;
+  border-radius: 3px;
+  box-shadow: 0 0 2pt 2pt rgba(255,127,127,0.25);
+  background-color: rgba(15,19,28,0.9);
+  padding: 5px;
+  text-align: center;
+  font-size: 150%;
+  color: #ffffff;
+}
+#versionChangeHide {
+  display: none;
+}
+
 
 /*End Versions*/
 
@@ -14219,23 +14304,23 @@ input#submitBreakdown:hover {
 #proposalFormButtonRight:hover, #proposalFormButtonRightActive {
   background: linear-gradient(to left, rgba(0,220,255,0.1), rgba(0,220,255,0)) !important;
 }
-#pdfProposalContainer {
+#pdfProposalContainer, #pdfProposalContainerVersion {
   display: none;
   width: 100%;
   margin: 0 auto;
 }
-#pdfProposalContainerShow {
+#pdfProposalContainerShow, #pdfProposalContainerShowVersion {
   width: 100%;
   margin: 0 auto;
   margin-top: 3%;
   text-align: center;
 }
-#proseProposalContainer {
+#proseProposalContainer, #proseProposalContainerVersion {
   display: none;
   width: 100%;
   margin: 0 auto;
 }
-#proseProposalContainerShow {
+#proseProposalContainerShow, #proseProposalContainerShowVersion {
   width: 100%;
   margin: 0 auto;
 }

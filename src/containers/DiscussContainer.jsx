@@ -4,7 +4,7 @@ import DiscussUnit from '../components/discuss/DiscussUnit.jsx';
 import DiscussUnitPrivate from '../components/discuss/DiscussUnitPrivate.jsx';
 import {Config} from '../config.js'
 
-export default class QuestionContainer extends React.Component {
+export default class DiscussContainer extends React.Component {
   constructor(props){
         super(props);
 
@@ -32,7 +32,7 @@ export default class QuestionContainer extends React.Component {
     }
    
    render() {
-    if (window.location.pathname.include('private')) {
+    if (window.location.pathname.includes('private')) {
 
         return (
             <div id="questionContainer">

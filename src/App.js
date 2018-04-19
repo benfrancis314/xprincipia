@@ -71,6 +71,11 @@ class App extends React.Component {
         $('#easterEggContainer').fadeOut(3000);
      });
   };
+  hideVersionChange() {
+    $(document).ready(function() {
+        $('#versionChangeShow').attr('id','versionChangeHide');
+     });
+  };
     
 
 //   handleClick() {
@@ -136,6 +141,9 @@ class App extends React.Component {
         </div>
         <NotebookContainer />
 
+        <div id="versionChangeHide">
+          <img src={require('./assets/redX.svg')} id="closeRedX" width="30" height="30" alt="Close button, red X symbol" />            
+        </div>
         {/* <div onMouseOver={this.hideEasterEgg}>
         {randomImg()}
         </div> */}

@@ -14,9 +14,9 @@ export default class VersionsContainer extends React.Component {
         }
 
     };
-        componentDidMount(){
+    componentDidMount(){
         var self = this;
-        return axios.get( Config.API + '/solutions/problemID?id='+this.props.params.probID).then(function (response) {
+        return axios.get( Config.API + '/solutions/versions?id='+this.props.params.solutionID).then(function (response) {
             self.setState({
                 solutions: response.data
             })
@@ -25,23 +25,16 @@ export default class VersionsContainer extends React.Component {
 
    render() {
       return (
-      <div> 
           
         <div id="fullVersions">
-            <div id="developVersionsHeader">
-                <Link to={`/proposal/${this.props.params.probID}/${this.props.params.solutionID}`}>
-                    <div id="downArrowDiv">
-                        <img src={require('../assets/leftArrowLight.png')} id="backDevelopArrow" width="30" height="50" alt="Back arrow, blue up arrow" />
-                    </div>
-                </Link>
-                <Link to={`/proposal/${this.props.params.probID}/${this.props.params.solutionID}/versionform`}>
-                    <div id="developVersionsButton">Develop v.112</div>
-                </Link>
-            </div>
+            <Link to={`/project/${this.props.params.probID}/proposal/${this.props.params.solutionID}`}>
+                <img src={require('../assets/redX.svg')} id="closeRedX" width="30" height="30" alt="Close button, red X symbol" />            
+            </Link>
+            <Link to={`/project/${this.props.params.probID}/proposal/${this.props.params.solutionID}/versions/create`}>
+                <div id="versionsContainerHeader">proposal versions</div>
+            </Link>
             <VersionsUnit solutions={this.state.solutions} probID={this.props.params.probID} solutionID={this.props.params.solutionID} />
-            <SideBarMore />
         </div>
-      </div>
       );
    }
 }
