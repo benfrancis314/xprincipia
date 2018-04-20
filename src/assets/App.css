@@ -1112,12 +1112,6 @@ margin-right: 0px !important;
 
     /* PROPOSALS */
 
-    #proposalDiscussButton, #proposalSubProjectsButton, #proposalDevelopButton {
-      font-size: 130% !important;
-    }
-    #proposalSubProjectsButton {
-      padding-bottom: 6px !important;
-    }
 
     /* NOTEBOOK */ 
     #notebookContainerShow {
@@ -4032,55 +4026,39 @@ cursor: pointer;
 
 #proposalSubProjectsButton {
 text-align: center;
-font-size: 150%;
-letter-spacing: 6px;
+font-size: 120%;
+letter-spacing: 4px;
 width: 50%;
 margin: 0 auto;
 padding: 0.5% 0% 0.6% 0%;
-margin-bottom: 0.5%;
-margin-top: 0%;
-border: 1px solid #00dcff;
-border-width: 1px 1px 1px 1px;
-border-radius: 0% 0% 45% 45%;
-background: linear-gradient(to right,rgba(0,220,255, 0), rgba(0,220,255, 0.075), rgba(0,220,255, 0));
+margin-top: 1%;
+margin-bottom: 1%;
+color: #00dcff;
+border: 1px solid #515151;
+border-width: 0px 1px;
+/* border-radius: 3px; */
+background: radial-gradient(circle,rgba(0,220,255, 0), rgba(0,220,255, 0.05));
 
-transition: all 0.75s ease 0s;
-background-color: rgba(0,220,255,0.01);
-transform: scale(1);
+transition: all 1s ease 0s;
 text-transform: lowercase !important;
 }
-#proposalSubProjectsButton:hover, #proposalDevelopButton:hover, #proposalDiscussButton:hover,
-#proposalSubProjectsButton:focus, #proposalDevelopButton:focus, #proposalDiscussButton:focus,
-#proposalSubProjectsButton:active, #proposalDevelopButton:active, #proposalDiscussButton:active {
-/*box-shadow: 0 0 2pt 2pt rgba(0,220,255,0.5);*/
-background: linear-gradient(to right,rgba(0,220,255, 0), rgba(0,220,255, 0.1), rgba(0,220,255, 0)) !important;
-/*background-color: rgba(15,19,28,0.9);*/
-letter-spacing: 7px !important;
-color: #00dcff !important;
-cursor: pointer;
-border-color: #00dcff !important;
-transform: scale(1.05);
+#proposalSubProjectsButton:hover, #proposalSubProjectsButton:focus {
+  transform: scale(1.02);
+  border-color: #00dcff;
+}
+#proposalDevelopButton:hover, 
+#proposalDevelopButton:focus, 
+#proposalDevelopButton:active, {
+  /*box-shadow: 0 0 2pt 2pt rgba(0,220,255,0.5);*/
+  background: linear-gradient(to right,rgba(0,220,255, 0), rgba(0,220,255, 0.1), rgba(0,220,255, 0)) !important;
+  /*background-color: rgba(15,19,28,0.9);*/
+  letter-spacing: 7px !important;
+  color: #00dcff !important;
+  cursor: pointer;
+  border-color: #00dcff !important;
+  transform: scale(1.05);
 }
 
-#proposalDiscussButton {
-text-align: center;
-font-size: 150%;
-letter-spacing: 6px;
-width: 50%;
-margin: 0 auto;
-padding: 0.6% 0% 0.5% 0%;
-/*margin-bottom: 0.5%;*/
-margin-top: 0%;
-border: 1px solid #00dcff;
-border-width: 0px 1px 0px 1px;
-border-radius: 0% 0% 0% 0%;
-background: linear-gradient(to right,rgba(0,220,255, 0), rgba(0,220,255, 0.075), rgba(0,220,255, 0));
-
-transition: all 0.75s ease 0s;
-background-color: rgba(0,220,255,0.01);
-transform: scale(1);
-text-transform: lowercase !important;
-}
 #proposalDevelopButton {
 text-align: center;
 font-size: 150%;
@@ -4889,8 +4867,8 @@ background-position: center 48%;
   margin: 0 auto;
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
-  /* justify-content: center; */
+  /* justify-content: space-between; */
+  justify-content: center;
   /* padding: 25px; */
   background: radial-gradient(rgba(15,19,28,0.9), rgba(15,19,28,0.9), rgba(0,220,255,0.1));
   border: 0px solid #00dcff;
@@ -4899,7 +4877,7 @@ background-position: center 48%;
   transition: all 2s ease 0s;
 }
 #userSymbolSelectContainer:hover {
-  width: 100%;
+  width: 98%;
   padding: 5px 0px;
 }
 #userSymbolSelectContainer:hover #earthMini {
@@ -5004,6 +4982,8 @@ border-radius: 0px 0px 25% 25%;
   margin: 0 auto;
   margin-bottom: 2.5%;
   margin-top: 2.5%;
+  margin-right: 10%;
+  margin-left: 10%;
   background-blend-mode: overlay;
   border-radius: 50%;
   /* background-size: 630px; */
@@ -7988,7 +7968,6 @@ color: #00ffdc;
 text-align: center;
 font-size: 350%;
 color: #00ffdc;
-margin-bottom: 0.5%;
 
 width: 100%;
 transition: all 2s ease 0s;
@@ -8283,7 +8262,7 @@ text-transform: lowercase !important;
 
 #discussFormContainer {
   background: radial-gradient(circle, rgba(0,220,255,0.05), rgba(0,220,255,0));
-  padding: 5% 0%;
+  padding: 2.5% 0%;
 }
 
 
@@ -8292,24 +8271,29 @@ text-transform: lowercase !important;
 #fullSolution {
   position: relative;
   width: 70%;
-border: 1px solid #00dcff;
-border-radius: 3px;
-/*background-color: rgba(255,255,255,0.05);*/
-background-color: rgba(0,220,255,0.05);
-margin: 0 auto;
-margin-top: 1%;
-/*margin-bottom: 2%;*/
-padding-top: 1%;
+  border: 1px solid #00dcff;
+  border-radius: 3px;
+  /* OLD */
+  /* background-color: rgba(0,220,255,0.05); */
+  /* CURRENT*/
+  background-color: rgba(0,220,255,0.025);
+  margin: 0 auto;
+  margin-top: 1%;
+  padding-top: 1%;
 }
 #fullSolutionContainer {
 margin-bottom: 1%;
 }
 #solutionFormLabel {
 color: #00dcff;
-font-size: 160%;
+/* OLD */
+/* font-size: 160%; */
+/* CURRENT */
+font-size: 130%;
 text-align: center;
 letter-spacing: 6px;
 margin-top: 1%;
+text-transform: lowercase !important;
 }
 #solutionDescriptionFormLabel {
 color: #00dcff;
@@ -8339,8 +8323,11 @@ white-space: pre-wrap !important;
 }
 #solutionDescription, #solutionReferences {
 padding-top: 3%;
+padding-bottom: 3%;
 margin-top: 0%;
 font-size: 110%;
+background: radial-gradient(circle, rgba(0,220,255,0), rgba(0,220,255,0.05));
+/* border: 1px solid rgba(0,220,255,0.5); */
 }
 /*End Right Solutions SB*/
 
@@ -8372,6 +8359,11 @@ font-size: 110%;
 }
 #discussSelectButtonLeftInactive, #discussSelectButtonRightInactive, #discussSelectButtonCenterInactive {
 
+}
+#discussSelectButtonLeftActive, #discussSelectButtonRightActive, #discussSelectButtonCenterActive {
+  background-color: rgba(0,220,255,0.05) !important;
+  color: #00dcff !important;
+  border-color: #00dcff !important;
 }
 #discussSelectButtonRightActive, #discussSelectButtonRightInactive {
   background: linear-gradient(135deg, rgba(0,220,255,0), rgba(0,220,255,0.05));
@@ -8528,6 +8520,35 @@ letter-spacing: 2px;
   transition: all 0.5s ease 0s;
 }
 
+#discussListSelectButtonHide {
+  display: none;
+}
+#discussListSelectButton {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin: 0 auto;
+  margin-top: 2%;
+  margin-bottom: 1%;
+  width: 70%;
+  background: linear-gradient(to right, rgba(0,220,255,0), rgba(0,220,255,0.05));
+}
+#discussListNewButtonActive, #discussListNewButtonInactive, #discussListTopButtonActive, #discussListNewButtonInactive {
+  width: 25%;
+  text-align: center;
+  margin: 0 auto;
+  margin-right: 0px;
+  padding: 3px;
+  letter-spacing: 4px;
+  border: 1px solid rgba(0,220,255,0.5);
+  border-radius:  3px 3px 3px 15%;
+}
+#discussListTopButtonActive, #discussListNewButtonInactive {
+  border-radius:  3px 3px 15% 3px;
+}
+#discussListNewButtonActive:hover, #discussListNewButtonInactive:hover, #discussListTopButtonActive:hover, #discussListNewButtonInactive:hover {
+  background-color: rgba(0,220,255,0.05);
+}
 /*End Discuss SB*/
 
 
@@ -8881,75 +8902,50 @@ cursor: pointer;
 /*Full Solution*/
 
 #voteVersionsMenu {
-display: inline-flex;
-text-align: center;
+display: flex;
 flex-direction: row;
-justify-content: space-around;
-width: 100%;
+justify-content: center;
+width: 50%;
+margin: 0 auto;
+margin-bottom: 0.5%;
 }
-#voteSolution, #versionsButton {
+#voteSolution, #versionsButton, #votedSolution {
 flex: 1 1 auto;
 padding-left: 1%;
 color: #00ffdc;
 background-color: #00ffdc;
-font-size: 115%;
-/*A*/
+font-size: 125%;
 border: 1px solid #00ffdc;
-border-radius: 3px;
+border-width: 0px 1px 1px 1px;
+border-radius: 0px 0px 0px 25%;
 text-align: center;
 letter-spacing: 2px;
 padding: 0.7% 0%;
-/*B*/
-/*border: 1px solid #00ffdc;
-border-radius: 0% 0% 30% 30%;
-text-align: center;
-letter-spacing: 2px;
-padding: 3% 0%;*/
+
 margin: 0 auto;
 width: 8em;
-text-align: center;
 transition: all 0.5s ease 0s;
 
 background-color: rgba(255,255,255,0.025);
 text-transform: lowercase !important;
 }
+#versionsButton {
+  color: #00dcff;
+  border-color: #00dcff;
+  border-radius: 0px 0px 25% 0px;
+  }
 #voteSolution:hover, 
 #versionsButton:hover {
-background-color: #00ffdc;
-color: #0f131c;
-cursor: pointer;
-}
-#versionsButton {
-color: #00dcff;
-border: 1px solid #00dcff;
-border-radius: 0px 0px 3px 0px;
+  background-color: #00ffdc;
+  color: #0f131c;
+  cursor: pointer;
 }
 #versionsButton:hover {
 background-color: #00dcff;
 }
 #votedSolution {
-flex: 1 1 auto;
 color: #0f131c;
 background-color: #00ffdc;
-font-size: 120%;
-/*A*/
-border: 1px solid #00ffdc;
-border-radius: 3px;
-text-align: center;
-letter-spacing: 2px;
-padding: 0.7% 0%;
-/*B*/
-/*border: 1px solid #00ffdc;
-border-radius: 0% 0% 30% 30%;
-text-align: center;
-letter-spacing: 2px;
-padding: 3% 0%;*/
-margin: 0 auto;
-margin-bottom: 5%;
-width: 8em;
-text-align: center;
-transition: all 0.5s ease 0s;
-text-transform: lowercase !important;
 }
 #votedSolution:hover {
 cursor: pointer;
@@ -9107,36 +9103,34 @@ text-align: center;
 flex-direction: row;
 justify-content: space-around;
 width: 100%;
-border: 1px solid #00dcff;
+border: 1px solid rgba(0,220,255,0.5);
 border-width: 1px 0px;
-/*margin-top: 10px;*/
 background: linear-gradient(to right,rgba(0,220,255, 0.05), rgba(0,220,255, 0), rgba(0,220,255, 0.05));
 }
-#prosButton, #consButton {
-flex: 1 1 auto;
-margin: 0 auto;
-font-size: 120%;
-text-align: center;
-letter-spacing: 6px;
-padding: 7px;
-width: 20em;
-text-align: center;
-transition: all 1s ease 0s;
-box-shadow: 0 0 0pt 0pt rgba(0,220,255,0.5);
-background-color: rgba(0,220,255,0);
-background: linear-gradient(to right,rgba(0,220,255, 0), rgba(0,220,255, 0.025), rgba(0,220,255, 0));
-
+#proposalProConButton, #proposalDiscussButton {
+  flex: 1 1 auto;
+  margin: 0 auto;
+  font-size: 120%;
+  text-align: center;
+  letter-spacing: 6px;
+  padding: 7px;
+  width: 20em;
+  text-align: center;
+  transition: all 1s ease 0s;
+  box-shadow: 0 0 0pt 0pt rgba(0,220,255,0.5);
+  background-color: rgba(0,220,255,0);
+  background: linear-gradient(to right,rgba(0,220,255, 0), rgba(0,220,255, 0.025), rgba(0,220,255, 0));
 }
-#prosButton:hover, #consButton:hover, #prosButton:focus, #consButton:focus, #prosButton:active, #consButton:active {
+#proposalProConButton:hover, #proposalDiscussButton:hover, #proposalProConButton:focus, #proposalDiscussButton:focus, #proposalProConButton:active, #proposalDiscussButton:active {
 background-color: rgba(0,220,255,0.05);
 color: #00dcff;
 cursor: pointer;
 box-shadow: 0 0 0px 0px rgba(0,220,255,0.5);
 background: linear-gradient(to right,rgba(0,220,255, 0), rgba(0,220,255, 0.05), rgba(0,220,255, 0));
-letter-spacing: 12px;
+letter-spacing: 10px;
 transform: scale(1.05);
 }
-#prosButton:active, #consButton:active {
+#proposalProConButton:active, #proposalDiscussButton:active {
 background-color: rgba(0,220,255,0.15);
 color: #00dcff;
 border-color: #00dcff;
@@ -9191,17 +9185,21 @@ cursor: pointer;
 
 #newVersionButton {
   margin: 0 auto;
+  margin-bottom: 1%;
   text-align: center;
   width: 50%;
   color: #00dff;
   padding: 3px;
   font-size: 130%;
   letter-spacing: 4px;
-  border: 1px solid #00dcff;
-  border-width: 1px 1px 0px 1px;
-  border-radius: 10% 10% 0px 0px;
+  border: 1px solid rgba(255,127,127,0.5);
+  border-width: 1px 0px;
+  border-radius: 3px 3px 20% 20% ;
   background: radial-gradient(circle, rgba(0,220,255,0.05), rgba(0,220,255,0.05), rgba(0,220,255,0));
   transition: all 1s ease 0s;
+  /* background: linear-gradient(to right,rgba(0,220,255, 0), rgba(0,220,255, 0.075), rgba(0,220,255, 0)) !important; */
+  color: #00dcff;
+  border-color: #00dcff;
 }
 #newVersionButton:hover {
   background-color: rgba(15,19,28,0.9);
@@ -9318,13 +9316,17 @@ color: #00ffdc;
 height: 10em;
 }
 #createVersionHeader {
+  width: 70%;
+  margin: 0 auto;
+  margin-top: 2%;
   text-align: center;
   font-size: 135%;
   letter-spacing: 4px;
   padding: 6px 0px;
   border: 1px solid #00dcff;
-  border-width: 1px 0px;
-  background: radial-gradient(circle, rgba(15,19,28,0.9), rgba(15,19,28,0));
+  border-width: 1px 1px;
+  border-radius: 3px 3px 25% 25%;
+  background: radial-gradient(circle, rgba(0,220,255,0.05), rgba(15,19,28,0.9));
 }
 #createVersionForm {
 background-color: inherit;

@@ -3,6 +3,7 @@ import axios from 'axios';
 import cookie from 'react-cookie';
 import {Config} from '../../config.js';
 import $ from 'jquery';
+import { Link } from 'react-router';
 
 export default class ProfilePointsContainer extends React.Component {
 constructor(){
@@ -70,6 +71,9 @@ selectFutureTitle() {
     $('#pointsTitleSwitchButtonFutureHide').attr('id','pointsTitleSwitchButtonFuture');
     $('#pointsBackgroundWest').attr('id','pointsBackgroundFuture');
   });
+  axios.put( Config.API + '/auth/users/updateTheme?username='+cookie.load('userName'), {
+    theme : 'future'
+  })
 }
 selectWestTitle() {
   $(document).ready(function() {
@@ -80,6 +84,9 @@ selectWestTitle() {
     $('#pointsTitleSwitchButtonWestHide').attr('id','pointsTitleSwitchButtonWest');
     $('#pointsBackgroundFuture').attr('id','pointsBackgroundWest');
   });
+  axios.put( Config.API + '/auth/users/updateTheme?username='+cookie.load('userName'), {
+    theme : 'frontier'
+  })
 }
 hoverWestTitle() {
   $(document).ready(function() {
@@ -102,16 +109,18 @@ unHoverFutureTitle() {
   });
 }
 changePlanetEarth() {
-
+  axios.put( Config.API + '/auth/users/updatePlanet?username='+cookie.load('userName'), {
+    planet : 'earth'
+  })
 }
 changePlanetMars() {
-  
+  axios.put( Config.API + '/auth/users/updatePlanet?username='+cookie.load('userName'), {
+    planet : 'mars'
+  })
 }
 
    render() {
-    // if (Number(this.state.level) <= 1) {
-    //   // Use this when ready, fix less than or equal sign
-    // }
+    //  IF STATEMENT, based on theme
     return (
       <div id="pointsContainer">
         <div id="pointsBackgroundWest">
@@ -153,17 +162,18 @@ changePlanetMars() {
             insignia
           </div>
           <div id="userSymbolSelectContainer">
-            <div id="earthMini" onMouseOver={this.hoverEarth} onMouseOut={this.unHoverEarth}></div>
-            <br />
-            <div id="marsMini" onMouseOver={this.hoverMars} onMouseOut={this.unHoverMars}></div>
-            {/* When hovering on one, make it bigger, change some text to: SELECT NEW SYMBOL */}
-            {/* Then, if clicked on, give alert saying 'new symbol selected', or something */}
+            <Link to={window.location.pathname}>
+              <div id="earthMini" onMouseOver={this.hoverEarth} onMouseOut={this.unHoverEarth}></div>
+            </Link>
+            <Link to={window.location.pathname}>
+              <div id="marsMini" onMouseOver={this.hoverMars} onMouseOut={this.unHoverMars}></div>
+            </Link>
           </div>
           <div id="nextLevelLabel">
             next level
           </div>
           <div id="nextLevelPointsNumberDisplay">
-            50 points
+            XX points
           </div>
           <div id="nextLevelLabel">
             at level 11

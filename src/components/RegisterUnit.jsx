@@ -76,7 +76,7 @@ constructor(){
             token : "Bearer " + self.state.userToken
           }, {headers: { Authorization: "Bearer " + self.state.userToken }}).then (function (response){
             
-            document.location = "/welcome";
+            document.location = "/profile/points";
 
           })
           
@@ -174,7 +174,7 @@ return axios.post( Config.API + '/register', {
                 <input type="text" name="username" required="required" maxLength="20" placeholder="Username" id="registerUserName" />
                 <input type="email" name="email" required="required" maxLength="30" placeholder="Email" id="registerEmail" />
                 <input type="password" name="password" required="required" maxLength="30" placeholder="Password" id="registerPassword"/>
-                <Link to="/register"><input type="submit" value="Register" onClick={this.postRegister} id="submitRegister"/></Link>
+                <Link to="/profile/points"><input type="submit" value="Register" onClick={this.postRegister} id="submitRegister"/></Link>
                 <Link to='/login'><div id="loginButton">Login</div></Link>
             </form>
         </div>

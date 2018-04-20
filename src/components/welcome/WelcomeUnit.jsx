@@ -67,9 +67,9 @@ export default class WelcomeUnit extends React.Component {
                 <Link to={'/project/'+problem.ID +'/subprojects'}>
                     <div id="welcomeProblemsHeader4">
                         <div id="welcomeProblemsTitle">
-                            technology
+                            advancing
                             <br />
-                            development
+                            technology
                         </div>
                     </div>
                 </Link>

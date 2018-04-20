@@ -23,21 +23,21 @@ export default class SolutionUnit extends React.Component {
 
 
 	render() {
-		if (this.state.solutions === null) {
-			alert("hey")
-			return (
-				<div>
-					Hello
-				</div>
-			);
-		} else {
+		// if (this.state.solutions === null) {
+		// 	alert("hey")
+		// 	return (
+		// 		<div>
+		// 			Hello
+		// 		</div>
+		// 	);
+		// } else {
 			return (
 				<div>
             		{/*x{this.state.probID}x*/}
 					<ul> {this.state.solutions.map(this.renderItem)} </ul>
 				</div>
 			);
-		}
+		// }
 	}
 
 	renderItem(solution) {

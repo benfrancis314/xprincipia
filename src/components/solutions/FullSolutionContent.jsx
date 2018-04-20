@@ -184,7 +184,7 @@ unVote() {
                   </div>
               </Link>
             </div>
-              <div id="versionNumber">v.1</div>
+              <div id="versionNumber">v.{this.state.solutionInfo.Version}</div>
               <div id="createDate">{dateTime(this.state.solutionInfo.CreatedAt)}</div>
               
               {/* <Link to={`/proposal/${this.props.params.probID}/${this.props.params.solutionID}/delete`}>
@@ -202,10 +202,10 @@ unVote() {
               
               <div id="prosConsMenu">
                 <Link to={`/project/${this.props.params.probID}/proposal/${this.props.params.solutionID}/pros`} activeClassName="activeProsCons">
-                    <div id="prosButton">pro</div>
+                    <div id="proposalProConButton">pro/con analysis</div>
                 </Link>
-                <Link to={`/project/${this.props.params.probID}/proposal/${this.props.params.solutionID}/cons`} activeClassName="activeProsCons">
-                    <div id="consButton">contra</div>
+                <Link to={`/project/${this.props.params.probID}/proposal/${this.props.params.solutionID}/discuss`} activeClassName="activeProposalOption">                    
+                    <div id="proposalDiscussButton">discuss</div>
                 </Link>
               </div>
               <div>
@@ -231,7 +231,7 @@ unVote() {
                   </div>
               </Link>
             </div>
-              <div id="versionNumber">v. 1</div>
+              <div id="versionNumber">v.{this.state.solutionInfo.Version}</div>
               <div id="createDate">{dateTime(this.state.solutionInfo.CreatedAt)}</div>
 
               <Link to={`/proposal/${this.props.params.probID}/${this.props.params.solutionID}/edit`} activeClassName="activeProposalOption">
@@ -245,10 +245,10 @@ unVote() {
 
               <div id="prosConsMenu">
                 <Link to={`/project/${this.props.params.probID}/proposal/${this.props.params.solutionID}/pros`} activeClassName="activeProsCons">
-                    <div id="prosButton">pro</div>
+                    <div id="proposalProConButton">pro/con analysis</div>
                 </Link>
-                <Link to={`/project/${this.props.params.probID}/proposal/${this.props.params.solutionID}/cons`} activeClassName="activeProsCons">
-                    <div id="consButton">contra</div>
+                <Link to={`/project/${this.props.params.probID}/proposal/${this.props.params.solutionID}/discuss`} activeClassName="activeProposalOption">                    
+                    <div id="proposalDiscussButton">discuss</div>
                 </Link>
               </div>
               <div>
@@ -274,7 +274,7 @@ unVote() {
                         </div>
                     </Link>
               </div>
-              <div id="versionNumber">v. 1</div>
+              <div id="versionNumber">v.{this.state.solutionInfo.Version}</div>
               <div id="createDate">{dateTime(this.state.solutionInfo.CreatedAt)}</div>
               
               {/*<Link to={`/proposal/${this.props.probID}/${this.props.solutionID}/flag`}>
@@ -284,10 +284,10 @@ unVote() {
 
               <div id="prosConsMenu">
                 <Link to={`/project/${this.props.params.probID}/proposal/${this.props.params.solutionID}/pros`} activeClassName="activeProsCons">
-                    <div id="prosButton">pro</div>
+                    <div id="proposalProConButton">pro/con analysis</div>
                 </Link>
-                <Link to={`/project/${this.props.params.probID}/proposal/${this.props.params.solutionID}/cons`} activeClassName="activeProsCons">
-                    <div id="consButton">contra</div>
+                <Link to={`/project/${this.props.params.probID}/proposal/${this.props.params.solutionID}/discuss`} activeClassName="activeProposalOption">                    
+                    <div id="proposalDiscussButton">discuss</div>
                 </Link>
               </div>
               <div>
@@ -313,7 +313,7 @@ unVote() {
                   </div>
               </Link>
             </div>
-              <div id="versionNumber">v. 1</div>
+              <div id="versionNumber">v.{this.state.solutionInfo.Version}</div>
               <div id="createDate">{dateTime(this.state.solutionInfo.CreatedAt)}</div>
               
               {/*<Link to={`/proposal/${this.props.probID}/${this.props.solutionID}/flag`}>
@@ -323,10 +323,10 @@ unVote() {
 
               <div id="prosConsMenu">
                 <Link to={`/project/${this.props.params.probID}/proposal/${this.props.params.solutionID}/pros`} activeClassName="activeProsCons">
-                    <div id="prosButton">pro</div>
+                    <div id="proposalProConButton">pro/con analysis</div>
                 </Link>
-                <Link to={`/project/${this.props.params.probID}/proposal/${this.props.params.solutionID}/cons`} activeClassName="activeProsCons">
-                    <div id="consButton">contra</div>
+                <Link to={`/project/${this.props.params.probID}/proposal/${this.props.params.solutionID}/discuss`} activeClassName="activeProposalOption">                    
+                    <div id="proposalDiscussButton">discuss</div>
                 </Link>
               </div>
               <div>

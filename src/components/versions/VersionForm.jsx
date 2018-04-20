@@ -127,8 +127,11 @@ export default class VersionForm extends React.Component {
   render() {
       return (
       <div id="createSolutionBox">
+        <Link to={`/project/${this.props.params.probID}/proposal/${this.props.params.solutionID}`}>
+            <img src={require('../../assets/redX.svg')} id="closeRedX" width="30" height="30" alt="Close button, red X symbol" />            
+        </Link>
         <div id="createVersionHeader">
-          create v.2
+          new version
         </div>
           {/* <form id="createVersionForm"> */}
               <label htmlFor="solutionDescription" id="versionChangesFormLabel">changes from v.1<br />
@@ -218,8 +221,7 @@ export default class VersionForm extends React.Component {
                 <label htmlFor="solutionReferences" id="solutionReferenceFormLabel">sources <span id="gray">(optional)</span><br />
                     <textarea name="solutionReferences" placeholder="Please provide your sources here." id="versionReferencesForm">
                     </textarea></label><br />
-                  {/* <Link to={`/project/${this.props.probID}/subprojects`}> */}
-                  <Link to={window.location.pathname}>
+                  <Link to={`/project/${this.props.params.probID}/proposal/${this.props.params.solutionID}/versions`}>
                       <input type="button" ref='btn' value="Create" onClick={this.postSolutionVersion} id="submitSolution"/>
                   </Link>
               </fieldset>

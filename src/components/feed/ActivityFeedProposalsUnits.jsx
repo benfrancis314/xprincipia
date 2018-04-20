@@ -102,10 +102,10 @@ if (proposal.Private === true) {
       return (
         <li key={proposal.ID} id="feedListUnit">
             <Link to={'/project/'+proposal.ProblemID +'/proposal/'+proposal.ID}>
-                <div id="feedUnits">  
+                <div id="omniActivityUnit">  
                      {/* Used to say "Question on: ... " or "Q: ... " or just the title */}
-                    <div id="blueFeedProse">project:<span id="feedCaps"> {proposal.ParentTitle}</span></div>
-                    <div id="whiteFeed">{proposal.Title}</div>
+                    project:<span id="feedCaps"> {proposal.ParentTitle}</span>
+                    <div id="omniTitle">{proposal.Title}</div>
                     <div id="feedDateProse">{dateTime(proposal.CreatedAt)}</div>
                 </div>
             </Link>

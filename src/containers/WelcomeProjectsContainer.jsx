@@ -14,7 +14,7 @@ export default class WelcomeContainer extends React.Component {
    
   hoverLeaderBoardText() {
     $(document).ready(function() {
-            $('#leaderBoardCapTop').html("competitions").fadeIn(7500);
+            $('#leaderBoardCapTop').html("categories").fadeIn(7500);
             $('#leaderBoardCapTop').attr('id','leaderBoardCapTopHover');
     });
   }
