@@ -57,27 +57,12 @@ unHoverFilter() {
                         </Link>
                         <Link to ={'/welcome/questions'}>
                             <div id="feedFilterUnits">
-                                questions
-                            </div>
-                        </Link>
-                        <Link to ={'/welcome/suggestions'}>
-                            <div id="feedFilterUnits">
-                                suggestions
-                            </div>
-                        </Link>
-                        <Link to ={'/welcome/debate'}>
-                            <div id="feedFilterUnits">
-                                debate
+                                discuss
                             </div>
                         </Link>
                         <Link to ={'/welcome/resources'}>
                             <div id="feedFilterUnits">
-                                resources
-                            </div>
-                        </Link>
-                        <Link to ={'/welcome/lessons'}>
-                            <div id="feedFilterUnits">
-                                lessons
+                                learn
                             </div>
                         </Link>
                         <Link to ={'/welcome/questions'}>

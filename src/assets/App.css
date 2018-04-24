@@ -868,7 +868,7 @@ margin-bottom: 2% !important;
 padding-left: 0px !important;
 padding-right: 0px !important;
 }
-#discussHeader {
+#discussHeader, #discussHeaderQuestion, #discussHeaderSuggestion, #discussHeaderDebate {
 margin-left: 2% !important;
 }
 #deleteSBButton, #editSBButton, #commentSBButtonUser{
@@ -5344,7 +5344,7 @@ font-family: 'Open Sans';
   display: flex;
   flex-direction: row;
   font-family: 'Open Sans';
-  padding-top: 10px;
+  padding-bottom: 10px;
   transition: all 1s ease 0s;
 }
 #prosConsUnit {
@@ -5383,13 +5383,13 @@ font-family: 'Open Sans';
   transform: scale(1.02);
   transition: all 1s ease 0s;
 }
-#suggestionContent, #commentContent {
+#suggestionContent, #commentContent, #suggestionContentQuestion, #suggestionContentSuggestion, #suggestionContentDebate {
   flex: 3 3 auto;
   font-family: 'Open Sans';
   border: 1px solid #dddddd;
   border-radius: 5px 3px 25% 10px;
   width: 80%;
-  padding: 1% 5% 1% 5%;
+  padding: 1% 5% 0.5% 5%;
   margin-bottom: 1.1%;
   background: linear-gradient(to right,rgba(0,220,255, 0.01), rgba(0,220,255, 0.02), rgba(0,220,255, 0));
   /* background: linear-gradient(to right,rgba(0,220,255, 0.06), rgba(0,220,255, 0.07), rgba(0,220,255, 0.02)); */
@@ -5397,17 +5397,36 @@ font-family: 'Open Sans';
   transition: all 0.5s ease 0s;
   background-color: rgba(0,220,255,0.05);
 }
-#suggestionContentHover, #suggestionContentHoverVote, #suggestionContentHoverUnvote, #commentContentHover, #commentContentHoverVote, #commentContentHoverUnvote {
+#suggestionContentQuestion {
+  border-color: rgba(0,220,255,0.5);
+} 
+#suggestionContentSuggestion {
+  border-color: rgba(0,255,220,0.5);
+} 
+#suggestionContentDebate {
+  border-color: rgba(255,127,127, 0.5);
+}
+#suggestionContentHover, #suggestionContentHoverVote, #suggestionContentHoverUnvote, #commentContentHover, #commentContentHoverVote, #commentContentHoverUnvote,
+#suggestionContentHoverVoteQuestion, #suggestionContentHoverVoteSuggestion, #suggestionContentHoverVoteDebate {
   flex: 3 3 auto;
   font-family: 'Open Sans';
   border: 1px solid #dddddd;
   border-radius: 5px 3px 25% 10px;
   width: 80%;
-  padding: 1% 5% 1% 5%;
+  padding: 1% 5% 0.5% 5%;
   margin-bottom: 1.1%;
   background-color: rgba(0,220,255,0.05);
   position: relative;
   transition: all 0.5s ease 0s;
+}
+#suggestionContentHoverVoteQuestion {
+  border-color: rgba(0,220,255,0.5);
+} 
+#suggestionContentHoverVoteSuggestion {
+  border-color: rgba(0,255,220,0.5);
+} 
+#suggestionContentHoverVoteDebate {
+  border-color: rgba(255,127,127, 0.5);
 }
 #suggestionContentHoverVote, #commentContentHoverVote {
   background-color: rgba(0,255,220,0.05);
@@ -5432,7 +5451,7 @@ font-family: 'Open Sans';
   background-color: rgba(0,220,255,0.2);
   background: linear-gradient(to right,rgba(0,220,255, 0.2), rgba(0,220,255, 0.15), rgba(0,220,255, 0.05));
 }
-#suggestionContentHoverVote:active {
+#suggestionContentHoverVote:active, #suggestionContentHoverVoteQuestion:active, #suggestionContentHoverVoteSuggestion:active, #suggestionContentHoverVoteDebate:active {
   background: linear-gradient(to right,rgba(0,255,220, 0.2), rgba(0,255,220, 0.15), rgba(0,255,220, 0.05));
 }
 #suggestionText, #suggestionTextCaps {
@@ -8261,7 +8280,7 @@ text-transform: lowercase !important;
 }
 
 #discussFormContainer {
-  background: radial-gradient(circle, rgba(0,220,255,0.05), rgba(0,220,255,0));
+  /* background: radial-gradient(circle, rgba(0,220,255,0.05), rgba(0,220,255,0)); */
   padding: 2.5% 0%;
 }
 
@@ -8388,7 +8407,7 @@ flex-direction: column;
 align-items: stretch;
 width: 70%;
 margin: 0 auto;
-background: radial-gradient(circle, rgba(0,220,255,0.05), rgba(0,220,255,0));
+/* background: radial-gradient(circle, rgba(0,220,255,0.05), rgba(0,220,255,0)); */
 }
 #discussGroupSelectAllActive, #discussGroupSelectAllInactive {
   flex: 1 1 auto;
@@ -8397,7 +8416,7 @@ background: radial-gradient(circle, rgba(0,220,255,0.05), rgba(0,220,255,0));
   font-size: 160%;
   border: 1px solid #00dcff;
   border-width: 0px 1px 1px 1px;
-  border-radius: 0px 0px 25% 25%;
+  border-radius: 0px 0px 15% 15%;
   text-align: center;
   text-decoration: none;
   margin: 0 auto;
@@ -8433,18 +8452,25 @@ background: radial-gradient(circle, rgba(0,220,255,0.05), rgba(0,220,255,0));
   letter-spacing: 2px;
   padding-bottom: 3px;
 }
-#discussHeader {
+#discussHeader, #discussHeaderQuestion, #discussHeaderSuggestion, #discussHeaderDebate {
 /*Old Styles*/
 /*font-size: 110%;
 color: #00dcff;
 margin-bottom: 3px;*/
 
-color: #00dcff !important;
+color: #00dcff;
 font-size: 90%;
 padding-left: 0.5%;
 width: 30%;
 border: 1px solid #333333;
 border-width: 0px 0px 1px 0px;
+text-transform: lowercase !important;
+}
+#discussHeaderSuggestion {
+  color: #00ffdc;
+}
+#discussHeaderDebate {
+  color: #ff7f7f;
 }
 #discussHeaderGreen {
 /*Old Styles*/
@@ -8491,6 +8517,7 @@ letter-spacing: 2px;
 }
 #discussHoverTextGreen {
   color: #00ffdc;
+  letter-spacing: 6px;
 }
 #discussHoverTextRed {
   color: #ff7f7f;
@@ -8504,6 +8531,9 @@ letter-spacing: 2px;
   letter-spacing: 6px;
   opacity: 1;
   font-size: 110%;
+}
+#discussHoverTextShowVoted {
+  letter-spacing: 2px;
 }
 #discussHoverTextShowGreen, #discussHoverTextShowVoted {
   color: #00ffdc;
@@ -8520,34 +8550,43 @@ letter-spacing: 2px;
   transition: all 0.5s ease 0s;
 }
 
-#discussListSelectButtonHide {
+#discussSelectionMenuContainer {
+  background: radial-gradient(circle, rgba(0,220,255,0.05), rgba(0,220,255,0));
+}
+#discussListSelectButtonHide, #discussListSelectButtonHide * {
   display: none;
 }
 #discussListSelectButton {
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  /* justify-content: flex-end; */
   margin: 0 auto;
-  margin-top: 2%;
-  margin-bottom: 1%;
+  padding-top: 2%;
+  padding-bottom: 1%;
   width: 70%;
-  background: linear-gradient(to right, rgba(0,220,255,0), rgba(0,220,255,0.05));
+  /* background: radial-gradient(circle, rgba(0,220,255,0.05), rgba(0,220,255,0)); */
 }
-#discussListNewButtonActive, #discussListNewButtonInactive, #discussListTopButtonActive, #discussListNewButtonInactive {
+#discussListNewButtonActive, #discussListNewButtonInactive, #discussListTopButtonActive, #discussListTopButtonInactive {
   width: 25%;
+  /* flex: 1 1 0 auto; */
   text-align: center;
   margin: 0 auto;
-  margin-right: 0px;
+  /* margin-right: 0px; */
   padding: 3px;
   letter-spacing: 4px;
   border: 1px solid rgba(0,220,255,0.5);
-  border-radius:  3px 3px 3px 15%;
+  border-radius:  20% 20% 3px 3px;
+  background: radial-gradient(circle, rgba(0,220,255,0), rgba(0,220,255,0.05));
+  transition: all 0.5s ease 0s;
 }
-#discussListTopButtonActive, #discussListNewButtonInactive {
-  border-radius:  3px 3px 15% 3px;
+#discussListNewButtonActive, #discussListTopButtonActive {
+  background-color: #00dcff;
+  color: #0f131c;
 }
-#discussListNewButtonActive:hover, #discussListNewButtonInactive:hover, #discussListTopButtonActive:hover, #discussListNewButtonInactive:hover {
-  background-color: rgba(0,220,255,0.05);
+#discussListNewButtonActive:hover, #discussListNewButtonInactive:hover, #discussListTopButtonActive:hover, #discussListTopButtonInactive:hover {
+  background-color: #00dcff;
+  color: #0f131c;
+  cursor: pointer !important;
 }
 /*End Discuss SB*/
 

@@ -125,7 +125,7 @@ postQuestion() {
             <div id="projectFormRadioContainer">
               <div id="projectFormRadioColumn">
                 <div id="projectFormRadioRow1">
-                  question <span id="grayLessSpacing">(default)</span>
+                  comment <span id="grayLessSpacing">(default)</span>
                 </div>
                 <div id="projectFormRadioRow">
                   <label id="projectRadioButtonContainer">
@@ -136,7 +136,7 @@ postQuestion() {
               </div>
               <div id="projectFormRadioColumn">
                 <div id="projectFormRadioRow2">
-                  suggestion
+                  pro
                 </div>
                 <div id="projectFormRadioRow">
                   <label id="projectRadioButtonContainer">
@@ -147,7 +147,7 @@ postQuestion() {
               </div>
               <div id="projectFormRadioColumn">
                 <div id="projectFormRadioRow3">
-                  debate
+                  con
                 </div>
                 <div id="projectFormRadioRow">
                   <label id="projectRadioButtonContainer">

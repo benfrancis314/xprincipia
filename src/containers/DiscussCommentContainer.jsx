@@ -11,7 +11,9 @@ export default class DiscussContainer extends React.Component {
 
         this.state = {
             discuss: [],
-            newTopID: ''
+            newTopID: '',
+            parent: [],
+            parentType: ''
            
         }
         this.selectAll = this.selectAll.bind(this)
@@ -22,7 +24,7 @@ export default class DiscussContainer extends React.Component {
     componentDidMount(){
         var self = this;
             axios.get( Config.API + '/comments/bytype/question?problem_id='+this.props.params.probID).then(function (response) {
-                if(response.data.length > 0) {
+                if (response.data.length > 0) {
                     self.setState({
                         newTopID: 'discussListSelectButton',
                         discuss: response.data
@@ -33,6 +35,11 @@ export default class DiscussContainer extends React.Component {
                         discuss: response.data
                     })
                 }
+            }) 
+            axios.get( Config.API + '/comments/ID?id='+this.props.params.discussID).then(function (response) {
+                self.setState({
+                    parent: response.data
+                })
             }) 
             axios.get( Config.API + '/questions/number?id='+this.props.params.probID).then(function (response) {
                 self.setState({
@@ -49,6 +56,9 @@ export default class DiscussContainer extends React.Component {
                     debateNumber: response.data
                 })
             })
+            // if ()
+            // IF CALL, saying IF parent type is SUGGESTION OR DEBATE, then return 'DISCUSS',
+            // ELSE return COMMENT (or THREAD or something)
     }
     componentWillReceiveProps(nextProps){
         var self = this;
@@ -64,6 +74,11 @@ export default class DiscussContainer extends React.Component {
                         discuss: response.data
                     })
                 }
+            }) 
+            axios.get( Config.API + '/comments/ID?id='+nextProps.params.discussID).then(function (response) {
+                self.setState({
+                    parent: response.data
+                })
             }) 
             axios.get( Config.API + '/questions/number?id='+nextProps.params.probID).then(function (response) {
                 self.setState({
@@ -164,36 +179,98 @@ export default class DiscussContainer extends React.Component {
     }
 
    render() {
-    if (window.location.pathname.includes('private')) {
+    if (parent.Type == '2') {
 
         return (
             <div id="questionContainer">
-                private
-                {/* {React.cloneElement(this.props.children, {parentTitle: this.props.parentTitle})} */}
-                {/* <DiscussUnitPrivate questions={this.state.questions} /> */}
+                <div id="answerQuestionHeader">
+                    {/* <Link to={`/project/${this.props.params.probID}/question/${this.props.params.questID}/answers`}> */}
+                        <div id="backSolutionArrowDiv">
+                            <img src={require('../assets/upArrow.svg')} id="backSolutionArrow" width="50" height="30" alt="Back arrow, blue up arrow" />
+                        </div>
+                    {/* </Link> */}
+                    <div id="answerQuestionLabel">return to discuss</div>
+                </div>
+                {/* EDIT LINK */}
+                {/* <Link to={`/project/${this.props.params.probID}/question/${this.props.params.discussID}/answers`}> */}
+                    <div id="answerQuestionUnit">
+                        <div id="answerQuestionContent">
+                            <div id="discussHeader">
+                                {this.state.parent.Username}
+                            </div>
+                            <div id="suggestionText">
+                                {this.state.parent.Description}
+                            </div>
+                        </div>
+                    </div>
+                {/* </Link> */}
+                <div id="sidebarDiscussMenu">
+                    <div id="discussGroupSelectAllActive" onClick={this.selectAll}>
+                        omni<span id="greenSmall">  {this.state.questionNumber}</span>
+                    </div>
+                    <div id="discussGroupSelection">
+                    <div id="discussGroupSelection">
+                        <div id="discussSelectButtonLeftInactive" onClick={this.selectQuestions}>
+                            answers
+                            <span id="greenSmall">  {this.state.questionNumber}</span>
+                        </div>
+
+                        <div id="discussSelectButtonRightInactive" onClick={this.selectDebates}>                                            
+                            comments
+                            <span id="greenSmall">  {this.state.debateNumber}</span>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+                {React.cloneElement(this.props.children, {parentTitle: this.props.parentTitle})}
+                <div id={this.state.newTopID}>
+                    <div id="discussListNewButtonActive">
+                        new
+                    </div>
+                    <div id="discussListTopButtonInactive">
+                        top
+                    </div>
+                </div>
+                <DiscussUnit questions={this.state.discuss} />
             </div>
       
         );
 } else {
     return (
         <div id="questionContainer">
+            <div id="answerQuestionHeader">
+                {/* <Link to={`/project/${this.props.params.probID}/question/${this.props.params.questID}/answers`}> */}
+                    <div id="backSolutionArrowDiv">
+                        <img src={require('../assets/upArrow.svg')} id="backSolutionArrow" width="50" height="30" alt="Back arrow, blue up arrow" />
+                    </div>
+                {/* </Link> */}
+                <div id="answerQuestionLabel">return to {this.state.parentTye}</div>
+            </div>
+            {/* EDIT LINK */}
+            {/* <Link to={`/project/${this.props.params.probID}/question/${this.props.params.discussID}/answers`}> */}
+                <div id="answerQuestionUnit">
+                    <div id="answerQuestionContent">
+                        <div id="discussHeader">
+                            {this.state.parent.Username}
+                        </div>
+                        <div id="suggestionText">
+                            {this.state.parent.Description}
+                        </div>
+                    </div>
+                </div>
+            {/* </Link> */}
             <div id="sidebarDiscussMenu">
                 <div id="discussGroupSelectAllActive" onClick={this.selectAll}>
                     omni<span id="greenSmall">  {this.state.questionNumber}</span>
                 </div>
                 <div id="discussGroupSelection">
                     <div id="discussSelectButtonLeftInactive" onClick={this.selectQuestions}>
-                        questions
+                        pros/cons
                         <span id="greenSmall">  {this.state.questionNumber}</span>
                     </div>
 
-                    <div id="discussSelectButtonCenterInactive" onClick={this.selectSuggestions}>                                           
-                        suggestions
-                        <span id="greenSmall">  {this.state.suggestionNumber}</span>
-                    </div>
-
                     <div id="discussSelectButtonRightInactive" onClick={this.selectDebates}>                                            
-                        debates
+                        comments
                         <span id="greenSmall">  {this.state.debateNumber}</span>
                     </div>
                 </div>
@@ -214,3 +291,6 @@ export default class DiscussContainer extends React.Component {
 }
 }
 }
+function floatToDecimal(float) {
+	return Math.round(float*100)+'%';
+};

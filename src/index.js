@@ -8,14 +8,11 @@ ReactGA.initialize('UA-104103231-1'); //Unique Google Analytics tracking number
 //Load Components
 
 import ActivityFeedFilter from './components/feed/ActivityFeedFilter.jsx';
-import ActivityFeedDebateUnits from './components/feed/ActivityFeedDebateUnits.jsx';
-import ActivityFeedLessonsUnits from './components/feed/ActivityFeedLessonsUnits.jsx';
 import ActivityFeedOmniUnits from './components/feed/ActivityFeedOmniUnits.jsx';
 import ActivityFeedProjectsUnits from './components/feed/ActivityFeedProjectsUnits.jsx';
 import ActivityFeedProposalsUnits from './components/feed/ActivityFeedProposalsUnits.jsx';
 import ActivityFeedQuestionsUnits from './components/feed/ActivityFeedQuestionsUnits.jsx';
 import ActivityFeedResourcesUnits from './components/feed/ActivityFeedResourcesUnits.jsx';
-import ActivityFeedSuggestionsUnits from './components/feed/ActivityFeedSuggestionsUnits.jsx';
 import AnswerDeleteForm from './components/answers/AnswerDeleteForm.jsx';
 import AnswerDeleteFormPrivate from './components/answers/AnswerDeleteFormPrivate.jsx';
 import AnswerEditForm from './components/answers/AnswerEditForm.jsx';
@@ -38,6 +35,7 @@ import ConsFlagForm from './components/proscons/ConsFlagForm.jsx';
 import ConsForm from './components/proscons/ConsForm.jsx';
 import ConsFormPrivate from './components/proscons/ConsFormPrivate.jsx';
 import DiscussForm from './components/discuss/DiscussForm.jsx';
+import DiscussCommentForm from './components/discuss/DiscussCommentForm.jsx';
 import Empty from './components/Empty.jsx';
 import Error404 from './components/Error404.jsx';
 import FeedbackForm from './components/FeedbackForm.jsx';
@@ -167,14 +165,11 @@ import WelcomeCreateForm from './components/welcome/WelcomeCreateForm.jsx';
 
 
 //Load Containers
-import ActivityFeedDebateContainer from './containers/feed/ActivityFeedDebateContainer.jsx';
-import ActivityFeedLessonsContainer from './containers/feed/ActivityFeedLessonsContainer.jsx';
 import ActivityFeedOmniContainer from './containers/feed/ActivityFeedOmniContainer.jsx';
 import ActivityFeedProjectsContainer from './containers/feed/ActivityFeedProjectsContainer.jsx';
 import ActivityFeedProposalsContainer from './containers/feed/ActivityFeedProposalsContainer.jsx';
 import ActivityFeedQuestionsContainer from './containers/feed/ActivityFeedQuestionsContainer.jsx';
 import ActivityFeedResourcesContainer from './containers/feed/ActivityFeedResourcesContainer.jsx';
-import ActivityFeedSuggestionsContainer from './containers/feed/ActivityFeedSuggestionsContainer.jsx';
 import AnswerContainer from './containers/AnswerContainer.jsx';
 import AnswerContainerPrivate from './containers/AnswerContainerPrivate.jsx';
 import BenPaperContainer from './containers/BenPaperContainer.jsx';
@@ -197,6 +192,7 @@ import CommentSuggestionContainerPrivate from './containers/comments/CommentSugg
 import ConsContainer from './containers/ConsContainer.jsx';
 import ConsContainerPrivate from './containers/ConsContainerPrivate.jsx';
 import DiscussContainer from './containers/DiscussContainer.jsx';
+import DiscussCommentContainer from './containers/DiscussCommentContainer.jsx';
 import EntranceContainer from './containers/EntranceContainer.jsx';
 import ErrorContainer from './containers/ErrorContainer.jsx';
 import FreeFormContainer from './containers/FreeFormContainer.jsx';
@@ -299,21 +295,9 @@ ReactDOM.render(
             <IndexRoute component={ActivityFeedQuestionsUnits}></IndexRoute>
             <Route path='/welcome/questions' component={ActivityFeedQuestionsUnits}></Route>
           </Route>
-          <Route path='/welcome/feed/suggestions' component={ActivityFeedSuggestionsContainer}>
-            <IndexRoute component={ActivityFeedSuggestionsUnits}></IndexRoute>
-            <Route path='/welcome/suggestions' component={ActivityFeedSuggestionsUnits}></Route>
-          </Route>
-          <Route path='/welcome/feed/debate' component={ActivityFeedDebateContainer}>
-            <IndexRoute component={ActivityFeedDebateUnits}></IndexRoute>
-            <Route path='/welcome/debate' component={ActivityFeedDebateUnits}></Route>
-          </Route>
           <Route path='/welcome/feed/resources' component={ActivityFeedResourcesContainer}>
             <IndexRoute component={ActivityFeedResourcesUnits}></IndexRoute>
             <Route path='/welcome/resources' component={ActivityFeedResourcesUnits}></Route>
-          </Route>
-          <Route path='/welcome/feed/lessons' component={ActivityFeedLessonsContainer}>
-            <IndexRoute component={ActivityFeedLessonsUnits}></IndexRoute>
-            <Route path='/welcome/lessons' component={ActivityFeedLessonsUnits}></Route>
           </Route>
         </Route>
       </Route>
@@ -614,9 +598,13 @@ ReactDOM.render(
               <Route path='/project/:probID/proposal/:solutionID/question/container' component={DiscussContainer}>
                 <IndexRoute component={DiscussForm}></IndexRoute>
                 <Route path='/project/:probID/proposal/:solutionID/discuss' component={DiscussForm}></Route>
-                <Route path='/project/:probID/proposal/:solutionID/question/:questID/edit' component={QuestionEditForm}></Route>
-                <Route path='/project/:probID/proposal/:solutionID/question/:questID/flag' component={QuestionFlagForm}></Route>
-                <Route path='/project/:probID/proposal/:solutionID/question/:questID/delete' component={QuestionDeleteForm}></Route>
+                <Route path='/project/:probID/proposal/:solutionID/discuss/:discussID/edit' component={QuestionEditForm}></Route>
+                <Route path='/project/:probID/proposal/:solutionID/discuss/:discussID/flag' component={QuestionFlagForm}></Route>
+                <Route path='/project/:probID/proposal/:solutionID/discuss/:discussID/delete' component={QuestionDeleteForm}></Route>
+              </Route>
+              <Route path='/project/:probID/proposal/:solutionID/question/container' component={DiscussCommentContainer}>
+                <IndexRoute component={DiscussCommentForm}></IndexRoute>
+                <Route path='/project/:probID/proposal/:solutionID/discuss/:discussID/comment' component={DiscussCommentForm}></Route>
               </Route>
               <Route path='/project/:probID/proposal/:solutionID/question/:questID/answers/container' component={AnswerContainer}>
                 <IndexRoute component={AnswerForm}></IndexRoute>
@@ -709,6 +697,10 @@ ReactDOM.render(
               <Route path='/project/:probID/discuss/:questID/flag' component={QuestionFlagForm}></Route>
               <Route path='/project/:probID/discuss/:questID/delete' component={QuestionDeleteForm}></Route>
             </Route> 
+            <Route path='/project/:probID/discuss/:discussID/comments/container' component={DiscussCommentContainer}>
+              <IndexRoute component={DiscussCommentForm}></IndexRoute>
+              <Route path='/project/:probID/discuss/:discussID/comments' component={DiscussCommentForm}></Route>
+            </Route>
             <Route path='/project/:probID/question/:questID/answers/container' component={AnswerContainer}>
               <IndexRoute component={AnswerForm}></IndexRoute>
               <Route path='/project/:probID/question/:questID/answers' component={AnswerForm}></Route>
