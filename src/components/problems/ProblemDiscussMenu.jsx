@@ -46,11 +46,8 @@ export default class ProblemDiscussMenu extends React.Component {
             transitionAppearTimeout={2000}
             transitionEnter={false}
             transitionLeave={false}>
-                <div id="projectInteractDiscussMenu">
-                    <div id="proposalsTitleRightSB">DISCUSS</div>
-                            {React.cloneElement(this.props.children, {probID: this.props.params.probID, parentTitle: this.props.parentTitle})}
-                    <div id="proposalsTitleRightSBEnd"><br /></div>
-                </div>
+                {React.cloneElement(this.props.children, {probID: this.props.params.probID, parentTitle: this.props.parentTitle})}
+                <div id="proposalsTitleRightSBEnd"><br /></div>
             </ReactCSSTransitionGroup>
         </div>
 

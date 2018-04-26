@@ -348,7 +348,8 @@ export default class DiscussContainer extends React.Component {
     //     );
 // } else {
     return (
-        <div id="questionContainer">
+        <div id="projectInteractDiscussMenu">
+            <div id="proposalsTitleRightSB">DISCUSS</div>
             <div id="discussSelectionMenuContainer">
                 <div id="sidebarDiscussMenu">
                     <div id="discussGroupSelectAllActive" onClick={this.selectAll}>

@@ -1236,10 +1236,6 @@ letter-spacing: 2px !important;
 
 /*Answer and Question*/
 
-#answerQuestionHeader {
-  display: flex;
-  flex-direction: row;
-}
 #answerQuestionLabel {
   font-size: 150%;
   color: #ffffff;
@@ -1256,7 +1252,8 @@ letter-spacing: 2px !important;
   box-shadow: 0 0 1pt 1pt rgba(255,255,255,0.5);
   text-transform: lowercase !important;
 }
-#answerQuestionContent {
+#answerQuestionContent, #answerQuestionContentQuestion, #answerQuestionContentSuggestion, #answerQuestionContentDebate,
+#answerQuestionContentAnswer, #answerQuestionContentComment, #answerQuestionContentPro, #answerQuestionContentCon {
   /*Old Styles*/
   /*flex: 3 3 auto;
   font-family: 'Open Sans';
@@ -1273,7 +1270,17 @@ letter-spacing: 2px !important;
   background: linear-gradient(to right,rgba(0,220,255, 0.06), rgba(0,220,255, 0.07), rgba(0,220,255, 0.02));
   transition: all 0.5s ease 0s;
 }
-#answerQuestionContent:hover {
+#answerQuestionContentQuestion, #answerQuestionContentComment {
+  border-color: rgba(0,220,255,0.5);
+}
+#answerQuestionContentSuggestion, #answerQuestionContentAnswer, #answerQuestionContentPro {
+  border-color: rgba(0,255,220,0.5);
+}
+#answerQuestionContentDebate, #answerQuestionContentCon {
+  border-color: rgba(255,127,127,0.5);
+}
+#answerQuestionContent:hover, #answerQuestionContentQuestion:hover, #answerQuestionContentSuggestion:hover, #answerQuestionContentDebate:hover,
+#answerQuestionContentAnswer:hover, #answerQuestionContentComment:hover, #answerQuestionContentPro:hover, #answerQuestionContentCon:hover {
   background-color: rgba(0,220,255,0.05);
   transform: scale(1.02);
 }
@@ -1444,10 +1451,11 @@ letter-spacing: 2px !important;
   flex-direction: row;
   font-family: 'Open Sans';
   padding-top: 10px;
-  width: 100%;
+  width: 90%;
 }
 #answerQuestionUnit {
   display: flex;
+  position: relative;
   flex-direction: row;
   font-family: 'Open Sans';
   padding-top: 10px;
@@ -5383,7 +5391,9 @@ font-family: 'Open Sans';
   transform: scale(1.02);
   transition: all 1s ease 0s;
 }
-#suggestionContent, #commentContent, #suggestionContentQuestion, #suggestionContentSuggestion, #suggestionContentDebate {
+#suggestionContent, #commentContent, 
+#suggestionContentQuestion, #suggestionContentSuggestion, #suggestionContentDebate,
+#suggestionContentAnswer, #suggestionContentComment, #suggestionContentPro, #suggestionContentCon {
   flex: 3 3 auto;
   font-family: 'Open Sans';
   border: 1px solid #dddddd;
@@ -5397,14 +5407,22 @@ font-family: 'Open Sans';
   transition: all 0.5s ease 0s;
   background-color: rgba(0,220,255,0.05);
 }
-#suggestionContentQuestion {
+#suggestionContentQuestion, #suggestionContentComment {
   border-color: rgba(0,220,255,0.5);
 } 
-#suggestionContentSuggestion {
+#suggestionContentSuggestion, #suggestionContentAnswer, #suggestionContentPro {
   border-color: rgba(0,255,220,0.5);
 } 
-#suggestionContentDebate {
+#suggestionContentPro {
+  margin-right: 20%;
+}
+#suggestionContentDebate, #suggestionContentCon {
   border-color: rgba(255,127,127, 0.5);
+}
+#suggestionContentCon {
+  margin-left: 20%;
+  margin-right: 0px;
+  /* border-radius: 3px 5px 10% 15%; */
 }
 #suggestionContentHover, #suggestionContentHoverVote, #suggestionContentHoverUnvote, #commentContentHover, #commentContentHoverVote, #commentContentHoverUnvote,
 #suggestionContentHoverVoteQuestion, #suggestionContentHoverVoteSuggestion, #suggestionContentHoverVoteDebate {
@@ -8026,76 +8044,61 @@ font-size: 420%;
 
 
 /*Right Solutions SB*/
-#backSolutionArrowDiv {
-text-align: center;
-transition: all 0.5s ease 0s;
-width: 5%;
-/*box-shadow: 0 0 1pt 1pt rgba(0,220,255,0.5);*/
-left: 0;
-margin-top: -1%;
-margin-left: 14%;
-}
-#backSolutionArrowDiv:hover {
-/*background-color: rgba(0,220,255,0.15);*/
-cursor: pointer;
-/*box-shadow: 0 0 1pt 1pt rgba(0,220,255,0.5);*/
-}
+
 #backProposalArrowDiv {
-text-align: center;
-transition: all 0.5s ease 0s;
-width: 7%;
-box-shadow: 0 0 1pt 1pt rgba(0,220,255,0.5);
-/*left: 0;*/
-margin-bottom: 1%;
-}
-#backProposalArrowDiv:hover {
-background-color: rgba(0,220,255,0.15);
-cursor: pointer;
-}
-#backProjectArrowDiv {
-text-align: center;
-transition: all 0.5s ease 0s;
-box-shadow: 0 0 1pt 1pt rgba(0,220,255,0.5);
-width: 100%;
-margin-left: 30%;
-padding: 3px;
-}
-#backProjectArrowDiv:hover {
-background-color: rgba(0,220,255,0.15);
-cursor: pointer;
-}
-
-#solutionDescriptionReturn:hover {
-background-color: rgba(0,220,255,0.15);
-cursor: pointer;
-}
-#backSolutionArrow {
-flex: 1 1 auto;
-color: #00ffdc;
-text-align: center;
-margin: 0 auto;
-box-shadow: 0 0 1pt 1pt rgba(0,220,255,0.5);
-transition: all 0.5s ease 0s;
-
-/*display: block;*/
-}
-#backSolutionArrow:hover {
-cursor: pointer;
-background-color: rgba(0,220,255,0.15);
-
-/*box-shadow: 0 0 2pt 2pt rgba(0,220,255,0.5);*/
-}
-#backSubProjectArrow {
-/*flex: 1 1 auto;*/
-color: #00ffdc;
-/*text-align: center;*/
-margin: 0 auto;
-padding: 2px;
-/*box-shadow: 0 0 1pt 1pt rgba(0,220,255,0.5);*/
-transition: all 0.5s ease 0s;
-
-/*display: block;*/
-}
+  text-align: center;
+  transition: all 0.5s ease 0s;
+  width: 7%;
+  box-shadow: 0 0 1pt 1pt rgba(0,220,255,0.5);
+  /*left: 0;*/
+  margin-bottom: 1%;
+  }
+  #backProposalArrowDiv:hover {
+  background-color: rgba(0,220,255,0.15);
+  cursor: pointer;
+  }
+  #backProjectArrowDiv {
+  text-align: center;
+  transition: all 0.5s ease 0s;
+  box-shadow: 0 0 1pt 1pt rgba(0,220,255,0.5);
+  width: 100%;
+  margin-left: 30%;
+  padding: 3px;
+  }
+  #backProjectArrowDiv:hover {
+  background-color: rgba(0,220,255,0.15);
+  cursor: pointer;
+  }
+  
+  #solutionDescriptionReturn:hover {
+  background-color: rgba(0,220,255,0.15);
+  cursor: pointer;
+  }
+  #discussCommentBackArrow {
+    position: absolute;
+    transition: all 0.5s ease 0s;
+    top: 2%;
+    left: -10%;
+    /* margin: 0 auto; */
+    box-shadow: 0 0 1pt 1pt rgba(0,220,255,0.5);
+    transition: all 0.5s ease 0s;
+  }
+  #discussCommentBackArrow:hover {
+  cursor: pointer;
+  background-color: rgba(0,220,255,0.15);
+  box-shadow: 0 0 1pt 1pt rgba(0,220,255,1);
+  }
+  #backSubProjectArrow {
+  /*flex: 1 1 auto;*/
+  color: #00ffdc;
+  /*text-align: center;*/
+  margin: 0 auto;
+  padding: 2px;
+  /*box-shadow: 0 0 1pt 1pt rgba(0,220,255,0.5);*/
+  transition: all 0.5s ease 0s;
+  
+  /*display: block;*/
+  }
 #backSubProjectArrow:hover {
 cursor: pointer;
 /*background-color: rgba(0,220,255,0.05);*/
@@ -8452,7 +8455,8 @@ margin: 0 auto;
   letter-spacing: 2px;
   padding-bottom: 3px;
 }
-#discussHeader, #discussHeaderQuestion, #discussHeaderSuggestion, #discussHeaderDebate {
+#discussHeader, #discussHeaderQuestion, #discussHeaderSuggestion, #discussHeaderDebate,
+#discussHeaderAnswer, #discussHeaderComment, #discussHeaderPro, #discussHeaderCon {
 /*Old Styles*/
 /*font-size: 110%;
 color: #00dcff;
@@ -8466,10 +8470,10 @@ border: 1px solid #333333;
 border-width: 0px 0px 1px 0px;
 text-transform: lowercase !important;
 }
-#discussHeaderSuggestion {
+#discussHeaderAnswer, #discussHeaderSuggestion, #discussHeaderPro {
   color: #00ffdc;
 }
-#discussHeaderDebate {
+#discussHeaderDebate, #discussHeaderCon {
   color: #ff7f7f;
 }
 #discussHeaderGreen {

@@ -700,9 +700,6 @@ ReactDOM.render(
             <Route path='/project/:probID/discuss/:discussID/comments/container' component={DiscussCommentContainer}>
               <IndexRoute component={DiscussCommentForm}></IndexRoute>
               <Route path='/project/:probID/discuss/:discussID/comments' component={DiscussCommentForm}></Route>
-            </Route>
-            <Route path='/project/:probID/question/:questID/answers/container' component={AnswerContainer}>
-              <IndexRoute component={AnswerForm}></IndexRoute>
               <Route path='/project/:probID/question/:questID/answers' component={AnswerForm}></Route>
               <Route path='/project/:probID/question/:questID/answer/:answerID/edit' component={AnswerEditForm}></Route>
               <Route path='/project/:probID/question/:questID/answer/:answerID/flag' component={AnswerFlagForm}></Route>

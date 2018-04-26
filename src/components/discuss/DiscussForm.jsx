@@ -15,6 +15,7 @@ export default class QuestionForm extends React.Component {
     question: '',
     private: '',
     type: '',
+    placeholder: '',
   }
 
     this.postQuestion = this.postQuestion.bind(this);
@@ -29,6 +30,15 @@ componentDidMount(){
         self.setState({
             private: '0',
         })
+    }
+    if (this.props.params.solutionID) {
+      self.setState({
+        placeholder: "Ask a question, give a suggestion, or start a debate about this proposal. ",
+      })
+    } else {
+      self.setState({
+        placeholder: "Ask a question, give a suggestion, or start a debate about this project. ",
+      })
     }
 }
 
@@ -48,7 +58,7 @@ postQuestion() {
   //if User is on a solution post with type 1
   //solutionID will be available in props
   if(this.props.params.solutionID){
-    axios.post( Config.API + '/auth/questions/create', {
+    axios.post( Config.API + '/auth/comments/create', {
       type:'1',
       typeID: this.props.params.solutionID,
       username: cookie.load('userName'),
@@ -70,7 +80,7 @@ postQuestion() {
                   return (
                     $(document).ready(function() {
                       $('#notificationLoginRegisterContainer').attr('id','notificationLoginRegisterContainerShow');
-                      $('#notificationContent').html('Please <span id="blue">login </span>to ask a question');
+                      $('#notificationContent').html('Please <span id="blue">login </span>to join this discussion');
                     })
                   );
                 }  else if (error.response.data != '') {
@@ -104,7 +114,7 @@ postQuestion() {
                   return (
                     $(document).ready(function() {
                       $('#notificationLoginRegisterContainer').attr('id','notificationLoginRegisterContainerShow');
-                      $('#notificationContent').html('Please <span id="blue">login </span>to ask a question');
+                      $('#notificationContent').html('Please <span id="blue">login </span>to join this discussion');
                     })
                   );
                 }  else if (error.response.data != '') {
@@ -162,9 +172,9 @@ postQuestion() {
             <div id="questionFormComponent">
               <form id="questionForm">
                 <fieldset id='fieldSetNoBorderPadding'>
-                  <textarea name="questionText" required="required" id="questionTextArea" placeholder="Ask a question you have about this project or view those asked by your peers. " ></textarea>
+                  <textarea name="questionText" required="required" id="questionTextArea" placeholder={this.state.placeholder} ></textarea>
                   <Link to={window.location.pathname}>
-                    <input type="button" ref='btn' value="Ask" onClick={this.postQuestion} id="askQuestion"/>
+                    <input type="button" ref='btn' value="add" onClick={this.postQuestion} id="askQuestion"/>
                   </Link>
                 </fieldset>
               </form>
