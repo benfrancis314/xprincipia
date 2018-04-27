@@ -131,12 +131,12 @@ export default class DiscussUnit extends React.Component {
                             <div id="discussPercent">{floatToDecimal(question.PercentRank)}</div>
                         </Link>
                     </div>
-                    <Link to={`/project/${question.TypeID}/question/${question.ID}/edit`}>
+                    <Link to={this.props.linkPath+question.TypeID+`/question/${question.ID}/edit`}>
                         <div id="editDiscussButton" onMouseOver={hoverEditVoted} onMouseOut={unHoverEditVoted.bind(this)}>
                             <img src={require('../../assets/editBlue.svg')} id="editLogo" width="18" height="18" alt="Edit Button" />
                         </div>
                     </Link>
-                    <Link to={`/project/${question.TypeID}/question/${question.ID}/delete`}>
+                    <Link to={this.props.linkPath+question.TypeID+`/question/${question.ID}/delete`}>
                         <div id="deleteDiscussButton" onMouseOver={hoverDeleteVoted} onMouseOut={unHoverDeleteVoted.bind(this)}>
                             <img src={require('../../assets/delete.svg')} id="editLogo" width="18" height="18" alt="Delete Button" />
                         </div>
@@ -147,7 +147,7 @@ export default class DiscussUnit extends React.Component {
                     <div id={"discussHeader"+commentType}>
                         {commentType} <span id="gray">by {question.Username}</span>
                     </div>
-                    <Link to={`/project/${question.TypeID}/discuss/${question.ID}/comments`}>
+                    <Link to={this.props.linkPath+question.TypeID+`/discuss/${question.ID}/comments`}>
                         <div id="suggestionText" ref='votebtn' onMouseOver={hoverThreadVoted} onMouseOut={unHoverThreadVoted.bind(this)}>
                             {question.Description}
                         </div>
@@ -167,12 +167,12 @@ export default class DiscussUnit extends React.Component {
                             <div id="discussPercent">{floatToDecimal(question.PercentRank)}</div>
                         </Link>
                     </div>
-                    <Link to={`/project/${question.TypeID}/question/${question.ID}/edit`}>
+                    <Link to={this.props.linkPath+question.TypeID+`/question/${question.ID}/edit`}>
                         <div id="editDiscussButton" onMouseOver={hoverEdit} onMouseOut={unHoverEdit.bind(this)}>
                             <img src={require('../../assets/editBlue.svg')} id="editLogo" width="18" height="18" alt="Edit Button" />
                         </div>
                     </Link>
-                    <Link to={`/project/${question.TypeID}/question/${question.ID}/delete`}>
+                    <Link to={this.props.linkPath+question.TypeID+`/question/${question.ID}/delete`}>
                         <div id="deleteDiscussButton" onMouseOver={hoverDelete} onMouseOut={unHoverDelete.bind(this)}>
                             <img src={require('../../assets/delete.svg')} id="editLogo" width="18" height="18" alt="Delete Button" />
                         </div>
@@ -183,7 +183,7 @@ export default class DiscussUnit extends React.Component {
                     <div id={"discussHeader"+commentType}>
                         {commentType} <span id="gray">by {question.Username}</span>
                     </div>
-                    <Link to={`/project/${question.TypeID}/discuss/${question.ID}/comments`}>
+                    <Link to={this.props.linkPath+question.TypeID+`/discuss/${question.ID}/comments`}>
                         <div id="suggestionText" ref='votebtn' onMouseOver={hoverThread} onMouseOut={unHoverThread.bind(this)}>
                             {question.Description}
                         </div>
@@ -203,7 +203,7 @@ export default class DiscussUnit extends React.Component {
                         <div id="discussPercent">{floatToDecimal(question.PercentRank)}</div>
                     </Link>
                 </div>
-                <Link to={`/project/${question.TypeID}/question/${question.ID}/flag`}>
+                <Link to={this.props.linkPath+question.TypeID+`/question/${question.ID}/flag`}>
                     <div id="flagDiscussButton" onMouseOver={hoverFlagVoted} onMouseOut={unHoverFlagVoted.bind(this)}>
                         <img src={require('../../assets/flag.svg')} id="deleteLogo" width="24" height="24" alt="Delete Button, Red X" />
                     </div>
@@ -214,7 +214,7 @@ export default class DiscussUnit extends React.Component {
                 <div id={"discussHeader"+commentType}>
                     {commentType} <span id="gray">by {question.Username}</span>
                 </div>
-                <Link to={`/project/${question.TypeID}/discuss/${question.ID}/comments`}>
+                <Link to={this.props.linkPath+question.TypeID+`/discuss/${question.ID}/comments`}>
                     <div id="suggestionText" ref='votebtn' onMouseOver={hoverThreadVoted} onMouseOut={unHoverThreadVoted.bind(this)}>
                         {question.Description}
                     </div>
@@ -235,7 +235,7 @@ export default class DiscussUnit extends React.Component {
                         <div id="discussPercent">{floatToDecimal(question.PercentRank)}</div>
                     </Link>
                 </div>
-                <Link to={`/project/${question.TypeID}/question/${question.ID}/flag`}>
+                <Link to={this.props.linkPath+question.TypeID+`/question/${question.ID}/flag`}>
                     <div id="flagDiscussButton" onMouseOver={hoverFlag} onMouseOut={unHoverFlag.bind(this)}>
                         <img src={require('../../assets/flag.svg')} id="deleteLogo" width="24" height="24" alt="Delete Button, Red X" />
                     </div>
@@ -246,7 +246,7 @@ export default class DiscussUnit extends React.Component {
                 <div id={"discussHeader"+commentType}>
                     {commentType} <span id="gray">by {question.Username}</span>
                 </div>
-                <Link to={`/project/${question.TypeID}/discuss/${question.ID}/comments`}>
+                <Link to={this.props.linkPath+question.TypeID+`/discuss/${question.ID}/comments`}>
                     <div id="suggestionText" ref='votebtn' onMouseOver={hoverThread} onMouseOut={unHoverThread.bind(this)}>
                         {question.Description}
                     </div>

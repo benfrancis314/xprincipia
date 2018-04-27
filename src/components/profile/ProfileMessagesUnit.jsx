@@ -26,21 +26,23 @@ export default class ProfileNotifications extends React.Component {
 
 componentDidMount(){
     var self = this;
-    return axios.get( Config.API + '/messages/convo?user1='+this.props.params.user1+'&user2='+this.props.params.user2).then(function (response) {
+    axios.get( Config.API + '/messages/convo?user1='+this.props.params.user1+'&user2='+this.props.params.user2).then(function (response) {
         self.setState({
             messages: response.data,
             rerender: '0',
         })
-    })  
+    }) 
+    axios.get( Config.API + '/conversations/clearnotifications?user1='+this.props.params.user1+'&user2='+this.props.params.user2)
 }
 componentWillReceiveProps (nextProps){
     var self = this;
-    return axios.get( Config.API + '/messages/convo?user1='+nextProps.params.user1+'&user2='+nextProps.params.user2).then(function (response) {
+    axios.get( Config.API + '/messages/convo?user1='+nextProps.params.user1+'&user2='+nextProps.params.user2).then(function (response) {
         self.setState({
             messages: response.data,
             rerender: '0',
         })
     })  
+    axios.get( Config.API + '/conversations/clearnotifications?user1='+this.props.params.user1+'&user2='+this.props.params.user2)
 
 }
 postMessage() {
@@ -120,7 +122,7 @@ causeRerender() {
             <form id='conversationSubmit'>
                 <textarea id="conversationEntry" autoFocus autoComplete="off"></textarea>
                 <Link to={window.location.pathname}>
-                    <input id="conversationSubmitButton" ref='btn' type="button" value="submit" onClick={this.postMessage}></input>
+                    <input id="conversationSubmitButton" ref='btn' value="submit" onClick={this.postMessage}></input>
                 </Link>
             </form>
             <ul id="conversationMessagesList"> 

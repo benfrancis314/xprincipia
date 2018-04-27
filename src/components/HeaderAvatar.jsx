@@ -1,6 +1,6 @@
 import React from 'react';
 import {Link} from 'react-router';
-// import axios from 'axios';
+import axios from 'axios';
 import cookie from 'react-cookie';
 import {Config} from '../config.js';
 import $ from 'jquery';
@@ -13,8 +13,10 @@ constructor(props){
 
     this.state = {
         notification: '',
-        
+        messageNotifications: '',
+        messageButtonID: '',
     }
+    this.clearMessageNotifications = this.clearMessageNotifications.bind(this)
 
     // this.renderItem = this.renderItem.bind(this)
 };
@@ -25,6 +27,19 @@ componentDidMount(){
                 notification: this.props.notification
             })
         // }) 
+        axios.get( Config.API + '/messagenotifications/number?username='+cookie.load("userName")).then(function (response) {
+            if (response.data == '0') {
+                self.setState({
+                    messageNotifications: '',
+                    messageButtonID: 'headerMessagesButton',
+                })
+            } else {
+                self.setState({
+                    messageNotifications: response.data,
+                    messageButtonID: 'headerMessagesButtonNotifications',
+                })
+            }
+        }) 
 }
 // componentWillReceiveProps(nextState) {
 //     var self = this;
@@ -35,6 +50,15 @@ componentDidMount(){
 //     }) 
 // }
 
+
+    clearMessageNotifications() {
+        this.setState({
+            messageNotifications: '',
+            messageButtonID: 'headerMessagesButton',
+          })
+        axios.get( Config.API + '/messagenotifications/clear?username='+cookie.load("userName")).then(function (response) {
+        }) 
+    }
 
     hoverMessagesHeader() {
         $(document).ready(function() {
@@ -138,8 +162,8 @@ componentDidMount(){
                         </div>
                     </Link>
                     <Link to="/messages" activeClassName="activePrivate">
-                        <div id="headerMessagesButton" onMouseOver={this.hoverMessagesHeader} onMouseOut={this.unHoverMessagesHeader}>
-                            <img src={require('../assets/comments.svg')} id="mindTempleButton" width="30" height="30" alt="Gear logo, link to settings"/>
+                        <div id={this.state.messageButtonID} onMouseOver={this.hoverMessagesHeader} onMouseOut={this.unHoverMessagesHeader} onClick={this.clearMessageNotifications}>
+                            {this.state.messageNotifications}
                         </div>
                     </Link>
                     <Link to="/mindtemple" id="whiteHeader" activeClassName="activePrivate">
@@ -171,8 +195,8 @@ componentDidMount(){
                             </div>
                         </Link>
                         <Link to="/messages" activeClassName="activePrivate">
-                            <div id="headerMessagesButton" onMouseOver={this.hoverMessagesHeader} onMouseOut={this.unHoverMessagesHeader}>
-                                <img src={require('../assets/comments.svg')} id="mindTempleButton" width="30" height="30" alt="Gear logo, link to settings"/>
+                            <div id={this.state.messageButtonID} onMouseOver={this.hoverMessagesHeader} onMouseOut={this.unHoverMessagesHeader} onClick={this.clearMessageNotifications}>
+                                {this.state.messageNotifications}
                             </div>
                         </Link>
                         <Link to="/mindtemple" id="whiteHeader" activeClassName="activePrivate">

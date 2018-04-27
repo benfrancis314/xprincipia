@@ -3,7 +3,7 @@ import axios from 'axios';
 import LearnContentUnitPrivate from '../components/learn/LearnContentUnitPrivate.jsx';
 import {Config} from '../config.js'
 
-export default class LearnContentContainer1 extends React.Component {
+export default class LearnContentContainerPrivate extends React.Component {
 constructor(props){
         super(props);
 

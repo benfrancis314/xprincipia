@@ -5,7 +5,7 @@ import { Link } from 'react-router';
 // Currently unused, may use later. Loading only loads part of page, currently looks weird
 // import ReactCSSTransitionGroup from 'react-addons-css-transition-group'; // ES6
 import WelcomeUnit from '../components/welcome/WelcomeUnit.jsx';
-import WelcomeUserUnit from '../components/welcome/WelcomeUserUnit.jsx';
+import LeaderboardUnit from '../components/welcome/LeaderboardUnit.jsx';
 import {Config} from '../config.js';
 import $ from 'jquery';
 
@@ -68,34 +68,23 @@ export default class WelcomeContainer extends React.Component {
 
         this.state = {
            problems : [],
-           userproblems : [],
+           leaderboardType: '',
+           leaderboard : [],
            searchText: [],
            feedProjects: []
         }
-        this.queryProblem = this.queryProblem.bind(this);
         this.selectUsers = this.selectUsers.bind(this);
         this.selectProjects = this.selectProjects.bind(this);
         this.selectProposals = this.selectProposals.bind(this);
         // this.startSound = this.startSound.bind(this);
     };
-    queryProblem () {
-        this.state.searchText = document.getElementById('welcomeSearchFormLabel').value
 
-        var self = this
-        return axios.get( Config.API + '/problems/search?q='+this.state.searchText).then(function (response) {
-            self.setState({
-              userproblems: response.data
-            })
-        })
-      .catch(function (error) {
-      });
-    }
-
-    componentWillMount(){
+    componentDidMount(){
       var self = this;
       axios.get( Config.API + '/problems/filter/byvote').then(function (response) {
           self.setState({
-              userproblems: response.data,
+              leaderboardType: 'projects',
+              leaderboard: response.data,
               feedProjects: response.data
           })
       }) 
@@ -135,7 +124,8 @@ export default class WelcomeContainer extends React.Component {
       var self = this;
       axios.get( Config.API + '/users/list').then(function (response) {
           self.setState({
-              problems: response.data,
+            leaderboardType: 'users',  
+            leaderboard: response.data,
           })
       }) 
         .catch(function (error) {
@@ -154,7 +144,6 @@ export default class WelcomeContainer extends React.Component {
               } 
           });
       });
-      alert('success');
     };
 
     selectProjects () {
@@ -274,7 +263,7 @@ export default class WelcomeContainer extends React.Component {
                     </div>
                     <div id="leaderBoardSelect">
                       <div id="leaderBoardOption" onClick={this.selectUsers}>
-                        players
+                        members
                       </div>
                       <div id="leaderBoardOption" onClick={this.selectProjects}>
                         projects
@@ -298,7 +287,7 @@ export default class WelcomeContainer extends React.Component {
                       *Users list here*
                     </div> */}
                     <div id="visibleLeaderboardProjects">
-                      <WelcomeUserUnit problems={this.state.userproblems} />
+                      <LeaderboardUnit leaderboardType={this.state.leaderboardType} leaderboard={this.state.leaderboard} />
                     </div>
                   {/* <div id="leaderBoardCapBottom">
                   </div> */}

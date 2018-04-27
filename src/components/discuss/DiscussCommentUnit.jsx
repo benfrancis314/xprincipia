@@ -50,6 +50,8 @@ export default class DiscussUnit extends React.Component {
             var commentType = 'Pro'
         } else if (question.Type == '10') {
             var commentType = 'Con'
+        } else if (question.Type == '4') {
+        var commentType = 'Answer'
         }
 
        function submitVote() {

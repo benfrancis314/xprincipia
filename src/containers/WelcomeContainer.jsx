@@ -6,7 +6,6 @@ import { Link } from 'react-router';
 // import ReactCSSTransitionGroup from 'react-addons-css-transition-group'; // ES6
 import TutorialWelcomeContent from '../components/tutorials/TutorialWelcomeContent.jsx';
 import WelcomeUnit from '../components/welcome/WelcomeUnit.jsx';
-import WelcomeUserUnit from '../components/welcome/WelcomeUserUnit.jsx';
 import {Config} from '../config.js';
 import $ from 'jquery';
 

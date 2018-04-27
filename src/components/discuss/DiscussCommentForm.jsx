@@ -95,8 +95,38 @@ postComment() {
               }
           });
       });
+    } else {
+      axios.post( Config.API + '/auth/comments/create', {
+        type: this.state.type,
+        typeID: this.props.params.probID,
+        username: cookie.load('userName'),
+        description : this.state.question,
+        parentID: this.props.params.discussID,
+        parentTitle : this.props.parentTitle,
+        private: this.state.private,
+      })
+        .then(function (result) {
+          document.getElementById("questionForm").reset();
+          self.refs.btn.removeAttribute("disabled");
+        })
+        .catch(function (error) {
+            $(document).ready(function() {
+                $('#notification').attr('id','notificationShow').hide().slideDown();
+
+                  if (error.response.data == '[object Object]') {
+                    return (
+                      $(document).ready(function() {
+                        $('#notificationLoginRegisterContainer').attr('id','notificationLoginRegisterContainerShow');
+                        $('#notificationContent').html('Please <span id="blue">login </span>to ask a question');
+                      })
+                    );
+                  }  else if (error.response.data != '') {
+                $('#notificationContent').text(error.response.data);
+                }
+            });
+        });
+      }
     }
-  }
     postAnswer() {
       //Read field items into component state
       var self = this;

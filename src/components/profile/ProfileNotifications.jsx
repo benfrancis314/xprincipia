@@ -18,9 +18,9 @@ constructor(props){
     this.renderItem = this.renderItem.bind(this)
     this.resetNotificationsList = this.resetNotificationsList.bind(this)    
 };
-componentDidMount(props){
+componentDidMount(){
     var self = this;
-        return axios.get( Config.API + '/notifications/new?username='+cookie.load("userName")).then(function (response) {
+    axios.get( Config.API + '/notifications/new?username='+cookie.load("userName")).then(function (response) {
     self.setState({
         // notifications: response.data
         notifications: self.props.notifications

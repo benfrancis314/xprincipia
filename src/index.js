@@ -197,7 +197,7 @@ import EntranceContainer from './containers/EntranceContainer.jsx';
 import ErrorContainer from './containers/ErrorContainer.jsx';
 import FreeFormContainer from './containers/FreeFormContainer.jsx';
 import FreeFormContainerPrivate from './containers/FreeFormContainerPrivate.jsx';
-import LearnContentContainer1 from './containers/LearnContentContainer1.jsx';
+import LearnContainer from './containers/LearnContainer.jsx';
 import LearnContentContainerPrivate from './containers/LearnContentContainerPrivate.jsx';
 import LearnResourcesContainer1 from './containers/LearnResourcesContainer1.jsx';
 import LearnResourcesContainerPrivate from './containers/LearnResourcesContainerPrivate.jsx';
@@ -521,10 +521,10 @@ ReactDOM.render(
             </Route>
         </Route>
           {/*<IndexRoute component={ProblemLearnMenu}></IndexRoute>*/}
-        <Route path='/project/private/:probID/learn' component={ProblemLearnPrivateMenu}>
+        <Route path='/project/private/:probID/learn/menu' component={ProblemLearnPrivateMenu}>
               <Route path='/project/private/:probID/learn/content/full' component={LearnContentContainerPrivate}>
                 <IndexRoute component={LearnContentPrivateForm}></IndexRoute>
-                <Route path='/project/private/:probID/notes' component={LearnContentPrivateForm}></Route>
+                <Route path='/project/private/:probID/learn' component={LearnContentPrivateForm}></Route>
                 <Route path='/project/private/:probID/notes/:learnItemID/edit' component={LearnContentEditPrivateForm}></Route>
                 <Route path='/project/private/:probID/notes/:learnItemID/flag' component={LearnContentFlagForm}></Route>
                 <Route path='/project/private/:probID/notes/:learnItemID/delete' component={LearnContentDeletePrivateForm}></Route>
@@ -707,10 +707,10 @@ ReactDOM.render(
             </Route>
         </Route>
           {/*<IndexRoute component={ProblemLearnMenu}></IndexRoute>*/}
-        <Route path='/project/:probID/learn' component={ProblemLearnMenu}>
-              <Route path='/project/:probID/learn/content/full' component={LearnContentContainer1}>
+        <Route path='/project/:probID/learn/menu' component={ProblemLearnMenu}>
+              <Route path='/project/:probID/learn/content/full' component={LearnContainer}>
                 <IndexRoute component={LearnContentButton}></IndexRoute>
-                <Route path='/project/:probID/learn/content' component={LearnContentButton}></Route>
+                <Route path='/project/:probID/learn' component={LearnContentButton}></Route>
                 <Route path='/project/:probID/learn/content/new' component={LearnContentForm}></Route>
                 <Route path='/project/:probID/learn/content/:learnItemID/edit' component={LearnContentEditForm}></Route>
                 <Route path='/project/:probID/learn/content/:learnItemID/flag' component={LearnContentFlagForm}></Route>

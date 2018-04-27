@@ -14,7 +14,7 @@ export default class DiscussContainer extends React.Component {
             newTopID: '',
             newTopSelect: '',
             currentType: '',
-           
+            linkPath: '',
         }
         this.selectAll = this.selectAll.bind(this)
         this.selectQuestions = this.selectQuestions.bind(this)
@@ -25,6 +25,15 @@ export default class DiscussContainer extends React.Component {
     };
     componentDidMount(){
         var self = this;
+            if (window.location.pathname.includes('private')) {
+                self.setState({
+                    linkPath: '/project/private/',
+                })
+            } else {
+                self.setState({
+                    linkPath: '/project/',
+                })
+            }
             axios.get( Config.API + '/comments/bytype/discuss?problem_id='+this.props.params.probID).then(function (response) {
                 if(response.data.length > 0) {
                     self.setState({
@@ -60,6 +69,15 @@ export default class DiscussContainer extends React.Component {
     }
     componentWillReceiveProps(nextProps){
         var self = this;
+            if (window.location.pathname.includes('private')) {
+                self.setState({
+                    linkPath: '/project/private/',
+                })
+            } else {
+                self.setState({
+                    linkPath: '/project/',
+                })
+            }
             axios.get( Config.API + '/comments/bytype/discuss?problem_id='+nextProps.params.probID).then(function (response) {
                 if (response.data.length > 0) {
                     self.setState({
@@ -382,7 +400,7 @@ export default class DiscussContainer extends React.Component {
                     </div>
                 </div>
             </div>
-            <DiscussUnit questions={this.state.discuss} />
+            <DiscussUnit linkPath={this.state.linkPath} questions={this.state.discuss} />
         </div>
   
     );

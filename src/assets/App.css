@@ -1087,7 +1087,7 @@ margin-right: 0px !important;
       padding-left: 3px !important;
       padding-right: 3px !important;
     }
-    #notebookHeaderButton, #headerTempleName, #headerMessagesButton, #headerName, #headerNameNotifications {
+    #notebookHeaderButton, #headerTempleName, #headerMessagesButton, #headerMessagesButtonNotifications,#headerName, #headerNameNotifications {
       height: 30px !important;
     }
     #headerName, #headerNameNotifications {
@@ -1452,6 +1452,8 @@ letter-spacing: 2px !important;
   font-family: 'Open Sans';
   padding-top: 10px;
   width: 90%;
+  margin-right: 5%;
+  margin-left: 5%;
 }
 #answerQuestionUnit {
   display: flex;
@@ -2199,13 +2201,15 @@ text-align: center;
 #headerName, #headerNameNotifications {
   color: #00dcff;
   /* font-size: 140%; */
-  /* New */
-  font-size: 110%;
+  /* New A*/
+  /* font-size: 110%; */
+  /* New B */
+  font-size: 120%;
   text-align: center;
-  letter-spacing: 8px;
+  /* letter-spacing: 8px; */
   /* New */
-  letter-spacing: 6px;
-  padding: 6px 4px 2px 4px;
+  letter-spacing: 4px;
+  padding: 7px 4px 3px 4px;
   width: 100%;
   transition: all 0.5s ease 0s;
   background-color: rgba(0,220,255,0.05);
@@ -2258,7 +2262,7 @@ text-align: center;
   flex-direction: row;
   justify-content: center;
 }
-#notebookHeaderButton, #headerMessagesButton, #headerTempleName {
+#notebookHeaderButton, #headerMessagesButton, #headerMessagesButtonNotifications, #headerTempleName {
   text-align: center;
   /* padding-left: 3px;
   padding-right: 3px; */
@@ -2281,18 +2285,40 @@ text-align: center;
   transform: scale(1.05);
   cursor: pointer;
 }
-#headerMessagesButton  {
+#headerMessagesButton, #headerMessagesButtonNotifications  {
   border-radius: 0px 0px 0px 0px;
   border-width: 1px 0px;
   background-color: rgba(0,220,255,0.05);
   border: 1px solid #00dcff;
-  background: radial-gradient(circle, rgba(0,220,255,0), rgba(0,220,255,0.15))
+  /* background: radial-gradient(circle, rgba(0,220,255,0), rgba(0,220,255,0.15)) */
+  background-image: url('./comments.svg');  
+  background-size: 60%;
+  background-repeat: no-repeat;
+  background-color: rgba(15,19,28,0);
+  background-blend-mode: overlay;
+  background-position: center;
+  padding-top: 6px;
+  height: 33px;
+  color: #ff7f7f;
+  font-size: 125%;
+  letter-spacing: 2px;
+}
+#headerMessagesButtonNotifications {
+  background-color: rgba(15,19,28,0.9);
+  border-color: #ff7f7f;
 }
 #headerMessagesButton:hover {
   background-color: rgba(0,220,255,0.05);
   border-width: 1px;
   /* background: radial-gradient(circle, rgba(0,220,255,0.05), rgba(0,220,255,0.2));   */
-  box-shadow: 0 0 0.5pt 0.5pt rgba(255,127,127,0.5) inset;
+  box-shadow: 0 0 0.5pt 0.5pt rgba(0,220,255,0.5) inset;
+}
+#headerMessagesButtonNotifications:hover {
+  background-color: rgba(15,19,28,0.8);
+  border-width: 1px;
+  box-shadow: 0 0 2pt 2pt rgba(255,127,127,0.5) inset;
+  transform: scale(1.05);
+  cursor: pointer;
 }
 #headerTempleName {
   border-radius: 0px 5px 5px 0px;
@@ -3928,6 +3954,7 @@ input[type=search]:focus {
 input[type=text]:focus, input[type=email]:focus, input[type=password]:focus, input[type=button]:focus, input[type=submit]:focus, textarea {
 box-shadow: 0 0 0pt 0pt rgba(0,220,255,0) !important;
 outline: none !important;
+/* background: transparent; */
 }
 #privateExploreInput:hover, #privateExploreInput:focus, #privateExploreInput:active, input[type=search]:focus {
   /*background-color: rgba(0,220,255, 0.1);*/
@@ -5467,10 +5494,11 @@ font-family: 'Open Sans';
 }
 #suggestionContent:active {
   background-color: rgba(0,220,255,0.2);
-  background: linear-gradient(to right,rgba(0,220,255, 0.2), rgba(0,220,255, 0.15), rgba(0,220,255, 0.05));
+  /* background: linear-gradient(to right,rgba(0,220,255, 0.2), rgba(0,220,255, 0.15), rgba(0,220,255, 0.05)); */
 }
 #suggestionContentHoverVote:active, #suggestionContentHoverVoteQuestion:active, #suggestionContentHoverVoteSuggestion:active, #suggestionContentHoverVoteDebate:active {
-  background: linear-gradient(to right,rgba(0,255,220, 0.2), rgba(0,255,220, 0.15), rgba(0,255,220, 0.05));
+  background-color: rgba(0,255,220,0.2);
+  /* background: linear-gradient(to right,rgba(0,255,220, 0.2), rgba(0,255,220, 0.15), rgba(0,255,220, 0.05)); */
 }
 #suggestionText, #suggestionTextCaps {
   /*Old Styles*/

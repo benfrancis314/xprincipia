@@ -363,7 +363,7 @@ unVote() {
                     </a>
                     <ProblemFollowButton probID={this.props.params.probID} username={cookie.load('userName')} />
                   </div>
-                  <Link to={`/project/${this.props.params.probID}/learn/resources`} activeClassName="activeProblemOptionLearn">
+                  <Link to={`/project/${this.props.params.probID}/learn`} activeClassName="activeProblemOptionLearn">
                     <div id="SBButtonLearn">learn</div>
                   </Link>
               </div>
@@ -476,7 +476,7 @@ unVote() {
                       </a>
                       <ProblemFollowButton probID={this.props.params.probID} username={cookie.load('userName')} />
                     </div>
-                    <Link to={`/project/${this.props.params.probID}/learn/resources`} activeClassName="activeProblemOptionLearn">
+                    <Link to={`/project/${this.props.params.probID}/learn`} activeClassName="activeProblemOptionLearn">
                       <div id="SBButtonLearn">learn</div>
                     </Link>
                 </div>
@@ -581,7 +581,7 @@ unVote() {
                       </a>
                       <ProblemFollowButton probID={this.props.params.probID} username={cookie.load('userName')} />
                     </div>
-                    <Link to={`/project/${this.props.params.probID}/learn/resources`} activeClassName="activeProblemOptionLearn">
+                    <Link to={`/project/${this.props.params.probID}/learn`} activeClassName="activeProblemOptionLearn">
                       <div id="SBButtonLearn">learn</div>
                     </Link>
                 </div>
@@ -686,7 +686,7 @@ unVote() {
                   </a>
                   <ProblemFollowButton probID={this.props.params.probID} username={cookie.load('userName')} />
                 </div>
-                <Link to={`/project/${this.props.params.probID}/learn/resources`} activeClassName="activeProblemOptionLearn">
+                <Link to={`/project/${this.props.params.probID}/learn`} activeClassName="activeProblemOptionLearn">
                   <div id="SBButtonLearn">learn</div>
                 </Link>
             </div>
@@ -790,7 +790,7 @@ unVote() {
                   </a>
                   <ProblemFollowButton probID={this.props.params.probID} username={cookie.load('userName')} />
                 </div>
-                <Link to={`/project/${this.props.params.probID}/learn/resources`} activeClassName="activeProblemOptionLearn">
+                <Link to={`/project/${this.props.params.probID}/learn`} activeClassName="activeProblemOptionLearn">
                   <div id="SBButtonLearn">learn</div>
                 </Link>
             </div>
