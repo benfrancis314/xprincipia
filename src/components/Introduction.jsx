@@ -7,6 +7,24 @@ import ReactCSSTransitionGroup from 'react-addons-css-transition-group'; // ES6
 
 export default class Introduction extends React.Component {
 
+    constructor(){
+        super();
+
+    };
+
+    hoverSlogan() {
+        $(document).ready(function() {
+            $('#introductionWelcomeSlogan').html("online science").fadeIn(7500);
+            $('#introductionWelcomeSlogan').attr('id','introductionWelcomeSloganBlue');
+        });
+      }
+      unHoverSlogan() {
+          $(document).ready(function() {
+              $('#introductionWelcomeSloganBlue').html('welcome to xprincipia');            
+              $('#introductionWelcomeSloganBlue').attr('id','introductionWelcomeSlogan');
+          });
+      }
+
    render() {
     $(document).ready(function() {
         $('#introductionContainer').hide().slideDown(500);
@@ -23,22 +41,47 @@ export default class Introduction extends React.Component {
                 <img src={require('../assets/redX.svg')} id="closeRedX" width="30" height="30" alt="Close button, red X symbol" />            
             </Link>
           <div id="introductionContainer">
-                <div id="introductionWelcome">
+                <div id="introductionWelcomeSlogan" onMouseOver={this.hoverSlogan} onMouseOut={this.unHoverSlogan}>
                     welcome to xprincipia
                 </div>
                 <div id="introductionProse">
                     <div id="introductionSection1">
-                        <div id="introductionSectionHeaderBig">creativity</div>
-                        <div id="introductionSectionHeader1">  
-                            is the great endeavor of humanity
+                        <div id="introductionSectionHeaderBig">i</div>
+                        <div id="introductionSectionHeaderBlue">  
+                            share your scientific ideas
                         </div>
-                        <div id="introductionSectionProse">
-                            Pure <span id="blueBigger">art </span>is the product of the human’s <span id="blueBigger">creativity</span>, without application to practical problem solving. 
-                            The nature of art may also be applied to the human’s need to solve problems. 
-                            The application of art to the understanding of the world is called <span id="blueBigger">science</span>, and its application to the shaping of the world <span id="blueBigger">technology</span>. 
+                        <div id="introductionSectionHeaderWhite">  
+                            develop them as a community
                         </div>
                     </div>
                     <div id="introductionSection2">
+                        <div id="introductionSectionHeaderBig">ii</div>
+                        <div id="introductionSectionHeaderBlue">  
+                            collaborate through the internet
+                        </div>
+                        <div id="introductionSectionHeaderWhite">  
+                            contribute regardless of background
+                        </div>
+                    </div>
+                    <div id="introductionSection3">
+                        <div id="introductionSectionHeaderBig">iii</div>
+                        <div id="introductionSectionHeaderBlue">  
+                            breakdown critical projects
+                        </div>
+                        <div id="introductionSectionHeaderWhite">  
+                            into managable parts
+                        </div>
+                    </div>
+                    <div id="introductionSection1">
+                        <div id="introductionSectionHeaderBig">iv</div>
+                        <div id="introductionSectionHeaderBlue">  
+                            propose cutting edge ideas
+                        </div>
+                        <div id="introductionSectionHeaderWhite">  
+                            discuss and learn
+                        </div>
+                    </div>
+                    {/* <div id="introductionSection2">
                         <div id="introductionSectionHeader2">
                             science applied to the internet
                         </div>
@@ -59,57 +102,10 @@ export default class Introduction extends React.Component {
                             XPrincipia is forever free and open to all of humanity. 
                             XPrincipia is <span id="blueBigger">science</span> become <span id="blueBigger">internet</span>. 
                         </div>
-                    </div>
+                    </div> */}
                 </div>
 
                 <IntroductionRegister />
-                {/* <Link to="/welcome">
-                    <div id="introductionExploreButton">
-                        Explore
-                    </div>
-                </Link> */}
-
-                {/* <div id="introductionProjectsProse"> 
-                    Help humanity reach the stars
-                </div>
-                <Link to={`/project/7/subprojects`}>
-                    <div id="introductionProjectHeader1">
-                        <div id="introductionProjectTitle">
-                            interstellar civilization
-                        </div>
-                    </div>
-                </Link>
-                
-                <div id="introductionProjectsProse">
-                    Purposely evolve the human body and mind
-                </div>
-                <Link to={`/project/8/subprojects`}>
-                    <div id="introductionProjectHeader2"> 
-                        <div id="introductionProjectTitle">
-                            evolving humanity
-                        </div>
-                    </div>
-                </Link>
-                <div id="introductionProjectsProse">
-                    Seek to understand our universe
-                </div>
-                <Link to={`/project/9/subprojects`}>
-                    <div id="introductionProjectHeader3">
-                        <div id="introductionProjectTitle">
-                            describing reality
-                        </div>
-                    </div>
-                </Link>
-                <div id="introductionProjectsProse">
-                    Design technologies to shape the world
-                </div>
-                <Link to={`/project/10/subprojects`}>
-                    <div id="introductionProjectHeader4">
-                        <div id="introductionProjectTitle">
-                            technology development
-                        </div>
-                    </div>
-                </Link> */}
             </div>
             
             {randomImg()}

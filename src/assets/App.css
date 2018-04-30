@@ -2889,14 +2889,14 @@ text-align: left;
 padding: 0% 5% 0% 5%;
 z-index: 5;
 }
-#introductionWelcome {
+#introductionWelcomeSlogan, #introductionWelcomeSloganBlue {
 padding: 3%;
 padding-bottom: 4%;
 padding-top: 4%;
 margin-top: 1%;
 margin-bottom: 1%;
 /* If capital letters */
-font-size: 160%;
+font-size: 200%;
 /* If not */
 /* font-size: 180%; */
 text-align: center;
@@ -2913,7 +2913,11 @@ background-image: url('./buzzAldrin.jpg');
 background-position: center 8%;
 background-size: 150%;
 }
-#introductionWelcome:hover {
+#introductionWelcomeSloganBlue {
+  color: #00dcff;
+  font-size: 160%;
+}
+#introductionWelcomeSlogan:hover, #introductionWelcomeSloganBlue:hover {
 transform: scale(1.15);
 background-color: rgba(15,19,28,0.5);
 background-size: 100%;
@@ -2924,7 +2928,7 @@ border-radius: 5px 5px 5px 5px;
 font-size: 190%;
 /* letter-spacing: 6px; */
 }
-#introductionWelcome:active {
+#introductionWelcomeSlogan:active, #introductionWelcomeSloganBlue:active {
   /* background-image: url('./newtonBlake.jpg');
   background-position: center 92%; */
   background-image: url('./earthlyDelights2.jpg');
@@ -3141,7 +3145,7 @@ background: radial-gradient(circle,rgba(0,220,255, 0.025), rgba(0,220,255, 0.05)
   transition: all 1s ease 0s;
   font-family: 'Open Sans';
 }
-#introductionSectionHeader1, #introductionSectionHeader2, #introductionSectionHeader3 {
+#introductionSectionHeaderBlue, #introductionSectionHeaderWhite {
   text-align: center;
   color: #dddddd;
   letter-spacing: 2px;
@@ -3150,17 +3154,29 @@ background: radial-gradient(circle,rgba(0,220,255, 0.025), rgba(0,220,255, 0.05)
   padding-bottom: 2.5%;
   opacity: 1;
   transition: all 1s ease 0s;
-}
-#introductionSectionHeader1 {
   margin-top: 0%;
+  opacity: 0.25;
+  color: #515151;
+}
+#introductionSectionHeaderBlue {
+  color: #00dcff;
 }
 #introductionSection1:hover #introductionSectionProse, #introductionSection2:hover #introductionSectionProse, #introductionSection3:hover #introductionSectionProse {
   color: #dddddd;
   opacity: 1;
 }
-#introductionSection1:hover #introductionSectionHeader1, #introductionSection2:hover #introductionSectionHeader2, #introductionSection3:hover #introductionSectionHeader3 {
+#introductionSection1:hover #introductionSectionHeaderBlue,
+#introductionSection2:hover #introductionSectionHeaderBlue,
+#introductionSection3:hover #introductionSectionHeaderBlue {
   color: #00dcff;
+  opacity: 1;
   /* letter-spacing: 4px; */
+}
+#introductionSection1:hover #introductionSectionHeaderWhite,
+#introductionSection2:hover #introductionSectionHeaderWhite,
+#introductionSection3:hover #introductionSectionHeaderWhite {
+  color: #ffffff;
+  opacity: 1;
 }
 #introductionSectionHeaderBig {
   text-align: center;
@@ -3172,10 +3188,14 @@ background: radial-gradient(circle,rgba(0,220,255, 0.025), rgba(0,220,255, 0.05)
   padding-bottom: 1%;
   transition: all 1s ease 0s;
 }
-#introductionSection1:hover #introductionSectionHeaderBig {
+#introductionSection1:hover #introductionSectionHeaderBig,
+#introductionSection2:hover #introductionSectionHeaderBig,
+#introductionSection3:hover #introductionSectionHeaderBig {
   color: #00dcff;
   transition: all 1s ease 0s;
-  letter-spacing: 12px;
+  transform: scale(1.02);
+  opacity: 0.25;
+  color: #515151;
 }
 
 #fullWideIntro {
@@ -5886,19 +5906,14 @@ font-family: 'Open Sans';
 #welcomeUnitsContainer {
   padding: 2px;
   width: 100%;
-  /* Old */
-  /* width: 80%; */
   margin: 0 auto;
+  margin-top: 1%;
+  margin-bottom: 1%;
   border: 1px solid #00dcff;
   border-width: 0px 0px 1px 0px;
   border-radius: 0% 0% 12% 12%;
   padding: 1px;
-  /* New, commenting out for now */
-  /* background: linear-gradient(rgba(0,220,255,0), rgba(0,220,255,0.01), rgba(0,220,255,0.05), rgba(0,220,255, 0.1)); */
-  /* border-color: rgba(0,220,255,0.25); */
   border-width: 0px;
-  /* Old */
-  /* background: linear-gradient(rgba(0,255,220,0), rgba(0,220,255,0.1)); */
 }
 #welcomeProblemsHeader:hover, #welcomeProblemsHeader:active, #welcomeProblemsHeader:focus, 
 #welcomeProblemsHeader1:hover, #welcomeProblemsHeader1:active, #welcomeProblemsHeader1:focus,
@@ -6023,12 +6038,15 @@ input#submitWelcomeProblem:hover {
 
 
 /* New welcome styles */
-  #width80 {
+  #width80, #width87 {
     /* Original width in welcome container is 80% */
     width: 87%;
     /* Other option that looks good */
     /* width: 86%; */
     margin: 0 auto;
+  }
+  #width80 {
+    width: 80%;
   }
   #welcomeTutorialVideoButton {
     margin: 0 auto;
@@ -6067,66 +6085,35 @@ input#submitWelcomeProblem:hover {
     }
     #welcomeContainerTitle {
       margin: 0 auto;
-      color: #ffffff;
+      color: #515151;
       text-align: center;
-      margin-bottom: 0%;
-      /* margin-top: 1.5%; */
-      margin-top: 1%;
-      font-size: 260%;
-      /* OLD */
-      /* letter-spacing: 15px; */
-      /* NEW */
-      letter-spacing: 12px;
+      margin-bottom: 1%;
+      letter-spacing: 8px;
       width: 70%;
-      
-      border: 1px solid #00dcff;
-      border-radius: 0% 0% 15% 15%;
-      border-width: 1px 0px 1px 0px;
-      /* Old Padding */
-      /* padding: 15px 35px 15px 35px; */
-      /* New Padding */
-      /* Padding Top and Bottom at 10px also looks fine */
-      padding: 12px 35px;      
-      transition: all 0.5s ease 0s;
-      background: linear-gradient(rgba(255,255,255,0.05), rgba(0,220,255,0.1), rgba(0,220,255,0.1), rgba(255,255,255,0.025));
+      font-size: 150%;
+      transition: all 2s ease 0s;
+    }
+    #welcomeContainerTitle:hover {
+      color: #00dcff;
+      letter-spacing: 10px;
     }
     #welcomeIntroductionLabel {
-      letter-spacing: 14px;
-      /* Old width: 90% */
-      /* width: 90%; */
-      /* New width 50% to stop XPrincipia Mission showing up everytime going to header */
       width: 52%;
       margin: 0 auto;
-      border: 1px solid #00dcff;
+      border: 1px solid #515151;
       border-width: 0px 1px 1px 1px;
-      /*border-right-color: #515151;
-      border-left-color: #515151;*/
       letter-spacing: 16px;
       color: #00dcff;
-      /* font-size: 90%;     */
       font-size: 85%;    
-      /* Old */
-      /* font-size: 130%; */
       text-align: center;
-      /* transition: all 2s ease 0s; */
       transition: all 2.5s ease 0s;
       transform: scale(1);
-      /*Original*/
-      /*border-radius: 0% 0% 15% 15%;*/
       border-radius: 0% 0% 40% 40%;
-      /*Make sure this refreshes to keep page normal width*/
-      /* padding: 0.15% 0% 0.35% 0%; */
       padding: 0.1% 0% 0.3% 0%;
       background: linear-gradient(rgba(0,255,220,0.05), rgba(0,255,220,0.05), rgba(0,220,255,0));
-
-
-
-
       background-size: contain;
       background-repeat: no-repeat;
-      /* background-color: rgba(15,19,28,0.999); */
       background-blend-mode: overlay;
-      /* background-image: url('./crabNebula1.jpg'); */
       background-position: center;
       background-size: 1000px;
       height: initial;
@@ -6149,6 +6136,7 @@ input#submitWelcomeProblem:hover {
       background-position: center !important;
       /* May cause difficulty in mobile, if so switch to % */
       background-size: 1000px !important;
+      border-color: #00dcff;
     }
     .activeIntroductionButton div {
       width: 80% !important;
@@ -11422,14 +11410,19 @@ margin-top: 1%;
     background-color: rgba(0,220,255,0.025);
     transform: scale(1);
     opacity: 0.8;
-    
-    /*Test to draw eye more to user projects*/
-    /*border-radius: 0px 0px 15px 0px;
-    background-color: rgba(255,255,255,0.05);*/
-    
-    /*Added gradient for testing 3D hologram look*/
-    /* background: radial-gradient(rgba(0,220,255,0.05), rgba(0,220,255,0.035), rgba(0,220,255,0.05)); */
-    }
+
+
+
+    border: 1px solid rgb(136, 136, 136, 0.5);
+    border-radius: 3px 3px 10px 15%;
+    background: linear-gradient(to right,rgba(0,255,220, 0.01), rgba(0,255,220, 0.04), rgba(0,255,220, 0));
+    box-shadow: 0 0 0.5pt 0.5pt rgba(0,255,220,0.5);
+    background-color: rgba(0,255,220,0.04);
+    letter-spacing: 1px;
+    font-family: 'Alegreya Sans SC', sans-serif;
+    opacity: 0.9;
+  }
+
     #welcomeUserProblemsHeader:hover {
     opacity: 1;
     box-shadow: 0 0 1.5pt 1.5pt rgba(0,220,255,0.5);
@@ -11500,7 +11493,7 @@ margin-top: 1%;
     }
     #welcomeProjectPercent:hover {
       /* transform: scale(1.2); */
-      font-size: 200%;
+      /* font-size: 200%; */
     }
     #welcomeProblemsTitleText {
       margin: 0 auto;

@@ -201,28 +201,18 @@ export default class WelcomeContainer extends React.Component {
    render() {
       return (
         <div>
-          <div id="welcomeContainerBanner">
-              <div id="welcomeContainerTitle">
-                  {/* OLD */}
-                  XPrincipia Projects
-                  {/* NEW */}
-                  {/* critical projects */}
-              </div>     
-              <Link to="/demo">
-                <div id="welcomeTutorialVideoButton" onClick={this.privateAlert} onMouseOver={this.hoverText} onMouseOut={this.unHoverText}>
-                    <img src={require('../assets/videoPlay3.svg')} id="welcomeVideoLogo" width="22" height="22" alt="Video player symbol, link to tutorial"/>
-                </div>
-              </Link>
-          </div>
-          {/* <div id="privateContainerMottoContainer">
-              <div id="privateContainerMotto">
-                    ORGANIZE YOUR THOUGHTS
-              </div>
-          </div> */}
+          {/* <Link to="/demo">
+            <div id="welcomeTutorialVideoButton" onClick={this.privateAlert} onMouseOver={this.hoverText} onMouseOut={this.unHoverText}>
+                <img src={require('../assets/videoPlay3.svg')} id="welcomeVideoLogo" width="22" height="22" alt="Video player symbol, link to tutorial"/>
+            </div>
+          </Link> */}    
 
           {/* Get rid of if not using */}
           <div id="welcomeUnitsContainer">
-            <div id="width80">
+            <div id="welcomeContainerTitle">
+                centralized projects
+            </div> 
+            <div id="width87">
                 <WelcomeUnit problems={this.state.problems} />
             </div>
           </div>

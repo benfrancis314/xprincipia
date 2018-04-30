@@ -16,7 +16,7 @@ export default class WelcomeContainer extends React.Component {
   hoverText() {
     $(document).ready(function() {
         // $('#privateContainerMotto').html("NEW PROJECT").fadeIn(7500);
-        $('#logoName').html('XPrincipia mission');
+        $('#logoName').html('begin experience');
         $('#logoName').attr('id','logoNameGuide');
     });
   }
