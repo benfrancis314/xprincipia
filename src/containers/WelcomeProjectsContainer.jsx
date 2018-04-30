@@ -203,7 +203,10 @@ export default class WelcomeContainer extends React.Component {
         <div>
           <div id="welcomeContainerBanner">
               <div id="welcomeContainerTitle">
+                  {/* OLD */}
                   XPrincipia Projects
+                  {/* NEW */}
+                  {/* critical projects */}
               </div>     
               <Link to="/demo">
                 <div id="welcomeTutorialVideoButton" onClick={this.privateAlert} onMouseOver={this.hoverText} onMouseOut={this.unHoverText}>

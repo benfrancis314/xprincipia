@@ -21,6 +21,8 @@ export default class ProfileContainer extends React.Component {
             currentItems:[],
             currentType: 'solution',
             notifications: [],
+            planet: '',
+            user: [],
         }
 
         this.onCreatedSolution = this.onCreatedSolution.bind(this)
@@ -34,6 +36,7 @@ export default class ProfileContainer extends React.Component {
 
     componentDidMount(){
         var self = this;
+        window.scrollTo(0,0);
         axios.get( Config.API + '/users/followedSolutions?username='+this.props.params.username).then(function (response) {
             self.setState({
                 followedSolutions: response.data,
@@ -45,11 +48,11 @@ export default class ProfileContainer extends React.Component {
                 createdSolutions: response.data,
             })
         })
-        axios.get( Config.API + '/users/createdProblems?username='+this.props.params.username).then(function (response) {
+        axios.get( Config.API + '/notifications/new?username='+this.props.params.username).then(function (response) {
             self.setState({
-                createdProblems: response.data,
+                notifications: response.data,
             })
-        })
+        }) 
          axios.get( Config.API + '/users/followedProblems?username='+this.props.params.username).then(function (response) {
             self.setState({
                 followedProblems: response.data,
@@ -60,6 +63,11 @@ export default class ProfileContainer extends React.Component {
                 notifications: response.data,
             })
         }) 
+        axios.get( Config.API + '/users/byusername?username='+this.props.params.username).then(function (response) {
+            self.setState({
+                user: response.data,
+            })
+        })
     }   
     onCreatedSolution() {
         var self = this;
@@ -111,6 +119,7 @@ export default class ProfileContainer extends React.Component {
                         <p id="userName">
                             {this.props.params.username}
                         </p>
+                        {this.state.user.Planet}
                         {randomPlanet()}
                         {/* <div id="mercury"></div> */}
                     </div>

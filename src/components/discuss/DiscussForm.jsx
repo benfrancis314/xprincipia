@@ -48,12 +48,12 @@ postQuestion() {
   self.refs.btn.setAttribute("disabled", "disabled");
   this.state.question = document.getElementById('questionTextArea').value
   if (document.getElementById('projectClass2').checked) {
-      this.state.type = '6' 
-    } else if (document.getElementById('projectClass1').checked) {
-      this.state.type = '3' 
-    } else {
-      this.state.type = '2' 
-    }
+    this.state.type = '6' 
+  } else if (document.getElementById('projectClass1').checked) {
+    this.state.type = '3' 
+  } else {
+    this.state.type = '2' 
+  }
 
   //if User is on a solution post with type 1
   //solutionID will be available in props

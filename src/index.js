@@ -544,7 +544,7 @@ ReactDOM.render(
                 <Route path='/project/private/:probID/resources/:resourceID/delete' component={LearnResourcesDeletePrivateForm}></Route>  
                 <Route path='/project/private/:probID/resources/:resourceID/embed' component={LearnResourcesEmbed}></Route>            
               </Route>
-              <Route path='/project/:probID/learn/resources/:resourceID/container' component={CommentResourceContainerPrivate}>
+              <Route path='/project/private/:probID/learn/resources/:resourceID/container' component={CommentResourceContainerPrivate}>
                 <IndexRoute component={CommentFormPrivate}></IndexRoute>
                 <Route path='/project/private/:probID/learn/resources/:resourceID/comments' component={CommentFormPrivate}></Route>
                 <Route path='/project/private/:probID/learn/resources/:resourceID/comment/:commentID/edit' component={CommentEditFormPrivate}></Route>
@@ -709,9 +709,9 @@ ReactDOM.render(
           {/*<IndexRoute component={ProblemLearnMenu}></IndexRoute>*/}
         <Route path='/project/:probID/learn/menu' component={ProblemLearnMenu}>
               <Route path='/project/:probID/learn/content/full' component={LearnContainer}>
-                <IndexRoute component={LearnContentButton}></IndexRoute>
-                <Route path='/project/:probID/learn' component={LearnContentButton}></Route>
-                <Route path='/project/:probID/learn/content/new' component={LearnContentForm}></Route>
+                <IndexRoute component={LearnResourcesForm}></IndexRoute>
+                <Route path='/project/:probID/learn' component={LearnResourcesForm}></Route>
+                <Route path='/project/:probID/learn/button' component={LearnContentButton}></Route>
                 <Route path='/project/:probID/learn/content/:learnItemID/edit' component={LearnContentEditForm}></Route>
                 <Route path='/project/:probID/learn/content/:learnItemID/flag' component={LearnContentFlagForm}></Route>
                 <Route path='/project/:probID/learn/content/:learnItemID/delete' component={LearnContentDeleteForm}></Route>

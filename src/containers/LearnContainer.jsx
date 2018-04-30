@@ -309,12 +309,12 @@ constructor(props){
                         </div>
                         <div id="discussGroupSelection">
                             <div id="discussSelectButtonLeftInactive" onClick={this.selectResearch}>
-                                research
+                                educational
                                 <span id="greenSmall">  {this.state.questionNumber}</span>
                             </div>
 
-                            <div id="discussSelectButtonCenterInactive" onClick={this.selectEducational}>                                           
-                                educational
+                            <div id="discussSelectButtonRightInactive" onClick={this.selectEducational}>                                           
+                                research
                                 <span id="greenSmall">  {this.state.suggestionNumber}</span>
                             </div>
                         </div>

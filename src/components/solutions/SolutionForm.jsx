@@ -293,8 +293,7 @@ export default class SolutionForm extends React.Component {
                 </div>
 
                 <div id="pdfProposalContainerShow">
-                    <input type="file" id="fileProposal" 
-                    />
+                    <input type="file" id="fileProposal" />
                 </div>
 
               {/* <div onClick={this.testFileInput}>testHTML</div> */}

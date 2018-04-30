@@ -2154,18 +2154,22 @@ text-align: center;
 #logoName {
   margin: 0 auto;
   float: left;
-  margin-left: 5%;
-  transition: all 0.5s ease 0s;
-  transform: scale(1);
-  color: #ffffff;
+  /* transition: all 0.5s ease 0s; */
+  /* color: #ffffff; */
   transition: all 2s ease 0s;
-  letter-spacing: 16px;
-  /* ALT */
-  letter-spacing: 14px; 
+  /* OLD */
+  /* letter-spacing: 14px;  */
+  /* NEW */
+  letter-spacing: 10px; 
   margin-left: 4%;
+  color: #515151;
 }
 #logoName:hover {
-  letter-spacing: 14px;
+  /* OLD */
+  /* letter-spacing: 14px; */
+  /* NEW */
+  letter-spacing: 12px;
+  color: #ffffff;
 }
 #logoNameGuide {
   margin: 0 auto;
@@ -2213,7 +2217,7 @@ text-align: center;
   width: 100%;
   transition: all 0.5s ease 0s;
   background-color: rgba(0,220,255,0.05);
-  border: 1px solid #00dcff;
+  border: 1px solid #515151;
   border-radius: 5px;
   margin-bottom: 0px;
   transform: scale(1);
@@ -2227,6 +2231,7 @@ text-align: center;
   background-color: rgba(0,220,255,0.12);
   box-shadow: 0 0 0.5pt 0.5pt rgba(0,220,255,1) inset;
   transform: scale(1.02);
+  border-color: rgba(0,220,255,0.5);
 }
 #commandButton {
   flex: 1 1 auto;
@@ -2922,7 +2927,7 @@ font-size: 190%;
 #introductionWelcome:active {
   /* background-image: url('./newtonBlake.jpg');
   background-position: center 92%; */
-  background-image: url('./wandererAboveFog2.jpg');
+  background-image: url('./earthlyDelights2.jpg');
   /* background-position: center 35%; */
   background-position: center 0%;
   background-size: 100%;
@@ -6068,7 +6073,10 @@ input#submitWelcomeProblem:hover {
       /* margin-top: 1.5%; */
       margin-top: 1%;
       font-size: 260%;
-      letter-spacing: 15px;
+      /* OLD */
+      /* letter-spacing: 15px; */
+      /* NEW */
+      letter-spacing: 12px;
       width: 70%;
       
       border: 1px solid #00dcff;

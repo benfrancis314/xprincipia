@@ -127,18 +127,18 @@ if (this.props.leaderboardType == 'projects') {
    } else if (this.props.leaderboardType == 'users') {
        return (
         <li key={problem.ID} id="welcomeUserProblemsUnit">
-            {/* <Link to={'/project/'+problem.ID +'/subprojects'}> */}
+            <Link to={'/user/'+problem.username}>
                 <div id="welcomeUserProblemsHeader">
                     <div id="welcomeUserProblemsTitle">
                         <div id="welcomeProjectPercent" onMouseOver={hoverLeaderBoardTextVotes} onMouseOut={unHoverLeaderBoardTextVotes}>
                             {problem.Points}
                         </div>
                         <div id="welcomeProblemsTitleText">
-                            {problem.Username}
+                            {problem.username}
                         </div>
                     </div>
                 </div>
-            {/* </Link> */}
+            </Link>
         </li>
        )
    }

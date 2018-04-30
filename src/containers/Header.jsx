@@ -98,7 +98,22 @@ hideSearch() {
       $('#searchResultsContainer').attr('id','searchResultsContainerHide');
   });
 }
-   render() {
+
+hoverExplore() {
+  $(document).ready(function() {
+      $('#logoName').html("explore").fadeIn(7500);
+      $('#logoName').attr('id','logoNameGuide');
+  });
+}
+unHoverExplore() {
+    $(document).ready(function() {
+        $('#logoNameGuide').html('XPrincipia');            
+        $('#logoNameGuide').attr('id','logoName');
+    });
+}
+
+
+render() {
 
 if (this.state.userToken === undefined ){
       return (
@@ -111,7 +126,7 @@ if (this.state.userToken === undefined ){
               </Link>
             </div>
             <div id="explore">
-                <form id="exploreFormHeader">
+                <form id="exploreFormHeader" onMouseOver={this.hoverExplore} onMouseOut={this.unHoverExplore}>
                     <input type="search" name="search"
                         // placeholder="explore" 
                         id="exploreHeaderInput"  
@@ -144,7 +159,7 @@ if (this.state.userToken === undefined ){
                     </Link>
                   </div>
                   <div id="explore">
-                      <form id="exploreFormHeader">
+                      <form id="exploreFormHeader" onMouseOver={this.hoverExplore} onMouseOut={this.unHoverExplore}>
                           <input type="search" name="search"
                               // placeholder="explore" 
                               id="exploreHeaderInput"  

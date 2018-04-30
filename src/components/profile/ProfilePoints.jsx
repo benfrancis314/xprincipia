@@ -110,13 +110,14 @@ unHoverFutureTitle() {
 }
 changePlanetEarth() {
   axios.put( Config.API + '/auth/users/updatePlanet?username='+cookie.load('userName'), {
-    planet : 'earth'
+    planet : 3
   })
 }
 changePlanetMars() {
   axios.put( Config.API + '/auth/users/updatePlanet?username='+cookie.load('userName'), {
-    planet : 'mars'
+    planet : 4
   })
+  alert('mars')
 }
 
    render() {
@@ -162,11 +163,12 @@ changePlanetMars() {
             insignia
           </div>
           <div id="userSymbolSelectContainer">
+            {this.state.user.Planet}
             <Link to={window.location.pathname}>
-              <div id="earthMini" onMouseOver={this.hoverEarth} onMouseOut={this.unHoverEarth}></div>
+              <div id="earthMini" onMouseOver={this.hoverEarth} onMouseOut={this.unHoverEarth} onClick={this.changePlanetEarth}></div>
             </Link>
             <Link to={window.location.pathname}>
-              <div id="marsMini" onMouseOver={this.hoverMars} onMouseOut={this.unHoverMars}></div>
+              <div id="marsMini" onMouseOver={this.hoverMars} onMouseOut={this.unHoverMars} onClick={this.changePlanetMars}></div>
             </Link>
           </div>
           <div id="nextLevelLabel">
