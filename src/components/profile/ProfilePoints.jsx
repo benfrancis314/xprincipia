@@ -109,15 +109,12 @@ unHoverFutureTitle() {
   });
 }
 changePlanetEarth() {
-  axios.put( Config.API + '/auth/users/updatePlanet?username='+cookie.load('userName'), {
-    planet : 3
-  })
+  axios.get( Config.API + '/users/updatePlanet?username='+cookie.load('userName')+'&planet='+0).then(function (response) {
+  }) 
 }
 changePlanetMars() {
-  axios.put( Config.API + '/auth/users/updatePlanet?username='+cookie.load('userName'), {
-    planet : 4
-  })
-  alert('mars')
+  axios.get( Config.API + '/users/updatePlanet?username='+cookie.load('userName')+'&planet='+1).then(function (response) {
+  }) 
 }
 
    render() {
@@ -125,12 +122,12 @@ changePlanetMars() {
     return (
       <div id="pointsContainer">
         <div id="pointsBackgroundWest">
-          <div id="pointsTitleSwitchButtonWest" onClick={this.selectFutureTitle} onMouseOver={this.hoverWestTitle} onMouseOut={this.unHoverWestTitle}>
+          {/* <div id="pointsTitleSwitchButtonWest" onClick={this.selectFutureTitle} onMouseOver={this.hoverWestTitle} onMouseOut={this.unHoverWestTitle}>
             frontier
           </div> 
           <div id="pointsTitleSwitchButtonFutureHide" onClick={this.selectWestTitle} onMouseOver={this.hoverFutureTitle} onMouseOut={this.unHoverFutureTitle}>
             future
-          </div> 
+          </div>  */}
           <div id="pointsLevelLabel">
             level {this.state.level}
           </div>
@@ -163,7 +160,7 @@ changePlanetMars() {
             insignia
           </div>
           <div id="userSymbolSelectContainer">
-            {this.state.user.Planet}
+            {/* {this.state.user.Planet} */}
             <Link to={window.location.pathname}>
               <div id="earthMini" onMouseOver={this.hoverEarth} onMouseOut={this.unHoverEarth} onClick={this.changePlanetEarth}></div>
             </Link>
@@ -171,7 +168,7 @@ changePlanetMars() {
               <div id="marsMini" onMouseOver={this.hoverMars} onMouseOut={this.unHoverMars} onClick={this.changePlanetMars}></div>
             </Link>
           </div>
-          <div id="nextLevelLabel">
+          {/* <div id="nextLevelLabel">
             next level
           </div>
           <div id="nextLevelPointsNumberDisplay">
@@ -186,7 +183,7 @@ changePlanetMars() {
               frontiersman
             </div>
             <div id="nextLevelTitleLockRight"></div>
-          </div>
+          </div> */}
           {/* <div id="nextLevelPointsRankingDisplay">
             enter top x%
           </div> */}

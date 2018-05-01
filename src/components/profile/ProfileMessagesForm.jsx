@@ -20,7 +20,6 @@ export default class ProfileMessagesForm extends React.Component {
     }
 
     this.postMessage = this.postMessage.bind(this);
-    // this.toggle = this.toggle.bind(this);
   };
 
   postMessage() {
@@ -31,18 +30,17 @@ export default class ProfileMessagesForm extends React.Component {
     this.state.user2 = document.getElementById('problemTitleForm').value
     this.state.message = document.getElementById('problemSummaryForm').value
     axios.post( Config.API + '/auth/messages/create', {
-        // username: cookie.load('userName'),
-        // parentID: this.props.params.probID,
+        username: cookie.load('userName'),
         user1 : this.state.user1,
         user2 : this.state.user2,
         description : this.state.message,
       })
       axios.post( Config.API + '/auth/conversations/create', {
-        // username: cookie.load('userName'),
-        // parentID: this.props.params.probID,
+        username: cookie.load('userName'),
         user1 : this.state.user1,
         user2 : this.state.user2,
       })
+      
       .then(function (response) {
         document.getElementById("welcomeCreateProjectForm").reset();
         self.refs.messagebtn.removeAttribute("disabled");

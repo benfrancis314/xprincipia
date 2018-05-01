@@ -20,7 +20,7 @@ export default class WelcomeContainer extends React.Component {
   }
   unHoverLeaderBoardText() {
     $(document).ready(function() {
-            $('#leaderBoardCapTopHover').html("player leaderboard");
+            $('#leaderBoardCapTopHover').html("top members");
             $('#leaderBoardCapTopHover').attr('id','leaderBoardCapTop');
     });
   }
@@ -36,7 +36,7 @@ export default class WelcomeContainer extends React.Component {
   hideLeaderBoardSelect() {
     $(document).ready(function() {
             $('#leaderBoardSelectShow').attr('id','leaderBoardSelect');
-            $('#leaderBoardCapTopClick').html("player leaderboard");
+            $('#leaderBoardCapTopClick').html("top members");
             $('#leaderBoardCapTopClick').attr('id','leaderBoardCapTop');
             $('#leaderBoardFilterButtonClick').attr('id','leaderBoardFilterButton');
             $('#leaderBoardFilterExitLeftShow').attr('id','leaderBoardFilterExitLeft');
@@ -268,7 +268,7 @@ export default class WelcomeContainer extends React.Component {
 
                     {/* <div id="leaderBoardTitleContainer"> */}
                     <div id="leaderBoardCapTop">
-                        members leaderboard
+                        top projects
                     </div>
                     {/* </div> */}
                     {/* <form id="welcomeSearchFormContainer">

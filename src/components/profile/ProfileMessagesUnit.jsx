@@ -32,7 +32,8 @@ componentDidMount(){
             rerender: '0',
         })
     }) 
-    axios.get( Config.API + '/conversations/clearnotifications?user1='+this.props.params.user1+'&user2='+this.props.params.user2)
+    axios.get( Config.API + '/conversations/clearnotifications?user1='+this.props.params.user1+'&user2='+this.props.params.user2).then(function (response) {
+    }) 
 }
 componentWillReceiveProps (nextProps){
     var self = this;
@@ -42,8 +43,9 @@ componentWillReceiveProps (nextProps){
             rerender: '0',
         })
     })  
-    axios.get( Config.API + '/conversations/clearnotifications?user1='+this.props.params.user1+'&user2='+this.props.params.user2)
-
+    // axios.get( Config.API + '/conversations/clearnotifications?user1='+this.props.params.user1+'&user2='+this.props.params.user2)
+    axios.get( Config.API + '/conversations/clearnotifications?user1='+nextProps.params.user1+'&user2='+this.props.params.user2).then(function (response) {
+    }) 
 }
 postMessage() {
     var self = this;
@@ -122,7 +124,7 @@ causeRerender() {
             <form id='conversationSubmit'>
                 <textarea id="conversationEntry" autoFocus autoComplete="off"></textarea>
                 <Link to={window.location.pathname}>
-                    <input id="conversationSubmitButton" ref='btn' value="submit" onClick={this.postMessage}></input>
+                    <input id="conversationSubmitButton" ref='btn' value="send" onClick={this.postMessage}></input>
                 </Link>
             </form>
             <ul id="conversationMessagesList"> 

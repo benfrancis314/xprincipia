@@ -218,7 +218,7 @@ ol, ul {
   color: #888888 !important;
   letter-spacing: 2px !important;
 }
-#nodisplay {
+#nodisplay, #noDisplay {
   display: none;
 }
 #iOpen {
@@ -931,10 +931,7 @@ margin-right: 0px !important;
   #projectMajorButtonRow {
     flex-direction: column !important;
   }
-  #projectActivityButton, #projectActionButton, #projectInfoButton,
-  #projectActivityButton1, #projectActionButton1, #projectInfoButton1,
-  #projectActivityButton2, #projectActionButton2, #projectInfoButton2,
-  #projectActivityButton3, #projectActionButton3, #projectInfoButton3 {
+  #projectActivityButton, #projectActionButton, #projectInfoButton {
     width: 80% !important;
     transform: rotateX(0deg) rotateY(0deg) !important;
   }
@@ -1172,9 +1169,6 @@ text-align: left !important;
 border-width: 0px;
 font-size: 220% !important;
 
-}
-#xpbr {
-display: none;
 }
 #xp {
 display: none;
@@ -2037,7 +2031,7 @@ text-align: center;
 /*Header*/
 
 #header {
-  border: 1px solid #00dcff;
+  border: 1px solid rgba(0,220,255,0.5);
   border-width: 1px 0px 1px 0px;
   width: 100%;
   display: flex;
@@ -2048,14 +2042,11 @@ text-align: center;
   text-align: center;
   padding: 3px 0px 2px 0px;
   font-size: 110%;
-  box-shadow: 0 0 0pt 0pt rgba(0,220,255,0.5);
 
   transition: all 2s ease 0s;
   background-color: rgba(0,220,255,0.025);
   background: linear-gradient(to right,rgba(0,220,255, 0), rgba(0,220,255, 0.05), rgba(0,220,255, 0));
-  transform: scale(1);
 
-  /* New with Search Bar */
   position: relative;
 }
 #header:hover, #header:active, #header:focus {
@@ -2275,7 +2266,7 @@ text-align: center;
   width: 50px;
   transition: all 0.5s ease 0s;
   background-color: rgba(255,255,255,0.05);
-  border: 1px solid #ffffff;
+  border: 1px solid rgba(255,255,255,0.5);
   border-radius: 5px 0px 0px 5px;
   transform: scale(1);
   margin: 0 auto;
@@ -2294,7 +2285,7 @@ text-align: center;
   border-radius: 0px 0px 0px 0px;
   border-width: 1px 0px;
   background-color: rgba(0,220,255,0.05);
-  border: 1px solid #00dcff;
+  border: 1px solid rgba(0,220,255,0.5);
   /* background: radial-gradient(circle, rgba(0,220,255,0), rgba(0,220,255,0.15)) */
   background-image: url('./comments.svg');  
   background-size: 60%;
@@ -2328,7 +2319,7 @@ text-align: center;
 #headerTempleName {
   border-radius: 0px 5px 5px 0px;
   background-color: rgba(255,255,255,0.05);
-  border: 1px solid #dddddd;
+  border: 1px solid rgba(255, 255, 255, 0.5);
   background: radial-gradient(circle, rgba(255,255,255,0), rgba(255,255,255,0.15))
 }
 #headerTempleName:hover {
@@ -2363,11 +2354,11 @@ text-align: center;
 #headerPointsNumber {
   font-size: 100%;
   color: #00ffdc;
-  border: 1px solid #00ffdc;
+  border: 1px solid rgba(0,255,220,0.5);
   border-width: 0px 1px 1px 1px;
   border-radius: 0px 0px 5px 5px;
   letter-spacing: 4px;
-  padding: 0px 2px 0px 2px;
+  padding: 1px 2px;
   background: radial-gradient(circle, rgba(0,255,220,0), rgba(0,255,220,0.1));
 }
 #headerPointsContainer:hover {
@@ -2376,6 +2367,9 @@ text-align: center;
  }
  #headerPointsContainer:hover #headerLevelTitle {
   border-color: #00dcff;
+ }
+ #headerPointsContainer:hover #headerPointsNumber {
+  border-color: #00ffdc;
  }
 
 
@@ -2692,6 +2686,7 @@ cursor: pointer;
   transition: all 0.75s ease 0s;
   background-color: rgba(0,220,255,0.025);
   transform: scale(1);
+  border-color: rgba(0,220,255,0.5) !important;
 }
 #introRegisterFullName:focus, #introRegisterUserName:focus, #introRegisterEmail:focus, #introRegisterPassword:focus,
 #registerFullName:focus, #registerUserName:focus, #registerEmail:focus, #registerPassword:focus,
@@ -2765,7 +2760,7 @@ cursor: pointer;
   color: #00dcff;
   background-color: inherit;
   text-align: center;
-  border: 1px solid #00dcff;
+  border: 1px solid rgba(0,220,255,0.5);
   border-radius: 3px;
   padding: 3px 8px 3px 8px;
   display: block;
@@ -2933,7 +2928,7 @@ font-size: 190%;
   background-position: center 92%; */
   background-image: url('./earthlyDelights2.jpg');
   /* background-position: center 35%; */
-  background-position: center 0%;
+  background-position: center 25%;
   background-size: 100%;
 }
 #introductionCapital {
@@ -4091,12 +4086,12 @@ letter-spacing: 4px;
 width: 50%;
 margin: 0 auto;
 padding: 0.5% 0% 0.6% 0%;
-margin-top: 1%;
+/* margin-top: 1%; */
 margin-bottom: 1%;
 color: #00dcff;
 border: 1px solid #515151;
-border-width: 0px 1px;
-/* border-radius: 3px; */
+border-width: 0px 1px 1px 1px;
+border-radius: 0px 0px 10% 10%;
 background: radial-gradient(circle,rgba(0,220,255, 0), rgba(0,220,255, 0.05));
 
 transition: all 1s ease 0s;
@@ -4311,7 +4306,10 @@ letter-spacing: 7px;
 }
 #xp {
   text-align: center;
+  color: #515151;
+  transition: all 1s ease 0s;
 }
+
 #profileSidebarMenu {
   display: inline-flex;
   flex-direction: row;
@@ -4798,7 +4796,7 @@ letter-spacing: 7px;
 #pointsLevelTitleWest:hover, #pointsLevelTitleFuture:hover {
 background-color: rgba(15,19,28,0.5);
 transform: scale(1.03);
-background-image: url('./rooseveltBadlands1.jpg');
+background-image: url('./grandPrismaticSpring.jpg'); 
 background-size: 110%; 
 background-position: center 48%; 
 }
@@ -4929,7 +4927,7 @@ background-position: center 48%;
   flex-direction: row;
   /* justify-content: space-between; */
   justify-content: center;
-  /* padding: 25px; */
+  padding: 10px 0px;
   background: radial-gradient(rgba(15,19,28,0.9), rgba(15,19,28,0.9), rgba(0,220,255,0.1));
   border: 0px solid #00dcff;
   border-radius: 3px 3px 15% 15%;
@@ -4937,8 +4935,8 @@ background-position: center 48%;
   transition: all 2s ease 0s;
 }
 #userSymbolSelectContainer:hover {
-  width: 98%;
-  padding: 5px 0px;
+  /* width: 98%; */
+  padding: 25px 0px;
 }
 #userSymbolSelectContainer:hover #earthMini {
   transform: rotate(23.44deg) scale(1.05);
@@ -5042,8 +5040,8 @@ border-radius: 0px 0px 25% 25%;
   margin: 0 auto;
   margin-bottom: 2.5%;
   margin-top: 2.5%;
-  margin-right: 10%;
-  margin-left: 10%;
+  margin-right: 35px;
+  margin-left: 35px;
   background-blend-mode: overlay;
   border-radius: 50%;
   /* background-size: 630px; */
@@ -5260,42 +5258,40 @@ width: 75%;
   padding: 10px;
   margin: 0 auto;
   width: 90%;
-  border: 1px solid #00dcff;
   border-radius: 3px;
   transition: all 0.5s ease 0s;
-  box-shadow: 0 0 0pt 0pt rgba(0,220,255,0.5);
   margin-top: 2.25%;
-  background-color: rgba(0,220,255,0.05);
+  border: 1px solid rgba(0,220,255,0.5);
+  background: radial-gradient(circle, rgba(0,220,255, 0), rgba(0,220,255, 0.05));
 }
 #solutionUnit:hover, #solutionUnitGreen:hover, #solutionUnitRed:hover {
   cursor: pointer;
-  /*font-size: 105%;*/
   box-shadow: 0 0 2px 2px rgba(0,220,255,0.5);
-  background: linear-gradient(to right,rgba(0,220,255, 0.05), rgba(0,220,255, 0.1), rgba(0,220,255, 0.05));
+  background-color: rgba(0,220,255,0.05);
 }
 #solutionUnitGreen {
-  border: 1px solid #00ffdc;
-  background-color: rgba(0,255,220,0.05);
+  border: 1px solid rgba(0,255,220,0.5);
+  background: radial-gradient(circle, rgba(0,255,220, 0), rgba(0,255,220, 0.05));
 }
 #solutionUnitRed {
-  border: 1px solid #ff7f7f;
-  background-color: rgba(255,127,127,0.05);
+  border: 1px solid rgba(255,127,127,0.5);
+  background: radial-gradient(circle, rgba(255,127,127, 0), rgba(255,127,127, 0.05));
 }
 #solutionUnitGreen:hover {
   box-shadow: 0 0 2px 2px rgba(0,255,220,0.5);
-  background: linear-gradient(to right,rgba(0,255,220, 0.05), rgba(0,255,220, 0.1), rgba(0,255,220, 0.05));
+  background-color: rgba(0,255,220,0.05);
 }
 #solutionUnitRed:hover {
   box-shadow: 0 0 2px 2px rgba(255,127,127,0.5);
-  background: linear-gradient(to right,rgba(255,127,127, 0.05), rgba(255,127,127, 0.1), rgba(255,127,127, 0.05));
+  background-color: rgba(255,127,127,0.05);
 }
-#redProposal {
-  font-size: 80%;
-  color: #ff7f7f;
+#redProposal, #greenProposal {
+  font-size: 60%;
+  line-height: 10%;
+  color: rgba(255,127,127,0.5);
 }
 #greenProposal {
-  font-size: 80%;
-  color: #00ffdc;
+  color: rgba(0,255,220,0.5);
 }
 #solutionUnitActive {
 padding: 10px;
@@ -5834,6 +5830,18 @@ font-family: 'Open Sans';
   border-color: #00dcff !important;
   cursor: default !important;
 }
+.activePoints #profileLevelButton {
+  /* box-shadow: 0 0 0.5pt 0.5pt rgba(0,220,255,1) !important; */
+  transform: scale(1.05) !important;
+  border-color: rgba(0,220,255,0.5) !important;
+}
+.activePoints #profilePointsButton {
+  /* box-shadow: 0 0 0.5pt 0.5pt rgba(0,220,255,1) !important; */
+  /* background-color: rgba(0,255,220,0.05) !important; */
+  transform: scale(1.05) !important;
+  /* border-color: rgba(0,255,220,0.5) !important; */
+  box-shadow: 0 0 0.5pt 0.5pt rgba(0,220,255,1) !important;    
+}
 .activePointsHeader div {
   box-shadow: 0 0 0.5pt 0.5pt rgba(0,220,255,1) !important;
   transform: scale(1.02) !important;
@@ -5907,8 +5915,8 @@ font-family: 'Open Sans';
   padding: 2px;
   width: 100%;
   margin: 0 auto;
-  margin-top: 1%;
-  margin-bottom: 1%;
+  margin-top: 2%;
+  margin-bottom: 2%;
   border: 1px solid #00dcff;
   border-width: 0px 0px 1px 0px;
   border-radius: 0% 0% 12% 12%;
@@ -5933,9 +5941,9 @@ font-family: 'Open Sans';
   background-size: contain;
   background-repeat: no-repeat;
   /* Less Dark */
-  /* background-color: rgba(15,19,28,0.9); */
+  background-color: rgba(15,19,28,0.9);
   /* Darker */
-  background-color: rgba(15,19,28,0.999);
+  /* background-color: rgba(15,19,28,0.999); */
   background-blend-mode: overlay;
   transition: all 0.5s ease 0s;
   transform: scale(1);
@@ -5944,16 +5952,24 @@ font-family: 'Open Sans';
   flex-direction: column;
   border: 2px solid #00dcff;
   border-radius: 100%;
-  /* Used to be 14em */
+  /* 13.5em */
   width: 13.5em;
   height: 13.5em;
+  /* 13.75em */
+  /* width: 13.75em;
+  height: 13.75em; */
+  /* 14 */
+  /* width: 14em;
+  height: 14em; */
   word-wrap: break-word; 
   align-items: center; 
   justify-content: center;
   margin: 0 auto;
   box-shadow: 0 0 2pt 2pt rgba(0,220,255,0.5);
-  transition: all 0.5s ease 0s;
-  transform: scale(1);
+  /* OLD */
+  /* transition: all 0.5s ease 0s; */
+  /* NEW */
+  transition: all 1s ease 0s;
 }
 #welcomeProblemsHeader1 {
   background-image: url('./earthRise.jpg');
@@ -6538,9 +6554,6 @@ background-color: #00dcff;
   background-color: #00dcff;
   color: #0f131c;
 }
-#xp {
-  text-align: center;
-}
 #followedProblemsButton:hover, #createdProblemsButton:hover,
 #votedSolutionsButton:hover, #createdSolutionsButton:hover,
 #followedProblemsButton:active, #createdProblemsButton:active,
@@ -6706,6 +6719,7 @@ transition: all 0.5s ease 0s;
 z-index: 500;
 margin-top: 0.5%;
 margin-bottom: 0.5%;
+opacity: 0.5;
 }
 #editProposalButton {
   opacity: 0.5;
@@ -8317,15 +8331,16 @@ text-transform: lowercase !important;
 #fullSolution {
   position: relative;
   width: 70%;
-  border: 1px solid #00dcff;
+  border: 1px solid rgba(0,220,255,0.5);
   border-radius: 3px;
-  /* OLD */
-  /* background-color: rgba(0,220,255,0.05); */
-  /* CURRENT*/
   background-color: rgba(0,220,255,0.025);
   margin: 0 auto;
   margin-top: 1%;
   padding-top: 1%;
+  transition: all 1s ease 0s;
+}
+#fullSolution:hover {
+  border-color: #00dcff;
 }
 #fullSolutionContainer {
 margin-bottom: 1%;
@@ -9090,15 +9105,6 @@ transition: all 0.5s ease 0s;
 text-align: left;
 white-space: pre-wrap !important;
 }
-#currentVersion {
-flex: 1 1 auto;
-margin: 0 auto;
-font-size: 80%;
-text-align: center;
-letter-spacing: 8px;
-padding: 5px;
-width: 5em;
-}
 #proposalCreator, #privateProposalRank, #privateProposalRankActive {
 flex: 1 1 auto;
 margin: 0 auto;
@@ -9159,48 +9165,45 @@ letter-spacing: 8px;
 padding: 5px;
 width: 12em;
 text-align: center;
-transition: all 0.25s ease 0s;
+transition: all 1s ease 0s;
+color: #515151;
 } 
 
 
 /*ProsCons*/
-#prosConsMenu {
-display: inline-flex;
-text-align: center;
+#proposalMenu {
+display: flex;
 flex-direction: row;
 justify-content: space-around;
 width: 100%;
-border: 1px solid rgba(0,220,255,0.5);
+border: 1px solid #515151;
 border-width: 1px 0px;
-background: linear-gradient(to right,rgba(0,220,255, 0.05), rgba(0,220,255, 0), rgba(0,220,255, 0.05));
+/* background: linear-gradient(to right,rgba(0,220,255, 0.05), rgba(0,220,255, 0), rgba(0,220,255, 0.05)); */
+background: radial-gradient(circle,rgba(0,220,255, 0), rgba(0,220,255, 0.05));
+transition: all 1s ease 0s;
 }
-#proposalProConButton, #proposalDiscussButton {
+#proposalDiscussButton, #proposalBreakdownButton {
   flex: 1 1 auto;
   margin: 0 auto;
   font-size: 120%;
   text-align: center;
-  letter-spacing: 6px;
+  letter-spacing: 4px;
   padding: 7px;
+  color: #00dcff;
   width: 20em;
-  text-align: center;
   transition: all 1s ease 0s;
-  box-shadow: 0 0 0pt 0pt rgba(0,220,255,0.5);
   background-color: rgba(0,220,255,0);
   background: linear-gradient(to right,rgba(0,220,255, 0), rgba(0,220,255, 0.025), rgba(0,220,255, 0));
 }
-#proposalProConButton:hover, #proposalDiscussButton:hover, #proposalProConButton:focus, #proposalDiscussButton:focus, #proposalProConButton:active, #proposalDiscussButton:active {
+#proposalDiscussButton:hover, #proposalBreakdownButton:hover, #proposalDiscussButton:focus, #proposalBreakdownButton:focus, #proposalDiscussButton:active, #proposalBreakdownButton:active {
 background-color: rgba(0,220,255,0.05);
-color: #00dcff;
 cursor: pointer;
-box-shadow: 0 0 0px 0px rgba(0,220,255,0.5);
-background: linear-gradient(to right,rgba(0,220,255, 0), rgba(0,220,255, 0.05), rgba(0,220,255, 0));
-letter-spacing: 10px;
-transform: scale(1.05);
+/* background: linear-gradient(to right,rgba(0,220,255, 0), rgba(0,220,255, 0.05), rgba(0,220,255, 0)); */
+transform: scale(1.1);
 }
 #proposalProConButton:active, #proposalDiscussButton:active {
-background-color: rgba(0,220,255,0.15);
-color: #00dcff;
-border-color: #00dcff;
+background-color: rgba(0,220,255,0.1);
+transform: scale(1.1);
 }
 #solutionDescriptionReturn {
 color: #00dcff;
@@ -9277,7 +9280,7 @@ cursor: pointer;
   font-size: 120%;
   color: #00dcff;
   text-align: center;
-  letter-spacing: 2px;
+  letter-spacing: 4px;
 }
 
 
@@ -10732,7 +10735,8 @@ margin-top: 1%;
 }
 #feedTitle {
   border: 1px solid #333333;
-  background-color: rgba(0,220,255, 0.05);
+  /* background-color: rgba(0,220,255, 0.05); */
+  background: radial-gradient(circle, rgba(0,220,255,0.05), rgba(0,220,255,0));
   border-radius: 45% 45% 3px 3px;
   margin-bottom: 1%;
   text-align: center;
@@ -11390,36 +11394,21 @@ margin-top: 1%;
     #welcomeUserProblemsHeader {
     display: flex;
     flex-direction: row;
-    border: 1px solid #00dcff;
-    border-radius: 3px 3px 15% 15%;
-    box-shadow: 0 0 0pt 0pt rgba(0,220,255,0.5);
     width: 98.5%;
     height: auto;
     word-wrap: break-word; 
     align-items: center; 
     justify-content: center;
-    background-color: rgba(0,220,255,0);
-    margin-bottom: 5%;
-    background-size: cover;
     position: relative;
     margin: 0 auto;
     margin-bottom: 2%;
     
-    background: linear-gradient(to right,rgba(0,220,255, 0), rgba(0,220,255, 0.05), rgba(0,220,255, 0));
     transition: all 0.75s ease 0s;
-    background-color: rgba(0,220,255,0.025);
-    transform: scale(1);
-    opacity: 0.8;
-
-
-
     border: 1px solid rgb(136, 136, 136, 0.5);
-    border-radius: 3px 3px 10px 15%;
+    border-radius: 3px 3px 15% 10px;
     background: linear-gradient(to right,rgba(0,255,220, 0.01), rgba(0,255,220, 0.04), rgba(0,255,220, 0));
     box-shadow: 0 0 0.5pt 0.5pt rgba(0,255,220,0.5);
-    background-color: rgba(0,255,220,0.04);
     letter-spacing: 1px;
-    font-family: 'Alegreya Sans SC', sans-serif;
     opacity: 0.9;
   }
 
@@ -12242,7 +12231,7 @@ cursor: pointer !important;
   cursor: pointer;
   transform: scale(1.02);
 }
-#profileSideMessagesButton:hover, .activeMessagesButton div, #userMessagesButton:hover div, #userMessagesButton:hover {
+#profileSideMessagesButton:hover, .activeMessagesButton #messagesUnit, #userMessagesButton:hover div, #userMessagesButton:hover {
   cursor: pointer;
   transform: scale(1.02);
   box-shadow: inset 0 0 18px 12px rgba(0,220,255,0.25);   
@@ -12404,9 +12393,12 @@ cursor: pointer !important;
   background: linear-gradient(to right, rgba(0,220,255,0), rgba(0,220,255,0,0), rgba(0,220,255,0.04), rgba(0,220,255,0));  
   width: 90%;
   margin: 0 auto;
-  transform: rotateY(20deg);
+  position: relative;
+  /* transform: rotateY(20deg); */
+  /* display: flex;
+  flex-direction: row; */
 }
-#messagesUnit:hover, #messagesUnitXP:hover, .activeMessage div {
+#messagesUnit:hover, #messagesUnitXP:hover, .activeMessage #messagesUnit {
   color: #ffffff;
   transform: scale(1.02);
   cursor: pointer;
@@ -12417,7 +12409,7 @@ cursor: pointer !important;
   margin-top: 2%;
   margin-bottom: 2%;
 }
-.activeMessage div {
+.activeMessage #messagesUnit {
   background: linear-gradient(to right, rgba(0,220,255,0.07), rgba(0,220,255,0), rgba(0,220,255,0.04), rgba(0,220,255,0.05));  
   cursor: default;
   color: #00dcff;
@@ -12436,7 +12428,6 @@ cursor: pointer !important;
   font-size: 160%;
   line-height: 120%;
   letter-spacing: 2px;
-  height: auto;
   word-break: break-all;
   overflow: auto;
   width: 100%;
@@ -12451,6 +12442,21 @@ cursor: pointer !important;
   transform: scale(1.02);
   cursor: pointer;
   background-color: rgba(0,220,255,0.025);
+}
+#conversationNotificationNumber {
+  position: absolute;
+  top: 3%;
+  right: 0px;
+  color: rgba(255,127,127,1);
+  text-align: left;
+  margin: 0 auto;
+  margin-left: 0;
+  font-size: 160%;
+  line-height: 120%;
+  letter-spacing: 2px;
+  padding: 2.5% 3% 3% 3%;
+  border-radius: 50%;
+  transition: all 0.5s ease 0s;
 }
 #newMessageAddButton {
   display: flex;
@@ -12595,18 +12601,25 @@ cursor: pointer !important;
   min-height: 10px;
   max-height: 100px;
   margin-top: 1%;
-  /*background-color: rgba(0,220,255, 0.05);*/
-  background: radial-gradient(rgba(0,220,255, 0), rgba(0,220,255, 0.1));
+  border-color: rgba(0,220,255,0.5);
+  transition: all 0.5s ease 0s;
+  background: radial-gradient(circle, rgba(0,220,255, 0), rgba(0,220,255, 0.05));
   }
   #conversationSubmitButton {
   width: 20%;
   margin: 0 auto;
-  font-size: 80%;
-  margin-top: 1%;
+  /* font-size: 80%; */
+  font-size: 100%;
+  letter-spacing: 2px;
+  /* margin-top: 1%; */
   color: #00dcff;
+  border-width: 0px 1px 1px 1px;
+  border-color: rgba(0,220,255,0.5);
+  border-radius: 0px 0px 15% 15%;
+  padding: 3px;
   transition: all 0.5s ease 0s;
   font-family: 'Alegreya Sans SC';
-  background: radial-gradient(rgba(0,220,255, 0), rgba(0,220,255, 0.1));
+  background: radial-gradient(circle, rgba(0,220,255, 0), rgba(0,220,255, 0.1));
   }
   #conversationSubmitButton:hover, #conversationSubmitButton:active {
   background-color: rgba(0,220,255, 0.1);
@@ -14473,33 +14486,26 @@ input#submitBreakdown:hover {
   margin-right: 0px !important;
   right: 0 !important;
 }
-#projectActionButton, #projectActivityButton, #projectInfoButton, #projectActivityButton2, #projectActivityButton3, #projectInfoButton2, #projectInfoButton3 {
+#projectActivityButton, #projectInfoButton {
   position: relative;
-  /* width: 26%; */
   width: 28%;
   margin: 0 auto;
   text-align: center;
   border: 1px solid #00dcff;
   border-radius: 3px;
-  /* padding: 22px 24px; */
-  /* padding: 24px 26px; */
   padding: 30px 26px;
   letter-spacing: 4px;
-  /* margin-top: 5%; */
+
   margin-top: 1.5%;
   margin-bottom: 4.5%;
   color: #00dcff;
   background: radial-gradient(circle, rgba(0,220,255, 0.15), rgba(0,220,255, 0.05), rgba(0,220,255, 0));   
   transition: all 1s ease 0s;
   box-shadow: 0 0 1pt 1pt rgba(0,220,255,0.5);  
-  /* font-size: 195%; */
   font-size: 205%;
   top: 28px;
 }
-#projectInfoButton3, #projectActivityButton3 {
-  width: 60% !important;
-}
-#projectActionButton:hover, #projectActivityButton:hover, #projectInfoButton:hover, #projectActivityButton2:hover, #projectInfoButton2:hover, #projectActivityButton3:hover, #projectInfoButton3:hover {
+#projectActivityButton:hover, #projectInfoButton:hover {
   cursor: pointer;
   letter-spacing: 5px;
   background: radial-gradient(circle, rgba(0,220,255, 0.15), rgba(0,220,255, 0.1), rgba(0,220,255, 0));   
@@ -14510,7 +14516,7 @@ input#submitBreakdown:hover {
 #projectActionButton:hover {
   top: 30px;
 }
-#projectActivityButton, #projectInfoButton, #projectActivityButton2, #projectInfoButton2 {
+#projectActivityButton, #projectInfoButton {
   /* width: 30%; */
   position: relative;
   top: 26px;
@@ -14518,13 +14524,13 @@ input#submitBreakdown:hover {
   /* transform: rotate3d(45deg, 90deg, 0deg) !important;     */
   transform: rotateX(1.5deg) rotateY(15deg);
 }
-#projectInfoButton, #projectInfoButton2 {
+#projectInfoButton {
   transform: rotateX(1.5deg) rotateY(-15deg);
 }
-#projectActivityButton:hover, #projectActivityButton2:hover {
+#projectActivityButton:hover {
   top: 30px;
 }
-#projectInfoButton:hover, #projectInfoButton2:hover {
+#projectInfoButton:hover {
   top: 30px;
 }
 #projectMidColumnLeftStart {

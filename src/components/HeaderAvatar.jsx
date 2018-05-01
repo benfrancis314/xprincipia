@@ -8,13 +8,14 @@ import $ from 'jquery';
 
 export default class HeaderAvatar extends React.Component {
 
-constructor(props){
-    super(props);
+constructor(){
+    super();
 
     this.state = {
         notification: '',
         messageNotifications: '',
         messageButtonID: '',
+        user: [],
     }
     this.clearMessageNotifications = this.clearMessageNotifications.bind(this)
 
@@ -40,6 +41,11 @@ componentDidMount(){
                 })
             }
         }) 
+        axios.get( Config.API + '/users/byusername?username='+cookie.load('userName')).then(function (response) {
+            self.setState({
+                user: response.data,
+            })
+        })
 }
 // componentWillReceiveProps(nextState) {
 //     var self = this;
@@ -142,6 +148,18 @@ componentDidMount(){
             $('#notebookContainer').attr('id','notebookContainerShow');
         });
     }
+    hoverPoints() {
+        $(document).ready(function() {
+            $('#logoName').html("progress").fadeIn(7500);
+            $('#logoName').attr('id','logoNameGuide');
+        });
+    }
+    unHoverPoints() {
+        $(document).ready(function() {
+            $('#logoNameGuide').html('XPrincipia');            
+            $('#logoNameGuide').attr('id','logoName');
+        });
+    }
 
 
 
@@ -210,13 +228,13 @@ componentDidMount(){
                             {cookie.load("userName")}
                         </div>
                     </Link>
-                    <Link to="/profile/points" id="whiteHeader" activeClassName="activePointsHeader">
-                        <div id="headerPointsContainer">
+                    <Link to="/profile/points" activeClassName="activePointsHeader">
+                        <div id="headerPointsContainer" onMouseOver={this.hoverPoints} onMouseOut={this.unHoverPoints}>
                             <div id="headerLevelTitle">
                                 newcomer
                             </div>
                             <div id="headerPointsNumber">
-                                16
+                                {this.state.user.Points}
                             </div>
                         </div>
                     </Link>

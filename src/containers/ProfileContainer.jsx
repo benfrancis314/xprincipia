@@ -21,6 +21,8 @@ export default class ProfileContainer extends React.Component {
             currentItems:[],
             currentType: 'solution',
             notifications: [],
+            user: [],
+            planetID: '',
         }
 
 
@@ -66,25 +68,63 @@ export default class ProfileContainer extends React.Component {
                 notifications: response.data,
             })
         }) 
-        // $('#sphere').earth3d({
-        //     dragElement: $('#locations') // where do we catch the mouse drag
-        //   });
+        axios.get( Config.API + '/users/byusername?username='+cookie.load('userName')).then(function (response) {
+            if(response.data.Planet == 1) {
+                self.setState({
+                    user: response.data,
+                    planetID: 'mars',
+                })
+            } else {
+                self.setState({
+                    user: response.data,
+                    planetID: 'earth',
+                })
+            }
+        })
     }   
-    // Experimental to try to fix logout issues
-    // componentWillMount() {
-    //     this.state =  { 
-    //       userToken: cookie.load('userToken'),
-    //       // userName: cookie.load('userName')
-    //     };
-    //     // alert('mountProfile');
-    //   }
-    //   componentWillReceiveProps(nextState) {
-    //     nextState =  { 
-    //       userToken: cookie.load('userToken'),
-    //       // userName: cookie.load('userName')
-    //     };
-    //     // alert('changeProfile');
-    //   }
+    componentWillReceiveProps(nextProps){
+        var self = this;
+        axios.get( Config.API + '/users/followedSolutions?username='+cookie.load('userName')).then(function (response) {
+            self.setState({
+                followedSolutions: response.data,
+                currentItems: response.data,
+            })
+        })
+        axios.get( Config.API + '/users/createdSolutions?username='+cookie.load('userName')).then(function (response) {
+            self.setState({
+                createdSolutions: response.data,
+            })
+        })
+        axios.get( Config.API + '/users/createdProblems?username='+cookie.load('userName')).then(function (response) {
+            self.setState({
+                createdProblems: response.data,
+            })
+        })
+        axios.get( Config.API + '/users/followedProblems?username='+cookie.load('userName')).then(function (response) {
+            self.setState({
+                followedProblems: response.data,
+            })
+        })
+        axios.get( Config.API + '/notifications/new?username='+cookie.load("userName")).then(function (response) {
+            self.setState({
+                notifications: response.data,
+            })
+        }) 
+        axios.get( Config.API + '/users/byusername?username='+cookie.load('userName')).then(function (response) {
+            if(response.data.Planet == 1) {
+                self.setState({
+                    user: response.data,
+                    planetID: 'mars',
+                })
+            } else {
+                self.setState({
+                    user: response.data,
+                    planetID: 'earth',
+                })
+            }
+        })
+    }   
+
     onLogout() {
         cookie.remove('userToken', { path: '/' });
         cookie.remove('userName', { path: '/' });
@@ -164,7 +204,7 @@ export default class ProfileContainer extends React.Component {
                         <br />
                         <br />
                         {/* xxx */}
-                        <div id="earth"></div>
+                        <div id={this.state.planetID}></div>
                         {/* <EarthSphere /> */}
                     </div>
                     <div id="userOptions">
@@ -206,11 +246,11 @@ export default class ProfileContainer extends React.Component {
                                 westward newcomer
                             </div>
                             <div id="profilePointsButton">
-                                122
+                                {this.state.user.Points}
                             </div>
                         </Link>
                         <div id="earthContainer">
-                            <div id="earth"></div>
+                            <div id={this.state.planetID}></div>
                         </div>
                     </div>
                     <div id="userOptions">

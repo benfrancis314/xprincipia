@@ -135,9 +135,9 @@ return axios.post( Config.API + '/register', {
         username : self.state.username,
         token : "Bearer " + self.state.userToken
       }, {headers: { Authorization: "Bearer " + self.state.userToken }}).then (function (response){
-        document.location = "/profile/points";
+        
       })
-  
+      document.location = "/profile/points";
   })
       .catch(function (error) {
         // console.log(error.response.data)
@@ -174,7 +174,7 @@ return axios.post( Config.API + '/register', {
                 <input type="text" name="username" required="required" maxLength="20" placeholder="Username" id="registerUserName" />
                 <input type="email" name="email" required="required" maxLength="30" placeholder="Email" id="registerEmail" />
                 <input type="password" name="password" required="required" maxLength="30" placeholder="Password" id="registerPassword"/>
-                <Link to="/profile/points"><input type="submit" value="Register" onClick={this.postRegister} id="submitRegister"/></Link>
+                <Link to={window.location.pathname}><input type="submit" value="Register" onClick={this.postRegister} id="submitRegister"/></Link>
                 <Link to='/login'><div id="loginButton">Login</div></Link>
             </form>
         </div>

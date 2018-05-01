@@ -38,15 +38,6 @@ componentWillReceiveProps(nextProps) {
 		return (
 	    <div id="fullWide">
             {this.props.children}
-            <Link to={`messages/${cookie.load('userName')}/xprincipia`} activeClassName="activeMessage">
-                <div id="messagesUnitXP">
-                    <div id="messageTitle">
-                        XPrincipia
-                    </div>
-                    {/* NEED CALL GETTING NOTIFICATIONS FROM JUST XPRINCIPIA */}
-                    {/* {this.state.conversations.Notifications} */}
-                </div>
-            </Link>
             <ul> 
                 {/* {this.state.conversations.length} */}
                 {this.state.conversations.map(this.renderItem)}
@@ -55,6 +46,12 @@ componentWillReceiveProps(nextProps) {
 		);
 	}
 	renderItem(conversation) {
+        if(conversation.Notifications > 0) {
+            var notificationNumber = conversation.Notifications
+        } else {
+            var notificationNumber = ''
+        }
+        
         if(conversation.User1 == cookie.load('userName')) {
             return (
             <Link key={conversation.ID} to={`messages/${conversation.User1}/${conversation.User2}`} activeClassName="activeMessage">
@@ -63,8 +60,10 @@ componentWillReceiveProps(nextProps) {
                         <div id="messageTitle">
                             {conversation.User2}
                         </div>
-                        {conversation.Notifications}
-                    </div>
+                        <div id="conversationNotificationNumber">
+                            {notificationNumber}
+                        </div>
+                    </div>   
                 </li>
             </Link>
         );
@@ -76,7 +75,9 @@ componentWillReceiveProps(nextProps) {
                         <div id="messageTitle">
                             {conversation.User1}
                         </div>
-                        {conversation.Notifications}
+                        <div id="conversationNotificationNumber">
+                            {notificationNumber}
+                        </div>
                     </div>
                 </li>
             </Link>

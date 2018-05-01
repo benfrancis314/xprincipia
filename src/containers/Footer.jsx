@@ -8,7 +8,7 @@ export default class Header extends React.Component {
         window.location.href='/profile/about'
     }
 
-    function goToCareers() {
+    function goToContact() {
         window.location.href='/profile/careers'
     }
 
@@ -18,11 +18,11 @@ export default class Header extends React.Component {
                 <img src={require('../assets/footerEarth3.jpg')} id="footerImg" alt="Curvature of Earth"/>
             </div> */
             <div id="footer">
-                <div id="footerCareers" onClick={goToCareers}>
-                    Careers
+                <div id="footerCareers" onClick={goToContact}>
+                    contact
                 </div>
                 <div id="footerAbout" onClick={goToAbout}>
-                    About/Contact
+                    about
                 </div>
                 {/* <div id="creativeCommons">
                     <a rel="license" href="http://creativecommons.org/licenses/by/4.0/" target="_blank">

@@ -14,12 +14,12 @@ export default class FullSolutionContent extends React.Component {
             solutionInfo: [],
             vote : true,
             probID : [],
-            solutionID : []
+            solutionID : [],
         }
 
         this.submitVote = this.submitVote.bind(this)
         this.unVote = this.unVote.bind(this)
-        this.deleteSolution = this.deleteSolution.bind(this)
+        // this.deleteSolution = this.deleteSolution.bind(this)
     };
 
     //initialize the component with this state
@@ -42,6 +42,7 @@ export default class FullSolutionContent extends React.Component {
               vote: response.data
             })
       })     
+      // if (window.location.pathname)
     }
     // shouldComponentUpdate(nextProps, nextState) {
     //     // only render if solutionID has changed
@@ -66,37 +67,38 @@ export default class FullSolutionContent extends React.Component {
     
      }
 
-  deleteSolution() {
+  // deleteSolution() {
   
-  //Delete question
-   var self = this
-    axios.delete( Config.API + '/auth/solutions/delete?id='+this.state.solutionID, {
-        params: {
-          id: this.props.params.solutionID,
-          username: cookie.load('userName')
-        }
-      })
-      .then(function (result) {
-        document.location = '/project/'+ self.state.probID + '/solutions/top'
-      })
-      .catch(function (error) {
-        // console.log(error.response.data)
-          $(document).ready(function() {
-              $('#notification').attr('id','notificationShow').hide().slideDown();
-              if (error.response.data != '') {
-                $('#notificationContent').text(error.response.data);
-              }
-              else if (error.response.data == '[object Object]') {
-                return (
-                  $(document).ready(function() {
-                    $('#notificationLoginRegisterContainer').attr('id','notificationLoginRegisterContainerShow');
-                    $('#notificationContent').html('Please <span id="blue">login </span>to contribute');
-                  })
-                );
-              } 
-          });
-      });
-  }
+  // //Delete question
+  //  var self = this
+  //   axios.delete( Config.API + '/auth/solutions/delete?id='+this.state.solutionID, {
+  //       params: {
+  //         id: this.props.params.solutionID,
+  //         username: cookie.load('userName')
+  //       }
+  //     })
+  //     .then(function (result) {
+  //       // WHAT WAS THIS DOING?
+  //       // document.location = '/project/'+ self.state.probID + '/solutions/top'
+  //     })
+  //     .catch(function (error) {
+  //       // console.log(error.response.data)
+  //         $(document).ready(function() {
+  //             $('#notification').attr('id','notificationShow').hide().slideDown();
+  //             if (error.response.data != '') {
+  //               $('#notificationContent').text(error.response.data);
+  //             }
+  //             else if (error.response.data == '[object Object]') {
+  //               return (
+  //                 $(document).ready(function() {
+  //                   $('#notificationLoginRegisterContainer').attr('id','notificationLoginRegisterContainerShow');
+  //                   $('#notificationContent').html('Please <span id="blue">login </span>to contribute');
+  //                 })
+  //               );
+  //             } 
+  //         });
+  //     });
+  // }
   submitVote() {
       var self = this
       self.refs.solbtn.setAttribute("disabled", "disabled");
@@ -200,12 +202,12 @@ unVote() {
                 </div>
               </Link>
               
-              <div id="prosConsMenu">
-                <Link to={`/project/${this.props.params.probID}/proposal/${this.props.params.solutionID}/pros`} activeClassName="activeProsCons">
-                    <div id="proposalProConButton">pro/con analysis</div>
-                </Link>
-                <Link to={`/project/${this.props.params.probID}/proposal/${this.props.params.solutionID}/discuss`} activeClassName="activeProposalOption">                    
+              <div id="proposalMenu">
+                <Link to={window.location.pathname+'/discuss'} activeClassName="activeProsCons">
                     <div id="proposalDiscussButton">discuss</div>
+                </Link>
+                <Link to={window.location.pathname+'/subprojects'} activeClassName="activeProposalOption">                    
+                    <div id="proposalBreakdownButton">breakdown</div>
                 </Link>
               </div>
               <div>
@@ -243,12 +245,12 @@ unVote() {
                 </div>
               </Link>
 
-              <div id="prosConsMenu">
-                <Link to={`/project/${this.props.params.probID}/proposal/${this.props.params.solutionID}/pros`} activeClassName="activeProsCons">
-                    <div id="proposalProConButton">pro/con analysis</div>
-                </Link>
-                <Link to={`/project/${this.props.params.probID}/proposal/${this.props.params.solutionID}/discuss`} activeClassName="activeProposalOption">                    
+              <div id="proposalMenu">
+                <Link to={window.location.pathname+'/discuss'} activeClassName="activeProsCons">
                     <div id="proposalDiscussButton">discuss</div>
+                </Link>
+                <Link to={window.location.pathname+'/subprojects'} activeClassName="activeProposalOption">                    
+                    <div id="proposalBreakdownButton">breakdown</div>
                 </Link>
               </div>
               <div>
@@ -282,12 +284,12 @@ unVote() {
               </Link>*/}
 
 
-              <div id="prosConsMenu">
-                <Link to={`/project/${this.props.params.probID}/proposal/${this.props.params.solutionID}/pros`} activeClassName="activeProsCons">
-                    <div id="proposalProConButton">pro/con analysis</div>
-                </Link>
-                <Link to={`/project/${this.props.params.probID}/proposal/${this.props.params.solutionID}/discuss`} activeClassName="activeProposalOption">                    
+              <div id="proposalMenu">
+                <Link to={window.location.pathname+'/discuss'} activeClassName="activeProsCons">
                     <div id="proposalDiscussButton">discuss</div>
+                </Link>
+                <Link to={window.location.pathname+'/subprojects'} activeClassName="activeProposalOption">                    
+                    <div id="proposalBreakdownButton">breakdown</div>
                 </Link>
               </div>
               <div>
@@ -321,12 +323,12 @@ unVote() {
               </Link>*/}
 
 
-              <div id="prosConsMenu">
-                <Link to={`/project/${this.props.params.probID}/proposal/${this.props.params.solutionID}/pros`} activeClassName="activeProsCons">
-                    <div id="proposalProConButton">pro/con analysis</div>
-                </Link>
-                <Link to={`/project/${this.props.params.probID}/proposal/${this.props.params.solutionID}/discuss`} activeClassName="activeProposalOption">                    
+              <div id="proposalMenu">
+                <Link to={`/project/${this.props.params.probID}/proposal/${this.props.params.solutionID}/discuss`} activeClassName="activeProsCons">
                     <div id="proposalDiscussButton">discuss</div>
+                </Link>
+                <Link to={`/project/${this.props.params.probID}/proposal/${this.props.params.solutionID}/subprojects`} activeClassName="activeProposalOption">                    
+                    <div id="proposalBreakdownButton">breakdown</div>
                 </Link>
               </div>
               <div>
