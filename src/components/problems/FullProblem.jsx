@@ -70,16 +70,16 @@ export default class FullProblem extends React.Component {
             .then( function (response){
               if (response.data === true) {
                 self.setState({
-                  voteID: 'voteProblem',
-                  voteTitle: 'vote',
-                  voteAction: 'this.submitVote',
+                  voteID: 'votedProblem',
+                  voteTitle: 'voted',
+                  voteAction: 'this.unVote',
                   vote: true,
                 }) 
             } else {
               self.setState({
-                voteID: 'votedProblem',
-                voteTitle: 'voted',
-                voteAction: 'this.unVote',
+                voteID: 'voteProblem',
+                voteTitle: 'vote',
+                voteAction: 'this.submitVote',
                 vote: false,
               }) 
             }
@@ -216,21 +216,25 @@ export default class FullProblem extends React.Component {
     showActivity() {
       $(document).ready(function() {
             $('#projectActivityGroup').attr('id','projectActivityGroupShow');
+            $('#projectActivityButton').attr('id','projectActivityButtonHide');
         });
     }
     hideActivity() {
       $(document).ready(function() {
             $('#projectActivityGroupShow').attr('id','projectActivityGroup');  
+            $('#projectActivityButtonHide').attr('id','projectActivityButton');
       });
     }
     showInfo() {
       $(document).ready(function() {
             $('#projectInfoGroup').attr('id','projectInfoGroupShow');
+            $('#projectInfoButton').attr('id','projectInfoButtonHide');
         });
     }
     hideInfo() {
       $(document).ready(function() {
-        $('#projectInfoGroupShow').attr('id','projectInfoGroup');   
+        $('#projectInfoGroupShow').attr('id','projectInfoGroup'); 
+        $('#projectInfoButtonHide').attr('id','projectInfoButton');  
       });
     }
 
@@ -238,12 +242,14 @@ export default class FullProblem extends React.Component {
     return (
 
             <div id="maxContainerColumn">
+            
             <ReactCSSTransitionGroup
               transitionName="example"
               transitionAppear={true}
               transitionAppearTimeout={2000}
               transitionEnter={false}
               transitionLeave={false}>
+              <div id="vh1">
               <Link to={`/project/${this.props.params.probID}/flag`} activeClassName="activeProblemFlagButton">
                 <div id="flagProblemButton">
                   <img src={require('../../assets/flag.svg')} id="flagProblemLogo" width="24" height="24" alt="Delete Button, Red X" />
@@ -315,6 +321,7 @@ export default class FullProblem extends React.Component {
                 </div>
               {React.cloneElement(this.props.children, {probID:this.props.params.probID, parentTitle: this.state.problemInfo.Title, gParentID: this.state.problemInfo.ParentID, gParentTitle: this.state.problemInfo.ParentTitle, ggParentID: this.state.problemInfo.GrandParentID, creator:this.state.problemInfo.OriginalPosterUsername, breakdownID:this.state.breakdownID})}
               <SubProblemContainer probID={this.props.params.probID} breakdownOriginal={this.state.breakdownOriginal} differentBreakdown={this.differentBreakdown} />
+              </div>
               <ScrollableAnchor id={'proposals'}>
                 <ProblemSolutionsMenu probID={this.props.params.probID} projectTitle={this.state.problemInfo.Title} />
               </ScrollableAnchor>

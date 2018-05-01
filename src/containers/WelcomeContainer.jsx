@@ -16,14 +16,14 @@ export default class WelcomeContainer extends React.Component {
   hoverText() {
     $(document).ready(function() {
         // $('#privateContainerMotto').html("NEW PROJECT").fadeIn(7500);
-        $('#logoName').html('begin experience');
+        $('#logoName').html('begin');
         $('#logoName').attr('id','logoNameGuide');
     });
   }
   unHoverText() {
       $(document).ready(function() {
           // $('#privateContainerMottoBlue').html("ORGANIZE YOUR THOUGHTS");
-          $('#logoNameGuide').html('XPrincipia');            
+          $('#logoNameGuide').html('<span id="xBlue">x</span>principia');             
           $('#logoNameGuide').attr('id','logoName');
       });
   }

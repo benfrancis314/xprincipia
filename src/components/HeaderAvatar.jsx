@@ -79,7 +79,7 @@ componentDidMount(){
     unHoverMessagesHeader() {
         $(document).ready(function() {
             // Used to say SEARCH PROJECT TREES
-            $('#logoNameGuide').html('XPrincipia');            
+            $('#logoNameGuide').html('<span id="xBlue">x</span>principia');             
             $('#logoNameGuide').attr('id','logoName');
         });
     }
@@ -94,7 +94,7 @@ componentDidMount(){
       unHoverMindTemple() {
           $(document).ready(function() {
               // Used to say SEARCH PROJECT TREES
-              $('#logoNameGuide').html('XPrincipia');            
+              $('#logoNameGuide').html('<span id="xBlue">x</span>principia');             
               $('#logoNameGuide').attr('id','logoName');
           });
       }
@@ -111,7 +111,7 @@ componentDidMount(){
       unHoverNotificationsHeader() {
           $(document).ready(function() {
               // Used to say SEARCH PROJECT TREES
-              $('#logoNameGuide').html('XPrincipia');            
+              $('#logoNameGuide').html('<span id="xBlue">x</span>principia');             
               $('#logoNameGuide').attr('id','logoName');
           });
       }
@@ -127,7 +127,7 @@ componentDidMount(){
       unHoverProfile() {
           $(document).ready(function() {
               // Used to say SEARCH PROJECT TREES
-              $('#logoNameGuide').html('XPrincipia');            
+              $('#logoNameGuide').html('<span id="xBlue">x</span>principia');             
               $('#logoNameGuide').attr('id','logoName');
           });
       }
@@ -139,7 +139,7 @@ componentDidMount(){
       }
       unHoverNotebook() {
           $(document).ready(function() {
-              $('#logoNameGuide').html('XPrincipia');            
+              $('#logoNameGuide').html('<span id="xBlue">x</span>principia');             
               $('#logoNameGuide').attr('id','logoName');
           });
       }
@@ -156,7 +156,7 @@ componentDidMount(){
     }
     unHoverPoints() {
         $(document).ready(function() {
-            $('#logoNameGuide').html('XPrincipia');            
+            $('#logoNameGuide').html('<span id="xBlue">x</span>principia');             
             $('#logoNameGuide').attr('id','logoName');
         });
     }

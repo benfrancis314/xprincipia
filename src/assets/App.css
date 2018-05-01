@@ -77,6 +77,9 @@ body {
 #fullWide {
   width: 100%;
 }
+#vh1 {
+  height: 100vh;
+}
 #maxContainerColumn {
   width: 100%;
   display: inline-flex;
@@ -212,10 +215,10 @@ ol, ul {
   font-family: 'Open Sans' !important;
 }
 #gray {
-  color: #888888 !important;
+  color: #515151 !important;
 }
 #grayLessSpacing {
-  color: #888888 !important;
+  color: #515151 !important;
   letter-spacing: 2px !important;
 }
 #nodisplay, #noDisplay {
@@ -2105,7 +2108,8 @@ text-align: center;
   border-width: 0px 0px !important;
   border-radius: 15%;
   height: 35px;
-  width: 70%;
+  /* width: 70%; */
+  width: 25%;
   letter-spacing: 5px;
   text-align: center;
   margin: 0 auto;
@@ -2117,20 +2121,20 @@ text-align: center;
   background-size: contain;
   background-repeat: no-repeat;
   background-color: rgba(15,19,28,0.425);
+  background-color: rgba(15,19,28,0.7);
   background-blend-mode: overlay;
   background-position: center;
 }
 #exploreHeaderInput:hover {
   transform: scale(1.05);
   background-color: rgba(15,19,28,0.15);
+  width: 60%;
 }
 #exploreHeaderInput:focus, #exploreHeaderInput:active {
-  /* border: 0px solid #00dcff !important; */
-  /* border: 1px solid rgba(0,220,255,0.55) !important; */
-  /* background: radial-gradient(circle, rgba(0,220,255,0.15), rgba(0,220,255,0.05), rgba(0,220,255,0.05)) */
-  /* background-color: rgba(0,220,255,0.1); */
-  background-color: rgba(15,19,28,0.55);
+  /* background-color: rgba(15,19,28,0.55); */
+  background-color: rgba(15,19,28,0.85);
   transform: scale(1.15);
+  width: 70%;
 } 
 #submitExplore {
   display: none;
@@ -2142,25 +2146,24 @@ text-align: center;
   /* width: 33%; */
   width: 32%;
 }
+#xBlue {
+  color: rgba(0,220,255,0.5);
+  transition: all 2s ease 0s;
+}
 #logoName {
   margin: 0 auto;
   float: left;
-  /* transition: all 0.5s ease 0s; */
-  /* color: #ffffff; */
   transition: all 2s ease 0s;
-  /* OLD */
-  /* letter-spacing: 14px;  */
-  /* NEW */
   letter-spacing: 10px; 
   margin-left: 4%;
   color: #515151;
 }
 #logoName:hover {
-  /* OLD */
-  /* letter-spacing: 14px; */
-  /* NEW */
   letter-spacing: 12px;
   color: #ffffff;
+}
+#logoName:hover #xBlue {
+  color: #00dcff;
 }
 #logoNameGuide {
   margin: 0 auto;
@@ -2382,7 +2385,7 @@ text-align: center;
 /*Footer*/
 #footer {
 width: 100%;
-background-color: rgba(255,255,255,0.05);
+background-color: #515151;
 text-align: center;
 font-size: 150%;
 letter-spacing: 16px;
@@ -3740,7 +3743,7 @@ margin-top: 0.5%;
 }
 #privateContainerMotto {
   display: inline-block;
-  color: #888888;
+  color: #515151;
   transition: all 2s ease 0s;
 }
 #privateContainerMottoBlue, #privateContainerMottoWhite, #privateContainerMottoRed {
@@ -4133,7 +4136,7 @@ text-transform: lowercase !important;
 }
 #privateContainerMottoProposal {
 display: inline-block;
-color: #888888;
+color: #515151;
 transition: all 2s ease 0s;
 }
 #privateContainerMottoBlueProposal {
@@ -7152,14 +7155,11 @@ cursor: pointer;
 }
 #parentButton, #parentButtonHover {
 width: 50%;
-/* display: block; */
-background-color: rgba(0,220,255,0.1);
-/* OLD */
-padding: 0.3%;
-/* NEW */
+/* background-color: rgba(0,220,255,0.1); */
+background: radial-gradient(circle, rgba(0,220,255,0), rgba(0,220,255,0.05));
 padding: 0.2%;
 padding-top: 0.1%;
-border: 1px solid #00dcff;
+border: 1px solid rgba(0,220,255,0.5);
 border-width: 0px 1px 1px 1px;
 border-radius: 0px 0px 3px 3px;
 letter-spacing: 1px;
@@ -7171,15 +7171,12 @@ margin-right: 25%;
 text-align: center;
 text-transform: lowercase !important;
 
-/*Use until project sibilings are working*/
-/* margin-bottom: 1%; */
 }
 #parentButton:hover, #parentButton:active, #parentButtonHover:hover, #parentButtonHover:active {
 cursor: pointer;
 color: #ffffff;
 transform: scale(1.02);
-/*background-color: rgba(0,220,255,0.12);*/
-background: linear-gradient(to right,rgba(0,220,255, 0.1), rgba(0,220,255, 0.15), rgba(0,220,255, 0.1));
+background-color: rgba(0,220,255,0.05);
 }
 #parentChildrenButton {
 background-color: rgba(0,220,255,0.05);
@@ -7244,21 +7241,14 @@ border-color: #dddddd;
 display: flex;
 justify-content: space-between;
 align-items: center;
-/* align-content: flex-start; */
 width: 100%;
 }
 #problemRow1 {
-/* OLD */
-/* width: 60%; */
-/* NEW */
-/* width: 79%; */
 width: 78%;
-/* Note: width: 80 matches the title exactly */
+/* width: 85%; */
 margin: 0 auto;
 margin-top: 1%;
-/* OLD */
-/* justify-content: center; */
-/* NEW */
+/* margin-top: 2%; */
 justify-content: space-around;
 }
 #problemCenterColumn, #problemCenterColumnPrivate {
@@ -7322,18 +7312,16 @@ color: rgba(0,255,220,1);
 flex: 1 1 auto;
 margin: 0 auto;
 margin-top: -1%;
-/* OLD */
-font-size: 475%;
-/* NEW */
 font-size: 375%;
 text-align: center;
 letter-spacing: 4px;
 font-family: 'Alegreya Sans SC', sans-serif;
 width: 100%;
 transition: all 2s ease 0s;
-border: 1px solid #00ffdc;
+border: 1px solid rgba(0,255,220,0.5);
 border-width: 0px 0px 1px 0px;
-border-radius: 0% 0% 20% 20%;
+/* border-radius: 0% 0% 20% 20%; */
+border-radius: 0% 0% 10% 15%;
 padding: 1px;
 background: linear-gradient(rgba(0,255,220,0), rgba(0,220,255,0.1));
 }
@@ -7371,7 +7359,7 @@ font-size: 570%;
 flex: 1 1 auto;
 text-align: center;
 color: #00ffdc;
-border: 1px solid #00ffdc;
+border: 1px solid rgba(0,255,220,0.5);
 border-radius: 3px 3px 3px 35%;
 text-align: center;
 font-family: 'Alegreya Sans SC', sans-serif;
@@ -7464,10 +7452,8 @@ background-color: #00ffdc;
 #SBButtonDiscuss, #SBButtonLearn {
 flex: 1 1 auto;
 text-align: center;
-background-color: rgba(0, 255, 220, 1);
 color: #dddddd;
 border: 1px solid #dddddd;
-/* border-radius: 3px 3px 25% 3px; */
 border-radius: 3px 3px 35% 3px;
 text-align: center;
 font-family: 'Alegreya Sans SC', sans-serif;
@@ -7480,19 +7466,19 @@ margin: 0 auto;
 margin-top: 1%;
 box-shadow: 0 0 1pt 1pt rgba(255,255,255,0.5);
 font-size: 145%;
-background-color: rgba(0,220,255,0.05);
+/* background-color: rgba(0,220,255,0.05); */
 width: 9em;
-/* background: linear-gradient(to right, rgba(0,220,255,0.05), rgba(0,220,255,0.05), rgba(0,220,255,0.04), rgba(0,220,255,0)); */
+border-color: rgba(255,255,255,0.5);
+box-shadow: 0 0 0.5pt 0.5pt rgba(255,255,255,0.5);
+background: radial-gradient(circle, rgba(0,220,255,0), rgba(0,220,255,0.05));
 }
 #SBButtonLearn {
   padding-right: 10px;
   /* transform:rotateY(-12deg); */
 }
 #SBButtonDiscuss {
-border-radius: 3px 3px 3px 25%;
-/* background: linear-gradient(to left, rgba(0,220,255,0.05), rgba(0,220,255,0.05), rgba(0,220,255,0.04), rgba(0,220,255,0)); */
+border-radius: 3px 3px 3px 35%;
 padding-left: 10px;
-/* transform:rotateY(12deg); */
 }
 #SBButtonDiscuss:hover, #SBButtonLearn:hover {
 /*A*/
@@ -7532,7 +7518,7 @@ transform: scale(1.02);
   text-align: center;
   background-color: rgba(0, 255, 220, 1);
   color: #dddddd;
-  border: 1px solid #dddddd;
+  border: 1px solid rgba(255,255,255,0.5);
   text-align: center;
   font-family: 'Alegreya Sans SC', sans-serif;
   transition: all 0.5s ease 0s;
@@ -7551,7 +7537,7 @@ transform: scale(1.02);
   border-radius: 3px;
   }
   #SBButtonFollow, #SBButtonFollowPrivate {
-    border-color: #00dcff;
+    border-color: rgba(0,220,255,0.5);
     color: #00dcff;
   }
   #SBButtonFollowed, #SBButtonFollowedPrivate {
@@ -7572,13 +7558,14 @@ background: radial-gradient(circle, rgba(0,220,255,0.05), rgba(0,220,255,0.075),
 color: rgba(255,255,255,1);
 font-size: 210%;
 letter-spacing: 4px;
-border: 1px solid #dddddd;
+border: 1px solid rgba(255,255,255,0.5);
 border-radius: 3px;
-box-shadow: 0 0 1pt 1pt rgba(255,255,255,0.5);
+box-shadow: 0 0 0.5pt 0.5pt rgba(255,255,255,0.5);
 margin: 0 auto;
 margin: 0% 10% 0% 10%;
 transition: all 0.25s ease 0s;
 z-index: 500;
+text-transform: lowercase !important;
 }
 #problemTitle {
   margin-top: 1%;
@@ -7707,7 +7694,7 @@ margin: -1px 25px 7.5px 25px;
 line-height: 150%;
 /*Previously was 125%, fullproblem was 60% in width*/
 font-size: 130%;
-border: 1px solid #00dcff;
+border: 1px solid rgba(0,220,255,0.5);
 border-radius: 15%;
 border-width: 0px 0px 1px 0px;
 padding: 15px 35px 17px 35px;
@@ -9139,6 +9126,7 @@ color: #ffffff;
   letter-spacing: 8px;
   width: 100%;
   transition: all 0.5s ease 0s;
+  color: #515151;
 }
 #projectCreator:hover {
 color: #ffffff;
@@ -10836,6 +10824,7 @@ margin-top: 1%;
     transition: all 1s ease 0s;
     transform: rotate(0deg);
     box-shadow: 0 0 0pt 0pt rgba(0,220,255,0.5);
+    opacity: 0.5;
   }
   #feedCircleImg:hover, #feedCircleImg:active, #feedCircleImg:focus {
     transform: rotate(90deg);
@@ -10843,6 +10832,7 @@ margin-top: 1%;
     /* This effect is cool but I'm not sure if it's quite right */
     /* background-color: rgba(0,220,255,0.15); */
     border-radius: 50%;
+    opacity: 1;
   }
     
     
@@ -11039,6 +11029,7 @@ margin-top: 1%;
   font-size: 80%;
   overflow: auto;
   opacity: 0.9;
+  text-transform: lowercase !important;
 }
 #omniActivityUnit:hover, #omniActivityUnit:active, #omniActivityUnit:focus {
   cursor: pointer;
@@ -11342,7 +11333,7 @@ margin-top: 1%;
     }
   #welcomeSearchFormLabel {
     /* display: inline-block; */
-    color: #888888;
+    color: #515151;
     transition: all 2s ease 0s;
     letter-spacing: 8px !important;  
     font-family: 'Alegreya Sans SC' !important;
@@ -11410,6 +11401,7 @@ margin-top: 1%;
     box-shadow: 0 0 0.5pt 0.5pt rgba(0,255,220,0.5);
     letter-spacing: 1px;
     opacity: 0.9;
+    text-transform: lowercase !important;
   }
 
     #welcomeUserProblemsHeader:hover {
@@ -14015,7 +14007,7 @@ input#submitBreakdown:hover {
     text-align: center;
     font-size: 125%;
     letter-spacing: 1px;
-    color: #888888;
+    color: #515151;
     margin-top: 2%;
   }
   #projectIDExplainClose {
@@ -14056,7 +14048,7 @@ input#submitBreakdown:hover {
     margin-top: 0%;
 
     display: inline-block;
-    color: #888888;
+    color: #515151;
     transition: all 2s ease 0s;
   }
   #linkExplainButton {
@@ -14239,7 +14231,7 @@ input#submitBreakdown:hover {
   cursor: pointer;
 }
 #parentListExplainShow {
- color: #888888;
+ color: #515151;
  font-family: 'Open Sans';
  font-size: 70%;
  transition: all 1s ease 0s;
@@ -14436,15 +14428,12 @@ input#submitBreakdown:hover {
 
 /* New Project Module Simplification Styling */
 
-#projectMajorButtonRow, #projectMajorButtonRowRight {
+#projectMajorButtonRow {
   display: flex;
   flex-direction: row;
   width: 96%;
   margin: 0 auto;
-}
-#buttonHide1, #buttonHide2, #buttonHide3, #buttonHide4, #buttonHide5 {
-  display: none;
-  transition: all 1s ease 0s;
+  justify-content: center;
 }
 #projectActionGroupShow {
   transition: all 1s ease 0s;
@@ -14490,20 +14479,35 @@ input#submitBreakdown:hover {
   position: relative;
   width: 28%;
   margin: 0 auto;
+  margin-top: 1.5%;
+  /* margin-bottom: 4.5%; */
+  /* margin-bottom: 3%; */
+  margin-bottom: 2%;
   text-align: center;
-  border: 1px solid #00dcff;
+  border: 1px solid rgba(0,220,255,0.5);
   border-radius: 3px;
-  padding: 30px 26px;
+  /* padding: 30px 26px; */
+  padding: 25px 20px;
   letter-spacing: 4px;
 
-  margin-top: 1.5%;
-  margin-bottom: 4.5%;
+  
   color: #00dcff;
   background: radial-gradient(circle, rgba(0,220,255, 0.15), rgba(0,220,255, 0.05), rgba(0,220,255, 0));   
   transition: all 1s ease 0s;
-  box-shadow: 0 0 1pt 1pt rgba(0,220,255,0.5);  
+  box-shadow: 0 0 0.5pt 0.5pt rgba(0,220,255,0.5);  
   font-size: 205%;
-  top: 28px;
+
+  position: relative;
+  background: radial-gradient(circle, rgba(0,220,255, 0.14), rgba(0,220,255, 0.05), rgba(0,220,255, 0));     
+  /* transform: rotateX(0deg) rotateY(5deg); */
+}
+#projectActivityButton {
+  margin-right: 2%;
+  border-radius: 3px 3px 3px 25%;
+}
+#projectInfoButton {
+  margin-left: 2%;
+  border-radius: 3px 3px 25% 3px;
 }
 #projectActivityButton:hover, #projectInfoButton:hover {
   cursor: pointer;
@@ -14511,27 +14515,14 @@ input#submitBreakdown:hover {
   background: radial-gradient(circle, rgba(0,220,255, 0.15), rgba(0,220,255, 0.1), rgba(0,220,255, 0));   
   transform: scale(1.05);
   background-color: rgba(0,220,255,0.05);
-  box-shadow: 0 0 1.5pt 1.5pt rgba(0,220,255,1);  
+  box-shadow: 0 0 1pt 1pt rgba(0,220,255,1);  
 }
 #projectActionButton:hover {
   top: 30px;
 }
-#projectActivityButton, #projectInfoButton {
-  /* width: 30%; */
-  position: relative;
-  top: 26px;
-  background: radial-gradient(circle, rgba(0,220,255, 0.14), rgba(0,220,255, 0.05), rgba(0,220,255, 0));     
-  /* transform: rotate3d(45deg, 90deg, 0deg) !important;     */
-  transform: rotateX(1.5deg) rotateY(15deg);
-}
-#projectInfoButton {
-  transform: rotateX(1.5deg) rotateY(-15deg);
-}
-#projectActivityButton:hover {
-  top: 30px;
-}
-#projectInfoButton:hover {
-  top: 30px;
+
+#projectActivityButtonHide, #projectInfoButtonHide {
+  display: none;
 }
 #projectMidColumnLeftStart {
   /* Old width, may still be needed in certain scenarios */

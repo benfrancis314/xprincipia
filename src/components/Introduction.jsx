@@ -42,7 +42,7 @@ export default class Introduction extends React.Component {
             </Link>
           <div id="introductionContainer">
                 <div id="introductionWelcomeSlogan" onMouseOver={this.hoverSlogan} onMouseOut={this.unHoverSlogan}>
-                    welcome to xprincipia
+                    xprincipia
                 </div>
                 <div id="introductionProse">
                     <div id="introductionSection1">

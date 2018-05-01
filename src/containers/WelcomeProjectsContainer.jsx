@@ -55,7 +55,7 @@ export default class WelcomeContainer extends React.Component {
   unHoverText() {
       $(document).ready(function() {
           // Used to say SEARCH PROJECT TREES
-          $('#logoNameGuide').html('XPrincipia');            
+          $('#logoNameGuide').html('<span id="xBlue">x</span>principia');             
           $('#logoNameGuide').attr('id','logoName');
       });
   }

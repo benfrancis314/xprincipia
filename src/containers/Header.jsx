@@ -107,7 +107,7 @@ hoverExplore() {
 }
 unHoverExplore() {
     $(document).ready(function() {
-        $('#logoNameGuide').html('XPrincipia');            
+        $('#logoNameGuide').html('<span id="xBlue">x</span>principia');             
         $('#logoNameGuide').attr('id','logoName');
     });
 }
@@ -121,7 +121,7 @@ if (this.state.userToken === undefined ){
             <div id="logo">
               <Link to="/welcome">
                 <div id="logoName">
-                  XPrincipia
+                  <span id="xBlue">x</span>principia
                 </div>
               </Link>
             </div>
@@ -153,9 +153,9 @@ if (this.state.userToken === undefined ){
               <div id="header">
                   <div id="logo">
                     <Link to="/welcome">
-                      <div id="logoName">
-                        XPrincipia
-                      </div>
+                    <div id="logoName">
+                      <span id="xBlue">x</span>principia
+                    </div>
                     </Link>
                   </div>
                   <div id="explore">
@@ -172,7 +172,7 @@ if (this.state.userToken === undefined ){
               </div>
 
               {/* SEARCH RESULTS */}
-              <div id="searchResultsContainerHide">
+              <div id="searchResultsContainerHides">
                 <img src={require('../assets/redX3.svg')} id="searchResultsExitButton" width="20" height="20" alt="exit button" onClick={this.hideSearch} />
                 <SearchResults problems={this.state.userproblems}/>
               </div>
