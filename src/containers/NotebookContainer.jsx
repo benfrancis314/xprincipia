@@ -37,7 +37,7 @@ export default class NotebookContainer extends React.Component {
 // This will prevent it from always mounting and make the site faster
 
 
-componentWillMount(){
+componentDidMount(){
     var self = this;
     // Axios call getting most recent notebook
     return axios.get( Config.API + '/notebooks/username?username='+cookie.load('userName')).then(function (response) {

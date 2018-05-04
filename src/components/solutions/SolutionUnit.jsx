@@ -23,79 +23,67 @@ export default class SolutionUnit extends React.Component {
 
 
 	render() {
-		// if (this.state.solutions === null) {
-		// 	alert("hey")
-		// 	return (
-		// 		<div>
-		// 			Hello
-		// 		</div>
-		// 	);
-		// } else {
 			return (
 				<div>
-            		{/*x{this.state.probID}x*/}
-					<ul> {this.state.solutions.map(this.renderItem)} </ul>
+					{this.state.solutions.map(this.renderItem)}
 				</div>
 			);
-		// }
 	}
 
 	renderItem(solution) {
 
-		if (solution.Class == '2') {
+		function scrollToProposal() {
+			document.getElementById('fullSolutionContainer').scrollIntoView()
+		}
+		
+
+		if (solution.Class === 2) {
 			return (
-				<li key={solution.ID}>
-					<Link to={`/project/${solution.ProblemID}/proposal/${solution.ID}`} >
+					<Link key={solution.ID} onClick={scrollToProposal.bind(this)} to={`/project/${solution.ProblemID}/proposal/${solution.ID}`} >
 						<div id="solutionUnitRed">
 							<div id="solutionUnitContainer">
 								<div id="solutionPercentRed">{floatToDecimal(solution.PercentRank)}</div>
 								<div id="solutionUnitTitle">
-									<span id="redProposal">solution</span>
-									<br />
+									<div id="redProposal">solution</div>
 									{solution.Title}
 								</div>
 							</div>
 						</div>
-					<div id="proposalToggleOff">
-						{/* <FullSolution probID={solution.ProblemID} solutionID={solution.ID}  /> */}
-					</div>
+						<div id="proposalToggleOff">
+							{/* <FullSolution probID={solution.ProblemID} solutionID={solution.ID}  /> */}
+						</div>
 					</Link>
-				</li>
 				);
-			} else if (solution.Class == '1') {
+			} else if (solution.Class === 1) {
 			return (
-				<li key={solution.ID}>
-						<Link to={`/project/${solution.ProblemID}/proposal/${solution.ID}`} >
-							<div id="solutionUnitGreen">
-								<div id="solutionUnitContainer">
-									<div id="solutionPercentGreen">{floatToDecimal(solution.PercentRank)}</div>
-									<div id="solutionUnitTitle">
-										<span id="greenProposal">plan</span>
-										<br />
-										{solution.Title}
-									</div>
+					<Link key={solution.ID} onClick={scrollToProposal.bind(this)} to={`/project/${solution.ProblemID}/proposal/${solution.ID}`} >
+						<div id="solutionUnitGreen">
+							<div id="solutionUnitContainer">
+								<div id="solutionPercentGreen">{floatToDecimal(solution.PercentRank)}</div>
+								<div id="solutionUnitTitle">
+									<div id="greenProposal">plan</div>
+									{solution.Title}
 								</div>
 							</div>
+						</div>
 						<div id="proposalToggleOff">
 							{/*<FullSolution probID={solution.ProblemID} solutionID={solution.ID}  />*/}
 						</div>
-						</Link>
-					</li>);
+					</Link>
+				);
 			} else {
 				return (
-					<li key={solution.ID}>
-						<Link to={`/project/${solution.ProblemID}/proposal/${solution.ID}`} >
-							<div id="solutionUnit">
-								<div id="solutionUnitContainer">
-									<div id="solutionPercent">{floatToDecimal(solution.PercentRank)}</div>
-									<div id="solutionUnitTitle">{solution.Title}</div>
-								</div>
+					<Link key={solution.ID} onClick={scrollToProposal.bind(this)} to={`/project/${solution.ProblemID}/proposal/${solution.ID}`} >
+						<div id="solutionUnit">
+							<div id="solutionUnitContainer">
+								<div id="solutionPercent">{floatToDecimal(solution.PercentRank)}</div>
+								<div id="solutionUnitTitle">{solution.Title}</div>
 							</div>
+						</div>
 						<div id="proposalToggleOff">
 							{/*<FullSolution probID={solution.ProblemID} solutionID={solution.ID}  />*/}
 						</div>
-						</Link>
-					</li>
+					</Link>
 				);
 			}
 		}

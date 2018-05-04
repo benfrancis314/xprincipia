@@ -95,7 +95,7 @@ export default class WelcomeCreateForm extends React.Component {
                     <div id="projectFormRadioContainer">
                       <div id="projectFormRadioColumn">
                         <div id="projectFormRadioRow1">
-                          project <span id="gray">(default)</span>
+                          project <span id="gray"> | default</span>
                         </div>
                         <div id="projectFormRadioRow">
                           <label id="projectRadioButtonContainer">
@@ -134,7 +134,7 @@ export default class WelcomeCreateForm extends React.Component {
                       synopsis
                       <br />
                       <textarea name="problemSummary" maxLength="500" 
-                      placeholder="Please provide any additional information you'd like. (500 ch.)" id="problemSummaryForm"/>
+                      placeholder="Please provide any additional information you'd like. (500 ch)" id="problemSummaryForm"/>
                       </label><br />
                   <Link to={`/mindtemple`}>
                       <input type="button" ref='btn' value="Create" onClick={this.postProblem} id="submitProblem"/>

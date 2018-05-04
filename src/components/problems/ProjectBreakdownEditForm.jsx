@@ -181,7 +181,7 @@ export default class ProjectBreakdownForm extends React.Component {
                   {/* 
                   <label htmlFor="problemSummaryForm" id="problemSummaryFormLabel">concept or distinction<br />
                       <textarea name="problemSummary" maxLength="150" 
-                      placeholder="What is the concept behind this breakdown or what makes it distinct? (250 ch.)" id="problemSummaryForm"/>
+                      placeholder="What is the concept behind this breakdown or what makes it distinct? (250 ch)" id="problemSummaryForm"/>
                       </label><br /> */}
                   <Link to={`/project/${this.props.params.probID}/create/breakdown`}>
                     <input type="button" value="edit" onClick={this.updateBreakdown} id="submitBreakdown"/>

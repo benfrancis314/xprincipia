@@ -189,7 +189,7 @@ export default class ProjectBreakdownForm extends React.Component {
 								<div id="projectFormRadioContainer">
 								<div id="projectFormRadioColumn">
 									<div id="projectFormRadioRow1">
-									project <span id="grayLessSpacing">(default)</span>
+									project<span id="grayLessSpacing"> | default</span>
 									</div>
 									<div id="projectFormRadioRow">
 									<label id="projectRadioButtonContainer">
@@ -226,7 +226,7 @@ export default class ProjectBreakdownForm extends React.Component {
 								synopsis
 								<br />
 								<textarea name="problemSummary" maxLength="500" 
-								placeholder="Please provide any additional information you'd like. (500 ch.)" id="breakdownProblemSummaryForm"/>
+								placeholder="Please provide any additional information you'd like. (500 ch)" id="breakdownProblemSummaryForm"/>
 							</label>
 							<br />
 							<Link to={window.location.pathname}>
@@ -268,7 +268,7 @@ export default class ProjectBreakdownForm extends React.Component {
                   {/* 
                   <label htmlFor="problemSummaryForm" id="problemSummaryFormLabel">concept or distinction<br />
                       <textarea name="problemSummary" maxLength="150" 
-                      placeholder="What is the concept behind this breakdown or what makes it distinct? (250 ch.)" id="problemSummaryForm"/>
+                      placeholder="What is the concept behind this breakdown or what makes it distinct? (250 ch)" id="problemSummaryForm"/>
                       </label><br /> */}
                   <Link to={window.location.pathname}>
                     <input type="button" value="Create" onClick={this.postBranch} id="submitBreakdown"/>

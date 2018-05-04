@@ -82,7 +82,7 @@ export default class ConsFlagForm extends React.Component {
             <div id="projectFormRadioColumn">
               <div id="projectFormRadioRow3">
                 misplaced
-                 {/* <span id="gray">(default)</span> */}
+                 {/* <span id="gray"> | default</span> */}
               </div>
               <div id="projectFormRadioRow">
                 <label id="projectRadioButtonContainer">

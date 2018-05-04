@@ -305,7 +305,7 @@ constructor(props){
                 <div id="discussSelectionMenuContainer">
                     <div id="sidebarDiscussMenu">
                         <div id="discussGroupSelectAllActive" onClick={this.selectAll}>
-                            all<span id="greenSmall">  {this.state.questionNumber}</span>
+                            omni<span id="greenSmall">  {this.state.questionNumber}</span>
                         </div>
                         <div id="discussGroupSelection">
                             <div id="discussSelectButtonLeftInactive" onClick={this.selectResearch}>
@@ -330,6 +330,7 @@ constructor(props){
                     </div>
                 </div>
                 <LearnContentUnit1 learnItems={this.state.learnItems} />
+                <div id="proposalsTitleRightSBEnd"><br /></div>
             </div>  
       );
     }  

@@ -17,7 +17,7 @@ export default class QuestionEditForm extends React.Component {
     this.updateQuestion = this.updateQuestion.bind(this);
   };
 
-  componentWillMount(){
+  componentDidMount(){
       var self = this;
         return axios.get( Config.API + '/questions/ID?id='+this.props.params.questID).then(function (response) {
           self.setState({

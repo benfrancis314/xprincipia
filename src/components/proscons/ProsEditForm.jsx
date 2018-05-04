@@ -17,7 +17,7 @@ export default class ProsEditForm extends React.Component {
     this.updatePro = this.updatePro.bind(this);
   };
 
-  componentWillMount(){
+  componentDidMount(){
       var self = this;
         return axios.get( Config.API + '/pros/ID?id='+this.props.params.proID).then(function (response) {
           self.setState({

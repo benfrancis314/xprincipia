@@ -3,7 +3,6 @@ import { Link  } from 'react-router';
 import axios from 'axios';
 import cookie from 'react-cookie';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group'; // ES6
-import TutorialSolutionPage from '../tutorials/TutorialSolutionPage.jsx';
 import {Config} from '../../config.js';
 import $ from 'jquery';
 
@@ -203,7 +202,6 @@ unVote() {
             <img src={require('../../assets/tutorial.svg')} id="tutorialSolutionButton" width="50" height="50" alt="Back arrow, blue up arrow" />
           </div>*/}
           
-          <TutorialSolutionPage />
           </ReactCSSTransitionGroup>
       </div>
       );
@@ -250,7 +248,6 @@ unVote() {
             <img src={require('../../assets/tutorial.svg')} id="tutorialSolutionButton" width="50" height="50" alt="Back arrow, blue up arrow" />
           </div>*/}
           
-          <TutorialSolutionPage />
           </ReactCSSTransitionGroup>
       </div>
              );
@@ -297,7 +294,6 @@ unVote() {
             <img src={require('../../assets/tutorial.svg')} id="tutorialSolutionButton" width="50" height="50" alt="Back arrow, blue up arrow" />
           </div>*/}
           
-          <TutorialSolutionPage />
           </ReactCSSTransitionGroup>
       </div>
       );
@@ -347,7 +343,6 @@ unVote() {
             <img src={require('../../assets/tutorial.svg')} id="tutorialSolutionButton" width="50" height="50" alt="Back arrow, blue up arrow" />
           </div>*/}
           
-          <TutorialSolutionPage />
           </ReactCSSTransitionGroup>
       </div>
               );

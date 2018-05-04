@@ -14,14 +14,14 @@ export default class Introduction extends React.Component {
 
     hoverSlogan() {
         $(document).ready(function() {
-            $('#introductionWelcomeSlogan').html("online science").fadeIn(7500);
-            $('#introductionWelcomeSlogan').attr('id','introductionWelcomeSloganBlue');
+            $('#introductionWelcomeSlogan').html('<span id="blue">online </span>science').fadeIn(7500);
+            $('#introductionWelcomeSlogan').attr('id','introductionWelcomeSloganHover');
         });
       }
       unHoverSlogan() {
           $(document).ready(function() {
-              $('#introductionWelcomeSloganBlue').html('welcome to xprincipia');            
-              $('#introductionWelcomeSloganBlue').attr('id','introductionWelcomeSlogan');
+              $('#introductionWelcomeSloganHover').html('welcome to xprincipia');            
+              $('#introductionWelcomeSloganHover').attr('id','introductionWelcomeSlogan');
           });
       }
 

@@ -28,45 +28,45 @@ export default class SubProblemContainer extends React.Component {
 
     hoverText() {
 		$(document).ready(function() {
-			$('#privateContainerMotto').html("NEW SUB PROJECT").fadeIn(7500);
-			$('#privateContainerMotto').attr('id','privateContainerMottoBlue');
+			$('#privateContainerMotto').html('<span id="blue">NEW </span>SUB PROJECT').fadeIn(7500);
+			$('#privateContainerMotto').attr('id','privateContainerMottoWhite');
 		});
 	}
 	unHoverText() {
 		$(document).ready(function() {
-			$('#privateContainerMottoBlue').html("PROJECT BREAKDOWN");
-			$('#privateContainerMottoBlue').attr('id','privateContainerMotto');
+			$('#privateContainerMottoWhite').html("PROJECT BREAKDOWN");
+			$('#privateContainerMottoWhite').attr('id','privateContainerMotto');
 		});
     }
     clickBranch() {
 		$(document).ready(function() {
-			$('#privateContainerMotto').html("ALTERNATE BREAKDOWNS").fadeIn(7500);
-            $('#privateContainerMotto').attr('id','privateContainerMottoBlue');
+			$('#privateContainerMotto').html('<span id="blue">ALTERNATE </span>BREAKDOWNS').fadeIn(7500);
+            $('#privateContainerMotto').attr('id','privateContainerMottoWhite');
             // $('#branchesProjectButton').attr('id','branchesProjectButtonClick');
 		});
     }
     hideBranch() {
 		$(document).ready(function() {
-			$('#privateContainerMottoBlue').html("PROJECT BREAKDOWNS").fadeIn(7500);
-            $('#privateContainerMottoBlue').attr('id','privateContainerMotto');
+			$('#privateContainerMottoWhite').html("PROJECT BREAKDOWNS").fadeIn(7500);
+            $('#privateContainerMottoWhite').attr('id','privateContainerMotto');
             $('#branchesProjectButtonClick').attr('id','branchesProjectButton');
 		});
 	}
 	hoverBranch() {
 		$(document).ready(function() {
-			$('#privateContainerMotto').html("ALTERNATE BREAKDOWNS").fadeIn(7500);
-			$('#privateContainerMotto').attr('id','privateContainerMottoBlue');
+			$('#privateContainerMotto').html('<span id="blue">ALTERNATE </span>BREAKDOWNS').fadeIn(7500);
+			$('#privateContainerMotto').attr('id','privateContainerMottoWhite');
 		});
 	}
 	unHoverBranch() {
 		$(document).ready(function() {
-			$('#privateContainerMottoBlue').html("PROJECT BREAKDOWN");
-			$('#privateContainerMottoBlue').attr('id','privateContainerMotto');
+			$('#privateContainerMottoWhite').html("PROJECT BREAKDOWN");
+			$('#privateContainerMottoWhite').attr('id','privateContainerMotto');
 		});
     }
     hoverNewBranch() {
         $(document).ready(function() {
-                $('#privateContainerMotto').html("NEW BREAKDOWN").fadeIn(7500);
+                $('#privateContainerMotto').html('NEW<span id="blue"> BREAKDOWN</span>').fadeIn(7500);
                 $('#privateContainerMotto').attr('id','privateContainerMottoWhite');
         });
     }
@@ -232,8 +232,8 @@ export default class SubProblemContainer extends React.Component {
                     $(document).ready(function() {
                         $('.branchText').html(branch.Title).fadeIn(7500);
                         $('div.branchText').attr('class',branch.ID);
-                        $('#privateContainerMottoRed').html("ALTERNATE BREAKDOWNS").fadeIn(7500);
-                        $('#privateContainerMottoRed').attr('id','privateContainerMottoBlue');
+                        $('#privateContainerMottoRed').html('<span id="blue">ALTERNATE </span>BREAKDOWNS').fadeIn(7500);
+                        $('#privateContainerMottoRed').attr('id','privateContainerMottoWhite');
                     });
                 }
                 function branchChange() {
@@ -247,8 +247,8 @@ export default class SubProblemContainer extends React.Component {
                         })
                     })  
                     $(document).ready(function() {
-                        $('#privateContainerMottoBlue').html("PROJECTS CHANGED").fadeIn(7500);
-                        $('#privateContainerMottoBlue').attr('id','privateContainerMottoRed');
+                        $('#privateContainerMottoWhite').html("PROJECTS CHANGED").fadeIn(7500);
+                        $('#privateContainerMottoWhite').attr('id','privateContainerMottoRed');
                     });
                 }
 

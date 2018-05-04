@@ -53,7 +53,6 @@ export default class ProblemLearnMenu extends React.Component {
             transitionEnter={false}
             transitionLeave={false}>
                     {React.cloneElement(this.props.children, {probID: this.state.probID, parentTitle: this.props.parentTitle})}
-                    <div id="proposalsTitleRightSBEnd"><br /></div>
             </ReactCSSTransitionGroup>
         </div>
 

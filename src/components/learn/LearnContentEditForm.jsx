@@ -17,7 +17,7 @@ export default class LearnContentEditForm extends React.Component {
     this.updateLearnItem = this.updateLearnItem.bind(this);
   };
 
-  componentWillMount(){
+  componentDidMount(){
       var self = this;
         return axios.get( Config.API + '/learnItems/ID?id='+this.props.params.learnItemID).then(function (response) {
           self.setState({

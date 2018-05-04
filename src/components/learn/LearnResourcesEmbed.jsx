@@ -16,7 +16,7 @@ export default class LearnResourcesEmbed extends React.Component {
 
   };
 
-  componentWillMount(){
+  componentDidMount(){
       var self = this; ///TODO Change Resouces to resources when backend Changes
         return axios.get( Config.API + '/resources/ID?id='+this.props.params.resourceID).then(function (response) {
           self.setState({

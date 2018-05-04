@@ -18,7 +18,7 @@ export default class CommentProContainer extends React.Component {
 
         // this.submitVote = this.submitVote.bind(this)
     };
-    componentWillMount(){
+    componentDidMount(){
         var self = this;
         // Need to do & in URL query with parentType also
          axios.get( Config.API + '/comments/parentType?id='+this.props.params.proID+'&parentType=9').then(function (response) {

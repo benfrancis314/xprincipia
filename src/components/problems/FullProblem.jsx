@@ -39,6 +39,7 @@ export default class FullProblem extends React.Component {
             voteTitle: '',
             voteAction: '',
             editID: '',
+            linkPath: '',
         }
         this.vote = this.vote.bind(this)
         this.hoverVoteNumber = this.hoverVoteNumber.bind(this)
@@ -53,6 +54,15 @@ export default class FullProblem extends React.Component {
       var self = this;
       // ReactDOM.findDOMNode(this).scrollIntoView();
       window.scrollTo(0,0);
+      if (window.location.pathname.includes('private')) {
+          self.setState({
+              linkPath: '/project/private/',
+          })
+      } else {
+          self.setState({
+              linkPath: '/project/',
+          })
+      }
       axios.get( Config.API + '/problems/ID?id='+this.props.params.probID).then(function (response) {
           if (response.data.OriginalPosterUsername === cookie.load('userName')) {
             self.setState({
@@ -98,6 +108,15 @@ export default class FullProblem extends React.Component {
   componentWillReceiveProps(nextProps){
       var self = this;
       // window.scrollTo(0,0);
+      if (window.location.pathname.includes('private')) {
+          self.setState({
+              linkPath: '/project/private/',
+          })
+      } else {
+          self.setState({
+              linkPath: '/project/',
+          })
+      }
       axios.get( Config.API + '/problems/ID?id='+nextProps.params.probID).then(function (response) {
         if (response.data.OriginalPosterUsername === cookie.load('userName')) {
           self.setState({
@@ -249,8 +268,7 @@ export default class FullProblem extends React.Component {
               transitionAppearTimeout={2000}
               transitionEnter={false}
               transitionLeave={false}>
-              <div id="vh1">
-              <Link to={`/project/${this.props.params.probID}/flag`} activeClassName="activeProblemFlagButton">
+              <Link to={this.state.linkPath+this.props.params.probID+'/flag'} activeClassName="activeProblemFlagButton">
                 <div id="flagProblemButton">
                   <img src={require('../../assets/flag.svg')} id="flagProblemLogo" width="24" height="24" alt="Delete Button, Red X" />
                 </div>
@@ -260,11 +278,11 @@ export default class FullProblem extends React.Component {
               <ProblemTitle problemTitle={this.state.problemInfo.Title} problemClass={this.state.problemInfo.Class} />
               <div id="projectActionGroupShow">
                 <div id="problemRow1">
-                    <Link to={`/project/${this.props.params.probID}/discuss`} activeClassName="activeProblemOptionDiscuss">
+                    <Link to={this.state.linkPath+this.props.params.probID+'/discuss'} activeClassName="activeProblemOptionDiscuss">
                       <div id="SBButtonDiscuss">discuss</div>
                     </Link>
                     <div id="problemCenterColumn">
-                      <Link to={`/project/${this.props.params.probID}/subprojects`}>
+                      <Link to={this.state.linkPath+this.props.params.probID+'/subprojects'}>
                         <div id={this.state.voteID} ref='probbtn' onClick={this.vote}>
                             {this.state.voteTitle}
                         </div>
@@ -274,27 +292,22 @@ export default class FullProblem extends React.Component {
                       </a>
                       <ProblemFollowButton probID={this.props.params.probID} username={cookie.load('userName')} />
                     </div>
-                    <Link to={`/project/${this.props.params.probID}/learn`} activeClassName="activeProblemOptionLearn">
+                    <Link to={this.state.linkPath+this.props.params.probID+'/learn'} activeClassName="activeProblemOptionLearn">
                       <div id="SBButtonLearn">learn</div>
                     </Link>
                 </div>
                 <div id="projectCreator">
                   {this.state.problemInfo.OriginalPosterUsername}
                 </div>
-                <Link to={`/project/${this.props.params.probID}/edit`}>
+                <Link to={this.state.linkPath+this.props.params.probID+'/edit'}>
                   <img src={require('../../assets/editBlue.svg')} id={this.state.editID} width="20" height="20" alt="Edit Button" />
                 </Link>
               </div>
-              <div id="projectMajorButtonRow">
-                <div id="projectActivityButton" onClick={this.showActivity}>
-                  activity
-                </div>
-                <div id="projectInfoButton" onClick={this.showInfo}>
-                  brief
-                </div>
-              </div>
                 <div id="projectMidColumnContainer">
                   <div id="projectMidColumnLeftStart">
+                    <div id="projectActivityButton" onClick={this.showActivity}>
+                      activity
+                    </div>
                     <div id="projectActivityGroup">
                       <ProjectActivity probID={this.props.params.probID} />
                       <div id="projectHideButton2" onClick={this.hideActivity}>
@@ -303,6 +316,9 @@ export default class FullProblem extends React.Component {
                     </div>
                   </div>
                   <div id="projectMidColumnRightStart">
+                    <div id="projectInfoButton" onClick={this.showInfo}>
+                      brief
+                    </div>
                     <div id="projectInfoGroup">
                       <div id="projectPercent" onClick={this.submitVote} onMouseOver={this.hoverVoteNumber} onMouseOut={this.unHoverVoteNumber}>
                         {this.state.problemInfo.Rank}
@@ -321,7 +337,6 @@ export default class FullProblem extends React.Component {
                 </div>
               {React.cloneElement(this.props.children, {probID:this.props.params.probID, parentTitle: this.state.problemInfo.Title, gParentID: this.state.problemInfo.ParentID, gParentTitle: this.state.problemInfo.ParentTitle, ggParentID: this.state.problemInfo.GrandParentID, creator:this.state.problemInfo.OriginalPosterUsername, breakdownID:this.state.breakdownID})}
               <SubProblemContainer probID={this.props.params.probID} breakdownOriginal={this.state.breakdownOriginal} differentBreakdown={this.differentBreakdown} />
-              </div>
               <ScrollableAnchor id={'proposals'}>
                 <ProblemSolutionsMenu probID={this.props.params.probID} projectTitle={this.state.problemInfo.Title} />
               </ScrollableAnchor>

@@ -1,11 +1,9 @@
 import React from 'react';
 import axios from 'axios';
 import { Link } from 'react-router';
+import cookie from 'react-cookie';
 // import Sound from 'react-sound';
 // Currently unused, may use later. Loading only loads part of page, currently looks weird
-// import ReactCSSTransitionGroup from 'react-addons-css-transition-group'; // ES6
-import TutorialWelcomeContent from '../components/tutorials/TutorialWelcomeContent.jsx';
-import WelcomeUnit from '../components/welcome/WelcomeUnit.jsx';
 import {Config} from '../config.js';
 import $ from 'jquery';
 
@@ -14,11 +12,17 @@ export default class WelcomeContainer extends React.Component {
    
 
   hoverText() {
-    $(document).ready(function() {
-        // $('#privateContainerMotto').html("NEW PROJECT").fadeIn(7500);
-        $('#logoName').html('begin');
-        $('#logoName').attr('id','logoNameGuide');
-    });
+    if (cookie.load('userName')) {
+      $(document).ready(function() {
+          $('#logoName').html('review <span id="brightWhite">mission</span>');
+          $('#logoName').attr('id','logoNameGuide');
+      });
+    } else {
+        $(document).ready(function() {
+            $('#logoName').html('begin');
+            $('#logoName').attr('id','logoNameGuide');
+        });
+    }
   }
   unHoverText() {
       $(document).ready(function() {
@@ -35,6 +39,7 @@ export default class WelcomeContainer extends React.Component {
            problems : [],
            userproblems : [],
            searchText: [],
+           introductionTitle: '',
         }
         this.queryProblem = this.queryProblem.bind(this);
         // this.startSound = this.startSound.bind(this);
@@ -72,10 +77,19 @@ export default class WelcomeContainer extends React.Component {
         // componentDidMount(){
         //   window.scrollTo(0,0);
         // }
-        componentWillMount(){
+        componentDidMount(){
         var self = this;
         window.scrollTo(0,0);
-        return axios.get( Config.API + '/problems/all').then(function (response) {
+        if (cookie.load('userName')) {
+          self.setState({
+              introductionTitle: 'mission',
+          })
+        } else {
+            self.setState({
+                introductionTitle: 'introduction',
+            })
+        }
+        axios.get( Config.API + '/problems/all').then(function (response) {
             self.setState({
                 problems: response.data,
                 userproblems: response.data
@@ -120,7 +134,7 @@ export default class WelcomeContainer extends React.Component {
                 volume={0}/>*/}
          <Link to="/introduction" activeClassName="activeIntroductionButton">
             <div id="welcomeIntroductionLabel" onMouseOver={this.hoverText} onMouseOut={this.unHoverText}>
-                introduction
+                {this.state.introductionTitle}
             </div>
          </Link>
          {this.props.children}

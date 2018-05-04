@@ -117,34 +117,42 @@ render() {
 
 if (this.state.userToken === undefined ){
       return (
-        <div id="header">
-            <div id="logo">
-              <Link to="/welcome">
-                <div id="logoName">
-                  <span id="xBlue">x</span>principia
-                </div>
-              </Link>
-            </div>
-            <div id="explore">
-                <form id="exploreFormHeader" onMouseOver={this.hoverExplore} onMouseOut={this.unHoverExplore}>
-                    <input type="search" name="search"
-                        // placeholder="explore" 
-                        id="exploreHeaderInput"  
-                        onKeyDown={this.queryProblem} autoFocus autoComplete="off" />
-                    <input onKeyPress={this.submitSearch}  id="submitExplore" />
-                </form>
-            </div>
-            {/*Login in header*/}
-            <input type="text" name="email" required="required" maxLength="30" placeholder="username" id="loginHeaderEmail" autoFocus />
-            <input type="password" name="password" required="required" maxLength="30" placeholder="password" id="loginHeaderPassword" />            
-            <input type="submit" value="login" onClick={this.postLogin} id="loginHeaderSubmitButton" />           
-            {/*Attempt to get the login button to just be an arrow*/}
-            {/*<input type="image" src={require('../assets/rightArrowWhite.svg')} onClick={this.postLogin} id="loginHeaderSubmitImage" alt="Submit login arrow, blue right arrow"/>*/}
-            <div id="registerHeaderButton">
-                <Link to="/register">
-                    join
+        <div>
+          <div id="header">
+              <div id="logo">
+                <Link to="/welcome">
+                  <div id="logoName">
+                    <span id="xBlue">x</span>principia
+                  </div>
                 </Link>
-            </div>
+              </div>
+              <div id="explore">
+                  <form id="exploreFormHeader" onMouseOver={this.hoverExplore} onMouseOut={this.unHoverExplore}>
+                      <input type="search" name="search"
+                          // placeholder="explore" 
+                          id="exploreHeaderInput"  
+                          onKeyDown={this.queryProblem} autoFocus autoComplete="off" />
+                      <input onKeyPress={this.submitSearch}  id="submitExplore" />
+                  </form>
+              </div>
+              {/*Login in header*/}
+              <input type="text" name="email" required="required" maxLength="30" placeholder="username" id="loginHeaderEmail" autoFocus />
+              <input type="password" name="password" required="required" maxLength="30" placeholder="password" id="loginHeaderPassword" />            
+              <input type="submit" value="login" onClick={this.postLogin} id="loginHeaderSubmitButton" />           
+              {/*Attempt to get the login button to just be an arrow*/}
+              {/*<input type="image" src={require('../assets/rightArrowWhite.svg')} onClick={this.postLogin} id="loginHeaderSubmitImage" alt="Submit login arrow, blue right arrow"/>*/}
+              <div id="registerHeaderButton">
+                  <Link to="/register">
+                      join
+                  </Link>
+              </div>
+          </div>
+
+          {/* SEARCH RESULTS */}
+          <div id="searchResultsContainerHide">
+            <img src={require('../assets/redX3.svg')} id="searchResultsExitButton" width="20" height="20" alt="exit button" onClick={this.hideSearch} />
+            <SearchResults problems={this.state.userproblems}/>
+          </div>
         </div>
       );
     } else {
@@ -172,7 +180,7 @@ if (this.state.userToken === undefined ){
               </div>
 
               {/* SEARCH RESULTS */}
-              <div id="searchResultsContainerHides">
+              <div id="searchResultsContainerHide">
                 <img src={require('../assets/redX3.svg')} id="searchResultsExitButton" width="20" height="20" alt="exit button" onClick={this.hideSearch} />
                 <SearchResults problems={this.state.userproblems}/>
               </div>

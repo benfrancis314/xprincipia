@@ -17,7 +17,7 @@ export default class LearnResourcesEditForm extends React.Component {
     this.updateResource = this.updateResource.bind(this);
   };
 
-  componentWillMount(){
+  componentDidMount(){
       var self = this; ///TODO Change Resouces to resources when backend Changes
         return axios.get( Config.API + '/resources/ID?id='+this.props.params.resourceID).then(function (response) {
           self.setState({

@@ -15,6 +15,10 @@ export default class DiscussContainer extends React.Component {
             newTopSelect: '',
             currentType: '',
             linkPath: '',
+            discussNumber: '',
+            questionNumber: '',
+            suggestionNumber: '',
+            debateNumber: '',
         }
         this.selectAll = this.selectAll.bind(this)
         this.selectQuestions = this.selectQuestions.bind(this)
@@ -49,19 +53,24 @@ export default class DiscussContainer extends React.Component {
                         newTopSelect: 'new',
                         currentType: 'discuss',
                     })
-                }
+                } 
             }) 
-            axios.get( Config.API + '/questions/number?id='+this.props.params.probID).then(function (response) {
+            axios.get( Config.API + '/comments/bytype/discuss/number?problem_id='+this.props.params.probID).then(function (response) {
+                self.setState({
+                    discussNumber: response.data
+                })
+            })
+            axios.get( Config.API + '/comments/bytype/question/number?problem_id='+this.props.params.probID).then(function (response) {
                 self.setState({
                     questionNumber: response.data
                 })
             })
-            axios.get( Config.API + '/suggestions/number?id='+this.props.params.probID).then(function (response) {
+            axios.get( Config.API + '/comments/bytype/suggestion/number?problem_id='+this.props.params.probID).then(function (response) {
                 self.setState({
                     suggestionNumber: response.data
                 })
             })
-            axios.get( Config.API + '/freeForms/number?id='+this.props.params.probID).then(function (response) {
+            axios.get( Config.API + '/comments/bytype/freeform/number?problem_id='+this.props.params.probID).then(function (response) {
                 self.setState({
                     debateNumber: response.data
                 })
@@ -95,17 +104,22 @@ export default class DiscussContainer extends React.Component {
                     })
                 }
             }) 
-            axios.get( Config.API + '/questions/number?id='+nextProps.params.probID).then(function (response) {
+            axios.get( Config.API + '/comments/bytype/discuss/number?problem_id='+nextProps.params.probID).then(function (response) {
+                self.setState({
+                    discussNumber: response.data
+                })
+            })
+            axios.get( Config.API + '/comments/bytype/question/number?problem_id='+nextProps.params.probID).then(function (response) {
                 self.setState({
                     questionNumber: response.data
                 })
             })
-            axios.get( Config.API + '/suggestions/number?id='+nextProps.params.probID).then(function (response) {
+            axios.get( Config.API + '/comments/bytype/suggestion/number?problem_id='+nextProps.params.probID).then(function (response) {
                 self.setState({
                     suggestionNumber: response.data
                 })
             })
-            axios.get( Config.API + '/freeForms/number?id='+nextProps.params.probID).then(function (response) {
+            axios.get( Config.API + '/comments/bytype/freeform/number?problem_id='+nextProps.params.probID).then(function (response) {
                 self.setState({
                     debateNumber: response.data
                 })
@@ -119,7 +133,7 @@ export default class DiscussContainer extends React.Component {
             $('#discussSelectButtonRightActive').attr('id','discussSelectButtonRightInactive');               
         });
         var self = this;
-        if(this.state.newTopSelect == 'new') {
+        if(this.state.newTopSelect === 'new') {
             axios.get( Config.API + '/comments/bytype/discuss?problem_id='+this.props.params.probID).then(function (response) {
                 if(response.data.length > 0) {
                     self.setState({
@@ -162,7 +176,7 @@ export default class DiscussContainer extends React.Component {
             $('#discussSelectButtonRightActive').attr('id','discussSelectButtonRightInactive');               
         });
         var self = this;
-        if(this.state.newTopSelect == 'new') {
+        if(this.state.newTopSelect === 'new') {
             axios.get( Config.API + '/comments/bytype/question?problem_id='+this.props.params.probID).then(function (response) {
                 if(response.data.length > 0) {
                     self.setState({
@@ -204,7 +218,7 @@ export default class DiscussContainer extends React.Component {
             $('#discussSelectButtonRightActive').attr('id','discussSelectButtonRightInactive');               
         });
         var self = this;
-        if(this.state.newTopSelect == 'new') {
+        if(this.state.newTopSelect === 'new') {
             axios.get( Config.API + '/comments/bytype/suggestion?problem_id='+this.props.params.probID).then(function (response) {
                 if(response.data.length > 0) {
                     self.setState({
@@ -246,7 +260,7 @@ export default class DiscussContainer extends React.Component {
             $('#discussSelectButtonRightInactive').attr('id','discussSelectButtonRightActive');               
         });
         var self = this;
-        if(this.state.newTopSelect == 'new') {
+        if(this.state.newTopSelect === 'new') {
             axios.get( Config.API + '/comments/bytype/freeform?problem_id='+this.props.params.probID).then(function (response) {
                 if(response.data.length > 0) {
                     self.setState({
@@ -371,22 +385,22 @@ export default class DiscussContainer extends React.Component {
             <div id="discussSelectionMenuContainer">
                 <div id="sidebarDiscussMenu">
                     <div id="discussGroupSelectAllActive" onClick={this.selectAll}>
-                        omni<span id="greenSmall">  {this.state.questionNumber}</span>
+                        omni<span id="greenSmallFaint">  {this.state.discussNumber}</span>
                     </div>
                     <div id="discussGroupSelection">
                         <div id="discussSelectButtonLeftInactive" onClick={this.selectQuestions}>
                             questions
-                            <span id="greenSmall">  {this.state.questionNumber}</span>
+                            <span id="greenSmallFaint">  {this.state.questionNumber}</span>
                         </div>
 
                         <div id="discussSelectButtonCenterInactive" onClick={this.selectSuggestions}>                                           
                             suggestions
-                            <span id="greenSmall">  {this.state.suggestionNumber}</span>
+                            <span id="greenSmallFaint">  {this.state.suggestionNumber}</span>
                         </div>
 
                         <div id="discussSelectButtonRightInactive" onClick={this.selectDebates}>                                            
                             debates
-                            <span id="greenSmall">  {this.state.debateNumber}</span>
+                            <span id="greenSmallFaint">  {this.state.debateNumber}</span>
                         </div>
                     </div>
                 </div>
@@ -401,6 +415,7 @@ export default class DiscussContainer extends React.Component {
                 </div>
             </div>
             <DiscussUnit linkPath={this.state.linkPath} questions={this.state.discuss} />
+            <div id="proposalsTitleRightSBEnd"><br /></div>
         </div>
   
     );

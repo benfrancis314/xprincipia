@@ -11,7 +11,7 @@ export default class ProjectParentChildrenUnits extends React.Component {
 
   };
 
-    componentWillMount(){
+    componentDidMount(){
       var self = this;
 	  if (self.props.problem !== null ){
 		  self.setState({problems: this.props.problems})

@@ -6,7 +6,6 @@ import ReactCSSTransitionGroup from 'react-addons-css-transition-group'; // ES6
 import EarthSphere from '../components/profile/EarthSphere.jsx';
 import {Config} from '../config.js';
 import $ from 'jquery';
-// import earth3d from '../../node_modules/earth3d/jquery.earth-3d';
 
 
 export default class ProfileContainer extends React.Component {

@@ -15,7 +15,7 @@ export default class ProblemSolutionsMenu extends React.Component {
     };
     componentDidMount(){
         var self = this;
-        return axios.get( Config.API + '/solutions/problemID?id='+this.props.probID).then(function (response) {
+        axios.get( Config.API + '/solutions/problemID?id='+this.props.probID).then(function (response) {
             self.setState({
                 solutions: response.data,
             })
@@ -23,7 +23,7 @@ export default class ProblemSolutionsMenu extends React.Component {
     }
     componentWillReceiveProps (nextProps){
         var self = this;
-        return axios.get( Config.API + '/solutions/problemID?id='+nextProps.probID).then(function (response) {
+        axios.get( Config.API + '/solutions/problemID?id='+nextProps.probID).then(function (response) {
             self.setState({
                 solutions: response.data,
                 probID: nextProps.probID
@@ -33,10 +33,15 @@ export default class ProblemSolutionsMenu extends React.Component {
 
    render() {
     
-    if (this.state.solutions === null) {
+    if (this.state.solutions === undefined || this.state.solutions.length == 0) {
         return (
-            <div>
-                XP
+            <div id="fullWide">
+                <a href='#proposalForm'>
+                    <div id="noProposalsPromptFlare"><br /></div>
+                    <div id="noProposalsPrompt">
+                        <span id="blue">propose </span>the <span id="blue">first </span>idea
+                    </div>
+                </a>
             </div>
         );
     } else {

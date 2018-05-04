@@ -1,7 +1,6 @@
 import React from 'react';
 import axios from 'axios';
-import DiscussCommentUnit from '../components/discuss/DiscussCommentUnit.jsx';
-import DiscussUnitPrivate from '../components/discuss/DiscussUnitPrivate.jsx';
+import DiscussUnit from '../components/discuss/DiscussUnit.jsx';
 import {Config} from '../config.js';
 import $ from 'jquery';
 import { Link } from 'react-router';
@@ -21,8 +20,13 @@ export default class DiscussContainer extends React.Component {
             parentID: '',
             linkPath: '',
             parentLink: '',
+            commentNumber: '',
+            proConNumber: '',
+            answerNumber: '',
+            proConComNumber: '',
+            answerComNumber: '',
         }
-        this.selectAll = this.selectAll.bind(this)
+        this.selectProConCom = this.selectProConCom.bind(this)
         this.selectComments = this.selectComments.bind(this)
         this.selectProsCons = this.selectProsCons.bind(this)
         this.selectAnswers = this.selectAnswers.bind(this)
@@ -31,6 +35,7 @@ export default class DiscussContainer extends React.Component {
     };
     componentDidMount(){
         var self = this;
+        document.getElementById("answerQuestionUnit").scrollIntoView();
             if (window.location.pathname.includes('private')) {
                 self.setState({
                     linkPath: '/project/private/',
@@ -40,25 +45,9 @@ export default class DiscussContainer extends React.Component {
                     linkPath: '/project/',
                 })
             }
-            axios.get( Config.API + '/comments/parentType?id='+self.props.params.discussID).then(function (response) {
-                if(response.data.length > 0) {
-                    self.setState({
-                        newTopID: 'discussListSelectButton',
-                        discuss: response.data,
-                        newTopSelect: 'new',
-                        currentType: 'discuss',
-                    })
-                } else {
-                    self.setState({
-                        newTopID: 'discussListSelectButtonHide',
-                        discuss: response.data,
-                        newTopSelect: 'new',
-                        currentType: 'discuss',
-                    })
-                }
-            }) 
+            
             axios.get( Config.API + '/comments/ID?id='+self.props.params.discussID).then(function (response) {
-                if(response.data.ParentID == '0') {
+                if(response.data.ParentID === 0) {
                     self.setState({
                         parent: response.data,
                         parentLink: `${self.props.params.probID}/discuss`
@@ -69,31 +58,31 @@ export default class DiscussContainer extends React.Component {
                         parentLink: `${self.props.params.probID}/discuss/${response.data.ParentID}/comments`
                     })
                 }
-                if(response.data.Type === '2') {
+                if(response.data.Type === 2) {
                     self.setState({
                         parentType: 'Question',
                     })
-                } else if(response.data.Type === '3') {
+                } else if(response.data.Type === 3) {
                     self.setState({
                         parentType: 'Suggestion',
                     })
-                } else if(response.data.Type === '4') {
+                } else if(response.data.Type === 4) {
                     self.setState({
                         parentType: 'Answer',
                     })
-                } else if(response.data.Type === '5') {
+                } else if(response.data.Type === 5) {
                     self.setState({
                         parentType: 'Comment',
                     })
-                } else if(response.data.Type === '6') {
+                } else if(response.data.Type === 6) {
                     self.setState({
                         parentType: 'Debate',
                     })
-                } else if(response.data.Type === '9') {
+                } else if(response.data.Type === 9) {
                     self.setState({
                         parentType: 'Pro',
                     })
-                } else if(response.data.Type === '10') {
+                } else if(response.data.Type === 10) {
                     self.setState({
                         parentType: 'Con',
                     })
@@ -102,44 +91,77 @@ export default class DiscussContainer extends React.Component {
                         parentType: 'Discuss',
                     })
                 }
+
+                if(response.data.Type === 2) {
+                    axios.get( Config.API + '/comments/bytype/answercom?problem_id='+self.props.params.discussID).then(function (response) {
+                        if(response.data.length > 0) {
+                            self.setState({
+                                newTopID: 'discussListSelectButton',
+                                discuss: response.data,
+                                newTopSelect: 'new',
+                                currentType: 'discuss',
+                            })
+                        } else {
+                            self.setState({
+                                newTopID: 'discussListSelectButtonHide',
+                                discuss: response.data,
+                                newTopSelect: 'new',
+                                currentType: 'discuss',
+                            })
+                        }
+                    }) 
+                } else {
+                    axios.get( Config.API + '/comments/bytype/proconcom?problem_id='+self.props.params.discussID).then(function (response) {
+                        if(response.data.length > 0) {
+                            self.setState({
+                                newTopID: 'discussListSelectButton',
+                                discuss: response.data,
+                                newTopSelect: 'new',
+                                currentType: 'discuss',
+                            })
+                        } else {
+                            self.setState({
+                                newTopID: 'discussListSelectButtonHide',
+                                discuss: response.data,
+                                newTopSelect: 'new',
+                                currentType: 'discuss',
+                            })
+                        }
+                    }) 
+                }
             }) 
-// GET NUMBER OF COMMENTS, PROS/CONS, ANSWERS, COMMENTS&PROSCONS, COMMMENTS&ANSWERS
-            // axios.get( Config.API + '/questions/number?id='+this.props.params.probID).then(function (response) {
-            //     self.setState({
-            //         questionNumber: response.data
-            //     })
-            // })
-            // axios.get( Config.API + '/suggestions/number?id='+this.props.params.probID).then(function (response) {
-            //     self.setState({
-            //         suggestionNumber: response.data
-            //     })
-            // })
-            // axios.get( Config.API + '/freeForms/number?id='+this.props.params.probID).then(function (response) {
-            //     self.setState({
-            //         debateNumber: response.data
-            //     })
-            // })
+            axios.get( Config.API + '/comments/bytype/comment/number?problem_id='+this.props.params.discussID).then(function (response) {
+                self.setState({
+                    commentNumber: response.data
+                })
+            })
+            axios.get( Config.API + '/comments/bytype/procon/number?problem_id='+this.props.params.discussID).then(function (response) {
+                self.setState({
+                    proConNumber: response.data
+                })
+            })
+            axios.get( Config.API + '/comments/bytype/answer/number?problem_id='+this.props.params.discussID).then(function (response) {
+                self.setState({
+                    answerNumber: response.data
+                })
+            })
+            axios.get( Config.API + '/comments/bytype/proconcom/number?problem_id='+this.props.params.discussID).then(function (response) {
+                self.setState({
+                    proConComNumber: response.data
+                })
+            })
+            axios.get( Config.API + '/comments/bytype/answercom/number?problem_id='+this.props.params.discussID).then(function (response) {
+                self.setState({
+                    answerComNumber: response.data
+                })
+            })
+
     }
     componentWillReceiveProps(nextProps){
         var self = this;
-            axios.get( Config.API + '/comments/parentType?id='+nextProps.params.discussID).then(function (response) {                if (response.data.length > 0) {
-                    self.setState({
-                        newTopID: 'discussListSelectButton',
-                        discuss: response.data,
-                        newTopSelect: 'new',
-                        currentType: 'discuss',
-                    })
-                } else {
-                    self.setState({
-                        newTopID: 'discussListSelectButtonHide',
-                        discuss: response.data,
-                        newTopSelect: 'new',
-                        currentType: 'discuss',
-                    })
-                }
-            }) 
+        document.getElementById("answerQuestionUnit").scrollIntoView();
             axios.get( Config.API + '/comments/ID?id='+nextProps.params.discussID).then(function (response) {
-                if(response.data.ParentID == '0') {
+                if(response.data.ParentID === 0) {
                     self.setState({
                         parent: response.data,
                         parentLink: `${nextProps.params.probID}/discuss`
@@ -150,31 +172,31 @@ export default class DiscussContainer extends React.Component {
                         parentLink: `${nextProps.params.probID}/discuss/${response.data.ParentID}/comments`
                     })
                 }
-                if(response.data.Type == '2') {
+                if(response.data.Type === 2) {
                     self.setState({
                         parentType: 'Question',
                     })
-                } else if(response.data.Type == '3') {
+                } else if(response.data.Type === 3) {
                     self.setState({
                         parentType: 'Suggestion',
                     })
-                } else if(response.data.Type == '4') {
+                } else if(response.data.Type === 4) {
                     self.setState({
                         parentType: 'Answer',
                     })
-                } else if(response.data.Type == '5') {
+                } else if(response.data.Type === 5) {
                     self.setState({
                         parentType: 'Comment',
                     })
-                } else if(response.data.Type == '6') {
+                } else if(response.data.Type === 6) {
                     self.setState({
                         parentType: 'Debate',
                     })
-                } else if(response.data.Type == '9') {
+                } else if(response.data.Type === 9) {
                     self.setState({
                         parentType: 'Pro',
                     })
-                } else if(response.data.Type == '10') {
+                } else if(response.data.Type === 10) {
                     self.setState({
                         parentType: 'Con',
                     })
@@ -183,33 +205,80 @@ export default class DiscussContainer extends React.Component {
                         parentType: 'Discuss',
                     })
                 }
+                if(response.data.Type === '2') {
+                    axios.get( Config.API + '/comments/bytype/answercom?problem_id='+nextProps.params.discussID).then(function (response) {
+                        if(response.data.length > 0) {
+                            self.setState({
+                                newTopID: 'discussListSelectButton',
+                                discuss: response.data,
+                                newTopSelect: 'new',
+                                currentType: 'discuss',
+                            })
+                        } else {
+                            self.setState({
+                                newTopID: 'discussListSelectButtonHide',
+                                discuss: response.data,
+                                newTopSelect: 'new',
+                                currentType: 'discuss',
+                            })
+                        }
+                    }) 
+                } else {
+                    axios.get( Config.API + '/comments/bytype/proconcom?problem_id='+nextProps.params.discussID).then(function (response) {
+                        if(response.data.length > 0) {
+                            self.setState({
+                                newTopID: 'discussListSelectButton',
+                                discuss: response.data,
+                                newTopSelect: 'new',
+                                currentType: 'discuss',
+                            })
+                        } else {
+                            self.setState({
+                                newTopID: 'discussListSelectButtonHide',
+                                discuss: response.data,
+                                newTopSelect: 'new',
+                                currentType: 'discuss',
+                            })
+                        }
+                    }) 
+                }
             }) 
-            // axios.get( Config.API + '/questions/number?id='+nextProps.params.probID).then(function (response) {
-            //     self.setState({
-            //         questionNumber: response.data
-            //     })
-            // })
-            // axios.get( Config.API + '/suggestions/number?id='+nextProps.params.probID).then(function (response) {
-            //     self.setState({
-            //         suggestionNumber: response.data
-            //     })
-            // })
-            // axios.get( Config.API + '/freeForms/number?id='+nextProps.params.probID).then(function (response) {
-            //     self.setState({
-            //         debateNumber: response.data
-            //     })
-            // })
+            axios.get( Config.API + '/comments/bytype/comment/number?problem_id='+nextProps.params.discussID).then(function (response) {
+                self.setState({
+                    commentNumber: response.data
+                })
+            })
+            axios.get( Config.API + '/comments/bytype/procon/number?problem_id='+nextProps.params.discussID).then(function (response) {
+                self.setState({
+                    proConNumber: response.data
+                })
+            })
+            axios.get( Config.API + '/comments/bytype/answer/number?problem_id='+nextProps.params.discussID).then(function (response) {
+                self.setState({
+                    answerNumber: response.data
+                })
+            })
+            axios.get( Config.API + '/comments/bytype/proconcom/number?problem_id='+nextProps.params.discussID).then(function (response) {
+                self.setState({
+                    proConComNumber: response.data
+                })
+            })
+            axios.get( Config.API + '/comments/bytype/answercom/number?problem_id='+nextProps.params.discussID).then(function (response) {
+                self.setState({
+                    answerComNumber: response.data
+                })
+            })
     }
-    selectAll() {
+    selectProConCom() {
         $(document).ready(function() {
-            $('#discussGroupSelectAllInactive').attr('id','discussGroupSelectAllActive');                
+            $('#discussCommentGroupSelectAllInactive').attr('id','discussCommentGroupSelectAllActive');                
             $('#discussSelectButtonLeftActive').attr('id','discussSelectButtonLeftInactive');               
             $('#discussSelectButtonCenterActive').attr('id','discussSelectButtonCenterInactive');               
             $('#discussSelectButtonRightActive').attr('id','discussSelectButtonRightInactive');               
         });
         var self = this;
-        if(this.state.newTopSelect == 'new') {
-            axios.get( Config.API + '/comments/parentType?id='+this.props.params.discussID).then(function (response) {
+        if(this.state.newTopSelect === 'new') {
+            axios.get( Config.API + '/comments/bytype/proconcom?problem_id='+this.props.params.discussID).then(function (response) {
                 if(response.data.length > 0) {
                     self.setState({
                         newTopID: 'discussListSelectButton',
@@ -226,7 +295,7 @@ export default class DiscussContainer extends React.Component {
             })
         } else {
             // NOT SETUP TO DO 'TOP' YET
-            axios.get( Config.API + '/comments/parentType?id='+this.props.params.discussID).then(function (response) {
+            axios.get( Config.API + '/comments/bytype/proconcom/byrank?problem_id='+this.props.params.discussID).then(function (response) {
                 if(response.data.length > 0) {
                     self.setState({
                         newTopID: 'discussListSelectButton',
@@ -238,6 +307,49 @@ export default class DiscussContainer extends React.Component {
                         newTopID: 'discussListSelectButtonHide',
                         discuss: response.data,
                         currentType: 'discuss',
+                    })
+                }
+            })  
+        }
+    }
+    selectAnswerCom() {
+        $(document).ready(function() {
+            $('#discussCommentGroupSelectAllInactive').attr('id','discussCommentGroupSelectAllActive');                
+            $('#discussSelectButtonLeftActive').attr('id','discussSelectButtonLeftInactive');               
+            $('#discussSelectButtonCenterActive').attr('id','discussSelectButtonCenterInactive');               
+            $('#discussSelectButtonRightActive').attr('id','discussSelectButtonRightInactive');               
+        });
+        var self = this;
+        if(this.state.newTopSelect === 'new') {
+            axios.get( Config.API + '/comments/bytype/answercom?problem_id='+this.props.params.discussID).then(function (response) {
+                if(response.data.length > 0) {
+                    self.setState({
+                        newTopID: 'discussListSelectButton',
+                        discuss: response.data,
+                        currentType: 'answercom',
+                    })
+                } else {
+                    self.setState({
+                        newTopID: 'discussListSelectButtonHide',
+                        discuss: response.data,
+                        currentType: 'answercom',
+                    })
+                }
+            })
+        } else {
+            // NOT SETUP TO DO 'TOP' YET
+            axios.get( Config.API + '/comments/bytype/answercom/byrank?problem_id='+this.props.params.discussID).then(function (response) {
+                if(response.data.length > 0) {
+                    self.setState({
+                        newTopID: 'discussListSelectButton',
+                        discuss: response.data,
+                        currentType: 'answercom',
+                    })
+                } else {
+                    self.setState({
+                        newTopID: 'discussListSelectButtonHide',
+                        discuss: response.data,
+                        currentType: 'answercom',
                     })
                 }
             })  
@@ -245,51 +357,51 @@ export default class DiscussContainer extends React.Component {
     }
     
     selectComments() {
-        if (this.state.parentType == 'Question') {
+        if (this.state.parentType === 'Question') {
             $(document).ready(function() {
-                $('#discussGroupSelectAllActive').attr('id','discussGroupSelectAllInactive');               
+                $('#discussCommentGroupSelectAllActive').attr('id','discussCommentGroupSelectAllInactive');               
                 $('#discussSelectButtonRightInactive').attr('id','discussSelectButtonRightActive');               
                 $('#discussSelectButtonCenterActive').attr('id','discussSelectButtonCenterInactive');               
                 $('#discussSelectButtonLeftActive').attr('id','discussSelectButtonLeftInactive');               
             });
         } else {
             $(document).ready(function() {
-                $('#discussGroupSelectAllActive').attr('id','discussGroupSelectAllInactive');               
+                $('#discussCommentGroupSelectAllActive').attr('id','discussCommentGroupSelectAllInactive');               
                 $('#discussSelectButtonLeftInactive').attr('id','discussSelectButtonLeftActive');               
                 $('#discussSelectButtonCenterActive').attr('id','discussSelectButtonCenterInactive');               
                 $('#discussSelectButtonRightActive').attr('id','discussSelectButtonRightInactive');               
             });
         }
         var self = this;
-        if(this.state.newTopSelect == 'new') {
-            axios.get( Config.API + '/comments/bytype/comment?problem_id='+this.props.params.probID).then(function (response) {
+        if(this.state.newTopSelect === 'new') {
+            axios.get( Config.API + '/comments/bytype/comment?problem_id='+this.props.params.discussID).then(function (response) {
                 if(response.data.length > 0) {
                     self.setState({
                         newTopID: 'discussListSelectButton',
                         discuss: response.data,
-                        currentType: 'question',
+                        currentType: 'comment',
                     })
                 } else {
                     self.setState({
                         newTopID: 'discussListSelectButtonHide',
                         discuss: response.data,
-                        currentType: 'question',
+                        currentType: 'comment',
                     })
                 }
             }) 
         } else {
-            axios.get( Config.API + '/comments/bytype/comment/byrank?problem_id='+this.props.params.probID).then(function (response) {
+            axios.get( Config.API + '/comments/bytype/comment/byrank?problem_id='+this.props.params.discussID).then(function (response) {
                 if(response.data.length > 0) {
                     self.setState({
                         newTopID: 'discussListSelectButton',
                         discuss: response.data,
-                        currentType: 'question',
+                        currentType: 'comment',
                     })
                 } else {
                     self.setState({
                         newTopID: 'discussListSelectButtonHide',
                         discuss: response.data,
-                        currentType: 'question',
+                        currentType: 'comment',
                     })
                 }
             })  
@@ -297,41 +409,41 @@ export default class DiscussContainer extends React.Component {
     }
     selectProsCons() {
         $(document).ready(function() {
-            $('#discussGroupSelectAllActive').attr('id','discussGroupSelectAllInactive');               
+            $('#discussCommentGroupSelectAllActive').attr('id','discussCommentGroupSelectAllInactive');               
             $('#discussSelectButtonLeftActive').attr('id','discussSelectButtonLeftInactive');               
             $('#discussSelectButtonCenterInactive').attr('id','discussSelectButtonCenterActive');               
             $('#discussSelectButtonRightActive').attr('id','discussSelectButtonRightInactive');               
         });
         var self = this;
-        if(this.state.newTopSelect == 'new') {
-            axios.get( Config.API + 'comments/bytype/procon?problem_id='+this.props.params.probID).then(function (response) {
+        if(this.state.newTopSelect === 'new') {
+            axios.get( Config.API + '/comments/bytype/procon?problem_id='+this.props.params.discussID).then(function (response) {
                 if(response.data.length > 0) {
                     self.setState({
                         newTopID: 'discussListSelectButton',
                         discuss: response.data,
-                        currentType: 'suggestion',
+                        currentType: 'procon',
                     })
                 } else {
                     self.setState({
                         newTopID: 'discussListSelectButtonHide',
                         discuss: response.data,
-                        currentType: 'suggestion',
+                        currentType: 'procon',
                     })
                 }
             }) 
         } else {
-            axios.get( Config.API + 'comments/bytype/procon/byrank?problem_id='+this.props.params.probID).then(function (response) {
+            axios.get( Config.API + '/comments/bytype/procon/byrank?problem_id='+this.props.params.discussID).then(function (response) {
                 if(response.data.length > 0) {
                     self.setState({
                         newTopID: 'discussListSelectButton',
                         discuss: response.data,
-                        currentType: 'suggestion',
+                        currentType: 'procon',
                     })
                 } else {
                     self.setState({
                         newTopID: 'discussListSelectButtonHide',
                         discuss: response.data,
-                        currentType: 'suggestion',
+                        currentType: 'procon',
                     })
                 }
             })  
@@ -339,41 +451,41 @@ export default class DiscussContainer extends React.Component {
     }
     selectAnswers() {
         $(document).ready(function() {
-            $('#discussGroupSelectAllActive').attr('id','discussGroupSelectAllInactive');               
+            $('#discussCommentGroupSelectAllActive').attr('id','discussCommentGroupSelectAllInactive');               
             $('#discussSelectButtonRightActive').attr('id','discussSelectButtonRightInactive');               
             $('#discussSelectButtonCenterActive').attr('id','discussSelectButtonCenterInactive');               
             $('#discussSelectButtonLeftInactive').attr('id','discussSelectButtonLeftActive');               
         });
         var self = this;
-        if(this.state.newTopSelect == 'new') {
-            axios.get( Config.API + '/comments/bytype/procon?problem_id='+this.props.params.probID).then(function (response) {
+        if(this.state.newTopSelect === 'new') {
+            axios.get( Config.API + '/comments/bytype/answer?problem_id='+this.props.params.discussID).then(function (response) {
                 if(response.data.length > 0) {
                     self.setState({
                         newTopID: 'discussListSelectButton',
                         discuss: response.data,
-                        currentType: 'suggestion',
+                        currentType: 'answer',
                     })
                 } else {
                     self.setState({
                         newTopID: 'discussListSelectButtonHide',
                         discuss: response.data,
-                        currentType: 'suggestion',
+                        currentType: 'answer',
                     })
                 }
             }) 
         } else {
-            axios.get( Config.API + '/comments/bytype/procon/byrank?problem_id='+this.props.params.probID).then(function (response) {
+            axios.get( Config.API + '/comments/bytype/answer/byrank?problem_id='+this.props.params.discussID).then(function (response) {
                 if(response.data.length > 0) {
                     self.setState({
                         newTopID: 'discussListSelectButton',
                         discuss: response.data,
-                        currentType: 'suggestion',
+                        currentType: 'answer',
                     })
                 } else {
                     self.setState({
                         newTopID: 'discussListSelectButtonHide',
                         discuss: response.data,
-                        currentType: 'suggestion',
+                        currentType: 'answer',
                     })
                 }
             })  
@@ -388,26 +500,32 @@ export default class DiscussContainer extends React.Component {
         self.setState({
             newTopSelect: 'new',
         })
-        if (this.state.currentType === 'question') {
-            axios.get( Config.API + '/comments/bytype/question?problem_id='+this.props.params.probID).then(function (response) {
+        if (this.state.currentType === 'comment') {
+            axios.get( Config.API + '/comments/bytype/comment?problem_id='+this.props.params.discussID).then(function (response) {
                 self.setState({
                     discuss: response.data,
                 })
             }) 
-        } else if (this.state.currentType === 'suggestion') {
-            axios.get( Config.API + '/comments/bytype/suggestion?problem_id='+this.props.params.probID).then(function (response) {
+        } else if (this.state.currentType === 'procon') {
+            axios.get( Config.API + '/comments/bytype/proconcom?problem_id='+this.props.params.discussID).then(function (response) {
                 self.setState({
                     discuss: response.data,
                 })
             }) 
-        } else if (this.state.currentType === 'debate') {
-            axios.get( Config.API + '/comments/bytype/debate?problem_id='+this.props.params.probID).then(function (response) {
+        } else if (this.state.currentType === 'answer') {
+            axios.get( Config.API + '/comments/bytype/answer?problem_id='+this.props.params.discussID).then(function (response) {
+                self.setState({
+                    discuss: response.data,
+                })
+            }) 
+        } else if (this.state.currentType === 'proconcom') {
+            axios.get( Config.API + '/comments/bytype/proconcom?problem_id='+this.props.params.discussID).then(function (response) {
                 self.setState({
                     discuss: response.data,
                 })
             }) 
         } else {
-            axios.get( Config.API + '/comments/bytype/discuss?problem_id='+this.props.params.probID).then(function (response) {
+            axios.get( Config.API + '/comments/bytype/answercom?problem_id='+this.props.params.discussID).then(function (response) {
                 self.setState({
                     discuss: response.data,
                 })
@@ -423,48 +541,42 @@ export default class DiscussContainer extends React.Component {
         self.setState({
             newTopSelect: 'top',
         })
-        if (this.state.currentType === 'question') {
-            axios.get( Config.API + '/comments/bytype/question/byrank?problem_id='+this.props.params.probID).then(function (response) {
-                self.setState({
-                    discuss: response.data,
-                })
-            })  
-        } else if (this.state.currentType === 'suggestion') {
-            axios.get( Config.API + '/comments/bytype/suggestion/byrank?problem_id='+this.props.params.probID).then(function (response) {
+        if (this.state.currentType === 'comment') {
+            axios.get( Config.API + '/comments/bytype/comment/byrank??problem_id='+this.props.params.discussID).then(function (response) {
                 self.setState({
                     discuss: response.data,
                 })
             }) 
-        } else if (this.state.currentType === 'debate') {
-            axios.get( Config.API + '/comments/bytype/debate/byrank?problem_id='+this.props.params.probID).then(function (response) {
+        } else if (this.state.currentType === 'procon') {
+            axios.get( Config.API + '/comments/bytype/proconcom/byrank??problem_id='+this.props.params.discussID).then(function (response) {
                 self.setState({
                     discuss: response.data,
                 })
-            })  
+            }) 
+        } else if (this.state.currentType === 'answer') {
+            axios.get( Config.API + '/comments/bytype/answer/byrank??problem_id='+this.props.params.discussID).then(function (response) {
+                self.setState({
+                    discuss: response.data,
+                })
+            }) 
+        } else if (this.state.currentType === 'proconcom') {
+            axios.get( Config.API + '/comments/bytype/proconcom/byrank??problem_id='+this.props.params.discussID).then(function (response) {
+                self.setState({
+                    discuss: response.data,
+                })
+            }) 
         } else {
-            axios.get( Config.API + '/comments/bytype/discuss/byrank?problem_id='+this.props.params.probID).then(function (response) {
+            axios.get( Config.API + '/comments/bytype/answercom/byrank??problem_id='+this.props.params.discussID).then(function (response) {
                 self.setState({
                     discuss: response.data,
                 })
             }) 
         }
-
     }
 
 
    render() {
-//     if (window.location.pathname.includes('private')) {
-
-//         return (
-//             <div id="questionContainer">
-//                 private
-//                 {/* {React.cloneElement(this.props.children, {parentTitle: this.props.parentTitle})} */}
-//                 {/* <DiscussUnitPrivate questions={this.state.questions} /> */}
-//             </div>
-      
-//         );
-// } else {
-    if (this.state.parentType == 'Question') {
+    if (this.state.parentType === 'Question') {
         return (
             <div id="projectInteractDiscussMenu">
             <div id="proposalsTitleRightSB">DISCUSS</div>
@@ -484,17 +596,17 @@ export default class DiscussContainer extends React.Component {
                 </Link>
             <div id="discussSelectionMenuContainer">
                 <div id="sidebarDiscussMenu">
-                    <div id="discussGroupSelectAllActive" onClick={this.selectAll}>
-                        responses<span id="greenSmall">  {this.state.questionNumber}</span>
+                    <div id="discussCommentGroupSelectAllActive" onClick={this.selectAnswerCom}>
+                        responses<span id="greenSmall">  {this.state.answerComNumber}</span>
                     </div>
                     <div id="discussGroupSelection">
                         <div id="discussSelectButtonLeftInactive" onClick={this.selectAnswers}>                                           
                             answers
-                            <span id="greenSmall">  {this.state.suggestionNumber}</span>
+                            <span id="greenSmall">  {this.state.answerNumber}</span>
                         </div>
                         <div id="discussSelectButtonRightInactive" onClick={this.selectComments}>
                             comments
-                            <span id="greenSmall">  {this.state.questionNumber}</span>
+                            <span id="greenSmall">  {this.state.commentNumber}</span>
                         </div>
                     </div>
                 </div>
@@ -508,7 +620,8 @@ export default class DiscussContainer extends React.Component {
                     </div>
                 </div>
             </div>
-            <DiscussCommentUnit linkPath={this.state.linkPath} questions={this.state.discuss} />
+            <DiscussUnit linkPath={this.state.linkPath} questions={this.state.discuss} />
+            <div id="proposalsTitleRightSBEnd"><br /></div>
         </div>
         )
     } else {
@@ -531,18 +644,18 @@ export default class DiscussContainer extends React.Component {
                 </Link>
             <div id="discussSelectionMenuContainer">
                 <div id="sidebarDiscussMenu">
-                    <div id="discussGroupSelectAllActive" onClick={this.selectAll}>
-                        responses<span id="greenSmall">  {this.state.questionNumber}</span>
+                    <div id="discussCommentGroupSelectAllActive" onClick={this.selectProConCom}>
+                        responses<span id="greenSmall">  {this.state.proConComNumber}</span>
                     </div>
                     <div id="discussGroupSelection">
                         <div id="discussSelectButtonLeftInactive" onClick={this.selectComments}>
                             comments
-                            <span id="greenSmall">  {this.state.questionNumber}</span>
+                            <span id="greenSmall">  {this.state.commentNumber}</span>
                         </div>
 
                         <div id="discussSelectButtonRightInactive" onClick={this.selectProsCons}>                                           
                             pros/cons
-                            <span id="greenSmall">  {this.state.suggestionNumber}</span>
+                            <span id="greenSmall">  {this.state.proConNumber}</span>
                         </div>
                     </div>
                 </div>
@@ -556,7 +669,8 @@ export default class DiscussContainer extends React.Component {
                     </div>
                 </div>
             </div>
-            <DiscussCommentUnit linkPath={this.state.linkPath} questions={this.state.discuss} />
+            <DiscussUnit linkPath={this.state.linkPath} questions={this.state.discuss} />
+            <div id="proposalsTitleRightSBEnd"><br /></div>
         </div>
   
     );

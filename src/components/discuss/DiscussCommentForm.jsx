@@ -61,21 +61,19 @@ postComment() {
       this.state.type = '5' 
     }
 
-  //if User is on a solution post with type 1
-  //solutionID will be available in props
-  // REDO THIS, IT DOESN'T MAKE SENSE
   if(this.props.params.solutionID){
     axios.post( Config.API + '/auth/comments/create', {
-      type:'1',
-      typeID: this.props.params.solutionID,
+      type: this.state.type,
+      typeID: this.props.params.probID,
       username: cookie.load('userName'),
       description : this.state.question,
       parentTitle: this.props.parentTitle,
       private: this.state.private,
-      parentID: this.props.params.probID,
+      backupParentID: this.props.params.solutionID,
+      parentID: this.props.params.discussID,
+      parentType: '5',
   })
     .then(function (result) {
-      // document.location = window.location.pathname 
       document.getElementById("questionForm").reset();
       self.refs.btn.removeAttribute("disabled");
     })
@@ -104,6 +102,7 @@ postComment() {
         parentID: this.props.params.discussID,
         parentTitle : this.props.parentTitle,
         private: this.state.private,
+        parentType: '5',
       })
         .then(function (result) {
           document.getElementById("questionForm").reset();
@@ -150,6 +149,7 @@ postComment() {
           parentTitle: this.props.parentTitle,
           private: this.state.private,
           parentID: this.props.params.probID,
+          parentType: '5',
       })
         .then(function (result) {
           // document.location = window.location.pathname 
@@ -186,6 +186,7 @@ postComment() {
         parentID: this.props.params.discussID,
         parentTitle : this.props.parentTitle,
         private: this.state.private,
+        parentType: '5',
 
     })
       .then(function (result) {
@@ -224,7 +225,7 @@ postComment() {
         <div id="projectFormRadioContainer">
           <div id="projectFormRadioColumn">
             <div id="projectFormRadioRow2">
-              answer <span id="grayLessSpacing">(default)</span>
+              answer<span id="grayLessSpacing"> | default</span>
             </div>
             <div id="projectFormRadioRow">
               <label id="projectRadioButtonContainer">
@@ -266,7 +267,7 @@ postComment() {
             <div id="projectFormRadioContainer">
               <div id="projectFormRadioColumn">
                 <div id="projectFormRadioRow1">
-                  comment <span id="grayLessSpacing">(default)</span>
+                  comment<span id="grayLessSpacing"> | default</span>
                 </div>
                 <div id="projectFormRadioRow">
                   <label id="projectRadioButtonContainer">

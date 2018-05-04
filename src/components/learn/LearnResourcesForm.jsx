@@ -93,7 +93,7 @@ componentDidMount(){
               <div id="projectFormRadioContainer">
                 <div id="projectFormRadioColumn">
                   <div id="projectFormRadioRow1">
-                    educational <span id="grayLessSpacing">(default)</span>
+                    educational<span id="grayLessSpacing"> | default</span>
                   </div>
                   <div id="projectFormRadioRow">
                     <label id="projectRadioButtonContainer">

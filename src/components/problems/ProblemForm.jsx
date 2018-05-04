@@ -18,6 +18,8 @@ export default class ProblemForm extends React.Component {
       summary: '',
       class: '',
       breakdownID: '',
+      linkPath: '',
+      private: '',
     }
 
     this.postProblem = this.postProblem.bind(this);
@@ -34,15 +36,38 @@ export default class ProblemForm extends React.Component {
             breakdownID: response.data.ID,
         })
     })   
+    if (window.location.pathname.includes('private')) {
+        self.setState({
+            linkPath: '/project/private/',
+            private: '1',
+        })
+    } else {
+        self.setState({
+            linkPath: '/project/',
+            private: '0',
+        })
+    }
   }
-  // componentWillReceiveProps (nextProps){
-  //   var self = this;
-  //   axios.get( Config.API + '/breakdowns/byproblemnumber?parentID='+nextProps.params.probID+'&parentNumber=1').then(function (response) {
-  //       self.setState({
-  //           breakdownID: response.data,
-  //       })
-  //   })   
-  // }
+  componentWillReceiveProps(nextProps) {
+    var self = this;
+    axios.get( Config.API + '/breakdowns/byproblemnumber?parentID='+nextProps.params.probID + '&parentNumber=1').then(function (response) {
+        self.setState({
+            breakdownID: response.data.ID,
+        })
+    })   
+    if (window.location.pathname.includes('private')) {
+        self.setState({
+            linkPath: '/project/private/',
+            private: '1',
+        })
+    } else {
+        self.setState({
+            linkPath: '/project/',
+            private: '0',
+        })
+    }
+  }
+
 
   postProblem() {
     var self = this;
@@ -69,33 +94,24 @@ export default class ProblemForm extends React.Component {
       grandParentTitle: this.props.gParentTitle,
       ggParentID : String(this.props.ggParentID),
       class : String(this.state.class),
-      // Breakdown not used yet
-      // breakdownID : String(this.props.breakdownID),
       breakdownID: String(this.state.breakdownID),
-      private: '0',
+      private: this.state.private,
     })
     .then(function (result) {
-      //redirect back to the last page     
-      // document.location = '/project/'+self.props.params.probID+'/subprojects'
       self.refs.btn.removeAttribute("disabled");
       window.scrollTo(0,0);
-      alert(String(this.state.breakdownID));
     })
       .catch(function (error) {
-        // alert(error.response.data);
           $(document).ready(function() {
               if (error.response.data == '[object Object]') {
                 return (
                   $(document).ready(function() {
-                    // Usually outside IF statement, revert when 400 error is fixed
                     $('#notification').attr('id','notificationShow').hide().slideDown();
                     $('#notificationLoginRegisterContainer').attr('id','notificationLoginRegisterContainerShow');
                     $('#notificationContent').html('Please <span id="blue">login </span>to create a project');
                   })
                 );
               }  else if (error.response.data != '') {
-                // Not using until 400 error is fixed
-                // $('#notificationContent').text(error.response.data);
             }
           });
       });
@@ -103,8 +119,6 @@ export default class ProblemForm extends React.Component {
 
   render() {
       return (
-        <div>
-          {/* XXX   {this.props.ggParentID}GGPARENT ID */}
           <div id="createProblemBox">
               <form id="createProjectForm">
                 <fieldset id="fieldSetNoBorder">
@@ -116,7 +130,7 @@ export default class ProblemForm extends React.Component {
                     <div id="projectFormRadioContainer">
                       <div id="projectFormRadioColumn">
                         <div id="projectFormRadioRow1">
-                          project <span id="grayLessSpacing">(default)</span>
+                          project<span id="grayLessSpacing"> | default</span>
                         </div>
                         <div id="projectFormRadioRow">
                           <label id="projectRadioButtonContainer">
@@ -153,16 +167,15 @@ export default class ProblemForm extends React.Component {
                       synopsis
                       <br />
                       <textarea name="problemSummary" maxLength="500" 
-                      placeholder="Please provide any additional information you'd like. (500 ch.)" id="problemSummaryForm"/>
+                      placeholder="Please summarize this project or add any additional information you'd like. (500 ch)" id="problemSummaryForm"/>
                   </label>
                   <br />
-                  <Link to={`/project/${this.props.params.probID}/subprojects`}>
+                  <Link to={this.state.linkPath+this.props.params.probID+`/subprojects`}>
                       <input type="button" ref='btn' value="create" onClick={this.postProblem} id="submitProblem"/>
                   </Link>
                 </fieldset>
               </form>
           </div>
-        </div>
 
       );
    }

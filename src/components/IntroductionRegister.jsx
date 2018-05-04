@@ -17,15 +17,26 @@ constructor(){
     password: '',
     fullname: '',
     username: '',
-    userToken: ''
+    userToken: '',
+    registerContainerID: '',
   }
 
   this.postRegister = this.postRegister.bind(this);
   this.postRegisterReturn = this.postRegisterReturn.bind(this);
 };
 
-  componentWillMount() {
+  componentDidMount() {
     this.state =  { userToken: cookie.load('userToken') };
+    var self = this;
+    if (cookie.load('userName')) {
+      self.setState({
+          registerContainerID: 'noDisplay',
+      })
+    } else {
+        self.setState({
+            registerContainerID: 'introRegisterContainer',
+        })
+    }
   }
 
   postRegister() {
@@ -164,7 +175,8 @@ return axios.post( Config.API + '/register', {
   render() {
       return (
 
-      <div id="introRegisterContainer">
+      <div id={this.state.registerContainerID}>
+      {this.state.registerContainerID}x
         {/*<ScrollableAnchor id={'register'}>*/}
           <div id="introRegisterJoin">
             join xprincipia

@@ -21,7 +21,7 @@ export default class EditSolutionForm extends React.Component {
 
     this.updateSolution = this.updateSolution.bind(this);
   };
-  componentWillMount(){
+  componentDidMount(){
       var self = this;
       return axios.get( Config.API + '/solutions/ID?id='+this.props.params.solutionID).then(function (response) {
           //if parent ID is 0 then the problem is at the root of the tree

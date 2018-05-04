@@ -35,10 +35,10 @@ export default class SearchResults extends React.Component {
             return (
                 <div id="fullWide">
                     <div id="searchEmptyAlert">
-                        explore xprincipia              
+                        <span id="gray">explore </span><span id="blue">x</span><span id="gray">principia</span>              
                     </div>
                     <div id="ouroborosContainer">
-                        <img src={require('../../assets/ouroborosBlue2.svg')} id="ouroborosImg" width="120" height="120" alt="Ouroboros"/>
+                        <div id="ouroborosImg"></div>
                         <div id="searchMotto"
                          onMouseOver={this.hoverText} onMouseOut={this.unHoverText}
                         >

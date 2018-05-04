@@ -17,7 +17,7 @@ export default class AnswerEditForm extends React.Component {
     this.updateAnswer = this.updateAnswer.bind(this);
   };
 
-  componentWillMount(){
+  componentDidMount(){
       var self = this;
         return axios.get( Config.API + '/answers/ID?id='+this.props.params.answerID).then(function (response) {
           self.setState({

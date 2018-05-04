@@ -16,6 +16,8 @@ constructor(){
         messageNotifications: '',
         messageButtonID: '',
         user: [],
+        userPoints: '',
+        title: '',
     }
     this.clearMessageNotifications = this.clearMessageNotifications.bind(this)
 
@@ -42,9 +44,21 @@ componentDidMount(){
             }
         }) 
         axios.get( Config.API + '/users/byusername?username='+cookie.load('userName')).then(function (response) {
-            self.setState({
-                user: response.data,
-            })
+            if (response.data.Tier == '2') {
+                self.setState({
+                    user: response.data,
+                    userPoints: response.data.Points,
+                    title1: 'way',
+                    title2: 'farer',
+                })
+              } else {
+                self.setState({
+                    user: response.data,
+                    userPoints: response.data.Points,
+                    title1: 'new',
+                    title2: 'comer',
+                })
+              }
         })
 }
 // componentWillReceiveProps(nextState) {
@@ -87,7 +101,7 @@ componentDidMount(){
         $(document).ready(function() {
             // $('#welcomeSearchFormLabel').attr('placeholder','CINEMATIC GUIDE');
             // $('#welcomeSearchFormLabel').attr('id','welcomeSearchFormLabelBlue');
-            $('#logoName').html("mind temple").fadeIn(7500);
+            $('#logoName').html('mind <span id="brightWhite">temple</span>').fadeIn(7500);
             $('#logoName').attr('id','logoNameGuide');
         });
       }
@@ -120,7 +134,7 @@ componentDidMount(){
         $(document).ready(function() {
             // $('#welcomeSearchFormLabel').attr('placeholder','CINEMATIC GUIDE');
             // $('#welcomeSearchFormLabel').attr('id','welcomeSearchFormLabelBlue');
-            $('#logoName').html("personal quarters").fadeIn(7500);
+            $('#logoName').html('personal <span id="brightWhite">quarters</span>').fadeIn(7500);
             $('#logoName').attr('id','logoNameGuide');
         });
       }
@@ -133,7 +147,7 @@ componentDidMount(){
       }
       hoverNotebook() {
         $(document).ready(function() {
-            $('#logoName').html("universal notebook").fadeIn(7500);
+            $('#logoName').html('note<span id="brightWhite">book</span>').fadeIn(7500);
             $('#logoName').attr('id','logoNameGuide');
         });
       }
@@ -150,7 +164,7 @@ componentDidMount(){
     }
     hoverPoints() {
         $(document).ready(function() {
-            $('#logoName').html("progress").fadeIn(7500);
+            $('#logoName').html('personal<span id="brightWhite"> progress</span>').fadeIn(7500);
             $('#logoName').attr('id','logoNameGuide');
         });
     }
@@ -231,10 +245,10 @@ componentDidMount(){
                     <Link to="/profile/points" activeClassName="activePointsHeader">
                         <div id="headerPointsContainer" onMouseOver={this.hoverPoints} onMouseOut={this.unHoverPoints}>
                             <div id="headerLevelTitle">
-                                newcomer
+                                <span id="blue">{this.state.title1}</span><span id="brightWuite">{this.state.title2}</span>
                             </div>
                             <div id="headerPointsNumber">
-                                {this.state.user.Points}
+                                {this.state.userPoints}
                             </div>
                         </div>
                     </Link>

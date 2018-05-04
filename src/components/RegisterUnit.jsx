@@ -22,7 +22,7 @@ constructor(){
   this.postRegisterReturn = this.postRegisterReturn.bind(this);
 };
 
-  componentWillMount() {
+  componentDidMount() {
     this.state =  { userToken: cookie.load('userToken') };
   }
 

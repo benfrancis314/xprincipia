@@ -14,15 +14,27 @@ export default class WelcomeContainer extends React.Component {
    
   hoverLeaderBoardText() {
     $(document).ready(function() {
-            $('#leaderBoardCapTop').html("categories").fadeIn(7500);
+            $('#leaderBoardCapTop').html("leaderboards").fadeIn(7500);
             $('#leaderBoardCapTop').attr('id','leaderBoardCapTopHover');
     });
   }
   unHoverLeaderBoardText() {
-    $(document).ready(function() {
-            $('#leaderBoardCapTopHover').html("top members");
-            $('#leaderBoardCapTopHover').attr('id','leaderBoardCapTop');
-    });
+    if(this.state.leaderboardType == 'users') {
+        $(document).ready(function() {
+                $('#leaderBoardCapTopHover').html("top members");
+                $('#leaderBoardCapTopHover').attr('id','leaderBoardCapTop');
+        });
+    } else if (this.state.leaderboardType == 'proposals') {
+      $(document).ready(function() {
+        $('#leaderBoardCapTopHover').html("top proposals");
+        $('#leaderBoardCapTopHover').attr('id','leaderBoardCapTop');
+      });
+    } else {
+      $(document).ready(function() {
+        $('#leaderBoardCapTopHover').html("top projects");
+        $('#leaderBoardCapTopHover').attr('id','leaderBoardCapTop');
+      });
+    }
   }
   showLeaderBoardSelect() {
     $(document).ready(function() {
@@ -34,14 +46,35 @@ export default class WelcomeContainer extends React.Component {
     });
   }
   hideLeaderBoardSelect() {
-    $(document).ready(function() {
-            $('#leaderBoardSelectShow').attr('id','leaderBoardSelect');
-            $('#leaderBoardCapTopClick').html("top members");
-            $('#leaderBoardCapTopClick').attr('id','leaderBoardCapTop');
-            $('#leaderBoardFilterButtonClick').attr('id','leaderBoardFilterButton');
-            $('#leaderBoardFilterExitLeftShow').attr('id','leaderBoardFilterExitLeft');
-            $('#leaderBoardFilterExitRightShow').attr('id','leaderBoardFilterExitRight');
-    });
+            
+      if(this.state.leaderboardType == 'users') {
+        $(document).ready(function() {
+          $('#leaderBoardSelectShow').attr('id','leaderBoardSelect');
+          $('#leaderBoardCapTopClick').html("top members");
+          $('#leaderBoardCapTopClick').attr('id','leaderBoardCapTop');
+          $('#leaderBoardFilterButtonClick').attr('id','leaderBoardFilterButton');
+          $('#leaderBoardFilterExitLeftShow').attr('id','leaderBoardFilterExitLeft');
+          $('#leaderBoardFilterExitRightShow').attr('id','leaderBoardFilterExitRight');
+        });
+      } else if (this.state.leaderboardType == 'proposals') {
+        $(document).ready(function() {
+          $('#leaderBoardSelectShow').attr('id','leaderBoardSelect');
+          $('#leaderBoardCapTopClick').html("top proposals");
+          $('#leaderBoardCapTopClick').attr('id','leaderBoardCapTop');
+          $('#leaderBoardFilterButtonClick').attr('id','leaderBoardFilterButton');
+          $('#leaderBoardFilterExitLeftShow').attr('id','leaderBoardFilterExitLeft');
+          $('#leaderBoardFilterExitRightShow').attr('id','leaderBoardFilterExitRight');
+        });
+      } else {
+        $(document).ready(function() {
+          $('#leaderBoardSelectShow').attr('id','leaderBoardSelect');
+          $('#leaderBoardCapTopClick').html("top projects");
+          $('#leaderBoardCapTopClick').attr('id','leaderBoardCapTop');
+          $('#leaderBoardFilterButtonClick').attr('id','leaderBoardFilterButton');
+          $('#leaderBoardFilterExitLeftShow').attr('id','leaderBoardFilterExitLeft');
+          $('#leaderBoardFilterExitRightShow').attr('id','leaderBoardFilterExitRight');
+        });
+      }             
 }
 
   hoverText() {
@@ -76,6 +109,8 @@ export default class WelcomeContainer extends React.Component {
         this.selectUsers = this.selectUsers.bind(this);
         this.selectProjects = this.selectProjects.bind(this);
         this.selectProposals = this.selectProposals.bind(this);
+        this.unHoverLeaderBoardText = this.unHoverLeaderBoardText.bind(this);
+        this.hideLeaderBoardSelect = this.hideLeaderBoardSelect.bind(this);
         // this.startSound = this.startSound.bind(this);
     };
 
@@ -144,13 +179,22 @@ export default class WelcomeContainer extends React.Component {
               } 
           });
       });
+      $(document).ready(function() {
+        $('#leaderBoardSelectShow').attr('id','leaderBoardSelect');
+        $('#leaderBoardCapTopClick').html("top members");
+        $('#leaderBoardCapTopClick').attr('id','leaderBoardCapTop');
+        $('#leaderBoardFilterButtonClick').attr('id','leaderBoardFilterButton');
+        $('#leaderBoardFilterExitLeftShow').attr('id','leaderBoardFilterExitLeft');
+        $('#leaderBoardFilterExitRightShow').attr('id','leaderBoardFilterExitRight');
+      });
     };
 
     selectProjects () {
       var self = this;
       axios.get( Config.API + '/problems/filter/byvote').then(function (response) {
           self.setState({
-              problems: response.data,
+            leaderboardType: 'projects',  
+            leaderboard: response.data,
           })
       }) 
       .catch(function (error) {
@@ -168,14 +212,23 @@ export default class WelcomeContainer extends React.Component {
                 );
               } 
           });
+      });
+      $(document).ready(function() {
+        $('#leaderBoardSelectShow').attr('id','leaderBoardSelect');
+        $('#leaderBoardCapTopClick').html("top projects");
+        $('#leaderBoardCapTopClick').attr('id','leaderBoardCapTop');
+        $('#leaderBoardFilterButtonClick').attr('id','leaderBoardFilterButton');
+        $('#leaderBoardFilterExitLeftShow').attr('id','leaderBoardFilterExitLeft');
+        $('#leaderBoardFilterExitRightShow').attr('id','leaderBoardFilterExitRight');
       });
     };
 
     selectProposals () {
       var self = this;
-      axios.get( Config.API + '/problems/all').then(function (response) {
+      axios.get( Config.API + '/solutions/filter/byvote').then(function (response) {
           self.setState({
-              problems: response.data,
+            leaderboardType: 'proposals',  
+            leaderboard: response.data,
           })
       }) 
       .catch(function (error) {
@@ -194,8 +247,15 @@ export default class WelcomeContainer extends React.Component {
               } 
           });
       });
+      $(document).ready(function() {
+        $('#leaderBoardSelectShow').attr('id','leaderBoardSelect');
+        $('#leaderBoardCapTopClick').html("top proposals");
+        $('#leaderBoardCapTopClick').attr('id','leaderBoardCapTop');
+        $('#leaderBoardFilterButtonClick').attr('id','leaderBoardFilterButton');
+        $('#leaderBoardFilterExitLeftShow').attr('id','leaderBoardFilterExitLeft');
+        $('#leaderBoardFilterExitRightShow').attr('id','leaderBoardFilterExitRight');
+      });
     };
-
 
    
    render() {
@@ -207,39 +267,20 @@ export default class WelcomeContainer extends React.Component {
             </div>
           </Link> */}    
 
-          {/* Get rid of if not using */}
           <div id="welcomeUnitsContainer">
             <div id="welcomeContainerTitle">
-                centralized projects
+                <span id="welcomeContainerTitleBlue">centralized </span><span id="welcomeContainerTitleWhite">projects</span>
             </div> 
             <div id="width87">
                 <WelcomeUnit problems={this.state.problems} />
             </div>
           </div>
-          
-          {/*<div id="chatBoxOpenButtonContainer">*/}
-            {/*<Link to="/chatbox" activeClassName="activeChat">
-              <div id="chatBoxOpenButton">
-                Live Debate
-              </div>
-            </Link>*/}
-          {/*</div>*/}
 
-          
-          
-        
-          {/* Old */}
-          {/* <div id="welcomeFormComponent">
-              <form id="privateSearchForm">
-                <input type="search" name="search" placeholder="Search all projects" id="privateExploreInput"  onKeyDown={this.queryProblem} autoFocus/>
-              </form>
-          </div> */}
           <div id="welcomeUserUnitsContainer">
               {this.props.children}
               
               <div id="welcomeRightContainer">
                 <div id="SPListDiv">
-                {/* <div id="welcomeRightResults"> */}
                     <div id="featuredContainer">
                       <div id="featuredProjectLabel">
                         featured
@@ -255,46 +296,29 @@ export default class WelcomeContainer extends React.Component {
                       <img src={require('../assets/redX.svg')} id="leaderBoardFilterExitRight" width="25" height="25" onClick={this.hideLeaderBoardSelect} />
                     </div>
                     <div id="leaderBoardSelect">
-                      <div id="leaderBoardOption" onClick={this.selectUsers}>
-                        members
-                      </div>
                       <div id="leaderBoardOption" onClick={this.selectProjects}>
                         projects
                       </div>
                       <div id="leaderBoardOption" onClick={this.selectProposals}>
                         proposals
                       </div>
+                      <div id="leaderBoardOption" onClick={this.selectUsers}>
+                        members
+                      </div>
                     </div>
 
-                    {/* <div id="leaderBoardTitleContainer"> */}
                     <div id="leaderBoardCapTop">
                         top projects
                     </div>
-                    {/* </div> */}
-                    {/* <form id="welcomeSearchFormContainer">
-                      <input type="search" name="search" placeholder="SEARCH PROJECT TREES" id="welcomeSearchFormLabel" onKeyDown={this.queryProblem} 
-                      autoComplete="off" />
-                    </form> */}
-                    
-                    {/* <div id="invisibleLeaderboardUsers">
-                      *Users list here*
-                    </div> */}
                     <div id="visibleLeaderboardProjects">
                       <LeaderboardUnit leaderboardType={this.state.leaderboardType} leaderboard={this.state.leaderboard} />
                     </div>
-                  {/* <div id="leaderBoardCapBottom">
-                  </div> */}
                 </div>
               </div>
               
           </div>
 
-          {/*<div id="tutorialWelcomeButtonDiv">
-            <img src={require('../assets/tutorial.svg')} id="tutorialWelcomeButton" width="50" height="50" alt="Back arrow, blue up arrow" />
-          </div>*/}
           {randomImg()}
-          {/* <TutorialWelcomeContent /> */}
-          {/*</ReactCSSTransitionGroup>*/}
         </div>
       );
    }

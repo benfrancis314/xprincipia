@@ -57,7 +57,7 @@ export default class SolutionForm extends React.Component {
     axios.get( Config.API + '/s3call/key').then(function (response) {
       self.setState({
           key: response.data,
-          file: document.getElementById("fileProposal").value,
+          // file: document.getElementById("fileProposal").value,
           prose: '0',
       })
   }) 
@@ -69,7 +69,7 @@ export default class SolutionForm extends React.Component {
     axios.get( Config.API + '/s3call/key').then(function (response) {
       self.setState({
         key: response.data,
-        file: document.getElementById("fileProposal").value,
+        // file: document.getElementById("fileProposal").value,
       })
     })
   }
@@ -114,7 +114,7 @@ export default class SolutionForm extends React.Component {
 
     var files = document.getElementById('fileProposal').files;
     var file = files[0];
-    this.state.file = file;
+    // this.state.file = file;
 
     this.state.title = document.getElementById('solutionTitleForm').value
     this.state.summary = document.getElementById('solutionSummaryForm').value
@@ -224,7 +224,7 @@ export default class SolutionForm extends React.Component {
         <div id="createSolutionBox">
             <ScrollableAnchor id={'proposalForm'}>
               <div id="proposalFormCreateTitle">
-                    new proposal
+                    <span id="blue">new </span>proposal
               </div>
             </ScrollableAnchor>
 
@@ -277,7 +277,7 @@ export default class SolutionForm extends React.Component {
 
 
                 <label htmlFor="solutionSummary" id="solutionSummaryFormLabel">summary<br />
-                  <textarea name="solutionSummary" required="required" maxLength="500" placeholder="Please summarize your proposal here. (500 ch.)" id="solutionSummaryForm"/>
+                  <textarea name="solutionSummary" required="required" maxLength="500" placeholder="Please summarize your proposal here. (500 ch)" id="solutionSummaryForm"/>
                 </label><br />
 
                 <div id="solutionDescriptionFormLabel">

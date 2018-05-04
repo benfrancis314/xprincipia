@@ -102,7 +102,7 @@ componentWillReceiveProps (nextProps){
                   {/* 
                   <label htmlFor="problemSummaryForm" id="problemSummaryFormLabel">concept or distinction<br />
                       <textarea name="problemSummary" maxLength="150" 
-                      placeholder="What is the concept behind this breakdown or what makes it distinct? (250 ch.)" id="problemSummaryForm"/>
+                      placeholder="What is the concept behind this breakdown or what makes it distinct? (250 ch)" id="problemSummaryForm"/>
                       </label><br /> */}
                   <Link to={window.location.pathname}>
                     <input type="button" value="Create" onClick={this.postBreakdown} id="submitBreakdown"/>

@@ -47,7 +47,6 @@ export default class ProblemDiscussMenu extends React.Component {
             transitionEnter={false}
             transitionLeave={false}>
                 {React.cloneElement(this.props.children, {probID: this.props.params.probID, parentTitle: this.props.parentTitle})}
-                <div id="proposalsTitleRightSBEnd"><br /></div>
             </ReactCSSTransitionGroup>
         </div>
 

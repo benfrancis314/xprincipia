@@ -436,7 +436,7 @@ export default class Tutorial extends React.Component {
                                                 </label><br />
 
                                                 <label htmlFor="solutionSummary" id="solutionSummaryFormLabel">Summary<br />
-                                                    <textarea name="solutionSummary" required="required" maxLength="400" placeholder="Please summarize your proposal here. (400 ch.)" id="solutionSummaryForm"/>
+                                                    <textarea name="solutionSummary" required="required" maxLength="400" placeholder="Please summarize your proposal here. (400 ch)" id="solutionSummaryForm"/>
                                                 </label><br />
 
                                                 <label htmlFor="solutionDescription" id="solutionDescriptionFormLabel">Description<br />

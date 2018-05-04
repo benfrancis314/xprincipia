@@ -32,7 +32,7 @@ export default class NotebookFull extends React.Component {
         
     };
     //initialize the component with this state
-    componentWillMount(){
+    componentDidMount(){
       var self = this;
       if (cookie.load('userName') !== undefined) { 
           return axios.get( Config.API + '/notebooks/username/top?username='+cookie.load('userName')).then(function (response) {

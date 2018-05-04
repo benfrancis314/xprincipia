@@ -187,7 +187,7 @@ export default class VersionForm extends React.Component {
 
 
                 <label htmlFor="solutionSummary" id="solutionSummaryFormLabel">summary<br />
-                  <textarea name="solutionSummary" required="required" maxLength="500" placeholder="Please summarize your proposal here. (500 ch.)" id="versionSummaryForm"/>
+                  <textarea name="solutionSummary" required="required" maxLength="500" placeholder="Please summarize your proposal here. (500 ch)" id="versionSummaryForm"/>
                 </label><br />
 
                 <div id="solutionDescriptionFormLabel">

@@ -17,7 +17,7 @@ export default class LoginUnit extends React.Component {
     this.postLogin = this.postLogin.bind(this);
   };
 
-  componentWillMount() {
+  componentDidMount() {
     this.state =  { userToken: cookie.load('userToken') };
   }
 

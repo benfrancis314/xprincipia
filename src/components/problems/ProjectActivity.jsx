@@ -13,6 +13,7 @@ export default class ProblemFollowButton extends React.Component {
 
     this.state = {
       projectFeed: [],
+      linkPath: '',
     }
     this.renderItem = this.renderItem.bind(this)
 };
@@ -20,11 +21,20 @@ export default class ProblemFollowButton extends React.Component {
 componentDidMount(){
     var self = this;
     // window.scrollTo(0,0);
-    return axios.get( Config.API + '/problems/onproblemfeed?problem_id='+this.props.probID).then(function (response) {
+    axios.get( Config.API + '/problems/onproblemfeed?problem_id='+this.props.probID).then(function (response) {
         self.setState({
             projectFeed: response.data,
         })
     }) 
+    if (window.location.pathname.includes('private')) {
+        self.setState({
+            linkPath: '/project/private/',
+        })
+    } else {
+        self.setState({
+            linkPath: '/project/',
+        })
+    }
 
  }
 componentWillReceiveProps(nextProps){
@@ -73,27 +83,22 @@ render() {
 }
     
 renderItem(problem) {  
-    if (problem.ParentType == '1') {
+    if (problem.ParentType === 1) {
 
       return (
-    //   We do actually want to show projects on proposals here:
-        // <li key={problem.ID} id="feedListUnit">
-        //     <Link to={'/project/'+problem.ID +'/subprojects'}>
-        //         <div id="feedUnits">               
-        //             <div id="blueFeed">project by <span id="feedCaps">{problem.OriginalPosterUsername}</span></div>
-        //             <div id="whiteFeed">{problem.Title}</div>
-        //             <div id="feedDate">{dateTime(problem.CreatedAt)}</div>
-        //         </div>
-        //     </Link>
-        // </li>
         <div key={problem.ID} id="nodisplay">
         </div>
       
       );
+} else if (problem.BackupParentID !== 0) {
 
-// NEED MORE IF STATEMENTS TO SEE IF THEY'RE ON PROPOSALS
+    return (
+      <div key={problem.ID} id="nodisplay">
+      </div>
+    
+    );
 
-} else if (problem.Type == '0') {
+} else if (problem.Type === 0) {
 
     return (
         <li key={problem.ID} id="feedListUnit">
@@ -107,7 +112,7 @@ renderItem(problem) {
             </Link>  
         </li>
     );
-} else if (problem.Type == '1') {
+} else if (problem.Type === 1) {
 
     return (
         <li key={problem.ID} id="feedListUnit">
@@ -120,55 +125,21 @@ renderItem(problem) {
                 </div>
             </Link>  
         </li>
-    );
-    } else if (problem.Type == '2') {
+        );
+    } else if (problem.Type === 5) {
         return (
-        <li key={problem.ID} id="feedListUnit">
-            <Link to={'/project/'+problem.ProblemID +'/question/'+problem.TypeID +'/answers'}>
-                <div id="feedUnitsProject">               
-                    <div id="blueFeedProject">new question:</div>
-                    <div id="whiteFeedProjectDescription">
-                        {problem.Description}
+            <li key={problem.ID} id="feedListUnit">
+                <Link to={'/project/'+problem.ProblemID +'/suggestion/'+problem.TypeID +'/comments'}>
+                    <div id="feedUnitsProject">               
+                        <div id="blueFeedProject">new comment:</div>
+                        <div id="whiteFeedProjectDescription">
+                            {problem.Description}
+                        </div>
                     </div>
-                </div>
-            </Link>  
-        </li>);
-    } else if (problem.Type == '3') {
-        return (
-        <li key={problem.ID} id="feedListUnit">
-            <Link to={'/project/'+problem.ProblemID +'/suggestion/'+problem.TypeID +'/comments'}>
-                <div id="feedUnitsProject">               
-                    <div id="blueFeedProject">new suggestion:</div>
-                    <div id="whiteFeedProjectDescription">
-                        {problem.Description}
-                    </div>
-                </div>
-            </Link>
-        </li>);
-    } else if (problem.Type == '4') {
-        return (
-        <div key={problem.ID} id="nodisplay">
-        </div>);
-    } else if (problem.Type == '5') {
-        return (
-        <div key={problem.ID} id="nodisplay">
-        </div>
-);
-    } else if (problem.Type == '6') {
-        return (
-        <li key={problem.ID} id="feedListUnit">
-            <Link to={'/project/'+problem.ProblemID +'/freeform/'+problem.TypeID +'/comments'}>
-                <div id="feedUnitsProject">               
-                    <div id="blueFeedProject">new debate:</div>
-                    <div id="whiteFeedProjectDescription">
-                        {problem.Description}
-                    </div>
-                </div>
-            </Link>
-            
-        </li>);
-    
-    } else if (problem.Type == '7') {
+                </Link>
+            </li>
+            );
+    } else if (problem.Type === 7) {
         return (
         <li key={problem.ID} id="feedListUnit">
             <Link to={'/project/'+problem.ProblemID +'/learn/content/'+problem.TypeID +'/comments'}>
@@ -180,42 +151,26 @@ renderItem(problem) {
                 </div>
             </Link>
         </li>);
-    } else if (problem.Type == '8') {
+    } else if (problem.Type === 8) {
         return (
-        <li key={problem.ID} id="feedListUnit">
-            <Link to={'/project/'+problem.ProblemID +'/learn/resources/'+problem.TypeID +'/comments'}>
-                <div id="feedUnitsProject">               
-                    <div id="blueFeedProject">new resource:</div>
-                    <div id="whiteFeedProject">
-                        {problem.Description}
-                    </div>
-                </div>
-            </Link>
-        </li>);
-    } else if (problem.Type == '9') {
-        return (
-        <div key={problem.ID} id="nodisplay">
-        </div>);
-    } else if (problem.Type == '10') {
-        return (
-        <div key={problem.ID} id="nodisplay">
-        </div>);
-    } else {
-          return (
             <li key={problem.ID} id="feedListUnit">
-                <Link to={'/project/'+problem.ID +'/subprojects'}>
+                <Link to={'/project/'+problem.ProblemID +'/learn/resources/'+problem.TypeID +'/comments'}>
                     <div id="feedUnitsProject">               
-                        <div id="blueFeedProject">new update:</div>
+                        <div id="blueFeedProject">new resource:</div>
                         <div id="whiteFeedProject">
                             {problem.Description}
                         </div>
                     </div>
                 </Link>
-            </li>
-          );
-        }
-       }
+            </li>);
+    } else {
+        return (
+            <div key={problem.ID} id="nodisplay">
+            </div>
+        );
     }
+}
+}
 
 
     

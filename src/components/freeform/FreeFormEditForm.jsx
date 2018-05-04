@@ -17,7 +17,7 @@ export default class FreeFormEditForm extends React.Component {
     this.updateFreeForm = this.updateFreeForm.bind(this);
   };
 
-  componentWillMount(){
+  componentDidMount(){
       var self = this;
         return axios.get( Config.API + '/freeForms/ID?id='+this.props.params.freeFormID).then(function (response) {
           self.setState({

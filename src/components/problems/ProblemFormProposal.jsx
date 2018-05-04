@@ -18,6 +18,8 @@ export default class ProblemForm extends React.Component {
       title: '',
       summary: '',
       class: '',
+      linkPath: '',
+      private: '',
     }
 
     this.postProblem = this.postProblem.bind(this);
@@ -141,7 +143,7 @@ export default class ProblemForm extends React.Component {
                       synopsis
                       <br />
                       <textarea name="problemSummary" required="required" maxLength="500" 
-                      placeholder="Please provide any additional information you'd like. (500 ch.)" id="problemSummaryForm"/>
+                      placeholder="Please summarize this project or add any additional information you'd like. (500 ch)" id="problemSummaryForm"/>
                       </label><br />
                   <Link to={`/project/${this.props.params.probID}/proposal/${this.props.params.solutionID}/subprojects`}>
                       <input type="button" value="Create" onClick={this.postProblem} id="submitProblem"/>

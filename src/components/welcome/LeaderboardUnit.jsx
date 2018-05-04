@@ -40,18 +40,42 @@ export default class LeaderboardUnit extends React.Component {
 	}
 	renderItem(problem) {
   
-        function hoverLeaderBoardTextVotes() {
+        function hoverLeaderBoardProjectVotes() {
+            $(document).ready(function() {
+                    $('#leaderBoardCapTop').html("project votes").fadeIn(7500);
+                    $('#leaderBoardCapTop').attr('id','leaderBoardCapTopVotesHover');
+            });
+          }
+        function unHoverLeaderBoardProjectVotes() {
+            $(document).ready(function() {
+                    $('#leaderBoardCapTopVotesHover').html("top projects");
+                    $('#leaderBoardCapTopVotesHover').attr('id','leaderBoardCapTop');
+            });
+        }
+        function hoverLeaderBoardUserPoints() {
             $(document).ready(function() {
                     $('#leaderBoardCapTop').html("user points").fadeIn(7500);
                     $('#leaderBoardCapTop').attr('id','leaderBoardCapTopVotesHover');
             });
-          }
-          function unHoverLeaderBoardTextVotes() {
+        }
+        function unHoverLeaderBoardUserPoints() {
             $(document).ready(function() {
-                    $('#leaderBoardCapTopVotesHover').html("user leaderboard");
+                    $('#leaderBoardCapTopVotesHover').html("top members");
                     $('#leaderBoardCapTopVotesHover').attr('id','leaderBoardCapTop');
             });
-          }
+        }
+        function hoverLeaderBoardProposalVotes() {
+            $(document).ready(function() {
+                    $('#leaderBoardCapTop').html("proposal votes").fadeIn(7500);
+                    $('#leaderBoardCapTop').attr('id','leaderBoardCapTopVotesHover');
+            });
+        }
+        function unHoverLeaderBoardProposalVotes() {
+            $(document).ready(function() {
+                    $('#leaderBoardCapTopVotesHover').html("top proposals");
+                    $('#leaderBoardCapTopVotesHover').attr('id','leaderBoardCapTop');
+            });
+        }
 
 
 if (this.props.leaderboardType == 'projects') {
@@ -63,57 +87,13 @@ if (this.props.leaderboardType == 'projects') {
     //         action: 'Clicked Link',
     //     });
     // }
-// if (problem.Private === true) {
-//         return (
-//             <div key={problem.ID} id="nodisplay">
-//             </div>
-//         );
 
-// } else if (problem.ParentType === 1) {
-
-//       return (
-      
-//             <li key={problem.ID} id="nodisplay">
-//             </li>
-      
-      
-//       );
-
-// } else if (problem.Title === 'Interstellar Civilization') {
-
-//       return (
-      
-//         <li key={problem.ID} id="nodisplay">
-//         </li>
-      
-      
-//       );
-
-// } else if (problem.Title === 'Evolving Humanity') {
-//       return (
-//         <li key={problem.ID} id="nodisplay">
-//         </li>
-      
-//       );
-// } else if (problem.Title === 'theoretical knowledge') {
-//       return (
-//         <li key={problem.ID} id="nodisplay">
-//         </li>
-      
-//       );
-// } else if (problem.Title === 'Technology Development') {
-//       return (
-//         <li key={problem.ID} id="nodisplay">
-//         </li>
-      
-//       );
-// } else 
       return (
         <li key={problem.ID} id="welcomeUserProblemsUnit">
             <Link to={'/project/'+problem.ID +'/subprojects'}>
                 <div id="welcomeUserProblemsHeader">
                     <div id="welcomeUserProblemsTitle">
-                        <div id="welcomeProjectPercent" onMouseOver={hoverLeaderBoardTextVotes} onMouseOut={unHoverLeaderBoardTextVotes}>
+                        <div id="welcomeProjectPercent" onMouseOver={hoverLeaderBoardProjectVotes} onMouseOut={unHoverLeaderBoardProjectVotes}>
                             {problem.Rank}
                         </div>
                         <div id="welcomeProblemsTitleText">
@@ -130,7 +110,7 @@ if (this.props.leaderboardType == 'projects') {
             <Link to={'/user/'+problem.username}>
                 <div id="welcomeUserProblemsHeader">
                     <div id="welcomeUserProblemsTitle">
-                        <div id="welcomeProjectPercent" onMouseOver={hoverLeaderBoardTextVotes} onMouseOut={unHoverLeaderBoardTextVotes}>
+                        <div id="welcomeProjectPercent" onMouseOver={hoverLeaderBoardUserPoints} onMouseOut={unHoverLeaderBoardUserPoints}>
                             {problem.Points}
                         </div>
                         <div id="welcomeProblemsTitleText">
@@ -141,7 +121,24 @@ if (this.props.leaderboardType == 'projects') {
             </Link>
         </li>
        )
-   }
+    } else if (this.props.leaderboardType == 'proposals') {
+        return (
+         <li key={problem.ID} id="welcomeUserProblemsUnit">
+             <Link to={'/project/'+problem.ID +'/proposal/'+problem.ProblemID}>
+                 <div id="welcomeUserProblemsHeader">
+                     <div id="welcomeUserProblemsTitle">
+                         <div id="welcomeProjectPercent" onMouseOver={hoverLeaderBoardProposalVotes} onMouseOut={unHoverLeaderBoardProposalVotes}>
+                             {problem.Rank}
+                         </div>
+                         <div id="welcomeProblemsTitleText">
+                             {problem.Title}
+                         </div>
+                     </div>
+                 </div>
+             </Link>
+         </li>
+        )
+    }
 }
 }
 

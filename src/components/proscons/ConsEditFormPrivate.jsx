@@ -17,7 +17,7 @@ export default class ConsEditForm extends React.Component {
     this.updateCon = this.updateCon.bind(this);
   };
 
-  componentWillMount(){
+  componentDidMount(){
       var self = this;
         return axios.get( Config.API + '/cons/ID?id='+this.props.params.conID).then(function (response) {
           self.setState({

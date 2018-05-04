@@ -55,20 +55,17 @@ postQuestion() {
     this.state.type = '2' 
   }
 
-  //if User is on a solution post with type 1
-  //solutionID will be available in props
   if(this.props.params.solutionID){
     axios.post( Config.API + '/auth/comments/create', {
-      type:'1',
-      typeID: this.props.params.solutionID,
+      type: this.state.type,
+      typeID: this.props.params.probID,
       username: cookie.load('userName'),
       description : this.state.question,
       parentTitle: this.props.parentTitle,
       private: this.state.private,
-      parentID: this.props.params.probID,
+      backupParentID: this.props.params.solutionID,
   })
     .then(function (result) {
-      // document.location = window.location.pathname 
       document.getElementById("questionForm").reset();
       self.refs.btn.removeAttribute("disabled");
     })
@@ -135,7 +132,7 @@ postQuestion() {
             <div id="projectFormRadioContainer">
               <div id="projectFormRadioColumn">
                 <div id="projectFormRadioRow1">
-                  question <span id="grayLessSpacing">(default)</span>
+                  question<span id="grayLessSpacing"> | default</span>
                 </div>
                 <div id="projectFormRadioRow">
                   <label id="projectRadioButtonContainer">

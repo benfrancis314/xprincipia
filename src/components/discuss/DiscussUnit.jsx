@@ -39,7 +39,7 @@ export default class DiscussUnit extends React.Component {
 	render() {
 		return (
 	    <div>
-			<ul> {this.props.questions.map(this.renderItem)} </ul>    
+			{this.props.questions.map(this.renderItem)}  
 	    </div>
 		);
 	}
@@ -50,13 +50,21 @@ export default class DiscussUnit extends React.Component {
             var commentType = 'Suggestion'
         } else if (question.Type == '6') {
             var commentType = 'Debate'
+        } else if (question.Type == '5') {
+            var commentType = 'Comment'
+        } else if (question.Type == '9') {
+            var commentType = 'Pro'
+        } else if (question.Type == '10') {
+            var commentType = 'Con'
+        } else if (question.Type == '4') {
+        var commentType = 'Answer'
         }
 
        function submitVote() {
         var self = this
         self.refs.votebtn.setAttribute("disabled", "disabled");
        axios.post( Config.API + '/auth/vote/create', {
-           Type: 2,
+           Type: 5,
            TypeID: question.ID,
            username : cookie.load("userName"),
            
@@ -90,7 +98,7 @@ export default class DiscussUnit extends React.Component {
         self.refs.votebtn.setAttribute("disabled", "disabled");
       axios.delete( Config.API + '/auth/vote/delete' ,{
         params: {
-          type: 2,
+          type: 5,
           typeID: question.ID,
           username: cookie.load('userName')
         }
@@ -119,8 +127,17 @@ export default class DiscussUnit extends React.Component {
       });
 }
 
+    if (question.Username === cookie.load('userName')) {
+        var editID = 'editDiscussButton'
+        var deleteID = 'deleteDiscussButton'
+        var flagID = 'noDisplay'
+    } else {
+        var editID = 'noDisplay'
+        var deleteID = 'noDisplay'
+        var flagID = 'flagDiscussButton'
+    }
   
-       if (this.state.voteHash[question.ID] === true && question.Username === cookie.load('userName')) {
+       if (this.state.voteHash[question.ID] === true) {
            return (
             <li key={question.ID} id="suggestionUnit">
                 <div id={'suggestionContentHoverVote'+commentType} className={question.ID}>
@@ -128,17 +145,22 @@ export default class DiscussUnit extends React.Component {
                         <Link to={window.location.pathname}>
                             <div id="discussVotedButton" onClick={unVote.bind(this)} onMouseOver={hoverVoteVoted} onMouseOut={unHoverVoteVoted.bind(this)}>     
                             </div>
-                            <div id="discussPercent">{floatToDecimal(question.PercentRank)}</div>
+                            <div id="discussPercent">{question.Rank}</div>
                         </Link>
                     </div>
-                    <Link to={this.props.linkPath+question.TypeID+`/question/${question.ID}/edit`}>
-                        <div id="editDiscussButton" onMouseOver={hoverEditVoted} onMouseOut={unHoverEditVoted.bind(this)}>
+                    <Link to={this.props.linkPath+question.TypeID+`/discuss/${question.ID}/edit`} activeClassName="activeDiscussEdit">
+                        <div id={editID} onMouseOver={hoverEditVoted} onMouseOut={unHoverEditVoted.bind(this)}>
                             <img src={require('../../assets/editBlue.svg')} id="editLogo" width="18" height="18" alt="Edit Button" />
                         </div>
                     </Link>
-                    <Link to={this.props.linkPath+question.TypeID+`/question/${question.ID}/delete`}>
-                        <div id="deleteDiscussButton" onMouseOver={hoverDeleteVoted} onMouseOut={unHoverDeleteVoted.bind(this)}>
+                    <Link to={this.props.linkPath+question.TypeID+`/discuss/${question.ID}/delete`} activeClassName="activeDiscussDelete">
+                        <div id={deleteID} onMouseOver={hoverDeleteVoted} onMouseOut={unHoverDeleteVoted.bind(this)}>
                             <img src={require('../../assets/delete.svg')} id="editLogo" width="18" height="18" alt="Delete Button" />
+                        </div>
+                    </Link>
+                    <Link to={this.props.linkPath+question.TypeID+`/discuss/${question.ID}/flag`} activeClassName="activeDiscussFlag">
+                        <div id={flagID} onMouseOver={hoverFlag} onMouseOut={unHoverFlag.bind(this)}>
+                            <img src={require('../../assets/flag.svg')} id="deleteLogo" width="24" height="24" alt="Delete Button, Red X" />
                         </div>
                     </Link>
                     <div id="discussHoverTextShowVoted">
@@ -156,7 +178,7 @@ export default class DiscussUnit extends React.Component {
                 </div>
             </li>
         );
-    }  else if ( question.Username === cookie.load('userName')) {
+    } else {
         return (
             <li key={question.ID} id="suggestionUnit">
                 <div id={'suggestionContent'+commentType} className={question.ID}>
@@ -164,17 +186,22 @@ export default class DiscussUnit extends React.Component {
                         <Link to={window.location.pathname}>
                             <div id="discussVoteButton" onClick={submitVote.bind(this)} onMouseOver={hoverVote} onMouseOut={unHoverVote.bind(this)}>     
                             </div>
-                            <div id="discussPercent">{floatToDecimal(question.PercentRank)}</div>
+                            <div id="discussPercent">{question.Rank}</div>
                         </Link>
                     </div>
-                    <Link to={this.props.linkPath+question.TypeID+`/question/${question.ID}/edit`}>
-                        <div id="editDiscussButton" onMouseOver={hoverEdit} onMouseOut={unHoverEdit.bind(this)}>
+                    <Link to={this.props.linkPath+question.TypeID+`/discuss/${question.ID}/edit`} activeClassName="activeDiscussEdit">
+                        <div id={editID} onMouseOver={hoverEdit} onMouseOut={unHoverEdit.bind(this)}>
                             <img src={require('../../assets/editBlue.svg')} id="editLogo" width="18" height="18" alt="Edit Button" />
                         </div>
                     </Link>
-                    <Link to={this.props.linkPath+question.TypeID+`/question/${question.ID}/delete`}>
-                        <div id="deleteDiscussButton" onMouseOver={hoverDelete} onMouseOut={unHoverDelete.bind(this)}>
+                    <Link to={this.props.linkPath+question.TypeID+`/discuss/${question.ID}/delete`} activeClassName="activeDiscussDelete">
+                        <div id={deleteID} onMouseOver={hoverDelete} onMouseOut={unHoverDelete.bind(this)}>
                             <img src={require('../../assets/delete.svg')} id="editLogo" width="18" height="18" alt="Delete Button" />
+                        </div>
+                    </Link>
+                    <Link to={this.props.linkPath+question.TypeID+`/discuss/${question.ID}/flag`}  activeClassName="activeDiscussFlag">
+                        <div id={flagID} onMouseOver={hoverFlag} onMouseOut={unHoverFlag.bind(this)}>
+                            <img src={require('../../assets/flag.svg')} id="deleteLogo" width="24" height="24" alt="Delete Button, Red X" />
                         </div>
                     </Link>
                     <div id="discussHoverText">
@@ -192,68 +219,7 @@ export default class DiscussUnit extends React.Component {
                 </div>
             </li>
         );
-    } else if (this.state.voteHash[question.ID] === true) {
-        return (
-        <li key={question.ID} id="suggestionUnit">
-            <div id={'suggestionContentHoverVote'+commentType} className={question.ID}>
-                <div id="discussUnitButtonsContainer">
-                    <Link to={window.location.pathname}>
-                        <div id="discussVotedButton" onClick={unVote.bind(this)} onMouseOver={hoverVoteVoted} onMouseOut={unHoverVoteVoted.bind(this)}>     
-                        </div>
-                        <div id="discussPercent">{floatToDecimal(question.PercentRank)}</div>
-                    </Link>
-                </div>
-                <Link to={this.props.linkPath+question.TypeID+`/question/${question.ID}/flag`}>
-                    <div id="flagDiscussButton" onMouseOver={hoverFlagVoted} onMouseOut={unHoverFlagVoted.bind(this)}>
-                        <img src={require('../../assets/flag.svg')} id="deleteLogo" width="24" height="24" alt="Delete Button, Red X" />
-                    </div>
-                </Link>
-                <div id="discussHoverTextShowVoted">
-                    <span id="discussNumberValue">{this.state.debateNumber[question.ID]} </span>responses
-                </div>
-                <div id={"discussHeader"+commentType}>
-                    {commentType} <span id="gray">by {question.Username}</span>
-                </div>
-                <Link to={this.props.linkPath+question.TypeID+`/discuss/${question.ID}/comments`}>
-                    <div id="suggestionText" ref='votebtn' onMouseOver={hoverThreadVoted} onMouseOut={unHoverThreadVoted.bind(this)}>
-                        {question.Description}
-                    </div>
-                </Link>
-                <div id="feedDateProse">{dateTime(question.CreatedAt)}</div>
-            </div>
-        </li>
-        );
 
-    } else {
-    return (
-        <li key={question.ID} id="suggestionUnit">
-            <div id={'suggestionContent'+commentType} className={question.ID}>
-                <div id="discussUnitButtonsContainer">
-                    <Link to={window.location.pathname}>
-                        <div id="discussVoteButton" onClick={submitVote.bind(this)} onMouseOver={hoverVote} onMouseOut={unHoverVote.bind(this)}>     
-                        </div>
-                        <div id="discussPercent">{floatToDecimal(question.PercentRank)}</div>
-                    </Link>
-                </div>
-                <Link to={this.props.linkPath+question.TypeID+`/question/${question.ID}/flag`}>
-                    <div id="flagDiscussButton" onMouseOver={hoverFlag} onMouseOut={unHoverFlag.bind(this)}>
-                        <img src={require('../../assets/flag.svg')} id="deleteLogo" width="24" height="24" alt="Delete Button, Red X" />
-                    </div>
-                </Link>
-                <div id="discussHoverText">
-                    <span id="discussNumberValue">{this.state.debateNumber[question.ID]} </span>responses
-                </div>
-                <div id={"discussHeader"+commentType}>
-                    {commentType} <span id="gray">by {question.Username}</span>
-                </div>
-                <Link to={this.props.linkPath+question.TypeID+`/discuss/${question.ID}/comments`}>
-                    <div id="suggestionText" ref='votebtn' onMouseOver={hoverThread} onMouseOut={unHoverThread.bind(this)}>
-                        {question.Description}
-                    </div>
-                </Link>
-            </div>
-        </li>
-        );
 }
 
 function hoverThread() {

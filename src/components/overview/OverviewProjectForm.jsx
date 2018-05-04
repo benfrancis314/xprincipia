@@ -127,7 +127,7 @@ export default class ProblemForm extends React.Component {
 
                   <label htmlFor="problemSummaryForm" id="problemSummaryFormLabel">Additional Information<br />
                       <textarea name="problemSummary" maxLength="350" 
-                      placeholder="Please provide any additional information you'd like. (350 ch.)" id="problemSummaryForm"/>
+                      placeholder="Please provide any additional information you'd like. (350 ch)" id="problemSummaryForm"/>
                       </label><br />
 
                   <input type="button" value="Create" onClick={this.postProblem} id="submitProblem"/>

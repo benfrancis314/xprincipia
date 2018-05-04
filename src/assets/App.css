@@ -177,6 +177,7 @@ ol, ul {
 }
 #blue {
   color: #00dcff !important;
+  transition: all 2s ease 0s;
 }
 #blueOpen {
   color: #00dcff !important;
@@ -193,12 +194,16 @@ ol, ul {
   color: #00ffdc !important;
   font-family: 'Open Sans' !important;
 }
-#greenSmall {
+#greenSmall, #greenSmallFaint {
   color: #00ffdc !important;
   font-size: 90% !important;  
   margin-bottom: 12px !important;
   margin-left: 5px !important;
   /* padding-left: 5px !important; */
+}
+#greenSmallFaint {
+  color: rgba(0,255,220,0.5) !important;
+  transition: all 1s ease 0s;
 }
 #red {
   color: #ff7f7f !important;
@@ -209,6 +214,10 @@ ol, ul {
 
 #white {
   color: #dddddd !important;
+}
+#brightWhite {
+  color: #ffffff !important;
+  transition: all 2s ease 0s !important;
 }
 #whiteOpen {
   color: #dddddd !important;
@@ -882,7 +891,7 @@ padding-right: 0px !important;
 #suggestionTextArea, #commentTextArea,
 #proTextArea, #conTextArea, 
 #resourcesTextArea, #learnContentTextArea, 
-#freeFormTextArea {
+#freeFormTextArea, #commentEditTextArea {
 width: 70% !important;
 }
 #fieldSetNoBorderPadding {
@@ -1250,7 +1259,7 @@ letter-spacing: 2px !important;
   text-transform: lowercase !important;
 }
 #answerQuestionContent, #answerQuestionContentQuestion, #answerQuestionContentSuggestion, #answerQuestionContentDebate,
-#answerQuestionContentAnswer, #answerQuestionContentComment, #answerQuestionContentPro, #answerQuestionContentCon {
+#answerQuestionContentAnswer, #answerQuestionContentComment, #answerQuestionContentPro, #answerQuestionContentCon, #answerQuestionContentDiscuss {
   /*Old Styles*/
   /*flex: 3 3 auto;
   font-family: 'Open Sans';
@@ -1263,7 +1272,7 @@ letter-spacing: 2px !important;
   border-radius: 5px 3px 25% 10px;
   width: 90%;
   padding: 1% 5% 1% 5%;
-  margin-bottom: 1.1%;
+  /* margin-bottom: 1.1%; */
   background: linear-gradient(to right,rgba(0,220,255, 0.06), rgba(0,220,255, 0.07), rgba(0,220,255, 0.02));
   transition: all 0.5s ease 0s;
 }
@@ -1302,6 +1311,18 @@ letter-spacing: 2px !important;
 }
 /* #questionForm {
 } */
+#discussDeleteConfirm {
+  margin: 0 auto;
+  margin-top: 2%;
+  border: 1px solid #515151;
+  border-radius: 3px 3px 20% 20%;
+  padding: 10px;
+  width: 70%;
+  text-align: center;
+  font-size: 125%;
+  letter-spacing: 2px;
+  background: radial-gradient(circle, rgba(0,220,255,0.05), rgba(0,220,255,0));
+}
 #questionLegend {
   color: #00dcff;
   margin: 0 auto;
@@ -1457,12 +1478,12 @@ letter-spacing: 2px !important;
   position: relative;
   flex-direction: row;
   font-family: 'Open Sans';
-  padding-top: 10px;
-  width: 100%;
-  /*border: 1px solid #00dcff;
-  border-radius: 3px;*/
-  margin-top: 1%;
-  margin-bottom: 1%;
+  /* padding-top: 10px; */
+  /* width: 100%; */
+  margin: 0 auto;
+  width: 90%;
+  margin-top: 2%;
+  margin-bottom: 2%;
 }
 #answerContent {
   /*Old Styles*/
@@ -1532,10 +1553,10 @@ letter-spacing: 2px !important;
   padding: 2% 0% 2% 0%;
   font-size: 175%;
   letter-spacing: 6px;
-  border: 1px solid #dddddd;
+  border: 1px solid #515151;
   border-width: 1px 1px 1px 1px;
-  border-radius: 3px 3px 3px 3px;
-  background-color: rgba(0,220,255, 0.05);
+  border-radius: 3px 3px 10% 10%;
+  background: radial-gradient(circle, rgba(0,220,255,0), rgba(0,220,255,0.1));
 }
 #solutionDeleteForm, #solutionEditForm {
   color: #00dcff;
@@ -1596,7 +1617,7 @@ letter-spacing: 2px !important;
   margin: 0 auto;
   letter-spacing: 4px;
   border: 1px solid #ffffff;
-  border-radius: 3px;
+  border-radius: 3px 3px 10% 10%;
   box-shadow: 0 0 1pt 1pt rgba(255,255,255,0.5);
   /* background-color: rgba(0,220,255, 0.05); */
   background: radial-gradient(circle, rgba(0,220,255, 0.1), rgba(0,220,255, 0), rgba(0,220,255, 0));   
@@ -1948,7 +1969,7 @@ margin-top: 11%;
 }
 #errorTitle {
 font-size: 100%;
-letter-spacing: 16px;
+letter-spacing: 10px;
 border: 1px solid #00dcff;
 border-width: 2px 0px;
 text-align: center;
@@ -1956,8 +1977,12 @@ text-align: center;
 #errorSlogan {
 margin-left: 35px;
 margin-top: 15px;
-letter-spacing: 12px;
+letter-spacing: 2px;
 text-align: center;
+}
+#errorSlogan2 {
+  color: rgba(255,127,127,0.5);
+  font-size: 120%;
 }
 #loader {
 border: 12px solid #0f131c;
@@ -2159,8 +2184,10 @@ text-align: center;
   color: #515151;
 }
 #logoName:hover {
-  letter-spacing: 12px;
+  /* letter-spacing: 12px; */
+  letter-spacing: 8px; 
   color: #ffffff;
+  margin-left: 3%;
 }
 #logoName:hover #xBlue {
   color: #00dcff;
@@ -2385,17 +2412,17 @@ text-align: center;
 /*Footer*/
 #footer {
 width: 100%;
-background-color: #515151;
+background-color: rgba(81, 81, 81,0.5);
 text-align: center;
 font-size: 150%;
 letter-spacing: 16px;
-color: #dddddd;
+color: #00dcff;
 padding-top: 0.5%;
 /* WHEN CREATIVE COMMONS */
 /* padding-bottom: 0%; */
 /* WITHOUT CREATIVE COMMONS */
 padding-bottom: 0.5%;
-border: 1px solid #dddddd;
+border: 1px solid #00dcff;
 border-width: 1px 0px;
 margin: 0 auto;
 transition: all 0.5s ease 0s;
@@ -2878,7 +2905,7 @@ padding-top: 0px;
 #introductionContainer {
 margin: 0 auto;
 margin-top: 2%;
-margin-bottom: 0%;
+margin-bottom: 3%;
 font-size: 175%;
 width: 75%;
 border-width: 1px 1px 1px 1px;
@@ -2887,7 +2914,7 @@ text-align: left;
 padding: 0% 5% 0% 5%;
 z-index: 5;
 }
-#introductionWelcomeSlogan, #introductionWelcomeSloganBlue {
+#introductionWelcomeSlogan, #introductionWelcomeSloganHover {
 padding: 3%;
 padding-bottom: 4%;
 padding-top: 4%;
@@ -2911,8 +2938,8 @@ background-image: url('./buzzAldrin.jpg');
 background-position: center 8%;
 background-size: 150%;
 }
-#introductionWelcomeSloganBlue {
-  color: #00dcff;
+#introductionWelcomeSloganHover {
+  /* color: #00dcff; */
   font-size: 160%;
 }
 #introductionWelcomeSlogan:hover, #introductionWelcomeSloganBlue:hover {
@@ -3754,7 +3781,7 @@ margin-top: 0.5%;
 }
 #privateContainerMottoWhite {
   color: #ffffff;
-  letter-spacing: 6px;
+  letter-spacing: 7px;
 }
 #privateContainerMottoRed {
   color: #ff7f7f;
@@ -5261,7 +5288,7 @@ width: 75%;
   padding: 10px;
   margin: 0 auto;
   width: 90%;
-  border-radius: 3px;
+  border-radius: 3px 3px 10% 10%;
   transition: all 0.5s ease 0s;
   margin-top: 2.25%;
   border: 1px solid rgba(0,220,255,0.5);
@@ -5273,11 +5300,11 @@ width: 75%;
   background-color: rgba(0,220,255,0.05);
 }
 #solutionUnitGreen {
-  border: 1px solid rgba(0,255,220,0.5);
+  border-color: rgba(0,255,220,0.5);
   background: radial-gradient(circle, rgba(0,255,220, 0), rgba(0,255,220, 0.05));
 }
 #solutionUnitRed {
-  border: 1px solid rgba(255,127,127,0.5);
+  border-color: rgba(255,127,127,0.5);
   background: radial-gradient(circle, rgba(255,127,127, 0), rgba(255,127,127, 0.05));
 }
 #solutionUnitGreen:hover {
@@ -5289,8 +5316,8 @@ width: 75%;
   background-color: rgba(255,127,127,0.05);
 }
 #redProposal, #greenProposal {
-  font-size: 60%;
-  line-height: 10%;
+  font-size: 50%;
+  line-height: 25%;
   color: rgba(255,127,127,0.5);
 }
 #greenProposal {
@@ -5469,6 +5496,7 @@ font-family: 'Open Sans';
 }
 #suggestionContentDebate, #suggestionContentCon {
   border-color: rgba(255,127,127, 0.5);
+  /* border-color: hsla(24, 100%, 57%, 0.5); */
 }
 #suggestionContentCon {
   margin-left: 20%;
@@ -6112,8 +6140,15 @@ input#submitWelcomeProblem:hover {
       font-size: 150%;
       transition: all 2s ease 0s;
     }
-    #welcomeContainerTitle:hover {
+    #welcomeContainerTitleBlue, #welcomeContainerTitleWhite {
+      transition: all 2s ease 0s;
+    }
+    #welcomeContainerTitle:hover #welcomeContainerTitleBlue {
       color: #00dcff;
+      letter-spacing: 10px;
+    }
+    #welcomeContainerTitle:hover #welcomeContainerTitleWhite {
+      color: #ffffff;
       letter-spacing: 10px;
     }
     #welcomeIntroductionLabel {
@@ -6129,7 +6164,7 @@ input#submitWelcomeProblem:hover {
       transform: scale(1);
       border-radius: 0% 0% 40% 40%;
       padding: 0.1% 0% 0.3% 0%;
-      background: linear-gradient(rgba(0,255,220,0.05), rgba(0,255,220,0.05), rgba(0,220,255,0));
+      background: radial-gradient(rgba(0,255,220,0.05), rgba(0,220,255,0));
       background-size: contain;
       background-repeat: no-repeat;
       background-blend-mode: overlay;
@@ -6351,11 +6386,12 @@ input#submitWelcomeProblem:hover {
 #suggestionTextArea, #commentTextArea,
 #proTextArea, #conTextArea, 
 #resourcesTextArea, #learnContentTextArea, #learnContentSummary,  
-#freeFormTextArea, #questionFlagTextArea, #flagTextArea {
+#freeFormTextArea, #questionFlagTextArea, #flagTextArea, #commentEditTextArea {
   text-align: left;
   font-family: 'Open Sans', sans-serif;
   color: #ffffff;
-  border: 1px solid #dddddd;
+  border: 1px solid rgba(0,220,255,0.5);
+  border-radius: 3px 3px 10% 10%;
   height: 4em;
   resize: none;
   background-color: rgba(0,220,255, 0.05);
@@ -6364,6 +6400,7 @@ input#submitWelcomeProblem:hover {
   line-height: 150%;
   background: radial-gradient(circle, rgba(0,220,255, 0), rgba(0,220,255, 0.1));    
   transition: all 1s ease 0s;
+  padding-bottom: 2%;
 }
 #learnContentTextArea {
   height: 12em;
@@ -6391,7 +6428,7 @@ input#submitWelcomeProblem:hover {
 #suggestionTextArea:focus, #commentTextArea:focus,
 #proTextArea:focus, #conTextArea:focus, 
 #resourcesTextArea:focus, #learnContentTextArea:focus, #learnContentSummary:focus,  
-#freeFormTextArea:focus, #questionFlagTextArea:focus, #flagTextArea:focus {
+#freeFormTextArea:focus, #questionFlagTextArea:focus, #flagTextArea:focus, #commentEditTextArea {
   transform: scale(1.02);
 }
 #askQuestion, #addSuggestion, #addAnswer {
@@ -6411,6 +6448,29 @@ border-radius: 3px 3px 3px 3px;
 background-color: rgba(0,220,255, 0.05);
 font-family: 'Alegreya Sans SC';
 text-transform: lowercase !important;
+
+
+
+width: 30%;
+margin: 0 auto;
+/* font-size: 80%; */
+font-size: 100%;
+letter-spacing: 2px;
+/* margin-top: 1%; */
+color: #515151;
+border-width: 0px 1px 1px 1px;
+border-color: rgba(81,81,81,1);
+border-radius: 0px 0px 15% 15%;
+padding: 3px;
+transition: all 0.5s ease 0s;
+font-family: 'Alegreya Sans SC';
+background: radial-gradient(circle, rgba(0,220,255, 0), rgba(0,220,255, 0.1));
+}
+#askQuestion:hover, #addSuggestion:hover, #addAnswer:hover, #askQuestion:active, #addSuggestion:active, #addAnswer:active {
+background-color: rgba(0,220,255, 0.1);
+cursor: pointer;
+color: #00dcff;
+border-color: rgba(0,220,255,0.5);
 }
 #addAnswer {
 color: #00dcff;
@@ -6433,11 +6493,11 @@ color: #0f131c;
 background-color: rgba(0,255,220,1);
 cursor: pointer;
 }
-#askQuestion:hover, #addAnswer:hover, #addSuggestion:hover, #askquestion:active, #addAnswer:active, #addSuggestion:active  {
+/* #askQuestion:hover, #addAnswer:hover, #addSuggestion:hover, #askquestion:active, #addAnswer:active, #addSuggestion:active  {
 color: #0f131c;
 background-color: rgba(0,220,255,1);
 cursor: pointer;
-}
+} */
 #addAnswer:hover, #addAnswer:active {
 background-color: #00dcff;
 }
@@ -7003,7 +7063,7 @@ box-shadow: 0 0 2pt 2pt rgba(0,220,255,0.5);
   background-color: rgba(0,220,255,0);
   background: radial-gradient(circle , rgba(0,220,255,0.05), rgba(0,220,255,0), rgba(0,220,255,0));
 }
-#flagDiscussButton:hover {
+#flagDiscussButton:hover, .activeDiscussFlag div {
   opacity: 1;
   transform: scale(1.2);
   cursor: pointer;
@@ -7019,9 +7079,9 @@ box-shadow: 0 0 2pt 2pt rgba(0,220,255,0.5);
   background-color: rgba(0,220,255,0);
   background: radial-gradient(circle , rgba(0,220,255,0.05), rgba(0,220,255,0), rgba(0,220,255,0));
 }
-#editDiscussButton:hover {
-  opacity: 1;
-  transform: scale(1.2);
+#editDiscussButton:hover, .activeDiscussFlag div {
+  opacity: 1 !important;
+  transform: scale(1.2) !important;
   cursor: pointer;
 }
 #deleteDiscussButton {
@@ -7035,9 +7095,9 @@ box-shadow: 0 0 2pt 2pt rgba(0,220,255,0.5);
   background-color: rgba(0,220,255,0);
   background: radial-gradient(circle , rgba(0,220,255,0.05), rgba(0,220,255,0), rgba(0,220,255,0));
 }
-#deleteDiscussButton:hover {
-  opacity: 1;
-  transform: scale(1.2);
+#deleteDiscussButton:hover, .activeDiscussDelete div {
+  opacity: 1 !important;
+  transform: scale(1.2) !important;
   cursor: pointer;
 }
 #numberLearnButton {
@@ -7552,9 +7612,9 @@ transform: scale(1.02);
   border-color: #00dcff;
   }
 #problemTitle, #problemTitleGreen, #problemTitleRed {
-background-color: rgba(0,220,255,0.1);
+/* background-color: rgba(0,220,255,0.1); */
 /* Trying radial background */
-background: radial-gradient(circle, rgba(0,220,255,0.05), rgba(0,220,255,0.075), rgba(0,220,255,0.1));
+background: radial-gradient(circle, rgba(0,220,255,0.1), rgba(0,220,255,0));
 color: rgba(255,255,255,1);
 font-size: 210%;
 letter-spacing: 4px;
@@ -7570,12 +7630,6 @@ text-transform: lowercase !important;
 #problemTitle {
   margin-top: 1%;
 }
-/* #problemTitleGreen { */
-  /* background-color: rgba(0,255,220,0.1); */
-/* } */
-/* #problemTitleRed { */
-  /* background-color: rgba(255,127,127,0.1); */
-/* } */
 #problemTypeLabelGreen {
   margin: 0 auto;
   letter-spacing: 4px;
@@ -7763,12 +7817,11 @@ border-radius: 0px;
 border-width: 0px 0px;
 position: relative;
 color: #dddddd;
-padding: 0px 0px 20px 0px;
+padding: 0px 0px 4% 0px;
 margin: 0 auto;
-/*margin-top: 3%;*/
-margin-bottom: 10px;
 flex: 1 1 auto;
 width: 70%;
+/* background: radial-gradient(circle, rgba(0,220,255,0.05), rgba(0,220,255,0)); */
 }
 #projectInteractMenu {
 margin-top: 2%;
@@ -7852,54 +7905,40 @@ height: 12em;
 word-wrap: break-word; 
 align-items: center; 
 justify-content: center;
-background-color: rgba(0,220,255,0.05);
 margin: 0 auto;
 box-shadow: 0 0 2pt 2pt rgba(0, 220, 255, 0.5);
-/* Testing Alt Box Shadows */
-/* Green */
-/* box-shadow: 0 0 2pt 2pt rgba(0,255,220,0.5);
-border-color: #00ffdc; */
-/* Red */
-/* box-shadow: 0 0 2pt 2pt rgba(255,127,127,0.5);
-border-color: rgb(255,127,127); */
 
-transition: all 0.75s ease 0s;
+/* transition: all 0.75s ease 0s; */
+transition: all 0.5s ease 0s;
 transform: scale(1);
 margin-top: 1%;
+background: radial-gradient(circle, rgba(0,220,255,0.05), rgba(0,220,255,0.05), rgba(0,220,255,0.1), rgba(0,220,255,0.05));
 
-/*Testing out a gradient here for 3D holograp effect*/
-/*Currently I like it*/
-/*I also am adding it to the welcome user units for now*/
-/*background: radial-gradient(rgba(0,220,255,0.05), rgba(0,220,255,0.05), rgba(0,220,255,0.035), rgba(0,220,255,0.05));*/
 }
 #SPHeader:hover {
 box-shadow: 0 0 1pt 3pt rgba(0,220,255,0.5);
-/* Green */
-/* box-shadow: 0 0 2pt 2pt rgba(0,255,220,0.5); */
-/* Red */
-/* box-shadow: 0 0 1pt 3pt rgba(255,127,127,0.5); */
+background-color: rgba(0,220,255,0.05);
 transform: scale(1.02);
-background: radial-gradient(circle, rgba(0,220,255,0.05), rgba(0,220,255,0.05), rgba(0,220,255,0.1), rgba(0,220,255,0.05));
 }
 #SPHeaderGreen {
   box-shadow: 0 0 2pt 2pt rgba(0,255,220,0.5);
   border-color: #00ffdc;
-  background-color: rgba(0,255,220,0.05);
+  background: radial-gradient(circle, rgba(0,255,220,0.05), rgba(0,255,220,0.05), rgba(0,255,220,0.1), rgba(0,255,220,0.05));
 }
 #SPHeaderRed {
   box-shadow: 0 0 2pt 2pt rgba(255,127,127,0.5);
   border-color: rgb(255,127,127);
-  background-color: rgba(255,127,127,0.05);
+  background: radial-gradient(circle, rgba(255,127,127,0.05), rgba(255,127,127,0.05), rgba(255,127,127,0.1), rgba(255,127,127,0.05));
 }
 #SPHeaderGreen:hover {
   box-shadow: 0 0 1pt 3pt rgba(0,255,220,0.5);
   transform: scale(1.02);
-  background: radial-gradient(circle, rgba(0,255,220,0.05), rgba(0,255,220,0.05), rgba(0,255,220,0.1), rgba(0,255,220,0.05));
+  background-color: rgba(0,255,220,0.05);
 }
 #SPHeaderRed:hover {
   box-shadow: 0 0 1pt 3pt rgba(255,127,127,0.5);
   transform: scale(1.02);
-  background: radial-gradient(circle, rgba(255,127,127,0.05), rgba(255,127,127,0.05), rgba(255,127,127,0.1), rgba(255,127,127,0.05));
+  background-color: rgba(255,127,127,0.05);
 }
 #SPTitle, #SPTitleGreen, #SPTitleRed, #SPTitleSmall, #SPTitleGreenPrivate, #SPTitleRedPrivate {
 margin: 0 auto;
@@ -8228,29 +8267,55 @@ background-color: rgba(0,220,255,0.1) !important;
 /*color: #00dcff !important;*/
 }
 #solutionsTitleRightSB {
-flex: 1 1 auto;
-color: #ffffff;
-font-size: 200%;
-margin: 0px 0px;
-letter-spacing: 4px;
-text-align: center;
-margin-bottom: 2%;
-transition: all 0.25s ease 0s;
-padding: 2% 0% 2% 0%;
-font-size: 200%;
-letter-spacing: 6px;
-border: 1px solid #dddddd;
-border-width: 1px;
-border-radius: 3px;
-background-color: rgba(0,220,255, 0.05);
-box-shadow: 0 0 1pt 1pt rgba(255,255,255,0.5);
-text-transform: lowercase !important;
-
+  flex: 1 1 auto;
+  color: #ffffff;
+  font-size: 200%;
+  margin: 0px 0px;
+  letter-spacing: 4px;
+  text-align: center;
+  margin-bottom: 2%;
+  transition: all 0.25s ease 0s;
+  padding: 2% 0% 2% 0%;
+  font-size: 200%;
+  letter-spacing: 6px;
+  border: 1px solid #dddddd;
+  border-width: 1px;
+  border-radius: 3px 3px 10% 10%;
+  background: radial-gradient(circle, rgba(0,220,255,0.05), rgba(0,220,255,0));
+  box-shadow: 0 0 1pt 1pt rgba(255,255,255,0.5);
+  text-transform: lowercase !important;
 }
+#noProposalsPromptFlare {
+    width: 70%;
+    margin: 0 auto;
+    margin-top: 3%;
+    padding: 3px 0px;
+    background: radial-gradient(to top, rgba(0,220,255, 0.1), rgba(0,220,255, 0.02), rgba(0,220,255, 0));  
+}
+#noProposalsPrompt {
+  margin: 0 auto;
+  margin-bottom: 5%;
+  text-align: center;
+  width: 60%;
+  padding: 3% 0%;
+  color: #ffffff;
+  letter-spacing: 4px;
+  font-size: 150%;
+  border: 1px solid #515151;
+  border-radius: 3px 3px 20% 20%;
+  background: radial-gradient(circle, rgba(0,220,255,0), rgba(0,220,255,0.1));
+  transition: all 1s ease 0s;
+}
+#noProposalsPrompt:hover {
+  border-color: #00dcff;
+  cursor: pointer;
+  transform: scale(1.05);
+}
+
+
 #proposalsTitleRightSB {
 flex: 1 1 auto;
 color: #ffffff;
-border-radius: 3px;
 font-size: 200%;
 margin: 0 auto;
 letter-spacing: 4px;
@@ -8262,29 +8327,21 @@ font-size: 200%;
 letter-spacing: 6px;
 border: 1px solid #dddddd;
 border-width: 1px 1px 1px 1px;
-border-radius: 3px 3px 3px 3px;
-background-color: rgba(0,220,255, 0.05);
+border-radius: 3px 3px 10% 10%;
+/* background-color: rgba(0,220,255, 0.05); */
+background: radial-gradient(circle, rgba(0,220,255,0.05), rgba(0,220,255,0));
 box-shadow: 0 0 1pt 1pt rgba(255,255,255,0.5);
 }
 #proposalsTitleRightSBEnd {
-flex: 1 1 auto;
-color: #ffffff;
-border-radius: 3px;
-font-size: 200%;
 margin: 0 auto;
-letter-spacing: 4px;
-text-align: center;
-margin-top: 1.5%;
 margin-bottom: 0.15%;
-transition: all 0.25s ease 0s;
-font-size: 200%;
-letter-spacing: 6px;
 border: 1px solid #dddddd;
 border-width: 1px 1px 1px 1px;
-border-radius: 3px 3px 3px 3px;
-background-color: rgba(0,220,255, 0.05);
+border-radius: 3px 3px 20% 20%;
+background: radial-gradient(circle, rgba(0,220,255,0.05), rgba(0,220,255,0));
 box-shadow: 0 0 1pt 1pt rgba(255,255,255,0.5);
-width: 85%;
+/* width: 60%; */
+padding: 3px 0px;
 }
 #discussMenuEnd {
 flex: 1 1 auto;
@@ -8356,7 +8413,7 @@ text-align: center;
 }
 #solutionDescription, #problemDescription, 
 #solutionReferences, #problemRequirements, #problemReferences {
-border: 1px solid #00dcff;
+border: 1px solid rgba(0,220,255,0.5);
 border-width: 0px 1px 0px 1px;
 padding: 0px 5px 10px 5px;
 margin: 2.5% 5% 5% 5%;
@@ -8368,6 +8425,10 @@ word-wrap: break-word;
 transition: all 0.5s ease 0s;
 text-align: left;
 white-space: pre-wrap !important;
+}
+#solutionDescription:hover, #problemDescription:hover, 
+#solutionReferences:hover, #problemRequirements:hover, #problemReferences:hover {
+  border-color: rgba(0,220,255,1);
 }
 #solutionDescription, #solutionReferences {
 padding-top: 3%;
@@ -8400,18 +8461,23 @@ background: radial-gradient(circle, rgba(0,220,255,0), rgba(0,220,255,0.05));
   padding: 4px 0px;
   text-transform: lowercase !important;
   background: linear-gradient(225deg, rgba(0,220,255,0), rgba(0,220,255,0.05));
-  border: 1px solid #dddddd;
+  border: 1px solid (rgba(0,220,255,0.5));
   border-width: 0px 0px 1px 1px;
   border-radius: 0px 0px 0px 25%;
   box-shadow: 0 0 0.5pt 0.5pt rgba(255,255,255,0.5);
 }
 #discussSelectButtonLeftInactive, #discussSelectButtonRightInactive, #discussSelectButtonCenterInactive {
-
+  border-color: #515151;
+  color: #515151;
 }
 #discussSelectButtonLeftActive, #discussSelectButtonRightActive, #discussSelectButtonCenterActive {
   background-color: rgba(0,220,255,0.05) !important;
-  color: #00dcff !important;
+  color: #00dcff;
   border-color: #00dcff !important;
+}
+#discussSelectButtonLeftInactive:hover #greenSmallFaint, #discussSelectButtonRightInactive:hover #greenSmallFaint, #discussSelectButtonCenterInactive:hover #greenSmallFaint, 
+#discussSelectButtonLeftActive #greenSmallFaint, #discussSelectButtonRightActive #greenSmallFaint, #discussSelectButtonCenterActive #greenSmallFaint {
+  color: #00ffdc !important;
 }
 #discussSelectButtonRightActive, #discussSelectButtonRightInactive {
   background: linear-gradient(135deg, rgba(0,220,255,0), rgba(0,220,255,0.05));
@@ -8438,12 +8504,13 @@ width: 70%;
 margin: 0 auto;
 /* background: radial-gradient(circle, rgba(0,220,255,0.05), rgba(0,220,255,0)); */
 }
-#discussGroupSelectAllActive, #discussGroupSelectAllInactive {
+#discussGroupSelectAllActive, #discussGroupSelectAllInactive,
+#discussCommentGroupSelectAllActive, #discussCommentGroupSelectAllInactive {
   flex: 1 1 auto;
   color: #00dcff;
   letter-spacing: 2px;
   font-size: 160%;
-  border: 1px solid #00dcff;
+  border: 1px solid rgba(0,220,255,0.5);
   border-width: 0px 1px 1px 1px;
   border-radius: 0px 0px 15% 15%;
   text-align: center;
@@ -8456,14 +8523,24 @@ margin: 0 auto;
   background: linear-gradient(rgba(0,220,255,0.05), rgba(0,220,255,0));
   box-shadow: 0 0 0.5pt 0.5pt rgba(0,220,255,0.5);
 }
-#discussGroupSelectAllInactive {
-  border-radius: 0px 0px 10% 10%;
+#discussCommentGroupSelectAllActive, #discussCommentGroupSelectAllInactive {
+  border-width: 1px;
 }
-#discussGroupSelectAllActive:hover, #discussGroupSelectAllInactive:hover {
+#discussGroupSelectAllInactive, #discussCommentGroupSelectAllInactive {
+  border-radius: 0px 0px 10% 10%;
+  border-color: #515151;
+  color: #515151;
+}
+#discussGroupSelectAllActive:hover, #discussGroupSelectAllInactive:hover, #discussGroupSelectAllActive,
+#discussCommentGroupSelectAllActive:hover, #discussCommentGroupSelectAllInactive:hover, #discussCommentGroupSelectAllActive {
   background-color: rgba(0,220,255,0.05);
   color: #00dcff;
   cursor: pointer !important;
   border-color: #00dcff;
+}
+#discussGroupSelectAllActive #greenSmallFaint, #discussGroupSelectAllInactive:hover #greenSmallFaint,
+#discussCommentGroupSelectAllActive #greenSmallFaint, #discussCommentGroupSelectAllInactive:hover #greenSmallFaint {
+  color: #00ffdc !important;
 }
 #discussGroupSelection {
   flex: 1 1 auto;
@@ -8501,6 +8578,8 @@ text-transform: lowercase !important;
 }
 #discussHeaderDebate, #discussHeaderCon {
   color: #ff7f7f;
+  /* color: hsla(24, 100%, 57%,1);
+  color: hsl(24, 99%, 57%); */
 }
 #discussHeaderGreen {
 /*Old Styles*/
@@ -8524,7 +8603,7 @@ color: #00ffdc;
 text-align: center;
 font-size: 70%;
 padding-top: 5%;
-padding-bottom: 5%;
+padding-bottom: 25%;
 padding-left: 2%;
 letter-spacing: 2px;
 }
@@ -8598,25 +8677,37 @@ letter-spacing: 2px;
 }
 #discussListNewButtonActive, #discussListNewButtonInactive, #discussListTopButtonActive, #discussListTopButtonInactive {
   width: 25%;
-  /* flex: 1 1 0 auto; */
   text-align: center;
   margin: 0 auto;
-  /* margin-right: 0px; */
-  padding: 3px;
-  letter-spacing: 4px;
   border: 1px solid rgba(0,220,255,0.5);
   border-radius:  20% 20% 3px 3px;
-  background: radial-gradient(circle, rgba(0,220,255,0), rgba(0,220,255,0.05));
   transition: all 0.5s ease 0s;
+
+
+  letter-spacing: 2px;
+  color: #515151;
+  border-color: rgba(81,81,81,1);
+  padding: 3px;
+  background: radial-gradient(circle, rgba(0,220,255, 0), rgba(0,220,255, 0.1));
 }
 #discussListNewButtonActive, #discussListTopButtonActive {
-  background-color: #00dcff;
-  color: #0f131c;
+  /* background-color: #00dcff;
+  color: #0f131c; */
+
+  background-color: rgba(0,220,255, 0.1);
+cursor: pointer;
+color: #00dcff;
+border-color: rgba(0,220,255,0.5);
 }
 #discussListNewButtonActive:hover, #discussListNewButtonInactive:hover, #discussListTopButtonActive:hover, #discussListTopButtonInactive:hover {
-  background-color: #00dcff;
+  /* background-color: #00dcff;
   color: #0f131c;
-  cursor: pointer !important;
+  cursor: pointer !important; */
+
+  background-color: rgba(0,220,255, 0.1);
+  cursor: pointer;
+  color: #00dcff;
+  border-color: rgba(0,220,255,0.5);
 }
 /*End Discuss SB*/
 
@@ -9125,11 +9216,11 @@ color: #ffffff;
   text-align: center;
   letter-spacing: 8px;
   width: 100%;
-  transition: all 0.5s ease 0s;
+  transition: all 1s ease 0s;
   color: #515151;
 }
 #projectCreator:hover {
-color: #ffffff;
+color: #00dcff;
 }
 #privateProjectRank {
   color: #00ffdc;
@@ -9934,32 +10025,42 @@ border-color: #ff7f7f;
 /*textarea:focus {
 border-color: #ff7f7f !important;
 }*/
-#deleteButton, #editButton, #flagButton, #returnButton, #returnButtonProject, #editButtonProject, #deleteButtonProject {
-font-size: 120%;
-color: #ff7f7f;
-background-color: rgba(0,220,255,0.05);
-border: 1px solid #ff7f7f;
-border-radius: 2px;
-margin-top: 5px;
-margin: 0 auto;
-width: 20%;
-text-align: center;
-padding: 5px;
-float: right;
-margin-right: 10%;
-transition: all 0.5s ease 0s;
+#discussFormButtonContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  width: 50%;
+  margin: 0 auto;
 }
+#deleteButton, #editButton, #flagButton, #returnButton, #returnButtonProject, #editButtonProject, #deleteButtonProject {
+  font-size: 120%;
+  color: rgba(255,127,127,0.5);
+  border: 1px solid rgba(255,127,125,0.5);
+  border-width: 0px 1px 1px 1px;
+  margin: 0 auto;
+  width: 8em;
+  text-align: center;
+  transition: all 0.5s ease 0s;
+  border-radius:  3px 3px 20% 3px ;
+
+
+  letter-spacing: 2px;
+  padding: 3px;
+  background: radial-gradient(circle, rgba(0,220,255, 0), rgba(0,220,255, 0.1));
+}
+#deleteButton, #editButton, #flagButton, #editButtonProject, #deleteButtonProject {
+  /* margin-right: 10%; */
+}
+
 #returnButton, #returnButtonProject {
-color: #00dcff;
-border: 1px solid #00dcff;
-float: left;
-margin-right: 0%;
-margin-left: 10%;
+color: rgba(0,220,255,0.5);
+border-color: rgba(0,220,255,0.5);
+border-radius: 0px 0px 3px 20%;
+/* margin-left: 10%; */
 }
 #editButton, #editButtonProject {
-color: #00ffdc;
-border: 1px solid #00ffdc;
-border-radius: 2px;
+color: rgba(0,255,220,0.5);
+border-color: rgba(0,255,220,0.5);
 }
 #editButton:hover, #editButtonProject:hover {
 cursor: pointer;
@@ -10723,7 +10824,6 @@ margin-top: 1%;
 }
 #feedTitle {
   border: 1px solid #333333;
-  /* background-color: rgba(0,220,255, 0.05); */
   background: radial-gradient(circle, rgba(0,220,255,0.05), rgba(0,220,255,0));
   border-radius: 45% 45% 3px 3px;
   margin-bottom: 1%;
@@ -10747,11 +10847,10 @@ margin-top: 1%;
 }
 #feedBottom {
   border: 1px solid #333333;
-  background-color: rgba(0,220,255, 0.05);
+  background: radial-gradient(circle, rgba(0,220,255,0.05), rgba(0,220,255,0));
   border-radius: 3px 3px 45% 45%;
   margin-bottom: 2%;
   transition: all 2s ease 0s;
-  /* margin-top: 1%; */
 }
 #feedBottomBlue {
   border: 1px solid #00dcff;
@@ -11608,7 +11707,7 @@ margin-top: 1%;
   width: 100%;
   margin: 0 auto;
   margin-bottom: 1.5%;
-  background: radial-gradient(circle, rgba(0,255,220,0.1), rgba(0,255,220,0.05), rgba(0,255,220,0), rgba(0,255,220,0), rgba(0,255,220,0));
+  background: radial-gradient(circle, rgba(0,255,220,0.1), rgba(0,255,220,0.025), rgba(0,255,220,0), rgba(0,255,220,0), rgba(0,255,220,0));
   opacity: 1;
   transition: all 0.5s ease 0s;
 }
@@ -12604,9 +12703,9 @@ cursor: pointer !important;
   font-size: 100%;
   letter-spacing: 2px;
   /* margin-top: 1%; */
-  color: #00dcff;
+  color: #515151;
   border-width: 0px 1px 1px 1px;
-  border-color: rgba(0,220,255,0.5);
+  border-color: rgba(81,81,81,1);
   border-radius: 0px 0px 15% 15%;
   padding: 3px;
   transition: all 0.5s ease 0s;
@@ -12616,6 +12715,8 @@ cursor: pointer !important;
   #conversationSubmitButton:hover, #conversationSubmitButton:active {
   background-color: rgba(0,220,255, 0.1);
   cursor: pointer;
+  color: #00dcff;
+  border-color: rgba(0,220,255,0.5);
   }
 
 
@@ -12663,7 +12764,8 @@ cursor: pointer !important;
   color: #00dcff;
   text-align: center;
   letter-spacing: 6px;
-  font-size: 130%;
+  /* font-size: 130%; */
+  font-size: 110%;
 }
 #projectFormRadioRow2 {
   color: #00ffdc;
@@ -13154,11 +13256,10 @@ transition: all 1s ease 0s;
   left: -65px;
   width: 100px;
   height: 100px;
-  /* top: 0%; */
   width: 60px;
   transition: all 1s ease 0s;
   cursor: pointer;
-  /* transform: scale(2.25) rotate(20deg); */
+  top: 14%;
   opacity: 1;
   /* ALT */
   /* background: url('./projectTreeWhite2.svg') no-repeat !important; */
@@ -13475,6 +13576,7 @@ input#submitBreakdown:hover {
   border: 1px solid #00dcff;
   border-radius: 2% 2% 5% 5%;
   box-shadow: 0 0 1pt 1pt rgba(0,220,255,0.5);
+  margin-top: 3%;
   margin-bottom: 5%;
   padding-bottom: 4%;
   padding-top: 2px;
@@ -13516,7 +13618,7 @@ input#submitBreakdown:hover {
   display: flex;
   width: 100%;
   flex-direction: row;
-  /* margin-bottom: 2%; */
+  justify-content: center;
 }
 #projectMidColumnLeft {
   width: 40%;
@@ -14428,13 +14530,6 @@ input#submitBreakdown:hover {
 
 /* New Project Module Simplification Styling */
 
-#projectMajorButtonRow {
-  display: flex;
-  flex-direction: row;
-  width: 96%;
-  margin: 0 auto;
-  justify-content: center;
-}
 #projectActionGroupShow {
   transition: all 1s ease 0s;
   width: 100%;
@@ -14477,17 +14572,14 @@ input#submitBreakdown:hover {
 }
 #projectActivityButton, #projectInfoButton {
   position: relative;
-  width: 28%;
+  width: 48%;
   margin: 0 auto;
   margin-top: 1.5%;
-  /* margin-bottom: 4.5%; */
-  /* margin-bottom: 3%; */
   margin-bottom: 2%;
   text-align: center;
   border: 1px solid rgba(0,220,255,0.5);
   border-radius: 3px;
-  /* padding: 30px 26px; */
-  padding: 25px 20px;
+  padding: 22px 20px;
   letter-spacing: 4px;
 
   
@@ -14827,10 +14919,15 @@ input#submitBreakdown:hover {
 #ouroborosImg {
   transition: all 6s ease 0s;
   opacity: 0.5;
+  background: url('./ouroborosGray2.svg') no-repeat !important;
+  width: 120px;
+  height: 120px;
+  margin: 0 auto;
 }
 #ouroborosContainer:hover #ouroborosImg {
   transform: scale(1.5) rotate(1080deg);
   opacity: 1;
+  background: url('./ouroborosBlue2.svg') no-repeat !important;
 }
 #ouroborosContainer:hover #searchMotto {
   opacity: 1;

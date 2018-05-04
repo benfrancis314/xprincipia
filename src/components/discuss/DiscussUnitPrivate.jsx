@@ -188,7 +188,7 @@ export default class DiscussUnit extends React.Component {
                         <Link to={window.location.pathname}>
                             <div id="discussVotedButton" onClick={unVote.bind(this)} onMouseOver={hoverVoteVoted} onMouseOut={unHoverVoteVoted}>     
                             </div>
-                            <div id="discussPercent">{floatToDecimal(question.PercentRank)}</div>
+                            <div id="discussPercent">{question.Rank}</div>
                         </Link>
                     </div>
                     <Link to={`/project/${question.TypeID}/question/${question.ID}/edit`}>
