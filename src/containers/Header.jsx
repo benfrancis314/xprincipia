@@ -57,7 +57,7 @@ componentDidMount(){
         token : "Bearer " + self.state.userToken
       }, 
       {headers: { Authorization: "Bearer " + self.state.userToken }}).then (function (response) {
-        document.location = window.location.pathname;
+        // document.location = window.location.pathname;
       })
     })
       .catch(function (error) {
@@ -138,14 +138,18 @@ if (this.state.userToken === undefined ){
               {/*Login in header*/}
               <input type="text" name="email" required="required" maxLength="30" placeholder="username" id="loginHeaderEmail" autoFocus />
               <input type="password" name="password" required="required" maxLength="30" placeholder="password" id="loginHeaderPassword" />            
-              <input type="submit" value="login" onClick={this.postLogin} id="loginHeaderSubmitButton" />           
+              <Link to={window.location.pathname}>
+                <input type="submit" value="login" onClick={this.postLogin} id="loginHeaderSubmitButton" />           
+              </Link>
               {/*Attempt to get the login button to just be an arrow*/}
               {/*<input type="image" src={require('../assets/rightArrowWhite.svg')} onClick={this.postLogin} id="loginHeaderSubmitImage" alt="Submit login arrow, blue right arrow"/>*/}
-              <div id="registerHeaderButton">
-                  <Link to="/register">
-                      join
-                  </Link>
-              </div>
+              
+              <Link to="/register" activeClassName="activeHeaderRegister">
+                <div id="registerHeaderButton">
+                  join
+                </div>
+              </Link>
+              
           </div>
 
           {/* SEARCH RESULTS */}

@@ -1589,7 +1589,8 @@ letter-spacing: 2px !important;
 #solutionSummaryForm, #solutionDescriptionForm, 
 #solutionReferencesForm, #problemSummaryForm, #breakdownProblemSummaryForm {
   /* background: linear-gradient(to right,rgba(0,220,255, 0.06), rgba(0,220,255, 0.07),rgba(0,220,255, 0.03)); */
-  background: radial-gradient(circle, rgba(0,220,255, 0), rgba(0,220,255, 0.1));     
+  background: radial-gradient(circle, rgba(0,220,255, 0), rgba(0,220,255, 0.1)); 
+  border-radius: 3px 3px 5% 5%;    
 }
 #solutionSummaryForm:active, #solutionReferencesForm:focus, #solutionReferencesForm:active, #solutionSummaryForm:focus, #solutionDescriptionForm:focus, #solutionDescriptionForm:active {
   /* background: radial-gradient(circle, rgba(0,220,255, 0), rgba(0,220,255, 0.12));      */
@@ -1785,25 +1786,43 @@ input:focus {
 textarea:focus {
   border-color: #00dcff;
 }
-input#submitProblem, input#submitSolution {
-  display: block;
-  color: #00dcff;
-  border: 1px solid #00dcff;
+#submitProblem, #submitSolution {
+  
   background-color: rgba(0,220,255, 0.05);
   width: 50%;
   margin: 0 auto;
-  margin-top: 2%;
   margin-bottom: 1%;
-  font-family: 'Alegreya Sans SC', sans-serif;
-  transition: all 0.5s ease 0s;
-  letter-spacing: 2px;
   text-transform: lowercase !important;
+  margin: 0 auto;
+  letter-spacing: 2px;
+  color: #515151;
+  border: 1px solid rgba(81,81,81,1);
+  border-width: 0px 1px 1px 1px;
+  border-radius: 0px 0px 15% 15%;
+  padding: 3px;
+  transition: all 1s ease 0s;
+  font-family: 'Alegreya Sans SC';
+  background: radial-gradient(circle, rgba(0,220,255, 0), rgba(0,220,255, 0.1));
 }
-input#submitProblem:hover, input#submitSolution:hover {
-  color: #0f131c;
-  border: 1px solid #0f131c;
-  background-color: rgba(0,220,255,1);
+#submitSolution {
+  border-width: 1px;
+  border-radius: 3px 3px 15% 15%;
+  color: rgba(0,220,255,0.5);
+  margin-bottom: 5%;
+  font-size: 150%;
+  padding: 7px;
+}
+#submitProblem:hover, #submitSolution:hover {
+  /* color: #0f131c; */
+  color: #00dcff;
+  border-color: rgba(0,220,255,1);
+  /* background-color: rgba(0,220,255,1); */
   cursor: pointer;
+  background-color: rgba(0,220,255, 0.1);
+  cursor: pointer;
+  color: #00dcff;
+  border-color: rgba(0,220,255,0.5);
+  transform: scale(1.05);
 }
 label {
   display: block;
@@ -2302,7 +2321,7 @@ text-align: center;
   margin: 0 auto;
   margin-top: 0.39%;
   flex: 1 1 auto;
-  background: radial-gradient(circle, rgba(255,255,255,0), rgba(255,255,255,0.15))
+  background: radial-gradient(circle, rgba(255,255,255,0), rgba(255,255,255,0.15));
 }
 #notebookHeaderButton:hover, #headerMessagesButton:hover, #headerTempleName:hover {
   background-color: rgba(255,255,255,0.05);
@@ -2412,20 +2431,18 @@ text-align: center;
 /*Footer*/
 #footer {
 width: 100%;
-background-color: rgba(81, 81, 81,0.5);
+background: radial-gradient(to top, rgba(0,220,255, 0.05), rgba(0,220,255, 0));  
 text-align: center;
 font-size: 150%;
-letter-spacing: 16px;
-color: #00dcff;
+letter-spacing: 8px;
 padding-top: 0.5%;
 /* WHEN CREATIVE COMMONS */
 /* padding-bottom: 0%; */
 /* WITHOUT CREATIVE COMMONS */
 padding-bottom: 0.5%;
-border: 1px solid #00dcff;
-border-width: 1px 0px;
+border: 1px solid rgba(0,220,255,0.5);
+border-width: 1px 0px 1px 0px;
 margin: 0 auto;
-transition: all 0.5s ease 0s;
 z-index: 500;
 
 display: inline-flex;
@@ -2437,18 +2454,25 @@ right: 0;
 bottom: 0;
 left: 0;
 z-index: 500;
+transition: all 1s ease 0s;
+color: rgba(0,220,255,0.5);
+}
+#footer:hover {
+  background-color: rgba(0,220,255,0.05);
+  color: #00dcff;
 }
 
 #footerAbout, #footerCareers, #creativeCommons {
 flex: 1 1 auto;
-transition: all 0.5s ease 0s;
+transition: all 1s ease 0s;
 margin: 0 auto;
 width: 33.3vw;
 }
 #footerAbout:hover, #footerCareers:hover,
 #footerAbout:active, #footerCareers:active  {
 cursor: pointer;
-color: #00dcff;
+/* color: #00dcff; */
+letter-spacing: 10px;
 }
 #creativeCommons {
 text-align: center;
@@ -2510,7 +2534,6 @@ cursor: pointer;
   color: #dddddd;
   padding: 20px 10px 20px 0px;
   flex: 1 1 auto;
-  width: 60%;
   width: 100%;
   font-size: 90%;
   margin: 0 auto;
@@ -2528,14 +2551,23 @@ cursor: pointer;
   margin-bottom: 5.5%;
 }
 #bannerTitle {
+  color: #515151;
   font-size: 250%;
-  letter-spacing: 16px;
-  border: 1px solid #00dcff;
+  letter-spacing: 14px;
+  border: 1px solid #515151;
   border-width: 2px 0px;
   text-align: center;
   margin: 0 auto;
+  transition: all 2s ease 0s;
   box-shadow: 0 0 2pt 2pt rgba(0,220,255,0.5);
-  background-color: rgba(0, 220, 255, 0.05);
+  background: radial-gradient(circle, rgba(0,220,255,0), rgba(0,220,255,0.1));
+}
+#bannerTitle:hover {
+  border-color: #00dcff;
+  background-color: rgba(0,220,255,0.1);
+  letter-spacing: 16px;
+  color: #ffffff;
+  box-shadow: 0 0 2pt 2pt rgba(0,220,255,1);
 }
 #bannerSlogan {
   padding: 3px;
@@ -2611,7 +2643,7 @@ cursor: pointer;
   background-color: rgba(0,220, 255, 0);
   font-size: 80%;
   border: 1px solid #00dcff;
-  border-radius: 3px;
+  border-radius: 3px 3px 10% 10%;
   width: 14%;
   padding: 3px;
   margin: 0 auto;
@@ -2785,28 +2817,25 @@ cursor: pointer;
   background-color: rgba(255,255,255,0.15);
 }
 #loginHeaderSubmitButton {
+  display: block;
   font-family: 'Alegreya Sans SC', sans-serif;
-  font-size: 100%;
   color: #00dcff;
-  background-color: inherit;
   text-align: center;
   border: 1px solid rgba(0,220,255,0.5);
   border-radius: 3px;
   padding: 3px 8px 3px 8px;
   display: block;
   margin: 0 auto;
-  margin: 0.3% 0.5% 0.3% 1%;
-  font-size: 125%;
+  margin: 6px 3px 0% 8px;
+  /* font-size: 125%; */
+  font-size: 115%;
   box-shadow: 0 0 1pt 1pt rgba(0,220,255,0.5);
   transition: all 0.5s ease 0s;
   background-color: #0f131c;
-  width: 6%;
+  width: 3em;
 
-  /*background: linear-gradient(to right,rgba(0,220,255, 0), rgba(0,220,255, 0.05), rgba(0,220,255, 0));*/
-  background: radial-gradient(circle,rgba(0,220,255, 0), rgba(0,220,255, 0.025), rgba(0,220,255, 0.05));
-  /*transition: all 0.75s ease 0s;*/
+  background: radial-gradient(circle,rgba(0,220,255, 0), rgba(0,220,255, 0.1));
   background-color: rgba(0,220,255,0.025);
-  transform: scale(1);
 }
 #loginHeaderSubmitButton:hover, #loginHeaderSubmitButton:active, #loginHeaderSubmitButton:focus {
  cursor: pointer;
@@ -2819,28 +2848,44 @@ cursor: pointer;
 }
 #registerHeaderButton {
   font-family: 'Alegreya Sans SC', sans-serif;
-  font-size: 100%;
   color: #00ffdc;
-  background-color: inherit;
   text-align: center;
   border: 1px solid #00ffdc;
   border-radius: 3px;
   padding: 3px 8px 3px 8px;
-  display: block;
   margin: 0 auto;
-  margin: 0.3% 0.5% 0.3% 1%;
+  margin: 6px 5px 0% 5px;
   font-size: 125%;
+  font-size: 115%;
   box-shadow: 0 0 1pt 1pt rgba(0,255,220,0.5);
   transition: all 0.5s ease 0s;
   background-color: #0f131c;
 
+
+  /* padding: 7px 4px 3px 4px; */
+  /* width: 100%; */
+  transition: all 0.5s ease 0s;
+  background-color: rgba(0,220,255,0.05);
+  /* border: 1px solid #515151; */
+  border-radius: 3px;
+  margin-bottom: 0px;
+  transform: scale(1);
+
+  
+
+  text-align: center;
+  flex: 1 1 auto;
+  background: radial-gradient(circle, rgba(255,255,255,0), rgba(255,255,255,0.15));
+
+
+
+
   /*background: linear-gradient(to right,rgba(0,220,255, 0), rgba(0,220,255, 0.05), rgba(0,220,255, 0));*/
-  background: radial-gradient(circle,rgba(0,255,220, 0), rgba(0,255,220, 0.025), rgba(0,255,220, 0.05));
+  background: radial-gradient(circle,rgba(0,255,220, 0), rgba(0,255,220, 0.1));
   /*transition: all 0.75s ease 0s;*/
   background-color: rgba(0,255,220,0.025);
-  transform: scale(1);
 }
-#registerHeaderButton:hover {
+#registerHeaderButton:hover, #registerHeaderButton:active, #registerHeaderButton:focus, .activeHeaderRegister div {
  cursor: pointer;
  background-color: rgba(0,255,220,1);
  color: #0f131c;
@@ -2860,19 +2905,19 @@ line-height: 120%;
 }
 #introductionButton {
 padding: 4px;
-border: 1px solid #dddddd;
-border-radius: 3px;
+border: 1px solid #515151;
+border-radius: 3px 3px 10% 10%;
 margin: 0 auto;
 margin-top: 1.5%;
 margin-bottom: 1.5%;
 width: 30%;
 font-size: 90%;
 /*transition: all 0.5s ease 0s;*/
-color: #dddddd;
-background: linear-gradient(to right,rgba(255,255,255, 0), rgba(255,255,255, 0.05), rgba(255,255,255, 0));
-transition: all 0.75s ease 0s;
+color: #515151;
+background: radial-gradient(circle, rgba(255,255,255, 0.05), rgba(255,255,255, 0));
+transition: all 1s ease 0s;
 background-color: rgba(255,255,255,0.025);
-transform: scale(1);
+box-shadow: 0 0 0.5pt 0.5pt rgba(255,255,255,0.5);
 }
 #introductionButtonClicked {
 background-color: rgba(0,220,255,0.05);
@@ -2894,10 +2939,12 @@ cursor: pointer;
 color: rgba(0,220,255,1);
 border: 1px solid rgba(0,220,255,1);*/
 
-box-shadow: 0 0 1.5pt 1.5pt rgba(255,255,255,0.5);
+box-shadow: 0 0 1.5pt 1.5pt rgba(255,255,255,1);
 transform: scale(1.02);
 cursor: pointer;
 background: linear-gradient(to right,rgba(255,255,255, 0.05), rgba(255,255,255, 0.1), rgba(255,255,255, 0.05));
+color: #ffffff;
+border-color: #ffffff;
 }
 #signup, #register {
 padding-top: 0px;
@@ -6442,11 +6489,9 @@ width: 40%;
 transition: all 0.5s ease 0s;
 padding: 3px 0px 3px 0px;
 
-border: 1px solid #00dcff;
 border-width: 1px 1px 1px 1px;
 border-radius: 3px 3px 3px 3px;
 background-color: rgba(0,220,255, 0.05);
-font-family: 'Alegreya Sans SC';
 text-transform: lowercase !important;
 
 
@@ -6458,8 +6503,8 @@ font-size: 100%;
 letter-spacing: 2px;
 /* margin-top: 1%; */
 color: #515151;
+border: 1px solid rgba(81,81,81,1);
 border-width: 0px 1px 1px 1px;
-border-color: rgba(81,81,81,1);
 border-radius: 0px 0px 15% 15%;
 padding: 3px;
 transition: all 0.5s ease 0s;
@@ -7619,7 +7664,7 @@ color: rgba(255,255,255,1);
 font-size: 210%;
 letter-spacing: 4px;
 border: 1px solid rgba(255,255,255,0.5);
-border-radius: 3px;
+border-radius: 3px 3px 10% 10%;
 box-shadow: 0 0 0.5pt 0.5pt rgba(255,255,255,0.5);
 margin: 0 auto;
 margin: 0% 10% 0% 10%;
@@ -10949,7 +10994,8 @@ margin-top: 1%;
   
   border: 1px solid #333333;
   background-color: rgba(0,220,255, 0.05);
-  border-radius: 0px 0px 65% 65%;
+  /* border-radius: 0px 0px 65% 65%; */
+  border-radius: 0px 0px 45% 45%;
   
   color: rgba(0,220,255,1);
   width: 90%;

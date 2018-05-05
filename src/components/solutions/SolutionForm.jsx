@@ -242,7 +242,7 @@ export default class SolutionForm extends React.Component {
                   <div id="projectFormRadioContainer">
                       <div id="projectFormRadioColumn">
                         <div id="projectFormRadioRow1">
-                          proposal
+                          proposal<span id="grayLessSpacing"> | default</span>
                         </div>
                         <div id="projectFormRadioRow">
                           <label id="projectRadioButtonContainer">
@@ -306,10 +306,9 @@ export default class SolutionForm extends React.Component {
                 </div>
 
 
-                <br />
-                <label htmlFor="solutionReferences" id="solutionReferenceFormLabel">sources <span id="gray">(optional)</span><br />
+                {/* <label htmlFor="solutionReferences" id="solutionReferenceFormLabel">sources <span id="gray">(optional)</span><br />
                     <textarea name="solutionReferences" placeholder="Please provide your sources here." id="solutionReferencesForm">
-                    </textarea></label><br />
+                    </textarea></label><br /> */}
                   <Link to={`/project/${this.props.probID}/subprojects`}>
                       <input type="button" ref='btn' value="Create" onClick={this.postSolution} id="submitSolution"/>
                   </Link>
