@@ -2923,6 +2923,10 @@ cursor: pointer;
  color: #0f131c !important;
 }
 
+#loginHeaderLink {
+  /* border: 1px solid red; */
+}
+
 /*End Login*/
 
 /*Introduction*/

@@ -169,7 +169,7 @@ if (this.state.userToken === undefined ){
               {/*Login in header*/}
               <input type="text" name="email" required="required" maxLength="30" placeholder="username" id="loginHeaderEmail" autoFocus onKeyPress={this.enterLogin} />
               <input type="password" name="password" required="required" maxLength="30" placeholder="password" id="loginHeaderPassword" onKeyPress={this.enterLogin}/>            
-              <Link to={window.location.pathname}>
+              <Link to={window.location.pathname} id="loginHeaderLink"  onKeyPress={this.postLogin}>
                 <input type="submit" value="login" onClick={this.postLogin} id="loginHeaderSubmitButton" onKeyPress={this.enterLogin}/>           
               </Link>
               {/*Attempt to get the login button to just be an arrow*/}
@@ -199,7 +199,7 @@ if (this.state.userToken === undefined ){
                     <form id="exploreFormHeader" onMouseOver={this.hoverExplore} onMouseOut={this.unHoverExplore} onSubmit={this.stopEnter}>
                         <input type="search" name="search" id="exploreHeaderInput" onKeyUp={this.queryProblem} autoComplete="off" />
                     </form>
-                    <Link to="/welcome">
+                    <Link to="/welcome" >
                       <div id="logoName">
                         <span id="xBlue">x</span>principia
                       </div>

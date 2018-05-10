@@ -226,7 +226,7 @@ ReactDOM.render(
       <Route path='/passwordreset' component={PasswordResetContainer}>
         <IndexRoute component={PasswordResetStart}></IndexRoute>
         <Route path='/passwordreset/start' component={PasswordResetStart}></Route>
-        <Route path='/passwordreset/finish/:userID' component={PasswordResetFinish}></Route>
+        <Route path='/passwordreset/finish/:passID' component={PasswordResetFinish}></Route>
       </Route>
 
       <Route path='/error' component={ErrorContainer}>
