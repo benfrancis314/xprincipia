@@ -2,7 +2,8 @@ import React from 'react';
 import axios from 'axios';
 import cookie from 'react-cookie';
 import { Link } from 'react-router';
-import {Config} from '../../config.js'
+import {Config} from '../../config.js';
+import $ from 'jquery';
 
 export default class ProsEditForm extends React.Component {
 
@@ -16,9 +17,9 @@ export default class ProsEditForm extends React.Component {
     this.updatePro = this.updatePro.bind(this);
   };
 
-  componentWillMount(){
+  componentDidMount(){
       var self = this;
-        return axios.get( Config.API + '/auth/pros/ID?id='+this.props.params.proID).then(function (response) {
+        return axios.get( Config.API + '/pros/ID?id='+this.props.params.proID).then(function (response) {
           self.setState({
               pro: response.data
           })
@@ -26,11 +27,23 @@ export default class ProsEditForm extends React.Component {
           document.getElementById('proEditTextArea').value = self.state.pro.Description;
 
     })
-    .catch(function (error) {
-        if(error.response.status === 401 || error.response.status === 403){
-            document.location = "/login"
-        }
-    });   
+      .catch(function (error) {
+        // console.log(error.response.data)
+          $(document).ready(function() {
+              $('#notification').attr('id','notificationShow').hide().slideDown();
+              if (error.response.data != '') {
+                $('#notificationContent').text(error.response.data);
+              }
+              else if (error.response.data == '[object Object]') {
+                return (
+                  $(document).ready(function() {
+                    $('#notificationLoginRegisterContainer').attr('id','notificationLoginRegisterContainerShow');
+                    $('#notificationContent').html('Please <span id="blue">login </span>to contribute');
+                  })
+                );
+              } 
+          });
+      });
   }
 
 updatePro() {
@@ -39,16 +52,30 @@ updatePro() {
 
   var self = this
   axios.put( Config.API + '/auth/pros/update?id='+this.props.params.proID, {
-      type:'1',
-      typeID: this.props.params.solutionID,
-      username: cookie.load('userName'),
+      // type:'1',
+      // typeID: this.props.params.solutionID,
+      // username: cookie.load('userName'),
       description : this.state.pro,
     })
       .then(function (result) {
-        document.location = '/fullsolution/' + self.props.params.probID + '/' + self.props.params.solutionID + '/pros'
+        // document.location = '/proposal/' + self.props.params.probID + '/' + self.props.params.solutionID + '/pros'
       })
       .catch(function (error) {
-        alert("I'm sorry, there was a problem with your request.")
+        // console.log(error.response.data)
+          $(document).ready(function() {
+              $('#notification').attr('id','notificationShow').hide().slideDown();
+              if (error.response.data != '') {
+                $('#notificationContent').text(error.response.data);
+              }
+              else if (error.response.data == '[object Object]') {
+                return (
+                  $(document).ready(function() {
+                    $('#notificationLoginRegisterContainer').attr('id','notificationLoginRegisterContainerShow');
+                    $('#notificationContent').html('Please <span id="blue">login </span>to contribute');
+                  })
+                );
+              } 
+          });
       });
     }
 
@@ -62,11 +89,13 @@ updatePro() {
       <div id="questionFormComponent">
             <form id="questionForm">
                 <fieldset>
-                    <legend id="redLegend">Edit Pro</legend>
+                    <legend id="redLegend">edit pro</legend>
                          <textarea name="questionText" required="required" id="proEditTextArea" autoFocus ></textarea>
                          <br />
-                         <div onClick={this.updatePro} id="editButton">Submit</div>
-                         <Link to={`/fullsolution/${this.props.params.probID}/${this.props.params.solutionID}/pros`}>
+                         <Link to={`/proposal/${this.props.params.probID}/${this.props.params.solutionID}/pros`}>
+                          <div onClick={this.updatePro} id="editButton">Submit</div>
+                         </Link>
+                         <Link to={`/proposal/${this.props.params.probID}/${this.props.params.solutionID}/pros`}>
                           <div id="returnButton">Exit</div>
                          </Link>
                 </fieldset>

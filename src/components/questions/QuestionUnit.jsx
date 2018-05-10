@@ -2,45 +2,51 @@ import React from 'react';
 import { Link } from 'react-router';
 import axios from 'axios';
 import cookie from 'react-cookie';
-import {Config} from '../../config.js'
+import {Config} from '../../config.js';
+import $ from 'jquery';
 
 export default class QuestionUnit extends React.Component {
 
-constructor(props){
-     super(props);
+    constructor(props){
+        super(props);
 
-        this.renderItem = this.renderItem.bind(this)
-        // this.submitVote = this.submitVote.bind(this)
+        this.state = {
+            voteHash : {},
+            debateNumber : [],
+        }
 
+         this.renderItem = this.renderItem.bind(this);
     };
-    componentWillReceiveProps (props) {
-    var self = this
-    self.setState({
-        voteHash : {},
-    })
-    props.questions.forEach( function (question){
-        axios.get( Config.API + "/auth/vote/isVotedOn?type=2&typeID=" + question.ID + "&username=" + cookie.load("userName"))
-        .then( function (response) {  
-            const voteHash = self.state.voteHash;
 
-            voteHash[question.ID] = response.data
-            self.setState({
-                voteHash,
+    componentWillReceiveProps (nextProps) {
+        var self = this
+        nextProps.questions.forEach( function (question){
+            axios.get( Config.API + "/vote/isVotedOn?type=2&typeID=" + question.ID + "&username=" + cookie.load("userName"))
+            .then( function (response) {  
+                const voteHash = self.state.voteHash;
+
+                voteHash[question.ID] = response.data
+            })  
+            axios.get( Config.API + '/answers/number?questionID='+question.ID)
+            .then(function (response) {
+                const debateNumber = self.state.debateNumber;
+                
+                debateNumber[question.ID] = response.data
             })
-        })  
-    })
-}
+        })
+    }
 
 	render() {
 		return (
 	    <div>
-			<ul> {this.props.questions.map(this.renderItem)} </ul>	               
+			<ul> {this.props.questions.map(this.renderItem)} </ul>    
 	    </div>
 		);
 	}
 	renderItem(question) {
        function submitVote() {
-       var self = this
+        var self = this
+        self.refs.votebtn.setAttribute("disabled", "disabled");
        axios.post( Config.API + '/auth/vote/create', {
            Type: 2,
            TypeID: question.ID,
@@ -48,25 +54,32 @@ constructor(props){
            
         })
         .then(function (result) {
-          return axios.get( Config.API + '/auth/questions/ID?id='+self.props.params.questID).then(function (response) {
-          
-            //set problem data
-            self.setState({
-                question: response.data,
-            })
+            // document.location = window.location.pathname;
+            self.refs.votebtn.removeAttribute("disabled");
+        })
+      .catch(function (error) {
+          $(document).ready(function() {
+            //   $('#notification').attr('id','notificationShow').hide().slideDown();
+            // HIDE ERROR UNLESS NOT LOGGED IN
 
-          })
-          
-        })
-        .catch(function (error) {
-            // alert("I'm sorry, there was a problem with your request.")
-        
-            // Slow internet may cause there to an error, when really
-            //it just needs to reload. In so, the following may be useful:
-            document.location = window.location.pathname 
-        })
-    }
-     function unVote() {
+                if (error.response.data == '[object Object]') {
+                  return (
+                    $(document).ready(function() {
+                      $('#notification').attr('id','notificationShow').hide().slideDown();
+                      $('#notificationLoginRegisterContainer').attr('id','notificationLoginRegisterContainerShow');
+                      $('#notificationContent').html('Please <span id="blue">login </span>to vote');
+                    })
+                  );
+                }  else if (error.response.data != '') {
+                // $('#notificationContent').text(error.response.data);
+              }
+          });
+          self.refs.votebtn.removeAttribute("disabled");
+      });
+  }
+      function unVote() {
+        var self = this
+        self.refs.votebtn.setAttribute("disabled", "disabled");
       axios.delete( Config.API + '/auth/vote/delete' ,{
         params: {
           type: 2,
@@ -75,135 +88,321 @@ constructor(props){
         }
         })
         .then(function (result) {
-            document.location = window.location.pathname 
+            // document.location = window.location.pathname 
+            self.refs.votebtn.removeAttribute("disabled");
         })
-        .catch(function (error) {
-            alert("I'm sorry, there was a problem with your request. ")
-        })
-        
-    }
- 
+      .catch(function (error) {
+          $(document).ready(function() {
+            // HIDE ERROR UNLESS NOT LOGGED IN
+
+                if (error.response.data == '[object Object]') {
+                  return (
+                    $(document).ready(function() {
+                      $('#notification').attr('id','notificationShow').hide().slideDown();
+                      $('#notificationLoginRegisterContainer').attr('id','notificationLoginRegisterContainerShow');
+                      $('#notificationContent').html('Please <span id="blue">login </span>to vote');
+                    })
+                  );
+                }  else if (error.response.data != '') {
+                // $('#notificationContent').text(error.response.data);
+              }
+          });
+          self.refs.votebtn.removeAttribute("disabled");
+      });
+}
+
+  
        if (this.state.voteHash[question.ID] === true && question.Username === cookie.load('userName')) {
            return (
-        <li key={question.ID} id="questionUnit"> 
-				<div id="suggestionContent">
-					<div id="discussHeader">
-                        <span id="discussPercent">{floatToDecimal(question.PercentRank)}</span>
-					    {question.Username}
+            <li key={question.ID} id="suggestionUnit">
+                <div id='suggestionContentHoverVote' className={question.ID}>
+                    <div id="discussUnitButtonsContainer">
+                        <Link to={window.location.pathname}>
+                            <div id="discussVotedButton" onClick={unVote.bind(this)} onMouseOver={hoverVoteVoted} onMouseOut={unHoverVoteVoted}>     
+                            </div>
+                            <div id="discussPercent">{floatToDecimal(question.PercentRank)}</div>
+                        </Link>
                     </div>
-                    <div id="suggestionText">
-                        {question.Description}
+                    <Link to={`/project/${question.TypeID}/question/${question.ID}/edit`}>
+                        <div id="editDiscussButton" onMouseOver={hoverEdit} onMouseOut={unHoverEdit}>
+                            <img src={require('../../assets/editBlue.svg')} id="editLogo" width="18" height="18" alt="Edit Button" />
+                        </div>
+                    </Link>
+                    <Link to={`/project/${question.TypeID}/question/${question.ID}/delete`}>
+                        <div id="deleteDiscussButton" onMouseOver={hoverDelete} onMouseOut={unHoverDelete}>
+                            <img src={require('../../assets/delete.svg')} id="editLogo" width="18" height="18" alt="Delete Button" />
+                        </div>
+                    </Link>
+                    <div id="discussHoverTextShowVoted">
+                        <span id="discussNumberValue">{this.state.debateNumber[question.ID]} </span>answers
                     </div>
-				</div>
-                <Link to={`/problem/${question.TypeID}/question/${question.ID}/delete`} >
-                   <div id="deleteSBButton">
-                        <img src={require('../../assets/delete.svg')} id="editLogo" width="18" height="18" alt="Delete Button" />
+                    <div id="discussHeader">
+                        {question.Username}
                     </div>
-                </Link>
-                <Link to={`/problem/${question.TypeID}/question/${question.ID}/edit`}>
-                    <div id="editSBButton">
-                        <img src={require('../../assets/editBlue.svg')} id="editLogo" width="18" height="18" alt="Edit Button" />
-                    </div>
-                </Link>
-                <Link to={`/problem/${question.TypeID}/question/${question.ID}/answers`} activeClassName="activeGlow">
-                    <div id="commentSBButtonUser">
-                            <img src={require('../../assets/comments.svg')} id="commentLogo" width="24" height="24" alt="Comments Button" />
-                    </div>                
-                </Link>
-                <button type="button" id="suggestionVoted" onClick={unVote}>
-                    Voted
-                </button>
-        </li>);
-
+                    <Link to={`/project/${question.TypeID}/question/${question.ID}/answers`}>
+                        <div id="suggestionText" ref='votebtn' onMouseOver={hoverThread} onMouseOut={unHoverThread.bind(this)}>
+                            {question.Description}
+                        </div>
+                    </Link>
+                </div>
+            </li>
+        );
     }  else if ( question.Username === cookie.load('userName')) {
         return (
-            <li key={question.ID} id="questionUnit"> 
-				<div id="suggestionContent">
-					<div id="discussHeader">
-                        <span id="discussPercent">{floatToDecimal(question.PercentRank)}</span>
-					    {question.Username}
+            <li key={question.ID} id="suggestionUnit">
+                <div id={'suggestionContent'} className={question.ID}>
+                    <div id="discussUnitButtonsContainer">
+                        <Link to={window.location.pathname}>
+                            <div id="discussVoteButton" onClick={submitVote.bind(this)} onMouseOver={hoverVote} onMouseOut={unHoverVote}>     
+                            </div>
+                            <div id="discussPercent">{floatToDecimal(question.PercentRank)}</div>
+                        </Link>
                     </div>
-                    <div id="suggestionText">
-                        {question.Description}
+                    <Link to={`/project/${question.TypeID}/question/${question.ID}/edit`}>
+                        <div id="editDiscussButton" onMouseOver={hoverEdit} onMouseOut={unHoverEdit}>
+                            <img src={require('../../assets/editBlue.svg')} id="editLogo" width="18" height="18" alt="Edit Button" />
+                        </div>
+                    </Link>
+                    <Link to={`/project/${question.TypeID}/question/${question.ID}/delete`}>
+                        <div id="deleteDiscussButton" onMouseOver={hoverDelete} onMouseOut={unHoverDelete}>
+                            <img src={require('../../assets/delete.svg')} id="editLogo" width="18" height="18" alt="Delete Button" />
+                        </div>
+                    </Link>
+                    <div id="discussHoverText">
+                        <span id="discussNumberValue">{this.state.debateNumber[question.ID]} </span>answers
                     </div>
-				</div>
-                <Link to={`/problem/${question.TypeID}/question/${question.ID}/delete`} >
-                   <div id="deleteSBButton">
-                        <img src={require('../../assets/delete.svg')} id="editLogo" width="18" height="18" alt="Delete Button" />
+                    <div id="discussHeader">
+                        {question.Username}
                     </div>
-                </Link>
-                <Link to={`/problem/${question.TypeID}/question/${question.ID}/edit`}>
-                    <div id="editSBButton">
-                        <img src={require('../../assets/editBlue.svg')} id="editLogo" width="18" height="18" alt="Edit Button" />
-                    </div>
-                </Link>
-                <Link to={`/problem/${question.TypeID}/question/${question.ID}/answers`} activeClassName="activeGlow">
-                    <div id="commentSBButtonUser">
-                            <img src={require('../../assets/comments.svg')} id="commentLogo" width="24" height="24" alt="Comments Button" />
-                    </div>                
-                </Link>
-                <button type="button" id="suggestionVote" onClick={submitVote}>
-                    Vote
-                </button>
-            </li>);    
+                    <Link to={`/project/${question.TypeID}/question/${question.ID}/answers`}>
+                        <div id="suggestionText" ref='votebtn' onMouseOver={hoverThread} onMouseOut={unHoverThread.bind(this)}>
+                            {question.Description}
+                        </div>
+                    </Link>
+                </div>
+            </li>
+        );
     } else if (this.state.voteHash[question.ID] === true) {
         return (
-        <li key={question.ID} id="questionUnit"> 
-				<div id="suggestionContent">
-					<div id="discussHeader">
-                        <span id="discussPercent">{floatToDecimal(question.PercentRank)}</span>
-					    {question.Username}
+        <li key={question.ID} id="suggestionUnit">
+            <div id={'suggestionContentHoverVote'} className={question.ID}>
+                <div id="discussUnitButtonsContainer">
+                    <Link to={window.location.pathname}>
+                        <div id="discussVotedButton" onClick={unVote.bind(this)} onMouseOver={hoverVoteVoted} onMouseOut={unHoverVoteVoted}>     
+                        </div>
+                        <div id="discussPercent">{floatToDecimal(question.PercentRank)}</div>
+                    </Link>
+                </div>
+                <Link to={`/project/${question.TypeID}/question/${question.ID}/flag`}>
+                    <div id="flagDiscussButton" onMouseOver={hoverFlag} onMouseOut={unHoverFlag}>
+                        <img src={require('../../assets/flag.svg')} id="deleteLogo" width="24" height="24" alt="Delete Button, Red X" />
                     </div>
-                    <div id="suggestionText">
+                </Link>
+                <div id="discussHoverTextShowVoted">
+                    <span id="discussNumberValue">{this.state.debateNumber[question.ID]} </span>answers
+                </div>
+                <div id="discussHeader">
+                    {question.Username}
+                </div>
+                <Link to={`/project/${question.TypeID}/question/${question.ID}/answers`}>
+                    <div id="suggestionText" ref='votebtn' onMouseOver={hoverThread} onMouseOut={unHoverThread.bind(this)}>
                         {question.Description}
                     </div>
-				</div>
-                    {/*<Link to={`/problem/${question.TypeID}/question/${question.ID}/flag`}>
-                        <div id="flagSBButton">
-                            <img src={require('.../src/assets/flag.svg')} id="deleteLogo" width="11" height="11" alt="Delete Button, Red X" />
-                            Flag
-                        </div>
-                    </Link>*/}
-                <Link to={`/problem/${question.TypeID}/question/${question.ID}/answers`} activeClassName="activeGlow">
-                    <div id="commentSBButtonUser">
-                            <img src={require('../../assets/comments.svg')} id="commentLogo" width="24" height="24" alt="Comments Button" />
-                    </div>                
                 </Link>
-                <button type="button" id="suggestionVoted" onClick={unVote}>
-                    Voted
-                </button>
-        </li>);
+            </div>
+        </li>
+        );
+
     } else {
     return (
-        <li key={question.ID} id="questionUnit"> 
-				<div id="suggestionContent">
-					<div id="discussHeader">
-                        <span id="discussPercent">{floatToDecimal(question.PercentRank)}</span>
-					    {question.Username}
+        <li key={question.ID} id="suggestionUnit">
+            <div id={'suggestionContent'} className={question.ID}>
+                <div id="discussUnitButtonsContainer">
+                    <Link to={window.location.pathname}>
+                        <div id="discussVoteButton" onClick={submitVote.bind(this)} onMouseOver={hoverVote} onMouseOut={unHoverVote}>     
+                        </div>
+                        <div id="discussPercent">{floatToDecimal(question.PercentRank)}</div>
+                    </Link>
+                </div>
+                <Link to={`/project/${question.TypeID}/question/${question.ID}/flag`}>
+                    <div id="flagDiscussButton" onMouseOver={hoverFlag} onMouseOut={unHoverFlag}>
+                        <img src={require('../../assets/flag.svg')} id="deleteLogo" width="24" height="24" alt="Delete Button, Red X" />
                     </div>
-                    <div id="suggestionText">
+                </Link>
+                <div id="discussHoverText">
+                    <span id="discussNumberValue">{this.state.debateNumber[question.ID]} </span>answers
+                </div>
+                <div id="discussHeader">
+                    {question.Username}
+                </div>
+                <Link to={`/project/${question.TypeID}/question/${question.ID}/answers`}>
+                    <div id="suggestionText" ref='votebtn' onMouseOver={hoverThread} onMouseOut={unHoverThread.bind(this)}>
                         {question.Description}
                     </div>
-				</div>
-                    {/*<Link to={`/problem/${question.TypeID}/question/${question.ID}/flag`}>
-                        <div id="flagSBButton">
-                            <img src={require('.../src/assets/flag.svg')} id="deleteLogo" width="11" height="11" alt="Delete Button, Red X" />
-                            Flag
-                        </div>
-                    </Link>*/}
-                <Link to={`/problem/${question.TypeID}/question/${question.ID}/answers`} activeClassName="activeGlow">
-                    <div id="commentSBButtonUser">
-                            <img src={require('../../assets/comments.svg')} id="commentLogo" width="24" height="24" alt="Comments Button" />
-                    </div>                
                 </Link>
-                <button type="button" id="suggestionVote" onClick={submitVote}>
-                    Vote
-                </button>
-        </li>);
-  }
-}}
+            </div>
+        </li>
+        );
+}
+
+function hoverThread() {
+    $(document).ready(function() {
+        $('div.'+question.ID).attr('class','suggestionContentClassBlue');
+        $('.suggestionContentClassBlue > #discussHoverText').attr('id','discussHoverTextShow');
+        $('#discussHoverTextShow').html("view answers").fadeIn(7500);
+    });
+}
+function unHoverThread() {
+    // Removed document part to use 'this.state'
+    // $(document).ready(function() {
+        $('div.suggestionContentClassBlue').attr('class',question.ID);
+        $('#discussHoverTextShow').html(this.state.debateNumber[question.ID]+" answers").fadeIn(7500);
+        $('div#discussHoverTextShow').attr('id','discussHoverText');
+    // });
+}
+function hoverVote() {
+    $(document).ready(function() {
+        $('div.'+question.ID).attr('class','suggestionContentClassGreen');
+        $('.suggestionContentClassGreen > #discussHoverText').attr('id','discussHoverTextGreen');    
+        $('#discussHoverTextGreen').html("vote").fadeIn(7500);
+        $('#discussHoverTextGreen').attr('id','discussHoverTextShowGreen');    
+    });
+}
+function unHoverVote() {
+    // $(document).ready(function() {
+        $('div.suggestionContentClassGreen').attr('class',question.ID);
+        $('div#discussHoverTextShowGreen').html(this.state.debateNumber[question.ID]+" answers").fadeIn(7500);
+        $('div#discussHoverTextShowGreen').attr('id','discussHoverTextGreen');
+        $('div#discussHoverTextGreen').attr('id','discussHoverText');
+    // });
+}
+function hoverFlag() {
+    $(document).ready(function() {
+        $('div.'+question.ID).attr('class','suggestionContentClassRed');
+        $('.suggestionContentClassRed > #discussHoverText').attr('id','discussHoverTextRed');    
+        $('#discussHoverTextRed').html("flag").fadeIn(7500);
+        $('#discussHoverTextRed').attr('id','discussHoverTextShowRed');              
+    });
+}
+function unHoverFlag() {
+    // $(document).ready(function() {
+        $('div.suggestionContentClassRed').attr('class',question.ID);
+        $('#discussHoverTextShowRed').html(this.state.debateNumber[question.ID]+" answers").fadeIn(7500);
+        $('div#discussHoverTextShowRed').attr('id','discussHoverTextRed');
+        $('div#discussHoverTextRed').attr('id','discussHoverText');
+    // });
+}
+function hoverEdit() {
+    $(document).ready(function() {
+        $('div.'+question.ID).attr('class','suggestionContentClassBlue');
+        $('.suggestionContentClassBlue > #discussHoverText').attr('id','discussHoverTextShow');
+        $('#discussHoverTextShow').html("edit").fadeIn(7500);
+    });
+}
+function unHoverEdit() {
+    // $(document).ready(function() {
+        $('div.suggestionContentClassBlue').attr('class',question.ID);
+        $('#discussHoverTextShow').html(this.state.debateNumber[question.ID]+" answers").fadeIn(7500);
+        $('div#discussHoverTextShow').attr('id','discussHoverText');
+    // });
+}
+function hoverDelete() {
+    $(document).ready(function() {      
+        $('div.'+question.ID).attr('class','suggestionContentClassRed');
+        $('.suggestionContentClassRed > #discussHoverText').attr('id','discussHoverTextRed');    
+        $('#discussHoverTextRed').html("delete").fadeIn(7500);
+        $('#discussHoverTextRed').attr('id','discussHoverTextShowRed');
+    });
+}
+function unHoverDelete() {
+    // $(document).ready(function() {
+        $('div.suggestionContentClassRed').attr('class',question.ID);
+        $('#discussHoverTextShowRed').html(this.state.debateNumber[question.ID]+" answers").fadeIn(7500);
+        $('div#discussHoverTextShowRed').attr('id','discussHoverTextRed');
+        $('div#discussHoverTextRed').attr('id','discussHoverText');
+    // });
+}
+function hoverThreadVoted() {
+    $(document).ready(function() {
+        $('div.'+question.ID).attr('class','suggestionContentClassBlue');
+        $('.suggestionContentClassBlue > #discussHoverTextShowVoted').attr('id','discussHoverTextShow');
+        $('#discussHoverTextShow').html("view answers").fadeIn(7500);
+    });
+}
+function unHoverThreadVoted() {
+    // $(document).ready(function() {
+        $('div.suggestionContentClassBlue').attr('class',question.ID);
+        $('div#discussHoverTextShow').attr('id','discussHoverTextShowVoted');
+        $('div#discussHoverTextShowVoted').html("voted").fadeIn(7500);
+    // });
+}
+function hoverVoteVoted() {
+    $(document).ready(function() {
+        $('div.'+question.ID).attr('class','suggestionContentClassGreen');
+        $('.suggestionContentClassGreen > #discussHoverTextShowVoted').attr('id','discussHoverTextGreen');    
+        $('#discussHoverTextGreen').html("unvote").fadeIn(7500);
+        $('#discussHoverTextGreen').attr('id','discussHoverTextShowVoted'); 
+    });
+}
+function unHoverVoteVoted() {
+    // $(document).ready(function() {
+        $('div.suggestionContentClassGreen').attr('class',question.ID);
+        $('div#discussHoverTextShowVoted').attr('id','discussHoverTextGreen');
+        $('div#discussHoverTextGreen').attr('id','discussHoverTextShowVoted');
+        $('div#discussHoverTextShowVoted').html("voted").fadeIn(7500);
+    // });
+}
+function hoverFlagVoted() {
+    $(document).ready(function() {       
+        $('div.'+question.ID).attr('class','suggestionContentClassRed');
+        $('.suggestionContentClassRed > #discussHoverTextShowVoted').attr('id','discussHoverTextRed');    
+        $('#discussHoverTextRed').html("flag").fadeIn(7500);
+        $('#discussHoverTextRed').attr('id','discussHoverTextShowRed');  
+    });
+}
+function unHoverFlagVoted() {
+    // $(document).ready(function() {
+        $('div.suggestionContentClassRed').attr('class',question.ID);
+        $('div#discussHoverTextShowRed').attr('id','discussHoverTextRed');
+        $('div#discussHoverTextRed').attr('id','discussHoverTextShowVoted');
+        $('div#discussHoverTextShowVoted').html("voted").fadeIn(7500);
+    // });
+}
+function hoverEditVoted() {
+    $(document).ready(function() {
+        $('div.'+question.ID).attr('class','suggestionContentClassBlue');
+        $('.suggestionContentClassBlue > #discussHoverTextShowVoted').attr('id','discussHoverTextShow');
+        $('#discussHoverTextShow').html("edit").fadeIn(7500);
+    });
+}
+function unHoverEditVoted() {
+    // $(document).ready(function() {
+        $('div.suggestionContentClassBlue').attr('class',question.ID);
+        $('div#discussHoverTextShow').attr('id','discussHoverTextShowVoted');
+        $('div#discussHoverTextShowVoted').html("voted").fadeIn(7500);
+    // });
+}
+function hoverDeleteVoted() {
+    $(document).ready(function() {
+        $('div.'+question.ID).attr('class','suggestionContentClassRed');
+        $('.suggestionContentClassRed > #discussHoverTextShowVoted').attr('id','discussHoverTextRed');    
+        $('#discussHoverTextRed').html("delete").fadeIn(7500);
+        $('#discussHoverTextRed').attr('id','discussHoverTextShowRed');
+    });
+}
+function unHoverDeleteVoted() {
+    // $(document).ready(function() {
+        $('div.suggestionContentClassRed').attr('class',question.ID);
+        $('div#discussHoverTextShowRed').attr('id','discussHoverTextRed');
+        $('div#discussHoverTextRed').attr('id','discussHoverTextShowVoted');
+        $('div#discussHoverTextShowVoted').html("voted").fadeIn(7500);
+    // });
+}
+}
+}
 
 //convert float to Decimal
 function floatToDecimal(float) {
 	return Math.round(float*100)+'%';
-};
+}
+

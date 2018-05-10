@@ -7,14 +7,14 @@ export default class SideBarFullSolutionMenu extends React.Component {
       return (
       <div id="sidebarMenu">
         <div id="solveMenu">
-                <div id="solveTitle">Solve</div>
-                  <Link to={`/fullsolution/${this.props.probID}/${this.props.solutionID}/solutions`} activeClassName="activeGreen"><div id="solutionsButton">Top Solutions</div></Link>
-                  <Link to={`/fullsolution/${this.props.probID}/${this.props.solutionID}/subproblems`} activeClassName="activeGreen"><div id="subproblemButton">Sub Problems</div></Link>
+                <div id="solveTitle">solve</div>
+                  <Link to={`/proposal/${this.props.probID}/${this.props.solutionID}/solutions`} activeClassName="activeGreen"><div id="solutionsButton">top solutions</div></Link>
+                  <Link to={`/proposal/${this.props.probID}/${this.props.solutionID}/subprojects`} activeClassName="activeGreen"><div id="subproblemButton">subproblems</div></Link>
         </div>
         <div id="developMenu">
-                <div id="developTitle">Develop</div>
-                  <Link to={`/fullsolution/${this.props.probID}/${this.props.solutionID}/questions`} activeClassName="activeGreen"><div id="questionsButton">Questions</div></Link>
-                  <Link to={`/fullsolution/${this.props.probID}/${this.props.solutionID}/suggestions`} activeClassName="activeGreen"><div id="suggestionsButton">Suggestions</div></Link>
+                <div id="developTitle">develop</div>
+                  <Link to={`/proposal/${this.props.probID}/${this.props.solutionID}/questions`} activeClassName="activeGreen"><div id="questionsButton">questions</div></Link>
+                  <Link to={`/proposal/${this.props.probID}/${this.props.solutionID}/suggestions`} activeClassName="activeGreen"><div id="suggestionsButton">suggestions</div></Link>
         </div>
       </div>
 

@@ -1,68 +1,137 @@
 import React from 'react';
+import { Link } from 'react-router';
 import axios from 'axios';
 import cookie from 'react-cookie';
-import SideBarMore from '../SideBarMore.jsx';
-import {Config} from '../../config.js'
+import {Config} from '../../config.js';
+import $ from 'jquery';
 
 export default class LearnContentForm extends React.Component {
 constructor(props){
         super(props);
 
         this.state = {
-            learnItem: []
+            title: '',
+            summary: '',
+            description: '',
         }
             this.postLearnItem = this.postLearnItem.bind(this);
         
     };
     postLearnItem() {
   //Read field items into component state
-      this.state.learnItem = document.getElementById('learnContentTextArea').value
+      var self = this;
+      self.refs.btn.setAttribute("disabled", "disabled");
+
+      this.state.title = document.getElementById('lessonTitleForm').value
+      this.state.summary = document.getElementById('learnContentSummary').value
+      this.state.description = document.getElementById('learnContentTextArea').value
+
 
   //if User is on a solution post with type 1
   //solutionID will be available in props
+  if (this.props.params.solutionID) {
       axios.post( Config.API + '/auth/learnItems/create', {
-      type:'0',
-      typeID: this.props.params.probID,
-      username: cookie.load('userName'),
-      description : this.state.learnItem,
+        type: '1',
+        typeID: this.props.params.solutionID,
+        parentID: this.props.params.probID,
+        username: cookie.load('userName'),
+        title: this.state.title,
+        summary: this.state.summary,
+        description : this.state.description,
+        parentTitle: this.props.parentTitle,
+        private: '0',
     })
       .then(function (result) {
-        document.location = window.location.pathname 
+        document.getElementById("suggestionForm").reset();
+        self.refs.btn.removeAttribute("disabled");
       })
       .catch(function (error) {
-        alert("I'm sorry, there was a problem with your request.")
+        alert('error')
+          $(document).ready(function() {
+              $('#notification').attr('id','notificationShow').hide().slideDown();
+
+                if (error.response.data == '[object Object]') {
+                  return (
+                    $(document).ready(function() {
+                      $('#notificationLoginRegisterContainer').attr('id','notificationLoginRegisterContainerShow');
+                      $('#notificationContent').html('Please <span id="blue">login </span>to add a suggestion');
+                    })
+                  );
+                }  else if (error.response.data != '') {
+              $('#notificationContent').text(error.response.data);
+              }
+          });
+      });
+
+    //else post to problem
+    //probID will be used
+  } else {
+      axios.post( Config.API + '/auth/learnItems/create', {
+        type:'0',
+        typeID: this.props.params.probID,
+        username: cookie.load('userName'),
+        title: this.state.title,
+        summary: this.state.summary,
+        description : this.state.description,
+        parentTitle: this.props.parentTitle,
+        private: '0',
+    })
+      .then(function (result) {
+        document.getElementById("suggestionForm").reset();
+        self.refs.btn.removeAttribute("disabled");
+      })
+      .catch(function (error) {
+          $(document).ready(function() {
+              // CHANGING ERROR TO NOT GO OFF UNLESS NOT LOGGED IN,
+              // NOT SURE WHY CURRENT ERROR IS OCCURING UPON CREATION
+
+                if (error.response.data == '[object Object]') {
+                  return (
+                    $(document).ready(function() {
+                      $('#notification').attr('id','notificationShow').hide().slideDown();
+                      $('#notificationLoginRegisterContainer').attr('id','notificationLoginRegisterContainerShow');
+                      $('#notificationContent').html('Please <span id="blue">login </span>to create a lesson');
+                    })
+                  );
+                }  else if (error.response.data != '') {
+              // $('#notificationContent').text(error.response.data);
+              }
+          });
       });
     }
+    }
 
-    // componentDidMount(){
-    //     var self = this;
-    //         return axios.get( Config.API + '/auth/learnItems/typeID?id='+this.props.params.probID+'&dataType=0').then(function (response) {
-    //             self.setState({
-    //                 learnItems: response.data
-    //             })
-    //         }) 
-    //     }
    render() {
            return (
         <div>
-            <div id="suggestionFormComponent">
-                <form id="suggestionForm">
-                    <fieldset>
-                        <legend>Create a Lesson</legend>
-                             {/*<div>
-                                <input type="radio" id="option-one" />
-                                    <label>Easy</label>
-                                <input type="radio" id="option-two" />
-                                    <label>Medium</label>
-                                <input type="radio" id="option-three" />
-                                    <label>Hard</label>
-                             </div>*/}
-                            <textarea name="suggestionText" required="required" id="learnContentTextArea" 
-                            placeholder="Create a lesson to help others understand the project." autoFocus ></textarea>
-                            <input type="button" value="Create" onClick={this.postLearnItem} id="addSuggestion"/>
-                    </fieldset>
-                </form>
-            </div>
+          <div id="discussMenuEnd">
+            Lessons
+          </div>
+          <Link to={`/project/${this.props.params.probID}/learn/content`}>
+                <img src={require('../../assets/redX.svg')} id="closeRedXNoMargin" width="30" height="30" alt="Close button, red X symbol" />
+          </Link>
+          <div id="suggestionFormComponent">
+              <form id="suggestionForm">
+                  <fieldset id='fieldSetNoBorderPadding'>
+                    {/* <label htmlFor="problemTitleForm" id="problemTitleFormLabel">lesson title<br /> */}
+                      <input type="text" name="problemTitle" placeholder="LESSON TITLE" required="required" maxLength="70" id="lessonTitleForm" />
+                    {/* </label><br /> */}
+
+                    <label htmlFor="problemTitleForm" id="problemTitleFormLabel">overview<br />
+                    <textarea name="suggestionText" required="required" id="learnContentSummary" 
+                    placeholder="Give an overview of your lesson." ></textarea>
+                    </label><br />
+
+                    <label htmlFor="problemTitleForm" id="problemTitleFormLabel">lesson<br />
+                    <textarea name="suggestionText" required="required" id="learnContentTextArea" 
+                    placeholder="Create a lesson to help others understand this project, promoting future advancement." ></textarea>
+                    </label><br />
+                    <Link to={`/project/${this.props.params.probID}/learn/content`}>
+                      <input type="button" ref='btn' value="Create" onClick={this.postLearnItem} id="addSuggestion"/>
+                    </Link>
+                  </fieldset>
+              </form>
+          </div>
         </div>
       );
     }  

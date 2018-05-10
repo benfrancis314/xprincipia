@@ -1,8 +1,9 @@
 import React from 'react';
 import {Link} from 'react-router';
-import cookie from 'react-cookie'
-import axios from 'axios'
-import {Config} from '../config.js'
+import cookie from 'react-cookie';
+import axios from 'axios';
+import {Config} from '../config.js';
+import $ from 'jquery';
 
 export default class LoginUnit extends React.Component {
   constructor(){
@@ -16,8 +17,10 @@ export default class LoginUnit extends React.Component {
     this.postLogin = this.postLogin.bind(this);
   };
 
-  componentWillMount() {
-    this.state =  { userToken: cookie.load('userToken') };
+  componentDidMount() {
+    this.state =  { 
+      userToken: cookie.load('userToken') 
+    };
   }
 
   postLogin() {
@@ -34,8 +37,9 @@ export default class LoginUnit extends React.Component {
       self.setState({
         userToken: result.data.token
       })
-      cookie.save('userToken', result.data.token );
-      cookie.save('userName', self.state.username)
+      // I am removing the "path" here because it is currently causing problems. 
+      cookie.save('userToken', result.data.token, { path: '/' });
+      cookie.save('userName', self.state.username, { path: '/' })
       
       // Store token/Username in db table
       return axios.post( Config.API + '/auth/saveToken',  {
@@ -47,22 +51,45 @@ export default class LoginUnit extends React.Component {
    
     })
     .catch(function (error) {
-      alert("I'm sorry, your username and password was not recognized. ")
-  });
+      // console.log(error.response.data)
+        $(document).ready(function() {
+            $('#notification').attr('id','notificationShow').hide().slideDown();
+
+              if (error.response.data == '[object Object]') {
+                return (
+                  $(document).ready(function() {
+                    $('#notificationLoginRegisterContainer').attr('id','notificationLoginRegisterContainerShow');
+                    $('#notificationFeedbackShow').attr('id','notificationFeedback');
+                    $('#notificationContent').html('Your information was <span id="red">not recognized</span>.<br />Please<span id="blue"> try again </span> or <span id="green">register</span>');
+                  })
+                );
+              }  else if (error.response.data != '') {
+              $('#notificationContent').text(error.response.data);
+            }
+        });
+    });
 
 
   }
 
    render() {
       return (
+        <div>
+          
+          <Link to={`/introduction`}>
+            <div id="introductionButton">
+              Introduction
+            </div>
+          </Link>
 
-        <div id="signup">
-            <form>
-                <input type="text" name="email" required="required" maxLength="30" placeholder="Username" id="loginEmail" autoFocus />
-                <input type="password" name="password" required="required" maxLength="30" placeholder="Password" id="loginPassword" />
-                <Link to='/login'><input type="submit" value="Login" onClick={this.postLogin} id="submitLogin" /></Link>
-                <Link to='/register'><div id="registerButton">Register</div></Link>
-            </form>
+          <div id="signup">
+              <form>
+                  <input type="text" name="email" required="required" maxLength="30" placeholder="Username" id="loginEmail" autoFocus />
+                  <input type="password" name="password" required="required" maxLength="30" placeholder="Password" id="loginPassword" />
+                  <Link to='/login'><input type="submit" value="login" onClick={this.postLogin} id="submitLogin" /></Link>
+                  <Link to='/register'><div id="registerButton">register</div></Link>
+              </form>
+          </div>
         </div>
 
       );

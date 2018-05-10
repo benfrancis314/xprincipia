@@ -1,46 +1,53 @@
 import React from 'react';
+// Will be uesd with componentDidUpdate
+import ReactDOM from 'react-dom';
 import {Link} from 'react-router';
-import axios from 'axios'
-import {Config} from '../../config.js'
+import axios from 'axios';
+import {Config} from '../../config.js';
+import $ from 'jquery';
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group'; // ES6
 
 export default class ProblemDiscussMenu extends React.Component {
   constructor(props){
         super(props);
 
         this.state = {
-            solutions: []
+            questionNumber: '',
+            suggestionNumber: '',
+            debateNumber: '',
+            discussElements: [],
         }
 
     };
-        componentDidMount(){
-        var self = this;
-        window.scrollTo(0,0);
-        return axios.get( Config.API + '/auth/solutions/problemID?id='+this.props.params.probID).then(function (response) {
-            self.setState({
-                solutions: response.data
-            })
-        })
-    }
+    
+    // componentDidMount(){
+    //     var self = this;
+    // }
+
+// Not using this currently, keep in case we decide to switch back
+// componentDidUpdate() {
+//         ReactDOM.findDOMNode(this).scrollIntoView();
+//         window.scrollBy(0, -70);
+//   }      
+
+
+
 
    render() {
+       
       return (
-        <div id="solutions">
-            <div id="solutionsTitleRightSB">Discuss</div>
-            <div id="sidebarDiscussMenu">
-                <div id="discussGroup1">
-                    <Link to={`/problem/${this.props.params.probID}/questions`} activeClassName="activeWhite">
-                        <div id="SBDiscussButton">Questions</div>
-                    </Link>
-
-                    <Link to={`/problem/${this.props.params.probID}/suggestions`} activeClassName="activeWhite">
-                        <div id="SBDiscussButton">Suggestions</div>
-                    </Link>
-                    <Link to={`/problem/${this.props.params.probID}/freeforms`} activeClassName="activeWhite">
-                        <div id="SBDiscussButton">FreeForm</div>
-                    </Link>
-                </div>
-            </div>
-            {React.cloneElement(this.props.children, {probID: this.state.probID})}
+        <div>
+            <Link to={`/project/${this.props.params.probID}/subprojects`}>
+                <img src={require('../../assets/redX.svg')} id="closeRedX" width="30" height="30" alt="Close button, red X symbol" />
+            </Link>
+            <ReactCSSTransitionGroup
+            transitionName="example"
+            transitionAppear={true}
+            transitionAppearTimeout={2000}
+            transitionEnter={false}
+            transitionLeave={false}>
+                {React.cloneElement(this.props.children, {probID: this.props.params.probID, parentTitle: this.props.parentTitle})}
+            </ReactCSSTransitionGroup>
         </div>
 
       );

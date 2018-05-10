@@ -1,39 +1,82 @@
 import React from 'react';
 import {Link} from 'react-router';
+import $ from 'jquery';
+import ProjectBreakdownList from './ProjectBreakdownList.jsx';
 
 export default class SubProblemUnit extends React.Component {
+
+	hoverText() {
+		$(document).ready(function() {
+			$('#privateContainerMotto').html("NEW SUBPROJECT").fadeIn(7500);
+			$('#privateContainerMotto').attr('id','privateContainerMottoBlue');
+		});
+	}
+	unHoverText() {
+		$(document).ready(function() {
+			$('#privateContainerMottoBlue').html("PROJECT BREAKDOWN");
+			$('#privateContainerMottoBlue').attr('id','privateContainerMotto');
+		});
+	}
+	hoverBranch() {
+		$(document).ready(function() {
+			$('#privateContainerMotto').html("ALTERNATE BREAKDOWNS").fadeIn(7500);
+			$('#privateContainerMotto').attr('id','privateContainerMottoBlue');
+		});
+	}
+	unHoverBranch() {
+		$(document).ready(function() {
+			$('#privateContainerMottoBlue').html("PROJECT BREAKDOWN");
+			$('#privateContainerMottoBlue').attr('id','privateContainerMotto');
+		});
+	}
 
   constructor(){
   super();
   this.state = {
 	  problems: []
   }
-
+  this.renderItem = this.renderItem.bind(this);
+  
   };
 
-    componentWillMount(){
-      var self = this;
-	  if (self.props.problem != null ){
-		  self.setState({problems: this.props.problems})
-	  }
-      return
-    }
+
+		// Not sure what this is used for
+    // componentDidMount(){
+    //   var self = this;
+	  // if (self.props.problem != null ){
+		//   self.setState({problems: this.props.problems})
+	  // }
+    //   return
+    // }
 
     //On recieving new props
-  componentWillReceiveProps(newProps){
+  componentWillReceiveProps(nextProps){
 	  var self = this
-	  self.setState({problems: newProps.problems})
-	  console.log(self.state.problems)
+	  self.setState({problems: nextProps.problems})
   }
 
 
 	render() {
 		return (
+		// CURRENTLY, THIS IS NOT USED: SubProblemContainer IS
 	    <div id="SPwrapper">
+			{/* <Link to={`/project/branches`} activeClassName="activeBranchesProjectButton"> */}
+					<div id="branchesProjectButton" onMouseOver={this.hoverBranch} onMouseOut={this.unHoverBranch}>
+						<img src={require('../../assets/branchWhite1.svg')} id="branchesProjectImg" width="60" height="60" alt="User avatar, DNA Helix" />
+						<ProjectBreakdownList probID={this.props.probID} />
+					</div>
+			{/* </Link> */}
 			<ul id="SPUnitList"> 
 				<li>
 					<img src={require('../../assets/leftArrow.svg')} id="SParrowImg" width="50" height="50" alt="User avatar, DNA Helix" />
 				</li>
+				<Link to={`/project/${this.props.probID}/create`} activeClassName="activePrivateCreateButton">
+						<li id="SPUnit">
+								<div id="SPHeader" onMouseOver={this.hoverText} onMouseOut={this.unHoverText}>
+										<img src={require('../../assets/blueAdd2.svg')} id="privateNewProjectPlus" width="80" height="80" alt="User avatar, DNA Helix" />
+								</div>
+						</li>
+				</Link>
 				{this.state.problems.map(this.renderItem)}
 				<li>
 					<img src={require('../../assets/rightArrow.svg')} id="SParrowImg" width="50" height="50" alt="User avatar, DNA Helix" />
@@ -43,28 +86,75 @@ export default class SubProblemUnit extends React.Component {
 		);
 	}
 	renderItem(problem) {
-  
-			function refreshPage() {
-				// Temporary fix for refreshing sub problems
-				// document.location = '/problem/'+ self.props.params.probID +'/subproblems';
-					 SubProblemUnit.forceUpdate()
-			}
 
+	// 			function handleClick() {
+	// 				ReactGA.event({
+	// 						category: 'Project',
+	// 						action: 'Clicked Link',
+	// 				});
+	// 				// alert('success');
+    // }
+if (problem.ParentType === 1) {
+        return (
+            <div key={problem.ID} id="nodisplay">
+            </div>
+        );
+
+// Ensure to copy this so that it works for Goals and Problems too
+// This makes text smaller if problem length is larger
+} else if (problem.Title.length > 50) {
+return (
+	<Link key={problem.ID} to={'/project/'+problem.ID +'/subprojects'}>
+		<li key={problem.ID} id="SPUnit">
+			<div id="SPHeader">
+				<div id="SPTitleSmall">{problem.Title}</div>
+				<div id="SPPercent">{problem.Rank}</div>
+			</div>
+		</li>
+	</Link>
+
+);
+} else if (problem.Class == '2') {
     return (
-
-        <Link key={problem.ID} to={'/problem/'+problem.ID +'/subproblems'} onClick={refreshPage} >
-				<li key={problem.ID} id="SPUnit">
-				<div id="SPHeader">
-					<div id="SPTitle">{problem.Title}</div>
+		<Link key={problem.ID} to={'/project/'+problem.ID +'/subprojects'}>
+			<li key={problem.ID} id="SPUnit">
+				<div id="SPHeaderRed">
+					<div id="SPTitleRed">
+						<span id="red">problem</span>
+						<br />
+						{problem.Title}
+					</div>
 					<div id="SPPercent">{problem.Rank}</div>
-					{/*<div>
-						<img src={require('../assets/voteArrow.png')} id="SPVote" width="20" height="20" alt="Vote arrow, blue up arrow" />
-					</div>*/}
 				</div>
 			</li>
 		</Link>
-
 	);
+} else if (problem.Class == '1') {
+    return (
+        <Link key={problem.ID} to={'/project/'+problem.ID +'/subprojects'}>
+			<li key={problem.ID} id="SPUnit">
+				<div id="SPHeaderGreen">
+					<div id="SPTitleGreen">
+						<span id="green">goal</span>
+						<br />
+						{problem.Title}
+					</div>
+					<div id="SPPercent">{problem.Rank}</div>
+				</div>
+			</li>
+		</Link>
+	);
+} else {
+	return (
+        <Link key={problem.ID} to={'/project/'+problem.ID +'/subprojects'}>
+			<li key={problem.ID} id="SPUnit">
+				<div id="SPHeader">
+					<div id="SPTitle">{problem.Title}</div>
+					<div id="SPPercent">{problem.Rank}</div>
+				</div>
+			</li>
+		</Link>
+	)};
   }
 }
 

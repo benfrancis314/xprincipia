@@ -2,7 +2,8 @@ import React from 'react';
 import axios from 'axios';
 import cookie from 'react-cookie';
 import { Link } from 'react-router';
-import {Config} from '../../config.js'
+import {Config} from '../../config.js';
+import $ from 'jquery';
 
 export default class ProjectEditForm extends React.Component {
 
@@ -13,17 +14,24 @@ export default class ProjectEditForm extends React.Component {
     this.state= {
       title: '',
       summary: '',
+      linkPath: '',
     }
 
     this.updateProject = this.updateProject.bind(this);
   };
 
-  componentWillMount() {
+  componentDidMount() {
       var self = this;
-      return axios.get( Config.API + '/auth/problems/ID?id='+this.props.params.probID).then(function (response) {
-        //if parent ID is 0 then the problem is at the root of the tree
-        // return id as the parentID for routing purposes
-        //set other data
+      if (window.location.pathname.includes('private')) {
+        self.setState({
+            linkPath: '/project/private/',
+        })
+      } else {
+          self.setState({
+              linkPath: '/project/',
+          })
+      }
+      axios.get( Config.API + '/problems/ID?id='+this.props.params.probID).then(function (response) {
         self.setState({
             problemInfo: response.data
       })
@@ -32,11 +40,22 @@ export default class ProjectEditForm extends React.Component {
         document.getElementById('projectEditSummaryForm').value = self.state.problemInfo.Summary;
   
     })
-    .catch(function (error) {
-        if(error.response.status === 401 || error.response.status === 403){
-            document.location = "/login"
-        }
-    });   
+      .catch(function (error) {
+          $(document).ready(function() {
+              $('#notification').attr('id','notificationShow').hide().slideDown();
+              if (error.response.data != '') {
+                $('#notificationContent').text(error.response.data);
+              }
+              else if (error.response.data == '[object Object]') {
+                return (
+                  $(document).ready(function() {
+                    $('#notificationLoginRegisterContainer').attr('id','notificationLoginRegisterContainerShow');
+                    $('#notificationContent').html('Please <span id="blue">login </span>to contribute');
+                  })
+                );
+              } 
+          });
+      });
   }
 
  updateProject() {
@@ -51,10 +70,22 @@ export default class ProjectEditForm extends React.Component {
       summary : self.state.summary
     })
     .then(function (result) {
-      document.location = '/problem/'+ self.props.params.probID + '/subproblems'
     })
-    .catch(function (error) {
-        alert("I'm sorry, there was a problem with your request.")
+      .catch(function (error) {
+          $(document).ready(function() {
+              $('#notification').attr('id','notificationShow').hide().slideDown();
+              if (error.response.data != '') {
+                $('#notificationContent').text(error.response.data);
+              }
+              else if (error.response.data == '[object Object]') {
+                return (
+                  $(document).ready(function() {
+                    $('#notificationLoginRegisterContainer').attr('id','notificationLoginRegisterContainerShow');
+                    $('#notificationContent').html('Please <span id="blue">login </span>to contribute');
+                  })
+                );
+              } 
+          });
       });
   
   }
@@ -63,24 +94,23 @@ export default class ProjectEditForm extends React.Component {
       return (
         <div id="createProblemBox">
             <form id="createForm">
-              <fieldset>
-                  <legend>Edit Project</legend>
-                        <Link to={`/problem/${this.props.params.probID}/subproblems`}>
-                          <div id="backSolutionArrowDiv">
-                              <img src={require('../../assets/upArrow.svg')} id="backSubProjectArrow" width="50" height="30" alt="Back arrow, blue up arrow" />
-                          </div>
-                        </Link>
-                        <label htmlFor="problemTitleForm" id="problemTitleFormLabel">Title<br />
-                            <input type="text" name="problemTitle" required="required" maxLength="70" id="projectEditTitleForm" autoFocus/>
-                          </label><br />
+                <label htmlFor="problemTitleForm" id="problemTitleFormLabel">Title<br />
+                    <input type="text" name="problemTitle" required="required" maxLength="70" id="projectEditTitleForm" autoFocus/>
+                  </label><br />
 
-                        <label htmlFor="problemSummaryForm" id="problemSummaryFormLabel">Additional Information<br />
-                            <textarea name="problemSummary" required="required" maxLength="350" 
-                            placeholder="Please provide any additional information you'd like. (250 character max.)" id="projectEditSummaryForm">
-                            </textarea></label><br />
-
-                        <input type="button" value="Edit" onClick={this.updateProject} id="submitProblem"/>
-              </fieldset>
+                <label htmlFor="problemSummaryForm" id="problemSummaryFormLabel">synopsis<br />
+                    <textarea name="problemSummary" required="required" maxLength="350" 
+                    placeholder="Please provide any additional information you'd like. (250 ch..)" id="projectEditSummaryForm">
+                    </textarea>
+                </label>
+                <div id="discussFormButtonContainer">
+                  <Link to={this.state.linkPath+this.props.params.probID+'/subprojects'}>
+                    <div id="returnButton">exit</div>
+                  </Link>
+                  <Link to={this.state.linkPath+this.props.params.probID+'/subprojects'}>
+                      <div onClick={this.updateProject} id="editButton">edit</div>
+                  </Link>
+                </div>     
             </form>
         </div>
       );

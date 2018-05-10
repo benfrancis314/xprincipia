@@ -1,35 +1,74 @@
 import React from 'react';
 import SolutionUnit from '../solutions/SolutionUnit.jsx';
-import SideBarMore from '../SideBarMore.jsx';
 import axios from 'axios';
-import {Config} from '../../config.js'
+import {Config} from '../../config.js';
 
 export default class ProblemSolutionsMenu extends React.Component {
-  constructor(props){
-        super(props);
+  constructor(){
+        super();
 
         this.state = {
-            solutions: []
+            solutions: [],
+            probID: [],
+            promptWord: '',
         }
 
     };
-        componentDidMount(){
+    componentDidMount(){
         var self = this;
-        window.scrollTo(0,0);
-        return axios.get( Config.API + '/auth/solutions/problemID?id='+this.props.params.probID).then(function (response) {
+        if (window.location.pathname.includes('private')) {
             self.setState({
-                solutions: response.data
+                promptWord: 'your',
+            })
+        } else {
+            self.setState({
+                promptWord: 'the',
+            })
+        }
+        axios.get( Config.API + '/solutions/problemID?id='+this.props.probID).then(function (response) {
+            self.setState({
+                solutions: response.data,
+            })
+        })
+    }
+    componentWillReceiveProps (nextProps){
+        var self = this;
+        if (window.location.pathname.includes('private')) {
+            self.setState({
+                promptWord: 'your',
+            })
+        } else {
+            self.setState({
+                promptWord: 'the',
+            })
+        }
+        axios.get( Config.API + '/solutions/problemID?id='+nextProps.probID).then(function (response) {
+            self.setState({
+                solutions: response.data,
+                probID: nextProps.probID
             })
         })
     }
 
    render() {
+    
+    if (this.state.solutions === undefined || this.state.solutions.length == 0) {
+        return (
+            <div id="fullWide">
+                <a href='#proposalForm'>
+                    <div id="noProposalsPromptFlare"><br /></div>
+                    <div id="noProposalsPrompt">
+                        <span id="blue">propose </span>{this.state.promptWord} <span id="blue">first </span>idea
+                    </div>
+                </a>
+            </div>
+        );
+    } else {
       return (
         <div>
-            <SolutionUnit solutions={this.state.solutions} probID={this.props.params.probID}/>
-            <SideBarMore />
+            <SolutionUnit solutions={this.state.solutions} probID={this.props.probID}/>
         </div>
 
       );
-   }
+   }}
 }

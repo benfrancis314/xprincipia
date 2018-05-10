@@ -1,9 +1,10 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 import { Link } from 'react-router';
 import axios from 'axios';
-import cookie from 'react-cookie';
-import ReactCSSTransitionGroup from 'react-addons-css-transition-group'; // ES6
-import {Config} from '../../config.js'
+import {Config} from '../../config.js';
+import $ from 'jquery';
+
 
 export default class FullSolution extends React.Component {
   constructor(props){
@@ -11,99 +12,147 @@ export default class FullSolution extends React.Component {
 
         this.state = {
             solutionInfo: [],
+            solutionID: [],
+            probID: [],
+            proposalTypeID: '',
+            proposalTypeName: '',
+            linkPath: '',
+            flagID: '',
         }
-
-        this.submitVote = this.submitVote.bind(this)
+        // this.dayMode = this.dayMode.bind(this);
     };
     //initialize the component with this state
     componentDidMount(){
-      var self = this;
-      return axios.get( Config.API + '/auth/solutions/ID?id='+this.props.params.solutionID).then(function (response) {
-          self.setState({
-              solutionInfo: response.data,
-          })
-          var solutionInfo = self.state.solutionInfo
-          solutionInfo.CreatedAt = dateTime(solutionInfo.CreatedAt)
-          self.setState({
-              solutionInfo : solutionInfo
-          })
-
-    })
-    .catch(function (error) {
-        if(error.response.status === 401 || error.response.status === 403){
-            document.location = "/login"
+        ReactDOM.findDOMNode(this).scrollIntoView();
+        var self = this;
+        axios.get( Config.API + '/solutions/ID?id='+this.props.params.solutionID).then(function (response) {
+            if (response.data.Class == '2') {
+                self.setState({
+                    solutionInfo: response.data,
+                    proposalTypeID: 'Red',
+                    proposalTypeName: 'solution',
+                })
+            } else if (response.data.Class == '1') {
+                self.setState({
+                    solutionInfo: response.data,
+                    proposalTypeID: 'Green',
+                    proposalTypeName: 'plan',
+                })
+            } else {
+                self.setState({
+                    solutionInfo: response.data,
+                    proposalTypeID: '',
+                    proposalTypeName: '',
+                })
+            }
+        })
+        if (window.location.pathname.includes('private')) {
+            self.setState({
+                linkPath: '/project/private/',
+            })
+        } else {
+            self.setState({
+                linkPath: '/project/',
+            })
         }
-    });   
-    }
-  //On recieving new props
-  componentWillReceiveProps(newProps){
-    var self = this;
-      return axios.get( Config.API + '/auth/solutions/ID?id='+newProps.params.solutionID).then(function (response) {
-          self.setState({
-              solutionInfo: response.data,  
-          })
-          var solutionInfo = self.state.solutionInfo
-          solutionInfo.CreatedAt = dateTime(solutionInfo.CreatedAt)
-          self.setState({
-              solutionInfo : solutionInfo
-          })
-
-    })
-    .catch(function (error) {
-        // if(error.response.status === 401 || error.response.status === 403){
-        //     document.location = "/login"
-        // }
-    }); 
-
-  }
-  submitVote() {
-       axios.post( Config.API + '/auth/vote/create', {
-           Type: 1,
-           TypeID: this.state.solutionInfo.ID,
-           username : cookie.load("userName"),
-           
-        })
-        .then(function (result) {
-            document.location = window.location.pathname;
-            alert("Thank you, your vote has been recorded.");
-        })
-        .catch(function (error) {
-            alert("I'm sorry, you've already voted on a solution.");
-        })
-  }
-   render() {
-      return (
-      <div id="maxContainer"> 
-        <ReactCSSTransitionGroup
-        transitionName="example"
-        transitionAppear={true}
-        transitionAppearTimeout={2000}
-        transitionEnter={false}
-        transitionLeave={false}>
-        <div id="fullSolution">
-            <div id="solutionIntro">
-                <Link to={`/problem/${this.props.params.probID}/solutions/top`}>
-                    <div id="backProposalArrowDiv">
-                        <img src={require('../../assets/upArrow.svg')} id="backArrowBlueHover" width="50" height="30" alt="Back arrow, blue up arrow" />
-                    </div>
-                </Link>
-                <h1 id="solutionTitle">{this.state.solutionInfo.Title}</h1>
-                <div id="proposalCreator">{this.state.solutionInfo.OriginalPosterUsername}</div>
-                {/*<div id="currentVersion">v.112</div>*/}
-                <p id="solutionSummary">
-                {this.state.solutionInfo.Summary}
-                </p>
-            </div>
-            {React.cloneElement(this.props.children, {solutionInfo: this.state.solutionInfo})}
-        </div>
-        </ReactCSSTransitionGroup>
-      </div>
-      );
-   }
 }
 
+  //On recieving next props
+  componentWillReceiveProps(nextProps){
+    var self = this;
+	    axios.get( Config.API + '/solutions/ID?id='+nextProps.params.solutionID).then(function (response) {
+            if (response.data.Class == '2') {
+                self.setState({
+                    solutionInfo: response.data,
+                    proposalTypeID: 'Red',
+                    proposalTypeName: 'solution',
+                })
+            } else if (response.data.Class == '1') {
+                self.setState({
+                    solutionInfo: response.data,
+                    proposalTypeID: 'Green',
+                    proposalTypeName: 'plan',
+                })
+            } else {
+                self.setState({
+                    solutionInfo: response.data,
+                    proposalTypeID: '',
+                    proposalTypeName: '',
+                })
+            }
+        })
+        if (window.location.pathname.includes('private')) {
+            self.setState({
+                linkPath: '/project/private/',
+                flagID: 'noDisplay',
+            })
+        } else {
+            self.setState({
+                linkPath: '/project/',
+                flagID: 'flagProposalButton',
+            })
+        }
+  }
 
+   render() {
+    //    No longer used but would like to use this in the future.
+    //    Problem is it toggles the solution units in order from first to last, not the one selected
+        // function toggleProposal() {
+        //     $(document).ready(function() {
+        //         $('#proposalToggleOn').attr('id','proposalToggleOff');
+        //         $('#solutionUnitActive').attr('id','solutionUnit');			
+        //     });
+        // };
+            
+      return (
+        <div id='fullSolutionContainer'>
+            <div id="fullSolution">
+                <Link to={this.state.linkPath+this.props.params.probID+'/proposal/'+this.props.params.solutionID+'/flag'} activeClassName="activeProposalFlagButton">
+                    <div id={this.state.flagID}>
+                        <img src={require('../../assets/flag.svg')} id="dayProposalLogo" width="24" height="24" alt="Delete Button, Red X" />
+                    </div>
+                </Link>
+                <div id="solutionIntro">
+                    <Link to={this.state.linkPath+this.props.params.probID+'/subprojects'}>
+                        <img src={require('../../assets/redX.svg')} id="closeRedX" width="30" height="30" alt="Close button, red X symbol" />
+                    </Link>
+                    <div id={'solutionTitleLabel'+this.state.proposalTypeID}>
+                        {this.state.proposalTypeName}
+                    </div>
+                    <h1 id={'solutionTitle'+this.state.proposalTypeID}>
+                        {this.state.solutionInfo.Title}
+                    </h1>
+                    <div id="proposalCreator">
+                        {this.state.solutionInfo.OriginalPosterUsername}
+                    </div>
+                    <p id="solutionSummary">
+                    {this.state.solutionInfo.Summary}
+                    </p>
+                </div>
+                {React.cloneElement(this.props.children, {solutionInfo: this.state.solutionInfo, parentTitle: this.props.parentTitle})}
+            </div>
+            {randomImg()}
+        </div>
+      );
+    }
+}
 
- function dateTime(str){
-     return str.substring(0,9)
- }
+function randomImg() {
+    if (Math.random() < 0.125) {
+      return <img src={require('../../assets/orionLogo.svg')} id="middleAlignOrionLess" width='70' height='100' alt="Back arrow, blue up arrow" />
+    } else if (Math.random() < 0.25){
+      return <img src={require('../../assets/heroLogo.svg')} id="middleAlignOrionLess" width='70' height='100' alt="Back arrow, blue up arrow" />
+    } else if (Math.random() < 0.375){
+      return <img src={require('../../assets/dragonConstellation.svg')} id="middleAlignOrionLess" width='70' height='100' alt="Back arrow, blue up arrow" />
+    } else if (Math.random() < 0.5){
+      return <img src={require('../../assets/hunterConstellation.svg')} id="middleAlignOrionLess" width='70' height='100' alt="Back arrow, blue up arrow" />
+    } else if (Math.random() < 0.625){
+      return <img src={require('../../assets/queenConstellation.svg')} id="middleAlignOrionLess" width='70' height='100' alt="Back arrow, blue up arrow" />
+    } else if (Math.random() < 0.75){
+      return <img src={require('../../assets/pegasusConstellation.svg')} id="middleAlignOrionLess" width='70' height='100' alt="Back arrow, blue up arrow" />
+    } else if (Math.random() < 0.875){
+      return <img src={require('../../assets/archerConstellation.svg')} id="middleAlignOrionLess" width='70' height='100' alt="Back arrow, blue up arrow" />
+    } else if (Math.random() < 1){
+      return <img src={require('../../assets/greatBearConstellation.svg')} id="middleAlignOrionLess" width='70' height='100' alt="Back arrow, blue up arrow" />
+    }
+}

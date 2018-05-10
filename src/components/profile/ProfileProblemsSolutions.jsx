@@ -14,11 +14,10 @@ export default class ProfileProblemsSolutions extends React.Component {
             votedProblems: [],
             createdProblems: [],
             currentItems:[],
-            currentType: 'solution',
+            currentType: 'problem',
         }
 
 
-        this.onLogout = this.onLogout.bind(this);
         this.onCreatedSolution = this.onCreatedSolution.bind(this)
         this.onVotedSolution = this.onVotedSolution.bind(this)
         this.onCreatedProblem = this.onCreatedProblem.bind(this)
@@ -29,22 +28,22 @@ export default class ProfileProblemsSolutions extends React.Component {
 
     componentDidMount(){
         var self = this;
-        axios.get( Config.API + '/auth/users/followedSolutions?username='+cookie.load('userName')).then(function (response) {
+        axios.get( Config.API + '/users/followedSolutions?username='+cookie.load('userName')).then(function (response) {
             self.setState({
                 followedSolutions: response.data,
             })
         })
-        axios.get( Config.API + '/auth/users/createdSolutions?username='+cookie.load('userName')).then(function (response) {
+        axios.get( Config.API + '/users/createdSolutions?username='+cookie.load('userName')).then(function (response) {
             self.setState({
                 createdSolutions: response.data,
             })
         })
-        axios.get( Config.API + '/auth/users/createdProblems?username='+cookie.load('userName')).then(function (response) {
+        axios.get( Config.API + '/users/createdProblems?username='+cookie.load('userName')).then(function (response) {
             self.setState({
                 createdProblems: response.data,
             })
         })
-         axios.get( Config.API + '/auth/users/followedProblems?username='+cookie.load('userName')).then(function (response) {
+         axios.get( Config.API + '/users/followedProblems?username='+cookie.load('userName')).then(function (response) {
             self.setState({
                 followedProblems: response.data,
                 currentItems: response.data,
@@ -52,11 +51,6 @@ export default class ProfileProblemsSolutions extends React.Component {
         })
         
     }   
-    onLogout() {
-        cookie.remove('userToken');
-        cookie.remove('userName');
-        document.location = "/login";
-    }
     onCreatedSolution() {
         var self = this;
         self.setState({
@@ -96,14 +90,14 @@ export default class ProfileProblemsSolutions extends React.Component {
     <div>
         <div id="profileSidebarMenu">
             <div id="profileProjectsMenu">
-                <div id="projectsTitleProfile">Projects</div>
-                <div id="createdProblemsButtonActive" onClick={this.onCreatedProblem}>Created</div>
-                <div id="followedProblemsButton" onClick={this.onFollowedProblem}>Voted</div>
+                <div id="projectsTitleProfile">projects</div>
+                <div id="createdProblemsButtonActive" onClick={this.onCreatedProblem}>created</div>
+                <div id="followedProblemsButton" onClick={this.onFollowedProblem}>voted</div>
             </div>
             <div id="profileProposalsMenu">
-                <div id="proposalsTitleProfile">Proposals</div>
-                <div id="createdSolutionsButton" onClick={this.onCreatedSolution}>Created</div>
-                <div id="votedSolutionsButton" onClick={this.onVotedSolution}>Voted</div>
+                <div id="proposalsTitleProfile">proposals</div>
+                <div id="createdSolutionsButton" onClick={this.onCreatedSolution}>created</div>
+                <div id="votedSolutionsButton" onClick={this.onVotedSolution}>voted</div>
             </div>
         </div>
         <div id="profileRightElements">
@@ -119,14 +113,14 @@ export default class ProfileProblemsSolutions extends React.Component {
     <div>
         <div id="profileSidebarMenu">
             <div id="profileProjectsMenu">
-                <div id="projectsTitleProfile">Projects</div>
-                <div id="createdProblemsButton" onClick={this.onCreatedProblem}>Created</div>
-                <div id="followedProblemsButtonActive" onClick={this.onFollowedProblem}>Voted</div>
+                <div id="projectsTitleProfile">projects</div>
+                <div id="createdProblemsButton" onClick={this.onCreatedProblem}>created</div>
+                <div id="followedProblemsButtonActive" onClick={this.onFollowedProblem}>voted</div>
             </div>
             <div id="profileProposalsMenu">
-                <div id="proposalsTitleProfile">Proposals</div>
-                <div id="createdSolutionsButton" onClick={this.onCreatedSolution}>Created</div>
-                <div id="votedSolutionsButton" onClick={this.onVotedSolution}>Voted</div>
+                <div id="proposalsTitleProfile">proposals</div>
+                <div id="createdSolutionsButton" onClick={this.onCreatedSolution}>created</div>
+                <div id="votedSolutionsButton" onClick={this.onVotedSolution}>voted</div>
             </div>
         </div>
         <div id="profileRightElements">
@@ -142,14 +136,14 @@ export default class ProfileProblemsSolutions extends React.Component {
     <div>
         <div id="profileSidebarMenu">
             <div id="profileProjectsMenu">
-                <div id="projectsTitleProfile">Projects</div>
-                <div id="createdProblemsButton" onClick={this.onCreatedProblem}>Created</div>
-                <div id="followedProblemsButton" onClick={this.onFollowedProblem}>Voted</div>
+                <div id="projectsTitleProfile">projects</div>
+                <div id="createdProblemsButton" onClick={this.onCreatedProblem}>created</div>
+                <div id="followedProblemsButton" onClick={this.onFollowedProblem}>voted</div>
             </div>
             <div id="profileProposalsMenu">
-                <div id="proposalsTitleProfile">Proposals</div>
-                <div id="createdSolutionsButtonActive" onClick={this.onCreatedSolution}>Created</div>
-                <div id="votedSolutionsButton" onClick={this.onVotedSolution}>Voted</div>
+                <div id="proposalsTitleProfile">proposals</div>
+                <div id="createdSolutionsButtonActive" onClick={this.onCreatedSolution}>created</div>
+                <div id="votedSolutionsButton" onClick={this.onVotedSolution}>voted</div>
             </div>
         </div>
         <div id="profileRightElements">
@@ -164,14 +158,14 @@ export default class ProfileProblemsSolutions extends React.Component {
         <div>
         <div id="profileSidebarMenu">
             <div id="profileProjectsMenu">
-                <div id="projectsTitleProfile">Projects</div>
-                <div id="createdProblemsButton" onClick={this.onCreatedProblem}>Created</div>
-                <div id="followedProblemsButton" onClick={this.onFollowedProblem}>Voted</div>
+                <div id="projectsTitleProfile">projects</div>
+                <div id="createdProblemsButton" onClick={this.onCreatedProblem}>created</div>
+                <div id="followedProblemsButton" onClick={this.onFollowedProblem}>voted</div>
             </div>
             <div id="profileProposalsMenu">
-                <div id="proposalsTitleProfile">Proposals</div>
-                <div id="createdSolutionsButton" onClick={this.onCreatedSolution}>Created</div>
-                <div id="votedSolutionsButtonActive" onClick={this.onVotedSolution}>Voted</div>
+                <div id="proposalsTitleProfile">proposals</div>
+                <div id="createdSolutionsButton" onClick={this.onCreatedSolution}>created</div>
+                <div id="votedSolutionsButtonActive" onClick={this.onVotedSolution}>voted</div>
             </div>
         </div>
         <div id="profileRightElements">
@@ -186,14 +180,14 @@ export default class ProfileProblemsSolutions extends React.Component {
     <div>
         <div id="profileSidebarMenu">
             <div id="profileProjectsMenu">
-                <div id="projectsTitleProfile">Projects</div>
-                <div id="createdProblemsButton" onClick={this.onCreatedProblem}>Created</div>
-                <div id="followedProblemsButtonActive" onClick={this.onFollowedProblem}>Voted</div>
+                <div id="projectsTitleProfile">projects</div>
+                <div id="createdProblemsButton" onClick={this.onCreatedProblem}>created</div>
+                <div id="followedProblemsButtonActive" onClick={this.onFollowedProblem}>voted</div>
             </div>
             <div id="profileProposalsMenu">
-                <div id="proposalsTitleProfile">Proposals</div>
-                <div id="createdSolutionsButton" onClick={this.onCreatedSolution}>Created</div>
-                <div id="votedSolutionsButton" onClick={this.onVotedSolution}>Voted</div>
+                <div id="proposalsTitleProfile">proposals</div>
+                <div id="createdSolutionsButton" onClick={this.onCreatedSolution}>created</div>
+                <div id="votedSolutionsButton" onClick={this.onVotedSolution}>voted</div>
             </div>
         </div>
         <div id="profileRightElements">

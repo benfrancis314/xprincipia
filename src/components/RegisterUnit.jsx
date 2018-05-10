@@ -2,7 +2,8 @@ import React from 'react';
 import {Link, bros} from 'react-router';
 import axios from 'axios';
 import cookie from 'react-cookie';
-import {Config} from '../config.js'
+import {Config} from '../config.js';
+import $ from 'jquery';
 
 export default class RegisterUnit extends React.Component {
 
@@ -19,9 +20,11 @@ constructor(){
 
   this.postRegister = this.postRegister.bind(this);
   this.postRegisterReturn = this.postRegisterReturn.bind(this);
+  this.showLegal = this.showLegal.bind(this);
+  this.hideLegal = this.hideLegal.bind(this);
 };
 
-  componentWillMount() {
+  componentDidMount() {
     this.state =  { userToken: cookie.load('userToken') };
   }
 
@@ -38,8 +41,23 @@ constructor(){
         email: this.state.email,
         username : this.state.username,
         password: this.state.password
-      }).catch(function (error) {
-        alert( error.response.data)
+      })
+      .catch(function (error) {
+        // console.log(error.response.data)
+          $(document).ready(function() {
+              $('#notification').attr('id','notificationShow').hide().slideDown();
+              if (error.response.data != '') {
+                $('#notificationContent').text(error.response.data);
+              }
+              else if (error.response.data == '[object Object]') {
+                return (
+                  $(document).ready(function() {
+                    $('#notificationLoginRegisterContainer').attr('id','notificationLoginRegisterContainerShow');
+                    $('#notificationContent').html('Please <span id="blue">login </span>to contribute');
+                  })
+                );
+              } 
+          });
       })
       .then(function (result) {
         
@@ -51,8 +69,8 @@ constructor(){
           self.setState({
             userToken: result.data.token
           })
-          cookie.save('userToken', self.state.userToken );
-          cookie.save('userName', self.state.username)
+          cookie.save('userToken', self.state.userToken, { path: '/' } );
+          cookie.save('userName', self.state.username, { path: '/' })
           
           // Store token/Username in db table
           return axios.post( Config.API + '/auth/saveToken',  {
@@ -60,7 +78,7 @@ constructor(){
             token : "Bearer " + self.state.userToken
           }, {headers: { Authorization: "Bearer " + self.state.userToken }}).then (function (response){
             
-            document.location = "/welcome";
+            document.location = "/profile/points";
 
           })
           
@@ -85,10 +103,23 @@ return axios.post( Config.API + '/register', {
     username : this.state.username,
     password: this.state.password
   })
-  .catch(function (error) {
-        alert( error.response.data)
-        return
-    })
+      .catch(function (error) {
+        // console.log(error.response.data)
+          $(document).ready(function() {
+              $('#notification').attr('id','notificationShow').hide().slideDown();
+              if (error.response.data != '') {
+                $('#notificationContent').text(error.response.data);
+              }
+              else if (error.response.data == '[object Object]') {
+                return (
+                  $(document).ready(function() {
+                    $('#notificationLoginRegisterContainer').attr('id','notificationLoginRegisterContainerShow');
+                    $('#notificationContent').html('Please <span id="blue">login </span>to contribute');
+                  })
+                );
+              } 
+          });
+      })
   .then(function (result) {
     return axios.post( Config.API + '/login', {
       username : self.state.username,
@@ -98,128 +129,86 @@ return axios.post( Config.API + '/register', {
       self.setState({
         userToken: result.data.token
       })
-      cookie.save('userToken', self.state.userToken );
-      cookie.save('userName', self.state.username)
+      cookie.save('userToken', self.state.userToken, { path: '/' });
+      cookie.save('userName', self.state.username, { path: '/' })
       
       // Store token/Username in db table
       return axios.post( Config.API + '/auth/saveToken',  {
         username : self.state.username,
         token : "Bearer " + self.state.userToken
       }, {headers: { Authorization: "Bearer " + self.state.userToken }}).then (function (response){
-        document.location = "/welcome";
+        
       })
-  
+      document.location = "/profile/points";
   })
-  .catch(function (error) {
-    alert( error.response.data)
-    
-  })
+      .catch(function (error) {
+        // console.log(error.response.data)
+          $(document).ready(function() {
+              $('#notification').attr('id','notificationShow').hide().slideDown();
+              if (error.response.data != '') {
+                $('#notificationContent').text(error.response.data);
+              }
+              else if (error.response.data == '[object Object]') {
+                return (
+                  $(document).ready(function() {
+                    $('#notificationLoginRegisterContainer').attr('id','notificationLoginRegisterContainerShow');
+                    $('#notificationContent').html('Please <span id="blue">login </span>to contribute');
+                  })
+                );
+              } 
+          });
+      });
 })
 }}
 
-  render() {
-      return (
-
-        <div id="register">
-            <form >
-                <input type="text" name="fullname" required="required" maxLength="30" placeholder="Full Name" id="registerFullName" autoFocus />
-                <input type="text" name="username" required="required" maxLength="30" placeholder="Username" id="registerUserName" />
-                <input type="email" name="email" required="required" maxLength="30" placeholder="Email" id="registerEmail" />
-                <input type="password" name="password" required="required" maxLength="30" placeholder="Password" id="registerPassword"/>
-                <Link to="/register"><input type="submit" value="Register" onClick={this.postRegister} id="submitRegister"/></Link>
-                <Link to='/login'><div id="loginButton">Login</div></Link>
-            </form>
-        </div>
-
-      );
-   }
+showLegal() {
+  $(document).ready(function() {
+      $('#legalAgreementRegisterDescriptionHide').attr('id','legalAgreementRegisterDescription');
+  });
 }
-
-
-/*import React from 'react';
-import {Link} from 'react-router';
-import axios from 'axios';
-
-export default class RegisterUnit extends React.Component {
-
-constructor(){
-  super();
-
-  this.state= {
-    email: '',
-    password: '',
-    fullname: '',
-    username: ''
-  }
-
-  this.postRegister = this.postRegister.bind(this);
-};
-
-postRegister() {
-  //Read field items into component state
-  this.state.email = document.getElementById('registerEmail').value
-  this.state.password = document.getElementById('registerPassword').value
-  this.state.fullname = document.getElementById('registerFullName').value
-  this.state.username = document.getElementById('registerUserName').value
-
-// // Ajax post register request
-// $.ajax({
-//   crossDomain: 'true',
-//   type: 'POST',
-//   headers: {'Content-Type' : 'application/json'},
-//   url: 'http://localhost:10000/login/register',
-//   processData: false,
-//   data: JSON.stringify({
-//     'email' : this.state.email,
-//     'username' : this.state.username,
-//     'password' : this.state.password,
-//     // 'fullname' : this.state.fullname,
-    
-//   }),
-//   success: function(result){
-//     console.log(result)
-//     document.location('/welcome')
-    
-//     alert('Welcome to XPrincipia.')
-//   },
-//   error: function(result){
-//     console.log(result)
-
-//     alert('Please try again.')
-//   },
-
-// });
-axios.post('http://localhost:10000/register', {
-      fullName: this.state.fullname,
-      email: this.state.email,
-      username : this.state.username,
-      password: this.state.password
-    })
-    .then(function (result) {
-      alert('You have been registered. Welcome to XPrincipia! Please log in')
-     
-    })
-    .catch(function (error) {
-      console.log(error.response.data)
-      alert( error.response.data)
+hideLegal() {
+    $(document).ready(function() {
+        $('#legalAgreementRegisterDescription').attr('id','legalAgreementRegisterDescriptionHide');
     });
 }
 
+
   render() {
       return (
 
+      <div>
+        <Link to={`/introduction`}>
+          <div id="introductionButton">
+            Introduction
+          </div>
+        </Link>
         <div id="register">
-            <form id="registerForm">
-                <div id="enter">Enter</div>
+            <form >
                 <input type="text" name="fullname" required="required" maxLength="30" placeholder="Full Name" id="registerFullName" autoFocus />
-                <input type="text" name="username" required="required" maxLength="30" placeholder="Username" id="registerUserName" />
-                <input type="email" name="email" required="required" maxLength="30" placeholder="Email" id="registerEmail" /> <br />
-                <input type="password" name="password" required="required" maxLength="30" placeholder="Password" id="registerPassword"/> <br />
-                <Link to='/login'><input type="submit" value="Register" onClick={this.postRegister} id="submitRegister"/></Link>
+                <input type="text" name="username" required="required" maxLength="20" placeholder="Username" id="registerUserName" />
+                <input type="email" name="email" required="required" maxLength="30" placeholder="Email" id="registerEmail" />
+                <input type="password" name="password" required="required" maxLength="30" placeholder="Password" id="registerPassword"/>
+                <Link to={window.location.pathname}>
+                  <input type="submit" value="register" onClick={this.postRegister} id="submitRegister"/>
+                </Link>
+                <Link to='/login'>
+                  <div id="loginButton">login</div>
+                </Link>
+                {/* <div id="legalAgreementRegisterButton" onClick={this.showLegal}>
+                  legal agreement
+                </div> */}
+                <div id="legalAgreementRegisterDescription">
+                  {/* <img onClick={this.hideLegal} src={require('../assets/redX.svg')} id="closeRedX" width="30" height="30" alt="Close button, red X symbol" />             */}
+                  <span id="legalBlue">all rights are reserved by the creators </span>
+                  <br />of intellectual property on xprincipia.com
+                  <br />
+                  <span id="legalBlue">the creators permit this content to be distributed </span>
+                  <br />and used by xprincipia, inc. upon creation
+                </div>
             </form>
-            <Link to='/login'><div id="loginButton">Login</div></Link>
         </div>
+      </div>
 
       );
    }
-}*/
+}

@@ -1,8 +1,18 @@
 import React from 'react';
 import { Link } from 'react-router';
+import $ from 'jquery';
 
 export default class VersionsUnit extends React.Component {
+	
+	constructor(props){
+        super(props);
 
+        // this.state = {
+        // }
+
+         this.renderItem = this.renderItem.bind(this);
+	};
+	
 	render() {
 		return (
 	    <div>
@@ -14,25 +24,27 @@ export default class VersionsUnit extends React.Component {
 
 	renderItem(solution) {
 
-    return (
+	function showNotification() {
+		$(document).ready(function() {
+			$('#versionChangeHide').attr('id','versionChangeShow');
+			$('#versionChangeShow').html(solution.Evidence).fadeIn(7500);
+		});
+	};
 
-        <li key={solution.ID}>
-			<Link to={`/fullsolution/${solution.ProblemID}/${solution.solutionID}/fullversion`}>
-				<div id="versionUnit">
-					<div id="versionUnitTitle">
-						<div id="versionPercent">{floatToDecimal(solution.PercentRank)}</div>
-						<div>
-							<div id="versionNumber">v.112</div>
-							<div id="changesFrom">Changes from <span id="versionFrom">v.90</span></div>
-						</div>
-					</div>
-					{/*<div id="solutionUnitSummary">
-						{solution.Summary}
-					</div>*/}
+    return (
+		<div id="versionUnit">
+			<Link key={solution.ID} to={`/project/${this.props.probID}/proposal/${solution.ID}`}>
+				<div id="versionUnitTitle">
+					v.{solution.Version}
 				</div>
 			</Link>
-        </li>);
-
+			<div id="versionUnitChangesButton">
+				changes
+			</div>
+		</div>
+			
+				
+		);
   }
 }
 

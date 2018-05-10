@@ -1,7 +1,8 @@
 import React from 'react';
 import axios from 'axios';
 import cookie from 'react-cookie';
-import {Config} from '../config.js'
+import {Config} from '../config.js';
+import $ from 'jquery';
 
 export default class FeedbackForm extends React.Component {
 constructor(){
@@ -27,9 +28,22 @@ this.state.feedback = document.getElementById('addSuggestion').value
     // alert("Thank you for your feedback. We will use this to improve your experience in the future. ")
     document.location = window.location.pathname 
   })
-  .catch(function (error) {
-    alert("I'm sorry, there was a problem with your request. ")
-  });
+      .catch(function (error) {
+          $(document).ready(function() {
+              $('#notification').attr('id','notificationShow').hide().slideDown();
+
+                if (error.response.data == '[object Object]') {
+                  return (
+                    $(document).ready(function() {
+                      $('#notificationLoginRegisterContainer').attr('id','notificationLoginRegisterContainerShow');
+                      $('#notificationContent').html('Please <span id="blue">login </span>to contribute feedback. ');
+                    })
+                  );
+                }  else if (error.response.data != '') {
+              $('#notificationContent').text(error.response.data);
+              }
+          });
+      });
 
   
 }
@@ -43,11 +57,8 @@ this.state.feedback = document.getElementById('addSuggestion').value
                 Thank you for your feedback.
             </div>
             <form id="suggestionForm">
-                <fieldset id="feedbackFieldset">
-                    <legend>User Feedback</legend>
-                         <textarea name="feedbackText" required="required" id="feedbackTextArea" placeholder="Please provide feedback on how we can improve your XPrincipia experience. " autoFocus ></textarea>
-                         <input type="button" value="Submit" onClick={this.postFeedback} id="addSuggestion"/>
-                </fieldset>
+                         <textarea name="feedbackText" required="required" id="feedbackTextArea" placeholder="Please provide feedback on how we can improve your experience at XPrincipia. " autoFocus ></textarea>
+                         <input type="button" value="submit" onClick={this.postFeedback} id="addSuggestion"/>
             </form>
       </div>
 

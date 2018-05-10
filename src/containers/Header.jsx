@@ -1,62 +1,223 @@
 import React from 'react';
-import {  Link  } from 'react-router';
+import {Link} from 'react-router';
+import cookie from 'react-cookie';
 import axios from 'axios';
 import HeaderAvatar from '../components/HeaderAvatar.jsx';
-// Notifications currently unused, may be used for notifications in future
-// import NotificationSuccess from '../components/NotificationSuccess.jsx';
-// import NotificationFailure from '../components/NotificationFailure.jsx';
-import {Config} from '../config.js'
+// import SearchUnit from '../components/search/SearchUnit.jsx';
+import SearchResults from '../components/search/SearchResults.jsx';
+import {Config} from '../config.js';
+import $ from 'jquery';
 
 export default class Header extends React.Component {
 
-    constructor(props){
-        super(props);
+  
+    constructor(){
+        super();
 
         this.state = {
-           problems : [],
+           username: '',
+           password: '',
+           userToken: '',
+           notification: '',
+           searchResults : [],
            searchText: [],
         }
-        this.queryProblem = this.queryProblem.bind(this)
-        this.queryProblem = this.submitSearch.bind(this)
+        this.queryProblem = this.queryProblem.bind(this);
+        this.postLogin = this.postLogin.bind(this);
+        this.enterLogin = this.enterLogin.bind(this);
+        this.enterRegister = this.enterRegister.bind(this);
+        this.stopEnter = this.stopEnter.bind(this);
+
     };
 
-    queryProblem () {
-        var self = this
-        this.state.searchText = document.getElementById('exploreInput').value
-        return axios.get( Config.API + '/auth/problems/search?q='+this.state.searchText).then(function (response) {
-            self.setState({
-              problems: response.data
-            })
-            document.location = '/welcome';
-        })  
-    }
+componentDidMount(){
+  var self = this;
+  self.setState({ 
+    userToken: cookie.load('userToken'),
+    username: cookie.load('userName'),
+    notification: this.props.notification,
+  })
+}
+enterLogin(event) {
+  var code = event.keyCode || event.which;
+  if(code === 13) { //13 is the enter keycode
+      this.postLogin()
+  } 
+}
+enterRegister(event) {
+  var code = event.keyCode || event.which;
+  if(code === 13) { //13 is the enter keycode
+       document.location = '/register';
+  } 
+}
 
-    submitSearch(e) {
-        // if (e.keyCode === 13)
-        {
-            // alert("This is not functional yet");
-            document.location = '/welcome';
-            
-        }
-        
-    }
+  postLogin() {
+    var self = this
+    //Read field items into component state
+    this.state.username = document.getElementById('loginHeaderEmail').value
+    this.state.password = document.getElementById('loginHeaderPassword').value
 
-   render() {
+    return axios.post( Config.API + '/login', {
+      username : this.state.username,
+      password: this.state.password
+    })
+    .then(function (result) {
+      self.setState({
+        userToken: result.data.token
+      })
+      cookie.save('userToken', result.data.token, { path: '/' } );
+      cookie.save('userName', self.state.username, { path: '/' })
+      // Store token/Username in db table
+      return axios.post( Config.API + '/auth/saveToken',  {
+        username : self.state.username,
+        token : "Bearer " + self.state.userToken
+      }, 
+      {headers: { Authorization: "Bearer " + self.state.userToken }}).then (function (response) {
+        // document.location = window.location.pathname;
+      })
+    })
+      .catch(function (error) {
+          $(document).ready(function() {
+              $('#notification').attr('id','notificationShow').hide().slideDown();
+
+                if (error.response.data == '[object Object]') {
+                  return (
+                    $(document).ready(function() {
+                      $('#notificationLoginRegisterContainer').attr('id','notificationLoginRegisterContainerShow');
+                      $('#notificationFeedbackShow').attr('id','notificationFeedback');
+                      $('#notificationContent').html('your information was <span id="red">not recognized</span>.<br />Please<span id="blue"> try again </span> or <span id="green">register</span>');
+                      $('#passwordResetAlertButtonHide').attr('id','passwordResetAlertButton');
+                    })
+                  );
+                }  else if (error.response.data != '') {
+                $('#notificationContent').text(error.response.data);
+              }
+          });
+      });
+}
+stopEnter(e) {
+  e.preventDefault();
+}
+queryProblem (e) {
+    $(document).ready(function() {
+      $('#searchResultsContainerHide').attr('id','searchResultsContainer');
+    });
+    this.state.searchText = document.getElementById('exploreHeaderInput').value
+    var self = this
+    if (self.state.searchText == '') {
+      $(document).ready(function() {
+        $('#searchResultsContainer').attr('id','searchResultsContainerHide');
+    });
+    } else {
+      axios.get( Config.API + '/problems/search?q='+self.state.searchText).then(function (response) {
+        self.setState({
+          searchResults: response.data
+        })
+      })
+    }
+}
+hideSearch() {
+  $(document).ready(function() {
+      $('#searchResultsContainer').attr('id','searchResultsContainerHide');
+      document.getElementById("exploreFormHeader").reset();
+  });
+}
+
+hoverExplore() {
+  $(document).ready(function() {
+      $('#logoName').html("explore").fadeIn(7500);
+      $('#logoName').attr('id','logoNameGuideWhite');
+  });
+}
+unHoverExplore() {
+    $(document).ready(function() {
+        $('#logoNameGuideWhite').html('<span id="xBlue">x</span>principia');             
+        $('#logoNameGuideWhite').attr('id','logoName');
+    });
+}
+
+
+render() {
+  // var input = document.getElementById("loginHeaderPassword");
+
+  // // Execute a function when the user releases a key on the keyboard
+  // input.addEventListener("keyup", function(event) {
+  //   // Cancel the default action, if needed
+  //   event.preventDefault();
+  //   // Number 13 is the "Enter" key on the keyboard
+  //   if (event.keyCode === 13) {
+  //     // Trigger the button element with a click
+  //     document.getElementById("loginHeaderSubmitButton").click();
+  //   }
+  // });
+
+if (this.state.userToken === undefined ){
       return (
-        <div id="header">
-            {/*<div id="explore">
-                <form id="exploreFormHeader">
-                    <input type="search" name="search"
-                        placeholder="Explore" id="exploreHeaderInput"  
-                        onKeyDown={this.queryProblem} />
-                    <input onKeyPress={this.submitSearch}  id="submitExplore" />
+        <div>
+          <div id="header">
+              <div id="headerLeft">
+                <form id="exploreFormHeader" onMouseOver={this.hoverExplore} onMouseOut={this.unHoverExplore} onSubmit={this.stopEnter}>
+                    <input type="search" name="search" id="exploreHeaderInput" onKeyUp={this.queryProblem} autoFocus autoComplete="off" />
                 </form>
-            </div>*/}
-            <div id="logo">
-              <Link to="/welcome"><div id="logoName">XPrincipia</div></Link>
-            </div>
-            <HeaderAvatar />
+                <Link to="/welcome">
+                  <div id="logoName">
+                    <span id="xBlue">x</span>principia
+                  </div>
+                </Link>
+              </div>
+              
+              {/*Login in header*/}
+              <input type="text" name="email" required="required" maxLength="30" placeholder="username" id="loginHeaderEmail" autoFocus onKeyPress={this.enterLogin} />
+              <input type="password" name="password" required="required" maxLength="30" placeholder="password" id="loginHeaderPassword" onKeyPress={this.enterLogin}/>            
+              <Link to={window.location.pathname}>
+                <input type="submit" value="login" onClick={this.postLogin} id="loginHeaderSubmitButton" onKeyPress={this.enterLogin}/>           
+              </Link>
+              {/*Attempt to get the login button to just be an arrow*/}
+              {/*<input type="image" src={require('../assets/rightArrowWhite.svg')} onClick={this.postLogin} id="loginHeaderSubmitImage" alt="Submit login arrow, blue right arrow"/>*/}
+              
+              <Link to="/register" activeClassName="activeHeaderRegister">
+                <div id="registerHeaderButton" onKeyPress={this.enterRegister}>
+                  join
+                </div>
+              </Link>
+              
+          </div>
+
+          {/* SEARCH RESULTS */}
+          <div id="searchResultsContainerHide">
+            <img src={require('../assets/redX3.svg')} id="searchResultsExitButton" width="20" height="20" alt="exit button" onClick={this.hideSearch} />
+            <SearchResults searchText={this.state.searchText} problems={this.state.searchResults}/>
+
+          </div>
         </div>
       );
-   }
+    } else {
+        return (
+            <div>
+              <div id="header">
+                  <div id="headerLeft">
+                    <form id="exploreFormHeader" onMouseOver={this.hoverExplore} onMouseOut={this.unHoverExplore} onSubmit={this.stopEnter}>
+                        <input type="search" name="search" id="exploreHeaderInput" onKeyUp={this.queryProblem} autoComplete="off" />
+                    </form>
+                    <Link to="/welcome">
+                      <div id="logoName">
+                        <span id="xBlue">x</span>principia
+                      </div>
+                    </Link>
+                  </div>
+
+
+                  <HeaderAvatar notification={this.props.notification}/>
+                  {/* <SearchUnit problems={this.state.userproblems} /> */}
+              </div>
+
+              {/* SEARCH RESULTS */}
+              <div id="searchResultsContainerHide">
+                <img src={require('../assets/redX3.svg')} id="searchResultsExitButton" width="20" height="20" alt="exit button" onClick={this.hideSearch} />
+                <SearchResults searchText={this.state.searchText} problems={this.state.searchResults}/>
+              </div>
+            </div>
+      );  
+
+ }}
 }

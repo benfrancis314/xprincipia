@@ -2,7 +2,8 @@ import React from 'react';
 import axios from 'axios';
 import cookie from 'react-cookie';
 import { Link } from 'react-router';
-import {Config} from '../../config.js'
+import {Config} from '../../config.js';
+import $ from 'jquery';
 
 export default class AnswerEditForm extends React.Component {
 
@@ -16,9 +17,9 @@ export default class AnswerEditForm extends React.Component {
     this.updateAnswer = this.updateAnswer.bind(this);
   };
 
-  componentWillMount(){
+  componentDidMount(){
       var self = this;
-        return axios.get( Config.API + '/auth/answers/ID?id='+this.props.params.answerID).then(function (response) {
+        return axios.get( Config.API + '/answers/ID?id='+this.props.params.answerID).then(function (response) {
           self.setState({
               answer: response.data
           })
@@ -26,11 +27,23 @@ export default class AnswerEditForm extends React.Component {
           document.getElementById('answerEditTextArea').value = self.state.answer.Description;
 
     })
-    .catch(function (error) {
-        if(error.response.status === 401 || error.response.status === 403){
-            document.location = "/login"
-        }
-    });   
+      .catch(function (error) {
+        // console.log(error.response.data)
+          $(document).ready(function() {
+              $('#notification').attr('id','notificationShow').hide().slideDown();
+              if (error.response.data != '') {
+                $('#notificationContent').text(error.response.data);
+              }
+              else if (error.response.data == '[object Object]') {
+                return (
+                  $(document).ready(function() {
+                    $('#notificationLoginRegisterContainer').attr('id','notificationLoginRegisterContainerShow');
+                    $('#notificationContent').html('Please <span id="blue">login </span>to contribute');
+                  })
+                );
+              } 
+          });
+      });
   }
 
 updateAnswer() {
@@ -44,35 +57,63 @@ updateAnswer() {
       description : this.state.answer,
     })
       .then(function (result) {
-        // document.location = '/problem/' + self.props.params.probID + '/question/' + self.props.params.questID + '/answers'
         document.location = window.location.pathname 
       })
       .catch(function (error) {
-        alert("I'm sorry, there was a problem with your request. ")
+          $(document).ready(function() {
+              $('#notification').attr('id','notificationShow').hide().slideDown();
+              if (error.response.data != '') {
+                $('#notificationContent').text(error.response.data);
+              }
+              else if (error.response.data == '[object Object]') {
+                return (
+                  $(document).ready(function() {
+                    $('#notificationLoginRegisterContainer').attr('id','notificationLoginRegisterContainerShow');
+                    $('#notificationContent').html('Please <span id="blue">login </span>to contribute');
+                  })
+                );
+              } 
+          });
       });
     }
 
-  
-  
-
-
-
    render() {
+      if (this.props.params.solutionID){
+        return (
+            <div id="questionFormComponent">
+              <form id="questionForm">
+                  <fieldset id="redFieldset">
+                      <legend id="redLegend">Edit Answer</legend>
+                          <textarea name="questionText" required="required" id="answerEditTextArea" autoFocus ></textarea>
+                          <br />
+                          <Link to={`/project/${this.props.params.probID}/proposal/${this.props.params.solutionID}/question/${this.props.params.questID}/answers`}>
+                            <div onClick={this.updateAnswer} id="editButton">Submit</div>
+                          </Link>
+                          <Link to={`/project/${this.props.params.probID}/proposal/${this.props.params.solutionID}/question/${this.props.params.questID}/answers`}>
+                              <div id="returnButton">Exit</div>
+                          </Link>
+                  </fieldset>
+              </form>
+        </div>
+        );
+    } else {
       return (
-      <div id="questionFormComponent">
-            <form id="questionForm">
-                <fieldset id="redFieldset">
-                    <legend id="redLegend">Edit Answer</legend>
-                         <textarea name="questionText" required="required" id="answerEditTextArea" autoFocus ></textarea>
-                         <br />
-                         <div onClick={this.updateAnswer} id="editButton">Submit</div>
-                         <Link to={`/problem/${this.props.params.probID}/question/${this.props.params.questID}/answers`}>
-                            <div id="returnButton">Exit</div>
-                         </Link>
-                </fieldset>
-            </form>
-      </div>
-
+        <div id="questionFormComponent">
+              <form id="questionForm">
+                  <fieldset id="redFieldset">
+                      <legend id="redLegend">Edit Answer</legend>
+                          <textarea name="questionText" required="required" id="answerEditTextArea" autoFocus ></textarea>
+                          <br />
+                          <Link to={`/project/${this.props.params.probID}/question/${this.props.params.questID}/answers`}>
+                            <div onClick={this.updateAnswer} id="editButton">Submit</div>
+                          </Link>
+                          <Link to={`/project/${this.props.params.probID}/question/${this.props.params.questID}/answers`}>
+                              <div id="returnButton">Exit</div>
+                          </Link>
+                  </fieldset>
+              </form>
+        </div>
       );
-   }
+    }
+  }
 }

@@ -3,8 +3,8 @@ import { Link  } from 'react-router';
 import axios from 'axios';
 import cookie from 'react-cookie';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group'; // ES6
-import TutorialSolutionPage from '../tutorials/TutorialSolutionPage.jsx';
-import {Config} from '../../config.js'
+import {Config} from '../../config.js';
+import $ from 'jquery';
 
 export default class ProblemLeftSB extends React.Component {
   constructor(props){
@@ -19,20 +19,32 @@ export default class ProblemLeftSB extends React.Component {
     };
     componentDidMount(){
       var self = this;
-      axios.get( Config.API + '/auth/problems/ID?id='+this.props.params.probID).then(function (response) {
+      axios.get( Config.API + '/problems/ID?id='+this.props.params.probID).then(function (response) {
 
           //set Problem Data
           self.setState({
               problemInfo: response.data
           })
     })
-    .catch(function (error) {
-        if(error.response.status === 401 || error.response.status === 403){
-            document.location = "/login"
-        }
-    });
+      .catch(function (error) {
+        // console.log(error.response.data)
+          $(document).ready(function() {
+              $('#notification').attr('id','notificationShow').hide().slideDown();
+              if (error.response.data != '') {
+                $('#notificationContent').text(error.response.data);
+              }
+              else if (error.response.data == '[object Object]') {
+                return (
+                  $(document).ready(function() {
+                    $('#notificationLoginRegisterContainer').attr('id','notificationLoginRegisterContainerShow');
+                    $('#notificationContent').html('Please <span id="blue">login </span>to contribute');
+                  })
+                );
+              } 
+          });
+      });
           
-    axios.get( Config.API + "/auth/vote/isVotedOn?type=0&typeID=" + this.props.params.probID + "&username=" + cookie.load("userName"))
+    axios.get( Config.API + "/vote/isVotedOn?type=0&typeID=" + this.props.params.probID + "&username=" + cookie.load("userName"))
           .then( function (response){
             console.log(response.data)
             self.setState({
@@ -44,18 +56,30 @@ export default class ProblemLeftSB extends React.Component {
 
   componentWillReceiveProps(newProps){
     var self = this;
-      return axios.get( Config.API + '/auth/problems/ID?id='+newProps.params.probID).then(function (response) {
+      return axios.get( Config.API + '/problems/ID?id='+newProps.params.probID).then(function (response) {
         //set problem data
         self.setState({
             problemInfo: response.data,
             probID: response.data.ID
         })
     })
-    .catch(function (error) {
-        if(error.response.status === 401 || error.response.status === 403){
-            document.location = "/login"
-        }
-    }); 
+      .catch(function (error) {
+        // console.log(error.response.data)
+          $(document).ready(function() {
+              $('#notification').attr('id','notificationShow').hide().slideDown();
+              if (error.response.data != '') {
+                $('#notificationContent').text(error.response.data);
+              }
+              else if (error.response.data == '[object Object]') {
+                return (
+                  $(document).ready(function() {
+                    $('#notificationLoginRegisterContainer').attr('id','notificationLoginRegisterContainerShow');
+                    $('#notificationContent').html('Please <span id="blue">login </span>to contribute');
+                  })
+                );
+              } 
+          });
+      });
 
   }
   submitVote() {
@@ -68,7 +92,7 @@ export default class ProblemLeftSB extends React.Component {
         })
         .then(function (result) {
             // alert("Thank you, your vote has been recorded.")
-          return axios.get( Config.API + '/auth/problems/ID?id='+self.props.params.probID).then(function (response) {
+          return axios.get( Config.API + '/problems/ID?id='+self.props.params.probID).then(function (response) {
           
             //set problem data
             self.setState({
@@ -79,9 +103,23 @@ export default class ProblemLeftSB extends React.Component {
           })
           
         })
-        .catch(function (error) {
-            alert("You may only vote on a project once. ");
-        })
+      .catch(function (error) {
+        // console.log(error.response.data)
+          $(document).ready(function() {
+              $('#notification').attr('id','notificationShow').hide().slideDown();
+              if (error.response.data != '') {
+                $('#notificationContent').text(error.response.data);
+              }
+              else if (error.response.data == '[object Object]') {
+                return (
+                  $(document).ready(function() {
+                    $('#notificationLoginRegisterContainer').attr('id','notificationLoginRegisterContainerShow');
+                    $('#notificationContent').html('Please <span id="blue">login </span>to contribute');
+                  })
+                );
+              } 
+          });
+      });
   }
 unVote() {
       return axios.delete( Config.API + '/auth/vote/delete' ,{
@@ -99,9 +137,23 @@ unVote() {
             // })
             document.location = window.location.pathname 
         })
-        .catch(function (error) {
-            alert("I'm sorry, there was a problem with your request. ")
-        })
+      .catch(function (error) {
+        // console.log(error.response.data)
+          $(document).ready(function() {
+              $('#notification').attr('id','notificationShow').hide().slideDown();
+              if (error.response.data != '') {
+                $('#notificationContent').text(error.response.data);
+              }
+              else if (error.response.data == '[object Object]') {
+                return (
+                  $(document).ready(function() {
+                    $('#notificationLoginRegisterContainer').attr('id','notificationLoginRegisterContainerShow');
+                    $('#notificationContent').html('Please <span id="blue">login </span>to contribute');
+                  })
+                );
+              } 
+          });
+      });
         
     }
 
@@ -119,7 +171,7 @@ unVote() {
         <div id="maxContainerRow">
           <div id="fullProblemLeft">
             <div id="problemLeftSBHeader">
-              <Link to={`/problem/${this.props.params.probID}/subproblems`}>
+              <Link to={`/project/${this.props.params.probID}/subprojects`}>
                 <div id="backProjectArrowDiv">
                   <img src={require('../../assets/leftArrow.svg')} id="backArrowBlueHover" width="50" height="30" alt="Back arrow, blue up arrow" />
                 </div>
@@ -150,7 +202,6 @@ unVote() {
             <img src={require('../../assets/tutorial.svg')} id="tutorialSolutionButton" width="50" height="50" alt="Back arrow, blue up arrow" />
           </div>*/}
           
-          <TutorialSolutionPage />
           </ReactCSSTransitionGroup>
       </div>
       );
@@ -166,7 +217,7 @@ unVote() {
         <div id="maxContainerRow">
           <div id="fullProblemLeft">
             <div id="problemLeftSBHeader">
-              <Link to={`/problem/${this.props.params.probID}/subproblems`}>
+              <Link to={`/project/${this.props.params.probID}/subprojects`}>
                 <div id="backProjectArrowDiv">
                   <img src={require('../../assets/leftArrow.svg')} id="backArrowBlueHover" width="50" height="30" alt="Back arrow, blue up arrow" />
                 </div>
@@ -197,7 +248,6 @@ unVote() {
             <img src={require('../../assets/tutorial.svg')} id="tutorialSolutionButton" width="50" height="50" alt="Back arrow, blue up arrow" />
           </div>*/}
           
-          <TutorialSolutionPage />
           </ReactCSSTransitionGroup>
       </div>
              );
@@ -213,7 +263,7 @@ unVote() {
         <div id="maxContainerRow">
           <div id="fullProblemLeft">
             <div id="problemLeftSBHeader">
-              <Link to={`/problem/${this.props.params.probID}/subproblems`}>
+              <Link to={`/project/${this.props.params.probID}/subprojects`}>
                 <div id="backProjectArrowDiv">
                   <img src={require('../../assets/leftArrow.svg')} id="backArrowBlueHover" width="50" height="30" alt="Back arrow, blue up arrow" />
                 </div>
@@ -244,7 +294,6 @@ unVote() {
             <img src={require('../../assets/tutorial.svg')} id="tutorialSolutionButton" width="50" height="50" alt="Back arrow, blue up arrow" />
           </div>*/}
           
-          <TutorialSolutionPage />
           </ReactCSSTransitionGroup>
       </div>
       );
@@ -263,7 +312,7 @@ unVote() {
         <div id="maxContainerRow">
           <div id="fullProblemLeft">
             <div id="problemLeftSBHeader">
-              <Link to={`/problem/${this.props.params.probID}/subproblems`}>
+              <Link to={`/project/${this.props.params.probID}/subprojects`}>
                 <div id="backProjectArrowDiv">
                   <img src={require('../../assets/leftArrow.svg')} id="backArrowBlueHover" width="50" height="30" alt="Back arrow, blue up arrow" />
                 </div>
@@ -294,7 +343,6 @@ unVote() {
             <img src={require('../../assets/tutorial.svg')} id="tutorialSolutionButton" width="50" height="50" alt="Back arrow, blue up arrow" />
           </div>*/}
           
-          <TutorialSolutionPage />
           </ReactCSSTransitionGroup>
       </div>
               );

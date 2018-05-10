@@ -9,7 +9,7 @@ export default class ProfileAbout extends React.Component {
                  web app allowing anyone to access and contribute to <span id="blue">scientific progress</span>.
                  <br />
                  <br />
-                 Our mission is to <span id="blue">advance humanity to the best possible future. </span>
+                 Our mission is to <span id="blue">advance humanity to the best possible future </span>through <span id='blue'>free scientific collaboration</span>.
                  <br />
                  <br />
                  
@@ -26,15 +26,15 @@ export default class ProfileAbout extends React.Component {
                  Over time <span id="blue">new areas of the site will open</span>, with the goal of becoming the <span id="blue">online center for scientific progress</span>. 
                  <br />
                  <br />
-                 <span id="blue">XPrincipia Competitions </span> will open on <span id="blue">Labor Day 2017</span>, 
+                 <span id="blue">XPrincipia Competitions </span> will open <span id="blue">Fall 2018</span>, 
                  focusing users towards developing <span id="blue">specific projects</span>, where <span id="blue">themed prizes</span> are earned by the <span id="blue">top competitors</span>.
                  <br />
                  <br />
-                 <span id="blue">XPrincipia Crowdfunding </span> will open in <span id="blue">2018</span>, 
+                 <span id="blue">XPrincipia Crowdfunding </span> will open in <span id="blue">2019</span>, 
                  allowing users to choose which <span id="blue"> experiments to conduct </span> and <span id="blue"> prototypes to create</span>.
                  <br />
                  <br />
-                 <span id="blue">XPrincipia Market </span> will open in <span id="blue">2020</span>, 
+                 <span id="blue">XPrincipia Market </span> will open in <span id="blue">2021</span>, 
                  providing users with the <span id="blue">technology</span>, <span id="blue">scientific equipment</span> and <span id="blue">raw materials</span> to create and research <span id="blue"> on their own</span>.
                  <br />
                  <br />

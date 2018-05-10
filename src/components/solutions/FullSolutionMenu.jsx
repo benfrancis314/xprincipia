@@ -2,7 +2,8 @@ import React from 'react';
 import { Link } from 'react-router';
 import axios from 'axios';
 import cookie from 'react-cookie';
-import {Config} from '../../config.js'
+import {Config} from '../../config.js';
+import $ from 'jquery';
 
 export default class FullSolutionMenu extends React.Component {
   constructor(props){
@@ -17,31 +18,55 @@ export default class FullSolutionMenu extends React.Component {
     //initialize the component with this state
     componentDidMount(){
       var self = this;
-      return axios.get( Config.API + '/auth/solutions/ID?id='+this.props.params.solutionID).then(function (response) {
+      return axios.get( Config.API + '/solutions/ID?id='+this.props.params.solutionID).then(function (response) {
           self.setState({
               solutionInfo: response.data,
           })
     })
-    .catch(function (error) {
-        if(error.response.status === 401 || error.response.status === 403){
-            document.location = "/login"
-        }
-    });   
+      .catch(function (error) {
+        // console.log(error.response.data)
+          $(document).ready(function() {
+              $('#notification').attr('id','notificationShow').hide().slideDown();
+              if (error.response.data != '') {
+                $('#notificationContent').text(error.response.data);
+              }
+              else if (error.response.data == '[object Object]') {
+                return (
+                  $(document).ready(function() {
+                    $('#notificationLoginRegisterContainer').attr('id','notificationLoginRegisterContainerShow');
+                    $('#notificationContent').html('Please <span id="blue">login </span>to contribute');
+                  })
+                );
+              } 
+          });
+      });
     }
 
   //On recieving new props
   componentWillReceiveProps(newProps){
     var self = this;
-      return axios.get( Config.API + '/auth/solutions/ID?id='+newProps.params.solutionID).then(function (response) {
+      return axios.get( Config.API + '/solutions/ID?id='+newProps.params.solutionID).then(function (response) {
           self.setState({
               solutionInfo: response.data,  
           })
     })
-    .catch(function (error) {
-        if(error.response.status === 401 || error.response.status === 403){
-            document.location = "/login"
-        }
-    }); 
+      .catch(function (error) {
+        // console.log(error.response.data)
+          $(document).ready(function() {
+              $('#notification').attr('id','notificationShow').hide().slideDown();
+              if (error.response.data != '') {
+                $('#notificationContent').text(error.response.data);
+              }
+              else if (error.response.data == '[object Object]') {
+                return (
+                  $(document).ready(function() {
+                    $('#notificationLoginRegisterContainer').attr('id','notificationLoginRegisterContainerShow');
+                    $('#notificationContent').html('Please <span id="blue">login </span>to contribute');
+                  })
+                );
+              } 
+          });
+      });
 
   }
   submitVote() {
@@ -55,16 +80,30 @@ export default class FullSolutionMenu extends React.Component {
             document.location = window.location.pathname;
             alert("Thank you, your vote has been recorded.");
         })
-        .catch(function (error) {
-            alert("I'm sorry, you've already voted on a solution.");
-        })
+      .catch(function (error) {
+        // console.log(error.response.data)
+          $(document).ready(function() {
+              $('#notification').attr('id','notificationShow').hide().slideDown();
+              if (error.response.data != '') {
+                $('#notificationContent').text(error.response.data);
+              }
+              else if (error.response.data == '[object Object]') {
+                return (
+                  $(document).ready(function() {
+                    $('#notificationLoginRegisterContainer').attr('id','notificationLoginRegisterContainerShow');
+                    $('#notificationContent').html('Please <span id="blue">login </span>to contribute');
+                  })
+                );
+              } 
+          });
+      });
   }
    render() {
       return (
       <div> 
             <div id="voteVersionsMenu">
                     <Link><div id="voteSolution" onClick={this.submitVote}>Vote</div></Link>
-                    <Link to={`/fullsolution/${this.props.params.probID}/${this.props.params.solutionID}/versions`}>
+                    <Link to={`/proposal/${this.props.params.probID}/${this.props.params.solutionID}/versions`}>
                         <div id="versionsButton">
                                 Versions
                         </div>
@@ -72,10 +111,10 @@ export default class FullSolutionMenu extends React.Component {
               </div>
               <div id="createDate">{dateTime(this.state.solutionInfo.CreatedAt)}</div>
               <div id="prosConsMenu">
-                <Link to={`/fullsolution/${this.props.params.probID}/${this.props.params.solutionID}/pros`}>
+                <Link to={`/proposal/${this.props.params.probID}/${this.props.params.solutionID}/pros`}>
                     <div id="prosButton">Pros</div>
                 </Link>
-                <Link to={`/fullsolution/${this.props.params.probID}/${this.props.params.solutionID}/cons`}>
+                <Link to={`/proposal/${this.props.params.probID}/${this.props.params.solutionID}/cons`}>
                     <div id="consButton">Cons</div>
                 </Link>
               </div>

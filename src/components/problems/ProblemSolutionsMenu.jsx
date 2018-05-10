@@ -1,36 +1,62 @@
 import React from 'react';
-import {Link} from 'react-router';
 import axios from 'axios'
-import {Config} from '../../config.js'
+import {Config} from '../../config.js';
+import ProblemTopSolutions from './ProblemTopSolutions.jsx';
+import SolutionForm from '../solutions/SolutionForm.jsx';
+import $ from 'jquery';
 
 export default class ProblemSolutionsMenu extends React.Component {
   constructor(props){
         super(props);
 
         this.state = {
-            solutions: []
+            solutions: [],
         }
-
     };
-        componentDidMount(){
+
+    componentDidMount(){
         var self = this;
-        window.scrollTo(0,0);
-        return axios.get( Config.API + '/auth/solutions/problemID?id='+this.props.params.probID).then(function (response) {
+        return axios.get( Config.API + '/solutions/problemID?id='+this.props.probID).then(function (response) {
             self.setState({
-                solutions: response.data
+                solutions: response.data,
             })
         })
     }
 
+    componentWillReceiveProps (nextProps){
+        var self = this;
+        return axios.get( Config.API + '/solutions/problemID?id='+this.props.probID).then(function (response) {
+            self.setState({
+                solutions: response.data,
+            })
+        })
+    }
+    hoverNewProposal() {
+        $(document).ready(function() {
+            // $('#welcomeSearchFormLabel').attr('placeholder','CINEMATIC GUIDE');
+            // $('#welcomeSearchFormLabel').attr('id','welcomeSearchFormLabelBlue');
+            $('#proposalSectionHeader').html('new <span id="brightWhite">proposal</span>').fadeIn(7500);
+            $('#proposalSectionHeader').attr('id','proposalSectionHeaderHover');
+        });
+      }
+      unHoverNewProposal() {
+          $(document).ready(function() {
+              // Used to say SEARCH PROJECT TREES
+              $('#proposalSectionHeaderHover').html('proposals');             
+              $('#proposalSectionHeaderHover').attr('id','proposalSectionHeader');
+          });
+      }
+
    render() {
+
       return (
-        <div id="solutions">
-            <div id="solutionsTitleRightSB">Proposals</div>
-            <div id="solutionsHeader">
-                <Link to={`/problem/${this.props.params.probID}/solutions/top`} activeClassName="activeWhite"><div id="topSolutionsButtonRightSB">Top</div></Link>
-                <Link to={`/problem/${this.props.params.probID}/solutions/create`}  activeClassName="activeWhite"><div id="createSolutionsButtonRightSB">Create</div></Link>
-            </div>
-            {React.cloneElement(this.props.children, {probID: this.state.probID})}
+        <div id="projectInteractMenu">
+            <div id="proposalSectionHeader">proposals</div>
+            <a href='#proposalForm'>
+                <div id="addBlueX" onMouseOver={this.hoverNewProposal} onMouseOut={this.unHoverNewProposal}></div>
+            </a>
+            <ProblemTopSolutions probID={this.props.probID} />
+            <SolutionForm probID={this.props.probID} projectTitle={this.props.projectTitle} />
         </div>
 
       );
