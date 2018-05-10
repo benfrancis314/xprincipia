@@ -16,19 +16,23 @@ export default class ProblemDiscussMenu extends React.Component {
             suggestionNumber: '',
             debateNumber: '',
             discussElements: [],
+            linkPath: '',
         }
 
     };
     
-    // componentDidMount(){
-    //     var self = this;
-    // }
-
-// Not using this currently, keep in case we decide to switch back
-// componentDidUpdate() {
-//         ReactDOM.findDOMNode(this).scrollIntoView();
-//         window.scrollBy(0, -70);
-//   }      
+    componentDidMount(){
+        var self = this;
+        if (window.location.pathname.includes('private')) {
+            self.setState({
+                linkPath: '/project/private/',
+            })
+        } else {
+            self.setState({
+                linkPath: '/project/',
+            })
+        }
+    }     
 
 
 
@@ -37,7 +41,7 @@ export default class ProblemDiscussMenu extends React.Component {
        
       return (
         <div>
-            <Link to={`/project/${this.props.params.probID}/subprojects`}>
+            <Link to={this.state.linkPath+`${this.props.params.probID}/subprojects`}>
                 <img src={require('../../assets/redX.svg')} id="closeRedX" width="30" height="30" alt="Close button, red X symbol" />
             </Link>
             <ReactCSSTransitionGroup

@@ -83,7 +83,7 @@ postPassions() {
       return (
         <div id="passionsFormContainer">
               <div id="passionsHeader">
-                  philosophical passions
+                  intellectual passions
               </div>
               <form id="suggestionForm">
                   <textarea name="feedbackText" required="required" id="passionsTextArea" placeholder="What are your passions, your fields of interest, or your driving motivations? " autoFocus ></textarea>
@@ -98,11 +98,11 @@ postPassions() {
     return (
       <div id="passionsFormContainer">
               <div id="passionsHeader">
-                  philosophical passions
+                  intellectual passions
               </div>
               <form id="suggestionForm">
-                  <div id="passionsTextArea">
-                    {this.state.passions}
+                  <div id="passionsViewText">
+                    {this.props.user.Passions}
                   </div>
               </form>
         </div>

@@ -57,7 +57,7 @@ enterRegister(event) {
     this.state.username = document.getElementById('loginHeaderEmail').value
     this.state.password = document.getElementById('loginHeaderPassword').value
 
-    return axios.post( Config.API + '/login', {
+    axios.post( Config.API + '/login', {
       username : this.state.username,
       password: this.state.password
     })
@@ -68,7 +68,7 @@ enterRegister(event) {
       cookie.save('userToken', result.data.token, { path: '/' } );
       cookie.save('userName', self.state.username, { path: '/' })
       // Store token/Username in db table
-      return axios.post( Config.API + '/auth/saveToken',  {
+      axios.post( Config.API + '/auth/saveToken',  {
         username : self.state.username,
         token : "Bearer " + self.state.userToken
       }, 

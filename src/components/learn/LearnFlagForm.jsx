@@ -17,12 +17,37 @@ export default class LearnContentFlagForm extends React.Component {
       reason: '',
       submitUser: '',
       flagUser: '',
+      linkPath: '',
     }
 
-    this.flagLesson = this.flagLesson.bind(this);
+    this.flagLearn = this.flagLearn.bind(this);
   };
+  componentDidMount(){
+    var self = this;
+    if (window.location.pathname.includes('private')) {
+        self.setState({
+            linkPath: '/project/private/',
+        })
+    } else {
+        self.setState({
+            linkPath: '/project/',
+        })
+    }
+  }
+  componentWillReceiveProps(){
+    var self = this;
+    if (window.location.pathname.includes('private')) {
+        self.setState({
+            linkPath: '/project/private/',
+        })
+    } else {
+        self.setState({
+            linkPath: '/project/',
+        })
+    }
+  }
 
-  flagLesson() {
+  flagLearn() {
   //Read field items into component state
   this.state.description = document.getElementById('questionTextArea').value
   if (document.getElementById('flagReason3').checked) {
@@ -45,10 +70,10 @@ export default class LearnContentFlagForm extends React.Component {
     description : this.state.description,
   })
   .then(function (result) {
-    document.location = '/project/'+ self.props.params.probID + '/learn/content'
+    document.location = self.state.linkPath + self.props.params.probID + '/learn'
   })
     .catch(function (error) {
-      // console.log(error.response.data)
+      console.log(error.response.data)
         $(document).ready(function() {
             $('#notification').attr('id','notificationShow').hide().slideDown();
             if (error.response.data != '') {
@@ -116,13 +141,15 @@ export default class LearnContentFlagForm extends React.Component {
           </div>
 
           <form id="flagForm">
-            <textarea id="questionTextArea" name="questionText" placeholder="Why should this project be moved, altered or removed?" 
-            autoFocus ></textarea>
-            <br />
-            <div onClick={this.flagLesson} id="flagButton">submit</div>
-            <Link to={`/project/${this.props.params.probID}/learn/content`}>
-              <div id="returnButton">exit</div>
-            </Link>
+            <textarea id="questionTextArea" name="questionText" placeholder="Why should this project be moved, altered or removed?" autoFocus ></textarea>
+            <div id="discussFormButtonContainer">
+                <Link to={this.state.linkPath+this.props.params.probID+'/learn'}>
+                    <div id="returnButton">exit</div>
+                </Link>
+                <Link>
+                    <div onClick={this.flagLearn} id="flagButton">submit</div>
+                </Link>
+            </div>
           </form>
           </div>
         </div>

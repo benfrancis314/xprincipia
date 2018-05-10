@@ -89,8 +89,7 @@ renderItem(problem) {
 } else if (problem.BackupParentID > 0) {
 
     return (
-      <div key={problem.ID} id="nodisplays">
-        x
+      <div key={problem.ID} id="nodisplay">
       </div>
     
     );
@@ -103,7 +102,7 @@ renderItem(problem) {
                     <div id="feedUnitsProject">               
                         <div id="blueFeedProject">new sub project:</div>
                         <div id="whiteFeedProject">
-                            {problem.Description}
+                            {problem.Title}
                         </div>
                     </div>
                 </Link>  
@@ -112,11 +111,11 @@ renderItem(problem) {
     } else if (problem.Type == 1) {
         return (
             <li key={problem.ID} id="feedListUnit">
-                <Link to={'/project/'+problem.ProblemID +'/proposal/'+problem.TypeID}>
+                <Link to={'/project/'+problem.TypeID +'/proposal/'+problem.ProblemID}>
                     <div id="feedUnitsProject">               
                         <div id="blueFeedProject">new proposal:</div>
                         <div id="whiteFeedProject">
-                            {problem.Description}
+                            {problem.Title}
                         </div>
                     </div>
                 </Link>  
@@ -138,7 +137,7 @@ renderItem(problem) {
     } else if (problem.Type == 3) {
         return (
             <li key={problem.ID} id="feedListUnit">
-                <Link to={'/project/'+problem.ProblemID +'/suggestion/'+problem.TypeID +'/comments'}>
+                <Link to={'/project/'+problem.ProblemID +'/discuss/'+problem.TypeID +'/comments'}>
                     <div id="feedUnitsProject">               
                         <div id="blueFeedProject">new suggestion:</div>
                         <div id="whiteFeedProjectDescription">
@@ -151,7 +150,7 @@ renderItem(problem) {
     } else if (problem.Type == 6) {
         return (
             <li key={problem.ID} id="feedListUnit">
-                <Link to={'/project/'+problem.ProblemID +'/suggestion/'+problem.TypeID +'/comments'}>
+                <Link to={'/project/'+problem.ProblemID +'/discuss/'+problem.TypeID +'/comments'}>
                     <div id="feedUnitsProject">               
                         <div id="blueFeedProject">new debate:</div>
                         <div id="whiteFeedProjectDescription">
@@ -164,9 +163,9 @@ renderItem(problem) {
     } else if (problem.Type == 7) {
         return (
         <li key={problem.ID} id="feedListUnit">
-            <Link to={'/project/'+problem.ProblemID +'/learn/content/'+problem.TypeID +'/comments'}>
+            <Link to={'/project/'+problem.ProblemID +'/learn'}>
                 <div id="feedUnitsProject">               
-                    <div id="blueFeedProject">new lesson:</div>
+                    <div id="blueFeedProject">new educational resource:</div>
                     <div id="whiteFeedProject">
                         {problem.Description}
                     </div>
@@ -176,9 +175,9 @@ renderItem(problem) {
     } else if (problem.Type == 8) {
         return (
             <li key={problem.ID} id="feedListUnit">
-                <Link to={'/project/'+problem.ProblemID +'/learn/resources/'+problem.TypeID +'/comments'}>
+                <Link to={'/project/'+problem.ProblemID +'/learn'}>
                     <div id="feedUnitsProject">               
-                        <div id="blueFeedProject">new resource:</div>
+                        <div id="blueFeedProject">new research:</div>
                         <div id="whiteFeedProject">
                             {problem.Description}
                         </div>

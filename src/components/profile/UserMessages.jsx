@@ -15,7 +15,6 @@ export default class ProfileNotifications extends React.Component {
         this.state= {
             messages: [],
             description: '',
-            rerender: '',
             user1: '',
             user2: '',
             message: '',
@@ -24,13 +23,12 @@ export default class ProfileNotifications extends React.Component {
         this.renderItem = this.renderItem.bind(this)
         this.postMessage = this.postMessage.bind(this)
         this.startConversation = this.startConversation.bind(this)
-        this.causeRerender = this.causeRerender.bind(this)
     // this.submitVote = this.submitVote.bind(this)
 };
 
 componentDidMount(){
     var self = this;
-    return axios.get( Config.API + '/messages/convo?user1='+this.props.params.username+'&user2='+cookie.load('userName')).then(function (response) {
+    axios.get( Config.API + '/messages/convo?user1='+this.props.params.username+'&user2='+cookie.load('userName')).then(function (response) {
         self.setState({
             messages: response.data,
             rerender: '0',
@@ -39,7 +37,7 @@ componentDidMount(){
 }
 componentWillReceiveProps (nextProps){
     var self = this;
-    return axios.get( Config.API + '/messages/convo?user1='+nextProps.params.username+'&user2='+cookie.load('userName')).then(function (response) {
+    axios.get( Config.API + '/messages/convo?user1='+nextProps.params.username+'&user2='+cookie.load('userName')).then(function (response) {
         self.setState({
             messages: response.data,
             rerender: '0',
@@ -49,13 +47,13 @@ componentWillReceiveProps (nextProps){
 }
 postMessage() {
     var self = this;
-    self.refs.btn.setAttribute("disabled", "disabled");
+    self.refs.messagebtn.setAttribute("disabled", "disabled");
 
-    this.state.description = document.getElementById('conversationEntry').value
+    this.state.message = document.getElementById('conversationEntry').value
     axios.post( Config.API + '/auth/messages/create', {
         user1 : cookie.load('userName'),
         user2 : this.props.params.username,
-        // description : this.state.description,
+        description : this.state.message,
       })
       .then(function (response) {
         // return axios.get( Config.API + '/messages/convo?user1='+nextProps.params.user1+'&user2='+nextProps.params.user2).then(function (response) {
@@ -64,10 +62,8 @@ postMessage() {
         //     })
         // })  
         document.getElementById("conversationSubmit").reset();
-        self.refs.btn.removeAttribute("disabled");
-        document.location = window.location.pathname 
+        self.refs.messagebtn.removeAttribute("disabled");
 
-        
       })
       .catch(function (error) {
           $(document).ready(function() {
@@ -84,6 +80,7 @@ postMessage() {
                 $('#notificationContent').text(error.response.data);
               }
           });
+          self.refs.messagebtn.removeAttribute("disabled");
       });
     };
    startConversation() {
@@ -105,7 +102,6 @@ postMessage() {
           .then(function (response) {
             document.getElementById("conversationSubmit").reset();
             self.refs.messagebtn.removeAttribute("disabled");
-            // document.location = window.location.pathname 
           })
           .catch(function (error) {
     
@@ -127,14 +123,6 @@ postMessage() {
           });
         };
 
-// Attempt to keep autofocus on without page always scrolling down to it
-// componentDidMount() {
-//     window.scrollTo(0,0);
-// }
-
-causeRerender() {
-    alert('rerender');
-}
 
 	render() {
         // setInterval(this.causeRerender(), 5000);
@@ -156,12 +144,12 @@ causeRerender() {
                 <br />
             </div>
             <div id="conversationInstructions">
-                {this.props.params.user2}
+                {this.props.params.username}
             </div>
             <form id='conversationSubmit'>
                 <textarea id="conversationEntry" autoFocus autoComplete="off"></textarea>
                 <Link to={window.location.pathname}>
-                    <input id="conversationSubmitButton" ref='btn' type="button" value="submit" onClick={this.postMessage}></input>
+                    <input id="conversationSubmitButton" ref='messagebtn' type="button" value="submit" onClick={this.postMessage}></input>
                 </Link>
             </form>
             <ul id="conversationMessagesList"> 
@@ -188,14 +176,12 @@ causeRerender() {
                     <br />
                 </div>
                 <div id="conversationInstructions">
-                    {this.props.params.user2}
-                    {/* <br />
-                    {this.props.params.user1} */}
+                    {this.props.params.username}
                 </div>
                 <form id='conversationSubmit'>
                     <textarea id="conversationEntry" placeholder="Start a dialogue with a fellow member." autoFocus autoComplete="off"></textarea>
                     <Link to={window.location.pathname}>
-                        <input id="conversationSubmitButton" ref='messagebtn' type="button" value="submit" onClick={this.startConversation}></input>
+                        <input id="conversationSubmitButton" ref='messagebtn' type="button" value="send" onClick={this.startConversation}></input>
                     </Link>
                 </form>
                 {/* <ul id="conversationMessagesList"> 

@@ -61,7 +61,7 @@ constructor(){
       })
       .then(function (result) {
         
-        return axios.post( Config.API + '/login', {
+        axios.post( Config.API + '/login', {
           username : self.state.username,
           password: self.state.password
         })
@@ -73,12 +73,12 @@ constructor(){
           cookie.save('userName', self.state.username, { path: '/' })
           
           // Store token/Username in db table
-          return axios.post( Config.API + '/auth/saveToken',  {
+          axios.post( Config.API + '/auth/saveToken',  {
             username : self.state.username,
             token : "Bearer " + self.state.userToken
           }, {headers: { Authorization: "Bearer " + self.state.userToken }}).then (function (response){
             
-            document.location = "/profile/points";
+            document.location = "/profile/prestige";
 
           })
           
@@ -121,7 +121,7 @@ return axios.post( Config.API + '/register', {
           });
       })
   .then(function (result) {
-    return axios.post( Config.API + '/login', {
+    axios.post( Config.API + '/login', {
       username : self.state.username,
       password: self.state.password
     })  
@@ -133,13 +133,13 @@ return axios.post( Config.API + '/register', {
       cookie.save('userName', self.state.username, { path: '/' })
       
       // Store token/Username in db table
-      return axios.post( Config.API + '/auth/saveToken',  {
+      axios.post( Config.API + '/auth/saveToken',  {
         username : self.state.username,
         token : "Bearer " + self.state.userToken
       }, {headers: { Authorization: "Bearer " + self.state.userToken }}).then (function (response){
         
       })
-      document.location = "/profile/points";
+      document.location = "/profile/prestige";
   })
       .catch(function (error) {
         // console.log(error.response.data)

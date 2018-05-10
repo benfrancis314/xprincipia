@@ -64,7 +64,7 @@ export default class WelcomeUserUnit extends React.Component {
                 </div>
                 <div id="feedOptionsBar">
                     <div id="feedListType" onMouseOver={this.hoverLabel} onMouseOut={this.unHoverLabel}>
-                        lessons
+                        learn
                     </div>
                     <div id="feedOptionsButton">
                         <Link to="/welcome/filter" activeClassName="activeBlue">
@@ -118,12 +118,11 @@ if (lesson.Private === true) {
 } else 
       return (
         <li key={lesson.ID} id="feedListUnit">
-            <Link to={'/project/'+lesson.TypeID +'/lesson/'+lesson.ID +'/answers'}>
+            <Link to={'/project/'+lesson.TypeID +'/lesson'}>
                 <div id="feedUnits">  
-                     {/* Used to say "Question on: ... " or "Q: ... " or just the title */}
-                    <div id="blueFeedProse">project:<span id="feedCaps"> {lesson.ParentTitle}</span></div>
+                    <div id="blueFeedProse">{lesson.ParentTitle}</div>
                     <div id="whiteFeed">{lesson.Title}</div>
-                    <div id="feedDateProse">{dateTime(lesson.CreatedAt)}</div>
+                    <div id="feedDateDiscussProse">{dateTime(lesson.CreatedAt)}</div>
                 </div>
             </Link>
         </li>

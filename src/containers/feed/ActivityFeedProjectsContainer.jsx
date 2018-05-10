@@ -51,7 +51,7 @@ export default class WelcomeUserUnit extends React.Component {
     componentDidMount(){
         var self = this;
         // window.scrollTo(0,0);
-        return axios.get( Config.API + '/problems/feed').then(function (response) {
+        axios.get( Config.API + '/problems/feed').then(function (response) {
             self.setState({
                 feedProjects: response.data.reverse(),
                 // feedProjectsSlice: response.data.reverse().slice(1,3)

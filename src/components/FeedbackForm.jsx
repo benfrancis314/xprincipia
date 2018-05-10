@@ -17,7 +17,7 @@ constructor(){
 
 postFeedback() {
   //Read field items into component state
-this.state.feedback = document.getElementById('addSuggestion').value
+this.state.feedback = document.getElementById('feedbackTextArea').value
 
 
  axios.post( Config.API + '/auth/feedback/create', {

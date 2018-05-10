@@ -1,4 +1,5 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 import axios from 'axios';
 import cookie from 'react-cookie';
 import { Link } from 'react-router';
@@ -12,7 +13,6 @@ export default class DiscussDeleteForm extends React.Component {
 
   this.state= {
     comment: '',
-    comment: '',
     linkPath: '',
     proposalPath: '',
     commentPath: '',
@@ -22,7 +22,8 @@ export default class DiscussDeleteForm extends React.Component {
   };
 
 componentDidMount(){
-var self = this;
+    var self = this;
+    ReactDOM.findDOMNode(this).scrollIntoView(); 
     if (this.props.params.commentID) {
         axios.get( Config.API + '/comments/ID?id='+this.props.params.commentID).then(function (response) {
             self.setState({
@@ -153,6 +154,7 @@ deleteComment() {
                     </Link>
                 </div>
             </form>
-        </div>);
+        </div>
+        );
   }
 }

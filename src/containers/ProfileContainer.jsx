@@ -22,6 +22,9 @@ export default class ProfileContainer extends React.Component {
             notifications: [],
             user: [],
             planetID: '',
+            userPoints: '',
+            title1: '',
+            title2: '',
         }
 
 
@@ -79,6 +82,19 @@ export default class ProfileContainer extends React.Component {
                     planetID: 'earth',
                 })
             }
+            if(response.data.Tier == '2') {
+                self.setState({
+                    userPoints: response.data.Points,
+                    title1: 'way',
+                    title2: 'farer',
+                })
+            } else {
+                self.setState({
+                    userPoints: response.data.Points,
+                    title1: 'new',
+                    title2: 'comer',
+                })
+            }
         })
     }   
     componentWillReceiveProps(nextProps){
@@ -119,6 +135,19 @@ export default class ProfileContainer extends React.Component {
                 self.setState({
                     user: response.data,
                     planetID: 'earth',
+                })
+            }
+            if(response.data.Tier == '2') {
+                self.setState({
+                    userPoints: response.data.Points,
+                    title1: 'way',
+                    title2: 'farer',
+                })
+            } else {
+                self.setState({
+                    userPoints: response.data.Points,
+                    title1: 'new',
+                    title2: 'comer',
                 })
             }
         })
@@ -209,7 +238,10 @@ export default class ProfileContainer extends React.Component {
                     <div id="userOptions">
                         <br />
                         <Link to={`/profile/about`} activeClassName="activeBlue">
-                            <div id="aboutXPButton">about xprincipia</div>
+                            <div id="aboutXPButtonLoggedOut">about xprincipia</div>
+                        </Link>
+                        <Link to={`/profile/feedback`} activeClassName="activeBlue">
+                            <div id="aboutXPButtonLoggedOut">feedback</div>
                         </Link>
                     </div>
                 </div>
@@ -240,12 +272,12 @@ export default class ProfileContainer extends React.Component {
                 <div id="profileLeft">
                     <div id="userInformation">
                         <p id="userName">{cookie.load('userName')}</p>
-                        <Link to={`/profile/points`} activeClassName="activePoints">
+                        <Link to={`/profile/prestige`} activeClassName="activePoints">
                             <div id="profileLevelButton">
-                                westward newcomer
+                                <span id="blue">{this.state.title1}</span>{this.state.title2}
                             </div>
                             <div id="profilePointsButton">
-                                {this.state.user.Points}
+                                {this.state.userPoints}
                             </div>
                         </Link>
                         <div id="earthContainer">

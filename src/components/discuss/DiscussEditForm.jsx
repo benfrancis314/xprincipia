@@ -1,4 +1,5 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 import axios from 'axios';
 import cookie from 'react-cookie';
 import { Link } from 'react-router';
@@ -22,6 +23,7 @@ export default class DiscussEditForm extends React.Component {
 
   componentDidMount(){
       var self = this;
+      ReactDOM.findDOMNode(this).scrollIntoView(); 
       if (this.props.params.commentID) {
           axios.get( Config.API + '/comments/ID?id='+this.props.params.commentID).then(function (response) {
               self.setState({
@@ -86,11 +88,11 @@ export default class DiscussEditForm extends React.Component {
       self.setState({
           linkPath: '/project/private/',
       })
-  } else {
-      self.setState({
-          linkPath: '/project/',
-      })
-  }
+    } else {
+        self.setState({
+            linkPath: '/project/',
+        })
+    }
   if (window.location.pathname.includes('proposal')) {
     self.setState({
         proposalPath: '/proposal/'+nextProps.params.solutionID+'/',
@@ -118,15 +120,10 @@ updateComment() {
 if (this.props.params.commentID) {
     var self = this
     axios.put( Config.API + '/auth/comments/update?id='+this.props.params.commentID, {
-        // type:'5',
-        // typeID: self.props.params.subcommentID,
         username: cookie.load('userName'),
         description : self.state.comment,
       })
         .then(function (result) {
-          // document.location = '/project/' + self.props.params.probID + '/suggestion/' + self.props.params.suggID + '/comments'
-        //   document.location = window.location.pathname 
-        alert('subcomment')
         })
         .catch(function (error) {
           // console.log(error.response.data)
@@ -148,17 +145,12 @@ if (this.props.params.commentID) {
 } else {
   var self = this
   axios.put( Config.API + '/auth/comments/update?id='+this.props.params.discussID, {
-      // type:'5',
-    //   typeID: self.props.params.commentID,
       username: cookie.load('userName'),
       description : self.state.comment,
     })
       .then(function (result) {
-        // document.location = '/project/' + self.props.params.probID + '/suggestion/' + self.props.params.suggID + '/comments'
-        // document.location = window.location.pathname 
       })
       .catch(function (error) {
-        // console.log(error.response.data)
           $(document).ready(function() {
               $('#notification').attr('id','notificationShow').hide().slideDown();
               if (error.response.data != '') {

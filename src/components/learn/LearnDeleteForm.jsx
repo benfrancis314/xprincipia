@@ -13,19 +13,42 @@ export default class LearnContentDeleteForm extends React.Component {
 
   this.state= {
     learnItem: '',
+    linkPath: '',
   }
 
-    this.deleteLearnItem = this.deleteLearnItem.bind(this);
+    this.deleteLearn = this.deleteLearn.bind(this);
   };
 
   componentDidMount(){
+      var self = this;
+      ReactDOM.findDOMNode(this).scrollIntoView(); 
+      if (window.location.pathname.includes('private')) {
+        self.setState({
+            linkPath: '/project/private/',
+        })
+      } else {
+          self.setState({
+              linkPath: '/project/',
+          })  
+      } 
+  }
+  componentWillReceiveProps(nextProps) {
     var self = this;
-    ReactDOM.findDOMNode(this).scrollIntoView();    
+    // ReactDOM.findDOMNode(this).scrollIntoView(); 
+    if (window.location.pathname.includes('private')) {
+      self.setState({
+          linkPath: '/project/private/',
+      })
+    } else {
+        self.setState({
+            linkPath: '/project/',
+        })  
+    } 
 }
 
 
 
-deleteLearnItem() {
+deleteLearn() {
 //Delete question
       var self = this
       axios.delete( Config.API + '/auth/learnItems/delete?', {
@@ -35,7 +58,7 @@ deleteLearnItem() {
         }
       })
       .then(function (result) {
-        // document.location = '/project/'+ self.props.params.probID + '/learn/content'
+        document.location = self.state.linkPath+self.props.params.probID+'/learn'
       })
       .catch(function (error) {
         // console.log(error.response.data)
@@ -63,25 +86,18 @@ deleteLearnItem() {
 
    render() {
       return (
-        <div>
-          <div id="discussMenuEnd">
-            Lessons
-          </div>
-          <div id="questionFormComponent">
-                <form id="questionForm">
-                    <fieldset>
-                        <legend>Delete Lesson</legend>
-                            <div>Are you sure you would like to delete this lesson?</div>
-                            <br />
-                            <Link to={`/project/${this.props.params.probID}/learn/content`}>
-                                <div onClick={this.deleteLearnItem} id="deleteButton">Delete</div>
-                            </Link>
-                            <Link to={`/project/${this.props.params.probID}/learn/content`}>
-                                <div id="returnButton">Exit</div>
-                            </Link>
-                    </fieldset>
-                </form>
-          </div>
+        <div id="questionFormComponent">
+            <form id="questionForm">
+                <div id="discussDeleteConfirm">confirm <span id="red">deletion</span></div>
+                <div id="discussFormButtonContainer">
+                    <Link to={this.state.linkPath+this.props.params.probID+'/learn'}>
+                        <div id="returnButton">exit</div>
+                    </Link>
+                    <Link>
+                        <div onClick={this.deleteLearn} id="deleteButton">delete</div>                          
+                    </Link>
+                </div>
+            </form>
         </div>
 
       );

@@ -21,8 +21,11 @@ export default class ProfileContainer extends React.Component {
             currentItems:[],
             currentType: 'solution',
             notifications: [],
-            planet: '',
             user: [],
+            planetID: '',
+            userPoints: '',
+            title1: '',
+            title2: '',
         }
 
         this.onCreatedSolution = this.onCreatedSolution.bind(this)
@@ -64,11 +67,89 @@ export default class ProfileContainer extends React.Component {
             })
         }) 
         axios.get( Config.API + '/users/byusername?username='+this.props.params.username).then(function (response) {
-            self.setState({
-                user: response.data,
-            })
+            
+            if (response.data.Planet === 1)
+                self.setState({
+                    user: response.data,
+                    planetID: 'mars'
+                })
+            else {
+                self.setState({
+                    user: response.data,
+                    planetID: 'earth'
+                })
+            }
+            if(response.data.Tier == '2') {
+                self.setState({
+                    userPoints: response.data.Points,
+                    title1: 'way',
+                    title2: 'farer',
+                })
+            } else {
+                self.setState({
+                    userPoints: response.data.Points,
+                    title1: 'new',
+                    title2: 'comer',
+                })
+            }
         })
     }   
+    componentWillReceiveProps(nextProps){
+        var self = this;
+        axios.get( Config.API + '/users/followedSolutions?username='+nextProps.params.username).then(function (response) {
+            self.setState({
+                followedSolutions: response.data,
+                currentItems: response.data,
+            })
+        })
+        axios.get( Config.API + '/users/createdSolutions?username='+nextProps.params.username).then(function (response) {
+            self.setState({
+                createdSolutions: response.data,
+            })
+        })
+        axios.get( Config.API + '/notifications/new?username='+nextProps.params.username).then(function (response) {
+            self.setState({
+                notifications: response.data,
+            })
+        }) 
+         axios.get( Config.API + '/users/followedProblems?username='+nextProps.params.username).then(function (response) {
+            self.setState({
+                followedProblems: response.data,
+            })
+        })
+        axios.get( Config.API + '/notifications/new?username='+nextProps.params.username).then(function (response) {
+            self.setState({
+                notifications: response.data,
+            })
+        }) 
+        axios.get( Config.API + '/users/byusername?username='+nextProps.params.username).then(function (response) {
+            
+            if (response.data.Planet === 1)
+                self.setState({
+                    user: response.data,
+                    planetID: 'mars'
+                })
+            else {
+                self.setState({
+                    user: response.data,
+                    planetID: 'earth'
+                })
+            }
+            if(response.data.Tier == '2') {
+                self.setState({
+                    userPoints: response.data.Points,
+                    title1: 'way',
+                    title2: 'farer',
+                })
+            } else {
+                self.setState({
+                    userPoints: response.data.Points,
+                    title1: 'new',
+                    title2: 'comer',
+                })
+            }
+        })
+    }  
     onCreatedSolution() {
         var self = this;
         self.setState({
@@ -119,9 +200,15 @@ export default class ProfileContainer extends React.Component {
                         <p id="userName">
                             {this.props.params.username}
                         </p>
-                        {this.state.user.Planet}
-                        {randomPlanet()}
-                        {/* <div id="mercury"></div> */}
+                        <div id="profileLevelButton">
+                            <span id="blue">{this.state.title1}</span>{this.state.title2}
+                        </div>
+                        <div id="profilePointsButton">
+                            {this.state.userPoints}
+                        </div>
+                        <div id="earthContainer">
+                            <div id={this.state.planetID}></div>
+                        </div>
                     </div>
                     <div id="userOptions">
                         <br />
@@ -139,7 +226,7 @@ export default class ProfileContainer extends React.Component {
                     </div>
                 </div>
                 <div id="profileRight">
-                    {React.cloneElement(this.props.children, {probID: this.state.probID})}
+                    {React.cloneElement(this.props.children, {user: this.state.user, probID: this.state.probID})}
                 </div>
             </div>
             </ReactCSSTransitionGroup>

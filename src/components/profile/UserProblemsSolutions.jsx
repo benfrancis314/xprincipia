@@ -1,5 +1,5 @@
 import React from 'react';
-import ProfileUnit from '../../components/profile/ProfileUnit.jsx';
+import UserProfileUnit from '../../components/profile/UserProfileUnit.jsx';
 import cookie from 'react-cookie';
 import axios from 'axios'
 import {Config} from '../../config.js'
@@ -101,7 +101,7 @@ export default class ProfileProblemsSolutions extends React.Component {
             </div>
         </div>
         <div id="profileRightElements">
-            <ProfileUnit displayItems={this.state.currentItems} currentType={this.state.currentType}/>
+            <UserProfileUnit displayItems={this.state.currentItems} currentType={this.state.currentType}/>
         </div>
         {/*<div id="moreButtonProfile">
             More
@@ -124,7 +124,7 @@ export default class ProfileProblemsSolutions extends React.Component {
             </div>
         </div>
         <div id="profileRightElements">
-            <ProfileUnit displayItems={this.state.currentItems} currentType={this.state.currentType}/>
+            <UserProfileUnit displayItems={this.state.currentItems} currentType={this.state.currentType}/>
         </div>
         {/*<div id="moreButtonProfile">
             More
@@ -147,7 +147,7 @@ export default class ProfileProblemsSolutions extends React.Component {
             </div>
         </div>
         <div id="profileRightElements">
-            <ProfileUnit displayItems={this.state.currentItems} currentType={this.state.currentType}/>
+            <UserProfileUnit displayItems={this.state.currentItems} currentType={this.state.currentType}/>
         </div>
         {/*<div id="moreButtonProfile">
             More
@@ -169,7 +169,7 @@ export default class ProfileProblemsSolutions extends React.Component {
             </div>
         </div>
         <div id="profileRightElements">
-            <ProfileUnit displayItems={this.state.currentItems} currentType={this.state.currentType}/>
+            <UserProfileUnit displayItems={this.state.currentItems} currentType={this.state.currentType}/>
         </div>
         {/*<div id="moreButtonProfile">
             More
@@ -191,7 +191,7 @@ export default class ProfileProblemsSolutions extends React.Component {
             </div>
         </div>
         <div id="profileRightElements">
-            <ProfileUnit displayItems={this.state.currentItems} currentType={this.state.currentType}/>
+            <UserProfileUnit displayItems={this.state.currentItems} currentType={this.state.currentType}/>
         </div>
         {/*<div id="moreButtonProfile">
             More

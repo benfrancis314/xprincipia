@@ -27,18 +27,13 @@ export default class LearnUnit extends React.Component {
 
                 voteHash[resource.ID] = response.data
             })  
-            axios.get( Config.API + '/learnItems/bytype/combined/number?problem_id='+resource.ID).then(function (response) {
-                const debateNumber = self.state.debateNumber;
-                
-                debateNumber[resource.ID] = response.data
-            })
         })
     }
 
 	render() {
 		return (
 	    <div>
-			<ul> {this.props.learnItems.map(this.renderItem)} </ul>    
+			{this.props.learnItems.map(this.renderItem)}    
 	    </div>
 		);
 	}
@@ -52,15 +47,14 @@ export default class LearnUnit extends React.Component {
 
         function submitVote() {
             var self = this
-            self.refs.votebtn.setAttribute("disabled", "disabled");
+            // self.refs.votebtn.setAttribute("disabled", "disabled");
             axios.post( Config.API + '/auth/vote/create', {
                 Type: 7,
                 TypeID: resource.ID,
                 username : cookie.load("userName"),
             })
                 .then(function (result) {
-                    // document.location = window.location.pathname;
-                    self.refs.votebtn.removeAttribute("disabled");
+                    // self.refs.votebtn.removeAttribute("disabled");
                 })
                 .catch(function (error) {
                     $(document).ready(function() {
@@ -78,12 +72,12 @@ export default class LearnUnit extends React.Component {
                             // $('#notificationContent').text(error.response.data);
                         }
                     });
-                    self.refs.votebtn.removeAttribute("disabled");
+                    // self.refs.votebtn.removeAttribute("disabled");
                 });
         }
         function unVote() {
             var self = this
-            self.refs.votebtn.setAttribute("disabled", "disabled");
+            // self.refs.votebtn.setAttribute("disabled", "disabled");
         axios.delete( Config.API + '/auth/vote/delete' ,{
             params: {
                 type: 7,
@@ -92,8 +86,7 @@ export default class LearnUnit extends React.Component {
             }
         })
         .then(function (result) {
-            // document.location = window.location.pathname 
-            self.refs.votebtn.removeAttribute("disabled");
+            // self.refs.votebtn.removeAttribute("disabled");
         })
       .catch(function (error) {
           $(document).ready(function() {
@@ -111,205 +104,132 @@ export default class LearnUnit extends React.Component {
                 // $('#notificationContent').text(error.response.data);
               }
           });
-          self.refs.votebtn.removeAttribute("disabled");
+        //   self.refs.votebtn.removeAttribute("disabled");
       });
 }
 
+    if (resource.Username === cookie.load('userName')) {
+        var editID = 'editDiscussButton'
+        var deleteID = 'deleteDiscussButton'
+        var flagID = 'noDisplay'
+    } else {
+        var editID = 'noDisplay'
+        var deleteID = 'noDisplay'
+        var flagID = 'flagDiscussButton'
+    }
   
-       if (this.state.voteHash[resource.ID] === true && resource.Username === cookie.load('userName')) {
-           return (
-       <li key={resource.ID} id="suggestionUnit">
-				<div id="suggestionContentHoverVote" className={resource.ID}>
-                    <Link to={`/project/${resource.TypeID}/learn/resources/${resource.ID}/comments`}>
-                        <div id="debateThreadButton" onMouseOver={hoverThreadVoted} onMouseOut={unHoverThreadVoted}>
-                            <img src={require('../../assets/list4.svg')} id="debateThreadLogo" width="50" height="50" alt="Delete Button, Red X" />
+    if (this.state.voteHash[resource.ID] === true) {
+        return (
+            <li key={resource.ID} id="suggestionUnit">
+                <div id={'suggestionContentHoverVote'+commentType} className={resource.ID}>
+                    <div id="discussUnitButtonsContainer">
+                        <Link to={window.location.pathname}>
+                            <div id="discussVotedButton" onClick={unVote.bind(this)} onMouseOver={hoverVoteVoted} onMouseOut={unHoverVoteVoted.bind(this)}>     
+                            </div>
+                            <div id="discussPercent">{resource.Rank}</div>
+                        </Link>
+                    </div>
+                    <Link to={this.props.linkPath+`${resource.TypeID}/learn/${resource.ID}/edit`}>
+                        <div id={editID} onMouseOver={hoverEditVoted} onMouseOut={unHoverEditVoted}>
+                            <img src={require('../../assets/editBlue.svg')} id="editLogo" width="18" height="18" alt="Edit Button" />
                         </div>
                     </Link>
-                    <Link to={`/project/${resource.TypeID}/learn/resources/${resource.ID}/edit`}>
+                    <Link to={this.props.linkPath+`${resource.TypeID}/learn/${resource.ID}/delete`}>
+                        <div id={deleteID} onMouseOver={hoverDeleteVoted} onMouseOut={unHoverDeleteVoted}>
+                            <img src={require('../../assets/delete.svg')} id="editLogo" width="18" height="18" alt="Delete Button" />
+                        </div>
+                    </Link>
+                    <Link to={this.props.linkPath+`${resource.TypeID}/learn/${resource.ID}/flag`}>
+                        <div id={flagID} onMouseOver={hoverFlagVoted} onMouseOut={unHoverFlagVoted}>
+                            <img src={require('../../assets/flag.svg')} id="deleteLogo" width="24" height="24" alt="Delete Button, Red X" />
+                        </div>
+                    </Link>
+                    <Link to={this.props.linkPath+`${resource.TypeID}/learn/${resource.ID}/edit`}>
                         <div id="editDiscussButton" onMouseOver={hoverEditVoted} onMouseOut={unHoverEditVoted}>
                             <img src={require('../../assets/editBlue.svg')} id="editLogo" width="18" height="18" alt="Edit Button" />
                         </div>
                     </Link>
-                    <Link to={`/project/${resource.TypeID}/learn/resources/${resource.ID}/delete`}>
+                    <Link to={this.props.linkPath+`${resource.TypeID}/learn/${resource.ID}/delete`}>
                         <div id="deleteDiscussButton" onMouseOver={hoverDeleteVoted} onMouseOut={unHoverDeleteVoted}>
                             <img src={require('../../assets/delete.svg')} id="editLogo" width="18" height="18" alt="Delete Button" />
                         </div>
                     </Link>
-                    <Link to={`/project/${resource.TypeID}/learn/resources/${resource.ID}/comments`}>
-                        <div id="numberDiscussButton" onMouseOver={hoverThreadVoted} onMouseOut={unHoverThreadVoted}>
-                            {this.state.debateNumber[resource.ID]}
-                        </div>
-                    </Link>
-                    <div id="discussHoverTextShowVoted">
-                        voted
-                    </div>
-					<div id="discussHeader">
-                        <span id="discussPercent">{floatToDecimal(resource.PercentRank)}</span>
-					    {resource.Username}
-                    </div>
-                    <div id="resourceURLTextContainer">
-                        <div id="resourceTitleText">
-                            {resource.Title}
-                        </div>
-                        <div id="resourceURLText">
-                            <a href={url(resource.Summary)} target="_blank">
-                                {resource.Summary}
-                            </a>
-                        </div>
-                    </div>
-                    <Link to={`/project/${resource.TypeID}/learn/resources`}>
-                        <div id="suggestionText" ref='votebtn' onClick={unVote.bind(this)} onMouseOver={hoverVote} onMouseOut={unHoverVote}>
-                            <span id="shrunkText">{resource.Description}</span>
-                        </div>
-                    </Link>
-				</div>
-        </li>);
-    }  else if ( resource.Username === cookie.load('userName')) {
-        return (
-       <li key={resource.ID} id="suggestionUnit">
-				<div id={'suggestionContent'} className={resource.ID}>
-                    <Link to={`/project/${resource.TypeID}/learn/resources/${resource.ID}/comments`}>
-                        <div id="debateThreadButton" onMouseOver={hoverThread} onMouseOut={unHoverThread}>
-                            <img src={require('../../assets/list4.svg')} id="debateThreadLogo" width="50" height="50" alt="Delete Button, Red X" />
-                        </div>
-                    </Link>
-                    <Link to={`/project/${resource.TypeID}/learn/resources/${resource.ID}/edit`}>
-                        <div id="editDiscussButton" onMouseOver={hoverEdit} onMouseOut={unHoverEdit}>
-                            <img src={require('../../assets/editBlue.svg')} id="editLogo" width="18" height="18" alt="Edit Button" />
-                        </div>
-                    </Link>
-                    <Link to={`/project/${resource.TypeID}/learn/resources/${resource.ID}/delete`}>
-                        <div id="deleteDiscussButton" onMouseOver={hoverDelete} onMouseOut={unHoverDelete}>
-                            <img src={require('../../assets/delete.svg')} id="editLogo" width="18" height="18" alt="Delete Button" />
-                        </div>
-                    </Link>
-                    <Link to={`/project/${resource.TypeID}/learn/resources/${resource.ID}/comments`}>
-                        <div id="numberDiscussButton" onMouseOver={hoverThread} onMouseOut={unHoverThread}>
-                            {this.state.debateNumber[resource.ID]}
-                        </div>
-                    </Link>
-                    <div id="discussHoverText"></div>
-					<div id="discussHeader">
-                        <span id="discussPercent">{floatToDecimal(resource.PercentRank)}</span>
-					    {resource.Username}
-                    </div>
-                    <div id="resourceURLTextContainer">
-                        <div id="resourceTitleText">
-                            {resource.Title}
-                        </div>
-                        <div id="resourceURLText">
-                            <a href={url(resource.Summary)} target="_blank">
-                                {resource.Summary}
-                            </a>
-                        </div>
-                    </div>
-                    <Link to={`/project/${resource.TypeID}/learn/resources`}>
-                        <div id="suggestionText" ref='votebtn' onClick={submitVote.bind(this)} onMouseOver={hoverVote} onMouseOut={unHoverVote}>
-                            <span id="shrunkText">{resource.Description}</span>
-                        </div>
-                    </Link>
-				</div>
-        </li>);
-    } else if (this.state.voteHash[resource.ID] === true) {
-        return (
-       <li key={resource.ID} id="suggestionUnit">
-				<div id="suggestionContentHoverVote" className={resource.ID}>
-                    <Link to={`/project/${resource.TypeID}/learn/resources/${resource.ID}/comments`}>
-                        <div id="debateThreadButton" onMouseOver={hoverThreadVoted} onMouseOut={unHoverThreadVoted}>
-                            <img src={require('../../assets/list4.svg')} id="debateThreadLogo" width="50" height="50" alt="Delete Button, Red X" />
-                        </div>
-                    </Link>
-                    <Link to={`/project/${resource.TypeID}/learn/resources/${resource.ID}/flag`}>
+                    <Link to={this.props.linkPath+`${resource.TypeID}/learn/${resource.ID}/flag`}>
                         <div id="flagDiscussButton" onMouseOver={hoverFlagVoted} onMouseOut={unHoverFlagVoted}>
                             <img src={require('../../assets/flag.svg')} id="deleteLogo" width="24" height="24" alt="Delete Button, Red X" />
                         </div>
                     </Link>
-                    <Link to={`/project/${resource.TypeID}/learn/resources/${resource.ID}/comments`}>
-                        <div id="numberDiscussButton" onMouseOver={hoverThreadVoted} onMouseOut={unHoverThreadVoted}>
-                            {this.state.debateNumber[resource.ID]}
-                        </div>
-                    </Link>
-                    <div id="discussHoverTextShowVoted">
-                        voted
+                    <div id="discussHoverText">
                     </div>
-					<div id="discussHeader">
-                        <span id="discussPercent">{floatToDecimal(resource.PercentRank)}</span>
-					    {resource.Username}
+                    <div id={"discussHeader"+commentType}>
+                        {commentType} <span id="gray">from {resource.Username}</span>
                     </div>
                     <div id="resourceURLTextContainer">
                         <div id="resourceTitleText">
                             {resource.Title}
                         </div>
-                        <div id="resourceURLText">
-                            <a href={url(resource.Summary)} target="_blank">
-                                {resource.Summary}
+                        <div id="resourceURLTextShowVoted">
+                            <a href={url(resource.Url)} target="_blank">
+                                {resource.Url}
                             </a>
                         </div>
                     </div>
-                    <Link to={`/project/${resource.TypeID}/learn/resources`}>
-                        <div id="suggestionText" ref='votebtn' onClick={unVote.bind(this)} onMouseOver={hoverVote} onMouseOut={unHoverVote}>
-                            <span id="shrunkText">{resource.Description}</span>
-                        </div>
-                    </Link>
-				</div>
-        </li>);
+                    <div id="learnDescription">
+                        {resource.Description}
+                    </div>
+                </div>
+            </li>
+        );
 
     } else {
     return (
        <li key={resource.ID} id="suggestionUnit">
-            <div id={'suggestionContent'} className={resource.ID}>
-                <Link to={`/project/${resource.TypeID}/learn/resources/${resource.ID}/comments`}>
-                    <div id="debateThreadButton" onMouseOver={hoverThread} onMouseOut={unHoverThread}>
-                        <img src={require('../../assets/list4.svg')} id="debateThreadLogo" width="50" height="50" alt="Delete Button, Red X" />
+            <div id={'suggestionContent'+commentType} className={resource.ID}>
+                <div id="discussUnitButtonsContainer">
+                    <Link to={window.location.pathname}>
+                        <div id="discussVoteButton" onClick={submitVote.bind(this)} onMouseOver={hoverVote} onMouseOut={unHoverVote.bind(this)}>     
+                        </div>
+                        <div id="discussPercent">{resource.Rank}</div>
+                    </Link>
+                </div>
+                <Link to={this.props.linkPath+`${resource.TypeID}/learn/${resource.ID}/edit`}>
+                    <div id="editDiscussButton" onMouseOver={hoverEdit} onMouseOut={unHoverEdit}>
+                        <img src={require('../../assets/editBlue.svg')} id="editLogo" width="18" height="18" alt="Edit Button" />
                     </div>
                 </Link>
-                <Link to={`/project/${resource.TypeID}/learn/resources/${resource.ID}/flag`}>
+                <Link to={this.props.linkPath+`${resource.TypeID}/learn/${resource.ID}/delete`}>
+                    <div id="deleteDiscussButton" onMouseOver={hoverDelete} onMouseOut={unHoverDelete}>
+                        <img src={require('../../assets/delete.svg')} id="editLogo" width="18" height="18" alt="Delete Button" />
+                    </div>
+                </Link>
+                <Link to={this.props.linkPath+`${resource.TypeID}/learn/${resource.ID}/flag`}>
                     <div id="flagDiscussButton" onMouseOver={hoverFlag} onMouseOut={unHoverFlag}>
                         <img src={require('../../assets/flag.svg')} id="deleteLogo" width="24" height="24" alt="Delete Button, Red X" />
                     </div>
                 </Link>
-                <Link to={`/project/${resource.TypeID}/learn/resources/${resource.ID}/comments`}>
-                    <div id="numberDiscussButton" onMouseOver={hoverThread} onMouseOut={unHoverThread}>
-                        {this.state.debateNumber[resource.ID]}
-                    </div>
-                </Link>
-                <div id="discussHoverText"></div>
-                <div id="discussHeader">
-                    <span id="discussPercent">{floatToDecimal(resource.PercentRank)}</span>
-                    {resource.Username}
+                <div id="discussHoverText">
+                </div>
+                <div id={"discussHeader"+commentType}>
+                    {commentType} <span id="gray">from {resource.Username}</span>
                 </div>
                 <div id="resourceURLTextContainer">
                     <div id="resourceTitleText">
                         {resource.Title}
                     </div>
                     <div id="resourceURLText">
-                        <a href={url(resource.Summary)} target="_blank">
-                            {resource.Summary}
+                        <a href={url(resource.Url)} target="_blank">
+                            {resource.Url}
                         </a>
                     </div>
                 </div>
-                <Link to={`/project/${resource.TypeID}/learn/resources`}>
-                    <div id="suggestionText" ref='votebtn' onClick={submitVote.bind(this)} onMouseOver={hoverVote} onMouseOut={unHoverVote}>
-                        <span id="shrunkText">{resource.Description}</span>
-                    </div>
-                </Link>
+                <div id="learnDescription">
+                    {resource.Description}
+                </div>
             </div>
-        </li>);
+        </li>
+    );
 }
 
-function hoverThread() {
-    $(document).ready(function() {
-        $('div.'+resource.ID).attr('class','suggestionContentClassBlue');
-        $('.suggestionContentClassBlue > #discussHoverText').attr('id','discussHoverTextShow');
-        $('#discussHoverTextShow').html("comments").fadeIn(7500);
-    });
-}
-function unHoverThread() {
-    $(document).ready(function() {
-        $('div.suggestionContentClassBlue').attr('class',resource.ID);
-        $('div#discussHoverTextShow').attr('id','discussHoverText');
-    });
-}
 function hoverVote() {
     $(document).ready(function() {
         $('div.'+resource.ID).attr('class','suggestionContentClassGreen');
@@ -319,11 +239,12 @@ function hoverVote() {
     });
 }
 function unHoverVote() {
-    $(document).ready(function() {
+    // $(document).ready(function() {
         $('div.suggestionContentClassGreen').attr('class',resource.ID);
+        $('#discussHoverTextShowGreen').html("").fadeIn(7500);
         $('div#discussHoverTextShowGreen').attr('id','discussHoverTextGreen');
         $('div#discussHoverTextGreen').attr('id','discussHoverText');
-    });
+    // });
 }
 function hoverFlag() {
     $(document).ready(function() {
@@ -334,11 +255,12 @@ function hoverFlag() {
     });
 }
 function unHoverFlag() {
-    $(document).ready(function() {
+    // $(document).ready(function() {
         $('div.suggestionContentClassRed').attr('class',resource.ID);
+        $('#discussHoverTextShowRed').html("").fadeIn(7500);
         $('div#discussHoverTextShowRed').attr('id','discussHoverTextRed');
         $('div#discussHoverTextRed').attr('id','discussHoverText');
-    });
+    // });
 }
 function hoverEdit() {
     $(document).ready(function() {
@@ -348,10 +270,11 @@ function hoverEdit() {
     });
 }
 function unHoverEdit() {
-    $(document).ready(function() {
+    // $(document).ready(function() {
         $('div.suggestionContentClassBlue').attr('class',resource.ID);
+        $('#discussHoverTextShow').html("").fadeIn(7500);
         $('div#discussHoverTextShow').attr('id','discussHoverText');
-    });
+    // });
 }
 function hoverDelete() {
     $(document).ready(function() {      
@@ -362,42 +285,30 @@ function hoverDelete() {
     });
 }
 function unHoverDelete() {
-    $(document).ready(function() {
+    // $(document).ready(function() {
         $('div.suggestionContentClassRed').attr('class',resource.ID);
+        $('#discussHoverTextShowRed').html("").fadeIn(7500);
         $('div#discussHoverTextShowRed').attr('id','discussHoverTextRed');
         $('div#discussHoverTextRed').attr('id','discussHoverText');
-    });
+    // });
 }
-function hoverThreadVoted() {
-    $(document).ready(function() {
-        $('div.'+resource.ID).attr('class','suggestionContentClassBlue');
-        $('.suggestionContentClassBlue > #discussHoverTextShowVoted').attr('id','discussHoverTextShow');
-        $('#discussHoverTextShow').html("comments").fadeIn(7500);
-    });
-}
-function unHoverThreadVoted() {
-    $(document).ready(function() {
-        $('div.suggestionContentClassBlue').attr('class',resource.ID);
-        $('div#discussHoverTextShow').attr('id','discussHoverTextShowVoted');
-        $('div#discussHoverTextShowVoted').html("voted").fadeIn(7500);
-    });
-}
+
 function hoverVoteVoted() {
     $(document).ready(function() {
         $('div.'+resource.ID).attr('class','suggestionContentClassGreen');
         $('.suggestionContentClassGreen > #discussHoverTextShowVoted').attr('id','discussHoverTextGreen');    
         $('#discussHoverTextGreen').html("unvote").fadeIn(7500);
-        $('#discussHoverTextGreen').attr('id','discussHoverTextShowVoted'); 
-        
+        // $('#discussHoverTextGreen').attr('id','discussHoverTextShowVoted'); 
     });
 }
 function unHoverVoteVoted() {
-    $(document).ready(function() {
+    // $(document).ready(function() {
         $('div.suggestionContentClassGreen').attr('class',resource.ID);
-        $('div#discussHoverTextShowVoted').attr('id','discussHoverTextGreen');
+        $('div#discussHoverTextGreen').html("").fadeIn(7500);
+        // $('div#discussHoverTextShowVoted').attr('id','discussHoverTextGreen');
+    
         $('div#discussHoverTextGreen').attr('id','discussHoverTextShowVoted');
-        $('div#discussHoverTextShowVoted').html("voted").fadeIn(7500);
-    });
+    // });
 }
 function hoverFlagVoted() {
     $(document).ready(function() {       
@@ -408,12 +319,12 @@ function hoverFlagVoted() {
     });
 }
 function unHoverFlagVoted() {
-    $(document).ready(function() {
+    // $(document).ready(function() {
         $('div.suggestionContentClassRed').attr('class',resource.ID);
+        $('div#discussHoverTextShowRed').html("").fadeIn(7500);
         $('div#discussHoverTextShowRed').attr('id','discussHoverTextRed');
         $('div#discussHoverTextRed').attr('id','discussHoverTextShowVoted');
-        $('div#discussHoverTextShowVoted').html("voted").fadeIn(7500);
-    });
+    // });
 }
 function hoverEditVoted() {
     $(document).ready(function() {
@@ -423,11 +334,11 @@ function hoverEditVoted() {
     });
 }
 function unHoverEditVoted() {
-    $(document).ready(function() {
+    // $(document).ready(function() {
         $('div.suggestionContentClassBlue').attr('class',resource.ID);
+        $('div#discussHoverTextShow').html("").fadeIn(7500);
         $('div#discussHoverTextShow').attr('id','discussHoverTextShowVoted');
-        $('div#discussHoverTextShowVoted').html("voted").fadeIn(7500);
-    });
+    // });
 }
 function hoverDeleteVoted() {
     $(document).ready(function() {
@@ -438,13 +349,12 @@ function hoverDeleteVoted() {
     });
 }
 function unHoverDeleteVoted() {
-    $(document).ready(function() {
+    // $(document).ready(function() {
         $('div.suggestionContentClassRed').attr('class',resource.ID);
+        $('div#discussHoverTextShowRed').html("").fadeIn(7500);
         $('div#discussHoverTextShowRed').attr('id','discussHoverTextRed');
         $('div#discussHoverTextRed').attr('id','discussHoverTextShowVoted');
-        $('div#discussHoverTextShowVoted').html("voted").fadeIn(7500);
-    });
-
+    // });
 }
 }
 }
@@ -452,6 +362,12 @@ function unHoverDeleteVoted() {
 //convert float to Decimal
 function floatToDecimal(float) {
 	return Math.round(float*100)+'%';
+}
+function dateTime(str) {
+    if(str != undefined){
+       var result = str.substring(0,10);
+       return result
+    }
 }
 
 function url(resourceURL){
@@ -473,4 +389,3 @@ function url(resourceURL){
         return ( 'https://www.google.com/#q=' + resourceURL );
     }
 }
-

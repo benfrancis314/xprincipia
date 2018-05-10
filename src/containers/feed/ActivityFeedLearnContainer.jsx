@@ -49,7 +49,7 @@ export default class WelcomeUserUnit extends React.Component {
     componentDidMount(){
         var self = this;
         // window.scrollTo(0,0);
-        return axios.get( Config.API + '/learnItems/feed').then(function (response) {
+        return axios.get( Config.API + '/learnItems/bytype/combined/feed').then(function (response) {
             self.setState({
                 feedLessons: response.data.reverse(),
                 feedLessonsSlice: response.data.reverse().slice(0,10)

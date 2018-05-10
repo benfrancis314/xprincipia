@@ -13,37 +13,27 @@ export default class ProblemLearnMenu extends React.Component {
             solutions: [],
             lessonNumber: '',
             resourceNumber: '',
+            linkPath: '',
         }
 
     };
     componentDidMount(){
         var self = this;
-        axios.get( Config.API + '/solutions/problemID?id='+this.props.params.probID).then(function (response) {
+        if (window.location.pathname.includes('private')) {
             self.setState({
-                solutions: response.data
+                linkPath: '/project/private/',
             })
-        })
-        axios.get( Config.API + '/learnItems/number?id='+this.props.params.probID).then(function (response) {
+        } else {
             self.setState({
-                lessonNumber: response.data
+                linkPath: '/project/',
             })
-        })
-        axios.get( Config.API + '/resources/number?id='+this.props.params.probID).then(function (response) {
-            self.setState({
-                resourceNumber: response.data
-            })
-        })
+        }
     }
-
-// Removing this isn't stopping the scrolling from happening, not sure why
-// componentDidUpdate() {
-//         ReactDOM.findDOMNode(this).scrollIntoView();
-//   }      
 
    render() {
       return (
         <div>
-            <Link to={`/project/${this.props.params.probID}/subprojects`}>
+            <Link to={this.state.linkPath+`${this.props.params.probID}/subprojects`}>
                 <img src={require('../../assets/redX.svg')} id="closeRedX" width="30" height="30" alt="Close button, red X symbol" />
             </Link>
             <ReactCSSTransitionGroup

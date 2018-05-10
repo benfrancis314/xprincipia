@@ -51,7 +51,6 @@ export default class DiscussUnit extends React.Component {
 	render() {
 		return (
 	    <div>
-            {this.props.parentType}
 			{this.props.questions.map(this.renderItem)}  
 	    </div>
 		);
@@ -89,7 +88,7 @@ export default class DiscussUnit extends React.Component {
 
        function submitVote() {
         var self = this
-        self.refs.votebtn.setAttribute("disabled", "disabled");
+        // self.refs.votebtn.setAttribute("disabled", "disabled");
        axios.post( Config.API + '/auth/vote/create', {
            Type: 5,
            TypeID: question.ID,
@@ -98,7 +97,7 @@ export default class DiscussUnit extends React.Component {
         })
         .then(function (result) {
             // document.location = window.location.pathname;
-            self.refs.votebtn.removeAttribute("disabled");
+            // self.refs.votebtn.removeAttribute("disabled");
         })
       .catch(function (error) {
           $(document).ready(function() {
@@ -117,12 +116,12 @@ export default class DiscussUnit extends React.Component {
                 // $('#notificationContent').text(error.response.data);
               }
           });
-          self.refs.votebtn.removeAttribute("disabled");
+        //   self.refs.votebtn.removeAttribute("disabled");
       });
   }
       function unVote() {
         var self = this
-        self.refs.votebtn.setAttribute("disabled", "disabled");
+        // self.refs.votebtn.setAttribute("disabled", "disabled");
       axios.delete( Config.API + '/auth/vote/delete' ,{
         params: {
           type: 5,
@@ -131,8 +130,7 @@ export default class DiscussUnit extends React.Component {
         }
         })
         .then(function (result) {
-            // document.location = window.location.pathname 
-            self.refs.votebtn.removeAttribute("disabled");
+            // self.refs.votebtn.removeAttribute("disabled");
         })
       .catch(function (error) {
           $(document).ready(function() {
@@ -150,7 +148,7 @@ export default class DiscussUnit extends React.Component {
                 // $('#notificationContent').text(error.response.data);
               }
           });
-          self.refs.votebtn.removeAttribute("disabled");
+        //   self.refs.votebtn.removeAttribute("disabled");
       });
 }
 
@@ -197,7 +195,7 @@ export default class DiscussUnit extends React.Component {
                         {commentType} <span id="gray">by {question.Username}</span>
                     </div>
                     <Link to={this.props.linkPath+question.TypeID+proposalPath+'discuss/'+question.ID+'/comments'}>
-                        <div id="suggestionText" ref='votebtn' onMouseOver={hoverThreadVoted} onMouseOut={unHoverThreadVoted.bind(this)}>
+                        <div id="suggestionText" onMouseOver={hoverThreadVoted} onMouseOut={unHoverThreadVoted.bind(this)}>
                             {question.Description}
                         </div>
                     </Link>
@@ -239,7 +237,7 @@ export default class DiscussUnit extends React.Component {
                     </div>
                     {/* <Link to={this.props.linkPath+question.TypeID+`/discuss/${question.ID}/comments`}> */}
                     <Link to={this.props.linkPath+question.TypeID+proposalPath+'discuss/'+question.ID+'/comments'}>
-                        <div id="suggestionText" ref='votebtn' onMouseOver={hoverThread} onMouseOut={unHoverThread.bind(this)}>
+                        <div id="suggestionText" onMouseOver={hoverThread} onMouseOut={unHoverThread.bind(this)}>
                             {question.Description}
                         </div>
                     </Link>

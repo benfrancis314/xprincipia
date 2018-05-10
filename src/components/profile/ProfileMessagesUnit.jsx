@@ -118,8 +118,6 @@ causeRerender() {
             </div>
             <div id="conversationInstructions">
                 {this.props.params.user2}
-                {/* <br />
-                {this.props.params.user1} */}
             </div>
             <form id='conversationSubmit'>
                 <textarea id="conversationEntry" autoFocus autoComplete="off"></textarea>

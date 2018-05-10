@@ -51,15 +51,14 @@ postLearn() {
         typeID: this.props.params.probID,
         username: cookie.load('userName'),
         title: this.state.title,
-        url: this.state.summary,
-        description : this.state.resource,
+        url: this.state.url,
+        description : this.state.description,
         parentTitle: this.props.parentTitle,
         private: this.state.private,
     })
       .then(function (result) {
         document.getElementById("questionForm").reset();
         self.refs.btn.removeAttribute("disabled");
-        alert('success')
       })
       .catch(function (error) {
           $(document).ready(function() {

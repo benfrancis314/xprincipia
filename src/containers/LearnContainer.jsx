@@ -24,62 +24,45 @@ constructor(props){
         this.selectNew = this.selectNew.bind(this)
         this.selectTop = this.selectTop.bind(this)
     };
-    // componentDidMount(){
-    //     var self = this;
-    //         if (window.location.pathname.includes('private')) {
-    //             self.setState({
-    //                 linkPath: '/project/private/',
-    //             })
-    //         } else {
-    //             self.setState({
-    //                 linkPath: '/project/',
-    //             })
-    //         }
-    //         axios.get( Config.API + '/comments/bytype/discuss?problem_id='+this.props.params.probID).then(function (response) {
-    //             if(response.data.length > 0) {
-    //                 self.setState({
-    //                     newTopID: 'discussListSelectButton',
-    //                     discuss: response.data,
-    //                     newTopSelect: 'new',
-    //                     currentType: 'discuss',
-    //                 })
-    //             } else {
-    //                 self.setState({
-    //                     newTopID: 'discussListSelectButtonHide',
-    //                     discuss: response.data,
-    //                     newTopSelect: 'new',
-    //                     currentType: 'discuss',
-    //                 })
-    //             }
-    //         }) 
-    //         
-    // }
     componentDidMount(){
         var self = this;
-        if(this.props.params.solutionID){
-            axios.get( Config.API + '/learnItems/bytype/combined?problem_id='+this.props.params.solutionID+'&dataType=1').then(function (response) {
-                self.setState({
-                    learnItems: response.data
-                })
-            })  
+        if (window.location.pathname.includes('private')) {
+            self.setState({
+                linkPath: '/project/private/',
+            })
         } else {
-            axios.get( Config.API + '/learnItems/bytype/combined?problem_id='+this.props.params.probID+'&dataType=0').then(function (response) {
-                self.setState({
-                    learnItems: response.data
-                })
-            }) 
+            self.setState({
+                linkPath: '/project/',
+            })
         }
-        axios.get( Config.API + '/learnItems/bytype/combined/number?problem_id='+this.props.params.probID).then(function (response) {
+        axios.get( Config.API + '/learnItems/bytype/combined?id='+this.props.params.probID+'&dataType=0').then(function (response) {
+            if(response.data.length > 0) {
+                self.setState({
+                    newTopID: 'discussListSelectButton',
+                    learnItems: response.data,
+                    newTopSelect: 'new',
+                    currentType: 'combined',
+                })
+            } else {
+                self.setState({
+                    newTopID: 'discussListSelectButtonHide',
+                    learnItems: response.data,
+                    newTopSelect: 'new',
+                    currentType: 'combined',
+                })
+            } 
+        }) 
+        axios.get( Config.API + '/learnItems/bytype/combined/number?id='+this.props.params.probID).then(function (response) {
             self.setState({
                 learnNumber: response.data
             })
         })
-        axios.get( Config.API + '/learnItems/bytype/learnitem/number?problem_id='+this.props.params.probID).then(function (response) {
+        axios.get( Config.API + '/learnItems/bytype/learnitem/number?id='+this.props.params.probID).then(function (response) {
             self.setState({
                 educationalNumber: response.data
             })
         })
-        axios.get( Config.API + '/learnItems/bytype/resource/number?problem_id='+this.props.params.probID).then(function (response) {
+        axios.get( Config.API + '/learnItems/bytype/resource/number?id='+this.props.params.probID).then(function (response) {
             self.setState({
                 researchNumber: response.data
             })
@@ -87,19 +70,35 @@ constructor(props){
     }
     componentWillReceiveProps(nextProps){
         var self = this;
-        if(this.props.params.solutionID){
-            return axios.get( Config.API + '/learnItems/typeID?id='+nextProps.params.solutionID+'&dataType=1').then(function (response) {
-                self.setState({
-                    learnItems: response.data
-                })
-            })  
+        if (window.location.pathname.includes('private')) {
+            self.setState({
+                linkPath: '/project/private/',
+            })
         } else {
-            return axios.get( Config.API + '/learnItems/typeID?id='+nextProps.params.probID+'&dataType=0').then(function (response) {
-                self.setState({
-                    learnItems: response.data
-                })
-            }) 
+            self.setState({
+                linkPath: '/project/',
+            })
         }
+        axios.get( Config.API + '/learnItems/bytype/combined?id='+nextProps.params.probID+'&dataType=0').then(function (response) {
+            self.setState({
+                learnItems: response.data
+            })
+        }) 
+        axios.get( Config.API + '/learnItems/bytype/combined/number?id='+nextProps.params.probID).then(function (response) {
+            self.setState({
+                learnNumber: response.data
+            })
+        })
+        axios.get( Config.API + '/learnItems/bytype/learnitem/number?id='+nextProps.params.probID).then(function (response) {
+            self.setState({
+                educationalNumber: response.data
+            })
+        })
+        axios.get( Config.API + '/learnItems/bytype/resource/number?id='+nextProps.params.probID).then(function (response) {
+            self.setState({
+                researchNumber: response.data
+            })
+        })
     }
 
     selectAll() {
@@ -108,123 +107,124 @@ constructor(props){
             $('#discussSelectButtonLeftActive').attr('id','discussSelectButtonLeftInactive');               
             $('#discussSelectButtonRightActive').attr('id','discussSelectButtonRightInactive');               
         });
-        // var self = this;
-        // if(this.state.newTopSelect == 'new') {
-        //     axios.get( Config.API + '/comments/bytype/discuss?problem_id='+this.props.params.probID).then(function (response) {
-        //         if(response.data.length > 0) {
-        //             self.setState({
-        //                 newTopID: 'discussListSelectButton',
-        //                 discuss: response.data,
-        //                 currentType: 'discuss',
-        //             })
-        //         } else {
-        //             self.setState({
-        //                 newTopID: 'discussListSelectButtonHide',
-        //                 discuss: response.data,
-        //                 currentType: 'discuss',
-        //             })
-        //         }
-        //     }) 
-        // } else {
-        //     axios.get( Config.API + '/comments/bytype/discuss/byrank?problem_id='+this.props.params.probID).then(function (response) {
-        //         if(response.data.length > 0) {
-        //             self.setState({
-        //                 newTopID: 'discussListSelectButton',
-        //                 discuss: response.data,
-        //                 currentType: 'discuss',
-        //             })
-        //         } else {
-        //             self.setState({
-        //                 newTopID: 'discussListSelectButtonHide',
-        //                 discuss: response.data,
-        //                 currentType: 'discuss',
-        //             })
-        //         }
-        //     })  
-        // }
+        var self = this;
+        if(this.state.newTopSelect === 'new') {
+            axios.get( Config.API + '/learnItems/bytype/combined?id='+this.props.params.probID).then(function (response) {
+                if(response.data.length > 0) {
+                    self.setState({
+                        newTopID: 'discussListSelectButton',
+                        learnItems: response.data,
+                        currentType: 'combined',
+                    })
+                } else {
+                    self.setState({
+                        newTopID: 'discussListSelectButtonHide',
+                        learnItems: response.data,
+                        currentType: 'combined',
+                    })
+                }
+            }) 
+        } else {
+            axios.get( Config.API + '/learnItems/bytype/combined/byrank?id='+this.props.params.probID).then(function (response) {
+                if(response.data.length > 0) {
+                    self.setState({
+                        newTopID: 'discussListSelectButton',
+                        learnItems: response.data,
+                        currentType: 'combined',
+                    })
+                } else {
+                    self.setState({
+                        newTopID: 'discussListSelectButtonHide',
+                        learnItems: response.data,
+                        currentType: 'combined',
+                    })
+                }
+            })  
+        }
     }
     
-    selectResearch() {
+    selectEducational() {
         $(document).ready(function() {
             $('#discussGroupSelectAllActive').attr('id','discussGroupSelectAllInactive');               
             $('#discussSelectButtonLeftInactive').attr('id','discussSelectButtonLeftActive');               
             $('#discussSelectButtonRightActive').attr('id','discussSelectButtonRightInactive');               
         });
-        // var self = this;
-        // if(this.state.newTopSelect == 'new') {
-        //     axios.get( Config.API + '/comments/bytype/question?problem_id='+this.props.params.probID).then(function (response) {
-        //         if(response.data.length > 0) {
-        //             self.setState({
-        //                 newTopID: 'discussListSelectButton',
-        //                 discuss: response.data,
-        //                 currentType: 'question',
-        //             })
-        //         } else {
-        //             self.setState({
-        //                 newTopID: 'discussListSelectButtonHide',
-        //                 discuss: response.data,
-        //                 currentType: 'question',
-        //             })
-        //         }
-        //     }) 
-        // } else {
-        //     axios.get( Config.API + '/comments/bytype/question/byrank?problem_id='+this.props.params.probID).then(function (response) {
-        //         if(response.data.length > 0) {
-        //             self.setState({
-        //                 newTopID: 'discussListSelectButton',
-        //                 discuss: response.data,
-        //                 currentType: 'question',
-        //             })
-        //         } else {
-        //             self.setState({
-        //                 newTopID: 'discussListSelectButtonHide',
-        //                 discuss: response.data,
-        //                 currentType: 'question',
-        //             })
-        //         }
-        //     })  
-        // }
+        var self = this;
+        if(this.state.newTopSelect === 'new') {
+            axios.get( Config.API + '/learnItems/bytype/learnitem?id='+this.props.params.probID).then(function (response) {
+                if(response.data.length > 0) {
+                    self.setState({
+                        newTopID: 'discussListSelectButton',
+                        learnItems: response.data,
+                        currentType: 'educational',
+                    })
+                } else {
+                    self.setState({
+                        newTopID: 'discussListSelectButtonHide',
+                        learnItems: response.data,
+                        currentType: 'educational',
+                    })
+                }
+            }) 
+        } else {
+            axios.get( Config.API + '/learnItems/bytype/learnitem/byrank?id='+this.props.params.probID).then(function (response) {
+                if(response.data.length > 0) {
+                    self.setState({
+                        newTopID: 'discussListSelectButton',
+                        learnItems: response.data,
+                        currentType: 'educational',
+                    })
+                } else {
+                    self.setState({
+                        newTopID: 'discussListSelectButtonHide',
+                        learnItems: response.data,
+                        currentType: 'educational',
+                    })
+                }
+            })  
+        }
     }
-    selectEducational() {
+
+    selectResearch() {
         $(document).ready(function() {
             $('#discussGroupSelectAllActive').attr('id','discussGroupSelectAllInactive');               
             $('#discussSelectButtonLeftActive').attr('id','discussSelectButtonLeftInactive');               
             $('#discussSelectButtonRightInactive').attr('id','discussSelectButtonRightActive');               
         });
-        // var self = this;
-        // if(this.state.newTopSelect == 'new') {
-        //     axios.get( Config.API + '/comments/bytype/suggestion?problem_id='+this.props.params.probID).then(function (response) {
-        //         if(response.data.length > 0) {
-        //             self.setState({
-        //                 newTopID: 'discussListSelectButton',
-        //                 discuss: response.data,
-        //                 currentType: 'suggestion',
-        //             })
-        //         } else {
-        //             self.setState({
-        //                 newTopID: 'discussListSelectButtonHide',
-        //                 discuss: response.data,
-        //                 currentType: 'suggestion',
-        //             })
-        //         }
-        //     }) 
-        // } else {
-        //     axios.get( Config.API + '/comments/bytype/suggestion/byrank?problem_id='+this.props.params.probID).then(function (response) {
-        //         if(response.data.length > 0) {
-        //             self.setState({
-        //                 newTopID: 'discussListSelectButton',
-        //                 discuss: response.data,
-        //                 currentType: 'suggestion',
-        //             })
-        //         } else {
-        //             self.setState({
-        //                 newTopID: 'discussListSelectButtonHide',
-        //                 discuss: response.data,
-        //                 currentType: 'suggestion',
-        //             })
-        //         }
-        //     })  
-        // }
+        var self = this
+        if(this.state.newTopSelect === 'new') {
+            axios.get( Config.API + '/learnItems/bytype/resource?id='+this.props.params.probID).then(function (response) {
+                if(response.data.length > 0) {
+                    self.setState({
+                        newTopID: 'discussListSelectButton',
+                        learnItems: response.data,
+                        currentType: 'research',
+                    })
+                } else {
+                    self.setState({
+                        newTopID: 'discussListSelectButtonHide',
+                        learnItems: response.data,
+                        currentType: 'research',
+                    })
+                }
+            }) 
+        } else {
+            axios.get( Config.API + '/learnItems/bytype/resource/byrank?id='+this.props.params.probID).then(function (response) {
+                if(response.data.length > 0) {
+                    self.setState({
+                        newTopID: 'discussListSelectButton',
+                        learnItems: response.data,
+                        currentType: 'research',
+                    })
+                } else {
+                    self.setState({
+                        newTopID: 'discussListSelectButtonHide',
+                        learnItems: response.data,
+                        currentType: 'research',
+                    })
+                }
+            })  
+        }
     }
 
     selectNew() {
@@ -236,28 +236,22 @@ constructor(props){
         self.setState({
             newTopSelect: 'new',
         })
-        if (this.state.currentType === 'question') {
-            axios.get( Config.API + '/comments/bytype/question?problem_id='+this.props.params.probID).then(function (response) {
+        if (this.state.currentType === 'educational') {
+            axios.get( Config.API + '/learnItems/bytype/educational?id='+this.props.params.probID).then(function (response) {
                 self.setState({
-                    discuss: response.data,
+                    learnItems: response.data,
                 })
             }) 
-        } else if (this.state.currentType === 'suggestion') {
-            axios.get( Config.API + '/comments/bytype/suggestion?problem_id='+this.props.params.probID).then(function (response) {
+        } else if (this.state.currentType === 'research') {
+            axios.get( Config.API + '/learnItems/bytype/research?id='+this.props.params.probID).then(function (response) {
                 self.setState({
-                    discuss: response.data,
-                })
-            }) 
-        } else if (this.state.currentType === 'debate') {
-            axios.get( Config.API + '/comments/bytype/debate?problem_id='+this.props.params.probID).then(function (response) {
-                self.setState({
-                    discuss: response.data,
+                    learnItems: response.data,
                 })
             }) 
         } else {
-            axios.get( Config.API + '/comments/bytype/discuss?problem_id='+this.props.params.probID).then(function (response) {
+            axios.get( Config.API + '/learnItems/bytype/combined?id='+this.props.params.probID).then(function (response) {
                 self.setState({
-                    discuss: response.data,
+                    learnItems: response.data,
                 })
             }) 
         }
@@ -271,28 +265,22 @@ constructor(props){
         self.setState({
             newTopSelect: 'top',
         })
-        if (this.state.currentType === 'question') {
-            axios.get( Config.API + '/comments/bytype/question/byrank?problem_id='+this.props.params.probID).then(function (response) {
+        if (this.state.currentType === 'educational') {
+            axios.get( Config.API + '/learnItems/bytype/educational/byrank?id='+this.props.params.probID).then(function (response) {
                 self.setState({
-                    discuss: response.data,
-                })
-            })  
-        } else if (this.state.currentType === 'suggestion') {
-            axios.get( Config.API + '/comments/bytype/suggestion/byrank?problem_id='+this.props.params.probID).then(function (response) {
-                self.setState({
-                    discuss: response.data,
+                    learnItems: response.data,
                 })
             }) 
-        } else if (this.state.currentType === 'debate') {
-            axios.get( Config.API + '/comments/bytype/debate/byrank?problem_id='+this.props.params.probID).then(function (response) {
+        } else if (this.state.currentType === 'research') {
+            axios.get( Config.API + '/learnItems/bytype/research/byrank?id='+this.props.params.probID).then(function (response) {
                 self.setState({
-                    discuss: response.data,
+                    learnItems: response.data,
                 })
-            })  
+            }) 
         } else {
-            axios.get( Config.API + '/comments/bytype/discuss/byrank?problem_id='+this.props.params.probID).then(function (response) {
+            axios.get( Config.API + '/learnItems/bytype/combined/byrank?id='+this.props.params.probID).then(function (response) {
                 self.setState({
-                    discuss: response.data,
+                    learnItems: response.data,
                 })
             }) 
         }
@@ -309,12 +297,12 @@ constructor(props){
                 <div id="discussSelectionMenuContainer">
                     <div id="sidebarDiscussMenu">
                         <div id="discussGroupSelection">
-                            <div id="discussSelectButtonLeftInactive" onClick={this.selectResearch}>
+                            <div id="discussSelectButtonLeftInactive" onClick={this.selectEducational}>
                                 educational
                                 <span id="greenSmall">  {this.state.educationalNumber}</span>
                             </div>
 
-                            <div id="discussSelectButtonRightInactive" onClick={this.selectEducational}>                                           
+                            <div id="discussSelectButtonRightInactive" onClick={this.selectResearch}>                                           
                                 research
                                 <span id="greenSmall">  {this.state.researchNumber}</span>
                             </div>
@@ -330,7 +318,7 @@ constructor(props){
                         </div>
                     </div>
                 </div>
-                <LearnUnit learnItems={this.state.learnItems} />
+                <LearnUnit linkPath={this.state.linkPath} learnItems={this.state.learnItems} />
                 <div id="proposalsTitleRightSBEnd"><br /></div>
             </div>  
       );

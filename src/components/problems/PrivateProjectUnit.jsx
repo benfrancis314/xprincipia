@@ -54,7 +54,7 @@ export default class PrivateProjectUnit extends React.Component {
         if (problem.Private === true && (problem.OriginalPosterUsername === cookie.load('userName')) && problem.Title.length > 50) {
         return (
             <Link key={problem.ID} to={'/project/private/'+problem.ID +'/subprojects'}>
-                <li key={problem.ID} id="SPUnit">
+                <li id="SPUnit">
                     <div id="SPHeader">
                         <div id="SPTitleSmall">{problem.Title}</div>
                         <div id="SPPercent">{problem.Rank}</div>
@@ -66,7 +66,7 @@ export default class PrivateProjectUnit extends React.Component {
         } else if (problem.Private === true && (problem.OriginalPosterUsername === cookie.load('userName')) && problem.Class == '2') {
             return (
                 <Link key={problem.ID} to={'/project/private/'+problem.ID +'/subprojects'}>
-                    <li key={problem.ID} id="SPUnit">
+                    <li id="SPUnit">
                         <div id="SPHeaderRed">
                             <div id="SPTitleRed">
                                 <span id="red">problem</span>
@@ -81,7 +81,7 @@ export default class PrivateProjectUnit extends React.Component {
         } else if (problem.Private === true && (problem.OriginalPosterUsername === cookie.load('userName')) && problem.Class == '1') {
             return (
                 <Link key={problem.ID} to={'/project/private/'+problem.ID +'/subprojects'}>
-                    <li key={problem.ID} id="SPUnit">
+                    <li id="SPUnit">
                         <div id="SPHeaderGreen">
                             <div id="SPTitleGreen">
                                 <span id="green">goal</span>

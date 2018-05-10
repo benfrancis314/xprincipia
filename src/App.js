@@ -128,9 +128,11 @@ class App extends React.Component {
             <div id="notificationRegister" onClick={this.hideNotification}>register</div>
             </Link>
           </div>
-          <div id="passwordResetAlertButtonHide" onClick={this.hideNotification}>
-            reset password
-          </div>
+          <Link to='/passwordreset'>
+            <div id="passwordResetAlertButtonHide" onClick={this.hideNotification}>
+              reset password
+            </div>
+          </Link>
           <Link to='/profile/feedback'>
               <div id="notificationFeedbackShow" onClick={this.hideNotification}>feedback</div>
           </Link>

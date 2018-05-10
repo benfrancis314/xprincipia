@@ -55,12 +55,12 @@ unHoverFilter() {
                                 proposals
                             </div>
                         </Link>
-                        <Link to ={'/welcome/questions'}>
+                        <Link to ={'/welcome/discuss'}>
                             <div id="feedFilterUnits">
                                 discuss
                             </div>
                         </Link>
-                        <Link to ={'/welcome/resources'}>
+                        <Link to ={'/welcome/learn'}>
                             <div id="feedFilterUnits">
                                 learn
                             </div>

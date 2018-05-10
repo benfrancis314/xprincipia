@@ -2026,9 +2026,10 @@ letter-spacing: 10px;
 border: 1px solid #00dcff;
 border-width: 2px 0px;
 text-align: center;
+margin: 0 auto;
 }
 #errorSlogan {
-margin-left: 35px;
+margin: 0 auto;
 margin-top: 15px;
 letter-spacing: 2px;
 text-align: center;
@@ -2036,6 +2037,7 @@ text-align: center;
 #errorSlogan2 {
   color: rgba(255,127,127,0.5);
   font-size: 120%;
+  margin: 0 auto;
 }
 #loader {
 border: 12px solid #0f131c;
@@ -2917,8 +2919,8 @@ cursor: pointer;
 }
 #registerHeaderButton:hover, #registerHeaderButton:active, #registerHeaderButton:focus, .activeHeaderRegister div {
  cursor: pointer;
- background-color: rgba(0,255,220,1);
- color: #0f131c;
+ background-color: rgba(0,255,220,1) !important;
+ color: #0f131c !important;
 }
 
 /*End Login*/
@@ -3848,6 +3850,7 @@ margin: 0 auto;
   background-blend-mode: overlay !important;
   /* background-image: url('./ringNebula.jpg') !important; */
   background-image: url('./helixNebula2.jpg') !important;
+  background-image: url('./catsEyeNebula.jpg') !important;
   /* background-image: url('./iris.jpg') !important; */
   background-position: center !important;
   background-size: 110% !important;
@@ -4405,8 +4408,9 @@ letter-spacing: 7px;
   transform: scale(1);
   width: 90%;
   transition: all 1s ease 0s;
-  background: linear-gradient(to right, rgba(0,220,255,0), rgba(0,220,255,0), rgba(255,255,255,0.025), rgba(0,220,255,0));    
-  
+  /* background: linear-gradient(to right, rgba(0,220,255,0), rgba(0,220,255,0), rgba(255,255,255,0.025), rgba(0,220,255,0));     */
+  background: radial-gradient(circle, rgba(15, 19, 28, 0.75), rgba(0,220,255,0.1));
+
 }
 #userName:hover {
   transform: scale(1.02);
@@ -4424,7 +4428,7 @@ letter-spacing: 7px;
   margin-bottom: 6%;
 }
 #userProblemsSolutionsButton, #notificationsButton,
-#userSettingsButton, #aboutXPButton, 
+#userSettingsButton, #aboutXPButton, #aboutXPButtonLoggedOut,
 #userFeedbackButton, #logOutButton, #userMessagesButton {
   background-color: rgba(0,220,255,0);
   color: #00dcff;
@@ -4455,7 +4459,7 @@ letter-spacing: 7px;
   width: 7.5em;
 }
 #userProblemsSolutionsButton:hover, #notificationsButton:hover,
-#userSettingsButton:hover, #aboutXPButton:hover, 
+#userSettingsButton:hover, #aboutXPButton:hover, #aboutXPButtonLoggedOut:hover, 
 #userFeedbackButton:hover, #logOutButton:hover {
   background-color: rgba(0,220,255,1);
   color: #0f131c;
@@ -4463,7 +4467,7 @@ letter-spacing: 7px;
   transform: scale(1.02);
 }
 #userProblemsSolutionsButton:active, #notificationsButton:active,
-#userSettingsButton:active, #aboutXPButton:active, #logOutButton:active {
+#userSettingsButton:active, #aboutXPButton:active, #aboutXPButtonLoggedOut:active, #logOutButton:active {
   background-color: #00dcff;
   color: #0f131c;
 }
@@ -4861,9 +4865,10 @@ letter-spacing: 7px;
   border-width: 0px 1px 1px 1px;
   border-radius: 0px 0px 15% 15%;
   padding: 2px;
-  color: #00dcff;
+  color: #ffffff;
   letter-spacing: 2px;
-  background: radial-gradient(rgba(81,81,81,0.5), rgba(0,220,255,0.05));
+  transition: all 2s ease 0s;
+  background: radial-gradient(rgba(81,81,81,0.4), rgba(0,220,255,0.05));
   box-shadow: 0 0 0.5pt 0.5pt rgba(0,220,255,0.5);
 }
 #profilePointsButton {
@@ -4879,16 +4884,15 @@ letter-spacing: 7px;
   transform: scale(1);
   border: 1px solid #00dcff;
   border-width: 0px 0px 0px 0px;
-  border-radius: 0% 0% 25% 25%;
+  border-radius: 3px 3px 25% 25%;
   padding: 1px;
   /* padding-bottom: 1%; */
   background: radial-gradient(circle at top,rgba(0,255,220, 0.15), rgba(0,255,220, 0.05), rgba(0,255,220, 0), rgba(0,255,220, 0), rgba(0,255,220, 0), rgba(0,255,220, 0));  
   box-shadow: 0 0 0.5pt 0.5pt rgba(0,220,255,0.25);    
 }
   #profilePointsButton:hover {
-  font-size: 200%;
-  box-shadow: 0 0 0.5pt 0.5pt rgba(0,220,255,1);    
-
+  box-shadow: 0 0 1pt 1pt rgba(0,220,255,1); 
+  font-size: 200%;   
   }
 
 #pointsContainer {
@@ -5604,7 +5608,8 @@ font-family: 'Open Sans';
 }
 #suggestionContent, #commentContent, 
 #suggestionContentQuestion, #suggestionContentSuggestion, #suggestionContentDebate,
-#suggestionContentAnswer, #suggestionContentComment, #suggestionContentPro, #suggestionContentCon {
+#suggestionContentAnswer, #suggestionContentComment, #suggestionContentPro, #suggestionContentCon,
+#suggestionContentEducational, #suggestionContentResearch {
   flex: 3 3 auto;
   font-family: 'Open Sans';
   border: 1px solid #dddddd;
@@ -5618,10 +5623,10 @@ font-family: 'Open Sans';
   transition: all 0.5s ease 0s;
   background-color: rgba(0,220,255,0.05);
 }
-#suggestionContentQuestion, #suggestionContentComment {
+#suggestionContentQuestion, #suggestionContentComment, #suggestionContentEducational {
   border-color: rgba(0,220,255,0.5);
 } 
-#suggestionContentSuggestion, #suggestionContentAnswer, #suggestionContentPro {
+#suggestionContentSuggestion, #suggestionContentAnswer, #suggestionContentPro, #suggestionContentResearch {
   border-color: rgba(0,255,220,0.5);
 } 
 #suggestionContentPro {
@@ -5638,7 +5643,8 @@ font-family: 'Open Sans';
 }
 #suggestionContentHover, #suggestionContentHoverVote, #suggestionContentHoverUnvote, #commentContentHover, #commentContentHoverVote, #commentContentHoverUnvote,
 #suggestionContentHoverVoteQuestion, #suggestionContentHoverVoteSuggestion, #suggestionContentHoverVoteDebate, 
-#suggestionContentHoverVoteComment, #suggestionContentHoverVotePro, #suggestionContentHoverVoteCon, #suggestionContentHoverVoteAnswer {
+#suggestionContentHoverVoteComment, #suggestionContentHoverVotePro, #suggestionContentHoverVoteCon, #suggestionContentHoverVoteAnswer,
+#suggestionContentHoverVoteEducational, #suggestionContentHoverVoteResearch {
   flex: 3 3 auto;
   font-family: 'Open Sans';
   border: 1px solid #dddddd;
@@ -5650,10 +5656,10 @@ font-family: 'Open Sans';
   position: relative;
   transition: all 0.5s ease 0s;
 }
-#suggestionContentHoverVoteQuestion, #suggestionContentHoverVoteComment {
+#suggestionContentHoverVoteQuestion, #suggestionContentHoverVoteComment, #suggestionContentHoverVoteEducational {
   border-color: rgba(0,220,255,0.5);
 } 
-#suggestionContentHoverVoteSuggestion, #suggestionContentHoverVotePro, #suggestionContentHoverVoteAnswer {
+#suggestionContentHoverVoteSuggestion, #suggestionContentHoverVotePro, #suggestionContentHoverVoteAnswer, #suggestionContentHoverVoteResearch {
   border-color: rgba(0,255,220,0.5);
 } 
 #suggestionContentHoverVoteDebate, #suggestionContentHoverVoteCon {
@@ -5686,7 +5692,7 @@ font-family: 'Open Sans';
   background-color: rgba(0,255,220,0.2);
   /* background: linear-gradient(to right,rgba(0,255,220, 0.2), rgba(0,255,220, 0.15), rgba(0,255,220, 0.05)); */
 }
-#suggestionText, #suggestionTextCaps {
+#suggestionText, #suggestionTextCaps, #learnDescription {
   /*Old Styles*/
   /* margin: 7px;
   margin-top: 10px;
@@ -5997,14 +6003,13 @@ font-family: 'Open Sans';
 }
 .activePoints #profileLevelButton {
   /* box-shadow: 0 0 0.5pt 0.5pt rgba(0,220,255,1) !important; */
-  transform: scale(1.05) !important;
-  border-color: rgba(0,220,255,0.5) !important;
+  transform: scale(1.1) !important;
+  border-color: rgba(0,220,255,1) !important;
 }
 .activePoints #profilePointsButton {
-  /* box-shadow: 0 0 0.5pt 0.5pt rgba(0,220,255,1) !important; */
-  /* background-color: rgba(0,255,220,0.05) !important; */
-  transform: scale(1.05) !important;
-  /* border-color: rgba(0,255,220,0.5) !important; */
+  margin-top: 2%;
+  border-color: #00dcff;
+  transform: scale(1.1) !important;
   box-shadow: 0 0 0.5pt 0.5pt rgba(0,220,255,1) !important;    
 }
 .activePointsHeader div {
@@ -8515,7 +8520,7 @@ text-transform: lowercase !important;
 
 #discussFormContainer {
   /* background: radial-gradient(circle, rgba(0,220,255,0.05), rgba(0,220,255,0)); */
-  padding: 2.5% 0%;
+  padding: 1.5% 0% 2.5% 0%;
 }
 
 
@@ -8723,7 +8728,8 @@ margin: 0 auto;
   padding-bottom: 3px;
 }
 #discussHeader, #discussHeaderQuestion, #discussHeaderSuggestion, #discussHeaderDebate,
-#discussHeaderAnswer, #discussHeaderComment, #discussHeaderPro, #discussHeaderCon {
+#discussHeaderAnswer, #discussHeaderComment, #discussHeaderPro, #discussHeaderCon,
+#discussHeaderEducational, #discussHeaderResearch {
 /*Old Styles*/
 /*font-size: 110%;
 color: #00dcff;
@@ -8737,7 +8743,7 @@ border: 1px solid #333333;
 border-width: 0px 0px 1px 0px;
 text-transform: lowercase !important;
 }
-#discussHeaderAnswer, #discussHeaderSuggestion, #discussHeaderPro {
+#discussHeaderAnswer, #discussHeaderSuggestion, #discussHeaderPro, #discussHeaderResearch {
   color: #00ffdc;
 }
 #discussHeaderDebate, #discussHeaderCon {
@@ -9077,6 +9083,7 @@ cursor: pointer;
   margin-top: 1%;
   border-color: #ffffff;
   background: radial-gradient(rgba(0,220,255, 0), rgba(0,220,255, 0.1));
+  border-radius: 3px 3px 10% 10%;
 }
 #resourceURLForm {
   width: 60%;
@@ -9088,6 +9095,7 @@ cursor: pointer;
   margin-top: 1%;
   margin-bottom: 1.5%;
   background: radial-gradient(rgba(0,220,255, 0), rgba(0,220,255, 0.1));
+  border-radius: 3px 3px 10% 10%;
 }
 #resourceURLTextContainer {
   width: 82%;
@@ -9098,38 +9106,48 @@ cursor: pointer;
   font-family: 'Alegreya Sans SC';
   text-align: center;
   height: auto;
-  min-height: 10px;
-  max-height: 100px;
+  /* min-height: 10px;
+  max-height: 100px; */
   margin: 0 auto;
   /* background: radial-gradient(rgba(0,220,255, 0), rgba(0,220,255, 0.1)); */
   transition: all 1s ease 0s;
-  transform: scale(1);
   overflow: auto;
   word-break: break-all;
-  text-decoration: underline;
-  max-width: 584.31px;
+  /* text-decoration: underline; */
+  max-width: 90%;
   line-height: 150%;
   font-family: 'Open Sans' !important;
   font-size: 135%;
   padding-left: 2%;
   padding-right: 2%;
-  width: 82%;
+  /* width: 82%; */
+  padding: 0px 5%;
   white-space: pre-wrap !important;
-  color: #00dcff;
+  color: rgba(0,220,255,0.75);
   text-align: center;
+
+
+  border: 1px solid rgba(0,220,255,0.5);
+  border-width: 0px 0px 1px 0px;
+  border-radius: 0% 0% 20% 20%;
+  padding: 1px;
+  background: linear-gradient(rgba(0,255,220,0), rgba(15,19,28,0.25));
 }
 #resourceURLText:hover {
 color: rgba(0,255,220,1);
 transform: scale(1.02);
 cursor: pointer;
+border-color: rgba(0,220,255,1);
 }
 #resourceTitleText {
   margin: 0 auto;
   text-align: center;
-  font-size: 185%;
+  font-size: 200%;
   color: #ffffff;
   letter-spacing: 2px;
-}
+  text-transform: lowercase !important;
+
+}  
 #resourceHeader {
   color: #00dcff !important;
   font-size: 115%;
@@ -12996,7 +13014,7 @@ cursor: pointer !important;
 #projectFormRadioContainer {
   margin: 0 auto;
   margin-top: 0%;
-  margin-bottom: 1.5%;
+  margin-bottom: 1%;
   display: flex;
   flex-direction: row;
   width: 100%;
@@ -15282,17 +15300,41 @@ input#submitBreakdown:hover {
   text-align: center;
   color: #ffffff;
   font-size: 200%;
-  background: radial-gradient(rgba(0,220,255,0), rgba(0,220,255,0.05));
+  /* background: radial-gradient(rgba(0,220,255,0), rgba(0,220,255,0.05)); */
+  background: radial-gradient(circle, rgba(0,220,255,0.05), rgba(15, 19, 28, 0.75));
 }
 #passionsTextArea {
-  background: radial-gradient(circle, rgba(0,220,255,0), rgba(0,220,255,0.05));
+  background: radial-gradient(circle, rgba(0,220,255,0.05), rgba(15, 19, 28, 0.75));
   transition: all 1s ease 0s;
   margin-bottom: 3%;
+  border-radius: 3px 3px 10% 10%;
+  border-color: rgba(0,220,255,0.5);
 }
 #passionsTextArea:focus {
   transform: scale(1.02);
 }
+#passionsViewText {
+  background: radial-gradient(circle, rgba(0,220,255,0.05), rgba(15, 19, 28, 0.75));
+  transition: all 1s ease 0s;
+  margin-bottom: 3%;
+  font-family: 'Open Sans', sans-serif;
+  color: #ffffff;
+  text-align: center;
+  border: 1px solid rgba(0,220,255,0.5);
+  border-width: 1px 0px;
+  border-radius: 3px 3px 10% 10%;
+  padding: 3px 8px 3px 8px;
+  display: block;
+  margin-bottom: 10px;
+  width: 60%;
+  resize: none;
+  margin: 0 auto;
 
+  text-align: left;
+  padding: 5% 10%;
+  line-height: 110%;
+  /*margin-left: 7.5%;*/
+}
 
 
 

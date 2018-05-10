@@ -240,7 +240,7 @@ componentDidMount(){
                             {cookie.load("userName")}
                         </div>
                     </Link>
-                    <Link to="/profile/points" activeClassName="activePointsHeader">
+                    <Link to="/profile/prestige" activeClassName="activePointsHeader">
                         <div id="headerPointsContainer" onMouseOver={this.hoverPoints} onMouseOut={this.unHoverPoints}>
                             <div id="headerLevelTitle">
                                 {this.state.title}

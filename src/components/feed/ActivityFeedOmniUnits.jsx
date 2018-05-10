@@ -127,8 +127,7 @@ if (problem.Private === true) {
 
         return (
       //   We do actually want to show projects on proposals here:
-          <div key={problem.ID} id="nodisplayd">
-          x
+          <div key={problem.ID} id="nodisplay">
           </div>
         
         );
@@ -144,8 +143,7 @@ if (problem.Private === true) {
                     <span id="omniTitle">
                         {problem.Description}
                     </span>
-                    {/* <br />
-                    <span id="omniActivityDate">{problem.CreatedAt}</span> */}
+                    <div id="feedDate">{dateTime(problem.CreatedAt)}</div>
                 </div>
             </Link>
         </li>);
@@ -159,45 +157,44 @@ if (problem.Private === true) {
                     <span id="omniTitle">
                         {problem.Description}
                     </span>
-                    {/* <br />
-                    <span id="omniActivityDate">{problem.CreatedAt}</span> */}
+                    <div id="feedDate">{dateTime(problem.CreatedAt)}</div>
                 </div>
             </Link>
         </li>);
     } else if (problem.Type == '2') {
         return (
         <li key={problem.ID} id="feedListUnit">
-            <Link to={'/project/'+problem.ProblemID +'/question/'+problem.TypeID +'/answers'}>
+            <Link to={'/project/'+problem.ProblemID +'/discuss/'+problem.TypeID +'/comments'}>
                 <div id="omniActivityUnit">
                     question in:
                     <br />
                     <span id="omniTitle">
                         {problem.ProblemTitle}
                     </span>
-                    {/* <br />
-                    <span id="omniActivityDate">{problem.CreatedAt}</span> */}
+                    <div id="feedDate">{dateTime(problem.CreatedAt)}</div>
                 </div>
             </Link>
         </li>);
     } else if (problem.Type == '3') {
         return (
         <li key={problem.ID} id="feedListUnit">
-            <Link to={'/project/'+problem.ProblemID +'/suggestion/'+problem.TypeID +'/comments'}>
+            <Link to={'/project/'+problem.ProblemID +'/discuss/'+problem.TypeID +'/comments'}>
                 <div id="omniActivityUnit">
                     suggestion in:
                     <br />
                     <span id="omniTitle">
                         {problem.ProblemTitle}
                     </span>
-                    {/* <br />
-                    <span id="omniActivityDate">{problem.CreatedAt}</span> */}
+                    <div id="feedDate">{dateTime(problem.CreatedAt)}</div>
                 </div>
             </Link>
-        </li>);
+        </li>
+        );
     } else if (problem.Type == '4') {
         return (
         <div key={problem.ID} id="nodisplay">
-        </div>);
+        </div>
+        );
     } else if (problem.Type == '5') {
         return (
         <div key={problem.ID} id="nodisplay">
@@ -206,15 +203,14 @@ if (problem.Private === true) {
     } else if (problem.Type == '6') {
         return (
         <li key={problem.ID} id="feedListUnit">
-            <Link to={'/project/'+problem.ProblemID +'/freeform/'+problem.TypeID +'/comments'}>
+            <Link to={'/project/'+problem.ProblemID +'/discuss/'+problem.TypeID +'/comments'}>
                 <div id="omniActivityUnit">
                     debate in:
                     <br />
                     <span id="omniTitle">
                         {problem.ProblemTitle}
                     </span>
-                    {/* <br />
-                    <span id="omniActivityDate">{problem.CreatedAt}</span> */}
+                    <div id="feedDate">{dateTime(problem.CreatedAt)}</div>
                 </div>
             </Link>
             
@@ -223,30 +219,28 @@ if (problem.Private === true) {
     } else if (problem.Type == '7') {
         return (
         <li key={problem.ID} id="feedListUnit">
-            <Link to={'/project/'+problem.ProblemID +'/learn/content/'+problem.TypeID +'/coments'}>
+            <Link to={'/project/'+problem.ProblemID +'/learn'}>
             <div id="omniActivityUnit">
-                lesson in:
+                educational resource in:
                 <br />
                 <span id="omniTitle">
                     {problem.ProblemTitle}
                 </span>
-                {/* <br />
-                <span id="omniActivityDate">{problem.CreatedAt}</span> */}
+                <div id="feedDate">{dateTime(problem.CreatedAt)}</div>
             </div>
             </Link>
         </li>);
     } else if (problem.Type == '8') {
         return (
         <li key={problem.ID} id="feedListUnit">
-            <Link to={'/project/'+problem.ProblemID +'/learn/resources/'+problem.TypeID +'/comments'}>
+            <Link to={'/project/'+problem.ProblemID +'/learn'}>
             <div id="omniActivityUnit">
-                resource in:
+                research in:
                 <br />
                 <span id="omniTitle">
                     {problem.ProblemTitle}
                 </span>
-                {/* <br />
-                <span id="omniActivityDate">{problem.CreatedAt}</span> */}
+                <div id="feedDate">{dateTime(problem.CreatedAt)}</div>
             </div>
             </Link>
         </li>);
@@ -260,19 +254,8 @@ if (problem.Private === true) {
         </div>);
     } else {
           return (
-            <li key={problem.ID} id="feedListUnit">
-                <Link to={'/project/'+problem.ProblemID +'/subprojects'}>
-                    <div id="omniActivityUnit">
-                        update in:
-                        <br />
-                        <span id="omniTitle">
-                            {problem.ProblemTitle}
-                        </span>
-                        {/* <br />
-                        <span id="omniActivityDate">{problem.CreatedAt}</span> */}
-                    </div>
-                </Link>
-            </li>
+            <div id="noDisplay">
+            </div>
           );
         }
        }

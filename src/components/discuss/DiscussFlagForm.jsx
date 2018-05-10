@@ -1,4 +1,5 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 import axios from 'axios';
 import cookie from 'react-cookie';
 import { Link } from 'react-router';
@@ -26,6 +27,7 @@ export default class DiscussFlagForm extends React.Component {
   };
   componentDidMount(){
     var self = this;
+    ReactDOM.findDOMNode(this).scrollIntoView(); 
     if (window.location.pathname.includes('private')) {
         self.setState({
             linkPath: '/project/private/',
@@ -47,6 +49,36 @@ export default class DiscussFlagForm extends React.Component {
     if (window.location.pathname.includes('comments')) {
       self.setState({
           commentPath: '/'+this.props.params.discussID+'/comments',
+      })
+    } else {
+        self.setState({
+            commentPath: '',
+        })
+    }
+  }
+  componentWillReceiveProps(nextProps){
+    var self = this;
+    if (window.location.pathname.includes('private')) {
+        self.setState({
+            linkPath: '/project/private/',
+        })
+    } else {
+        self.setState({
+            linkPath: '/project/',
+        })
+    }
+    if (window.location.pathname.includes('proposal')) {
+      self.setState({
+          proposalPath: '/proposal/'+nextProps.params.solutionID+'/',
+      })
+    } else {
+        self.setState({
+            proposalPath: '/',
+        })
+    }
+    if (window.location.pathname.includes('comments')) {
+      self.setState({
+          commentPath: '/'+nextProps.params.discussID+'/comments',
       })
     } else {
         self.setState({

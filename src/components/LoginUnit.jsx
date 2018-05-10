@@ -29,7 +29,7 @@ export default class LoginUnit extends React.Component {
     this.state.username = document.getElementById('loginEmail').value
     this.state.password = document.getElementById('loginPassword').value
 
-    return axios.post( Config.API + '/login', {
+    axios.post( Config.API + '/login', {
       username : this.state.username,
       password: this.state.password
     })
@@ -42,7 +42,7 @@ export default class LoginUnit extends React.Component {
       cookie.save('userName', self.state.username, { path: '/' })
       
       // Store token/Username in db table
-      return axios.post( Config.API + '/auth/saveToken',  {
+      axios.post( Config.API + '/auth/saveToken',  {
         username : self.state.username,
         token : "Bearer " + self.state.userToken
       }, {headers: { Authorization: "Bearer " + self.state.userToken }}).then (function (response){
