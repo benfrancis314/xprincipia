@@ -20,7 +20,7 @@ export default class QuestionForm extends React.Component {
 
     this.postDiscuss = this.postDiscuss.bind(this);
     // USE IF AUTH SYSTEM DOESN'T WORK
-    // this.checkLogin = this.checkLogin.bind(this);
+    this.checkLoginDiscuss = this.checkLoginDiscuss.bind(this);
   };
 componentDidMount(){
     var self = this;
@@ -43,17 +43,17 @@ componentDidMount(){
       })
     }
 }
-// checkLogin() {
-//   if (cookie.load('userName')) {
-//     this.postQuestion()
-//   } else {
-//     $(document).ready(function() {
-//       $('#notification').attr('id','notificationShow').hide().slideDown();
-//       $('#notificationLoginRegisterContainer').attr('id','notificationLoginRegisterContainerShow');
-//       $('#notificationContent').html('please <span id="blue">login </span>to join this discussion');
-//     });
-//   }
-// }
+checkLoginDiscuss() {
+  if (cookie.load('userName')) {
+    this.postDiscuss()
+  } else {
+    $(document).ready(function() {
+      $('#notification').attr('id','notificationShow').hide().slideDown();
+      $('#notificationLoginRegisterContainer').attr('id','notificationLoginRegisterContainerShow');
+      $('#notificationContent').html('please <span id="blue">login </span>to join this discussion');
+    });
+  }
+}
 
 postDiscuss() {
   //Read field items into component state
@@ -185,7 +185,7 @@ postDiscuss() {
                 <fieldset id='fieldSetNoBorderPadding'>
                   <textarea name="questionText" required="required" id="questionTextArea" placeholder={this.state.placeholder} ></textarea>
                   <Link to={window.location.pathname}>
-                    <input type="button" ref='btn' value="add" onClick={this.postDiscuss} id="askQuestion"/>
+                    <input type="button" ref='btn' value="add" onClick={this.checkLoginDiscuss} id="askQuestion"/>
                   </Link>
                 </fieldset>
               </form>

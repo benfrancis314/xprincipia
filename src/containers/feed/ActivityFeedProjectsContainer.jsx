@@ -114,7 +114,7 @@ if (problem.Private === true) {
       
       );
 
-} else if (problem.Title === 'Interstellar Civilization') {
+} else if (problem.Title === 'interstellar civilization') {
 
       return (
       
@@ -124,19 +124,19 @@ if (problem.Private === true) {
       
       );
 
-} else if (problem.Title === 'Evolving Humanity') {
+} else if (problem.Title === 'evolving humanity') {
       return (
         <li key={problem.ID} id="nodisplay">
         </li>
       
       );
-} else if (problem.Title === 'theoretical knowledge') {
+} else if (problem.Title === 'describing reality') {
       return (
         <li key={problem.ID} id="nodisplay">
         </li>
       
       );
-} else if (problem.Title === 'Technology Development') {
+} else if (problem.Title === 'advancing technology') {
       return (
         <li key={problem.ID} id="nodisplay">
         </li>

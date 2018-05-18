@@ -33,8 +33,7 @@ export default class FullProblem extends React.Component {
         }
         this.changeRankOn = this.changeRankOn.bind(this)
         this.changeRankOff = this.changeRankOff.bind(this)
-        this.voteUp = this.voteUp.bind(this)
-        this.voteDown = this.voteDown.bind(this)
+        this.vote = this.vote.bind(this)
         this.differentBreakdown = this.differentBreakdown.bind(this)
         this.hoverVoteNumber = this.hoverVoteNumber.bind(this)
         this.unHoverVoteNumber = this.unHoverVoteNumber.bind(this)
@@ -84,7 +83,8 @@ export default class FullProblem extends React.Component {
   }
 
 
-  voteUp() {
+  vote() {
+    if(this.state.vote === true ) {
       var self = this
       self.refs.probbtn.setAttribute("disabled", "disabled");
       axios.get( Config.API + '/vote/privateUp?id='+this.props.params.probID+'&type=0').then(function (response) {
@@ -107,9 +107,7 @@ export default class FullProblem extends React.Component {
           });
           self.refs.probbtn.removeAttribute("disabled");
       });
-  }
-
-voteDown() {
+  } else {
       var self = this;
       self.refs.probbtn.setAttribute("disabled", "disabled");
       // I believe something about the double click disable broke,
@@ -136,6 +134,7 @@ voteDown() {
           self.refs.probbtn.removeAttribute("disabled");
       });
         
+    }
     }
 
     differentBreakdown(breakdown) {
@@ -321,7 +320,7 @@ voteDown() {
                     </Link>
                     <div id="problemCenterColumnPrivate">
                       <Link to={`/project/private/${this.props.params.probID}/subprojects`}>
-                        <div id="voteProblemUp" ref='probbtn' onClick={this.voteUp}  onMouseDown={this.changeRankOn} onMouseUp={this.changeRankOff}>
+                        <div id="voteProblemUp" ref='probbtn' onClick={this.vote}  onMouseDown={this.changeRankOn} onMouseUp={this.changeRankOff}>
                         </div>
                       </Link>
                       <a href='#proposals'>

@@ -14,6 +14,7 @@ export default class SubProblemContainer extends React.Component {
             branches: [],
             probID: '',
             linkPath: '',
+            breakdownOriginal: [],
         }
         this.renderItem = this.renderItem.bind(this);  
         this.renderBranch = this.renderBranch.bind(this);
@@ -76,37 +77,36 @@ export default class SubProblemContainer extends React.Component {
                     $('#privateContainerMottoWhite').attr('id','privateContainerMotto');
             });
     }
-    componentDidMount(){
-        var self = this;
-        if (window.location.pathname.includes('private')) {
-            self.setState({
-                linkPath: '/project/private/',
-            })
-        } else {
-            self.setState({
-                linkPath: '/project/',
-            })
-        }
-        this.setState({
-            probID: self.props.probID,
-        })
-        // We are no longer using this for problems, instaed only getting those of the original breakdown
-        // axios.get( Config.API + '/problems/subproblems?id='+this.props.probID).then(function (response) {
+    // componentDidMount(){
+    //     var self = this;
+    //     if (window.location.pathname.includes('private')) {
+    //         self.setState({
+    //             linkPath: '/project/private/',
+    //         })
+    //     } else {
+    //         self.setState({
+    //             linkPath: '/project/',
+    //         })
+    //     }
+        // axios.get( Config.API + '/breakdowns/byproblemnumber?parentID='+this.props.params.probID + '&parentNumber=1').then(function (response) {
         //     self.setState({
-        //         problems: response.data,
+        //         breakdownOriginal: response.data.ID,
         //     })
-        // }) 
-        axios.get( Config.API + '/problems/breakdown?breakdownID='+this.props.breakdownOriginal).then(function (response) {
-            self.setState({
-                problems: response.data,
-            })
-        }) 
-        axios.get( Config.API + '/breakdowns/byproblem?parentID='+this.props.probID).then(function (response) {
-            self.setState({
-                branches: response.data
-            })
-        })   
-    }
+        // })  
+    //     this.setState({
+    //         probID: self.props.probID,
+    //     })
+    //     axios.get( Config.API + '/problems/breakdown?breakdownID='+this.props.breakdownOriginal).then(function (response) {
+    //         self.setState({
+    //             problems: response.data,
+    //         })
+    //     }) 
+    //     // axios.get( Config.API + '/breakdowns/byproblem?parentID='+this.props.probID).then(function (response) {
+    //     //     self.setState({
+    //     //         branches: response.data
+    //     //     })
+    //     // })   
+    // }
     
     componentWillReceiveProps (nextProps){
         var self = this;
@@ -122,13 +122,12 @@ export default class SubProblemContainer extends React.Component {
         this.setState({
             probID: nextProps.probID,
         })
-        // We are no longer using this for problems, instaed only getting those of the original breakdown
-        // axios.get( Config.API + '/problems/subproblems?id='+nextProps.probID).then(function (response) {
-        //     self.setState({
-        //         problems: response.data,
-        //     })
-        // }) 
-        axios.get( Config.API + '/problems/breakdown?breakdownID='+nextProps.breakdownOriginal).then(function (response) {
+        axios.get( Config.API + '/breakdowns/byproblemnumber?parentID='+nextProps.probID + '&parentNumber=1').then(function (response) {
+            self.setState({
+                breakdownOriginal: response.data.ID,
+            })
+        })  
+        axios.get( Config.API + '/problems/breakdown?breakdownID='+nextProps.probID).then(function (response) {
             self.setState({
                 problems: response.data,
             })
@@ -154,6 +153,7 @@ export default class SubProblemContainer extends React.Component {
     render() {
             return (
                 <div id="SPwrapper">
+                {this.props.breakdownOriginal}
                     <Link to={this.state.linkPath+this.props.probID+'/create/breakdown'} activeClassName="activePrivateCreateButton">
                         <div id="branchesProjectButton" onMouseOver={this.hoverBranch} onMouseOut={this.unHoverBranch} onClick={this.clickBranch}>
                         </div>

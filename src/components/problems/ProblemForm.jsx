@@ -23,6 +23,8 @@ export default class ProblemForm extends React.Component {
     }
 
     this.postProblem = this.postProblem.bind(this);
+    this.checkLoginProblem = this.checkLoginProblem.bind(this);
+
   };
 
 // componentDidUpdate() {
@@ -68,7 +70,17 @@ export default class ProblemForm extends React.Component {
     }
   }
 
-
+  checkLoginProblem() {
+    if (cookie.load('userName')) {
+      this.postProblem()
+    } else {
+      $(document).ready(function() {
+        $('#notification').attr('id','notificationShow').hide().slideDown();
+        $('#notificationLoginRegisterContainer').attr('id','notificationLoginRegisterContainerShow');
+        $('#notificationContent').html('please <span id="blue">login </span>to join this discussion');
+      });
+    }
+  }
   postProblem() {
     var self = this;
     self.refs.btn.setAttribute("disabled", "disabled");
@@ -170,7 +182,7 @@ export default class ProblemForm extends React.Component {
                       placeholder="Please summarize this project or add any additional information you'd like. (500 ch)" id="problemSummaryForm"/>
                   </label>
                   <Link to={this.state.linkPath+this.props.params.probID+`/subprojects`}>
-                      <input type="button" ref='btn' value="create" onClick={this.postProblem} id="submitProblem"/>
+                      <input type="button" ref='btn' value="create" onClick={this.checkLoginProblem} id="submitProblem"/>
                   </Link>
               </form>
           </div>

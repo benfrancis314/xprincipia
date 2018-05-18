@@ -282,12 +282,10 @@ export default class WelcomeContainer extends React.Component {
               <div id="welcomeRightContainer">
                 <div id="SPListDiv">
                     <div id="featuredContainer">
-                      <div id="featuredProjectLabel">
-                        featured
-                      </div>
-                      <div id="featuredProjectButton">
+                      {randomFeatured()}
+                      {/* <div id="featuredProjectButton">
                             the three world reality
-                      </div>
+                      </div> */}
                     </div>
                     <div id="leaderBoardFilterContainer">
                       <div id="leaderBoardFilterButton" onMouseOver={this.hoverLeaderBoardText} onMouseOut={this.unHoverLeaderBoardText} onClick={this.showLeaderBoardSelect}>
@@ -340,5 +338,32 @@ function randomImg() {
     return <img src={require('../assets/archerConstellation.svg')} id="middleAlignOrionPrivate" width='70' height='100' alt="Back arrow, blue up arrow" />
   } else if (Math.random() < 1){
     return <img src={require('../assets/greatBearConstellation.svg')} id="middleAlignOrionPrivate" width='70' height='100' alt="Back arrow, blue up arrow" />
+  }
+}
+
+
+function randomFeatured() {
+  if (Math.random() < 0.5) {
+      return (
+        <div>
+        <div id="featuredProjectLabel">
+                        featured project
+                      </div>
+          <div id="featuredProjectButton1">
+              the human mind
+          </div>
+          </div>
+      );
+  } else if (Math.random() < 1){
+      return (
+        <div>
+        <div id="featuredProjectLabel">
+                        featured proposal
+                      </div>
+          <div id="featuredProjectButton2">
+              the mental world
+          </div>
+          </div>
+      );
   }
 }

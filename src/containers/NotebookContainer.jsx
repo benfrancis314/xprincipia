@@ -36,8 +36,15 @@ export default class NotebookContainer extends React.Component {
 
 componentDidMount(){
     var self = this;
-    // Axios call getting most recent notebook
-    if (cookie.load('userName') != undefined) { 
+    // OLD
+    // if (cookie.load('userName') != undefined) { 
+    self.setState({ 
+        userToken: cookie.load('userToken'),
+        username: cookie.load('userName'),
+        notification: this.props.notification,
+    })
+    if (this.state.userToken !== undefined ) { 
+        
         axios.get( Config.API + '/notebooks/username/top?username='+cookie.load('userName')).then(function (response) {
             self.setState({
                 currentNotebook: response.data.ID,
@@ -175,6 +182,9 @@ saveNotebookClick() {
 
    render() {
     
+
+    // if (this.state.userToken !== undefined ) { 
+
       return (
         <div id="notebookContainer">
             {/* <div id="notebookRow"> */}
@@ -209,6 +219,12 @@ saveNotebookClick() {
             {/* </div> */}
         </div>
       );
+    // } else {
+    //     return (
+    //         <div id="noDisplay">
+    //         </div>
+    //     )
+    // }
     }
     renderItem(notebook) {
         

@@ -3,6 +3,7 @@ import { Link } from 'react-router';
 import $ from 'jquery';
 import axios from 'axios';
 import {Config} from '../../config.js';
+import cookie from 'react-cookie';
 // import ReactGA from 'react-ga';
 
 export default class WelcomeUserUnit extends React.Component {
@@ -99,7 +100,19 @@ export default class WelcomeUserUnit extends React.Component {
 }
 	renderItem(problem) {
 
-
+        function checkLoginLink() {
+            if (cookie.load('userName')) {
+              createLink.bind(this)
+            //   OR
+            // createLink()
+            } else {
+              $(document).ready(function() {
+                $('#notification').attr('id','notificationShow').hide().slideDown();
+                $('#notificationLoginRegisterContainer').attr('id','notificationLoginRegisterContainerShow');
+                $('#notificationContent').html('please <span id="blue">login </span>to join this discussion');
+              });
+            }
+          }
         function createLink() {
             $(document).ready(function() {
                 $('div.linkConfirmContainerShow').attr('class',problem.ID+'Confirm');      
@@ -186,7 +199,7 @@ if (problem.Private == '1') {
                     confirm link?
                 </div> */}
                 <Link to={this.state.linkPath+this.state.probID+'/subprojects'}>
-                    <div id="linkConfirmButton" ref='btnlink' onClick={createLink.bind(this)}>
+                    <div id="linkConfirmButton" ref='btnlink' onClick={checkLoginLink.bind(this)}>
                         link
                     </div>
                 </Link>

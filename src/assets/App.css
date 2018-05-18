@@ -3095,7 +3095,7 @@ width: 80%;
 /* background: linear-gradient(to right,rgba(0,220,255, 0.06), rgba(0,220,255, 0.07), rgba(0,220,255, 0.02)); */
 /*Test*/
 background: radial-gradient(to right,rgba(0,220,255, 0), rgba(0,220,255, 0), rgba(0,220,255, 0.1));
-
+padding-bottom: 2%;
 }
 #introductionProjectsProse {
 font-family: 'Alegreya Sans SC';
@@ -5439,6 +5439,7 @@ width: 75%;
   cursor: pointer;
   box-shadow: 0 0 2px 2px rgba(0,220,255,0.5);
   background-color: rgba(0,220,255,0.05);
+  transform: scale(1.02);
 }
 #solutionUnitGreen {
   border-color: rgba(0,255,220,0.5);
@@ -12063,7 +12064,7 @@ margin-top: 1%;
   padding-bottom: 1px;
   font-size: 90%;
 }
-#featuredProjectButton {
+#featuredProjectButton1, #featuredProjectButton2 {
   border: 1px solid #333333;
   background-color: rgba(0,220,255, 0.05);
   border-color: rgba(0,255,220, 0.5);
@@ -12092,7 +12093,12 @@ margin-top: 1%;
   transform: scale(1.01);
   box-shadow: 0 0 1pt 1pt rgba(0,220,255,0.5);
 }
-#featuredProjectButton:hover {
+#featuredProjectButton2 {
+  background-image: url('./jungMandala.jpg'); 
+  background-size: 115%; 
+  background-position: center 35%;
+}
+#featuredProjectButton1:hover, #featuredProjectButton2:hover {
 background-color: rgba(15,19,28,0.5);
 transform: scale(1.03);
 cursor: pointer !important;

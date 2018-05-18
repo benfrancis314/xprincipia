@@ -25,7 +25,7 @@ export default class WelcomeCreateForm extends React.Component {
 
   postWelcomeProblem() {
     var self = this;
-    self.refs.btn.setAttribute("disabled", "disabled");
+    // self.refs.btn.setAttribute("disabled", "disabled");
 
     this.state.title = document.getElementById('problemCreateTitleForm').value
     this.state.summary = document.getElementById('problemCreateSummaryForm').value
@@ -48,7 +48,7 @@ export default class WelcomeCreateForm extends React.Component {
       })
       .then(function (response) {
         // document.location = '/welcome' 
-        self.refs.btn.removeAttribute("disabled");
+        // self.refs.btn.removeAttribute("disabled");
       })
       .catch(function (error) {
           $(document).ready(function() {
@@ -87,7 +87,7 @@ export default class WelcomeCreateForm extends React.Component {
             <div id="createProblemBox">
                 <form id="welcomeCreateProjectForm">
                   <fieldset id="fieldSetNoBorder">
-                    <label htmlFor="problemCreateTitleForm" id="problemTitleFormLabel">Project Title<br />
+                    <label id="problemTitleFormLabel">Project Title<br />
                         <input type="text" name="problemTitle" required="required" maxLength="70" id="problemCreateTitleForm" autoFocus/>
                       </label><br />
 
@@ -128,12 +128,12 @@ export default class WelcomeCreateForm extends React.Component {
                         </div>
                       </div>
 
-                    <label htmlFor="problemCreateSummaryForm" id="problemSummaryFormLabel">synopsis<br />
+                    <label id="problemSummaryFormLabel">synopsis<br />
                         <textarea name="problemSummary" maxLength="500" 
                         placeholder="Please summarize this project or add any additional information you'd like. (500 ch)" id="problemCreateSummaryForm"/>
                         </label>
                     <Link to={`/welcome`}>
-                        <input type="button" ref='btn' value="Create" onClick={this.postProblem} id="submitProblem"/>
+                        <input type="button" ref='btn' value="Create" onClick={this.postWelcomeProblem} id="submitProblem"/>
                     </Link>
                   </fieldset>
                 </form>

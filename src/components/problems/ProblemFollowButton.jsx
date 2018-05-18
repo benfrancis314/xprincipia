@@ -16,6 +16,8 @@ export default class ProblemFollowButton extends React.Component {
     }
     this.track = this.track.bind(this)
     this.unTrack = this.unTrack.bind(this)
+    this.checkLoginTrack = this.checkLoginTrack.bind(this)
+    this.checkLoginUntrack = this.checkLoginUntrack.bind(this)
 };
 
 componentDidMount(){
@@ -36,7 +38,28 @@ componentWillReceiveProps(nextProps){
           })
     })       
 }
-
+checkLoginTrack() {
+  if (cookie.load('userName')) {
+    this.track()
+  } else {
+    $(document).ready(function() {
+      $('#notification').attr('id','notificationShow').hide().slideDown();
+      $('#notificationLoginRegisterContainer').attr('id','notificationLoginRegisterContainerShow');
+      $('#notificationContent').html('please <span id="blue">login </span>to join this discussion');
+    });
+  }
+}
+checkLoginUntrack() {
+  if (cookie.load('userName')) {
+    this.unTrack()
+  } else {
+    $(document).ready(function() {
+      $('#notification').attr('id','notificationShow').hide().slideDown();
+      $('#notificationLoginRegisterContainer').attr('id','notificationLoginRegisterContainerShow');
+      $('#notificationContent').html('please <span id="blue">login </span>to join this discussion');
+    });
+  }
+}
 track() {
     var self = this
       axios.post( Config.API + '/auth/tracker/track', {
@@ -96,7 +119,7 @@ unTrack() {
       return (
            <div>
              <Link to={window.location.pathname}>
-               <div id="SBButtonFollowedPrivate" onClick={this.unTrack}>
+               <div id="SBButtonFollowedPrivate" onClick={this.checkLoginUntrack}>
                  tracking
                </div>
              </Link>
@@ -106,7 +129,7 @@ unTrack() {
        return (
            <div>
              <Link to={window.location.pathname}>
-               <div id="SBButtonFollowPrivate" onClick={this.track}>
+               <div id="SBButtonFollowPrivate" onClick={this.checkLoginTrack}>
                  track
                </div>
              </Link>
@@ -118,7 +141,7 @@ unTrack() {
        return (
             <div>
               <Link to={window.location.pathname}>
-                <div id="SBButtonFollowed" onClick={this.unTrack}>
+                <div id="SBButtonFollowed" onClick={this.checkLoginUntrack}>
                   tracking
                 </div>
               </Link>
@@ -128,7 +151,7 @@ unTrack() {
         return (
             <div>
               <Link to={window.location.pathname}>
-                <div id="SBButtonFollow" onClick={this.track}>
+                <div id="SBButtonFollow" onClick={this.checkLoginTrack}>
                   track
                 </div>
               </Link>

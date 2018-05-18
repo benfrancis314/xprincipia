@@ -22,6 +22,7 @@ export default class ProjectBreakdownForm extends React.Component {
     }
 
     this.postBreakdown = this.postBreakdown.bind(this);
+    this.checkLoginBreakdown = this.checkLoginBreakdown.bind(this);
   };
 
   componentDidMount(){
@@ -43,6 +44,17 @@ componentWillReceiveProps (nextProps){
     })  
 }
 
+checkLoginBreakdown() {
+  if (cookie.load('userName')) {
+    this.postBreakdown()
+  } else {
+    $(document).ready(function() {
+      $('#notification').attr('id','notificationShow').hide().slideDown();
+      $('#notificationLoginRegisterContainer').attr('id','notificationLoginRegisterContainerShow');
+      $('#notificationContent').html('please <span id="blue">login </span>to join this discussion');
+    });
+  }
+}
   postBreakdown() {
     //Read field items into component state
     this.state.title = document.getElementById('problemTitleForm').value
@@ -105,7 +117,7 @@ componentWillReceiveProps (nextProps){
                       placeholder="What is the concept behind this breakdown or what makes it distinct? (250 ch)" id="problemSummaryForm"/>
                       </label><br /> */}
                   <Link to={window.location.pathname}>
-                    <input type="button" value="Create" onClick={this.postBreakdown} id="submitBreakdown"/>
+                    <input type="button" value="create" onClick={this.checkLoginBreakdown} id="submitBreakdown"/>
                   </Link>
                 </fieldset>
               </form>

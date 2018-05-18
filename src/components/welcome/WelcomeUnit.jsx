@@ -26,7 +26,7 @@ export default class WelcomeUnit extends React.Component {
 
 // If using GA, add this to each project button: onClick={()=>{this.handleClick()}}
     
-    if (problem.Title === 'Interstellar Civilization') {
+    if (problem.Title === 'interstellar civilization') {
 
         return (
             <li key={problem.ID} id="welcomeProblemsUnit">
@@ -36,7 +36,7 @@ export default class WelcomeUnit extends React.Component {
             </li>
         );
 
-    } else if (problem.Title === 'Evolving Humanity') {
+    } else if (problem.Title === 'evolving humanity') {
         return (
             <li key={problem.ID} id="welcomeProblemsUnit">
                 <Link to={'/project/'+problem.ID +'/subprojects'}>
@@ -52,7 +52,7 @@ export default class WelcomeUnit extends React.Component {
 
         
         );
-    } else if (problem.Title === 'theoretical knowledge') {
+    } else if (problem.Title === 'describing reality') {
         return (
             <li key={problem.ID} id="welcomeProblemsUnit">
                 <Link to={'/project/'+problem.ID +'/subprojects'}>
@@ -61,7 +61,7 @@ export default class WelcomeUnit extends React.Component {
             </li>
 
         );
-    } else if (problem.Title === 'Technology Development') {
+    } else if (problem.Title === 'advancing technology') {
         return (
             <li key={problem.ID} id="welcomeProblemsUnit">
                 <Link to={'/project/'+problem.ID +'/subprojects'}>

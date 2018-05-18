@@ -44,6 +44,7 @@ export default class FullProblem extends React.Component {
             linkPath: '',
         }
         this.vote = this.vote.bind(this)
+        this.checkLoginVote = this.checkLoginVote.bind(this)
         this.hoverVoteNumber = this.hoverVoteNumber.bind(this)
         this.unHoverVoteNumber = this.unHoverVoteNumber.bind(this)
         this.showActivity = this.showActivity.bind(this)
@@ -105,12 +106,7 @@ export default class FullProblem extends React.Component {
                   vote: false,
                 }) 
               }
-      })       
-      axios.get( Config.API + '/breakdowns/byproblemnumber?parentID='+this.props.params.probID + '&parentNumber=1').then(function (response) {
-          self.setState({
-              breakdownOriginal: response.data.ID,
-          })
-      })   
+      })        
   }
 
   shouldComponentUpdate(nextProps, nextState) {
@@ -157,14 +153,19 @@ export default class FullProblem extends React.Component {
             self.setState({
               vote: response.data
             })
-      })       
-    axios.get( Config.API + '/breakdowns/byproblemnumber?parentID='+nextProps.params.probID + '&parentNumber=1').then(function (response) {
-      self.setState({
-          breakdownOriginal: response.data.ID,
-      })
-    })   
+      })         
   }
-
+  checkLoginVote() {
+    if (cookie.load('userName')) {
+      this.vote()
+    } else {
+      $(document).ready(function() {
+        $('#notification').attr('id','notificationShow').hide().slideDown();
+        $('#notificationLoginRegisterContainer').attr('id','notificationLoginRegisterContainerShow');
+        $('#notificationContent').html('please <span id="blue">login </span>to join this discussion');
+      });
+    }
+  }
 
   vote() {
     if(this.state.vote === true ) {
@@ -305,7 +306,7 @@ export default class FullProblem extends React.Component {
                     </Link>
                     <div id="problemCenterColumn">
                       <Link to={this.state.linkPath+this.props.params.probID+'/subprojects'}>
-                        <div id={this.state.voteID} ref='probbtn' onClick={this.vote}>
+                        <div id={this.state.voteID} ref='probbtn' onClick={this.checkLoginVote}>
                             {this.state.voteTitle}
                         </div>
                       </Link>

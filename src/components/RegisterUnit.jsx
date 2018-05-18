@@ -179,15 +179,15 @@ hideLegal() {
       <div>
         <Link to={`/introduction`}>
           <div id="introductionButton">
-            Introduction
+            introduction
           </div>
         </Link>
         <div id="register">
             <form >
-                <input type="text" name="fullname" required="required" maxLength="30" placeholder="Full Name" id="registerFullName" autoFocus />
-                <input type="text" name="username" required="required" maxLength="20" placeholder="Username" id="registerUserName" />
-                <input type="email" name="email" required="required" maxLength="30" placeholder="Email" id="registerEmail" />
-                <input type="password" name="password" required="required" maxLength="30" placeholder="Password" id="registerPassword"/>
+                <input type="text" name="fullname" required="required" maxLength="30" placeholder="full name" id="registerFullName" autoFocus />
+                <input type="text" name="username" required="required" maxLength="20" placeholder="username" id="registerUserName" />
+                <input type="email" name="email" required="required" maxLength="30" placeholder="email" id="registerEmail" />
+                <input type="password" name="password" required="required" maxLength="30" placeholder="password" id="registerPassword"/>
                 <Link to={window.location.pathname}>
                   <input type="submit" value="register" onClick={this.postRegister} id="submitRegister"/>
                 </Link>

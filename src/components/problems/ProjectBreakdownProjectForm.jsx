@@ -25,6 +25,7 @@ export default class ProjectBreakdownForm extends React.Component {
 
     this.postBranch = this.postBranch.bind(this);
     this.postProblemBreakdown = this.postProblemBreakdown.bind(this);
+    this.checkLoginProblemBreakdown = this.checkLoginProblemBreakdown.bind(this);
   };
 
     componentDidMount(){
@@ -89,7 +90,17 @@ export default class ProjectBreakdownForm extends React.Component {
   }
 
 
-
+  checkLoginProblemBreakdown() {
+    if (cookie.load('userName')) {
+      this.postProblemBreakdown()
+    } else {
+      $(document).ready(function() {
+        $('#notification').attr('id','notificationShow').hide().slideDown();
+        $('#notificationLoginRegisterContainer').attr('id','notificationLoginRegisterContainerShow');
+        $('#notificationContent').html('please <span id="blue">login </span>to join this discussion');
+      });
+    }
+  }
   postProblemBreakdown() {
     var self = this;
     // self.refs.btn.setAttribute("disabled", "disabled");
@@ -228,9 +239,8 @@ export default class ProjectBreakdownForm extends React.Component {
 								<textarea name="problemSummary" maxLength="500" 
 								placeholder="Please provide any additional information you'd like. (500 ch)" id="breakdownProblemSummaryForm"/>
 							</label>
-							<br />
 							<Link to={window.location.pathname}>
-								<input type="button" ref='btn' value="create" onClick={this.postProblemBreakdown} id="submitProblem"/>
+								<input type="button" ref='btn' value="create" onClick={this.checkLoginProblemBreakdown} id="submitProblem"/>
 							</Link>
 							</fieldset>
 						</form>

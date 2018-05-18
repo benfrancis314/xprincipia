@@ -48,6 +48,7 @@ export default class SolutionForm extends React.Component {
     this.postSolution = this.postSolution.bind(this);
     this.showPDF = this.showPDF.bind(this);
     this.showProse = this.showProse.bind(this);
+    this.checkLoginProposal = this.checkLoginProposal.bind(this);
   };
 
 
@@ -121,6 +122,18 @@ export default class SolutionForm extends React.Component {
     })
   }
 
+  checkLoginProposal() {
+    if (cookie.load('userName')) {
+      this.postSolution()
+    } else {
+      $(document).ready(function() {
+        $('#notification').attr('id','notificationShow').hide().slideDown();
+        $('#notificationLoginRegisterContainer').attr('id','notificationLoginRegisterContainerShow');
+        $('#notificationContent').html('please <span id="blue">login </span>to join this discussion');
+      });
+    }
+  }
+
   postSolution() {
     //Read field items into component state
     var self = this
@@ -188,8 +201,10 @@ export default class SolutionForm extends React.Component {
         if (err) {
           // alert('There was an error uploading your photo: ', err.message);
           console.log(err.message)
+          console.log(err)
         } else {
           // alert('Successfully uploaded photo.');
+          console.log(data)
         }
       });
       axios.post( Config.API + '/auth/solutions/create', {
@@ -210,7 +225,6 @@ export default class SolutionForm extends React.Component {
         // document.getElementById("createForm").reset();
       })
       .catch(function (error) {
-        alert('error')
           $(document).ready(function() {
               $('#notification').attr('id','notificationShow').hide().slideDown();
 
@@ -316,7 +330,7 @@ export default class SolutionForm extends React.Component {
                 </div>
 
                   <Link to={this.state.linkPath+this.props.probID+'/subprojects'}>
-                      <input type="button" ref='btn' value="create" onClick={this.postSolution} id="submitSolution"/>
+                      <input type="button" ref='btn' value="create" onClick={this.checkLoginProposal} id="submitSolution"/>
                   </Link>
               </fieldset>
             </form>

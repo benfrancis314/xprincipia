@@ -152,6 +152,11 @@ render() {
   // });
 
 if (this.state.userToken === undefined ){
+  // $().html("explore").fadeIn(7500);
+  // $('#loginHeaderLink' ).keypress(function() {
+  //   console.log( "Handler for .keypress() called." );
+  // });
+
       return (
         <div>
           <div id="header">

@@ -18,6 +18,8 @@ export default class LearnResourcesForm extends React.Component {
       }
       
       this.postLearn = this.postLearn.bind(this);
+      this.checkLoginLearn = this.checkLoginLearn.bind(this);
+
   };
 
 componentDidMount(){
@@ -30,6 +32,18 @@ componentDidMount(){
       self.setState({
           private: '0',
       })
+  }
+}
+
+checkLoginLearn() {
+  if (cookie.load('userName')) {
+    this.postLearn()
+  } else {
+    $(document).ready(function() {
+      $('#notification').attr('id','notificationShow').hide().slideDown();
+      $('#notificationLoginRegisterContainer').attr('id','notificationLoginRegisterContainerShow');
+      $('#notificationContent').html('please <span id="blue">login </span>to join this discussion');
+    });
   }
 }
 
@@ -115,7 +129,7 @@ postLearn() {
                               <textarea name="suggestionText" required="required" id="resourcesTextArea" placeholder="Please provide any additional information you'd like. " ></textarea>
                               {/* OLD Placeholder: "Please describe the resource or explain its purpose. " */}
                               <Link to={window.location.pathname}>
-                                <input type="button" ref='btn' value="add" onClick={this.postLearn} id="addSuggestion"/>
+                                <input type="button" ref='btn' value="add" onClick={this.checkLoginLearn} id="addSuggestion"/>
                               </Link>
                       </fieldset>
                   </form>
