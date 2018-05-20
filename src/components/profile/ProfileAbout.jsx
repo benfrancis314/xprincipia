@@ -5,7 +5,59 @@ export default class ProfileAbout extends React.Component {
       return (
         <div>
               <div id="aboutProseDescriptions">
-                 <span id="blue">XPrincipia</span> is an <span id="blue">open content research and development </span>
+
+
+                Much as writing allowed for information to extend through time, 
+                the internet allows for information to extend through space. 
+                <br />
+                <br />
+                In this way, billions of human minds are able to be intimately connected, 
+                forming a type of ultraorganism. 
+                <br />
+                <br />
+                However, this internet-based ultraorganism is today primarily used only for social interaction, entertainment, and commerce. 
+                <br />
+                <br />
+                There exists no centralized nexus for pushing human progress further, for solving our 
+                greatest problems and achieving our grandest goals. 
+                <br />
+                <br />
+                This centralized location would take the form of a website, allowing anyone to
+                access and contribute to leading-edge scientific and technological thought. 
+                It would focus people upon major projects, determined to be most critical for the future of humanity. 
+                <br />
+                <br />
+                People would create proposals of their ideas, discuss them as a community, and 
+                iterate versions of them as they become improved towards perfection. 
+                <br />
+                <br />
+                Eventually, the core group of people contributing to the intellectual progress of humanity would
+                extend from academia and private industry to the civilization in general. 
+                Our rate of discovery would accelerate; in our lifetimes we would achieve unthought of change, 
+                perhaps interplanetary colonies or the cessation of aging. 
+                <br />
+                <br />
+                This is the mission of XPrincipia. 
+
+                <br />
+                <br />
+                <br /> 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                 {/* <span id="blue">XPrincipia</span> is an <span id="blue">open content research and development </span>
                  web app allowing anyone to access and contribute to <span id="blue">scientific progress</span>.
                  <br />
                  <br />
@@ -38,7 +90,14 @@ export default class ProfileAbout extends React.Component {
                  providing users with the <span id="blue">technology</span>, <span id="blue">scientific equipment</span> and <span id="blue">raw materials</span> to create and research <span id="blue"> on their own</span>.
                  <br />
                  <br />
-                 <br />
+                 <br /> */}
+
+
+
+
+
+
+
                  <span id="blue">Contact us</span> for more information:
               </div>
             <div id="profileAboutContact">

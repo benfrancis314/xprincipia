@@ -62,6 +62,22 @@ export default class ProfileDisclaimer extends React.Component {
                  <br />
               </div> */}
           
+
+            <div id="legalAgreementDisclaimerDescription">
+                {/* <img onClick={this.hideLegal} src={require('../assets/redX.svg')} id="closeRedX" width="30" height="30" alt="Close button, red X symbol" />             */}
+                <span id="legalBlue">all rights are reserved by the creators </span>
+                <br />
+                of intellectual property on xprincipia.com.
+                <br />
+                <span id="legalBlue">the creators permit this content to be distributed </span>
+                <br />
+                and used by xprincipia, inc. upon creation.
+                < br />
+                <span id="legalBlue">xprincipia, inc. is in no way responsible</span>
+                <br />
+                for any legal violations of content added by users on xprincipia.com.
+            </div>
+
             <div id="profileAboutContact">
                 info@xprincipia.com
             </div>

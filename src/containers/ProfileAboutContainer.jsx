@@ -11,9 +11,9 @@ export default class ProfileAboutContainer extends React.Component {
                 <Link to={`/profile/about`} activeClassName="activeDimWhite">
                     <div id="aboutButton">About</div>
                 </Link>
-                <Link to={`/profile/careers`} activeClassName="activeDimWhite">
+                {/* <Link to={`/profile/careers`} activeClassName="activeDimWhite">
                     <div id="careersButton">Careers</div>
-                </Link>
+                </Link> */}
                 <Link to={`/profile/disclaimer`} activeClassName="activeDimWhite">
                     <div id="careersButton">Disclaimer</div>
                 </Link>

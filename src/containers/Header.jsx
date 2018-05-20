@@ -73,7 +73,8 @@ enterRegister(event) {
         token : "Bearer " + self.state.userToken
       }, 
       {headers: { Authorization: "Bearer " + self.state.userToken }}).then (function (response) {
-        // document.location = window.location.pathname;
+        // Added back in due to new auth system needing it and the notebook system needing it
+        document.location = window.location.pathname;
       })
     })
       .catch(function (error) {

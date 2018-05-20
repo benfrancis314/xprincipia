@@ -70,6 +70,7 @@ export default class ProjectEditForm extends React.Component {
       summary : self.state.summary
     })
     .then(function (result) {
+      document.location = self.state.linkPath+self.props.params.probID+'/subprojects';
     })
       .catch(function (error) {
           $(document).ready(function() {
@@ -100,7 +101,7 @@ export default class ProjectEditForm extends React.Component {
 
                 <label htmlFor="problemSummaryForm" id="problemSummaryFormLabel">synopsis<br />
                     <textarea name="problemSummary" required="required" maxLength="350" 
-                    placeholder="Please provide any additional information you'd like. (250 ch..)" id="projectEditSummaryForm">
+                    placeholder="Please provide any additional information you'd like. (500 ch)" id="projectEditSummaryForm">
                     </textarea>
                 </label>
                 <div id="discussFormButtonContainer">

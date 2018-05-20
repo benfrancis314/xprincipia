@@ -43,8 +43,9 @@ componentDidMount(){
         username: cookie.load('userName'),
         notification: this.props.notification,
     })
-    if (this.state.userToken !== undefined ) { 
-        
+    console.log(this.state.username)
+    if (cookie.load('userName') !== undefined ) { 
+        console.log('notebook YES')
         axios.get( Config.API + '/notebooks/username/top?username='+cookie.load('userName')).then(function (response) {
             self.setState({
                 currentNotebook: response.data.ID,
@@ -59,6 +60,37 @@ componentDidMount(){
                 rerender: '0',
             })
         })
+    } else {
+        console.log('notebook NO')
+    }
+}
+componentWillReceiveProps(nextProps){
+    var self = this;
+    // OLD
+    // if (cookie.load('userName') != undefined) { 
+    self.setState({ 
+        userToken: cookie.load('userToken'),
+        username: cookie.load('userName'),
+        notification: nextProps.notification,
+    })
+    if (cookie.load('userName') !== undefined ) { 
+        console.log('notebook YES')
+        axios.get( Config.API + '/notebooks/username/top?username='+cookie.load('userName')).then(function (response) {
+            self.setState({
+                currentNotebook: response.data.ID,
+            })
+            document.getElementById('notebookFullTitle').value = response.data.Title;
+            document.getElementById('notebookFullContent').value = response.data.Description;
+            document.getElementById('notebookFullResources').value = response.data.Sources;
+        })
+        axios.get( Config.API + '/notebooks/username?username='+cookie.load('userName')).then(function (response) {
+            self.setState({
+                notebooks: response.data,
+                rerender: '0',
+            })
+        })
+    } else {
+        console.log('notebook NO')
     }
 }
 

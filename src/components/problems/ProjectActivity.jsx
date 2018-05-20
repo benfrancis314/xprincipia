@@ -40,11 +40,20 @@ componentDidMount(){
 componentWillReceiveProps(nextProps){
     var self = this;
     // window.scrollTo(0,0);
-    return axios.get( Config.API + '/problems/onproblemfeed?problem_id='+nextProps.probID).then(function (response) {
+    axios.get( Config.API + '/problems/onproblemfeed?problem_id='+nextProps.probID).then(function (response) {
         self.setState({
             projectFeed: response.data,
         })
-    })     
+    })   
+    if (window.location.pathname.includes('private')) {
+        self.setState({
+            linkPath: '/project/private/',
+        })
+    } else {
+        self.setState({
+            linkPath: '/project/',
+        })
+    }  
 }
 
 render() {
@@ -186,8 +195,8 @@ renderItem(problem) {
             </li>);
     } else {
         return (
-            <div key={problem.ID} id="nodisplays">
-                {problem.BackupParentID}.
+            <div key={problem.ID} id="nodisplay">
+                {/* {problem.BackupParentID}. */}
             </div>
         );
     }

@@ -42,8 +42,12 @@ export default class FullProblem extends React.Component {
             editID: '',
             deleteID: '',
             linkPath: '',
+            menuID: '',
+            menuIDPrivate: '',
         }
         this.vote = this.vote.bind(this)
+        this.voteUp = this.voteUp.bind(this)
+        this.voteDown = this.voteDown.bind(this)
         this.checkLoginVote = this.checkLoginVote.bind(this)
         this.hoverVoteNumber = this.hoverVoteNumber.bind(this)
         this.unHoverVoteNumber = this.unHoverVoteNumber.bind(this)
@@ -60,10 +64,15 @@ export default class FullProblem extends React.Component {
       if (window.location.pathname.includes('private')) {
           self.setState({
               linkPath: '/project/private/',
+              menuIDPrivate: 'problemCenterColumnPrivate',
+              menuID: 'noDisplay',
+
           })
       } else {
           self.setState({
               linkPath: '/project/',
+              menuIDPrivate: 'noDisplay',
+              menuID: 'problemCenterColumn',
           })
       }
       axios.get( Config.API + '/problems/ID?id='+this.props.params.probID).then(function (response) {
@@ -75,7 +84,7 @@ export default class FullProblem extends React.Component {
               editDeleteMenuID: 'editDeleteMenu',
             })
           } else if (response.data.OriginalPosterUsername === cookie.load('userName')) {
-              self.setState({
+            self.setState({
                 problemInfo: response.data,
                 editID: 'editProjectButton',
                 deleteID: 'noDisplay',
@@ -106,7 +115,7 @@ export default class FullProblem extends React.Component {
                   vote: false,
                 }) 
               }
-      })        
+      })       
   }
 
   shouldComponentUpdate(nextProps, nextState) {
@@ -119,10 +128,15 @@ export default class FullProblem extends React.Component {
       if (window.location.pathname.includes('private')) {
           self.setState({
               linkPath: '/project/private/',
+              menuIDPrivate: 'problemCenterColumnPrivate',
+              menuID: 'noDisplay',
+
           })
       } else {
           self.setState({
               linkPath: '/project/',
+              menuIDPrivate: 'noDisplay',
+              menuID: 'problemCenterColumn',
           })
       }
       axios.get( Config.API + '/problems/ID?id='+nextProps.params.probID).then(function (response) {
@@ -245,6 +259,62 @@ export default class FullProblem extends React.Component {
     }
   }
 
+  voteUp() {
+    var self = this
+    // self.refs.probbtn.setAttribute("disabled", "disabled");
+    axios.get( Config.API + '/vote/privateUp?id='+this.props.params.probID+'&type=0').then(function (response) {
+      // alert('vote up success');
+    })
+    .catch(function (error) {
+        $(document).ready(function() {
+            $('#notification').attr('id','notificationShow').hide().slideDown();
+              if (error.response.data == '[object Object]') {
+                return (
+                  $(document).ready(function() {
+                    $('#notificationLoginRegisterContainer').attr('id','notificationLoginRegisterContainerShow');
+                    $('#notificationFeedbackShow').attr('id','notificationFeedback');
+                    $('#notificationContent').html('Please <span id="blue">login </span>to vote');
+                  })
+                );
+              }  else if (error.response.data != '') {
+              $('#notificationContent').text(error.response.data);
+            }
+        });
+        // self.refs.probbtn.removeAttribute("disabled");
+    });
+}
+
+voteDown() {
+    var self = this;
+    // self.refs.probbtn.setAttribute("disabled", "disabled");
+    // I believe something about the double click disable broke,
+    // look at old versions to find the fix
+    // self.refs.btn.setAttribute("disabled", "disabled");
+    axios.get( Config.API + '/vote/privateDown?id='+this.props.params.probID+'&type=0').then(function (response) {
+        // alert('vote down success');
+      })
+    .catch(function (error) {
+        $(document).ready(function() {
+            $('#notification').attr('id','notificationShow').hide().slideDown();
+              if (error.response.data == '[object Object]') {
+                return (
+                  $(document).ready(function() {
+                    $('#notificationLoginRegisterContainer').attr('id','notificationLoginRegisterContainerShow');
+                    $('#notificationFeedbackShow').attr('id','notificationFeedback');
+                    $('#notificationContent').html('Please <span id="blue">login </span>to vote');
+                  })
+                );
+              }  else if (error.response.data != '') {
+              $('#notificationContent').text(error.response.data);
+            }
+        });
+        // self.refs.probbtn.removeAttribute("disabled");
+    });
+      
+  }
+
+  
+
     hoverVoteNumber() {
       $(document).ready(function() {
             $('#voteProblem').attr('id','voteProblemHover');               
@@ -282,7 +352,6 @@ export default class FullProblem extends React.Component {
 
    render() {
     return (
-
             <div id="maxContainerColumn">
             
             <ReactCSSTransitionGroup
@@ -304,7 +373,7 @@ export default class FullProblem extends React.Component {
                     <Link to={this.state.linkPath+this.props.params.probID+'/discuss'} activeClassName="activeProblemOptionDiscuss">
                       <div id="SBButtonDiscuss">discuss</div>
                     </Link>
-                    <div id="problemCenterColumn">
+                    <div id={this.state.menuID}>
                       <Link to={this.state.linkPath+this.props.params.probID+'/subprojects'}>
                         <div id={this.state.voteID} ref='probbtn' onClick={this.checkLoginVote}>
                             {this.state.voteTitle}
@@ -314,6 +383,19 @@ export default class FullProblem extends React.Component {
                         <div id="SBButtonProposal" onClick={this.goToProposal}>proposals</div>
                       </a>
                       <ProblemFollowButton probID={this.props.params.probID} username={cookie.load('userName')} />
+                    </div>
+                    <div id={this.state.menuIDPrivate}>
+                      <Link to={`/project/private/${this.props.params.probID}/subprojects`}>
+                        <div id="voteProblemUp" ref='probbtn' onClick={this.voteUp}  onMouseDown={this.changeRankOn} onMouseUp={this.changeRankOff}>
+                        </div>
+                      </Link>
+                      <a href='#proposals'>
+                        <div id="SBButtonProposalPrivate" onClick={this.goToProposal}>proposals</div>
+                      </a>
+                      <Link to={`/project/private/${this.props.params.probID}/subprojects`}>
+                        <div id="voteProblemDown" ref='probbtn' onClick={this.voteDown}  onMouseDown={this.changeRankOn} onMouseUp={this.changeRankOff}>
+                        </div>
+                      </Link>
                     </div>
                     <Link to={this.state.linkPath+this.props.params.probID+'/learn'} activeClassName="activeProblemOptionLearn">
                       <div id="SBButtonLearn">learn</div>

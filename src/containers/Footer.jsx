@@ -18,9 +18,9 @@ export default class Header extends React.Component {
                 <img src={require('../assets/footerEarth3.jpg')} id="footerImg" alt="Curvature of Earth"/>
             </div> */
             <div id="footer">
-                <div id="footerCareers" onClick={goToContact}>
+                {/* <div id="footerCareers" onClick={goToContact}>
                     contact
-                </div>
+                </div> */}
                 <div id="footerAbout" onClick={goToAbout}>
                     about
                 </div>

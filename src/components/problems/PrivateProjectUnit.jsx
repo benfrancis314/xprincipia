@@ -51,7 +51,7 @@ export default class PrivateProjectUnit extends React.Component {
                         });
                         // alert('success');
         }
-        if (problem.Private === true && (problem.OriginalPosterUsername === cookie.load('userName')) && problem.Title.length > 50) {
+        if (problem.Private == true && (problem.OriginalPosterUsername === cookie.load('userName')) && problem.Title.length > 50) {
         return (
             <Link key={problem.ID} to={'/project/private/'+problem.ID +'/subprojects'}>
                 <li id="SPUnit">
@@ -63,7 +63,7 @@ export default class PrivateProjectUnit extends React.Component {
             </Link>
         
         );
-        } else if (problem.Private === true && (problem.OriginalPosterUsername === cookie.load('userName')) && problem.Class == '2') {
+        } else if (problem.Private == true && (problem.OriginalPosterUsername === cookie.load('userName')) && problem.Class == '2') {
             return (
                 <Link key={problem.ID} to={'/project/private/'+problem.ID +'/subprojects'}>
                     <li id="SPUnit">
@@ -78,7 +78,7 @@ export default class PrivateProjectUnit extends React.Component {
                     </li>
                 </Link>
             );
-        } else if (problem.Private === true && (problem.OriginalPosterUsername === cookie.load('userName')) && problem.Class == '1') {
+        } else if (problem.Private == true && (problem.OriginalPosterUsername === cookie.load('userName')) && problem.Class == '1') {
             return (
                 <Link key={problem.ID} to={'/project/private/'+problem.ID +'/subprojects'}>
                     <li id="SPUnit">
@@ -93,13 +93,13 @@ export default class PrivateProjectUnit extends React.Component {
                     </li>
                 </Link>
             );
-        } else if (problem.Private === true && (problem.OriginalPosterUsername === cookie.load('userName'))) {
+        } else if (problem.Private == true && (problem.OriginalPosterUsername === cookie.load('userName'))) {
             return (
                <Link key={problem.ID} to={'/project/private/'+problem.ID +'/subprojects'}>
                     <li id="SPPrivateUnit">
                         <div id="SPHeaderPrivate">
                             <div id="SPTitle">{problem.Title}</div>
-                            {/*<div id="SPPercent">{problem.Rank}</div>*/}
+                            <div id="SPPercent">{problem.Rank}</div>
                         </div>
                     </li>
                </Link>

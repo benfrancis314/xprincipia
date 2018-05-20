@@ -260,11 +260,11 @@ ReactDOM.render(
             <IndexRoute component={ActivityFeedProposalsUnits}></IndexRoute>
             <Route path='/welcome/proposals' component={ActivityFeedProposalsUnits}></Route>
           </Route>
-          <Route path='/welcome/feed/questions' component={ActivityFeedDiscussContainer}>
+          <Route path='/welcome/feed/discuss' component={ActivityFeedDiscussContainer}>
             <IndexRoute component={ActivityFeedDiscussUnits}></IndexRoute>
-            <Route path='/welcome/questions' component={ActivityFeedDiscussUnits}></Route>
+            <Route path='/welcome/discuss' component={ActivityFeedDiscussUnits}></Route>
           </Route>
-          <Route path='/welcome/feed/resources' component={ActivityFeedLearnContainer}>
+          <Route path='/welcome/feed/learn' component={ActivityFeedLearnContainer}>
             <IndexRoute component={ActivityFeedLearnUnits}></IndexRoute>
             <Route path='/welcome/learn' component={ActivityFeedLearnUnits}></Route>
           </Route>
@@ -364,7 +364,7 @@ ReactDOM.render(
           </Route>
           <Route path='/project/private/:probID/proposal/:solutionID/fullversion' component={FullVersion}></Route>
         </Route>
-        <Route path='/project/private/:probID/discuss' component={ProblemDiscussMenu}>
+        <Route path='/project/private/:probID/discuss/menu' component={ProblemDiscussMenu}>
             <IndexRoute component={DiscussContainer}></IndexRoute>
             <Route path='/project/private/:probID/discuss/container' component={DiscussContainer}>
               <IndexRoute component={DiscussForm}></IndexRoute>
@@ -373,7 +373,7 @@ ReactDOM.render(
               <Route path='/project/private/:probID/discuss/:discussID/flag' component={DiscussFlagForm}></Route>
               <Route path='/project/private/:probID/discuss/:discussID/delete' component={DiscussDeleteForm}></Route>
             </Route> 
-            <Route path='/project/:probID/discuss/:discussID/comments/container' component={DiscussCommentContainer}>
+            <Route path='/project/private/:probID/discuss/:discussID/comments/container' component={DiscussCommentContainer}>
               <IndexRoute component={DiscussCommentForm}></IndexRoute>
               <Route path='/project/private/:probID/discuss/:discussID/comments' component={DiscussCommentForm}></Route>
               <Route path='/project/private/:probID/discuss/:discussID/comments/:commentID/edit' component={DiscussEditForm}></Route>

@@ -260,7 +260,7 @@ export default class FullSolutionContent extends React.Component {
                       {this.state.voteTitle}
                     </div>
                   </Link>
-                  <Link to={this.state.linkPath+this.props.params.probID+'/proposal/'+this.props.params.solutionID+'/versions'}>
+                  <Link to={this.state.linkPath+this.props.params.probID+'/proposal/'+this.props.params.solutionID+'/versions'} activeClassName="activeVersionsButton">
                       <div id="versionsButton">
                               versions
                       </div>

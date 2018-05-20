@@ -346,24 +346,28 @@ function randomFeatured() {
   if (Math.random() < 0.5) {
       return (
         <div>
-        <div id="featuredProjectLabel">
-                        featured project
-                      </div>
-          <div id="featuredProjectButton1">
-              the human mind
+          <div id="featuredProjectLabel">
+            featured project
           </div>
-          </div>
+          <Link to={'/project/7/subprojects'}>
+            <div id="featuredProjectButton1">
+                the human mind
+            </div>
+          </Link>
+        </div>
       );
   } else if (Math.random() < 1){
       return (
         <div>
-        <div id="featuredProjectLabel">
-                        featured proposal
-                      </div>
-          <div id="featuredProjectButton2">
-              the mental world
+          <div id="featuredProjectLabel">
+            featured proposal
           </div>
-          </div>
+          <Link to={'/project/7/proposal/2'}>
+            <div id="featuredProjectButton2">
+                the mental world
+            </div>
+          </Link>
+        </div>
       );
   }
 }

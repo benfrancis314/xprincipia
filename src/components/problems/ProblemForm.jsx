@@ -19,7 +19,8 @@ export default class ProblemForm extends React.Component {
       class: '',
       breakdownID: '',
       linkPath: '',
-      private: '',
+      privateCall: '',
+      proposalCheck: '',
     }
 
     this.postProblem = this.postProblem.bind(this);
@@ -41,12 +42,21 @@ export default class ProblemForm extends React.Component {
     if (window.location.pathname.includes('private')) {
         self.setState({
             linkPath: '/project/private/',
-            private: '1',
+            privateCall: '/private',
         })
     } else {
         self.setState({
             linkPath: '/project/',
-            private: '0',
+            privateCall: '',
+        })
+    }
+    if (window.location.pathname.includes('proposal')) {
+      self.setState({
+          proposalCheck: '1',
+      })
+    } else {
+        self.setState({
+            proposalCheck: '0',
         })
     }
   }
@@ -60,12 +70,21 @@ export default class ProblemForm extends React.Component {
     if (window.location.pathname.includes('private')) {
         self.setState({
             linkPath: '/project/private/',
-            private: '1',
+            privateCall: '/private',
         })
     } else {
         self.setState({
             linkPath: '/project/',
-            private: '0',
+            privateCall: '',
+        })
+    }
+    if (window.location.pathname.includes('proposal')) {
+      self.setState({
+          proposalCheck: '1',
+      })
+    } else {
+        self.setState({
+            proposalCheck: '0',
         })
     }
   }
@@ -95,11 +114,11 @@ export default class ProblemForm extends React.Component {
       this.state.class = '0' 
     }
   
-    axios.post( Config.API + '/auth/problems/create', {
+    axios.post( Config.API + '/auth/problems/create'+this.state.privateCall, {
       username: cookie.load('userName'),
       title : this.state.title,
       summary : this.state.summary,
-      parentType : '0',
+      parentType : this.state.proposalCheck,
       parentID: this.props.params.probID,
       parentTitle : this.props.parentTitle,
       grandParentID : String(this.props.gParentID),
@@ -107,7 +126,6 @@ export default class ProblemForm extends React.Component {
       ggParentID : String(this.props.ggParentID),
       class : String(this.state.class),
       breakdownID: String(this.state.breakdownID),
-      private: this.state.private,
     })
     .then(function (result) {
       self.refs.btn.removeAttribute("disabled");

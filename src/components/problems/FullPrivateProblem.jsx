@@ -33,7 +33,8 @@ export default class FullProblem extends React.Component {
         }
         this.changeRankOn = this.changeRankOn.bind(this)
         this.changeRankOff = this.changeRankOff.bind(this)
-        this.vote = this.vote.bind(this)
+        this.voteUp = this.voteUp.bind(this)
+        this.voteDown = this.voteDown.bind(this)
         this.differentBreakdown = this.differentBreakdown.bind(this)
         this.hoverVoteNumber = this.hoverVoteNumber.bind(this)
         this.unHoverVoteNumber = this.unHoverVoteNumber.bind(this)
@@ -83,59 +84,60 @@ export default class FullProblem extends React.Component {
   }
 
 
-  vote() {
-    if(this.state.vote === true ) {
-      var self = this
-      self.refs.probbtn.setAttribute("disabled", "disabled");
-      axios.get( Config.API + '/vote/privateUp?id='+this.props.params.probID+'&type=0').then(function (response) {
-        // alert('vote up success');
+  voteUp() {
+    var self = this
+    self.refs.probbtn.setAttribute("disabled", "disabled");
+    axios.get( Config.API + '/vote/privateUp?id='+this.props.params.probID+'&type=0').then(function (response) {
+      // alert('vote up success');
+    })
+    .catch(function (error) {
+        $(document).ready(function() {
+            $('#notification').attr('id','notificationShow').hide().slideDown();
+              if (error.response.data == '[object Object]') {
+                return (
+                  $(document).ready(function() {
+                    $('#notificationLoginRegisterContainer').attr('id','notificationLoginRegisterContainerShow');
+                    $('#notificationFeedbackShow').attr('id','notificationFeedback');
+                    $('#notificationContent').html('Please <span id="blue">login </span>to vote');
+                  })
+                );
+              }  else if (error.response.data != '') {
+              $('#notificationContent').text(error.response.data);
+            }
+        });
+        self.refs.probbtn.removeAttribute("disabled");
+    });
+}
+
+voteDown() {
+    var self = this;
+    self.refs.probbtn.setAttribute("disabled", "disabled");
+    // I believe something about the double click disable broke,
+    // look at old versions to find the fix
+    // self.refs.btn.setAttribute("disabled", "disabled");
+    axios.get( Config.API + '/vote/privateDown?id='+this.props.params.probID+'&type=0').then(function (response) {
+        // alert('vote down success');
       })
-      .catch(function (error) {
-          $(document).ready(function() {
-              $('#notification').attr('id','notificationShow').hide().slideDown();
-                if (error.response.data == '[object Object]') {
-                  return (
-                    $(document).ready(function() {
-                      $('#notificationLoginRegisterContainer').attr('id','notificationLoginRegisterContainerShow');
-                      $('#notificationFeedbackShow').attr('id','notificationFeedback');
-                      $('#notificationContent').html('Please <span id="blue">login </span>to vote');
-                    })
-                  );
-                }  else if (error.response.data != '') {
-                $('#notificationContent').text(error.response.data);
-              }
-          });
-          self.refs.probbtn.removeAttribute("disabled");
-      });
-  } else {
-      var self = this;
-      self.refs.probbtn.setAttribute("disabled", "disabled");
-      // I believe something about the double click disable broke,
-      // look at old versions to find the fix
-      // self.refs.btn.setAttribute("disabled", "disabled");
-      axios.get( Config.API + '/vote/privateDown?id='+this.props.params.probID+'&type=0').then(function (response) {
-          // alert('vote down success');
-        })
-      .catch(function (error) {
-          $(document).ready(function() {
-              $('#notification').attr('id','notificationShow').hide().slideDown();
-                if (error.response.data == '[object Object]') {
-                  return (
-                    $(document).ready(function() {
-                      $('#notificationLoginRegisterContainer').attr('id','notificationLoginRegisterContainerShow');
-                      $('#notificationFeedbackShow').attr('id','notificationFeedback');
-                      $('#notificationContent').html('Please <span id="blue">login </span>to vote');
-                    })
-                  );
-                }  else if (error.response.data != '') {
-                $('#notificationContent').text(error.response.data);
-              }
-          });
-          self.refs.probbtn.removeAttribute("disabled");
-      });
-        
-    }
-    }
+    .catch(function (error) {
+        $(document).ready(function() {
+            $('#notification').attr('id','notificationShow').hide().slideDown();
+              if (error.response.data == '[object Object]') {
+                return (
+                  $(document).ready(function() {
+                    $('#notificationLoginRegisterContainer').attr('id','notificationLoginRegisterContainerShow');
+                    $('#notificationFeedbackShow').attr('id','notificationFeedback');
+                    $('#notificationContent').html('Please <span id="blue">login </span>to vote');
+                  })
+                );
+              }  else if (error.response.data != '') {
+              $('#notificationContent').text(error.response.data);
+            }
+        });
+        self.refs.probbtn.removeAttribute("disabled");
+    });
+      
+  }
+
 
     differentBreakdown(breakdown) {
       this.setState({

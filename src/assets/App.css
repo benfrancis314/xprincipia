@@ -2477,10 +2477,13 @@ left: 0;
 z-index: 500;
 transition: all 1s ease 0s;
 color: rgba(0,220,255,0.5);
+
+border-radius: 0px 0px 10% 10%;
 }
 #footer:hover {
   background-color: rgba(0,220,255,0.05);
   color: #00dcff;
+  border-radius: 0px;
 }
 
 #footerAbout, #footerCareers, #creativeCommons {
@@ -3004,11 +3007,10 @@ padding-top: 4%;
 margin-top: 1%;
 margin-bottom: 1%;
 /* If capital letters */
-font-size: 200%;
+
 /* If not */
 /* font-size: 180%; */
-text-align: center;
-letter-spacing: 4px;
+
 border: 1px solid #00dcff;
 border-radius: 3px 3px 15% 15%;
 transition: all 2.5s ease 0s;
@@ -3020,12 +3022,12 @@ background-blend-mode: overlay;
 background-image: url('./buzzAldrin.jpg');
 background-position: center 8%;
 background-size: 150%;
+
+  text-align: center;
+  letter-spacing: 4px;
+  font-size: 200%;
 }
-#introductionWelcomeSloganHover {
-  /* color: #00dcff; */
-  font-size: 160%;
-}
-#introductionWelcomeSlogan:hover, #introductionWelcomeSloganBlue:hover {
+#introductionWelcomeSloganHover, #introductionWelcomeSlogan:hover, #introductionWelcomeSloganBlue:hover {
 transform: scale(1.15);
 background-color: rgba(15,19,28,0.5);
 background-size: 100%;
@@ -3033,8 +3035,12 @@ padding-bottom: 7%;
 padding-top: 7%;
 border-radius: 5px 5px 5px 5px;
 /* color: #00dcff; */
-font-size: 190%;
-/* letter-spacing: 6px; */
+/* font-size: 190%; */
+letter-spacing: 16px !important;
+font-size: 160% !important;
+}
+#introductionWelcomeSlogan:hover * {
+  letter-spacing: 16px !important;
 }
 #introductionWelcomeSlogan:active, #introductionWelcomeSloganBlue:active {
   /* background-image: url('./newtonBlake.jpg');
@@ -3044,6 +3050,11 @@ font-size: 190%;
   background-position: center 25%;
   background-size: 100%;
 }
+#blueIntro, #blueIntro:hover {
+  color: #00dcff !important;
+  /* transition: all 2.5s ease 0s; */
+}
+
 #introductionCapital {
 font-size: 120%;
 }
@@ -3095,7 +3106,6 @@ width: 80%;
 /* background: linear-gradient(to right,rgba(0,220,255, 0.06), rgba(0,220,255, 0.07), rgba(0,220,255, 0.02)); */
 /*Test*/
 background: radial-gradient(to right,rgba(0,220,255, 0), rgba(0,220,255, 0), rgba(0,220,255, 0.1));
-padding-bottom: 2%;
 }
 #introductionProjectsProse {
 font-family: 'Alegreya Sans SC';
@@ -3221,30 +3231,33 @@ box-shadow: 0 0 1pt 1pt rgba(0,220,255,0.5) !important;
 transform: scale(1.02);
 background: radial-gradient(circle,rgba(0,220,255, 0.025), rgba(0,220,255, 0.05), rgba(0,220,255, 0.075));
 }
-#introductionSection1, #introductionSection2, #introductionSection3 {
+#introductionSection1, #introductionSection2, #introductionSection3, #introductionSection4 {
   font-family: 'Open Sans';
   background-repeat: no-repeat;
   background-attachment: fixed;
   transition: all 1s ease 0s;
 }
-#introductionSection1:hover, #introductionSection2:hover, #introductionSection3:hover {
+#introductionSection1:hover, #introductionSection2:hover, #introductionSection3:hover, #introductionSection4:hover {
   color: #00dcff;
 }
-#introductionSection1 {
+#introductionSection1, #introductionSection4 {
   background-image: url('./earthDark.svg');  
   background-position: top right;
-  padding: 6% 5% 0% 5%;  
+  padding: 6% 5% 1% 5%;  
 }
 #introductionSection2 {
   background-position: top right;
   background-image: url('./geodesicDark.svg');    
-  padding: 0% 5% 0% 5%;
+  padding: 0% 5% 1% 5%;
 }
 #introductionSection3 {
   background-position: top right;  
   background-image: url('./templeDark.svg');
   background-image: url('./saturnDark.svg');    
-  padding: 0% 5% 6% 5%;
+  padding: 0% 5% 1% 5%;
+}
+#introductionSection4 {
+  padding-bottom: 6%;
 }
 #introductionSectionProse {
   text-align: justify;
@@ -3269,20 +3282,22 @@ background: radial-gradient(circle,rgba(0,220,255, 0.025), rgba(0,220,255, 0.05)
 #introductionSectionHeaderBlue {
   color: #00dcff;
 }
-#introductionSection1:hover #introductionSectionProse, #introductionSection2:hover #introductionSectionProse, #introductionSection3:hover #introductionSectionProse {
+#introductionSection1:hover #introductionSectionProse, #introductionSection2:hover #introductionSectionProse, #introductionSection3:hover #introductionSectionProse, #introductionSection4:hover #introductionSectionProse {
   color: #dddddd;
   opacity: 1;
 }
 #introductionSection1:hover #introductionSectionHeaderBlue,
 #introductionSection2:hover #introductionSectionHeaderBlue,
-#introductionSection3:hover #introductionSectionHeaderBlue {
+#introductionSection3:hover #introductionSectionHeaderBlue, 
+#introductionSection4:hover #introductionSectionHeaderBlue {
   color: #00dcff;
   opacity: 1;
   /* letter-spacing: 4px; */
 }
 #introductionSection1:hover #introductionSectionHeaderWhite,
 #introductionSection2:hover #introductionSectionHeaderWhite,
-#introductionSection3:hover #introductionSectionHeaderWhite {
+#introductionSection3:hover #introductionSectionHeaderWhite,
+#introductionSection4:hover #introductionSectionHeaderWhite {
   color: #ffffff;
   opacity: 1;
 }
@@ -3298,7 +3313,8 @@ background: radial-gradient(circle,rgba(0,220,255, 0.025), rgba(0,220,255, 0.05)
 }
 #introductionSection1:hover #introductionSectionHeaderBig,
 #introductionSection2:hover #introductionSectionHeaderBig,
-#introductionSection3:hover #introductionSectionHeaderBig {
+#introductionSection3:hover #introductionSectionHeaderBig,
+#introductionSection4:hover #introductionSectionHeaderBig {
   color: #00dcff;
   transition: all 1s ease 0s;
   transform: scale(1.02);
@@ -7748,7 +7764,7 @@ transform: scale(1.02);
   border-radius: 3px 3px 35% 3px;
   }
   #SBButtonProposalPrivate {
-    border-radius: 3px 3px 3px 35%;
+    border-radius: 3px 3px 25% 25%;
   }
   #SBButtonProposal {
   border-radius: 3px;
@@ -9282,12 +9298,12 @@ text-transform: lowercase !important;
   border-radius: 0px 0px 25% 0px;
   }
 #voteSolution:hover, 
-#versionsButton:hover {
+#versionsButton:hover, .activeVersionsButton div {
   background-color: #00ffdc;
   color: #0f131c;
   cursor: pointer;
 }
-#versionsButton:hover {
+#versionsButton:hover, .activeVersionsButton div {
 background-color: #00dcff;
 }
 #votedSolution {
@@ -9300,24 +9316,23 @@ cursor: pointer;
 
 #solutionTitle, #solutionTitleGreen, #solutionTitleRed {
 border: 1px solid #dddddd;
-border-radius: 3px;
+border-radius: 3px 3px 10% 10%;
 box-shadow: 0 0 1pt 1pt rgba(255,255,255,0.5);
 margin-bottom: 0px;
 margin-top: 3%;
 transition: all 0.25s ease 0s;
+background: radial-gradient(circle, rgba(0,220,255,0.1), rgba(0,220,255,0));
 color: rgba(221,221,221,1);
 word-wrap: break-word; 
 }
 #solutionTitleGreen {
   box-shadow: 0 0 1pt 1pt rgba(0,220,255,0.5);
-  background: linear-gradient(to right,rgba(0,220,255, 0.05), rgba(0,220,255, 0.1), rgba(0,220,255, 0.05));
   border: 1px solid #00ffdc;
   background-color: rgba(0,255,220,0.05);
   margin-top: 0%;
 }
 #solutionTitleRed {
   box-shadow: 0 0 1pt 1pt rgba(255,127,127,0.5);
-  background: linear-gradient(to right,rgba(0,220,255, 0.05), rgba(0,220,255, 0.1), rgba(0,220,255, 0.05));
   border: 1px solid #ff7f7f;
   background-color: rgba(255,127,127,0.05);
   margin-top: 0%;
@@ -10127,6 +10142,8 @@ margin-right: 20%;*/
 letter-spacing: 1px;
 color: #dddddd;
 margin-top: 3%;
+font-family: 'Open Sans';
+font-size: 80%;
 }
 #aboutBlue {
 color: #00dcff;
@@ -10195,7 +10212,7 @@ color: #00dcff;
 #legalAgreementRegisterDescriptionHide {
   display: none;
 }
-#legalAgreementRegisterDescription {
+#legalAgreementRegisterDescription, #legalAgreementDisclaimerDescription {
   width: 50%;
   margin: 0 auto;
   margin-top: 2%;
@@ -10205,7 +10222,11 @@ color: #00dcff;
   font-size: 55%;
   letter-spacing: 2px;
 }
-#legalAgreementRegisterDescription:hover {
+#legalAgreementDisclaimerDescription {
+  width: 90%;
+  font-size: 90%;
+}
+#legalAgreementRegisterDescription:hover, #legalAgreementDisclaimerDescription:hover {
   color: #dddddd;
   transform: scale(1.05);
 }
@@ -10213,7 +10234,7 @@ color: #00dcff;
   color: rgba(0,220,255,0.5);
   transition: all 2s ease 0s;
 }
-#legalAgreementRegisterDescription:hover #legalBlue {
+#legalAgreementRegisterDescription:hover #legalBlue, #legalAgreementDisclaimerDescription:hover #legalBlue {
   color: #00dcff;
 }
 
@@ -11580,13 +11601,10 @@ margin-top: 1%;
   margin: 0 auto;
   color: #515151;
   text-align: center;
-  /* margin-bottom: 2%;
-  margin-top: 1.5%; */
   margin-bottom: 2.5%;
   margin-top: 0%;
   font-size: 175%;
-  font-size: 225%;  
-  /*font-style: italic;*/
+  /* font-size: 225%;   */
   letter-spacing: 8px;
   width: 70%;
   transition: all 1s ease 0s;
@@ -11598,13 +11616,10 @@ margin-top: 1%;
   margin: 0 auto;
   color: #00dcff;
   text-align: center;
-  /* margin-bottom: 2%; */
-  margin-top: 1.5%;
+  /* margin-top: 1.5%; */
+  margin-top: 0%;
   margin-bottom: 2.5%;
-  /* margin-top: 0%; */
   font-size: 175%;
-  font-size: 225%;  
-  /*font-style: italic;*/
   letter-spacing: 10px;
   width: 70%;
   transition: all 1s ease 0s;
@@ -13524,40 +13539,31 @@ transition: all 1s ease 0s;
 
 #branchesProjectButton {
   position: absolute;
-  /* Old */
-  left: -55px;
-  /* Current */
-  /* left: 0px; */
   top: 4%;
   border: 1px solid rgba(255,255,255,0.25);
   border-width: 0px;
   border-radius: 0% 10% 35% 0%;
-  /* transition: all 2s ease 0s; */
   transition: all 1s ease 0s;
   z-index: 510;
   width: 100px;
   height: 100px;
-  background: url('./branchWhite1.svg') no-repeat !important;
-  /* background: url('./projectTreeWhite2.svg') no-repeat !important; */
-  transform: scale(1.5);
+  background: url('./threeEmptyCirclesWhite.svg') no-repeat !important;
+  left: -50px;
+  transform: scale(1.5) rotate(90deg);
   padding: 0px 5px 30px 5px;
-  /* margin-top: 35px; */
-  opacity: 0.15;
-  /* border: 1px solid red; */
+  opacity: 0.05;
 }
 #branchesProjectButton:hover, .activeBranchesProjectButton div, #branchesProjectButtonClick {
-  left: -65px;
+  left: -75px;
   width: 100px;
   height: 100px;
-  width: 60px;
   transition: all 1s ease 0s;
   cursor: pointer;
-  top: 14%;
-  opacity: 1;
-  /* ALT */
-  /* background: url('./projectTreeWhite2.svg') no-repeat !important; */
-  background: url('./branchWhite1.svg') no-repeat !important;
-  transform: scale(2.5) rotate(20deg);
+  background: url('./threeEmptyCirclesBlue.svg') no-repeat !important;
+  left: -45px;
+  top: 4%;
+  transform: scale(1.5) rotate(90deg);
+  opacity: 0.5;
 }
 #branchesProjectButton:hover #branchUnitList, #branchesProjectButtonClick #branchUnitList {
   display: flex !important;

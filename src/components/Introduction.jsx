@@ -14,14 +14,14 @@ export default class Introduction extends React.Component {
 
     hoverSlogan() {
         $(document).ready(function() {
-            $('#introductionWelcomeSlogan').html('<span id="blue">online </span>science').fadeIn(7500);
-            $('#introductionWelcomeSlogan').attr('id','introductionWelcomeSloganHover');
+            $('#introductionWelcomeSlogan').html('<span id="blueIntro">online </span>science').fadeIn(7500);
+            // $('#introductionWelcomeSloganText').attr('id','introductionWelcomeSloganTextHover');
         });
       }
       unHoverSlogan() {
           $(document).ready(function() {
-              $('#introductionWelcomeSloganHover').html('welcome to xprincipia');            
-              $('#introductionWelcomeSloganHover').attr('id','introductionWelcomeSlogan');
+              $('#introductionWelcomeSlogan').html('welcome to <span id="blueIntro">x</span>principia');            
+            //   $('#introductionWelcomeSloganTextHover').attr('id','introductionWelcomeSloganText');
           });
       }
 
@@ -42,7 +42,7 @@ export default class Introduction extends React.Component {
             </Link>
           <div id="introductionContainer">
                 <div id="introductionWelcomeSlogan" onMouseOver={this.hoverSlogan} onMouseOut={this.unHoverSlogan}>
-                    xprincipia
+                    welcome to <span id="blue">x</span>principia
                 </div>
                 <div id="introductionProse">
                     <div id="introductionSection1">
@@ -51,7 +51,7 @@ export default class Introduction extends React.Component {
                             share your scientific ideas
                         </div>
                         <div id="introductionSectionHeaderWhite">  
-                            develop them as a community
+                            improve them as a community
                         </div>
                     </div>
                     <div id="introductionSection2">
@@ -72,13 +72,13 @@ export default class Introduction extends React.Component {
                             into managable parts
                         </div>
                     </div>
-                    <div id="introductionSection1">
+                    <div id="introductionSection4">
                         <div id="introductionSectionHeaderBig">iv</div>
                         <div id="introductionSectionHeaderBlue">  
                             propose cutting edge ideas
                         </div>
                         <div id="introductionSectionHeaderWhite">  
-                            discuss and learn
+                            discuss<span id="gray"> | </span>learn<span id="gray"> | </span>iterate
                         </div>
                     </div>
                     {/* <div id="introductionSection2">

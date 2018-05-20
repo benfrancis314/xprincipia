@@ -73,11 +73,6 @@ export default class WelcomeUserUnit extends React.Component {
                             {/* </a> */}
                         </Link>
                     </div>
-                    <Link to="/welcome/create" activeClassName="activeBlue">
-                        <div id="feedAddButton" onMouseOver={this.hoverAdd} onMouseOut={this.unHoverAdd}>
-                            <img src={require('../../assets/blueAdd2.svg')} id="privateNewProjectPlus" width="35" height="35" alt="User avatar, DNA Helix" />
-                        </div>
-                    </Link>
                 </div>
             </div>
 		);
