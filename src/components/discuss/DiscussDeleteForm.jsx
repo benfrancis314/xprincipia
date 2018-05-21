@@ -16,6 +16,7 @@ export default class DiscussDeleteForm extends React.Component {
     linkPath: '',
     proposalPath: '',
     commentPath: '',
+    deleteID: '',
   }
 
     this.deleteComment = this.deleteComment.bind(this);
@@ -58,10 +59,12 @@ componentDidMount(){
     if (window.location.pathname.includes('comments')) {
       self.setState({
           commentPath: '/'+this.props.params.discussID+'/comments',
+          deleteID: this.props.params.commentID
       })
     } else {
         self.setState({
             commentPath: '',
+            deleteID: this.props.params.discussID
         })
     }
 }
@@ -113,14 +116,15 @@ var self = this;
 deleteComment() {
 
 ////Delete comment
-      axios.delete( Config.API + '/auth/comments/delete?id='+this.props.params.commentID, {
+    var self = this
+      axios.delete( Config.API + '/auth/comments/delete?id='+this.state.deleteID, {
         params: {
-          id: this.props.params.subcommentID,
+          id: this.state.deleteID,
           username: cookie.load('userName')
         }
     })
       .then(function (result) {
-        document.location = this.state.linkPath+this.props.params.probID+this.state.proposalPath+'discuss'+this.state.commentPath
+        document.location = self.state.linkPath+self.props.params.probID+self.state.proposalPath+'discuss'+self.state.commentPath
     })
       .catch(function (error) {
         // console.log(error.response.data)
@@ -139,7 +143,7 @@ deleteComment() {
               } 
           });
       });
-    }
+}
    render() {
       return (
         <div id="questionFormComponent">

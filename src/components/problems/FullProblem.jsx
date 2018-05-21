@@ -176,7 +176,7 @@ export default class FullProblem extends React.Component {
       $(document).ready(function() {
         $('#notification').attr('id','notificationShow').hide().slideDown();
         $('#notificationLoginRegisterContainer').attr('id','notificationLoginRegisterContainerShow');
-        $('#notificationContent').html('please <span id="blue">login </span>to join this discussion');
+        $('#notificationContent').html('please <span id="blue">login </span>to vote on this project');
       });
     }
   }

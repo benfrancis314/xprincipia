@@ -346,6 +346,11 @@ select {
     outline: 0 !important;
 }
 
+/* Fixing searchbar for safari */
+input[type="search"] {
+  -webkit-appearance: textfield;
+  appearance: textfield;
+}
 
 
 /* Fixing Autocomplete */
@@ -1558,14 +1563,17 @@ letter-spacing: 2px !important;
 #createProblemBox {
   margin-top: 0%;
 }
-#createForm, #linkForm, #createProjectForm {
+#createForm, #linkForm, #createProjectForm, #createProjectFormProposal {
   color: #00dcff;
   height: auto;
   padding: 0px 5px 5px 5px;
   width: 80%;
   margin: 0 auto;
   /*background-color: rgba(0,220,255,0.025);*/
- }
+}
+#createProjectFormProposal {
+  width: 95%;
+}
 #linkForm {
   padding: 0px 5px;
 }
@@ -2170,6 +2178,7 @@ text-align: center;
   margin-top: 4px;
   font-family: 'Alegreya Sans SC' !important;
   font-size: 130%;
+  -webkit-transition: all 1s ease 0s;
   transition: all 1s ease 0s;
 
   background-image: url('./magnifyingGlass2White.svg');  
@@ -2183,6 +2192,7 @@ text-align: center;
   transform: scale(1.05);
   background-color: rgba(15,19,28,0.15);
   background-image: url('./magnifyingGlass2Blue.svg');  
+  -webkit-transition: all 1s ease 0s;
   transition: all 1s ease 0s;
 }
 #exploreHeaderInput:focus, #exploreHeaderInput:active {  
@@ -2192,6 +2202,7 @@ text-align: center;
   position: absolute;
   margin: 0 auto;
   margin-top: 4px;
+  -webkit-transition: all 1s ease 0s;
   transition: all 1s ease 0s;
 } 
 #exploreInput {
@@ -6324,7 +6335,7 @@ input#submitWelcomeProblem:hover {
       transform: scale(1);
       border-radius: 0% 0% 40% 40%;
       padding: 0.1% 0% 0.3% 0%;
-      background: radial-gradient(rgba(0,255,220,0.05), rgba(0,220,255,0));
+      background: radial-gradient(circle, rgba(0,255,220,0), rgba(0,220,255,0.05));
       background-size: contain;
       background-repeat: no-repeat;
       background-blend-mode: overlay;
@@ -7546,10 +7557,15 @@ flex: 1 1 auto;
 margin: 0 auto;
 margin-top: -1%;
 font-size: 375%;
+/* ALT */
+font-size: 325%;
 text-align: center;
 letter-spacing: 4px;
 font-family: 'Alegreya Sans SC', sans-serif;
 width: 100%;
+/* ALT */
+width: 92.5%;
+margin-right: 0;
 transition: all 2s ease 0s;
 border: 1px solid rgba(0,255,220,0.5);
 border-width: 0px 0px 1px 0px;
@@ -7559,11 +7575,10 @@ padding: 1px;
 background: linear-gradient(rgba(0,255,220,0), rgba(0,220,255,0.1));
 }
 #projectPercent:hover {
-/*transform: scale(1.2);*/
-/* OLD */
-/* font-size: 570%; */
 /* NEW */
 font-size: 470%;
+/* ALT */
+font-size: 420%;
 }
 #projectPercentGreen {
 color: rgba(0,255,220,1);
@@ -8500,7 +8515,7 @@ transition: all 0.25s ease 0s;
 padding: 2% 0% 2% 0%;
 font-size: 200%;
 letter-spacing: 6px;
-border: 1px solid #dddddd;
+border: 1px solid #515151;
 border-width: 1px 1px 1px 1px;
 border-radius: 3px 3px 10% 10%;
 /* background-color: rgba(0,220,255, 0.05); */
@@ -8510,7 +8525,7 @@ box-shadow: 0 0 1pt 1pt rgba(255,255,255,0.5);
 #proposalsTitleRightSBEnd {
 margin: 0 auto;
 margin-bottom: 0.15%;
-border: 1px solid #dddddd;
+border: 1px solid #515151;
 border-width: 1px 1px 1px 1px;
 border-radius: 3px 3px 20% 20%;
 background: radial-gradient(circle, rgba(0,220,255,0.05), rgba(0,220,255,0));
@@ -8553,6 +8568,7 @@ text-transform: lowercase !important;
   border: 1px solid rgba(0,220,255,0.5);
   border-radius: 3px;
   background-color: rgba(0,220,255,0.025);
+  /* background: linear-gradient(rgba(0,220,255,0.025), rgba(0,220,255,0)); */
   margin: 0 auto;
   margin-top: 1%;
   padding-top: 1%;
@@ -12079,7 +12095,7 @@ margin-top: 1%;
   padding-bottom: 1px;
   font-size: 90%;
 }
-#featuredProjectButton1, #featuredProjectButton2 {
+#featuredProjectButton1, #featuredProjectButton2, #featuredProjectButtonX {
   border: 1px solid #333333;
   background-color: rgba(0,220,255, 0.05);
   border-color: rgba(0,255,220, 0.5);
@@ -12108,12 +12124,23 @@ margin-top: 1%;
   transform: scale(1.01);
   box-shadow: 0 0 1pt 1pt rgba(0,220,255,0.5);
 }
+#featuredProjectButton1 {
+  font-size: 90%;
+  padding-top: 12px;
+  padding-bottom: 12px;
+}
 #featuredProjectButton2 {
   background-image: url('./jungMandala.jpg'); 
   background-size: 115%; 
   background-position: center 35%;
 }
-#featuredProjectButton1:hover, #featuredProjectButton2:hover {
+#featuredProjectButtonX {
+  background: radial-gradient(circle, rgba(0,220,255,0), rgba(0,220,255,0), rgba(0,220,255,0.1));
+  font-size: 90%;
+  padding-top: 12px;
+  padding-bottom: 12px;
+}
+#featuredProjectButton1:hover, #featuredProjectButton2:hover, #featuredProjectButtonX:hover {
 background-color: rgba(15,19,28,0.5);
 transform: scale(1.03);
 cursor: pointer !important;
@@ -13701,12 +13728,12 @@ transition: all 1s ease 0s;
   padding: 3px 0px;
   margin: 0 auto;
   margin-top: 2%;
-  letter-spacing: 4px;
+  letter-spacing: 2px;
   font-family: 'Alegreya Sans SC';
-  font-size: 175%;
+  font-size: 150%;
   color: #dddddd;
   width: 50%;
-  border: 1px solid #dddddd;
+  border: 1px solid #515151;
   border-width: 0px 0px 1px 0px;
   border-radius: 0% 0% 20% 20%;
   padding: 5px 3% 5px 3%;
@@ -13771,6 +13798,7 @@ transition: all 1s ease 0s;
   #branchFormTitle, #branchFormTitleEdit {
     flex: 1 1 auto;
     color: #dddddd;
+    /* letter-spacing: 2px; */
     font-size: 180%;
     text-align: center;
     text-decoration: none;
@@ -13778,10 +13806,10 @@ transition: all 1s ease 0s;
     margin-top: 2%;
     margin-bottom: 3px;
     width: 40%;
-    border: 1px solid #ff7f7f;
+    border: 1px solid rgba(255,127,127,0.5);
     border-width: 1px;
-    border-radius: 3px;
-    background-color: rgba(0,220,255, 0.05);
+    border-radius: 3px 3px 10% 10%;
+    background: radial-gradient(circle, rgba(0,220,255,0), rgba(0,220,255, 0.05));
     box-shadow: 0 0 1pt 1pt rgba(255,255,255,0.5);
     transition: all 0.5s ease 0s;
   }
@@ -13801,22 +13829,23 @@ transition: all 1s ease 0s;
 #submitBreakdown {
   display: block;
   color: #00dcff;
-  border: 1px solid #00dcff;
-  background-color: rgba(0,220,255, 0.05);
+  border: 1px solid #515151;
+  border-radius: 3px 3px 10% 10% !important;
+  background: radial-gradient(circle, rgba(0,220,255, 0.1), rgba(0,220,255, 0));
   width: 30%;
   margin: 0 auto;
-  margin-top: 2%;
+  margin-top: 1%;
   margin-bottom: 1%;
   font-family: 'Alegreya Sans SC', sans-serif;
-  transition: all 0.5s ease 0s;
+  transition: all 1s ease 0s;
   letter-spacing: 2px;
   text-transform: lowercase !important;
 }
 input#submitBreakdown:hover {
-  color: #0f131c;
-  border: 1px solid #0f131c;
-  background-color: rgba(0,220,255,1);
+  border-color: #00dcff;
+  background-color: rgba(0,220,255,0.05);
   cursor: pointer;
+  transform: scale(1.02);
 }
 #breakdownHeaderContainer {
   width: 100%;
@@ -13846,17 +13875,15 @@ input#submitBreakdown:hover {
 }
 #breakdownHeader {
   text-align: center;
-  /* This also looks nice */
-  /* color: #dddddd; */
-  /* Current */
   color: #00dcff;
   letter-spacing: 4px;
   font-size: 300%;
+  font-size: 220%;
   margin: 0 auto;
   margin-top: 1%;
   margin-bottom: 3%;
   width: 100%;
-  border: 1px solid #00dcff;
+  border: 1px solid rgba(0,220,255,0.5);
   border-width: 0px 0px 1px 0px;
   border-radius: 0% 0% 25% 25%;
   padding: 2px 0px 7px 0px;
@@ -13872,7 +13899,7 @@ input#submitBreakdown:hover {
 }
 #breakdownContainer {
   background: radial-gradient(circle, rgba(0,220,255,0.1), rgba(0,220,255,0));
-  border: 1px solid #00dcff;
+  border: 1px solid rgba(0,220,255,0.5);
   border-radius: 2% 2% 5% 5%;
   box-shadow: 0 0 1pt 1pt rgba(0,220,255,0.5);
   margin-top: 3%;

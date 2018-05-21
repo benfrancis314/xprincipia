@@ -20,6 +20,8 @@ export default class QuestionForm extends React.Component {
 
     this.postComment = this.postComment.bind(this);
     this.postAnswer = this.postAnswer.bind(this);
+    this.checkLoginComment = this.checkLoginComment.bind(this);
+    this.checkLoginAnswer = this.checkLoginAnswer.bind(this);
   };
 componentDidMount() {
     var self = this;
@@ -73,7 +75,28 @@ componentWillReceiveProps(nextProps) {
       })
     }
 }
-
+checkLoginComment() {
+  if (cookie.load('userName')) {
+    this.postComment()
+  } else {
+    $(document).ready(function() {
+      $('#notification').attr('id','notificationShow').hide().slideDown();
+      $('#notificationLoginRegisterContainer').attr('id','notificationLoginRegisterContainerShow');
+      $('#notificationContent').html('please <span id="blue">login </span>to join this discussion');
+    });
+  }
+}
+checkLoginAnswer() {
+  if (cookie.load('userName')) {
+    this.postAnswer()
+  } else {
+    $(document).ready(function() {
+      $('#notification').attr('id','notificationShow').hide().slideDown();
+      $('#notificationLoginRegisterContainer').attr('id','notificationLoginRegisterContainerShow');
+      $('#notificationContent').html('please <span id="blue">login </span>to join this discussion');
+    });
+  }
+}
 postComment() {
   //Read field items into component state
   var self = this;
@@ -281,7 +304,7 @@ postComment() {
             <fieldset id='fieldSetNoBorderPadding'>
               <textarea name="questionText" required="required" id="questionTextArea" placeholder={this.state.placeholder} ></textarea>
               <Link to={window.location.pathname}>
-                <input type="button" ref='btn' value="add" onClick={this.postAnswer} id="askQuestion"/>
+                <input type="button" ref='btn' value="add" onClick={this.checkLoginAnswer} id="askQuestion"/>
               </Link>
             </fieldset>
           </form>
@@ -334,7 +357,7 @@ postComment() {
                 <fieldset id='fieldSetNoBorderPadding'>
                   <textarea name="questionText" required="required" id="questionTextArea" placeholder={this.state.placeholder} ></textarea>
                   <Link to={window.location.pathname}>
-                    <input type="button" ref='btn' value="add" onClick={this.postComment} id="askQuestion"/>
+                    <input type="button" ref='btn' value="add" onClick={this.checkLoginComment} id="askQuestion"/>
                   </Link>
                 </fieldset>
               </form>

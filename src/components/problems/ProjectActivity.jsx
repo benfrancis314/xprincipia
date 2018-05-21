@@ -111,7 +111,7 @@ renderItem(problem) {
                     <div id="feedUnitsProject">               
                         <div id="blueFeedProject">new sub project:</div>
                         <div id="whiteFeedProject">
-                            {problem.Title}
+                            {problem.Description}
                         </div>
                     </div>
                 </Link>  
@@ -120,11 +120,11 @@ renderItem(problem) {
     } else if (problem.Type == 1) {
         return (
             <li key={problem.ID} id="feedListUnit">
-                <Link to={'/project/'+problem.TypeID +'/proposal/'+problem.ProblemID}>
+                <Link to={'/project/'+problem.ProblemID +'/proposal/'+problem.TypeID}>
                     <div id="feedUnitsProject">               
                         <div id="blueFeedProject">new proposal:</div>
                         <div id="whiteFeedProject">
-                            {problem.Title}
+                            {problem.Description}
                         </div>
                     </div>
                 </Link>  

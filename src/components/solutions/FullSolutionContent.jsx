@@ -27,6 +27,7 @@ export default class FullSolutionContent extends React.Component {
         }
 
         this.vote = this.vote.bind(this)
+        this.checkLoginVote = this.checkLoginVote.bind(this)
     };
 
     //initialize the component with this state
@@ -176,7 +177,18 @@ export default class FullSolutionContent extends React.Component {
       })     
     
      }
-
+     
+    checkLoginVote() {
+      if (cookie.load('userName')) {
+        this.vote()
+      } else {
+        $(document).ready(function() {
+          $('#notification').attr('id','notificationShow').hide().slideDown();
+          $('#notificationLoginRegisterContainer').attr('id','notificationLoginRegisterContainerShow');
+          $('#notificationContent').html('please <span id="blue">login </span>to vote on this proposal');
+        });
+      }
+    }
   vote() {
     if(this.state.vote === true ) {
       var self = this
@@ -209,6 +221,7 @@ export default class FullSolutionContent extends React.Component {
           });
           self.refs.solbtn.removeAttribute("disabled");
       });
+
   }
   else {
     var self = this
@@ -247,7 +260,7 @@ export default class FullSolutionContent extends React.Component {
           self.refs.solbtn.removeAttribute("disabled");
       });
     }
-    }
+  }
    render() {
            return (
               <div>
@@ -256,7 +269,7 @@ export default class FullSolutionContent extends React.Component {
                 </div>
                 <div id="voteVersionsMenu">
                 <Link to={this.state.linkPath+this.props.params.probID+'/proposal/'+this.props.params.solutionID}>
-                    <div id={this.state.voteID} ref='solbtn' onClick={this.vote}>
+                    <div id={this.state.voteID} ref='solbtn' onClick={this.checkLoginVote}>
                       {this.state.voteTitle}
                     </div>
                   </Link>

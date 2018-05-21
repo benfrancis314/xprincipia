@@ -21,6 +21,8 @@ export default class ProblemForm extends React.Component {
       linkPath: '',
       privateCall: '',
       proposalCheck: '',
+      proposalBoxID: '',
+      proposalPath: '',
     }
 
     this.postProblem = this.postProblem.bind(this);
@@ -53,10 +55,14 @@ export default class ProblemForm extends React.Component {
     if (window.location.pathname.includes('proposal')) {
       self.setState({
           proposalCheck: '1',
+          proposalBoxID: 'createProjectFormProposal',
+          proposalPath: '/proposal/'+self.props.params.solutionID,
       })
     } else {
         self.setState({
             proposalCheck: '0',
+            proposalBoxID: 'createProjectForm',
+            proposalPath: '/subprojects',
         })
     }
   }
@@ -81,10 +87,14 @@ export default class ProblemForm extends React.Component {
     if (window.location.pathname.includes('proposal')) {
       self.setState({
           proposalCheck: '1',
+          proposalBoxID: 'createProjectFormProposal',
+          proposalPath: '/proposal/'+self.props.params.solutionID,
       })
     } else {
         self.setState({
             proposalCheck: '0',
+            proposalBoxID: 'createProjectForm',
+            proposalPath: '/subprojects',
         })
     }
   }
@@ -96,7 +106,7 @@ export default class ProblemForm extends React.Component {
       $(document).ready(function() {
         $('#notification').attr('id','notificationShow').hide().slideDown();
         $('#notificationLoginRegisterContainer').attr('id','notificationLoginRegisterContainerShow');
-        $('#notificationContent').html('please <span id="blue">login </span>to join this discussion');
+        $('#notificationContent').html('please <span id="blue">login </span>to create a project');
       });
     }
   }
@@ -151,7 +161,7 @@ export default class ProblemForm extends React.Component {
   render() {
       return (
           <div id="createProblemBox">
-              <form id="createProjectForm">
+              <form id={this.state.proposalBoxID}>
                     <label htmlFor="problemTitleForm" id="problemTitleFormLabel">subproject title<br />
                       <input type="text" name="problemTitle" required="required" maxLength="70" id="problemTitleForm" autoFocus/>
                     </label><br />
@@ -199,7 +209,7 @@ export default class ProblemForm extends React.Component {
                       <textarea name="problemSummary" maxLength="500" 
                       placeholder="Please summarize this project or add any additional information you'd like. (500 ch)" id="problemSummaryForm"/>
                   </label>
-                  <Link to={this.state.linkPath+this.props.params.probID+`/subprojects`}>
+                  <Link to={this.state.linkPath+this.props.params.probID+this.state.proposalPath}>
                       <input type="button" ref='btn' value="create" onClick={this.checkLoginProblem} id="submitProblem"/>
                   </Link>
               </form>
