@@ -176,7 +176,6 @@ return axios.post( Config.API + '/register', {
       return (
 
       <div id={this.state.registerContainerID}>
-      {this.state.registerContainerID}x
         {/*<ScrollableAnchor id={'register'}>*/}
           <div id="introRegisterJoin">
             join xprincipia

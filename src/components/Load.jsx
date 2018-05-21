@@ -5,7 +5,7 @@ export default class Load extends React.Component {
       return (
 
         <div id="errorLoadContainer">
-        </div>
+        </div> 
 
       );
    }

@@ -7,6 +7,8 @@ import HeaderAvatar from '../components/HeaderAvatar.jsx';
 import SearchResults from '../components/search/SearchResults.jsx';
 import {Config} from '../config.js';
 import $ from 'jquery';
+import HeaderSphere from '../components/HeaderSphere.jsx';
+
 
 export default class Header extends React.Component {
 
@@ -136,6 +138,20 @@ unHoverExplore() {
         $('#logoNameGuideWhite').attr('id','logoName');
     });
 }
+showMenu() {
+  // IF MOBILE (and thus can't hover), THEN: 
+  // $(document).ready(function() {
+  //     $('#headerSphere').attr('id','headerSphereHide');
+  //     $('#headerOptionsContainerHide').attr('id','headerOptionsContainer');      
+  // });
+}
+hideMenu() {
+  // IF MOBILE (and thus can't hover), THEN: 
+  // $(document).ready(function() {
+  //     $('#headerSphereHide').attr('id','headerSphere');
+  //     $('#headerOptionsContainer').attr('id','headerOptionsContainerHide');
+  // });
+}
 
 
 render() {
@@ -172,20 +188,25 @@ if (this.state.userToken === undefined ){
                 </Link>
               </div>
               
-              {/*Login in header*/}
-              <input type="text" name="email" required="required" maxLength="30" placeholder="username" id="loginHeaderEmail" autoFocus onKeyPress={this.enterLogin} />
-              <input type="password" name="password" required="required" maxLength="30" placeholder="password" id="loginHeaderPassword" onKeyPress={this.enterLogin}/>            
-              <Link to={window.location.pathname} id="loginHeaderLink"  onKeyPress={this.postLogin}>
-                <input type="submit" value="login" onClick={this.postLogin} id="loginHeaderSubmitButton" onKeyPress={this.enterLogin}/>           
-              </Link>
-              {/*Attempt to get the login button to just be an arrow*/}
-              {/*<input type="image" src={require('../assets/rightArrowWhite.svg')} onClick={this.postLogin} id="loginHeaderSubmitImage" alt="Submit login arrow, blue right arrow"/>*/}
-              
-              <Link to="/register" activeClassName="activeHeaderRegister">
-                <div id="registerHeaderButton" onKeyPress={this.enterRegister}>
-                  join
+              <div id="headerRight">
+                <HeaderSphere />
+                <div id="exitHeaderMenuMobile" onClick={this.hideMenu}></div>
+                  <div id="headerOptionsContainer">
+                          <input name="email" required="required" maxLength="30" placeholder="username" id="loginHeaderEmail" autoFocus onKeyPress={this.enterLogin} />
+                          <input type="password" name="password" required="required" maxLength="30" placeholder="password" id="loginHeaderPassword" onKeyPress={this.enterLogin}/>            
+                          <Link to={window.location.pathname} id="loginHeaderLink"  onKeyPress={this.postLogin}>
+                            <input type="submit" value="login" onClick={this.postLogin} id="loginHeaderSubmitButton" onKeyPress={this.enterLogin}/>           
+                          </Link>
+                          {/*Attempt to get the login button to just be an arrow*/}
+                          {/*<input type="image" src={require('../assets/rightArrowWhite.svg')} onClick={this.postLogin} id="loginHeaderSubmitImage" alt="Submit login arrow, blue right arrow"/>*/}
+                          
+                          <Link to="/register" activeClassName="activeHeaderRegister">
+                            <div id="registerHeaderButton" onKeyPress={this.enterRegister}>
+                              join
+                            </div>
+                          </Link>
+                  </div>
                 </div>
-              </Link>
               
           </div>
 
@@ -212,10 +233,8 @@ if (this.state.userToken === undefined ){
                     </Link>
                   </div>
 
-
-                  <HeaderAvatar notification={this.props.notification}/>
-                  {/* <SearchUnit problems={this.state.userproblems} /> */}
-              </div>
+              
+                    <HeaderAvatar notification={this.props.notification}/>
 
               {/* SEARCH RESULTS */}
               <div id="searchResultsContainerHide">
@@ -223,6 +242,7 @@ if (this.state.userToken === undefined ){
                 <SearchResults searchText={this.state.searchText} problems={this.state.searchResults}/>
               </div>
             </div>
+          </div>
       );  
 
  }}

@@ -1,0 +1,7 @@
+{ 
+    "presets": [
+        "react",
+        "transform-react-pug",
+        "transform-react-jsx"
+    ] 
+}
