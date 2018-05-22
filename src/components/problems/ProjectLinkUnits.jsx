@@ -114,6 +114,7 @@ export default class WelcomeUserUnit extends React.Component {
             }
           }
         function createLink() {
+            console.log('create link')
             $(document).ready(function() {
                 $('div.linkConfirmContainerShow').attr('class',problem.ID+'Confirm');      
 
@@ -132,10 +133,12 @@ export default class WelcomeUserUnit extends React.Component {
                 })
                   .then(function (result) {
                     // self.refs.btnlink.removeAttribute("disabled");
+                    console.log('create link SUCCESS')
                     document.getElementById("linkForm").reset();
                     // document.getElementById("SPUnitList").scrollIntoView();
                   })
                     .catch(function (error) {
+                        console.log('create link FAIL')
                         $(document).ready(function() {
                             // $('#notification').attr('id','notificationShow').hide().slideDown();
               

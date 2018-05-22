@@ -15,7 +15,7 @@ export default class ProfileAbout extends React.Component {
                 forming a type of ultraorganism. 
                 <br />
                 <br />
-                However, this internet-based ultraorganism is today primarily used only for social interaction, entertainment, and commerce. 
+                However, this internet-based ultraorganism is today primarily used only for communication, entertainment, and commerce. 
                 <br />
                 <br />
                 There exists no centralized nexus for pushing human progress further, for solving our 
@@ -98,7 +98,7 @@ export default class ProfileAbout extends React.Component {
 
 
 
-                 <span id="blue">Contact us</span> for more information:
+                 <span id="blueOpen">Contact us</span> for more information:
               </div>
             <div id="profileAboutContact">
                 info@xprincipia.com

@@ -138,19 +138,20 @@ unHoverExplore() {
         $('#logoNameGuideWhite').attr('id','logoName');
     });
 }
-showMenu() {
-  // IF MOBILE (and thus can't hover), THEN: 
-  // $(document).ready(function() {
-  //     $('#headerSphere').attr('id','headerSphereHide');
-  //     $('#headerOptionsContainerHide').attr('id','headerOptionsContainer');      
-  // });
-}
 hideMenu() {
   // IF MOBILE (and thus can't hover), THEN: 
-  // $(document).ready(function() {
-  //     $('#headerSphereHide').attr('id','headerSphere');
-  //     $('#headerOptionsContainer').attr('id','headerOptionsContainerHide');
-  // });
+  if (window.screen.width <= 600) {
+      $(document).ready(function() {
+          $('#exitHeaderMenuMobileLogoutShow').attr('id','exitHeaderMenuMobileLogout');
+          $('#headerSphereHide').attr('id','headerSphere');
+          $('#headerOptionsContainer').attr('id','headerOptionsContainerHide');
+          $('#headerLeftHide').attr('id','headerLeft');
+          $('#exploreHeaderInputHide').attr('id','exploreHeaderInput');
+          $('#exploreFormHeaderHide').attr('id','exploreFormHeader');
+          $('#headerRightMobile').attr('id','headerRight');
+          $('#headerSphereInfo1Hide').attr('id','#headerSphereInfo1');
+      });
+  }
 }
 
 
@@ -187,11 +188,16 @@ if (this.state.userToken === undefined ){
                   </div>
                 </Link>
               </div>
-              
               <div id="headerRight">
                 <HeaderSphere />
-                <div id="exitHeaderMenuMobile" onClick={this.hideMenu}></div>
-                  <div id="headerOptionsContainer">
+                {/* <div id="headerSphereInfo1">
+                    login | join
+                </div> */}
+                <div id="exitHeaderMenuMobileLogout" onClick={this.hideMenu}></div>
+                {/* <div id="headerSphereInfo2">
+                    join |
+                </div> */}
+                  <div id="headerOptionsContainerHide">
                           <input name="email" required="required" maxLength="30" placeholder="username" id="loginHeaderEmail" autoFocus onKeyPress={this.enterLogin} />
                           <input type="password" name="password" required="required" maxLength="30" placeholder="password" id="loginHeaderPassword" onKeyPress={this.enterLogin}/>            
                           <Link to={window.location.pathname} id="loginHeaderLink"  onKeyPress={this.postLogin}>
@@ -236,13 +242,13 @@ if (this.state.userToken === undefined ){
               
                     <HeaderAvatar notification={this.props.notification}/>
 
-              {/* SEARCH RESULTS */}
-              <div id="searchResultsContainerHide">
-                <img src={require('../assets/redX3.svg')} id="searchResultsExitButton" width="20" height="20" alt="exit button" onClick={this.hideSearch} />
-                <SearchResults searchText={this.state.searchText} problems={this.state.searchResults}/>
+                {/* SEARCH RESULTS */}
+                <div id="searchResultsContainerHide">
+                  <img src={require('../assets/redX3.svg')} id="searchResultsExitButton" width="20" height="20" alt="exit button" onClick={this.hideSearch} />
+                  <SearchResults searchText={this.state.searchText} problems={this.state.searchResults}/>
+                </div>
               </div>
             </div>
-          </div>
       );  
 
  }}

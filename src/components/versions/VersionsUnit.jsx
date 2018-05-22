@@ -38,9 +38,12 @@ export default class VersionsUnit extends React.Component {
 					v.{solution.Version}
 				</div>
 			</Link>
-			<div id="versionUnitChangesButton">
+			{/* <div id="versionUnitChangesButton">
 				changes
 			</div>
+			<div id="versionChangesDisplayHide">
+
+			</div> */}
 		</div>
 			
 				

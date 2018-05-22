@@ -149,106 +149,108 @@ export default class SolutionForm extends React.Component {
     var file = files[0];
     console.log('just the file, files[0]')
     console.log(file)
-    // this.state.file = file;
+    this.state.file = file;
 
-    // this.state.title = document.getElementById('solutionTitleForm').value
-    // this.state.summary = document.getElementById('solutionSummaryForm').value
-    // this.state.description = document.getElementById('solutionDescriptionForm').value
+    this.state.title = document.getElementById('solutionTitleForm').value
+    this.state.summary = document.getElementById('solutionSummaryForm').value
+    this.state.description = document.getElementById('solutionDescriptionForm').value
 
-    // if (document.getElementById('proposalClass2').checked) {
-    //   this.state.class = '2' 
-    // } else if (document.getElementById('proposalClass1').checked) {
-    //   this.state.class = '1' 
-    // } else {
-    //   this.state.class = '0' 
-    // }
+    if (document.getElementById('proposalClass2').checked) {
+      this.state.class = '2' 
+    } else if (document.getElementById('proposalClass1').checked) {
+      this.state.class = '1' 
+    } else {
+      this.state.class = '0' 
+    }
 
-    // if (this.state.prose == '1') {
-    // axios.post( Config.API + '/auth/solutions/create', {
-    //     username: cookie.load('userName'),
-    //     problemID:this.props.probID,
-    //     title : this.state.title,
-    //     summary : this.state.summary,
-    //     description : this.state.description,
-    //     class : this.state.class,
-    //     private: this.state.private,
-    //     parentTitle: this.props.projectTitle,
-    //     key: '',
-    //   })
-    //   .then(function (result) {
-    //     // document.location = '/project/' + self.props.probID + '/subprojects'
-    //     document.getElementById("proposalSectionHeader").scrollIntoView();
-    //     self.refs.btn.removeAttribute("disabled");
-    //     // document.getElementById("createForm").reset();
-    //   })
-    //   .catch(function (error) {
-    //     // alert('error')
-    //       $(document).ready(function() {
-    //           $('#notification').attr('id','notificationShow').hide().slideDown();
+    if (this.state.prose == '1') {
+    axios.post( Config.API + '/auth/solutions/create', {
+        username: cookie.load('userName'),
+        problemID:this.props.probID,
+        title : this.state.title,
+        summary : this.state.summary,
+        description : this.state.description,
+        class : this.state.class,
+        private: this.state.private,
+        parentTitle: this.props.projectTitle,
+        key: '',
+      })
+      .then(function (result) {
+        // document.location = '/project/' + self.props.probID + '/subprojects'
+        document.getElementById("proposalSectionHeader").scrollIntoView();
+        self.refs.btn.removeAttribute("disabled");
+        // document.getElementById("createForm").reset();
+      })
+      .catch(function (error) {
+        // alert('error')
+          $(document).ready(function() {
+              $('#notification').attr('id','notificationShow').hide().slideDown();
 
-    //             if (error.response.data == '[object Object]') {
-    //               return (
-    //                 $(document).ready(function() {
-    //                   $('#notificationLoginRegisterContainer').attr('id','notificationLoginRegisterContainerShow');
-    //                   $('#notificationContent').html('Please <span id="blue">login </span>to create a project');
-    //                 })
-    //               );
-    //             }  else if (error.response.data != '') {
-    //           $('#notificationContent').text(error.response.data);
-    //           }
-    //       });
-    //   });
-    // } else {
-    //   s3.upload({
-    //     Key: String(this.state.key),
-    //     Body: file,
-    //     ACL: 'public-read'
-    //   }, function(err, data) {
-    //     if (err) {
-    //       // alert('There was an error uploading your photo: ', err.message);
-    //       console.log(err.message)
-    //       console.log(err)
-    //       console.log(file)
-    //     } else {
-    //       // alert('Successfully uploaded photo.');
-    //       console.log(data)
-    //       console.log(file)
-    //     }
-    //   });
-    //   axios.post( Config.API + '/auth/solutions/create', {
-    //     username: cookie.load('userName'),
-    //     problemID:this.props.probID,
-    //     title : this.state.title,
-    //     summary : this.state.summary,
-    //     description : this.state.description,
-    //     class : this.state.class,
-    //     private: this.state.private,
-    //     parentTitle: this.props.projectTitle,
-    //     key: String(this.state.key),
-    //   })
-    //   .then(function (result) {
-    //     // document.location = '/project/' + self.props.probID + '/subprojects'
-    //     document.getElementById("proposalSectionHeader").scrollIntoView();
-    //     self.refs.btn.removeAttribute("disabled");
-    //     // document.getElementById("createForm").reset();
-    //   })
-    //   .catch(function (error) {
-    //       $(document).ready(function() {
-    //           $('#notification').attr('id','notificationShow').hide().slideDown();
+                if (error.response.data == '[object Object]') {
+                  return (
+                    $(document).ready(function() {
+                      $('#notificationLoginRegisterContainer').attr('id','notificationLoginRegisterContainerShow');
+                      $('#notificationContent').html('Please <span id="blue">login </span>to create a project');
+                    })
+                  );
+                }  else if (error.response.data != '') {
+              $('#notificationContent').text(error.response.data);
+              }
+          });
+            self.refs.btn.removeAttribute("disabled");
+      });
+    } else {
+      s3.upload({
+        Key: String(this.state.key),
+        Body: file,
+        ACL: 'public-read'
+      }, function(err, data) {
+        if (err) {
+          // alert('There was an error uploading your photo: ', err.message);
+          console.log(err.message)
+          console.log(err)
+          console.log(file)
+        } else {
+          // alert('Successfully uploaded photo.');
+          console.log(data)
+          console.log(file)
+        }
+      });
+      axios.post( Config.API + '/auth/solutions/create', {
+        username: cookie.load('userName'),
+        problemID:this.props.probID,
+        title : this.state.title,
+        summary : this.state.summary,
+        description : this.state.description,
+        class : this.state.class,
+        private: this.state.private,
+        parentTitle: this.props.projectTitle,
+        key: String(this.state.key),
+      })
+      .then(function (result) {
+        // document.location = '/project/' + self.props.probID + '/subprojects'
+        document.getElementById("proposalSectionHeader").scrollIntoView();
+        self.refs.btn.removeAttribute("disabled");
+        // document.getElementById("createForm").reset();
+      })
+      .catch(function (error) {
+          $(document).ready(function() {
+              $('#notification').attr('id','notificationShow').hide().slideDown();
 
-    //             if (error.response.data == '[object Object]') {
-    //               return (
-    //                 $(document).ready(function() {
-    //                   $('#notificationLoginRegisterContainer').attr('id','notificationLoginRegisterContainerShow');
-    //                   $('#notificationContent').html('Please <span id="blue">login </span>to create a project');
-    //                 })
-    //               );
-    //             }  else if (error.response.data != '') {
-    //           $('#notificationContent').text(error.response.data);
-    //           }
-    //       });
-    //   });
-    // }
+                if (error.response.data == '[object Object]') {
+                  return (
+                    $(document).ready(function() {
+                      $('#notificationLoginRegisterContainer').attr('id','notificationLoginRegisterContainerShow');
+                      $('#notificationContent').html('Please <span id="blue">login </span>to create a project');
+                    })
+                  );
+                }  else if (error.response.data != '') {
+              $('#notificationContent').text(error.response.data);
+              }
+          });
+    self.refs.btn.removeAttribute("disabled");
+      });
+    }
 }
 
   render() {

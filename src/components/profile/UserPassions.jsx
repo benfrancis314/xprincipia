@@ -88,7 +88,7 @@ postPassions() {
               <form id="suggestionForm">
                   <textarea name="feedbackText" required="required" id="passionsTextArea" placeholder="What are your passions, your fields of interest, or your driving motivations? " autoFocus ></textarea>
                   <Link to={window.location.pathname}>
-                    <input type="button" value="submit" onClick={this.postPassions} id="addSuggestion"/>
+                    <input type="button" value="update" onClick={this.postPassions} id="addSuggestion"/>
                   </Link>
               </form>
         </div>

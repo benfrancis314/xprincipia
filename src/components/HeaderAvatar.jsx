@@ -21,6 +21,7 @@ constructor(){
         title: '',
     }
     this.clearMessageNotifications = this.clearMessageNotifications.bind(this)
+    this.hideMenu = this.hideMenu.bind(this)
 
     // this.renderItem = this.renderItem.bind(this)
 };
@@ -173,19 +174,19 @@ componentDidMount(){
             $('#logoNameGuide').attr('id','logoName');
         });
     }
-    showMenu() {
-        // IF MOBILE (and thus can't hover), THEN: 
-        // $(document).ready(function() {
-        //     $('#headerSphere').attr('id','headerSphereHide');
-        //     $('#headerOptionsContainerHide').attr('id','headerOptionsContainer');      
-        // });
-    }
     hideMenu() {
         // IF MOBILE (and thus can't hover), THEN: 
-        // $(document).ready(function() {
-        //     $('#headerSphereHide').attr('id','headerSphere');
-        //     $('#headerOptionsContainer').attr('id','headerOptionsContainerHide');
-        // });
+        if (window.screen.width <= 600) {
+            $(document).ready(function() {
+                $('#exitHeaderMenuMobileShow').attr('id','exitHeaderMenuMobile');
+                $('#headerSphereHide').attr('id','headerSphere');
+                $('#headerOptionsContainer').attr('id','headerOptionsContainerHide');
+                $('#headerLeftHide').attr('id','headerLeft');
+                $('#exploreHeaderInputHide').attr('id','exploreHeaderInput');
+                $('#exploreFormHeaderHide').attr('id','exploreFormHeader');
+                $('#headerRightMobile').attr('id','headerRight');
+            });
+        }
     }
 
 
@@ -196,16 +197,18 @@ componentDidMount(){
    render() {
         
     if (this.props.notification != ('0' || undefined)) {
-    // if (1) {
         return (
-            <div id="headerRight">
+            <div id="headerRight" >
                 {/* <div id="headerOptionsContainerNotifications"> */}
                 <HeaderSphere />
+                <div id="headerSphereInfo2">
+                    {this.props.notification}
+                </div>
                 <div id="exitHeaderMenuMobile"
-                //  onClick={this.hideMenu}
+                 onClick={this.hideMenu}
                 >
                 </div>
-                <div id="headerOptionsContainer">
+                <div id="headerOptionsContainerHide">
                     <div id="headerTabContainer">
                         <Link>
                             <div id="notebookHeaderButton" onClick={this.showNotebook} onMouseOver={this.hoverNotebook} onMouseOut={this.unHoverNotebook}>
@@ -240,11 +243,11 @@ componentDidMount(){
     
         return (
             <div id="headerRight" 
-            //  onClick={this.showMenu}
+             
             >
                 <HeaderSphere />
                 <div id="exitHeaderMenuMobile"
-                //  onClick={this.hideMenu}
+                 onClick={this.hideMenu}
                 >
                 </div>
                 <div id="headerOptionsContainerHide">

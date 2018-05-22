@@ -113,7 +113,7 @@ if (lesson.Private === true) {
 } else 
       return (
         <li key={lesson.ID} id="feedListUnit">
-            <Link to={'/project/'+lesson.TypeID +'/lesson'}>
+            <Link to={'/project/'+lesson.TypeID +'/learn'}>
                 <div id="feedUnits">  
                     <div id="blueFeedProse">{lesson.ParentTitle}</div>
                     <div id="whiteFeed">{lesson.Title}</div>

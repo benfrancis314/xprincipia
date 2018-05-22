@@ -35,7 +35,6 @@ export default class VersionForm extends React.Component {
           document.getElementById('versionTitleForm').value = self.state.solutionInfo.Title;
           document.getElementById('versionSummaryForm').value = self.state.solutionInfo.Summary;
           document.getElementById('versionDescriptionForm').value = self.state.solutionInfo.Description;
-          document.getElementById('versionReferencesForm').value = self.state.solutionInfo.References;
 
     })
       .catch(function (error) {
@@ -87,7 +86,6 @@ export default class VersionForm extends React.Component {
     this.state.title = document.getElementById('versionTitleForm').value
     this.state.summary = document.getElementById('versionSummaryForm').value
     this.state.description = document.getElementById('versionDescriptionForm').value
-    this.state.references = document.getElementById('versionReferencesForm').value
     this.state.changes = document.getElementById('versionChangesForm').value
 
   axios.post( Config.API + '/auth/solutions/versions/create', {
@@ -133,13 +131,13 @@ export default class VersionForm extends React.Component {
         <div id="createVersionHeader">
           new version
         </div>
-          {/* <form id="createVersionForm"> */}
-              <label htmlFor="solutionDescription" id="versionChangesFormLabel">changes from v.1<br />
-                  <textarea name="solutionDescription" required="required" placeholder='Describe your changes so others may follow the evolution of your idea.' id="versionChangesForm">
-                  </textarea></label><br />
-          {/* </form> */}
+        <label htmlFor="solutionDescription" id="versionChangesFormLabel">changes from v.{this.state.solutionInfo.Version}<br />
+        <textarea name="solutionDescription" required="required" placeholder='Describe your changes so others may follow the evolution of your ideas.' id="versionChangesForm">
+        </textarea></label><br />
+
+        {/* Simulate proposal form */}
           <form id="createForm">
-              <fieldset id="fieldSetSideBorder">
+              <fieldset id="fieldSetSideBorderGray">
                 <label htmlFor="solutionTitle" id="projectTitleProposalFormLabel">project title<br />
                   <h1 id="proposalCreateProjectTitle">{this.props.parentTitle}</h1>
                 </label><br />
@@ -194,10 +192,10 @@ export default class VersionForm extends React.Component {
                   description
                 </div>
                 <div id="proposalFormButtonContainer">
-                  <div id="proposalFormButtonLeftActive" onClick={this.showPDFVersion}>
+                  <div id="proposalFormButtonLeftActiveVersion" onClick={this.showPDFVersion}>
                       pdf
                   </div>
-                  <div id="proposalFormButtonRight" onClick={this.showProseVersion}>
+                  <div id="proposalFormButtonRightVersion" onClick={this.showProseVersion}>
                       prose
                   </div>
                 </div>
@@ -216,11 +214,6 @@ export default class VersionForm extends React.Component {
                   {/* </label> */}
                 </div>
 
-
-                <br />
-                <label htmlFor="solutionReferences" id="solutionReferenceFormLabel">sources <span id="gray">(optional)</span><br />
-                    <textarea name="solutionReferences" placeholder="Please provide your sources here." id="versionReferencesForm">
-                    </textarea></label><br />
                   <Link to={`/project/${this.props.params.probID}/proposal/${this.props.params.solutionID}/versions`}>
                       <input type="button" ref='btn' value="Create" onClick={this.postSolutionVersion} id="submitSolution"/>
                   </Link>

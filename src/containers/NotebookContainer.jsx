@@ -43,9 +43,9 @@ componentDidMount(){
         username: cookie.load('userName'),
         notification: this.props.notification,
     })
-    console.log(this.state.username)
+    // console.log(this.state.username)
     if (cookie.load('userName') !== undefined ) { 
-        console.log('notebook YES')
+        // console.log('notebook YES')
         axios.get( Config.API + '/notebooks/username/top?username='+cookie.load('userName')).then(function (response) {
             self.setState({
                 currentNotebook: response.data.ID,
@@ -61,7 +61,7 @@ componentDidMount(){
             })
         })
     } else {
-        console.log('notebook NO')
+        // console.log('notebook NO')
     }
 }
 componentWillReceiveProps(nextProps){
@@ -74,7 +74,7 @@ componentWillReceiveProps(nextProps){
         notification: nextProps.notification,
     })
     if (cookie.load('userName') !== undefined ) { 
-        console.log('notebook YES')
+        // console.log('notebook YES')
         axios.get( Config.API + '/notebooks/username/top?username='+cookie.load('userName')).then(function (response) {
             self.setState({
                 currentNotebook: response.data.ID,
@@ -90,7 +90,7 @@ componentWillReceiveProps(nextProps){
             })
         })
     } else {
-        console.log('notebook NO')
+        // console.log('notebook NO')
     }
 }
 

@@ -481,9 +481,9 @@ padding-left: 0px !important;
 background-size: cover !important;
 border: 1px solid #00dcff !important;
 border-width: 1px 1px 1px 1px !important;
-border-radius: 3px !important;
+border-radius: 3px 3px 10% 10% !important;
 box-shadow: 0 0 1pt 1pt rgba(0,220,255,0.5) !important;
-width: 90.5% !important;
+width: 95% !important;
 height: auto !important;
 word-wrap: break-word !important; 
 align-items: center !important; 
@@ -835,7 +835,7 @@ margin-bottom: 5% !important;
 }
 #header {
 display: flex !important;
-flex-direction: column !important;
+/* flex-direction: column !important; */
 }
 #headerName, #headerNameNotifications {
 width: 100% !important;
@@ -1157,11 +1157,6 @@ margin-right: 0px !important;
     #notebookContainerShow {
       width: 100% !important;
     }
-
-
-
-
-
   }
 
 
@@ -1270,9 +1265,160 @@ letter-spacing: 2px !important;
 }
 #headerOptionsContainer {
   opacity: 1 !important;
+  justify-content: flex-start !important;
+}
+
+#headerRight {
+  /* width: 15% !important; */
+}
+#exploreHeaderInput {
+
+}
+#exploreFormHeader {
+  width: 30% !important;
+}
+#exitHeaderMenuMobile, #exitHeaderMenuMobileLogout {
+  display: none !important;
+}
+#headerSphere2 {
+  display: none !important;
+}
+#exitHeaderMenuMobileShow, #exitHeaderMenuMobileLogoutShow {
+  background-image: url('./redX.svg') !important; 
+  background-size: 100% !important; 
+  background-position: center !important;
+  display: inline !important;
+  width: 12px;
+  height: 12px;
+  padding: 8px;
+
+  position: absolute;
+  top: 6px;
+  right: 4%;
+  color: #515151;
+  transition: all 0.5s ease 0s;
+  opacity: 0.5;
+}
+#exitHeaderMenuMobileLogoutShow {
+  top: 0px;
+}
+#exitHeaderMenuMobileShow:hover, #exitHeaderMenuMobileShow:active, 
+#exitHeaderMenuMobileLogoutShow:hover, #exitHeaderMenuMobileLogoutShow:active {
+  opacity: 1;
+  transform: scale(1.02);
+}
+#headerLeftHide, #exploreHeaderInputHide, #exploreFormHeaderHide {
+  display: none !important;
+}
+#logoNameGuide, #logoNameGuideWhite, #logoNameGuide *, #logoNameGuideWhite *#logoNameGuideWhite * {
+  color: rgba(0,220,255,0) !important;
+  letter-spacing: 0% !important;
+  word-break: keep-all !important;
+  overflow: !important;
+}
+#header {
+  max-height: 46px !important;
+}
+#headerRightMobile {
+  width: 100%;
+  margin: 0 auto;
+  margin-left: 5px;
+  position: relative;
+}
+
+#headerMessagesButton {
+  padding-top: 2px !important;
+}
+/* #headerPointsNumber {
+  font-size: 80%!important;
+  border-width: 1px !important;
+  border-radius: 3px!important;
+}
+#headerLevelTitle {
+  font-size: 50% !important;
+  display: none !important;
+} */
+#headerPointsContainer {
+  /* margin-left: 25% !important; */
+  display: none !important;
+}
+#headerSphereInfo1Hide {
+  display: none !important;
 }
 
 
+/* PROJECT */
+#SBButtonFollow {
+  border-width: 0px 1px !important;
+  border-radius: 0px !important;
+}
+#projectActivityButton, #projectInfoButton {
+  margin: 0 auto !important;
+  border-radius: 3px 3px 25% 25% !important;
+}
+#branchesProjectButton {
+  display: none !important;
+}
+#proposalDiscussButton, #proposalBreakdownButton {
+  width: 10em !important;
+}
+
+/* DISCUSS */
+#discussHoverText {
+  display: none !important;
+}
+#discussHeaderQuestion, #discussHeaderSuggestion, #discussHeaderDebate {
+  width: 80% !important;
+}
+#suggestionContent, #commentContent, 
+#suggestionContentQuestion, #suggestionContentSuggestion, #suggestionContentDebate,
+#suggestionContentAnswer, #suggestionContentComment, #suggestionContentPro, #suggestionContentCon,
+#suggestionContentEducational, #suggestionContentResearch {
+  width: 90% !important;
+}
+#editDiscussButton, #deleteDiscussButton, #flagDiscussButton {
+  display: none !important;
+}
+#discussUnitButtonsContainer {
+  right: 5px !important;
+}
+#discussPercent {
+  display: none !important;
+}
+
+/* SEARCH */
+#searchResultsContainer {
+  width: 98% !important;
+  margin: 0 auto !important;
+  margin-left: 1% !important;
+  margin-right: 1% !important;
+  top: 7vh !important;
+}
+#searchTypeProjectLabel {
+  margin-top: 12px !important;
+}
+#searchResultsUnitHeader {
+  width: 12em !important;
+}
+#searchResultsUnitPercent {
+  display: none !important;
+}
+#loginHeaderSubmitButton, #registerHeaderButton {
+  width: 4em !important;
+  margin: 0 auto !important;
+  margin-right: 5px !important;
+  display: block !important;
+  padding: 2px !important;
+  font-size: 70% !important;
+  }
+#loginHeaderEmail, #loginHeaderPassword {
+  width: 7em !important;
+  text-align: center !important;
+  margin: 0 auto !important;
+  margin-right: 5px !important;
+  margin-left: 0 !important;
+  font-size: 90% !important;
+}
 
 
 
@@ -1630,19 +1776,20 @@ letter-spacing: 2px !important;
 #problemSummaryForm, #problemDescriptionForm,
 #problemRequirementsForm, #problemReferencesForm,
 #solutionSummaryForm, #solutionReferencesForm,
-#breakdownProblemSummaryForm {
+#breakdownProblemSummaryForm, #versionSummaryForm {
   font-family: 'Open Sans';
   text-align: left;
   height: 5em;
   transition: all 1s ease 0s;
 }
-#solutionSummaryForm, #solutionDescriptionForm, 
+#solutionSummaryForm, #solutionDescriptionForm, #versionSummaryForm, #versionDescriptionForm,
 #solutionReferencesForm, #problemSummaryForm, #breakdownProblemSummaryForm {
   /* background: linear-gradient(to right,rgba(0,220,255, 0.06), rgba(0,220,255, 0.07),rgba(0,220,255, 0.03)); */
   background: radial-gradient(circle, rgba(0,220,255, 0), rgba(0,220,255, 0.1)); 
   border-radius: 3px 3px 5% 5%;    
 }
-#solutionSummaryForm:active, #solutionReferencesForm:focus, #solutionReferencesForm:active, #solutionSummaryForm:focus, #solutionDescriptionForm:focus, #solutionDescriptionForm:active {
+#solutionSummaryForm:active, #solutionReferencesForm:focus, #solutionReferencesForm:active, #solutionSummaryForm:focus, 
+#solutionDescriptionForm:focus, #solutionDescriptionForm:active, #versionSummaryForm:active, #versionDescriptionForm:active {
   /* background: radial-gradient(circle, rgba(0,220,255, 0), rgba(0,220,255, 0.12));      */
   /* background-color: rgba(0,220,255,0.05); */
   transform: scale(1.02);
@@ -1655,10 +1802,10 @@ letter-spacing: 2px !important;
   background: radial-gradient(circle, rgba(0,220,255,0), rgba(0,220,255,0.05));
   transition: all 1s ease 0s;
 }
-#problemDescriptionForm, #problemRequirementsForm, #solutionDescriptionForm, {
+#problemDescriptionForm, #problemRequirementsForm, #solutionDescriptionForm, #versionDescriptionForm {
   height: 10em;
 }
-#solutionDescriptionForm {
+#solutionDescriptionForm, #versionDescriptionForm {
   height: 15em;
   margin-top: 2%;
   border-radius: 3px 3px 5% 5%;
@@ -1770,15 +1917,17 @@ letter-spacing: 2px !important;
 #editDescriptionForm, #editReferencesForm {
   background-color: inherit; 
 }
-#solutionTitleForm {
+#solutionTitleForm, #versionTitleForm {
   font-family: 'Alegreya Sans SC';
   border-color: #dddddd;
   /* background-color: rgba(0,220,255, 0.05); */
   margin: 0 auto;
   background: radial-gradient(circle, rgba(0,220,255, 0.1), rgba(0,220,255, 0), rgba(0,220,255, 0));   
   transition: all 1s ease 0s;
+  border-radius: 3px 3px 10% 10%;
 }
-#solutionTitleForm:active, #solutionTitleForm:focus {
+#solutionTitleForm:active, #solutionTitleForm:focus, 
+#versionTitleForm:active, #versionTitleForm:focus {
   background: radial-gradient(circle, rgba(0,220,255, 0.12), rgba(0,220,255, 0), rgba(0,220,255, 0));   
   background-color: rgba(0,220,255,0.05);
   transform: scale(1.02);
@@ -1795,9 +1944,18 @@ fieldset {
 }
 #fieldSetSideBorder {
   border-width: 0px 1px;
+  border-color: rgba(0,220,255,0.5);
+  transition: all 1s ease 0s;
+}
+#fieldSetSideBorder:hover {
+  border-color: rgba(0,220,255,1);
 }
 #fieldSetNoBorder {
   border-width: 0px;
+}
+#fieldSetSideBorderGray {
+  border-width: 0px 1px;
+  border-color: #515151;
 }
 #fieldSetNoBorderNoPaddingBottom {
   border-width: 0px;
@@ -2316,10 +2474,10 @@ text-align: center;
   vertical-align: middle;
 }
 #headerName:hover, #headerNameNotifications:hover {
-  background-color: rgba(0,220,255,0.12);
+  /* background-color: rgba(0,220,255,0.12); */
   box-shadow: 0 0 0.5pt 0.5pt rgba(0,220,255,1) inset;
   transform: scale(1.02);
-  border-color: rgba(0,220,255,0.5);
+  /* border-color: rgba(0,220,255,0.5); */
 }
 #commandButton {
   flex: 1 1 auto;
@@ -2334,23 +2492,45 @@ text-align: center;
 #imgContainerAvatar {
   flex: 1 1 auto;
 }
+#headerRight:hover #headerSphereInfo1, #headerRight:hover #headerSphereInfo2 {
+  opacity: 0;
+}
+#headerSphereInfo1, #headerSphereInfo2 {
+  position: absolute;
+  top: 6px;
+  right: 2%;
+  color: #515151;
+  /* color: rgba(0,220,255,0.5); */
+  font-size: 80%;
+  letter-spacing: 1px;
+  transition: all 0.5s ease 0s;
+}
+#headerSphereInfo2 {
+  color: rgba(255,127,127,0.5);
+  /* top: 20px; */
+}
 #headerSphere {
   transform: scale(0.1) !important;
   margin: 0 auto;
   transition: all 0.5s ease 0s;
   position: absolute;
-  top: 25%;
+  top: 23%;
   right: 25%;
   /* width: 100%; */
+  border: 1px solid red !important;
 }
 #headerRight:hover #headerSphere {
   opacity: 0;
+  transition: all 0.5s ease 0s;
 }
 #headerSphereHide {
   display: none;
   transition: all 0.5s ease 0s;
 }
-#exitHeaderMenuMobile {
+#exitHeaderMenuMobile, #exitHeaderMenuMobileLogout {
+  display: none;
+}
+#exitHeaderMenuMobileShow, #exitHeaderMenuMobileLogoutShow {
   display: none;
 }
 #headerRight {
@@ -2364,7 +2544,7 @@ text-align: center;
   transition: all 0.5s ease 0s;
   opacity: 0;
 }
-#headerOptionsContainer:hover, #headerOptionsContainerHide:hover {
+#headerRight:hover #headerOptionsContainer, #headerRight:hover #headerOptionsContainerHide {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
@@ -4991,10 +5171,9 @@ letter-spacing: 7px;
   width: 100%;
   margin: 0 auto;
   height: 100%;
-  background: url('./mazeDark1.svg') no-repeat !important;
-  background-color: rgba(15,19,28,0.9);
+  background: url('./mazeDark1.svg') no-repeat center !important;
+  background-color: rgba(15,19,28,0.99999999);
   background-blend-mode: overlay;
-  background-position: 100% 0%;
   padding-top: 8%;
   position: relative;
   transition: all 1s ease 0s;
@@ -5715,14 +5894,14 @@ font-family: 'Open Sans';
 #suggestionContentSuggestion, #suggestionContentAnswer, #suggestionContentPro, #suggestionContentResearch {
   border-color: rgba(0,255,220,0.5);
 } 
-#suggestionContentPro {
+#suggestionContentPro, #suggestionContentHoverVotePro {
   margin-right: 20%;
 }
 #suggestionContentDebate, #suggestionContentCon {
   border-color: rgba(255,127,127, 0.5);
   /* border-color: hsla(24, 100%, 57%, 0.5); */
 }
-#suggestionContentCon {
+#suggestionContentCon, #suggestionContentHoverVoteCon {
   margin-left: 20%;
   margin-right: 0px;
   /* border-radius: 3px 5px 10% 15%; */
@@ -7900,7 +8079,7 @@ color: rgba(221,221,221,1);
 font-size: 150%;
 letter-spacing: 4px;
 border: 1px solid #00dcff;
-border-radius: 3px;
+border-radius: 3px 3px 10% 10%;
 /*box-shadow: 0 0 1pt 1pt rgba(255,255,255,0.5);*/
 margin: 0% 10% 0% 10%;
 transition: all 0.25s ease 0s;
@@ -9193,7 +9372,7 @@ cursor: pointer;
   margin-top: 2%;
   margin-bottom: 0.5%;
 }
-#resourceURLText {
+#resourceURLText, #resourceURLTextShowVoted {
   font-family: 'Alegreya Sans SC';
   text-align: center;
   height: auto;
@@ -9218,22 +9397,23 @@ cursor: pointer;
   text-align: center;
 
 
-  border: 1px solid rgba(0,220,255,0.5);
-  border-width: 0px 0px 1px 0px;
-  border-radius: 0% 0% 20% 20%;
+
   padding: 1px;
-  background: linear-gradient(rgba(0,255,220,0), rgba(15,19,28,0.25));
+  /* background: linear-gradient(rgba(0,255,220,0), rgba(15,19,28,0.25)); */
 }
-#resourceURLText:hover {
+#resourceURLText:hover, #resourceURLTextShowVoted:hover {
 color: rgba(0,255,220,1);
 transform: scale(1.02);
 cursor: pointer;
 border-color: rgba(0,220,255,1);
+  border: 1px solid rgba(0,220,255,0.5);
+  border-width: 0px 0px 1px 0px;
+  border-radius: 0% 0% 20% 20%;
 }
 #resourceTitleText {
   margin: 0 auto;
   text-align: center;
-  font-size: 200%;
+  font-size: 150%;
   color: #ffffff;
   letter-spacing: 2px;
   text-transform: lowercase !important;
@@ -9620,12 +9800,12 @@ cursor: pointer;
   background-color: rgba(15,19,28,0.9);
   transition: all 1s ease 0s;
 }
-#newVersionButton:hover {
-  border-color: #00dcff;
-  border-width: 1px;
-  transform: scale(1.05);
+#newVersionButton:hover, .activeNewVersionButton div {
+  border-color: #00dcff !important;
+  /* border-width: 1px !important; */
+  transform: scale(1.05) !important;
   cursor: pointer;
-  box-shadow: 0 0 1pt 1pt rgba(0,220,255,0.5);
+  box-shadow: 0 0 1pt 1pt rgba(0,220,255,0.5) !important;
 }
 #versionNumber {
   font-size: 120%;
@@ -9665,12 +9845,13 @@ cursor: pointer;
   justify-content: center;
   margin: 0 auto;
   margin-top: 2%;
-  width: 65%;
+  width: 100%;
 }
 #versionUnitTitle {
-  /* margin: 0 auto;
-  width: 80%;
-  border: 1px solid #00dcff;
+  /* width: 16em;
+  
+  margin: 0 auto;
+  border: 1px solid rgba(0,220,255,0.5);
   border-radius: 3px 0px 0px 25%;
   padding: 12px 0px;
   background: radial-gradient(circle, rgba(0,220,255,0), rgba(0,220,255,0.05));
@@ -9682,28 +9863,28 @@ cursor: pointer;
   height: 20px;
   vertical-align: middle; */
 
-  width: 8em;
+
+  width: 20em;
   height: 20px;
   padding: 12px 0px;
-  color: #ff7f7f;
+  /* color: #ff7f7f; */
   text-align: center;
   letter-spacing: 2px;
   font-size: 100%;
-  border: 1px solid #ff7f7f;
-  border-radius: 0px 3px 25% 0px;
-  background: radial-gradient(circle, rgba(255,127,127,0), rgba(255,127,127,0.05));
+  border: 1px solid #515151;
+  border-radius: 3px 0px 25% 25%;
+  background: radial-gradient(circle, rgba(0,220,255,0), rgba(0,220,255,0.05));
   transition: all 1s ease 0s;
-  box-shadow: 0 0 1pt 1pt rgba(255,127,127,0.5);
+  box-shadow: 0 0 1pt 1pt rgba(0,220,255,0.5);
+  margin-left: 1%;
+
 }
 #versionUnitTitle:hover {
   box-shadow: 0 0 1pt 1pt rgba(0,220,255,1);
   transform: scale(1.02);
   cursor: pointer;
   background-color: rgba(0,220,255,0.05);
-  width: 70%;
 }
-
-
 #versionUnitChangesButton {
   width: 8em;
   height: 20px;
@@ -9712,11 +9893,12 @@ cursor: pointer;
   text-align: center;
   letter-spacing: 2px;
   font-size: 100%;
-  border: 1px solid #ff7f7f;
+  border: 1px solid #515151;
   border-radius: 0px 3px 25% 0px;
   background: radial-gradient(circle, rgba(255,127,127,0), rgba(255,127,127,0.05));
   transition: all 1s ease 0s;
   box-shadow: 0 0 1pt 1pt rgba(255,127,127,0.5);
+  margin-left: 1%;
 }
 #versionUnitChangesButton:hover {
   background-color: rgba(255,127,127,0.05);
@@ -9729,36 +9911,51 @@ cursor: pointer;
   font-size: 0%;
   transition: all 1.5s ease 0s;
 }
-
-#versionFrom {
-color: #00ffdc;
-}
 #versionChangesForm {
-height: 10em;
+background-color: inherit;
+color: #00dcff;
+height: 6em;
+/* border: 1px solid #00dcff;
+border-width: 0px 0px 1px 0px; */
+border-radius: 3px 3px 10% 10%;
+border-color: #515151;
+/* padding: 0px 5px 5px 5px; */
+width: 80%;
+margin: 0 auto;
+background: radial-gradient(circle, rgba(0,220,255,0), rgba(0,220,255,0.1));
+transition: all 1s ease 0s;
 }
+#versionChangesForm:focus {
+  transform: scale(1.02);
+  /* border-color: #00dcff; */
+  box-shadow: 0 0 1pt 1pt rgba(0,220,255,1);
+} 
 #createVersionHeader {
   width: 70%;
   margin: 0 auto;
   margin-top: 2%;
   text-align: center;
-  font-size: 135%;
+  font-size: 155%;
   letter-spacing: 4px;
   padding: 6px 0px;
-  border: 1px solid #00dcff;
+  /* border: 1px solid #00dcff;
   border-width: 1px 1px;
   border-radius: 3px 3px 25% 25%;
-  background: radial-gradient(circle, rgba(0,220,255,0.05), rgba(15,19,28,0.9));
+  background: radial-gradient(circle, rgba(0,220,255,0.05), rgba(15,19,28,0.9)); */
+
+  color: #515151;
 }
 #createVersionForm {
 background-color: inherit;
 color: #00dcff;
-height: auto;
+height: 3em;
 border: 2px solid #00dcff;
 border-width: 0px 0px 1px 0px;
-border-radius: 3px;
+border-radius: 3px 3px 10% 10%;
 padding: 0px 5px 5px 5px;
 width: 90%;
 margin: 0 auto;
+background: radial-gradient(circle, rgba(0,220,255,0), rgba(15,19,28,0.1));
 }
 #createVersionForm textarea {
 background-color: inherit;
@@ -10206,14 +10403,14 @@ font-style: italic;
 line-height: 120%;
 }
 #aboutProseDescriptions {
-text-align: left;
-/*margin-left: 10%;
-margin-right: 20%;*/
+text-align: justify;
 letter-spacing: 1px;
 color: #dddddd;
+margin: 0 auto;
 margin-top: 3%;
 font-family: 'Open Sans';
 font-size: 80%;
+width: 80%;
 }
 #aboutBlue {
 color: #00dcff;
@@ -10306,6 +10503,18 @@ color: #00dcff;
 }
 #legalAgreementRegisterDescription:hover #legalBlue, #legalAgreementDisclaimerDescription:hover #legalBlue {
   color: #00dcff;
+}
+
+#imgCreditsSection {
+  color: #515151;
+  font-size: 90%;
+  font-family: 'Open Sans' !important;
+  text-align: justify;
+}
+#imgCreditsHeader {
+  color: rgba(0,220,255,0.5);
+  text-align: center;
+  font-size: 120%;
 }
 
 /*End Profile About*/
@@ -12149,7 +12358,7 @@ margin-top: 1%;
   padding-bottom: 1px;
   font-size: 90%;
 }
-#featuredProjectButton1, #featuredProjectButton2, #featuredProjectButtonX {
+#featuredProjectButton1, #featuredProjectButton2, #featuredProjectButton3,  #featuredProjectButtonX {
   border: 1px solid #333333;
   background-color: rgba(0,220,255, 0.05);
   border-color: rgba(0,255,220, 0.5);
@@ -12188,13 +12397,23 @@ margin-top: 1%;
   background-size: 115%; 
   background-position: center 35%;
 }
+#featuredProjectButton3 {
+  background-image: url('./aiTom1.jpg'); 
+  background-image: url('./wwBath.jpg'); 
+  background-size: 100%; 
+  background-position: center 30%;
+  /* background-position: 100% 45%; */
+  font-size: 90%;
+  padding-top: 12px;
+  padding-bottom: 12px;
+}
 #featuredProjectButtonX {
   background: radial-gradient(circle, rgba(0,220,255,0), rgba(0,220,255,0), rgba(0,220,255,0.1));
   font-size: 90%;
   padding-top: 12px;
   padding-bottom: 12px;
 }
-#featuredProjectButton1:hover, #featuredProjectButton2:hover, #featuredProjectButtonX:hover {
+#featuredProjectButton1:hover, #featuredProjectButton2:hover, #featuredProjectButton3:hover, #featuredProjectButtonX:hover {
 background-color: rgba(15,19,28,0.5);
 transform: scale(1.03);
 cursor: pointer !important;
@@ -14832,7 +15051,8 @@ input#submitBreakdown:hover {
   margin-top: 1%;
   justify-content: center;
 }
-#proposalFormButtonLeft, #proposalFormButtonRight, #proposalFormButtonLeftActive, #proposalFormButtonRightActive {
+#proposalFormButtonLeft, #proposalFormButtonRight, #proposalFormButtonLeftActive, #proposalFormButtonRightActive,
+#proposalFormButtonLeftVersion, #proposalFormButtonRightVersion, #proposalFormButtonLeftActiveVersion, #proposalFormButtonRightActiveVersion {
   flex: 1 1 auto;
   color: #dddddd;
   font-size: 125%;
@@ -14845,17 +15065,19 @@ input#submitBreakdown:hover {
   width: 8em;
   border: 1px solid #dddddd;
   border-width: 1px;
-  border-radius: 3px 0px 0px 3px;
+  border-radius: 3px 0px 0px 10%;
   background-color: rgba(0,220,255, 0.05);
   /*box-shadow: 0 0 1pt 1pt rgba(255,255,255,0.5);*/
   transition: all 1s ease 0s;
   letter-spacing: 2px;
 }
-#proposalFormButtonRight, #proposalFormButtonRightActive {
-  border-radius: 0px 3px 3px 0px;
+#proposalFormButtonRight, #proposalFormButtonRightActive,
+#proposalFormButtonRightVersion, #proposalFormButtonRightActiveVersion {
+  border-radius: 0px 3px 10% 0px;
   border-width: 1px 1px 1px 0px;
 }
-#proposalFormButtonLeft:hover, #proposalFormButtonRight:hover, #proposalFormButtonLeftActive, #proposalFormButtonRightActive {
+#proposalFormButtonLeft:hover, #proposalFormButtonRight:hover, #proposalFormButtonLeftActive, #proposalFormButtonRightActive, 
+#proposalFormButtonLeftVersion:hover, #proposalFormButtonRightVersion:hover, #proposalFormButtonLeftActiveVersion, #proposalFormButtonRightActiveVersion {
   background: linear-gradient(to right, rgba(0,220,255,0.1), rgba(0,220,255,0)) !important;
   width: 9em !important;
   border-color: #00dcff !important;
@@ -14863,7 +15085,8 @@ input#submitBreakdown:hover {
   letter-spacing: 3px;
   cursor: pointer;
 }
-#proposalFormButtonRight:hover, #proposalFormButtonRightActive {
+#proposalFormButtonRight:hover, #proposalFormButtonRightActive,
+#proposalFormButtonRightVersion:hover, #proposalFormButtonRightActiveVersion {
   background: linear-gradient(to left, rgba(0,220,255,0.1), rgba(0,220,255,0)) !important;
 }
 #pdfProposalContainer, #pdfProposalContainerVersion {
@@ -15403,7 +15626,7 @@ input#submitBreakdown:hover {
 #passionsTextArea {
   background: radial-gradient(circle, rgba(0,220,255,0.05), rgba(15, 19, 28, 0.75));
   transition: all 1s ease 0s;
-  margin-bottom: 3%;
+  /* margin-bottom: 3%; */
   border-radius: 3px 3px 10% 10%;
   border-color: rgba(0,220,255,0.5);
 }

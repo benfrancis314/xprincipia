@@ -25,11 +25,15 @@ export default class DiscussContainer extends React.Component {
             answerNumber: '',
             proConComNumber: '',
             answerComNumber: '',
+
+            proposalID: '',
+            proposalPath: '',
         }
         this.selectProConCom = this.selectProConCom.bind(this)
         this.selectComments = this.selectComments.bind(this)
         this.selectProsCons = this.selectProsCons.bind(this)
         this.selectAnswers = this.selectAnswers.bind(this)
+        this.selectAnswerCom = this.selectAnswerCom.bind(this)
         this.selectNew = this.selectNew.bind(this)
         this.selectTop = this.selectTop.bind(this)
     };
@@ -38,11 +42,11 @@ export default class DiscussContainer extends React.Component {
         document.getElementById("answerQuestionUnit").scrollIntoView();
             if (window.location.pathname.includes('private')) {
                 self.setState({
-                    linkPath: '/project/private/',
+                    linkPath: `/project/private/${self.props.params.probID}`,
                 })
             } else {
                 self.setState({
-                    linkPath: '/project/',
+                    linkPath: `/project/${self.props.params.probID}`,
                 })
             }
             
@@ -50,12 +54,12 @@ export default class DiscussContainer extends React.Component {
                 if(response.data.ParentID === 0) {
                     self.setState({
                         parent: response.data,
-                        parentLink: `${self.props.params.probID}/discuss`
+                        parentLink: `/discuss`,
                     })
                 } else {
                     self.setState({
                         parent: response.data,
-                        parentLink: `${self.props.params.probID}/discuss/${response.data.ParentID}/comments`
+                        parentLink: `/discuss/${response.data.ParentID}/comments`
                     })
                 }
                 if(response.data.Type === 2) {
@@ -99,14 +103,14 @@ export default class DiscussContainer extends React.Component {
                                 newTopID: 'discussListSelectButton',
                                 discuss: response.data,
                                 newTopSelect: 'new',
-                                currentType: 'discuss',
+                                currentType: 'answercom',
                             })
                         } else {
                             self.setState({
                                 newTopID: 'discussListSelectButtonHide',
                                 discuss: response.data,
                                 newTopSelect: 'new',
-                                currentType: 'discuss',
+                                currentType: 'answercom',
                             })
                         }
                     }) 
@@ -117,14 +121,14 @@ export default class DiscussContainer extends React.Component {
                                 newTopID: 'discussListSelectButton',
                                 discuss: response.data,
                                 newTopSelect: 'new',
-                                currentType: 'discuss',
+                                currentType: 'proconcom',
                             })
                         } else {
                             self.setState({
                                 newTopID: 'discussListSelectButtonHide',
                                 discuss: response.data,
                                 newTopSelect: 'new',
-                                currentType: 'discuss',
+                                currentType: 'proconcom',
                             })
                         }
                     }) 
@@ -155,21 +159,41 @@ export default class DiscussContainer extends React.Component {
                     answerComNumber: response.data
                 })
             })
+            if (window.location.pathname.includes('proposal')) {
+                self.setState({
+                    proposalID: 'proposalInteractDiscussMenu',
+                    proposalPath: '/proposal/'+this.props.params.solutionID,
+                })
+            } else {
+                self.setState({
+                    proposalID: 'projectInteractDiscussMenu',
+                    proposalPath: '',
+                })
+            }
 
     }
     componentWillReceiveProps(nextProps){
         var self = this;
+        if (window.location.pathname.includes('private')) {
+            self.setState({
+                linkPath: `/project/private/${self.props.params.probID}`,
+            })
+        } else {
+            self.setState({
+                linkPath: `/project/${self.props.params.probID}`,
+            })
+        }
         document.getElementById("answerQuestionUnit").scrollIntoView();
             axios.get( Config.API + '/comments/ID?id='+nextProps.params.discussID).then(function (response) {
                 if(response.data.ParentID === 0) {
                     self.setState({
                         parent: response.data,
-                        parentLink: `${nextProps.params.probID}/discuss`
+                        parentLink: `/discuss`,
                     })
                 } else {
                     self.setState({
                         parent: response.data,
-                        parentLink: `${nextProps.params.probID}/discuss/${response.data.ParentID}/comments`
+                        parentLink: `/discuss/${response.data.ParentID}/comments`
                     })
                 }
                 if(response.data.Type === 2) {
@@ -205,21 +229,21 @@ export default class DiscussContainer extends React.Component {
                         parentType: 'Discuss',
                     })
                 }
-                if(response.data.Type === '2') {
+                if(response.data.Type === 2) {
                     axios.get( Config.API + '/comments/bytype/answercom?problem_id='+nextProps.params.discussID).then(function (response) {
                         if(response.data.length > 0) {
                             self.setState({
                                 newTopID: 'discussListSelectButton',
                                 discuss: response.data,
                                 newTopSelect: 'new',
-                                currentType: 'discuss',
+                                currentType: 'answercom',
                             })
                         } else {
                             self.setState({
                                 newTopID: 'discussListSelectButtonHide',
                                 discuss: response.data,
                                 newTopSelect: 'new',
-                                currentType: 'discuss',
+                                currentType: 'answercom',
                             })
                         }
                     }) 
@@ -230,14 +254,14 @@ export default class DiscussContainer extends React.Component {
                                 newTopID: 'discussListSelectButton',
                                 discuss: response.data,
                                 newTopSelect: 'new',
-                                currentType: 'discuss',
+                                currentType: 'proconcom',
                             })
                         } else {
                             self.setState({
                                 newTopID: 'discussListSelectButtonHide',
                                 discuss: response.data,
                                 newTopSelect: 'new',
-                                currentType: 'discuss',
+                                currentType: 'proconcom',
                             })
                         }
                     }) 
@@ -268,6 +292,17 @@ export default class DiscussContainer extends React.Component {
                     answerComNumber: response.data
                 })
             })
+            if (window.location.pathname.includes('proposal')) {
+                self.setState({
+                    proposalID: 'proposalInteractDiscussMenu',
+                    proposalPath: '/proposal/'+this.props.params.solutionID,
+                })
+            } else {
+                self.setState({
+                    proposalID: 'projectInteractDiscussMenu',
+                    proposalPath: '',
+                })
+            }
     }
     selectProConCom() {
         $(document).ready(function() {
@@ -283,13 +318,13 @@ export default class DiscussContainer extends React.Component {
                     self.setState({
                         newTopID: 'discussListSelectButton',
                         discuss: response.data,
-                        currentType: 'discuss',
+                        currentType: 'proconcom',
                     })
                 } else {
                     self.setState({
                         newTopID: 'discussListSelectButtonHide',
                         discuss: response.data,
-                        currentType: 'discuss',
+                        currentType: 'proconcom',
                     })
                 }
             })
@@ -300,13 +335,13 @@ export default class DiscussContainer extends React.Component {
                     self.setState({
                         newTopID: 'discussListSelectButton',
                         discuss: response.data,
-                        currentType: 'discuss',
+                        currentType: 'proconcom',
                     })
                 } else {
                     self.setState({
                         newTopID: 'discussListSelectButtonHide',
                         discuss: response.data,
-                        currentType: 'discuss',
+                        currentType: 'proconcom',
                     })
                 }
             })  
@@ -411,8 +446,8 @@ export default class DiscussContainer extends React.Component {
         $(document).ready(function() {
             $('#discussCommentGroupSelectAllActive').attr('id','discussCommentGroupSelectAllInactive');               
             $('#discussSelectButtonLeftActive').attr('id','discussSelectButtonLeftInactive');               
-            $('#discussSelectButtonCenterInactive').attr('id','discussSelectButtonCenterActive');               
-            $('#discussSelectButtonRightActive').attr('id','discussSelectButtonRightInactive');               
+            // $('#discussSelectButtonCenterInactive').attr('id','discussSelectButtonCenterActive');               
+            $('#discussSelectButtonRightInactive').attr('id','discussSelectButtonRightActive');               
         });
         var self = this;
         if(this.state.newTopSelect === 'new') {
@@ -507,7 +542,7 @@ export default class DiscussContainer extends React.Component {
                 })
             }) 
         } else if (this.state.currentType === 'procon') {
-            axios.get( Config.API + '/comments/bytype/proconcom?problem_id='+this.props.params.discussID).then(function (response) {
+            axios.get( Config.API + '/comments/bytype/procon?problem_id='+this.props.params.discussID).then(function (response) {
                 self.setState({
                     discuss: response.data,
                 })
@@ -548,7 +583,7 @@ export default class DiscussContainer extends React.Component {
                 })
             }) 
         } else if (this.state.currentType === 'procon') {
-            axios.get( Config.API + '/comments/bytype/proconcom/byrank?problem_id='+this.props.params.discussID).then(function (response) {
+            axios.get( Config.API + '/comments/bytype/procon/byrank?problem_id='+this.props.params.discussID).then(function (response) {
                 self.setState({
                     discuss: response.data,
                 })
@@ -578,11 +613,11 @@ export default class DiscussContainer extends React.Component {
    render() {
     if (this.state.parentType === 'Question') {
         return (
-            <div id="projectInteractDiscussMenu">
-                <Link to={this.state.linkPath+this.props.params.probID+'/discuss'}>
+            <div id={this.state.proposalID}>
+                <Link to={this.state.linkPath+ this.state.proposalPath +'/discuss'}>
                     <div id="discussGroupSelectAllInactive">discuss</div>
                 </Link>
-                <Link to={this.state.linkPath + this.state.parentLink}>
+                <Link to={this.state.linkPath + this.state.proposalPath + this.state.parentLink}>
                     <div id="answerQuestionUnit">
                         <div id={"answerQuestionContent"+this.state.parentType}>
                             <div id={"discussHeader"+this.state.parentType}>
@@ -627,11 +662,11 @@ export default class DiscussContainer extends React.Component {
         )
     } else {
     return (
-        <div id="projectInteractDiscussMenu">
-            <Link to={this.state.linkPath+this.props.params.probID+'/discuss'}>
+        <div id={this.state.proposalID}>
+            <Link to={this.state.linkPath + this.state.proposalPath + '/discuss'}>
                 <div id="discussGroupSelectAllInactive">discuss</div>
             </Link>
-            <Link to={this.state.linkPath + this.state.parentLink}>
+            <Link to={this.state.linkPath + this.state.proposalPath + this.state.parentLink}>
                 <div id="answerQuestionUnit">
                     <div id={"answerQuestionContent"+this.state.parentType}>
                         <div id={"discussHeader"+this.state.parentType}>

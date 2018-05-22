@@ -237,13 +237,13 @@ constructor(props){
             newTopSelect: 'new',
         })
         if (this.state.currentType === 'educational') {
-            axios.get( Config.API + '/learnItems/bytype/educational?id='+this.props.params.probID).then(function (response) {
+            axios.get( Config.API + '/learnItems/bytype/learnitem?id='+this.props.params.probID).then(function (response) {
                 self.setState({
                     learnItems: response.data,
                 })
             }) 
         } else if (this.state.currentType === 'research') {
-            axios.get( Config.API + '/learnItems/bytype/research?id='+this.props.params.probID).then(function (response) {
+            axios.get( Config.API + '/learnItems/bytype/resource?id='+this.props.params.probID).then(function (response) {
                 self.setState({
                     learnItems: response.data,
                 })
@@ -266,13 +266,13 @@ constructor(props){
             newTopSelect: 'top',
         })
         if (this.state.currentType === 'educational') {
-            axios.get( Config.API + '/learnItems/bytype/educational/byrank?id='+this.props.params.probID).then(function (response) {
+            axios.get( Config.API + '/learnItems/bytype/learnitem/byrank?id='+this.props.params.probID).then(function (response) {
                 self.setState({
                     learnItems: response.data,
                 })
             }) 
         } else if (this.state.currentType === 'research') {
-            axios.get( Config.API + '/learnItems/bytype/research/byrank?id='+this.props.params.probID).then(function (response) {
+            axios.get( Config.API + '/learnItems/bytype/resource/byrank?id='+this.props.params.probID).then(function (response) {
                 self.setState({
                     learnItems: response.data,
                 })

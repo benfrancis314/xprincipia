@@ -88,6 +88,19 @@ export default class ProfileDisclaimer extends React.Component {
                 <br />
                 - Marsilio Ficino
             </div>
+            < br />
+            <div id="imgCreditsSection">
+                <div id="imgCreditsHeader">
+                image credits
+                </div>
+                <div id="imgCreditsExplain">
+                xprincipia, inc. does not own any images presented on xprincipia.com. all rights are reserved by their original owners. 
+                </div>
+                <div id="imgCreditsUnit">
+                the image used in the featured project is taken from the WestWorld introduction, from: <br />
+                http://www.iamag.co/features/westworld-opening-titles/
+                </div>
+            </div>
           </div>
       );
    }

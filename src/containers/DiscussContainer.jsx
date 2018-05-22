@@ -344,7 +344,7 @@ export default class DiscussContainer extends React.Component {
                 })
             }) 
         } else if (this.state.currentType === 'debate') {
-            axios.get( Config.API + '/comments/bytype/debate?problem_id='+this.state.typeID+'&discuss='+this.state.discussType).then(function (response) {
+            axios.get( Config.API + '/comments/bytype/freeform?problem_id='+this.state.typeID+'&discuss='+this.state.discussType).then(function (response) {
                 self.setState({
                     discuss: response.data,
                 })
