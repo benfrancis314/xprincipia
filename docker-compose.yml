@@ -2,7 +2,7 @@ api:
     # based off the golang:1.6.1-alpine image
 
     #Docker hub image
-    image: xprincipia/frontend:v3.1
+    image: xprincipia/frontend:v4.1
 
     # Local host build
     # build:

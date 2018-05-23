@@ -352,7 +352,7 @@ function randomFeatured() {
           <Link to={'/project/23/subprojects'}>
             <div id="featuredProjectButton1">
                 structure and dynamics
-                <br />of the mind
+                <br />of the human mind
             </div>
           </Link>
         </div>

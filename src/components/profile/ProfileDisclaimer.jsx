@@ -89,7 +89,7 @@ export default class ProfileDisclaimer extends React.Component {
                 - Marsilio Ficino
             </div>
             < br />
-            <div id="imgCreditsSection">
+            {/* <div id="imgCreditsSection">
                 <div id="imgCreditsHeader">
                 image credits
                 </div>
@@ -100,7 +100,7 @@ export default class ProfileDisclaimer extends React.Component {
                 the image used in the featured project is taken from the WestWorld introduction, from: <br />
                 http://www.iamag.co/features/westworld-opening-titles/
                 </div>
-            </div>
+            </div> */}
           </div>
       );
    }

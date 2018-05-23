@@ -8364,10 +8364,10 @@ transform: scale(1.02);
 #SPTitle, #SPTitleGreen, #SPTitleRed, #SPTitleSmall, #SPTitleGreenPrivate, #SPTitleRedPrivate {
 margin: 0 auto;
 padding: 5px 10px 5px 10px;
-/* If project title length becomes an issue, change font-size to normal */
-/* It is still legible enough */
-/* font-size: 100% */
-font-size: 120%;
+/* OLD */
+/* font-size: 120%; */
+/* NEW */
+font-size: 110%;
 color: #dddddd;
 word-wrap: break-word; 
 word-break: break-word;
