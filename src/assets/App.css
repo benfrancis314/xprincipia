@@ -9549,12 +9549,12 @@ text-transform: lowercase !important;
   }
 #voteSolution:hover, 
 #versionsButton:hover, .activeVersionsButton div {
-  background-color: #00ffdc;
-  color: #0f131c;
+  background-color: #00ffdc !important;
+  color: #0f131c !important;
   cursor: pointer;
 }
 #versionsButton:hover, .activeVersionsButton div {
-background-color: #00dcff;
+background-color: #00dcff !important;
 }
 #votedSolution {
 color: #0f131c;
@@ -12399,13 +12399,26 @@ margin-top: 1%;
 }
 #featuredProjectButton3 {
   background-image: url('./aiTom1.jpg'); 
-  background-image: url('./wwBath.jpg'); 
-  background-size: 100%; 
-  background-position: center 30%;
-  /* background-position: 100% 45%; */
+  background-size: 100%;
+  background-position: 100% 45%;
   font-size: 90%;
   padding-top: 12px;
   padding-bottom: 12px;
+  /* background-image: url('./wwBath.jpg');  */
+  /* background-position: center 30%; */
+
+  /* PIANO */
+  background-image: url('./ai1.jpeg');
+  /* Also 75% looks good */
+  background-position: center 70%;
+
+  /* ANDROID */
+  /* background-image: url('./ai2.jpeg');
+  background-position: center 17.5%; */
+  
+  /* CHESS */
+  /* background-image: url('./ai3.jpg');
+  background-position: center 70%; */
 }
 #featuredProjectButtonX {
   background: radial-gradient(circle, rgba(0,220,255,0), rgba(0,220,255,0), rgba(0,220,255,0.1));
@@ -15021,7 +15034,10 @@ input#submitBreakdown:hover {
   width: 70%;
   margin: 0 auto;
   margin-top: 3.5%;
-  margin-bottom: 6%;
+  /* WITHOUT WARNING */
+  /* margin-bottom: 6%; */
+  /* WITH WARNING */
+  margin-bottom: 1%;
   transition: all 1s ease 0s;
   /* box-shadow: 0 0 1pt 1px rgba(255,255,255,0.75); */
   opacity: 1;
@@ -15120,8 +15136,39 @@ input#submitBreakdown:hover {
 
 /* SHOWING THE PDF */
 
+#pdfWarningsContainer {
+  width: 50%;
+  margin: 0 auto;
+  margin-top: 1.5%;
+  margin-bottom: 1.5%;
+}
+#pdfWarningsContainer:hover #pdfLoadWarning, 
+#pdfWarningsContainer:hover #pdfSizeWarning {
+  color: #dddddd;
+}
 #proposalPDFContainer {
   border: 5px solid red;
+}
+
+#pdfLoadWarning {
+  text-align: center;
+  width: 100%;
+  margin: 0 auto;
+  font-size: 90%;
+  color: #515151;
+  transition: all 1s ease 0s;
+}
+#blueOpaque {
+  color: rgba(0,220,255,0.75);
+}
+#pdfSizeWarning {
+  text-align: center;
+  width: 100%;
+  margin: 0 auto;
+  margin-top: 1.5%;
+  font-size: 90%;
+  color: #515151;
+  transition: all 1s ease 0s;
 }
 
 
@@ -15852,7 +15899,7 @@ a:focus #registerHeaderButton {
   /* ORIGINAL */
   /* background: rgba(204, 204, 204, 0.25); */
   /* XP */
-  background: rgba(81, 81, 81, 0.05);
+  background: rgba(81, 81, 81, 0.025);
   /* ORIGINAL */
   /* border: solid 8px rgba(0, 0, 0, 0.125); */
   /* XP */
@@ -15891,7 +15938,7 @@ a:focus #registerHeaderButton {
   top: 0;
   width: 50vh;
   height: 50vh;
-  background: rgba(81,81,81, 0.05);
+  background: rgba(81,81,81, 0.025);
   border: solid 32px rgba(81,81,81, 0);
   border-radius: 50%;
   -moz-box-shadow: 0 0 0 10px 8px rgba(81,81,81, 0.025), 0 0 10px 8px transparent;

@@ -5,24 +5,6 @@ import {Config} from '../../config.js';
 import $ from 'jquery';
 import ScrollableAnchor from 'react-scrollable-anchor';
 import { Link  } from 'react-router';
-import AWS from 'aws-sdk/dist/aws-sdk-react-native';
-
-AWS.config.region = 'us-east-1'; // Region
-AWS.config.credentials = new AWS.CognitoIdentityCredentials({
-    IdentityPoolId: 'us-east-1:48435c33-63c3-4825-a3de-0c06e01d2c90',
-});
-
-
-var s3 = new AWS.S3({
-  apiVersion: '2006-03-01',
-  params: {Bucket: 'xprincipiabucket'}
-});
-
-var params = {
-  Bucket: "xprincipiabucket", 
-  Key: "test key"
- };
-
 
 
 
@@ -43,12 +25,15 @@ export default class SolutionForm extends React.Component {
       prose: '',
       linkPath: '',
       private: '',
+      dataString: '',
     }
 
     this.postSolution = this.postSolution.bind(this);
     this.showPDF = this.showPDF.bind(this);
     this.showProse = this.showProse.bind(this);
     this.checkLoginProposal = this.checkLoginProposal.bind(this);
+    this.onChange = this.onChange.bind(this);
+    this.showDataURL = this.showDataURL.bind(this);
   };
 
 
@@ -64,8 +49,8 @@ export default class SolutionForm extends React.Component {
         linkPath: '/project/',
         private: '0',
 			})
-		}
-    // S3 CALL HERE
+    }
+    // Is this needed anymore?
     axios.get( Config.API + '/s3call/key').then(function (response) {
       self.setState({
           key: response.data,
@@ -100,8 +85,8 @@ export default class SolutionForm extends React.Component {
     $(document).ready(function() {
       $('#pdfProposalContainer').attr('id','pdfProposalContainerShow');    
       $('#proseProposalContainerShow').attr('id','proseProposalContainer');  
-      $('#proposalFormButtonLeft').attr('id','proposalFormButtonLeftActive');  
-      $('#proposalFormButtonRightActive').attr('id','proposalFormButtonRight');                          
+      $('#proposalFormButtonRight').attr('id','proposalFormButtonRightActive');   
+      $('#proposalFormButtonLeftActive').attr('id','proposalFormButtonLeft');  
     });
     this.setState({
       prose: '0',
@@ -114,8 +99,8 @@ export default class SolutionForm extends React.Component {
     $(document).ready(function() {
       $('#pdfProposalContainerShow').attr('id','pdfProposalContainer');    
       $('#proseProposalContainer').attr('id','proseProposalContainerShow');
-      $('#proposalFormButtonRight').attr('id','proposalFormButtonRightActive');   
-      $('#proposalFormButtonLeftActive').attr('id','proposalFormButtonLeft');        
+      $('#proposalFormButtonLeft').attr('id','proposalFormButtonLeftActive');  
+      $('#proposalFormButtonRightActive').attr('id','proposalFormButtonRight');       
     });
     this.setState({
       prose: '1',
@@ -140,16 +125,6 @@ export default class SolutionForm extends React.Component {
     self.refs.btn.setAttribute("disabled", "disabled");
 
     // FILE UPLOAD
-
-    var files = document.getElementById('fileProposal').files;
-    console.log('from ID')
-    console.log(document.getElementById('fileProposal'))
-    console.log('files')
-    console.log(files)
-    var file = files[0];
-    console.log('just the file, files[0]')
-    console.log(file)
-    this.state.file = file;
 
     this.state.title = document.getElementById('solutionTitleForm').value
     this.state.summary = document.getElementById('solutionSummaryForm').value
@@ -200,22 +175,8 @@ export default class SolutionForm extends React.Component {
             self.refs.btn.removeAttribute("disabled");
       });
     } else {
-      s3.upload({
-        Key: String(this.state.key),
-        Body: file,
-        ACL: 'public-read'
-      }, function(err, data) {
-        if (err) {
-          // alert('There was an error uploading your photo: ', err.message);
-          console.log(err.message)
-          console.log(err)
-          console.log(file)
-        } else {
-          // alert('Successfully uploaded photo.');
-          console.log(data)
-          console.log(file)
-        }
-      });
+      console.log('start')
+      // $('#pdfUploadLoaderHide').attr('id','pdfUploadLoaderShow');
       axios.post( Config.API + '/auth/solutions/create', {
         username: cookie.load('userName'),
         problemID:this.props.probID,
@@ -226,14 +187,17 @@ export default class SolutionForm extends React.Component {
         private: this.state.private,
         parentTitle: this.props.projectTitle,
         key: String(this.state.key),
+        pdf: this.state.dataString,
       })
       .then(function (result) {
-        // document.location = '/project/' + self.props.probID + '/subprojects'
+        // $('#pdfUploadLoaderShow').attr('id','pdfUploadLoaderHide');
+        console.log('end')
         document.getElementById("proposalSectionHeader").scrollIntoView();
         self.refs.btn.removeAttribute("disabled");
         // document.getElementById("createForm").reset();
       })
       .catch(function (error) {
+        console.log('error')
           $(document).ready(function() {
               $('#notification').attr('id','notificationShow').hide().slideDown();
 
@@ -252,6 +216,56 @@ export default class SolutionForm extends React.Component {
       });
     }
 }
+
+
+onChange() {
+  // GETS FILE
+  var self = this;
+  var files = document.getElementById('fileProposal').files;
+  var file = files[0];
+  this.state.file = file;
+
+
+  // ATTEMPT AT CREATING GLOBAL VARIABLE
+  var dataURL = '1'
+
+  // JUST SETS UP FILEREADER
+  var reader  = new FileReader();
+
+  // EXTRACTS INFO AS BASE64
+  if (file) {
+    reader.readAsDataURL(file);
+  }
+
+  // RETURNS RESULTS AFTER LOAD
+  reader.addEventListener("load", function () {
+    dataURL = reader.result;
+    self.setState({
+        dataString: reader.result.replace("data:application/pdf;base64,", ""),
+    })
+  });
+}
+
+showDataURL() {
+  console.log(this.state.dataString)
+}
+
+
+
+
+
+
+
+
+
+  // alert(this.state.dataURL)
+
+  // FOR REPLACING
+  // var res = str.replace("data:application/pdf;base64,", "");
+
+
+
+// }
 
   render() {
 
@@ -274,11 +288,6 @@ export default class SolutionForm extends React.Component {
     //     }
     // } 
     // document.getElementById ("demo").innerHTML = txt;
-
-
-
-
-
 
 
 
@@ -348,20 +357,32 @@ export default class SolutionForm extends React.Component {
                   description
                 </div>
                 <div id="proposalFormButtonContainer">
-                  <div id="proposalFormButtonLeftActive" onClick={this.showPDF}>
-                      pdf
-                  </div>
-                  <div id="proposalFormButtonRight" onClick={this.showProse}>
+                  <div id="proposalFormButtonLeftActive" onClick={this.showProse}>
                       prose
                   </div>
+                  <div id="proposalFormButtonRight" onClick={this.showPDF}>
+                      pdf
+                  </div>
                 </div>
 
-                <div id="pdfProposalContainerShow">
-                    <input type="file" id="fileProposal" />
+                <div id="pdfProposalContainer">
+                    <input type="file" id="fileProposal" onChange={this.onChange} />
+                    <div id="pdfWarningsContainer">
+                      <div id="pdfLoadWarning">
+                        pdfs may take<span id="blueOpaque"> ~1-2 minutes </span>to upload
+                      </div>
+                      <div id="pdfSizeWarning">
+                        if your pdf is <span id="blueOpaque">above 1mb</span>, <br />
+                        please send your proposal information to:<br />
+                        <span id="green"> info@xprincipia.com</span>
+                      </div>
+                    </div>
                 </div>
+                
+                
+                {/* <div id="solutionSummary" onClick={this.showDataURL}>XXX</div>{this.state.dataURL} */}
 
-
-                <div id="proseProposalContainer">
+                <div id="proseProposalContainerShow">
                     <textarea name="solutionDescription" required="required" placeholder="Please describe your proposal here." id="solutionDescriptionForm">
                     </textarea>
                 </div>

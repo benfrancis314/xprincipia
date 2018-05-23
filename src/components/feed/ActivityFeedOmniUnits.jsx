@@ -150,7 +150,7 @@ if (problem.Private === true) {
     } else if (problem.Type == '1') {
         return (
         <li key={problem.ID} id="feedListUnit">
-            <Link to={'/project/'+problem.ProblemID +'/proposal/'+problem.TypeID}>
+            <Link to={'/project/'+problem.ProblemID +'/proposal/'+problem.SecondaryID}>
                 <div id="omniActivityUnit">
                     proposal
                     <br />
@@ -164,7 +164,7 @@ if (problem.Private === true) {
     } else if (problem.Type == '2') {
         return (
         <li key={problem.ID} id="feedListUnit">
-            <Link to={'/project/'+problem.ProblemID +'/discuss/'+problem.TypeID +'/comments'}>
+            <Link to={'/project/'+problem.ProblemID +'/discuss/'+problem.SecondaryID +'/comments'}>
                 <div id="omniActivityUnit">
                     question in:
                     <br />
@@ -178,7 +178,7 @@ if (problem.Private === true) {
     } else if (problem.Type == '3') {
         return (
         <li key={problem.ID} id="feedListUnit">
-            <Link to={'/project/'+problem.ProblemID +'/discuss/'+problem.TypeID +'/comments'}>
+            <Link to={'/project/'+problem.ProblemID +'/discuss/'+problem.SecondaryID +'/comments'}>
                 <div id="omniActivityUnit">
                     suggestion in:
                     <br />
@@ -203,7 +203,7 @@ if (problem.Private === true) {
     } else if (problem.Type == '6') {
         return (
         <li key={problem.ID} id="feedListUnit">
-            <Link to={'/project/'+problem.ProblemID +'/discuss/'+problem.TypeID +'/comments'}>
+            <Link to={'/project/'+problem.ProblemID +'/discuss/'+problem.SecondaryID +'/comments'}>
                 <div id="omniActivityUnit">
                     debate in:
                     <br />

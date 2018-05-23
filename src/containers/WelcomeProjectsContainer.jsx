@@ -350,18 +350,34 @@ function randomFeatured() {
             featured project
           </div>
           <Link to={'/project/23/subprojects'}>
-            <div id="featuredProjectButton3">
-              {/* imitation human cognition 
-              <br />
-              artificial intelligence */}
-              human based
-              <br />
-              general artificial intelligence
+            <div id="featuredProjectButton1">
+                structure and dynamics
+                <br />of the mind
             </div>
           </Link>
         </div>
       );
-  // } else if (Math.random() < 1){
+  } else {
+    return (
+    
+      <div>
+        <div id="featuredProjectLabel">
+          featured project
+        </div>
+        <Link to={'/project/23/subprojects'}>
+          <div id="featuredProjectButton3">
+            {/* imitation human cognition 
+            <br />
+            artificial intelligence */}
+            human based
+            <br />
+            general artificial intelligence
+          </div>
+        </Link>
+      </div>
+    );
+  }
+    // } else if (Math.random() < 1){
   //     return (
   //       <div>
   //         <div id="featuredProjectLabel">
@@ -374,19 +390,4 @@ function randomFeatured() {
   //         </Link>
   //       </div>
   //     );
-  } else {
-    return (
-      <div>
-        <div id="featuredProjectLabel">
-          featured project
-        </div>
-        <Link to={'/project/23/subprojects'}>
-          <div id="featuredProjectButton1">
-              structure and dynamics
-              <br />of the mind
-          </div>
-        </Link>
-      </div>
-    );
-  }
 }

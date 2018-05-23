@@ -87,7 +87,7 @@ export default class FullSolutionContent extends React.Component {
           .then( function (response){
             if (response.data === true) {
               self.setState({
-                voteID: 'votedProblem',
+                voteID: 'votedSolution',
                 voteNumberID: 'proposalPercentFullGreen',
                 voteTitle: 'voted',
                 voteAction: 'this.unVote',
@@ -95,7 +95,7 @@ export default class FullSolutionContent extends React.Component {
               }) 
             } else {
               self.setState({
-                voteID: 'voteProblem',
+                voteID: 'voteSolution',
                 voteNumberID: 'proposalPercentFull',
                 voteTitle: 'vote',
                 voteAction: 'this.submitVote',
@@ -162,6 +162,7 @@ export default class FullSolutionContent extends React.Component {
             if (response.data === true) {
               self.setState({
                 voteID: 'votedSolution',
+                voteNumberID: 'proposalPercentFullGreen',
                 voteTitle: 'voted',
                 voteAction: 'this.unVote',
                 vote: true,
@@ -169,6 +170,7 @@ export default class FullSolutionContent extends React.Component {
             } else {
               self.setState({
                 voteID: 'voteSolution',
+                voteNumberID: 'proposalPercentFull',
                 voteTitle: 'vote',
                 voteAction: 'this.submitVote',
                 vote: false,
@@ -192,6 +194,44 @@ export default class FullSolutionContent extends React.Component {
   vote() {
     if(this.state.vote === true ) {
       var self = this
+        self.refs.solbtn.setAttribute("disabled", "disabled");
+          axios.delete( Config.API + '/auth/vote/delete' ,{
+            params: {
+              type: 1,
+              typeID: this.state.solutionInfo.ID,
+              username: cookie.load('userName')
+            }
+            })
+            .then(function (result) {
+                self.setState({
+                    vote: false
+
+                })
+                // document.location = window.location.pathname 
+                self.refs.solbtn.removeAttribute("disabled");
+            })
+          .catch(function (error) {
+            // console.log(error.response.data)
+              $(document).ready(function() {
+                  $('#notification').attr('id','notificationShow').hide().slideDown();
+
+                    if (error.response.data == '[object Object]') {
+                      return (
+                        $(document).ready(function() {
+                          $('#notificationLoginRegisterContainer').attr('id','notificationLoginRegisterContainerShow');
+                          $('#notificationContent').html('Please <span id="blue">login </span>to vote');
+                        })
+                      );
+                    }  else if (error.response.data != '') {
+                    $('#notificationContent').text(error.response.data);
+                  }
+              });
+              self.refs.solbtn.removeAttribute("disabled");
+          });
+  }
+  else {
+    
+      var self = this
       self.refs.solbtn.setAttribute("disabled", "disabled");
        axios.post( Config.API + '/auth/vote/create', {
            Type: 1,
@@ -201,44 +241,6 @@ export default class FullSolutionContent extends React.Component {
         })
         .then(function (result) {
             // document.location = window.location.pathname;
-            self.refs.solbtn.removeAttribute("disabled");
-        })
-      .catch(function (error) {
-        // console.log(error.response.data)
-          $(document).ready(function() {
-              $('#notification').attr('id','notificationShow').hide().slideDown();
-
-                if (error.response.data == '[object Object]') {
-                  return (
-                    $(document).ready(function() {
-                      $('#notificationLoginRegisterContainer').attr('id','notificationLoginRegisterContainerShow');
-                      $('#notificationContent').html('Please <span id="blue">login </span>to vote');
-                    })
-                  );
-                }  else if (error.response.data != '') {
-                $('#notificationContent').text(error.response.data);
-              }
-          });
-          self.refs.solbtn.removeAttribute("disabled");
-      });
-
-  }
-  else {
-    var self = this
-    self.refs.solbtn.setAttribute("disabled", "disabled");
-      axios.delete( Config.API + '/auth/vote/delete' ,{
-        params: {
-          type: 1,
-          typeID: this.state.solutionInfo.ID,
-          username: cookie.load('userName')
-        }
-        })
-        .then(function (result) {
-            self.setState({
-                vote: false
-
-            })
-            // document.location = window.location.pathname 
             self.refs.solbtn.removeAttribute("disabled");
         })
       .catch(function (error) {

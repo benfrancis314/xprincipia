@@ -13,7 +13,7 @@ export default class DiscussUnit extends React.Component {
         this.state = {
             voteHash : {},
             responseNumber : [],
-            // linkPath: '',
+            linkPath: '',
             proposalPath: '',
             commentPath: '',
         }
@@ -24,6 +24,15 @@ export default class DiscussUnit extends React.Component {
 
     componentWillReceiveProps (nextProps) {
         var self = this
+        if (window.location.pathname.includes('private')) {
+            self.setState({
+                linkPath: '/project/private/',
+            })
+        } else {
+            self.setState({
+                linkPath: '/project/',
+            })
+        }
         nextProps.questions.forEach( 
             function (question){
                 axios.get( Config.API + "/vote/isVotedOn?type=5&typeID=" + question.ID + "&username=" + cookie.load("userName"))
@@ -173,17 +182,17 @@ export default class DiscussUnit extends React.Component {
                             <div id="discussPercent">{question.Rank}</div>
                         </Link>
                     </div>
-                    <Link to={this.props.linkPath+question.TypeID+proposalPath+'discuss'+commentPath + '/edit'} activeClassName="activeDiscussEdit">
+                    <Link to={this.state.linkPath+question.TypeID+proposalPath+'discuss'+commentPath + '/edit'} activeClassName="activeDiscussEdit">
                         <div id={editID} onMouseOver={hoverEditVoted} onMouseOut={unHoverEditVoted.bind(this)}>
                             <img src={require('../../assets/editBlue.svg')} id="editLogo" width="18" height="18" alt="Edit Button" />
                         </div>
                     </Link>
-                    <Link to={this.props.linkPath+question.TypeID+proposalPath+'discuss'+commentPath + '/delete'} activeClassName="activeDiscussDelete">
+                    <Link to={this.state.linkPath+question.TypeID+proposalPath+'discuss'+commentPath + '/delete'} activeClassName="activeDiscussDelete">
                         <div id={deleteID} onMouseOver={hoverDeleteVoted} onMouseOut={unHoverDeleteVoted.bind(this)}>
                             <img src={require('../../assets/delete.svg')} id="editLogo" width="18" height="18" alt="Delete Button" />
                         </div>
                     </Link>
-                    <Link to={this.props.linkPath+question.TypeID+proposalPath+'discuss'+commentPath + '/flag'} activeClassName="activeDiscussFlag">
+                    <Link to={this.state.linkPath+question.TypeID+proposalPath+'discuss'+commentPath + '/flag'} activeClassName="activeDiscussFlag">
                         <div id={flagID} onMouseOver={hoverFlag} onMouseOut={unHoverFlag.bind(this)}>
                             <img src={require('../../assets/flag.svg')} id="deleteLogo" width="24" height="24" alt="Delete Button, Red X" />
                         </div>
@@ -194,7 +203,7 @@ export default class DiscussUnit extends React.Component {
                     <div id={"discussHeader"+commentType}>
                         {commentType} <span id="gray">by {question.Username}</span>
                     </div>
-                    <Link to={this.props.linkPath+question.TypeID+proposalPath+'discuss/'+question.ID+'/comments'}>
+                    <Link to={this.state.linkPath+question.TypeID+proposalPath+'discuss/'+question.ID+'/comments'}>
                         <div id="suggestionText" onMouseOver={hoverThreadVoted} onMouseOut={unHoverThreadVoted.bind(this)}>
                             {question.Description}
                         </div>
@@ -214,17 +223,17 @@ export default class DiscussUnit extends React.Component {
                             <div id="discussPercent">{question.Rank}</div>
                         </Link>
                     </div>
-                    <Link to={this.props.linkPath+question.TypeID+proposalPath+'discuss'+commentPath + '/edit'} activeClassName="activeDiscussEdit">
+                    <Link to={this.state.linkPath+question.TypeID+proposalPath+'discuss'+commentPath + '/edit'} activeClassName="activeDiscussEdit">
                         <div id={editID} onMouseOver={hoverEdit} onMouseOut={unHoverEdit.bind(this)}>
                             <img src={require('../../assets/editBlue.svg')} id="editLogo" width="18" height="18" alt="Edit Button" />
                         </div>
                     </Link>
-                    <Link to={this.props.linkPath+question.TypeID+proposalPath+'discuss'+commentPath + '/delete'} activeClassName="activeDiscussDelete">
+                    <Link to={this.state.linkPath+question.TypeID+proposalPath+'discuss'+commentPath + '/delete'} activeClassName="activeDiscussDelete">
                         <div id={deleteID} onMouseOver={hoverDelete} onMouseOut={unHoverDelete.bind(this)}>
                             <img src={require('../../assets/delete.svg')} id="editLogo" width="18" height="18" alt="Delete Button" />
                         </div>
                     </Link>
-                    <Link to={this.props.linkPath+question.TypeID+proposalPath+'discuss'+commentPath + '/flag'}  activeClassName="activeDiscussFlag">
+                    <Link to={this.state.linkPath+question.TypeID+proposalPath+'discuss'+commentPath + '/flag'}  activeClassName="activeDiscussFlag">
                         <div id={flagID} onMouseOver={hoverFlag} onMouseOut={unHoverFlag.bind(this)}>
                             <img src={require('../../assets/flag.svg')} id="deleteLogo" width="24" height="24" alt="Delete Button, Red X" />
                         </div>
@@ -235,8 +244,8 @@ export default class DiscussUnit extends React.Component {
                     <div id={"discussHeader"+commentType}>
                         {commentType} <span id="gray">by {question.Username}</span>
                     </div>
-                    {/* <Link to={this.props.linkPath+question.TypeID+`/discuss/${question.ID}/comments`}> */}
-                    <Link to={this.props.linkPath+question.TypeID+proposalPath+'discuss/'+question.ID+'/comments'}>
+                    {/* <Link to={this.state.linkPath+question.TypeID+`/discuss/${question.ID}/comments`}> */}
+                    <Link to={this.state.linkPath+question.TypeID+proposalPath+'discuss/'+question.ID+'/comments'}>
                         <div id="suggestionText" onMouseOver={hoverThread} onMouseOut={unHoverThread.bind(this)}>
                             {question.Description}
                         </div>

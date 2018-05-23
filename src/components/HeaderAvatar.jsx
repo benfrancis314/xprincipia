@@ -202,7 +202,7 @@ componentDidMount(){
                 {/* <div id="headerOptionsContainerNotifications"> */}
                 <HeaderSphere />
                 <div id="headerSphereInfo2">
-                    {this.props.notification}
+                    <span id="red">{this.props.notification}</span>
                 </div>
                 <div id="exitHeaderMenuMobile"
                  onClick={this.hideMenu}
@@ -246,6 +246,9 @@ componentDidMount(){
              
             >
                 <HeaderSphere />
+                <div id="headerSphereInfo2">
+                    <span id="red">{this.state.messageNotifications}</span>
+                </div>
                 <div id="exitHeaderMenuMobile"
                  onClick={this.hideMenu}
                 >

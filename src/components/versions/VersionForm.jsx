@@ -16,6 +16,7 @@ export default class VersionForm extends React.Component {
       description: '',
       references: '',
       solutionInfo: '',
+      dataString: '',
     }
 
     this.postSolutionVersion = this.postSolutionVersion.bind(this);
@@ -83,43 +84,129 @@ export default class VersionForm extends React.Component {
 
   postSolutionVersion() {
     //Read field items into component state
-    this.state.title = document.getElementById('versionTitleForm').value
-    this.state.summary = document.getElementById('versionSummaryForm').value
-    this.state.description = document.getElementById('versionDescriptionForm').value
-    this.state.changes = document.getElementById('versionChangesForm').value
+    var self = this
+    self.refs.btn.setAttribute("disabled", "disabled");
 
-  axios.post( Config.API + '/auth/solutions/versions/create', {
-      username: cookie.load('userName'),
-      problemID:this.props.params.probID,
-      title : this.state.title,
-      summary : this.state.summary,
-      description : this.state.description,
-      references: this.state.references,
-      evidence: this.state.changes,
-      originalproposalID: this.props.params.solutionID,
-    })
-    .then(function (result) {
-      // document.location = window.location.pathname 
-      // alert('success version create')
-    })
+    // FILE UPLOAD
+
+    this.state.title = document.getElementById('solutionTitleForm').value
+    this.state.summary = document.getElementById('solutionSummaryForm').value
+    this.state.description = document.getElementById('solutionDescriptionForm').value
+
+    if (document.getElementById('proposalClass2').checked) {
+      this.state.class = '2' 
+    } else if (document.getElementById('proposalClass1').checked) {
+      this.state.class = '1' 
+    } else {
+      this.state.class = '0' 
+    }
+
+    if (this.state.prose == '1') {
+    axios.post( Config.API + '/auth/solutions/create', {
+        username: cookie.load('userName'),
+        problemID:this.props.probID,
+        title : this.state.title,
+        summary : this.state.summary,
+        description : this.state.description,
+        class : this.state.class,
+        private: this.state.private,
+        parentTitle: this.props.projectTitle,
+        key: '',
+      })
+      .then(function (result) {
+        // document.location = '/project/' + self.props.probID + '/subprojects'
+        document.getElementById("proposalSectionHeader").scrollIntoView();
+        self.refs.btn.removeAttribute("disabled");
+        // document.getElementById("createForm").reset();
+      })
       .catch(function (error) {
-        // console.log(error.response.data)
+        // alert('error')
           $(document).ready(function() {
               $('#notification').attr('id','notificationShow').hide().slideDown();
-              if (error.response.data != '') {
-                $('#notificationContent').text(error.response.data);
+
+                if (error.response.data == '[object Object]') {
+                  return (
+                    $(document).ready(function() {
+                      $('#notificationLoginRegisterContainer').attr('id','notificationLoginRegisterContainerShow');
+                      $('#notificationContent').html('Please <span id="blue">login </span>to create a project');
+                    })
+                  );
+                }  else if (error.response.data != '') {
+              $('#notificationContent').text(error.response.data);
               }
-              else if (error.response.data == '[object Object]') {
-                return (
-                  $(document).ready(function() {
-                    $('#notificationLoginRegisterContainer').attr('id','notificationLoginRegisterContainerShow');
-                    $('#notificationContent').html('Please <span id="blue">login </span>to contribute');
-                  })
-                );
-              } 
           });
+            self.refs.btn.removeAttribute("disabled");
       });
+    } else {
+      console.log('start')
+      // $('#pdfUploadLoaderHide').attr('id','pdfUploadLoaderShow');
+      axios.post( Config.API + '/auth/solutions/create', {
+        username: cookie.load('userName'),
+        problemID:this.props.probID,
+        title : this.state.title,
+        summary : this.state.summary,
+        description : this.state.description,
+        class : this.state.class,
+        private: this.state.private,
+        // parentTitle: this.props.projectTitle,
+        key: String(this.state.key),
+        pdf: this.state.dataString,
+        originalproposalID: this.props.params.solutionID,
+      })
+      .then(function (result) {
+        // $('#pdfUploadLoaderShow').attr('id','pdfUploadLoaderHide');
+        console.log('end')
+        document.getElementById("proposalSectionHeader").scrollIntoView();
+        self.refs.btn.removeAttribute("disabled");
+        // document.getElementById("createForm").reset();
+      })
+      .catch(function (error) {
+        console.log('error')
+          $(document).ready(function() {
+              $('#notification').attr('id','notificationShow').hide().slideDown();
+
+                if (error.response.data == '[object Object]') {
+                  return (
+                    $(document).ready(function() {
+                      $('#notificationLoginRegisterContainer').attr('id','notificationLoginRegisterContainerShow');
+                      $('#notificationContent').html('Please <span id="blue">login </span>to create a project');
+                    })
+                  );
+                }  else if (error.response.data != '') {
+              $('#notificationContent').text(error.response.data);
+              }
+          });
+    self.refs.btn.removeAttribute("disabled");
+      });
+    }
+  }
+
+  onChange() {
+    // GETS FILE
+    var self = this;
+    var files = document.getElementById('fileVersion').files;
+    var file = files[0];
+    this.state.file = file;
   
+  
+    // ATTEMPT AT CREATING GLOBAL VARIABLE
+    var dataURL = '1'
+  
+    // JUST SETS UP FILEREADER
+    var reader  = new FileReader();
+  
+    // EXTRACTS INFO AS BASE64
+    if (file) {
+      reader.readAsDataURL(file);
+    }
+  
+    // RETURNS RESULTS AFTER LOAD
+    reader.addEventListener("load", function () {
+      dataURL = reader.result;
+      self.setState({
+          dataString: reader.result.replace("data:application/pdf;base64,", ""),
+      })
+    });
   }
 
   render() {
@@ -192,17 +279,26 @@ export default class VersionForm extends React.Component {
                   description
                 </div>
                 <div id="proposalFormButtonContainer">
-                  <div id="proposalFormButtonLeftActiveVersion" onClick={this.showPDFVersion}>
-                      pdf
-                  </div>
-                  <div id="proposalFormButtonRightVersion" onClick={this.showProseVersion}>
+                  <div id="proposalFormButtonLeftActive" onClick={this.showProse}>
                       prose
+                  </div>
+                  <div id="proposalFormButtonRight" onClick={this.showPDF}>
+                      pdf
                   </div>
                 </div>
 
-                <div id="pdfProposalContainerShowVersion">
-                    <input type="file" id="fileProposal" 
-                    />
+                <div id="pdfProposalContainer">
+                    <input type="file" id="fileVersion" onChange={this.onChange} />
+                    <div id="pdfWarningsContainer">
+                      <div id="pdfLoadWarning">
+                        pdfs may take<span id="blueOpaque"> ~1-2 minutes </span>to upload
+                      </div>
+                      <div id="pdfSizeWarning">
+                        if your pdf is <span id="blueOpaque">above 1mb</span>, <br />
+                        please send your proposal information to:<br />
+                        <span id="green"> info@xprincipia.com</span>
+                      </div>
+                    </div>
                 </div>
 
               {/* <div onClick={this.testFileInput}>testHTML</div> */}

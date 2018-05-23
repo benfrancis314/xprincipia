@@ -164,9 +164,21 @@ export default class FullProblem extends React.Component {
     })
     axios.get( Config.API + "/vote/isVotedOn?type=0&typeID=" + nextProps.params.probID + "&username=" + cookie.load("userName"))
           .then( function (response){
-            self.setState({
-              vote: response.data
-            })
+            if (response.data === true) {
+              self.setState({
+                voteID: 'votedProblem',
+                voteTitle: 'voted',
+                voteAction: 'this.unVote',
+                vote: true,
+              }) 
+            } else {
+              self.setState({
+                voteID: 'voteProblem',
+                voteTitle: 'vote',
+                voteAction: 'this.submitVote',
+                vote: false,
+              }) 
+            }
       })         
   }
   checkLoginVote() {
@@ -183,6 +195,48 @@ export default class FullProblem extends React.Component {
 
   vote() {
     if(this.state.vote === true ) {
+      var self = this;
+      // I believe something about the double click disable broke,
+      // look at old versions to find the fix
+      self.refs.probbtn.setAttribute("disabled", "disabled");
+      axios.delete( Config.API + '/auth/vote/delete' ,{
+        params: {
+          type: 0,
+          typeID: this.props.params.probID,
+          username: cookie.load('userName')
+        }})
+        .then(function (result) {
+            return axios.get( Config.API + '/problems/ID?id='+self.props.params.probID).then(function (response) {
+            self.setState({
+                problemInfo: response.data,
+            })
+            // document.location = window.location.pathname 
+            // Below is for double click problem, if needed
+            self.refs.probbtn.removeAttribute("disabled");
+        })
+        })
+      .catch(function (error) {
+          $(document).ready(function() {
+            // MOVED NOTIFICATION SHOW INTO ONLY FOR IF NOT LOGGED IN,
+            // BECAUSE ERROR OCCURS TOO OFTEN
+                if (error.response.data == '[object Object]') {
+                  return (
+                    $(document).ready(function() {
+                      $('#notification').attr('id','notificationShow').hide().slideDown();
+                      $('#notificationLoginRegisterContainer').attr('id','notificationLoginRegisterContainerShow');
+                      $('#notificationFeedbackShow').attr('id','notificationFeedback');
+                      $('#notificationContent').html('Please <span id="blue">login </span>to vote');
+                    })
+                  );
+                }  else if (error.response.data != '') {
+                // $('#notificationContent').text(error.response.data);
+              }
+          });
+          self.refs.probbtn.removeAttribute("disabled");
+      });
+
+    } else {
+
           var self = this
           self.refs.probbtn.setAttribute("disabled", "disabled");
           axios.post( Config.API + '/auth/vote/create', {
@@ -216,47 +270,7 @@ export default class FullProblem extends React.Component {
               self.refs.probbtn.removeAttribute("disabled");
           });
 
-    } else {
-          var self = this;
-          // I believe something about the double click disable broke,
-          // look at old versions to find the fix
-          self.refs.probbtn.setAttribute("disabled", "disabled");
-          axios.delete( Config.API + '/auth/vote/delete' ,{
-            params: {
-              type: 0,
-              typeID: this.props.params.probID,
-              username: cookie.load('userName')
-            }})
-            .then(function (result) {
-                return axios.get( Config.API + '/problems/ID?id='+self.props.params.probID).then(function (response) {
-                self.setState({
-                    problemInfo: response.data,
-                })
-                // document.location = window.location.pathname 
-                // Below is for double click problem, if needed
-                self.refs.probbtn.removeAttribute("disabled");
-            })
-            })
-          .catch(function (error) {
-              $(document).ready(function() {
-                // MOVED NOTIFICATION SHOW INTO ONLY FOR IF NOT LOGGED IN,
-                // BECAUSE ERROR OCCURS TOO OFTEN
-                    if (error.response.data == '[object Object]') {
-                      return (
-                        $(document).ready(function() {
-                          $('#notification').attr('id','notificationShow').hide().slideDown();
-                          $('#notificationLoginRegisterContainer').attr('id','notificationLoginRegisterContainerShow');
-                          $('#notificationFeedbackShow').attr('id','notificationFeedback');
-                          $('#notificationContent').html('Please <span id="blue">login </span>to vote');
-                        })
-                      );
-                    }  else if (error.response.data != '') {
-                    // $('#notificationContent').text(error.response.data);
-                  }
-              });
-              self.refs.probbtn.removeAttribute("disabled");
-          });
-    }
+        }
   }
 
   voteUp() {

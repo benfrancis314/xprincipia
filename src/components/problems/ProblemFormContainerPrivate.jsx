@@ -20,7 +20,7 @@ export default class ProblemFormContainer extends React.Component {
             <Link to={`/project/private/${this.props.params.probID}/subprojects`}>
                 <img src={require('../../assets/redX.svg')} id="closeRedX" width="30" height="30" alt="Close button, red X symbol" />
             </Link>
-            <div id="projectFormButtonContainer">
+            {/* <div id="projectFormButtonContainer">
                 <Link to={`/project/private/${this.props.params.probID}/create`} activeClassName="activeProjectFormButtonLeft">
                     <div id="projectFormButtonLeft">
                         new
@@ -31,7 +31,7 @@ export default class ProblemFormContainer extends React.Component {
                         link
                     </div>
                 </Link>
-            </div>
+            </div> */}
             {React.cloneElement(this.props.children, {probID: this.props.probID, parentTitle: this.props.parentTitle,  breakdownID:this.props.breakdownID})}
         </div>
 

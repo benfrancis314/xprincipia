@@ -32,7 +32,7 @@ export default class FullSolutionDescription extends React.Component {
   }
    render() {
       
-      if (this.state.solutionInfo.Key === 0) {
+      if (this.state.solutionInfo.PDF == '') {
           return (
             <div> 
                 <br />
@@ -53,7 +53,7 @@ export default class FullSolutionDescription extends React.Component {
       return (
         <div> 
             <br />
-            <SolutionPDF keyNumber={String(this.state.solutionInfo.Key)} />
+            <SolutionPDF solutionInfo={this.state.solutionInfo} />
             <br />
             <br />
             <br />
