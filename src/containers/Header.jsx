@@ -190,9 +190,9 @@ if (this.state.userToken === undefined ){
               </div>
               <div id="headerRight">
                 <HeaderSphere />
-                {/* <div id="headerSphereInfo1">
+                <div id="headerSphereInfo1">
                     login | join
-                </div> */}
+                </div>
                 <div id="exitHeaderMenuMobileLogout" onClick={this.hideMenu}></div>
                 {/* <div id="headerSphereInfo2">
                     join |
