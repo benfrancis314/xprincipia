@@ -349,7 +349,7 @@ function randomFeatured() {
           <div id="featuredProjectLabel">
             featured project
           </div>
-          <Link to={'/project/23/subprojects'}>
+          <Link to={'/project/13/subprojects'}>
             <div id="featuredProjectButton1">
                 structure and dynamics
                 <br />of the human mind
@@ -369,9 +369,9 @@ function randomFeatured() {
             {/* imitation human cognition 
             <br />
             artificial intelligence */}
-            human based
-            <br />
-            general artificial intelligence
+            {/* human based
+            <br /> */}
+            artificial general intelligence
           </div>
         </Link>
       </div>

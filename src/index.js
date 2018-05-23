@@ -91,6 +91,7 @@ import ProfileMessagesCenter from './components/profile/ProfileMessagesCenter.js
 import ProfileMessagesForm from './components/profile/ProfileMessagesForm.jsx';
 import ProfileMessagesUnit from './components/profile/ProfileMessagesUnit.jsx';
 import ProfileNotifications from './components/profile/ProfileNotifications.jsx';
+import ProfilePassions from './components/profile/ProfilePassions.jsx';
 import ProfilePoints from './components/profile/ProfilePoints.jsx';
 import ProfileProblemsSolutions from './components/profile/ProfileProblemsSolutions.jsx';
 import ProfileResume from './components/profile/ProfileResume.jsx';
@@ -287,7 +288,7 @@ ReactDOM.render(
       <Route path='/profile/container' component={ProfileContainer}>
         <IndexRoute component={ProfileProblemsSolutions}></IndexRoute>
         <Route path='/profile' component={ProfileProblemsSolutions}></Route>
-        <Route path='/profile/passions' component={UserPassions}></Route>
+        <Route path='/profile/passions' component={ProfilePassions}></Route>
         <Route path='/profile/resume' component={ProfileResume}></Route>
         <Route path='/profile/feedback' component={FeedbackForm}></Route>
         <Route path='/profile/prestige' component={ProfilePoints}></Route>

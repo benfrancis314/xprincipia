@@ -35,10 +35,10 @@ export default class SolutionPDF extends React.Component {
               {/* NO PDF */}
           </div>
         )
-    } else if (this.props.solutionInfo.ID === '1') {
+    } else if (this.props.solutionInfo.ID == '1') {
         return (
           <div> 
-              <object id="benPaperContainer" data={require('../../assets/TheMentalWorldXPrincipiaVersion.pdf')}></object>
+              <object id="proposalPDF" data={require('../../assets/TheMentalWorldXPrincipiaVersion.pdf')}></object>
           </div>
         )
     } else {

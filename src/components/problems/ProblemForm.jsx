@@ -23,6 +23,7 @@ export default class ProblemForm extends React.Component {
       proposalCheck: '',
       proposalBoxID: '',
       proposalPath: '',
+      private: '',
     }
 
     this.postProblem = this.postProblem.bind(this);
@@ -45,11 +46,13 @@ export default class ProblemForm extends React.Component {
         self.setState({
             linkPath: '/project/private/',
             privateCall: '/private',
+            private: '1',
         })
     } else {
         self.setState({
             linkPath: '/project/',
             privateCall: '',
+            private: '0',
         })
     }
     if (window.location.pathname.includes('proposal')) {
@@ -77,11 +80,13 @@ export default class ProblemForm extends React.Component {
         self.setState({
             linkPath: '/project/private/',
             privateCall: '/private',
+            private: '1',
         })
     } else {
         self.setState({
             linkPath: '/project/',
             privateCall: '',
+            private: '0',
         })
     }
     if (window.location.pathname.includes('proposal')) {
@@ -136,6 +141,7 @@ export default class ProblemForm extends React.Component {
       ggParentID : String(this.props.ggParentID),
       class : String(this.state.class),
       breakdownID: String(this.state.breakdownID),
+      private: this.state.private,
     })
     .then(function (result) {
       self.refs.btn.removeAttribute("disabled");

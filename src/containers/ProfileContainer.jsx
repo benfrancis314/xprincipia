@@ -246,7 +246,7 @@ export default class ProfileContainer extends React.Component {
                     </div>
                 </div>
                 <div id="profileRight">
-                    {React.cloneElement(this.props.children, {probID: this.state.probID})}
+                    {React.cloneElement(this.props.children, {user: this.state.user, probID: this.state.probID})}
                 </div>
             </div>
             </ReactCSSTransitionGroup>
@@ -322,7 +322,7 @@ export default class ProfileContainer extends React.Component {
                 </div>
                 <div id="profileRight">
                     {/* x{this.state.notifications.length}x */}
-                    {React.cloneElement(this.props.children, {probID: this.state.probID, resetNotifications: this.resetNotificationsProfile, notifications: this.state.notifications})}
+                    {React.cloneElement(this.props.children, {user: this.state.user, probID: this.state.probID, resetNotifications: this.resetNotificationsProfile, notifications: this.state.notifications})}
                 </div>
             </div>
             {/* </ReactCSSTransitionGroup> */}

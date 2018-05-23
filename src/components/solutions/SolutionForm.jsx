@@ -21,7 +21,6 @@ export default class SolutionForm extends React.Component {
       class: '',
       parentTitle: '',
       file: '',
-      key: '',
       prose: '',
       linkPath: '',
       private: '',
@@ -50,13 +49,6 @@ export default class SolutionForm extends React.Component {
         private: '0',
 			})
     }
-    // Is this needed anymore?
-    axios.get( Config.API + '/s3call/key').then(function (response) {
-      self.setState({
-          key: response.data,
-          prose: '0',
-      })
-  }) 
   }
 
   componentWillReceiveProps(nextState, nextProps){
@@ -73,12 +65,6 @@ export default class SolutionForm extends React.Component {
 			})
 		}
     // S3 CALL HERE      
-    axios.get( Config.API + '/s3call/key').then(function (response) {
-      self.setState({
-        key: response.data,
-        prose: '0',
-      })
-    })
   }
 
   showPDF() {
@@ -148,7 +134,6 @@ export default class SolutionForm extends React.Component {
         class : this.state.class,
         private: this.state.private,
         parentTitle: this.props.projectTitle,
-        key: '',
       })
       .then(function (result) {
         // document.location = '/project/' + self.props.probID + '/subprojects'
@@ -186,7 +171,6 @@ export default class SolutionForm extends React.Component {
         class : this.state.class,
         private: this.state.private,
         parentTitle: this.props.projectTitle,
-        key: String(this.state.key),
         pdf: this.state.dataString,
       })
       .then(function (result) {

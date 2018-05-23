@@ -136,7 +136,7 @@ if (problem.Private === true) {
     } else if (problem.Type == '0') {
         return (
         <li key={problem.ID} id="feedListUnit">
-            <Link to={'/project/'+problem.ProblemID +'/subprojects'}>
+            <Link to={'/project/'+problem.TypeID +'/subprojects'}>
                 <div id="omniActivityUnit">
                     project
                     <br />
@@ -150,7 +150,7 @@ if (problem.Private === true) {
     } else if (problem.Type == '1') {
         return (
         <li key={problem.ID} id="feedListUnit">
-            <Link to={'/project/'+problem.ProblemID +'/proposal/'+problem.SecondaryID}>
+            <Link to={'/project/'+problem.ProblemID +'/proposal/'+problem.TypeID}>
                 <div id="omniActivityUnit">
                     proposal
                     <br />

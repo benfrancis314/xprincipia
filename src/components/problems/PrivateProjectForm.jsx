@@ -72,7 +72,7 @@ export default class ProblemForm extends React.Component {
       this.state.class = '0' 
     }
   
-    axios.post( Config.API + '/auth/problems/create/private', {
+    axios.post( Config.API + '/auth/problems/create', {
       username: cookie.load('userName'),
       title : this.state.title,
       summary : this.state.summary,

@@ -30,7 +30,7 @@ componentDidMount(){
 componentWillReceiveProps(nextProps) {
     // nextProps.resetNotifications()
     var self = this;
-    return axios.get( Config.API + '/notifications/new?username='+cookie.load("userName")).then(function (response) {
+    axios.get( Config.API + '/notifications/new?username='+cookie.load("userName")).then(function (response) {
         
     self.setState({
         // notifications: response.data

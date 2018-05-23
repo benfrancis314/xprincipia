@@ -53,25 +53,12 @@ export default class SolutionForm extends React.Component {
 
   componentDidMount(){
     var self = this;
-    // S3 CALL HERE
-    axios.get( Config.API + '/s3call/key').then(function (response) {
-      self.setState({
-          key: response.data,
-          file: document.getElementById("fileProposal").value,
-          prose: '0',
-      })
-  }) 
+    // S3 CALL HERE 
   }
 
   componentWillReceiveProps(nextState, nextProps){
     var self = this;
     // S3 CALL HERE      
-    axios.get( Config.API + '/s3call/key').then(function (response) {
-      self.setState({
-        key: response.data,
-        file: document.getElementById("fileProposal").value,
-      })
-    })
   }
 
   // testFileInput() {

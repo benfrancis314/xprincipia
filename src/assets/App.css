@@ -2915,7 +2915,7 @@ cursor: pointer;
 #submitLogin, #submitRegister {
   margin-top: 1.5%;
   width: 15%;
-  background: radial-gradient(circle, rgba(0,220,255,0), rgba(0,220,255,0.05));
+  background: radial-gradient(circle,rgba(0,220,255, 0), rgba(0,220,255, 0.025), rgba(0,220,255, 0.1));
 }
 #submitLogin:hover, #submitRegister:hover,
 #submitLogin:focus, #submitLogin:active, 
@@ -2949,11 +2949,11 @@ cursor: pointer;
   /* border-color: rgba(0,255, 220, 1); */
 }
 #submitRegisterIntroduction {
-  color: #00ffdc;
+  color: #00dcff;
   background-color: rgba(0,220, 255, 0);
-  font-size: 80%;
-  border: 1px solid #00ffdc;
-  border-radius: 3px;
+  font-size: 70%;
+  border: 1px solid rgba(0,220,255,0.5);
+  border-radius: 3px 3px 10% 10%;
   width: 14%;
   padding: 3px;
   margin: 0 auto;
@@ -2964,46 +2964,45 @@ cursor: pointer;
   transition: all 0.5s ease 0s;
   margin-top: 2%;
   width: 20%;
-  background-color: rgba(0,255,220,0.05);
+  background-color: rgba(0,220,255,0.05);
 
-  background: radial-gradient(circle,rgba(0,255,220, 0), rgba(0,255,220, 0.025), rgba(0,255,220, 0.05));
-  background-color: rgba(0,255,220,0.025);
+  background: radial-gradient(circle,rgba(0,220,255, 0), rgba(0,220,255, 0.025), rgba(0,220,255, 0.1));
+  background-color: rgba(0,220,255,0.025);
   transform: scale(1);
 }
 #submitRegisterIntroduction:hover, #submitRegisterIntroduction:active, #submitRegisterIntroduction:focus {
   color: #0f131c !important;
-  background-color: rgba(0,255,220, 1) !important;
+  background-color: rgba(0,220,255, 1) !important;
   cursor: pointer;
 }
 #registerButtonIntroduction {
-  color: #00dcff;
+  color: #00ffdc;
   background-color: rgba(0,220,255, 0);
-  font-size: 80%;
-  border: 1px solid #00dcff;
+  border: 1px solid #515151;
   border-width: 0px 1px 1px 1px;
-  border-radius: 3px;
+  border-radius: 3px 3px 10% 10%;
   width: 14%;
-  padding: 3px;
+  padding: 2px;
   margin: 0 auto;
   text-align: center;
   font-family: 'Alegreya Sans SC', sans-serif;
   letter-spacing: 2px;
   margin-top: 3%;
   transition: all 0.5s ease 0s;
-  background-color: rgba(0,220,255,0.05);
+  background-color: rgba(0,255,220,0.05);
   width: 15%;
-  font-size: 70%;
+  font-size: 60%;
   margin-top: 0%;
 
   /*background: linear-gradient(to right,rgba(0,220,255, 0), rgba(0,220,255, 0.05), rgba(0,220,255, 0));*/
-  background: radial-gradient(circle,rgba(0,220,255, 0), rgba(0,220,255, 0.025), rgba(0,220,255, 0.05));
+  background: radial-gradient(circle,rgba(0,255,220, 0), rgba(0,255,220, 0.025), rgba(0,255,220, 0.05));
   /*transition: all 0.75s ease 0s;*/
-  background-color: rgba(0,220,255,0.025);
+  background-color: rgba(0,255,220,0.025);
   transform: scale(1);
 }
 #registerButtonIntroduction:hover, #registerButtonIntroduction:active, #registerButtonIntroduction:focus {
   color: #0f131c !important;
-  background-color: rgba(0,220,255, 1) !important;
+  background-color: rgba(0,255,220, 1) !important;
   cursor: pointer;
 }
 #introRegisterFullName, #introRegisterUserName, #introRegisterEmail, #introRegisterPassword,
@@ -3131,7 +3130,6 @@ cursor: pointer;
   color: #00ffdc;
   text-align: center;
   border: 1px solid rgba(0,255,220,0.5);
-  border-radius: 3px;
   padding: 3px 8px 3px 8px;
   margin: 0 auto;
   margin: 6px 5px 0% 5px;
@@ -3142,20 +3140,13 @@ cursor: pointer;
   background-color: #0f131c;
 
 
-  /* padding: 7px 4px 3px 4px; */
-  /* width: 100%; */
   transition: all 0.5s ease 0s;
   background-color: rgba(0,220,255,0.05);
-  /* border: 1px solid #515151; */
-  border-radius: 3px;
+  border-radius: 3px 3px 20% 3px;
   margin-bottom: 0px;
   transform: scale(1);
 
-  
-
-  text-align: center;
   flex: 1 1 auto;
-  background: radial-gradient(circle, rgba(255,255,255,0), rgba(255,255,255,0.15));
 
 
 
@@ -3380,7 +3371,7 @@ width: 60%;
 text-align: center;
 color: #ffffff;
 border: 1px solid #dddddd;
-border-radius: 3px;
+border-radius: 3px 3px 10% 10%;
 padding: 3px;
 margin-top: 4%;
 margin-bottom: 2%;
@@ -3506,7 +3497,7 @@ background: radial-gradient(circle,rgba(0,220,255, 0.025), rgba(0,220,255, 0.05)
 }
 #introductionSectionProse {
   text-align: justify;
-  opacity: 0.25;
+  opacity: 0.75;
   color: #515151;
   transition: all 1s ease 0s;
   font-family: 'Open Sans';
@@ -3521,7 +3512,7 @@ background: radial-gradient(circle,rgba(0,220,255, 0.025), rgba(0,220,255, 0.05)
   opacity: 1;
   transition: all 1s ease 0s;
   margin-top: 0%;
-  opacity: 0.25;
+  opacity: 0.75;
   color: #515151;
 }
 #introductionSectionHeaderBlue {
@@ -3563,7 +3554,7 @@ background: radial-gradient(circle,rgba(0,220,255, 0.025), rgba(0,220,255, 0.05)
   color: #00dcff;
   transition: all 1s ease 0s;
   transform: scale(1.02);
-  opacity: 0.25;
+  opacity: 0.75;
   color: #515151;
 }
 
@@ -12346,7 +12337,7 @@ margin-top: 1%;
   background: linear-gradient(rgba(0,220,255,0), rgba(0,220,255,0.05));
 }
 #featuredProjectLabel {
-  color: #00dcff;
+  color: rgba(0,220,255,1);
   letter-spacing: 4px;
   /* border: 1px solid rgba(0,220,255,0.25);
   border-width: 0px 0px 0px 0px;
@@ -12400,17 +12391,17 @@ margin-top: 1%;
 #featuredProjectButton3 {
   background-image: url('./aiTom1.jpg'); 
   background-size: 100%;
-  background-position: 100% 45%;
+  background-position: 100% 65%;
   font-size: 90%;
-  padding-top: 12px;
-  padding-bottom: 12px;
+  padding-top: 18px;
+  padding-bottom: 18px;
   /* background-image: url('./wwBath.jpg');  */
   /* background-position: center 30%; */
 
   /* PIANO */
-  background-image: url('./ai1.jpeg');
+  /* background-image: url('./ai1.jpeg'); */
   /* Also 75% looks good */
-  background-position: center 70%;
+  /* background-position: center 75%; */
 
   /* ANDROID */
   /* background-image: url('./ai2.jpeg');
@@ -15156,6 +15147,7 @@ input#submitBreakdown:hover {
   margin: 0 auto;
   font-size: 90%;
   color: #515151;
+  color: rgba(255,255,255,0.75);
   transition: all 1s ease 0s;
 }
 #blueOpaque {
@@ -15168,6 +15160,7 @@ input#submitBreakdown:hover {
   margin-top: 1.5%;
   font-size: 90%;
   color: #515151;
+  color: rgba(255,255,255,0.75);
   transition: all 1s ease 0s;
 }
 
@@ -15661,13 +15654,13 @@ input#submitBreakdown:hover {
   margin: 0% 5% 3% 5%;
   border: 1px solid #00dcff;
   border-width: 1px 0px;
+  /* border-radius: 0px 0px 10% 10%; */
   line-height: 150%;
   letter-spacing: 4px;
   padding: 2% 5%;
   text-align: center;
   color: #ffffff;
   font-size: 200%;
-  /* background: radial-gradient(rgba(0,220,255,0), rgba(0,220,255,0.05)); */
   background: radial-gradient(circle, rgba(0,220,255,0.05), rgba(15, 19, 28, 0.75));
 }
 #passionsTextArea {

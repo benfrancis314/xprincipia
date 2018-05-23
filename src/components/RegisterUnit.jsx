@@ -189,7 +189,7 @@ hideLegal() {
                 <input type="email" name="email" required="required" maxLength="30" placeholder="email" id="registerEmail" />
                 <input type="password" name="password" required="required" maxLength="30" placeholder="password" id="registerPassword"/>
                 <Link to={window.location.pathname}>
-                  <input type="submit" value="register" onClick={this.postRegister} id="submitRegister"/>
+                  <input type="submit" value="join" onClick={this.postRegister} id="submitRegister"/>
                 </Link>
                 <Link to='/login'>
                   <div id="loginButton">login</div>
