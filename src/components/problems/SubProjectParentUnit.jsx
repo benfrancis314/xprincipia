@@ -30,6 +30,12 @@ export default class FullProblem extends React.Component {
 
     componentDidMount(){
         var self = this;
+        axios.get( Config.API + '/problems/ID?id='+this.props.parentID).then(function (response) {
+            self.setState({
+                parent: response.data
+            })
+        }) 
+        console.log(self.state.parent)
         if (window.location.pathname.includes('private')) {
             self.setState({
                 linkPath: '/project/private/',
@@ -51,11 +57,6 @@ export default class FullProblem extends React.Component {
             })
 
         })
-        axios.get( Config.API + '/problems/ID?id='+this.props.parentID).then(function (response) {
-            self.setState({
-                parent: response.data
-            })
-        }) 
         axios.get( Config.API + '/problems/linkparents?problemid='+this.props.probID).then(function (response) {
             self.setState({
                 parentList: response.data
@@ -64,6 +65,11 @@ export default class FullProblem extends React.Component {
     }
 componentWillReceiveProps (nextProps){
         var self = this;
+        axios.get( Config.API + '/problems/ID?id='+nextProps.parentID).then(function (response) {
+            self.setState({
+                parent: response.data
+            })
+        }) 
         if (window.location.pathname.includes('private')) {
             self.setState({
                 linkPath: '/project/private/',
@@ -84,11 +90,6 @@ componentWillReceiveProps (nextProps){
                 solutionInfo: response.data,
             })
         })
-        axios.get( Config.API + '/problems/ID?id='+nextProps.parentID).then(function (response) {
-            self.setState({
-                parent: response.data
-            })
-        }) 
         axios.get( Config.API + '/problems/linkparents?problemid='+nextProps.probID).then(function (response) {
             self.setState({
                 parentList: response.data

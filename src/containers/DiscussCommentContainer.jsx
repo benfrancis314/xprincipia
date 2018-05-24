@@ -183,7 +183,7 @@ export default class DiscussContainer extends React.Component {
                 linkPath: `/project/${self.props.params.probID}`,
             })
         }
-        document.getElementById("answerQuestionUnit").scrollIntoView();
+        // document.getElementById("answerQuestionUnit").scrollIntoView();
             axios.get( Config.API + '/comments/ID?id='+nextProps.params.discussID).then(function (response) {
                 if(response.data.ParentID === 0) {
                     self.setState({
