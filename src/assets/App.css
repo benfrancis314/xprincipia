@@ -5959,11 +5959,12 @@ font-family: 'Open Sans';
   /* font-size: 125%; */
   padding-left: 2%;
   padding-right: 2%;
-  padding-top: 1.75%;
-  padding-bottom: 1.75%;
+  padding-top: 1%;
+  padding-bottom: 2.5%;
   border: 1px solid #333333;
   border-width: 0px 0px 1px 0px;
-  width: 82%;
+  /* OLD WIDTH: 82% */
+  width: 78%;
   white-space: pre-wrap !important;
 }
 #suggestionText:hover, #suggestionTextCaps:hover {
@@ -9389,12 +9390,17 @@ border-color: rgba(0,220,255,0.5);
   
 }
 #resourceTitleText {
+  width: 95%;
   margin: 0 auto;
+  margin-top: 0.5%;
   text-align: center;
   font-size: 160%;
   color: #ffffff;
   letter-spacing: 2px;
   text-transform: lowercase !important;
+  padding: 1px 0px;
+  border: 1px solid #333333;
+  border-width: 1px 0px;
 
 }  
 #resourceHeader {

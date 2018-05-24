@@ -108,7 +108,7 @@ unHoverClearUpdates() {
         );
     } else if (notification.Type == '2') { 
         return (
-            <Link key={notification.ID} to={`/project/${notification.ProblemID}/question/${notification.TypeID}/answers`}>
+            <Link key={notification.ID} to={`/project/${notification.ProblemID}/discuss/${notification.TypeID}/comments`}>
                 <li>
                     <div id="notificationsUnit">
                         new question in:
@@ -121,7 +121,7 @@ unHoverClearUpdates() {
 
     } else if (notification.Type == '3') { 
         return (
-            <Link key={notification.ID} to={`/project/${notification.ProblemID}/suggestion/${notification.TypeID}/comments`}>
+            <Link key={notification.ID} to={`/project/${notification.ProblemID}/discuss/${notification.TypeID}/comments`}>
                 <li>
                     <div id="notificationsUnit">
                         new suggestion in:
@@ -134,7 +134,7 @@ unHoverClearUpdates() {
         
     } else if (notification.Type == '4') { 
         return (
-            <Link key={notification.ID} to={`/project/${notification.ProblemID}/answer/${notification.TypeID}/comments`}>
+            <Link key={notification.ID} to={`/project/${notification.ProblemID}/discuss/${notification.TypeID}/comments`}>
                 <li>
                     <div id="notificationsUnit">
                         new answer in:
@@ -147,7 +147,7 @@ unHoverClearUpdates() {
         
     } else if (notification.Type == '5') { 
         return (
-            <Link key={notification.ID} to={`/project/${notification.ProblemID}/comment/${notification.TypeID}/subcomments`}>
+            <Link key={notification.ID} to={`/project/${notification.ProblemID}/discuss/${notification.TypeID}/comments`}>
                 <li>
                     <div id="notificationsUnit">
                         new comment in:
@@ -160,7 +160,7 @@ unHoverClearUpdates() {
         
     } else if (notification.Type == '6') { 
         return (
-            <Link key={notification.ID} to={`/project/${notification.ProblemID}/freeform/${notification.TypeID}/comments`}>
+            <Link key={notification.ID} to={`/project/${notification.ProblemID}/discuss/${notification.TypeID}/comments`}>
                 <li>
                     <div id="notificationsUnit">
                         new debate in:
@@ -173,10 +173,10 @@ unHoverClearUpdates() {
         
     } else if (notification.Type == '7') { 
         return (
-            <Link key={notification.ID} to={`/project/${notification.ProblemID}/learn/content/${notification.TypeID}/comments`}>
+            <Link key={notification.ID} to={`/project/${notification.ProblemID}/learn`}>
                 <li>
                     <div id="notificationsUnit">
-                        new lesson in:
+                        new educational resource in:
                         <br />
                         <span id="blueUpdate">{notification.ProblemTitle}</span>
                     </div>
@@ -186,10 +186,10 @@ unHoverClearUpdates() {
         
     } else if (notification.Type == '8') { 
         return (
-            <Link key={notification.ID} to={`/project/${notification.ProblemID}/learn/resources/${notification.TypeID}/comments`}>
+            <Link key={notification.ID} to={`/project/${notification.ProblemID}/learn`}>
                 <li>
                     <div id="notificationsUnit">
-                        new resource in:
+                        new research in:
                         <br />
                         <span id="blueUpdate">{notification.ProblemTitle}</span>
                     </div>

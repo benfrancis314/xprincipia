@@ -1,6 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router';
 // import ReactGA from 'react-ga';
+import ReactGA from 'react-ga';
+ReactGA.initialize('UA-104103231-1'); //Unique Google Analytics tracking number
+
 
 export default class WelcomeUnit extends React.Component {
    
@@ -26,10 +29,37 @@ export default class WelcomeUnit extends React.Component {
 
 // If using GA, add this to each project button: onClick={()=>{this.handleClick()}}
     
-    if (problem.Title === 'interstellar civilization') {
+
+function handleClick1() {
+    ReactGA.event({
+        category: 'View Centralized',
+        action: 'Future Civilization',
+    });
+  }
+  function handleClick2() {
+    ReactGA.event({
+        category: 'View Centralized',
+        action: 'Evolving Humanity',
+    });
+  }
+  function handleClick3() {
+    ReactGA.event({
+        category: 'View Centralized',
+        action: 'Describing Reality',
+    });
+  }
+  function handleClick4() {
+    ReactGA.event({
+        category: 'View Centralized',
+        action: 'Advancing Technology',
+    });
+  }
+
+
+    if (problem.Title === 'future civilization') {
 
         return (
-            <li key={problem.ID} id="welcomeProblemsUnit">
+            <li key={problem.ID} id="welcomeProblemsUnit" onClick={()=>{handleClick1()}}>
                 <Link to={'/project/'+problem.ID +'/subprojects'} >
                     {randomInterstellar()}
                 </Link>
@@ -38,7 +68,7 @@ export default class WelcomeUnit extends React.Component {
 
     } else if (problem.Title === 'evolving humanity') {
         return (
-            <li key={problem.ID} id="welcomeProblemsUnit">
+            <li key={problem.ID} id="welcomeProblemsUnit" onClick={()=>{handleClick2()}}>
                 <Link to={'/project/'+problem.ID +'/subprojects'}>
                     <div id="welcomeProblemsHeader2">
                         <div id="welcomeProblemsTitle">
@@ -54,7 +84,7 @@ export default class WelcomeUnit extends React.Component {
         );
     } else if (problem.Title === 'describing reality') {
         return (
-            <li key={problem.ID} id="welcomeProblemsUnit">
+            <li key={problem.ID} id="welcomeProblemsUnit" onClick={()=>{handleClick3()}}>
                 <Link to={'/project/'+problem.ID +'/subprojects'}>
                     {randomReality()}
                 </Link>
@@ -63,7 +93,7 @@ export default class WelcomeUnit extends React.Component {
         );
     } else if (problem.Title === 'advancing technology') {
         return (
-            <li key={problem.ID} id="welcomeProblemsUnit">
+            <li key={problem.ID} id="welcomeProblemsUnit" onClick={()=>{handleClick4()}}>
                 <Link to={'/project/'+problem.ID +'/subprojects'}>
                     <div id="welcomeProblemsHeader4">
                         <div id="welcomeProblemsTitle">
