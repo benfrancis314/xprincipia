@@ -114,7 +114,7 @@ if (problem.Private === true) {
       
       );
 
-} else if (problem.Title === 'interstellar civilization') {
+} else if (problem.Title === 'future civilization') {
 
       return (
       

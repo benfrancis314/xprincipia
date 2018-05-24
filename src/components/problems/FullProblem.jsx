@@ -61,6 +61,11 @@ export default class FullProblem extends React.Component {
       var self = this;
       // ReactDOM.findDOMNode(this).scrollIntoView();
       window.scrollTo(0,0);
+      axios.get( Config.API + '/breakdowns/byproblemnumber?parentID='+this.props.params.probID + '&parentNumber=1').then(function (response) {
+          self.setState({
+              breakdownOriginal: response.data.ID,
+          })
+      }) 
       if (window.location.pathname.includes('private')) {
           self.setState({
               linkPath: '/project/private/',
@@ -124,6 +129,11 @@ export default class FullProblem extends React.Component {
 
   componentWillReceiveProps(nextProps){
       var self = this;
+      axios.get( Config.API + '/breakdowns/byproblemnumber?parentID='+nextProps.params.probID + '&parentNumber=1').then(function (response) {
+          self.setState({
+              breakdownOriginal: response.data.ID,
+          })
+      })  
       // window.scrollTo(0,0);
       if (window.location.pathname.includes('private')) {
           self.setState({
@@ -179,7 +189,7 @@ export default class FullProblem extends React.Component {
                 vote: false,
               }) 
             }
-      })         
+      })       
   }
   checkLoginVote() {
     if (cookie.load('userName')) {

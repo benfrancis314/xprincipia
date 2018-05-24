@@ -121,13 +121,9 @@ export default class SubProblemContainer extends React.Component {
         }
         this.setState({
             probID: nextProps.probID,
+            breakdownOriginal: nextProps.breakdownOriginal
         })
-        axios.get( Config.API + '/breakdowns/byproblemnumber?parentID='+nextProps.probID + '&parentNumber=1').then(function (response) {
-            self.setState({
-                breakdownOriginal: response.data.ID,
-            })
-        })  
-        axios.get( Config.API + '/problems/breakdown?breakdownID='+nextProps.probID).then(function (response) {
+        axios.get( Config.API + '/problems/breakdown?breakdownID='+nextProps.breakdownOriginal).then(function (response) {
             self.setState({
                 problems: response.data,
             })
@@ -153,7 +149,6 @@ export default class SubProblemContainer extends React.Component {
     render() {
             return (
                 <div id="SPwrapper">
-                {this.props.breakdownOriginal}
                     <Link to={this.state.linkPath+this.props.probID+'/create/breakdown'} activeClassName="activePrivateCreateButton">
                         <div id="branchesProjectButton" onMouseOver={this.hoverBranch} onMouseOut={this.unHoverBranch} onClick={this.clickBranch}>
                         </div>

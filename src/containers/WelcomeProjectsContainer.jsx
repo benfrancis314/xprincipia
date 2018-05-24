@@ -8,6 +8,9 @@ import WelcomeUnit from '../components/welcome/WelcomeUnit.jsx';
 import LeaderboardUnit from '../components/welcome/LeaderboardUnit.jsx';
 import {Config} from '../config.js';
 import $ from 'jquery';
+import ReactGA from 'react-ga';
+ReactGA.initialize('UA-104103231-1'); //Unique Google Analytics tracking number
+
 
 
 export default class WelcomeContainer extends React.Component {
@@ -256,7 +259,6 @@ export default class WelcomeContainer extends React.Component {
         $('#leaderBoardFilterExitRightShow').attr('id','leaderBoardFilterExitRight');
       });
     };
-
    
    render() {
       return (
@@ -345,7 +347,7 @@ function randomImg() {
 function randomFeatured() {
   if (Math.random() < 0.5) {
       return (
-        <div>
+        <div onClick={()=>{handleClick1()}}>
           <div id="featuredProjectLabel">
             featured project
           </div>
@@ -360,11 +362,11 @@ function randomFeatured() {
   } else {
     return (
     
-      <div>
+      <div onClick={()=>{handleClick2()}}>
         <div id="featuredProjectLabel">
           featured project
         </div>
-        <Link to={'/project/23/subprojects'}>
+        <Link to={'/project/15/subprojects'}>
           <div id="featuredProjectButton3">
             {/* imitation human cognition 
             <br />
@@ -390,4 +392,24 @@ function randomFeatured() {
   //         </Link>
   //       </div>
   //     );
+}
+
+
+function handleClick1() {
+  ReactGA.event({
+      // Replace with "Created project", "voted question", etc. 
+      category: 'View Featured',
+      // Replace action with project ID, etc. for various things
+      action: 'Mind',
+  });
+  // alert('click');
+}
+function handleClick2() {
+  ReactGA.event({
+      // Replace with "Created project", "voted question", etc. 
+      category: 'View Featured',
+      // Replace action with project ID, etc. for various things
+      action: 'AI',
+  });
+  // alert('click');
 }

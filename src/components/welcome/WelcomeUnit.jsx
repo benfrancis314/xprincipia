@@ -89,7 +89,7 @@ function randomInterstellar() {
       return (
         <div id="welcomeProblemsHeader1">
             <div id="welcomeProblemsTitle">
-                interstellar 
+                future
                 <br />
                 civilization
             </div>
@@ -99,7 +99,7 @@ function randomInterstellar() {
       return (
         <div id="welcomeProblemsHeader1Jupiter">
             <div id="welcomeProblemsTitle">
-                interstellar 
+                future 
                 <br />
                 civilization
             </div>

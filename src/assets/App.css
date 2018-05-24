@@ -9366,45 +9366,32 @@ cursor: pointer;
 #resourceURLText, #resourceURLTextShowVoted {
   font-family: 'Alegreya Sans SC';
   text-align: center;
-  height: auto;
-  /* min-height: 10px;
-  max-height: 100px; */
   margin: 0 auto;
-  /* background: radial-gradient(rgba(0,220,255, 0), rgba(0,220,255, 0.1)); */
   transition: all 1s ease 0s;
-  overflow: auto;
   word-break: break-all;
-  /* text-decoration: underline; */
   max-width: 90%;
-  line-height: 150%;
   font-family: 'Open Sans' !important;
-  font-size: 135%;
-  padding-left: 2%;
-  padding-right: 2%;
-  /* width: 82%; */
-  padding: 0px 5%;
+  font-size: 115%;
   white-space: pre-wrap !important;
   color: rgba(0,220,255,0.75);
   text-align: center;
+  padding: 0% 1px 0% 1px;
 
-
-
-  padding: 1px;
-  /* background: linear-gradient(rgba(0,255,220,0), rgba(15,19,28,0.25)); */
+  border: 1px solid rgba(0,220,255,0);
+  border-width: 0px 0px 1px 0px;
+  border-radius: 0% 0% 20% 20%;
 }
 #resourceURLText:hover, #resourceURLTextShowVoted:hover {
 color: rgba(0,255,220,1);
 transform: scale(1.02);
 cursor: pointer;
-border-color: rgba(0,220,255,1);
-  border: 1px solid rgba(0,220,255,0.5);
-  border-width: 0px 0px 1px 0px;
-  border-radius: 0% 0% 20% 20%;
+border-color: rgba(0,220,255,0.5);
+  
 }
 #resourceTitleText {
   margin: 0 auto;
   text-align: center;
-  font-size: 150%;
+  font-size: 160%;
   color: #ffffff;
   letter-spacing: 2px;
   text-transform: lowercase !important;
