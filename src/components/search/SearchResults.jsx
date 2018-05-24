@@ -53,7 +53,7 @@ export default class SearchResults extends React.Component {
             });
         }
 
-        if (problem.Private === true) {
+        if (problem.Private == '1') {
                 return (
                     <div key={problem.ID} id="nodisplay">
                     </div>

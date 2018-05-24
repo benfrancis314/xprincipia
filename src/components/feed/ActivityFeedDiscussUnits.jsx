@@ -83,7 +83,7 @@ export default class WelcomeUserUnit extends React.Component {
 		);
 	}
 	renderItem(question) {
-  
+  console.log(question)
 
 // For Google Analytics when working
     // function handleClick() {

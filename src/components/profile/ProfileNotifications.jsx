@@ -82,7 +82,21 @@ unHoverClearUpdates() {
 	}
 
    renderItem(notification) {
-       if (notification.Type == '0') {
+    //    console.log(notification)
+       if(notification.SecondaryID !== '0') {
+        return (
+            <Link key={notification.ID} to={`/project/${notification.ProblemID}/proposal/${notification.SecondaryID}/discuss/${notification.TypeID}/comments`}>
+                <li>
+                    <div id="notificationsUnit">
+                        new comment in:
+                        <br />
+                        <span id="blueUpdate">{notification.ProblemTitle}</span>
+                    </div>
+                </li>
+            </Link>
+        );
+       }
+       else if (notification.Type == '0') {
         return (
             <Link key={notification.ID} to={`/project/${notification.TypeID}/subprojects`}>
                 <li>

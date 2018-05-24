@@ -435,9 +435,9 @@ ReactDOM.render(
               <Route path='/project/:probID/proposal/:solutionID/question/container' component={DiscussContainer}>
                 <IndexRoute component={DiscussForm}></IndexRoute>
                 <Route path='/project/:probID/proposal/:solutionID/discuss' component={DiscussForm}></Route>
-                <Route path='/project/:probID/proposal/:solutionID/discuss/:discussID/edit' component={QuestionEditForm}></Route>
-                <Route path='/project/:probID/proposal/:solutionID/discuss/:discussID/flag' component={QuestionFlagForm}></Route>
-                <Route path='/project/:probID/proposal/:solutionID/discuss/:discussID/delete' component={QuestionDeleteForm}></Route>
+                <Route path='/project/:probID/proposal/:solutionID/discuss/:discussID/edit' component={DiscussEditForm}></Route>
+                <Route path='/project/:probID/proposal/:solutionID/discuss/:discussID/flag' component={DiscussFlagForm}></Route>
+                <Route path='/project/:probID/proposal/:solutionID/discuss/:discussID/delete' component={DiscussDeleteForm}></Route>
               </Route>
               <Route path='/project/:probID/discuss/:discussID/comments/container' component={DiscussCommentContainer}>
                 <IndexRoute component={DiscussCommentForm}></IndexRoute>

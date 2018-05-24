@@ -112,6 +112,7 @@ postDiscuss() {
         description : this.state.question,
         parentTitle : this.props.parentTitle,
         private: this.state.private,
+        backupParentID: '0',
     })
       .then(function (result) {
         document.getElementById("questionForm").reset();

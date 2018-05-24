@@ -237,6 +237,7 @@ postComment() {
         parentTitle : this.props.parentTitle,
         private: this.state.private,
         parentType: '5',
+        backupParentID: '0',
 
     })
       .then(function (result) {

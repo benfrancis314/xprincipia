@@ -170,7 +170,6 @@ export default class DiscussContainer extends React.Component {
                     proposalPath: '',
                 })
             }
-
     }
     componentWillReceiveProps(nextProps){
         var self = this;

@@ -88,7 +88,8 @@ render() {
 }
     
 renderItem(problem) {  
-    if (problem.ParentType === 1) {
+    console.log(problem)
+    if (problem.ParentType === '1') {
 
       return (
         <div key={problem.ID} id="nodisplay">
@@ -133,7 +134,7 @@ renderItem(problem) {
     } else if (problem.Type == 2) {
         return (
             <li key={problem.ID} id="feedListUnit">
-                <Link to={'/project/'+problem.ProblemID +'/discuss/'+problem.TypeID +'/comments'}>
+                <Link to={'/project/'+problem.ProblemID +'/discuss/'+problem.SecondaryID +'/comments'}>
                     <div id="feedUnitsProject">               
                         <div id="blueFeedProject">new question:</div>
                         <div id="whiteFeedProjectDescription">
@@ -146,7 +147,7 @@ renderItem(problem) {
     } else if (problem.Type == 3) {
         return (
             <li key={problem.ID} id="feedListUnit">
-                <Link to={'/project/'+problem.ProblemID +'/discuss/'+problem.TypeID +'/comments'}>
+                <Link to={'/project/'+problem.ProblemID +'/discuss/'+problem.SecondaryID +'/comments'}>
                     <div id="feedUnitsProject">               
                         <div id="blueFeedProject">new suggestion:</div>
                         <div id="whiteFeedProjectDescription">
@@ -159,7 +160,7 @@ renderItem(problem) {
     } else if (problem.Type == 6) {
         return (
             <li key={problem.ID} id="feedListUnit">
-                <Link to={'/project/'+problem.ProblemID +'/discuss/'+problem.TypeID +'/comments'}>
+                <Link to={'/project/'+problem.ProblemID +'/discuss/'+problem.SecondaryID +'/comments'}>
                     <div id="feedUnitsProject">               
                         <div id="blueFeedProject">new debate:</div>
                         <div id="whiteFeedProjectDescription">
