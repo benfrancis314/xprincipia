@@ -83,13 +83,13 @@ unHoverClearUpdates() {
 
    renderItem(notification) {
        console.log(notification)
-       if ((notification.Username) == cookie.load('userName')) {
-           return (
-               <div id="noDisplay">
-               </div>
-           )
-       }
-       else if(notification.SecondaryID !== '0') {
+    //    if ((notification.Username) == cookie.load('userName')) {
+    //        return (
+    //            <div id="noDisplay">
+    //            </div>
+    //        )
+    //    }
+       if(notification.SecondaryID > 0) {
         return (
             <Link key={notification.ID} to={`/project/${notification.ProblemID}/proposal/${notification.SecondaryID}/discuss/${notification.TypeID}/comments`}>
                 <li>
