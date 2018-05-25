@@ -273,7 +273,7 @@ export default class EditSolutionForm extends React.Component {
                 </div>
 
                   <Link to={this.state.linkPath+this.props.probID+'/subprojects'}>
-                      <input type="button" ref='btn' value="create" onClick={this.checkLoginProposal} id="submitSolution"/>
+                      <input type="button" ref='btn' value="edit" onClick={this.checkLoginProposal} id="submitSolution"/>
                   </Link>
               </fieldset>
             </form>
