@@ -117,12 +117,17 @@ export default class LearnUnit extends React.Component {
         var deleteID = 'noDisplay'
         var flagID = 'flagDiscussButton'
     }
+    if (resource.Private === 1) {
+        var voteSectionID = 'noDisplay'
+    } else {
+        var voteSectionID = 'discussUnitButtonsContainer'
+    }
   
     if (this.state.voteHash[resource.ID] === true) {
         return (
             <li key={resource.ID} id="suggestionUnit">
                 <div id={'suggestionContentHoverVote'+commentType} className={resource.ID}>
-                    <div id="discussUnitButtonsContainer">
+                    <div id={voteSectionID}>
                         <Link to={window.location.pathname}>
                             <div id="discussVotedButton" onClick={unVote.bind(this)} onMouseOver={hoverVoteVoted} onMouseOut={unHoverVoteVoted.bind(this)}>     
                             </div>
@@ -185,7 +190,7 @@ export default class LearnUnit extends React.Component {
     return (
        <li key={resource.ID} id="suggestionUnit">
             <div id={'suggestionContent'+commentType} className={resource.ID}>
-                <div id="discussUnitButtonsContainer">
+                <div id={voteSectionID}>
                     <Link to={window.location.pathname}>
                         <div id="discussVoteButton" onClick={submitVote.bind(this)} onMouseOver={hoverVote} onMouseOut={unHoverVote.bind(this)}>     
                         </div>

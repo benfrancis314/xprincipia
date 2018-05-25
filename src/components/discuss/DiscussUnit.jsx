@@ -170,12 +170,16 @@ export default class DiscussUnit extends React.Component {
         var deleteID = 'noDisplay'
         var flagID = 'flagDiscussButton'
     }
-  
+    if (question.Private === 1) {
+        var voteSectionID = 'noDisplay'
+    } else {
+        var voteSectionID = 'discussUnitButtonsContainer'
+    }
        if (this.state.voteHash[question.ID] === true) {
            return (
             <li key={question.ID} id="suggestionUnit">
                 <div id={'suggestionContentHoverVote'+commentType} className={question.ID}>
-                    <div id="discussUnitButtonsContainer">
+                    <div id={voteSectionID}>
                         <Link to={window.location.pathname}>
                             <div id="discussVotedButton" onClick={unVote.bind(this)} onMouseOver={hoverVoteVoted} onMouseOut={unHoverVoteVoted.bind(this)}>     
                             </div>
@@ -216,7 +220,7 @@ export default class DiscussUnit extends React.Component {
         return (
             <li key={question.ID} id="suggestionUnit">
                 <div id={'suggestionContent'+commentType} className={question.ID}>
-                    <div id="discussUnitButtonsContainer">
+                    <div id={voteSectionID}>
                         <Link to={window.location.pathname}>
                             <div id="discussVoteButton" onClick={submitVote.bind(this)} onMouseOver={hoverVote} onMouseOut={unHoverVote.bind(this)}>     
                             </div>
