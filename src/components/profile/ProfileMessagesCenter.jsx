@@ -54,7 +54,7 @@ componentWillReceiveProps(nextProps) {
         
         if(conversation.User1 == cookie.load('userName')) {
             return (
-            <Link key={conversation.ID} to={`messages/${conversation.User1}/${conversation.User2}`} activeClassName="activeMessage">
+            <Link key={conversation.ID} to={`/messages/${conversation.User1}/${conversation.User2}`} activeClassName="activeMessage">
                 <li key={conversation.ID}>
                     <div id="messagesUnit">
                         <div id="messageTitle">
@@ -69,7 +69,7 @@ componentWillReceiveProps(nextProps) {
         );
         } else {
             return (
-            <Link key={conversation.ID} to={`messages/${conversation.User2}/${conversation.User1}`} activeClassName="activeMessage">
+            <Link key={conversation.ID} to={`/messages/${conversation.User2}/${conversation.User1}`} activeClassName="activeMessage">
                 <li key={conversation.ID}>
                     <div id="messagesUnit">
                         <div id="messageTitle">

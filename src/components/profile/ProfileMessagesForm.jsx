@@ -24,7 +24,7 @@ export default class ProfileMessagesForm extends React.Component {
 
   postMessage() {
     var self = this;
-    self.refs.messagebtn.setAttribute("disabled", "disabled");
+    // self.refs.messagebtn.setAttribute("disabled", "disabled");
 
     this.state.user1 = cookie.load('userName')
     this.state.user2 = document.getElementById('problemTitleForm').value
@@ -43,7 +43,7 @@ export default class ProfileMessagesForm extends React.Component {
       
       .then(function (response) {
         document.getElementById("welcomeCreateProjectForm").reset();
-        self.refs.messagebtn.removeAttribute("disabled");
+        // self.refs.messagebtn.removeAttribute("disabled");
 
         // Direct them to their new conversation they just created
       })
@@ -66,7 +66,7 @@ export default class ProfileMessagesForm extends React.Component {
                 $('#notificationContent').text(error.response.data);
               }
           });
-          self.refs.messagebtn.removeAttribute("disabled");
+          // self.refs.messagebtn.removeAttribute("disabled");
       });
     };
 
@@ -91,16 +91,16 @@ export default class ProfileMessagesForm extends React.Component {
             <div id="createProblemBox">
                 <form id="welcomeCreateProjectForm">
                   <fieldset id="fieldSetNoBorder">
-                    <label htmlFor="problemTitleForm" id="problemTitleFormLabel">Recipient<br />
+                    <label htmlFor="problemTitleForm" id="problemTitleFormLabel">recipient<br />
                         <input type="text" name="problemTitle" required="required" maxLength="70" id="problemTitleForm" autoFocus/>
                       </label><br />
 
-                    <label htmlFor="problemSummaryForm" id="problemSummaryFormLabel">Message<br />
+                    <label htmlFor="problemSummaryForm" id="problemSummaryFormLabel">message<br />
                         <textarea name="problemSummary" required="required" maxLength="350" 
                         placeholder="Start a dialogue with a fellow member." id="problemSummaryForm"/>
-                        </label><br />
-                    <Link to={window.location.pathname}>
-                      <input type="button" ref='messagebtn' value="send" onClick={this.postMessage} id="submitProblem"/>
+                        </label>
+                    <Link to={window.location.pathname} onClick={this.postMessage}>
+                      <input ref='messagebtn' value="send" id="submitProblem"/>
                     </Link>
                   </fieldset>
                 </form>

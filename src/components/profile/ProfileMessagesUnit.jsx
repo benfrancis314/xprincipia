@@ -5,6 +5,7 @@ import cookie from 'react-cookie';
 import {Config} from '../../config.js';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group'; // ES6
 import $ from 'jquery';
+import { Redirect } from 'react-router';
 
 
 
@@ -49,7 +50,7 @@ componentWillReceiveProps (nextProps){
 }
 postMessage() {
     var self = this;
-    self.refs.btn.setAttribute("disabled", "disabled");
+    // self.refs.btn.setAttribute("disabled", "disabled");
 
     this.state.description = document.getElementById('conversationEntry').value
     axios.post( Config.API + '/auth/messages/create', {
@@ -64,9 +65,8 @@ postMessage() {
         //     })
         // })  
         document.getElementById("conversationSubmit").reset();
-        self.refs.btn.removeAttribute("disabled");
-
-        
+        // self.refs.btn.removeAttribute("disabled");
+        // <Link to={'/welcome'} />
       })
       .catch(function (error) {
           $(document).ready(function() {
@@ -84,6 +84,10 @@ postMessage() {
               }
           });
       });
+    //   self.refs.btn.removeAttribute("disabled");
+    self.setState({
+        rerender: Number(self.state.rerender)+1,
+    })
     };
 
 
@@ -121,13 +125,12 @@ causeRerender() {
             </div>
             <form id='conversationSubmit'>
                 <textarea id="conversationEntry" autoFocus autoComplete="off"></textarea>
-                <Link to={window.location.pathname}>
-                    <input id="conversationSubmitButton" ref='btn' value="send" onClick={this.postMessage}></input>
+                <Link to={window.location.pathname} onClick={this.postMessage}>
+                    <input id="conversationSubmitButton" ref='btn' value="send" ></input>
                 </Link>
             </form>
             <ul id="conversationMessagesList"> 
                 {this.state.messages.map(this.renderItem)} 
-
             </ul>
             {/* <div id="textBoxBottom">
                 <br />

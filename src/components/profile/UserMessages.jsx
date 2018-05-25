@@ -47,7 +47,7 @@ componentWillReceiveProps (nextProps){
 }
 postMessage() {
     var self = this;
-    self.refs.messagebtn.setAttribute("disabled", "disabled");
+    // self.refs.messagebtn.setAttribute("disabled", "disabled");
 
     this.state.message = document.getElementById('conversationEntry').value
     axios.post( Config.API + '/auth/messages/create', {
@@ -62,7 +62,7 @@ postMessage() {
         //     })
         // })  
         document.getElementById("conversationSubmit").reset();
-        self.refs.messagebtn.removeAttribute("disabled");
+        // self.refs.messagebtn.removeAttribute("disabled");
 
       })
       .catch(function (error) {
@@ -80,12 +80,12 @@ postMessage() {
                 $('#notificationContent').text(error.response.data);
               }
           });
-          self.refs.messagebtn.removeAttribute("disabled");
+        //   self.refs.messagebtn.removeAttribute("disabled");
       });
     };
    startConversation() {
         var self = this;
-        self.refs.messagebtn.setAttribute("disabled", "disabled");
+        // self.refs.messagebtn.setAttribute("disabled", "disabled");
     
         this.state.user1 = cookie.load('userName')
         this.state.user2 = this.props.params.username
@@ -101,7 +101,7 @@ postMessage() {
           })
           .then(function (response) {
             document.getElementById("conversationSubmit").reset();
-            self.refs.messagebtn.removeAttribute("disabled");
+            // self.refs.messagebtn.removeAttribute("disabled");
           })
           .catch(function (error) {
     
@@ -119,7 +119,7 @@ postMessage() {
                     $('#notificationContent').text(error.response.data);
                   }
               });
-              self.refs.messagebtn.removeAttribute("disabled");
+            //   self.refs.messagebtn.removeAttribute("disabled");
           });
         };
 
@@ -148,8 +148,8 @@ postMessage() {
             </div>
             <form id='conversationSubmit'>
                 <textarea id="conversationEntry" autoFocus autoComplete="off"></textarea>
-                <Link to={window.location.pathname}>
-                    <input id="conversationSubmitButton" ref='messagebtn' type="button" value="submit" onClick={this.postMessage}></input>
+                <Link to={window.location.pathname} onClick={this.postMessage}>
+                    <input id="conversationSubmitButton" ref='messagebtn' type="button" value="submit"></input>
                 </Link>
             </form>
             <ul id="conversationMessagesList"> 
@@ -180,8 +180,8 @@ postMessage() {
                 </div>
                 <form id='conversationSubmit'>
                     <textarea id="conversationEntry" placeholder="Start a dialogue with a fellow member." autoFocus autoComplete="off"></textarea>
-                    <Link to={window.location.pathname}>
-                        <input id="conversationSubmitButton" ref='messagebtn' type="button" value="send" onClick={this.startConversation}></input>
+                    <Link to={window.location.pathname} onClick={this.startConversation}>
+                        <input id="conversationSubmitButton" ref='messagebtn' type="button" value="send"></input>
                     </Link>
                 </form>
                 {/* <ul id="conversationMessagesList"> 
