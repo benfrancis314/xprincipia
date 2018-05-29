@@ -128,8 +128,8 @@ postLearn() {
                               <input type="text" placeholder="url | optional" id="resourceURLForm"/>
                               <textarea name="suggestionText" required="required" id="resourcesTextArea" placeholder="Please provide any additional information you'd like. " ></textarea>
                               {/* OLD Placeholder: "Please describe the resource or explain its purpose. " */}
-                              <Link to={window.location.pathname}>
-                                <input type="button" ref='btn' value="add" onClick={this.checkLoginLearn} id="addSuggestion"/>
+                              <Link to={window.location.pathname} onClick={this.checkLoginLearn}>
+                                <input type="button" ref='btn' value="add" id="addSuggestion"/>
                               </Link>
                       </fieldset>
                   </form>

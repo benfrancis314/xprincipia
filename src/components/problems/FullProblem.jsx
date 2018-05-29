@@ -44,6 +44,8 @@ export default class FullProblem extends React.Component {
             linkPath: '',
             menuID: '',
             menuIDPrivate: '',
+            discussNumber: '',
+            learnNumber: '',
         }
         this.vote = this.vote.bind(this)
         this.voteUp = this.voteUp.bind(this)
@@ -120,7 +122,17 @@ export default class FullProblem extends React.Component {
                   vote: false,
                 }) 
               }
-      })       
+      })     
+      axios.get( Config.API + '/comments/bytype/discuss/number?problem_id='+this.props.params.probID+'&discuss=0').then(function (response) {
+          self.setState({
+              discussNumber: response.data
+          })
+      })  
+      axios.get( Config.API + '/learnItems/bytype/combined/number?id='+this.props.params.probID).then(function (response) {
+          self.setState({
+              learnNumber: response.data
+          })
+      })
   }
 
   shouldComponentUpdate(nextProps, nextState) {
@@ -190,6 +202,16 @@ export default class FullProblem extends React.Component {
               }) 
             }
       })       
+      axios.get( Config.API + '/comments/bytype/discuss/number?problem_id='+nextProps.params.probID+'&discuss=0').then(function (response) {
+          self.setState({
+              discussNumber: response.data
+          })
+      })  
+      axios.get( Config.API + '/learnItems/bytype/combined/number?id='+nextProps.params.probID).then(function (response) {
+          self.setState({
+              learnNumber: response.data
+          })
+      })
   }
   checkLoginVote() {
     if (cookie.load('userName')) {
@@ -395,11 +417,11 @@ voteDown() {
               <div id="projectActionGroupShow">
                 <div id="problemRow1">
                     <Link to={this.state.linkPath+this.props.params.probID+'/discuss'} activeClassName="activeProblemOptionDiscuss">
-                      <div id="SBButtonDiscuss">discuss</div>
+                      <div id="SBButtonDiscuss"><span id="greenDiscussLearnNumber">{this.state.discussNumber} </span>discuss</div>
                     </Link>
                     <div id={this.state.menuID}>
-                      <Link to={this.state.linkPath+this.props.params.probID+'/subprojects'}>
-                        <div id={this.state.voteID} ref='probbtn' onClick={this.checkLoginVote}>
+                      <Link to={this.state.linkPath+this.props.params.probID+'/subprojects'} onClick={this.checkLoginVote}>
+                        <div id={this.state.voteID} ref='probbtn'>
                             {this.state.voteTitle}
                         </div>
                       </Link>
@@ -409,20 +431,20 @@ voteDown() {
                       <ProblemFollowButton probID={this.props.params.probID} username={cookie.load('userName')} />
                     </div>
                     <div id={this.state.menuIDPrivate}>
-                      <Link to={`/project/private/${this.props.params.probID}/subprojects`}>
-                        <div id="voteProblemUp" ref='probbtn' onClick={this.voteUp}  onMouseDown={this.changeRankOn} onMouseUp={this.changeRankOff}>
+                      <Link to={`/project/private/${this.props.params.probID}/subprojects`}  onClick={this.voteUp} onMouseDown={this.changeRankOn} onMouseUp={this.changeRankOff}>
+                        <div id="voteProblemUp" ref='probbtn'>
                         </div>
                       </Link>
-                      <a href='#proposals'>
-                        <div id="SBButtonProposalPrivate" onClick={this.goToProposal}>proposals</div>
+                      <a href='#proposals' onClick={this.goToProposal}>
+                        <div id="SBButtonProposalPrivate">proposals</div>
                       </a>
-                      <Link to={`/project/private/${this.props.params.probID}/subprojects`}>
-                        <div id="voteProblemDown" ref='probbtn' onClick={this.voteDown}  onMouseDown={this.changeRankOn} onMouseUp={this.changeRankOff}>
+                      <Link to={`/project/private/${this.props.params.probID}/subprojects`} onClick={this.voteDown}  onMouseDown={this.changeRankOn} onMouseUp={this.changeRankOff}>
+                        <div id="voteProblemDown" ref='probbtn'>
                         </div>
                       </Link>
                     </div>
                     <Link to={this.state.linkPath+this.props.params.probID+'/learn'} activeClassName="activeProblemOptionLearn">
-                      <div id="SBButtonLearn">learn</div>
+                      <div id="SBButtonLearn">learn <span id="greenDiscussLearnNumber">{this.state.learnNumber}</span></div>
                     </Link>
                 </div>
                 <div id="projectCreator">

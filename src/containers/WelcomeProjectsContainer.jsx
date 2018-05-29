@@ -24,7 +24,7 @@ export default class WelcomeContainer extends React.Component {
   unHoverLeaderBoardText() {
     if(this.state.leaderboardType == 'users') {
         $(document).ready(function() {
-                $('#leaderBoardCapTopHover').html("top members");
+                $('#leaderBoardCapTopHover').html("top creators");
                 $('#leaderBoardCapTopHover').attr('id','leaderBoardCapTop');
         });
     } else if (this.state.leaderboardType == 'proposals') {
@@ -53,7 +53,7 @@ export default class WelcomeContainer extends React.Component {
       if(this.state.leaderboardType == 'users') {
         $(document).ready(function() {
           $('#leaderBoardSelectShow').attr('id','leaderBoardSelect');
-          $('#leaderBoardCapTopClick').html("top members");
+          $('#leaderBoardCapTopClick').html("top creators");
           $('#leaderBoardCapTopClick').attr('id','leaderBoardCapTop');
           $('#leaderBoardFilterButtonClick').attr('id','leaderBoardFilterButton');
           $('#leaderBoardFilterExitLeftShow').attr('id','leaderBoardFilterExitLeft');
@@ -184,7 +184,7 @@ export default class WelcomeContainer extends React.Component {
       });
       $(document).ready(function() {
         $('#leaderBoardSelectShow').attr('id','leaderBoardSelect');
-        $('#leaderBoardCapTopClick').html("top members");
+        $('#leaderBoardCapTopClick').html("top creators");
         $('#leaderBoardCapTopClick').attr('id','leaderBoardCapTop');
         $('#leaderBoardFilterButtonClick').attr('id','leaderBoardFilterButton');
         $('#leaderBoardFilterExitLeftShow').attr('id','leaderBoardFilterExitLeft');
@@ -303,7 +303,7 @@ export default class WelcomeContainer extends React.Component {
                         proposals
                       </div>
                       <div id="leaderBoardOption" onClick={this.selectUsers}>
-                        members
+                        creators
                       </div>
                     </div>
 

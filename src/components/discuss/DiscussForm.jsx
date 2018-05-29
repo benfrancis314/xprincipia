@@ -185,8 +185,8 @@ postDiscuss() {
               <form id="questionForm">
                 <fieldset id='fieldSetNoBorderPadding'>
                   <textarea name="questionText" required="required" id="questionTextArea" placeholder={this.state.placeholder} ></textarea>
-                  <Link to={window.location.pathname}>
-                    <input type="button" ref='btn' value="add" onClick={this.checkLoginDiscuss} id="askQuestion"/>
+                  <Link to={window.location.pathname} onClick={this.checkLoginDiscuss}>
+                    <input type="button" ref='btn' value="add" id="askQuestion"/>
                   </Link>
                 </fieldset>
               </form>

@@ -60,7 +60,7 @@ export default class LeaderboardUnit extends React.Component {
         }
         function unHoverLeaderBoardUserPoints() {
             $(document).ready(function() {
-                    $('#leaderBoardCapTopVotesHover').html("top members");
+                    $('#leaderBoardCapTopVotesHover').html("top creators");
                     $('#leaderBoardCapTopVotesHover').attr('id','leaderBoardCapTop');
             });
         }

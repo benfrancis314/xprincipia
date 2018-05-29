@@ -371,8 +371,8 @@ showDataURL() {
                     </textarea>
                 </div>
 
-                  <Link to={this.state.linkPath+this.props.probID+'/subprojects'}>
-                      <input type="button" ref='btn' value="create" onClick={this.checkLoginProposal} id="submitSolution"/>
+                  <Link to={this.state.linkPath+this.props.probID+'/subprojects'} onClick={this.checkLoginProposal}>
+                      <input type="button" ref='btn' value="create" id="submitSolution"/>
                   </Link>
               </fieldset>
             </form>

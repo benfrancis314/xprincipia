@@ -2372,7 +2372,8 @@ text-align: center;
   -webkit-transition: all 1s ease 0s;
   transition: all 1s ease 0s;
 }
-#exploreHeaderInput:focus, #exploreHeaderInput:active {  
+#exploreHeaderInput:focus, #exploreHeaderInput:active
+ {  
   background-color: rgba(15,19,28,0.99);
   background: radial-gradient(circle, rgba(0,220,255,0.05), rgba(15,19,28,1), rgba(15,19,28,1), rgba(15,19,28,1));
   transform: scale(1.15);
@@ -7946,10 +7947,14 @@ font-size: 145%;
 width: 9em;
 border-color: rgba(255,255,255,0.5);
 box-shadow: 0 0 0.5pt 0.5pt rgba(255,255,255,0.5);
-background: radial-gradient(circle, rgba(0,220,255,0), rgba(0,220,255,0.05));
+/* background-color: rgba(0,220,255,0.05); */
+/* background: radial-gradient(circle, rgba(0,220,255,0), rgba(0,220,255,0.05)); */
+background: linear-gradient(to left, rgba(0,220,255,0.1), rgba(0,220,255,0.05), rgba(0,220,255,0.02));
+
 }
 #SBButtonLearn {
   padding-right: 10px;
+  background: linear-gradient(to right, rgba(0,220,255,0.1), rgba(0,220,255,0.05), rgba(0,220,255,0.02)) !important;  
   /* transform:rotateY(-12deg); */
 }
 #SBButtonDiscuss {
@@ -7967,13 +7972,24 @@ box-shadow: 0 0 1px 1px rgba(0,220,255,1);*/
 color: #00dcff;
 cursor: pointer;
 border-color: #00dcff;
-background-color: rgba(0,220,255,0.05);
-background: linear-gradient(to left, rgba(0,220,255,0.1), rgba(0,220,255,0.05), rgba(0,220,255,0.02));
+/* background-color: rgba(0,220,255,0.05); */
+/* background: linear-gradient(to left, rgba(0,220,255,0.1), rgba(0,220,255,0.05), rgba(0,220,255,0.02)); */
 box-shadow: 0 0 1px 1px rgba(0,220,255,1);
 transform: scale(1.02);
+background-color: rgba(0,220,255,0.05);
+
 }
 #SBButtonLearn:hover {
-  background: linear-gradient(to right, rgba(0,220,255,0.1), rgba(0,220,255,0.05), rgba(0,220,255,0.02)) !important;  
+  /* background: linear-gradient(to right, rgba(0,220,255,0.1), rgba(0,220,255,0.05), rgba(0,220,255,0.02)) !important;   */
+}
+#greenDiscussLearnNumber {
+  color: rgba(0,255,220,0.75);
+  font-size: 70%;
+  vertical-align: 20%;
+  transition: all 0.5s ease 0s;
+}
+#SBButtonDiscuss:hover #greenDiscussLearnNumber, #SBButtonLearn:hover #greenDiscussLearnNumber {
+  color: rgba(0,255,220,1) !important;
 }
 .activeProblemOptionDiscuss div, .activeProblemOptionLearn div {
   color: #00dcff !important;

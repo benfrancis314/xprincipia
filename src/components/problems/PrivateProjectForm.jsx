@@ -161,8 +161,8 @@ export default class ProblemForm extends React.Component {
                       <textarea name="problemSummary" maxLength="500" 
                       placeholder="Please summarize this project or add any additional information you'd like. (500 ch)" id="problemSummaryForm"/>
                   </label>
-                  <Link to='/mindtemple'>
-                      <input type="button" ref='btn' value="create" onClick={this.checkLoginProblem} id="submitProblem"/>
+                  <Link to='/mindtemple' onClick={this.checkLoginProblem}>
+                      <input type="button" ref='btn' value="create" id="submitProblem"/>
                   </Link>
               </form>
           </div>

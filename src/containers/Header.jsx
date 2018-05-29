@@ -22,7 +22,7 @@ export default class Header extends React.Component {
            userToken: '',
            notification: '',
            searchResults : [],
-           searchText: [],
+           searchText: '',
         }
         this.queryProblem = this.queryProblem.bind(this);
         this.postLogin = this.postLogin.bind(this);
@@ -118,6 +118,7 @@ queryProblem (e) {
         })
       })
     }
+    console.log(this.state.searchText)
 }
 hideSearch() {
   $(document).ready(function() {
@@ -219,7 +220,7 @@ if (this.state.userToken === undefined ){
           {/* SEARCH RESULTS */}
           <div id="searchResultsContainerHide">
             <img src={require('../assets/redX3.svg')} id="searchResultsExitButton" width="20" height="20" alt="exit button" onClick={this.hideSearch} />
-            <SearchResults searchText={this.state.searchText} problems={this.state.searchResults}/>
+            <SearchResults searchText={this.state.searchText} searchResults={this.state.searchResults}/>
 
           </div>
         </div>
@@ -245,7 +246,7 @@ if (this.state.userToken === undefined ){
                 {/* SEARCH RESULTS */}
                 <div id="searchResultsContainerHide">
                   <img src={require('../assets/redX3.svg')} id="searchResultsExitButton" width="20" height="20" alt="exit button" onClick={this.hideSearch} />
-                  <SearchResults searchText={this.state.searchText} problems={this.state.searchResults}/>
+                  <SearchResults searchText={this.state.searchText} searchResults={this.state.searchResults}/>
                 </div>
               </div>
             </div>

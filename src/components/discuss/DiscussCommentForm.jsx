@@ -357,8 +357,8 @@ postComment() {
               <form id="questionForm">
                 <fieldset id='fieldSetNoBorderPadding'>
                   <textarea name="questionText" required="required" id="questionTextArea" placeholder={this.state.placeholder} ></textarea>
-                  <Link to={window.location.pathname}>
-                    <input type="button" ref='btn' value="add" onClick={this.checkLoginComment} id="askQuestion"/>
+                  <Link to={window.location.pathname} onClick={this.checkLoginComment}>
+                    <input type="button" ref='btn' value="add" id="askQuestion"/>
                   </Link>
                 </fieldset>
               </form>
