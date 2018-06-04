@@ -4,6 +4,7 @@ import cookie from 'react-cookie';
 import {Config} from '../../config.js';
 import $ from 'jquery';
 import { Link } from 'react-router';
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group'; // ES6
 
 export default class ProfilePointsContainer extends React.Component {
 constructor(){
@@ -131,78 +132,105 @@ changePlanetMars() {
   }) 
 }
 
+hoverText() {
+  $(document).ready(function() {
+      $('#fullTutorialMotto').html("QUESTION AUTHORITY").fadeIn(7500);
+      $('#fullTutorialMotto').attr('id','fullTutorialMotto2');
+  });
+}
+unHoverText() {
+  $(document).ready(function() {
+      $('#fullTutorialMotto2').html("NULLIUS IN VERBA");
+      $('#fullTutorialMotto2').attr('id','fullTutorialMotto');
+  });
+}
+
    render() {
     //  IF STATEMENT, based on theme
     return (
-      <div id="pointsContainer">
-        <div id="pointsBackgroundWest">
-          {/* <div id="pointsTitleSwitchButtonWest" onClick={this.selectFutureTitle} onMouseOver={this.hoverWestTitle} onMouseOut={this.unHoverWestTitle}>
-            frontier
-          </div> 
-          <div id="pointsTitleSwitchButtonFutureHide" onClick={this.selectWestTitle} onMouseOver={this.hoverFutureTitle} onMouseOut={this.unHoverFutureTitle}>
-            future
-          </div>  */}
-          <div id="pointsLevelLabel">
-            level {this.state.level}
-          </div>
-          <div id="pointsLevelTitleWest">
-          {/* CREATE IF STATEMENT: IF title is newcomer, return the following html */}
-            <span id="blue">{this.state.title1}</span>{this.state.title2}
-          </div>
-          <div id="pointsNumberContainer">
-            <div id="pointsNumberValue">
-              {this.state.userPoints}
-            </div>
-            <div id="pointsNumberDisplay">
-              prestige
-            </div>
-          </div>
-          {/* NOT READY YET */}
-          {/* <div id="pointsRankingDisplay">
-            top x%
-          </div> */}
-          {/* NOT READY YET */}
-          {/* <div id="pointsBreakdownType">
-            creation points: <span id="pointsBreakdownNumber">8</span>
-          </div>
-          <div id="pointsBreakdownType">
-            voted points: <span id="pointsBreakdownNumber">4</span>
-          </div>
-          <div id="pointsBreakdownType">
-            activity points: <span id="pointsBreakdownNumber">4</span>
-          </div> */}
-          <div id="userSymbolLabel">
-            insignia
-          </div>
-          <div id="userSymbolSelectContainer">
-            {/* {this.state.user.Planet} */}
-            <Link to={window.location.pathname}>
-              <div id="earthMini" onMouseOver={this.hoverEarth} onMouseOut={this.unHoverEarth} onClick={this.changePlanetEarth}></div>
+      <div>
+        <ReactCSSTransitionGroup
+                    transitionName="example"
+                    transitionAppear={true}
+                    transitionAppearTimeout={2000}
+                    transitionEnter={false}
+                    transitionLeave={false}>
+        <div id="pointsContainer">
+            <Link to="/profile/guide">
+              <div id="welcomeTutorialVideoButtonProfile" onClick={this.privateAlert} onMouseOver={this.hoverText} onMouseOut={this.unHoverText}>
+                  <img src={require('../../assets/videoPlay3.svg')} id="welcomeVideoLogo" width="22" height="22" alt="Video player symbol, link to tutorial"/>
+              </div>
             </Link>
-            <Link to={window.location.pathname}>
-              <div id="marsMini" onMouseOver={this.hoverMars} onMouseOut={this.unHoverMars} onClick={this.changePlanetMars}></div>
-            </Link>
-          </div>
-          {/* <div id="nextLevelLabel">
-            next level
-          </div>
-          <div id="nextLevelPointsNumberDisplay">
-            XX points
-          </div>
-          <div id="nextLevelLabel">
-            at level 11
-          </div>
-          <div id="nextLevelTitleContainer">
-            <div id="nextLevelTitleLockLeft"></div>
-            <div id="nextLevelTitle">
-              frontiersman
+          <div id="pointsBackgroundWest">
+            {/* <div id="pointsTitleSwitchButtonWest" onClick={this.selectFutureTitle} onMouseOver={this.hoverWestTitle} onMouseOut={this.unHoverWestTitle}>
+              frontier
+            </div> 
+            <div id="pointsTitleSwitchButtonFutureHide" onClick={this.selectWestTitle} onMouseOver={this.hoverFutureTitle} onMouseOut={this.unHoverFutureTitle}>
+              future
+            </div>  */}
+            <div id="pointsLevelLabel">
+              level {this.state.level}
             </div>
-            <div id="nextLevelTitleLockRight"></div>
-          </div> */}
-          {/* <div id="nextLevelPointsRankingDisplay">
-            enter top x%
-          </div> */}
+            <div id="pointsLevelTitleWest">
+            {/* CREATE IF STATEMENT: IF title is newcomer, return the following html */}
+              <span id="blue">{this.state.title1}</span>{this.state.title2}
+            </div>
+            <div id="pointsNumberContainer">
+              <div id="pointsNumberValue">
+                {this.state.userPoints}
+              </div>
+              <div id="pointsNumberDisplay">
+                prestige
+              </div>
+            </div>
+            {/* NOT READY YET */}
+            {/* <div id="pointsRankingDisplay">
+              top x%
+            </div> */}
+            {/* NOT READY YET */}
+            {/* <div id="pointsBreakdownType">
+              creation points: <span id="pointsBreakdownNumber">8</span>
+            </div>
+            <div id="pointsBreakdownType">
+              voted points: <span id="pointsBreakdownNumber">4</span>
+            </div>
+            <div id="pointsBreakdownType">
+              activity points: <span id="pointsBreakdownNumber">4</span>
+            </div> */}
+            <div id="userSymbolLabel">
+              insignia
+            </div>
+            <div id="userSymbolSelectContainer">
+              {/* {this.state.user.Planet} */}
+              <Link to={window.location.pathname}  onClick={this.changePlanetEarth}>
+                <div id="earthMini" onMouseOver={this.hoverEarth} onMouseOut={this.unHoverEarth}></div>
+              </Link>
+              <Link to={window.location.pathname}  onClick={this.changePlanetMars}>
+                <div id="marsMini" onMouseOver={this.hoverMars} onMouseOut={this.unHoverMars}></div>
+              </Link>
+            </div>
+            {/* <div id="nextLevelLabel">
+              next level
+            </div>
+            <div id="nextLevelPointsNumberDisplay">
+              XX points
+            </div>
+            <div id="nextLevelLabel">
+              at level 11
+            </div>
+            <div id="nextLevelTitleContainer">
+              <div id="nextLevelTitleLockLeft"></div>
+              <div id="nextLevelTitle">
+                frontiersman
+              </div>
+              <div id="nextLevelTitleLockRight"></div>
+            </div> */}
+            {/* <div id="nextLevelPointsRankingDisplay">
+              enter top x%
+            </div> */}
+          </div>
         </div>
+        </ReactCSSTransitionGroup>
       </div>
       );
    }

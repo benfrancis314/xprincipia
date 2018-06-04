@@ -9,6 +9,7 @@ export default class ProfileProblemsSolutions extends React.Component {
         super();
 
         this.state = {
+            username: '',
             followedSolutions: [],
             createdSolutions: [],
             votedProblems: [],

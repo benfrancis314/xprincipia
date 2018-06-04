@@ -84,7 +84,8 @@ export default class WelcomeUserUnit extends React.Component {
 		);
 	}
 	renderItem(problem) {
-  
+        console.log(problem)
+        console.log(problem.Title)
 
 // For Google Analytics when working
     // function handleClick() {
@@ -93,7 +94,7 @@ export default class WelcomeUserUnit extends React.Component {
     //         action: 'Clicked Link',
     //     });
     // }
-if (problem.Private === true) {
+if (problem.Private == true) {
         return (
             <div key={problem.ID} id="nodisplay">
             </div>

@@ -412,7 +412,7 @@ voteDown() {
                 </div>
               </Link>
             <div id="problemColumn1">
-              <SubProjectParentUnit probID={this.props.params.probID} parentID={this.state.problemInfo.ParentID} parentType={this.state.problemInfo.ParentType} />
+              <SubProjectParentUnit probID={this.props.params.probID} parentTitle={this.state.problemInfo.ParentTitle} parentID={this.state.problemInfo.ParentID} parentType={this.state.problemInfo.ParentType} />
               <ProblemTitle problemTitle={this.state.problemInfo.Title} problemClass={this.state.problemInfo.Class} />
               <div id="projectActionGroupShow">
                 <div id="problemRow1">

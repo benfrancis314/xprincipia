@@ -180,7 +180,8 @@ export default class ProfileContainer extends React.Component {
     }
 
    render() {
-
+    console.log(window.location.pathname)
+    console.log(this.props.params)
     $(document).ready(function() {
         // $('#profileContainer').slideDown(700);
         $('#profileContainer').slideDown(300);

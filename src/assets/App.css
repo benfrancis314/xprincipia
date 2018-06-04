@@ -802,10 +802,6 @@ width: 100% !important;
 padding-top: 1% !important;
 padding-bottom: 1% !important;
 }
-#voteProblem, #votedProblem, #SBButtonDiscuss, #SBButtonLearn {
-/* width: 12em !important; */
-/* font-size: 130% !important; */
-}
 #projectInteractMenu, #projectInteractDiscussMenu {
 width: 100% !important;
 }
@@ -2249,31 +2245,40 @@ animation: spinError 4s linear infinite;
 }
 #errorLoadContainer {
   /* margin-top: 2%; */
-  width: 100%;
+  width: 100vw;
   height: 100vh;
   /* Old */
-  background: radial-gradient(circle,rgba(0,220,255, 0), rgba(0,220, 255, 0.05), rgba(0,220,255, 0), rgba(0,220,255, 0.05));
+  /* background: radial-gradient(circle,rgba(0,220,255, 0), rgba(0,220, 255, 0.05), rgba(0,220,255, 0), rgba(0,220,255, 0.05)); */
   /* Current A */
   /* background: radial-gradient(circle,rgba(0,220,255, 0.025), rgba(0,220, 255, 0.1), rgba(0, 220, 255, 0.025), rgba(0,220,255, 0.1));   */
   /* Current B */
   /* background: radial-gradient(circle,rgba(0,220,255, 0.075), rgba(0,220, 255, 0.05), rgba(0,220,255, 0.2), rgba(0,220,255, 0)); */
-  background: radial-gradient(circle,rgba(0,220,255, 0.01), rgba(0,220, 255, 0.025), rgba(0,220,255, 0.075), rgba(0,220,255, 0.05));  
+  /* background: radial-gradient(circle,rgba(0,220,255, 0.01), rgba(0,220, 255, 0.025), rgba(0,220,255, 0.075), rgba(0,220,255, 0.05));   */
   transition: all 6s ease 0s;
   background-color: #0f131c;
   transform: scale(1);
   box-shadow: 0 0 0pt 0pt rgba(0,220,255,0.5);
-  
+  margin: 0 auto;
+  text-align: center;
+  font-size: 700%;
+  letter-spacing: 8px;
+  padding-top: 54%;
+  /* color: #515151; */
+  /* FOR LOGO */
+  background: radial-gradient(circle,rgba(0,220,255, 0.1), rgba(0,220,255, 0.1),rgba(0,220,255, 0.05), rgba(0,220, 255, 0.1), rgba(0,220, 255, 0), rgba(0, 220, 255, 0.05), rgba(0,220,255, 0.25)); 
+  transition: all 3s ease 0s; 
+  /* background-color: rgba(0,220,255,0.05); */
   }
 #errorLoadContainer:hover {
   box-shadow: 0 0 2px 2px rgba(0,220,255,0.5);  
-  width: 100%;
-  height: 100vh;
-  transform: scale(1.02);
+  /* width: 100%; */
+  /* height: 100vh; */
+  transform: scale(1.1);
   background-color: rgba(0,220,255,0.05);
   /* Old */
   /* background: radial-gradient(circle,rgba(0,220,255, 0), rgba(0,220, 255, 0.1), rgba(0,220,255, 0), rgba(0,220,255, 0.1)); */
   /* Current */
-  background: radial-gradient(circle,rgba(0,220,255, 0.01), rgba(0,220, 255, 0.025), rgba(0,220,255, 0.1), rgba(0,220,255, 0.025));
+  /* background: radial-gradient(circle,rgba(0,220,255, 0.01), rgba(0,220, 255, 0.025), rgba(0,220,255, 0.1), rgba(0,220,255, 0.025)); */
   
 }
 
@@ -3384,7 +3389,7 @@ background-color: rgba(0,220,255,0.05);
 }
 #introRegister {
 padding: 0px 0% 4% 0px;
-flex: 1 1 auto;
+/* flex: 1 1 auto; */
 width: 100%;
 font-size: 110%;
 margin: 0 auto;
@@ -3401,6 +3406,9 @@ margin-bottom: 0px;
 /*box-shadow: 0 0 2pt 2pt rgba(0,220,255,0.5);*/
 font-family: 'Alegreya Sans SC', sans-serif;
 background-color: rgba(0,220,255,0.05);
+}
+#introRegisterUserName, #registerUserName, #loginHeaderEmail, #loginEmail {
+  text-transform: lowercase !important;
 }
 #loginPassword, #registerPassword {
 margin-bottom: 15px;
@@ -3791,18 +3799,33 @@ letter-spacing: 7px;
 width: 70%;
 transition: all 2s ease 0s;
 }
-#demoVideoContainer {
+#demoVideoContainer, #demoVideoContainerProfile {
   margin: 0 auto;
   width: 70%;
   text-align: center;
-  box-shadow: 0 0 1pt 1pt #00dcff;
-  /* border: 1px solid #00dcff; */
+  box-shadow: 0 0 1pt 1pt rgba(0,220,255,0.75);
+  border: 1px solid #515151;
   /* border-width: 1px 0px; */
+  border-radius: 3px 3px 3% 3%;
   padding: 4px;
   margin-top: 1%;
   margin-bottom: 1%;
-  background: linear-gradient(to right,rgba(0,220,255, 0), rgba(0,220,255, 0.25), rgba(0,220,255, 0));
-  /* background: linear-gradient(to right,rgba(255,127,127, 0.06), rgba(255,127,127, 0.07), rgba(255,127,127, 0.02)); */
+  /* background: linear-gradient(to right,rgba(0,220,255, 0), rgba(0,220,255, 0.25), rgba(0,220,255, 0)); */
+  background: radial-gradient(to circle,rgba(0,220,255, 0), rgba(0,220,255, 0.1));
+}
+#demoVideoContainerProfile {
+  width: 90%;
+}
+
+#introTutorialTitle {
+  margin: 0 auto;
+  /*color: #dddddd;*/
+  color: #515151;
+  text-align: center;
+  font-size: 250%;
+  letter-spacing: 4px;
+  width: 70%;
+  transition: all 2s ease 0s;
 }
 
 /*End Full Tutorial*/
@@ -5169,7 +5192,10 @@ letter-spacing: 7px;
   background: url('./mazeDark1.svg') no-repeat center !important;
   background-color: rgba(15,19,28,0.99999999);
   background-blend-mode: overlay;
-  padding-top: 8%;
+  /* WITHOUT TUTORIAL */
+  /* padding-top: 8%; */
+  /* WITH TUTORIAL */
+  margin-top: 3%;
   position: relative;
   transition: all 1s ease 0s;
 }
@@ -5179,14 +5205,18 @@ letter-spacing: 7px;
   /* border: 1px solid red; */
 }
 
-#pointsLevelLabel {
+#pointsLevelLabel, #pointsLevelLabelGuide {
   text-align: center;
   margin: 0 auto;
   /* padding: 2px; */
   width: 90%;
   letter-spacing: 2px;
   color: #00dcff;
-  background: linear-gradient(rgba(0,255,220,0), rgba(0,220,255,0.1));
+  background: linear-gradient(rgba(0,220,255,0), rgba(0,220,255,0.1));
+}
+#pointsLevelLabelGuide {
+  background: linear-gradient(rgba(0,220,55,0.025), rgba(0,220,255,0.1));
+
 }
 #pointsLevelTitleWest, #pointsLevelTitleFuture {
   text-align: center;
@@ -6064,6 +6094,10 @@ font-family: 'Open Sans';
 #suggestionTextHide {
   display: none;
 }
+#learnDescription {
+  width: 86%;
+  margin: 0 auto;
+}
 
 /*End Suggestion*/
 
@@ -6495,7 +6529,7 @@ input#submitWelcomeProblem:hover {
   #width80 {
     width: 80%;
   }
-  #welcomeTutorialVideoButton {
+  #welcomeTutorialVideoButton, #welcomeTutorialVideoButtonProfile {
     margin: 0 auto;
     color: #00dcff;
     text-align: center;
@@ -6516,12 +6550,17 @@ input#submitWelcomeProblem:hover {
     background-image: url('./videoPlay3.svg');
     height: 22px; */
     }
-    #welcomeTutorialVideoButton:hover {
-    cursor: pointer;
-    background-color: rgba(0,220,255,0.1);
-    color: #0f131c;
-
-    /* background-image: url('./tv3.svg'); */
+    #welcomeTutorialVideoButtonProfile {
+      border-color: #515151;
+      width: 20%;
+      opacity: 0.5;
+    }
+    #welcomeTutorialVideoButton:hover, #welcomeTutorialVideoButtonProfile:hover {
+      cursor: pointer;
+      background-color: rgba(0,220,255,0.1);
+      color: #0f131c;
+      opacity: 1;
+      /* background-image: url('./tv3.svg'); */
     }
     #welcomeContainerBanner {
       transition: all 2s ease 0s;
@@ -6568,10 +6607,12 @@ input#submitWelcomeProblem:hover {
       background-size: contain;
       background-repeat: no-repeat;
       background-blend-mode: overlay;
+      background-image: none;
       background-position: center;
-      /* background-size: 1000px; */
-      background-size: 100%;
+      background-size: 1000px;
+      /* background-size: 100%; */
       height: initial;
+      /* transition-delay: 0.1s; */
     }
     #welcomeIntroductionLabel:hover, .activeIntroductionButton div {
       transform: scale(1.02) !important;
@@ -6590,7 +6631,7 @@ input#submitWelcomeProblem:hover {
       background-image: url('./crabNebula1.jpg') !important;
       background-position: center !important;
       /* May cause difficulty in mobile, if so switch to % */
-      /* background-size: 1000px !important; */
+      background-size: 1000px !important;
       border-color: #00dcff;
       background-size: 100% !important;
     }
@@ -7954,7 +7995,7 @@ background: linear-gradient(to left, rgba(0,220,255,0.1), rgba(0,220,255,0.05), 
 }
 #SBButtonLearn {
   padding-right: 10px;
-  background: linear-gradient(to right, rgba(0,220,255,0.1), rgba(0,220,255,0.05), rgba(0,220,255,0.02)) !important;  
+  background: linear-gradient(to right, rgba(0,220,255,0.1), rgba(0,220,255,0.05), rgba(0,220,255,0.02));  
   /* transform:rotateY(-12deg); */
 }
 #SBButtonDiscuss {
@@ -7978,9 +8019,6 @@ box-shadow: 0 0 1px 1px rgba(0,220,255,1);
 transform: scale(1.02);
 background-color: rgba(0,220,255,0.05);
 
-}
-#SBButtonLearn:hover {
-  /* background: linear-gradient(to right, rgba(0,220,255,0.1), rgba(0,220,255,0.05), rgba(0,220,255,0.02)) !important;   */
 }
 #greenDiscussLearnNumber {
   color: rgba(0,255,220,0.75);
@@ -8824,7 +8862,7 @@ text-transform: lowercase !important;
 #fullSolutionContainer {
 margin-bottom: 1%;
 }
-#solutionFormLabel {
+#solutionFormLabel, #solutionFormLabelBottom {
 color: #00dcff;
 /* OLD */
 /* font-size: 160%; */
@@ -8832,8 +8870,15 @@ color: #00dcff;
 font-size: 130%;
 text-align: center;
 letter-spacing: 6px;
+margin: 0 auto;
 margin-top: 1%;
 text-transform: lowercase !important;
+width: 86%;
+background: linear-gradient(rgba(0,220,255,0), rgba(0,220,255,0.05));
+}
+#solutionFormLabelBottom {
+  background: linear-gradient(rgba(0,220,255,0.05), rgba(0,220,255,0));
+  margin-top: 0%;
 }
 #solutionDescriptionFormLabel {
 color: #00dcff;
@@ -8872,6 +8917,10 @@ margin-top: 0%;
 font-size: 110%;
 background: radial-gradient(circle, rgba(0,220,255,0), rgba(0,220,255,0.05));
 /* border: 1px solid rgba(0,220,255,0.5); */
+margin: 0 auto;
+width: 70%; 
+padding-left: 8%;
+padding-right: 8%;
 }
 /*End Right Solutions SB*/
 
@@ -9400,6 +9449,10 @@ cursor: pointer;
   border: 1px solid rgba(0,220,255,0);
   border-width: 0px 0px 1px 0px;
   border-radius: 0% 0% 20% 20%;
+
+  /* NEW */
+  font-size: 100%;
+  margin-top: 0.75%;
 }
 #resourceURLText:hover, #resourceURLTextShowVoted:hover {
 color: rgba(0,255,220,1);
@@ -9419,8 +9472,15 @@ border-color: rgba(0,220,255,0.5);
   text-transform: lowercase !important;
   padding: 1px 0px;
   border: 1px solid #333333;
-  border-width: 1px 0px;
+  /* border-width: 1px 0px; */
 
+  /* NEW */
+  font-size: 150%;
+  padding: 3px;
+  border-width: 1px;
+  border-radius: 3px 3px 10% 10%;
+  margin-bottom: 0.5%;
+  box-shadow: 0 0 1pt 1pt rgba(0,220,255,0.25);
 }  
 #resourceHeader {
   color: #00dcff !important;
@@ -16020,6 +16080,8 @@ a:focus #registerHeaderButton {
 
 
 
+
+
 /* select {
   font-family: 'Alegreya Sans SC';
   background: linear-gradient(to right, rgba(0,220,255,0), rgba(0,220,255,0.05), rgba(0,220,255,0.02));  
@@ -16072,12 +16134,151 @@ option {
 
 
 
+/* Google Register Button */
+
+.googleRegisterButton {
+  text-align: center;
+  margin: 0 auto;
+  background: url('./googleLogo.svg') no-repeat !important;
+  background-size: 100%;
+  background-position: center center;
+  opacity: 0.5;
+  width: 30px;
+  height: 30px;
+  border-color: rgba(0,220,255,0) !important;
+  margin-top: 1%;
+  transition: all 1s ease 0s;
+  outline-color: rgba(0,220,255,0) !important;
+  box-shadow: 0 0 0pt 0pt rgba(255,255,255,0) !important;
+  border-radius: 50% !important;
+  display: flex !important;
+}
+.googleRegisterButton:hover {
+  cursor: pointer;
+  /* background: url('./googleSigninDark.svg') no-repeat !important; */
+  /* background-size: 100%;
+  background-position: center;
+  transition: all 0.5s ease 0s;
+  width: 50px;
+  height: 50px; */
+  transform: scale(1.1);
+  opacity: 1;
+}
+.googleRegisterButton:active, .googleRegisterButton:focus {
+  /* background: url('./googleSigninDarkActive.svg') no-repeat !important;
+  background-size: 100%;
+  background-position: center;
+  transition: all 0.5s ease 0s; */
+}
+#googleRegisterAlert {
+  color: #ffffff;
+  text-align: center;
+  /* margin-top: 0.25%; */
+  /* margin-bottom: 0.5%; */
+  opacity: 0;
+  transition: all 1s ease 0s;
+}
+#googleRegisterContainer {
+  margin: 0 auto;
+}
+#googleRegisterContainer:hover #googleRegisterAlert {
+  opacity: 1;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
 
 
 /*XPrincipia Day*/
+
+/* DESIGN: RED */
+
+#errorLoadContainerDay {
+    /* margin-top: 2%; */
+    width: 100vw;
+    height: 100vh;
+    transition: all 6s ease 0s;
+    transform: scale(1);
+    margin: 0 auto;
+    text-align: center;
+    font-size: 700%;
+    letter-spacing: 8px;
+    padding-top: 54%;
+    background: radial-gradient(circle,rgba(255,0,0, 0), rgba(255,0,0, 0), rgba(255,0,0, 1)); 
+    transition: all 3s ease 0s; 
+    background-color: #ffffff;
+    color: #333333;
+}
+#dayRed {
+  color: hsl(0, 100%, 50%);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /*body {
 background-color: #ffffff;

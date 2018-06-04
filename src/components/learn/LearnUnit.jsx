@@ -178,9 +178,9 @@ export default class LearnUnit extends React.Component {
                                 {resource.Url}
                             </a>
                         </div>
-                    </div>
-                    <div id="learnDescription">
-                        {resource.Description}
+                        <div id="learnDescription">
+                            {resource.Description}
+                        </div>
                     </div>
                 </div>
             </li>
@@ -226,10 +226,11 @@ export default class LearnUnit extends React.Component {
                             {resource.Url}
                         </a>
                     </div>
+                    <div id="learnDescription">
+                        {resource.Description}
+                    </div>
                 </div>
-                <div id="learnDescription">
-                    {resource.Description}
-                </div>
+                
             </div>
         </li>
     );

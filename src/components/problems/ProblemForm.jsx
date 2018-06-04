@@ -24,6 +24,7 @@ export default class ProblemForm extends React.Component {
       proposalBoxID: '',
       proposalPath: '',
       private: '',
+      parentID: '',
     }
 
     this.postProblem = this.postProblem.bind(this);
@@ -59,13 +60,15 @@ export default class ProblemForm extends React.Component {
       self.setState({
           proposalCheck: '1',
           proposalBoxID: 'createProjectFormProposal',
-          proposalPath: '/proposal/'+self.props.params.solutionID,
+          proposalPath: '/proposal/'+self.props.params.solutionID + '/subprojects',
+          parentID: self.props.params.solutionID,
       })
     } else {
         self.setState({
             proposalCheck: '0',
             proposalBoxID: 'createProjectForm',
             proposalPath: '/subprojects',
+            parentID: self.props.params.probID,
         })
     }
   }
@@ -93,13 +96,15 @@ export default class ProblemForm extends React.Component {
       self.setState({
           proposalCheck: '1',
           proposalBoxID: 'createProjectFormProposal',
-          proposalPath: '/proposal/'+self.props.params.solutionID,
+          proposalPath: '/proposal/'+self.props.params.solutionID + '/subprojects',
+          parentID: nextProps.params.solutionID,
       })
     } else {
         self.setState({
             proposalCheck: '0',
             proposalBoxID: 'createProjectForm',
             proposalPath: '/subprojects',
+            parentID: self.props.params.probID,
         })
     }
   }
@@ -134,7 +139,7 @@ export default class ProblemForm extends React.Component {
       title : this.state.title,
       summary : this.state.summary,
       parentType : this.state.proposalCheck,
-      parentID: this.props.params.probID,
+      parentID: this.state.parentID,
       parentTitle : this.props.parentTitle,
       grandParentID : String(this.props.gParentID),
       grandParentTitle: this.props.gParentTitle,

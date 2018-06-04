@@ -88,7 +88,7 @@ render() {
 }
     
 renderItem(problem) {  
-    console.log(problem)
+    // console.log(problem)
     if (problem.ParentType === '1') {
 
       return (

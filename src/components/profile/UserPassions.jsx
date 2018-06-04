@@ -13,7 +13,7 @@ constructor(props){
     passions: '',
   }
 
-  this.postPassions = this.postPassions.bind(this);
+  // this.postPassions = this.postPassions.bind(this);
 };
 
    render() {

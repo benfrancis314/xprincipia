@@ -48,7 +48,7 @@ import FullProblem from './components/problems/FullProblem.jsx';
 import FullSolution from './components/solutions/FullSolution.jsx';
 import FullSolutionContent from './components/solutions/FullSolutionContent.jsx';
 import FullSolutionContentPrivate from './components/solutions/FullSolutionContentPrivate.jsx';
-import FullTutorial from './components/tutorials/FullTutorial.jsx';
+import GeneralTutorial from './components/tutorials/GeneralTutorial.jsx';
 import FullVersion from './components/versions/FullVersion.jsx';
 import Introduction from './components/Introduction.jsx';
 import Layout from './components/Layout.jsx';
@@ -96,6 +96,7 @@ import ProfilePoints from './components/profile/ProfilePoints.jsx';
 import ProfileProblemsSolutions from './components/profile/ProfileProblemsSolutions.jsx';
 import ProfileResume from './components/profile/ProfileResume.jsx';
 import ProfileSettings from './components/profile/ProfileSettings.jsx';
+import ProfileTutorial from './components/tutorials/ProfileTutorial.jsx';
 import ProfileWorkspace from './components/profile/ProfileWorkspace.jsx';
 import ProposalDiscussMenu from './components/solutions/ProposalDiscussMenu.jsx';
 import ProposalDiscussMenuPrivate from './components/solutions/ProposalDiscussMenuPrivate.jsx';
@@ -237,7 +238,7 @@ ReactDOM.render(
       <IndexRoute component={FullProblem}></IndexRoute>
       <Route path='/welcome/container' component={WelcomeContainer}>
         <Route path='/introduction' component={Introduction}></Route>
-        <Route path='/demo' component={FullTutorial}></Route>
+        <Route path='/demo' component={GeneralTutorial}></Route>
         <Route path='/welcome/container/project' component={WelcomeProjectsContainer}>
           <IndexRoute component={WelcomeCreateButton}></IndexRoute>
           <Route path='/welcomecreate' component={WelcomeCreateButton}>
@@ -292,6 +293,7 @@ ReactDOM.render(
         <Route path='/profile/resume' component={ProfileResume}></Route>
         <Route path='/profile/feedback' component={FeedbackForm}></Route>
         <Route path='/profile/prestige' component={ProfilePoints}></Route>
+        <Route path='/profile/guide' component={ProfileTutorial}></Route>
         <Route path='/messages/container' component={ProfileMessagesCenter}>
           <IndexRoute component={ProfileMessagesAddButton}></IndexRoute>
           <Route path='/messages' component={ProfileMessagesAddButton}></Route>

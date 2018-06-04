@@ -36,10 +36,16 @@ export default class FullSolutionDescription extends React.Component {
           return (
             <div> 
                 <br />
-                <div id="solutionFormLabel">DESCRIPTION</div>
+                <div id="solutionFormLabel">
+                    {/* DESCRIPTION */}
+                    <br />
+                </div>
                 <p id="solutionDescription">
                     {this.state.solutionInfo.Description}
                 </p>
+                <div id="solutionFormLabelBottom">
+                    <br />
+                </div>
                 <br />
                 <br />
                 <br />

@@ -2,6 +2,7 @@ import React from 'react';
 import {Link} from 'react-router';
 import $ from 'jquery';
 import IntroductionRegister from './IntroductionRegister'
+import IntroTutorial from './tutorials/IntroTutorial.jsx'
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group'; // ES6
 
 
@@ -30,88 +31,92 @@ export default class Introduction extends React.Component {
         $('#introductionContainer').hide().slideDown(500);
     });
       return (
-        <div id="fullWideIntro">
+        <div>
             <ReactCSSTransitionGroup
-                transitionName="example"
-                transitionAppear={true}
-                transitionAppearTimeout={2000}
-                transitionEnter={false}
-                transitionLeave={false}>
-            <Link to="/welcome">
-                <img src={require('../assets/redX.svg')} id="closeRedX" width="30" height="30" alt="Close button, red X symbol" />            
-            </Link>
-          <div id="introductionContainer">
-                <div id="introductionWelcomeSlogan" onMouseOver={this.hoverSlogan} onMouseOut={this.unHoverSlogan}>
-                    welcome to <span id="blue">x</span>principia
-                </div>
-                <div id="introductionProse">
-                    <div id="introductionSection1">
-                        <div id="introductionSectionHeaderBig">i</div>
-                        <div id="introductionSectionHeaderBlue">  
-                            share your scientific ideas
-                        </div>
-                        <div id="introductionSectionHeaderWhite">  
-                            improve them as a community
-                        </div>
+                    transitionName="example"
+                    transitionAppear={true}
+                    transitionAppearTimeout={2000}
+                    transitionEnter={false}
+                    transitionLeave={false}>
+            <div id="fullWideIntro">     
+                <Link to="/welcome">
+                    <img src={require('../assets/redX.svg')} id="closeRedX" width="30" height="30" alt="Close button, red X symbol" />            
+                </Link>
+            <div id="introductionContainer">
+                    <div id="introductionWelcomeSlogan" onMouseOver={this.hoverSlogan} onMouseOut={this.unHoverSlogan}>
+                        welcome to <span id="blue">x</span>principia
                     </div>
-                    <div id="introductionSection2">
-                        <div id="introductionSectionHeaderBig">ii</div>
-                        <div id="introductionSectionHeaderBlue">  
-                            collaborate through the internet
+                    <div id="introductionProse">
+                        <div id="introductionSection1">
+                            <div id="introductionSectionHeaderBig">i</div>
+                            <div id="introductionSectionHeaderBlue">  
+                                share your scientific ideas
+                            </div>
+                            <div id="introductionSectionHeaderWhite">  
+                                improve them as a community
+                            </div>
                         </div>
-                        <div id="introductionSectionHeaderWhite">  
-                            contribute regardless of background
+                        <div id="introductionSection2">
+                            <div id="introductionSectionHeaderBig">ii</div>
+                            <div id="introductionSectionHeaderBlue">  
+                                collaborate through the internet
+                            </div>
+                            <div id="introductionSectionHeaderWhite">  
+                                contribute regardless of background
+                            </div>
                         </div>
+                        <div id="introductionSection3">
+                            <div id="introductionSectionHeaderBig">iii</div>
+                            <div id="introductionSectionHeaderBlue">  
+                                breakdown critical projects
+                            </div>
+                            <div id="introductionSectionHeaderWhite">  
+                                into managable parts
+                            </div>
+                        </div>
+                        <div id="introductionSection4">
+                            <div id="introductionSectionHeaderBig">iv</div>
+                            <div id="introductionSectionHeaderBlue">  
+                                propose cutting edge ideas
+                            </div>
+                            <div id="introductionSectionHeaderWhite">  
+                                discuss<span id="gray"> | </span>learn<span id="gray"> | </span>iterate
+                            </div>
+                        </div>
+                        {/* <div id="introductionSection2">
+                            <div id="introductionSectionHeader2">
+                                science applied to the internet
+                            </div>
+                            <div id="introductionSectionProse">
+                                As of <span id="blueBigger">12,018 HE</span>, the act of science has been carried out by small groups of people, often connected loosely as they each strived for a greater <span id="blueBigger">science</span>. 
+                                The same can be said of technology. 
+                                However, humanity has created the <span id="blueBigger">internet</span>, allowing for the connectivity of multiple human minds. 
+                                With this great civilization-nervous system, there needs to be a location designed for the task of collective science. 
+                                The same can be said of technology. 
+                            </div>
+                        </div>
+                        <div id="introductionSection3">
+                            <div id="introductionSectionHeader3">
+                                xprincipia as scientific connectivity
+                            </div>
+                            <div id="introductionSectionProse">
+                                XPrincipia is crafted to be this center of mass-creativity, focused upon the understanding and shaping of our world. 
+                                XPrincipia is forever free and open to all of humanity. 
+                                XPrincipia is <span id="blueBigger">science</span> become <span id="blueBigger">internet</span>. 
+                            </div>
+                        </div> */}
                     </div>
-                    <div id="introductionSection3">
-                        <div id="introductionSectionHeaderBig">iii</div>
-                        <div id="introductionSectionHeaderBlue">  
-                            breakdown critical projects
-                        </div>
-                        <div id="introductionSectionHeaderWhite">  
-                            into managable parts
-                        </div>
-                    </div>
-                    <div id="introductionSection4">
-                        <div id="introductionSectionHeaderBig">iv</div>
-                        <div id="introductionSectionHeaderBlue">  
-                            propose cutting edge ideas
-                        </div>
-                        <div id="introductionSectionHeaderWhite">  
-                            discuss<span id="gray"> | </span>learn<span id="gray"> | </span>iterate
-                        </div>
-                    </div>
-                    {/* <div id="introductionSection2">
-                        <div id="introductionSectionHeader2">
-                            science applied to the internet
-                        </div>
-                        <div id="introductionSectionProse">
-                            As of <span id="blueBigger">12,018 HE</span>, the act of science has been carried out by small groups of people, often connected loosely as they each strived for a greater <span id="blueBigger">science</span>. 
-                            The same can be said of technology. 
-                            However, humanity has created the <span id="blueBigger">internet</span>, allowing for the connectivity of multiple human minds. 
-                            With this great civilization-nervous system, there needs to be a location designed for the task of collective science. 
-                            The same can be said of technology. 
-                        </div>
-                    </div>
-                    <div id="introductionSection3">
-                        <div id="introductionSectionHeader3">
-                            xprincipia as scientific connectivity
-                        </div>
-                        <div id="introductionSectionProse">
-                            XPrincipia is crafted to be this center of mass-creativity, focused upon the understanding and shaping of our world. 
-                            XPrincipia is forever free and open to all of humanity. 
-                            XPrincipia is <span id="blueBigger">science</span> become <span id="blueBigger">internet</span>. 
-                        </div>
-                    </div> */}
-                </div>
 
-                <IntroductionRegister />
+                    <IntroductionRegister />
+
+                </div>
+                
+                
             </div>
-            
-            {randomImg()}
-
+            <IntroTutorial />
+            {randomImg()}  
             </ReactCSSTransitionGroup>
-          </div>
+        </div>
       );
    }
 }

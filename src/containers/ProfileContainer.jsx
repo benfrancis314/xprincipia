@@ -271,8 +271,8 @@ export default class ProfileContainer extends React.Component {
             <div id="profileBox">
                 <div id="profileLeft">
                     <div id="userInformation">
-                        <p id="userName">{cookie.load('userName')}</p>
                         <Link to={`/profile/prestige`} activeClassName="activePoints">
+                            <p id="userName">{cookie.load('userName')}</p>
                             <div id="profileLevelButton">
                                 <span id="blue">{this.state.title1}</span>{this.state.title2}
                             </div>

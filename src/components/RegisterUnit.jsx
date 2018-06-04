@@ -4,6 +4,8 @@ import axios from 'axios';
 import cookie from 'react-cookie';
 import {Config} from '../config.js';
 import $ from 'jquery';
+import GoogleRegisterButton from './GoogleRegisterButton.jsx';
+
 
 export default class RegisterUnit extends React.Component {
 
@@ -78,7 +80,7 @@ constructor(){
             token : "Bearer " + self.state.userToken
           }, {headers: { Authorization: "Bearer " + self.state.userToken }}).then (function (response){
             
-            document.location = "/profile/prestige";
+            document.location = "/profile/guide";
 
           })
           
@@ -121,7 +123,7 @@ return axios.post( Config.API + '/register', {
           });
       })
   .then(function (result) {
-    axios.post( Config.API + '/login', {
+    return axios.post( Config.API + '/login', {
       username : self.state.username,
       password: self.state.password
     })  
@@ -133,13 +135,13 @@ return axios.post( Config.API + '/register', {
       cookie.save('userName', self.state.username, { path: '/' })
       
       // Store token/Username in db table
-      axios.post( Config.API + '/auth/saveToken',  {
+      return axios.post( Config.API + '/auth/saveToken',  {
         username : self.state.username,
         token : "Bearer " + self.state.userToken
       }, {headers: { Authorization: "Bearer " + self.state.userToken }}).then (function (response){
         
       })
-      document.location = "/profile/prestige";
+      document.location = "/profile/guide";
   })
       .catch(function (error) {
         // console.log(error.response.data)
@@ -185,7 +187,7 @@ hideLegal() {
         <div id="register">
             <form >
                 <input type="text" name="fullname" required="required" maxLength="30" placeholder="full name" id="registerFullName" autoFocus />
-                <input type="text" name="username" required="required" maxLength="20" placeholder="username" id="registerUserName" />
+                <input type="text" name="username" required="required" maxLength="30" placeholder="username" id="registerUserName" />
                 <input type="email" name="email" required="required" maxLength="30" placeholder="email" id="registerEmail" />
                 <input type="password" name="password" required="required" maxLength="30" placeholder="password" id="registerPassword"/>
                 <Link to={window.location.pathname}>
@@ -194,6 +196,7 @@ hideLegal() {
                 <Link to='/login'>
                   <div id="loginButton">login</div>
                 </Link>
+                {/* <GoogleRegisterButton /> */}
                 {/* <div id="legalAgreementRegisterButton" onClick={this.showLegal}>
                   legal agreement
                 </div> */}

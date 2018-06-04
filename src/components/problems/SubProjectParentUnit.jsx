@@ -30,12 +30,12 @@ export default class FullProblem extends React.Component {
 
     componentDidMount(){
         var self = this;
-        axios.get( Config.API + '/problems/ID?id='+this.props.parentID).then(function (response) {
-            self.setState({
-                parent: response.data
-            })
-        }) 
-        console.log(self.state.parent)
+        // axios.get( Config.API + '/problems/ID?id='+this.props.parentID).then(function (response) {
+        //     self.setState({
+        //         parent: response.data
+        //     })
+        // }) 
+        // console.log(self.state.parent)
         if (window.location.pathname.includes('private')) {
             self.setState({
                 linkPath: '/project/private/',
@@ -65,11 +65,11 @@ export default class FullProblem extends React.Component {
     }
 componentWillReceiveProps (nextProps){
         var self = this;
-        axios.get( Config.API + '/problems/ID?id='+nextProps.parentID).then(function (response) {
-            self.setState({
-                parent: response.data
-            })
-        }) 
+        // axios.get( Config.API + '/problems/ID?id='+nextProps.parentID).then(function (response) {
+        //     self.setState({
+        //         parent: response.data
+        //     })
+        // }) 
         if (window.location.pathname.includes('private')) {
             self.setState({
                 linkPath: '/project/private/',
@@ -169,7 +169,7 @@ showParentList() {
                 <div id="parentButtonContainer">
                     <Link to={this.state.linkPath+this.props.parentID+'/subprojects'}>
                         <div id="parentButton">
-                            <span id="parentText"><span id='blue'>parent: </span>{this.state.parent.Title}</span>
+                            <span id="parentText"><span id='blue'>parent: </span>{this.props.parentTitle}</span>
                         </div>
                     </Link>
                     <div id="parentListButton" onMouseOver={this.hoverParentListButton} onMouseOut={this.unHoverParentListButton}>
@@ -188,7 +188,7 @@ showParentList() {
                 <div id="parentButtonContainer">
                     <Link to={this.state.linkPath+this.props.parentID+'/subprojects'}>
                         <div id="parentButton">
-                            <span id="parentText"><span id='blue'>parent: </span>{this.state.parent.Title}</span>
+                            <span id="parentText"><span id='blue'>parent: </span>{this.props.parentTitle}</span>
                         </div>
                     </Link>
                     {/* <div id="parentListButton" onMouseOver={this.hoverParentListButton} onMouseOut={this.unHoverParentListButton}>

@@ -4,6 +4,7 @@ import axios from 'axios';
 import cookie from 'react-cookie';
 import {Config} from '../config.js';
 import $ from 'jquery';
+import GoogleRegisterButton from './GoogleRegisterButton.jsx';
 // import ScrollableAnchor from 'react-scrollable-anchor';
 
 
@@ -72,7 +73,7 @@ constructor(){
       })
       .then(function (result) {
         
-        return axios.post( Config.API + '/login', {
+        axios.post( Config.API + '/login', {
           username : self.state.username,
           password: self.state.password
         })
@@ -84,12 +85,12 @@ constructor(){
           cookie.save('userName', self.state.username, { path: '/' })
           
           // Store token/Username in db table
-          return axios.post( Config.API + '/auth/saveToken',  {
+          axios.post( Config.API + '/auth/saveToken',  {
             username : self.state.username,
             token : "Bearer " + self.state.userToken
           }, {headers: { Authorization: "Bearer " + self.state.userToken }}).then (function (response){
             
-            document.location = "/profile/prestige";
+            document.location = "/profile/guide";
 
           })
           
@@ -148,7 +149,7 @@ return axios.post( Config.API + '/register', {
         username : self.state.username,
         token : "Bearer " + self.state.userToken
       }, {headers: { Authorization: "Bearer " + self.state.userToken }}).then (function (response){
-        document.location = "/profile/prestige";
+        document.location = "/profile/guide";
       })
   
   })
@@ -182,16 +183,24 @@ return axios.post( Config.API + '/register', {
           </div>
         {/*</ScrollableAnchor>*/}
         <div id="introRegister">
-            <form >
+            {/* <form > */}
                 <input type="text" name="fullname" required="required" maxLength="30" placeholder="full name" id="introRegisterFullName" />
                 <input type="text" name="username" required="required" maxLength="30" placeholder="username" id="introRegisterUserName" />
                 <input type="email" name="email" required="required" maxLength="30" placeholder="email" id="introRegisterEmail" />
                 <input type="password" name="password" required="required" maxLength="30" placeholder="password" id="introRegisterPassword"/>
-                <Link to='/profile/prestige'>
+                <Link to={window.location.pathname}>
                   <input type="submit" value="join" onClick={this.postRegister} id="submitRegisterIntroduction"/>
                 </Link>
                 <Link to='/login'><div id="registerButtonIntroduction">login</div></Link>
-            </form>
+                {/* <GoogleRegisterButton /> */}
+                <div id="legalAgreementRegisterDescription">
+                  <span id="legalBlue">all rights are reserved by the creators </span>
+                  <br />of intellectual property on xprincipia.com
+                  <br />
+                  <span id="legalBlue">the creators permit this content to be distributed </span>
+                  <br />and used by xprincipia, inc. upon creation
+                </div>
+            {/* </form> */}
         </div>
       </div>
 
