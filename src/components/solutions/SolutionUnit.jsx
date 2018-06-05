@@ -54,7 +54,7 @@ export default class SolutionUnit extends React.Component {
 		  to={this.state.linkPath+solution.ProblemID+'/proposal/'+solution.ID}>
 						<div id="solutionUnitRed">
 							<div id="solutionUnitContainer">
-								<div id="solutionPercentRed">{floatToDecimal(solution.PercentRank)}</div>
+								<div id="solutionPercentRed">{floatToDecimal(solution.Rank)}</div>
 								<div id="solutionUnitTitle">
 									<div id="redProposal">solution</div>
 									{solution.Title}
@@ -73,7 +73,7 @@ export default class SolutionUnit extends React.Component {
           to={this.state.linkPath+solution.ProblemID+'/proposal/'+solution.ID}>
 						<div id="solutionUnitGreen">
 							<div id="solutionUnitContainer">
-								<div id="solutionPercentGreen">{floatToDecimal(solution.PercentRank)}</div>
+								<div id="solutionPercentGreen">{floatToDecimal(solution.Rank)}</div>
 								<div id="solutionUnitTitle">
 									<div id="greenProposal">plan</div>
 									{solution.Title}
@@ -92,7 +92,7 @@ export default class SolutionUnit extends React.Component {
           to={this.state.linkPath+solution.ProblemID+'/proposal/'+solution.ID}>
 						<div id="solutionUnit">
 							<div id="solutionUnitContainer">
-								<div id="solutionPercent">{floatToDecimal(solution.PercentRank)}</div>
+								<div id="solutionPercent">{floatToDecimal(solution.Rank)}</div>
 								<div id="solutionUnitTitle">{solution.Title}</div>
 							</div>
 						</div>

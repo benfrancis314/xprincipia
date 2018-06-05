@@ -171,16 +171,15 @@ export default class ProblemForm extends React.Component {
   }
 
   hideProblemForm() {
-    alert('1')
-    $(document).ready(function() {
-        $('#problemFormContainerShow').attr('id','problemFormContainerHide');
-    });
-}
+      $(document).ready(function() {
+          $('#problemFormContainerShow').attr('id','problemFormContainerHide');
+      });
+  }
 
   render() {
       return (
         <div>
-          <img src={require('../../assets/redX.svg')} id="closeRedX" width="30" height="30" alt="Close button, red X symbol" onClick={this.showProblemForm}/>
+          <img src={require('../../assets/redX.svg')} id="closeRedX" width="30" height="30" alt="Close button, red X symbol" onClick={this.hideProblemForm}/>
           <div id="createProblemBox">
               <form id={this.state.proposalBoxID}>
                     <label htmlFor="problemTitleForm" id="problemTitleFormLabel">subproject title<br />

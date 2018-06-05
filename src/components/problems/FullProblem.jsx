@@ -502,16 +502,16 @@ voteDown() {
                       </div> */}
                       
                       <div id="projectRightMenu">
-                        <Link to={this.state.linkPath+this.props.params.probID+'/discuss'} activeClassName="activeProblemOptionDiscuss">
-                          <div id="SBButtonDiscuss">
-                            <span id="greenDiscussLearnNumber">{this.state.discussNumber} </span>discuss
-                          </div>
-                        </Link> 
-                        <Link to={this.state.linkPath+this.props.params.probID+'/proposals'} activeClassName="activeProblemOptionDiscuss">
+                        <Link to={this.state.linkPath+this.props.params.probID+'/subprojects'} activeClassName="activeProblemOptionProposal">
                           <div id="SBButtonProposal" onClick={this.goToProposal}>ideas</div>
+                        </Link> 
+                        <Link to={this.state.linkPath+this.props.params.probID+'/discuss'} activeClassName="activeProblemOptionDiscuss">    
+                          <div id="SBButtonDiscuss">
+                            discuss<span id="greenDiscussLearnNumber"> {this.state.discussNumber}</span>
+                          </div>
                         </Link>
                         <Link to={this.state.linkPath+this.props.params.probID+'/learn'} activeClassName="activeProblemOptionLearn">
-                          <div id="SBButtonLearn">references <span id="greenDiscussLearnNumber">{this.state.learnNumber}</span></div>
+                          <div id="SBButtonLearn">learn <span id="greenDiscussLearnNumber">{this.state.learnNumber}</span></div>
                         </Link>
                       </div>
                       {React.cloneElement(this.props.children, {probID:this.props.params.probID, parentTitle: this.state.problemInfo.Title, parentID: this.state.problemInfo.ParentID, creator:this.state.problemInfo.OriginalPosterUsername, breakdownID:this.state.breakdownID})}

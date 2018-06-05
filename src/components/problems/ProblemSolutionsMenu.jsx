@@ -56,7 +56,9 @@ export default class ProblemSolutionsMenu extends React.Component {
                 <div id="addBlueX" onMouseOver={this.hoverNewProposal} onMouseOut={this.unHoverNewProposal}></div>
             </a> */}
             <ProblemTopSolutions probID={this.props.probID} />
-            <SolutionForm probID={this.props.probID} projectTitle={this.props.projectTitle} />
+            <div id="solutionFormContainerHide">
+                <SolutionForm probID={this.props.probID} projectTitle={this.props.projectTitle} />
+            </div>
         </div>
 
       );

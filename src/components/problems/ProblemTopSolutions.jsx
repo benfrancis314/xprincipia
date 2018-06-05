@@ -2,6 +2,7 @@ import React from 'react';
 import SolutionUnit from '../solutions/SolutionUnit.jsx';
 import axios from 'axios';
 import {Config} from '../../config.js';
+import $ from 'jquery';
 
 export default class ProblemSolutionsMenu extends React.Component {
   constructor(){
@@ -50,6 +51,12 @@ export default class ProblemSolutionsMenu extends React.Component {
         })
     }
 
+    showSolutionForm() {
+        $(document).ready(function() {
+            $('#solutionFormContainerHide').attr('id','solutionFormContainerShow');
+        });
+    }
+
    render() {
     
     if (this.state.solutions === undefined || this.state.solutions.length == 0) {
@@ -57,7 +64,7 @@ export default class ProblemSolutionsMenu extends React.Component {
             <div id="fullWide">
                 <a href='#proposalForm'>
                     <div id="noProposalsPromptFlare"><br /></div>
-                    <div id="noProposalsPrompt">
+                    <div id="noProposalsPrompt" onClick={this.showSolutionForm}>
                         <span id="blue">propose </span>{this.state.promptWord} <span id="blue">first </span>idea
                     </div>
                 </a>
