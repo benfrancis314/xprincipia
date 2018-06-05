@@ -5,8 +5,10 @@ import axios from 'axios';
 import cookie from 'react-cookie';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group'; // ES6
 import ProblemFollowButton from './ProblemFollowButton.jsx';
+import ProblemForm from './ProblemForm.jsx';
 import ProblemSolutionsMenu from './ProblemSolutionsMenu.jsx';
 import ProblemTitle from './ProblemTitle.jsx';
+import ProjectBreakdownSlogan from '../ProjectBreakdownSlogan.jsx';
 import ProjectVoteButton from './ProjectVoteButton.jsx';
 import ProjectActivity from './ProjectActivity.jsx';
 import SubProblemContainer from '../../containers/SubProblemContainer.jsx';
@@ -397,9 +399,12 @@ voteDown() {
     }
 
    render() {
+    $(document).ready(function() {
+      // $('#problemSummary').hide().slideDown(500);
+      // $('#projectInfoGroupShow').hide().slideDown(500);
+  });
     return (
-            <div id="maxContainerColumn">
-            
+          <div id="fullProblemContainer">
             <ReactCSSTransitionGroup
               transitionName="example"
               transitionAppear={true}
@@ -411,26 +416,22 @@ voteDown() {
                   <img src={require('../../assets/flag.svg')} id="flagProblemLogo" width="24" height="24" alt="Delete Button, Red X" />
                 </div>
               </Link>
-            <div id="problemColumn1">
               <SubProjectParentUnit probID={this.props.params.probID} parentTitle={this.state.problemInfo.ParentTitle} parentID={this.state.problemInfo.ParentID} parentType={this.state.problemInfo.ParentType} />
               <ProblemTitle problemTitle={this.state.problemInfo.Title} problemClass={this.state.problemInfo.Class} />
-              <div id="projectActionGroupShow">
-                <div id="problemRow1">
-                    <Link to={this.state.linkPath+this.props.params.probID+'/discuss'} activeClassName="activeProblemOptionDiscuss">
-                      <div id="SBButtonDiscuss"><span id="greenDiscussLearnNumber">{this.state.discussNumber} </span>discuss</div>
-                    </Link>
-                    <div id={this.state.menuID}>
-                      <Link to={this.state.linkPath+this.props.params.probID+'/subprojects'} onClick={this.checkLoginVote}>
-                        <div id={this.state.voteID} ref='probbtn'>
-                            {this.state.voteTitle}
-                        </div>
-                      </Link>
-                      <a href='#proposals'>
-                        <div id="SBButtonProposal" onClick={this.goToProposal}>proposals</div>
-                      </a>
-                      <ProblemFollowButton probID={this.props.params.probID} username={cookie.load('userName')} />
+              {/* <div id="problemSummaryContainer">
+                  <Link to={this.state.linkPath+this.props.params.probID+'/subprojects'} onClick={this.checkLoginVote}>
+                    <div id={this.state.voteID} ref='probbtn'>
+                      <span id="greenVoteNumber">{this.state.problemInfo.Rank} </span>{this.state.voteTitle}
                     </div>
-                    <div id={this.state.menuIDPrivate}>
+                  </Link>
+                  <div id="problemSummary">
+                    {this.state.problemInfo.Summary}
+                  </div>
+                  <ProblemFollowButton probID={this.props.params.probID} username={cookie.load('userName')} />
+              </div> */}
+                <div id="problemRow1">
+                    
+                    {/* <div id={this.state.menuIDPrivate}>
                       <Link to={`/project/private/${this.props.params.probID}/subprojects`}  onClick={this.voteUp} onMouseDown={this.changeRankOn} onMouseUp={this.changeRankOff}>
                         <div id="voteProblemUp" ref='probbtn'>
                         </div>
@@ -442,60 +443,91 @@ voteDown() {
                         <div id="voteProblemDown" ref='probbtn'>
                         </div>
                       </Link>
-                    </div>
-                    <Link to={this.state.linkPath+this.props.params.probID+'/learn'} activeClassName="activeProblemOptionLearn">
-                      <div id="SBButtonLearn">learn <span id="greenDiscussLearnNumber">{this.state.learnNumber}</span></div>
-                    </Link>
+                    </div> */}
                 </div>
-                <div id="projectCreator">
+                {/* <div id="projectCreator">
                   {this.state.problemInfo.OriginalPosterUsername}
-                </div>
-                <div id={this.state.editDeleteMenuID}>
-                  <Link to={this.state.linkPath+this.props.params.probID+'/edit'} activeClassName="activeProjectEditButton">
-                    <img src={require('../../assets/editBlue.svg')} id={this.state.editID} width="20" height="20" alt="Edit Button" />
-                  </Link>
-                  <Link to={this.state.linkPath+this.props.params.probID+'/delete'} activeClassName="activeProjectDeleteButton">
-                    <img src={require('../../assets/redX2.svg')} id={this.state.deleteID} width="24" height="24" alt="Delete Button, Red X" />
-                  </Link>
-                </div>
-              </div>
+                </div> */}
                 <div id="projectMidColumnContainer">
                   <div id="projectMidColumnLeftStart">
-                    <div id="projectActivityButton" onClick={this.showActivity}>
+                    {/* <div id="projectActivityButton" onClick={this.showActivity}>
                       activity
+                    </div> */}
+                    {/* <SubProjectParentUnit probID={this.props.params.probID} parentTitle={this.state.problemInfo.ParentTitle} parentID={this.state.problemInfo.ParentID} parentType={this.state.problemInfo.ParentType} />
+                    <ProblemTitle problemTitle={this.state.problemInfo.Title} problemClass={this.state.problemInfo.Class} /> */}
+                    <div id="projectTreeContainer">
+                    <div id="projectTreeContainerInner">
+                      <div id="problemSummaryContainer">   
+                          <Link to={this.state.linkPath+this.props.params.probID+'/subprojects'} onClick={this.checkLoginVote}>
+                            <div id={this.state.voteID} ref='probbtn'>
+                              <div id="voteProblemText">
+                              {/* <div id="greenVoteNumber">{this.state.problemInfo.Rank} </div>
+                              {this.state.voteTitle} */}
+                              </div>
+                            </div>
+                          </Link>
+                          <div id="problemSummary">
+                            {this.state.problemInfo.Summary}
+                          </div>
+                          <ProblemFollowButton probID={this.props.params.probID} username={cookie.load('userName')} />
+                      </div>
+                      <div id={this.state.editDeleteMenuID}>
+                        <Link to={this.state.linkPath+this.props.params.probID+'/edit'} activeClassName="activeProjectEditButton">
+                          <img src={require('../../assets/editBlue.svg')} id={this.state.editID} width="20" height="20" alt="Edit Button" />
+                        </Link>
+                        <Link to={this.state.linkPath+this.props.params.probID+'/delete'} activeClassName="activeProjectDeleteButton">
+                          <img src={require('../../assets/redX2.svg')} id={this.state.deleteID} width="24" height="24" alt="Delete Button, Red X" />
+                        </Link>
+                      </div>
+                      {/* <ProjectActivity probID={this.props.params.probID} /> */}
+                      <ProjectBreakdownSlogan />
+                      <SubProblemContainer problemInfo={this.state.problemInfo} probID={this.props.params.probID} breakdownOriginal={this.state.breakdownOriginal} differentBreakdown={this.differentBreakdown} />
                     </div>
-                    <div id="projectActivityGroup">
-                      <ProjectActivity probID={this.props.params.probID} />
-                      <div id="projectHideButton2" onClick={this.hideActivity}>
+                    </div>
+                    <div id="problemFormContainerHide">
+                      <ProblemForm probID={this.props.params.probID} solutionID={this.props.params.solutionID} />
+                    </div>
+                      {/* <div id="projectHideButton2" onClick={this.hideActivity}>
                         <img src={require('../../assets/redX2.svg')} id="projectModuleClose2" width="22" height="22" alt="Project Tree Button, white tree"  onClick={this.hideParentList} />
-                      </div>
-                    </div>
+                      </div> */}
                   </div>
+                  <div id="projectRightContainer">
                   <div id="projectMidColumnRightStart">
-                    <div id="projectInfoButton" onClick={this.showInfo}>
+                    {/* <div id="projectInfoButton" onClick={this.showInfo}>
                       brief
-                    </div>
-                    <div id="projectInfoGroup">
-                      <div id="projectPercent" onClick={this.submitVote} onMouseOver={this.hoverVoteNumber} onMouseOut={this.unHoverVoteNumber}>
+                    </div> */}
+                    <div id="projectInfoGroupShow">
+                      {/* <div id="projectPercent" onClick={this.submitVote} onMouseOver={this.hoverVoteNumber} onMouseOut={this.unHoverVoteNumber}>
                         {this.state.problemInfo.Rank}
+                      </div> */}
+                      
+                      <div id="projectRightMenu">
+                        <Link to={this.state.linkPath+this.props.params.probID+'/discuss'} activeClassName="activeProblemOptionDiscuss">
+                          <div id="SBButtonDiscuss">
+                            <span id="greenDiscussLearnNumber">{this.state.discussNumber} </span>discuss
+                          </div>
+                        </Link> 
+                        <Link to={this.state.linkPath+this.props.params.probID+'/proposals'} activeClassName="activeProblemOptionDiscuss">
+                          <div id="SBButtonProposal" onClick={this.goToProposal}>ideas</div>
+                        </Link>
+                        <Link to={this.state.linkPath+this.props.params.probID+'/learn'} activeClassName="activeProblemOptionLearn">
+                          <div id="SBButtonLearn">references <span id="greenDiscussLearnNumber">{this.state.learnNumber}</span></div>
+                        </Link>
                       </div>
-                      <div id="fullProblem">
-                        <p id="problemSummary">
-                          {this.state.problemInfo.Summary}
-                        </p>
-                      </div>
-                      <div id="projectHideButton3" onClick={this.hideInfo}>
+                      {React.cloneElement(this.props.children, {probID:this.props.params.probID, parentTitle: this.state.problemInfo.Title, parentID: this.state.problemInfo.ParentID, creator:this.state.problemInfo.OriginalPosterUsername, breakdownID:this.state.breakdownID})}
+                      {/* <div id="fullProblem">
+                      </div> */}
+                      {/* <div id="projectHideButton3" onClick={this.hideInfo}>
                         <img src={require('../../assets/redX2.svg')} id="projectModuleClose3" width="18" height="18" alt="Project Tree Button, white tree"  onClick={this.hideParentList} />
-                      </div>
+                      </div> */}
                     </div>
                     </div>
                   </div>
-                </div>
-              {React.cloneElement(this.props.children, {probID:this.props.params.probID, parentTitle: this.state.problemInfo.Title, parentID: this.state.problemInfo.ParentID, creator:this.state.problemInfo.OriginalPosterUsername, breakdownID:this.state.breakdownID})}
-              <SubProblemContainer problemInfo={this.state.problemInfo} probID={this.props.params.probID} breakdownOriginal={this.state.breakdownOriginal} differentBreakdown={this.differentBreakdown} />
-              <ScrollableAnchor id={'proposals'}>
-                <ProblemSolutionsMenu probID={this.props.params.probID} projectTitle={this.state.problemInfo.Title} />
-              </ScrollableAnchor>
+                  </div>
+              
+              {/* <ScrollableAnchor id={'proposals'}> */}
+                {/* <ProblemSolutionsMenu probID={this.props.params.probID} projectTitle={this.state.problemInfo.Title} /> */}
+              {/* </ScrollableAnchor> */}
     
             </ReactCSSTransitionGroup>
           </div>

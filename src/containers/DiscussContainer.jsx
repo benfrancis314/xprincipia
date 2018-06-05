@@ -398,9 +398,9 @@ export default class DiscussContainer extends React.Component {
    render() {
     return (
         <div id={this.state.proposalID}>
-            <div id="discussGroupSelectAllActive" onClick={this.selectAll}>
+            {/* <div id="discussGroupSelectAllActive" onClick={this.selectAll}>
                 discuss<span id="greenSmallFaint">  {this.state.discussNumber}</span>
-            </div>
+            </div> */}
             <div id="discussSelectionMenuContainer">
                 <div id="sidebarDiscussMenu">
                     {/* <div id="discussGroupSelectAllActive" onClick={this.selectAll}>

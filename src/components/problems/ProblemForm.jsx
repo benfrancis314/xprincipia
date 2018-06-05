@@ -29,6 +29,7 @@ export default class ProblemForm extends React.Component {
 
     this.postProblem = this.postProblem.bind(this);
     this.checkLoginProblem = this.checkLoginProblem.bind(this);
+    this.hideProblemForm = this.hideProblemForm.bind(this);
 
   };
 
@@ -38,7 +39,7 @@ export default class ProblemForm extends React.Component {
 
   componentDidMount(){
     var self = this;
-    axios.get( Config.API + '/breakdowns/byproblemnumber?parentID='+this.props.params.probID + '&parentNumber=1').then(function (response) {
+    axios.get( Config.API + '/breakdowns/byproblemnumber?parentID='+this.props.probID + '&parentNumber=1').then(function (response) {
         self.setState({
             breakdownID: response.data.ID,
         })
@@ -60,21 +61,21 @@ export default class ProblemForm extends React.Component {
       self.setState({
           proposalCheck: '1',
           proposalBoxID: 'createProjectFormProposal',
-          proposalPath: '/proposal/'+self.props.params.solutionID + '/subprojects',
-          parentID: self.props.params.solutionID,
+          proposalPath: '/proposal/'+self.props.solutionID + '/subprojects',
+          parentID: self.props.solutionID,
       })
     } else {
         self.setState({
             proposalCheck: '0',
             proposalBoxID: 'createProjectForm',
             proposalPath: '/subprojects',
-            parentID: self.props.params.probID,
+            parentID: self.props.probID,
         })
     }
   }
   componentWillReceiveProps(nextProps) {
     var self = this;
-    axios.get( Config.API + '/breakdowns/byproblemnumber?parentID='+nextProps.params.probID + '&parentNumber=1').then(function (response) {
+    axios.get( Config.API + '/breakdowns/byproblemnumber?parentID='+nextProps.probID + '&parentNumber=1').then(function (response) {
         self.setState({
             breakdownID: response.data.ID,
         })
@@ -96,15 +97,15 @@ export default class ProblemForm extends React.Component {
       self.setState({
           proposalCheck: '1',
           proposalBoxID: 'createProjectFormProposal',
-          proposalPath: '/proposal/'+self.props.params.solutionID + '/subprojects',
-          parentID: nextProps.params.solutionID,
+          proposalPath: '/proposal/'+self.props.solutionID + '/subprojects',
+          parentID: nextProps.solutionID,
       })
     } else {
         self.setState({
             proposalCheck: '0',
             proposalBoxID: 'createProjectForm',
             proposalPath: '/subprojects',
-            parentID: self.props.params.probID,
+            parentID: self.props.probID,
         })
     }
   }
@@ -169,8 +170,17 @@ export default class ProblemForm extends React.Component {
       self.refs.btn.removeAttribute("disabled");
   }
 
+  hideProblemForm() {
+    alert('1')
+    $(document).ready(function() {
+        $('#problemFormContainerShow').attr('id','problemFormContainerHide');
+    });
+}
+
   render() {
       return (
+        <div>
+          <img src={require('../../assets/redX.svg')} id="closeRedX" width="30" height="30" alt="Close button, red X symbol" onClick={this.showProblemForm}/>
           <div id="createProblemBox">
               <form id={this.state.proposalBoxID}>
                     <label htmlFor="problemTitleForm" id="problemTitleFormLabel">subproject title<br />
@@ -220,11 +230,12 @@ export default class ProblemForm extends React.Component {
                       <textarea name="problemSummary" maxLength="500" 
                       placeholder="Please summarize this project or add any additional information you'd like. (500 ch)" id="problemSummaryForm"/>
                   </label>
-                  <Link to={this.state.linkPath+this.props.params.probID+this.state.proposalPath} onClick={this.checkLoginProblem}>
+                  <Link to={this.state.linkPath+this.props.probID+this.state.proposalPath} onClick={this.checkLoginProblem}>
                       <input type="button" ref='btn' value="create" id="submitProblem"/>
                   </Link>
               </form>
           </div>
+        </div>
 
       );
    }

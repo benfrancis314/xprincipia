@@ -8,7 +8,7 @@ export default class ProjectBreakdownSlogan extends React.Component {
       return (
         <div id="privateContainerMottoContainer">
             <div id="privateContainerMotto">
-                    PROJECT BREAKDOWN
+                    <span id="blueOpaque">PROJECT </span><span id="whiteOpaque">BREAKDOWN</span>
             </div>
         </div>
       );

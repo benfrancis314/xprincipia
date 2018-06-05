@@ -25,6 +25,7 @@ export default class SubProblemContainer extends React.Component {
         this.unHoverBranch = this.unHoverBranch.bind(this);
         this.hoverNewBranch = this.hoverNewBranch.bind(this);
         this.unHoverNewBranch = this.unHoverNewBranch.bind(this);
+        this.showProblemForm = this.showProblemForm.bind(this);
     };
 
     hoverText() {
@@ -76,6 +77,11 @@ export default class SubProblemContainer extends React.Component {
                     $('#privateContainerMottoWhite').html("PROJECT BREAKDOWN");
                     $('#privateContainerMottoWhite').attr('id','privateContainerMotto');
             });
+    }
+    showProblemForm() {
+        $(document).ready(function() {
+            $('#problemFormContainerHide').attr('id','problemFormContainerShow');
+        });
     }
     // componentDidMount(){
     //     var self = this;
@@ -148,31 +154,48 @@ export default class SubProblemContainer extends React.Component {
 
     render() {
             return (
-                <div id="SPwrapper">
-                    <Link to={this.state.linkPath+this.props.probID+'/create/breakdown'} activeClassName="activePrivateCreateButton">
+                <div>
+                    <div id="SPwrapper">
+                        <ul id="SPUnitList"> 
+                            {/* <li>
+                                <img src={require('../assets/leftArrow.svg')} id="SParrowImg" width="50" height="50" alt="User avatar, DNA Helix" />
+                            </li> */}
+                            {/* <Link to={this.state.linkPath+this.props.probID+'/create'} activeClassName="activePrivateCreateButton"> */}
+                                
+                            {/* </Link> */}
+                            {this.state.problems.map(this.renderItem)}
+                            {/* <li>
+                                <img src={require('../assets/rightArrow.svg')} id="SParrowImg" width="50" height="50" alt="User avatar, DNA Helix" />
+                            </li> */}
+                        </ul>
+                    </div>
+                    {/* <Link to={this.state.linkPath+this.props.probID+'/create/breakdown'} activeClassName="activePrivateCreateButton">
                         <div id="branchesProjectButton" onMouseOver={this.hoverBranch} onMouseOut={this.unHoverBranch} onClick={this.clickBranch}>
                         </div>
-                    </Link>
-                    <ul id="SPUnitList"> 
-                        <li>
-                            <img src={require('../assets/leftArrow.svg')} id="SParrowImg" width="50" height="50" alt="User avatar, DNA Helix" />
-                        </li>
-                        <Link to={this.state.linkPath+this.props.probID+'/create'} activeClassName="activePrivateCreateButton">
-                                <li id="SPUnit">
-                                        <div id="SPHeader" onMouseOver={this.hoverText} onMouseOut={this.unHoverText}>
-                                                <img src={require('../assets/blueAdd2.svg')} id="privateNewProjectPlus" width="80" height="80" alt="User avatar, DNA Helix" />
-                                        </div>
-                                </li>
-                        </Link>
-                        {this.state.problems.map(this.renderItem)}
-                        <li>
-                            <img src={require('../assets/rightArrow.svg')} id="SParrowImg" width="50" height="50" alt="User avatar, DNA Helix" />
-                        </li>
-                    </ul>
+                    </Link> */}
+                    <div id="SPUnitNew">
+                            <div id="SPHeaderNew" onMouseOver={this.hoverText} onMouseOut={this.unHoverText} onClick={this.showProblemForm}>
+                                    <img src={require('../assets/blueAdd2.svg')} id="privateNewProjectPlus" width="50" height="50" alt="User avatar, DNA Helix" />
+                            </div>
+                    </div>
                 </div>
             );
         }
         renderItem(problem) {
+            // var distance = 1;
+            // var spID = "SPUnit" + String(problem.ID)
+            // var spIDDiv = document.getElementById(spID)
+            // var spDist = document.getElementById("SPUnit").offsetLeft * 10
+            // // console.log(spID)
+            // // console.log(document.getElementById("SPUnit").offsetLeft)
+            // console.log(spIDDiv.getBoundingClientRect())
+
+            // const divStyle = {
+            //     transform: 'rotateY(' + spDist + 'deg)',
+            //     border: '1px solid pink'
+            //   };
+
+
             if (problem.ParentType === 1) {
                     return (
                         <div key={problem.ID} id="nodisplay">
@@ -222,11 +245,15 @@ export default class SubProblemContainer extends React.Component {
             } else {
                 return (
                     <Link key={problem.ID} to={this.state.linkPath+problem.ID +'/subprojects'}>
-                        <li id="SPUnit">
+                        <li id="SPUnit" 
+                        // style={divStyle}
+                        >
+                        <div id={"SPUnit" + String(problem.ID)}>
                             <div id="SPHeader">
                                 <div id="SPTitle">{problem.Title}</div>
                                 <div id="SPPercent">{problem.Rank}</div>
                             </div>
+                        </div>
                         </li>
                     </Link>
                 )};

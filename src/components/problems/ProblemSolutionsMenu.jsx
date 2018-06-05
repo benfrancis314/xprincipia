@@ -51,10 +51,10 @@ export default class ProblemSolutionsMenu extends React.Component {
 
       return (
         <div id="projectInteractMenu">
-            <div id="proposalSectionHeader">proposals</div>
+            {/* <div id="proposalSectionHeader">proposals</div>
             <a href='#proposalForm'>
                 <div id="addBlueX" onMouseOver={this.hoverNewProposal} onMouseOut={this.unHoverNewProposal}></div>
-            </a>
+            </a> */}
             <ProblemTopSolutions probID={this.props.probID} />
             <SolutionForm probID={this.props.probID} projectTitle={this.props.projectTitle} />
         </div>

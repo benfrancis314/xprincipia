@@ -398,7 +398,7 @@ ReactDOM.render(
         <Route path='/project/:probID/tree/create' component={OverviewProjectForm}></Route>
       </Route>
       <Route path='/project/:probID' component={FullProblem}>
-        <IndexRoute component={ProjectBreakdownSlogan}></IndexRoute>
+        <IndexRoute component={ProblemSolutionsMenu}></IndexRoute>
         <Route path='/project/:probID/add' component={ProblemFormContainer}>
           <IndexRoute component={ProblemForm}></IndexRoute>
           <Route path='/project/:probID/create' component={ProblemForm}></Route>
@@ -411,8 +411,8 @@ ReactDOM.render(
         <Route path='/project/:probID/edit' component={ProjectEditForm}></Route>
         <Route path='/project/:probID/flag' component={ProjectFlagForm}></Route>
         <Route path='/project/:probID/delete' component={ProjectDeleteForm}></Route>
-        <Route path='/project/:probID/subprojects' component={ProjectBreakdownSlogan}></Route>
-        <Route path='/project/:probID/solutions' component={ProblemSolutionsMenu}>
+        <Route path='/project/:probID/subprojects' component={ProblemSolutionsMenu}></Route>
+        <Route path='/project/:probID/proposals' component={ProblemSolutionsMenu}>
           <IndexRoute component={ProblemTopSolutions}></IndexRoute>
           <Route path='/project/:probID/solutions/create' component={SolutionForm}></Route>
         </Route>

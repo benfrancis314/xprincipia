@@ -120,7 +120,7 @@ unTrack() {
            <div>
              <Link to={window.location.pathname}>
                <div id="SBButtonFollowedPrivate" onClick={this.checkLoginUntrack}>
-                 tracking
+                 {/* tracking */}
                </div>
              </Link>
            </div>
@@ -130,7 +130,7 @@ unTrack() {
            <div>
              <Link to={window.location.pathname}>
                <div id="SBButtonFollowPrivate" onClick={this.checkLoginTrack}>
-                 track
+                 {/* track */}
                </div>
              </Link>
            </div>
@@ -142,7 +142,7 @@ unTrack() {
             <div>
               <Link to={window.location.pathname}>
                 <div id="SBButtonFollowed" onClick={this.checkLoginUntrack}>
-                  tracking
+                  {/* tracking */}
                 </div>
               </Link>
             </div>
@@ -152,7 +152,7 @@ unTrack() {
             <div>
               <Link to={window.location.pathname}>
                 <div id="SBButtonFollow" onClick={this.checkLoginTrack}>
-                  track
+                  {/* track */}
                 </div>
               </Link>
             </div>
