@@ -171,10 +171,19 @@ export default class ProblemForm extends React.Component {
   }
 
   hideProblemForm() {
-      $(document).ready(function() {
+    if(document.getElementById("SPHeader")) {
+        $(document).ready(function() {
           $('#problemFormContainerShow').attr('id','problemFormContainerHide');
-      });
+          $('#SPUnitNewHide').attr('id','SPUnitNew');
+        });
+    } else {
+        $(document).ready(function() {
+          $('#problemFormContainerShow').attr('id','problemFormContainerHide');
+          $('#noProjectsContainerHide').attr('id','noProjectsContainerShow');
+        });
+    }
   }
+
 
   render() {
       return (

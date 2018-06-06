@@ -23,7 +23,7 @@ export default class FullSolution extends React.Component {
     };
     //initialize the component with this state
     componentDidMount(){
-        ReactDOM.findDOMNode(this).scrollIntoView();
+        // ReactDOM.findDOMNode(this).scrollIntoView();
         var self = this;
         axios.get( Config.API + '/solutions/ID?id='+this.props.params.solutionID).then(function (response) {
             if (response.data.Class == '2') {

@@ -276,22 +276,22 @@ showDataURL() {
 
 
       return (
-      <div>
-        {randomImg()}
+      // <div>
+        // {randomImg()}
         <div id="createSolutionBox">
             <ScrollableAnchor id={'proposalForm'}>
               <div id="proposalFormCreateTitle">
-                    <span id="blue">new </span>proposal
+                    <span id="blue">new </span>idea
               </div>
             </ScrollableAnchor>
 
             <form id="createForm">
-              <fieldset id="fieldSetSideBorder">
+              {/* <fieldset id="fieldSetSideBorder"> */}
                 <label htmlFor="solutionTitle" id="projectTitleProposalFormLabel">project title<br />
                   <h1 id="proposalCreateProjectTitle">{this.props.projectTitle}</h1>
                 </label><br />
 
-                <label htmlFor="solutionTitle" id="solutionTitleFormLabel">proposal title<br />
+                <label htmlFor="solutionTitle" id="solutionTitleFormLabel">idea title<br />
                     <input name="solutionTitle" required="required" maxLength="140" id="solutionTitleForm" />
                   </label><br />
 
@@ -334,7 +334,7 @@ showDataURL() {
 
 
                 <label htmlFor="solutionSummary" id="solutionSummaryFormLabel">summary<br />
-                  <textarea name="solutionSummary" required="required" maxLength="500" placeholder="Please summarize your proposal here. (500 ch)" id="solutionSummaryForm"/>
+                  <textarea name="solutionSummary" required="required" maxLength="500" placeholder="Please summarize your idea here. (500 ch)" id="solutionSummaryForm"/>
                 </label><br />
 
                 <div id="solutionDescriptionFormLabel">
@@ -374,10 +374,10 @@ showDataURL() {
                   <Link to={this.state.linkPath+this.props.probID+'/subprojects'} onClick={this.checkLoginProposal}>
                       <input type="button" ref='btn' value="create" id="submitSolution"/>
                   </Link>
-              </fieldset>
+              {/* </fieldset> */}
             </form>
         </div>
-      </div>
+      // </div>
       );
    }
 }

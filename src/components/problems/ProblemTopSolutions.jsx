@@ -54,6 +54,7 @@ export default class ProblemSolutionsMenu extends React.Component {
     showSolutionForm() {
         $(document).ready(function() {
             $('#solutionFormContainerHide').attr('id','solutionFormContainerShow');
+            $('#proposalsPromptContainerShow').attr('id','proposalsPromptContainerHide');
         });
     }
 
@@ -61,13 +62,13 @@ export default class ProblemSolutionsMenu extends React.Component {
     
     if (this.state.solutions === undefined || this.state.solutions.length == 0) {
         return (
-            <div id="fullWide">
-                <a href='#proposalForm'>
+            <div id="proposalsPromptContainerShow">
+                {/* <a href='#proposalForm'> */}
                     <div id="noProposalsPromptFlare"><br /></div>
                     <div id="noProposalsPrompt" onClick={this.showSolutionForm}>
                         <span id="blue">propose </span>{this.state.promptWord} <span id="blue">first </span>idea
                     </div>
-                </a>
+                {/* </a> */}
             </div>
         );
     } else {

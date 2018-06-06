@@ -402,28 +402,37 @@ export default class DiscussContainer extends React.Component {
                 discuss<span id="greenSmallFaint">  {this.state.discussNumber}</span>
             </div> */}
             <div id="discussSelectionMenuContainer">
-                <div id="sidebarDiscussMenu">
-                    {/* <div id="discussGroupSelectAllActive" onClick={this.selectAll}>
-                        all<span id="greenSmallFaint">  {this.state.discussNumber}</span>
-                    </div> */}
-                    <div id="discussGroupSelection">
-                        <div id="discussSelectButtonLeftInactive" onClick={this.selectQuestions}>
-                            questions
-                            <span id="greenSmallFaint">  {this.state.questionNumber}</span>
-                        </div>
+                <div id="discussFilterFormContainer">
+                    <div id="sidebarDiscussMenu">
+                        {/* <div id="discussGroupSelectAllActive" onClick={this.selectAll}>
+                            all<span id="greenSmallFaint">  {this.state.discussNumber}</span>
+                        </div> */}
+                        {/* <div id="discussFilterLabelActive">
+                            unfiltered
+                        </div> */}
+                        <div id="discussGroupSelection">
+                            <div id="discussSelectButtonLeftInactive" onClick={this.selectQuestions}>
+                                all posts
+                                <span id="greenSmallFaint">  {this.state.discussNumber}</span>
+                            </div>
+                            <div id="discussSelectButtonLeftInactive" onClick={this.selectQuestions}>
+                                questions
+                                <span id="greenSmallFaint">  {this.state.questionNumber}</span>
+                            </div>
 
-                        <div id="discussSelectButtonCenterInactive" onClick={this.selectSuggestions}>                                           
-                            suggestions
-                            <span id="greenSmallFaint">  {this.state.suggestionNumber}</span>
-                        </div>
+                            <div id="discussSelectButtonCenterInactive" onClick={this.selectSuggestions}>                                           
+                                suggestions
+                                <span id="greenSmallFaint">  {this.state.suggestionNumber}</span>
+                            </div>
 
-                        <div id="discussSelectButtonRightInactive" onClick={this.selectDebates}>                                            
-                            debates
-                            <span id="greenSmallFaint">  {this.state.debateNumber}</span>
+                            <div id="discussSelectButtonRightInactive" onClick={this.selectDebates}>                                            
+                                debates
+                                <span id="greenSmallFaint">  {this.state.debateNumber}</span>
+                            </div>
                         </div>
                     </div>
+                    {React.cloneElement(this.props.children, {discuss:this.state.discuss, parentTitle: this.props.parentTitle})}
                 </div>
-                {React.cloneElement(this.props.children, {parentTitle: this.props.parentTitle})}
                 <div id={this.state.newTopID}>
                     <div id="discussListNewButtonActive" onClick={this.selectNew}>
                         new
@@ -434,7 +443,7 @@ export default class DiscussContainer extends React.Component {
                 </div>
             </div>
             <DiscussUnit linkPath={this.state.linkPath} solutionID={this.props.params.solutionID} discussID={this.props.params.discussID}questions={this.state.discuss} />
-            <div id="proposalsTitleRightSBEnd"><br /></div>
+            {/* <div id="proposalsTitleRightSBEnd"><br /></div> */}
         </div>
   
     );

@@ -293,7 +293,7 @@ constructor(props){
    render() {
        return (
             <div id="projectInteractDiscussMenu">
-                <div id="discussGroupSelectAllActive" onClick={this.selectAll}>learn<span id="greenSmall">  {this.state.learnNumber}</span></div>
+                {/* <div id="discussGroupSelectAllActive" onClick={this.selectAll}>learn<span id="greenSmall">  {this.state.learnNumber}</span></div> */}
                 <div id="discussSelectionMenuContainer">
                     <div id="sidebarDiscussMenu">
                         <div id="discussGroupSelection">

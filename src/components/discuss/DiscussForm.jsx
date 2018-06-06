@@ -21,6 +21,7 @@ export default class QuestionForm extends React.Component {
     this.postDiscuss = this.postDiscuss.bind(this);
     // USE IF AUTH SYSTEM DOESN'T WORK
     this.checkLoginDiscuss = this.checkLoginDiscuss.bind(this);
+    this.showDiscussForm = this.showDiscussForm.bind(this);
   };
 componentDidMount(){
     var self = this;
@@ -138,12 +139,26 @@ postDiscuss() {
 
   }
 
-
+  showDiscussForm() {
+      $(document).ready(function() {
+          $('#projectFormRadioContainerHide').attr('id','projectFormRadioContainer');
+          $('#noDiscussContainerShow').attr('id','noDiscussContainerHide');
+      });
+  }
 
    render() {
-        return (
-          <div id="discussFormContainer">
 
+
+    if (this.props.discuss === undefined || this.props.discuss.length == 0) {
+      return (
+        <div id="discussFormContainer">
+          <div id="noDiscussContainerShow">
+            <div id="noDiscussPromptFlare"><br /></div>
+            <div id="noDiscussPrompt" onClick={this.showDiscussForm}>
+                <span id="blue">begin </span>the <span id="blue">first </span>discussion
+            </div>
+          </div>
+          <div id="discussFormHide">
             <div id="projectFormRadioContainer">
               <div id="projectFormRadioColumn">
                 <div id="projectFormRadioRow1">
@@ -192,7 +207,68 @@ postDiscuss() {
               </form>
             </div>
           </div>
+        </div>
+      );
+    } else {
+        return (
+            <div id="discussFormContainer">
+              <div id="noDiscussContainerShow">
+                <div id="noDiscussPromptFlare"><br /></div>
+                <div id="noDiscussPrompt" onClick={this.showDiscussForm}>
+                    <span id="blue">add </span>a <span id="blue">new </span>discussion
+                </div>
+              </div>
+              <div id="discussFormHide">
+                <div id="projectFormRadioContainer">
+                  <div id="projectFormRadioColumn">
+                    <div id="projectFormRadioRow1">
+                      question<span id="grayLessSpacing"> | default</span>
+                    </div>
+                    <div id="projectFormRadioRow">
+                      <label id="projectRadioButtonContainer">
+                        <input type="radio" id="projectClass0" name="projectType" value="0"/>
+                        <span id="checkmark1"></span>
+                      </label>
+                    </div>
+                  </div>
+                  <div id="projectFormRadioColumn">
+                    <div id="projectFormRadioRow2">
+                      suggestion
+                    </div>
+                    <div id="projectFormRadioRow">
+                      <label id="projectRadioButtonContainer">
+                        <input type="radio" id="projectClass1" name="projectType" value="1" />
+                        <span id="checkmark2"></span>
+                      </label>
+                    </div>
+                  </div>
+                  <div id="projectFormRadioColumn">
+                    <div id="projectFormRadioRow3">
+                      debate
+                    </div>
+                    <div id="projectFormRadioRow">
+                      <label id="projectRadioButtonContainer">
+                        <input type="radio" id="projectClass2" name="projectType" value="2" />
+                        <span id="checkmark3"></span>
+                      </label>
+                    </div>
+                  </div>
+                </div>
+
+               <div id="questionFormComponent">
+                  <form id="questionForm">
+                    <fieldset id='fieldSetNoBorderPadding'>
+                      <textarea name="questionText" required="required" id="questionTextArea" placeholder={this.state.placeholder} ></textarea>
+                      <Link to={window.location.pathname} onClick={this.checkLoginDiscuss}>
+                        <input type="button" ref='btn' value="add" id="askQuestion"/>
+                      </Link>
+                    </fieldset>
+                  </form>
+                </div>
+              </div>
+            </div>
 
         );
+    }
    }
 }

@@ -15,6 +15,7 @@ export default class SubProblemContainer extends React.Component {
             probID: '',
             linkPath: '',
             breakdownOriginal: [],
+            destinationPath: '',
         }
         this.renderItem = this.renderItem.bind(this);  
         this.renderBranch = this.renderBranch.bind(this);
@@ -26,6 +27,7 @@ export default class SubProblemContainer extends React.Component {
         this.hoverNewBranch = this.hoverNewBranch.bind(this);
         this.unHoverNewBranch = this.unHoverNewBranch.bind(this);
         this.showProblemForm = this.showProblemForm.bind(this);
+        this.showProblemFormFirst = this.showProblemFormFirst.bind(this);
     };
 
     hoverText() {
@@ -36,7 +38,7 @@ export default class SubProblemContainer extends React.Component {
 	}
 	unHoverText() {
 		$(document).ready(function() {
-			$('#privateContainerMottoWhite').html("PROJECT BREAKDOWN");
+			$('#privateContainerMottoWhite').html("<span id='blueOpaque'>PROJECT </span><span id='whiteOpaque'>BREAKDOWN</span>");
 			$('#privateContainerMottoWhite').attr('id','privateContainerMotto');
 		});
     }
@@ -49,7 +51,7 @@ export default class SubProblemContainer extends React.Component {
     }
     hideBranch() {
 		$(document).ready(function() {
-			$('#privateContainerMottoWhite').html("PROJECT BREAKDOWNS").fadeIn(7500);
+			$('#privateContainerMottoWhite').html("<span id='blueOpaque'>PROJECT </span><span id='whiteOpaque'>BREAKDOWN</span>").fadeIn(7500);
             $('#privateContainerMottoWhite').attr('id','privateContainerMotto');
             $('#branchesProjectButtonClick').attr('id','branchesProjectButton');
 		});
@@ -62,7 +64,7 @@ export default class SubProblemContainer extends React.Component {
 	}
 	unHoverBranch() {
 		$(document).ready(function() {
-			$('#privateContainerMottoWhite').html("PROJECT BREAKDOWN");
+			$('#privateContainerMottoWhite').html("<span id='blueOpaque'>PROJECT </span><span id='whiteOpaque'>BREAKDOWN</span>");
 			$('#privateContainerMottoWhite').attr('id','privateContainerMotto');
 		});
     }
@@ -74,15 +76,23 @@ export default class SubProblemContainer extends React.Component {
     }
     unHoverNewBranch() {
             $(document).ready(function() {
-                    $('#privateContainerMottoWhite').html("PROJECT BREAKDOWN");
+                    $('#privateContainerMottoWhite').html("<span id='blueOpaque'>PROJECT </span><span id='whiteOpaque'>BREAKDOWN</span>");
                     $('#privateContainerMottoWhite').attr('id','privateContainerMotto');
             });
+    }
+    showProblemFormFirst() {
+        $(document).ready(function() {
+            $('#problemFormContainerHide').attr('id','problemFormContainerShow');
+            $('#noProjectsContainerShow').attr('id','noProjectsContainerHide');
+        });
     }
     showProblemForm() {
         $(document).ready(function() {
             $('#problemFormContainerHide').attr('id','problemFormContainerShow');
+            $('#SPUnitNew').attr('id','SPUnitNewHide');
         });
     }
+    
     // componentDidMount(){
     //     var self = this;
     //     if (window.location.pathname.includes('private')) {
@@ -113,9 +123,18 @@ export default class SubProblemContainer extends React.Component {
     //     //     })
     //     // })   
     // }
-    
-    componentWillReceiveProps (nextProps){
+    componentDidMount() {
         var self = this;
+        axios.get( Config.API + '/problems/breakdown?breakdownID='+this.props.breakdownOriginal).then(function (response) {
+            self.setState({
+                problems: response.data,
+            })
+        }) 
+        axios.get( Config.API + '/breakdowns/byproblem?parentID='+this.props.probID).then(function (response) {
+            self.setState({
+                branches: response.data
+            })
+        }) 
         if (window.location.pathname.includes('private')) {
             self.setState({
                 linkPath: '/project/private/',
@@ -125,10 +144,22 @@ export default class SubProblemContainer extends React.Component {
                 linkPath: '/project/',
             })
         }
-        this.setState({
-            probID: nextProps.probID,
-            breakdownOriginal: nextProps.breakdownOriginal
-        })
+        if (window.location.pathname.includes('discuss')) {
+            self.setState({
+                destinationPath: '/discuss',
+            })
+        } else if (window.location.pathname.includes('learn')) {
+            self.setState({
+                destinationPath: '/learn',
+            })
+        } else {
+            self.setState({
+                destinationPath: '/subprojects',
+            })
+        }
+    }
+    componentWillReceiveProps (nextProps){
+        var self = this;
         axios.get( Config.API + '/problems/breakdown?breakdownID='+nextProps.breakdownOriginal).then(function (response) {
             self.setState({
                 problems: response.data,
@@ -138,7 +169,29 @@ export default class SubProblemContainer extends React.Component {
             self.setState({
                 branches: response.data
             })
-        })  
+        }) 
+        if (window.location.pathname.includes('private')) {
+            self.setState({
+                linkPath: '/project/private/',
+            })
+        } else {
+            self.setState({
+                linkPath: '/project/',
+            })
+        }
+        if (window.location.pathname.includes('discuss')) {
+            self.setState({
+                destinationPath: '/discuss',
+            })
+        } else if (window.location.pathname.includes('learn')) {
+            self.setState({
+                destinationPath: '/learn',
+            })
+        } else {
+            self.setState({
+                destinationPath: '/subprojects',
+            })
+        }
     }
 
     shouldComponentUpdate (nextProps, nextState) {
@@ -153,7 +206,42 @@ export default class SubProblemContainer extends React.Component {
 
 
     render() {
+        if (this.state.problems === undefined || this.state.problems.length == 0) {
             return (
+                <div>
+                    <div id="noProjectsContainerShow">
+                            <div id="noProjectsPromptFlare"><br /></div>
+                            <div id="noProjectsPrompt" onMouseOver={this.hoverText} onMouseOut={this.unHoverText} onClick={this.showProblemFormFirst}>
+                                <span id="blue">begin </span>project <span id="blue">division</span>
+                            </div>
+                    </div>
+                    <div id="SPwrapper">
+                        <ul id="SPUnitList"> 
+                            {/* <li>
+                                <img src={require('../assets/leftArrow.svg')} id="SParrowImg" width="50" height="50" alt="User avatar, DNA Helix" />
+                            </li> */}
+                            {/* <Link to={this.state.linkPath+this.props.probID+'/create'} activeClassName="activePrivateCreateButton"> */}
+                                
+                            {/* </Link> */}
+                            {this.state.problems.map(this.renderItem)}
+                            {/* <li>
+                                <img src={require('../assets/rightArrow.svg')} id="SParrowImg" width="50" height="50" alt="User avatar, DNA Helix" />
+                            </li> */}
+                        </ul>
+                    </div>
+                    {/* <Link to={this.state.linkPath+this.props.probID+'/create/breakdown'} activeClassName="activePrivateCreateButton">
+                        <div id="branchesProjectButton" onMouseOver={this.hoverBranch} onMouseOut={this.unHoverBranch} onClick={this.clickBranch}>
+                        </div>
+                    </Link> */}
+                    {/* <div id="SPUnitNew">
+                            <div id="SPHeaderNew" onMouseOver={this.hoverText} onMouseOut={this.unHoverText} onClick={this.showProblemForm}>
+                                    <img src={require('../assets/blueAdd2.svg')} id="privateNewProjectPlus" width="50" height="50" alt="User avatar, DNA Helix" />
+                            </div>
+                    </div> */}
+                </div>
+            );
+        } else {
+          return (
                 <div>
                     <div id="SPwrapper">
                         <ul id="SPUnitList"> 
@@ -178,9 +266,10 @@ export default class SubProblemContainer extends React.Component {
                                     <img src={require('../assets/blueAdd2.svg')} id="privateNewProjectPlus" width="50" height="50" alt="User avatar, DNA Helix" />
                             </div>
                     </div>
-                </div>
-            );
-        }
+                </div>    
+          );
+       }  
+    }
         renderItem(problem) {
             // var distance = 1;
             // var spID = "SPUnit" + String(problem.ID)
@@ -203,7 +292,7 @@ export default class SubProblemContainer extends React.Component {
                     );
             } else if (problem.Title.length > 50) {
             return (
-                <Link key={problem.ID} to={this.state.linkPath+problem.ID +'/subprojects'}>
+                <Link key={problem.ID} to={this.state.linkPath+problem.ID + this.state.destinationPath}>
                     <li id="SPUnit">
                         <div id="SPHeader">
                             <div id="SPTitleSmall">{problem.Title}</div>
@@ -214,7 +303,7 @@ export default class SubProblemContainer extends React.Component {
             );
             } else if (problem.Class == '2') {
                 return (
-                    <Link key={problem.ID} to={this.state.linkPath+problem.ID +'/subprojects'}>
+                    <Link key={problem.ID} to={this.state.linkPath+problem.ID + this.state.destinationPath}>
                         <li id="SPUnit">
                             <div id="SPHeaderRed">
                                 <div id="SPTitleRed">
@@ -229,7 +318,7 @@ export default class SubProblemContainer extends React.Component {
                 );
             } else if (problem.Class == '1') {
                 return (
-                    <Link key={problem.ID} to={this.state.linkPath+problem.ID +'/subprojects'}>
+                    <Link key={problem.ID} to={this.state.linkPath+problem.ID + this.state.destinationPath}>
                         <li id="SPUnit">
                             <div id="SPHeaderGreen">
                                 <div id="SPTitleGreen">
@@ -244,16 +333,16 @@ export default class SubProblemContainer extends React.Component {
                 );
             } else {
                 return (
-                    <Link key={problem.ID} to={this.state.linkPath+problem.ID +'/subprojects'}>
+                    <Link key={problem.ID} to={this.state.linkPath+problem.ID + this.state.destinationPath}>
                         <li id="SPUnit" 
                         // style={divStyle}
                         >
-                        <div id={"SPUnit" + String(problem.ID)}>
+                        {/* <div id={"SPUnit" + String(problem.ID)}> */}
                             <div id="SPHeader">
                                 <div id="SPTitle">{problem.Title}</div>
                                 <div id="SPPercent">{problem.Rank}</div>
                             </div>
-                        </div>
+                        {/* </div> */}
                         </li>
                     </Link>
                 )};

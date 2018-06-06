@@ -41,9 +41,9 @@ export default class ProblemDiscussMenu extends React.Component {
        
       return (
         <div>
-            <Link to={this.state.linkPath+`${this.props.params.probID}/subprojects`}>
+            {/* <Link to={this.state.linkPath+`${this.props.params.probID}/subprojects`}>
                 <img src={require('../../assets/redX.svg')} id="closeRedX" width="30" height="30" alt="Close button, red X symbol" />
-            </Link>
+            </Link> */}
             <ReactCSSTransitionGroup
             transitionName="example"
             transitionAppear={true}

@@ -46,6 +46,12 @@ export default class ProblemSolutionsMenu extends React.Component {
               $('#proposalSectionHeaderHover').attr('id','proposalSectionHeader');
           });
       }
+    hideSolutionForm() {
+        $(document).ready(function() {
+            $('#solutionFormContainerShow').attr('id','solutionFormContainerHide');
+            $('#proposalsPromptContainerHide').attr('id','proposalsPromptContainerShow');
+        });
+    }
 
    render() {
 
@@ -57,7 +63,8 @@ export default class ProblemSolutionsMenu extends React.Component {
             </a> */}
             <ProblemTopSolutions probID={this.props.probID} />
             <div id="solutionFormContainerHide">
-                <SolutionForm probID={this.props.probID} projectTitle={this.props.projectTitle} />
+                <img src={require('../../assets/redX.svg')} id="closeRedX" width="30" height="30" alt="Close button, red X symbol"  onClick={this.hideSolutionForm}/>
+                <SolutionForm probID={this.props.probID} projectTitle={this.props.parentTitle} />
             </div>
         </div>
 
