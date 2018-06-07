@@ -200,11 +200,12 @@ export default class ProjectBreakdownForm extends React.Component {
 								<div id="projectFormRadioContainer">
 								<div id="projectFormRadioColumn">
 									<div id="projectFormRadioRow1">
-									project<span id="grayLessSpacing"> | default</span>
+									project
+                  {/* <span id="grayLessSpacing"> | default</span> */}
 									</div>
 									<div id="projectFormRadioRow">
 									<label id="projectRadioButtonContainer">
-										<input type="radio" id="projectClass0" name="projectType" value="0"/>
+										<input type="radio" id="projectClass0"  name="projectType" value="0"/>
 										<span id="checkmark1"></span>
 									</label>
 									</div>

@@ -126,6 +126,7 @@ showParentList() {
                 <Link to={this.state.linkPath+this.state.solutionInfo.ProblemID+'/proposal/'+this.props.parentID}>
                     <div id="parentButton">
                         <span id='blue'>proposal: </span>{this.state.solutionInfo.Title}
+                        <img src={require('../../assets/upArrow3Blue.svg')} id="parentArrowButton" width="15" height="15" alt="Project Tree Button, white tree"/>
                     </div>
                 </Link>
             </div>
@@ -138,6 +139,7 @@ showParentList() {
                     <Link to={this.state.baseParentLinkPath}>
                         <div id="parentButton">
                             <span id='blue'>{this.state.baseParentTitle1} </span>{this.state.baseParentTitle2}
+                            <img src={require('../../assets/upArrow3Blue.svg')} id="parentArrowButton" width="15" height="15" alt="Project Tree Button, white tree"/>
                         </div>
                     </Link>
                     <div id="parentListButton" onMouseOver={this.hoverParentListButton} onMouseOut={this.unHoverParentListButton}>
@@ -154,6 +156,7 @@ showParentList() {
                     <Link to={this.state.baseParentLinkPath}>
                         <div id="parentButton">
                             <span id='blue'>{this.state.baseParentTitle1} </span>{this.state.baseParentTitle2}
+                            <img src={require('../../assets/upArrow3Blue.svg')} id="parentArrowButton" width="15" height="15" alt="Project Tree Button, white tree"/>
                         </div>
                     </Link>
                     {/* <div id="parentListButton" onMouseOver={this.hoverParentListButton} onMouseOut={this.unHoverParentListButton}>
@@ -170,6 +173,7 @@ showParentList() {
                     <Link to={this.state.linkPath+this.props.parentID+'/subprojects'}>
                         <div id="parentButton">
                             <span id="parentText"><span id='blue'>parent: </span>{this.props.parentTitle}</span>
+                            <img src={require('../../assets/upArrow3Blue.svg')} id="parentArrowButton" width="15" height="15" alt="Project Tree Button, white tree"/>
                         </div>
                     </Link>
                     <div id="parentListButton" onMouseOver={this.hoverParentListButton} onMouseOut={this.unHoverParentListButton}>
@@ -189,6 +193,7 @@ showParentList() {
                     <Link to={this.state.linkPath+this.props.parentID+'/subprojects'}>
                         <div id="parentButton">
                             <span id="parentText"><span id='blue'>parent: </span>{this.props.parentTitle}</span>
+                            <img src={require('../../assets/upArrow3Blue.svg')} id="parentArrowButton" width="15" height="15" alt="Project Tree Button, white tree"/>
                         </div>
                     </Link>
                     {/* <div id="parentListButton" onMouseOver={this.hoverParentListButton} onMouseOut={this.unHoverParentListButton}>

@@ -16,7 +16,7 @@ export default class ProblemSolutionsMenu extends React.Component {
 
     componentDidMount(){
         var self = this;
-        return axios.get( Config.API + '/solutions/problemID?id='+this.props.probID).then(function (response) {
+        axios.get( Config.API + '/solutions/problemID?id='+this.props.probID).then(function (response) {
             self.setState({
                 solutions: response.data,
             })
@@ -25,7 +25,7 @@ export default class ProblemSolutionsMenu extends React.Component {
 
     componentWillReceiveProps (nextProps){
         var self = this;
-        return axios.get( Config.API + '/solutions/problemID?id='+this.props.probID).then(function (response) {
+        axios.get( Config.API + '/solutions/problemID?id='+nextProps.probID).then(function (response) {
             self.setState({
                 solutions: response.data,
             })

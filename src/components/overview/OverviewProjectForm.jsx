@@ -96,7 +96,7 @@ export default class ProblemForm extends React.Component {
                         </div>
                         <div id="projectFormRadioRow">
                           <label id="projectRadioButtonContainer">
-                            <input type="radio" name="projectType" value="0"/>
+                            <input type="radio"  name="projectType" value="0"/>
                             <span id="checkmark1"></span>
                           </label>
                         </div>

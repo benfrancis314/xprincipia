@@ -57,7 +57,7 @@ export default class PrivateProjectUnit extends React.Component {
                 <li id="SPUnit">
                     <div id="SPHeader">
                         <div id="SPTitleSmall">{problem.Title}</div>
-                        <div id="SPPercent">{problem.Rank}</div>
+                        {/* <div id="SPPercent">{problem.Rank}</div> */}
                     </div>
                 </li>
             </Link>
@@ -73,7 +73,7 @@ export default class PrivateProjectUnit extends React.Component {
                                 <br />
                                 {problem.Title}
                             </div>
-                            <div id="SPPercent">{problem.Rank}</div>
+                            {/* <div id="SPPercent">{problem.Rank}</div> */}
                         </div>
                     </li>
                 </Link>
@@ -88,7 +88,7 @@ export default class PrivateProjectUnit extends React.Component {
                                 <br />
                                 {problem.Title}
                             </div>
-                            <div id="SPPercent">{problem.Rank}</div>
+                            {/* <div id="SPPercent">{problem.Rank}</div> */}
                         </div>
                     </li>
                 </Link>
@@ -99,7 +99,7 @@ export default class PrivateProjectUnit extends React.Component {
                     <li id="SPPrivateUnit">
                         <div id="SPHeaderPrivate">
                             <div id="SPTitle">{problem.Title}</div>
-                            <div id="SPPercent">{problem.Rank}</div>
+                            {/* <div id="SPPercent">{problem.Rank}</div> */}
                         </div>
                     </li>
                </Link>

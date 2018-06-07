@@ -16,8 +16,10 @@ export default class SubProblemContainer extends React.Component {
             linkPath: '',
             breakdownOriginal: [],
             destinationPath: '',
+            private: false,
         }
         this.renderItem = this.renderItem.bind(this);  
+        this.renderPrivateItem = this.renderPrivateItem.bind(this);  
         this.renderBranch = this.renderBranch.bind(this);
         this.hoverText = this.hoverText.bind(this);
         this.unHoverText = this.unHoverText.bind(this);
@@ -28,17 +30,19 @@ export default class SubProblemContainer extends React.Component {
         this.unHoverNewBranch = this.unHoverNewBranch.bind(this);
         this.showProblemForm = this.showProblemForm.bind(this);
         this.showProblemFormFirst = this.showProblemFormFirst.bind(this);
+        this.hoverProject = this.hoverProject.bind(this);
+        this.unHoverProject = this.unHoverProject.bind(this);
     };
 
     hoverText() {
 		$(document).ready(function() {
-			$('#privateContainerMotto').html('<span id="blue">NEW </span>SUB PROJECT').fadeIn(7500);
+			$('#privateContainerMotto').html('<span id="blue">NEW </span>SUB<span id="blue">PROJECT</span>').fadeIn(7500);
 			$('#privateContainerMotto').attr('id','privateContainerMottoWhite');
 		});
 	}
 	unHoverText() {
 		$(document).ready(function() {
-			$('#privateContainerMottoWhite').html("<span id='blueOpaque'>PROJECT </span><span id='whiteOpaque'>BREAKDOWN</span>");
+			$('#privateContainerMottoWhite').html("<span id='blueOpaque'>PROJECT </span><span id='whiteOpaque'>TREE</span>");
 			$('#privateContainerMottoWhite').attr('id','privateContainerMotto');
 		});
     }
@@ -51,7 +55,7 @@ export default class SubProblemContainer extends React.Component {
     }
     hideBranch() {
 		$(document).ready(function() {
-			$('#privateContainerMottoWhite').html("<span id='blueOpaque'>PROJECT </span><span id='whiteOpaque'>BREAKDOWN</span>").fadeIn(7500);
+			$('#privateContainerMottoWhite').html("<span id='blueOpaque'>PROJECT </span><span id='whiteOpaque'>TREE</span>").fadeIn(7500);
             $('#privateContainerMottoWhite').attr('id','privateContainerMotto');
             $('#branchesProjectButtonClick').attr('id','branchesProjectButton');
 		});
@@ -64,7 +68,7 @@ export default class SubProblemContainer extends React.Component {
 	}
 	unHoverBranch() {
 		$(document).ready(function() {
-			$('#privateContainerMottoWhite').html("<span id='blueOpaque'>PROJECT </span><span id='whiteOpaque'>BREAKDOWN</span>");
+			$('#privateContainerMottoWhite').html("<span id='blueOpaque'>PROJECT </span><span id='whiteOpaque'>TREE</span>");
 			$('#privateContainerMottoWhite').attr('id','privateContainerMotto');
 		});
     }
@@ -76,7 +80,7 @@ export default class SubProblemContainer extends React.Component {
     }
     unHoverNewBranch() {
             $(document).ready(function() {
-                    $('#privateContainerMottoWhite').html("<span id='blueOpaque'>PROJECT </span><span id='whiteOpaque'>BREAKDOWN</span>");
+                    $('#privateContainerMottoWhite').html("<span id='blueOpaque'>PROJECT </span><span id='whiteOpaque'>TREE</span>");
                     $('#privateContainerMottoWhite').attr('id','privateContainerMotto');
             });
     }
@@ -90,6 +94,18 @@ export default class SubProblemContainer extends React.Component {
         $(document).ready(function() {
             $('#problemFormContainerHide').attr('id','problemFormContainerShow');
             $('#SPUnitNew').attr('id','SPUnitNewHide');
+        });
+    }
+    hoverProject() {
+        $(document).ready(function() {
+            $('#privateContainerMotto').html('<span id="blue">VIEW </span>SUB<span id="blue">PROJECT</span>').fadeIn(7500);
+            $('#privateContainerMotto').attr('id','privateContainerMottoWhite');
+        });
+    }
+    unHoverProject() {
+        $(document).ready(function() {
+            $('#privateContainerMottoWhite').html("<span id='blueOpaque'>PROJECT </span><span id='whiteOpaque'>TREE</span>");
+            $('#privateContainerMottoWhite').attr('id','privateContainerMotto');
         });
     }
     
@@ -138,10 +154,12 @@ export default class SubProblemContainer extends React.Component {
         if (window.location.pathname.includes('private')) {
             self.setState({
                 linkPath: '/project/private/',
+                private: true,
             })
         } else {
             self.setState({
                 linkPath: '/project/',
+                private: false,
             })
         }
         if (window.location.pathname.includes('discuss')) {
@@ -206,13 +224,14 @@ export default class SubProblemContainer extends React.Component {
 
 
     render() {
+
         if (this.state.problems === undefined || this.state.problems.length == 0) {
             return (
                 <div>
                     <div id="noProjectsContainerShow">
                             <div id="noProjectsPromptFlare"><br /></div>
                             <div id="noProjectsPrompt" onMouseOver={this.hoverText} onMouseOut={this.unHoverText} onClick={this.showProblemFormFirst}>
-                                <span id="blue">begin </span>project <span id="blue">division</span>
+                                <span id="blue">begin </span>project <span id="blue">breakdown</span>
                             </div>
                     </div>
                     <div id="SPwrapper">
@@ -239,6 +258,21 @@ export default class SubProblemContainer extends React.Component {
                             </div>
                     </div> */}
                 </div>
+            );
+        } else if (this.state.private === true) {
+            return (
+                  <div>
+                      <div id="SPwrapper">
+                          <ul id="SPUnitList"> 
+                              {this.state.problems.map(this.renderPrivateItem)}
+                          </ul>
+                      </div>
+                      <div id="SPUnitNew">
+                              <div id="SPHeaderNew" onMouseOver={this.hoverText} onMouseOut={this.unHoverText} onClick={this.showProblemForm}>
+                                      <img src={require('../assets/blueAdd2.svg')} id="privateNewProjectPlus" width="50" height="50" alt="User avatar, DNA Helix" />
+                              </div>
+                      </div>
+                  </div>    
             );
         } else {
           return (
@@ -284,7 +318,6 @@ export default class SubProblemContainer extends React.Component {
             //     border: '1px solid pink'
             //   };
 
-
             if (problem.ParentType === 1) {
                     return (
                         <div key={problem.ID} id="nodisplay">
@@ -294,7 +327,7 @@ export default class SubProblemContainer extends React.Component {
             return (
                 <Link key={problem.ID} to={this.state.linkPath+problem.ID + this.state.destinationPath}>
                     <li id="SPUnit">
-                        <div id="SPHeader">
+                        <div id="SPHeader" onMouseOver={this.hoverProject} onMouseOut={this.unHoverProject}>
                             <div id="SPTitleSmall">{problem.Title}</div>
                             <div id="SPPercent">{problem.Rank}</div>
                         </div>
@@ -305,9 +338,9 @@ export default class SubProblemContainer extends React.Component {
                 return (
                     <Link key={problem.ID} to={this.state.linkPath+problem.ID + this.state.destinationPath}>
                         <li id="SPUnit">
-                            <div id="SPHeaderRed">
+                            <div id="SPHeaderRed" onMouseOver={this.hoverProject} onMouseOut={this.unHoverProject}>
                                 <div id="SPTitleRed">
-                                    <span id="red">problem</span>
+                                    <span id="redProject">problem</span>
                                     <br />
                                     {problem.Title}
                                 </div>
@@ -320,9 +353,9 @@ export default class SubProblemContainer extends React.Component {
                 return (
                     <Link key={problem.ID} to={this.state.linkPath+problem.ID + this.state.destinationPath}>
                         <li id="SPUnit">
-                            <div id="SPHeaderGreen">
+                            <div id="SPHeaderGreen" onMouseOver={this.hoverProject} onMouseOut={this.unHoverProject}>
                                 <div id="SPTitleGreen">
-                                    <span id="green">goal</span>
+                                    <span id="greenProject">goal</span>
                                     <br />
                                     {problem.Title}
                                 </div>
@@ -334,63 +367,120 @@ export default class SubProblemContainer extends React.Component {
             } else {
                 return (
                     <Link key={problem.ID} to={this.state.linkPath+problem.ID + this.state.destinationPath}>
-                        <li id="SPUnit" 
+                        <li id="SPUnit"
                         // style={divStyle}
                         >
                         {/* <div id={"SPUnit" + String(problem.ID)}> */}
-                            <div id="SPHeader">
+                            <div id="SPHeader" onMouseOver={this.hoverProject} onMouseOut={this.unHoverProject}>
                                 <div id="SPTitle">{problem.Title}</div>
                                 <div id="SPPercent">{problem.Rank}</div>
                             </div>
                         {/* </div> */}
                         </li>
                     </Link>
-                )};
-              }
-              renderBranch(branch) {
-                
-                function hoverBranchText() {
-                    if (branch.Description !== '') {
-                        $(document).ready(function() {
-                            $('div.'+branch.ID).attr('class','branchText');
-                            $('.branchText').html(branch.Description).fadeIn(7500);
-                        });
-                    }
-                }
-                function unHoverBranchText() {
-                    $(document).ready(function() {
-                        $('.branchText').html(branch.Title).fadeIn(7500);
-                        $('div.branchText').attr('class',branch.ID);
-                        $('#privateContainerMottoRed').html('<span id="blue">ALTERNATE </span>BREAKDOWNS').fadeIn(7500);
-                        $('#privateContainerMottoRed').attr('id','privateContainerMottoWhite');
-                    });
-                }
-                function branchChange() {
-                    // CURRENTLY DISABLED PART NECESSARY TO ADD NEW PROJECTS IN EACH BREAKDOWN
-                    // NEED TO DISABLE RERENDER OF PROBLEMS WHEN FULLPROBLEM RERENDERS FROM STATE CHANGE
-                    this.props.differentBreakdown(branch.ID);
-                    var self = this;
-                    axios.get( Config.API + '/problems/breakdown?breakdownID='+branch.ID).then(function (response) {
-                        self.setState({
-                            problems: response.data
-                        })
-                    })  
-                    $(document).ready(function() {
-                        $('#privateContainerMottoWhite').html("PROJECTS CHANGED").fadeIn(7500);
-                        $('#privateContainerMottoWhite').attr('id','privateContainerMottoRed');
-                    });
-                }
-
-                    // Use if title is longer than certain amount
-                //  if (branch.Title.length > 50) {
-                    // if (1) {
-                return (
-                        <li key={branch.ID} id="branchUnit">
-                            <div id="branchHeader" className={branch.ID} onClick={branchChange.bind(this)} onMouseOver={hoverBranchText} onMouseOut={unHoverBranchText}>
-                                {branch.Title}
-                            </div>
-                        </li>                
-                );
-            }
-                  
+                )
+            };
         }
+        renderPrivateItem(problem) {
+            if (problem.ParentType === 1) {
+                    return (
+                        <div key={problem.ID} id="nodisplay">
+                        </div>
+                    );
+            } else if (problem.Title.length > 50) {
+            return (
+                <Link key={problem.ID} to={this.state.linkPath+problem.ID + this.state.destinationPath}>
+                    <li id="SPUnit">
+                        <div id="SPHeader" onMouseOver={this.hoverProject} onMouseOut={this.unHoverProject}>
+                            <div id="SPTitleSmall">{problem.Title}</div>
+                        </div>
+                    </li>
+                </Link>
+            );
+            } else if (problem.Class == '2') {
+                return (
+                    <Link key={problem.ID} to={this.state.linkPath+problem.ID + this.state.destinationPath}>
+                        <li id="SPUnit">
+                            <div id="SPHeaderRed" onMouseOver={this.hoverProject} onMouseOut={this.unHoverProject}>
+                                <div id="SPTitleRed">
+                                    <span id="redProject">problem</span>
+                                    <br />
+                                    {problem.Title}
+                                </div>
+                            </div>
+                        </li>
+                    </Link>
+                );
+            } else if (problem.Class == '1') {
+                return (
+                    <Link key={problem.ID} to={this.state.linkPath+problem.ID + this.state.destinationPath}>
+                        <li id="SPUnit">
+                            <div id="SPHeaderGreen" onMouseOver={this.hoverProject} onMouseOut={this.unHoverProject}>
+                                <div id="SPTitleGreen">
+                                    <span id="greenProject">goal</span>
+                                    <br />
+                                    {problem.Title}
+                                </div>
+                            </div>
+                        </li>
+                    </Link>
+                );
+            } else {
+                return (
+                    <Link key={problem.ID} to={this.state.linkPath+problem.ID + this.state.destinationPath}>
+                        <li id="SPUnit">
+                            <div id="SPHeader" onMouseOver={this.hoverProject} onMouseOut={this.unHoverProject}>
+                                <div id="SPTitle">{problem.Title}</div>
+                            </div>
+                        </li>
+                    </Link>
+                )
+            };
+        }
+        renderBranch(branch) {
+        
+        function hoverBranchText() {
+            if (branch.Description !== '') {
+                $(document).ready(function() {
+                    $('div.'+branch.ID).attr('class','branchText');
+                    $('.branchText').html(branch.Description).fadeIn(7500);
+                });
+            }
+        }
+        function unHoverBranchText() {
+            $(document).ready(function() {
+                $('.branchText').html(branch.Title).fadeIn(7500);
+                $('div.branchText').attr('class',branch.ID);
+                $('#privateContainerMottoRed').html('<span id="blue">ALTERNATE </span>BREAKDOWNS').fadeIn(7500);
+                $('#privateContainerMottoRed').attr('id','privateContainerMottoWhite');
+            });
+        }
+        function branchChange() {
+            // CURRENTLY DISABLED PART NECESSARY TO ADD NEW PROJECTS IN EACH BREAKDOWN
+            // NEED TO DISABLE RERENDER OF PROBLEMS WHEN FULLPROBLEM RERENDERS FROM STATE CHANGE
+            this.props.differentBreakdown(branch.ID);
+            var self = this;
+            axios.get( Config.API + '/problems/breakdown?breakdownID='+branch.ID).then(function (response) {
+                self.setState({
+                    problems: response.data
+                })
+            })  
+            $(document).ready(function() {
+                $('#privateContainerMottoWhite').html("PROJECTS CHANGED").fadeIn(7500);
+                $('#privateContainerMottoWhite').attr('id','privateContainerMottoRed');
+            });
+        }
+
+            // Use if title is longer than certain amount
+        //  if (branch.Title.length > 50) {
+            // if (1) {
+        return (
+                <li key={branch.ID} id="branchUnit">
+                    <div id="branchHeader" className={branch.ID} onClick={branchChange.bind(this)} onMouseOver={hoverBranchText} onMouseOut={unHoverBranchText}>
+                        {branch.Title}
+                    </div>
+                </li>                
+        );
+    }
+            
+}

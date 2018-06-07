@@ -72,7 +72,6 @@ import ProblemDiscussMenu from './components/problems/ProblemDiscussMenu.jsx';
 import ProblemDiscussPrivateMenu from './components/problems/ProblemDiscussPrivateMenu.jsx';
 import ProblemLearnMenu from './components/problems/ProblemLearnMenu.jsx';
 import ProblemLearnPrivateMenu from './components/problems/ProblemLearnPrivateMenu.jsx';
-import ProblemLeftSB from './components/problems/ProblemLeftSB.jsx';
 import ProblemSolutionsMenu from './components/problems/ProblemSolutionsMenu.jsx';
 import ProblemTopSolutions from './components/problems/ProblemTopSolutions.jsx';
 import ProjectBreakdownForm from './components/problems/ProjectBreakdownForm.jsx';
@@ -479,13 +478,8 @@ ReactDOM.render(
               <Route path='/project/:probID/learn/:learnItemID/delete' component={LearnDeleteForm}></Route>
             </Route>
           </Route>
-        <Route path='/project/:probID/related' component={ProjectRelatedParentsContainer}></Route>
-        <IndexRoute component={ProblemLeftSB}></IndexRoute>
-          <Route path='/project/:probID/sb' component={ProblemLeftSB}>
-            <IndexRoute component={ProblemSolutionsMenu}></IndexRoute>
-            </Route>
-            <IndexRoute component={ProblemDiscussMenu}></IndexRoute>
-          </Route>
+        {/* <Route path='/project/:probID/related' component={ProjectRelatedParentsContainer}></Route> */}
+        </Route>
         
         </Route>
       </Route>

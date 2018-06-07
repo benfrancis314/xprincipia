@@ -86,7 +86,7 @@ export default class LearnResourcesFlagForm extends React.Component {
               </div>
               <div id="projectFormRadioRow">
                 <label id="projectRadioButtonContainer">
-                  <input type="radio" id="flagReason1" name="flagType" value="1"/>
+                  <input type="radio" id="flagReason1"  name="flagType" value="1"/>
                   <span id="checkmark3"></span>
                 </label>
               </div>

@@ -155,10 +155,11 @@ export default class DiscussContainer extends React.Component {
     }
     selectAll() {
         $(document).ready(function() {
-            $('#discussGroupSelectAllInactive').attr('id','discussGroupSelectAllActive');                
+            // $('#discussGroupSelectAllInactive').attr('id','discussGroupSelectAllActive');                
             $('#discussSelectButtonLeftActive').attr('id','discussSelectButtonLeftInactive');               
             $('#discussSelectButtonCenterActive').attr('id','discussSelectButtonCenterInactive');               
-            $('#discussSelectButtonRightActive').attr('id','discussSelectButtonRightInactive');               
+            $('#discussSelectButtonRightActive').attr('id','discussSelectButtonRightInactive');  
+            $('#discussSelectButtonTopInactive').attr('id','discussSelectButtonTopActive');                                   
         });
         var self = this;
         if(this.state.newTopSelect === 'new') {
@@ -198,10 +199,11 @@ export default class DiscussContainer extends React.Component {
     
     selectQuestions() {
         $(document).ready(function() {
-            $('#discussGroupSelectAllActive').attr('id','discussGroupSelectAllInactive');               
+            // $('#discussGroupSelectAllActive').attr('id','discussGroupSelectAllInactive');               
             $('#discussSelectButtonLeftInactive').attr('id','discussSelectButtonLeftActive');               
             $('#discussSelectButtonCenterActive').attr('id','discussSelectButtonCenterInactive');               
-            $('#discussSelectButtonRightActive').attr('id','discussSelectButtonRightInactive');               
+            $('#discussSelectButtonRightActive').attr('id','discussSelectButtonRightInactive');     
+            $('#discussSelectButtonTopActive').attr('id','discussSelectButtonTopInactive');                                
         });
         var self = this;
         if(this.state.newTopSelect === 'new') {
@@ -240,10 +242,11 @@ export default class DiscussContainer extends React.Component {
     }
     selectSuggestions() {
         $(document).ready(function() {
-            $('#discussGroupSelectAllActive').attr('id','discussGroupSelectAllInactive');               
+            // $('#discussGroupSelectAllActive').attr('id','discussGroupSelectAllInactive');               
             $('#discussSelectButtonLeftActive').attr('id','discussSelectButtonLeftInactive');               
             $('#discussSelectButtonCenterInactive').attr('id','discussSelectButtonCenterActive');               
-            $('#discussSelectButtonRightActive').attr('id','discussSelectButtonRightInactive');               
+            $('#discussSelectButtonRightActive').attr('id','discussSelectButtonRightInactive'); 
+            $('#discussSelectButtonTopActive').attr('id','discussSelectButtonTopInactive');                                    
         });
         var self = this;
         if(this.state.newTopSelect === 'new') {
@@ -282,10 +285,11 @@ export default class DiscussContainer extends React.Component {
     }
     selectDebates() {
         $(document).ready(function() {
-            $('#discussGroupSelectAllActive').attr('id','discussGroupSelectAllInactive');             
+            // $('#discussGroupSelectAllActive').attr('id','discussGroupSelectAllInactive');             
             $('#discussSelectButtonLeftActive').attr('id','discussSelectButtonLeftInactive');               
             $('#discussSelectButtonCenterActive').attr('id','discussSelectButtonCenterInactive');               
-            $('#discussSelectButtonRightInactive').attr('id','discussSelectButtonRightActive');               
+            $('#discussSelectButtonRightInactive').attr('id','discussSelectButtonRightActive');        
+            $('#discussSelectButtonTopActive').attr('id','discussSelectButtonTopInactive');                      
         });
         var self = this;
         if(this.state.newTopSelect === 'new') {
@@ -411,7 +415,7 @@ export default class DiscussContainer extends React.Component {
                             unfiltered
                         </div> */}
                         <div id="discussGroupSelection">
-                            <div id="discussSelectButtonLeftInactive" onClick={this.selectQuestions}>
+                            <div id="discussSelectButtonTopActive" onClick={this.selectAll}>
                                 all posts
                                 <span id="greenSmallFaint">  {this.state.discussNumber}</span>
                             </div>
@@ -431,7 +435,7 @@ export default class DiscussContainer extends React.Component {
                             </div>
                         </div>
                     </div>
-                    {React.cloneElement(this.props.children, {discuss:this.state.discuss, parentTitle: this.props.parentTitle})}
+                    {React.cloneElement(this.props.children, {discuss:this.state.discuss, parentTitle: this.props.parentTitle, currentType: this.state.currentType})}
                 </div>
                 <div id={this.state.newTopID}>
                     <div id="discussListNewButtonActive" onClick={this.selectNew}>

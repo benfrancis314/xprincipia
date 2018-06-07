@@ -5757,6 +5757,14 @@ width: 75%;
 #greenProposal {
   color: rgba(0,255,220,0.5);
 }
+#redProject, #greenProject {
+  font-size: 80%;
+  line-height: 25%;
+  color: rgba(255,127,127,1);
+}
+#greenProject{
+  color: rgba(0,255,220,1);
+}
 #solutionUnitActive {
 padding: 10px;
 margin: 0 auto;
@@ -6904,12 +6912,12 @@ text-transform: lowercase !important;
 
 width: 30%;
 margin: 0 auto;
-/* font-size: 80%; */
 font-size: 100%;
 letter-spacing: 2px;
-/* margin-top: 1%; */
-color: #515151;
-border: 1px solid rgba(81,81,81,1);
+/* color: #515151;
+border: 1px solid rgba(81,81,81,1); */
+color: rgba(0,220,255,0.5);
+border: 1px solid rgba(0,220,255,0.5);
 border-width: 0px 1px 1px 1px;
 border-radius: 0px 0px 15% 15%;
 padding: 3px;
@@ -6921,7 +6929,7 @@ background: radial-gradient(circle, rgba(0,220,255, 0), rgba(0,220,255, 0.1));
 background-color: rgba(0,220,255, 0.1);
 cursor: pointer;
 color: #00dcff;
-border-color: rgba(0,220,255,0.5);
+border-color: rgba(0,220,255,1);
 }
 #addAnswer {
 color: #00dcff;
@@ -7233,14 +7241,43 @@ box-shadow: 0 0 2pt 2pt rgba(0,220,255,0.5);
   margin: 0 auto;
   margin-top: 0.5%;
 }
+#editDeleteMenu {
+  margin-top: 0%;
+  margin-left: 0px;
+  padding: 1% 1% 1.25% 1%;
+  border: 1px solid rgba(81,81,81,0.5);
+  border-width: 0px 1px 1px 0px;
+  border-radius: 0px 0px 25% 3px;
+  transition: all 1s ease 0s;
+}
+#editDeleteMenu:hover {
+  border-color: #515151;
+}
 #editDeleteMenuProposal {
   margin-bottom: 0.5%;
+}
+#editMenu {
+  display: block;
+  /* width: 10%; */
+  margin: 0 auto;
+  margin-left: 2%;
+  /* margin-top: 0.5%;
+  margin-top: 0%; */
+  /* margin-left: 0px; */
+  padding: 1% 1% 1.5% 1%;
+  border: 1px solid rgba(81,81,81,0.5);
+  border-width: 0px 1px 1px 1px;
+  border-radius: 0px 0px 25% 10%;
+  transition: all 1s ease 0s;
+}
+#editMenu:hover {
+  border-color: rgba(81,81,81,1);
 }
 #editProjectButton, #editProposalButton, #deleteProjectButton, #deleteProposalButton {
 display: block;
 margin: 0 auto;
 padding: 3px;
-transition: all 0.5s ease 0s;
+transition: all 1s ease 0s;
 z-index: 500;
 margin-top: 0.5%;
 margin-bottom: 0.5%;
@@ -7251,10 +7288,18 @@ cursor: pointer;
 box-shadow: 0 0 2pt 2pt rgba(0,220,255,0.5);
 opacity: 1 !important;
 }
+#editProjectButton:hover, #editProjectButton:active {
+  box-shadow: 0 0 0pt 0pt rgba(0,220,255,0);
+  transform: scale(1.1);
+}
 #deleteProjectButton:hover, #deleteProjectButton:active, #deleteProposalButton:hover, #deleteProposalButton:active, .activeProjectDeleteButton img {
   cursor: pointer;
   box-shadow: 0 0 2pt 2pt rgba(255,127,127,0.5);
   opacity: 1 !important;
+}
+#deleteProjectButton:hover, #deleteProjectButton:active {
+  box-shadow: 0 0 0pt 0pt rgba(255,127,127,0);
+  transform: scale(1.1);
 }
 #flagProjectButton {
 display: block;
@@ -7441,8 +7486,8 @@ box-shadow: 0 0 2pt 2pt rgba(0,220,255,0.5);
 #discussUnitButtonsContainer {
   position: absolute;
   /* top: 11%; */
-  top: 10px;
-  right: 45px;
+  top: 12px;
+  right: 42px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -7490,7 +7535,7 @@ box-shadow: 0 0 2pt 2pt rgba(0,220,255,0.5);
   border-radius: 50%;
   background: radial-gradient(circle, rgba(0,255,220, 0.5), rgba(0,255,220, 0.5), rgba(0,255,220, 0.1), rgba(0,255,220, 0),rgba(0,255,220, 0),rgba(0,255,220, 0.5), rgba(0,255,220, 1), rgba(0,255,220, 1));
   transition: all 1s ease 0s;
-  margin-top: 2%;
+  margin-top: 3%;
   margin-bottom: 2%;
 }
 #discussVotedButton {
@@ -7695,6 +7740,7 @@ padding-left: 15%;
 margin-right: 25%;
 text-align: center;
 text-transform: lowercase !important;
+position: relative;
 
 }
 #parentButton:hover, #parentButton:active, #parentButtonHover:hover, #parentButtonHover:active {
@@ -7759,6 +7805,27 @@ background-color: rgba(0,220,255,0.1);
 color: #ffffff;
 border-color: #dddddd;
 }
+#parentArrowButton {
+  position: absolute;
+  left: 11%;
+  /* left: 12%; */
+  top: 3px;
+  opacity: 0.5;
+  transition: all 1s ease 0s;
+}
+#parentButton:hover #parentArrowButton {
+  opacity: 1;
+  left: 14%;
+}
+
+
+
+
+
+
+
+
+
 
 
 #fullProblemContainer {
@@ -8001,69 +8068,43 @@ background-color: #00ffdc;
 
 
 #SBButtonDiscuss, #SBButtonLearn, #SBButtonProposal {
-flex: 1 1 auto;
-text-align: center;
-color: #dddddd;
-border: 1px solid #dddddd;
-border-radius: 3px 3px 35% 3px;
-text-align: center;
-font-family: 'Alegreya Sans SC', sans-serif;
-transition: all 0.5s ease 0s;
-transform: scale(1);
-padding: 1% 0% 2% 0%;
-padding: 2% 0% 3% 0%;
-letter-spacing: 4px;
-margin: 0 auto;
-/* margin-top: 1%; */
-padding-top: 12% 0%;
-/* OLD */
-/* width: 9em; */
-/* font-size: 145%; */
-/* NEW */
-/* width: 8em; */
-width: 9em;
-flex: 1 1 auto;
-font-size: 145%;
-border-width: 1px 1px 1px 1px;
-border-color: rgba(0,220,255,0.5);
-box-shadow: 0 0 0.5pt 0.5pt rgba(0,220,255,0.5);
-/* background-color: rgba(0,220,255,0.05); */
-/* background: radial-gradient(circle, rgba(0,220,255,0), rgba(0,220,255,0.05)); */
-background: linear-gradient(to left, rgba(0,220,255,0.1), rgba(0,220,255,0.05), rgba(0,220,255,0.02));
+  flex: 1 1 auto;
+  text-align: center;
+  color: #dddddd;
 
+
+  text-align: center;
+  font-family: 'Alegreya Sans SC', sans-serif;
+  transition: all 0.5s ease 0s;
+  transform: scale(1);
+  padding: 1% 0% 2% 0%;
+  padding: 4% 0% 4% 0%;
+  letter-spacing: 4px;
+  margin: 0 auto;
+  flex: 1 1 auto;
+  font-size: 145%;
+  border: 1px solid rgba(0,220,255,0.5);
+  border-width: 0px 1px 1px 0px;
+  border-radius: 5% 5% 10% 3px;
+  background: linear-gradient(to left, rgba(0,220,255,0.1), rgba(0,220,255,0.05), rgba(0,220,255,0.02));
 }
 #SBButtonLearn {
-  /* padding-right: 10px; */
   background: linear-gradient(to right, rgba(0,220,255,0.1), rgba(0,220,255,0.05), rgba(0,220,255,0.02));  
-  /* transform:rotateY(-12deg); */
-  border-radius: 1px 3px 35% 0px ;
+  border-radius: 2% 2% 10% 0px ;
+  border-width: 0px 0px 1px 1px;
 }
 #SBButtonDiscuss {
-border-radius: 0px;
-border-width: 1px 0px 1px 0px;
-/* padding-left: 10px; */
+  border-radius: 0px;
+  border-width: 0px 0px 1px 0px;
 }
 #SBButtonProposal {
-  /* border-radius: 3px 3px 35% 3px; */
-  border-radius: 3px 0px 0px 35%;
+  border-radius: 3px 0px 0px 10%;
 }
 #SBButtonDiscuss:hover, #SBButtonLearn:hover, #SBButtonProposal:hover {
-/*A*/
-/*background-color: rgba(255,255,255,0.05);
-cursor: pointer;
-box-shadow: 0 0 1px 1px rgba(0,220,255,1);*/
-
-/*B*/
-/* background-color: #00dcff; */
-color: #00dcff;
-cursor: pointer;
-border-color: #00dcff;
-/* background-color: rgba(0,220,255,0.05); */
-/* background: linear-gradient(to left, rgba(0,220,255,0.1), rgba(0,220,255,0.05), rgba(0,220,255,0.02)); */
-box-shadow: 0 0 1px 1px rgba(0,220,255,1);
-transform: scale(1.02);
-background-color: rgba(0,220,255,0.05);
-
+  color: #00dcff;
+  cursor: pointer;
+  border-color: #00dcff;
+  background-color: rgba(0,220,255,0.05);
 }
 #greenDiscussLearnNumber {
   color: rgba(0,255,220,0.75);
@@ -8077,19 +8118,24 @@ background-color: rgba(0,220,255,0.05);
 .activeProblemOptionDiscuss div, .activeProblemOptionLearn div, .activeProblemOptionProposal div {
   color: #00dcff !important;
   cursor: default !important;
+  border-width: 1px !important;
   border-color: #00dcff !important;
-  background-color: rgba(0,220,255,0.05) !important;
+  border-radius: 3px 3px 10% 10% !important;
+  /* background-color: rgba(0,220,255,0.05) !important; */
   box-shadow: 0 0 1px 1px rgba(0,220,255,1)!important;
   transform: scale(1.02)!important;
+  background: rgba(15, 19, 28, 1) !important;
+  z-index: 5 !important;
+
 }
 .activeProblemOptionProposal div {
-  background: linear-gradient(to right, rgba(0,220,255,0.1), rgba(0,220,255,0.05), rgba(0,220,255,0.02)) !important;  
+  /* background: linear-gradient(to right, rgba(0,220,255,0.1), rgba(0,220,255,0.05), rgba(0,220,255,0.02)) !important;   */
 }
 .activeProblemOptionDiscuss div {
-  background: linear-gradient(to right, rgba(0,220,255,0.1), rgba(0,220,255,0.05), rgba(0,220,255,0.02)) !important;  
+  /* background: linear-gradient(to right, rgba(0,220,255,0.1), rgba(0,220,255,0.05), rgba(0,220,255,0.02)) !important;   */
 }
 .activeProblemOptionLearn div {
-  background: linear-gradient(to right, rgba(0,220,255,0.1), rgba(0,220,255,0.05), rgba(0,220,255,0.02)) !important;  
+  /* background: linear-gradient(to right, rgba(0,220,255,0.1), rgba(0,220,255,0.05), rgba(0,220,255,0.02)) !important;   */
 }
 #greenVoteNumber {
   color: rgba(0,255,220,0.75);
@@ -8314,55 +8360,123 @@ color: #0f131c;
 cursor: pointer; 
 /*box-shadow: 0 0 2pt 2pt rgba(0,255,220,0.5);*/
 }
-#problemSummary, #problemSummaryLeftSB, #problemSummaryPrivate {
-margin: -1px 25px 7.5px 25px;
-line-height: 150%;
-/*Previously was 125%, fullproblem was 60% in width*/
-font-size: 130%;
-border: 1px solid rgba(0,220,255,0.5);
-border-radius: 15%;
-border-width: 0px 0px 1px 0px;
-padding: 15px 35px 17px 35px;
-text-align: left;
-font-family: 'Open Sans', sans-serif;
-color: #dddddd;
-/* min-width: 80%; */
-transition: all 0.5s ease 0s;
-background-color: rgba(255,255,255,0.025);
-/*font-weight: 300;*/
-white-space: pre-wrap !important;
-}
-#problemSummary, #problemSummaryPrivate {
-  /* font-size: 120%; */
-  font-size: 110%;
-  /* OLD */
-  /* background: radial-gradient(circle, rgba(0,220,255, 0.1), rgba(0,220,255, 0), rgba(0,220,255, 0));  */
-  /* NEW DRAFTING */
-  background: radial-gradient(circle at left, rgba(0,220,255, 0.05), rgba(0,220,255, 0.05), rgba(0,220,255, 0));    
-  background: radial-gradient(circle, rgba(15,19,28,0.99), rgba(0,220,255, 0.05));  
-  background: linear-gradient(to right, rgba(0,220,255,0.05), rgba(15,19,28,0.99));
-}
 #problemSummary {
+  line-height: 150%;
+  font-family: 'Open Sans', sans-serif;
+  color: #dddddd;
+  transition: all 0.5s ease 0s;
+  background-color: rgba(255,255,255,0.025);
+  white-space: pre-wrap !important;
+
+  background: linear-gradient(to right, rgba(0,220,255,0.05), rgba(15,19,28,0.99));
   font-size: 100%;
   text-align: justify;
-  margin: 0px 0px 0px 0px;
+  
   width: 55% !important;
   padding: 2.5% 5.5% 1.5% 7.5%;
-  border-color: #515151;
   border-color: rgba(0,220,255,0.25);
   border-radius: 0px 0px 10% 25%;
   border-width: 0px 1px 1px 1px;
   box-shadow: 0 0 0.5pt 0.5pt rgba(81,81,81,0.5);
 
-  padding-top: 2.25%;
   padding-top: 2%;
-  padding-bottom: 3%;
   padding-bottom: 3.25%;
-  margin-right: 5%;
-  margin-left: 5%;
-
+  margin: 0px 5%;
+  position: relative;
   /* min-width: 40%; */
-  /* color: #ffffff; */
+
+
+  /* FROM PROMPT */
+  padding-top: 1.5%;
+  padding-bottom: 2.5%;
+  margin: 0px 5%;
+  margin-top: 3px;
+  position: relative;
+
+  background-color: #0f131c;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4' viewBox='0 0 4 4'%3E%3Cpath fill='%2300dcff' fill-opacity='0.4' d='M1 3h1v1H1V3zm2-2h1v1H3V1z'%3E%3C/path%3E%3C/svg%3E");
+  background-color: rgba(15,19,28,0.75);
+  background-blend-mode: overlay;
+}
+#problemSummaryHide {
+  display: none;
+}
+#problemSummaryHideButtonHide {
+  display: none;
+}
+#problemSummaryHideButtonShow {
+  position: absolute;
+  left: 0px;
+  /* top: 5%; */
+  top: 0px;
+  margin: 0 auto;
+  margin-bottom: 2%;
+  padding: 14px 4px;
+  padding: 4px 6px;
+  border: 1px solid rgba(255,127,127,0.5);
+  border-width: 1px 1px 1px 1px;
+  border-top-color: rgba(255,127,127,0.5);
+  border-left-color: rgba(255,127,127,0.5);
+  border-radius: 0px 35% 35% 0px;
+  border-radius: 3px 3px 35% 3px;
+  opacity: 0.5;
+  transition: all 0.5s ease 0s;
+  text-align: center;
+  background: linear-gradient( to right, rgba(255,127,127,0), rgba(255,127,127,0), rgba(255,127,127,0));  
+}
+#problemSummaryHideButtonShow:hover {
+  border-color: rgba(255,127,127,1);
+  border-radius: 3px;
+  background-color: rgba(255,127,127,0.05);
+  cursor: pointer;
+  transform: scale(1.05);
+}
+#problemSummaryPromptHide {
+  display: none;
+}
+#problemSummaryPrompt {
+  /* margin: 0 auto;
+  margin-bottom: 5%;
+  text-align: center;
+  width: 75%;
+  padding: 3% 0%;
+  color: #ffffff;
+  letter-spacing: 4px;
+  font-size: 150%;
+  border-radius: 3px 3px 20% 20%;
+  transition: all 1s ease 0s; */
+
+  line-height: 150%;
+  text-align: center;
+  color: #ffffff;
+  letter-spacing: 4px;
+  transition: all 1s ease 0s;
+  background-color: rgba(255,255,255,0.025);
+  white-space: pre-wrap !important;
+  font-size: 150%;
+  
+  width: 55% !important;
+  padding: 2.5% 5.5% 1.5% 7.5%;
+  border: 1px solid rgba(0,220,255,0.25);
+  border-radius: 3px 3px 10% 25%;
+  border-width: 1px 1px 1px 1px;
+  box-shadow: 0 0 0.5pt 0.5pt rgba(81,81,81,0.5);
+
+  padding-top: 1.5%;
+  padding-bottom: 2%;
+  margin: 0px 5%;
+  margin-top: 3px;
+  position: relative;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4' viewBox='0 0 4 4'%3E%3Cpath fill='%2300dcff' fill-opacity='0.4' d='M1 3h1v1H1V3zm2-2h1v1H3V1z'%3E%3C/path%3E%3C/svg%3E");
+  background-color: rgba(15,19,28,0.85);
+  background-blend-mode: overlay;
+  opacity: 0.9;
+}
+#problemSummaryPrompt:hover {
+  border-color: #00dcff !important;
+  cursor: pointer;
+  transform: scale(1.05);
+  opacity: 1;
 }
 #problemSummaryPrivate {
   padding: 5% 35px;
@@ -8375,6 +8489,7 @@ white-space: pre-wrap !important;
 #problemSummaryContainer {
   display: flex;
   flex-direction: row;
+  align-items: flex-start !important;
   width: 100%;
   margin: 0 auto;
   margin-left: 0%;
@@ -8539,9 +8654,10 @@ margin: 4% 1% 4% 1%;
 list-style-type: none;
 }
 #SPUnit, #SPUnitNew {
-display: inline-block;
+/* display: inline-block; */
 width: 14em;
 margin: 0% 5% 0% 5%;  
+margin: 0 auto;
 }
 #SPUnitNew {
   display: auto;
@@ -9000,15 +9116,23 @@ background-color: rgba(0,220,255,0.1) !important;
   letter-spacing: 4px;
   font-size: 150%;
   border: 1px solid #515151;
+  /* border: 1px solid rgba(0,220,255,0.25); */
   border-radius: 3px 3px 20% 20%;
   background: radial-gradient(circle, rgba(0,220,255,0), rgba(0,220,255,0.1));
   transition: all 1s ease 0s;
+  /* background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4' viewBox='0 0 4 4'%3E%3Cpath fill='%2300dcff' fill-opacity='0.4' d='M1 3h1v1H1V3zm2-2h1v1H3V1z'%3E%3C/path%3E%3C/svg%3E");
+  background-color: rgba(15,19,28,0.75);
+  background-blend-mode: overlay; */
 }
 #noProjectsPrompt {
   width: 70%;
 }
 #noDiscussPrompt {
   width: 75%;
+  padding: 4% 0%;
+  font-size: 155%;
+  letter-spacing: 3px;
+  /* background: radial-gradient(circle, rgba(0,220,255,0.1), rgba(0,220,255,0.05), rgba(81,81,81,0.1)); */
 }
 #noProposalsPrompt:hover, #noProjectsPrompt:hover, #noDiscussPrompt:hover {
   border-color: #00dcff;
@@ -9174,7 +9298,8 @@ padding-right: 8%;
 /*Discuss SB*/
 
 #discussSelectButtonLeftActive, #discussSelectButtonRightActive, #discussSelectButtonCenterActive,
-#discussSelectButtonLeftInactive, #discussSelectButtonRightInactive, #discussSelectButtonCenterInactive {
+#discussSelectButtonLeftInactive, #discussSelectButtonRightInactive, #discussSelectButtonCenterInactive,
+#discussSelectButtonTopActive, #discussSelectButtonTopInactive {
   /* flex: 1 1 auto; */
   color: #dddddd;
   font-size: 110%;
@@ -9189,45 +9314,52 @@ padding-right: 8%;
   transition: all 0.5s ease 0s;
   padding: 4px 0px;
   text-transform: lowercase !important;
-  background: linear-gradient(225deg, rgba(0,220,255,0), rgba(0,220,255,0.05));
+  /* background: linear-gradient(225deg, rgba(0,220,255,0), rgba(0,220,255,0.05)); */
+  background: linear-gradient(to right, rgba(0,220,255,0.05), rgba(0,220,255,0));
   border: 1px solid rgba(0,220,255,0.5);
   /* OLD */
   border-width: 0px 0px 1px 1px;
   /* NEW */
   border-width: 1px;
-  border-radius: 0px 3px 25% 0px;
+  border-radius: 3px 3px 25% 3px;
   box-shadow: 0 0 0.5pt 0.5pt rgba(255,255,255,0.5);
 }
-#discussSelectButtonLeftInactive, #discussSelectButtonRightInactive, #discussSelectButtonCenterInactive {
+#discussSelectButtonLeftInactive, #discussSelectButtonRightInactive, 
+#discussSelectButtonCenterInactive, #discussSelectButtonTopInactive {
   border-color: #515151;
   color: #515151;
   color: rgba(0,220,255,0.75);
 }
-#discussSelectButtonLeftActive, #discussSelectButtonRightActive, #discussSelectButtonCenterActive {
+#discussSelectButtonLeftActive, #discussSelectButtonRightActive, #discussSelectButtonCenterActive, #discussSelectButtonTopActive {
   background-color: rgba(0,220,255,0.05) !important;
   color: #00dcff;
   border-color: #00dcff !important;
 }
 #discussSelectButtonLeftInactive:hover #greenSmallFaint, #discussSelectButtonRightInactive:hover #greenSmallFaint, #discussSelectButtonCenterInactive:hover #greenSmallFaint, 
-#discussSelectButtonLeftActive #greenSmallFaint, #discussSelectButtonRightActive #greenSmallFaint, #discussSelectButtonCenterActive #greenSmallFaint {
+#discussSelectButtonLeftActive #greenSmallFaint, #discussSelectButtonRightActive #greenSmallFaint, #discussSelectButtonCenterActive #greenSmallFaint,
+#discussSelectButtonTopActive:hover #greenSmallFaint, #discussSelectButtonTopInactive:hover #greenSmallFaint {
   color: #00ffdc !important;
 }
 #discussSelectButtonRightActive, #discussSelectButtonRightInactive {
-  background: linear-gradient(135deg, rgba(0,220,255,0), rgba(0,220,255,0.05));
+  /* background: linear-gradient(135deg, rgba(0,220,255,0), rgba(0,220,255,0.05)); */
   /* border-width: 0px 1px 1px 0px; */
   /* border-radius: 0px 0px 25% 0px; */
 }
 #discussSelectButtonCenterActive, #discussSelectButtonCenterInactive {
   /* border-width: 0px 1px 1px 1px; */
   /* border-radius: 0px 0px 0px 0px; */
-  background: linear-gradient(rgba(0,220,255,0), rgba(0,220,255,0.05));
+  /* background: linear-gradient(rgba(0,220,255,0), rgba(0,220,255,0.05)); */
 }
 #discussSelectButtonLeftActive:hover, #discussSelectButtonRightActive:hover, #discussSelectButtonCenterActive:hover, 
-#discussSelectButtonLeftInactive:hover, #discussSelectButtonRightInactive:hover, #discussSelectButtonCenterInactive:hover {
+#discussSelectButtonLeftInactive:hover, #discussSelectButtonRightInactive:hover, #discussSelectButtonCenterInactive:hover,
+#discussSelectButtonTopActive:hover, #discussSelectButtonTopInactive:hover {
   background-color: rgba(0,220,255,0.05);
   color: #00dcff;
   cursor: pointer;
   border-color: #00dcff;
+}
+#sidebarDiscussMenuHide {
+  display: none;
 }
 #sidebarDiscussMenu {
 /* display: flex;
@@ -13742,7 +13874,8 @@ cursor: pointer !important;
 }
 
 /* Create a custom radio button */
-#checkmark1, #checkmark2, #checkmark3 {
+/* #checkmark1Old, #checkmark2Old, #checkmark3Old, 
+#checkmark1ActiveOld, #checkmark2ActiveOld, #checkmark3ActiveOld {
   position: absolute;
   top: 0;
   left: 0;
@@ -13755,19 +13888,28 @@ cursor: pointer !important;
   background: radial-gradient(circle, rgba(0,220,255,0), rgba(0,220,255,0.1), rgba(0,220,255,0.3));
   margin: 0 auto;
 }
-#checkmark2 {
+#checkmark2Old, #checkmark2ActiveOld {
   background-color: #0f131c;
   background: radial-gradient(circle, rgba(0,255,220,0), rgba(0,255,220,0.1), rgba(0,255,220,0.3));
   border-color: #00ffdc;
 }
-#checkmark3 {
+#checkmark3Old, #checkmark3ActiveOld {
   background-color: #0f131c;
   background: radial-gradient(circle, rgba(255,127,127,0), rgba(255,127,127,0.1), rgba(255,127,127,0.3));
   border-color: #ff7f7f;
 }
+#checkmark1ActiveOld {
+  background-color: #00dcff;
+}
+#checkmark2ActiveOld {
+  background-color: #00ffdc;
+}
+#checkmark3ActiveOld {
+  background-color: #ff7f7f;
+} */
 
 /* On mouse-over, add a grey background color */
-#projectRadioButtonContainer:hover input ~ #checkmark1 {
+/* #projectRadioButtonContainer:hover input ~ #checkmark1 {
   background-color: #00dcff;
   transition: all 1s ease 0s;
 }
@@ -13778,10 +13920,10 @@ cursor: pointer !important;
 #projectRadioButtonContainer:hover input ~ #checkmark3 {
   background-color: #ff7f7f;
   transition: all 1s ease 0s;
-}
+} */
 
 /* When the radio button is checked, add a blue background */
-#projectRadioButtonContainer input:checked ~ #checkmark1 {
+/* #projectRadioButtonContainer input:checked ~ #checkmark1 {
   background-color: #00dcff;
   transition: all 1s ease 0s;
 }
@@ -13792,24 +13934,24 @@ cursor: pointer !important;
 #projectRadioButtonContainer input:checked ~ #checkmark3 {
   background-color: #ff7f7f;
   transition: all 1s ease 0s;
-}
+} */
 
 /* Create the indicator (the dot/circle - hidden when not checked) */
-#checkmark1:after, #checkmark2:after, #checkmark3:after {
+/* #checkmark1:after, #checkmark2:after, #checkmark3:after {
   content: "";
   position: absolute;
   display: none;
   transition: all 1s ease 0s;
-}
+} */
 
 /* Show the indicator (dot/circle) when checked */
-#projectRadioButtonContainer input:checked ~ #checkmark1:after, #projectRadioButtonContainer input:checked ~ #checkmark2:after, #projectRadioButtonContainer input:checked ~ #checkmark3:after {
+/* #projectRadioButtonContainer input:checked ~ #checkmark1:after, #projectRadioButtonContainer input:checked ~ #checkmark2:after, #projectRadioButtonContainer input:checked ~ #checkmark3:after {
   display: block;
   transition: all 1s ease 0s;
-}
+} */
 
 /* Style the indicator (dot/circle) */
-#projectRadioButtonContainer #checkmark1:after, #projectRadioButtonContainer #checkmark2:after, #projectRadioButtonContainer #checkmark3:after {
+/* #projectRadioButtonContainer #checkmark1:after, #projectRadioButtonContainer #checkmark2:after, #projectRadioButtonContainer #checkmark3:after {
  top: 0px;
  margin: 0 auto;
  position: relative;
@@ -13818,7 +13960,7 @@ height: 20px;
 background: linear-gradient(rgba(0,220,255,0), rgba(0,220,255,0));
 width: 8em;
 transition: all 1s ease 0s;
-}
+} */
 #problemRadioInput {
   display: block;
   width: 10%;
@@ -13826,6 +13968,83 @@ transition: all 1s ease 0s;
   text-align: center;
 }
 
+
+#checkmark1, #checkmark1Active,
+#checkmark2, #checkmark2Active,
+#checkmark3, #checkmark3Active,
+#checkmark1Discuss, #checkmark1DiscussActive,
+#checkmark2Discuss, #checkmark2DiscussActive,
+#checkmark3Discuss, #checkmark3DiscussActive {
+  height: 35px;
+  width: 35px;
+
+  background-image: url('./mandala2Blue.svg'); 
+  /* background-color: rgba(15,19,28,0.95); */
+  background-size: 100%; 
+  background-repeat: no-repeat;
+  background-blend-mode: overlay;
+  background-position: center center;
+  /* background-color: #0f131c;
+  border: 1px solid #00dcff; */
+  border-radius: 50%;
+  transition: all 1s ease 0s;
+  /* background: radial-gradient(circle, rgba(0,220,255,0), rgba(0,220,255,0.1), rgba(0,220,255,0.3)); */
+  margin: 0 auto;
+  opacity: 0.35;
+}
+#checkmark2, #checkmark2Active,
+#checkmark2Discuss, #checkmark2DiscussActive {
+  background-image: url('./mandala2Green.svg'); 
+  background-size: 100%; 
+  background-repeat: no-repeat;
+  background-blend-mode: overlay;
+  background-position: center center;
+}
+#checkmark3, #checkmark3Active,
+#checkmark3Discuss, #checkmark3DiscussActive {
+  background-image: url('./mandala2Red.svg'); 
+  background-size: 100%; 
+  background-repeat: no-repeat;
+  background-blend-mode: overlay;
+  background-position: center center;
+}
+#checkmark1Active,
+#checkmark1DiscussActive {
+  /* background-color: #00dcff; */
+  transform: scale(1.1);
+  opacity: 1;
+  background-image: url('./mandala3Blue.svg'); 
+  background-repeat: no-repeat;
+  background-blend-mode: overlay;
+  background-position: center center;
+}
+#checkmark2Active,
+#checkmark2DiscussActive {
+  /* background-color: #00ffdc; */
+  transform: scale(1.1);
+  opacity: 1;
+  background-image: url('./mandala3Green.svg'); 
+  background-repeat: no-repeat;
+  background-blend-mode: overlay;
+  background-position: center center;
+}
+#checkmark3Active,
+#checkmark3DiscussActive {
+  /* background-color: #ff7f7f; */
+  transform: scale(1.1);
+  opacity: 1;
+  background-image: url('./mandala3Red.svg'); 
+  background-repeat: no-repeat;
+  background-blend-mode: overlay;
+  background-position: center center;
+}
+
+#checkmark1:hover, #checkmark2:hover, #checkmark3:hover,
+#checkmark1Discuss:hover, #checkmark2Discuss:hover, #checkmark3Discuss:hover {
+  transform: scale(1.1);
+  opacity: 1;
+  cursor: pointer;
+}
 
 
 
@@ -14596,6 +14815,13 @@ input#submitBreakdown:hover {
   background: rgba(0,220,255,0) !important; 
   -webkit-box-shadow: inset 0 0 6px rgba(0,220,255,0) !important; 
   box-shadow: inset 0 0 6px rgba(0,220,255,0) !important; 
+}
+#SPUnitList::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0,220,255,0) !important; 
+  box-shadow: inset 0 0 6px rgba(0,220,255, 0) !important; 
+  -webkit-border-radius: 3px 3px 25% 25% !important;
+  border-radius: 3px 3px 25% 25% !important;
+  background-color: rgba(0,220,255,0) !important;  
 }
 #projectMidColumnRight {
   width: 60%;
@@ -15715,6 +15941,26 @@ input#submitBreakdown:hover {
 }
 #projectModuleClose1, #projectModuleClose2, #projectModuleClose3 {
   vertical-align: middle;
+}
+#discussFormHideButton {
+  /* position: absolute; */
+  width: 30%;
+  margin: 0 auto;
+  margin-bottom: 2%;
+  padding: 4px 7% 4px 7%;
+  border: 1px solid rgba(255,127,127,0.5);
+  /* border-width: 1px 0px 1px 0px; */
+  opacity: 0.5;
+  transition: all 0.5s ease 0s;
+  text-align: center;
+  border-radius: 3px 3px 35% 35%;
+  background: linear-gradient(rgba(255,127,127,0), rgba(255,127,127,0), rgba(255,127,127,0.1));  
+}
+#discussFormHideButton:hover {
+  border-color: rgba(255,127,127,1);
+  background-color: rgba(255,127,127,0.05);
+  cursor: pointer;
+  transform: scale(1.05);
 }
 
 
