@@ -27,6 +27,7 @@ export default class QuestionForm extends React.Component {
     // USE IF AUTH SYSTEM DOESN'T WORK
     this.checkLoginDiscuss = this.checkLoginDiscuss.bind(this);
     this.showDiscussForm = this.showDiscussForm.bind(this);
+    this.hideDiscussForm = this.hideDiscussForm.bind(this);
     this.radioChangeQuestion = this.radioChangeQuestion.bind(this);
     this.radioChangeSuggestion = this.radioChangeSuggestion.bind(this);
     this.radioChangeDebate = this.radioChangeDebate.bind(this);
@@ -46,18 +47,14 @@ componentDidMount(){
       self.setState({
         placeholder: "Ask a question, give a suggestion, or start a debate about this proposal. ",
       })
-    } else {
-      self.setState({
-        placeholder: "Ask a question, give a suggestion, or start a debate about this project. ",
-      })
-    }
-    if (this.props.currentType === 'question') {
+    } else if (this.props.currentType === 'question') {
       self.setState({
         prompt1: "ask",
         prompt2: "question",
         radio1: 'checkmark1DiscussActive',
         radio2: 'checkmark2Discuss',
         radio3: 'checkmark3Discuss',
+        placeholder: 'Ask a question you have about this project. ',
       })
     } else if (this.props.currentType === 'suggestion') {
       self.setState({
@@ -66,6 +63,7 @@ componentDidMount(){
         radio1: 'checkmark1Discuss',
         radio2: 'checkmark2DiscussActive',
         radio3: 'checkmark3Discuss',
+        placeholder: 'Give a suggestion for others to think about in the brainstorming process. ',
       })
     } else if (this.props.currentType === 'debate') {
       self.setState({
@@ -74,6 +72,7 @@ componentDidMount(){
         radio1: 'checkmark1Discuss',
         radio2: 'checkmark2Discuss',
         radio3: 'checkmark3DiscussActive',
+        placeholder: 'Start a debate you think would be positively constructive to this project. ',
       })
     } else {
       self.setState({
@@ -82,6 +81,7 @@ componentDidMount(){
         radio1: 'checkmark1DiscussActive',
         radio2: 'checkmark2Discuss',
         radio3: 'checkmark3Discuss',
+        placeholder: 'Ask a question you have about this project. ',
       })
     }
 }
@@ -107,7 +107,7 @@ componentWillReceiveProps(nextProps){
       radio1: 'checkmark1DiscussActive',
       radio2: 'checkmark2Discuss',
       radio3: 'checkmark3Discuss',
-      placeholder: 'Ask a question you have about this project. '
+      placeholder: 'Ask a question you have about this project. ',
     })
   } else if (nextProps.currentType === 'suggestion') {
     self.setState({
@@ -116,7 +116,7 @@ componentWillReceiveProps(nextProps){
       radio1: 'checkmark1Discuss',
       radio2: 'checkmark2DiscussActive',
       radio3: 'checkmark3Discuss',
-      placeholder: 'Give a suggestion for others to think about in the brainstorming process. '
+      placeholder: 'Give a suggestion for others to think about in the brainstorming process. ',
     })
   } else if (nextProps.currentType === 'debate') {
     self.setState({
@@ -125,7 +125,7 @@ componentWillReceiveProps(nextProps){
       radio1: 'checkmark1Discuss',
       radio2: 'checkmark2Discuss',
       radio3: 'checkmark3DiscussActive',
-      placeholder: 'Start a debate you think would be positively constructive to this project. '
+      placeholder: 'Start a debate you think would be positively constructive to this project. ',
     })
   } else {
     self.setState({
@@ -134,7 +134,7 @@ componentWillReceiveProps(nextProps){
       radio1: 'checkmark1DiscussActive',
       radio2: 'checkmark2Discuss',
       radio3: 'checkmark3Discuss',
-      placeholder: 'Ask a question you have about this project. '
+      placeholder: 'Ask a question you have about this project. ',
     })
   }
 }
@@ -272,6 +272,18 @@ postDiscuss() {
           $('#sidebarDiscussMenu').attr('id','sidebarDiscussMenuHide');
           $('#noDiscussContainerShow').attr('id','noDiscussContainerHide');
       });
+      // this.state.newDiscussClickFunction
+      // console.log(this.state.newDiscussClickFunction)
+
+      if (this.props.currentType === 'question') {
+        this.radioChangeQuestion()
+      } else if (this.props.currentType === 'suggestion') {
+        this.radioChangeSuggestion()
+      } else if (this.props.currentType === 'debate') {
+        this.radioChangeDebate()
+      } else {
+        this.radioChangeQuestion()
+      }
   }
   hideDiscussForm() {
       // $(document).ready(function() {
@@ -312,7 +324,6 @@ postDiscuss() {
                 <div id="projectFormRadioRow2">
                   suggestion
                 </div>
-                
               </div>
               <div id="projectFormRadioColumn" onClick={this.radioChangeDebate}>
                 <div id={this.state.radio3}></div>

@@ -17,6 +17,7 @@ export default class SubProblemContainer extends React.Component {
             breakdownOriginal: [],
             destinationPath: '',
             private: false,
+            breakdownOriginal: '',
         }
         this.renderItem = this.renderItem.bind(this);  
         this.renderPrivateItem = this.renderPrivateItem.bind(this);  
@@ -109,72 +110,53 @@ export default class SubProblemContainer extends React.Component {
         });
     }
     
-    // componentDidMount(){
-    //     var self = this;
-    //     if (window.location.pathname.includes('private')) {
-    //         self.setState({
-    //             linkPath: '/project/private/',
-    //         })
-    //     } else {
-    //         self.setState({
-    //             linkPath: '/project/',
-    //         })
-    //     }
-        // axios.get( Config.API + '/breakdowns/byproblemnumber?parentID='+this.props.params.probID + '&parentNumber=1').then(function (response) {
-        //     self.setState({
-        //         breakdownOriginal: response.data.ID,
-        //     })
-        // })  
-    //     this.setState({
-    //         probID: self.props.probID,
-    //     })
-    //     axios.get( Config.API + '/problems/breakdown?breakdownID='+this.props.breakdownOriginal).then(function (response) {
-    //         self.setState({
-    //             problems: response.data,
-    //         })
-    //     }) 
-    //     // axios.get( Config.API + '/breakdowns/byproblem?parentID='+this.props.probID).then(function (response) {
-    //     //     self.setState({
-    //     //         branches: response.data
-    //     //     })
-    //     // })   
-    // }
     componentDidMount() {
-        var self = this;
-        axios.get( Config.API + '/problems/breakdown?breakdownID='+this.props.breakdownOriginal).then(function (response) {
-            self.setState({
-                problems: response.data,
-            })
-        }) 
-        axios.get( Config.API + '/breakdowns/byproblem?parentID='+this.props.probID).then(function (response) {
-            self.setState({
-                branches: response.data
-            })
-        }) 
-        if (window.location.pathname.includes('private')) {
-            self.setState({
-                linkPath: '/project/private/',
-                private: true,
-            })
-        } else {
-            self.setState({
-                linkPath: '/project/',
-                private: false,
-            })
-        }
-        if (window.location.pathname.includes('discuss')) {
-            self.setState({
-                destinationPath: '/discuss',
-            })
-        } else if (window.location.pathname.includes('learn')) {
-            self.setState({
-                destinationPath: '/learn',
-            })
-        } else {
-            self.setState({
-                destinationPath: '/subprojects',
-            })
-        }
+        // var self = this;
+        // axios.get( Config.API + '/breakdowns/byproblemnumber?parentID='+this.props.probID + '&parentNumber=1').then(function (response) {
+        //     self.setState({
+        //         breakdownOriginal: String(response.data.ID),
+        //     })
+        //     console.log(response.data)
+        // }) 
+        // console.log(this.state.breakdownOriginal)
+        // axios.get( Config.API + '/problems/breakdown?breakdownID='+self.state.breakdownOriginal).then(function (response) {
+        //     self.setState({
+        //         problems: response.data,
+        //     })
+        //     console.log(response.data)
+        //     console.log(response.data.length)
+        // }) 
+        // console.log(self.state.problems)
+        // console.log(self.state.problems.length)
+        // axios.get( Config.API + '/breakdowns/byproblem?parentID='+this.props.probID).then(function (response) {
+        //     self.setState({
+        //         branches: response.data
+        //     })
+        // }) 
+        // if (window.location.pathname.includes('private')) {
+        //     self.setState({
+        //         linkPath: '/project/private/',
+        //         private: true,
+        //     })
+        // } else {
+        //     self.setState({
+        //         linkPath: '/project/',
+        //         private: false,
+        //     })
+        // }
+        // if (window.location.pathname.includes('discuss')) {
+        //     self.setState({
+        //         destinationPath: '/discuss',
+        //     })
+        // } else if (window.location.pathname.includes('learn')) {
+        //     self.setState({
+        //         destinationPath: '/learn',
+        //     })
+        // } else {
+        //     self.setState({
+        //         destinationPath: '/subprojects',
+        //     })
+        // }
     }
     componentWillReceiveProps (nextProps){
         var self = this;
@@ -212,19 +194,18 @@ export default class SubProblemContainer extends React.Component {
         }
     }
 
-    shouldComponentUpdate (nextProps, nextState) {
+    // shouldComponentUpdate (nextProps, nextState) {
         
-            if((nextState.probID !== nextProps.probID) 
-            || (nextState.problems !== this.state.problems)) {
-                return true
-            } else {
-                return false
-            }
-    }
+    //         if((nextState.probID !== nextProps.probID) 
+    //         || (nextState.problems !== this.state.problems)) {
+    //             return true
+    //         } else {
+    //             return false
+    //         }
+    // }
 
 
     render() {
-
         if (this.state.problems === undefined || this.state.problems.length == 0) {
             return (
                 <div>
@@ -235,42 +216,27 @@ export default class SubProblemContainer extends React.Component {
                             </div>
                     </div>
                     <div id="SPwrapper">
-                        <ul id="SPUnitList"> 
-                            {/* <li>
-                                <img src={require('../assets/leftArrow.svg')} id="SParrowImg" width="50" height="50" alt="User avatar, DNA Helix" />
-                            </li> */}
-                            {/* <Link to={this.state.linkPath+this.props.probID+'/create'} activeClassName="activePrivateCreateButton"> */}
-                                
-                            {/* </Link> */}
+                        <ul id='SPUnitList'> 
                             {this.state.problems.map(this.renderItem)}
-                            {/* <li>
-                                <img src={require('../assets/rightArrow.svg')} id="SParrowImg" width="50" height="50" alt="User avatar, DNA Helix" />
-                            </li> */}
                         </ul>
                     </div>
                     {/* <Link to={this.state.linkPath+this.props.probID+'/create/breakdown'} activeClassName="activePrivateCreateButton">
                         <div id="branchesProjectButton" onMouseOver={this.hoverBranch} onMouseOut={this.unHoverBranch} onClick={this.clickBranch}>
                         </div>
                     </Link> */}
-                    {/* <div id="SPUnitNew">
-                            <div id="SPHeaderNew" onMouseOver={this.hoverText} onMouseOut={this.unHoverText} onClick={this.showProblemForm}>
-                                    <img src={require('../assets/blueAdd2.svg')} id="privateNewProjectPlus" width="50" height="50" alt="User avatar, DNA Helix" />
-                            </div>
-                    </div> */}
                 </div>
             );
         } else if (this.state.private === true) {
             return (
                   <div>
                       <div id="SPwrapper">
-                          <ul id="SPUnitList"> 
-                              {this.state.problems.map(this.renderPrivateItem)}
-                          </ul>
-                      </div>
-                      <div id="SPUnitNew">
-                              <div id="SPHeaderNew" onMouseOver={this.hoverText} onMouseOut={this.unHoverText} onClick={this.showProblemForm}>
-                                      <img src={require('../assets/blueAdd2.svg')} id="privateNewProjectPlus" width="50" height="50" alt="User avatar, DNA Helix" />
-                              </div>
+                            <ul id='SPUnitList'> 
+                                {this.state.problems.map(this.renderPrivateItem)}
+                                <div id="SPHeaderNew" onMouseOver={this.hoverText} onMouseOut={this.unHoverText} onClick={this.showProblemForm}>
+                                    <img src={require('../assets/blueAdd2.svg')} id="privateNewProjectPlus" width="50" height="50" alt="User avatar, DNA Helix" />
+                                </div>
+                            </ul>
+                            
                       </div>
                   </div>    
             );
@@ -278,28 +244,17 @@ export default class SubProblemContainer extends React.Component {
           return (
                 <div>
                     <div id="SPwrapper">
-                        <ul id="SPUnitList"> 
-                            {/* <li>
-                                <img src={require('../assets/leftArrow.svg')} id="SParrowImg" width="50" height="50" alt="User avatar, DNA Helix" />
-                            </li> */}
-                            {/* <Link to={this.state.linkPath+this.props.probID+'/create'} activeClassName="activePrivateCreateButton"> */}
-                                
-                            {/* </Link> */}
+                        <ul id='SPUnitList'> 
                             {this.state.problems.map(this.renderItem)}
-                            {/* <li>
-                                <img src={require('../assets/rightArrow.svg')} id="SParrowImg" width="50" height="50" alt="User avatar, DNA Helix" />
-                            </li> */}
+                            <div id="SPHeaderNew" onMouseOver={this.hoverText} onMouseOut={this.unHoverText} onClick={this.showProblemForm}>
+                                    <img src={require('../assets/blueAdd2.svg')} id="privateNewProjectPlus" width="50" height="50" alt="User avatar, DNA Helix" />
+                            </div>
                         </ul>
                     </div>
                     {/* <Link to={this.state.linkPath+this.props.probID+'/create/breakdown'} activeClassName="activePrivateCreateButton">
                         <div id="branchesProjectButton" onMouseOver={this.hoverBranch} onMouseOut={this.unHoverBranch} onClick={this.clickBranch}>
                         </div>
                     </Link> */}
-                    <div id="SPUnitNew">
-                            <div id="SPHeaderNew" onMouseOver={this.hoverText} onMouseOut={this.unHoverText} onClick={this.showProblemForm}>
-                                    <img src={require('../assets/blueAdd2.svg')} id="privateNewProjectPlus" width="50" height="50" alt="User avatar, DNA Helix" />
-                            </div>
-                    </div>
                 </div>    
           );
        }  
@@ -367,16 +322,12 @@ export default class SubProblemContainer extends React.Component {
             } else {
                 return (
                     <Link key={problem.ID} to={this.state.linkPath+problem.ID + this.state.destinationPath}>
-                        <li id="SPUnit"
-                        // style={divStyle}
-                        >
-                        {/* <div id={"SPUnit" + String(problem.ID)}> */}
+                        {/* <li id="SPUnit"> */}
                             <div id="SPHeader" onMouseOver={this.hoverProject} onMouseOut={this.unHoverProject}>
                                 <div id="SPTitle">{problem.Title}</div>
                                 <div id="SPPercent">{problem.Rank}</div>
                             </div>
-                        {/* </div> */}
-                        </li>
+                        {/* </li> */}
                     </Link>
                 )
             };

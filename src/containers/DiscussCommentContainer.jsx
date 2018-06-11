@@ -305,10 +305,11 @@ export default class DiscussContainer extends React.Component {
     }
     selectProConCom() {
         $(document).ready(function() {
-            $('#discussCommentGroupSelectAllInactive').attr('id','discussCommentGroupSelectAllActive');                
+            // $('#discussCommentGroupSelectAllInactive').attr('id','discussCommentGroupSelectAllActive');                
             $('#discussSelectButtonLeftActive').attr('id','discussSelectButtonLeftInactive');               
             $('#discussSelectButtonCenterActive').attr('id','discussSelectButtonCenterInactive');               
-            $('#discussSelectButtonRightActive').attr('id','discussSelectButtonRightInactive');               
+            $('#discussSelectButtonRightActive').attr('id','discussSelectButtonRightInactive');  
+            $('#discussSelectButtonTopInactive').attr('id','discussSelectButtonTopActive');                                                 
         });
         var self = this;
         if(this.state.newTopSelect === 'new') {
@@ -348,10 +349,11 @@ export default class DiscussContainer extends React.Component {
     }
     selectAnswerCom() {
         $(document).ready(function() {
-            $('#discussCommentGroupSelectAllInactive').attr('id','discussCommentGroupSelectAllActive');                
+            // $('#discussCommentGroupSelectAllInactive').attr('id','discussCommentGroupSelectAllActive');                
             $('#discussSelectButtonLeftActive').attr('id','discussSelectButtonLeftInactive');               
             $('#discussSelectButtonCenterActive').attr('id','discussSelectButtonCenterInactive');               
-            $('#discussSelectButtonRightActive').attr('id','discussSelectButtonRightInactive');               
+            $('#discussSelectButtonRightActive').attr('id','discussSelectButtonRightInactive');   
+            $('#discussSelectButtonTopInactive').attr('id','discussSelectButtonTopActive');                                                
         });
         var self = this;
         if(this.state.newTopSelect === 'new') {
@@ -393,17 +395,19 @@ export default class DiscussContainer extends React.Component {
     selectComments() {
         if (this.state.parentType === 'Question') {
             $(document).ready(function() {
-                $('#discussCommentGroupSelectAllActive').attr('id','discussCommentGroupSelectAllInactive');               
+                // $('#discussCommentGroupSelectAllActive').attr('id','discussCommentGroupSelectAllInactive');               
                 $('#discussSelectButtonRightInactive').attr('id','discussSelectButtonRightActive');               
                 $('#discussSelectButtonCenterActive').attr('id','discussSelectButtonCenterInactive');               
-                $('#discussSelectButtonLeftActive').attr('id','discussSelectButtonLeftInactive');               
+                $('#discussSelectButtonLeftActive').attr('id','discussSelectButtonLeftInactive');
+                $('#discussSelectButtonTopActive').attr('id','discussSelectButtonTopInactive');                                                   
             });
         } else {
             $(document).ready(function() {
-                $('#discussCommentGroupSelectAllActive').attr('id','discussCommentGroupSelectAllInactive');               
+                // $('#discussCommentGroupSelectAllActive').attr('id','discussCommentGroupSelectAllInactive');               
                 $('#discussSelectButtonLeftInactive').attr('id','discussSelectButtonLeftActive');               
                 $('#discussSelectButtonCenterActive').attr('id','discussSelectButtonCenterInactive');               
                 $('#discussSelectButtonRightActive').attr('id','discussSelectButtonRightInactive');               
+                $('#discussSelectButtonTopActive').attr('id','discussSelectButtonTopInactive');                                    
             });
         }
         var self = this;
@@ -443,10 +447,11 @@ export default class DiscussContainer extends React.Component {
     }
     selectProsCons() {
         $(document).ready(function() {
-            $('#discussCommentGroupSelectAllActive').attr('id','discussCommentGroupSelectAllInactive');               
+            // $('#discussCommentGroupSelectAllActive').attr('id','discussCommentGroupSelectAllInactive');               
             $('#discussSelectButtonLeftActive').attr('id','discussSelectButtonLeftInactive');               
             // $('#discussSelectButtonCenterInactive').attr('id','discussSelectButtonCenterActive');               
-            $('#discussSelectButtonRightInactive').attr('id','discussSelectButtonRightActive');               
+            $('#discussSelectButtonRightInactive').attr('id','discussSelectButtonRightActive'); 
+            $('#discussSelectButtonTopActive').attr('id','discussSelectButtonTopInactive');                                                  
         });
         var self = this;
         if(this.state.newTopSelect === 'new') {
@@ -485,10 +490,11 @@ export default class DiscussContainer extends React.Component {
     }
     selectAnswers() {
         $(document).ready(function() {
-            $('#discussCommentGroupSelectAllActive').attr('id','discussCommentGroupSelectAllInactive');               
+            // $('#discussCommentGroupSelectAllActive').attr('id','discussCommentGroupSelectAllInactive');               
             $('#discussSelectButtonRightActive').attr('id','discussSelectButtonRightInactive');               
             $('#discussSelectButtonCenterActive').attr('id','discussSelectButtonCenterInactive');               
-            $('#discussSelectButtonLeftInactive').attr('id','discussSelectButtonLeftActive');               
+            $('#discussSelectButtonLeftInactive').attr('id','discussSelectButtonLeftActive');  
+            $('#discussSelectButtonTopActive').attr('id','discussSelectButtonTopInactive');                                                 
         });
         var self = this;
         if(this.state.newTopSelect === 'new') {
@@ -613,8 +619,10 @@ export default class DiscussContainer extends React.Component {
     if (this.state.parentType === 'Question') {
         return (
             <div id={this.state.proposalID}>
-                <Link to={this.state.linkPath+ this.state.proposalPath +'/discuss'}>
-                    <div id="discussGroupSelectAllInactive">discuss</div>
+                <Link to={this.state.linkPath + this.state.proposalPath + this.state.parentLink}>
+                    <div id="discussCommentBackButton">
+                        <img src={require('../assets/upArrow.svg')} id="projectModuleClose2" width="22" height="22" alt="Project Tree Button, white tree" />
+                    </div>
                 </Link>
                 <Link to={this.state.linkPath + this.state.proposalPath + this.state.parentLink}>
                     <div id="answerQuestionUnit">
@@ -626,26 +634,28 @@ export default class DiscussContainer extends React.Component {
                                 {this.state.parent.Description}
                             </div>
                         </div>
-                        <img src={require('../assets/upArrow.svg')} id="discussCommentBackArrow" width="50" height="30" alt="Back arrow, blue up arrow" />
                     </div>
                 </Link>
-                <div id="discussCommentGroupSelectAllActive" onClick={this.selectAnswerCom}>
-                    responses<span id="greenSmall">  {this.state.answerComNumber}</span>
-                </div>
                 <div id="discussSelectionMenuContainer">
-                    <div id="sidebarDiscussMenu">
-                        <div id="discussGroupSelection">
-                            <div id="discussSelectButtonLeftInactive" onClick={this.selectAnswers}>                                           
-                                answers
-                                <span id="greenSmall">  {this.state.answerNumber}</span>
-                            </div>
-                            <div id="discussSelectButtonRightInactive" onClick={this.selectComments}>
-                                comments
-                                <span id="greenSmall">  {this.state.commentNumber}</span>
+                    <div id="discussFilterFormContainer">
+                        <div id="sidebarDiscussCommentMenu">
+                            <div id="discussGroupSelection">
+                                <div id="discussSelectButtonTopActive" onClick={this.selectAnswerCom}>
+                                    all posts
+                                    <span id="greenSmallFaint">  {this.state.answerComNumber}</span>
+                                </div>
+                                <div id="discussSelectButtonLeftInactive" onClick={this.selectAnswers}>                                           
+                                    answers
+                                    <span id="greenSmallFaint">  {this.state.answerNumber}</span>
+                                </div>
+                                <div id="discussSelectButtonRightInactive" onClick={this.selectComments}>
+                                    comments
+                                    <span id="greenSmallFaint">  {this.state.commentNumber}</span>
+                                </div>
                             </div>
                         </div>
+                        {React.cloneElement(this.props.children, {discuss:this.state.discuss, parentTitle: this.props.parentTitle, parentType: this.state.parentType, currentType: this.state.currentType})}
                     </div>
-                    {React.cloneElement(this.props.children, {parentTitle: this.props.parentTitle, parentType: this.state.parentType})}
                     <div id={this.state.newTopID}>
                         <div id="discussListNewButtonActive" onClick={this.selectNew}>
                             new
@@ -656,14 +666,15 @@ export default class DiscussContainer extends React.Component {
                     </div>
                 </div>
                 <DiscussUnit linkPath={this.state.linkPath} solutionID={this.props.params.solutionID} discussID={this.props.params.discussID} questions={this.state.discuss} />
-                <div id="proposalsTitleRightSBEnd"><br /></div>
             </div>
         )
     } else {
     return (
         <div id={this.state.proposalID}>
-            <Link to={this.state.linkPath + this.state.proposalPath + '/discuss'}>
-                <div id="discussGroupSelectAllInactive">discuss</div>
+            <Link to={this.state.linkPath + this.state.proposalPath + this.state.parentLink}>
+                <div id="discussCommentBackButton">
+                    <img src={require('../assets/upArrow.svg')} id="projectModuleClose2" width="22" height="22" alt="Project Tree Button, white tree" />
+                </div>
             </Link>
             <Link to={this.state.linkPath + this.state.proposalPath + this.state.parentLink}>
                 <div id="answerQuestionUnit">
@@ -675,27 +686,30 @@ export default class DiscussContainer extends React.Component {
                             {this.state.parent.Description}
                         </div>
                     </div>
-                    <img src={require('../assets/upArrow.svg')} id="discussCommentBackArrow" width="50" height="30" alt="Back arrow, blue up arrow" />
                 </div>
             </Link>
-            <div id="discussCommentGroupSelectAllActive" onClick={this.selectProConCom}>
-                responses<span id="greenSmall">  {this.state.proConComNumber}</span>
-            </div>
             <div id="discussSelectionMenuContainer">
-                <div id="sidebarDiscussMenu">
-                    <div id="discussGroupSelection">
-                        <div id="discussSelectButtonLeftInactive" onClick={this.selectComments}>
-                            comments
-                            <span id="greenSmall">  {this.state.commentNumber}</span>
-                        </div>
+                <div id="discussFilterFormContainer">
+                    <div id="sidebarDiscussCommentMenu">
+                        <div id="discussGroupSelection">
+                            <div id="discussSelectButtonTopActive" onClick={this.selectProConCom}>
+                                all posts
+                                <span id="greenSmallFaint">  {this.state.proConComNumber}</span>
+                            </div>
+                            <div id="discussSelectButtonLeftInactive" onClick={this.selectComments}>
+                                comments
+                                <span id="greenSmallFaint">  {this.state.commentNumber}</span>
+                            </div>
 
-                        <div id="discussSelectButtonRightInactive" onClick={this.selectProsCons}>                                           
-                            pros/cons
-                            <span id="greenSmall">  {this.state.proConNumber}</span>
+                            <div id="discussSelectButtonRightInactive" onClick={this.selectProsCons}>                                           
+                                pros/cons
+                                <span id="greenSmallFaint">  {this.state.proConNumber}</span>
+                            </div>
                         </div>
-                    </div>
+                    </div>                
+                    {React.cloneElement(this.props.children, {discuss:this.state.discuss, parentTitle: this.props.parentTitle, parentType: this.state.parentType, currentType: this.state.currentType})}
+
                 </div>
-                {React.cloneElement(this.props.children, {parentTitle: this.props.parentTitle, parentType: this.state.parentType})}
                 <div id={this.state.newTopID}>
                     <div id="discussListNewButtonActive" onClick={this.selectNew}>
                         new
@@ -706,7 +720,6 @@ export default class DiscussContainer extends React.Component {
                 </div>
             </div>
             <DiscussUnit linkPath={this.state.linkPath} solutionID={this.props.params.solutionID} discussID={this.props.params.discussID} questions={this.state.discuss} />
-            <div id="proposalsTitleRightSBEnd"><br /></div>
         </div>
   
     );

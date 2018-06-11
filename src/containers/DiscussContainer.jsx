@@ -402,18 +402,9 @@ export default class DiscussContainer extends React.Component {
    render() {
     return (
         <div id={this.state.proposalID}>
-            {/* <div id="discussGroupSelectAllActive" onClick={this.selectAll}>
-                discuss<span id="greenSmallFaint">  {this.state.discussNumber}</span>
-            </div> */}
             <div id="discussSelectionMenuContainer">
                 <div id="discussFilterFormContainer">
                     <div id="sidebarDiscussMenu">
-                        {/* <div id="discussGroupSelectAllActive" onClick={this.selectAll}>
-                            all<span id="greenSmallFaint">  {this.state.discussNumber}</span>
-                        </div> */}
-                        {/* <div id="discussFilterLabelActive">
-                            unfiltered
-                        </div> */}
                         <div id="discussGroupSelection">
                             <div id="discussSelectButtonTopActive" onClick={this.selectAll}>
                                 all posts

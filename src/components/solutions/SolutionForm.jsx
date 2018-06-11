@@ -33,6 +33,9 @@ export default class SolutionForm extends React.Component {
     this.checkLoginProposal = this.checkLoginProposal.bind(this);
     this.onChange = this.onChange.bind(this);
     this.showDataURL = this.showDataURL.bind(this);
+    this.radioChangeProposal = this.radioChangeProposal.bind(this);
+    this.radioChangePlan = this.radioChangePlan.bind(this);
+    this.radioChangeSolution = this.radioChangeSolution.bind(this);
   };
 
 
@@ -116,9 +119,9 @@ export default class SolutionForm extends React.Component {
     this.state.summary = document.getElementById('solutionSummaryForm').value
     this.state.description = document.getElementById('solutionDescriptionForm').value
 
-    if (document.getElementById('proposalClass2').checked) {
+    if (document.getElementById('checkmark3ProposalActive')) {
       this.state.class = '2' 
-    } else if (document.getElementById('proposalClass1').checked) {
+    } else if (document.getElementById('checkmark2ProposalActive')) {
       this.state.class = '1' 
     } else {
       this.state.class = '0' 
@@ -137,7 +140,7 @@ export default class SolutionForm extends React.Component {
       })
       .then(function (result) {
         // document.location = '/project/' + self.props.probID + '/subprojects'
-        document.getElementById("proposalSectionHeader").scrollIntoView();
+        // document.getElementById("proposalSectionHeader").scrollIntoView();
         self.refs.btn.removeAttribute("disabled");
         // document.getElementById("createForm").reset();
       })
@@ -160,7 +163,6 @@ export default class SolutionForm extends React.Component {
             self.refs.btn.removeAttribute("disabled");
       });
     } else {
-      console.log('start')
       // $('#pdfUploadLoaderHide').attr('id','pdfUploadLoaderShow');
       axios.post( Config.API + '/auth/solutions/create', {
         username: cookie.load('userName'),
@@ -175,7 +177,6 @@ export default class SolutionForm extends React.Component {
       })
       .then(function (result) {
         // $('#pdfUploadLoaderShow').attr('id','pdfUploadLoaderHide');
-        console.log('end')
         document.getElementById("proposalSectionHeader").scrollIntoView();
         self.refs.btn.removeAttribute("disabled");
         // document.getElementById("createForm").reset();
@@ -234,7 +235,21 @@ showDataURL() {
   console.log(this.state.dataString)
 }
 
-
+radioChangeProposal() {
+  $('#checkmark1Proposal').attr('id','checkmark1ProposalActive');
+  $('#checkmark2ProposalActive').attr('id','checkmark2Proposal');
+  $('#checkmark3ProposalActive').attr('id','checkmark3Proposal');
+}
+radioChangePlan() {
+  $('#checkmark1ProposalActive').attr('id','checkmark1Proposal');
+  $('#checkmark2Proposal').attr('id','checkmark2ProposalActive');
+  $('#checkmark3ProposalActive').attr('id','checkmark3Proposal');
+}
+radioChangeSolution() {
+  $('#checkmark1ProposalActive').attr('id','checkmark1Proposal');
+  $('#checkmark2ProposalActive').attr('id','checkmark2Proposal');
+  $('#checkmark3Proposal').attr('id','checkmark3ProposalActive');
+}
 
 
 
@@ -298,38 +313,22 @@ showDataURL() {
 
                   <div id="projectFormRadioContainer">
                       <div id="projectFormRadioColumn">
+                        <div id='checkmark1ProposalActive' onClick={this.radioChangeProject}></div>
                         <div id="projectFormRadioRow1">
                           proposal
-                          {/* <span id="grayLessSpacing"> | default</span> */}
-                        </div>
-                        <div id="projectFormRadioRow">
-                          <label id="projectRadioButtonContainer">
-                            <input type="radio" id="proposalClass0"  name="projectType" value="0"/>
-                            <span id="checkmark1"></span>
-                          </label>
-                        </div>
+                        </div>    
                       </div>
                       <div id="projectFormRadioColumn">
+                        <div id='checkmark2Proposal' onClick={this.radioChangePlan}></div>
                         <div id="projectFormRadioRow2">
                           plan
-                        </div>
-                        <div id="projectFormRadioRow">
-                          <label id="projectRadioButtonContainer">
-                            <input type="radio" id="proposalClass1" name="projectType" value="1" />
-                            <span id="checkmark2"></span>
-                          </label>
-                        </div>
+                        </div>    
                       </div>
                       <div id="projectFormRadioColumn">
+                        <div id='checkmark3Proposal' onClick={this.radioChangeSolution}></div>
                         <div id="projectFormRadioRow3">
                           solution
-                        </div>
-                        <div id="projectFormRadioRow">
-                          <label id="projectRadioButtonContainer">
-                            <input type="radio" id="proposalClass2" name="projectType" value="2" />
-                            <span id="checkmark3"></span>
-                          </label>
-                        </div>
+                        </div>    
                       </div>
                     </div>
 

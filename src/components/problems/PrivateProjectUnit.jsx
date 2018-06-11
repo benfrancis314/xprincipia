@@ -8,7 +8,7 @@ export default class PrivateProjectUnit extends React.Component {
 
     hoverText() {
         $(document).ready(function() {
-            $('#privateContainerMotto').html('<span id="blue">NEW </span>SUB PROJECT').fadeIn(7500);
+            $('#privateContainerMotto').html('<span id="blue">NEW </span>SUB<span id="blue">PROJECT</span>').fadeIn(7500);
             $('#privateContainerMotto').attr('id','privateContainerMottoWhite');
         });
     }

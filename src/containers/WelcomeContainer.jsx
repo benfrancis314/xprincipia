@@ -82,7 +82,7 @@ export default class WelcomeContainer extends React.Component {
         window.scrollTo(0,0);
         if (cookie.load('userName')) {
           self.setState({
-              introductionTitle: 'mission',
+              introductionTitle: 'introduction',
           })
         } else {
             self.setState({

@@ -62,25 +62,11 @@ export default class FullProblem extends React.Component {
 
     componentDidMount(){
       var self = this;
-      // ReactDOM.findDOMNode(this).scrollIntoView();
-      window.scrollTo(0,0);
       axios.get( Config.API + '/breakdowns/byproblemnumber?parentID='+this.props.params.probID + '&parentNumber=1').then(function (response) {
           self.setState({
               breakdownOriginal: response.data.ID,
           })
       }) 
-      if (window.location.pathname.includes('private')) {
-          self.setState({
-              linkPath: '/project/private/',
-              voteTrackMenuID: 'noDisplay',
-
-          })
-      } else {
-          self.setState({
-              linkPath: '/project/',
-              voteTrackMenuID: 'voteTrackMenu',
-          })
-      }
       axios.get( Config.API + '/problems/ID?id='+this.props.params.probID).then(function (response) {
           if ((response.data.OriginalPosterUsername === cookie.load('userName')) && (response.data.Private == '1')) {
             self.setState({
@@ -104,6 +90,18 @@ export default class FullProblem extends React.Component {
             })
           }
       })
+      if (window.location.pathname.includes('private')) {
+        self.setState({
+            linkPath: '/project/private/',
+            voteTrackMenuID: 'noDisplay',
+
+        })
+      } else {
+          self.setState({
+              linkPath: '/project/',
+              voteTrackMenuID: 'voteTrackMenu',
+          })
+      }
       axios.get( Config.API + "/vote/isVotedOn?type=0&typeID=" + this.props.params.probID + "&username=" + cookie.load("userName"))
             .then( function (response){
               if (response.data === true) {
@@ -134,9 +132,9 @@ export default class FullProblem extends React.Component {
       })
   }
 
-  shouldComponentUpdate(nextProps, nextState) {
-    return nextState.probID !== nextProps.params.probID;
-}
+//   shouldComponentUpdate(nextProps, nextState) {
+//     return nextState.probID !== nextProps.params.probID;
+// }
 
   componentWillReceiveProps(nextProps){
       var self = this;
@@ -145,18 +143,6 @@ export default class FullProblem extends React.Component {
               breakdownOriginal: response.data.ID,
           })
       })  
-      // window.scrollTo(0,0);
-      if (window.location.pathname.includes('private')) {
-          self.setState({
-              linkPath: '/project/private/',
-              voteTrackMenuID: 'noDisplay',
-          })
-      } else {
-          self.setState({
-              linkPath: '/project/',
-              voteTrackMenuID: 'voteTrackMenu',
-          })
-      }
       axios.get( Config.API + '/problems/ID?id='+nextProps.params.probID).then(function (response) {
         if ((response.data.OriginalPosterUsername === cookie.load('userName')) && (response.data.Private == '1')) {
           self.setState({
@@ -208,6 +194,17 @@ export default class FullProblem extends React.Component {
               learnNumber: response.data
           })
       })
+      if (window.location.pathname.includes('private')) {
+        self.setState({
+            linkPath: '/project/private/',
+            voteTrackMenuID: 'noDisplay',
+        })
+      } else {
+          self.setState({
+              linkPath: '/project/',
+              voteTrackMenuID: 'voteTrackMenu',
+          })
+      }
   }
   checkLoginVote() {
     if (cookie.load('userName')) {
@@ -436,7 +433,7 @@ voteDown() {
                         </div>
                         <div id="problemSummary">
                           {/* <div id="problemSummaryHideButtonShow" onClick={this.hideSummary}>
-                            <img src={require('../../assets/redCircle1.svg')} id="projectModuleClose2" width="17" height="17" alt="Close discuss form" />
+                            <img src={require('../../assets/circle1Red.svg')} id="projectModuleClose2" width="17" height="17" alt="Close discuss form" />
                           </div> */}
                             {this.state.problemInfo.Summary}
                         </div>
@@ -445,11 +442,11 @@ voteDown() {
                         </div>
                       </div>
                       <ProjectBreakdownSlogan />
+                      <div id="problemFormContainerHide">
+                        <ProblemForm probID={this.props.params.probID} solutionID={this.props.params.solutionID} />
+                      </div>
                       <SubProblemContainer problemInfo={this.state.problemInfo} probID={this.props.params.probID} breakdownOriginal={this.state.breakdownOriginal} differentBreakdown={this.differentBreakdown} />
                     </div>
-                  </div>
-                  <div id="problemFormContainerHide">
-                    <ProblemForm probID={this.props.params.probID} solutionID={this.props.params.solutionID} />
                   </div>
                 </div>
                 <div id="projectRightContainer">
@@ -458,7 +455,7 @@ voteDown() {
                       <div id="projectRightMenu">
                         <div id="fullWide">
                         <Link to={this.state.linkPath+this.props.params.probID+'/subprojects'} activeClassName="activeProblemOptionProposal">
-                          <div id="SBButtonProposal" onClick={this.goToProposal}>ideas</div>
+                          <div id="SBButtonProposal" onClick={this.goToProposal}>proposals</div>
                         </Link> 
                         </div>
                         <div id="fullWide">

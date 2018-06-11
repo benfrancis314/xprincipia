@@ -271,7 +271,7 @@ export default class WelcomeContainer extends React.Component {
 
           <div id="welcomeUnitsContainer">
             <div id="welcomeContainerTitle">
-                <span id="welcomeContainerTitleBlue">centralized </span><span id="welcomeContainerTitleWhite">projects</span>
+                <span id="welcomeContainerTitleBlue">select </span><span id="welcomeContainerTitleWhite">mission</span>
             </div> 
             <div id="width87">
                 <WelcomeUnit problems={this.state.problems} />

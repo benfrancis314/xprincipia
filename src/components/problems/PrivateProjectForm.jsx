@@ -23,7 +23,9 @@ export default class ProblemForm extends React.Component {
 
     this.postProblem = this.postProblem.bind(this);
     this.checkLoginProblem = this.checkLoginProblem.bind(this);
-
+    this.radioChangeProject = this.radioChangeProject.bind(this);
+    this.radioChangeGoal = this.radioChangeGoal.bind(this);
+    this.radioChangeProblem = this.radioChangeProblem.bind(this);
   };
 
 // componentDidUpdate() {
@@ -64,9 +66,9 @@ export default class ProblemForm extends React.Component {
     //Read field items into component state
     this.state.title = document.getElementById('problemTitleForm').value
     this.state.summary = document.getElementById('problemSummaryForm').value
-    if (document.getElementById('projectClass2').checked) {
+    if (document.getElementById('checkmark3ProjectActive')) {
       this.state.class = '2' 
-    } else if (document.getElementById('projectClass1').checked) {
+    } else if (document.getElementById('checkmark2ProjectActive')) {
       this.state.class = '1' 
     } else {
       this.state.class = '0' 
@@ -106,6 +108,21 @@ export default class ProblemForm extends React.Component {
       });
       self.refs.btn.removeAttribute("disabled");
   }
+  radioChangeProject() {
+    $('#checkmark1Project').attr('id','checkmark1ProjectActive');
+    $('#checkmark2ProjectActive').attr('id','checkmark2Project');
+    $('#checkmark3ProjectActive').attr('id','checkmark3Project');
+  }
+  radioChangeGoal() {
+      $('#checkmark1ProjectActive').attr('id','checkmark1Project');
+      $('#checkmark2Project').attr('id','checkmark2ProjectActive');
+      $('#checkmark3ProjectActive').attr('id','checkmark3Project');
+  }
+  radioChangeProblem() {
+      $('#checkmark1ProjectActive').attr('id','checkmark1Project');
+      $('#checkmark2ProjectActive').attr('id','checkmark2Project');
+      $('#checkmark3Project').attr('id','checkmark3ProjectActive');
+  }
 
   render() {
       return (
@@ -121,38 +138,22 @@ export default class ProblemForm extends React.Component {
 
                     <div id="projectFormRadioContainer">
                       <div id="projectFormRadioColumn">
+                        <div id='checkmark1ProjectActive' onClick={this.radioChangeProject}></div>
                         <div id="projectFormRadioRow1">
                           project
-                          {/* <span id="grayLessSpacing"> | default</span> */}
-                        </div>
-                        <div id="projectFormRadioRow">
-                          <label id="projectRadioButtonContainer">
-                            <input type="radio" id="projectClass0"  name="projectType" value="0"/>
-                            <span id="checkmark1"></span>
-                          </label>
-                        </div>
+                        </div>    
                       </div>
                       <div id="projectFormRadioColumn">
+                        <div id='checkmark2Project' onClick={this.radioChangeGoal}></div>
                         <div id="projectFormRadioRow2">
                           goal
-                        </div>
-                        <div id="projectFormRadioRow">
-                          <label id="projectRadioButtonContainer">
-                            <input type="radio" id="projectClass1" name="projectType" value="1" />
-                            <span id="checkmark2"></span>
-                          </label>
-                        </div>
+                        </div>    
                       </div>
                       <div id="projectFormRadioColumn">
+                        <div id='checkmark3Project' onClick={this.radioChangeProblem}></div>
                         <div id="projectFormRadioRow3">
                           problem
-                        </div>
-                        <div id="projectFormRadioRow">
-                          <label id="projectRadioButtonContainer">
-                            <input type="radio" id="projectClass2" name="projectType" value="2" />
-                            <span id="checkmark3"></span>
-                          </label>
-                        </div>
+                        </div>    
                       </div>
                     </div>
 

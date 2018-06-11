@@ -1,5 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router';
+import $ from 'jquery';
+
 
 
 export default class SolutionUnit extends React.Component {
@@ -12,6 +14,7 @@ export default class SolutionUnit extends React.Component {
 			linkPath: '',
         }
 		this.renderItem = this.renderItem.bind(this);
+		this.showSolutionForm = this.showSolutionForm.bind(this);
     };
 
   componentWillReceiveProps(nextProps){
@@ -30,12 +33,21 @@ export default class SolutionUnit extends React.Component {
 			probID: nextProps.probID
 		})
   }
+  	showSolutionForm() {
+		$(document).ready(function() {
+			$('#solutionFormContainerHide').attr('id','solutionFormContainerShow');
+			$('#proposalsPromptContainerShow').attr('id','proposalsPromptContainerHide');
+		});
+	}
 
 
 	render() {
 			return (
 				<div>
 					{this.state.solutions.map(this.renderItem)}
+					<div id="newProposalButton" onClick={this.showSolutionForm}>
+						<img src={require('../../assets/blueAdd2.svg')} id="privateNewProjectPlus" width="37" height="37" alt="User avatar, DNA Helix" />
+					</div>
 				</div>
 			);
 	}
