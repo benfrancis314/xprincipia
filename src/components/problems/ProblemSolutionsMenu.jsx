@@ -12,11 +12,15 @@ export default class ProblemSolutionsMenu extends React.Component {
         this.state = {
             solutions: [],
         }
+        this.hoverNewProposal = this.hoverNewProposal.bind(this)
+        this.unHoverNewProposal = this.unHoverNewProposal.bind(this)
+        this.hideSolutionForm = this.hideSolutionForm.bind(this)
+
     };
 
     componentDidMount(){
         var self = this;
-        axios.get( Config.API + '/solutions/problemID?id='+this.props.probID).then(function (response) {
+        axios.get( Config.API + '/solutions/problemID?id='+this.props.params.probID).then(function (response) {
             self.setState({
                 solutions: response.data,
             })
@@ -25,7 +29,7 @@ export default class ProblemSolutionsMenu extends React.Component {
 
     componentWillReceiveProps (nextProps){
         var self = this;
-        axios.get( Config.API + '/solutions/problemID?id='+nextProps.probID).then(function (response) {
+        axios.get( Config.API + '/solutions/problemID?id='+nextProps.params.probID).then(function (response) {
             self.setState({
                 solutions: response.data,
             })
@@ -57,14 +61,10 @@ export default class ProblemSolutionsMenu extends React.Component {
 
       return (
         <div id="projectInteractMenu">
-            {/* <div id="proposalSectionHeader">proposals</div>
-            <a href='#proposalForm'>
-                <div id="addBlueX" onMouseOver={this.hoverNewProposal} onMouseOut={this.unHoverNewProposal}></div>
-            </a> */}
-            <ProblemTopSolutions probID={this.props.probID} />
+            <ProblemTopSolutions probID={this.props.params.probID} />
             <div id="solutionFormContainerHide">
                 <img src={require('../../assets/redX.svg')} id="closeRedX" width="30" height="30" alt="Close button, red X symbol"  onClick={this.hideSolutionForm}/>
-                <SolutionForm probID={this.props.probID} projectTitle={this.props.parentTitle} />
+                <SolutionForm probID={this.props.params.probID} projectTitle={this.props.parentTitle} />
             </div>
         </div>
 

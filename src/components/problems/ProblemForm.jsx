@@ -12,7 +12,6 @@ export default class ProblemForm extends React.Component {
   constructor(){
     super();
     
-    //ProblemForm structure in backend
     this.state= {
       title: '',
       summary: '',
@@ -33,11 +32,7 @@ export default class ProblemForm extends React.Component {
     this.radioChangeProject = this.radioChangeProject.bind(this);
     this.radioChangeGoal = this.radioChangeGoal.bind(this);
     this.radioChangeProblem = this.radioChangeProblem.bind(this);
-  };
-
-// componentDidUpdate() {
-//         ReactDOM.findDOMNode(this).scrollIntoView();
-//   }      
+  };    
 
   componentDidMount(){
     var self = this;

@@ -22,20 +22,12 @@ export default class FullProblem extends React.Component {
 
 
         }
-        this.hoverParentListButton = this.hoverParentListButton.bind(this);
-        this.unHoverParentListButton = this.unHoverParentListButton.bind(this);
-        
+        this.showParentList = this.showParentList.bind(this);
     };
 
 
     componentDidMount(){
         var self = this;
-        // axios.get( Config.API + '/problems/ID?id='+this.props.parentID).then(function (response) {
-        //     self.setState({
-        //         parent: response.data
-        //     })
-        // }) 
-        // console.log(self.state.parent)
         if (window.location.pathname.includes('private')) {
             self.setState({
                 linkPath: '/project/private/',
@@ -97,19 +89,6 @@ componentWillReceiveProps (nextProps){
         }) 
 }
 
-
-hoverParentListButton() {
-    $(document).ready(function() {
-        // $('#privateContainerMotto').html("ALTERNATE PARENTS").fadeIn(7500);
-        // $('#privateContainerMotto').attr('id','privateContainerMottoBlue');
-    });
-}
-unHoverParentListButton() {
-    $(document).ready(function() {
-        // $('#privateContainerMottoBlue').html("PROJECT BREAKDOWN");
-        // $('#privateContainerMottoBlue').attr('id','privateContainerMotto');
-    });
-}
 showParentList() {
     $(document).ready(function() {
         $('#parentListContainer').attr('id','parentListContainerShow');

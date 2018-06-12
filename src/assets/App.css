@@ -7970,12 +7970,14 @@ letter-spacing: 2px;
 margin: 0 auto; 
 font-size: 125%; 
 width: 8em;
-background-color: rgba(255,255,255,0.025);
+/* background-color: rgba(255,255,255,0.025); */
+background-color: rgba(0,255,220,0.025);
 }
 #voteProblem:hover, #voteProblemHover {
 cursor: pointer; 
-color: #0f131c;
-background-color: rgba(0, 255, 220, 1);
+/* color: #0f131c; */
+/* background-color: rgba(0, 255, 220, 1); */
+background-color: rgba(0,255,220,0.1);
 }
 #votedProblem, #votedProblemHover {
 flex: 1 1 auto;
@@ -7995,8 +7997,9 @@ width: 8em;
 }
 #votedProblem:hover, #votedProblemHover {
 cursor: pointer; 
-color: #0f131c;
-background-color: #00ffdc;
+/* color: #0f131c;
+background-color: #00ffdc; */
+background-color: rgba(0,255,220,0);
 }
 #voteProblemUp, #voteProblemDown, #voteSolutionUp, #voteSolutionDown {
   flex: 1 1 auto;
@@ -8050,7 +8053,8 @@ background-color: #00ffdc;
 #votedProblem {
   color: #00ffdc;
   border-color: #00ffdc;
-  background: radial-gradient(circle at bottom, rgba(15,19,28,1), rgba(0,255,220,0.25));
+  background-color: rgba(0,255,220,0.1);
+  /* background: radial-gradient(circle at bottom, rgba(15,19,28,1), rgba(0,255,220,0.25)); */
   /* background: linear-gradient(rgba(0,255,220,0.25), rgba(0,255,220,0)); */
 }
 
@@ -8169,7 +8173,7 @@ background-color: #00ffdc;
   padding: 0.7% 0%;
   letter-spacing: 2px;
   margin: 0 auto;
-  background-color: rgba(255,255,255,0.025);
+  background-color: rgba(0,220,255,0.025);
   width: 8em;
   font-size: 125%;  
   border-radius: 3px 3px 35% 3px;
@@ -8213,16 +8217,15 @@ background-color: #00ffdc;
   }
   #SBButtonFollowed, #SBButtonFollowedPrivate {
     border-color: #00dcff;
-    /* color: #0f131c; */
-    /* background-color: #00dcff; */
-      background: radial-gradient(circle at top, rgba(15,19,28,1), rgba(0,220,255,0.25));
-    /* background: linear-gradient(rgba(0,220,255,0), rgba(0,220,255,0.25)); */
+    /* background: radial-gradient(circle at top, rgba(15,19,28,1), rgba(0,220,255,0.25)); */
+    background-color: rgba(0,220,255,0.1);
     transition: all 1s ease 0s;
   }
   /* #SBButtonProposal:hover,  #SBButtonProposalPrivate:hover,  */
   #SBButtonFollow:hover, #SBButtonFollowPrivate:hover {
-  background-color: #00dcff;
-  color: #0f131c;
+  /* background-color: #00dcff; */
+  /* color: #0f131c; */
+  background-color: rgba(0,220,255,0.1);
   cursor: pointer;
   border-color: #00dcff;
   }

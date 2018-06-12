@@ -17,9 +17,9 @@ export default class ProblemFormContainer extends React.Component {
   render() {
       return (
         <div>
-            <Link to={`/project/${this.props.params.probID}/proposal/${this.props.params.solutionID}/subprojects`}>
+            {/* <Link to={`/project/${this.props.params.probID}/proposal/${this.props.params.solutionID}/subprojects`}>
                 <img src={require('../../assets/redX.svg')} id="closeRedX" width="30" height="30" alt="Close button, red X symbol" />
-            </Link>
+            </Link> */}
             {/* <div id="projectFormButtonContainer">
                 <Link to={`/project/${this.props.params.probID}/proposal/${this.props.params.solutionID}/create`} activeClassName="activeProjectFormButtonLeft">
                     <div id="projectFormButtonLeft">

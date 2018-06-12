@@ -6,22 +6,21 @@ import cookie from 'react-cookie';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group'; // ES6
 import ProblemFollowButton from './ProblemFollowButton.jsx';
 import ProblemForm from './ProblemForm.jsx';
-import ProblemSolutionsMenu from './ProblemSolutionsMenu.jsx';
 import ProblemTitle from './ProblemTitle.jsx';
 import ProjectBreakdownSlogan from '../ProjectBreakdownSlogan.jsx';
-import ProjectVoteButton from './ProjectVoteButton.jsx';
+// import ProjectVoteButton from './ProjectVoteButton.jsx';
 import ProjectActivity from './ProjectActivity.jsx';
 import SubProblemContainer from '../../containers/SubProblemContainer.jsx';
 import SubProjectParentUnit from './SubProjectParentUnit.jsx';
 import {Config} from '../../config.js';
 import $ from 'jquery';
-import ScrollableAnchor from 'react-scrollable-anchor';
-import { configureAnchors } from 'react-scrollable-anchor';
+// import ScrollableAnchor from 'react-scrollable-anchor';
+// import { configureAnchors } from 'react-scrollable-anchor';
 
 // import ReactGA from 'react-ga';
 // ReactGA.initialize('UA-104103231-1'); //Unique Google Analytics tracking number
 
-configureAnchors({offset: -20, scrollDuration: 700});
+// configureAnchors({offset: -20, scrollDuration: 700});
 
 export default class FullProblem extends React.Component {
   
@@ -34,7 +33,6 @@ export default class FullProblem extends React.Component {
             probID: [],
             // vote: false,
             // I don't think we use breakdown ID anymore
-            breakdownID: '',
             breakdownOriginal: '',
             vote: false,
             voteID: '',
@@ -62,9 +60,10 @@ export default class FullProblem extends React.Component {
 
     componentDidMount(){
       var self = this;
+      // alert('1')
       axios.get( Config.API + '/breakdowns/byproblemnumber?parentID='+this.props.params.probID + '&parentNumber=1').then(function (response) {
           self.setState({
-              breakdownOriginal: response.data.ID,
+              breakdownOriginal: String(response.data.ID),
           })
       }) 
       axios.get( Config.API + '/problems/ID?id='+this.props.params.probID).then(function (response) {
@@ -80,28 +79,17 @@ export default class FullProblem extends React.Component {
                 problemInfo: response.data,
                 editID: 'editProjectButton',
                 deleteID: 'noDisplay',
-                editDeleteMenuID: '',
+                editDeleteMenuID: 'noDisplay',
               })
           } else {
             self.setState({
               problemInfo: response.data,
               editID: 'noDisplay',
               deleteID: 'noDisplay',
+              editDeleteMenuID: 'noDisplay',
             })
           }
       })
-      if (window.location.pathname.includes('private')) {
-        self.setState({
-            linkPath: '/project/private/',
-            voteTrackMenuID: 'noDisplay',
-
-        })
-      } else {
-          self.setState({
-              linkPath: '/project/',
-              voteTrackMenuID: 'voteTrackMenu',
-          })
-      }
       axios.get( Config.API + "/vote/isVotedOn?type=0&typeID=" + this.props.params.probID + "&username=" + cookie.load("userName"))
             .then( function (response){
               if (response.data === true) {
@@ -130,6 +118,18 @@ export default class FullProblem extends React.Component {
               learnNumber: response.data
           })
       })
+      if (window.location.pathname.includes('private')) {
+        self.setState({
+            linkPath: '/project/private/',
+            voteTrackMenuID: 'noDisplay',
+
+        })
+      } else {
+          self.setState({
+              linkPath: '/project/',
+              voteTrackMenuID: 'voteTrackMenu',
+          })
+      }
   }
 
 //   shouldComponentUpdate(nextProps, nextState) {
@@ -445,6 +445,7 @@ voteDown() {
                       <div id="problemFormContainerHide">
                         <ProblemForm probID={this.props.params.probID} solutionID={this.props.params.solutionID} />
                       </div>
+                      {/* {this.state.breakdownOriginal}FullProb */}
                       <SubProblemContainer problemInfo={this.state.problemInfo} probID={this.props.params.probID} breakdownOriginal={this.state.breakdownOriginal} differentBreakdown={this.differentBreakdown} />
                     </div>
                   </div>
@@ -471,7 +472,7 @@ voteDown() {
                         </Link>
                         </div>
                       </div>
-                      {React.cloneElement(this.props.children, {probID:this.props.params.probID, parentTitle: this.state.problemInfo.Title, parentID: this.state.problemInfo.ParentID, creator:this.state.problemInfo.OriginalPosterUsername, breakdownID:this.state.breakdownID})}
+                      {React.cloneElement(this.props.children, {probID:this.props.params.probID, parentTitle: this.state.problemInfo.Title, parentID: this.state.problemInfo.ParentID, creator:this.state.problemInfo.OriginalPosterUsername})}
                     </div>
                   </div>
                 </div>

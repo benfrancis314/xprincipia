@@ -99,6 +99,11 @@ componentWillReceiveProps(nextProps){
   if (nextProps.params.solutionID) {
     self.setState({
       placeholder: "Ask a question, give a suggestion, or start a debate about this proposal. ",
+      prompt1: "add",
+      prompt2: "discussion",
+      radio1: 'checkmark1DiscussActive',
+      radio2: 'checkmark2Discuss',
+      radio3: 'checkmark3Discuss',
     })
   } else if (nextProps.currentType === 'question') {
     self.setState({

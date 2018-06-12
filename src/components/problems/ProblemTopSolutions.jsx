@@ -14,26 +14,15 @@ export default class ProblemSolutionsMenu extends React.Component {
             promptWord: '',
         }
 
+        this.showSolutionForm = this.showSolutionForm.bind(this)
     };
     componentDidMount(){
         var self = this;
-        if (window.location.pathname.includes('private')) {
-            self.setState({
-                promptWord: 'your',
-            })
-        } else {
-            self.setState({
-                promptWord: 'the',
-            })
-        }
         axios.get( Config.API + '/solutions/problemID?id='+this.props.probID).then(function (response) {
             self.setState({
                 solutions: response.data,
             })
         })
-    }
-    componentWillReceiveProps (nextProps){
-        var self = this;
         if (window.location.pathname.includes('private')) {
             self.setState({
                 promptWord: 'your',
@@ -43,12 +32,24 @@ export default class ProblemSolutionsMenu extends React.Component {
                 promptWord: 'the',
             })
         }
+    }
+    componentWillReceiveProps (nextProps){
+        var self = this;
         axios.get( Config.API + '/solutions/problemID?id='+nextProps.probID).then(function (response) {
             self.setState({
                 solutions: response.data,
                 probID: nextProps.probID
             })
         })
+        if (window.location.pathname.includes('private')) {
+            self.setState({
+                promptWord: 'your',
+            })
+        } else {
+            self.setState({
+                promptWord: 'the',
+            })
+        } 
     }
 
     showSolutionForm() {
@@ -76,7 +77,6 @@ export default class ProblemSolutionsMenu extends React.Component {
         <div>
             <SolutionUnit solutions={this.state.solutions} probID={this.props.probID}/>
         </div>
-
       );
    }}
 }
