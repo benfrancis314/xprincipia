@@ -72,11 +72,16 @@ export default class SubProblemContainer extends React.Component {
     
     componentDidMount() {
         var self = this;
-        axios.get( Config.API + '/problems/breakdown?breakdownID='+self.props.probID).then(function (response) {
+        axios.get( Config.API + '/problems/subproblems?id='+self.props.probID).then(function (response) {
             self.setState({
                 problemsArray: response.data,
             })
         }) 
+        // axios.get( Config.API + '/problems/breakdown?breakdownID='+self.props.probID).then(function (response) {
+        //     self.setState({
+        //         problemsArray: response.data,
+        //     })
+        // }) 
         // axios.get( Config.API + '/breakdowns/byproblem?parentID='+self.props.probID).then(function (response) {
         //     self.setState({
         //         branches: response.data
@@ -85,11 +90,16 @@ export default class SubProblemContainer extends React.Component {
     }
     componentWillReceiveProps (nextProps){
         var self = this;
-        axios.get( Config.API + '/problems/breakdown?breakdownID='+nextProps.probID).then(function (response) {
+        axios.get( Config.API + '/problems/subproblems?id='+nextProps.probID).then(function (response) {
             self.setState({
                 problemsArray: response.data,
             })
-        }) 
+        })
+        // axios.get( Config.API + '/problems/breakdown?breakdownID='+nextProps.probID).then(function (response) {
+        //     self.setState({
+        //         problemsArray: response.data,
+        //     })
+        // }) 
         // axios.get( Config.API + '/breakdowns/byproblem?parentID='+nextProps.probID).then(function (response) {
         //     self.setState({
         //         branches: response.data
