@@ -21,7 +21,7 @@ export default class SolutionForm extends React.Component {
       class: '',
       parentTitle: '',
       file: '',
-      prose: '',
+      pdf: '',
       linkPath: '',
       private: '',
       dataString: '',
@@ -78,7 +78,7 @@ export default class SolutionForm extends React.Component {
       $('#proposalFormButtonLeftActive').attr('id','proposalFormButtonLeft');  
     });
     this.setState({
-      prose: '0',
+      pdf: '1',
     })
   }
 
@@ -92,7 +92,7 @@ export default class SolutionForm extends React.Component {
       $('#proposalFormButtonRightActive').attr('id','proposalFormButtonRight');       
     });
     this.setState({
-      prose: '1',
+      pdf: '0',
     })
   }
 
@@ -111,7 +111,7 @@ export default class SolutionForm extends React.Component {
   postSolution() {
     //Read field items into component state
     var self = this
-    self.refs.btn.setAttribute("disabled", "disabled");
+    self.refs.proposalbtn.setAttribute("disabled", "disabled");
 
     // FILE UPLOAD
 
@@ -127,43 +127,46 @@ export default class SolutionForm extends React.Component {
       this.state.class = '0' 
     }
 
-    if (this.state.prose == '1') {
+    if (this.state.pdf == '1') {
+    // $('#pdfUploadLoaderHide').attr('id','pdfUploadLoaderShow');
     axios.post( Config.API + '/auth/solutions/create', {
-        username: cookie.load('userName'),
-        problemID:this.props.probID,
-        title : this.state.title,
-        summary : this.state.summary,
-        description : this.state.description,
-        class : this.state.class,
-        private: this.state.private,
-        parentTitle: this.props.projectTitle,
-      })
-      .then(function (result) {
-        // document.location = '/project/' + self.props.probID + '/subprojects'
-        // document.getElementById("proposalSectionHeader").scrollIntoView();
-        self.refs.btn.removeAttribute("disabled");
-        // document.getElementById("createForm").reset();
-      })
-      .catch(function (error) {
-        // alert('error')
-          $(document).ready(function() {
-              $('#notification').attr('id','notificationShow').hide().slideDown();
+      username: cookie.load('userName'),
+      problemID:this.props.probID,
+      title : this.state.title,
+      summary : this.state.summary,
+      description : this.state.description,
+      class : this.state.class,
+      private: this.state.private,
+      parentTitle: this.props.parentTitle,
+      pdf: this.state.dataString,
+    })
+    .then(function (result) {
+      // $('#pdfUploadLoaderShow').attr('id','pdfUploadLoaderHide');
+      // document.getElementById("proposalSectionHeader").scrollIntoView();
+      self.refs.proposalbtn.removeAttribute("disabled");
+      // document.getElementById("createForm").reset();
+    })
+    .catch(function (error) {
+      console.log('error')
+        $(document).ready(function() {
+            $('#notification').attr('id','notificationShow').hide().slideDown();
 
-                if (error.response.data == '[object Object]') {
-                  return (
-                    $(document).ready(function() {
-                      $('#notificationLoginRegisterContainer').attr('id','notificationLoginRegisterContainerShow');
-                      $('#notificationContent').html('Please <span id="blue">login </span>to create a project');
-                    })
-                  );
-                }  else if (error.response.data != '') {
-              $('#notificationContent').text(error.response.data);
-              }
-          });
-            self.refs.btn.removeAttribute("disabled");
-      });
+              if (error.response.data == '[object Object]') {
+                return (
+                  $(document).ready(function() {
+                    $('#notificationLoginRegisterContainer').attr('id','notificationLoginRegisterContainerShow');
+                    $('#notificationContent').html('Please <span id="blue">login </span>to create a project');
+                  })
+                );
+              }  else if (error.response.data != '') {
+            $('#notificationContent').text(error.response.data);
+            }
+        });
+  self.refs.proposalbtn.removeAttribute("disabled");
+    });
+
+
     } else {
-      // $('#pdfUploadLoaderHide').attr('id','pdfUploadLoaderShow');
       axios.post( Config.API + '/auth/solutions/create', {
         username: cookie.load('userName'),
         problemID:this.props.probID,
@@ -172,17 +175,17 @@ export default class SolutionForm extends React.Component {
         description : this.state.description,
         class : this.state.class,
         private: this.state.private,
-        parentTitle: this.props.projectTitle,
-        pdf: this.state.dataString,
+        parentTitle: this.props.parentTitle,
       })
       .then(function (result) {
-        // $('#pdfUploadLoaderShow').attr('id','pdfUploadLoaderHide');
-        document.getElementById("proposalSectionHeader").scrollIntoView();
-        self.refs.btn.removeAttribute("disabled");
+        self.refs.proposalbtn.removeAttribute("disabled");
+        $(document).ready(function() {
+          $('#solutionFormContainerShow').attr('id','solutionFormContainerHide');
+          $('#proposalsPromptContainerHide').attr('id','proposalsPromptContainerShow');
+        });
         // document.getElementById("createForm").reset();
       })
       .catch(function (error) {
-        console.log('error')
           $(document).ready(function() {
               $('#notification').attr('id','notificationShow').hide().slideDown();
 
@@ -197,7 +200,7 @@ export default class SolutionForm extends React.Component {
               $('#notificationContent').text(error.response.data);
               }
           });
-    self.refs.btn.removeAttribute("disabled");
+            self.refs.proposalbtn.removeAttribute("disabled");
       });
     }
 }
@@ -296,17 +299,17 @@ radioChangeSolution() {
         <div id="createSolutionBox">
             <ScrollableAnchor id={'proposalForm'}>
               <div id="proposalFormCreateTitle">
-                    <span id="blue">new </span>idea
+                    <span id="blue">new </span>proposal
               </div>
             </ScrollableAnchor>
 
             <form id="createForm">
               {/* <fieldset id="fieldSetSideBorder"> */}
                 <label htmlFor="solutionTitle" id="projectTitleProposalFormLabel">project title<br />
-                  <h1 id="proposalCreateProjectTitle">{this.props.projectTitle}</h1>
+                  <h1 id="proposalCreateProjectTitle">{this.props.parentTitle}</h1>
                 </label><br />
 
-                <label htmlFor="solutionTitle" id="solutionTitleFormLabel">idea title<br />
+                <label htmlFor="solutionTitle" id="solutionTitleFormLabel">proposal title<br />
                     <input name="solutionTitle" required="required" maxLength="140" id="solutionTitleForm" />
                   </label><br />
 
@@ -334,7 +337,7 @@ radioChangeSolution() {
 
 
                 <label htmlFor="solutionSummary" id="solutionSummaryFormLabel">summary<br />
-                  <textarea name="solutionSummary" required="required" maxLength="500" placeholder="Please summarize your idea here. (500 ch)" id="solutionSummaryForm"/>
+                  <textarea name="solutionSummary" required="required" maxLength="500" placeholder="Please summarize your proposal here. (500 ch)" id="solutionSummaryForm"/>
                 </label><br />
 
                 <div id="solutionDescriptionFormLabel">
@@ -372,7 +375,7 @@ radioChangeSolution() {
                 </div>
 
                   <Link to={this.state.linkPath+this.props.probID+'/subprojects'} onClick={this.checkLoginProposal}>
-                      <input type="button" ref='btn' value="create" id="submitSolution"/>
+                      <input type="button" ref='proposalbtn' value="create" id="submitSolution"/>
                   </Link>
               {/* </fieldset> */}
             </form>

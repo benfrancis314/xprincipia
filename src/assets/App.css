@@ -9392,6 +9392,8 @@ padding-right: 8%;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4' viewBox='0 0 4 4'%3E%3Cpath fill='%2300dcff' fill-opacity='0.4' d='M1 3h1v1H1V3zm2-2h1v1H3V1z'%3E%3C/path%3E%3C/svg%3E");
   background-color: rgba(15,19,28,0.5);
   background-blend-mode: overlay;
+
+  text-align: justify;
 }
 /*End Right Solutions SB*/
 
@@ -10243,8 +10245,9 @@ padding: 0px 0px 0px 0px;
   word-wrap: break-word; 
   font-family: 'Open Sans', sans-serif;
   transition: all 0.5s ease 0s;
-  text-align: left;
+  /* text-align: left; */
   white-space: pre-wrap !important;
+  text-align: justify;
 }
 #proposalCreator, #privateProposalRank, #privateProposalRankActive {
 flex: 1 1 auto;

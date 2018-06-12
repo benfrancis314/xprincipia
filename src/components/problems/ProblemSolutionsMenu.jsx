@@ -64,7 +64,7 @@ export default class ProblemSolutionsMenu extends React.Component {
             <ProblemTopSolutions probID={this.props.params.probID} />
             <div id="solutionFormContainerHide">
                 <img src={require('../../assets/redX.svg')} id="closeRedX" width="30" height="30" alt="Close button, red X symbol"  onClick={this.hideSolutionForm}/>
-                <SolutionForm probID={this.props.params.probID} projectTitle={this.props.parentTitle} />
+                <SolutionForm probID={this.props.params.probID} parentTitle={this.props.parentTitle} />
             </div>
         </div>
 
