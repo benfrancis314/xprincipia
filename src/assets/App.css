@@ -4098,10 +4098,13 @@ letter-spacing: 4px;
 
 /*Private Profile*/
 
-#privateContainer {
-width: 100%;
-margin: 0 auto;
-/* background: radial-gradient(circle, rgba(0,220,255,0), rgba(0,220,255,0.05)); */
+#privateContainer, #welcomeContainer {
+  width: 100%;
+  margin: 0 auto;
+  /* background: radial-gradient(circle, rgba(0,220,255,0), rgba(0,220,255,0.05)); */
+}
+#welcomeContainer {
+  position: relative;
 }
 #privateUserName {
   width: 52%;
@@ -6454,6 +6457,8 @@ font-family: 'Open Sans';
   /* transition: all 0.5s ease 0s; */
   /* NEW */
   transition: all 1s ease 0s;
+
+  /* animation: pulseTutorial 3s linear infinite; */
 }
 #welcomeProblemsHeader1 {
   background-image: url('./earthRise.jpg');
@@ -6660,6 +6665,71 @@ input#submitWelcomeProblem:hover {
     }
     .activeIntroductionButton div {
       width: 80% !important;
+    }
+
+
+
+
+    #tutorialWelcomeButtonOn {
+      position: absolute;
+      top: 1%;
+      right: 2%;
+      /* border: 1px solid rgba(0,220,255,0.5); */
+      border: 1px solid #515151;
+      border-radius: 3px 3px 20% 5%;
+      /* box-shadow: 0 0 1pt 1pt rgba(0,220,255,0.5); */
+      
+      background-color: #0f131c;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4' viewBox='0 0 4 4'%3E%3Cpath fill='%2300dcff' fill-opacity='0.4' d='M1 3h1v1H1V3zm2-2h1v1H3V1z'%3E%3C/path%3E%3C/svg%3E");
+      background-color: rgba(15,19,28,0.75);
+      background-blend-mode: overlay;
+      padding: 0.5% 2%;
+      color: #00dcff;
+      font-size: 120%;
+      letter-spacing: 4px;
+      animation: pulseTutorial 5s linear infinite;
+      transition: all 1s ease 0s;
+    }
+    #tutorialWelcomeButtonOn:hover {
+      transform: scale(1.1);
+      cursor: pointer;
+      box-shadow: 0 0 2pt 2pt rgba(0,220,255,1) !important;
+    }
+      
+    @keyframes pulseTutorial {
+      0% { box-shadow: 0 0 1pt 1pt rgba(0,220,255,0.5);; }
+      50% { box-shadow: 0 0 2pt 2pt rgba(0,220,255,1);; }
+      100% { box-shadow: 0 0 1pt 1pt rgba(0,220,255,0.5);; }
+    }
+
+    #tutorialWelcomeVideo {
+      position: absolute;
+      top: 0%;
+      right: 5%;
+      /* width: 40%; */
+      z-index: 1000 !important;
+    }
+    #demoVideoContainerWelcome {
+      margin: 0 auto;
+      width: 100%;
+      text-align: center;
+      box-shadow: 0 0 1pt 1pt rgba(0,220,255,0.75);
+      border: 1px solid #515151;
+      /* border-width: 1px 0px; */
+      border-radius: 3px 3px 3% 3%;
+      padding: 4px;
+      margin-top: 1%;
+      margin-bottom: 1%;
+      /* background: linear-gradient(to right,rgba(0,220,255, 0), rgba(0,220,255, 0.25), rgba(0,220,255, 0)); */
+      background: radial-gradient(to circle,rgba(0,220,255, 0), rgba(0,220,255, 0.1));
+    }
+    #welcomeContainerContentNormal {
+      opacity: 1;
+      transition: all 1s ease 0s;
+    }
+    #welcomeContainerContentDark {
+      opacity: 0.1;
+      transition: all 1s ease 0s;
     }
 
 /*End Welcome*/

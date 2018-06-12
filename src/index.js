@@ -68,6 +68,7 @@ import ProblemFormContainer from './components/problems/ProblemFormContainer.jsx
 import ProblemFormContainerPrivate from './components/problems/ProblemFormContainerPrivate.jsx';
 import ProblemFormContainerProposal from './components/problems/ProblemFormContainerProposal.jsx';
 import ProblemFormContainerProposalPrivate from './components/problems/ProblemFormContainerProposalPrivate.jsx';
+import ProblemFormProposal from './components/problems/ProblemFormProposal.jsx';
 import ProblemDiscussMenu from './components/problems/ProblemDiscussMenu.jsx';
 import ProblemDiscussPrivateMenu from './components/problems/ProblemDiscussPrivateMenu.jsx';
 import ProblemLearnMenu from './components/problems/ProblemLearnMenu.jsx';
@@ -332,8 +333,8 @@ ReactDOM.render(
             <Route path='/proposal/private/:probID/:solutionID/edit' component={SolutionEditForm}></Route>
             <Route path='/project/private/:probID/proposal/:solutionID/subprojects' component={SubProjectProposalContainer}></Route>
             <Route path='/project/private/:probID/proposal/:solutionID/subprojects/create' component={ProblemFormContainerProposal}>
-              <IndexRoute component={ProblemForm}></IndexRoute>
-              <Route path='/project/private/:probID/proposal/:solutionID/create' component={ProblemForm}></Route>
+              <IndexRoute component={ProblemFormProposal}></IndexRoute>
+              <Route path='/project/private/:probID/proposal/:solutionID/create' component={ProblemFormProposal}></Route>
               <Route path='/project/private/:probID/proposal/:solutionID/link' component={ProjectLinkForm}></Route>
             </Route>
             <Route path='/project/private/:probID/proposal/:solutionID/versions/create' component={VersionForm}></Route>
@@ -424,8 +425,8 @@ ReactDOM.render(
             <Route path='/project/:probID/proposal/:solutionID/flag' component={SolutionFlagForm}></Route>
             <Route path='/project/:probID/proposal/:solutionID/subprojects' component={SubProjectProposalContainer}></Route>
             <Route path='/project/:probID/proposal/:solutionID/subprojects/create' component={ProblemFormContainerProposal}>
-              <IndexRoute component={ProblemForm}></IndexRoute>
-              <Route path='/project/:probID/proposal/:solutionID/create' component={ProblemForm}></Route>
+              <IndexRoute component={ProblemFormProposal}></IndexRoute>
+              <Route path='/project/:probID/proposal/:solutionID/create' component={ProblemFormProposal}></Route>
               <Route path='/project/:probID/proposal/:solutionID/link' component={ProjectLinkForm}></Route>
             </Route>
             <Route path='/project/:probID/proposal/:solutionID/versions/create' component={VersionForm}></Route>

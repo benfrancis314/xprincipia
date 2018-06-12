@@ -295,9 +295,11 @@ export default class FullSolutionContent extends React.Component {
                       <img src={require('../../assets/redX2.svg')} id={this.state.deleteID} width="20" height="20" alt="Edit Button" />
                     </Link>
                   </div>
-                  <Link to={this.state.linkPath+this.props.params.probID+'/proposal/'+this.props.params.solutionID+'/versions/create'} activeClassName="activeNewVersionButton">
+                  <Link 
+                  // to={this.state.linkPath+this.props.params.probID+'/proposal/'+this.props.params.solutionID+'/versions/create'} activeClassName="activeNewVersionButton"
+                  >
                     <div id={this.state.newVersionID}>
-                      new version
+                      new version <span id="gray">| available soon</span>
                     </div>
                   </Link>
                   

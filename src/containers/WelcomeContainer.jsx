@@ -6,6 +6,9 @@ import cookie from 'react-cookie';
 // Currently unused, may use later. Loading only loads part of page, currently looks weird
 import {Config} from '../config.js';
 import $ from 'jquery';
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group'; // ES6
+import ScrollableAnchor from 'react-scrollable-anchor';
+import YouTube from 'react-youtube';
 
 
 export default class WelcomeContainer extends React.Component {
@@ -40,8 +43,11 @@ export default class WelcomeContainer extends React.Component {
            userproblems : [],
            searchText: [],
            introductionTitle: '',
+           tutorial: '',
         }
         this.queryProblem = this.queryProblem.bind(this);
+        this.tutorialOn = this.tutorialOn.bind(this);
+        this.tutorialOff = this.tutorialOff.bind(this);
         // this.startSound = this.startSound.bind(this);
     };
 
@@ -120,25 +126,118 @@ export default class WelcomeContainer extends React.Component {
     //     return  self.setState({ volume: 100 });
     //     }
    
+    tutorialOn() {
+        var self = this
+        self.setState({
+            tutorial: 'on',
+        })
+    }
+    tutorialOff() {
+        var self = this
+        self.setState({
+            tutorial: 'off',
+        })
+    }
+
    render() {
-      return (
-        <div id="privateContainer">
-            {/*<Sound
-                url={require('../assets/jfkSpeech.mp3')}
-                autoLoad={false}
-                playStatus={Sound.status.PLAYING}
-                playFromPosition={87500 //in ms}
-                onLoading={this.handleSongLoading}
-                onPlaying={this.handleSongPlaying}
-                onFinishedPlaying={this.handleSongFinishedPlaying} 
-                volume={0}/>*/}
-         <Link to="/introduction" activeClassName="activeIntroductionButton">
-            <div id="welcomeIntroductionLabel" onMouseOver={this.hoverText} onMouseOut={this.unHoverText}>
-                {this.state.introductionTitle}
+    if (cookie.load('userName')) {
+        return (
+            <div id="welcomeContainer">
+                {/*<Sound
+                    url={require('../assets/jfkSpeech.mp3')}
+                    autoLoad={false}
+                    playStatus={Sound.status.PLAYING}
+                    playFromPosition={87500 //in ms}
+                    onLoading={this.handleSongLoading}
+                    onPlaying={this.handleSongPlaying}
+                    onFinishedPlaying={this.handleSongFinishedPlaying} 
+                    volume={0}/>*/}
+             <Link to="/introduction" activeClassName="activeIntroductionButton">
+                <div id="welcomeIntroductionLabel" onMouseOver={this.hoverText} onMouseOut={this.unHoverText}>
+                    {this.state.introductionTitle}
+                </div>
+             </Link>
+             {this.props.children}
             </div>
-         </Link>
-         {this.props.children}
-        </div>
-      );
-   }
+          );
+        } else if (this.state.tutorial === 'on') {
+            const opts = {
+                // OLD
+                // height: '390',
+                // width: '640',
+                height: '488',
+                width: '800',
+                playerVars: { // https://developers.google.com/youtube/player_parameters 
+                    autoplay: 1
+                }
+            };
+            return (
+                <div id="welcomeContainer">
+                    <div id="tutorialWelcomeVideo">
+                        <ReactCSSTransitionGroup
+                            transitionName="example"
+                            transitionAppear={true}
+                            transitionAppearTimeout={2000}
+                            transitionEnter={false}
+                            transitionLeave={false}>
+                        <div id="fullTutorialHeader" onClick={this.tutorialOff}>
+                            <img src={require('../assets/redX.svg')} id="closeRedX" width="30" height="30" alt="Close button, red X symbol" />            
+                        </div>
+                        <div id="demoVideoContainerWelcome">
+                            <YouTube
+                                videoId="ohGhU4rg-PQ"
+                                opts={opts}
+                                onReady={this._onReady}
+                            />
+                        </div>
+                        {/* {randomImg()}   */}
+                        </ReactCSSTransitionGroup>
+                    </div>
+                        {/*<Sound
+                            url={require('../assets/jfkSpeech.mp3')}
+                            autoLoad={false}
+                            playStatus={Sound.status.PLAYING}
+                            playFromPosition={87500 //in ms}
+                            onLoading={this.handleSongLoading}
+                            onPlaying={this.handleSongPlaying}
+                            onFinishedPlaying={this.handleSongFinishedPlaying} 
+                            volume={0}/>*/}
+                    <div id="welcomeContainerContentDark" onClick={this.tutorialOff}>
+                        <Link to="/introduction" activeClassName="activeIntroductionButton">
+                            <div id="welcomeIntroductionLabel" onMouseOver={this.hoverText} onMouseOut={this.unHoverText}>
+                                {this.state.introductionTitle}
+                            </div>
+                        </Link>
+                        {this.props.children}
+                    </div>
+                </div>
+            );
+        } else {
+            return (
+                <div id="welcomeContainer">
+                    <div id="tutorialWelcomeButtonOn" onClick={this.tutorialOn}>
+                        tutorial
+                    </div>
+                        
+                        {/*<Sound
+                            url={require('../assets/jfkSpeech.mp3')}
+                            autoLoad={false}
+                            playStatus={Sound.status.PLAYING}
+                            playFromPosition={87500 //in ms}
+                            onLoading={this.handleSongLoading}
+                            onPlaying={this.handleSongPlaying}
+                            onFinishedPlaying={this.handleSongFinishedPlaying} 
+                            volume={0}/>*/}
+                    <div id="welcomeContainerContentNormal">
+                        <Link to="/introduction" activeClassName="activeIntroductionButton">
+                            <div id="welcomeIntroductionLabel" onMouseOver={this.hoverText} onMouseOut={this.unHoverText}>
+                                {this.state.introductionTitle}
+                            </div>
+                        </Link>
+                        {this.props.children}
+                    </div>
+                </div>
+            );
+        }
+    }
 }
