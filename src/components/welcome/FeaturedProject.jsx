@@ -31,7 +31,7 @@ export default class Load extends React.Component {
     }
 
     render() {   
-        if (this.state.random < 0.5) {
+        if (this.state.random < 0.3) {
             return (
                 <div id="featuredProjectContainer" onClick={()=>{handleClick1()}}>
                     <div id="featuredProjectLabel">
@@ -46,20 +46,48 @@ export default class Load extends React.Component {
                     <img src={require('../../assets/rightArrow.svg')} id="featuredProjectButtonNext" width="30" height="30" alt="Close button, red X symbol" onClick={this.randomFeatured} />            
                 </div>
             );
-        } else {
+        } else if (this.state.random < 0.6) {
+            return (
+                <div id="featuredProjectContainer" onClick={()=>{handleClick2()}}>
+                    <div id="featuredProjectLabel">
+                        featured projects
+                    </div>
+                    <Link to={'/project/15/subprojects'}>
+                        <div id="featuredProjectButton3">
+                            artificial general intelligence
+                        </div>
+                    </Link>
+                    <img src={require('../../assets/rightArrow.svg')} id="featuredProjectButtonNext" width="30" height="30" alt="Close button, red X symbol" onClick={this.randomFeatured} />            
+                </div>
+            );
+        } else if (this.state.random < 0.8) {
             return (
             
             <div id="featuredProjectContainer" onClick={()=>{handleClick2()}}>
                 <div id="featuredProjectLabel">
                     featured projects
                 </div>
-                <Link to={'/project/15/subprojects'}>
-                    <div id="featuredProjectButton3">
-                        artificial general intelligence
+                <Link to={'/project/5/subprojects'}>
+                    <div id="featuredProjectButton5">
+                        colonizing the moon
                     </div>
                 </Link>
                 <img src={require('../../assets/rightArrow.svg')} id="featuredProjectButtonNext" width="30" height="30" alt="Close button, red X symbol" onClick={this.randomFeatured} />            
             </div>
+            );
+        } else {
+            return (
+                <div id="featuredProjectContainer" onClick={()=>{handleClick2()}}>
+                    <div id="featuredProjectLabel">
+                        featured projects
+                    </div>
+                    <Link to={'/project/51/subprojects'}>
+                        <div id="featuredProjectButton4">
+                            plant intelligence
+                        </div>
+                    </Link>
+                    <img src={require('../../assets/rightArrow.svg')} id="featuredProjectButtonNext" width="30" height="30" alt="Close button, red X symbol" onClick={this.randomFeatured} />            
+                </div>
             );
         }
    }

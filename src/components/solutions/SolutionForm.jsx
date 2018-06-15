@@ -128,14 +128,13 @@ export default class SolutionForm extends React.Component {
     }
 
     if (this.state.pdf == '1') {
-      console.log(this.state.dataString)
     // $('#pdfUploadLoaderHide').attr('id','pdfUploadLoaderShow');
     axios.post( Config.API + '/auth/solutions/create', {
       username: cookie.load('userName'),
       problemID:this.props.probID,
       title : this.state.title,
       summary : this.state.summary,
-      // description : this.state.description,
+      description : this.state.description,
       class : this.state.class,
       private: this.state.private,
       parentTitle: this.props.parentTitle,

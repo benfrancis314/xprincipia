@@ -13184,7 +13184,8 @@ flex-direction: column;
   padding-bottom: 1px;
   font-size: 90%;
 }
-#featuredProjectButton1, #featuredProjectButton2, #featuredProjectButton3,  #featuredProjectButtonX {
+#featuredProjectButton1, #featuredProjectButton2, #featuredProjectButton3,  #featuredProjectButtonX,
+#featuredProjectButton4, #featuredProjectButton5 {
   border: 1px solid #333333;
   background-color: rgba(0,220,255, 0.05);
   border-color: rgba(0,255,220, 0.5);
@@ -13250,13 +13251,28 @@ flex-direction: column;
   /* background-image: url('./ai3.jpg');
   background-position: center 70%; */
 }
+#featuredProjectButton4 {
+  /* background-image: url('./darwinPlants.png');  */
+  background-image: url('./plants2.jpg'); 
+  background-size: 100%; 
+  /* background-position: center 22%; */
+  background-position: center 8%;
+  background-position: center 40%;
+}
+#featuredProjectButton5 {
+  /* background-image: url('./tripMoon1.jpg');  */
+  background-image: url('./apollo11.jpg'); 
+  background-size: 100%; 
+  background-position: center 35%;
+}
 #featuredProjectButtonX {
   background: radial-gradient(circle, rgba(0,220,255,0), rgba(0,220,255,0), rgba(0,220,255,0.1));
   font-size: 90%;
   padding-top: 12px;
   padding-bottom: 12px;
 }
-#featuredProjectButton1:hover, #featuredProjectButton2:hover, #featuredProjectButton3:hover, #featuredProjectButtonX:hover {
+#featuredProjectButton1:hover, #featuredProjectButton2:hover, #featuredProjectButton3:hover, #featuredProjectButtonX:hover,
+#featuredProjectButton4:hover, #featuredProjectButton5:hover {
 background-color: rgba(15,19,28,0.5);
 transform: scale(1.03);
 cursor: pointer !important;
@@ -13267,8 +13283,9 @@ cursor: pointer !important;
 }
 #featuredProjectButtonNext {
   position: absolute; 
-  right: 15px;
-  top: 35px;
+  right: 20px;
+  /* top: 38px; */
+  top: 34px;
   opacity: 0.5;
   transition: all 1s ease 0s;
 }
