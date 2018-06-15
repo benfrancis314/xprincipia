@@ -77,6 +77,9 @@ body {
 #fullWide {
   width: 100%;
 }
+#positionRelative {
+  position: relative;
+}
 
 #vh1 {
   height: 100vh;
@@ -5228,7 +5231,7 @@ letter-spacing: 7px;
   background: linear-gradient(rgba(0,220,55,0.025), rgba(0,220,255,0.1));
 
 }
-#pointsLevelTitleWest, #pointsLevelTitleFuture {
+#pointsLevelTitleWest, #pointsLevelTitleFuture, #pointsLevelTitleWest2 {
   text-align: center;
   margin: 0 auto;
   width: 90%;
@@ -5259,7 +5262,12 @@ letter-spacing: 7px;
   background-size: 120%; 
   background-position: center 35%;
 }
-#pointsLevelTitleWest:hover, #pointsLevelTitleFuture:hover {
+#pointsLevelTitleWest2 {
+  background-image: url('./wovoka.jpg'); 
+  background-size: 100%; 
+  background-position: center 44.25%;
+}
+#pointsLevelTitleWest:hover, #pointsLevelTitleFuture:hover, #pointsLevelTitleWest2:hover {
 background-color: rgba(15,19,28,0.5);
 transform: scale(1.03);
 background-image: url('./grandPrismaticSpring.jpg'); 
@@ -5271,7 +5279,12 @@ background-position: center 48%;
   background-size: 112%; 
   background-position: center 65%;
 }
-#pointsLevelTitleWest:active, #pointsLevelTitleFuture:active {
+#pointsLevelTitleWest2:hover {
+  background-image: url('./jungle1.jpeg'); 
+  background-size: 100%; 
+  background-position: center 42.5%;
+}
+#pointsLevelTitleWest:active, #pointsLevelTitleFuture:active, #pointsLevelTitleWest2:active {
   background-color: rgba(15,19,28,0.5);
   transform: scale(1.05);
   background-image: url('./rooseveltWest1.jpg');
@@ -5282,6 +5295,11 @@ background-position: center 48%;
   background-image: url('./academy1.jpg');
   background-size: 130%; 
   background-position: center 35%;
+}
+#pointsLevelTitleWest2:active {
+  background-image: url('./wovoka.jpg'); 
+  background-size: 100%; 
+  background-position: center 42.5%;
 }
 #pointsTitleSwitchButtonFuture, #pointsTitleSwitchButtonWest {
   position: absolute;
@@ -6731,6 +6749,137 @@ input#submitWelcomeProblem:hover {
       opacity: 0.1;
       transition: all 1s ease 0s;
     }
+    #tutorialWelcomeButtonOnRight {
+      position: absolute;
+      top: 30%;
+      right: 30%;
+      /* border: 1px solid rgba(0,220,255,0.5); */
+      border: 1px solid #515151;
+      border-radius: 3px 3px 20% 20%;
+      /* box-shadow: 0 0 1pt 1pt rgba(0,220,255,0.5); */
+      
+      background-color: #0f131c;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4' viewBox='0 0 4 4'%3E%3Cpath fill='%2300dcff' fill-opacity='0.4' d='M1 3h1v1H1V3zm2-2h1v1H3V1z'%3E%3C/path%3E%3C/svg%3E");
+      background-color: rgba(15,19,28,0.99);
+      background-blend-mode: overlay;
+      padding: 5% 10%;
+      color: #00dcff;
+      font-size: 120%;
+      letter-spacing: 4px;
+      animation: pulseTutorial 5s linear infinite;
+      transition: all 1s ease 0s;
+    }
+    #demoVideoContainerWelcomeOff {
+      margin: 0 auto;
+      /* width: 100%; */
+      text-align: center;
+      box-shadow: 0 0 1pt 1pt rgba(0,220,255,0.75);
+      animation: pulseTutorial 5s linear infinite;
+      border: 1px solid #515151;
+      border-radius: 3px 3px 15% 5%;
+      /* padding: 15px 0px; */
+      
+      /* animation: pulseTutorial 5s linear infinite; */
+      /* background-color: #0f131c; */
+      background-image: url('./tutorialImage1.png'); 
+      background-size: 110%; 
+      background-repeat: no-repeat;
+      background-position: center;
+      background-color: rgba(15,19,28,0.75);
+      background-blend-mode: overlay;
+      position: relative;
+
+      width: 65%;
+      margin: 0 auto;
+      margin-right: 13.5%;
+      margin-right: 12%;
+      
+      margin-bottom: 1%;
+      padding: 7% 0%;
+      transition: all 1s ease 0s;
+    }
+    #demoVideoContainerWelcomeOff:hover {
+      background-image: url('./tutorialImage2.png'); 
+      background-size: 110%; 
+      background-repeat: no-repeat;
+      background-position: center;
+      background-color: rgba(15,19,28,0.5);
+      background-blend-mode: overlay;
+      position: relative;
+      cursor: pointer;
+      box-shadow: 0 0 2pt 2pt rgba(0,220,255,1) !important;
+      transform: scale(1.05);
+    }
+
+    #tutorialWelcomeButtonOnRight:hover {
+      transform: scale(1.05);
+      cursor: pointer;
+      box-shadow: 0 0 2pt 2pt rgba(0,220,255,1) !important;
+    }
+    #tutorialWelcomePlayButton {
+      /* animation: pulseTutorialButton 5s linear infinite; */
+      transition: all 1s ease 0s;
+    }
+    @keyframes pulseTutorialButton {
+      0% { opacity: 0.5; }
+      50% { opacity: 1; }
+      100% { opacity: 0.5; }
+    }
+    #tutorialWelcomePlayButton:hover {
+      opacity: 1 !important;
+    }
+    #welcomeTutorialLabel {
+      color: rgba(0,220,255,1);
+      letter-spacing: 4px;
+      /* border: 1px solid rgba(0,220,255,0.25);
+      border-width: 0px 0px 0px 0px;
+      border-radius: 0% 0% 20% 20%; */
+      width: 50%;      
+      background: linear-gradient(rgba(0,220,255,0), rgba(0,220,255,0.05));
+      margin: 0 auto;
+      margin-top: 2%;
+      margin-top: 1%;
+      margin-right: 21%;
+      text-align: center;
+      padding-bottom: 1px;
+      font-size: 90%;
+      position: absolute;
+    }
+    #myVideo {
+      width: 60px;
+      /* width: 100%; */
+      margin: 0 auto;
+      /* width: 100%; */
+      text-align: center;
+      box-shadow: 0 0 1pt 1pt rgba(0,220,255,0.75);
+      animation: pulseTutorial 5s linear infinite;
+      border: 1px solid #515151;
+      border-radius: 3px 3px 15% 5%;
+      /* background-color: #0f131c; */
+      /* background-image: url('./tutorialImage1.png');  */
+      background-size: 110%; 
+      background-repeat: no-repeat;
+      background-position: center;
+      background-color: rgba(15,19,28,0.75);
+      background-blend-mode: overlay;
+      position: relative;
+
+      width: 65%;
+      margin: 0 auto;
+      margin-top: 1%;
+      margin-right: 13.5%;
+      /* margin-right: 12%; */
+      
+      /* margin-bottom: 1%; */
+      /* padding: 7% 0%; */
+      transition: all 2s ease 0s;
+    }
+    #myVideo:hover {
+      transform: scale(1.05);
+      cursor: pointer;
+      box-shadow: 0 0 2pt 2pt rgba(0,220,255,1) !important;
+    }
+
 
 /*End Welcome*/
 
@@ -11732,6 +11881,73 @@ margin-top: 1%;
 /*padding-top: 0.5%;*/
 }
 
+/* NEW TEAM CHAT */
+
+#teamChatButtonContainer {
+  position: fixed;
+  bottom: 1%;
+  right: 2%;
+  /* border: 1px solid rgba(0,220,255,0.5); */
+  border: 1px solid #515151;
+  border-radius: 3px 3px 20% 5%;
+  /* box-shadow: 0 0 1pt 1pt rgba(0,220,255,0.5); */
+  
+  background-color: #0f131c;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4' viewBox='0 0 4 4'%3E%3Cpath fill='%2300dcff' fill-opacity='0.4' d='M1 3h1v1H1V3zm2-2h1v1H3V1z'%3E%3C/path%3E%3C/svg%3E");
+  background-color: rgba(15,19,28,0.75);
+  background-blend-mode: overlay;
+  padding: 1% 4%;
+  color: #00dcff;
+  font-size: 120%;
+  letter-spacing: 4px;
+  animation: pulseTutorial 5s linear infinite;
+  transition: all 1s ease 0s;
+}
+
+#teamChatContainer {
+  position: fixed;
+  bottom: 70%;
+  right: 5%;
+  /* border: 1px solid rgba(0,220,255,0.5); */
+  border: 1px solid #515151;
+  border-radius: 3px 3px 20% 5%;
+  /* box-shadow: 0 0 1pt 1pt rgba(0,220,255,0.5); */
+  
+  background-color: #0f131c;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4' viewBox='0 0 4 4'%3E%3Cpath fill='%2300dcff' fill-opacity='0.4' d='M1 3h1v1H1V3zm2-2h1v1H3V1z'%3E%3C/path%3E%3C/svg%3E");
+  background-color: rgba(15,19,28,0.9);
+  background-blend-mode: overlay;
+  padding: 1% 4%;
+  font-size: 120%;
+  letter-spacing: 4px;
+  animation: pulseTutorial 5s linear infinite;
+  transition: all 1s ease 0s;
+  width: 40%;
+}
+#teamChatHeader {
+  width: 100%;
+  text-align: center;
+}
+
+#teamChatInterface {
+width: 100%;
+display: flex;
+flex-direction: column;
+}
+#teamChatList {
+  width: 50%;
+}
+#teamChatTeamUnitNew {
+  text-align: center;
+}
+#teamChatTeamUnit {
+  text-align: center;
+}
+#teamChatMessagesContainer {
+  width: 50%;
+}
+
+/* END NEW TEAM CHAT */
 
 /* Short Story Start */
 
@@ -12949,15 +13165,11 @@ margin-top: 1%;
 #featuredContainer {
   width: 100%;
   margin: 0 auto;
-  /* Used to be 2%, now handling margin in #leaderBoardFilterButton */
   margin-bottom: 0%;
-  border: 1px solid rgba(0,220,255,0.25);
+  /* border: 1px solid rgba(0,220,255,0.25); */
   border-width: 0px 0px 1px 0px;
-  /* Old */
-  /* border-radius: 0% 0% 20% 20%; */
-  /* Current */
   border-radius: 0% 0% 30% 30%;
-  background: linear-gradient(rgba(0,220,255,0), rgba(0,220,255,0.05));
+  /* background: linear-gradient(rgba(0,220,255,0), rgba(0,220,255,0.05)); */
 }
 #featuredProjectLabel {
   color: rgba(0,220,255,1);
@@ -12976,17 +13188,19 @@ margin-top: 1%;
   border: 1px solid #333333;
   background-color: rgba(0,220,255, 0.05);
   border-color: rgba(0,255,220, 0.5);
-  border-radius: 5% 5% 30% 30%;
+  /* OLD */
+  /* border-radius: 5% 5% 30% 30%; */
+  border-radius: 3px 5% 30% 15%;
   margin: 0 auto;
-  /* Old */
-  /* margin-bottom: 1.5%; */
-  /* Current */
   margin-bottom: 2.25%;
   text-align: center;
   letter-spacing: 4px;
   padding: 2px;
-  padding-top: 22px;
-  padding-bottom: 22px;
+  /* OLD */
+  /* padding-top: 22px;
+  padding-bottom: 22px; */
+  padding-top: 27px;
+  padding-bottom: 27px;
   color: #ffffff;
   transition: all 1s ease 0s;
   width: 80%;
@@ -13003,8 +13217,8 @@ margin-top: 1%;
 }
 #featuredProjectButton1 {
   font-size: 90%;
-  padding-top: 12px;
-  padding-bottom: 12px;
+  /* padding-top: 12px;
+  padding-bottom: 12px; */
 }
 #featuredProjectButton2 {
   background-image: url('./jungMandala.jpg'); 
@@ -13016,8 +13230,10 @@ margin-top: 1%;
   background-size: 100%;
   background-position: 100% 65%;
   font-size: 90%;
-  padding-top: 18px;
-  padding-bottom: 18px;
+  /* padding-top: 18px;
+  padding-bottom: 18px; */
+
+
   /* background-image: url('./wwBath.jpg');  */
   /* background-position: center 30%; */
 
@@ -13046,9 +13262,21 @@ transform: scale(1.03);
 cursor: pointer !important;
 }
 
-
-
-
+#featuredProjectContainer {
+  position: relative;
+}
+#featuredProjectButtonNext {
+  position: absolute; 
+  right: 15px;
+  top: 35px;
+  opacity: 0.5;
+  transition: all 1s ease 0s;
+}
+#featuredProjectButtonNext:hover {
+  opacity: 1;
+  cursor: pointer;
+  transform: scale(1.05);
+}
 
 
 

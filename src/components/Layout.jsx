@@ -1,6 +1,7 @@
 import React from 'react';
 import Footer from '../containers/Footer.jsx';
 import Header from '../containers/Header.jsx';
+import TeamChat from './chatbox/TeamChat.jsx';
 import {Config} from '../config.js';
 import cookie from 'react-cookie';
 import axios from 'axios';
@@ -54,7 +55,7 @@ handleClick() {
 
   render() {
       return (
-      	<div>
+      	<div id="positionRelative">
           {/* <div onClick={this.resetNotifications}>
             {this.state.notificationLayout}
           </div> */}
@@ -68,6 +69,7 @@ handleClick() {
           </div>
             {/* English pronounciation */}
             {/* Ageōmétrētos mēdeìs eisítō */}
+            {/* <TeamChat /> */}
           <Footer />
         </div>
       );

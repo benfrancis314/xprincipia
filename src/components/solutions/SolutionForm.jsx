@@ -128,13 +128,14 @@ export default class SolutionForm extends React.Component {
     }
 
     if (this.state.pdf == '1') {
+      console.log(this.state.dataString)
     // $('#pdfUploadLoaderHide').attr('id','pdfUploadLoaderShow');
     axios.post( Config.API + '/auth/solutions/create', {
       username: cookie.load('userName'),
       problemID:this.props.probID,
       title : this.state.title,
       summary : this.state.summary,
-      description : this.state.description,
+      // description : this.state.description,
       class : this.state.class,
       private: this.state.private,
       parentTitle: this.props.parentTitle,
@@ -144,6 +145,10 @@ export default class SolutionForm extends React.Component {
       // $('#pdfUploadLoaderShow').attr('id','pdfUploadLoaderHide');
       // document.getElementById("proposalSectionHeader").scrollIntoView();
       self.refs.proposalbtn.removeAttribute("disabled");
+      $(document).ready(function() {
+        $('#solutionFormContainerShow').attr('id','solutionFormContainerHide');
+        $('#proposalsPromptContainerHide').attr('id','proposalsPromptContainerShow');
+      });
       // document.getElementById("createForm").reset();
     })
     .catch(function (error) {
@@ -367,7 +372,7 @@ radioChangeSolution() {
                 </div>
                 
                 
-                {/* <div id="solutionSummary" onClick={this.showDataURL}>XXX</div>{this.state.dataURL} */}
+                {/* <div id="solutionSummary" onClick={this.showDataURL}>XXX</div> */}
 
                 <div id="proseProposalContainerShow">
                     <textarea name="solutionDescription" required="required" placeholder="Please describe your proposal here." id="solutionDescriptionForm">

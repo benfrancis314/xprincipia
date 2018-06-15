@@ -215,9 +215,9 @@ export default class WelcomeContainer extends React.Component {
         } else {
             return (
                 <div id="welcomeContainer">
-                    <div id="tutorialWelcomeButtonOn" onClick={this.tutorialOn}>
+                    {/* <div id="tutorialWelcomeButtonOn" onClick={this.tutorialOn}>
                         tutorial
-                    </div>
+                    </div> */}
                         
                         {/*<Sound
                             url={require('../assets/jfkSpeech.mp3')}

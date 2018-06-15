@@ -17,6 +17,7 @@ constructor(){
     level: '',
     title1: '',
     title2: '',
+    photoID: '',
   }
   this.changePlanetEarth = this.changePlanetEarth.bind(this)
   this.changePlanetMars = this.changePlanetMars.bind(this)
@@ -24,13 +25,14 @@ constructor(){
 componentDidMount(){
   var self = this;
   axios.get( Config.API + '/users/byusername?username='+cookie.load('userName')).then(function (response) {
-      if(response.data.Tier == '2') {
+      if(response.data.Tier === 2) {
         self.setState({
           user: response.data,
           userPoints: response.data.Points,
           level: response.data.Level,
           title1: 'way',
           title2: 'farer',
+          photoID: 'pointsLevelTitleWest2',
         })
       } else {
         self.setState({
@@ -39,6 +41,7 @@ componentDidMount(){
           level: response.data.Level,
           title1: 'new',
           title2: 'comer',
+          photoID: 'pointsLevelTitleWest',
         })
       }
   })
@@ -171,7 +174,7 @@ unHoverText() {
             <div id="pointsLevelLabel">
               level {this.state.level}
             </div>
-            <div id="pointsLevelTitleWest">
+            <div id={this.state.photoID}>
             {/* CREATE IF STATEMENT: IF title is newcomer, return the following html */}
               <span id="blue">{this.state.title1}</span>{this.state.title2}
             </div>

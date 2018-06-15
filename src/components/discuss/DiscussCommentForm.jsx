@@ -288,6 +288,9 @@ postComment() {
     .then(function (result) {
       document.getElementById("questionForm").reset();
       self.refs.btn.removeAttribute("disabled");
+      $('#discussCommentForm').attr('id','discussCommentFormHide');
+      $('#sidebarDiscussCommentMenuHide').attr('id','sidebarDiscussCommentMenu');
+      $('#noDiscussContainerHide').attr('id','noDiscussContainerShow');
     })
       .catch(function (error) {
           $(document).ready(function() {
@@ -319,6 +322,9 @@ postComment() {
         .then(function (result) {
           document.getElementById("questionForm").reset();
           self.refs.btn.removeAttribute("disabled");
+          $('#discussCommentForm').attr('id','discussCommentFormHide');
+          $('#sidebarDiscussCommentMenuHide').attr('id','sidebarDiscussCommentMenu');
+          $('#noDiscussContainerHide').attr('id','noDiscussContainerShow');
         })
         .catch(function (error) {
             $(document).ready(function() {

@@ -35,7 +35,7 @@ constructor(){
     this.state.email = document.getElementById('registerEmail').value
     this.state.password = document.getElementById('registerPassword').value
     this.state.fullname = document.getElementById('registerFullName').value
-    this.state.username = document.getElementById('registerUserName').value
+    this.state.username = document.getElementById('registerUserName').value.toLowerCase()
 
     var self = this;
     return axios.post( Config.API + '/register', {
@@ -96,7 +96,7 @@ if (e.keyCode === 13) {
 this.state.email = document.getElementById('registerEmail').value
 this.state.password = document.getElementById('registerPassword').value
 this.state.fullname = document.getElementById('registerFullName').value
-this.state.username = document.getElementById('registerUserName').value
+this.state.username = document.getElementById('registerUserName').value.toLowerCase()
 
 var self = this;
 return axios.post( Config.API + '/register', {

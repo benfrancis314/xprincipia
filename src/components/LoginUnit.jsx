@@ -26,7 +26,7 @@ export default class LoginUnit extends React.Component {
   postLogin() {
     var self = this
     //Read field items into component state
-    this.state.username = document.getElementById('loginEmail').value
+    this.state.username = document.getElementById('loginEmail').value.toLowerCase()
     this.state.password = document.getElementById('loginPassword').value
 
     axios.post( Config.API + '/login', {

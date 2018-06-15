@@ -106,7 +106,7 @@ if (e.keyCode === 13) {
 this.state.email = document.getElementById('introRegisterEmail').value
 this.state.password = document.getElementById('introRegisterPassword').value
 this.state.fullname = document.getElementById('introRegisterFullName').value
-this.state.username = document.getElementById('introRegisterUserName').value
+this.state.username = document.getElementById('introRegisterUserName').value.toLowerCase()
 
 var self = this;
 return axios.post( Config.API + '/register', {

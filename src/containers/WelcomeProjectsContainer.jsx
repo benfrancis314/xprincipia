@@ -4,12 +4,14 @@ import { Link } from 'react-router';
 // import Sound from 'react-sound';
 // Currently unused, may use later. Loading only loads part of page, currently looks weird
 // import ReactCSSTransitionGroup from 'react-addons-css-transition-group'; // ES6
-import WelcomeUnit from '../components/welcome/WelcomeUnit.jsx';
+import FeaturedProject from '../components/welcome/FeaturedProject.jsx';
 import LeaderboardUnit from '../components/welcome/LeaderboardUnit.jsx';
+import WelcomeUnit from '../components/welcome/WelcomeUnit.jsx';
 import {Config} from '../config.js';
 import $ from 'jquery';
-import ReactGA from 'react-ga';
-ReactGA.initialize('UA-104103231-1'); //Unique Google Analytics tracking number
+import YouTube from 'react-youtube';
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group'; // ES6
+
 
 
 
@@ -107,7 +109,8 @@ export default class WelcomeContainer extends React.Component {
            leaderboardType: '',
            leaderboard : [],
            searchText: [],
-           feedProjects: []
+           feedProjects: [],
+           tutorial: '',
         }
         this.selectUsers = this.selectUsers.bind(this);
         this.selectProjects = this.selectProjects.bind(this);
@@ -115,6 +118,8 @@ export default class WelcomeContainer extends React.Component {
         this.unHoverLeaderBoardText = this.unHoverLeaderBoardText.bind(this);
         this.hideLeaderBoardSelect = this.hideLeaderBoardSelect.bind(this);
         // this.startSound = this.startSound.bind(this);
+        this.tutorialOn = this.tutorialOn.bind(this);
+        this.tutorialOff = this.tutorialOff.bind(this);
     };
 
     componentDidMount(){
@@ -259,10 +264,35 @@ export default class WelcomeContainer extends React.Component {
         $('#leaderBoardFilterExitRightShow').attr('id','leaderBoardFilterExitRight');
       });
     };
+
+    tutorialOn() {
+      var self = this
+      self.setState({
+          tutorial: 'on',
+      })
+    }
+    tutorialOff() {
+        var self = this
+        self.setState({
+            tutorial: 'off',
+        })
+    }
    
    render() {
+      
+    if (this.state.tutorial === 'on') {
+      const opts = {
+        // OLD
+        // height: '390',
+        // width: '640',
+        height: '488',
+        width: '800',
+        playerVars: { // https://developers.google.com/youtube/player_parameters 
+            autoplay: 1
+        }
+    };
       return (
-        <div>
+        <div id="welcomeContainerContentDarkX" onClick={this.tutorialOff}>
           {/* <Link to="/demo">
             <div id="welcomeTutorialVideoButton" onClick={this.privateAlert} onMouseOver={this.hoverText} onMouseOut={this.unHoverText}>
                 <img src={require('../assets/videoPlay3.svg')} id="welcomeVideoLogo" width="22" height="22" alt="Video player symbol, link to tutorial"/>
@@ -284,36 +314,33 @@ export default class WelcomeContainer extends React.Component {
               <div id="welcomeRightContainer">
                 <div id="SPListDiv">
                     <div id="featuredContainer">
-                      {randomFeatured()}
+                      <FeaturedProject />
                       {/* <div id="featuredProjectButton">
                             the three world reality
                       </div> */}
                     </div>
-                    <div id="leaderBoardFilterContainer">
-                      <div id="leaderBoardFilterButton" onMouseOver={this.hoverLeaderBoardText} onMouseOut={this.unHoverLeaderBoardText} onClick={this.showLeaderBoardSelect}>
-                      </div>
-                      <img src={require('../assets/redX.svg')} id="leaderBoardFilterExitLeft" width="25" height="25" onClick={this.hideLeaderBoardSelect} />
-                      <img src={require('../assets/redX.svg')} id="leaderBoardFilterExitRight" width="25" height="25" onClick={this.hideLeaderBoardSelect} />
-                    </div>
-                    <div id="leaderBoardSelect">
-                      <div id="leaderBoardOption" onClick={this.selectProjects}>
-                        projects
-                      </div>
-                      <div id="leaderBoardOption" onClick={this.selectProposals}>
-                        proposals
-                      </div>
-                      <div id="leaderBoardOption" onClick={this.selectUsers}>
-                        creators
-                      </div>
-                    </div>
 
-                    <div id="leaderBoardCapTop">
-                        top projects
-                    </div>
-                    <div id="visibleLeaderboardProjects">
-                      <LeaderboardUnit leaderboardType={this.state.leaderboardType} leaderboard={this.state.leaderboard} />
-                    </div>
                 </div>
+              </div>
+              <div id="tutorialWelcomeVideo">
+                  <ReactCSSTransitionGroup
+                      transitionName="example"
+                      transitionAppear={true}
+                      transitionAppearTimeout={2000}
+                      transitionEnter={false}
+                      transitionLeave={false}>
+                  <div id="fullTutorialHeader" onClick={this.tutorialOff}>
+                      <img src={require('../assets/redX.svg')} id="closeRedX" width="30" height="30" alt="Close button, red X symbol" />            
+                  </div>
+                  <div id="demoVideoContainerWelcome">
+                      <YouTube
+                          videoId="ohGhU4rg-PQ"
+                          opts={opts}
+                          onReady={this._onReady}
+                      />
+                  </div>
+                  {/* {randomImg()}   */}
+                  </ReactCSSTransitionGroup>
               </div>
               
           </div>
@@ -321,6 +348,49 @@ export default class WelcomeContainer extends React.Component {
           {randomImg()}
         </div>
       );
+    } else {
+      return(
+      <div>
+          {/* <Link to="/demo">
+            <div id="welcomeTutorialVideoButton" onClick={this.privateAlert} onMouseOver={this.hoverText} onMouseOut={this.unHoverText}>
+                <img src={require('../assets/videoPlay3.svg')} id="welcomeVideoLogo" width="22" height="22" alt="Video player symbol, link to tutorial"/>
+            </div>
+          </Link> */}    
+
+          <div id="welcomeUnitsContainer">
+            <div id="welcomeContainerTitle">
+                <span id="welcomeContainerTitleBlue">select </span><span id="welcomeContainerTitleWhite">mission</span>
+            </div> 
+            <div id="width87">
+                <WelcomeUnit problems={this.state.problems} />
+            </div>
+          </div>
+
+          <div id="welcomeUserUnitsContainer">
+              {this.props.children}
+              
+              <div id="welcomeRightContainer">
+                <div id="SPListDiv">
+                    <div id="featuredContainer">
+                      <FeaturedProject />
+                    </div>
+                </div>
+                {/* <div id="welcomeTutorialLabel">
+                  tutorial
+                </div> */}
+                {/* <div id="demoVideoContainerWelcomeOff"> */}
+                  <video autoPlay muted loop id="myVideo" src={require('../assets/tutorialVideo1.mp4')} type="video/mp4"  onClick={this.tutorialOn}/>
+                  {/* <img src={require('../assets/videoPlay3.svg')} id="tutorialWelcomePlayButton" width="40" height="40" alt="Close button, red X symbol" />             */}
+                {/* </div> */}
+              </div>
+              
+              
+          </div>
+
+          {randomImg()}
+        </div>
+      );
+    }
    }
 }
 function randomImg() {
@@ -344,72 +414,34 @@ function randomImg() {
 }
 
 
-function randomFeatured() {
-  if (Math.random() < 0.5) {
-      return (
-        <div onClick={()=>{handleClick1()}}>
-          <div id="featuredProjectLabel">
-            featured project
-          </div>
-          <Link to={'/project/13/subprojects'}>
-            <div id="featuredProjectButton1">
-                structure and dynamics
-                <br />of the human mind
-            </div>
-          </Link>
-        </div>
-      );
-  } else {
-    return (
-    
-      <div onClick={()=>{handleClick2()}}>
-        <div id="featuredProjectLabel">
-          featured project
-        </div>
-        <Link to={'/project/15/subprojects'}>
-          <div id="featuredProjectButton3">
-            {/* imitation human cognition 
-            <br />
-            artificial intelligence */}
-            {/* human based
-            <br /> */}
-            artificial general intelligence
-          </div>
-        </Link>
-      </div>
-    );
-  }
-    // } else if (Math.random() < 1){
-  //     return (
-  //       <div>
-  //         <div id="featuredProjectLabel">
-  //           featured proposal
-  //         </div>
-  //         <Link to={'/project/7/proposal/2'}>
-  //           <div id="featuredProjectButton2">
-  //               the mental world
-  //           </div>
-  //         </Link>
-  //       </div>
-  //     );
-}
 
 
-function handleClick1() {
-  ReactGA.event({
-      // Replace with "Created project", "voted question", etc. 
-      category: 'View Featured',
-      // Replace action with project ID, etc. for various things
-      action: 'Mind',
-  });
-  // alert('click');
-}
-function handleClick2() {
-  ReactGA.event({
-      // Replace with "Created project", "voted question", etc. 
-      category: 'View Featured',
-      // Replace action with project ID, etc. for various things
-      action: 'AI',
-  });
-  // alert('click');
-}
+
+
+
+// OLD LEADERBOARD STUFF
+
+  {/* <div id="leaderBoardFilterContainer">
+    <div id="leaderBoardFilterButton" onMouseOver={this.hoverLeaderBoardText} onMouseOut={this.unHoverLeaderBoardText} onClick={this.showLeaderBoardSelect}>
+    </div>
+    <img src={require('../assets/redX.svg')} id="leaderBoardFilterExitLeft" width="25" height="25" onClick={this.hideLeaderBoardSelect} />
+    <img src={require('../assets/redX.svg')} id="leaderBoardFilterExitRight" width="25" height="25" onClick={this.hideLeaderBoardSelect} />
+  </div>
+  <div id="leaderBoardSelect">
+    <div id="leaderBoardOption" onClick={this.selectProjects}>
+      projects
+    </div>
+    <div id="leaderBoardOption" onClick={this.selectProposals}>
+      proposals
+    </div>
+    <div id="leaderBoardOption" onClick={this.selectUsers}>
+      creators
+    </div>
+  </div>
+
+  <div id="leaderBoardCapTop">
+      top projects
+  </div>
+  <div id="visibleLeaderboardProjects">
+    <LeaderboardUnit leaderboardType={this.state.leaderboardType} leaderboard={this.state.leaderboard} />
+  </div> */}

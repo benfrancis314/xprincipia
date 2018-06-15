@@ -56,7 +56,7 @@ enterRegister(event) {
   postLogin() {
     var self = this
     //Read field items into component state
-    this.state.username = document.getElementById('loginHeaderEmail').value
+    this.state.username = document.getElementById('loginHeaderEmail').value.toLowerCase()
     this.state.password = document.getElementById('loginHeaderPassword').value
 
     axios.post( Config.API + '/login', {
