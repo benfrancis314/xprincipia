@@ -334,7 +334,7 @@ export default class WelcomeContainer extends React.Component {
                   </div>
                   <div id="demoVideoContainerWelcome">
                       <YouTube
-                          videoId="ohGhU4rg-PQ"
+                          videoId="xyEowRRqF9s"
                           opts={opts}
                           onReady={this._onReady}
                       />

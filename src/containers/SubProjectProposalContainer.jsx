@@ -56,8 +56,8 @@ export default class SubProjectProposalContainer extends React.Component {
                         </div>
                     </Link>
                     <div id="privateContainerMottoContainer">
-                        <div id="privateContainerMotto">
-                            PROPOSAL BREAKDOWN
+                        <div id="privateContainerMottoProposal">
+                                <span id="blueOpaque">PROJECT </span><span id="whiteOpaque">TREE</span>
                         </div>
                     </div>
                     <div id="sidebarSBProjects">

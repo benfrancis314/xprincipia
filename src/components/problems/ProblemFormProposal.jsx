@@ -120,7 +120,7 @@ export default class ProblemForm extends React.Component {
   }
   postProblem() {
     var self = this;
-    self.refs.btn.setAttribute("disabled", "disabled");
+    self.refs.proposalprojectbtn.setAttribute("disabled", "disabled");
     //Read field items into component state
     this.state.title = document.getElementById('problemTitleForm').value
     this.state.summary = document.getElementById('problemSummaryForm').value
@@ -149,7 +149,6 @@ export default class ProblemForm extends React.Component {
     })
     .then(function (result) {
       document.getElementById(self.state.proposalBoxID).reset();
-      self.refs.btn.removeAttribute("disabled");
       if(document.getElementById("SPHeader")) {
         $(document).ready(function() {
           $('#problemFormContainerShow').attr('id','problemFormContainerHide');
@@ -176,7 +175,7 @@ export default class ProblemForm extends React.Component {
             }
           });
       });
-      self.refs.btn.removeAttribute("disabled");
+      self.refs.proposalprojectbtn.removeAttribute("disabled");
   }
 
   hideProblemForm() {
@@ -249,10 +248,10 @@ export default class ProblemForm extends React.Component {
                         <textarea name="problemSummary" maxLength="500" 
                         placeholder="Please summarize this project or add any additional information you'd like. (500 ch)" id="problemSummaryForm"/>
                     </label>
-                    <Link 
-                    to={this.state.linkPath+this.props.probID+this.state.proposalPath} 
-                    onClick={this.checkLoginProblem}>
-                        <input type="button" ref='btn' value="create" id="submitProblem"/>
+                        <Link 
+                        to={this.state.linkPath+this.props.params.probID+this.state.proposalPath} 
+                        onClick={this.checkLoginProblem}>
+                        <input type="button" ref='proposalprojectbtn' value="create" id="submitProblem"/>
                     </Link>
                 </form>
             </div>

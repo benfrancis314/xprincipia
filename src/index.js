@@ -332,11 +332,12 @@ ReactDOM.render(
             <Route path='/proposal/private/:probID/:solutionID/delete' component={SolutionDeleteForm}></Route>
             <Route path='/proposal/private/:probID/:solutionID/edit' component={SolutionEditForm}></Route>
             <Route path='/project/private/:probID/proposal/:solutionID/subprojects' component={SubProjectProposalContainer}></Route>
-            <Route path='/project/private/:probID/proposal/:solutionID/subprojects/create' component={ProblemFormContainerProposal}>
+            <Route path='/project/private/:probID/proposal/:solutionID/create' component={ProblemFormProposal}></Route>
+            {/* <Route path='/project/private/:probID/proposal/:solutionID/subprojects/create' component={ProblemFormContainerProposal}>
               <IndexRoute component={ProblemFormProposal}></IndexRoute>
               <Route path='/project/private/:probID/proposal/:solutionID/create' component={ProblemFormProposal}></Route>
               <Route path='/project/private/:probID/proposal/:solutionID/link' component={ProjectLinkForm}></Route>
-            </Route>
+            </Route> */}
             <Route path='/project/private/:probID/proposal/:solutionID/versions/create' component={VersionForm}></Route>
             <Route path='/project/private/:probID/proposal/:solutionID/versions' component={VersionsContainer}></Route>
             <Route path='/project/private/:probID/proposal/:solutionID/related' component={RelatedProposalsContainer}></Route>
@@ -424,11 +425,12 @@ ReactDOM.render(
             <Route path='/project/:probID/proposal/:solutionID/edit' component={SolutionEditForm}></Route>
             <Route path='/project/:probID/proposal/:solutionID/flag' component={SolutionFlagForm}></Route>
             <Route path='/project/:probID/proposal/:solutionID/subprojects' component={SubProjectProposalContainer}></Route>
-            <Route path='/project/:probID/proposal/:solutionID/subprojects/create' component={ProblemFormContainerProposal}>
+            <Route path='/project/:probID/proposal/:solutionID/create' component={ProblemFormProposal}></Route>
+            {/* <Route path='/project/:probID/proposal/:solutionID/subprojects/create' component={ProblemFormContainerProposal}>
               <IndexRoute component={ProblemFormProposal}></IndexRoute>
               <Route path='/project/:probID/proposal/:solutionID/create' component={ProblemFormProposal}></Route>
               <Route path='/project/:probID/proposal/:solutionID/link' component={ProjectLinkForm}></Route>
-            </Route>
+            </Route> */}
             <Route path='/project/:probID/proposal/:solutionID/versions/create' component={VersionForm}></Route>
             <Route path='/project/:probID/proposal/:solutionID/versions' component={VersionsContainer}></Route>
             <Route path='/project/:probID/proposal/:solutionID/related' component={RelatedProposalsContainer}></Route>

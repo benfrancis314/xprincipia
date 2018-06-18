@@ -170,7 +170,7 @@ export default class ProfileTutorial extends React.Component {
                 </div>
                 <div id="demoVideoContainerProfile">
                     <YouTube
-                        videoId="ohGhU4rg-PQ"
+                        videoId="xyEowRRqF9s"
                         opts={opts}
                         onReady={this._onReady}
                     />

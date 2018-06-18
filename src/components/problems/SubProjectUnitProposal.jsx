@@ -7,14 +7,14 @@ export default class SubProblemUnit extends React.Component {
 
 	hoverText() {
 			$(document).ready(function() {
-					$('#privateContainerMotto').html("NEW SUB PROJECT").fadeIn(7500);
-					$('#privateContainerMotto').attr('id','privateContainerMottoBlue');
+					$('#privateContainerMottoProposal').html('<span id="blue">NEW </span>SUB<span id="blue">PROJECT</span>').fadeIn(7500);
+					$('#privateContainerMottoProposal').attr('id','privateContainerMottoProposalWhite');
 			});
 	}
 	unHoverText() {
 			$(document).ready(function() {
-					$('#privateContainerMottoBlue').html("PROPOSAL BREAKDOWN");
-					$('#privateContainerMottoBlue').attr('id','privateContainerMotto');
+					$('#privateContainerMottoProposalWhite').html('<span id="blueOpaque">PROJECT </span><span id="whiteOpaque">TREE</span>');
+					$('#privateContainerMottoProposalWhite').attr('id','privateContainerMottoProposal');
 			});
 	}
 

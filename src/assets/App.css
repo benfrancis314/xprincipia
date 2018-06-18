@@ -4163,22 +4163,23 @@ margin: 0 auto;
 /* margin-bottom: 0.5%; */
 margin-top: 0.5%;
 }
-#privateContainerMotto {
+#privateContainerMotto, #privateContainerMottoProposal {
   display: inline-block;
   color: #515151;
   transition: all 2s ease 0s;
 }
-#privateContainerMottoBlue, #privateContainerMottoWhite, #privateContainerMottoRed {
+#privateContainerMottoBlue, #privateContainerMottoWhite, #privateContainerMottoRed,
+#privateContainerMottoProposalBlue, #privateContainerMottoProposalWhite, #privateContainerMottoProposalRed {
   display: inline-block;
   color: #00dcff;
   transition: all 2s ease 0s;
   letter-spacing: 7px;
 }
-#privateContainerMottoWhite {
+#privateContainerMottoWhite, #privateContainerMottoProposalWhite {
   color: #ffffff;
   letter-spacing: 7px;
 }
-#privateContainerMottoRed {
+#privateContainerMottoRed, #privateContainerMottoProposalRed {
   color: #ff7f7f;
   letter-spacing: 6px;
   transition: all 0.5s ease 0s;
@@ -4593,7 +4594,7 @@ background-color: rgba(0,220,255,0.01);
 transform: scale(1);
 text-transform: lowercase !important;
 }
-#privateContainerMottoProposal {
+/* #privateContainerMottoProposal {
 display: inline-block;
 color: #515151;
 transition: all 2s ease 0s;
@@ -4603,7 +4604,7 @@ display: inline-block;
 color: #00dcff;
 transition: all 2s ease 0s;
 letter-spacing: 7px;
-}
+} */
 
 
 
