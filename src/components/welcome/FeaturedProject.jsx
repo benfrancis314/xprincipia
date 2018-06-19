@@ -66,7 +66,7 @@ export default class Load extends React.Component {
                     <div id="featuredProjectLabel">
                         featured projects
                     </div>
-                    <Link to={'/project/15/subprojects'}>
+                    <Link to={'/project/64/subprojects'}>
                         <div id="featuredProjectButton6">
                             abiogenesis
                         </div>
