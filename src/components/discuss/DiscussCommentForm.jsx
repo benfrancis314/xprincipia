@@ -23,14 +23,15 @@ export default class QuestionForm extends React.Component {
     radio1: '',
     radio2: '',
     radio3: '',
+    userName: '',
   }
 
     this.postComment = this.postComment.bind(this);
     this.postAnswer = this.postAnswer.bind(this);
     this.showDiscussCommentForm = this.showDiscussCommentForm.bind(this);
     this.hideDiscussCommentForm = this.hideDiscussCommentForm.bind(this);
-    this.checkLoginComment = this.checkLoginComment.bind(this);
-    this.checkLoginAnswer = this.checkLoginAnswer.bind(this);
+    // this.checkLoginComment = this.checkLoginComment.bind(this);
+    // this.checkLoginAnswer = this.checkLoginAnswer.bind(this);
   };
 componentDidMount() {
     var self = this;
@@ -118,7 +119,16 @@ componentDidMount() {
         prompt2: "new",
       })
     }
-
+    if (cookie.load('userName')) {
+      self.setState({
+        userName: cookie.load('userName'),
+      })
+    }
+    else {
+      self.setState({
+        userName: 'anonymous',
+      })
+    }
 }
 componentWillReceiveProps(nextProps) {
   var self = this;
@@ -224,42 +234,40 @@ componentWillReceiveProps(nextProps) {
     }
     // MORE IF STATEMENTS
 
-
-
-
-
-
-
-
-
-
-
-
-
     // MORE IF STATEMENTS
+    if (cookie.load('userName')) {
+      self.setState({
+        userName: cookie.load('userName'),
+      })
+    }
+    else {
+      self.setState({
+        userName: 'anonymous',
+      })
+    }
 }
-checkLoginComment() {
-  if (cookie.load('userName')) {
-    this.postComment()
-  } else {
-    $(document).ready(function() {
-      $('#notification').attr('id','notificationShow').hide().slideDown();
-      $('#notificationLoginRegisterContainer').attr('id','notificationLoginRegisterContainerShow');
-      $('#notificationContent').html('please <span id="blue">login </span>to join this discussion');
-    });
-  }
-}
-checkLoginAnswer() {
-  if (cookie.load('userName')) {
-    this.postAnswer()
-  } else {
-    $(document).ready(function() {
-      $('#notification').attr('id','notificationShow').hide().slideDown();
-      $('#notificationLoginRegisterContainer').attr('id','notificationLoginRegisterContainerShow');
-      $('#notificationContent').html('please <span id="blue">login </span>to join this discussion');
-    });
-  }
-}
+// checkLoginComment() {
+//   if (cookie.load('userName')) {
+//     this.postComment()
+//   } else {
+//     $(document).ready(function() {
+//       $('#notification').attr('id','notificationShow').hide().slideDown();
+//       $('#notificationLoginRegisterContainer').attr('id','notificationLoginRegisterContainerShow');
+//       $('#notificationContent').html('please <span id="blue">login </span>to join this discussion');
+//     });
+//   }
+// }
+// checkLoginAnswer() {
+//   if (cookie.load('userName')) {
+//     this.postAnswer()
+//   } else {
+//     $(document).ready(function() {
+//       $('#notification').attr('id','notificationShow').hide().slideDown();
+//       $('#notificationLoginRegisterContainer').attr('id','notificationLoginRegisterContainerShow');
+//       $('#notificationContent').html('please <span id="blue">login </span>to join this discussion');
+//     });
+//   }
+// }
 postComment() {
   //Read field items into component state
   var self = this;
@@ -277,7 +285,7 @@ postComment() {
     axios.post( Config.API + '/auth/comments/create', {
       type: this.state.type,
       typeID: this.props.params.probID,
-      username: cookie.load('userName'),
+      username: this.state.userName,
       description : this.state.question,
       parentTitle: this.props.parentTitle,
       private: this.state.private,
@@ -312,7 +320,7 @@ postComment() {
       axios.post( Config.API + '/auth/comments/create', {
         type: this.state.type,
         typeID: this.props.params.probID,
-        username: cookie.load('userName'),
+        username: this.state.userName,
         description : this.state.question,
         parentID: this.props.params.discussID,
         parentTitle : this.props.parentTitle,
@@ -362,7 +370,7 @@ postComment() {
         axios.post( Config.API + '/auth/comments/create', {
           type:'1',
           typeID: this.props.params.solutionID,
-          username: cookie.load('userName'),
+          username: this.state.userName,
           description : this.state.question,
           parentTitle: this.props.parentTitle,
           private: this.state.private,
@@ -403,7 +411,7 @@ postComment() {
       axios.post( Config.API + '/auth/comments/create', {
         type: this.state.type,
         typeID: this.props.params.probID,
-        username: cookie.load('userName'),
+        username: this.state.userName,
         description : this.state.question,
         parentID: this.props.params.discussID,
         parentTitle : this.props.parentTitle,
@@ -534,7 +542,7 @@ postComment() {
                 <fieldset id='fieldSetNoBorderPadding'>
                   <textarea name="questionText" required="required" id="questionTextArea" placeholder={this.state.placeholder} ></textarea>
                   <Link to={window.location.pathname}>
-                    <input type="button" ref='btn' value="add" onClick={this.checkLoginAnswer} id="askQuestion"/>
+                    <input type="button" ref='btn' value="add" onClick={this.postAnswer} id="askQuestion"/>
                   </Link>
                 </fieldset>
               </form>
@@ -583,7 +591,7 @@ postComment() {
                 <form id="questionForm">
                   <fieldset id='fieldSetNoBorderPadding'>
                     <textarea name="questionText" required="required" id="questionTextArea" placeholder={this.state.placeholder} ></textarea>
-                    <Link to={window.location.pathname} onClick={this.checkLoginComment}>
+                    <Link to={window.location.pathname} onClick={this.postComment}>
                       <input type="button" ref='btn' value="add" id="askQuestion"/>
                     </Link>
                   </fieldset>

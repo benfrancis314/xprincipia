@@ -229,7 +229,7 @@ postDiscuss() {
       axios.post( Config.API + '/auth/comments/create', {
         type: this.state.type,
         typeID: this.props.params.probID,
-        username: cookie.load('userName'),
+        username: this.state.userName,
         description : this.state.question,
         parentTitle : this.props.parentTitle,
         private: this.state.private,

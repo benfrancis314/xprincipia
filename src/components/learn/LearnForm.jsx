@@ -22,10 +22,11 @@ export default class LearnResourcesForm extends React.Component {
         prompt4: '',
         radio1: '',
         radio2: '',
+        userName: '',
       }
       
       this.postLearn = this.postLearn.bind(this);
-      this.checkLoginLearn = this.checkLoginLearn.bind(this);
+      // this.checkLoginLearn = this.checkLoginLearn.bind(this);
       this.showLearnForm = this.showLearnForm.bind(this);
       this.hideLearnForm = this.hideLearnForm.bind(this);
       this.radioChangeEducational = this.radioChangeEducational.bind(this);
@@ -82,6 +83,16 @@ componentDidMount(){
       prompt4: "new",
     })
   }
+  if (cookie.load('userName')) {
+    self.setState({
+      userName: cookie.load('userName'),
+    })
+  }
+  else {
+    self.setState({
+      userName: 'anonymous',
+    })
+  }
 }
 componentDidReceiveProps(nextProps){
   var self = this;
@@ -133,19 +144,29 @@ componentDidReceiveProps(nextProps){
       prompt4: "new",
     })
   }
-}
-
-checkLoginLearn() {
   if (cookie.load('userName')) {
-    this.postLearn()
-  } else {
-    $(document).ready(function() {
-      $('#notification').attr('id','notificationShow').hide().slideDown();
-      $('#notificationLoginRegisterContainer').attr('id','notificationLoginRegisterContainerShow');
-      $('#notificationContent').html('please <span id="blue">login </span>to contribute to the learn section');
-    });
+    self.setState({
+      userName: cookie.load('userName'),
+    })
+  }
+  else {
+    self.setState({
+      userName: 'anonymous',
+    })
   }
 }
+
+// checkLoginLearn() {
+//   if (cookie.load('userName')) {
+//     this.postLearn()
+//   } else {
+//     $(document).ready(function() {
+//       $('#notification').attr('id','notificationShow').hide().slideDown();
+//       $('#notificationLoginRegisterContainer').attr('id','notificationLoginRegisterContainerShow');
+//       $('#notificationContent').html('please <span id="blue">login </span>to contribute to the learn section');
+//     });
+//   }
+// }
 
 postLearn() {
   //Read field items into component state
@@ -163,7 +184,7 @@ postLearn() {
       axios.post( Config.API + '/auth/learnItems/create', {
         type: this.state.type,
         typeID: this.props.params.probID,
-        username: cookie.load('userName'),
+        username: this.state.userName,
         title: this.state.title,
         url: this.state.url,
         description : this.state.description,
@@ -273,7 +294,7 @@ postLearn() {
                               <input type="text" placeholder="url | optional" id="resourceURLForm"/>
                               <textarea name="suggestionText" required="required" id="resourcesTextArea" placeholder="Please provide any additional information you'd like. " ></textarea>
                               {/* OLD Placeholder: "Please describe the resource or explain its purpose. " */}
-                              <Link to={window.location.pathname} onClick={this.checkLoginLearn}>
+                              <Link to={window.location.pathname} onClick={this.postLearn}>
                                 <input type="button" ref='btn' value="add" id="addSuggestion"/>
                               </Link>
                       </fieldset>
