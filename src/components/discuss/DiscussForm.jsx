@@ -21,11 +21,12 @@ export default class QuestionForm extends React.Component {
     radio1: '',
     radio2: '',
     radio3: '',
+    userName: '',
   }
 
     this.postDiscuss = this.postDiscuss.bind(this);
     // USE IF AUTH SYSTEM DOESN'T WORK
-    this.checkLoginDiscuss = this.checkLoginDiscuss.bind(this);
+    // this.checkLoginDiscuss = this.checkLoginDiscuss.bind(this);
     this.showDiscussForm = this.showDiscussForm.bind(this);
     this.hideDiscussForm = this.hideDiscussForm.bind(this);
     this.radioChangeQuestion = this.radioChangeQuestion.bind(this);
@@ -82,6 +83,16 @@ componentDidMount(){
         radio2: 'checkmark2Discuss',
         radio3: 'checkmark3Discuss',
         placeholder: 'Ask a question you have about this project. ',
+      })
+    }
+    if (cookie.load('userName')) {
+      self.setState({
+        userName: cookie.load('userName'),
+      })
+    }
+    else {
+      self.setState({
+        userName: 'anonymous',
       })
     }
 }
@@ -142,18 +153,28 @@ componentWillReceiveProps(nextProps){
       placeholder: 'Ask a question you have about this project. ',
     })
   }
-}
-checkLoginDiscuss() {
   if (cookie.load('userName')) {
-    this.postDiscuss()
-  } else {
-    $(document).ready(function() {
-      $('#notification').attr('id','notificationShow').hide().slideDown();
-      $('#notificationLoginRegisterContainer').attr('id','notificationLoginRegisterContainerShow');
-      $('#notificationContent').html('please <span id="blue">login </span>to join this discussion');
-    });
+    self.setState({
+      userName: cookie.load('userName'),
+    })
+  }
+  else {
+    self.setState({
+      userName: 'anonymous',
+    })
   }
 }
+// checkLoginDiscuss() {
+//   if (cookie.load('userName')) {
+//     this.postDiscuss()
+//   } else {
+//     $(document).ready(function() {
+//       $('#notification').attr('id','notificationShow').hide().slideDown();
+//       $('#notificationLoginRegisterContainer').attr('id','notificationLoginRegisterContainerShow');
+//       $('#notificationContent').html('please <span id="blue">login </span>to join this discussion');
+//     });
+//   }
+// }
 
 postDiscuss() {
   //Read field items into component state
@@ -172,7 +193,7 @@ postDiscuss() {
     axios.post( Config.API + '/auth/comments/create', {
       type: this.state.type,
       typeID: this.props.params.probID,
-      username: cookie.load('userName'),
+      username: this.state.userName,
       description : this.state.question,
       parentTitle: this.props.parentTitle,
       private: this.state.private,
@@ -343,7 +364,7 @@ postDiscuss() {
               <form id="questionForm">
                 <fieldset id='fieldSetNoBorderPadding'>
                   <textarea name="questionText" required="required" id="questionTextArea" placeholder={this.state.placeholder} ></textarea>
-                  <Link to={window.location.pathname} onClick={this.checkLoginDiscuss}>
+                  <Link to={window.location.pathname} onClick={this.postDiscuss}>
                     <input type="button" ref='btn' value="add" id="askQuestion"/>
                   </Link>
                 </fieldset>
@@ -392,7 +413,7 @@ postDiscuss() {
                   <form id="questionForm">
                     <fieldset id='fieldSetNoBorderPadding'>
                       <textarea name="questionText" required="required" id="questionTextArea" placeholder={this.state.placeholder} ></textarea>
-                      <Link to={window.location.pathname} onClick={this.checkLoginDiscuss}>
+                      <Link to={window.location.pathname} onClick={this.postDiscuss}>
                         <input type="button" ref='btn' value="add" id="askQuestion"/>
                       </Link>
                     </fieldset>

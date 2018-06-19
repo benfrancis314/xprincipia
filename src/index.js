@@ -13,22 +13,8 @@ import ActivityFeedProjectsUnits from './components/feed/ActivityFeedProjectsUni
 import ActivityFeedProposalsUnits from './components/feed/ActivityFeedProposalsUnits.jsx';
 import ActivityFeedDiscussUnits from './components/feed/ActivityFeedDiscussUnits.jsx';
 import ActivityFeedLearnUnits from './components/feed/ActivityFeedLearnUnits.jsx';
-import AnswerDeleteForm from './components/answers/AnswerDeleteForm.jsx';
-import AnswerDeleteFormPrivate from './components/answers/AnswerDeleteFormPrivate.jsx';
-import AnswerEditForm from './components/answers/AnswerEditForm.jsx';
-import AnswerEditFormPrivate from './components/answers/AnswerEditFormPrivate.jsx';
-import AnswerFlagForm from './components/answers/AnswerFlagForm.jsx';
-import AnswerForm from './components/answers/AnswerForm.jsx';
-import AnswerFormPrivate from './components/answers/AnswerFormPrivate.jsx';
 import CommentForm from './components/comments/CommentForm.jsx';
 import CommentFormPrivate from './components/comments/CommentFormPrivate.jsx';
-import ConsDeleteForm from './components/proscons/ConsDeleteForm.jsx';
-import ConsDeleteFormPrivate from './components/proscons/ConsDeleteFormPrivate.jsx';
-import ConsEditForm from './components/proscons/ConsEditForm.jsx';
-import ConsEditFormPrivate from './components/proscons/ConsEditFormPrivate.jsx';
-import ConsFlagForm from './components/proscons/ConsFlagForm.jsx';
-import ConsForm from './components/proscons/ConsForm.jsx';
-import ConsFormPrivate from './components/proscons/ConsFormPrivate.jsx';
 import DiscussDeleteForm from './components/discuss/DiscussDeleteForm.jsx';
 import DiscussEditForm from './components/discuss/DiscussEditForm.jsx';
 import DiscussFlagForm from './components/discuss/DiscussFlagForm.jsx';
@@ -37,13 +23,6 @@ import DiscussCommentForm from './components/discuss/DiscussCommentForm.jsx';
 import ProjectBreakdownSlogan from './components/ProjectBreakdownSlogan.jsx';
 import Error404 from './components/Error404.jsx';
 import FeedbackForm from './components/FeedbackForm.jsx';
-import FreeFormDeleteForm from './components/freeform/FreeFormDeleteForm.jsx';
-import FreeFormDeleteFormPrivate from './components/freeform/FreeFormDeleteFormPrivate.jsx';
-import FreeFormEditForm from './components/freeform/FreeFormEditForm.jsx';
-import FreeFormEditFormPrivate from './components/freeform/FreeFormEditFormPrivate.jsx';
-import FreeFormFlagForm from './components/freeform/FreeFormFlagForm.jsx';
-import FreeFormForm from './components/freeform/FreeFormForm.jsx';
-import FreeFormFormPrivate from './components/freeform/FreeFormFormPrivate.jsx';
 import FullProblem from './components/problems/FullProblem.jsx';
 import FullSolution from './components/solutions/FullSolution.jsx';
 import FullSolutionContent from './components/solutions/FullSolutionContent.jsx';
@@ -101,18 +80,6 @@ import ProfileWorkspace from './components/profile/ProfileWorkspace.jsx';
 import ProposalDiscussMenu from './components/solutions/ProposalDiscussMenu.jsx';
 import ProposalDiscussMenuPrivate from './components/solutions/ProposalDiscussMenuPrivate.jsx';
 import ProposalLearnMenu from './components/solutions/ProposalLearnMenu.jsx';
-import ProsDeleteForm from './components/proscons/ProsDeleteForm.jsx';
-import ProsDeleteFormPrivate from './components/proscons/ProsDeleteFormPrivate.jsx';
-import ProsEditForm from './components/proscons/ProsEditForm.jsx';
-import ProsEditFormPrivate from './components/proscons/ProsEditFormPrivate.jsx';
-import ProsFlagForm from './components/proscons/ProsFlagForm.jsx';
-import ProsForm from './components/proscons/ProsForm.jsx';
-import ProsFormPrivate from './components/proscons/ProsFormPrivate.jsx';
-import QuestionDeleteForm from './components/questions/QuestionDeleteForm.jsx';
-import QuestionDeleteFormPrivate from './components/questions/QuestionDeleteFormPrivate.jsx';
-import QuestionEditForm from './components/questions/QuestionEditForm.jsx';
-import QuestionEditFormPrivate from './components/questions/QuestionEditFormPrivate.jsx';
-import QuestionFlagForm from './components/questions/QuestionFlagForm.jsx';
 import Redirection from './components/Redirection.jsx';
 import RegisterUnit from './components/RegisterUnit.jsx';
 import SolutionDeleteForm from './components/solutions/SolutionDeleteForm.jsx';
@@ -121,13 +88,6 @@ import SolutionEditForm from './components/solutions/SolutionEditForm.jsx';
 import SolutionEditFormPrivate from './components/solutions/SolutionEditFormPrivate.jsx';
 import SolutionFlagForm from './components/solutions/SolutionFlagForm.jsx';
 import SolutionForm from './components/solutions/SolutionForm.jsx';
-import SuggestionDeleteForm from './components/suggestions/SuggestionDeleteForm.jsx';
-import SuggestionDeleteFormPrivate from './components/suggestions/SuggestionDeleteFormPrivate.jsx';
-import SuggestionEditForm from './components/suggestions/SuggestionEditForm.jsx';
-import SuggestionEditFormPrivate from './components/suggestions/SuggestionEditFormPrivate.jsx';
-import SuggestionFlagForm from './components/suggestions/SuggestionFlagForm.jsx';
-import SuggestionForm from './components/suggestions/SuggestionForm.jsx';
-import SuggestionFormPrivate from './components/suggestions/SuggestionFormPrivate.jsx';
 import Empty from './components/Empty.jsx';
 import UserMessages from './components/profile/UserMessages.jsx';
 import UserPassions from './components/profile/UserPassions.jsx';
@@ -146,29 +106,11 @@ import ActivityFeedLearnContainer from './containers/feed/ActivityFeedLearnConta
 import AnswerContainer from './containers/AnswerContainer.jsx';
 import AnswerContainerPrivate from './containers/AnswerContainerPrivate.jsx';
 import BenPaperContainer from './containers/BenPaperContainer.jsx';
-import CommentAnswerContainer from './containers/comments/CommentAnswerContainer.jsx';
-import CommentAnswerContainerPrivate from './containers/comments/CommentAnswerContainerPrivate.jsx';
-import CommentConContainer from './containers/comments/CommentConContainer.jsx';
-import CommentConContainerPrivate from './containers/comments/CommentConContainerPrivate.jsx';
-import CommentSubCommentContainer from './containers/comments/CommentSubCommentContainer.jsx';
-import CommentSubCommentContainerPrivate from './containers/comments/CommentSubCommentContainerPrivate.jsx';
-import CommentDebateContainer from './containers/comments/CommentDebateContainer.jsx';
-import CommentDebateContainerPrivate from './containers/comments/CommentDebateContainerPrivate.jsx';
-import CommentLessonContainer from './containers/comments/CommentLessonContainer.jsx';
-import CommentLessonContainerPrivate from './containers/comments/CommentLessonContainerPrivate.jsx';
-import CommentProContainer from './containers/comments/CommentProContainer.jsx';
-import CommentProContainerPrivate from './containers/comments/CommentProContainerPrivate.jsx';
-import CommentResourceContainer from './containers/comments/CommentResourceContainer.jsx';
-import CommentResourceContainerPrivate from './containers/comments/CommentResourceContainerPrivate.jsx';
-import CommentSuggestionContainer from './containers/comments/CommentSuggestionContainer.jsx';
-import CommentSuggestionContainerPrivate from './containers/comments/CommentSuggestionContainerPrivate.jsx';
 import ConsContainer from './containers/ConsContainer.jsx';
 import ConsContainerPrivate from './containers/ConsContainerPrivate.jsx';
 import DiscussContainer from './containers/DiscussContainer.jsx';
 import DiscussCommentContainer from './containers/DiscussCommentContainer.jsx';
 import ErrorContainer from './containers/ErrorContainer.jsx';
-import FreeFormContainer from './containers/FreeFormContainer.jsx';
-import FreeFormContainerPrivate from './containers/FreeFormContainerPrivate.jsx';
 import LearnContainer from './containers/LearnContainer.jsx';
 import LearnContentContainerPrivate from './containers/LearnContentContainerPrivate.jsx';
 import LearnResourcesContainer1 from './containers/LearnResourcesContainer1.jsx';
@@ -188,8 +130,6 @@ import ShortStoryContainer from './containers/ShortStoryContainer.jsx';
 import SubProblemContainer from './containers/SubProblemContainer.jsx';
 import SubProjectProposalContainer from './containers/SubProjectProposalContainer.jsx';
 import SubProjectProposalPrivateContainer from './containers/SubProjectProposalPrivateContainer.jsx';
-import SuggestionContainer from './containers/SuggestionContainer.jsx';
-import SuggestionContainerPrivate from './containers/SuggestionContainerPrivate.jsx';
 import UserContainer from './containers/UserContainer.jsx'
 import VersionsContainer from './containers/VersionsContainer.jsx'
 import WelcomeContainer from './containers/WelcomeContainer.jsx';
@@ -358,11 +298,6 @@ ReactDOM.render(
                 <Route path='/project/private/:probID/proposal/:solutionID/discuss/:discussID/comments/:commentID/delete' component={DiscussDeleteForm}></Route>
               </Route>
             </Route>
-         
-            <Route path='/project/private/:probID/proposal/:solutionID/cons/:conID/container' component={CommentConContainerPrivate}>
-              <IndexRoute component={CommentFormPrivate}></IndexRoute>
-              <Route path='/project/private/:probID/proposal/:solutionID/cons/:conID/comments' component={CommentFormPrivate}></Route>
-            </Route>   
           </Route>
           <Route path='/project/private/:probID/proposal/:solutionID/fullversion' component={FullVersion}></Route>
         </Route>

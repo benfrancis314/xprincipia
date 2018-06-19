@@ -24,10 +24,11 @@ export default class ProblemForm extends React.Component {
       proposalPath: '',
       private: '',
       parentID: '',
+      userName: '',
     }
 
     this.postProblem = this.postProblem.bind(this);
-    this.checkLoginProblem = this.checkLoginProblem.bind(this);
+    // this.checkLoginProblem = this.checkLoginProblem.bind(this);
     this.hideProblemForm = this.hideProblemForm.bind(this);
     this.radioChangeProject = this.radioChangeProject.bind(this);
     this.radioChangeGoal = this.radioChangeGoal.bind(this);
@@ -69,6 +70,16 @@ export default class ProblemForm extends React.Component {
             parentID: self.props.probID,
         })
     }
+    if (cookie.load('userName')) {
+      self.setState({
+        userName: cookie.load('userName'),
+      })
+    }
+    else {
+      self.setState({
+        userName: 'anonymous',
+      })
+    }
   }
   componentWillReceiveProps(nextProps) {
     var self = this;
@@ -105,19 +116,29 @@ export default class ProblemForm extends React.Component {
             parentID: self.props.probID,
         })
     }
-  }
-
-  checkLoginProblem() {
     if (cookie.load('userName')) {
-      this.postProblem()
-    } else {
-      $(document).ready(function() {
-        $('#notification').attr('id','notificationShow').hide().slideDown();
-        $('#notificationLoginRegisterContainer').attr('id','notificationLoginRegisterContainerShow');
-        $('#notificationContent').html('please <span id="blue">login </span>to create a project');
-      });
+      self.setState({
+        userName: cookie.load('userName'),
+      })
+    }
+    else {
+      self.setState({
+        userName: 'anonymous',
+      })
     }
   }
+
+  // checkLoginProblem() {
+  //   if (cookie.load('userName')) {
+  //     this.postProblem()
+  //   } else {
+  //     $(document).ready(function() {
+  //       $('#notification').attr('id','notificationShow').hide().slideDown();
+  //       $('#notificationLoginRegisterContainer').attr('id','notificationLoginRegisterContainerShow');
+  //       $('#notificationContent').html('please <span id="blue">login </span>to create a project');
+  //     });
+  //   }
+  // }
   postProblem() {
     var self = this;
     self.refs.btn.setAttribute("disabled", "disabled");
@@ -134,7 +155,7 @@ export default class ProblemForm extends React.Component {
     }
   
     axios.post( Config.API + '/auth/problems/create'+this.state.privateCall, {
-      username: cookie.load('userName'),
+      username: this.state.userName,
       title : this.state.title,
       summary : this.state.summary,
       parentType : this.state.proposalCheck,
@@ -249,7 +270,7 @@ export default class ProblemForm extends React.Component {
                   </label>
                   <Link 
                   to={this.state.linkPath+this.props.probID+this.state.proposalPath} 
-                  onClick={this.checkLoginProblem}>
+                  onClick={this.postProblem}>
                       <input type="button" ref='btn' value="create" id="submitProblem"/>
                   </Link>
               </form>
