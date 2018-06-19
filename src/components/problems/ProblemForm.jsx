@@ -141,7 +141,7 @@ export default class ProblemForm extends React.Component {
   // }
   postProblem() {
     var self = this;
-    self.refs.btn.setAttribute("disabled", "disabled");
+    self.refs.problemformbtn.setAttribute("disabled", "disabled");
     //Read field items into component state
     this.state.title = document.getElementById('problemTitleForm').value
     this.state.summary = document.getElementById('problemSummaryForm').value
@@ -170,7 +170,7 @@ export default class ProblemForm extends React.Component {
     })
     .then(function (result) {
       document.getElementById(self.state.proposalBoxID).reset();
-      self.refs.btn.removeAttribute("disabled");
+      self.refs.problemformbtn.removeAttribute("disabled");
       if(document.getElementById("SPHeader")) {
         $(document).ready(function() {
           $('#problemFormContainerShow').attr('id','problemFormContainerHide');
@@ -182,6 +182,7 @@ export default class ProblemForm extends React.Component {
             $('#noProjectsContainerHide').attr('id','noProjectsContainerShow');
           });
       }
+      self.refs.problemformbtn.removeAttribute("disabled");
     })
       .catch(function (error) {
           $(document).ready(function() {
@@ -196,8 +197,8 @@ export default class ProblemForm extends React.Component {
               }  else if (error.response.data != '') {
             }
           });
+          self.refs.problemformbtn.removeAttribute("disabled");
       });
-      self.refs.btn.removeAttribute("disabled");
   }
 
   hideProblemForm() {
@@ -270,8 +271,8 @@ export default class ProblemForm extends React.Component {
                   </label>
                   <Link 
                   to={this.state.linkPath+this.props.probID+this.state.proposalPath} 
-                  onClick={this.postProblem}>
-                      <input type="button" ref='btn' value="create" id="submitProblem"/>
+                  >
+                      <input type="button" ref='problemformbtn' value="create" onClick={this.postProblem} id="submitProblem"/>
                   </Link>
               </form>
           </div>

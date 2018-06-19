@@ -8770,7 +8770,13 @@ cursor: pointer;
   transform: rotate(180deg);
   background-color: rgba(15,19,28,0.985);
 }
+/* #workingProblemForm {
 
+} */
+#disabledProblemForm {
+  pointer-events: none !important;
+  border: 1px solid pink;
+}
 
 /*Sidebar*/
 

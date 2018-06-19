@@ -252,11 +252,12 @@ ReactDOM.render(
       </Route>
       <Route path='/project/private/:probID' component={FullProblem}>
         <IndexRoute component={Empty}></IndexRoute>
-        <Route path='/project/private/:probID/create' component={ProblemFormContainerPrivate}>
+        <Route path='/project/private/:probID/create' component={ProblemForm}></Route>
+        {/* <Route path='/project/private/:probID/create/container' component={ProblemFormContainerPrivate}>
             <IndexRoute component={ProblemForm}></IndexRoute>
             <Route path='/project/private/:probID/create' component={ProblemForm}></Route>
             <Route path='/project/private/:probID/link' component={ProjectLinkForm}></Route>
-        </Route>
+        </Route> */}
         <Route path='/project/private/:probID/edit' component={ProjectEditForm}></Route>
         <Route path='/project/private/:probID/delete' component={ProjectDeleteForm}></Route>
         <Route path='/project/private/:probID/flag' component={ProjectFlagForm}></Route>
@@ -335,11 +336,12 @@ ReactDOM.render(
       </Route>
       <Route path='/project/:probID' component={FullProblem}>
         <IndexRoute component={ProblemSolutionsMenu}></IndexRoute>
-        <Route path='/project/:probID/add' component={ProblemFormContainer}>
+        <Route path='/project/:probID/create' component={ProblemForm}></Route>
+        {/* <Route path='/project/:probID/add' component={ProblemFormContainer}>
           <IndexRoute component={ProblemForm}></IndexRoute>
           <Route path='/project/:probID/create' component={ProblemForm}></Route>
           <Route path='/project/:probID/link' component={ProjectLinkForm}></Route>
-        </Route>
+        </Route> */}
         <Route path='/project/:probID/create/breakdown' component={ProjectBreakdownForm}></Route>
         <Route path='/project/:probID/create/breakdown/:bdID' component={ProjectBreakdownProjectForm}></Route>
         <Route path='/project/:probID/create/breakdown/:bdID/edit' component={ProjectBreakdownEditForm}></Route>

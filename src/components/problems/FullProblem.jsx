@@ -443,9 +443,8 @@ voteDown() {
                       </div>
                       <ProjectBreakdownSlogan />
                       <div id="problemFormContainerHide">
-                        <ProblemForm probID={this.props.params.probID} solutionID={this.props.params.solutionID} />
+                        <ProblemForm probID={this.props.params.probID} solutionID={this.props.params.solutionID} parentTitle={this.state.problemInfo.Title} />
                       </div>
-                      {/* {this.state.breakdownOriginal}FullProb */}
                       <SubProblemContainer problemInfo={this.state.problemInfo} probID={this.props.params.probID} breakdownOriginal={this.state.breakdownOriginal} differentBreakdown={this.differentBreakdown} />
                     </div>
                   </div>

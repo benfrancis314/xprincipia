@@ -62,7 +62,7 @@ export default class Load extends React.Component {
             );
         } else if (this.state.random < 0.75) {
             return (
-                <div id="featuredProjectContainer" onClick={()=>{handleClick2()}}>
+                <div id="featuredProjectContainer" onClick={()=>{handleClick6()}}>
                     <div id="featuredProjectLabel">
                         featured projects
                     </div>
@@ -77,7 +77,7 @@ export default class Load extends React.Component {
         } else if (this.state.random < 0.875) {
             return (
             
-            <div id="featuredProjectContainer" onClick={()=>{handleClick2()}}>
+            <div id="featuredProjectContainer" onClick={()=>{handleClick5()}}>
                 <div id="featuredProjectLabel">
                     featured projects
                 </div>
@@ -91,7 +91,7 @@ export default class Load extends React.Component {
             );
         } else {
             return (
-                <div id="featuredProjectContainer" onClick={()=>{handleClick2()}}>
+                <div id="featuredProjectContainer" onClick={()=>{handleClick4()}}>
                     <div id="featuredProjectLabel">
                         featured projects
                     </div>
@@ -116,7 +116,7 @@ function handleClick1() {
     });
     // alert('click');
   }
-  function handleClick2() {
+function handleClick2() {
     ReactGA.event({
         // Replace with "Created project", "voted question", etc. 
         category: 'View Featured',
@@ -124,4 +124,31 @@ function handleClick1() {
         action: 'AI',
     });
     // alert('click');
+}
+function handleClick4() {
+    ReactGA.event({
+        // Replace with "Created project", "voted question", etc. 
+        category: 'View Featured',
+        // Replace action with project ID, etc. for various things
+        action: 'Plant Intelligence',
+    });
+    // alert('click');
+}
+function handleClick5() {
+    ReactGA.event({
+        // Replace with "Created project", "voted question", etc. 
+        category: 'View Featured',
+        // Replace action with project ID, etc. for various things
+        action: 'Moon',
+    });
+    // alert('click');
   }
+function handleClick6() {
+    ReactGA.event({
+        // Replace with "Created project", "voted question", etc. 
+        category: 'View Featured',
+        // Replace action with project ID, etc. for various things
+        action: 'Abiogenesis',
+    });
+    // alert('click');
+}
