@@ -198,6 +198,7 @@ postDiscuss() {
       parentTitle: this.props.parentTitle,
       private: this.state.private,
       backupParentID: this.props.params.solutionID,
+      parentType: '1',
   })
     .then(function (result) {
       document.getElementById("questionForm").reset();
@@ -234,6 +235,7 @@ postDiscuss() {
         parentTitle : this.props.parentTitle,
         private: this.state.private,
         backupParentID: '0',
+        parentType: '0',
     })
       .then(function (result) {
         document.getElementById("questionForm").reset();

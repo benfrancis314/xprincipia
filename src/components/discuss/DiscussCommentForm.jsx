@@ -163,6 +163,9 @@ componentWillReceiveProps(nextProps) {
     // }
     if (nextProps.params.solutionID) {
       self.setState({
+        radio1: 'checkmark1DiscussComment',
+        radio2: 'checkmark2DiscussCommentActive',
+        radio3: 'checkmark3DiscussComment',
         placeholder: "Respond with a comment or contribute to the pro/con analysis for this proposal. ",
       })
     } else if (nextProps.currentType === 'answer') {
