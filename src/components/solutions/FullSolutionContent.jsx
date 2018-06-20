@@ -312,7 +312,7 @@ export default class FullSolutionContent extends React.Component {
                     </Link>
                   </div>
                   <div>
-                  {React.cloneElement(this.props.children, {creator:this.state.solutionInfo.OriginalPosterUsername, parentTitle: this.props.parentTitle} )}
+                  {React.cloneElement(this.props.children, {creator:this.state.solutionInfo.OriginalPosterUsername, parentTitle: this.props.parentTitle, proposalTitle: this.state.solutionInfo.Title} )}
                   <FullSolutionDescription solutionInfo={ this.state.solutionInfo} solutionID={this.props.params.solutionID}/>
                 </div>
               </div>

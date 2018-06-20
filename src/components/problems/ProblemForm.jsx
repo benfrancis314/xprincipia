@@ -237,6 +237,10 @@ export default class ProblemForm extends React.Component {
           <img src={require('../../assets/redX.svg')} id="closeRedX" width="30" height="30" alt="Close button, red X symbol" onClick={this.hideProblemForm}/>
           <div id="createProblemBox">
               <form id={this.state.proposalBoxID}>
+                    <label htmlFor="solutionTitle" id="projectTitleProposalFormLabel">project title<br />
+                      <h1 id="proposalCreateProjectTitle">{this.props.parentTitle}</h1>
+                    </label>
+                    {/* <br /> */}
                     <label htmlFor="problemTitleForm" id="problemTitleFormLabel">subproject title<br />
                       <input type="text" name="problemTitle" required="required" maxLength="70" id="problemTitleForm" autoFocus/>
                     </label><br />

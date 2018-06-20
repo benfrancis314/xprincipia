@@ -371,13 +371,14 @@ postComment() {
       // REDO THIS, IT DOESN'T MAKE SENSE
       if(this.props.params.solutionID){
         axios.post( Config.API + '/auth/comments/create', {
-          type:'1',
-          typeID: this.props.params.solutionID,
+          type: this.state.type,
+          typeID: this.props.params.probID,
           username: this.state.userName,
           description : this.state.question,
           parentTitle: this.props.parentTitle,
           private: this.state.private,
-          parentID: this.props.params.probID,
+          backupParentID: this.props.params.solutionID,
+          parentID: this.props.params.discussID,
           parentType: '5',
       })
         .then(function (result) {

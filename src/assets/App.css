@@ -1832,6 +1832,7 @@ letter-spacing: 2px !important;
 #problemTitleForm:active, #problemTitleForm:focus, #problemSummaryForm:active, #problemSummaryForm:focus, #breakdownProblemTitleForm:active, #breakdownProblemTitleForm:focus, #breakdownProblemSummaryForm:active, #breakdownProblemSummaryForm:focus {
   transform: scale(1.02);
 }
+
 #projectEditTitleForm {
   font-family: 'Alegreya Sans SC', sans-serif;
   color: #ffffff;
@@ -1903,6 +1904,9 @@ letter-spacing: 2px !important;
   letter-spacing: 2px;
 }
 #welcomeCreateForm #problemTitleFormLabel, #welcomeCreateForm #problemTitleFormLabelRed {
+  margin-top: 2%;
+}
+#problemTitleFormLabel {
   margin-top: 2%;
 }
 #editTitleFormLabel, #versionChangesFormLabel {

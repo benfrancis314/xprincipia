@@ -237,6 +237,9 @@ export default class ProblemForm extends React.Component {
             </Link>
             <div id="createProblemBox">
                 <form id={this.state.proposalBoxID}>
+                        <label htmlFor="solutionTitle" id="projectTitleProposalFormLabel">project title<br />
+                        <h1 id="proposalCreateProjectTitle">{this.props.proposalTitle}</h1>
+                        </label>
                         <label htmlFor="problemTitleForm" id="problemTitleFormLabel">subproject title<br />
                         <input type="text" name="problemTitle" required="required" maxLength="70" id="problemTitleForm" autoFocus/>
                         </label><br />
