@@ -110,7 +110,7 @@ componentWillReceiveProps(nextProps){
   if (nextProps.params.solutionID) {
     self.setState({
       placeholder: "Ask a question, give a suggestion, or start a debate about this proposal. ",
-      prompt1: "add",
+      prompt1: "start",
       prompt2: "discussion",
       radio1: 'checkmark1DiscussActive',
       radio2: 'checkmark2Discuss',
@@ -328,12 +328,19 @@ postDiscuss() {
 
 
     if (this.props.discuss === undefined || this.props.discuss.length == 0) {
+      if (window.location.pathname.includes('proposal')) {
+        var prompt3 = 'a'
+        var prompt4 = 'new'
+      }   else {
+        var prompt3 = 'the'
+        var prompt4 = 'first'
+      }
       return (
         <div id="discussFormContainer">
           <div id="noDiscussContainerShow">
             <div id="noDiscussPromptFlare"><br /></div>
             <div id="noDiscussPrompt" onClick={this.showDiscussForm}>
-                <span id="blue">{this.state.prompt1} </span>the <span id="blue">first </span>{this.state.prompt2}
+                <span id="blue">{this.state.prompt1} </span>{prompt3} <span id="blue">{prompt4} </span>{this.state.prompt2}
             </div>
           </div>
           <div id="discussFormHide">

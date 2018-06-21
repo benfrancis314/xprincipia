@@ -37,7 +37,8 @@ componentDidMount() {
     var self = this;
     self.setState({
         prompt1: "add",
-        prompt2: "comment",
+        // prompt2: "comment",
+        prompt2: "response",
     })
     if (window.location.pathname.includes('private')) {
         self.setState({
@@ -101,7 +102,7 @@ componentDidMount() {
       // Assume proConCom
       self.setState({
         prompt1: "add",
-        prompt2: "comment",
+        prompt2: "response",
         radio1: 'checkmark1DiscussCommentActive',
         radio2: 'checkmark2DiscussComment',
         radio3: 'checkmark3DiscussComment',
@@ -134,7 +135,7 @@ componentWillReceiveProps(nextProps) {
   var self = this;
   self.setState({
       prompt1: "add",
-      prompt2: "comment",
+      prompt2: "response",
   })
     if (window.location.pathname.includes('private')) {
         self.setState({
@@ -170,8 +171,8 @@ componentWillReceiveProps(nextProps) {
       })
     } else if (nextProps.currentType === 'answer') {
       self.setState({
-        prompt1: "ask",
-        prompt2: "question",
+        prompt1: "add",
+        prompt2: "answer",
         radio1: 'checkmark1DiscussComment',
         radio2: 'checkmark2DiscussCommentActive',
         radio3: 'checkmark3DiscussComment',
@@ -217,7 +218,7 @@ componentWillReceiveProps(nextProps) {
       // Assume proConCom
       self.setState({
         prompt1: "add",
-        prompt2: "comment",
+        prompt2: "response",
         radio1: 'checkmark1DiscussCommentActive',
         radio2: 'checkmark2DiscussComment',
         radio3: 'checkmark3DiscussComment',
@@ -560,7 +561,8 @@ postComment() {
             <div id="noDiscussContainerShow">
               <div id="noDiscussPromptFlare"><br /></div>
               <div id="noDiscussPrompt" onClick={this.showDiscussCommentForm}>
-                  <span id="blue">{this.state.prompt1} </span>{this.state.prompt3} <span id="blue">{this.state.prompt4} </span>{this.state.prompt2}
+                  {/* <span id="blue">{this.state.prompt1} </span>{this.state.prompt3} <span id="blue">{this.state.prompt4} </span>{this.state.prompt2} */}
+                  <span id="blue">start </span>a thread
               </div>
             </div>
             <div id="discussCommentFormHide">

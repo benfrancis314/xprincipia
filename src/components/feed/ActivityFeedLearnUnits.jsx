@@ -15,7 +15,7 @@ export default class WelcomeUserUnit extends React.Component {
     }
     unHoverFeedText() {
             $(document).ready(function() {
-                    $('#feedTitleHover').html("new activity");
+                    $('#feedTitleHover').html("recent activity");
                     $('#feedTitleHover').attr('id','feedTitle');
                     $('#feedBottomBlue').attr('id','feedBottom');
             });
@@ -29,7 +29,7 @@ export default class WelcomeUserUnit extends React.Component {
     }
     unHoverAdd() {
             $(document).ready(function() {
-                    $('#feedTitleHover').html("new activity");
+                    $('#feedTitleHover').html("recent activity");
                     $('#feedTitleHover').attr('id','feedTitle');
                     $('#feedBottomBlue').attr('id','feedBottom');
             });
@@ -43,7 +43,7 @@ export default class WelcomeUserUnit extends React.Component {
     }
     unHoverLabel() {
             $(document).ready(function() {
-                    $('#feedTitleHover').html("new activity");
+                    $('#feedTitleHover').html("recent activity");
                     $('#feedTitleHover').attr('id','feedTitle');
                     $('#feedBottomBlue').attr('id','feedBottom');
             });
@@ -51,7 +51,7 @@ export default class WelcomeUserUnit extends React.Component {
 
 	render() {
         $(document).ready(function() {
-            $('#feedTitleHover').html("new activity");
+            $('#feedTitleHover').html("recent activity");
             $('#feedTitleHover').attr('id','feedTitle');
             $('#feedBottomBlue').attr('id','feedBottom');
         });
@@ -87,7 +87,7 @@ export default class WelcomeUserUnit extends React.Component {
     //         action: 'Clicked Link',
     //     });
     // }
-if (lesson.Private === true) {
+if (lesson.Private === 1) {
         return (
             <div key={lesson.ID} id="nodisplay">
             </div>

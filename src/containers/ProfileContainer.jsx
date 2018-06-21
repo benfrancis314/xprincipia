@@ -302,7 +302,7 @@ export default class ProfileContainer extends React.Component {
                             <div id="userProblemsSolutionsButton">private projects</div>
                         </Link> */}
                         <Link to={`/profile`} activeClassName="activeBlue">
-                            <div id="userProblemsSolutionsButton">activity</div>
+                            <div id="userProblemsSolutionsButton">personal activity</div>
                         </Link>
                         <Link to={`/profile/passions`} activeClassName="activeBlue">
                             <div id="userProblemsSolutionsButton">passions</div>

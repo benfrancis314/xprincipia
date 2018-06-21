@@ -29,7 +29,7 @@ postPassions() {
   this.state.passions = document.getElementById('passionsTextArea').value
   
   var self = this;
-  axios.put( Config.API + '/auth/users/updatePassions?username='+cookie.load('userName'), {
+  axios.put( Config.API + '/users/updatePassions?username='+cookie.load('userName'), {
     passions : self.state.passions
   })
   .then(function (result) {

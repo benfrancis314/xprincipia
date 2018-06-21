@@ -170,96 +170,137 @@ export default class DiscussUnit extends React.Component {
         var deleteID = 'noDisplay'
         var flagID = 'flagDiscussButton'
     }
-    if (question.Private === 1) {
-        var voteSectionID = 'noDisplay'
-    } else {
-        var voteSectionID = 'discussUnitButtonsContainer'
-    }
-       if (this.state.voteHash[question.ID] === true) {
-           return (
-            <li key={question.ID} id="suggestionUnit">
-                <div id={'suggestionContentHoverVote'+commentType} className={question.ID}>
-                    <div id={voteSectionID}>
-                        <Link to={window.location.pathname}>
-                            <div id="discussVotedButton" onClick={unVote.bind(this)} onMouseOver={hoverVoteVoted} onMouseOut={unHoverVoteVoted.bind(this)}>     
-                            </div>
-                            <div id="discussPercent">{question.Rank}</div>
-                        </Link>
-                    </div>
-                    <Link to={this.state.linkPath+question.TypeID+proposalPath+'discuss'+commentPath + '/edit'} activeClassName="activeDiscussEdit">
-                        <div id={editID} onMouseOver={hoverEditVoted} onMouseOut={unHoverEditVoted.bind(this)}>
-                            <img src={require('../../assets/editBlue.svg')} id="editLogo" width="18" height="18" alt="Edit Button" />
-                        </div>
-                    </Link>
-                    <Link to={this.state.linkPath+question.TypeID+proposalPath+'discuss'+commentPath + '/delete'} activeClassName="activeDiscussDelete">
-                        <div id={deleteID} onMouseOver={hoverDeleteVoted} onMouseOut={unHoverDeleteVoted.bind(this)}>
-                            <img src={require('../../assets/delete.svg')} id="editLogo" width="18" height="18" alt="Delete Button" />
-                        </div>
-                    </Link>
-                    <Link to={this.state.linkPath+question.TypeID+proposalPath+'discuss'+commentPath + '/flag'} activeClassName="activeDiscussFlag">
-                        <div id={flagID} onMouseOver={hoverFlag} onMouseOut={unHoverFlag.bind(this)}>
-                            <img src={require('../../assets/flag.svg')} id="deleteLogo" width="24" height="24" alt="Delete Button, Red X" />
-                        </div>
-                    </Link>
-                    <div id="discussHoverTextShowVoted">
-                        <span id="discussNumberValue">{this.state.responseNumber[question.ID]} </span>responses
-                    </div>
-                    <div id={"discussHeader"+commentType}>
-                        {commentType} <span id="gray">by {question.Username}</span>
-                    </div>
+    // if (question.Private === 1) {
+    //     var voteSectionID = 'noDisplay'
+    // } else {
+    //     var voteSectionID = 'discussUnitButtonsContainer'
+    // }
+    return (
+        <li key={question.ID} id="suggestionUnit">
+            <div id={'suggestionContent'+commentType} className={question.ID}>
+                <div id='discussUnitButtonsContainer' onMouseOver={hoverThread} onMouseOut={unHoverThread.bind(this)}>
                     <Link to={this.state.linkPath+question.TypeID+proposalPath+'discuss/'+question.ID+'/comments'}>
-                        <div id="suggestionText" onMouseOver={hoverThreadVoted} onMouseOut={unHoverThreadVoted.bind(this)}>
-                            {question.Description}
+                        <div id="discussResponsesNumber">     
+                            {this.state.responseNumber[question.ID]}
                         </div>
+                        <div id="discussPercent">responses</div>
                     </Link>
-                    <div id="feedDateProse">{dateTime(question.CreatedAt)}</div>
                 </div>
-            </li>
-        );
-    } else {
-        return (
-            <li key={question.ID} id="suggestionUnit">
-                <div id={'suggestionContent'+commentType} className={question.ID}>
-                    <div id={voteSectionID}>
-                        <Link to={window.location.pathname}>
-                            <div id="discussVoteButton" onClick={submitVote.bind(this)} onMouseOver={hoverVote} onMouseOut={unHoverVote.bind(this)}>     
-                            </div>
-                            <div id="discussPercent">{question.Rank}</div>
-                        </Link>
+                <Link to={this.state.linkPath+question.TypeID+proposalPath+'discuss'+commentPath + '/edit'} activeClassName="activeDiscussEdit">
+                    <div id={editID} onMouseOver={hoverEdit} onMouseOut={unHoverEdit.bind(this)}>
+                        <img src={require('../../assets/editBlue.svg')} id="editLogo" width="18" height="18" alt="Edit Button" />
                     </div>
-                    <Link to={this.state.linkPath+question.TypeID+proposalPath+'discuss'+commentPath + '/edit'} activeClassName="activeDiscussEdit">
-                        <div id={editID} onMouseOver={hoverEdit} onMouseOut={unHoverEdit.bind(this)}>
-                            <img src={require('../../assets/editBlue.svg')} id="editLogo" width="18" height="18" alt="Edit Button" />
-                        </div>
-                    </Link>
-                    <Link to={this.state.linkPath+question.TypeID+proposalPath+'discuss'+commentPath + '/delete'} activeClassName="activeDiscussDelete">
-                        <div id={deleteID} onMouseOver={hoverDelete} onMouseOut={unHoverDelete.bind(this)}>
-                            <img src={require('../../assets/delete.svg')} id="editLogo" width="18" height="18" alt="Delete Button" />
-                        </div>
-                    </Link>
-                    <Link to={this.state.linkPath+question.TypeID+proposalPath+'discuss'+commentPath + '/flag'}  activeClassName="activeDiscussFlag">
-                        <div id={flagID} onMouseOver={hoverFlag} onMouseOut={unHoverFlag.bind(this)}>
-                            <img src={require('../../assets/flag.svg')} id="deleteLogo" width="24" height="24" alt="Delete Button, Red X" />
-                        </div>
-                    </Link>
-                    <div id="discussHoverText">
-                        <span id="discussNumberValue">{this.state.responseNumber[question.ID]} </span>responses
+                </Link>
+                <Link to={this.state.linkPath+question.TypeID+proposalPath+'discuss'+commentPath + '/delete'} activeClassName="activeDiscussDelete">
+                    <div id={deleteID} onMouseOver={hoverDelete} onMouseOut={unHoverDelete.bind(this)}>
+                        <img src={require('../../assets/delete.svg')} id="editLogo" width="18" height="18" alt="Delete Button" />
                     </div>
-                    <div id={"discussHeader"+commentType}>
-                        {commentType} <span id="gray">by {question.Username}</span>
+                </Link>
+                <Link to={this.state.linkPath+question.TypeID+proposalPath+'discuss'+commentPath + '/flag'}  activeClassName="activeDiscussFlag">
+                    <div id={flagID} onMouseOver={hoverFlag} onMouseOut={unHoverFlag.bind(this)}>
+                        <img src={require('../../assets/flag.svg')} id="deleteLogo" width="24" height="24" alt="Delete Button, Red X" />
                     </div>
-                    {/* <Link to={this.state.linkPath+question.TypeID+`/discuss/${question.ID}/comments`}> */}
-                    <Link to={this.state.linkPath+question.TypeID+proposalPath+'discuss/'+question.ID+'/comments'}>
-                        <div id="suggestionText" onMouseOver={hoverThread} onMouseOut={unHoverThread.bind(this)}>
-                            {question.Description}
-                        </div>
-                    </Link>
-                    <div id="discussUnitDateProse">{dateTime(question.CreatedAt)}</div>
+                </Link>
+                <div id="discussHoverText">
                 </div>
-            </li>
-        );
+                <div id={"discussHeader"+commentType}>
+                    {commentType} <span id="gray">by {question.Username}</span>
+                </div>
+                {/* <Link to={this.state.linkPath+question.TypeID+`/discuss/${question.ID}/comments`}> */}
+                
+                <div id="suggestionText">
+                    {question.Description}
+                </div>
+                <div id="discussUnitDateProse">{dateTime(question.CreatedAt)}</div>
+            </div>
+        </li>
+    );
+    // OLD, WITH VOTE
+//        if (this.state.voteHash[question.ID] === true) {
+//            return (
+//             <li key={question.ID} id="suggestionUnit">
+//                 <div id={'suggestionContentHoverVote'+commentType} className={question.ID}>
+//                     <div id={voteSectionID}>
+//                         <Link to={window.location.pathname}>
+//                             <div id="discussVotedButton" onClick={unVote.bind(this)} onMouseOver={hoverVoteVoted} onMouseOut={unHoverVoteVoted.bind(this)}>     
+//                             </div>
+//                             <div id="discussPercent">{question.Rank}</div>
+//                         </Link>
+//                     </div>
+//                     <Link to={this.state.linkPath+question.TypeID+proposalPath+'discuss'+commentPath + '/edit'} activeClassName="activeDiscussEdit">
+//                         <div id={editID} onMouseOver={hoverEditVoted} onMouseOut={unHoverEditVoted.bind(this)}>
+//                             <img src={require('../../assets/editBlue.svg')} id="editLogo" width="18" height="18" alt="Edit Button" />
+//                         </div>
+//                     </Link>
+//                     <Link to={this.state.linkPath+question.TypeID+proposalPath+'discuss'+commentPath + '/delete'} activeClassName="activeDiscussDelete">
+//                         <div id={deleteID} onMouseOver={hoverDeleteVoted} onMouseOut={unHoverDeleteVoted.bind(this)}>
+//                             <img src={require('../../assets/delete.svg')} id="editLogo" width="18" height="18" alt="Delete Button" />
+//                         </div>
+//                     </Link>
+//                     <Link to={this.state.linkPath+question.TypeID+proposalPath+'discuss'+commentPath + '/flag'} activeClassName="activeDiscussFlag">
+//                         <div id={flagID} onMouseOver={hoverFlag} onMouseOut={unHoverFlag.bind(this)}>
+//                             <img src={require('../../assets/flag.svg')} id="deleteLogo" width="24" height="24" alt="Delete Button, Red X" />
+//                         </div>
+//                     </Link>
+//                     <div id="discussHoverTextShowVoted">
+//                         <span id="discussNumberValue">{this.state.responseNumber[question.ID]} </span>responses
+//                     </div>
+//                     <div id={"discussHeader"+commentType}>
+//                         {commentType} <span id="gray">by {question.Username}</span>
+//                     </div>
+//                     <Link to={this.state.linkPath+question.TypeID+proposalPath+'discuss/'+question.ID+'/comments'}>
+//                         <div id="suggestionText" onMouseOver={hoverThreadVoted} onMouseOut={unHoverThreadVoted.bind(this)}>
+//                             {question.Description}
+//                         </div>
+//                     </Link>
+//                     <div id="feedDateProse">{dateTime(question.CreatedAt)}</div>
+//                 </div>
+//             </li>
+//         );
+//     } else {
+        // return (
+        //     <li key={question.ID} id="suggestionUnit">
+        //         <div id={'suggestionContent'+commentType} className={question.ID}>
+        //             <div id={voteSectionID}>
+        //                 <Link to={window.location.pathname}>
+        //                     <div id="discussVoteButton" onClick={submitVote.bind(this)} onMouseOver={hoverVote} onMouseOut={unHoverVote.bind(this)}>     
+        //                     </div>
+        //                     <div id="discussPercent">{question.Rank}</div>
+        //                 </Link>
+        //             </div>
+        //             <Link to={this.state.linkPath+question.TypeID+proposalPath+'discuss'+commentPath + '/edit'} activeClassName="activeDiscussEdit">
+        //                 <div id={editID} onMouseOver={hoverEdit} onMouseOut={unHoverEdit.bind(this)}>
+        //                     <img src={require('../../assets/editBlue.svg')} id="editLogo" width="18" height="18" alt="Edit Button" />
+        //                 </div>
+        //             </Link>
+        //             <Link to={this.state.linkPath+question.TypeID+proposalPath+'discuss'+commentPath + '/delete'} activeClassName="activeDiscussDelete">
+        //                 <div id={deleteID} onMouseOver={hoverDelete} onMouseOut={unHoverDelete.bind(this)}>
+        //                     <img src={require('../../assets/delete.svg')} id="editLogo" width="18" height="18" alt="Delete Button" />
+        //                 </div>
+        //             </Link>
+        //             <Link to={this.state.linkPath+question.TypeID+proposalPath+'discuss'+commentPath + '/flag'}  activeClassName="activeDiscussFlag">
+        //                 <div id={flagID} onMouseOver={hoverFlag} onMouseOut={unHoverFlag.bind(this)}>
+        //                     <img src={require('../../assets/flag.svg')} id="deleteLogo" width="24" height="24" alt="Delete Button, Red X" />
+        //                 </div>
+        //             </Link>
+        //             <div id="discussHoverText">
+        //                 <span id="discussNumberValue">{this.state.responseNumber[question.ID]} </span>responses
+        //             </div>
+        //             <div id={"discussHeader"+commentType}>
+        //                 {commentType} <span id="gray">by {question.Username}</span>
+        //             </div>
+        //             {/* <Link to={this.state.linkPath+question.TypeID+`/discuss/${question.ID}/comments`}> */}
+        //             <Link to={this.state.linkPath+question.TypeID+proposalPath+'discuss/'+question.ID+'/comments'}>
+        //                 <div id="suggestionText" onMouseOver={hoverThread} onMouseOut={unHoverThread.bind(this)}>
+        //                     {question.Description}
+        //                 </div>
+        //             </Link>
+        //             <div id="discussUnitDateProse">{dateTime(question.CreatedAt)}</div>
+        //         </div>
+        //     </li>
+//         );
 
-}
+// }
 
 function hoverThread() {
     $(document).ready(function() {
@@ -272,7 +313,10 @@ function unHoverThread() {
     // Removed document part to use 'this.state'
     // $(document).ready(function() {
         $('div.suggestionContentClassBlue').attr('class',question.ID);
-        $('#discussHoverTextShow').html(this.state.responseNumber[question.ID]+" responses").fadeIn(7500);
+        // WITH VOTING
+        // $('#discussHoverTextShow').html(this.state.responseNumber[question.ID]+" responses").fadeIn(7500);
+        // WITHOUT VOTING
+        $('#discussHoverTextShow').html("").fadeIn(7500);
         $('div#discussHoverTextShow').attr('id','discussHoverText');
     // });
 }
@@ -287,7 +331,10 @@ function hoverVote() {
 function unHoverVote() {
     // $(document).ready(function() {
         $('div.suggestionContentClassGreen').attr('class',question.ID);
-        $('#discussHoverTextShowGreen').html(this.state.responseNumber[question.ID]+" responses").fadeIn(7500);
+        // WITH VOTING
+        // $('#discussHoverTextShowGreen').html(this.state.responseNumber[question.ID]+" responses").fadeIn(7500);
+        // WITHOUT VOTING
+        $('#discussHoverTextShowGreen').html("").fadeIn(7500);
         $('div#discussHoverTextShowGreen').attr('id','discussHoverTextGreen');
         $('div#discussHoverTextGreen').attr('id','discussHoverText');
     // });
@@ -303,7 +350,10 @@ function hoverFlag() {
 function unHoverFlag() {
     // $(document).ready(function() {
         $('div.suggestionContentClassRed').attr('class',question.ID);
-        $('#discussHoverTextShowRed').html(this.state.responseNumber[question.ID]+" responses").fadeIn(7500);
+        // WITH VOTING
+        // $('#discussHoverTextShowRed').html(this.state.responseNumber[question.ID]+" responses").fadeIn(7500);
+        // WITHOUT VOTING
+        $('#discussHoverTextShowRed').html("").fadeIn(7500);
         $('div#discussHoverTextShowRed').attr('id','discussHoverTextRed');
         $('div#discussHoverTextRed').attr('id','discussHoverText');
     // });
@@ -318,7 +368,10 @@ function hoverEdit() {
 function unHoverEdit() {
     // $(document).ready(function() {
         $('div.suggestionContentClassBlue').attr('class',question.ID);
-        $('#discussHoverTextShow').html(this.state.responseNumber[question.ID]+" responses").fadeIn(7500);
+        // WITH VOTING
+        // $('#discussHoverTextShowBlue').html(this.state.responseNumber[question.ID]+" responses").fadeIn(7500);
+        // WITHOUT VOTING
+        $('#discussHoverTextShowBlue').html("").fadeIn(7500);
         $('div#discussHoverTextShow').attr('id','discussHoverText');
     // });
 }
@@ -333,7 +386,10 @@ function hoverDelete() {
 function unHoverDelete() {
     // $(document).ready(function() {
         $('div.suggestionContentClassRed').attr('class',question.ID);
-        $('#discussHoverTextShowRed').html(this.state.responseNumber[question.ID]+" responses").fadeIn(7500);
+        // WITH VOTING
+        // $('#discussHoverTextShowRed').html(this.state.responseNumber[question.ID]+" responses").fadeIn(7500);
+        // WITHOUT VOTING
+        $('#discussHoverTextShowRed').html("").fadeIn(7500);
         $('div#discussHoverTextShowRed').attr('id','discussHoverTextRed');
         $('div#discussHoverTextRed').attr('id','discussHoverText');
     // });

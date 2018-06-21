@@ -119,7 +119,7 @@ class App extends React.Component {
         {this.props.children}
         {/*Error alert below*/}
         <div id="notification">
-          <div id="notificationHeader">!</div>
+          <div id="notificationHeader" onClick={this.hideNotification}>!</div>
           <div id="notificationContent">we apologize for this error. in your <span id="blue">personal headquarters</span>, please tell us the error under <span id="blue">feedback</span>.</div>
           <div id="notificationLoginRegisterContainer">
             <Link to='/login'>

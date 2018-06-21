@@ -656,14 +656,14 @@ export default class DiscussContainer extends React.Component {
                         </div>
                         {React.cloneElement(this.props.children, {discuss:this.state.discuss, parentTitle: this.props.parentTitle, parentType: this.state.parentType, currentType: this.state.currentType})}
                     </div>
-                    <div id={this.state.newTopID}>
+                    {/* <div id={this.state.newTopID}>
                         <div id="discussListNewButtonActive" onClick={this.selectNew}>
                             new
                         </div>
                         <div id="discussListTopButtonInactive" onClick={this.selectTop}>
                             top
                         </div>
-                    </div>
+                    </div> */}
                 </div>
                 <DiscussUnit linkPath={this.state.linkPath} solutionID={this.props.params.solutionID} discussID={this.props.params.discussID} questions={this.state.discuss} />
             </div>
@@ -710,14 +710,14 @@ export default class DiscussContainer extends React.Component {
                     {React.cloneElement(this.props.children, {discuss:this.state.discuss, parentTitle: this.props.parentTitle, parentType: this.state.parentType, currentType: this.state.currentType})}
 
                 </div>
-                <div id={this.state.newTopID}>
+                {/* <div id={this.state.newTopID}>
                     <div id="discussListNewButtonActive" onClick={this.selectNew}>
                         new
                     </div>
                     <div id="discussListTopButtonInactive" onClick={this.selectTop}>
                         top
                     </div>
-                </div>
+                </div> */}
             </div>
             <DiscussUnit linkPath={this.state.linkPath} solutionID={this.props.params.solutionID} discussID={this.props.params.discussID} questions={this.state.discuss} />
         </div>

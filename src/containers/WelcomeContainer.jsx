@@ -9,6 +9,8 @@ import $ from 'jquery';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group'; // ES6
 import ScrollableAnchor from 'react-scrollable-anchor';
 import YouTube from 'react-youtube';
+import NewsUnit from '../components/news/NewsUnit.jsx';
+
 
 
 export default class WelcomeContainer extends React.Component {
@@ -140,27 +142,7 @@ export default class WelcomeContainer extends React.Component {
     }
 
    render() {
-    if (cookie.load('userName')) {
-        return (
-            <div id="welcomeContainer">
-                {/*<Sound
-                    url={require('../assets/jfkSpeech.mp3')}
-                    autoLoad={false}
-                    playStatus={Sound.status.PLAYING}
-                    playFromPosition={87500 //in ms}
-                    onLoading={this.handleSongLoading}
-                    onPlaying={this.handleSongPlaying}
-                    onFinishedPlaying={this.handleSongFinishedPlaying} 
-                    volume={0}/>*/}
-             <Link to="/introduction" activeClassName="activeIntroductionButton">
-                <div id="welcomeIntroductionLabel" onMouseOver={this.hoverText} onMouseOut={this.unHoverText}>
-                    {this.state.introductionTitle}
-                </div>
-             </Link>
-             {this.props.children}
-            </div>
-          );
-        } else if (this.state.tutorial === 'on') {
+        if (this.state.tutorial === 'on') {
             const opts = {
                 // OLD
                 // height: '390',
@@ -173,7 +155,7 @@ export default class WelcomeContainer extends React.Component {
             };
             return (
                 <div id="welcomeContainer">
-                    <div id="tutorialWelcomeVideo">
+                    <div id="newsContainer">
                         <ReactCSSTransitionGroup
                             transitionName="example"
                             transitionAppear={true}
@@ -183,13 +165,7 @@ export default class WelcomeContainer extends React.Component {
                         <div id="fullTutorialHeader" onClick={this.tutorialOff}>
                             <img src={require('../assets/redX.svg')} id="closeRedX" width="30" height="30" alt="Close button, red X symbol" />            
                         </div>
-                        <div id="demoVideoContainerWelcome">
-                            <YouTube
-                                videoId="xyEowRRqF9s"
-                                opts={opts}
-                                onReady={this._onReady}
-                            />
-                        </div>
+                            <NewsUnit />
                         {/* {randomImg()}   */}
                         </ReactCSSTransitionGroup>
                     </div>
@@ -216,27 +192,15 @@ export default class WelcomeContainer extends React.Component {
             return (
                 <div id="welcomeContainer">
                     {/* <div id="tutorialWelcomeButtonOn" onClick={this.tutorialOn}>
-                        tutorial
+                        scientific news
                     </div> */}
-                        
-                        {/*<Sound
-                            url={require('../assets/jfkSpeech.mp3')}
-                            autoLoad={false}
-                            playStatus={Sound.status.PLAYING}
-                            playFromPosition={87500 //in ms}
-                            onLoading={this.handleSongLoading}
-                            onPlaying={this.handleSongPlaying}
-                            onFinishedPlaying={this.handleSongFinishedPlaying} 
-                            volume={0}/>*/}
-                    <div id="welcomeContainerContentNormal">
-                        <Link to="/introduction" activeClassName="activeIntroductionButton">
-                            <div id="welcomeIntroductionLabel" onMouseOver={this.hoverText} onMouseOut={this.unHoverText}>
-                                {this.state.introductionTitle}
-                            </div>
-                        </Link>
-                        {this.props.children}
+                <Link to="/introduction" activeClassName="activeIntroductionButton">
+                    <div id="welcomeIntroductionLabel" onMouseOver={this.hoverText} onMouseOut={this.unHoverText}>
+                        {this.state.introductionTitle}
                     </div>
-                </div>
+                </Link>
+                {this.props.children}
+            </div>
             );
         }
     }

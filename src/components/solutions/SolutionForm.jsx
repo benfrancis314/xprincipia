@@ -25,12 +25,13 @@ export default class SolutionForm extends React.Component {
       linkPath: '',
       private: '',
       dataString: '',
+      userName: '',
     }
 
     this.postSolution = this.postSolution.bind(this);
     this.showPDF = this.showPDF.bind(this);
     this.showProse = this.showProse.bind(this);
-    this.checkLoginProposal = this.checkLoginProposal.bind(this);
+    // this.checkLoginProposal = this.checkLoginProposal.bind(this);
     this.onChange = this.onChange.bind(this);
     this.showDataURL = this.showDataURL.bind(this);
     this.radioChangeProposal = this.radioChangeProposal.bind(this);
@@ -52,6 +53,16 @@ export default class SolutionForm extends React.Component {
         private: '0',
 			})
     }
+    if (cookie.load('userName')) {
+      self.setState({
+        userName: cookie.load('userName'),
+      })
+    }
+    else {
+      self.setState({
+        userName: 'anonymous',
+      })
+    }
   }
 
   componentWillReceiveProps(nextState, nextProps){
@@ -66,7 +77,17 @@ export default class SolutionForm extends React.Component {
         linkPath: '/project/',
         private: '0',
 			})
-		}
+    }
+    if (cookie.load('userName')) {
+      self.setState({
+        userName: cookie.load('userName'),
+      })
+    }
+    else {
+      self.setState({
+        userName: 'anonymous',
+      })
+    }
     // S3 CALL HERE      
   }
 
@@ -96,17 +117,17 @@ export default class SolutionForm extends React.Component {
     })
   }
 
-  checkLoginProposal() {
-    if (cookie.load('userName')) {
-      this.postSolution()
-    } else {
-      $(document).ready(function() {
-        $('#notification').attr('id','notificationShow').hide().slideDown();
-        $('#notificationLoginRegisterContainer').attr('id','notificationLoginRegisterContainerShow');
-        $('#notificationContent').html('please <span id="blue">login </span>to join this discussion');
-      });
-    }
-  }
+  // checkLoginProposal() {
+  //   if (cookie.load('userName')) {
+  //     this.postSolution()
+  //   } else {
+  //     $(document).ready(function() {
+  //       $('#notification').attr('id','notificationShow').hide().slideDown();
+  //       $('#notificationLoginRegisterContainer').attr('id','notificationLoginRegisterContainerShow');
+  //       $('#notificationContent').html('please <span id="blue">login </span>to join this discussion');
+  //     });
+  //   }
+  // }
 
   postSolution() {
     //Read field items into component state
@@ -130,7 +151,7 @@ export default class SolutionForm extends React.Component {
     if (this.state.pdf == '1') {
     // $('#pdfUploadLoaderHide').attr('id','pdfUploadLoaderShow');
     axios.post( Config.API + '/auth/solutions/create', {
-      username: cookie.load('userName'),
+      username: this.state.userName,
       problemID:this.props.probID,
       title : this.state.title,
       summary : this.state.summary,
@@ -378,7 +399,7 @@ radioChangeSolution() {
                     </textarea>
                 </div>
 
-                  <Link to={this.state.linkPath+this.props.probID+'/subprojects'} onClick={this.checkLoginProposal}>
+                  <Link to={this.state.linkPath+this.props.probID+'/subprojects'} onClick={this.postSolution}>
                       <input type="button" ref='proposalbtn' value="create" id="submitSolution"/>
                   </Link>
               {/* </fieldset> */}
