@@ -31,7 +31,7 @@ export default class Load extends React.Component {
     }
 
     render() {   
-        if (this.state.random < 0.2) {
+        if (this.state.random < 1) {
             return (
                 <div id="featuredProjectContainer" onClick={()=>{handleClick1()}}>
                     <div id="featuredProjectLabel">

@@ -41,26 +41,44 @@ export default class Load extends React.Component {
                     <div id="newsUnit1">
                         <div id="newsUnitTitle">
                             <div id="newsTitlePart1">
-                            {/* <span id="blueNews1">signs of </span>ancient life */}
-                            signs of <span id="blueNews1">ancient life</span>
+                            <span id="blueNews1">SIGNS OF </span>ANCIENT LIFE
+                            {/* signs of <span id="blueNews1">ancient life</span> */}
                             </div>
                             <div id="newsTitlePart2">
-                                {/* &nbsp;<span id="blueNews2">found </span>on mars */}
-                                &nbsp;found <span id="blueNews2">on mars</span>
+                                &nbsp;<span id="blueNews2">FOUND </span>ON MARS
+                                {/* &nbsp;found <span id="blueNews2">on mars</span> */}
                             </div>
                         </div>
                         <div id="newsProseContainer1Hide">
                             <div id="newsProse">
-                                Methane deposits <span id="blueOpen">unexplained by planetary processes</span>
+                                <span id="blueNewsProse">Methane deposits unexplained </span>
+                                <br />
+                                by planetary processes
                             </div>
                             <div id="newsProse">
-                                Seasonal layers <span id="blueOpen">similar to those caused by Earth life</span>
+                                <span id="blueNewsProse">Seasonal layers similar to those </span>
+                                <br />
+                                caused by Earth life
                             </div>
-                            <div id="newsArticleLink" onClick={()=>{article1()}}>
-                                washnington post article
-                            </div>
-                            <div id="newsPaperLink" onClick={()=>{paper1()}}>
-                                nasa paper
+                            <a href="https://www.washingtonpost.com/news/speaking-of-science/wp/2018/06/07/newest-nasa-discoveries-make-search-for-martian-life-a-lot-more-opportune/?noredirect=on&utm_term=.06070ebc1880" target="_blank"  
+                            // onClick={()=>{article1()}} 
+                            onMouseOver={article1Hover}  onMouseOut={article1Unhover}>
+                                <div id="newsArticleLink1">
+                                    ARTICLE
+                                </div>
+                            </a>
+                            {/* CNN */}
+                            {/* https://www.cnn.com/2018/06/08/opinions/nasa-curiosity-rover-mars-organic-matter-opinion-lunine/index.html */}
+                            <a href="http://science.sciencemag.org/content/360/6393/1096.full" target="_blank" 
+                            // onClick={()=>{paper1()}} 
+                            onMouseOver={paper1Hover}  onMouseOut={paper1Unhover}>
+                                <div id="newsPaperLink1">
+                                    PAPER
+                                </div>
+                            </a>
+                            {/*  */}
+                            <div id="newsDate">
+                                <span id="blueNewsDate">JUNE </span>2018
                             </div>
                         </div>
                         
@@ -82,7 +100,7 @@ function newsClick1() {
         $('#blueNews1').attr('id','blueNews1Active');
         $('#blueNews2').attr('id','blueNews2Active');
         // .hide().slideDown();
-      });
+    });
     ReactGA.event({
         // Replace with "Created project", "voted question", etc. 
         category: 'View News',
@@ -98,8 +116,29 @@ function article1() {
     });
 }
 function paper1() {
+    console.log('paper event')
     ReactGA.event({
         category: 'Paper Link',
         action: 'Mars Methane',
+    });
+}
+function article1Hover() {
+    $(document).ready(function() {
+        $('#newsArticleLink1').html('GO TO <span id="whiteEncode">WASH POST</span>');
+    });
+}
+function article1Unhover() {
+    $(document).ready(function() {
+        $('#newsArticleLink1').html('ARTICLE');
+    });
+}
+function paper1Hover() {
+    $(document).ready(function() {
+        $('#newsPaperLink1').html('GO TO <span id="blueEncode">SCIENCE</span>');
+    });
+}
+function paper1Unhover() {
+    $(document).ready(function() {
+        $('#newsPaperLink1').html('PAPER');
     });
 }
