@@ -17519,7 +17519,7 @@ option {
   background-blend-mode: overlay;
   background-color: rgba(15,19,28,0.95);
   background-position: center;
-  /* background-repeat: no-repeat; */
+  background-repeat: no-repeat;
 }
 #SPHeaderMathematics, #SPHeaderGreenMathematics, #SPHeaderRedMathematics {
   background-image: url('./projectPhotos/academyXLarge.jpg');
@@ -17537,17 +17537,23 @@ option {
 }
 #SPHeaderStructureDynamicsHumanMind, #SPHeaderGreenStructureDynamicsHumanMind, #SPHeaderRedStructureDynamicsHumanMind {
   background-image: url('./projectPhotos/creationAdam1.jpg');
-  background-size: 161%; 
+  /* A */
+  /* background-size: 161%;  */
+  /* B */
+  background-size: 270%; 
   background-blend-mode: overlay;
   background-color: rgba(15,19,28,0.95);
-  background-position: 33% center;
+  /* A */
+  /* background-position: 33% center; */
+  /* B */
+  background-position: 50% center;
 }
 #SPHeaderAGI, #SPHeaderGreenAGI, #SPHeaderRedAGI {
   background-image: url('./projectPhotos/aiTom1.jpg');
-  background-size: 108%; 
+  background-size: 330%; 
   background-blend-mode: overlay;
   background-color: rgba(15,19,28,0.95);
-  background-position: center;
+  background-position: 75% center;
 }
 #SPHeaderEarth, #SPHeaderGreenEarth, #SPHeaderRedEarth {
   background-image: url('./projectPhotos/blueMarble2012.jpg');
@@ -17565,14 +17571,17 @@ option {
 }
 #SPHeaderAbiogenesis, #SPHeaderGreenAbiogenesis, #SPHeaderRedAbiogenesis {
   background-image: url('./projectPhotos/ocean1.jpg');
-  background-size: 108%; 
+  background-size: 180%; 
   background-blend-mode: overlay;
   background-color: rgba(15,19,28,0.95);
-  background-position: center;
+  background-position: 25% 25%;
+
+  border-color: #ff7f7f;
+  box-shadow: 0 0 2pt 2pt rgba(255, 127, 127, 0.5);
 }
 #SPHeaderEnhancingBrain, #SPHeaderGreenEnhancingBrain, #SPHeaderRedEnhancingBrain {
   background-image: url('./projectPhotos/tractographyHuman.gif');
-  background-size: 108%; 
+  background-size: 190%; 
   background-blend-mode: overlay;
   background-color: rgba(15,19,28,0.95);
   background-position: center;
@@ -17624,6 +17633,7 @@ option {
 }
 #SPHeaderAbiogenesis:hover, #SPHeaderGreenAbiogenesis:hover, #SPHeaderRedAbiogenesis:hover {
   background-image: url('./projectPhotos/ocean1.jpg');
+  box-shadow: 0 0 1pt 3pt rgba(255,127,127,0.5);
 }
 #SPHeaderEnhancingBrain:hover, #SPHeaderGreenEnhancingBrain:hover, #SPHeaderRedEnhancingBrain:hover {
   background-image: url('./projectPhotos/tractographyHuman.gif');
