@@ -35,7 +35,7 @@ export default class DiscussContainer extends React.Component {
                     linkPath: '/project/',
                 })
             }
-            axios.get( Config.API + '/learnItems/bytype/combined?problem_id='+this.props.params.probID).then(function (response) {
+            axios.get( Config.API + '/learnItems/bytype/combined?id='+this.props.params.probID).then(function (response) {
                 if(response.data.length > 0) {
                     self.setState({
                         newTopID: 'discussListSelectButton',
@@ -52,17 +52,17 @@ export default class DiscussContainer extends React.Component {
                     })
                 } 
             }) 
-            axios.get( Config.API + '/learnItems/bytype/combined/number?problem_id='+this.props.params.probID).then(function (response) {
+            axios.get( Config.API + '/learnItems/bytype/combined/number?id='+this.props.params.probID).then(function (response) {
                 self.setState({
                     learnNumber: response.data
                 })
             })
-            axios.get( Config.API + '/learnItems/bytype/learnitem/number?problem_id='+this.props.params.probID).then(function (response) {
+            axios.get( Config.API + '/learnItems/bytype/learnitem/number?id='+this.props.params.probID).then(function (response) {
                 self.setState({
                     educationalNumber: response.data
                 })
             })
-            axios.get( Config.API + '/learnItems/bytype/resource/number?problem_id='+this.props.params.probID).then(function (response) {
+            axios.get( Config.API + '/learnItems/bytype/resource/number?id='+this.props.params.probID).then(function (response) {
                 self.setState({
                     researchNumber: response.data
                 })
@@ -79,7 +79,7 @@ export default class DiscussContainer extends React.Component {
                     linkPath: '/project/',
                 })
             }
-            axios.get( Config.API + '/learnItems/bytype/combined?problem_id='+self.props.params.probID).then(function (response) {
+            axios.get( Config.API + '/learnItems/bytype/combined?id='+self.props.params.probID).then(function (response) {
                 if (response.data.length > 0) {
                     self.setState({
                         newTopID: 'discussListSelectButton',
@@ -96,17 +96,17 @@ export default class DiscussContainer extends React.Component {
                     })
                 }
             }) 
-            axios.get( Config.API + '/learnItems/bytype/combined/number?problem_id='+self.props.params.probID).then(function (response) {
+            axios.get( Config.API + '/learnItems/bytype/combined/number?id='+self.props.params.probID).then(function (response) {
                 self.setState({
                     learnNumber: response.data
                 })
             })
-            axios.get( Config.API + '/learnItems/bytype/learnitem/number?problem_id='+self.props.params.probID).then(function (response) {
+            axios.get( Config.API + '/learnItems/bytype/learnitem/number?id='+self.props.params.probID).then(function (response) {
                 self.setState({
                     educationalNumber: response.data
                 })
             })
-            axios.get( Config.API + '/learnItems/bytype/resource/number?problem_id='+self.props.params.probID).then(function (response) {
+            axios.get( Config.API + '/learnItems/bytype/resource/number?id='+self.props.params.probID).then(function (response) {
                 self.setState({
                     researchNumber: response.data
                 })
@@ -120,7 +120,7 @@ export default class DiscussContainer extends React.Component {
         });
         var self = this;
         if(this.state.newTopSelect === 'new') {
-            axios.get( Config.API + '/learnItems/bytype/combined?problem_id='+this.props.params.probID).then(function (response) {
+            axios.get( Config.API + '/learnItems/bytype/combined?id='+this.props.params.probID).then(function (response) {
                 if(response.data.length > 0) {
                     self.setState({
                         newTopID: 'discussListSelectButton',
@@ -136,7 +136,7 @@ export default class DiscussContainer extends React.Component {
                 }
             }) 
         } else {
-            axios.get( Config.API + '/learnItems/bytype/combined/byrank?problem_id='+this.props.params.probID).then(function (response) {
+            axios.get( Config.API + '/learnItems/bytype/combined/byrank?id='+this.props.params.probID).then(function (response) {
                 if(response.data.length > 0) {
                     self.setState({
                         newTopID: 'discussListSelectButton',
@@ -162,7 +162,7 @@ export default class DiscussContainer extends React.Component {
         });
         var self = this;
         if(this.state.newTopSelect === 'new') {
-            axios.get( Config.API + '/learnItems/bytype/learnitem?problem_id='+this.props.params.probID).then(function (response) {
+            axios.get( Config.API + '/learnItems/bytype/learnitem?id='+this.props.params.probID).then(function (response) {
                 if(response.data.length > 0) {
                     self.setState({
                         newTopID: 'discussListSelectButton',
@@ -178,7 +178,7 @@ export default class DiscussContainer extends React.Component {
                 }
             }) 
         } else {
-            axios.get( Config.API + '/learnItems/bytype/learnitem/byrank?problem_id='+this.props.params.probID).then(function (response) {
+            axios.get( Config.API + '/learnItems/bytype/learnitem/byrank?id='+this.props.params.probID).then(function (response) {
                 if(response.data.length > 0) {
                     self.setState({
                         newTopID: 'discussListSelectButton',
@@ -203,7 +203,7 @@ export default class DiscussContainer extends React.Component {
         });
         var self = this;
         if(this.state.newTopSelect === 'new') {
-            axios.get( Config.API + '/learnItems/bytype/resource?problem_id='+this.props.params.probID).then(function (response) {
+            axios.get( Config.API + '/learnItems/bytype/resource?id='+this.props.params.probID).then(function (response) {
                 if(response.data.length > 0) {
                     self.setState({
                         newTopID: 'discussListSelectButton',
@@ -219,7 +219,7 @@ export default class DiscussContainer extends React.Component {
                 }
             }) 
         } else {
-            axios.get( Config.API + '/learnItems/bytype/resource/byrank?problem_id='+this.props.params.probID).then(function (response) {
+            axios.get( Config.API + '/learnItems/bytype/resource/byrank?id='+this.props.params.probID).then(function (response) {
                 if(response.data.length > 0) {
                     self.setState({
                         newTopID: 'discussListSelectButton',

@@ -5268,7 +5268,7 @@ letter-spacing: 7px;
   background-position: center 23%;
 }
 #pointsLevelTitleFuture {
-  background-image: url('./academy1.jpg'); 
+  background-image: url('./projectPhotos/academy1.jpg'); 
   background-size: 120%; 
   background-position: center 35%;
 }
@@ -5302,7 +5302,7 @@ background-position: center 48%;
   background-position: center 23%;
 }
 #pointsLevelTitleFuture:active {
-  background-image: url('./academy1.jpg');
+  background-image: url('./projectPhotos/academy1.jpg');
   background-size: 130%; 
   background-position: center 35%;
 }
@@ -8961,10 +8961,12 @@ cursor: pointer;
   align-items: center; 
   justify-content: center;
   box-shadow: 0 0 2pt 2pt rgba(0, 220, 255, 0.5);
-
   transition: all 0.5s ease 0s;
   margin: 0 auto;
   background: radial-gradient(circle, rgba(0,220,255,0.05), rgba(0,220,255,0.05), rgba(0,220,255,0.1), rgba(0,220,255,0.05));
+
+  /* NEW */
+  font-size: 102.5%;
 }
 #SPHeaderNew {
   background-image: url('./circle1Blue.svg'); 
@@ -9018,9 +9020,11 @@ cursor: pointer;
 margin: 0 auto;
 padding: 5px 10px 5px 10px;
 /* OLD */
-/* font-size: 120%; */
-/* NEW */
-font-size: 110%;
+font-size: 120%;
+/* NEW A*/
+/* font-size: 110%; */
+/* NEW B */
+font-size: 117.5%;
 color: #dddddd;
 word-wrap: break-word; 
 word-break: break-word;
@@ -11700,7 +11704,7 @@ background-color: #ff7f7f;
   background-color: rgba(15,19,28,1); */
 }
 #easterEgg2 {
-  background-image: url('./newtonBlake.jpg');  
+  background-image: url('./projectPhotos/newtonBlake.jpg');  
   /* background-size: contain; */
   background-position: center center;
   background-repeat: no-repeat;
@@ -13257,7 +13261,7 @@ flex-direction: column;
   background-size: 100%;
   background-position: 100% 25%; */
   /* NEW */
-  background-image: url('./creationAdam1.jpg'); 
+  background-image: url('./projectPhotos/creationAdam1.jpg'); 
   background-size: 121%; 
   background-repeat: no-repeat;
   background-color: rgba(15,19,28,0.9);
@@ -13277,7 +13281,7 @@ flex-direction: column;
   background-position: center 35%;
 }
 #featuredProjectButton3 {
-  background-image: url('./aiTom1.jpg'); 
+  background-image: url('./projectPhotos/aiTom1.jpg'); 
   background-size: 100%;
   background-position: 100% 65%;
   font-size: 90%;
@@ -13303,7 +13307,7 @@ flex-direction: column;
 }
 #featuredProjectButton4 {
   /* background-image: url('./darwinPlants.png');  */
-  background-image: url('./plants2.jpg'); 
+  background-image: url('./projectPhotos/plants2.jpg'); 
   background-size: 100%; 
   /* background-position: center 22%; */
   background-position: center 8%;
@@ -13311,13 +13315,13 @@ flex-direction: column;
 }
 #featuredProjectButton5 {
   /* background-image: url('./tripMoon1.jpg');  */
-  background-image: url('./apollo11.jpg'); 
+  background-image: url('./projectPhotos/apollo11.jpg'); 
   background-size: 100%; 
   background-position: center 35%;
 }
 #featuredProjectButton6 {
   /* background-image: url('./tripMoon1.jpg');  */
-  background-image: url('./ocean1.jpg'); 
+  background-image: url('./projectPhotos/ocean1.jpg'); 
   background-size: 100%; 
   background-position: center 0%;
 }
@@ -17469,12 +17473,212 @@ option {
 
 
 
+
+
+
+
+
+
+
+/* PROJECT PHOTOS */
+
+
+#SPHeaderUniverse, #SPHeaderGreenUniverse, #SPHeaderRedUniverse, 
+#SPHeaderMathematics, #SPHeaderGreenMathematics, #SPHeaderRedMathematics, 
+#SPHeaderColonizingMoon, #SPHeaderGreenColonizingMoon, #SPHeaderRedColonizingMoon,
+#SPHeaderStructureDynamicsHumanMind, #SPHeaderGreenStructureDynamicsHumanMind, #SPHeaderRedStructureDynamicsHumanMind, 
+#SPHeaderAGI, #SPHeaderGreenAGI, #SPHeaderRedAGI, 
+#SPHeaderEarth, #SPHeaderGreenEarth, #SPHeaderRedEarth, 
+#SPHeaderPlantIntelligence, #SPHeaderGreenPlantIntelligence, #SPHeaderRedPlantIntelligence, 
+#SPHeaderAbiogenesis, #SPHeaderGreenAbiogenesis, #SPHeaderRedAbiogenesis, 
+#SPHeaderEnhancingBrain, #SPHeaderGreenEnhancingBrain, #SPHeaderRedEnhancingBrain, 
+#SPHeaderCosmogenesis, #SPHeaderGreenCosmogenesis, #SPHeaderRedCosmogenesis  {
+  display: flex;
+  flex-direction: column;
+  border: 2px solid rgba(0, 220, 255, 1);
+  border-radius: 100%;
+  position: relative;
+  width: 11em;
+  height: 11em;
+  word-wrap: break-word; 
+  align-items: center; 
+  justify-content: center;
+  color: #ffffff;
+  box-shadow: 0 0 2pt 2pt rgba(0, 220, 255, 0.5);
+
+  font-size: 102.5%;
+  transition: all 0.5s ease 0s;
+  margin: 0 auto;
+  /* background: radial-gradient(circle, rgba(0,220,255,0.05), rgba(0,220,255,0.05), rgba(0,220,255,0.1), rgba(0,220,255,0.05)); */
+
+  box-shadow: 0 0 2pt 2pt rgba(0,220,255,0.5);
+  transition: all 1s ease 0s;
+  background-image: url('./projectPhotos/logarithmicUniverse.png');
+  /* background-image: url('./projectPhotos/logarithmicUniverse.png'), radial-gradient(circle, rgba(0,220,255,0.2), rgba(0,220,255,0.2)); */
+  background-size: 108%; 
+  background-blend-mode: overlay;
+  background-color: rgba(15,19,28,0.95);
+  background-position: center;
+  /* background-repeat: no-repeat; */
+}
+#SPHeaderMathematics, #SPHeaderGreenMathematics, #SPHeaderRedMathematics {
+  background-image: url('./projectPhotos/academyXLarge.jpg');
+  background-size: 138%; 
+  background-blend-mode: overlay;
+  background-color: rgba(15,19,28,0.95);
+  background-position: 53.5% center;
+}
+#SPHeaderColonizingMoon, #SPHeaderGreenColonizingMoon, #SPHeaderRedColonizingMoon {
+  background-image: url('./projectPhotos/apollo11.jpg');
+  background-size: 125%; 
+  background-blend-mode: overlay;
+  background-color: rgba(15,19,28,0.98);
+  background-position: center;
+}
+#SPHeaderStructureDynamicsHumanMind, #SPHeaderGreenStructureDynamicsHumanMind, #SPHeaderRedStructureDynamicsHumanMind {
+  background-image: url('./projectPhotos/creationAdam1.jpg');
+  background-size: 161%; 
+  background-blend-mode: overlay;
+  background-color: rgba(15,19,28,0.95);
+  background-position: 33% center;
+}
+#SPHeaderAGI, #SPHeaderGreenAGI, #SPHeaderRedAGI {
+  background-image: url('./projectPhotos/aiTom1.jpg');
+  background-size: 108%; 
+  background-blend-mode: overlay;
+  background-color: rgba(15,19,28,0.95);
+  background-position: center;
+}
+#SPHeaderEarth, #SPHeaderGreenEarth, #SPHeaderRedEarth {
+  background-image: url('./projectPhotos/blueMarble2012.jpg');
+  background-size: 121%; 
+  background-blend-mode: overlay;
+  background-color: rgba(15,19,28,0.95);
+  background-position: center 44%;
+}
+#SPHeaderPlantIntelligence, #SPHeaderGreenPlantIntelligence, #SPHeaderRedPlantIntelligence {
+  background-image: url('./projectPhotos/plants2.jpg');
+  background-size: 108%; 
+  background-blend-mode: overlay;
+  background-color: rgba(15,19,28,0.95);
+  background-position: center;
+}
+#SPHeaderAbiogenesis, #SPHeaderGreenAbiogenesis, #SPHeaderRedAbiogenesis {
+  background-image: url('./projectPhotos/ocean1.jpg');
+  background-size: 108%; 
+  background-blend-mode: overlay;
+  background-color: rgba(15,19,28,0.95);
+  background-position: center;
+}
+#SPHeaderEnhancingBrain, #SPHeaderGreenEnhancingBrain, #SPHeaderRedEnhancingBrain {
+  background-image: url('./projectPhotos/tractographyHuman.gif');
+  background-size: 108%; 
+  background-blend-mode: overlay;
+  background-color: rgba(15,19,28,0.95);
+  background-position: center;
+}
+#SPHeaderCosmogenesis, #SPHeaderGreenCosmogenesis, #SPHeaderRedCosmogenesis {
+  background-image: url('./projectPhotos/creationSun.jpg');
+  background-size: 215%; 
+  background-blend-mode: overlay;
+  background-color: rgba(15,19,28,0.95);
+  background-position: 66% 0%;
+
+  border-color: #ff7f7f;
+  box-shadow: 0 0 2pt 2pt rgba(255, 127, 127, 0.5);
+}
+#SPHeaderUniverse:hover, #SPHeaderGreenUniverse:hover, #SPHeaderRedUniverse:hover, 
+#SPHeaderMathematics:hover, #SPHeaderGreenMathematics.activeBlue, #SPHeaderRedMathematics:hover,
+#SPHeaderColonizingMoon:hover, #SPHeaderGreenColonizingMoon:hover, #SPHeaderRedColonizingMoon:hover,
+#SPHeaderStructureDynamicsHumanMind:hover, #SPHeaderGreenStructureDynamicsHumanMind:hover, #SPHeaderRedStructureDynamicsHumanMind:hover,
+#SPHeaderAGI:hover, #SPHeaderGreenAGI:hover, #SPHeaderRedAGI:hover,
+#SPHeaderEarth:hover, #SPHeaderGreenEarth:hover, #SPHeaderRedEarth:hover,
+#SPHeaderPlantIntelligence:hover, #SPHeaderGreenPlantIntelligence:hover, #SPHeaderRedPlantIntelligence:hover,
+#SPHeaderAbiogenesis:hover, #SPHeaderGreenAbiogenesis:hover, #SPHeaderRedAbiogenesis:hover,
+#SPHeaderEnhancingBrain:hover, #SPHeaderGreenEnhancingBrain:hover, #SPHeaderRedEnhancingBrain:hover,
+#SPHeaderCosmogenesis:hover, #SPHeaderGreenCosmogenesis:hover, #SPHeaderRedCosmogenesis:hover {
+  background-image: url('./projectPhotos/logarithmicUniverse.png');
+  box-shadow: 0 0 1pt 3pt rgba(0,220,255,0.5);
+  background-color: rgba(15,19,28,0);
+  background-blend-mode: overlay;
+  transform: scale(1.02);
+  cursor: pointer;
+}
+#SPHeaderMathematics:hover, #SPHeaderGreenMathematics:hover, #SPHeaderRedMathematics:hover {
+  background-image: url('./projectPhotos/academyXLarge.jpg');
+}
+#SPHeaderColonizingMoon:hover, #SPHeaderGreenColonizingMoon:hover, #SPHeaderRedColonizingMoon:hover {
+  background-image: url('./projectPhotos/apollo11.jpg');
+}
+#SPHeaderStructureDynamicsHumanMind:hover, #SPHeaderGreenStructureDynamicsHumanMind:hover, #SPHeaderRedStructureDynamicsHumanMind:hover {
+  background-image: url('./projectPhotos/creationAdam1.jpg');
+}
+#SPHeaderAGI:hover, #SPHeaderGreenAGI:hover, #SPHeaderRedAGI:hover {
+  background-image: url('./projectPhotos/aiTom1.jpg');
+}
+#SPHeaderEarth:hover, #SPHeaderGreenEarth:hover, #SPHeaderRedEarth:hover {
+  background-image: url('./projectPhotos/blueMarble2012.jpg');
+}
+#SPHeaderPlantIntelligence:hover, #SPHeaderGreenPlantIntelligence:hover, #SPHeaderRedPlantIntelligence:hover {
+  background-image: url('./projectPhotos/plants2.jpg');
+}
+#SPHeaderAbiogenesis:hover, #SPHeaderGreenAbiogenesis:hover, #SPHeaderRedAbiogenesis:hover {
+  background-image: url('./projectPhotos/ocean1.jpg');
+}
+#SPHeaderEnhancingBrain:hover, #SPHeaderGreenEnhancingBrain:hover, #SPHeaderRedEnhancingBrain:hover {
+  background-image: url('./projectPhotos/tractographyHuman.gif');
+}
+#SPHeaderCosmogenesis:hover, #SPHeaderGreenCosmogenesis:hover, #SPHeaderRedCosmogenesis:hover {
+  background-image: url('./projectPhotos/creationSun.jpg');
+  box-shadow: 0 0 1pt 3pt rgba(255,127,127,0.5);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /*XPrincipia Day*/
 
 /* DESIGN: RED */
 
-#errorLoadContainerDay {
-    /* margin-top: 2%; */
+/* #errorLoadContainerDay {
     width: 100vw;
     height: 100vh;
     transition: all 6s ease 0s;
@@ -17491,14 +17695,7 @@ option {
 }
 #dayRed {
   color: hsl(0, 100%, 50%);
-}
-
-
-
-
-
-
-
+} */
 
 
 

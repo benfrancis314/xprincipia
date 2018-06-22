@@ -141,7 +141,7 @@ export default class SubProblemUnit extends React.Component {
         return (
             <Link key={problem.ID} to={this.state.linkPath+problem.ID + this.state.destinationPath}>
                 <li id="SPUnit">
-                    <div id="SPHeader" onMouseOver={this.hoverProject} onMouseOut={this.unHoverProject}>
+                    <div id={"SPHeader"+problem.Picture} onMouseOver={this.hoverProject} onMouseOut={this.unHoverProject}>
                         <div id="SPTitleSmall">{problem.Title}</div>
                         <div id="SPPercent">{problem.Rank}</div>
                     </div>
@@ -152,7 +152,7 @@ export default class SubProblemUnit extends React.Component {
             return (
                 <Link key={problem.ID} to={this.state.linkPath+problem.ID + this.state.destinationPath}>
                     <li id="SPUnit">
-                        <div id="SPHeaderRed" onMouseOver={this.hoverProject} onMouseOut={this.unHoverProject}>
+                        <div id={"SPHeaderRed"+problem.Picture} onMouseOver={this.hoverProject} onMouseOut={this.unHoverProject}>
                             <div id="SPTitleRed">
                                 <span id="redProject">problem</span>
                                 <br />
@@ -167,7 +167,7 @@ export default class SubProblemUnit extends React.Component {
             return (
                 <Link key={problem.ID} to={this.state.linkPath+problem.ID + this.state.destinationPath}>
                     <li id="SPUnit">
-                        <div id="SPHeaderGreen" onMouseOver={this.hoverProject} onMouseOut={this.unHoverProject}>
+                        <div id={"SPHeaderGreen"+problem.Picture} onMouseOver={this.hoverProject} onMouseOut={this.unHoverProject}>
                             <div id="SPTitleGreen">
                                 <span id="greenProject">goal</span>
                                 <br />
@@ -182,7 +182,7 @@ export default class SubProblemUnit extends React.Component {
             return (
                 <Link key={problem.ID} to={this.state.linkPath+problem.ID + this.state.destinationPath}>
                     {/* <li id="SPUnit"> */}
-                        <div id="SPHeader" onMouseOver={this.hoverProject} onMouseOut={this.unHoverProject}>
+                        <div id={"SPHeader"+problem.Picture} onMouseOver={this.hoverProject} onMouseOut={this.unHoverProject}>
                             <div id="SPTitle">{problem.Title}</div>
                             <div id="SPPercent">{problem.Rank}</div>
                         </div>

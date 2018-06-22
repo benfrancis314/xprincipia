@@ -42,11 +42,9 @@ export default class Load extends React.Component {
                         <div id="newsUnitTitle">
                             <div id="newsTitlePart1">
                             <span id="blueNews1">SIGNS OF </span>ANCIENT LIFE
-                            {/* signs of <span id="blueNews1">ancient life</span> */}
                             </div>
                             <div id="newsTitlePart2">
                                 &nbsp;<span id="blueNews2">FOUND </span>ON MARS
-                                {/* &nbsp;found <span id="blueNews2">on mars</span> */}
                             </div>
                         </div>
                         <div id="newsProseContainer1Hide">
@@ -69,7 +67,7 @@ export default class Load extends React.Component {
                             </a>
                             {/* CNN */}
                             {/* https://www.cnn.com/2018/06/08/opinions/nasa-curiosity-rover-mars-organic-matter-opinion-lunine/index.html */}
-                            <a href="http://science.sciencemag.org/content/360/6393/1096.full" target="_blank" 
+                            <a href="http://science.sciencemag.org/content/360/6393/1093.full" target="_blank" 
                             // onClick={()=>{paper1()}} 
                             onMouseOver={paper1Hover}  onMouseOut={paper1Unhover}>
                                 <div id="newsPaperLink1">

@@ -142,7 +142,19 @@ export default class WelcomeContainer extends React.Component {
     }
 
    render() {
-        if (this.state.tutorial === 'on') {
+        
+    if (window.location.pathname.includes('introduction')) {
+        return (
+            <div id="welcomeContainer">
+                <Link to="/introduction" activeClassName="activeIntroductionButton">
+                    <div id="welcomeIntroductionLabel" onMouseOver={this.hoverText} onMouseOut={this.unHoverText}>
+                        {this.state.introductionTitle}
+                    </div>
+                </Link>
+                {this.props.children}
+            </div>
+        );
+    } else if (this.state.tutorial === 'on') {
             const opts = {
                 // OLD
                 // height: '390',
@@ -191,16 +203,16 @@ export default class WelcomeContainer extends React.Component {
         } else {
             return (
                 <div id="welcomeContainer">
-                    <div id="tutorialWelcomeButtonOn" onClick={this.tutorialOn}>
-                        scientific news
-                    </div>
-                <Link to="/introduction" activeClassName="activeIntroductionButton">
-                    <div id="welcomeIntroductionLabel" onMouseOver={this.hoverText} onMouseOut={this.unHoverText}>
-                        {this.state.introductionTitle}
-                    </div>
-                </Link>
-                {this.props.children}
-            </div>
+                        <div id="tutorialWelcomeButtonOn" onClick={this.tutorialOn}>
+                            scientific news
+                        </div>
+                    <Link to="/introduction" activeClassName="activeIntroductionButton">
+                        <div id="welcomeIntroductionLabel" onMouseOver={this.hoverText} onMouseOut={this.unHoverText}>
+                            {this.state.introductionTitle}
+                        </div>
+                    </Link>
+                    {this.props.children}
+                </div>
             );
         }
     }
