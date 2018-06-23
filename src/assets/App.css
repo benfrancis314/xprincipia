@@ -17492,7 +17492,8 @@ option {
 #SPHeaderPlantIntelligence, #SPHeaderGreenPlantIntelligence, #SPHeaderRedPlantIntelligence, 
 #SPHeaderAbiogenesis, #SPHeaderGreenAbiogenesis, #SPHeaderRedAbiogenesis, 
 #SPHeaderEnhancingBrain, #SPHeaderGreenEnhancingBrain, #SPHeaderRedEnhancingBrain, 
-#SPHeaderCosmogenesis, #SPHeaderGreenCosmogenesis, #SPHeaderRedCosmogenesis  {
+#SPHeaderCosmogenesis, #SPHeaderGreenCosmogenesis, #SPHeaderRedCosmogenesis,
+#SPHeaderMind, #SPHeaderGreenMind, #SPHeaderRedMind  {
   display: flex;
   flex-direction: column;
   border: 2px solid rgba(0, 220, 255, 1);
@@ -17585,6 +17586,9 @@ option {
   background-blend-mode: overlay;
   background-color: rgba(15,19,28,0.95);
   background-position: center;
+
+  border-color: #00ffdc;
+  box-shadow: 0 0 2pt 2pt rgba(0,255,220, 0.5);
 }
 #SPHeaderCosmogenesis, #SPHeaderGreenCosmogenesis, #SPHeaderRedCosmogenesis {
   background-image: url('./projectPhotos/creationSun.jpg');
@@ -17596,6 +17600,13 @@ option {
   border-color: #ff7f7f;
   box-shadow: 0 0 2pt 2pt rgba(255, 127, 127, 0.5);
 }
+#SPHeaderMind, #SPHeaderGreenMind, #SPHeaderRedMind {
+  background-image: url('./projectPhotos/mandalaGif1.gif');
+  background-size: 100%; 
+  background-blend-mode: overlay;
+  background-color: rgba(15,19,28,0.95);
+  background-position: center;
+}
 #SPHeaderUniverse:hover, #SPHeaderGreenUniverse:hover, #SPHeaderRedUniverse:hover, 
 #SPHeaderMathematics:hover, #SPHeaderGreenMathematics.activeBlue, #SPHeaderRedMathematics:hover,
 #SPHeaderColonizingMoon:hover, #SPHeaderGreenColonizingMoon:hover, #SPHeaderRedColonizingMoon:hover,
@@ -17605,7 +17616,8 @@ option {
 #SPHeaderPlantIntelligence:hover, #SPHeaderGreenPlantIntelligence:hover, #SPHeaderRedPlantIntelligence:hover,
 #SPHeaderAbiogenesis:hover, #SPHeaderGreenAbiogenesis:hover, #SPHeaderRedAbiogenesis:hover,
 #SPHeaderEnhancingBrain:hover, #SPHeaderGreenEnhancingBrain:hover, #SPHeaderRedEnhancingBrain:hover,
-#SPHeaderCosmogenesis:hover, #SPHeaderGreenCosmogenesis:hover, #SPHeaderRedCosmogenesis:hover {
+#SPHeaderCosmogenesis:hover, #SPHeaderGreenCosmogenesis:hover, #SPHeaderRedCosmogenesis:hover,
+#SPHeaderMind:hover, #SPHeaderGreenMind:hover, #SPHeaderRedMind:hover {
   background-image: url('./projectPhotos/logarithmicUniverse.png');
   box-shadow: 0 0 1pt 3pt rgba(0,220,255,0.5);
   background-color: rgba(15,19,28,0);
@@ -17637,10 +17649,14 @@ option {
 }
 #SPHeaderEnhancingBrain:hover, #SPHeaderGreenEnhancingBrain:hover, #SPHeaderRedEnhancingBrain:hover {
   background-image: url('./projectPhotos/tractographyHuman.gif');
+  box-shadow: 0 0 1pt 3pt rgba(0,255,220,0.5);
 }
 #SPHeaderCosmogenesis:hover, #SPHeaderGreenCosmogenesis:hover, #SPHeaderRedCosmogenesis:hover {
   background-image: url('./projectPhotos/creationSun.jpg');
   box-shadow: 0 0 1pt 3pt rgba(255,127,127,0.5);
+}
+#SPHeaderMind:hover, #SPHeaderGreenMind:hover, #SPHeaderRedMind:hover {
+  background-image: url('./projectPhotos/mandalaGif1.gif');
 }
 
 
