@@ -68,14 +68,18 @@ html, body {
   height: 100vh;
 }
 body {
-  color: #dddddd;
   font-family: 'Alegreya Sans SC', sans-serif;
   margin: 0 auto;
   position: relative;
-  background-color: #0f131c;
+  /* background-color: #0f131c; */
 }
 #fullWide {
   width: 100%;
+}
+#positionRelativeLayout {
+  background-color: #0f131c;
+  color: #dddddd;
+  position: relative;
 }
 #positionRelative {
   position: relative;
@@ -2418,7 +2422,6 @@ text-align: center;
   text-align: center;
 }
 #xBlue {
-  color: rgba(0,220,255,0.5);
   color: rgba(0,220,255,0.75);
   transition: all 2s ease 0s;
 }
@@ -17493,7 +17496,8 @@ option {
 #SPHeaderAbiogenesis, #SPHeaderGreenAbiogenesis, #SPHeaderRedAbiogenesis, 
 #SPHeaderEnhancingBrain, #SPHeaderGreenEnhancingBrain, #SPHeaderRedEnhancingBrain, 
 #SPHeaderCosmogenesis, #SPHeaderGreenCosmogenesis, #SPHeaderRedCosmogenesis,
-#SPHeaderMind, #SPHeaderGreenMind, #SPHeaderRedMind  {
+#SPHeaderMind, #SPHeaderGreenMind, #SPHeaderRedMind, 
+#SPHeaderBCI, #SPHeaderGreenBCI, #SPHeaderRedBCI  {
   display: flex;
   flex-direction: column;
   border: 2px solid rgba(0, 220, 255, 1);
@@ -17607,6 +17611,13 @@ option {
   background-color: rgba(15,19,28,0.95);
   background-position: center;
 }
+#SPHeaderBCI, #SPHeaderGreenBCI, #SPHeaderRedBCI {
+  background-image: url('./projectPhotos/brainConnectivity.jpg');
+  background-size: 220%; 
+  background-blend-mode: overlay;
+  background-color: rgba(15,19,28,0.95);
+  background-position: 95% 54%;
+}
 #SPHeaderUniverse:hover, #SPHeaderGreenUniverse:hover, #SPHeaderRedUniverse:hover, 
 #SPHeaderMathematics:hover, #SPHeaderGreenMathematics.activeBlue, #SPHeaderRedMathematics:hover,
 #SPHeaderColonizingMoon:hover, #SPHeaderGreenColonizingMoon:hover, #SPHeaderRedColonizingMoon:hover,
@@ -17617,7 +17628,8 @@ option {
 #SPHeaderAbiogenesis:hover, #SPHeaderGreenAbiogenesis:hover, #SPHeaderRedAbiogenesis:hover,
 #SPHeaderEnhancingBrain:hover, #SPHeaderGreenEnhancingBrain:hover, #SPHeaderRedEnhancingBrain:hover,
 #SPHeaderCosmogenesis:hover, #SPHeaderGreenCosmogenesis:hover, #SPHeaderRedCosmogenesis:hover,
-#SPHeaderMind:hover, #SPHeaderGreenMind:hover, #SPHeaderRedMind:hover {
+#SPHeaderMind:hover, #SPHeaderGreenMind:hover, #SPHeaderRedMind:hover,
+#SPHeaderBCI:hover, #SPHeaderGreenBCI:hover, #SPHeaderRedBCI:hover {
   background-image: url('./projectPhotos/logarithmicUniverse.png');
   box-shadow: 0 0 1pt 3pt rgba(0,220,255,0.5);
   background-color: rgba(15,19,28,0);
@@ -17658,6 +17670,9 @@ option {
 #SPHeaderMind:hover, #SPHeaderGreenMind:hover, #SPHeaderRedMind:hover {
   background-image: url('./projectPhotos/mandalaGif1.gif');
 }
+#SPHeaderBCI:hover, #SPHeaderGreenBCI:hover, #SPHeaderRedBCI:hover {
+  background-image: url('./projectPhotos/brainConnectivity.jpg');
+}
 
 
 
@@ -17667,6 +17682,222 @@ option {
 
 
 
+/* TEAMS */
+
+
+/* ER INITIATIVE */
+
+
+/* ER HEADER */
+
+#headerEr {
+  border: 1px solid rgba(255, 56, 82, 0.5);
+  border-width: 1px 0px 1px 0px;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  flex-wrap: nowrap;
+  align-items: stretch;
+  text-align: center;
+  padding: 3px 0px 2px 0px;
+  font-size: 110%;
+
+  transition: all 2s ease 0s;
+  background-color: rgba(0,220,255,0.025);
+  background: linear-gradient(to right,rgba(0,220,255, 0), rgba(0,220,255, 0.05), rgba(0,220,255, 0));
+
+  position: relative;
+  
+  text-transform: uppercase !important;
+  /* font-family: 'Encode Sans Condensed', sans-serif !important; */
+  /* font-family: 'Quicksand', sans-serif; */
+  font-family: 'Exo 2', sans-serif;
+  /* font-family: 'Nunito Sans', sans-serif;  
+  /* font-family: 'Montserrat', sans-serif !important; */
+  
+}
+#headerEr:hover, #headerEr:active, #headerEr:focus {
+  background-color: rgba(0,220,255,0.05);
+  transition: all 2s ease 0s;
+}
+
+
+#logoNameEr {
+  margin: 0 auto;
+  overflow: hidden;
+  flex: 1 1 auto;
+  text-align: center;
+  font-size: 200%;
+  width: 100%;
+
+  transition: all 2s ease 0s;
+  letter-spacing: 8px; 
+  margin-left: 4%;
+  margin-left: 6%;
+  color: rgb(166, 166, 166);
+
+  text-transform: uppercase !important;
+  /* font-family: 'Encode Sans Condensed', sans-serif !important; */
+  /* font-family: 'Quicksand', sans-serif; */
+  font-family: 'Exo 2', sans-serif;
+  /* font-family: 'Nunito Sans', sans-serif;   */
+
+  /* font-family: 'Encode Sans Condensed', sans-serif !important; */
+}
+#logoNameEr:hover {
+  /* letter-spacing: 12px; */
+  letter-spacing: 10px; 
+  color: #ffffff;
+  margin-left: 3%;
+  margin-left: 8%;
+}
+#logoName:hover #erGold {
+  color: #00dcff;
+}
+#erRed {
+  color: rgb(255, 56, 82);
+  transition: all 2s ease 0s;
+
+  text-transform: uppercase !important;
+  /* font-family: 'Encode Sans Condensed', sans-serif !important; */
+  /* font-family: 'Quicksand', sans-serif; */
+  font-family: 'Exo 2', sans-serif;
+  /* font-family: 'Nunito Sans', sans-serif;   */
+
+}
+
+
+
+/* ER HOME */
+
+#erContainer {
+    width: 100%;
+    margin: 0 auto;
+}
+
+#positionRelativeEr {
+  position: relative;
+  background-color: rgb(13, 19, 24) !important;
+  /* background-color: rgba(166, 166, 166, 0.05) !important; */
+  /* BRICK BACKGROUND */
+  /* background-color: rgb(31, 16, 1) !important; */
+  background: radial-gradient(circle, rgba(255, 56, 82,0.05), rgba(255, 56, 82,0.05), rgba(255, 56, 82,0.1), rgba(255, 56, 82,0.05));
+
+}
+
+
+#erContainerHeader {
+  width: 52%;
+  margin: 0 auto;
+  margin-bottom: 7%;
+  /* border: 1px solid rgb(166, 166, 166); */
+  border: 1px solid rgb(255, 56, 82);
+  border-width: 0px 1px 1px 1px;
+  border-radius: 0% 0% 40% 40%;
+  letter-spacing: 4px;
+  color: rgb(166, 166, 166);
+  font-size: 75%;    
+  text-align: center;
+  transition: all 2.5s ease 0s;
+  transform: scale(1);
+  
+  padding: 0.1% 0% 0.3% 0%;
+  background: radial-gradient(rgba(0,255,220,0.05), rgba(0,220,255,0));
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-blend-mode: overlay;
+  background-position: center;
+  background-size: 1000px;
+  height: initial;
+
+  text-transform: uppercase !important;
+  font-family: 'Exo 2', sans-serif;
+}
+#erContainerHeader:hover {
+  transform: scale(1.02) !important;
+  background-color: rgba(15,19,28,0.5) !important;
+  font-weight: bold !important;
+  width: 70% !important;
+  letter-spacing: 16px !important;
+
+  background-color: rgba(0,220,255,0.05) !important;
+  background: linear-gradient(rgba(0,255,220,0.07), rgba(0,255,220,0.05), rgba(0,220,255,0.02)) !important;
+
+  background-size: contain !important;
+  background-repeat: no-repeat !important;
+  background-color: rgba(15,19,28,0.8) !important;
+  background-blend-mode: overlay !important;
+  /* background-image: url('./ringNebula.jpg') !important; */
+  background-image: url('./helixNebula2.jpg') !important;
+  background-image: url('./catsEyeNebula.jpg') !important;
+  /* background-image: url('./iris.jpg') !important; */
+  background-position: center !important;
+  background-size: 110% !important;
+  border-color: #00dcff;
+}
+
+
+/* ER PROJECTS */
+#SPHeaderEr1, #SPHeaderEr2, #SPHeaderEr3, #SPHeaderEr4 {
+  display: flex;
+  flex-direction: column;
+  /* ORANGE */
+  /* box-shadow: 0 0 2pt 2pt hsl(29, 86%, 49%);
+  border: 2px solid hsl(29, 86%, 49%); */
+
+  /* RED */
+  box-shadow: 0 0 2pt 2pt rgb(201, 1, 28);
+  border: 2px solid rgb(255, 56, 82);
+  border-radius: 100%;
+  position: relative;
+  width: 14em;
+  height: 14em;
+  word-wrap: break-word; 
+  align-items: center; 
+  justify-content: center;
+  color: #ffffff;
+  transition: all 0.5s ease 0s;
+  margin: 0 auto;
+  background: radial-gradient(circle, rgba(255, 56, 82,0.05), rgba(255, 56, 82,0.05), rgba(255, 56, 82,0.1), rgba(255, 56, 82,0.05));
+
+  
+  transition: all 1s ease 0s;
+  /* background-image: url('./projectPhotos/logarithmicUniverse.png'); */
+  /* background-size: 108%; 
+  background-blend-mode: overlay;
+  background-color: rgba(15,19,28,0.95);
+  background-position: center;
+  background-repeat: no-repeat; */
+}
+#SPTitleEr {
+  margin: 0 auto;
+  padding: 5px 10px 5px 10px;
+  /* OLD */
+  font-size: 250%;
+  /* NEW A*/
+  /* font-size: 110%; */
+  /* NEW B */
+  font-size: 117.5%;
+  /* RED */
+  /* color: rgb(255, 56, 82); */
+  /* WHITe */
+  color: #ffffff;
+  word-wrap: break-word; 
+  word-break: break-word;
+  overflow: auto;
+  text-align: center;
+  transition: all 0.5s ease 0s;
+  text-transform: uppercase !important;
+
+  font-family: 'Encode Sans Condensed', sans-serif !important;
+
+  /* font-family: 'GFS Neohellenic', sans-serif;
+font-family: 'Quicksand', sans-serif; */
+font-family: 'Exo 2', sans-serif;
+/* font-family: 'Nunito Sans', sans-serif; */
+
+}
 
 
 
@@ -17674,15 +17905,112 @@ option {
 
 
 
+/* ER ORB */
 
-
-
-
-
-
-
-
-
+.containerEr {
+  position: relative;
+  box-sizing: border-box;
+  display: inline-block;
+  padding: 0;
+  margin: 0 auto;
+  /* ORIGINAL */
+  width: 100%;
+  height: 50%;
+  /* XP */
+  /* width: 10%;
+  height: 5%; */
+  -webkit-box-reflect: below;
+}
+.containerEr > .ball {
+  box-sizing: border-box;
+  position: absolute;
+  left: 50%;
+  top: 75%;
+  display: inline-block;
+  width: 25vh;
+  height: 25vh;
+  -moz-perspective: 1000px;
+  -webkit-perspective: 1000px;
+  perspective: 1000px;
+  -moz-transform-style: preserve-3d;
+  -webkit-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+  /* This is what's doing pretty much everything. The hardest part was figuring out how to scale the latitude lines */
+}
+.containerEr > .ball.spin {
+  -moz-animation: spin 5s linear infinite;
+  -webkit-animation: spin 5s linear infinite;
+  animation: spin 5s linear infinite;
+}
+.containerEr > .ball > .lat, .containerEr > .ball .lng {
+  box-sizing: border-box;
+  position: absolute;
+  left: -50%;
+  top: -50%;
+  display: inline-block;
+  width: 50vh;
+  height: 50vh;
+  /* ORIGINAL */
+  /* background: rgba(204, 204, 204, 0.25); */
+  /* XP */
+  background: rgba(81, 81, 81, 0.025);
+  /* ORIGINAL */
+  /* border: solid 8px rgba(0, 0, 0, 0.125); */
+  /* XP */
+  border: solid 8px rgba(255, 56, 82, 0.5);
+  -moz-perspective: 1000px;
+  -webkit-perspective: 1000px;
+  perspective: 1000px;
+  -moz-transform-origin: 50% 50% 50%;
+  -ms-transform-origin: 50% 50% 50%;
+  -webkit-transform-origin: 50% 50% 50%;
+  transform-origin: 50% 50% 50%;
+  -moz-box-shadow: 0 0 0 10px 8px rgba(81, 81, 81, 0.05), 0 0 10px 8px transparent;
+  -webkit-box-shadow: 0 0 0 10px 8px rgba(81, 81, 81, 0.05), 0 0 10px 8px transparent;
+  box-shadow: 0 0 0 10px 8px rgba(81, 81, 81, 0.05), 0 0 10px 8px transparent;
+  border-radius: 50%;
+}
+.containerEr > .ball > .lat:after, .containerEr > .ball .lng:after {
+  content: '';
+  box-sizing: border-box;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 50vh;
+  height: 50vh;
+  border: solid 32px rgba(81,81,81, 0);
+  -moz-box-shadow: 0 0 0 10px 8px rgba(81, 81, 81, 0.05), 0 0 10px 8px transparent;
+  -webkit-box-shadow: 0 0 0 10px 8px rgba(81, 81, 81, 0.05), 0 0 10px 8px transparent;
+  box-shadow: 0 0 0 10px 8px rgba(81, 81, 81, 0.05), 0 0 10px 8px transparent;
+  border-radius: 50%;
+}
+.containerEr > .ball > .lat:before, .container > .ball .lng:before {
+  content: '';
+  box-sizing: border-box;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 50vh;
+  height: 50vh;
+  background: rgba(81,81,81, 0.025);
+  border: solid 32px rgba(81,81,81, 0);
+  border-radius: 50%;
+  -moz-box-shadow: 0 0 0 10px 8px rgba(81,81,81, 0.025), 0 0 10px 8px transparent;
+  -webkit-box-shadow: 0 0 0 10px 8px rgba(81,81,81, 0.025), 0 0 10px 8px transparent;
+  box-shadow: 0 0 0 10px 8px rgba(81,81,81, 0.025), 0 0 10px 8px transparent;
+}
+.containerEr > .ball > .lat:nth-child(1) {
+  -moz-transform: translateY(-12.5vh) scale3d(0, 0, 0) scale3d(0.5, 0.5, 0.5) rotate3d(1, 0, 0, 90deg);
+  -ms-transform: translateY(-12.5vh) scale3d(0, 0, 0) scale3d(0.5, 0.5, 0.5) rotate3d(1, 0, 0, 90deg);
+  -webkit-transform: translateY(-12.5vh) scale3d(0, 0, 0) scale3d(0.5, 0.5, 0.5) rotate3d(1, 0, 0, 90deg);
+  transform: translateY(-12.5vh) scale3d(0, 0, 0) scale3d(0.5, 0.5, 0.5) rotate3d(1, 0, 0, 90deg);
+}
+.containerEr > .ball > .lng:nth-child(2) {
+  -moz-transform: scale3d(0.5, 0.5, 0.5) rotate3d(0, 1, 0, 36deg);
+  -ms-transform: scale3d(0.5, 0.5, 0.5) rotate3d(0, 1, 0, 36deg);
+  -webkit-transform: scale3d(0.5, 0.5, 0.5) rotate3d(0, 1, 0, 36deg);
+  transform: scale3d(0.5, 0.5, 0.5) rotate3d(0, 1, 0, 36deg);
+}
 
 
 

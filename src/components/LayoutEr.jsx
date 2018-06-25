@@ -1,7 +1,6 @@
 import React from 'react';
 import Footer from '../containers/Footer.jsx';
-import Header from '../containers/Header.jsx';
-import TeamChat from './chatbox/TeamChat.jsx';
+import HeaderEr from '../containers/HeaderEr.jsx';
 import {Config} from '../config.js';
 import cookie from 'react-cookie';
 import axios from 'axios';
@@ -55,11 +54,11 @@ handleClick() {
 
   render() {
       return (
-      	<div id="positionRelativeLayout">
+      	<div id="positionRelativeEr">
           {/* <div onClick={this.resetNotifications}>
             {this.state.notificationLayout}
           </div> */}
-      		<Header notification={this.state.notificationLayout}/>
+      		<HeaderEr notification={this.state.notificationLayout}/>
         	<div id="main">
               {React.cloneElement(this.props.children, {resetNotifications: this.resetNotifications})}
         	</div>
@@ -69,7 +68,6 @@ handleClick() {
           </div>
             {/* English pronounciation */}
             {/* Ageōmétrētos mēdeìs eisítō */}
-            {/* <TeamChat /> */}
           <Footer />
         </div>
       );

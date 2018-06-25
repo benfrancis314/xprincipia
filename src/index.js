@@ -31,6 +31,7 @@ import GeneralTutorial from './components/tutorials/GeneralTutorial.jsx';
 import FullVersion from './components/versions/FullVersion.jsx';
 import Introduction from './components/Introduction.jsx';
 import Layout from './components/Layout.jsx';
+import LayoutEr from './components/LayoutEr.jsx';
 import LearnDeleteForm from './components/learn/LearnDeleteForm.jsx';
 import LearnEditForm from './components/learn/LearnEditForm.jsx';
 import LearnFlagForm from './components/learn/LearnFlagForm.jsx';
@@ -110,6 +111,7 @@ import ConsContainer from './containers/ConsContainer.jsx';
 import ConsContainerPrivate from './containers/ConsContainerPrivate.jsx';
 import DiscussContainer from './containers/DiscussContainer.jsx';
 import DiscussCommentContainer from './containers/DiscussCommentContainer.jsx';
+import ErContainer from './containers/teams/ErContainer.jsx';
 import ErrorContainer from './containers/ErrorContainer.jsx';
 import LearnContainer from './containers/LearnContainer.jsx';
 import LearnContentContainerPrivate from './containers/LearnContentContainerPrivate.jsx';
@@ -159,6 +161,14 @@ ReactDOM.render(
     <Route path='/' component={App}>    
     <Route path='/newsfeed' component={NewsFeedContainer}></Route>
     <IndexRoute component={Layout}></IndexRoute>
+    <Route path='/home/er' component={LayoutEr}>
+      <Route path='/er/container' component={ErContainer}>
+        <IndexRoute component={Empty}></IndexRoute>
+        <Route path='/er' component={Empty}></Route>
+        <Route path='/er/create' component={PrivateProjectForm}></Route>
+      </Route>
+    </Route>
+
     <Route path='/home' component={Layout}>
       <Route path='/shortstory' component={ShortStoryContainer}></Route>
       <Route path='/thementalworld' component={BenPaperContainer}></Route>
