@@ -171,6 +171,7 @@ ReactDOM.render(
 
     <Route path='/home' component={Layout}>
       <Route path='/shortstory' component={ShortStoryContainer}></Route>
+      <Route path='/story' component={ShortStoryContainer}></Route>
       <Route path='/thementalworld' component={BenPaperContainer}></Route>
       {/* Add :user param later. */}
       <Route path='/passwordreset' component={PasswordResetContainer}>

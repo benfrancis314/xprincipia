@@ -8,6 +8,8 @@ import SearchResults from '../components/search/SearchResults.jsx';
 import {Config} from '../config.js';
 import $ from 'jquery';
 import HeaderSphere from '../components/HeaderSphere.jsx';
+import HeaderAvatarEr from '../components/HeaderAvatarEr.jsx';
+
 
 
 export default class Header extends React.Component {
@@ -23,6 +25,7 @@ export default class Header extends React.Component {
            notification: '',
            searchResults : [],
            searchText: '',
+           erKey: '',
         }
         this.queryProblem = this.queryProblem.bind(this);
         this.postLogin = this.postLogin.bind(this);
@@ -39,6 +42,18 @@ componentDidMount(){
     username: cookie.load('userName'),
     notification: this.props.notification,
   })
+  if (window.location.pathname.includes('/er')) {
+    this.setState({ 
+      erKey: '1',
+    })
+  }
+}
+componentWillReceiveProps(nextProps) {
+  if (window.location.pathname.includes('er')) {
+    this.setState({ 
+      erKey: '1',
+    })
+  }
 }
 enterLogin(event) {
   var code = event.keyCode || event.which;
@@ -118,7 +133,6 @@ queryProblem (e) {
         })
       })
     }
-    console.log(this.state.searchText)
 }
 hideSearch() {
   $(document).ready(function() {
@@ -224,6 +238,30 @@ if (this.state.userToken === undefined ){
 
           </div>
         </div>
+      );
+    } else if (this.state.erKey == '1') {
+      return(
+          <div id="headerEr">
+                <div id="headerLeft">
+                <form id="exploreFormHeader" onMouseOver={this.hoverExplore} onMouseOut={this.unHoverExplore} onSubmit={this.stopEnter}>
+                    <input type="search" name="search" id="exploreHeaderInput" onKeyUp={this.queryProblem} autoComplete="off" />
+                </form>
+                <Link to="/er" >
+                    <div id="logoNameEr">
+                    <span id="erRed">E</span>R
+                    </div>
+                </Link>
+                </div>
+
+            
+                <HeaderAvatarEr notification={this.props.notification}/>
+
+            {/* SEARCH RESULTS */}
+            <div id="searchResultsContainerHide">
+                <img src={require('../assets/redX3.svg')} id="searchResultsExitButton" width="20" height="20" alt="exit button" onClick={this.hideSearch} />
+                <SearchResults searchText={this.state.searchText} searchResults={this.state.searchResults}/>
+            </div>
+          </div>
       );
     } else {
         return (

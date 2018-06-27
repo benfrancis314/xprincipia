@@ -71,7 +71,7 @@ body {
   font-family: 'Alegreya Sans SC', sans-serif;
   margin: 0 auto;
   position: relative;
-  /* background-color: #0f131c; */
+  background-color: #0f131c;
 }
 #fullWide {
   width: 100%;
@@ -12003,6 +12003,22 @@ flex-direction: column;
 
 /* Short Story Start */
 
+
+#storyContainerTitle {
+  margin: 0 auto;
+  margin-top: 2%;
+  color: #ffffff;
+  text-align: center;
+  letter-spacing: 8px;
+  width: 55%;
+  font-size: 175%;
+  transition: all 2s ease 0s;
+  color: rgba(255,255,255,0.75);
+  padding: 1%;
+  border: 1px solid rgba(0,220,255,0.5);
+  border-radius: 3px 3px 25% 25%;
+  background: radial-gradient(circle, rgba(0,220,255,0.1), rgba(0,220,255,0));
+}
 #shortStoryContainer {
  color: black;
  /* width: 70%; */
@@ -12268,6 +12284,55 @@ flex-direction: column;
   background-color: rgba(0,220,255,0.05);
   /* transform: scale(1.02); */
 }
+
+
+#storySection3 {
+  color: #ffffff;
+  /* background-color: #D1B794; */
+  background: linear-gradient(to right,rgba(255, 56, 82, 0.1), rgba(255, 56, 82, 0));
+  
+  width: 70%;
+  margin: 0 auto;
+  margin-left: 5%;
+  border: 1px solid rgba(255, 56, 82, 0.5);
+  border-width: 1px 0px;
+  border-radius: 3% 3% 3% 3%;
+  /* font-family: Verdana; */
+  border-color: rgba(255, 56, 82, 0.5);
+  /* font-family: 'Open Sans'; */
+  font-size: 125%;
+  font-family: 'Slabo 27px', serif;
+  font-family: 'Montserrat', sans-serif !important;
+
+  padding: 2% 8%;
+  transition: all 1s ease 0s;
+  position: relative;
+}
+#storySection1:hover {
+  box-shadow: 0 0 1pt 1pt rgba(255, 56, 82, 1);
+  /* transform: scale(1.02); */
+}
+#storySection3Red {
+  color: rgba(255, 56, 82, 1);
+  font-family: 'Montserrat', sans-serif !important;
+}
+#storySection3Input {
+  position: absolute;
+  right: 5%;
+  top: 25%;
+  width: 10%;
+  border: 1px solid rgb(255, 56, 82);
+  border-width: 0px 1px;
+  border-radius: 10px;
+  color: rgb(255, 56, 82);
+  transition: all 1s ease 0s;
+  font-family: 'Encode Sans Condensed', sans-serif !important;
+}
+#storySection3Input:active, #storySection3Input:focus {
+  background-color: rgb(255, 56, 82, 0.05);
+  transform: scale(1.1);
+}
+
 
 
 /* Short Story End */
@@ -16314,7 +16379,7 @@ input#submitBreakdown:hover {
   /* NEW */
   width: 46%;
 }
-#projectRightContainer {
+#projectRightContainer, #projectRightContainerKey {
   /* OLD */
   /* width: 47.5%; */
   /* NEW */
@@ -16335,15 +16400,30 @@ input#submitBreakdown:hover {
   /* padding-top: 0px; */
   /* transform: scale(1.1); */
 }
+#projectKeyInputHide {
+  display: none;
+}
+#projectKeyInput {
+  margin-top: 5px;
+  width: 50%;
+  border: 1px solid rgb(255, 56, 82);
+  border-width: 0px 1px;
+  border-radius: 10px;
+  color: rgb(255, 56, 82);
+  transition: all 1s ease 0s;
+  background-color: rgba(255,56,82,0.05);
+  font-family: 'Encode Sans Condensed', sans-serif !important;
+}
+#projectKeyInput:focus {
+  transform: scale(1.1);
+  background-color: rgba(255,56,82,0.1);
+}
 #projectMidColumnRightStart {
-  /* width: 100%; */
   margin-bottom: 2%;
-  /* margin-right: 0px !important; */
   margin-top: 2%;
   margin-left: 2%;
   margin-right: 0.5%;
   right: 0 !important;
-  /* Attempt to fix too wide issue */
   
 
   background-image: url('./aztecCalendar.svg'); 
@@ -16352,21 +16432,50 @@ input#submitBreakdown:hover {
   background-repeat: no-repeat;
   background-blend-mode: overlay;
   background-position: center -100px;
-  /* background-attachment: fixed; */
 
   border: 1px solid #515151;
   border-radius: 2% 2% 5% 5%;
-  /* OLD */
-  /* box-shadow: 0 0 10pt 3pt rgba(0, 220, 255, 0.5); */
-  /* NEW */
   box-shadow: 0 0 4pt 2pt rgba(0, 220, 255, 0.75);
   min-height: 70vh;
+  transition: all 10s ease 0s;
+}
+#projectRightContainerKey:hover #projectMidColumnRightStart {
+  margin-bottom: 2%;
+  margin-top: 2%;
+  margin-left: 2%;
+  margin-right: 0.5%;
+  right: 0 !important;
+  
+
+  background-image: url('./aztecCalendar.svg'); 
+  background-color: rgba(255, 56, 82, 0.5);
+  background-size: 100%; 
+  background-repeat: no-repeat;
+  background-blend-mode: overlay;
+  background-position: center center;
+
+  border: 1px solid rgba(255, 56, 82, 1 );
+  border-radius: 45%;
+  box-shadow: 0 0 12pt 6pt rgba(255, 56, 82, 1);
+
+  transform: rotate(360deg);
+  /* min-height: 50vh !important; */
+}
+#projectRightContainerKey:hover #projectMidColumnRightStart *, 
+#projectRightContainerKey:hover #projectMidColumnRightStart * * ,
+#projectRightContainerKey:hover #projectMidColumnRightStart * * {
+  opacity: 0;
+  background-color: rgba(15,19,28,0.75);
+}
+#projectRightContainerKey:hover #projectMidColumnRightStart:active {
+  background-color: rgba(15,19,28,1);
 }
 #projectInfoGroupShow {
   background-color: rgba(15,19,28,0.925);
   background-color: rgba(15,19,28,0.91);
   border-radius: 2% 2% 5% 5%;
   min-height: 70vh;
+  transition: all 1s ease 0s;
 }
 #projectHideButton1, #projectHideButton2, #projectHideButton3 {
   position: absolute;
@@ -16863,7 +16972,20 @@ input#submitBreakdown:hover {
   color: #515151;
   margin-top: 3%;
   margin-bottom: 1%;
-  transition: all 2s ease 0s;
+  transition: all 5s ease 2s;
+  border: 1px solid rgba(255, 56, 82, 0);
+  border-width: 1px 0px;
+  border-radius: 10px;
+}
+#greekAcademyPhrase:hover {
+  color: #ffffff;
+  background-color: rgba(255, 56, 82, 0.05);
+  border: 1px solid rgba(255, 56, 82, 1);
+  border-width: 1px 0px;
+  border-radius: 0px;
+  padding: 5px;
+  cursor: pointer;
+  transform: scale(1.3);
 }
 /* #greekAcademyPhrase:active {
   color: #ffffff;
@@ -17757,7 +17879,7 @@ option {
 }
 #erRed {
   color: rgb(255, 56, 82);
-  transition: all 2s ease 0s;
+  /* transition: all 2s ease 0s; */
 
   text-transform: uppercase !important;
   /* font-family: 'Encode Sans Condensed', sans-serif !important; */
@@ -17869,6 +17991,12 @@ option {
   background-color: rgba(15,19,28,0.95);
   background-position: center;
   background-repeat: no-repeat; */
+}
+#SPHeaderEr1:hover, #SPHeaderEr2:hover, #SPHeaderEr3:hover, #SPHeaderEr4:hover {
+  box-shadow: 0 0 1pt 3pt rgba(255,56,82,0.5);
+  background-color: rgba(255,56,82,0.05);
+  transform: scale(1.02);
+  cursor: pointer;
 }
 #SPTitleEr {
   margin: 0 auto;

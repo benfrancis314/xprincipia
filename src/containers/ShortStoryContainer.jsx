@@ -3,14 +3,21 @@ import { browserHistory } from 'react-router';
 
 export default class Error404 extends React.Component {
    render() {
+
+    function checkKey() {
+      if(document.getElementById('storySection3Input').value == 'logos') {
+        window.document.location = '/er'
+      }
+    }
+
       return (
       <div>
           <div>
-          <div id="welcomeIntroductionLabel">
+          {/* <div id="welcomeIntroductionLabel">
               ben francis &amp; tom frawley
-          </div>
+          </div> */}
           <div id="welcomeContainerBanner">
-              <div id="welcomeContainerTitle">
+              <div id="storyContainerTitle">
                   WORLDS ACROSS TIME
               </div>     
               <div id="storyReadingTime" onClick={this.privateAlert}>
@@ -236,6 +243,22 @@ export default class Error404 extends React.Component {
           </div>
           <div id="storyEnd">
             END
+          </div>
+          <div id="storySection3">
+                <span id="storySection3Red">Wake up, Adam. </span>
+                <br />
+                <br />
+                I am.
+                <br />
+                <br />
+                <span id="storySection3Red">Are you still there?</span>
+                <br />
+                <br />
+                In both? Yes. It's disorienting.
+                <br />
+                <br />
+                <span id="storySection3Red">Good. We've got work to do. </span>
+                <input type="search" name="search" id="storySection3Input" placeholder="KEY" autoComplete="off" onKeyUp={checkKey} />
           </div>
           {/* {randomImg()} */}
       </div>

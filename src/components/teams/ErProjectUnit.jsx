@@ -43,7 +43,7 @@ export default class PrivateProjectUnit extends React.Component {
                 <Link to={'/project/private/100/subprojects'}>
                     <li id="SPUnit">
                         <div id="SPHeaderEr3">
-                            <div id="SPTitleEr">brain computer interfaces</div>
+                            <div id="SPTitleEr">brain computer interfacing</div>
                         </div>
                     </li>
                 </Link>

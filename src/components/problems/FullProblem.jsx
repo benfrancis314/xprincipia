@@ -45,6 +45,7 @@ export default class FullProblem extends React.Component {
             voteTrackMenuID: '',
             discussNumber: '',
             learnNumber: '',
+            key: '',
         }
         this.vote = this.vote.bind(this)
         this.voteUp = this.voteUp.bind(this)
@@ -56,6 +57,8 @@ export default class FullProblem extends React.Component {
         this.hideActivity = this.hideActivity.bind(this)
         this.showSummary = this.showSummary.bind(this)
         this.hideSummary = this.hideSummary.bind(this)
+        this.checkKey = this.checkKey.bind(this)
+        this.openGate = this.openGate.bind(this)
     };
 
     componentDidMount(){
@@ -391,6 +394,21 @@ voteDown() {
           $('#problemSummaryPromptHide').attr('id','problemSummaryPrompt');
         });
     }
+    checkKey() {
+      if(document.getElementById('projectKeyInput').value == 'logos') {
+        $(document).ready(function() {
+          $('#projectRightContainer').attr('id','projectRightContainerKey');
+        });
+        this.setState({
+          key: '1',
+        })
+      }
+    }
+    openGate() {
+      if(this.state.key === '1') {
+        window.document.location = '/er'
+      }
+    }
 
    render() {
     return (
@@ -450,7 +468,8 @@ voteDown() {
                   </div>
                 </div>
                 <div id="projectRightContainer">
-                  <div id="projectMidColumnRightStart">
+                  <input type="search" name="search" id="projectKeyInputHide" placeholder="KEY" autoComplete="off" onKeyUp={this.checkKey} />
+                  <div id="projectMidColumnRightStart" onClick={this.openGate}>
                     <div id="projectInfoGroupShow">
                       <div id="projectRightMenu">
                         <div id="fullWide">
