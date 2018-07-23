@@ -6631,15 +6631,28 @@ input#submitWelcomeProblem:hover {
       margin-bottom: 1%;
       letter-spacing: 8px;
       width: 70%;
+      /* SMALL */
       font-size: 150%;
+      /* LARGE */
+      /* font-size: 275%;
+      padding-bottom: 0.25%;
+      width: 80%;
+      letter-spacing: 6px; */
+      /* End Large */
       transition: all 2s ease 0s;
+      /* FAINT */
       color: rgba(255,255,255,0.75);
+      /* BRIGHT */
+      /* color: rgba(255,255,255,1); */
     }
     #welcomeContainerTitleBlue, #welcomeContainerTitleWhite {
       transition: all 2s ease 0s;
     }
     #welcomeContainerTitleBlue {
+      /* FAINT */
       color: rgba(0,220,255,0.75);
+      /* BRIGHT */
+      /* color: rgba(0,220,255,1); */
     }
     #welcomeContainerTitle:hover #welcomeContainerTitleBlue {
       color: #00dcff;
@@ -6672,6 +6685,12 @@ input#submitWelcomeProblem:hover {
       /* background-size: 100%; */
       height: initial;
       /* transition-delay: 0.1s; */
+
+
+      /* TESTING WITH SENTENCE */
+      /* color: #dddddd;
+      letter-spacing: 1px;
+      padding: 0.5%; */
     }
     #welcomeIntroductionLabel:hover, .activeIntroductionButton div {
       transform: scale(1.02) !important;
@@ -16448,7 +16467,7 @@ input#submitBreakdown:hover {
   
 
   background-image: url('./aztecCalendar.svg'); 
-  background-color: rgba(255, 56, 82, 0.5);
+  background-color: rgba(255, 56, 82, 0.35);
   background-size: 100%; 
   background-repeat: no-repeat;
   background-blend-mode: overlay;
@@ -17878,7 +17897,7 @@ option {
   color: #00dcff;
 }
 #erRed {
-  color: rgb(255, 56, 82);
+  color: #ff3852;
   /* transition: all 2s ease 0s; */
 
   text-transform: uppercase !important;
@@ -17978,21 +17997,53 @@ option {
   word-wrap: break-word; 
   align-items: center; 
   justify-content: center;
-  color: #ffffff;
-  transition: all 0.5s ease 0s;
+  color: rgba(255,255,255,0.75);
   margin: 0 auto;
   background: radial-gradient(circle, rgba(255, 56, 82,0.05), rgba(255, 56, 82,0.05), rgba(255, 56, 82,0.1), rgba(255, 56, 82,0.05));
 
   
   transition: all 1s ease 0s;
-  /* background-image: url('./projectPhotos/logarithmicUniverse.png'); */
-  /* background-size: 108%; 
+}
+#SPHeaderEr1 {
+  color: rgba(255,255,255,1);
+  background-image: url('./projectPhotos/alexanderGreat2.jpg'); 
+  background-size: 100%; 
+  background-blend-mode: overlay;
+  background-color: rgba(15,19,28,0.95);
+  background-position: center 0%;
+  background-repeat: no-repeat;
+}
+#SPHeaderEr2 {
+  color: rgba(255,255,255,1);
+  background-image: url('./projectPhotos/david.jpg'); 
+  background-size: 100%; 
+  background-blend-mode: overlay;
+  background-color: rgba(15,19,28,0.95);
+  background-position: center 0%;
+  background-repeat: no-repeat;
+}
+#SPHeaderEr3 {
+  color: rgba(255,255,255,1);
+  background-image: url('./projectPhotos/wingedVictory3.jpg'); 
+  background-size: 225%; 
+  background-blend-mode: overlay;
+  background-color: rgba(15,19,28,0.95);
+  background-position: center 100%;
+  background-repeat: no-repeat;
+}
+#SPHeaderEr4 {
+  color: rgba(255,255,255,1);
+  background-image: url('./projectPhotos/venusPaleolithic.jpg'); 
+  background-size: 100%; 
   background-blend-mode: overlay;
   background-color: rgba(15,19,28,0.95);
   background-position: center;
-  background-repeat: no-repeat; */
+  background-repeat: no-repeat;
 }
-#SPHeaderEr1:hover, #SPHeaderEr2:hover, #SPHeaderEr3:hover, #SPHeaderEr4:hover {
+#SPHeaderEr1:hover, #SPHeaderEr2:hover, 
+#SPHeaderEr3:hover
+, #SPHeaderEr4:hover 
+{
   box-shadow: 0 0 1pt 3pt rgba(255,56,82,0.5);
   background-color: rgba(255,56,82,0.05);
   transform: scale(1.02);
