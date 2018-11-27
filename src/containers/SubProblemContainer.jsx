@@ -1,7 +1,5 @@
 import React from 'react';
 import axios from 'axios';
-import {Link} from 'react-router';
-import ProjectBreakdownList from '../components/problems/ProjectBreakdownList.jsx';
 import SubProblemUnit from '../components/problems/SubProblemUnit.jsx';
 import {Config} from '../config.js';
 import $ from 'jquery';

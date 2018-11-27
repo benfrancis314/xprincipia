@@ -1,7 +1,10 @@
 {
-  "name": "projectName",
-  "version": "0.1.0",
+  "name": "frontend",
+  "version": "4.0.0",
+  "description": "ReactBased XPrincipia Frontend",
   "private": true,
+  "author": "Ben Francis",
+  "license": "ISC",
   "devDependencies": {
     "babel-cli": "^6.26.0",
     "babel-plugin-transform-react-pug": "^6.0.0",
