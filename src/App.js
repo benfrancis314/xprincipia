@@ -110,7 +110,8 @@ class App extends React.Component {
     //Load the welcome page if route is '/'
     if (window.location.pathname === "/" || this.state.undefinedPaths.inArray(window.location.pathname) //continue to next line
         || window.location.pathname === "/project/0/subprojects"){ 
-          document.location = "/welcome";
+          document.location = "/home";
+          // WAS = "/welcome";
     }
 
     //Return the rest of the renderings

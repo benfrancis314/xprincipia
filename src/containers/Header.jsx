@@ -197,7 +197,7 @@ if (this.state.userToken === undefined ){
                 <form id="exploreFormHeader" onMouseOver={this.hoverExplore} onMouseOut={this.unHoverExplore} onSubmit={this.stopEnter}>
                     <input type="search" name="search" id="exploreHeaderInput" onKeyUp={this.queryProblem} autoFocus autoComplete="off" />
                 </form>
-                <Link to="/welcome">
+                <Link to="/home">
                   <div id="logoName">
                     <span id="xBlue">x</span>principia
                   </div>
@@ -205,28 +205,29 @@ if (this.state.userToken === undefined ){
               </div>
               <div id="headerRight">
                 <HeaderSphere />
-                <div id="headerSphereInfo1">
+                {/* OLD STYLE */}
+                {/* <div id="headerSphereInfo1">
                     login | join
-                </div>
-                <div id="exitHeaderMenuMobileLogout" onClick={this.hideMenu}></div>
-                {/* <div id="headerSphereInfo2">
-                    join |
                 </div> */}
+                {/* FOR NEW STYLE */}
+                {/* <div id="headerSphereInfoWhite">
+                    login | join
+                </div> */}
+                {/* UNCOMMENTING UNTIL WE RESTART LOGIN PROCESS */}
+                {/* <div id="exitHeaderMenuMobileLogout" onClick={this.hideMenu}></div>
                   <div id="headerOptionsContainerHide">
                           <input name="email" required="required" maxLength="30" placeholder="username" id="loginHeaderEmail" autoFocus onKeyPress={this.enterLogin} />
                           <input type="password" name="password" required="required" maxLength="30" placeholder="password" id="loginHeaderPassword" onKeyPress={this.enterLogin}/>            
                           <Link to={window.location.pathname} id="loginHeaderLink"  onKeyPress={this.postLogin}>
                             <input type="submit" value="login" onClick={this.postLogin} id="loginHeaderSubmitButton" onKeyPress={this.enterLogin}/>           
                           </Link>
-                          {/*Attempt to get the login button to just be an arrow*/}
-                          {/*<input type="image" src={require('../assets/rightArrowWhite.svg')} onClick={this.postLogin} id="loginHeaderSubmitImage" alt="Submit login arrow, blue right arrow"/>*/}
                           
                           <Link to="/register" activeClassName="activeHeaderRegister">
                             <div id="registerHeaderButton" onKeyPress={this.enterRegister}>
                               join
                             </div>
                           </Link>
-                  </div>
+                  </div> */}
                 </div>
               
           </div>
@@ -271,7 +272,7 @@ if (this.state.userToken === undefined ){
                     <form id="exploreFormHeader" onMouseOver={this.hoverExplore} onMouseOut={this.unHoverExplore} onSubmit={this.stopEnter}>
                         <input type="search" name="search" id="exploreHeaderInput" onKeyUp={this.queryProblem} autoComplete="off" />
                     </form>
-                    <Link to="/welcome" >
+                    <Link to="/home" >
                       <div id="logoName">
                         <span id="xBlue">x</span>principia
                       </div>

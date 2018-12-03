@@ -25,6 +25,7 @@ import FullProblem from './components/problems/FullProblem.jsx';
 import FullSolution from './components/solutions/FullSolution.jsx';
 import FullSolutionContent from './components/solutions/FullSolutionContent.jsx';
 import GeneralTutorial from './components/tutorials/GeneralTutorial.jsx';
+import FullIdea from './components/home/FullIdea.jsx';
 import FullVersion from './components/versions/FullVersion.jsx';
 import Introduction from './components/Introduction.jsx';
 import Layout from './components/Layout.jsx';
@@ -66,6 +67,7 @@ import ProfilePoints from './components/profile/ProfilePoints.jsx';
 import ProfileProblemsSolutions from './components/profile/ProfileProblemsSolutions.jsx';
 import ProfileResume from './components/profile/ProfileResume.jsx';
 import ProfileSettings from './components/profile/ProfileSettings.jsx';
+import ProfileShow from './components/home/ProfileShow.jsx';
 import ProfileTutorial from './components/tutorials/ProfileTutorial.jsx';
 import ProfileWorkspace from './components/profile/ProfileWorkspace.jsx';
 import ProposalDiscussMenu from './components/solutions/ProposalDiscussMenu.jsx';
@@ -76,6 +78,8 @@ import SolutionDeleteForm from './components/solutions/SolutionDeleteForm.jsx';
 import SolutionEditForm from './components/solutions/SolutionEditForm.jsx';
 import SolutionFlagForm from './components/solutions/SolutionFlagForm.jsx';
 import SolutionForm from './components/solutions/SolutionForm.jsx';
+import TopicBranches from './components/home/TopicBranches.jsx';
+import TopicForm from './components/home/TopicForm.jsx';
 import Empty from './components/Empty.jsx';
 import UserMessages from './components/profile/UserMessages.jsx';
 import UserPassions from './components/profile/UserPassions.jsx';
@@ -96,6 +100,7 @@ import DiscussContainer from './containers/DiscussContainer.jsx';
 import DiscussCommentContainer from './containers/DiscussCommentContainer.jsx';
 import ErContainer from './containers/teams/ErContainer.jsx';
 import ErrorContainer from './containers/ErrorContainer.jsx';
+import Home from './containers/Home.jsx';
 import LearnContainer from './containers/LearnContainer.jsx';
 import LoginContainer from './containers/LoginContainer.jsx';
 import MindTempleContainer from './containers/MindTempleContainer.jsx';
@@ -143,7 +148,7 @@ ReactDOM.render(
       </Route>
     </Route>
 
-    <Route path='/home' component={Layout}>
+    <Route path='/home/layout' component={Layout}>
       <Route path='/shortstory' component={ShortStoryContainer}></Route>
       <Route path='/story' component={ShortStoryContainer}></Route>
       <Route path='/thementalworld' component={BenPaperContainer}></Route>
@@ -194,6 +199,14 @@ ReactDOM.render(
             <Route path='/welcome/learn' component={ActivityFeedLearnUnits}></Route>
           </Route>
         </Route>
+      </Route>
+      <Route path='/home/container' component={Home}>
+            <IndexRoute component={Empty}></IndexRoute>
+            <Route path='/home' component={Empty}></Route>
+            <Route path='/topic' component={TopicBranches}></Route>
+            <Route path='/topic/new' component={TopicForm}></Route>
+            <Route path='/idea' component={FullIdea}></Route>
+            <Route path='/profile/show' component={ProfileShow}></Route>
       </Route>
       <Route path='/logincontainer' component={LoginContainer}>
         <IndexRoute component={LoginContainer}></IndexRoute>
