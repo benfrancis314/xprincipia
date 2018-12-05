@@ -18939,16 +18939,16 @@ background-color: #ff7100;
     content: "view";
   }
 }   */
-#topicListUnit:nth-child(2) {
-  font-size: 115%;
-  color: #0f131c;
+.topicListUnitActive div {
+  font-size: 115% !important;
+  color: #0f131c!important;
   /* background-color: #00dcff; */
-  background-color: #83FAFB;
-  width: 75%;
-  box-shadow: 0 0 1pt 1pt rgba(131, 250, 251, 0.5);
-  margin-top: 7%;
-  margin-bottom: 7%;
-  padding: 5% 5%;
+  background-color: #83FAFB!important;
+  width: 75%!important;
+  box-shadow: 0 0 1pt 1pt rgba(131, 250, 251, 0.5) !important;
+  margin-top: 7% !important;
+  margin-bottom: 7% !important;
+  padding: 5% 5% !important;
 }
 
 #topicIdeaArrow {
@@ -18977,19 +18977,81 @@ background-color: #ff7100;
   cursor: pointer;
   transform: scale(1.05);
 }
+#newTopicButtonHide {
+  display: none;
+}
+/* #newTopicButton {
+  display: flex;
+  flex-direction: column;
+  
+  position: relative;
+  align-items: center; 
+  justify-content: center;
+
+  transition: all 0.5s ease 0s;
+
+  background-image: url('./circle1SharpBlue.svg'), radial-gradient(circle, rgba(0,220,255,0.05), rgba(0,220,255,0.05), rgba(0,220,255,0.1), rgba(15,19,28,0.95));
+  background-color: rgba(15,19,28,0.75);
+  background-size: 140%; 
+  background-repeat: no-repeat;
+  background-blend-mode: overlay;
+  background-position: center center;
+  border: 1px solid rgba(0,220,255,0.25);
+  border-radius: 100%;
+  width: 3.5em;
+  height: 3.5em;
+  margin: 0 auto;
+  margin-top: 2.5%;
+} */
+/* #newTopicButton:hover {
+  box-shadow: 0 0 1pt 1pt rgba(0,220,255,0.5);
+  background-color: rgba(0,220,255,0.05);
+  transform: scale(1.02);
+  cursor: pointer;
+} */
+#newTopicPlus {
+  padding: 0px;
+  margin: 0 auto;
+  vertical-align: middle;
+}
+#newTopicClose {
+  /* position: absolute; */
+  width: 30%;
+  margin: 0 auto;
+  margin-bottom: 2%;
+  padding: 4px 7% 4px 7%;
+  border: 1px solid rgba(255,127,127,0.5);
+  opacity: 0.5;
+  transition: all 0.5s ease 0s;
+  text-align: center;
+  border-radius: 3px 3px 35% 35%;
+  background: linear-gradient(rgba(255,127,127,0), rgba(255,127,127,0), rgba(255,127,127,0.1));  
+}
+#newTopicClose:hover {
+  border-color: rgba(255,127,127,1);
+  background-color: rgba(255,127,127,0.05);
+  cursor: pointer;
+  transform: scale(1.05);
+}
+#newTopicFormContainerHide {
+  display: none;
+}
 #newTopicFormContainer {
-  position: absolute;
+  /* position: absolute;
   top: 30%;
   left: 5%;
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: space-around;
+  justify-content: center;
   width: 70%;
   margin: 0 auto;
   margin-top: 10%;
   z-index: 3;
-  background-color: 
+  background-color: rgb(15, 19, 28, 0.5);
+  padding: 5% 8px;
+  box-shadow: 0 0 1pt 1pt rgba(0,220,255,0.5);
+  border-radius: 3px; */
 }
 #newTopicForm {
   width: 100%;
@@ -19003,14 +19065,15 @@ background-color: #ff7100;
   text-transform: uppercase !important;
   padding: 2% 4%;
   margin: 0 auto;
+  margin-top: 5%;
   
-  width: 60%;
+  width: 80%;
 
   background-color: #192329;
   color: #83FAFB;
   box-shadow: 0 0 1pt 1pt rgba(255,255,255,0.5) !important;
   border: 0px solid #515151;
-  border-radius: 0px 0px 0px 5%;
+  border-radius: 0px 0px 5% 5%;
 }
 #newTopicForm:active {
 
@@ -19018,17 +19081,23 @@ background-color: #ff7100;
 #newTopicCreate {
   color: #ffffff;
   font-size: 100%;
-  transition: all 1s ease 0s;
+  transition: all 0.5s ease 0s;
   text-align: center;
   font-family: 'Montserrat', sans-serif !important;
   text-transform: uppercase !important;
   padding: 2% 4%;
   margin: 0 auto;
+  margin-top: 5%;
   width: 15%;
 
   background-color: #192329;
   color: #83FAFB;
   box-shadow: 0 0 1pt 1pt rgba(255,255,255,0.5);
+}
+#newTopicCreate:hover {
+  cursor: pointer;
+  box-shadow: 0 0 1pt 1pt rgba(0,220,255,0.5);
+  transform: scale(1.05);
 }
 
 
@@ -19053,7 +19122,7 @@ background-color: #ff7100;
 */
   padding: 3% 0%; 
 }
-#ideaListUnit {
+#ideaListUnit, #ideaListUnitNew {
   text-align: left;
   font-family: 'Montserrat', sans-serif;
   /* background-color: rgba(167, 167, 167, 0.1); */
@@ -19070,7 +19139,10 @@ background-color: #ff7100;
   border-radius: 3px;
   transition: all 0.5s ease 0s;
 }
-#ideaListUnit:hover {
+/* #ideaListUnitNew {
+  color: #83fafb;
+} */
+#ideaListUnit:hover, #ideaListUnitNew:hover {
   box-shadow: 0 0 1pt 1pt rgba(0,220,255,1);
   background-color: rgba(0,220,255,0.025);
 }
@@ -19136,6 +19208,7 @@ background-color: #ff7100;
   font-size: 90%;
   color: #999;
   margin-left: 10%;
+  text-transform: uppercase;
 }
 #blueMontserrat {
   color: #84d7f1;
@@ -19183,7 +19256,10 @@ background-color: #ff7100;
   box-shadow: 0 0 1pt 1pt rgba(131, 250, 251, 0.5);
   transition: all 0.5s ease 0s;
   font-family: 'Montserrat', sans-serif;
+  /* Old, doesn't work with link over button: */
   width: 15%;
+  /* New, unideal */
+  width: 4em;
   margin: 0 auto;
   text-align: center;
   padding: 4px 8px;
@@ -19270,8 +19346,7 @@ background-color: #ff7100;
   font-size: 90%;
   color: #999;
   width: 60%;
-  /* margin-left: 5%; */
-  /* margin-top: 3%; */
+  text-transform: uppercase;
 }
 #fullIdeaAuthor {
   font-family: 'Montserrat', sans-serif;
@@ -19308,6 +19383,7 @@ background-color: #ff7100;
   margin: 0 auto;
   text-align: justify;
   line-height: 1.5;
+  white-space: pre-wrap !important;
 }
 
 /* Idea Comments */
@@ -19335,13 +19411,20 @@ background-color: #ff7100;
   color: #84D7F1;
 }
 #ideaCommentForm {
+  width: 100%;
+  /* margin: 0 auto; */
+
+}
+#ideaCommentFormDescription {
   font-family: 'Montserrat', sans-serif;
-  height: 15%;
+  height: 6em;
 
   background-color: rgba(49, 64, 70, 0.25);
   border-color: rgba(255,255,255,0);
   box-shadow: 0 0 1pt 1pt rgba(255,255,255,0.5);
   padding: 10px 20px;
+  line-height: 1.5;
+  font-size: 90%;
 }
 #ideaCommentFooter {
   display: flex;
@@ -19353,7 +19436,7 @@ background-color: #ff7100;
   margin-bottom: 7%;
   width: 95%;
 }
-#ideaCommentAuthorForm {
+#ideaCommentFormAuthor {
   border: 0px solid #515151;
   box-shadow: 0 0 1pt 1pt rgba(81,81,81, 0.5);
   font-family: 'Montserrat', sans-serif;
@@ -19426,6 +19509,7 @@ background-color: #ff7100;
   margin-top: 2px;
   margin-bottom: 2px;
   line-height: 1.5;
+  white-space: pre-wrap !important;
 }
 
 

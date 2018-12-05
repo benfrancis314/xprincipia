@@ -79,7 +79,6 @@ import SolutionEditForm from './components/solutions/SolutionEditForm.jsx';
 import SolutionFlagForm from './components/solutions/SolutionFlagForm.jsx';
 import SolutionForm from './components/solutions/SolutionForm.jsx';
 import TopicBranches from './components/home/TopicBranches.jsx';
-import TopicForm from './components/home/TopicForm.jsx';
 import Empty from './components/Empty.jsx';
 import UserMessages from './components/profile/UserMessages.jsx';
 import UserPassions from './components/profile/UserPassions.jsx';
@@ -202,10 +201,10 @@ ReactDOM.render(
       </Route>
       <Route path='/home/container' component={Home}>
             <IndexRoute component={Empty}></IndexRoute>
-            <Route path='/home' component={Empty}></Route>
+            {/* <Route path='/home' component={Empty}></Route> */}
+            <Route path='/home/:topicID' component={Empty}></Route>
             <Route path='/topic' component={TopicBranches}></Route>
-            <Route path='/topic/new' component={TopicForm}></Route>
-            <Route path='/idea' component={FullIdea}></Route>
+            <Route path='/idea/:ideaID' component={FullIdea}></Route>
             <Route path='/profile/show' component={ProfileShow}></Route>
       </Route>
       <Route path='/logincontainer' component={LoginContainer}>

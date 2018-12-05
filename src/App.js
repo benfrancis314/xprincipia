@@ -90,7 +90,6 @@ class App extends React.Component {
 //     alert('click');
 // }
 
-
   render() {
     //Check if user is logged in
     // if (this.state.userToken === undefined ){
@@ -110,7 +109,8 @@ class App extends React.Component {
     //Load the welcome page if route is '/'
     if (window.location.pathname === "/" || this.state.undefinedPaths.inArray(window.location.pathname) //continue to next line
         || window.location.pathname === "/project/0/subprojects"){ 
-          document.location = "/home";
+          var randomHome = Math.floor(Math.random() * (3) ) + 1;
+          document.location = "/home/"+randomHome;
           // WAS = "/welcome";
     }
 

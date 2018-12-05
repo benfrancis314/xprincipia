@@ -26,11 +26,12 @@ export default class Home extends React.Component {
     constructor(props){
         super(props);
         this.state = {
-        //    problems : [],
-           tutorial: '',
+           currentTopic: '',
+           ideaRefresh: '',
+           newIdeaTitle: '',
         }
-        // this.queryProblem = this.queryProblem.bind(this);
-        this.goToStory = this.goToStory.bind(this)
+        this.goToStory = this.goToStory.bind(this);
+        this.resetTopic = this.resetTopic.bind(this);
     };
 
     goToStory() {
@@ -41,6 +42,14 @@ export default class Home extends React.Component {
             $('#projectKeyInputHide').attr('id','projectKeyInput').hide().slideDown();
           })
         }
+    }
+
+
+    resetTopic() {
+        this.setState({
+            currentTopic: this.props.params.topicID,
+            ideaRefresh: 'update',
+        })
     }
 
    render() {
@@ -56,11 +65,9 @@ export default class Home extends React.Component {
                             transitionLeave={false}> */}
                     {/* {this.props.children} */}
                     <div id="topBanner">
-                        {/* <Link to={'/home'}> */}
                             <div id="sloganBanner">
                                 <span id="whiteMedium">SHARE </span>SCIENTIFIC IDEAS
                             </div>
-                        {/* </Link> */}
                         {/* <div id="tutorialStartButton">
                             tutorial
                         </div> */}
@@ -69,8 +76,8 @@ export default class Home extends React.Component {
                     <div id="homeContainerColumns">
                         
                         <TopicList />
-                        <IdeaList />
-                        <IdeaForm />
+                        <IdeaList currentTopic={this.props.params.topicID} ideaRefresh={this.state.ideaRefresh} newIdeaTitle={this.state.newIdeaTitle} />
+                        <IdeaForm currentTopic={this.props.params.topicID} resetTopic={this.resetTopic} />
                     </div>
                     {/* <SiteSuggestions /> */}
                     {/* <Footer /> */}

@@ -15,27 +15,64 @@ export default class IdeaForm extends React.Component {
             title: '',
             description: '',
             author: '',
+            topicTitle: '',
         }
         this.postIdea = this.postIdea.bind(this);
+        this.newIdeaTitleChange = this.newIdeaTitleChange.bind(this);
     };
+
+    componentDidMount() {
+        var self = this;
+        axios.get( Config.API + '/problems/ID?id='+this.props.currentTopic).then(function (response) {
+            self.setState({
+                topicTitle: response.data.Title
+            })
+        })    
+    }
+
+    componentWillReceiveProps(nextProps) {
+        var self = this;
+        axios.get( Config.API + '/problems/ID?id='+nextProps.currentTopic).then(function (response) {
+            self.setState({
+                topicTitle: response.data.Title
+            })
+        })    
+    }
 
     postIdea() {
         var self = this
         this.state.title = document.getElementById('ideaFormTitle').value
         this.state.description = document.getElementById('ideaFormDescription').value
-        this.state.author = document.getElementById('ideaAuthorForm').value
+        // Testing for if user input an author name
+        var authorName = document.getElementById('ideaAuthorForm').value
+        if (authorName.length == 0) {
+            this.state.author = 'Anonymous'
+        }
+        else {
+            this.state.author = authorName
+        }
+        
 
         axios.post( Config.API + '/solutions/create', {
             title : this.state.title,
             description : this.state.description,
             // Sending "author" to summary field until backend is updatable 
-            summary : this.state.author,
+            username : this.state.author,
+            problemID: this.props.currentTopic,
+            parentTitle: this.state.topicTitle,
           })
           .then(function (result) {
             // What else do we want here?
             document.getElementById("ideaFormBody").reset();
-          })
+            document.getElementById('ideaListUnitNew').value = "";
+            self.props.resetTopic()
+          })          
     }
+
+    newIdeaTitleChange(event) {
+        document.getElementById('ideaListUnitNew').value = document.getElementById('ideaFormTitle').value;
+    }
+
 
    render() {
         return (
@@ -45,17 +82,17 @@ export default class IdeaForm extends React.Component {
                         {/* NEW IDEA */}
                     </div>
                     <div id="ideaFormTopicName">
-                        <span id="blueMontserrat">>>>   TOPIC: </span>LUNAR COLONIZATION
+                        <span id="blueMontserrat">>>>   TOPIC: </span>{this.state.topicTitle}
                     </div>
                     <div id="ideaForm">
-                        <input type="text" required="required" maxLength="70" id="ideaFormTitle" placeholder="NEW IDEA TITLE"/>
+                        <input onChange={this.newIdeaTitleChange} type="text" required="required" maxLength="70" id="ideaFormTitle" placeholder="NEW IDEA TITLE"/>
                         <textarea placeholder="What is your idea? " id="ideaFormDescription"/>
                     </div>
                     <div id="ideaFormFooter">
                         <input type="text" required="required" maxLength="70" id="ideaAuthorForm" placeholder="Optional:  Author Name"/>
-                        <div id="ideaFormSubmit" onClick={this.postIdea}>
+                        <Link id="ideaFormSubmit" to={window.location.pathname} onClick={this.postIdea}>
                             ADD
-                        </div>
+                        </Link>
                     </div>
                 </form>
             </div>

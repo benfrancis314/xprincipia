@@ -184,12 +184,13 @@ render() {
   //   }
   // });
 
+  var randomHome = Math.floor(Math.random() * (3) ) + 1;
+
 if (this.state.userToken === undefined ){
   // $().html("explore").fadeIn(7500);
   // $('#loginHeaderLink' ).keypress(function() {
   //   console.log( "Handler for .keypress() called." );
   // });
-
       return (
         <div>
           <div id="header">
@@ -197,7 +198,7 @@ if (this.state.userToken === undefined ){
                 <form id="exploreFormHeader" onMouseOver={this.hoverExplore} onMouseOut={this.unHoverExplore} onSubmit={this.stopEnter}>
                     <input type="search" name="search" id="exploreHeaderInput" onKeyUp={this.queryProblem} autoFocus autoComplete="off" />
                 </form>
-                <Link to="/home">
+                <Link to={"/home/"+randomHome}>
                   <div id="logoName">
                     <span id="xBlue">x</span>principia
                   </div>
@@ -272,7 +273,7 @@ if (this.state.userToken === undefined ){
                     <form id="exploreFormHeader" onMouseOver={this.hoverExplore} onMouseOut={this.unHoverExplore} onSubmit={this.stopEnter}>
                         <input type="search" name="search" id="exploreHeaderInput" onKeyUp={this.queryProblem} autoComplete="off" />
                     </form>
-                    <Link to="/home" >
+                    <Link to={"/home/"+randomHome}>
                       <div id="logoName">
                         <span id="xBlue">x</span>principia
                       </div>

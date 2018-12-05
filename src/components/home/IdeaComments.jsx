@@ -5,6 +5,7 @@ import cookie from 'react-cookie';
 import {Config} from '../../config.js';
 import $ from 'jquery';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group'; // ES6
+import IdeaCommentUnit from './IdeaCommentUnit.jsx';
 
 
 export default class IdeaComments extends React.Component {
@@ -19,11 +20,64 @@ export default class IdeaComments extends React.Component {
     constructor(props){
         super(props);
         this.state = {
-        //    problems : [],
-           tutorial: '',
+           comments : [],
+           description: '',
+           author: '',
+           commentsRefresh: '',
         }
-        // this.queryProblem = this.queryProblem.bind(this);
+        this.postIdeaComment = this.postIdeaComment.bind(this);
+        this.commentsRefresh = this.commentsRefresh.bind(this);
     };
+    componentDidMount(){
+        var self = this;
+        axios.get( Config.API + '/comments/bytype/discuss?problem_id='+this.props.ideaID).then(function (response) {
+                self.setState({
+                    comments: response.data,
+                })
+        }) 
+    }
+    componentWillReceiveProps(nextProps){
+        var self = this;
+        axios.get( Config.API + '/comments/bytype/discuss?problem_id='+nextProps.ideaID).then(function (response) {
+                self.setState({
+                    comments: response.data,
+                })
+        }) 
+    }
+    commentsRefresh() {
+        var self = this;
+        axios.get( Config.API + '/comments/bytype/discuss?problem_id='+this.props.ideaID).then(function (response) {
+            self.setState({
+                comments: response.data,
+            })
+        }) 
+    }
+    
+
+    postIdeaComment() {
+        //Read field items into component state
+        var self = this;
+        this.state.description = document.getElementById('ideaCommentFormDescription').value
+        var authorName = document.getElementById('ideaCommentFormAuthor').value
+        if (authorName.length == 0) {
+            this.state.author = 'Anonymous'
+        }
+        else {
+            this.state.author = authorName
+        }
+        axios.post( Config.API + '/comments/create', {
+            type: '3', // Must be set to 2, 3, or 6, based upon current GetCommentsByTypeDiscuss function in backend (gorm)
+            userName: this.state.author,
+            description : this.state.description,
+            parentTitle: this.props.ideaTitle,
+            typeID: this.props.ideaID, // Rename this from "typeID", it doesn't make sense
+            parentType: '0', // Must be set to 0 based upon current GetCommentsByTypeDiscuss function in backend (gorm)
+        })
+        .then(function (result) {
+            document.getElementById("ideaCommentForm").reset();
+            self.commentsRefresh()
+        })
+    }
 
    render() {
     
@@ -32,59 +86,16 @@ export default class IdeaComments extends React.Component {
                     <div id="ideaCommentsLabel">
                         [ - -  COMMENTS  - - ]
                     </div>
-                    <textarea placeholder="What do you think? " id="ideaCommentForm" autoFocus />
-                    <div id="ideaCommentFooter">
-                        <input type="text" required="required" maxLength="70" id="ideaCommentAuthorForm" placeholder="Optional:  Author Name"/>
-                        <div id="ideaCommentSubmit">
-                            Comment
-                        </div>
-                    </div>
-                    <div id="ideaCommentList">
-                    {/* Comment 1 */}
-                        <div id="ideaCommentUnit">
-                            <div id="ideaCommentMetadata">
-                                <div id="ideaCommentDate">
-                                    11 - 30 - 2018
-                                </div>
-                                <div id="ideaCommentAuthor">
-                                    jack.wilson
-                                </div>
-                            </div>
-                            <div id="ideaCommentDescription">
-                                Will the body's immune system attempt to destroy the nanobots?
+                    <form id="ideaCommentForm">
+                        <textarea placeholder="What do you think? " id="ideaCommentFormDescription" autoFocus />
+                        <div id="ideaCommentFooter">
+                            <input type="text" required="required" maxLength="70" id="ideaCommentFormAuthor" placeholder="Optional:  Author Name"/>
+                            <div id="ideaCommentSubmit" onClick={this.postIdeaComment}>
+                                Comment
                             </div>
                         </div>
-                    {/* Comment 2 */}
-                        <div id="ideaCommentUnit">
-                            <div id="ideaCommentMetadata">
-                                <div id="ideaCommentDate">
-                                    11 - 30 - 2018
-                                </div>
-                                <div id="ideaCommentAuthor">
-                                    hannah.jade
-                                </div>
-                            </div>
-                            <div id="ideaCommentDescription">
-                                How will these machines be made?
-                            </div>
-                        </div>
-                        {/* Comment 3 */}
-                        <div id="ideaCommentUnit">
-                            <div id="ideaCommentMetadata">
-                                <div id="ideaCommentDate">
-                                    11 - 30 - 2018
-                                </div>
-                                <div id="ideaCommentAuthor">
-                                    ben.francis
-                                </div>
-                            </div>
-                            <div id="ideaCommentDescription">
-                                To @jack.white: That is a good question. I think it likely will, and I will consider how this might be best overcome. 
-                                To @hannah.hade: I'm not sure. Perhaps that will be the topic of another idea; one for what they will be, one for how they will be made. 
-                                Perhaps that might even belong on a different topic about nanotechnology?
-                            </div>
-                        </div>
-                    </div>
+                    </form>
+                    <IdeaCommentUnit commentsProps={this.state.comments} commentsRefresh={this.state.commentsRefresh} />
                 </div>
             );
     }

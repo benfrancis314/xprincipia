@@ -178,11 +178,15 @@ export default class SearchResults extends React.Component {
             );
         } else 
             return (
-                <Link key={problem.ID} to={'/project/'+problem.ID +'/subprojects'} onClick={hideSearch}>
+                // OLD PROJECT LINK
+                // <Link key={problem.ID} to={'/project/'+problem.ID +'/subprojects'} onClick={hideSearch}>
+                // NEW TOPIC LINK
+                <Link key={problem.ID} to={'/home/'+problem.ID} onClick={hideSearch}>
                     <div id="searchResultsUnitHeader">
-                        <div id="searchResultsUnitPercent">
+                        {/* OLD, FROM PROJECT LINK */}
+                        {/* <div id="searchResultsUnitPercent">
                             {problem.Rank}
-                        </div>
+                        </div> */}
                         <div id="searchResultsUnitTitle">
                             {problem.Title}
                         </div>

@@ -5,6 +5,7 @@ import cookie from 'react-cookie';
 import {Config} from '../../config.js';
 import $ from 'jquery';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group'; // ES6
+import IdeaUnit from './IdeaUnit.jsx';
 
 
 export default class IdeaList extends React.Component {
@@ -19,12 +20,36 @@ export default class IdeaList extends React.Component {
     constructor(props){
         super(props);
         this.state = {
-        //    problems : [],
+           ideas : [],
            tutorial: '',
-           newIdeaUnitTitle: '',
+           ideaRefresh: '',
         }
-        // this.queryProblem = this.queryProblem.bind(this);
+        this.newIdeaTitleChange = this.newIdeaTitleChange.bind(this);
     };
+
+    componentDidMount(){
+        var self = this;
+        axios.get( Config.API + '/solutions/problemID?id='+this.props.currentTopic).then(function (response) {
+            self.setState({
+                ideas: response.data,
+                ideaRefresh: self.props.ideaRefresh,
+            })
+        })
+    }
+    componentWillReceiveProps (nextProps){
+        var self = this;
+        axios.get( Config.API + '/solutions/problemID?id='+nextProps.currentTopic).then(function (response) {
+            self.setState({
+                ideas: response.data,
+                ideaRefresh: nextProps.ideaRefresh,
+                newIdeaTitle: nextProps.newIdeaTitle,
+            })
+        })
+    }
+
+    newIdeaTitleChange(event) {
+        document.getElementById('ideaFormTitle').value = document.getElementById('ideaListUnitNew').value;
+    }
 
    render() {
     
@@ -34,22 +59,8 @@ export default class IdeaList extends React.Component {
                         [ - -  IDEAS  - - ]
                     </div>
                     <div id="ideaListBody">
-                        <input type="text" required="required" maxLength="70" id="ideaListUnit" placeholder="ADD A NEW IDEA" autoFocus/>
-                        <Link to={'/idea'}>
-                            <div id="ideaListUnit">
-                                Nanorobots used for cleaning up mitochondria rust
-                            </div>
-                        </Link>
-                        <Link to={'/idea'}>
-                            <div id="ideaListUnit">
-                                Genetic Engineering for fixing telomeric disintegration
-                            </div>
-                        </Link>
-                        <Link to={'/idea'}>
-                            <div id="ideaListUnit">
-                                Pharmaceudical cocktail to address seven central problems
-                            </div>
-                        </Link>
+                        <input onChange={this.newIdeaTitleChange} type="text" required="required" maxLength="70" id="ideaListUnitNew" placeholder="ADD A NEW IDEA" autoFocus/>
+                        <IdeaUnit ideasProps={this.state.ideas} />
                         {/* <div id="ideaListMore">
                         </div> */}
                     </div>
