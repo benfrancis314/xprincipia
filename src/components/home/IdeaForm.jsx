@@ -5,6 +5,8 @@ import cookie from 'react-cookie';
 import {Config} from '../../config.js';
 import $ from 'jquery';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group'; // ES6
+import ReactGA from 'react-ga';
+ReactGA.initialize('UA-104103231-1'); //Unique Google Analytics tracking number
 
 
 export default class IdeaForm extends React.Component {
@@ -75,6 +77,29 @@ export default class IdeaForm extends React.Component {
 
 
    render() {
+
+    function gaIdeaFormTitle() {
+        ReactGA.event({
+            category: 'Idea',
+            action: 'Idea Form',
+            label: 'Click Title',
+        });
+    }
+    function gaIdeaFormDescription() {
+        ReactGA.event({
+            category: 'Idea',
+            action: 'Idea Form',
+            label: 'Click Description',
+        });
+    }
+    function gaIdeaFormAuthor() {
+        ReactGA.event({
+            category: 'Idea',
+            action: 'Idea Form',
+            label: 'Click Author',
+        });
+    }
+    
         return (
             <div id="ideaFormContainer">
                 <form id="ideaFormBody">
@@ -85,11 +110,11 @@ export default class IdeaForm extends React.Component {
                         <span id="blueMontserrat">>>>   TOPIC: </span>{this.state.topicTitle}
                     </div>
                     <div id="ideaForm">
-                        <input onChange={this.newIdeaTitleChange} type="text" required="required" maxLength="70" id="ideaFormTitle" placeholder="NEW IDEA TITLE"/>
-                        <textarea placeholder="What is your idea? " id="ideaFormDescription"/>
+                        <input onClick={gaIdeaFormTitle} onChange={this.newIdeaTitleChange} type="text" required="required" maxLength="70" id="ideaFormTitle" placeholder="NEW IDEA TITLE"/>
+                        <textarea onClick={gaIdeaFormDescription} placeholder="What is your idea? " id="ideaFormDescription"/>
                     </div>
                     <div id="ideaFormFooter">
-                        <input type="text" required="required" maxLength="70" id="ideaAuthorForm" placeholder="Optional:  Author Name"/>
+                        <input onClick={gaIdeaFormAuthor} type="text" required="required" maxLength="70" id="ideaAuthorForm" placeholder="Optional:  Author Name"/>
                         <Link id="ideaFormSubmit" to={window.location.pathname} onClick={this.postIdea}>
                             ADD
                         </Link>

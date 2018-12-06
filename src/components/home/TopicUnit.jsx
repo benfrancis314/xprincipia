@@ -5,6 +5,8 @@ import cookie from 'react-cookie';
 import {Config} from '../../config.js';
 import $ from 'jquery';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group'; // ES6
+import ReactGA from 'react-ga';
+ReactGA.initialize('UA-104103231-1'); //Unique Google Analytics tracking number
 
 
 export default class TopicUnit extends React.Component {
@@ -35,8 +37,17 @@ export default class TopicUnit extends React.Component {
     }
 
     renderItem(topic) {
+
+        function gaTopicSelect() {
+            ReactGA.event({
+                category: 'Topic',
+                action: 'Topic Select',
+                label: topic.Title,
+            });
+        }
+
         return(
-            <Link key={topic.ID} to={`/home/${topic.ID}`} activeClassName="topicListUnitActive">
+            <Link key={topic.ID} to={`/home/${topic.ID}`} onClick={gaTopicSelect} activeClassName="topicListUnitActive">
                 <div id="topicListUnit">
                     {topic.Title}
                 </div>

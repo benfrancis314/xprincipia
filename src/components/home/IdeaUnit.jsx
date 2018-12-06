@@ -5,6 +5,8 @@ import cookie from 'react-cookie';
 import {Config} from '../../config.js';
 import $ from 'jquery';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group'; // ES6
+import ReactGA from 'react-ga';
+ReactGA.initialize('UA-104103231-1'); //Unique Google Analytics tracking number
 
 
 export default class IdeaUnit extends React.Component {
@@ -35,8 +37,17 @@ export default class IdeaUnit extends React.Component {
     }
 
     renderItem(idea) {
+
+        function gaIdeaView() {
+            ReactGA.event({
+                category: 'Ideas',
+                action: 'Idea View',
+                label: idea.Title,
+            });
+        }
+
         return(
-            <Link key={idea.ID} to={`/idea/${idea.ID}`} activeClassName="ideaListUnitActive">
+            <Link key={idea.ID} to={`/idea/${idea.ID}`} onClick={gaIdeaView} activeClassName="ideaListUnitActive">
                 <div id="ideaListUnit">
                     {idea.Title}
                 </div>

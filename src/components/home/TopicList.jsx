@@ -6,6 +6,8 @@ import {Config} from '../../config.js';
 import $ from 'jquery';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group'; // ES6
 import TopicUnit from './TopicUnit.jsx';
+import ReactGA from 'react-ga';
+ReactGA.initialize('UA-104103231-1'); //Unique Google Analytics tracking number
 
 
 export default class TopicList extends React.Component {
@@ -79,18 +81,44 @@ export default class TopicList extends React.Component {
 		$(document).ready(function() {
             $('#newTopicFormContainerHide').attr('id','newTopicFormContainer');
             $('#newTopicButton').attr('id','newTopicButtonHide');
-		});
+        });
+        ReactGA.event({
+            category: 'Topic',
+            action: 'Topic Form',
+            label: 'Show Form',
+        });
     };
     
     hideTopicForm() {
 		$(document).ready(function() {
             $('#newTopicFormContainer').attr('id','newTopicFormContainerHide');
             $('#newTopicButtonHide').attr('id','newTopicButton');
-		});
+        });
+        ReactGA.event({
+            category: 'Topic',
+            action: 'Topic Form',
+            label: ('Close Form, ' + document.getElementById("newTopicForm").value),
+        });
 	};
 
    render() {
     
+    function gaTopicFormTitleClick() {
+        ReactGA.event({
+            category: 'Topic',
+            action: 'Topic Form',
+            label: 'Click Title',
+        });
+    }
+
+    function gaTopicFormTitleWrite() {
+        ReactGA.event({
+            category: 'Topic',
+            action: 'Topic Form',
+            label: ('Write Title:'+document.getElementById("newTopicFormTitle").value),
+        });
+    }
+
             return (
                 <div id="topicListContainer">
                     <div id="topicListTitle">
@@ -106,7 +134,7 @@ export default class TopicList extends React.Component {
                                 <img src={require('../../assets/redX2.svg')} id="projectModuleClose2" width="22" height="22" alt="Project Tree Button, white tree" />
                             </div>
                             <form id="newTopicForm">
-                                <input type="text" required="required" maxLength="70" id="newTopicFormTitle" placeholder="NEW TOPIC" />
+                                <input onClick={gaTopicFormTitleClick} onChange={gaTopicFormTitleWrite} type="text" required="required" maxLength="70" id="newTopicFormTitle" placeholder="NEW TOPIC" autoFocus />
                             </form>
                             <div id="newTopicCreate" onClick={this.postTopic}>
                                 ADD
