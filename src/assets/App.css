@@ -18813,7 +18813,62 @@ background-color: #ff7100;
 
 /*  */
 
+
 /* NEW UI */
+
+
+/* NEW UI MOBILE */
+
+@media screen and (max-width: 800px) { 
+
+  #homeContainerColumns {
+    flex-direction: column !important;
+  }
+  #homeContainerColumsn * {
+    width: 100% !important;
+  }
+  #topicListContainer, #ideaListContainer, #ideaFormContainer {
+    width: 100% !important;
+  }
+  #fullIdeaContainer {
+    width: 100% !important;
+    right: auto !important;
+    flex-direction: column !important;
+  }
+  #fullIdeaBody {
+    width: 100% !important;
+  }
+  #fullIdeaBody {
+    width: 100% !important;
+  }
+  #ideaCommentsBody {
+    width: 100% !important;
+  }
+  #fullIdeaDescription {
+    text-align: left !important;
+  }
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /* Home Container */
 
