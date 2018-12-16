@@ -1,7 +1,6 @@
 import React from 'react';
 import ReactGA from 'react-ga';
 import { Link } from 'react-router';
-ReactGA.initialize('UA-104103231-1'); //Unique Google Analytics tracking number
 
 export default class Load extends React.Component {
 

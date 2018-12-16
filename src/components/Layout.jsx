@@ -6,7 +6,6 @@ import {Config} from '../config.js';
 import cookie from 'react-cookie';
 import axios from 'axios';
 import ReactGA from 'react-ga';
-ReactGA.initialize('UA-104103231-1'); //Unique Google Analytics tracking number
 
 
 export default class Layout extends React.Component {

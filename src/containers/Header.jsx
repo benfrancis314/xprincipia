@@ -9,6 +9,9 @@ import {Config} from '../config.js';
 import $ from 'jquery';
 import HeaderSphere from '../components/HeaderSphere.jsx';
 import HeaderAvatarEr from '../components/HeaderAvatarEr.jsx';
+var Experiment = require("react-ab-test/lib/Experiment");
+var Variant = require("react-ab-test/lib/Variant");
+var emitter = require("react-ab-test/lib/emitter");
 
 
 
@@ -95,6 +98,7 @@ enterRegister(event) {
       })
     })
       .catch(function (error) {
+        // alert(error)
           $(document).ready(function() {
               $('#notification').attr('id','notificationShow').hide().slideDown();
 
@@ -205,18 +209,14 @@ if (this.state.userToken === undefined ){
                 </Link>
               </div>
               <div id="headerRight">
-                <HeaderSphere />
-                {/* OLD STYLE */}
-                {/* <div id="headerSphereInfo1">
-                    login | join
-                </div> */}
-                {/* FOR NEW STYLE */}
-                {/* <div id="headerSphereInfoWhite">
-                    login | join
-                </div> */}
-                {/* UNCOMMENTING UNTIL WE RESTART LOGIN PROCESS */}
-                {/* <div id="exitHeaderMenuMobileLogout" onClick={this.hideMenu}></div>
-                  <div id="headerOptionsContainerHide">
+              {/* TEST ONE */}
+              <Variant name="A">
+                {/* <HeaderSphere /> */}
+              </Variant>
+                
+              {/* <Variant name="B"> */}
+                <div id="exitHeaderMenuMobileLogout" onClick={this.hideMenu}></div>
+                  <div id="headerOptionsContainer">
                           <input name="email" required="required" maxLength="30" placeholder="username" id="loginHeaderEmail" autoFocus onKeyPress={this.enterLogin} />
                           <input type="password" name="password" required="required" maxLength="30" placeholder="password" id="loginHeaderPassword" onKeyPress={this.enterLogin}/>            
                           <Link to={window.location.pathname} id="loginHeaderLink"  onKeyPress={this.postLogin}>
@@ -228,9 +228,10 @@ if (this.state.userToken === undefined ){
                               join
                             </div>
                           </Link>
-                  </div> */}
+                  </div>
                 </div>
-              
+                {/* </Variant> */}
+                
           </div>
 
           {/* SEARCH RESULTS */}

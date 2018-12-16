@@ -7,7 +7,7 @@ import NotebookContainer from './containers/NotebookContainer.jsx';
 import { Link } from 'react-router';
 import $ from 'jquery';
 import ReactGA from 'react-ga';
-ReactGA.initialize('UA-104103231-1'); //Unique Google Analytics tracking number
+// ReactGA.initialize('UA-104103231-1'); //Unique Google Analytics tracking number
 
 
 class App extends React.Component {

@@ -7,7 +7,6 @@ import $ from 'jquery';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group'; // ES6
 import TopicUnit from './TopicUnit.jsx';
 import ReactGA from 'react-ga';
-ReactGA.initialize('UA-104103231-1'); //Unique Google Analytics tracking number
 
 
 export default class TopicList extends React.Component {
@@ -34,7 +33,7 @@ export default class TopicList extends React.Component {
 
     componentDidMount(){
         var self = this;
-        axios.get( Config.API + '/problems/all').then(function (response) {
+        axios.get( Config.API + '/topics/all').then(function (response) {
             self.setState({
                 topics: response.data,
             })
@@ -42,7 +41,7 @@ export default class TopicList extends React.Component {
     }
     componentDidReceiveProps(nextProps){
         var self = this;
-        axios.get( Config.API + '/problems/all').then(function (response) {
+        axios.get( Config.API + '/topics/all').then(function (response) {
             self.setState({
                 topics: response.data,
             })
@@ -51,7 +50,7 @@ export default class TopicList extends React.Component {
 
     refreshTopics() {
         var self = this;
-        axios.get( Config.API + '/problems/all').then(function (response) {
+        axios.get( Config.API + '/topics/all').then(function (response) {
             self.setState({
                 topics: response.data,
             })
@@ -62,10 +61,8 @@ export default class TopicList extends React.Component {
         var self = this;
         this.state.title = document.getElementById('newTopicFormTitle').value
         
-        axios.post( Config.API + '/problems/create', {
+        axios.post( Config.API + '/topics/create', {
           title : this.state.title,
-          // Summary here only because it is required by current backend
-          summary: "xxx",
         })
         .then(function (result) {
               document.getElementById("newTopicForm").reset();

@@ -30,7 +30,7 @@ export default class IdeaComments extends React.Component {
     };
     componentDidMount(){
         var self = this;
-        axios.get( Config.API + '/comments/bytype/discuss?problem_id='+this.props.ideaID).then(function (response) {
+        axios.get( Config.API + '/threads/ideaID?id='+this.props.ideaID).then(function (response) {
                 self.setState({
                     comments: response.data,
                 })
@@ -38,7 +38,7 @@ export default class IdeaComments extends React.Component {
     }
     componentWillReceiveProps(nextProps){
         var self = this;
-        axios.get( Config.API + '/comments/bytype/discuss?problem_id='+nextProps.ideaID).then(function (response) {
+        axios.get( Config.API + '/threads/ideaID?id='+nextProps.ideaID).then(function (response) {
                 self.setState({
                     comments: response.data,
                 })
@@ -46,7 +46,7 @@ export default class IdeaComments extends React.Component {
     }
     commentsRefresh() {
         var self = this;
-        axios.get( Config.API + '/comments/bytype/discuss?problem_id='+this.props.ideaID).then(function (response) {
+        axios.get( Config.API + '/threads/ideaID?id='+this.props.ideaID).then(function (response) {
             self.setState({
                 comments: response.data,
             })
@@ -65,13 +65,11 @@ export default class IdeaComments extends React.Component {
         else {
             this.state.author = authorName
         }
-        axios.post( Config.API + '/comments/create', {
-            type: '3', // Must be set to 2, 3, or 6, based upon current GetCommentsByTypeDiscuss function in backend (gorm)
+        axios.post( Config.API + '/threads/create', {
             userName: this.state.author,
             description : this.state.description,
             parentTitle: this.props.ideaTitle,
-            typeID: this.props.ideaID, // Rename this from "typeID", it doesn't make sense
-            parentType: '0', // Must be set to 0 based upon current GetCommentsByTypeDiscuss function in backend (gorm)
+            ideaID: this.props.ideaID,
         })
         .then(function (result) {
             document.getElementById("ideaCommentForm").reset();
@@ -79,7 +77,7 @@ export default class IdeaComments extends React.Component {
         })
     }
 
-   render() {
+    render() {
     
             return (
                 <div id="ideaCommentsBody">

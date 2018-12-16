@@ -196,65 +196,64 @@ componentDidMount(){
 
    render() {
         
-    if (this.props.notification != ('0' || undefined)) {
-        return (
-            <div id="headerRight" >
-                {/* <div id="headerOptionsContainerNotifications"> */}
-                <HeaderSphere />
-                <div id="headerSphereInfo2">
-                    <span id="red">{this.props.notification}</span>
-                </div>
-                <div id="exitHeaderMenuMobile"
-                 onClick={this.hideMenu}
-                >
-                </div>
-                <div id="headerOptionsContainerHide">
-                    <div id="headerTabContainer">
-                        <Link>
-                            <div id="notebookHeaderButton" onClick={this.showNotebook} onMouseOver={this.hoverNotebook} onMouseOut={this.unHoverNotebook}>
-                                <img src={require('../assets/notebookWhite.svg')} id="mindTempleButton" width="30" height="30" alt="Gear logo, link to settings"/>
-                            </div>
-                        </Link>
-                        <Link to="/messages" activeClassName="activePrivate">
-                            <div id={this.state.messageButtonID} onMouseOver={this.hoverMessagesHeader} onMouseOut={this.unHoverMessagesHeader} onClick={this.clearMessageNotifications}>
-                                {this.state.messageNotifications}
-                            </div>
-                        </Link>
-                        <Link to="/mindtemple" id="whiteHeader" activeClassName="activePrivate">
-                            <div id="headerTempleName" onMouseOver={this.hoverMindTemple} onMouseOut={this.unHoverMindTemple}>
-                                <img src={require('../assets/templeSoftWhite.svg')} id="mindTempleButton" width="30" height="30" alt="Gear logo, link to settings"/>
-                            </div>
-                        </Link>
-                    </div>
-                    <Link to="/profile" activeClassName="activeProfile">
-                        <div id="headerNameNotifications" onMouseOver={this.hoverProfile} onMouseOut={this.unHoverProfile}>
-                            {cookie.load("userName")}
-                        </div>
-                    </Link>
-                    <Link to="/profile/notifications" activeClassName="activeNotifications">
-                        <div id="headerNotificationsButton" onMouseOver={this.hoverNotificationsHeader} onMouseOut={this.unHoverNotificationsHeader}>
-                            {this.props.notification}
-                        </div>
-                    </Link>
-                </div>
-            </div>
-        );
-    } else {
+    // if (this.props.notification != ('0' || undefined)) {
+    //     return (
+    //         <div id="headerRight" >
+    //             <HeaderSphere />
+    //             <div id="headerSphereInfo2">
+    //                 <span id="red">{this.props.notification}</span>
+    //             </div>
+    //             <div id="exitHeaderMenuMobile"
+    //              onClick={this.hideMenu}
+    //             >
+    //             </div>
+    //             <div id="headerOptionsContainerHide">
+    //                 <div id="headerTabContainer">
+    //                     <Link>
+    //                         <div id="notebookHeaderButton" onClick={this.showNotebook} onMouseOver={this.hoverNotebook} onMouseOut={this.unHoverNotebook}>
+    //                             <img src={require('../assets/notebookWhite.svg')} id="mindTempleButton" width="30" height="30" alt="Gear logo, link to settings"/>
+    //                         </div>
+    //                     </Link>
+    //                     <Link to="/messages" activeClassName="activePrivate">
+    //                         <div id={this.state.messageButtonID} onMouseOver={this.hoverMessagesHeader} onMouseOut={this.unHoverMessagesHeader} onClick={this.clearMessageNotifications}>
+    //                             {this.state.messageNotifications}
+    //                         </div>
+    //                     </Link>
+    //                     <Link to="/mindtemple" id="whiteHeader" activeClassName="activePrivate">
+    //                         <div id="headerTempleName" onMouseOver={this.hoverMindTemple} onMouseOut={this.unHoverMindTemple}>
+    //                             <img src={require('../assets/templeSoftWhite.svg')} id="mindTempleButton" width="30" height="30" alt="Gear logo, link to settings"/>
+    //                         </div>
+    //                     </Link>
+    //                 </div>
+    //                 <Link to="/profile" activeClassName="activeProfile">
+    //                     <div id="headerNameNotifications" onMouseOver={this.hoverProfile} onMouseOut={this.unHoverProfile}>
+    //                         {cookie.load("userName")}
+    //                     </div>
+    //                 </Link>
+    //                 <Link to="/profile/notifications" activeClassName="activeNotifications">
+    //                     <div id="headerNotificationsButton" onMouseOver={this.hoverNotificationsHeader} onMouseOut={this.unHoverNotificationsHeader}>
+    //                         {this.props.notification}
+    //                     </div>
+    //                 </Link>
+    //             </div>
+    //         </div>
+    //     );
+    // } else {
     
         return (
             <div id="headerRight" 
              
             >
-                <HeaderSphere />
-                <div id="headerSphereInfo2">
+                {/* <HeaderSphere /> */}
+                {/* <div id="headerSphereInfo2">
                     <span id="red">{this.state.messageNotifications}</span>
-                </div>
-                <div id="exitHeaderMenuMobile"
+                </div> */}
+                {/* <div id="exitHeaderMenuMobile"
                  onClick={this.hideMenu}
-                >
-                </div>
-                <div id="headerOptionsContainerHide">
-                        <div id="headerTabContainer">
+                > 
+                </div> */}
+                <div id="headerOptionsContainerUser">
+                        {/* <div id="headerTabContainer">
                             <Link>
                                 <div id="notebookHeaderButton" onClick={this.showNotebook} onMouseOver={this.hoverNotebook} onMouseOut={this.unHoverNotebook}>
                                     <img src={require('../assets/notebookWhite.svg')} id="mindTempleButton" width="30" height="30" alt="Gear logo, link to settings"/>
@@ -270,13 +269,25 @@ componentDidMount(){
                                     <img src={require('../assets/templeSoftWhite.svg')} id="mindTempleButton" width="30" height="30" alt="Gear logo, link to settings"/>
                                 </div>
                             </Link>
-                        </div>
-                        <Link to="/profile" id="whiteHeader" activeClassName="activeProfile">
-                            <div id="headerName" onMouseOver={this.hoverProfile} onMouseOut={this.unHoverProfile}>
+                        </div> */}
+
+
+
+
+                        <Link 
+                        // REMOVING PROFILE LINK:   // to="/profile" 
+                        id="whiteHeader" activeClassName="activeProfile">
+                            <div id="headerName" 
+                            // onMouseOver={this.hoverProfile} onMouseOut={this.unHoverProfile}
+                            >
                                 {cookie.load("userName")}
                             </div>
                         </Link>
-                        <Link to="/profile/prestige" activeClassName="activePointsHeader">
+
+
+
+
+                        {/* <Link to="/profile/prestige" activeClassName="activePointsHeader">
                             <div id="headerPointsContainer" onMouseOver={this.hoverPoints} onMouseOut={this.unHoverPoints}>
                                 <div id="headerLevelTitle">
                                     {this.state.title}
@@ -285,10 +296,10 @@ componentDidMount(){
                                     {this.state.userPoints}
                                 </div>
                             </div>
-                        </Link>
+                        </Link> */}
                 </div>
             </div>
         );
-    }
+    // }
    }
 }

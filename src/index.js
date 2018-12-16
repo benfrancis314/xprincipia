@@ -3,57 +3,56 @@ import ReactDOM from 'react-dom';
 import { Router, Route, IndexRoute, browserHistory } from 'react-router';
 import App from './App';
 import ReactGA from 'react-ga';
-ReactGA.initialize('UA-104103231-1'); //Unique Google Analytics tracking number
 
 //Load Components
 
-import ActivityFeedFilter from './components/feed/ActivityFeedFilter.jsx';
-import ActivityFeedOmniUnits from './components/feed/ActivityFeedOmniUnits.jsx';
-import ActivityFeedProjectsUnits from './components/feed/ActivityFeedProjectsUnits.jsx';
-import ActivityFeedProposalsUnits from './components/feed/ActivityFeedProposalsUnits.jsx';
-import ActivityFeedDiscussUnits from './components/feed/ActivityFeedDiscussUnits.jsx';
-import ActivityFeedLearnUnits from './components/feed/ActivityFeedLearnUnits.jsx';
-import DiscussDeleteForm from './components/discuss/DiscussDeleteForm.jsx';
-import DiscussEditForm from './components/discuss/DiscussEditForm.jsx';
-import DiscussFlagForm from './components/discuss/DiscussFlagForm.jsx';
-import DiscussForm from './components/discuss/DiscussForm.jsx';
-import DiscussCommentForm from './components/discuss/DiscussCommentForm.jsx';
-import ProjectBreakdownSlogan from './components/ProjectBreakdownSlogan.jsx';
+// import ActivityFeedFilter from './components/feed/ActivityFeedFilter.jsx';
+// import ActivityFeedOmniUnits from './components/feed/ActivityFeedOmniUnits.jsx';
+// import ActivityFeedProjectsUnits from './components/feed/ActivityFeedProjectsUnits.jsx';
+// import ActivityFeedProposalsUnits from './components/feed/ActivityFeedProposalsUnits.jsx';
+// import ActivityFeedDiscussUnits from './components/feed/ActivityFeedDiscussUnits.jsx';
+// import ActivityFeedLearnUnits from './components/feed/ActivityFeedLearnUnits.jsx';
+// import DiscussDeleteForm from './components/discuss/DiscussDeleteForm.jsx';
+// import DiscussEditForm from './components/discuss/DiscussEditForm.jsx';
+// import DiscussFlagForm from './components/discuss/DiscussFlagForm.jsx';
+// import DiscussForm from './components/discuss/DiscussForm.jsx';
+// import DiscussCommentForm from './components/discuss/DiscussCommentForm.jsx';
+// import ProjectBreakdownSlogan from './components/ProjectBreakdownSlogan.jsx';
 import Error404 from './components/Error404.jsx';
 import FeedbackForm from './components/FeedbackForm.jsx';
-import FullProblem from './components/problems/FullProblem.jsx';
-import FullSolution from './components/solutions/FullSolution.jsx';
-import FullSolutionContent from './components/solutions/FullSolutionContent.jsx';
-import GeneralTutorial from './components/tutorials/GeneralTutorial.jsx';
+// import FullProblem from './components/problems/FullProblem.jsx';
+// import FullSolution from './components/solutions/FullSolution.jsx';
+// import FullSolutionContent from './components/solutions/FullSolutionContent.jsx';
+// import GeneralTutorial from './components/tutorials/GeneralTutorial.jsx';
 import FullIdea from './components/home/FullIdea.jsx';
-import FullVersion from './components/versions/FullVersion.jsx';
-import Introduction from './components/Introduction.jsx';
+// import FullVersion from './components/versions/FullVersion.jsx';
+// import Introduction from './components/Introduction.jsx';
 import Layout from './components/Layout.jsx';
 import LayoutEr from './components/LayoutEr.jsx';
-import LearnDeleteForm from './components/learn/LearnDeleteForm.jsx';
-import LearnEditForm from './components/learn/LearnEditForm.jsx';
-import LearnFlagForm from './components/learn/LearnFlagForm.jsx';
-import LearnForm from './components/learn/LearnForm.jsx';
-import Load from './components/Load.jsx';
+// import LearnDeleteForm from './components/learn/LearnDeleteForm.jsx';
+// import LearnEditForm from './components/learn/LearnEditForm.jsx';
+// import LearnFlagForm from './components/learn/LearnFlagForm.jsx';
+// import LearnForm from './components/learn/LearnForm.jsx';
+// import Load from './components/Load.jsx';
 import LoginUnit from './components/LoginUnit.jsx';
-import OverviewProjectForm from './components/overview/OverviewProjectForm.jsx';
+// import OverviewProjectForm from './components/overview/OverviewProjectForm.jsx';
 import PasswordResetContainer from './components/profile/PasswordResetContainer.jsx';
 import PasswordResetFinish from './components/profile/PasswordResetFinish.jsx';
 import PasswordResetStart from './components/profile/PasswordResetStart.jsx';
 import PrivateProjectForm from './components/problems/PrivateProjectForm.jsx';
-import ProblemForm from './components/problems/ProblemForm.jsx';
-import ProblemFormProposal from './components/problems/ProblemFormProposal.jsx';
-import ProblemDiscussMenu from './components/problems/ProblemDiscussMenu.jsx';
-import ProblemLearnMenu from './components/problems/ProblemLearnMenu.jsx';
-import ProblemSolutionsMenu from './components/problems/ProblemSolutionsMenu.jsx';
-import ProblemTopSolutions from './components/problems/ProblemTopSolutions.jsx';
-import ProjectBreakdownForm from './components/problems/ProjectBreakdownForm.jsx';
-import ProjectBreakdownEditForm from './components/problems/ProjectBreakdownEditForm.jsx';
-import ProjectBreakdownFlagForm from './components/problems/ProjectBreakdownFlagForm.jsx';
-import ProjectBreakdownProjectForm from './components/problems/ProjectBreakdownProjectForm.jsx';
-import ProjectDeleteForm from './components/problems/ProjectDeleteForm.jsx';
-import ProjectEditForm from './components/problems/ProjectEditForm.jsx';
-import ProjectFlagForm from './components/problems/ProjectFlagForm.jsx';
+// import ProblemForm from './components/problems/ProblemForm.jsx';
+// import ProblemFormProposal from './components/problems/ProblemFormProposal.jsx';
+// import ProblemDiscussMenu from './components/problems/ProblemDiscussMenu.jsx';
+// import ProblemLearnMenu from './components/problems/ProblemLearnMenu.jsx';
+// import ProblemSolutionsMenu from './components/problems/ProblemSolutionsMenu.jsx';
+// import ProblemTopSolutions from './components/problems/ProblemTopSolutions.jsx';
+// import ProjectBreakdownForm from './components/problems/ProjectBreakdownForm.jsx';
+// import ProjectBreakdownEditForm from './components/problems/ProjectBreakdownEditForm.jsx';
+// import ProjectBreakdownFlagForm from './components/problems/ProjectBreakdownFlagForm.jsx';
+// import ProjectBreakdownProjectForm from './components/problems/ProjectBreakdownProjectForm.jsx';
+// import ProjectDeleteForm from './components/problems/ProjectDeleteForm.jsx';
+// import ProjectEditForm from './components/problems/ProjectEditForm.jsx';
+// import ProjectFlagForm from './components/problems/ProjectFlagForm.jsx';
 import ProfileAbout from './components/profile/ProfileAbout.jsx';
 import ProfileCareers from './components/profile/ProfileCareers.jsx';
 import ProfileDisclaimer from './components/profile/ProfileDisclaimer.jsx';
@@ -70,22 +69,22 @@ import ProfileSettings from './components/profile/ProfileSettings.jsx';
 import ProfileShow from './components/home/ProfileShow.jsx';
 import ProfileTutorial from './components/tutorials/ProfileTutorial.jsx';
 import ProfileWorkspace from './components/profile/ProfileWorkspace.jsx';
-import ProposalDiscussMenu from './components/solutions/ProposalDiscussMenu.jsx';
-import ProposalDiscussMenuPrivate from './components/solutions/ProposalDiscussMenuPrivate.jsx';
-import Redirection from './components/Redirection.jsx';
+// import ProposalDiscussMenu from './components/solutions/ProposalDiscussMenu.jsx';
+// import ProposalDiscussMenuPrivate from './components/solutions/ProposalDiscussMenuPrivate.jsx';
+// import Redirection from './components/Redirection.jsx';
 import RegisterUnit from './components/RegisterUnit.jsx';
-import SolutionDeleteForm from './components/solutions/SolutionDeleteForm.jsx';
-import SolutionEditForm from './components/solutions/SolutionEditForm.jsx';
-import SolutionFlagForm from './components/solutions/SolutionFlagForm.jsx';
-import SolutionForm from './components/solutions/SolutionForm.jsx';
+// import SolutionDeleteForm from './components/solutions/SolutionDeleteForm.jsx';
+// import SolutionEditForm from './components/solutions/SolutionEditForm.jsx';
+// import SolutionFlagForm from './components/solutions/SolutionFlagForm.jsx';
+// import SolutionForm from './components/solutions/SolutionForm.jsx';
 import TopicBranches from './components/home/TopicBranches.jsx';
 import Empty from './components/Empty.jsx';
 import UserMessages from './components/profile/UserMessages.jsx';
 import UserPassions from './components/profile/UserPassions.jsx';
 import UserProblemsSolutions from './components/profile/UserProblemsSolutions.jsx';
-import VersionForm from './components/versions/VersionForm.jsx';
-import WelcomeCreateButton from './components/welcome/WelcomeCreateButton.jsx';
-import WelcomeCreateForm from './components/welcome/WelcomeCreateForm.jsx';
+// import VersionForm from './components/versions/VersionForm.jsx';
+// import WelcomeCreateButton from './components/welcome/WelcomeCreateButton.jsx';
+// import WelcomeCreateForm from './components/welcome/WelcomeCreateForm.jsx';
 
 
 //Load Containers
@@ -158,7 +157,7 @@ ReactDOM.render(
         <Route path='/passwordreset/finish/:passID' component={PasswordResetFinish}></Route>
       </Route>
 
-      <Route path='/error' component={ErrorContainer}>
+      {/* <Route path='/error' component={ErrorContainer}>
         <IndexRoute component={Redirection}></IndexRoute>
         <Route path='/404' component={Error404}></Route>
         <Route path='/redirection' component={Redirection}></Route>
@@ -171,8 +170,6 @@ ReactDOM.render(
         <Route path='/welcome/container/project' component={WelcomeProjectsContainer}>
           <IndexRoute component={WelcomeCreateButton}></IndexRoute>
           <Route path='/welcomecreate' component={WelcomeCreateButton}>
-            {/* <IndexRoute component={ChatBoxContainer}></IndexRoute> */}
-            {/* <Route path='/chatbox' component={ChatBoxContainer}/> */}
             <Route path='/welcome/old' component={Empty}/>
           </Route>
           <Route path='/welcome/feed' component={ActivityFeedOmniContainer}>
@@ -198,7 +195,7 @@ ReactDOM.render(
             <Route path='/welcome/learn' component={ActivityFeedLearnUnits}></Route>
           </Route>
         </Route>
-      </Route>
+      </Route> */}
       <Route path='/home/container' component={Home}>
             <IndexRoute component={Empty}></IndexRoute>
             {/* <Route path='/home' component={Empty}></Route> */}
@@ -212,11 +209,11 @@ ReactDOM.render(
         <Route path='/login' component={LoginUnit}></Route>
         <Route path='/register' component={RegisterUnit}></Route>
       </Route>
-      <Route path='/mindtemple/container' component={MindTempleContainer}>
+      {/* <Route path='/mindtemple/container' component={MindTempleContainer}>
         <IndexRoute component={Empty}></IndexRoute>
         <Route path='/mindtemple' component={Empty}></Route>
         <Route path='/mindtemple/create' component={PrivateProjectForm}></Route>
-      </Route>
+      </Route> */}
       <Route path='/user/:username' component={UserContainer}>
         <IndexRoute component={UserProblemsSolutions}></IndexRoute>
         <Route path='/user/:username/activity' component={UserProblemsSolutions}></Route>
@@ -247,14 +244,9 @@ ReactDOM.render(
         <Route path='/profile/settings' component={ProfileSettings}></Route>
         <Route path='/profile/workspace' component={ProfileWorkspace}></Route>
       </Route>
-      <Route path='/project/private/:probID' component={FullProblem}>
+      {/* <Route path='/project/private/:probID' component={FullProblem}>
         <IndexRoute component={Empty}></IndexRoute>
         <Route path='/project/private/:probID/create' component={ProblemForm}></Route>
-        {/* <Route path='/project/private/:probID/create/container' component={ProblemFormContainerPrivate}>
-            <IndexRoute component={ProblemForm}></IndexRoute>
-            <Route path='/project/private/:probID/create' component={ProblemForm}></Route>
-            <Route path='/project/private/:probID/link' component={ProjectLinkForm}></Route>
-        </Route> */}
         <Route path='/project/private/:probID/edit' component={ProjectEditForm}></Route>
         <Route path='/project/private/:probID/delete' component={ProjectDeleteForm}></Route>
         <Route path='/project/private/:probID/flag' component={ProjectFlagForm}></Route>
@@ -271,11 +263,6 @@ ReactDOM.render(
             <Route path='/proposal/private/:probID/:solutionID/edit' component={SolutionEditForm}></Route>
             <Route path='/project/private/:probID/proposal/:solutionID/subprojects' component={SubProjectProposalContainer}></Route>
             <Route path='/project/private/:probID/proposal/:solutionID/create' component={ProblemFormProposal}></Route>
-            {/* <Route path='/project/private/:probID/proposal/:solutionID/subprojects/create' component={ProblemFormContainerProposal}>
-              <IndexRoute component={ProblemFormProposal}></IndexRoute>
-              <Route path='/project/private/:probID/proposal/:solutionID/create' component={ProblemFormProposal}></Route>
-              <Route path='/project/private/:probID/proposal/:solutionID/link' component={ProjectLinkForm}></Route>
-            </Route> */}
             <Route path='/project/private/:probID/proposal/:solutionID/versions/create' component={VersionForm}></Route>
             <Route path='/project/private/:probID/proposal/:solutionID/versions' component={VersionsContainer}></Route>
             <Route path='/project/private/:probID/proposal/:solutionID/related' component={RelatedProposalsContainer}></Route>
@@ -334,11 +321,6 @@ ReactDOM.render(
       <Route path='/project/:probID' component={FullProblem}>
         <IndexRoute component={ProblemSolutionsMenu}></IndexRoute>
         <Route path='/project/:probID/create' component={ProblemForm}></Route>
-        {/* <Route path='/project/:probID/add' component={ProblemFormContainer}>
-          <IndexRoute component={ProblemForm}></IndexRoute>
-          <Route path='/project/:probID/create' component={ProblemForm}></Route>
-          <Route path='/project/:probID/link' component={ProjectLinkForm}></Route>
-        </Route> */}
         <Route path='/project/:probID/create/breakdown' component={ProjectBreakdownForm}></Route>
         <Route path='/project/:probID/create/breakdown/:bdID' component={ProjectBreakdownProjectForm}></Route>
         <Route path='/project/:probID/create/breakdown/:bdID/edit' component={ProjectBreakdownEditForm}></Route>
@@ -360,11 +342,6 @@ ReactDOM.render(
             <Route path='/project/:probID/proposal/:solutionID/flag' component={SolutionFlagForm}></Route>
             <Route path='/project/:probID/proposal/:solutionID/subprojects' component={SubProjectProposalContainer}></Route>
             <Route path='/project/:probID/proposal/:solutionID/create' component={ProblemFormProposal}></Route>
-            {/* <Route path='/project/:probID/proposal/:solutionID/subprojects/create' component={ProblemFormContainerProposal}>
-              <IndexRoute component={ProblemFormProposal}></IndexRoute>
-              <Route path='/project/:probID/proposal/:solutionID/create' component={ProblemFormProposal}></Route>
-              <Route path='/project/:probID/proposal/:solutionID/link' component={ProjectLinkForm}></Route>
-            </Route> */}
             <Route path='/project/:probID/proposal/:solutionID/versions/create' component={VersionForm}></Route>
             <Route path='/project/:probID/proposal/:solutionID/versions' component={VersionsContainer}></Route>
             <Route path='/project/:probID/proposal/:solutionID/related' component={RelatedProposalsContainer}></Route>
@@ -405,7 +382,6 @@ ReactDOM.render(
               <Route path='/project/:probID/discuss/:discussID/comments/:commentID/delete' component={DiscussDeleteForm}></Route>
             </Route>
         </Route>
-          {/*<IndexRoute component={ProblemLearnMenu}></IndexRoute>*/}
           <Route path='/project/:probID/learn/menu' component={ProblemLearnMenu}>
             <Route path='/project/:probID/learn/content/full' component={LearnContainer}>
               <IndexRoute component={LearnForm}></IndexRoute>
@@ -415,10 +391,9 @@ ReactDOM.render(
               <Route path='/project/:probID/learn/:learnItemID/delete' component={LearnDeleteForm}></Route>
             </Route>
           </Route>
-        {/* <Route path='/project/:probID/related' component={ProjectRelatedParentsContainer}></Route> */}
-        </Route>
+        </Route>*/}
         
-        </Route>
+        </Route> 
       </Route>
     {/*<Redirect from='*' to='/404' />*/}
     <Route path='*' component={Error404}/>

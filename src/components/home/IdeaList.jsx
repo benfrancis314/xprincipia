@@ -29,7 +29,7 @@ export default class IdeaList extends React.Component {
 
     componentDidMount(){
         var self = this;
-        axios.get( Config.API + '/solutions/problemID?id='+this.props.currentTopic).then(function (response) {
+        axios.get( Config.API + '/ideas/topicID?id='+this.props.currentTopic).then(function (response) {
             self.setState({
                 ideas: response.data,
                 ideaRefresh: self.props.ideaRefresh,
@@ -38,7 +38,7 @@ export default class IdeaList extends React.Component {
     }
     componentWillReceiveProps (nextProps){
         var self = this;
-        axios.get( Config.API + '/solutions/problemID?id='+nextProps.currentTopic).then(function (response) {
+        axios.get( Config.API + '/ideas/topicID?id='+nextProps.currentTopic).then(function (response) {
             self.setState({
                 ideas: response.data,
                 ideaRefresh: nextProps.ideaRefresh,

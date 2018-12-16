@@ -186,7 +186,7 @@ hideLegal() {
         </Link>
         <div id="register">
             <form >
-                <input type="text" name="fullname" required="required" maxLength="30" placeholder="full name" id="registerFullName" autoFocus />
+                <input type="text" name="fullname" required="required" maxLength="30" placeholder="optional: preferred name" id="registerFullName" autoFocus />
                 <input type="text" name="username" required="required" maxLength="30" placeholder="username" id="registerUserName" />
                 <input type="email" name="email" required="required" maxLength="30" placeholder="email" id="registerEmail" />
                 <input type="password" name="password" required="required" maxLength="30" placeholder="password" id="registerPassword"/>

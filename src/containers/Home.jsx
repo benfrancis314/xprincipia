@@ -68,13 +68,15 @@ export default class Home extends React.Component {
                             <div id="sloganBanner">
                                 <span id="whiteMedium">SHARE </span>SCIENTIFIC IDEAS
                             </div>
+                            <div id="narrativeBanner">
+                                NARRATIVE
+                            </div>
                         {/* <div id="tutorialStartButton">
                             tutorial
                         </div> */}
                     </div>
                     
                     <div id="homeContainerColumns">
-                        
                         <TopicList />
                         <IdeaList currentTopic={this.props.params.topicID} ideaRefresh={this.state.ideaRefresh} newIdeaTitle={this.state.newIdeaTitle} />
                         <IdeaForm currentTopic={this.props.params.topicID} resetTopic={this.resetTopic} />

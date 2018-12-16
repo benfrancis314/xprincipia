@@ -6,7 +6,6 @@ import {Config} from '../../config.js';
 import $ from 'jquery';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group'; // ES6
 import ReactGA from 'react-ga';
-ReactGA.initialize('UA-104103231-1'); //Unique Google Analytics tracking number
 
 
 export default class TopicUnit extends React.Component {

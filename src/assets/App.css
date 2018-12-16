@@ -2576,12 +2576,16 @@ text-align: center;
   align-items: center;
   justify-content: center; */
 }
-#headerOptionsContainer, #headerOptionsContainerHide {
+#headerOptionsContainer, #headerOptionsContainerHide, #headerOptionsContainerUser {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
   transition: all 0.5s ease 0s;
-  opacity: 0;
+  /* opacity: 0; */
+}
+#headerOptionsContainerUser {
+  justify-content: flex-end;
+  padding-right: 5%;
 }
 #headerRight:hover #headerOptionsContainer, #headerRight:hover #headerOptionsContainerHide {
   display: flex;
@@ -18913,7 +18917,30 @@ background-color: #ff7100;
   font-size: 90%;
   background-color: rgba(0,220,255,0.025);
   background: linear-gradient(to right, rgba(0,220,255,0.075), rgba(0,220,255,0));
-
+}
+#narrativeBanner {
+  position: absolute;
+  top: 0;
+  right: 3%;
+  font-family: 'Montserrat', sans-serif; 
+  padding: 0.5% 6%;
+  /* color: #999999; */
+  color: #00dcff;
+  /* border: 1px solid rgba(0,220,255,0.5); */
+  border: 1px solid rgba(81, 81, 81, 0.5);
+  border-width: 0px 1px 1px 1px;
+  border-radius: 0px 0px 15% 0px ;
+  letter-spacing: 2px;
+  /* font-weight: 300 !important; */
+  font-size: 90%;
+  background-color: rgba(0,220,255,0.025);
+  background: linear-gradient(to right, rgba(0,220,255,0), rgba(0,220,255,0.075));
+  transition: all 0.5s ease 0s;
+}
+#narrativeBanner:hover {
+  transform: scale(1.05);
+  cursor: pointer;
+  border-color: rgba(0,220,255,0.5);
 }
 #whiteMedium {
   /* font-weight: 300 !important; */
@@ -19436,6 +19463,7 @@ background-color: #ff7100;
   padding: 2% 5%;
   width: 80%;
   margin: 0 auto;
+  margin-bottom: 3%;
   text-align: justify;
   line-height: 1.5;
   white-space: pre-wrap !important;
@@ -19566,6 +19594,75 @@ background-color: #ff7100;
   line-height: 1.5;
   white-space: pre-wrap !important;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* NARRATIVE */
+
+
+/* CONTAINER */
+#narrativeContainer {
+  position: absolute;
+  min-height: 80%;
+  width: 90%;
+  right: 5%;
+  top: 6%;
+  box-shadow: 0 0 1pt 1pt rgba(0,220,255,0.5);
+  background-color: rgba(15, 19, 28, 0.98);
+  border-radius: 3px;
+  display: flex;
+  flex-direction: row;
+  z-index: 2;
+}
+#narrativeHeader {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 5px 15px;
+  margin-top: 1%;
+}
+#narrativeBody {
+  width: 65%;
+  background: radial-gradient(circle, rgba(0,220,255,0.05), rgba(0,220,255,0));
+  overflow: scroll;
+}
+
+/* CONTENT */
+
+
+/* FOOTER */
+#narrativeQuoteFooter {
+  color: #999999;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

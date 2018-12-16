@@ -6,7 +6,6 @@ import {Config} from '../../config.js';
 import $ from 'jquery';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group'; // ES6
 import ReactGA from 'react-ga';
-ReactGA.initialize('UA-104103231-1'); //Unique Google Analytics tracking number
 
 
 export default class IdeaForm extends React.Component {
@@ -25,7 +24,7 @@ export default class IdeaForm extends React.Component {
 
     componentDidMount() {
         var self = this;
-        axios.get( Config.API + '/problems/ID?id='+this.props.currentTopic).then(function (response) {
+        axios.get( Config.API + '/topics/ID?id='+this.props.currentTopic).then(function (response) {
             self.setState({
                 topicTitle: response.data.Title
             })
@@ -34,7 +33,7 @@ export default class IdeaForm extends React.Component {
 
     componentWillReceiveProps(nextProps) {
         var self = this;
-        axios.get( Config.API + '/problems/ID?id='+nextProps.currentTopic).then(function (response) {
+        axios.get( Config.API + '/topics/ID?id='+nextProps.currentTopic).then(function (response) {
             self.setState({
                 topicTitle: response.data.Title
             })
@@ -55,12 +54,12 @@ export default class IdeaForm extends React.Component {
         }
         
 
-        axios.post( Config.API + '/solutions/create', {
+        axios.post( Config.API + '/ideas/create', {
             title : this.state.title,
             description : this.state.description,
             // Sending "author" to summary field until backend is updatable 
             username : this.state.author,
-            problemID: this.props.currentTopic,
+            topicID: this.props.currentTopic,
             parentTitle: this.state.topicTitle,
           })
           .then(function (result) {

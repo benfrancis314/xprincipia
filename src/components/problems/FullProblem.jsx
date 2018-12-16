@@ -17,8 +17,6 @@ import $ from 'jquery';
 // import ScrollableAnchor from 'react-scrollable-anchor';
 // import { configureAnchors } from 'react-scrollable-anchor';
 
-// import ReactGA from 'react-ga';
-// ReactGA.initialize('UA-104103231-1'); //Unique Google Analytics tracking number
 
 // configureAnchors({offset: -20, scrollDuration: 700});
 

@@ -6,6 +6,8 @@ import {Config} from '../../config.js';
 import $ from 'jquery';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group'; // ES6
 import IdeaComments from './IdeaComments.jsx';
+import ReactGA from 'react-ga';
+
 
 
 export default class FullIdea extends React.Component {
@@ -31,7 +33,7 @@ export default class FullIdea extends React.Component {
     componentDidMount(){
         // ReactDOM.findDOMNode(this).scrollIntoView();
         var self = this;
-        axios.get( Config.API + '/solutions/ID?id='+this.props.params.ideaID).then(function (response) {
+        axios.get( Config.API + '/ideas/ID?id='+this.props.params.ideaID).then(function (response) {
             self.setState({
                 fullIdea: response.data,
                 date: response.data.CreatedAt.slice(0,10),
@@ -41,11 +43,18 @@ export default class FullIdea extends React.Component {
     }
 
    render() {
+    function gaIdeaFullClose() {
+        ReactGA.event({
+            category: 'Idea',
+            action: 'Idea Full',
+            label: 'Close Idea',
+        });
+    }
             return (
                 <div id="fullIdeaContainer">
                     <div id="fullIdeaBody">
                         <div id="fullIdeaHeader">
-                            <Link to={'/home/'+this.state.fullIdea.ProblemID}>
+                            <Link to={'/home/'+this.state.fullIdea.TopicID} onClick={gaIdeaFullClose}>
                                 <div id="ideaCloseButton">
                                     Close
                                 </div>
