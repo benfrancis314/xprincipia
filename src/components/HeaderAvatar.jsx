@@ -21,7 +21,8 @@ constructor(){
         title: '',
     }
     this.clearMessageNotifications = this.clearMessageNotifications.bind(this)
-    this.hideMenu = this.hideMenu.bind(this)
+    this.hoverMenu = this.hoverMenu.bind(this)
+    this.unHoverMenu = this.unHoverMenu.bind(this)
 
     // this.renderItem = this.renderItem.bind(this)
 };
@@ -174,19 +175,16 @@ componentDidMount(){
             $('#logoNameGuide').attr('id','logoName');
         });
     }
-    hideMenu() {
-        // IF MOBILE (and thus can't hover), THEN: 
-        if (window.screen.width <= 600) {
-            $(document).ready(function() {
-                $('#exitHeaderMenuMobileShow').attr('id','exitHeaderMenuMobile');
-                $('#headerSphereHide').attr('id','headerSphere');
-                $('#headerOptionsContainer').attr('id','headerOptionsContainerHide');
-                $('#headerLeftHide').attr('id','headerLeft');
-                $('#exploreHeaderInputHide').attr('id','exploreHeaderInput');
-                $('#exploreFormHeaderHide').attr('id','exploreFormHeader');
-                $('#headerRightMobile').attr('id','headerRight');
-            });
-        }
+
+    hoverMenu() {
+        $(document).ready(function() {
+            $('#userMenuListHide').attr('id','userMenuList');
+        });
+    }
+    unHoverMenu() {
+        $(document).ready(function() {
+            $('#userMenuList').attr('id','userMenuListHide');
+        });
     }
 
 
@@ -241,63 +239,21 @@ componentDidMount(){
     // } else {
     
         return (
-            <div id="headerRight" 
-             
-            >
-                {/* <HeaderSphere /> */}
-                {/* <div id="headerSphereInfo2">
-                    <span id="red">{this.state.messageNotifications}</span>
-                </div> */}
-                {/* <div id="exitHeaderMenuMobile"
-                 onClick={this.hideMenu}
-                > 
-                </div> */}
-                <div id="headerOptionsContainerUser">
-                        {/* <div id="headerTabContainer">
-                            <Link>
-                                <div id="notebookHeaderButton" onClick={this.showNotebook} onMouseOver={this.hoverNotebook} onMouseOut={this.unHoverNotebook}>
-                                    <img src={require('../assets/notebookWhite.svg')} id="mindTempleButton" width="30" height="30" alt="Gear logo, link to settings"/>
-                                </div>
-                            </Link>
-                            <Link to="/messages" activeClassName="activePrivate">
-                                <div id={this.state.messageButtonID} onMouseOver={this.hoverMessagesHeader} onMouseOut={this.unHoverMessagesHeader} onClick={this.clearMessageNotifications}>
-                                    {this.state.messageNotifications}
-                                </div>
-                            </Link>
-                            <Link to="/mindtemple" id="whiteHeader" activeClassName="activePrivate">
-                                <div id="headerTempleName" onMouseOver={this.hoverMindTemple} onMouseOut={this.unHoverMindTemple}>
-                                    <img src={require('../assets/templeSoftWhite.svg')} id="mindTempleButton" width="30" height="30" alt="Gear logo, link to settings"/>
-                                </div>
-                            </Link>
-                        </div> */}
+            <div id="headerRight">
+            
+                {/* <div id="headerOptionsContainerUser"> */}
 
 
-
-
-                        <Link 
-                        // REMOVING PROFILE LINK:   // to="/profile" 
-                        id="whiteHeader" activeClassName="activeProfile">
-                            <div id="headerName" 
-                            // onMouseOver={this.hoverProfile} onMouseOut={this.unHoverProfile}
-                            >
-                                {cookie.load("userName")}
-                            </div>
-                        </Link>
-
-
-
-
-                        {/* <Link to="/profile/prestige" activeClassName="activePointsHeader">
-                            <div id="headerPointsContainer" onMouseOver={this.hoverPoints} onMouseOut={this.unHoverPoints}>
-                                <div id="headerLevelTitle">
-                                    {this.state.title}
-                                </div>
-                                <div id="headerPointsNumber">
-                                    {this.state.userPoints}
+                        <div id="userMenuContainer">
+                            <div id="userMenuList">
+                                <div id="userMenuLogout">
+                                    logout
                                 </div>
                             </div>
-                        </Link> */}
-                </div>
+                        </div>
+                        
+
+                {/* </div> */}
             </div>
         );
     // }
