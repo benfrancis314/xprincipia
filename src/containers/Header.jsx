@@ -49,7 +49,7 @@ componentDidMount(){
   }
 }
 componentWillReceiveProps(nextProps) {
-  if (window.location.pathname.includes('er')) {
+  if (window.location.pathname.includes('/er')) {
     this.setState({ 
       erKey: '1',
     })

@@ -203,9 +203,9 @@ export default class WelcomeContainer extends React.Component {
         } else {
             return (
                 <div id="welcomeContainer">
-                        <div id="tutorialWelcomeButtonOn" onClick={this.tutorialOn}>
+                        {/* <div id="tutorialWelcomeButtonOn" onClick={this.tutorialOn}>
                             scientific news
-                        </div>
+                        </div> */}
                     <Link to="/introduction" activeClassName="activeIntroductionButton">
                         <div id="welcomeIntroductionLabel" onMouseOver={this.hoverText} onMouseOut={this.unHoverText}>
                             {this.state.introductionTitle}
